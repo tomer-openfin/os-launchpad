@@ -1,6 +1,6 @@
-import { App } from './App';
-import { DragDropManager } from './DragDropManager';
-import { TrayWindowManager } from './TrayWindowManager';
+import {App} from './App';
+import {DragDropManager} from './DragDropManager';
+import {TrayWindowManager} from './TrayWindowManager';
 
 /**
  * @interface AppInfo Interface for the Application Info loaded from the application metadata file
@@ -88,20 +88,20 @@ export class ContentManager {
     }
 
     /**
-     * @method _createEventListeners Creates Event Listeners 
+     * @method _createEventListeners Creates Event Listeners
      */
     private _createEventListeners(): void {
-        document.getElementById("searchBar")!.addEventListener("keyup", this._handleSearchInput.bind(this));
+        document.getElementById('searchBar')!.addEventListener('keyup', this._handleSearchInput.bind(this));
     }
 
     /**
-     * @method _handleSearchInput Handles input from the search bar.  
+     * @method _handleSearchInput Handles input from the search bar.
      * @param e Keyboard Event captured from the keyup event listener.
      */
     private _handleSearchInput(e: KeyboardEvent): void {
         const searchQuery: string = (e.target as HTMLInputElement).value.toLocaleUpperCase();
 
-        //if no search then render original list and escape.
+        // if no search then render original list and escape.
         if (searchQuery.length === 0) {
             this._renderAppList(this._trayApps, true);
             return;
@@ -126,19 +126,17 @@ export class ContentManager {
      */
     // tslint:disable-next-line:no-any
     private async _loadConfigurationFile(fileUrl: string): Promise<any> {
-        return await fetch(fileUrl)
-            .then((response: Response) => response.json());
+        return await fetch(fileUrl).then((response: Response) => response.json());
     }
 
     /**
      * @method _loadAppMetadataAndProcess Loads Application Metadata and Processes
      * @param fileUrl Url of Metadata
      */
-    private _loadAppMetadataAndProcess(fileUrl: string){
-        this._loadConfigurationFile(fileUrl)
-            .then((appMetadata: AppInfo[]) => {
-                this._processAppList(appMetadata);
-            });
+    private _loadAppMetadataAndProcess(fileUrl: string) {
+        this._loadConfigurationFile(fileUrl).then((appMetadata: AppInfo[]) => {
+            this._processAppList(appMetadata);
+        });
     }
 
     /**
@@ -146,18 +144,17 @@ export class ContentManager {
      * @param fileUrl Url of Metadata
      */
     private _loadConfigFileAndProcess(fileUrl: string): void {
-        this._loadConfigurationFile(fileUrl)
-            .then((config: ConfigFile) => {
-                if(config.style){
-                    this._processAppConfigs(config.style);
-                }
+        this._loadConfigurationFile(fileUrl).then((config: ConfigFile) => {
+            if (config.style) {
+                this._processAppConfigs(config.style);
+            }
 
-                if(config.applicationMetadata){
-                    config.applicationMetadata.forEach((metadata: string) => {
-                        this._loadAppMetadataAndProcess(metadata);
-                    });
-                }
-            });
+            if (config.applicationMetadata) {
+                config.applicationMetadata.forEach((metadata: string) => {
+                    this._loadAppMetadataAndProcess(metadata);
+                });
+            }
+        });
     }
 
     /**
@@ -165,25 +162,25 @@ export class ContentManager {
      * @param config ConfigInfo
      */
     private _processAppConfigs(config: ConfigInfo): void {
-        const windowTitle: string = config.windowTitle || "";
-        const icon: string = config.icon || "";
-        const iconBackground: string = config.iconBackground || "";
-        const systemTrayIcon: string = config.systemTrayIcon || "";
-        const hotbarBackground: string = config.hotbarBackground || "";
-        const listBackground: string = config.listBackground || "";
-        const listAppHover: string = config.listAppHover || "";
-        const listAppTextColor: string = config.listAppTextColor || "";
-        const searchBarBackground: string = config.searchBarBackground || "";
-        const searchBarTextColor: string = config.searchBarTextColor || "";
-        const iconHover: string = config.iconHover || "";
-        const toolTipBackground: string = config.toolTipBackground || "";
-        const toolTipTextColor: string = config.toolTipTextColor || "";
+        const windowTitle: string = config.windowTitle || '';
+        const icon: string = config.icon || '';
+        const iconBackground: string = config.iconBackground || '';
+        const systemTrayIcon: string = config.systemTrayIcon || '';
+        const hotbarBackground: string = config.hotbarBackground || '';
+        const listBackground: string = config.listBackground || '';
+        const listAppHover: string = config.listAppHover || '';
+        const listAppTextColor: string = config.listAppTextColor || '';
+        const searchBarBackground: string = config.searchBarBackground || '';
+        const searchBarTextColor: string = config.searchBarTextColor || '';
+        const iconHover: string = config.iconHover || '';
+        const toolTipBackground: string = config.toolTipBackground || '';
+        const toolTipTextColor: string = config.toolTipTextColor || '';
 
         // set Window Title
         document.title = windowTitle;
 
         // set Icon Image
-        document.getElementsByClassName('launch-bar-handle-img')[0].setAttribute("src", icon);
+        document.getElementsByClassName('launch-bar-handle-img')[0].setAttribute('src', icon);
 
         // set Icon Background Image
         document.getElementById('launch-bar-handle')!.style.background = iconBackground;
@@ -194,12 +191,12 @@ export class ContentManager {
         // set Hotbar Background Color
         document.getElementById('launch-bar-tearout')!.style.background = hotbarBackground;
 
-        //set Search Bar Background Color
+        // set Search Bar Background Color
         document.getElementById('searchBar')!.style.background = searchBarBackground;
 
-        //set Search Bar Text Color
+        // set Search Bar Text Color
         document.getElementById('searchBar')!.style.color = searchBarTextColor;
-        
+
         // set Search Bar placeholder text color (matches text color)
         this._writeCSS(`input::-webkit-input-placeholder {color: ${searchBarTextColor}; opacity: 0.3; }`);
 
@@ -215,7 +212,7 @@ export class ContentManager {
         // set action hover color (exit, expand)
         this._writeCSS(`:root {--highlight-color: ${iconHover}; !important}`);
 
-        //sets tooltip defaults
+        // sets tooltip defaults
         this._writeCSS(`.tooltip { color: ${toolTipTextColor} !important; background: ${toolTipBackground} !important }`);
     }
 
@@ -238,9 +235,8 @@ export class ContentManager {
     private _processAppList(apps: AppInfo[]): void {
         // Filter out hidden apps & start apps with startup flag
         const appsFiltered: AppInfo[] = apps.filter((app: AppInfo) => {
-            if(app.startup) {
+            if (app.startup) {
                 ContentManager.createFromManifestAndRun(app.manifest_url);
-
             }
 
             if (app.hidden) {
@@ -267,7 +263,7 @@ export class ContentManager {
         // Sets the App list to height relative to number of icons.
 
         const rowCount: number = (Math.ceil(this._trayApps.length / 4) - 1);
-        document.getElementsByClassName('app-list')[0].setAttribute("style", `height: ${((rowCount > 4 ? 4 : rowCount) * 96 + 10)}px`);
+        document.getElementsByClassName('app-list')[0].setAttribute('style', `height: ${((rowCount > 4 ? 4 : rowCount) * 96 + 10)}px`);
 
         // Once all apps are loaded, dispatch an event for
         // any compnents that require this to be complete
@@ -281,22 +277,19 @@ export class ContentManager {
      */
     private _renderHotBar(apps: App[], clearExistingIcons = false): void {
         // Trusting #app-hotbar is not null
-        const hotBar: HTMLElement = document.getElementById("app-hotbar")!;
+        const hotBar: HTMLElement = document.getElementById('app-hotbar')!;
 
         // Gets any apps on the HotBar from previous application uses.
-        const rememberedHotApps: Array<{ name: string }> = JSON.parse(localStorage.getItem('HotApps') as string) || [];
+        const rememberedHotApps: Array<{name: string}> = JSON.parse(localStorage.getItem('HotApps') as string) || [];
 
         if (hotBar) {
-
             // Render each applications HTML
             apps.forEach((app: App, index: number) => {
-
                 // Loads first 5 apps in list if there are no rememeberedApps, or loads the rememeberedApps.
                 if (((index < 5 && rememberedHotApps.length === 0) || rememberedHotApps.length > 0)) {
-
                     // Pluck out and renders the remembered apps
                     if (rememberedHotApps.length > 0) {
-                        const found: number = rememberedHotApps.findIndex((rememberedApp: { name: string }) => {
+                        const found: number = rememberedHotApps.findIndex((rememberedApp: {name: string}) => {
                             return app.info.name === rememberedApp.name;
                         });
 
@@ -318,14 +311,11 @@ export class ContentManager {
      * @param renderHotBar Boolean if we should consider the top bar items or render only to the tray.
      */
     private _renderAppList(apps: App[], clearExistingIcons = false): void {
-
-
-
         // Trusting .app-list is not null
-        const trayElement: HTMLElement = document.getElementsByClassName("app-list")![0] as HTMLElement;
+        const trayElement: HTMLElement = document.getElementsByClassName('app-list')![0] as HTMLElement;
 
         if (clearExistingIcons) {
-            trayElement.innerHTML = "";
+            trayElement.innerHTML = '';
 
             // Before re-rendering we also want to remove any/all existing tooltips
             const tooltips = Array.from(document.querySelectorAll('.tooltip')) as HTMLElement[];
@@ -364,11 +354,15 @@ export class ContentManager {
      */
     static createFromManifestAndRun(manifest: string): void {
         fin.desktop.Application.createFromManifest(manifest, (createdApp: fin.OpenFinApplication): void => {
-            createdApp.run((): void => {
-                console.info("Launched Successfully: ", createdApp);
-            }, (): void => {
-                console.info("Launch Error: ", createdApp);
-            });
+            createdApp.run(
+                ():
+                    void => {
+                        console.info('Launched Successfully: ', createdApp);
+                    },
+                ():
+                    void => {
+                        console.info('Launch Error: ', createdApp);
+                    });
         });
     }
 

@@ -1,6 +1,6 @@
 import * as openfinLayouts from 'openfin-layouts';
-import { ContentManager } from './ContentManager';
-import { TrayWindowManager } from './TrayWindowManager';
+import {ContentManager} from './ContentManager';
+import {TrayWindowManager} from './TrayWindowManager';
 
 /**
  * @class WindowManager Handles all Window Related Functionality
@@ -18,7 +18,7 @@ export class WindowManager {
     private readonly _hotBarHeight = 70;
 
     constructor() {
-        if(WindowManager.INSTANCE) {
+        if (WindowManager.INSTANCE) {
             return WindowManager.INSTANCE;
         }
 
@@ -26,9 +26,9 @@ export class WindowManager {
 
         WindowManager.INSTANCE = this;
 
-        /* 
+        /*
          * Sets _isTrayOpen based on the window height
-         * (This needs to be here to stop drag and drop breaking when 
+         * (This needs to be here to stop drag and drop breaking when
          * the window is reloaded while the tray is expanded)
          */
         this._isTrayOpen = (window.innerHeight > this._hotBarHeight ? true : false);
@@ -53,12 +53,12 @@ export class WindowManager {
     }
 
     /**
-     * @method handleUnload Fires before the DOM is unloaded. 
+     * @method handleUnload Fires before the DOM is unloaded.
      * Removes the current tray icon, then allows the reload to continue
      */
     private async handleUnload() {
         const trayWindowManager = TrayWindowManager.instance;
-        
+
         await trayWindowManager.destroyTrayWindow();
 
         return;
@@ -107,18 +107,11 @@ export class WindowManager {
      */
     private _moveTray(open: boolean): void {
         // 67px = top bar, 96 = row height, 20 = footer space
-        this._window.animate(
-            {
-                size: {
-                    height: (open ? this._calculateTrayHeight() : 67),
-                    duration: 100
-                }
-            }, { interrupt: false }
-        );
+        this._window.animate({size: {height: (open ? this._calculateTrayHeight() : 67), duration: 100}}, {interrupt: false});
     }
 
     /**
-     * @method _calculateTrayHeight Calculates the height that the tray should stretch out to. 
+     * @method _calculateTrayHeight Calculates the height that the tray should stretch out to.
      */
     private _calculateTrayHeight(): number {
         let numRows = Math.ceil(ContentManager.instance.getTrayApps.length / 4);
@@ -147,7 +140,7 @@ export class WindowManager {
      * @returns WindowManager
      */
     static get instance(): WindowManager {
-        if(WindowManager.INSTANCE){
+        if (WindowManager.INSTANCE) {
             return WindowManager.INSTANCE;
         } else {
             return new WindowManager();

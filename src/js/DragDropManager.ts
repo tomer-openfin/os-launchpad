@@ -1,6 +1,6 @@
 
 import * as dragula from 'dragula';
-import { WindowManager } from './WindowManager';
+import {WindowManager} from './WindowManager';
 
 // Default max number of hotbar icons
 const MAX_CHILD_COUNT = 5;
@@ -9,7 +9,6 @@ const MAX_CHILD_COUNT = 5;
  * Helper class that initiates and manages drag and drop functionality
  */
 export class DragDropManager {
-
     /** Maximum number of hotbar icons */
     private _maxChildren: number;
 
@@ -27,10 +26,9 @@ export class DragDropManager {
      * @param {number} maxChildren Maximum number of hotbar icons allowed
      */
     constructor(maxChildren: number = MAX_CHILD_COUNT) {
-
         this._maxChildren = maxChildren;
         // Initialize _childCount to the max allowed., preventing apps
-        // from being added to the hot bar. This will be set correctly once  
+        // from being added to the hot bar. This will be set correctly once
         // the content is fully loaded.
         this._hotBarChildCount = this._maxChildren;
 
@@ -47,7 +45,6 @@ export class DragDropManager {
      * Initializes the dragula library to manage drag and drop
      */
     private _initializeDragula(): dragula.Drake {
-
         return dragula({
             // Array of elements that will be managed by dragula
             containers: [
@@ -77,15 +74,13 @@ export class DragDropManager {
             },
             // Determines when an app can not be picked up
             invalid: (el, handle): boolean => {
-
                 // Block all drag and drop actions if the tray is minimized
                 return !WindowManager.instance.isTrayOpen;
             },
-            // If the object is dropped where there is no valid 
+            // If the object is dropped where there is no valid
             // position, it is removed (e.g. off window)
             removeOnSpill: true,
         });
-
     }
 
     /** Registers listeners against the drake object to customise behaviour */
@@ -118,9 +113,6 @@ export class DragDropManager {
      * functionality is required.
      */
     initChildCount(): void {
-        this._hotBarChildCount = document.getElementById("app-hotbar")!.childNodes.length;
+        this._hotBarChildCount = document.getElementById('app-hotbar')!.childNodes.length;
     }
-
 }
-
-
