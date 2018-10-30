@@ -1,0 +1,252 @@
+swagger: '2.0'
+
+host: 'localhost:9001'
+
+basePath: /
+
+info:
+  title: whiteboard api
+  version: 0.0.1
+
+paths:
+
+  /login:
+    post:
+      summary: Login
+
+      parameters:
+        - description: Login credentials json
+          required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/Login'
+
+      responses:
+        '200':
+          description: Login Successful
+          schema:
+            $ref: '#/definitions/UserProperties'
+        '401':
+          description: Login Unsuccessful
+          schema:
+            $ref: '#/definitions/AuthError'
+
+  /newPassword:
+    post:
+      summary: New Password
+
+      parameters:
+        - description: New password json
+          required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/NewPassword'
+
+      responses:
+        '200':
+          description: Password update successful
+          schema:
+            $ref: '#/definitions/UserProperties'
+        '401':
+          description: Password update unsuccessful
+          schema:
+            $ref: '#/definitions/NewPasswordError'
+
+  /config:
+    get:
+      summary: Get Configuration
+
+      responses:
+        '200':
+          description: Configuration
+          schema:
+            $ref: '#/definitions/Config'
+        '404':
+          description: Configuration not found
+
+  /api/layouts:
+    get:
+      summary: Get Layouts
+
+      responses:
+        '200':
+          description: Layouts Array
+          schema:
+            title: authentication error payload
+            type: array
+            items:
+              type: object
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+
+    post:
+      summary: Save New Layout
+
+      parameters:
+        - description: Layout json
+          required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/Layout'
+
+      responses:
+        '201':
+          description: Layout Created
+          schema:
+            $ref: '#/definitions/LayoutList'
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+        '400':
+          description: Bad request
+
+  /api/layout/{id}:
+
+    put:
+      summary: Update Layout
+
+      parameters: 
+        - in: path
+          required: true
+          name: id
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/Layout'
+          description: Layout json
+
+      responses:
+        '200':
+          description: Layout Updated
+          schema:
+            $ref: '#/definitions/LayoutList'
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+        '400':
+          description: Bad request
+        '404':
+          description: Layout not Found
+
+    delete:
+      summary: Delete Layout
+      parameters: 
+        - in: path
+          required: true
+          name: id
+          type: string
+
+      responses:
+        '200':
+          description: Layout Deleted
+          schema:
+            $ref: '#/definitions/LayoutList'
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+        '404':
+          description: Layout not Found
+
+definitions:
+  Login:
+    title: Login credentials payload
+    type: object
+    properties:
+      username:
+        type: string
+        description: Username (email)
+      password:
+        type: string
+        description: Password
+    required:
+      - username
+      - password
+
+  NewPassword:
+    title: New password and credentials payload
+    type: object
+    properties:
+      username:
+        type: string
+        description: Username (email)
+      password:
+        type: string
+        description: Old Password
+      newPassword:
+        type: string
+        description: New Password
+      fields:
+        type: object
+        description: required fields
+    required:
+      - username
+      - password
+      - newPassword
+
+  Layout:
+    title: layout json request payload
+    type: object
+
+  AuthError:
+    title: authentication error payload
+    type: object
+    properties:
+      status:
+        type: string
+        description: error status/type
+      message:
+        type: string
+        description: error message
+
+  NewPasswordError:
+    title: authentication error payload
+    type: object
+    properties:
+      status:
+        type: string
+        description: error status/type
+      message:
+        type: string
+        description: error message
+      requiredFields:
+        type: array
+        description: required addition user properties (initial login)
+        items:
+          type: string
+
+  UserProperties:
+    title: authentication error payload
+    type: object
+    properties:
+      username:
+        type: string
+        description: username
+      firstname:
+        type: string
+        description: user first name
+      lastname:
+        type: string
+        description: user last name
+      isAdmin:
+        type: boolean
+        description: user is an admin
+
+  LayoutList:
+    title: authentication error payload
+    type: array
+    items:
+      type: object
+
+  Config:
+    title: 'organization configuration (theme, etc)'
+    type: object
