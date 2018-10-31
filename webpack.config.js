@@ -1,72 +1,70 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
+require('dotenv').config();
 
-/**
- * creates a webpack config to be exported when npm run build in run
- * @param {string} entryPoint The entry points to the application
- * @return {Object} A webpack module for the project
- */
-function createWebpackConfigForProject(entryPoint) {
-    return {
-        entry: entryPoint,
-        output: {
-            path: path.resolve(__dirname, './dist/pack'),
-            filename: '[name]-bundle.js'
+const PORT = process.env.PORT || 8080;
+const NODE_ENV = process.env.NODE_ENV || 'development';
+
+module.exports = {
+  mode: NODE_ENV,
+  entry: './src/index.tsx',
+  output: {
+    filename: 'bundle.js',
+    path: path.join(__dirname, '/build'),
+  },
+  // Enable sourcemaps for debugging webpack's output.
+  devtool: 'source-map',
+  resolve: {
+    // Add '.ts' and '.tsx' as resolvable extensions.
+    extensions: ['.ts', '.tsx', '.js', '.json'],
+  },
+  module: {
+    rules: [
+      // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
+      {
+        test: /\.tsx?$/,
+        loader: 'awesome-typescript-loader',
+      },
+      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'index.html'),
+    }),
+    new webpack.NamedModulesPlugin(),
+    new CopyWebpackPlugin([
+      {
+        from: './src/app.json',
+        transform: content => {
+          const confString = '' + content;
+          return prepConfig(confString);
         },
-        resolve: {
-            extensions: ['.js']
-        },
-        devtool: 'source-map',
-        module: {
-            rules: [
-                {
-                    test: /\.(png|jpg|gif|otf|svg)$/,
-                    use: [
-                        {
-                            loader: 'url-loader',
-                            options: {
-                                limit: 8192
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        plugins: [
-            new CopyWebpackPlugin([ { from: './src', to: '..', ignore: ['*.ts', 'app.json'] } ]),
-            new CopyWebpackPlugin([
-                { 
-                    from: './src/app.json', 
-                    transform: (content) => {
-                        const confString = '' + content;
-                        return prepConfig(confString);
-                    },
-                    to: '..'
-                }
-            ])
-        ]
-    };
-}
+        to: '.',
+      },
+      {
+        from: './public',
+        to: './public',
+      },
+    ]),
+  ],
+};
 
 function prepConfig(configString) {
-    const deployLocation = process.env.DEPLOY_LOCATION;
-    const runtimeVersion = process.env.RUNTIME_VERSION;
+  const devConfigPath = `http://localhost:${PORT}`;
 
-    if (deployLocation !== undefined && deployLocation !== '') {
-        configString = configString.replace(/http\:\/\/localhost\:9001/g, deployLocation);
-    }
+  const deployLocation = process.env.DEPLOY_LOCATION || devConfigPath;
+  const runtimeVersion = process.env.RUNTIME_VERSION;
 
-    if (runtimeVersion !== undefined && runtimeVersion !== '') {
-        const config = JSON.parse(configString);
-        config.runtime.version = runtimeVersion;
-        configString = JSON.stringify(config, null, 4);
-    }
-    return configString;
+  configString = configString.replace(/%PUBLIC_URL%/g, deployLocation);
+
+  if (runtimeVersion !== undefined && runtimeVersion !== '') {
+    const config = JSON.parse(configString);
+    config.runtime.version = runtimeVersion;
+    configString = JSON.stringify(config, null, 4);
+  }
+  return configString;
 }
-
-/**
- * Modules to be exported
- */
-module.exports = [
-    createWebpackConfigForProject({'launcher': './staging/src/index.js'})
-];

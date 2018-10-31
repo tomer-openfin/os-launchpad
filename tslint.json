@@ -1,6 +1,17 @@
 {
-  "extends": "gts/tslint.json",
+  "extends": ["tslint:latest", "tslint-react", "gts/tslint.json"],
   "rules": {
-    "no-inferrable-types": false
+    "no-default-export": false,
+    "no-inferrable-types": false,
+    "no-submodule-imports": false,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-pascal-case"
+    ],
+    "quotemark": [true, "single", "jsx-double"],
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    "triple-equals": true
   }
 }
