@@ -3,3 +3,4 @@ import '../src/components/App';
 import '../src/components/AppList';
 import '../src/components/Button';
 import '../src/components/HMRTest';
+import '../src/components/NewUserForm';

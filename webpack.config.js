@@ -2,8 +2,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
+
 require('dotenv').config();
 
+const myEnv = require('dotenv').config().parsed;
 const PORT = process.env.PORT || 8080;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -30,6 +32,12 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        MOCK_POSTMAN_URI: myEnv.MOCK_POSTMAN_URI,
+        POSTMAN_API_KEY: myEnv.POSTMAN_API_KEY,
+      },
+    }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'index.html'),
     }),
