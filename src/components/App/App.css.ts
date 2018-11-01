@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import * as gradient from '../../assets/gradient.svg';
 import * as logo from '../../assets/logo-new.png';
 

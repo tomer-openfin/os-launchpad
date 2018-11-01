@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { GlobalStyle } from '../../stylesheets/globals.css';
 import Button from '../Button/Button';
 import { Title } from './';
 
@@ -38,7 +37,6 @@ class App extends React.Component<{}, State> {
   render() {
     return (
       <div>
-        <GlobalStyle />
         <Title>App</Title> {this.state.counter}
         <Button onClick={this.handleIncrement}>Increment</Button>
       </div>
