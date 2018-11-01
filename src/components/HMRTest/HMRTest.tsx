@@ -40,7 +40,7 @@ class App extends React.Component<{}, State> {
       <div>
         <GlobalStyle />
         <Title>App</Title> {this.state.counter}
-        <Button onClick={this.handleIncrement} />
+        <Button onClick={this.handleIncrement}>Increment</Button>
       </div>
     );
   }

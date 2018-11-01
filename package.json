@@ -41,6 +41,7 @@
     "@storybook/addon-actions": "4.0.0",
     "@storybook/addon-info": "4.0.0",
     "@storybook/addon-links": "4.0.0",
+    "@storybook/addon-knobs": "4.0.0",
     "@storybook/addon-storyshots": "4.0.0",
     "@storybook/react": "4.0.0",
     "dragula": "3.7.2",

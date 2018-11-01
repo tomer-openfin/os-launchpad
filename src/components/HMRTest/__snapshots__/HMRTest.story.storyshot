@@ -12,16 +12,19 @@ exports[`Storyshots HMRTest default 1`] = `
   >
     <div>
       <h1
-        className="sc-gqjmRU hwDYsh"
+        className="sc-VigVT kGHvty"
       >
         App
       </h1>
        
       0
       <button
+        className="sc-bZQynM kpLznR"
+        color="#000"
         onClick={[Function]}
+        width={150}
       >
-        increment
+        Increment
       </button>
     </div>
   </div>
