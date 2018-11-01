@@ -1,49 +1,18 @@
 import * as React from 'react';
 
-import { GlobalStyle } from '../../stylesheets/globals.css';
-import Button from '../Button/Button';
-import { Title } from './App.css';
+import { GlobalStyle } from '../../styles/globals.css';
+import AppList from '../AppList';
+import { Logo, LogoWrapper, Wrapper } from './';
 
-interface State {
-  counter: number;
-}
+const App = ({}) => (
+  <Wrapper>
+    <GlobalStyle />
 
-class App extends React.Component<{}, State> {
-  interval?: number;
+    <LogoWrapper>
+      <Logo />
+    </LogoWrapper>
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      counter: 0,
-    };
-  }
-
-  componentDidMount() {
-    this.interval = window.setInterval(this.handleIncrement, 500);
-  }
-
-  componentWillUnmount() {
-    if (this.interval) {
-      window.clearInterval(this.interval);
-    }
-  }
-
-  handleIncrement = () => {
-    this.setState(prevState => ({
-      counter: prevState.counter + 1,
-    }));
-  };
-
-  render() {
-    return (
-      <div>
-        <GlobalStyle />
-        <Title>App</Title> {this.state.counter}
-        <Button onClick={this.handleIncrement} />
-      </div>
-    );
-  }
-}
+    <AppList />
+  </Wrapper>);
 
 export default App;

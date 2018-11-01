@@ -1,4 +1,4 @@
-// @ts-ignore
+/* tslint:disable:no-console */
 
 import * as openfinLayouts from 'openfin-layouts';
 import { ContentManager } from './ContentManager';
@@ -19,67 +19,6 @@ export class TrayWindowManager {
     this.createTrayWindow();
 
     TrayWindowManager.INSTANCE = this;
-  }
-
-  /**
-   * @method createTrayWindow Creates the tray menu window
-   */
-  private createTrayWindow(): void {
-    this.window = new fin.desktop.Window(
-      {
-        name: 'LauncherTray',
-        url: 'tray.html',
-        defaultWidth: 300,
-        defaultHeight: 35,
-        defaultTop: 0,
-        defaultLeft: 0,
-        frame: false,
-        saveWindowState: false,
-        autoShow: false,
-        // @ts-ignore No smallWindow in openfin types
-        smallWindow: true,
-        showTaskbarIcon: false,
-        alwaysOnTop: true,
-        state: 'normal',
-      },
-      () => {
-        openfinLayouts.deregister({
-          uuid: fin.desktop.Application.getCurrent().uuid,
-          name: 'LauncherTray',
-        });
-      },
-      (e: string) => {
-        console.error('Failed to create LauncherTrayIcon Window', e);
-        this.window = fin.desktop.Window.wrap(
-          fin.desktop.Application.getCurrent().uuid,
-          'LauncherTray',
-        );
-      },
-    );
-  }
-
-  /**
-   * @method createTrayIcon Sets Tray Icon and sets up menu event
-   */
-  private createTrayIcon(): void {
-    fin.desktop.Application.getCurrent().setTrayIcon(
-      this.icon,
-      this.trayMenuHandler.bind(this),
-    );
-  }
-
-  /**
-   * @method trayMenuHandler Handles events for when the tray menu is activated.  Fired from tray icon click.
-   * @param e fin.TrayIconClickedEvent
-   */
-  private trayMenuHandler(e: fin.TrayIconClickedEvent): void {
-    /* Right Click */
-    if (e.button === 2) {
-      this.window.moveTo(e.x, e.y - this.window.getNativeWindow().outerHeight);
-      this.window.show();
-      this.window.setAsForeground();
-      this.window.focus();
-    }
   }
 
   /**
@@ -126,11 +65,63 @@ export class TrayWindowManager {
    * @param imageURL Image URL
    */
   updateTrayIcon(imageURL: string): void {
-    fin.desktop.Application.getCurrent().setTrayIcon(
-      imageURL,
-      this.trayMenuHandler.bind(this),
-    );
+    fin.desktop.Application.getCurrent().setTrayIcon(imageURL, this.trayMenuHandler.bind(this));
     this.icon = imageURL;
+  }
+
+  /**
+   * @method createTrayWindow Creates the tray menu window
+   */
+  private createTrayWindow(): void {
+    this.window = new fin.desktop.Window(
+      {
+        alwaysOnTop: true,
+        autoShow: false,
+        defaultHeight: 35,
+        defaultLeft: 0,
+        defaultTop: 0,
+        defaultWidth: 300,
+        frame: false,
+        name: 'LauncherTray',
+        saveWindowState: false,
+        showTaskbarIcon: false,
+        // @ts-ignore No smallWindow in openfin types
+        smallWindow: true,
+        state: 'normal',
+        url: 'tray.html',
+      },
+      () => {
+        openfinLayouts.deregister({
+          name: 'LauncherTray',
+          uuid: fin.desktop.Application.getCurrent().uuid,
+        });
+      },
+      (e: string) => {
+        console.error('Failed to create LauncherTrayIcon Window', e);
+        this.window = fin.desktop.Window.wrap(fin.desktop.Application.getCurrent().uuid, 'LauncherTray');
+      },
+    );
+  }
+
+  /**
+   * @method createTrayIcon Sets Tray Icon and sets up menu event
+   */
+  private createTrayIcon(): void {
+    fin.desktop.Application.getCurrent().setTrayIcon(this.icon, this.trayMenuHandler.bind(this));
+  }
+
+  /**
+   * @method trayMenuHandler Handles events for when the tray menu is activated.  Fired from tray icon click.
+   * @param e fin.TrayIconClickedEvent
+   */
+  private trayMenuHandler(e: fin.TrayIconClickedEvent): void {
+    /* Right Click */
+    if (e.button === 2) {
+      this.window.moveTo(e.x, e.y - this.window.getNativeWindow().outerHeight);
+      this.window.show();
+      this.window.setAsForeground();
+      this.window.focus();
+    }
   }
 
   /**

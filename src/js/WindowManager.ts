@@ -37,6 +37,31 @@ export class WindowManager {
   }
 
   /**
+   * @method toggleTray Toggles the tray open or close depending on current state.
+   */
+  toggleTray(): void {
+    this.moveTray(this.trayIsOpen ? false : true);
+  }
+
+  /**
+   * @method openTray Opens the tray regardless of current state.
+   */
+  openTray(): void {
+    this.moveTray(true);
+  }
+
+  /**
+   * @method closeTray Closes the tray regardless of current state.
+   */
+  closeTray(): void {
+    this.moveTray(false);
+  }
+
+  closeWindow(): void {
+    this.window.close();
+  }
+
+  /**
    * @method setWindowDefaults Sets default window attributes and Event Listeners
    */
   private setWindowDefaults(): void {
@@ -49,17 +74,9 @@ export class WindowManager {
    */
   private createEventListeners(): void {
     // @ts-ignore openfin type incorrectly handling windowResized param
-    this.window.addEventListener(
-      'bounds-changed',
-      this.windowResized.bind(this),
-    );
-    this.window.addEventListener(
-      'close-requested',
-      this.handleWindowClose.bind(this),
-    );
-    this.window
-      .getNativeWindow()
-      .addEventListener('beforeunload', this.handleUnload.bind(this));
+    this.window.addEventListener('bounds-changed', this.windowResized.bind(this));
+    this.window.addEventListener('close-requested', this.handleWindowClose.bind(this));
+    this.window.getNativeWindow().addEventListener('beforeunload', this.handleUnload.bind(this));
   }
 
   /**
@@ -91,27 +108,6 @@ export class WindowManager {
   }
 
   /**
-   * @method toggleTray Toggles the tray open or close depending on current state.
-   */
-  toggleTray(): void {
-    this.moveTray(this.trayIsOpen ? false : true);
-  }
-
-  /**
-   * @method openTray Opens the tray regardless of current state.
-   */
-  openTray(): void {
-    this.moveTray(true);
-  }
-
-  /**
-   * @method closeTray Closes the tray regardless of current state.
-   */
-  closeTray(): void {
-    this.moveTray(false);
-  }
-
-  /**
    * @method moveTray Opens or Closes the tray based on param.
    * @param open True if the tray should open, False if should close.
    */
@@ -120,8 +116,8 @@ export class WindowManager {
     this.window.animate(
       {
         size: {
-          height: open ? this.calculateTrayHeight() : 67,
           duration: 100,
+          height: open ? this.calculateTrayHeight() : 67,
         },
       },
       { interrupt: false },
@@ -147,10 +143,6 @@ export class WindowManager {
    */
   get isTrayOpen(): boolean {
     return this.trayIsOpen;
-  }
-
-  closeWindow(): void {
-    this.window.close();
   }
 
   /**

@@ -1,4 +1,4 @@
-// @ts-ignore
+/* tslint:disable:no-console */
 
 import { App } from './App';
 import { DragDropManager } from './DragDropManager';
@@ -50,6 +50,26 @@ interface ConfigInfo {
  */
 export class ContentManager {
   /**
+   * @method _createFromManifestAndRun Creates an Openfin Application from Manifest and runs it.
+   * @param manifest A URL to the Application Manifest.
+   */
+  static createFromManifestAndRun(manifest: string): void {
+    fin.desktop.Application.createFromManifest(
+      manifest,
+      (createdApp: fin.OpenFinApplication): void => {
+        createdApp.run(
+          (): void => {
+            console.info('Launched Successfully: ', createdApp);
+          },
+          (): void => {
+            console.info('Launch Error: ', createdApp);
+          },
+        );
+      },
+    );
+  }
+
+  /**
    * @member INSTANCE Contains the instance of the ContentManager Class
    */
   private static INSTANCE: ContentManager;
@@ -93,9 +113,7 @@ export class ContentManager {
    * @method createEventListeners Creates Event Listeners
    */
   private createEventListeners(): void {
-    document
-      .getElementById('searchBar')!
-      .addEventListener('keyup', this.handleSearchInput.bind(this));
+    document.getElementById('searchBar')!.addEventListener('keyup', this.handleSearchInput.bind(this));
   }
 
   /**
@@ -184,56 +202,40 @@ export class ContentManager {
     document.title = windowTitle;
 
     // set Icon Image
-    document
-      .getElementsByClassName('launch-bar-handle-img')[0]
-      .setAttribute('src', icon);
+    document.getElementsByClassName('launch-bar-handle-img')[0].setAttribute('src', icon);
 
     // set Icon Background Image
-    document.getElementById(
-      'launch-bar-handle',
-    )!.style.background = iconBackground;
+    document.getElementById('launch-bar-handle')!.style.background = iconBackground;
 
     // set Tray Background Color
     document.body.style.background = listBackground;
 
     // set Hotbar Background Color
-    document.getElementById(
-      'launch-bar-tearout',
-    )!.style.background = hotbarBackground;
+    document.getElementById('launch-bar-tearout')!.style.background = hotbarBackground;
 
     // set Search Bar Background Color
-    document.getElementById(
-      'searchBar',
-    )!.style.background = searchBarBackground;
+    document.getElementById('searchBar')!.style.background = searchBarBackground;
 
     // set Search Bar Text Color
     document.getElementById('searchBar')!.style.color = searchBarTextColor;
 
     // set Search Bar placeholder text color (matches text color)
-    this.writeCSS(
-      `input::-webkit-input-placeholder {color: ${searchBarTextColor}; opacity: 0.3; }`,
-    );
+    this.writeCSS(`input::-webkit-input-placeholder {color: ${searchBarTextColor}; opacity: 0.3; }`);
 
     // set System Tray Icon
     TrayWindowManager.instance.updateTrayIcon(systemTrayIcon);
 
     // set List App Hover Color
-    this.writeCSS(
-      `.app-list > .app-square:hover { background: ${listAppHover} }`,
-    );
+    this.writeCSS(`.app-list > .app-square:hover { background: ${listAppHover} }`);
 
     // set List App Text Color
-    this.writeCSS(
-      `.app-list > .app-square > .app-content > .app-name { color: ${listAppTextColor} !important; }`,
-    );
+    this.writeCSS(`.app-list > .app-square > .app-content > .app-name { color: ${listAppTextColor} !important; }`);
 
     // set action hover color (exit, expand)
     this.writeCSS(`:root {--highlight-color: ${iconHover}; !important}`);
 
     // sets tooltip defaults
-    this.writeCSS(
-      `.tooltip { color: ${toolTipTextColor} !important; background: ${toolTipBackground} !important }`,
-    );
+    this.writeCSS(`.tooltip { color: ${toolTipTextColor} !important; background: ${toolTipBackground} !important }`);
   }
 
   /**
@@ -285,12 +287,7 @@ export class ContentManager {
     // Sets the App list to height relative to number of icons.
 
     const rowCount: number = Math.ceil(this.trayApps.length / 4) - 1;
-    document
-      .getElementsByClassName('app-list')[0]
-      .setAttribute(
-        'style',
-        `height: ${(rowCount > 4 ? 4 : rowCount) * 96 + 10}px`,
-      );
+    document.getElementsByClassName('app-list')[0].setAttribute('style', `height: ${(rowCount > 4 ? 4 : rowCount) * 96 + 10}px`);
 
     // Once all apps are loaded, dispatch an event for
     // any compnents that require this to be complete
@@ -307,24 +304,18 @@ export class ContentManager {
     const hotBar: HTMLElement = document.getElementById('app-hotbar')!;
 
     // Gets any apps on the HotBar from previous application uses.
-    const rememberedHotApps: Array<{ name: string }> =
-      JSON.parse(localStorage.getItem('HotApps') as string) || [];
+    const rememberedHotApps: Array<{ name: string }> = JSON.parse(localStorage.getItem('HotApps') as string) || [];
 
     if (hotBar) {
       // Render each applications HTML
       apps.forEach((app: App, index: number) => {
         // Loads first 5 apps in list if there are no rememeberedApps, or loads the rememeberedApps.
-        if (
-          (index < 5 && rememberedHotApps.length === 0) ||
-          rememberedHotApps.length > 0
-        ) {
+        if ((index < 5 && rememberedHotApps.length === 0) || rememberedHotApps.length > 0) {
           // Pluck out and renders the remembered apps
           if (rememberedHotApps.length > 0) {
-            const found: number = rememberedHotApps.findIndex(
-              (rememberedApp: { name: string }) => {
-                return app.info.name === rememberedApp.name;
-              },
-            );
+            const found: number = rememberedHotApps.findIndex((rememberedApp: { name: string }) => {
+              return app.info.name === rememberedApp.name;
+            });
 
             if (found > -1) {
               this.renderTo(hotBar, app.render(true));
@@ -345,17 +336,13 @@ export class ContentManager {
    */
   private renderAppList(apps: App[], clearExistingIcons = false): void {
     // Trusting .app-list is not null
-    const trayElement: HTMLElement = document.getElementsByClassName(
-      'app-list',
-    )![0] as HTMLElement;
+    const trayElement: HTMLElement = document.getElementsByClassName('app-list')![0] as HTMLElement;
 
     if (clearExistingIcons) {
       trayElement.innerHTML = '';
 
       // Before re-rendering we also want to remove any/all existing tooltips
-      const tooltips = Array.from(
-        document.querySelectorAll('.tooltip'),
-      ) as HTMLElement[];
+      const tooltips = Array.from(document.querySelectorAll('.tooltip')) as HTMLElement[];
       tooltips.forEach((element: Element) => {
         element.remove();
       });
@@ -383,26 +370,6 @@ export class ContentManager {
    */
   get getTrayApps(): App[] {
     return this.trayApps;
-  }
-
-  /**
-   * @method _createFromManifestAndRun Creates an Openfin Application from Manifest and runs it.
-   * @param manifest A URL to the Application Manifest.
-   */
-  static createFromManifestAndRun(manifest: string): void {
-    fin.desktop.Application.createFromManifest(
-      manifest,
-      (createdApp: fin.OpenFinApplication): void => {
-        createdApp.run(
-          (): void => {
-            console.info('Launched Successfully: ', createdApp);
-          },
-          (): void => {
-            console.info('Launch Error: ', createdApp);
-          },
-        );
-      },
-    );
   }
 
   /**

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots App default 1`] = `
+exports[`Storyshots AppList default 1`] = `
 <div>
   <div
     style={
@@ -11,44 +11,33 @@ exports[`Storyshots App default 1`] = `
     }
   >
     <div
-      className="sc-bxivhb dmzBmC"
+      className="sc-bwzfXH jLXwJL"
     >
       <div
-        className="sc-ifAKCX dZvIDe"
-      >
-        <div
-          className="sc-EHOje jPfdPP"
-        />
-      </div>
+        className="sc-htpNat iRDpcp"
+        onClick={[Function]}
+        src="https://d33wubrfki0l68.cloudfront.net/29601600ed621a6d34af5c049a8c51f8c4bf9030/2002f/images/sales-tools-logos/logo-36-pipelinedeals.png"
+      />
       <div
-        className="sc-bwzfXH jLXwJL"
-      >
-        <div
-          className="sc-htpNat iRDpcp"
-          onClick={[Function]}
-          src="https://d33wubrfki0l68.cloudfront.net/29601600ed621a6d34af5c049a8c51f8c4bf9030/2002f/images/sales-tools-logos/logo-36-pipelinedeals.png"
-        />
-        <div
-          className="sc-htpNat leARKN"
-          onClick={[Function]}
-          src="http://scottlogic.github.io/StockFlux/master/favicon.ico"
-        />
-        <div
-          className="sc-htpNat daTdVK"
-          onClick={[Function]}
-          src="http://perpetualnyc.com/beacon/beacon_icon.ico"
-        />
-        <div
-          className="sc-htpNat keYutO"
-          onClick={[Function]}
-          src="https://www.rsrchx.com/static/openfin/rex.app.ico"
-        />
-        <div
-          className="sc-htpNat kuuwcL"
-          onClick={[Function]}
-          src="https://cdn.openfin.co/demos/whiteboard2/apps/external/fdc3explorer/shared/fdc3fav.png"
-        />
-      </div>
+        className="sc-htpNat leARKN"
+        onClick={[Function]}
+        src="http://scottlogic.github.io/StockFlux/master/favicon.ico"
+      />
+      <div
+        className="sc-htpNat daTdVK"
+        onClick={[Function]}
+        src="http://perpetualnyc.com/beacon/beacon_icon.ico"
+      />
+      <div
+        className="sc-htpNat keYutO"
+        onClick={[Function]}
+        src="https://www.rsrchx.com/static/openfin/rex.app.ico"
+      />
+      <div
+        className="sc-htpNat kuuwcL"
+        onClick={[Function]}
+        src="https://cdn.openfin.co/demos/whiteboard2/apps/external/fdc3explorer/shared/fdc3fav.png"
+      />
     </div>
   </div>
   <button
@@ -148,7 +137,7 @@ exports[`Storyshots App default 1`] = `
               }
             }
           >
-            App
+            AppList
           </h1>
           <h2
             style={
@@ -197,7 +186,7 @@ exports[`Storyshots App default 1`] = `
                   }
                 >
                   &lt;
-                  App
+                  AppList
                 </span>
                 <span />
                 <span
@@ -256,7 +245,7 @@ exports[`Storyshots App default 1`] = `
               }
             >
               "
-              App
+              AppList
               " Component
             </h2>
             <small>

@@ -72,6 +72,7 @@
     "storybook": "start-storybook -p 6006",
     "test": "jest",
     "posttest": "npm run check",
+    "storyshots": "jest -u",
     "watch": "webpack --watch"
   },
   "jest": {
@@ -79,8 +80,13 @@
       "ts",
       "tsx",
       "js",
-      "json"
+      "json",
+      "svg",
+      "png"
     ],
+    "moduleNameMapper": {
+      "\\.(svg|jpg|png)$": "<rootDir>/src/utils/empty-module.ts"
+    },
     "transform": {
       "^.+\\.(ts|tsx)$": "ts-jest"
     },

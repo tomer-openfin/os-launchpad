@@ -1,10 +1,6 @@
 import { AnyAction } from 'redux';
 
-import {
-  MeActions,
-  MeState,
-  SET_ME,
-} from './';
+import { MeActions, MeState, SET_ME } from './';
 
 const defaultState: MeState = { username: '' };
 

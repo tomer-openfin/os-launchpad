@@ -5,6 +5,7 @@ import { storiesOf } from '@storybook/react';
 import Button from './Button';
 
 const noop = () => {
+  /* tslint:disable:no-console */
   console.log('here');
 };
 

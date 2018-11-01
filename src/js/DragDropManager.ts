@@ -1,5 +1,3 @@
-// @ts-ignore
-
 import * as dragula from 'dragula';
 import { WindowManager } from './WindowManager';
 
@@ -43,17 +41,19 @@ export class DragDropManager {
   }
 
   /**
+   * Initializes the hotbar count tracker to the number of icons in the hotbar when called.
+   * Should be called once the app lists are fully rendered, but before any drag and drop
+   * functionality is required.
+   */
+  initChildCount(): void {
+    this.hotBarChildCount = document.getElementById('app-hotbar')!.childNodes.length;
+  }
+
+  /**
    * Initializes the dragula library to manage drag and drop
    */
   private initializeDragula(): dragula.Drake {
     return dragula({
-      // Array of elements that will be managed by dragula
-      containers: [this.appList, this.appHotBar],
-      // Determines when the dragged object is copied vs moved
-      copy: (el, source): boolean => {
-        // All drags originating from the app library are copied
-        return source === this.appList;
-      },
       // Determines when a container will accept a drop
       accepts: (el, target, source): boolean => {
         // Not allowed to add anything to the main list
@@ -69,6 +69,13 @@ export class DragDropManager {
         // Otherwise (moving from list to hotbar) there must be fewer
         // than maxChildren existing children
         return this.hotBarChildCount < MAX_CHILD_COUNT;
+      },
+      // Array of elements that will be managed by dragula
+      containers: [this.appList, this.appHotBar],
+      // Determines when the dragged object is copied vs moved
+      copy: (el, source): boolean => {
+        // All drags originating from the app library are copied
+        return source === this.appList;
       },
       // Determines when an app can not be picked up
       invalid: (el, handle): boolean => {
@@ -86,12 +93,7 @@ export class DragDropManager {
     // Increment the child counter when an app is added to the top bar
     drake.on(
       'drop',
-      (
-        el: Element,
-        target: Element,
-        source: Element,
-        sibling: Element,
-      ): void => {
+      (el: Element, target: Element, source: Element, sibling: Element): void => {
         if (target === this.appHotBar && source === this.appList) {
           this.hotBarChildCount++;
         }
@@ -117,16 +119,5 @@ export class DragDropManager {
         }
       },
     );
-  }
-
-  /**
-   * Initializes the hotbar count tracker to the number of icons in the hotbar when called.
-   * Should be called once the app lists are fully rendered, but before any drag and drop
-   * functionality is required.
-   */
-  initChildCount(): void {
-    this.hotBarChildCount = document.getElementById(
-      'app-hotbar',
-    )!.childNodes.length;
   }
 }

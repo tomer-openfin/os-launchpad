@@ -1,3 +1,4 @@
+/* tslint:disable:no-console */
 import { takeLatest } from 'redux-saga/effects';
 import { APPLICATION_STARTED, OPENFIN_READY } from './';
 
