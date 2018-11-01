@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Template default 1`] = `
+exports[`Storyshots HMRTest default 1`] = `
 <div>
   <div
     style={
@@ -10,10 +10,19 @@ exports[`Storyshots Template default 1`] = `
       }
     }
   >
-    <div
-      className="sc-bdVaJa bDWFJH"
-    >
-      Template
+    <div>
+      <h1
+        className="sc-gqjmRU hwDYsh"
+      >
+        App
+      </h1>
+       
+      0
+      <button
+        onClick={[Function]}
+      >
+        increment
+      </button>
     </div>
   </div>
   <button
@@ -113,7 +122,7 @@ exports[`Storyshots Template default 1`] = `
               }
             }
           >
-            Template
+            HMRTest
           </h1>
           <h2
             style={
@@ -162,7 +171,7 @@ exports[`Storyshots Template default 1`] = `
                   }
                 >
                   &lt;
-                  Template
+                  App
                 </span>
                 <span />
                 <span
@@ -221,7 +230,7 @@ exports[`Storyshots Template default 1`] = `
               }
             >
               "
-              Template
+              App
               " Component
             </h2>
             <small>
