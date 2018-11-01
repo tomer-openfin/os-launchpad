@@ -65,7 +65,7 @@
     "build": "webpack",
     "check": "gts check",
     "clean": "gts clean && rimraf build",
-    "dev": "webpack-dev-server --hot",
+    "dev": "node scripts/dev.js",
     "docs": "redoc-cli bundle -o ./dist/docs/index.html ./docs/api.yml",
     "fix": "gts fix",
     "openfin": "node openfin.js",
