@@ -1,6 +1,9 @@
-import { AnyAction } from 'redux';
-
-import { MeActions, MeState, SET_ME } from './';
+import {
+  MeActions,
+  MeState,
+  SET_ME,
+  SetMePayload,
+} from './';
 
 const defaultState: MeState = { username: '' };
 
@@ -9,7 +12,7 @@ export default (state: MeState = defaultState, action: MeActions) => {
     case SET_ME: {
       return {
         ...state,
-        username: action.payload!.username,
+        username: (action.payload! as SetMePayload).username,
       };
     }
     default: {

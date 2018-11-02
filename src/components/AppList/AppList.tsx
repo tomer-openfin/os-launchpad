@@ -22,7 +22,16 @@ const handleClickCreator = (manifestUrl: string) => () => {
   );
 };
 
-const AppList = ({}) =>
-  <Wrapper>{AppData.map(app => <AppIcon onClick={handleClickCreator(app.manifest_url)} key={app.manifest_url} src={app.icon} />)}</Wrapper>;
+const AppList = ({}) => (
+  <Wrapper>
+    {AppData.map(app => (
+      <AppIcon
+        onClick={handleClickCreator(app.manifest_url)}
+        key={app.manifest_url}
+        src={app.icon}
+      />
+    ))}
+  </Wrapper>
+);
 
 export default AppList;

@@ -1,10 +1,9 @@
 import { hot } from 'react-hot-loader';
 
 import Component from './App';
+import * as Story from './App.story';
 
 export * from './App.css';
-
-import * as Story from './App.story';
 
 export { Story };
 

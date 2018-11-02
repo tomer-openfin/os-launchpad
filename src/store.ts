@@ -1,12 +1,14 @@
+import { middleware as reduxOpenFin } from '@giantmachines/redux-openfin';
 import { applyMiddleware, compose, createStore, StoreEnhancer } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import rootReducer from './redux';
-import rootSaga from './redux/sagas';
+import rootReducer from './redux/rootReducer';
+import rootSaga from './redux/rootSaga';
 
 // Middleware
+const openFinMiddleware = reduxOpenFin(window.fin);
 const sagaMiddleware = createSagaMiddleware();
-const middleware = applyMiddleware(sagaMiddleware);
+const middleware = applyMiddleware(openFinMiddleware, sagaMiddleware);
 
 // Middleware enhancers
 const enhancers: StoreEnhancer[] = [];

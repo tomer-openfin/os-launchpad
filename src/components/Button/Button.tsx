@@ -3,10 +3,25 @@ import * as React from 'react';
 import { StyledButton } from './Button.css';
 
 interface Props {
+  /**
+   * Button background color
+   *
+   * @default '#fff'
+   */
   backgroundColor?: string;
   children: React.ReactNode;
+  /**
+   * Button text color
+   *
+   * @default '#000'
+   */
   color?: string;
   onClick: () => void;
+  /**
+   * Button width
+   *
+   * @default 150
+   */
   width?: number;
 }
 

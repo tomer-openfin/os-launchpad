@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
-require('dotenv').config();
+const appJson = require('./src/app.json');
 
 const myEnv = require('dotenv').config().parsed;
 const PORT = process.env.PORT || 8080;
@@ -34,6 +34,9 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
+        APP_UUID: JSON.stringify(appJson.startup_app.uuid),
+        ENTERPRISE: JSON.stringify(process.env.ENTERPRISE),
+        NODE_ENV: JSON.stringify(NODE_ENV),
         MOCK_POSTMAN_URI: myEnv.MOCK_POSTMAN_URI,
         POSTMAN_API_KEY: myEnv.POSTMAN_API_KEY,
       },
@@ -64,13 +67,19 @@ function prepConfig(configString) {
 
   const deployLocation = process.env.DEPLOY_LOCATION || devConfigPath;
   const runtimeVersion = process.env.RUNTIME_VERSION;
+  const isProduction = NODE_ENV === 'production';
 
   configString = configString.replace(/%PUBLIC_URL%/g, deployLocation);
+  const config = JSON.parse(configString);
 
   if (runtimeVersion !== undefined && runtimeVersion !== '') {
-    const config = JSON.parse(configString);
     config.runtime.version = runtimeVersion;
-    configString = JSON.stringify(config, null, 4);
   }
+
+  if (isProduction) {
+    config.startup_app.contextMenu = false;
+  }
+
+  configString = JSON.stringify(config, null, 4);
   return configString;
 }

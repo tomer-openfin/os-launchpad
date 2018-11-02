@@ -16,7 +16,7 @@ exports[`Storyshots HMRTest default 1`] = `
       >
         App
       </h1>
-       
+
       0
       <button
         className="sc-bZQynM kpLznR"
@@ -140,7 +140,7 @@ exports[`Storyshots HMRTest default 1`] = `
             default
           </h2>
         </div>
-        
+
         <div>
           <h1
             style={

@@ -1,9 +1,9 @@
+import { hot } from 'react-hot-loader';
+
 import Component from './HMRTest';
-
-export * from './HMRTest.css';
-
 import * as Story from './HMRTest.story';
 
+export * from './HMRTest.css';
 export { Story };
 
-export default Component;
+export default hot(module)(Component);

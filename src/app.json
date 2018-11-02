@@ -1,34 +1,31 @@
-{ 
-    "startup_app": {
-        "name": "Launcher",
-        "description": "Openfin Application Launcher",
-        "url": "%PUBLIC_URL%/index.html",
-        "defaultWidth": 408,
-        "defaultHeight": 67,
-        "defaultCentered":true,
-        "autoShow": true,
-        "uuid": "Launcher_Main",
-        "saveWindowState": false,
-        "resizable":false,
-        "shadow": true,
-        "frame": false,
-        "backgroundColor": "#1C1C31",
-        "alwaysOnTop":true,
-        "icon": "%PUBLIC_URL%/logo-new.ico",
-        "applicationIcon": "%PUBLIC_URL%/logo-new.png"
-    },
-    "services": [ 
-        { "name": "notifications" },
-        { "name": "layouts" }
-    ],
-    "runtime": {
-        "version": "9.61.34.25"
-    },
-    "shortcut": {
-        "company": "OpenFin",
-        "description": "",
-        "icon": "%PUBLIC_URL%/logo-new.ico",
-        "name": "OS Launcher"
-    },
-    "splashScreenImage": "%PUBLIC_URL%/splashscreen-new.png"
+{
+  "startup_app": {
+    "name": "osLaunchpadMain",
+    "description": "Openfin Application Launcher",
+    "url": "%PUBLIC_URL%/",
+    "defaultWidth": 408,
+    "defaultHeight": 67,
+    "defaultCentered": true,
+    "autoShow": false,
+    "uuid": "osLaunchpadMain",
+    "saveWindowState": false,
+    "resizable": false,
+    "shadow": true,
+    "frame": false,
+    "backgroundColor": "#1C1C31",
+    "alwaysOnTop": false,
+    "icon": "%PUBLIC_URL%/logo-new.ico",
+    "applicationIcon": "%PUBLIC_URL%/logo-new.png"
+  },
+  "services": [{ "name": "notifications" }, { "name": "layouts" }],
+  "runtime": {
+    "version": "9.61.34.25"
+  },
+  "shortcut": {
+    "company": "OpenFin",
+    "description": "",
+    "icon": "%PUBLIC_URL%/logo-new.ico",
+    "name": "OS Launcher"
+  },
+  "splashScreenImage": "%PUBLIC_URL%/splashscreen-new.png"
 }
