@@ -5,7 +5,6 @@ const webpack = require('webpack');
 
 const appJson = require('./src/app.json');
 
-const myEnv = require('dotenv').config().parsed;
 const PORT = process.env.PORT || 8080;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -36,9 +35,9 @@ module.exports = {
       'process.env': {
         APP_UUID: JSON.stringify(appJson.startup_app.uuid),
         ENTERPRISE: JSON.stringify(process.env.ENTERPRISE),
+        MOCK_POSTMAN_URI: JSON.stringify(process.env.MOCK_POSTMAN_URI),
         NODE_ENV: JSON.stringify(NODE_ENV),
-        MOCK_POSTMAN_URI: myEnv.MOCK_POSTMAN_URI,
-        POSTMAN_API_KEY: myEnv.POSTMAN_API_KEY,
+        POSTMAN_API_KEY: JSON.stringify(process.env.POSTMAN_API_KEY),
       },
     }),
     new HtmlWebpackPlugin({
