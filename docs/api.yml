@@ -74,10 +74,10 @@ paths:
         '200':
           description: Layouts Array
           schema:
-            title: authentication error payload
+            title: layouts array
             type: array
             items:
-              type: object
+              $ref: '#/definitions/Layout'
         '401':
           description: Access Denied
           schema:
@@ -95,10 +95,8 @@ paths:
             $ref: '#/definitions/Layout'
 
       responses:
-        '201':
-          description: Layout Created
-          schema:
-            $ref: '#/definitions/LayoutList'
+        '200':
+          description: Layout Saved
         '401':
           description: Access Denied
           schema:
@@ -106,56 +104,87 @@ paths:
         '400':
           description: Bad request
 
-  /api/layout/{id}:
+  # /api/layout/{id}:
 
-    put:
-      summary: Update Layout
+  #   put:
+  #     summary: Update Layout
 
-      parameters: 
-        - in: path
+  #     parameters: 
+  #       - in: path
+  #         required: true
+  #         name: id
+  #         type: string
+  #       - in: body
+  #         name: body
+  #         required: true
+  #         schema:
+  #           $ref: '#/definitions/Layout'
+  #         description: Layout json
+
+  #     responses:
+  #       '200':
+  #         description: Layout Updated
+  #       '401':
+  #         description: Access Denied
+  #         schema:
+  #           $ref: '#/definitions/AuthError'
+  #       '400':
+  #         description: Bad request
+  #       '404':
+  #         description: Layout not Found
+
+  #   delete:
+  #     summary: Delete Layout
+  #     parameters: 
+  #       - in: path
+  #         required: true
+  #         name: id
+  #         type: string
+
+  #     responses:
+  #       '200':
+  #         description: Layout Deleted
+  #       '401':
+  #         description: Access Denied
+  #         schema:
+  #           $ref: '#/definitions/AuthError'
+  #       '404':
+  #         description: Layout not Found
+
+  /api/settings:
+    get:
+      summary: Get User Settings
+
+      responses:
+        '200':
+          description: Settings Object
+          schema:
+            $ref: '#/definitions/Settings'
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+
+    post:
+      summary: Save User Settings
+
+      parameters:
+        - description: Settings json
           required: true
-          name: id
-          type: string
-        - in: body
           name: body
-          required: true
+          in: body
           schema:
-            $ref: '#/definitions/Layout'
-          description: Layout json
+            $ref: '#/definitions/Settings'
 
       responses:
         '200':
-          description: Layout Updated
-          schema:
-            $ref: '#/definitions/LayoutList'
+          description: Settings saved
         '401':
           description: Access Denied
           schema:
             $ref: '#/definitions/AuthError'
         '400':
           description: Bad request
-        '404':
-          description: Layout not Found
-
-    delete:
-      summary: Delete Layout
-      parameters: 
-        - in: path
-          required: true
-          name: id
-          type: string
-
-      responses:
-        '200':
-          description: Layout Deleted
-          schema:
-            $ref: '#/definitions/LayoutList'
-        '401':
-          description: Access Denied
-          schema:
-            $ref: '#/definitions/AuthError'
-        '404':
-          description: Layout not Found
 
 definitions:
   Login:
@@ -196,6 +225,16 @@ definitions:
   Layout:
     title: layout json request payload
     type: object
+    properties:
+      # id:
+      #   type: string
+      #   description: layout ID
+      # name:
+      #   type: string
+      #   description: layout name
+      layout:
+        type: object
+        description: layout data
 
   AuthError:
     title: authentication error payload
@@ -241,12 +280,17 @@ definitions:
         type: boolean
         description: user is an admin
 
-  LayoutList:
-    title: authentication error payload
-    type: array
-    items:
-      type: object
-
   Config:
     title: 'organization configuration (theme, etc)'
     type: object
+    properties:
+      config:
+        type: object
+  
+  Settings:
+    title: user settings
+    type: object
+    properties:
+      settings:
+        type: object
+        description: user settings object
