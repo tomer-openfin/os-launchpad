@@ -20,7 +20,7 @@ pipeline {
                 script {
                     GIT_SHORT_SHA = sh ( script: "git rev-parse --short HEAD", returnStdout: true ).trim()
                     VERSION = sh ( script: "node -pe \"require('./package.json').version\"", returnStdout: true ).trim()
-                    S3_LOC = env.S3_ROOT + "/demos/os-launchpad-dev/"
+                    S3_LOC = env.S3_ROOT + "/os-launchpad-dev/"
                 }
                 sh "npm i"
                 sh "DEPLOY_LOCATION=https://whiteboard-dev.openfin.co npm run build"
@@ -37,7 +37,7 @@ pipeline {
                 script {
                     GIT_SHORT_SHA = sh ( script: "git rev-parse --short HEAD", returnStdout: true ).trim()
                     VERSION = sh ( script: "node -pe \"require('./package.json').version\"", returnStdout: true ).trim()
-                    S3_LOC = env.S3_ROOT + "/demos/os-launchpad/"
+                    S3_LOC = env.S3_ROOT + "/os-launchpad/"
                 }
                 sh "npm i"
                 sh "DEPLOY_LOCATION=https://whiteboard.openfin.co npm run build"
