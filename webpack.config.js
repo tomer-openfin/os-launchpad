@@ -68,7 +68,7 @@ function prepConfig(configString) {
   const runtimeVersion = process.env.RUNTIME_VERSION;
   const isProduction = NODE_ENV === 'production';
 
-  configString = configString.replace(/%PUBLIC_URL%/g, deployLocation);
+  configString = configString.replace(/%ROOT_URL%/g, deployLocation);
   const config = JSON.parse(configString);
 
   if (runtimeVersion !== undefined && runtimeVersion !== '') {
