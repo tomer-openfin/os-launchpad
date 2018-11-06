@@ -1,3 +1,5 @@
+import { ApplicationState } from './application';
+import { LayoutsState } from './layouts';
 import { MeState } from './me';
 
 interface Bounds {
@@ -18,6 +20,8 @@ interface Windows {
 }
 
 export interface State {
+  application: ApplicationState;
+  layouts: LayoutsState;
   me: MeState;
   // TODO: either type out or add into redux-openfin package
   windows: Windows;

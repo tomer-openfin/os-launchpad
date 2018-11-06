@@ -1,8 +1,27 @@
 import { Window } from '@giantmachines/redux-openfin';
-import { put, takeLatest } from 'redux-saga/effects';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LoginError, loginError, LoginRequest, LoginSuccess, loginSuccess, setMe } from './';
-import { LOGIN_ERROR } from './actions';
+import ApiService from '../../services/ApiService';
+import { launchAppLauncher } from '../application';
+import {
+  GET_SETTINGS,
+  getMeSettings,
+  getSettingsSuccess,
+  LOGIN,
+  LoginError,
+  loginError,
+  LoginRequest,
+  LoginSuccess,
+  loginSuccess,
+  SAVE_SETTINGS,
+  saveSettingsSuccess,
+  setMe,
+} from './';
+
+function* watchGetSettingsRequest() {
+  const result = yield call(ApiService.getSettings);
+  yield put(getSettingsSuccess(result));
+}
 
 function* watchLoginRequest(action: LoginRequest) {
   // tslint:disable-next-line:no-console
@@ -18,7 +37,7 @@ function* watchLoginRequest(action: LoginRequest) {
   if (email === 'test@test.com' && password === 'test') {
     yield put(loginSuccess({ email }));
   } else {
-    yield put(loginError({ message: 'LOGIN FAILED' }));
+    yield put(loginError({ status: '401', message: 'LOGIN FAILED' }));
   }
 }
 
@@ -35,7 +54,7 @@ function* watchLoginSuccess(action: LoginSuccess) {
   yield put(setMe(email));
   // TODO: Use window config
   yield put(Window.closeWindow({ id: 'osLaunchpadLogin' }));
-  yield put(Window.showWindow({ id: 'osLaunchpadMain' }));
+  yield put(launchAppLauncher());
 }
 
 function* watchLoginError(action: LoginError) {
@@ -50,8 +69,16 @@ function* watchLoginError(action: LoginError) {
   console.log('Error Message:', message);
 }
 
+function* watchSaveSettingsRequest() {
+  const settings = yield select(getMeSettings);
+  yield call(ApiService.saveSettings, settings);
+  yield put(saveSettingsSuccess());
+}
+
 export function* meSaga() {
-  yield takeLatest(LOGIN_REQUEST, watchLoginRequest);
-  yield takeLatest(LOGIN_SUCCESS, watchLoginSuccess);
-  yield takeLatest(LOGIN_ERROR, watchLoginError);
+  yield takeLatest(GET_SETTINGS.REQUEST, watchGetSettingsRequest);
+  yield takeLatest(LOGIN.REQUEST, watchLoginRequest);
+  yield takeLatest(LOGIN.SUCCESS, watchLoginSuccess);
+  yield takeLatest(LOGIN.ERROR, watchLoginError);
+  yield takeLatest(SAVE_SETTINGS.REQUEST, watchSaveSettingsRequest);
 }

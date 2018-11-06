@@ -33,6 +33,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
+        API_URL: JSON.stringify(process.env.API_URL),
         APP_UUID: JSON.stringify(appJson.startup_app.uuid),
         ENTERPRISE: JSON.stringify(process.env.ENTERPRISE),
         MOCK_POSTMAN_URI: JSON.stringify(process.env.MOCK_POSTMAN_URI),

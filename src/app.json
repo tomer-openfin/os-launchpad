@@ -19,7 +19,7 @@
   },
   "services": [{ "name": "notifications" }, { "name": "layouts" }],
   "runtime": {
-    "version": "9.61.34.25"
+    "version": "9.61.36.36"
   },
   "shortcut": {
     "company": "OpenFin",
