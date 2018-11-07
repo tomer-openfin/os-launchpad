@@ -10,9 +10,8 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: ${(props: WrapperProps) => (isLeftOrRight(props) ? 'column' : 'row')};
   justify-content: space-between;
-  margin: auto;
-  height: ${(props: WrapperProps) => (isLeftOrRight(props) ? '300px' : 'auto')};
-  width: ${(props: WrapperProps) => (isLeftOrRight(props) ? 'auto' : '300px')};
+  height: ${(props: WrapperProps) => (isLeftOrRight(props) ? '160px' : 'auto')};
+  width: ${(props: WrapperProps) => (isLeftOrRight(props) ? 'auto' : '160px')};
 `;
 
 interface AppIconProps {

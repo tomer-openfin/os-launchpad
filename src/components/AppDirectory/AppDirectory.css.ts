@@ -18,8 +18,8 @@ export const Directory = styled.div`
 
 export const AppCard = styled.div`
   display: block;
-  color: ${Color.WHITE}
-  border: 1px solid ${Color.WHITE}
+  color: ${Color.WHITE};
+  border: 1px solid ${Color.WHITE};
   width: 402px;
 `;
 
@@ -30,7 +30,7 @@ export const AppCardRowWrapper = styled.div`
 `;
 
 export const AppName = styled<HProps>(Typography.H3)`
-  color: ${Color.WHITE}
+  color: ${Color.WHITE};
   padding: 0 32px;
   text-transform: capitalize;
 `;
@@ -74,8 +74,7 @@ export const WithTooltip = styled.div`
   display: inline-block;
 
   &:hover ${Tooltip} {
-      display: block;
-    }
+    display: block;
   }
 `;
 

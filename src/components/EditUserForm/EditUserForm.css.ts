@@ -37,7 +37,6 @@ export const StyledLabel = styled.label`
 
 export const StyledWrapper = styled.div`
   align-items: center;
-  align-text: center;
   border-radius: 3px;
   border: 1px solid dodgerblue;
   display: flex;

@@ -4,13 +4,16 @@ import config from '../../config/windows';
 import { App } from '../../redux/apps/types';
 import { WindowConfig } from '../../redux/windows/types';
 
-import * as appsIcon from '../../assets/app-list-button.svg';
-import * as cog from '../../assets/cog.svg';
+import * as ellipsis from '../../assets/Ellipsis.svg';
 import * as gradient from '../../assets/gradient.svg';
-import * as logo from '../../assets/logo-new.png';
-import * as searchIcon from '../../assets/replay.svg';
+import * as logo from '../../assets/Logo.svg';
+import * as notifications from '../../assets/Notifications.svg';
+import * as restoreLayout from '../../assets/RestoreLayout.svg';
+import * as saveLayout from '../../assets/SaveLayout.svg';
+import * as searchIcon from '../../assets/Search.svg';
+import * as settings from '../../assets/Settings.svg';
 
-import { CloseButton, Wrapper } from './App.css';
+import { Seperator, Wrapper } from './App.css';
 
 import AppList from '../AppList';
 import IconSpace from '../IconSpace';
@@ -22,17 +25,31 @@ interface Props {
 
 const App = ({ launchWindowCreator, launcherPosition }: Props) => (
   <Wrapper launcherPosition={launcherPosition}>
-    <IconSpace backgroundImg={gradient} iconImg={logo} draggable />
+    <IconSpace iconImg={logo} draggable />
+
+    <Seperator />
 
     <IconSpace iconImg={searchIcon} />
 
+    <Seperator />
+
     <AppList />
 
-    <IconSpace iconImg={appsIcon} onClick={launchWindowCreator(config.appDirectory)} />
+    <IconSpace iconImg={ellipsis} small />
 
-    <IconSpace iconImg={cog} />
+    <Seperator />
 
-    <CloseButton />
+    <IconSpace iconImg={saveLayout} onClick={launchWindowCreator(config.appDirectory)} />
+
+    <IconSpace iconImg={restoreLayout} />
+
+    <Seperator />
+
+    <IconSpace iconImg={settings} />
+
+    <Seperator />
+
+    <IconSpace iconImg={notifications} />
   </Wrapper>
 );
 

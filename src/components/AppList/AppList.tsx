@@ -5,7 +5,6 @@ import { App } from '../../redux/apps/types';
 import { WindowConfig } from '../../redux/windows/types';
 
 import * as plusIcon from '../../assets/AddApp.svg';
-import * as allAppsIcon from '../../assets/blot.svg';
 
 import IconSpace from '../IconSpace';
 import { Wrapper } from './AppList.css';
@@ -56,8 +55,6 @@ const AppList = ({ appList, launchWindowCreator, launcherPosition }: Props) => (
         <IconSpace key={index} onClick={launchWindowCreator(config.appDirectory)} iconImg={plusIcon} />
       );
     })}
-
-    <IconSpace iconImg={allAppsIcon} />
   </Wrapper>
 );
 

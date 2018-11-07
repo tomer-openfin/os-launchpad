@@ -8,12 +8,13 @@ interface Props {
   draggable?: boolean;
   onClick?: () => void;
   large?: boolean;
+  small?: boolean;
 }
 
-const IconSpace = ({ backgroundImg, iconImg, draggable, onClick, large }: Props) => (
+const IconSpace = ({ backgroundImg, iconImg, draggable, onClick, large, small }: Props) => (
   <Background imgSrc={backgroundImg} draggable={draggable} onClick={onClick} large={large} clickable={!!onClick}>
-      <Icon imgSrc={iconImg} draggable={draggable} large={large} />
-  </Background >
+    <Icon imgSrc={iconImg} draggable={draggable} large={large} small={small} />
+  </Background>
 );
 
 export default IconSpace;

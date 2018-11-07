@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import * as closeIcon from '../../assets/close-x-grey.svg';
+import { Color } from '../../styles';
 
 interface WrapperProps {
   launcherPosition: string;
@@ -14,17 +14,11 @@ export const Wrapper = styled.div`
   flex-direction: ${(props: WrapperProps) => (isLeftOrRight(props) ? 'column' : 'row')};
   justify-content: space-between;
   position: relative;
-  padding-right: 10px;
 `;
 
-export const CloseButton = styled.div`
-  position: absolute;
-  background: url(${closeIcon});
-  background-size: contain;
-  background-repeat: no - repeat;
-  height: 10px;
-  width: 10px;
-  right: 8px;
-  top: 8px;
-  z-index: 2;
+export const Seperator = styled.div`
+  margin: auto;
+  height: 36px;
+  width: 1px;
+  background-color: ${Color.DUSTY_GREY};
 `;
