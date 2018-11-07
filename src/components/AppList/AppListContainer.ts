@@ -7,6 +7,7 @@ import AppList from './AppList';
 
 const stateProps = state => ({
   appList: getAppLauncherList(state),
+  launcherPosition: state.me.settings.launcherPosition,
 });
 
 const dispatchProps = dispatch => ({

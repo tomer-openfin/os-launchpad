@@ -9,4 +9,4 @@ import App from './App';
 
 storiesOf('App', module)
   .addDecorator(story => <Provider store={store}>{story()}</Provider>)
-  .add('default', () => <App launchWindowCreator={noopCreator} />);
+  .add('default', () => <App launcherPosition="TOP" launchWindowCreator={noopCreator} />);

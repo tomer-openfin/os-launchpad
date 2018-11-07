@@ -1,7 +1,6 @@
 /* tslint:disable:no-console */
 import { createAction } from 'redux-actions';
-import { takeEvery, takeLatest } from 'redux-saga';
-import { call, put, select } from 'redux-saga/effects';
+import { call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 import { ErrorResponse } from '../../types/commons';

@@ -36,12 +36,13 @@ const handleClickCreator = (manifestUrl: string, altFn: () => void) => {
 const spaces = (spaceCount: number = 3, mapFn: (item, index: number) => JSX.Element) => Array.from(Array(spaceCount).keys()).map(mapFn);
 
 interface Props {
+  launcherPosition: string;
   appList: App[];
   launchWindowCreator: (window: WindowConfig) => () => void;
 }
 
-const AppList = ({ appList, launchWindowCreator }: Props) => (
-  <Wrapper>
+const AppList = ({ appList, launchWindowCreator, launcherPosition }: Props) => (
+  <Wrapper launcherPosition={launcherPosition}>
     {spaces(4, (item, index) => {
       const app = appList[index];
 
@@ -52,16 +53,11 @@ const AppList = ({ appList, launchWindowCreator }: Props) => (
           iconImg={app ? app.icon : plusIcon}
         />
       ) : (
-        <IconSpace
-          key={index}
-          onClick={launchWindowCreator(config.appDirectory)}
-          iconImg={plusIcon}
-        />
+        <IconSpace key={index} onClick={launchWindowCreator(config.appDirectory)} iconImg={plusIcon} />
       );
     })}
 
     <IconSpace iconImg={allAppsIcon} />
-
   </Wrapper>
 );
 

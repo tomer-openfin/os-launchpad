@@ -16,11 +16,12 @@ import AppList from '../AppList';
 import IconSpace from '../IconSpace';
 
 interface Props {
+  launcherPosition: string;
   launchWindowCreator: (window: WindowConfig) => () => void;
 }
 
-const App = ({ launchWindowCreator }: Props) => (
-  <Wrapper>
+const App = ({ launchWindowCreator, launcherPosition }: Props) => (
+  <Wrapper launcherPosition={launcherPosition}>
     <IconSpace backgroundImg={gradient} iconImg={logo} draggable />
 
     <IconSpace iconImg={searchIcon} />
@@ -32,7 +33,7 @@ const App = ({ launchWindowCreator }: Props) => (
     <IconSpace iconImg={cog} />
 
     <CloseButton />
-  </Wrapper >
+  </Wrapper>
 );
 
 export default App;

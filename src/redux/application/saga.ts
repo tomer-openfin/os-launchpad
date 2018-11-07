@@ -4,7 +4,7 @@ import windowsConfig from '../../config/windows';
 import { getAppDirectoryList } from '../apps';
 import { getLauncherAppIdsRequest } from '../apps/saga';
 import { getLayoutById, getLayoutsIds, getLayoutsRequest, restoreLayout } from '../layouts';
-import { getSettingsRequest } from '../me';
+import { getSettingsRequest, setLauncherBounds } from '../me';
 import { launchWindow } from '../windows';
 import { launchAppLauncher } from './actions';
 
@@ -35,6 +35,16 @@ function* openfinSetup(action: OpenfinReadyAction) {
     yield put(setIsEnterprise(isEnterprise));
 
     if (!isEnterprise || isLoggedIn) {
+      // Show main app bar
+      // TODO - Move to redux
+
+      // sets to TOP on initial load
+      yield setLauncherBounds();
+
+      // TODO - Move to redux
+      fin.desktop.Application.getCurrent()
+        .getWindow()
+        .show();
       yield put(launchAppLauncher());
     } else {
       // Show login

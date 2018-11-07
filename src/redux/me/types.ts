@@ -8,12 +8,12 @@ import {
   saveSettingsError,
   saveSettingsRequest,
   saveSettingsSuccess,
-  setApplicationLauncher,
+  setLaunchbarPosition,
   setMe,
- } from './';
+} from './';
 
 export interface MeStateSettings {
-  launcherLocation: 'TOP' | 'RIGHT' | 'BOTTOM' | 'LEFT';
+  launcherPosition: 'TOP' | 'RIGHT' | 'BOTTOM' | 'LEFT';
 }
 
 // Reducer
@@ -30,6 +30,11 @@ export interface LoginRequestPayload {
 export interface LoginSuccessPayload {
   email: string;
 }
+
+export interface SetLaunchbarPayload {
+  launcherPosition: 'TOP' | 'RIGHT' | 'BOTTOM' | 'LEFT';
+}
+
 export interface LoginRequestPayload {
   email: string;
   password: string;
@@ -51,11 +56,11 @@ export type LoginError = ReturnType<typeof loginError>;
 export type SaveSettingsRequest = ReturnType<typeof saveSettingsRequest>;
 export type SaveSettingsSuccess = ReturnType<typeof saveSettingsSuccess>;
 export type SaveSettingsError = ReturnType<typeof saveSettingsError>;
-export type SetApplicationLauncher = ReturnType<typeof setApplicationLauncher>;
 export type SetMe = ReturnType<typeof setMe>;
+export type SetLaunchbarPosition = ReturnType<typeof setLaunchbarPosition>;
 
 export type MeActions =
-  GetSettingsRequest
+  | GetSettingsRequest
   | GetSettingsSuccess
   | GetSettingsError
   | LoginRequest
@@ -64,5 +69,5 @@ export type MeActions =
   | SaveSettingsRequest
   | SaveSettingsSuccess
   | SaveSettingsError
-  | SetApplicationLauncher
-  | SetMe;
+  | SetMe
+  | SetLaunchbarPosition;
