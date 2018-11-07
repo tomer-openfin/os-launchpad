@@ -5,6 +5,6 @@ import '../src/components/AppList';
 import '../src/components/Button';
 import '../src/components/EditUserForm';
 import '../src/components/HMRTest';
-import '../src/components/Login/Login.story';
+import '../src/components/Login';
 import '../src/components/NewUserForm';
 import '../src/styles/';

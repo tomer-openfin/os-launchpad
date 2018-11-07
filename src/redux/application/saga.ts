@@ -1,14 +1,14 @@
 import { all, put, select, takeEvery } from 'redux-saga/effects';
 
 import windowsConfig from '../../config/windows';
-import { getAppDirectoryList } from '../apps';
-import { getLauncherAppIdsRequest } from '../apps/saga';
+
+import { getAppDirectoryList, getLauncherAppIdsRequest } from '../apps';
 import { getLayoutById, getLayoutsIds, getLayoutsRequest, restoreLayout } from '../layouts';
 import { getSettingsRequest, setLauncherBounds } from '../me';
 import { launchWindow } from '../windows';
-import { launchAppLauncher } from './actions';
+import { APPLICATION_STARTED, LAUNCH_APP_LAUNCHER, launchAppLauncher, OPENFIN_READY, setIsEnterprise } from './actions';
 
-import { APPLICATION_STARTED, LAUNCH_APP_LAUNCHER, OPENFIN_READY, OpenfinReadyAction, setIsEnterprise } from './';
+import { OpenfinReadyAction } from './types';
 
 const { APP_UUID, ENTERPRISE = false } = process.env;
 

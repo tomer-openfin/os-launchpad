@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 
-import { getAppLauncherList } from '../../redux/apps/reducer';
+import { getAppsLauncherAppList } from '../../redux/apps';
 import { launchWindow, WindowConfig } from '../../redux/windows';
 
 import AppList from './AppList';
 
 const stateProps = state => ({
-  appList: getAppLauncherList(state),
+  appList: getAppsLauncherAppList(state),
   launcherPosition: state.me.settings.launcherPosition,
 });
 

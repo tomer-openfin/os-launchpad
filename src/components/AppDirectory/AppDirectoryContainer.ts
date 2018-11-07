@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 
-import { addToAppLauncher, removeFromAppLauncher } from '../../redux/apps';
-import { getAppDirectoryList, getLauncherAppIds } from '../../redux/apps/reducer';
+import { addToAppLauncher, getAppsDirectoryAppList, getAppsLauncherIds, removeFromAppLauncher } from '../../redux/apps';
+
 import AppDirectory from './AppDirectory';
 
 const stateProps = state => ({
-  appList: getAppDirectoryList(state),
-  launcherAppIds: getLauncherAppIds(state),
+  appList: getAppsDirectoryAppList(state),
+  launcherAppIds: getAppsLauncherIds(state),
 });
 
 const dispatchProps = dispatch => ({

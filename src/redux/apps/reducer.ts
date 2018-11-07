@@ -1,6 +1,5 @@
-import { createSelector } from 'reselect';
-
-import { ADD_TO_APP_LAUNCHER, App, AppsById, AppsState, GET_APP_DIRECTORY_LIST, REMOVE_FROM_APP_LAUNCHER, SET_APP_DIRECTORY_LIST } from './';
+import { ADD_TO_APP_LAUNCHER, GET_APP_DIRECTORY_LIST, REMOVE_FROM_APP_LAUNCHER, SET_APP_DIRECTORY_LIST, SET_APP_LAUNCHER_IDS } from './actions';
+import { App, AppsById, AppsState } from './types';
 
 const formatByIds = (appList: App[]) =>
   appList.reduce((appsById: AppsById, app: App) => {
@@ -8,30 +7,12 @@ const formatByIds = (appList: App[]) =>
     return appsById;
   }, {});
 
-const appFromId = (appsById, id) => appsById[id];
-
-const appsFromIds = (appsById, ids) =>
-  ids.reduce((apps, id) => {
-    const app = appsById[id];
-    if (app) apps.push(app);
-    return apps;
-  }, []);
-
-export const getAppsState = state => state.apps;
-
-export const getAppsById = createSelector(getAppsState, appsState => appsState.byId);
-export const getAppIds = createSelector(getAppsState, appsState => appsState.ids);
-export const getLauncherAppIds = createSelector(getAppsState, appsState => appsState.launcherIds);
-
-export const getAppDirectoryList = createSelector(getAppsById, getAppIds, appsFromIds);
-export const getAppLauncherList = createSelector(getAppsById, getLauncherAppIds, appsFromIds);
-
 const defaultState: AppsState = { byId: {}, ids: [], launcherIds: ['12', '6', '7'] };
 
 export default (state: AppsState = defaultState, action): AppsState => {
   switch (action.type) {
     case SET_APP_DIRECTORY_LIST: {
-      const appList = action.payload.appList;
+      const appList = action.payload;
 
       const byId = formatByIds(appList);
 
@@ -46,8 +27,18 @@ export default (state: AppsState = defaultState, action): AppsState => {
     case GET_APP_DIRECTORY_LIST: {
       return state;
     }
+    case SET_APP_LAUNCHER_IDS: {
+      const ids = action.payload;
+
+      if (!ids) return state;
+
+      return {
+        ...state,
+        launcherIds: ids,
+      };
+    }
     case ADD_TO_APP_LAUNCHER: {
-      const id = action.payload.id;
+      const id = action.payload;
 
       if (!id || !state.byId[id] || state.launcherIds.indexOf(id) !== -1) return state;
 
@@ -57,7 +48,7 @@ export default (state: AppsState = defaultState, action): AppsState => {
       };
     }
     case REMOVE_FROM_APP_LAUNCHER: {
-      const id = action.payload.id;
+      const id = action.payload;
 
       const index = state.launcherIds.indexOf(id);
 

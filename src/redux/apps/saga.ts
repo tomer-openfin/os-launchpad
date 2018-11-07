@@ -1,29 +1,22 @@
-/* tslint:disable:no-console */
-import { createAction } from 'redux-actions';
-import { call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
+import { takeEvery, takeLatest } from 'redux-saga';
+import { all, call, put, select } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
-import { ErrorResponse } from '../../types/commons';
-import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
-import { setAppDirectoryList } from '../apps';
-import { GET_APP_DIRECTORY_LIST } from './';
-import { getLauncherAppIds } from './reducer';
 
-// Action types
-const ADD_TO_APP_LAUNCHER = 'ADD_TO_APP_LAUNCHER';
-const REMOVE_FROM_APP_LAUNCHER = 'REMOVE_FROM_APP_LAUNCHER';
-const GET_LAUNCHER_APP_IDS = generateAsyncActionTypes('GET_LAUNCHER_APP_IDS');
-const SAVE_LAUNCHER_APP_IDS = generateAsyncActionTypes('SAVE_LAUNCHER_APP_IDS');
+import {
+  ADD_TO_APP_LAUNCHER,
+  GET_APP_DIRECTORY_LIST,
+  GET_LAUNCHER_APP_IDS,
+  getLauncherAppIdsSuccess,
+  REMOVE_FROM_APP_LAUNCHER,
+  SAVE_LAUNCHER_APP_IDS,
+  saveLauncherAppIdsRequest,
+  saveLauncherAppIdsSuccess,
+  setAppDirectoryList,
+  setAppLauncherIds,
+} from './actions';
+import { getAppsLauncherIds } from './selectors';
 
-// Action creators
-const getLauncherAppIdsError = createAction<ErrorResponse>(GET_LAUNCHER_APP_IDS.ERROR);
-export const getLauncherAppIdsRequest = createAction(GET_LAUNCHER_APP_IDS.REQUEST);
-const getLauncherAppIdsSuccess = createAction<string[]>(GET_LAUNCHER_APP_IDS.SUCCESS);
-const saveLauncherAppIdsError = createAction<ErrorResponse>(SAVE_LAUNCHER_APP_IDS.ERROR);
-const saveLauncherAppIdsRequest = createAction<string[]>(SAVE_LAUNCHER_APP_IDS.REQUEST);
-const saveLauncherAppIdsSuccess = createAction(SAVE_LAUNCHER_APP_IDS.SUCCESS);
-
-// SAGA
 function* watchGetAppDirectoryList() {
   const appList = yield fetch('https://app-directory.openfin.co/api/v1/apps').then(res => res.json());
 
@@ -32,18 +25,21 @@ function* watchGetAppDirectoryList() {
 
 function* watchGetLauncherAppsRequest() {
   const results = yield call(ApiService.getApps);
-  yield put(getLauncherAppIdsSuccess(results));
+
+  yield all([put(getLauncherAppIdsSuccess()), put(setAppLauncherIds(results))]);
 }
 
 function* dispatchSaveLauncherAppsRequest() {
-  const apps = yield select(getLauncherAppIds);
+  const apps = yield select(getAppsLauncherIds);
 
   yield put(saveLauncherAppIdsRequest(apps));
 }
 
 function* watchSaveLauncherAppsRequest() {
-  const appIds = yield select(getLauncherAppIds);
+  const appIds = yield select(getAppsLauncherIds);
+
   yield call(ApiService.saveApps, appIds);
+
   yield put(saveLauncherAppIdsSuccess());
 }
 

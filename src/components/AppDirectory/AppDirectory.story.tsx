@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import appData from '../../redux/apps/AppData';
+import appData from '../../const/AppData';
 import noop from '../../utils/noop';
 
 import AppDirectory from './AppDirectory';

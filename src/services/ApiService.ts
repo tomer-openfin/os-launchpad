@@ -33,9 +33,7 @@ const createPostOptions = (body): RequestInit => ({
 });
 
 export const checkIsEnterprise = () => {
-  const store = window.opener
-    ? window.opener.store
-    : window.store;
+  const store = window.opener ? window.opener.store : window.store;
   const state = store.getState();
   return getIsEnterprise(state);
 };
@@ -64,8 +62,7 @@ export const getApps = () => {
 export const saveApps = (apps: string[]) => {
   if (checkIsEnterprise()) {
     const options = createPostOptions({ apps });
-    return fetch(APPS_URL, options)
-      .then(resp => resp.json());
+    return fetch(APPS_URL, options).then(resp => resp.json());
   }
 
   return setLocalStorage<string[]>(LOCAL_STORAGE_KEYS.APPS, apps);
@@ -95,8 +92,7 @@ export const getLayouts = () => {
 export const saveLayout = (layout: Layout) => {
   if (checkIsEnterprise()) {
     const options = createPostOptions({ layout });
-    return fetch(LAYOUTS_URL, options)
-      .then(resp => resp.json());
+    return fetch(LAYOUTS_URL, options).then(resp => resp.json());
   }
 
   return setLocalStorage<Layout[]>(LOCAL_STORAGE_KEYS.LAYOUTS, [layout]);
@@ -126,8 +122,7 @@ export const getSettings = () => {
 export const saveSettings = (settings: MeStateSettings) => {
   if (checkIsEnterprise()) {
     const options = createPostOptions({ settings });
-    return fetch(SETTINGS_URL, options)
-      .then(resp => resp.json());
+    return fetch(SETTINGS_URL, options).then(resp => resp.json());
   }
 
   return setLocalStorage<MeStateSettings>(LOCAL_STORAGE_KEYS.SETTINGS, settings);

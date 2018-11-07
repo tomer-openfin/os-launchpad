@@ -1,7 +1,7 @@
 import * as enzyme from 'enzyme';
 import * as React from 'react';
 
-import AppData from '../../../redux/apps/AppData';
+import AppData from '../../../const/AppData';
 import { noopCreator } from '../../../utils/noop';
 
 import AppList from '../AppList';
