@@ -2,12 +2,7 @@ import { createAction } from 'redux-actions';
 
 import { ErrorResponse } from '../../types/commons';
 import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
-import {
-  LoginRequestPayload,
-  LoginSuccessPayload,
-  MeStateSettings,
-  SetMePayload,
-} from './';
+import { LoginRequestPayload, LoginSuccessPayload, MeStateSettings, SetMePayload } from './';
 
 // Action Types
 export const GET_SETTINGS = generateAsyncActionTypes('GET_SETTINGS');
@@ -27,9 +22,6 @@ export const saveSettingsRequest = createAction<MeStateSettings>(SAVE_SETTINGS.R
 export const saveSettingsSuccess = createAction(SAVE_SETTINGS.SUCCESS);
 export const saveSettingsError = createAction<ErrorResponse>(SAVE_SETTINGS.ERROR);
 export const setApplicationLauncher = createAction(SET_APPLICATION_LAUNCHER);
-export const setMe = createAction<SetMePayload, string>(
-  SET_ME,
-  username => ({
-    username,
-  }),
-);
+export const setMe = createAction<SetMePayload, string>(SET_ME, username => ({
+  username,
+}));

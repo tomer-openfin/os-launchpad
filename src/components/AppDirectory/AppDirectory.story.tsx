@@ -2,6 +2,11 @@ import * as React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import AppDirectory from './index';
+import appData from '../../redux/apps/AppData';
+import noop from '../../utils/noop';
 
-storiesOf('AppDirectory', module).add('default', () => <AppDirectory />);
+import AppDirectory from './AppDirectory';
+
+storiesOf('AppDirectory', module).add('default', () =>
+  <AppDirectory addToLauncher={noop} appList={appData} launcherAppIds={['12', '6', '7']} removeFromLauncher={noop} />,
+);

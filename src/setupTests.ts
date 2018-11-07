@@ -1,5 +1,6 @@
 import * as enzyme from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
+import 'jest-styled-components';
 
 declare global {
   namespace NodeJS {

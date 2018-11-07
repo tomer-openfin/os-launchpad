@@ -1,18 +1,38 @@
 import * as React from 'react';
 
-import { GlobalStyle } from '../../styles/globals.css';
+import config from '../../config/windows';
+import { App } from '../../redux/apps/types';
+import { WindowConfig } from '../../redux/windows/types';
+
+import * as appsIcon from '../../assets/app-list-button.svg';
+import * as cog from '../../assets/cog.svg';
+import * as gradient from '../../assets/gradient.svg';
+import * as logo from '../../assets/logo-new.png';
+import * as searchIcon from '../../assets/replay.svg';
+
+import { CloseButton, Wrapper } from './App.css';
+
 import AppList from '../AppList';
-import { Logo, LogoWrapper, Wrapper } from './';
+import IconSpace from '../IconSpace';
 
-const App = ({}) => (
+interface Props {
+  launchWindowCreator: (window: WindowConfig) => () => void;
+}
+
+const App = ({ launchWindowCreator }: Props) => (
   <Wrapper>
-    <GlobalStyle />
+    <IconSpace backgroundImg={gradient} iconImg={logo} draggable />
 
-    <LogoWrapper>
-      <Logo />
-    </LogoWrapper>
+    <IconSpace iconImg={searchIcon} />
 
     <AppList />
-  </Wrapper>);
+
+    <IconSpace iconImg={appsIcon} onClick={launchWindowCreator(config.appDirectory)} />
+
+    <IconSpace iconImg={cog} />
+
+    <CloseButton />
+  </Wrapper >
+);
 
 export default App;

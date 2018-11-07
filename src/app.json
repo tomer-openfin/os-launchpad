@@ -3,7 +3,7 @@
     "name": "osLaunchpadMain",
     "description": "Openfin Application Launcher",
     "url": "%ROOT_URL%/",
-    "defaultWidth": 408,
+    "defaultWidth": 613,
     "defaultHeight": 67,
     "defaultCentered": true,
     "autoShow": false,

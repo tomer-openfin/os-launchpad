@@ -3,6 +3,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import routes from './routes';
 
+import { GlobalStyle } from '../../styles/globals.css';
+
 const renderRoute = ({ component, exact, path }) => (
   <Route
     key={path}
@@ -15,6 +17,8 @@ const renderRoute = ({ component, exact, path }) => (
 const Router = () => (
   <BrowserRouter>
     <div>
+      <GlobalStyle />
+
       {routes.map(renderRoute)}
     </div>
   </BrowserRouter>

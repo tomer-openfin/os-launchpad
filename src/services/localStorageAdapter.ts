@@ -6,13 +6,16 @@
  *
  * @return {Promise<P>} - Returned Promise of specified type T in function call
  */
-export function getLocalStorage<P>(
-  key: string,
-  defaultPayload: P,
-): Promise<P> {
+export function getLocalStorage<P>(key: string, defaultPayload: P): Promise<P> {
   const payload = localStorage.getItem(key);
+  try {
+    return Promise.resolve(payload === null ? defaultPayload : (JSON.parse(payload) as P));
+  } catch (e) {
+    /* tslint:disable-next-line:no-console */
+    console.error('Failed to get local storage key:', key, '\n', e);
 
-  return Promise.resolve(payload === null ? defaultPayload : JSON.parse(payload) as P);
+    return Promise.resolve(defaultPayload);
+  }
 }
 
 /**
@@ -23,11 +26,7 @@ export function getLocalStorage<P>(
  *
  * @return {Promise<>}
  */
-export function setLocalStorage<P, T = void>(
-  key: string,
-  payload: P,
-  resolvePayload?: T,
-): Promise<T | void> {
+export function setLocalStorage<P, T = void>(key: string, payload: P, resolvePayload?: T): Promise<T | void> {
   localStorage.setItem(key, JSON.stringify(payload));
 
   if (resolvePayload) {

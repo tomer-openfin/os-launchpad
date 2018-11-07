@@ -1,19 +1,14 @@
 import { all, put, select, takeEvery } from 'redux-saga/effects';
 
-import {
-  APPLICATION_STARTED,
-  LAUNCH_APP_LAUNCHER,
-  OPENFIN_READY,
-  OpenfinReadyAction,
-  setIsEnterprise,
-} from './';
-
 import windowsConfig from '../../config/windows';
+import { getAppDirectoryList } from '../apps';
 import { getLauncherAppIdsRequest } from '../apps/saga';
 import { getLayoutById, getLayoutsIds, getLayoutsRequest, restoreLayout } from '../layouts';
 import { getSettingsRequest } from '../me';
 import { launchWindow } from '../windows';
 import { launchAppLauncher } from './actions';
+
+import { APPLICATION_STARTED, LAUNCH_APP_LAUNCHER, OPENFIN_READY, OpenfinReadyAction, setIsEnterprise } from './';
 
 const { APP_UUID, ENTERPRISE = false } = process.env;
 
@@ -24,11 +19,7 @@ function* applicationStart() {
   // tslint:disable-next-line:no-console
   console.log('application started');
 
-  yield all([
-    put(getLayoutsRequest()),
-    put(getLauncherAppIdsRequest()),
-    put(getSettingsRequest()),
-  ]);
+  yield all([put(getAppDirectoryList()), put(getLayoutsRequest()), put(getLauncherAppIdsRequest()), put(getSettingsRequest())]);
 }
 
 /**
@@ -63,7 +54,9 @@ function* watchLaunchAppLauncher() {
   const { fin } = window;
   if (fin) {
     // TODO - Maybe move to a redux action
-    fin.desktop.Application.getCurrent().getWindow().show();
+    fin.desktop.Application.getCurrent()
+      .getWindow()
+      .show();
   }
 }
 

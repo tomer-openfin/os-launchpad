@@ -2,6 +2,10 @@
  * No operator singleton
  * @public
  */
-export default () => {
+const noop = () => {
   return;
 };
+
+export const noopCreator = () => noop;
+
+export default noop;

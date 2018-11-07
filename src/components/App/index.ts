@@ -1,10 +1,8 @@
-import { hot } from 'react-hot-loader';
-
-import Component from './App';
 import * as Story from './App.story';
+import Component from './AppContainer';
 
 export * from './App.css';
 
 export { Story };
 
-export default hot(module)(Component);
+export default Component;

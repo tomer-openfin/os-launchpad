@@ -1,4 +1,4 @@
-import Component from './AppDirectory';
+import Component from './AppDirectoryContainer';
 
 export * from './AppDirectory.css';
 

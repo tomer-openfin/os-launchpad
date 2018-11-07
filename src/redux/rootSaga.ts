@@ -7,11 +7,5 @@ import { meSaga } from './me';
 import { windowsSaga } from './windows';
 
 export default function* rootSaga() {
-  yield all([
-    applicationSaga(),
-    appsSaga(),
-    layoutsSaga(),
-    meSaga(),
-    windowsSaga(),
-  ]);
+  yield all([applicationSaga(), appsSaga(), layoutsSaga(), meSaga(), windowsSaga()]);
 }

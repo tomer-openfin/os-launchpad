@@ -1,7 +1,7 @@
-const HOME_ROUTE = '/';
-export const LOGIN_ROUTE = '/login';
+import { APP_DIRECTORY_ROUTE, HOME_ROUTE, LOGIN_ROUTE } from './const';
 
 import App from '../App';
+import AppDirectory from '../AppDirectory';
 import Login from '../Login';
 
 export default [
@@ -14,5 +14,10 @@ export default [
     component: Login,
     exact: true,
     path: LOGIN_ROUTE,
+  },
+  {
+    component: AppDirectory,
+    exact: true,
+    path: APP_DIRECTORY_ROUTE,
   },
 ];

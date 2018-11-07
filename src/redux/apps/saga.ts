@@ -1,3 +1,4 @@
+/* tslint:disable:no-console */
 import { createAction } from 'redux-actions';
 import { takeEvery, takeLatest } from 'redux-saga';
 import { call, put, select } from 'redux-saga/effects';
@@ -5,9 +6,9 @@ import { call, put, select } from 'redux-saga/effects';
 import ApiService from '../../services/ApiService';
 import { ErrorResponse } from '../../types/commons';
 import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
-
-// Selectors
-const getLauncherAppIds = state => state.apps.launcherAppIds;
+import { setAppDirectoryList } from '../apps';
+import { GET_APP_DIRECTORY_LIST } from './';
+import { getLauncherAppIds } from './reducer';
 
 // Action types
 const ADD_TO_APP_LAUNCHER = 'ADD_TO_APP_LAUNCHER';
@@ -24,6 +25,12 @@ const saveLauncherAppIdsRequest = createAction<string[]>(SAVE_LAUNCHER_APP_IDS.R
 const saveLauncherAppIdsSuccess = createAction(SAVE_LAUNCHER_APP_IDS.SUCCESS);
 
 // SAGA
+function* watchGetAppDirectoryList() {
+  const appList = yield fetch('https://app-directory.openfin.co/api/v1/apps').then(res => res.json());
+
+  yield put(setAppDirectoryList(appList));
+}
+
 function* watchGetLauncherAppsRequest() {
   const results = yield call(ApiService.getApps);
   yield put(getLauncherAppIdsSuccess(results));
@@ -42,6 +49,7 @@ function* watchSaveLauncherAppsRequest() {
 }
 
 export function* appsSaga() {
+  yield takeLatest(GET_APP_DIRECTORY_LIST, watchGetAppDirectoryList);
   yield takeEvery(ADD_TO_APP_LAUNCHER, dispatchSaveLauncherAppsRequest);
   yield takeEvery(REMOVE_FROM_APP_LAUNCHER, dispatchSaveLauncherAppsRequest);
   yield takeLatest(GET_LAUNCHER_APP_IDS.REQUEST, watchGetLauncherAppsRequest);

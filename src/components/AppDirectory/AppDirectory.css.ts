@@ -1,39 +1,84 @@
 import styled from 'styled-components';
 
+import * as gradient from '../../assets/gradient.svg';
 import { Color, Typography } from '../../styles';
 import { HProps } from '../../styles/typography.css';
 
 export const Wrapper = styled.div`
-  display: block;
   background: ${Color.CHARCOAL};
-  padding: 15px 50px;
+`;
+
+export const Directory = styled.div`
+  position: relative;
+  width: 100%;
+  height: 603px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 export const AppCard = styled.div`
+  display: block;
+  color: ${Color.WHITE}
+  border: 1px solid ${Color.WHITE}
+  width: 402px;
+`;
+
+export const AppCardRowWrapper = styled.div`
   display: flex;
   align-items: center;
-  color: ${Color.WHITE}
-  padding: 10px;
-  margin: 25px 0;
-  border-radius: 5px;
-  border: 1px solid ${Color.WHITE}
-  min-height: 50px;
+  justify-content: space-between;
 `;
 
 export const AppName = styled<HProps>(Typography.H3)`
   color: ${Color.WHITE}
-  min-width: 200px;
-  padding: 0 15px;
+  padding: 0 32px;
   text-transform: capitalize;
 `;
 
 export const AppDescription = styled.div`
-  padding: 0 15px;
+  padding: 5px 0;
   line-height: 30px;
+  margin: 0 auto;
+  max-height: 134px;
+  overflow: scroll;
+  width: 268px;
 `;
 
-export const Heading = styled<HProps>(Typography.H1)`
-  display: block;
-  margin: 10px 0;
+export const Heading = styled<HProps>(Typography.H3)`
+  padding: 0 16px;
   color: ${Color.WHITE};
+  background: url(${gradient});
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: static;
+  width: 100%;
+  z-index: 9999;
+  -webkit-app-region: drag;
+`;
+
+export const Tooltip = styled.div`
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: ${Color.CHARCOAL};
+  z-index: 2;
+
+  &:hover {
+    display: block;
+  }
+`;
+
+export const WithTooltip = styled.div`
+  position: relative;
+  display: inline-block;
+
+  &:hover ${Tooltip} {
+      display: block;
+    }
+  }
+`;
+
+export const ToggleButtonWrapper = styled.div<{ rotated: boolean }>`
+  transform: rotate(${props => (props.rotated ? '45deg' : '0')});
 `;

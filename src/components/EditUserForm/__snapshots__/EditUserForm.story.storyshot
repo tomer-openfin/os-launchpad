@@ -11,7 +11,7 @@ exports[`Storyshots EditUserForm default 1`] = `
     }
   >
     <div
-      className="sc-iwsKbI fCgkxm"
+      className="sc-ckVGcZ kIlodE"
     >
       <form
         onSubmit={[Function]}
@@ -20,7 +20,7 @@ exports[`Storyshots EditUserForm default 1`] = `
           Edit User Details
         </h3>
         <label
-          className="sc-dnqmqq hDgUng"
+          className="sc-dxgOiQ iQRfWq"
         >
           Email:
           <input
@@ -32,7 +32,7 @@ exports[`Storyshots EditUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-dnqmqq hDgUng"
+          className="sc-dxgOiQ iQRfWq"
         >
           First Name:
           <input
@@ -44,7 +44,7 @@ exports[`Storyshots EditUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-dnqmqq hDgUng"
+          className="sc-dxgOiQ iQRfWq"
         >
           Last Name:
           <input
@@ -56,7 +56,7 @@ exports[`Storyshots EditUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-dnqmqq hDgUng"
+          className="sc-dxgOiQ iQRfWq"
         >
           Middle Initial:
           <input
@@ -68,7 +68,7 @@ exports[`Storyshots EditUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-dnqmqq hDgUng"
+          className="sc-dxgOiQ iQRfWq"
         >
           Username:
           <input
@@ -80,7 +80,7 @@ exports[`Storyshots EditUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-dnqmqq hDgUng"
+          className="sc-dxgOiQ iQRfWq"
         >
           Is administrator?
           <select
@@ -103,14 +103,14 @@ exports[`Storyshots EditUserForm default 1`] = `
           </select>
         </label>
         <button
-          className="sc-gzVnrw kXNhgs"
+          className="sc-kGXeez gkXHWH"
           disabled={true}
           type="submit"
         >
           Submit
         </button>
         <button
-          className="sc-gzVnrw kXNhgs"
+          className="sc-kGXeez gkXHWH"
           onClick={[Function]}
           type="button"
         >

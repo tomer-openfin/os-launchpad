@@ -21,9 +21,9 @@ export default (Component: React.ComponentType) => {
       : window.store;
 
     ReactDOM.render(
-      <Provider store={store}>
-        <Component />
-      </Provider>,
+        <Provider store={store}>
+          <Component />
+        </Provider>,
       main,
     );
   }

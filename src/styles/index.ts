@@ -1,7 +1,5 @@
 import * as Color from './color';
-
+import * as Story from './styles.story';
 import * as Typography from './typography.css';
 
-import * as Story from './styles.story';
-
-export { Color, Typography, Story };
+export { Color, Story, Typography };

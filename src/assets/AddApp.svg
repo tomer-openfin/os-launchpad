@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>AddApp</title>
+    <desc>Created with Sketch.</desc>
+    <g id="AddApp" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="Rectangle" x="0" y="0" width="34" height="34"></rect>
+            <rect id="Rectangle" stroke="#8BA7B9" stroke-width="1.8" x="7.7" y="7.7" width="18.6" height="18.6" rx="2"></rect>
+            <g id="Plus" transform="translate(12.750000, 12.750000)" stroke="#8BA7B9" stroke-linecap="round" stroke-width="1.8">
+                <path d="M4.48611111,8.26388889 L4.48611111,0.708333333" id="Path"></path>
+                <path d="M0.708333333,4.48611111 L8.26388889,4.48611111" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -11,7 +11,7 @@ exports[`Storyshots Button default 1`] = `
     }
   >
     <button
-      className="sc-bZQynM kpLznR"
+      className="sc-kgoBCf hhPClN"
       color="#000"
       onClick={[Function]}
       width={150}
@@ -456,7 +456,7 @@ exports[`Storyshots Button with knobs 1`] = `
     }
   >
     <button
-      className="sc-bZQynM kpLznR"
+      className="sc-kgoBCf hhPClN"
       color="#000"
       onClick={[Function]}
       width={150}
@@ -901,7 +901,7 @@ exports[`Storyshots Button with theme 1`] = `
     }
   >
     <button
-      className="sc-bZQynM gZbQHN"
+      className="sc-kgoBCf fFyUNB"
       color="#111"
       onClick={[Function]}
       width={150}

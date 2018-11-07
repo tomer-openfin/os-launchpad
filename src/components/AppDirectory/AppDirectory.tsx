@@ -1,58 +1,81 @@
 import * as React from 'react';
 
-import { AppCard, AppDescription, AppName, Heading, Wrapper } from './';
+import { App } from '../../redux/apps';
 
-interface App {
-  name: string;
-  description: string;
-}
+import * as appsIcon from '../../assets/app-list-button.svg';
+import * as close from '../../assets/close-x-grey.svg';
 
-interface State {
+import noop from '../../utils/noop';
+import IconSpace from '../IconSpace/IconSpace';
+import {
+  AppCard,
+  AppCardRowWrapper,
+  AppDescription,
+  AppName,
+  Directory,
+  Heading,
+  ToggleButtonWrapper,
+  Tooltip,
+  WithTooltip,
+  Wrapper,
+} from './AppDirectory.css';
+
+interface Props {
+  addToLauncher: (id: string) => void;
   appList: App[];
+  launcherAppIds: string[];
+  removeFromLauncher: (id: string) => void;
 }
 
-const initialState: State = {
+const defaultProps: Props = {
+  addToLauncher: noop,
   appList: [],
+  launcherAppIds: [],
+  removeFromLauncher: noop,
 };
 
-/* tslint:disable:no-console */
-class AppDirectory extends React.Component<{}, State> {
+const AppDirectory = ({
+  addToLauncher,
+  appList,
+  launcherAppIds,
+  removeFromLauncher,
+}: Props) => (
+  <Wrapper>
+    <Heading>
+      <IconSpace iconImg={appsIcon} draggable />
+    </Heading>
 
-  constructor(props) {
-    super(props);
+    <Directory>
+      {appList.slice(0, 5).concat(appList.concat(appList)).map((app: App, index) => {
+        const isLauncherApp = launcherAppIds.indexOf(`${app.id}`) !== -1;
 
-    this.state = initialState;
-  }
+        return (
+          <WithTooltip key={app.name + index}>
+            <IconSpace iconImg={app.icon} large />
 
-  componentDidMount() {
-    fetch('https://app-directory.openfin.co/api/v1/apps')
-    .then(res => res.json())
-    .then(res => this.setState({ appList: res }));
-  }
+            <Tooltip>
+              <AppCard >
+                <AppCardRowWrapper>
+                  <IconSpace iconImg={app.icon} large />
 
-  renderApps() {
-    const { appList } = this.state;
+                  <ToggleButtonWrapper rotated={!isLauncherApp}>
+                    <IconSpace iconImg={close} onClick={isLauncherApp ? () => removeFromLauncher(`${app.id}`) : () => addToLauncher(`${app.id}`)}/>
+                  </ToggleButtonWrapper>
+                </AppCardRowWrapper>
 
-    console.log('appList', appList, '\n');
+                <AppCardRowWrapper>
+                  <AppName>{app.name}</AppName>
 
-    return appList.map((app: App) => (
-      <AppCard key={app.name}>
-        <AppName>{app.name}</AppName>
-        <AppDescription>{app.description}</AppDescription>
-      </AppCard>),
-    );
-  }
+                  <AppDescription>{app.description}</AppDescription>
+                </AppCardRowWrapper>
+              </AppCard>
+            </Tooltip>
+          </WithTooltip>
+        );
+      })}
+    </Directory>
+  </Wrapper>);
 
-  render() {
-
-    return (
-    <Wrapper>
-      <Heading>App Directory</Heading>
-
-      {this.renderApps()}
-    </Wrapper>
-    );
-  }
-}
+AppDirectory.defaultProps = defaultProps;
 
 export default AppDirectory;

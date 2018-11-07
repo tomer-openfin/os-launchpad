@@ -12,14 +12,14 @@ exports[`Storyshots HMRTest default 1`] = `
   >
     <div>
       <h1
-        className="sc-VigVT kGHvty"
+        className="sc-hMqMXs ilKRVj"
       >
         App
       </h1>
-
+       
       0
       <button
-        className="sc-bZQynM kpLznR"
+        className="sc-kgoBCf hhPClN"
         color="#000"
         onClick={[Function]}
         width={150}
@@ -140,7 +140,7 @@ exports[`Storyshots HMRTest default 1`] = `
             default
           </h2>
         </div>
-
+        
         <div>
           <h1
             style={

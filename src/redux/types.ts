@@ -1,4 +1,5 @@
 import { ApplicationState } from './application';
+import { AppsState } from './apps';
 import { LayoutsState } from './layouts';
 import { MeState } from './me';
 
@@ -14,12 +15,13 @@ interface Windows {
     [id: string]: {
       bounds: Bounds;
       id: string;
-    },
+    };
   };
   ids: string[];
 }
 
 export interface State {
+  apps: AppsState;
   application: ApplicationState;
   layouts: LayoutsState;
   me: MeState;
