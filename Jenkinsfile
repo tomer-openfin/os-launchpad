@@ -20,13 +20,13 @@ pipeline {
                 script {
                     GIT_SHORT_SHA = sh ( script: "git rev-parse --short HEAD", returnStdout: true ).trim()
                     VERSION = sh ( script: "node -pe \"require('./package.json').version\"", returnStdout: true ).trim()
-                    S3_LOC = env.S3_ROOT + "/os-launchpad-dev/"
+                    S3_LOC = env.OS_LAUNCHPAD_S3_ROOT + '-dev'
                 }
                 sh "npm i"
                 sh "DEPLOY_LOCATION=https://whiteboard-dev.openfin.co npm run build"
                 sh "echo ${GIT_SHORT_SHA} > ./build/SHA.txt"
-                sh "aws s3 cp ./build ${S3_LOC} --recursive --exclude '*.svg'"
-                sh "aws s3 cp ./build ${S3_LOC} --recursive --exclude '*' --include '*.svg' --content-type 'image/svg+xml'"
+                sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*.svg'"
+                sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*' --include '*.svg' --content-type 'image/svg+xml'"
             }
         }
 
@@ -37,13 +37,13 @@ pipeline {
                 script {
                     GIT_SHORT_SHA = sh ( script: "git rev-parse --short HEAD", returnStdout: true ).trim()
                     VERSION = sh ( script: "node -pe \"require('./package.json').version\"", returnStdout: true ).trim()
-                    S3_LOC = env.S3_ROOT + "/os-launchpad/"
+                    S3_LOC = env.OS_LAUNCHPAD_S3_ROOT
                 }
                 sh "npm i"
                 sh "DEPLOY_LOCATION=https://whiteboard.openfin.co npm run build"
                 sh "echo ${GIT_SHORT_SHA} > ./build/SHA.txt"
-                sh "aws s3 cp ./build ${S3_LOC} --recursive --exclude '*.svg'"
-                sh "aws s3 cp ./build ${S3_LOC} --recursive --exclude '*' --include '*.svg' --content-type 'image/svg+xml'"
+                sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*.svg'"
+                sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*' --include '*.svg' --content-type 'image/svg+xml'"
             }
         }
     }
