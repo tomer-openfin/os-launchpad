@@ -16,7 +16,7 @@ import { isPosInBounds } from '../../utils/coordinateHelpers';
 
 import AppList from '../AppList';
 import IconSpace from '../IconSpace';
-import { Seperator, Wrapper } from './App.css';
+import { Separator, Wrapper } from './App.css';
 
 interface Props {
   autoHide: boolean;
@@ -56,18 +56,18 @@ class App extends React.PureComponent<Props> {
 
     this.interval = window.setInterval(this.handleInterval, 250);
     window.addEventListener('mouseover', this.handleMouseEnterOnWindow);
-  }
+  };
 
   unbindMouseEvents = () => {
     this.clearInterval();
     window.removeEventListener('mouseover', this.handleMouseEnterOnWindow);
-  }
+  };
 
   clearInterval = () => {
     if (this.interval) {
       clearInterval(this.interval);
     }
-  }
+  };
 
   handleInterval = () => {
     const { fin } = window;
@@ -82,7 +82,7 @@ class App extends React.PureComponent<Props> {
         this.handleMouseLeaveOnWindow();
       }
     });
-  }
+  };
 
   handleMouseEnterOnWindow() {
     if (!this.props.isExpanded) {
@@ -103,27 +103,27 @@ class App extends React.PureComponent<Props> {
       <Wrapper launcherPosition={launcherPosition}>
         <IconSpace iconImg={logo} />
 
-        <Seperator />
+        <Separator launcherPosition={launcherPosition} />
 
         <IconSpace iconImg={searchIcon} onClick={launchWindowCreator(config.appDirectory)} hover />
 
-        <Seperator />
+        <Separator launcherPosition={launcherPosition} />
 
         <AppList />
 
         <IconSpace iconImg={ellipsis} small hover />
 
-        <Seperator />
+        <Separator launcherPosition={launcherPosition} />
 
         <IconSpace iconImg={saveLayout} hover />
 
         <IconSpace iconImg={restoreLayout} hover />
 
-        <Seperator />
+        <Separator launcherPosition={launcherPosition} />
 
         <IconSpace iconImg={settings} hover />
 
-        <Seperator />
+        <Separator launcherPosition={launcherPosition} />
 
         <IconSpace iconImg={notifications} hover />
       </Wrapper>
