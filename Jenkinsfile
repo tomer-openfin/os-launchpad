@@ -23,7 +23,7 @@ pipeline {
                     S3_LOC = env.OS_LAUNCHPAD_S3_ROOT + '-dev'
                 }
                 sh "npm i"
-                sh "DEPLOY_LOCATION=https://whiteboard-dev.openfin.co npm run build"
+                sh "ENTERPRISE=true API_URL=/ DEPLOY_LOCATION=https://os-launchpad-dev.openfin.co npm run build"
                 sh "echo ${GIT_SHORT_SHA} > ./build/SHA.txt"
                 sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*.svg'"
                 sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*' --include '*.svg' --content-type 'image/svg+xml'"
