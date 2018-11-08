@@ -1,83 +1,78 @@
 import styled from 'styled-components';
 
-import * as gradient from '../../assets/gradient.svg';
-import { Color, Typography } from '../../styles';
-import { HProps } from '../../styles/typography.css';
+import { Color } from '../../styles';
+
+import * as TinyDownArrow from '../../assets/TinyDownArrow.svg';
+import * as TinyUpArrow from '../../assets/TinyUpArrow.svg';
 
 export const Wrapper = styled.div`
   background: ${Color.CHARCOAL};
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 `;
 
 export const Directory = styled.div`
   position: relative;
   width: 100%;
-  height: 603px;
+  height: calc(100vh - 50px);
   overflow-y: scroll;
   overflow-x: hidden;
+
+  ::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${Color.DUSTY_GREY};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${Color.GREY};
+
+    &:hover {
+      background: ${Color.LIGHTER_GREY};
+    }
+  }
+
+  ::-webkit-scrollbar-button {
+    &:start {
+      &:decrement {
+        background: url(${TinyUpArrow}) ${Color.CHARCOAL};
+        background-size: 8px 8px;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: block;
+        border-left: 1px solid ${Color.DUSTY_GREY};
+      }
+    }
+    &:end {
+      &:increment {
+        background: url(${TinyDownArrow}) ${Color.CHARCOAL};
+        background-size: 8px 8px;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: block;
+        border-left: 1px solid ${Color.DUSTY_GREY};
+      }
+    }
+  }
 `;
 
-export const AppCard = styled.div`
-  display: block;
-  color: ${Color.WHITE};
-  border: 1px solid ${Color.WHITE};
-  width: 402px;
-`;
-
-export const AppCardRowWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const AppName = styled<HProps>(Typography.H3)`
-  color: ${Color.WHITE};
-  padding: 0 32px;
-  text-transform: capitalize;
-`;
-
-export const AppDescription = styled.div`
-  padding: 5px 0;
-  line-height: 30px;
-  margin: 0 auto;
-  max-height: 134px;
-  overflow: scroll;
-  width: 268px;
-`;
-
-export const Heading = styled<HProps>(Typography.H3)`
-  padding: 0 16px;
-  color: ${Color.WHITE};
-  background: url(${gradient});
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: static;
+export const SearchHeader = styled.div`
   width: 100%;
-  z-index: 9999;
-  -webkit-app-region: drag;
+  height: 50px;
+  display: flex;
+  z-index: 3;
+  background: ${Color.DUSTY_GREY};
+  border-bottom: 1px solid ${Color.SEAGULL};
 `;
 
-export const Tooltip = styled.div`
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: ${Color.CHARCOAL};
-  z-index: 2;
-
-  &:hover {
-    display: block;
-  }
-`;
-
-export const WithTooltip = styled.div`
-  position: relative;
-  display: inline-block;
-
-  &:hover ${Tooltip} {
-    display: block;
-  }
-`;
-
-export const ToggleButtonWrapper = styled.div<{ rotated: boolean }>`
-  transform: rotate(${props => (props.rotated ? '45deg' : '0')});
+export const SearchInput = styled.input`
+  color: ${Color.WHITE};
+  font-size: 20px;
+  font-weight: 200;
+  border: none;
+  outline: none;
+  background: ${Color.TRANSPARENT};
 `;

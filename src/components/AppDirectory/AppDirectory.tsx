@@ -1,77 +1,73 @@
 import * as React from 'react';
 
-import { App } from '../../redux/apps';
+import * as searchIcon from '../../assets/Search.svg';
 
-import * as close from '../../assets/close-x-grey.svg';
-
-import noop from '../../utils/noop';
-import IconSpace from '../IconSpace/IconSpace';
 import {
-  AppCard,
-  AppCardRowWrapper,
-  AppDescription,
-  AppName,
   Directory,
-  Heading,
-  ToggleButtonWrapper,
-  Tooltip,
-  WithTooltip,
+  SearchHeader,
+  SearchInput,
   Wrapper,
 } from './AppDirectory.css';
 
+import { App } from '../../redux/apps/types';
+
+import AppCard from '../AppCard';
+import IconSpace from '../IconSpace';
+
 interface Props {
-  addToLauncher: (id: string) => void;
   appList: App[];
-  launcherAppIds: string[];
-  removeFromLauncher: (id: string) => void;
+}
+
+interface State {
+  search: string;
 }
 
 const defaultProps: Props = {
-  addToLauncher: noop,
   appList: [],
-  launcherAppIds: [],
-  removeFromLauncher: noop,
 };
 
-const AppDirectory = ({ addToLauncher, appList, launcherAppIds, removeFromLauncher }: Props) => (
-  <Wrapper>
-    <Heading>{/* <IconSpace iconImg={appsIcon} draggable /> */}</Heading>
+class AppDirectory extends React.Component<Props, State> {
+  static defaultProps = defaultProps;
 
-    <Directory>
-      {appList
-        .slice(0, 5)
-        .concat(appList.concat(appList))
-        .map((app: App, index) => {
-          const isLauncherApp = launcherAppIds.indexOf(`${app.id}`) !== -1;
+  constructor(props) {
+    super(props);
 
-          return (
-            <WithTooltip key={app.name + index}>
-              <IconSpace iconImg={app.icon} large />
+    this.state = { search: '' };
+  }
 
-              <Tooltip>
-                <AppCard>
-                  <AppCardRowWrapper>
-                    <IconSpace iconImg={app.icon} large />
+  handleChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const { currentTarget } = e;
+    if (!currentTarget) return;
+    const { value } = currentTarget;
+    if (typeof value !== 'string') return;
 
-                    <ToggleButtonWrapper rotated={!isLauncherApp}>
-                      <IconSpace iconImg={close} onClick={isLauncherApp ? () => removeFromLauncher(`${app.id}`) : () => addToLauncher(`${app.id}`)} />
-                    </ToggleButtonWrapper>
-                  </AppCardRowWrapper>
+    this.setState({
+      search: value,
+    });
+  }
 
-                  <AppCardRowWrapper>
-                    <AppName>{app.name}</AppName>
+  filteredAppList() {
+    const { appList } = this.props;
+    const { search } = this.state;
 
-                    <AppDescription>{app.description}</AppDescription>
-                  </AppCardRowWrapper>
-                </AppCard>
-              </Tooltip>
-            </WithTooltip>
-          );
-        })}
-    </Directory>
-  </Wrapper>
-);
+    return appList.filter(app => app.name.toLowerCase().indexOf(search.toLowerCase()) !== -1);
+  }
 
-AppDirectory.defaultProps = defaultProps;
+  render() {
+    return(
+      <Wrapper>
+        <SearchHeader>
+          <IconSpace iconImg={searchIcon} />
+
+          <SearchInput onChange={this.handleChange} placeholder="Search for app..." />
+        </SearchHeader>
+
+        <Directory>
+          {this.filteredAppList().map((app: App) => <AppCard key={app.id} app={app} />)}
+        </Directory>
+      </Wrapper>
+    );
+  }
+}
 
 export default AppDirectory;

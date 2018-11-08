@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Color } from '../../styles';
 
@@ -9,14 +9,15 @@ interface ImgProps {
   large?: boolean;
   medium?: boolean;
   small?: boolean;
+  hover?: boolean;
 }
 
 export const Background = styled.div<ImgProps>`
   background: url(${props => props.imgSrc || ''});
   background-size: cover;
   background-repeat: no-repeat;
-  height: ${props => (props.large ? '50px' : '50px')};
-  width: ${props => (props.large ? '50px' : '50px')};
+  height: ${props => (props.large ? '68px' : '50px')};
+  width: ${props => (props.large ? '68px' : '50px')};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,10 +33,14 @@ export const Icon = styled.div<ImgProps>`
   width: ${props => (props.small ? '17px' : '34px')};
   -webkit-app-region: ${props => (props.draggable ? 'drag' : 'no-drag')};
 
-  &:hover {
-    background-color: ${Color.GREY};
-    border-radius: 2px;
-    cursor: pointer;
-    fill: ${Color.SEAGULL} !important;
-  }
+  ${props =>
+    props.hover &&
+    css`
+      &:hover {
+        background-color: ${Color.GREY};
+        border-radius: 2px;
+        cursor: pointer;
+        fill: ${Color.SEAGULL} !important;
+      }
+    `}
 `;

@@ -25,31 +25,31 @@ interface Props {
 
 const App = ({ launchWindowCreator, launcherPosition }: Props) => (
   <Wrapper launcherPosition={launcherPosition}>
-    <IconSpace iconImg={logo} draggable />
+    <IconSpace iconImg={logo} />
 
     <Seperator />
 
-    <IconSpace iconImg={searchIcon} />
+    <IconSpace iconImg={searchIcon} onClick={launchWindowCreator(config.appDirectory)} hover />
 
     <Seperator />
 
     <AppList />
 
-    <IconSpace iconImg={ellipsis} small />
+    <IconSpace iconImg={ellipsis} small hover />
 
     <Seperator />
 
-    <IconSpace iconImg={saveLayout} onClick={launchWindowCreator(config.appDirectory)} />
+    <IconSpace iconImg={saveLayout} hover />
 
-    <IconSpace iconImg={restoreLayout} />
-
-    <Seperator />
-
-    <IconSpace iconImg={settings} />
+    <IconSpace iconImg={restoreLayout} hover />
 
     <Seperator />
 
-    <IconSpace iconImg={notifications} />
+    <IconSpace iconImg={settings} hover />
+
+    <Seperator />
+
+    <IconSpace iconImg={notifications} hover />
   </Wrapper>
 );
 

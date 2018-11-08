@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
     <title>Settings</title>
     <desc>Created with Sketch.</desc>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Launcher" transform="translate(-410.000000, -13.000000)">
-            <g id="Settings">
-                <g transform="translate(405.000000, 8.000000)">
-                    <g>
-                        <rect id="Rectangle" x="0" y="0" width="34" height="34"></rect>
-                        <g id="Cog_1" transform="translate(5.500000, 5.000000)" stroke="#8BA7B9" stroke-width="1.8">
-                            <circle id="Oval" cx="11.544" cy="11.988" r="3.924"></circle>
-                            <polyline id="Path" stroke-linecap="round" stroke-linejoin="round" points="13.632 4.02 13.632 0.9 9.456 0.9 9.456 4.02"></polyline>
-                            <polyline id="Path" stroke-linecap="round" stroke-linejoin="round" points="13.632 19.944 13.632 23.064 9.456 23.064 9.456 19.944"></polyline>
-                            <polyline id="Path" stroke-linecap="round" stroke-linejoin="round" points="5.7 6.192 2.988 4.632 0.9 8.256 3.6 9.816"></polyline>
-                            <polyline id="Path" stroke-linecap="round" stroke-linejoin="round" points="19.488 14.16 22.188 15.72 20.1 19.332 19.164 18.732"></polyline>
-                            <polyline id="Path" stroke-linecap="round" stroke-linejoin="round" points="5.7 17.772 2.988 19.332 0.9 15.72 3.6 14.16"></polyline>
-                            <polyline id="Path" stroke-linecap="round" stroke-linejoin="round" points="19.488 9.816 22.188 8.256 20.1 4.632 17.388 6.192"></polyline>
-                            <circle id="Oval" stroke-linecap="round" cx="11.544" cy="11.952" r="7.8"></circle>
-                        </g>
-                    </g>
-                </g>
+    <g id="Settings" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="Rectangle" x="0" y="0" width="34" height="34"></rect>
+            <g id="Cog_1" transform="translate(5.500000, 5.000000)" stroke="#8BA7B9" stroke-width="1.8">
+                <circle id="Oval" cx="11.544" cy="11.988" r="3.924"></circle>
+                <polyline id="Path" stroke-linecap="round" stroke-linejoin="round" points="13.632 4.02 13.632 0.9 9.456 0.9 9.456 4.02"></polyline>
+                <polyline id="Path" stroke-linecap="round" stroke-linejoin="round" points="13.632 19.944 13.632 23.064 9.456 23.064 9.456 19.944"></polyline>
+                <polyline id="Path" stroke-linecap="round" stroke-linejoin="round" points="5.7 6.192 2.988 4.632 0.9 8.256 3.6 9.816"></polyline>
+                <polyline id="Path" stroke-linecap="round" stroke-linejoin="round" points="19.488 14.16 22.188 15.72 20.1 19.332 19.164 18.732"></polyline>
+                <polyline id="Path" stroke-linecap="round" stroke-linejoin="round" points="5.7 17.772 2.988 19.332 0.9 15.72 3.6 14.16"></polyline>
+                <polyline id="Path" stroke-linecap="round" stroke-linejoin="round" points="19.488 9.816 22.188 8.256 20.1 4.632 17.388 6.192"></polyline>
+                <circle id="Oval" stroke-linecap="round" cx="11.544" cy="11.952" r="7.8"></circle>
             </g>
         </g>
     </g>

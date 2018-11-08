@@ -52,7 +52,7 @@ const AppList = ({ appList, launchWindowCreator, launcherPosition }: Props) => (
           iconImg={app ? app.icon : plusIcon}
         />
       ) : (
-        <IconSpace key={index} onClick={launchWindowCreator(config.appDirectory)} iconImg={plusIcon} />
+        <IconSpace key={index} onClick={launchWindowCreator(config.appDirectory)} iconImg={plusIcon} hover />
       );
     })}
   </Wrapper>

@@ -9,6 +9,6 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     background: ${Color.CHARCOAL};
-    font-family: sans-serif;
+    font-family: 'Muli', sans-serif;
   }
   `;
