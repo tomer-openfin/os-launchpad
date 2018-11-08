@@ -3,7 +3,7 @@ OpenFin Application Launcher
 
 # Overview
 
-The Application Launcher is a reference implementation of a launch bar built on OpenFin OS. The Launcher centralizes app discovery and can be customized with your own branding.  
+The Application Launcher is a reference implementation of a launch bar built on OpenFin OS. The Launcher centralizes app discovery and can be customized with your own branding.
 
 
 ## Features
@@ -21,6 +21,18 @@ npm start
 ```
 
 This will place the built files into the `./dist/` directory.  You can then copy these files to your web server to serve.  Be sure to update the app.json accordingly.
+
+## Run on VM
+
+Launch VM which will then allow you to run `ifconfig` and retrieve your vmnet1 address. With this address add to `.env` file the following. (there is also a `.env.sample` file for more clarity)
+
+```
+DEPLOY_LOCATION=http://{{VMNET1_ADDRESS}}:8080
+HOST={{VMNET1_ADDRESS}}
+PORT=8080
+```
+
+Through the use of an openfin exe, have the target set to `http://{{VMNET1_ADDRESS}}:8080/app.json`.
 
 # Getting Started
 

@@ -1,22 +1,33 @@
 import { connect } from 'react-redux';
 
-import { launchWindow, WindowConfig } from '../../redux/windows';
+import { getWindowBounds, launchWindow, WindowConfig } from '../../redux/windows';
+
+import { collapseApp, expandApp, getApplicationIsExpanded } from '../../redux/application';
+import { getAutoHide } from '../../redux/me';
+import { getSystemMonitorInfo, setMonitorInfo } from '../../redux/system';
+import { State } from '../../redux/types';
+import getAppUuid from '../../utils/getAppUuid';
 
 import App from './App';
 
-const stateToProps = state => {
-  const { launcherPosition } = state.me.settings;
+const APP_UUID = getAppUuid();
 
-  return {
-    launcherPosition,
-  };
-};
+const mapState = (state: State) => ({
+  autoHide: getAutoHide(state),
+  bounds: getWindowBounds(state, APP_UUID),
+  isExpanded: getApplicationIsExpanded(state),
+  launcherPosition: state.me.settings.launcherPosition,
+  monitorInfo: getSystemMonitorInfo(state),
+});
 
-const dispatchProps = dispatch => ({
+const mapDispatch = dispatch => ({
+  collapseApp: () => dispatch(collapseApp()),
+  expandApp: () => dispatch(expandApp()),
   launchWindowCreator: (window: WindowConfig) => () => dispatch(launchWindow(window)),
+  setMonitorInfo: (monitorInfo: object) => dispatch(setMonitorInfo(monitorInfo)),
 });
 
 export default connect(
-  stateToProps,
-  dispatchProps,
+  mapState,
+  mapDispatch,
 )(App);

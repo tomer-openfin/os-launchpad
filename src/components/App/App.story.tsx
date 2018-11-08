@@ -3,10 +3,28 @@ import * as React from 'react';
 import { Provider } from 'react-redux';
 
 import store from '../../store';
-import { noopCreator } from '../../utils/noop';
+import noop, { noopCreator } from '../../utils/noop';
 
 import App from './App';
 
+const bounds = {
+  height: 0,
+  left: 0,
+  top: 0,
+  width: 0,
+};
+
 storiesOf('App', module)
   .addDecorator(story => <Provider store={store}>{story()}</Provider>)
-  .add('default', () => <App launcherPosition="TOP" launchWindowCreator={noopCreator} />);
+  .add('default', () => (
+    <App
+      bounds={bounds}
+      collapseApp={noop}
+      expandApp={noop}
+      isExpanded
+      launcherPosition="TOP"
+      launchWindowCreator={noopCreator}
+      monitorInfo={{}}
+      setMonitorInfo={noop}
+    />
+  ));

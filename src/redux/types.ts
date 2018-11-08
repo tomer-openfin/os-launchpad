@@ -2,8 +2,9 @@ import { ApplicationState } from './application';
 import { AppsState } from './apps';
 import { LayoutsState } from './layouts';
 import { MeState } from './me';
+import { SystemState } from './system';
 
-interface Bounds {
+export interface Bounds {
   height: number;
   left: number;
   top: number;
@@ -25,6 +26,7 @@ export interface State {
   application: ApplicationState;
   layouts: LayoutsState;
   me: MeState;
+  system: SystemState;
   // TODO: either type out or add into redux-openfin package
   windows: Windows;
 }

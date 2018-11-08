@@ -1,4 +1,4 @@
-import { GET_SETTINGS, GetSettingsSuccess, MeActions, MeState, SET_LAUNCHBAR_POSITION, SET_ME, SetLaunchbarPayload, SetMePayload } from './';
+import { GET_SETTINGS, GetSettingsSuccess, MeActions, MeState, SET_AUTO_HIDE, SET_LAUNCHBAR_POSITION, SET_ME, SetLaunchbarPayload, SetMePayload } from './';
 
 export enum Position {
   TOP = 'TOP',
@@ -9,6 +9,7 @@ export enum Position {
 
 export const defaultState: MeState = {
   settings: {
+    autoHide: true,
     launcherPosition: 'TOP',
   },
   username: '',
@@ -24,6 +25,15 @@ export default (state: MeState = defaultState, action: MeActions) => {
         },
       };
     }
+    case SET_AUTO_HIDE: {
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          ...(action as GetSettingsSuccess).payload!,
+        },
+      };
+    }
     case SET_ME: {
       return {
         ...state,
@@ -33,7 +43,10 @@ export default (state: MeState = defaultState, action: MeActions) => {
     case SET_LAUNCHBAR_POSITION: {
       return {
         ...state,
-        settings: { launcherPosition: (action.payload! as SetLaunchbarPayload).launcherPosition },
+        settings: {
+          ...state.settings,
+          launcherPosition: (action.payload! as SetLaunchbarPayload).launcherPosition,
+        },
       };
     }
     default: {

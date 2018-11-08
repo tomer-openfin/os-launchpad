@@ -1,12 +1,15 @@
 import {
   ApplicationActions,
   ApplicationState,
-  IsEnterpriseAction,
   SET_IS_ENTERPRISE,
+  SET_IS_EXPANDED,
+  SetIsEnterpriseAction,
+  SetIsExpandedAction,
 } from './';
 
 const defaultState: ApplicationState = {
   isEnterprise: false,
+  isExpanded: false,
 };
 
 export default (state: ApplicationState = defaultState, action: ApplicationActions) => {
@@ -14,7 +17,13 @@ export default (state: ApplicationState = defaultState, action: ApplicationActio
     case SET_IS_ENTERPRISE: {
       return {
         ...state,
-        isEnterprise: !!(action as IsEnterpriseAction).payload,
+        isEnterprise: !!(action as SetIsEnterpriseAction).payload,
+      };
+    }
+    case SET_IS_EXPANDED: {
+      return {
+        ...state,
+        isExpanded: (action as SetIsExpandedAction).payload,
       };
     }
     default: {

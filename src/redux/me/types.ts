@@ -8,11 +8,13 @@ import {
   saveSettingsError,
   saveSettingsRequest,
   saveSettingsSuccess,
+  setAutoHide,
   setLaunchbarPosition,
   setMe,
 } from './';
 
 export interface MeStateSettings {
+  autoHide: boolean;
   launcherPosition: 'TOP' | 'RIGHT' | 'BOTTOM' | 'LEFT';
 }
 
@@ -56,6 +58,7 @@ export type LoginError = ReturnType<typeof loginError>;
 export type SaveSettingsRequest = ReturnType<typeof saveSettingsRequest>;
 export type SaveSettingsSuccess = ReturnType<typeof saveSettingsSuccess>;
 export type SaveSettingsError = ReturnType<typeof saveSettingsError>;
+export type SetAutoHide = ReturnType<typeof setAutoHide>;
 export type SetMe = ReturnType<typeof setMe>;
 export type SetLaunchbarPosition = ReturnType<typeof setLaunchbarPosition>;
 

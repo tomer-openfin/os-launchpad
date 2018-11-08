@@ -5,6 +5,7 @@ import application from './application';
 import apps from './apps';
 import layouts from './layouts';
 import me from './me';
+import system from './system';
 import { State } from './types';
 
 export default combineReducers<State>({
@@ -12,5 +13,6 @@ export default combineReducers<State>({
   apps,
   layouts,
   me,
+  system,
   windows: Window.reducer,
 });

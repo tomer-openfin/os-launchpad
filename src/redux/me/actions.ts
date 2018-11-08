@@ -11,6 +11,7 @@ export const SAVE_SETTINGS = generateAsyncActionTypes('SAVE_SETTINGS');
 export const SET_LAUNCHBAR_POSITION = 'SET_LAUNCHBAR_POSITION';
 export const SET_APPLICATION_LAUNCHER = 'SET_APPLICATION_LAUNCHER';
 export const SET_ME = 'SET_ME';
+export const SET_AUTO_HIDE = 'SET_AUTO_HIDE';
 
 // Action Creators
 export const getSettingsRequest = createAction(GET_SETTINGS.REQUEST);
@@ -28,3 +29,4 @@ export const setMe = createAction<SetMePayload, string>(SET_ME, username => ({
 export const setLaunchbarPosition = createAction<SetLaunchbarPayload, 'TOP' | 'RIGHT' | 'LEFT' | 'BOTTOM'>(SET_LAUNCHBAR_POSITION, launcherPosition => ({
   launcherPosition,
 }));
+export const setAutoHide = createAction(SET_AUTO_HIDE);

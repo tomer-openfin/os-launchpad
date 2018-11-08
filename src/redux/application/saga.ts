@@ -1,18 +1,32 @@
-import { all, put, select, takeEvery } from 'redux-saga/effects';
+import { all, call, put, select, take, takeEvery } from 'redux-saga/effects';
 
 import windowsConfig from '../../config/windows';
-
+import { getNewPos } from '../../utils/coordinateHelpers';
+import getAppUuid from '../../utils/getAppUuid';
+import { animateWindow, getSystemMonitorInfo } from '../../utils/openfinPromises';
+import takeFirst from '../../utils/takeFirst.js';
 import { getAppDirectoryList, getLauncherAppIdsRequest } from '../apps';
 import { getLayoutById, getLayoutsIds, getLayoutsRequest, restoreLayout } from '../layouts';
-import { getSettingsRequest, setLauncherBounds } from '../me';
-import { launchWindow } from '../windows';
-import { APPLICATION_STARTED, LAUNCH_APP_LAUNCHER, launchAppLauncher, OPENFIN_READY, setIsEnterprise } from './actions';
-
+import { getAutoHide, getLauncherPosition, getSettingsRequest, setLauncherBounds } from '../me';
+import { setMonitorInfo } from '../system';
+import { getWindowBounds, launchWindow } from '../windows';
+import { APPLICATION_STARTED,
+  COLLAPSE_APP,
+  EXPAND_APP,
+  LAUNCH_APP_LAUNCHER,
+  launchAppLauncher,
+  OPENFIN_READY,
+  setIsEnterprise,
+  setIsExpanded,
+} from './actions';
+import { getApplicationIsExpanded } from './selectors';
 import { OpenfinReadyAction } from './types';
 
-const { APP_UUID, ENTERPRISE = false } = process.env;
+const APP_UUID = getAppUuid();
 
-/**
+const { ENTERPRISE = false } = process.env;
+
+/**w
  * Applcation Start
  */
 function* applicationStart() {
@@ -37,6 +51,9 @@ function* openfinSetup(action: OpenfinReadyAction) {
     if (!isEnterprise || isLoggedIn) {
       // Show main app bar
       // TODO - Move to redux
+
+      const monitorInfo = yield call(getSystemMonitorInfo);
+      yield put(setMonitorInfo(monitorInfo));
 
       // sets to TOP on initial load
       yield setLauncherBounds();
@@ -70,8 +87,73 @@ function* watchLaunchAppLauncher() {
   }
 }
 
+function* watchCollapseApp() {
+  const autoHide = yield select(getAutoHide);
+  const isExpanded = yield select(getApplicationIsExpanded);
+  if (!autoHide && !isExpanded) {
+    return;
+  }
+
+  const [bounds, launcherPosition] = yield all([
+    select(getWindowBounds, APP_UUID),
+    select(getLauncherPosition),
+  ]);
+  const { left, top } = getNewPos(bounds, launcherPosition, false);
+
+  yield call(
+    animateWindow,
+    fin.desktop.Application.getCurrent().getWindow(),
+    {
+      position: {
+        duration: 200,
+        left,
+        relative: true,
+        top,
+      },
+    },
+    {
+      interupt: false,
+    },
+  );
+  yield put(setIsExpanded(false));
+}
+
+function* watchExpandApp() {
+  const autoHide = yield select(getAutoHide);
+  const isExpanded = yield select(getApplicationIsExpanded);
+  if (!autoHide && isExpanded) {
+    return;
+  }
+
+  const [bounds, launcherPosition] = yield all([
+    select(getWindowBounds, APP_UUID),
+    select(getLauncherPosition),
+  ]);
+  const { left, top } = getNewPos(bounds, launcherPosition, true);
+
+  yield call(
+    animateWindow,
+    fin.desktop.Application.getCurrent().getWindow(),
+    {
+      position: {
+        duration: 200,
+        left,
+        relative: true,
+        top,
+      },
+    },
+    {
+      interupt: false,
+    },
+  );
+
+  yield put(setIsExpanded(true));
+}
+
 export function* applicationSaga() {
   yield takeEvery(APPLICATION_STARTED, applicationStart);
   yield takeEvery(LAUNCH_APP_LAUNCHER, watchLaunchAppLauncher);
   yield takeEvery(OPENFIN_READY, openfinSetup);
+  yield takeFirst(COLLAPSE_APP, watchCollapseApp);
+  yield takeFirst(EXPAND_APP, watchExpandApp);
 }

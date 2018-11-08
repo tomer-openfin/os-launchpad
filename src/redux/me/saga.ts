@@ -20,6 +20,8 @@ import {
 } from './';
 
 import { getPosition, getWindowById } from '../windows/selectors';
+import { SET_AUTO_HIDE } from './actions';
+import { getAutoHide } from './selectors';
 
 function* watchGetSettingsRequest() {
   const result = yield call(ApiService.getSettings);
@@ -72,39 +74,47 @@ function* watchLoginError(action: LoginError) {
   console.log('Error Message:', message);
 }
 
-function setBoundsFactory(position, width, height) {
+function setBoundsFactory(position, width, height, autoHide) {
   const launcherWindow = fin.desktop.Window.getCurrent();
   const currentScreenObj = launcherWindow.getNativeWindow().screen;
 
   let leftPosition;
   let topPosition;
+  let autoHideDelta;
+
+  const SHOW_LAUNCHER_ADJUSTMENT = 5;
 
   switch (position) {
-    case 'TOP':
-      leftPosition = currentScreenObj.availWidth / 2 - width / 2;
-      topPosition = currentScreenObj.height - currentScreenObj.availHeight;
-      break;
-    case 'RIGHT':
-      leftPosition = currentScreenObj.availWidth - width;
+    case 'RIGHT': {
+      autoHideDelta = autoHide ? width - SHOW_LAUNCHER_ADJUSTMENT : 0;
+      leftPosition = currentScreenObj.availWidth - width + autoHideDelta;
       topPosition = currentScreenObj.availHeight / 2 - height / 2;
       break;
-    case 'BOTTOM':
+    }
+    case 'BOTTOM': {
+      autoHideDelta = autoHide ? height - SHOW_LAUNCHER_ADJUSTMENT : 0;
       leftPosition = currentScreenObj.availWidth / 2 - width / 2;
-      topPosition = currentScreenObj.height - height;
+      topPosition = currentScreenObj.height - height + autoHideDelta;
       break;
-    case 'LEFT':
-      leftPosition = 0;
+    }
+    case 'LEFT': {
+      autoHideDelta = autoHide ? width - SHOW_LAUNCHER_ADJUSTMENT : 0;
+      leftPosition = 0 - autoHideDelta;
       topPosition = currentScreenObj.availHeight / 2 - height / 2;
       break;
-    default:
+    }
+    default: {
+      autoHideDelta = autoHide ? height - SHOW_LAUNCHER_ADJUSTMENT : 0;
       leftPosition = currentScreenObj.availWidth / 2 - width / 2;
-      topPosition = currentScreenObj.height - currentScreenObj.availHeight;
+      topPosition = currentScreenObj.height - currentScreenObj.availHeight - autoHideDelta;
+    }
   }
 
   return launcherWindow.setBounds(leftPosition, topPosition, width, height);
 }
 
 export function* setLauncherBounds() {
+  const autoHide = yield select(getAutoHide);
   // get bounds of launcher window
   const launchbarId = 'osLaunchpadMain';
   const state = yield select(getWindowById, launchbarId);
@@ -118,19 +128,19 @@ export function* setLauncherBounds() {
 
   switch (position) {
     case 'TOP':
-      setBoundsFactory('TOP', largestDim, smallestDim);
+      setBoundsFactory('TOP', largestDim, smallestDim, autoHide);
       break;
     case 'RIGHT':
-      setBoundsFactory('RIGHT', smallestDim, largestDim);
+      setBoundsFactory('RIGHT', smallestDim, largestDim, autoHide);
       break;
     case 'BOTTOM':
-      setBoundsFactory('BOTTOM', largestDim, smallestDim);
+      setBoundsFactory('BOTTOM', largestDim, smallestDim, autoHide);
       break;
     case 'LEFT':
-      setBoundsFactory('LEFT', smallestDim, largestDim);
+      setBoundsFactory('LEFT', smallestDim, largestDim, autoHide);
       break;
     default:
-      setBoundsFactory('TOP', largestDim, smallestDim);
+      setBoundsFactory('TOP', largestDim, smallestDim, autoHide);
   }
 }
 
@@ -147,4 +157,5 @@ export function* meSaga() {
   yield takeLatest(LOGIN.ERROR, watchLoginError);
   yield takeLatest(SAVE_SETTINGS.REQUEST, watchSaveSettingsRequest);
   yield takeLatest(SET_LAUNCHBAR_POSITION, setLauncherBounds);
+  yield takeLatest(SET_AUTO_HIDE, setLauncherBounds);
 }
