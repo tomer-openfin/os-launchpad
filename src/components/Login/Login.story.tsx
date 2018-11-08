@@ -5,4 +5,4 @@ import * as React from 'react';
 import Login from './Login';
 
 storiesOf('Login', module)
-  .add('default', () => <Login onSubmit={action('Login options')}/>);
+  .add('default', () => <Login loginError={false} onSubmit={action('Login options')} />);

@@ -25,14 +25,6 @@ export interface MeState {
 }
 
 // Action payloads
-export interface LoginRequestPayload {
-  email: string;
-  password: string;
-}
-export interface LoginSuccessPayload {
-  email: string;
-}
-
 export interface SetLaunchbarPayload {
   launcherPosition: 'TOP' | 'RIGHT' | 'BOTTOM' | 'LEFT';
 }
@@ -42,6 +34,7 @@ export interface LoginRequestPayload {
   password: string;
 }
 export interface LoginSuccessPayload {
+  token: string;
   email: string;
 }
 export interface SetMePayload {

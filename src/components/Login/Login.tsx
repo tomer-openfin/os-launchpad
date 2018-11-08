@@ -1,5 +1,6 @@
 import { Field, Form, Formik } from 'formik';
 import * as React from 'react';
+import { Wrapper } from './Login.css';
 
 interface SubmitPayload {
   email: string;
@@ -10,6 +11,7 @@ type SubmitFn = (payload: SubmitPayload) => void;
 
 interface Props {
   onSubmit: SubmitFn;
+  loginError: boolean;
 }
 
 /**
@@ -59,14 +61,18 @@ const LoginForm = () => (
  *
  * @returns {React.StatelessComponent}
  */
-const Login = ({ onSubmit }: Props) => (
-  <div style={{ height: '90vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+const Login = ({ loginError, onSubmit }: Props) => (
+  <Wrapper>
+    {loginError && (
+      <p style={{ color: 'red' }}>Login failed. Please try again.</p>
+    )}
+
     <Formik
       initialValues={{ email: '', password: '' }}
       onSubmit={handleSubmit(onSubmit)}
       render={LoginForm}
     />
-  </div>
+  </Wrapper>
 );
 
 export default Login;

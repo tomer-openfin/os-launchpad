@@ -1,13 +1,13 @@
 import throttle = require('lodash.throttle');
 import * as React from 'react';
 
-import * as ellipsis from '../../assets/Ellipsis.svg';
+import * as AdminIcon from '../../assets/AdminSettings.svg';
 import * as logo from '../../assets/Logo.svg';
 import * as notifications from '../../assets/Notifications.svg';
 import * as restoreLayout from '../../assets/RestoreLayout.svg';
 import * as saveLayout from '../../assets/SaveLayout.svg';
 import * as searchIcon from '../../assets/Search.svg';
-import * as settings from '../../assets/Settings.svg';
+import * as Settings from '../../assets/Settings.svg';
 
 import config from '../../config/windows';
 import { Bounds } from '../../redux/types';
@@ -111,17 +111,19 @@ class App extends React.PureComponent<Props> {
 
         <AppList />
 
-        <IconSpace iconImg={ellipsis} small hover />
+        <Separator launcherPosition={launcherPosition} />
+
+        <IconSpace iconImg={AdminIcon} hover />
+
+        <Separator launcherPosition={launcherPosition} />
+
+        <IconSpace iconImg={Settings} hover />
 
         <Separator launcherPosition={launcherPosition} />
 
         <IconSpace iconImg={saveLayout} hover />
 
         <IconSpace iconImg={restoreLayout} hover />
-
-        <Separator launcherPosition={launcherPosition} />
-
-        <IconSpace iconImg={settings} hover />
 
         <Separator launcherPosition={launcherPosition} />
 

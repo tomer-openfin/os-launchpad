@@ -6,5 +6,5 @@ export interface LoginErrorResponse {
 
 export interface ErrorResponse {
   status: string;
-  message: string;
+  message?: string;
 }

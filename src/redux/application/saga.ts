@@ -10,7 +10,8 @@ import { getLayoutById, getLayoutsIds, getLayoutsRequest, restoreLayout } from '
 import { getAutoHide, getLauncherPosition, getSettingsRequest, setLauncherBounds } from '../me';
 import { setMonitorInfo } from '../system';
 import { getWindowBounds, launchWindow } from '../windows';
-import { APPLICATION_STARTED,
+import {
+  APPLICATION_STARTED,
   COLLAPSE_APP,
   EXPAND_APP,
   LAUNCH_APP_LAUNCHER,
@@ -48,24 +49,24 @@ function* openfinSetup(action: OpenfinReadyAction) {
     const isEnterprise = ENTERPRISE === 'true';
     yield put(setIsEnterprise(isEnterprise));
 
-    if (!isEnterprise || isLoggedIn) {
-      // Show main app bar
-      // TODO - Move to redux
+    // Setup main window and hide
+    const monitorInfo = yield call(getSystemMonitorInfo);
+    yield put(setMonitorInfo(monitorInfo));
 
-      const monitorInfo = yield call(getSystemMonitorInfo);
-      yield put(setMonitorInfo(monitorInfo));
+    // sets to TOP on initial load
+    yield setLauncherBounds();
 
-      // sets to TOP on initial load
-      yield setLauncherBounds();
+    // TODO - Move to redux
+    fin.desktop.Application.getCurrent()
+      .getWindow()
+      .hide();
 
-      // TODO - Move to redux
-      fin.desktop.Application.getCurrent()
-        .getWindow()
-        .show();
-      yield put(launchAppLauncher());
-    } else {
-      // Show login
+    if (isEnterprise && !isLoggedIn) {
+      // Show Login
       yield put(launchWindow(windowsConfig.login));
+    } else {
+      // Show Launchbar
+      yield put(launchAppLauncher());
     }
   }
 }
@@ -94,10 +95,7 @@ function* watchCollapseApp() {
     return;
   }
 
-  const [bounds, launcherPosition] = yield all([
-    select(getWindowBounds, APP_UUID),
-    select(getLauncherPosition),
-  ]);
+  const [bounds, launcherPosition] = yield all([select(getWindowBounds, APP_UUID), select(getLauncherPosition)]);
   const { left, top } = getNewPos(bounds, launcherPosition, false);
 
   yield call(
@@ -125,10 +123,7 @@ function* watchExpandApp() {
     return;
   }
 
-  const [bounds, launcherPosition] = yield all([
-    select(getWindowBounds, APP_UUID),
-    select(getLauncherPosition),
-  ]);
+  const [bounds, launcherPosition] = yield all([select(getWindowBounds, APP_UUID), select(getLauncherPosition)]);
   const { left, top } = getNewPos(bounds, launcherPosition, true);
 
   yield call(

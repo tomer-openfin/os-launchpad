@@ -8,7 +8,6 @@ interface ImgProps {
   imgSrc?;
   large?: boolean;
   medium?: boolean;
-  small?: boolean;
   hover?: boolean;
 }
 
@@ -29,8 +28,8 @@ export const Icon = styled.div<ImgProps>`
   background: url(${props => props.imgSrc || ''});
   background-size: contain;
   background-repeat: no-repeat;
-  height: ${props => (props.small ? '34px' : '34px')};
-  width: ${props => (props.small ? '17px' : '34px')};
+  height: 34px;
+  width: 34px;
   -webkit-app-region: ${props => (props.draggable ? 'drag' : 'no-drag')};
 
   ${props =>

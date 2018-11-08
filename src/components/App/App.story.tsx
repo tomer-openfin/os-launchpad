@@ -18,7 +18,7 @@ storiesOf('App', module)
   .addDecorator(story => <Provider store={store}>{story()}</Provider>)
   .add('default', () => (
     <App
-      autoHide
+      autoHide={false}
       bounds={bounds}
       collapseApp={noop}
       expandApp={noop}

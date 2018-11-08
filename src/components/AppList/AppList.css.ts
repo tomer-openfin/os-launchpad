@@ -1,28 +1,36 @@
 import styled from 'styled-components';
 
-interface WrapperProps {
+import * as ellipsis from '../../assets/Ellipsis.svg';
+import { Color } from '../../styles/index';
+
+interface LauncherPositionProps {
   launcherPosition: string;
 }
 
-const isLeftOrRight = (props: WrapperProps) => props.launcherPosition === 'RIGHT' || props.launcherPosition === 'LEFT';
+const isLeftOrRight = (props: LauncherPositionProps) => props.launcherPosition === 'RIGHT' || props.launcherPosition === 'LEFT';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<LauncherPositionProps>`
   display: flex;
-  flex-direction: ${(props: WrapperProps) => (isLeftOrRight(props) ? 'column' : 'row')};
+  flex-direction: ${props => (isLeftOrRight(props) ? 'column' : 'row')};
   justify-content: space-between;
-  height: ${(props: WrapperProps) => (isLeftOrRight(props) ? '160px' : 'auto')};
-  width: ${(props: WrapperProps) => (isLeftOrRight(props) ? 'auto' : '160px')};
+  height: ${props => (isLeftOrRight(props) ? '225px' : 'auto')};
+  width: ${props => (isLeftOrRight(props) ? 'auto' : '225px')};
 `;
 
-interface AppIconProps {
-  src: string;
-}
-
-export const AppIcon = styled.div<AppIconProps>`
-  background: url(${props => props.src});
+export const Ellipsis = styled.div<LauncherPositionProps>`
+  background: url(${ellipsis});
   background-size: cover;
   background-repeat: no-repeat;
-  height: 33px;
-  width: 33px;
-  width: 268px;
+  margin: 8px 4px;
+  height: 34px;
+  width: 17px;
+  cursor: pointer;
+  transform: rotate(${props => (isLeftOrRight(props) ? '90' : '0')});
+
+  &:hover {
+    background-color: ${Color.GREY};
+    border-radius: 2px;
+    cursor: pointer;
+    fill: ${Color.SEAGULL} !important;
+  }
 `;

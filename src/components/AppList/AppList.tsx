@@ -7,7 +7,7 @@ import { WindowConfig } from '../../redux/windows/types';
 import * as plusIcon from '../../assets/AddApp.svg';
 
 import IconSpace from '../IconSpace';
-import { Wrapper } from './AppList.css';
+import { Ellipsis, Wrapper } from './AppList.css';
 
 const handleClickCreator = (manifestUrl: string, altFn: () => void) => {
   if (!manifestUrl) return altFn;
@@ -32,7 +32,7 @@ const handleClickCreator = (manifestUrl: string, altFn: () => void) => {
 };
 
 /* tslint:disable-next-line:ban Array constructor is here used properly, with a single argument for length https://eslint.org/docs/rules/no-array-constructor */
-const spaces = (spaceCount: number = 3, mapFn: (item, index: number) => JSX.Element) => Array.from(Array(spaceCount).keys()).map(mapFn);
+const spaces = (spaceCount: number, mapFn: (item, index: number) => JSX.Element) => Array.from(Array(spaceCount).keys()).map(mapFn);
 
 interface Props {
   launcherPosition: string;
@@ -55,6 +55,8 @@ const AppList = ({ appList, launchWindowCreator, launcherPosition }: Props) => (
         <IconSpace key={index} onClick={launchWindowCreator(config.appDirectory)} iconImg={plusIcon} hover />
       );
     })}
+
+    <Ellipsis launcherPosition={launcherPosition} />
   </Wrapper>
 );
 

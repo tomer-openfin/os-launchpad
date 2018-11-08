@@ -1,5 +1,6 @@
 import { Window } from '@giantmachines/redux-openfin';
-import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga';
+import { call, put, select } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 import { launchAppLauncher } from '../application';
@@ -25,24 +26,33 @@ import { getAutoHide } from './selectors';
 
 function* watchGetSettingsRequest() {
   const result = yield call(ApiService.getSettings);
+
   yield put(getSettingsSuccess(result));
 }
 
 function* watchLoginRequest(action: LoginRequest) {
   // tslint:disable-next-line:no-console
   console.log('Login Request', action);
+
   const { payload } = action;
 
   if (!payload) {
     return;
   }
+  const { email } = payload;
 
-  const { email, password } = payload;
+  console.log('login', payload);
 
-  if (email === 'test@test.com' && password === 'test') {
-    yield put(loginSuccess({ email }));
+  const result = yield call(ApiService.login, payload);
+
+  console.log('result', result);
+
+  const { status } = result;
+
+  if (status === 'ok') {
+    yield put(loginSuccess({ token: 'success', email }));
   } else {
-    yield put(loginError({ status: '401', message: 'LOGIN FAILED' }));
+    yield put(loginError({ status, message: 'Login failed' }));
   }
 }
 
@@ -56,9 +66,11 @@ function* watchLoginSuccess(action: LoginSuccess) {
   const { email } = payload;
   // tslint:disable-next-line:no-console
   console.log('Login Success for', email);
+
   yield put(setMe(email));
   // TODO: Use window config
   yield put(Window.closeWindow({ id: 'osLaunchpadLogin' }));
+
   yield put(launchAppLauncher());
 }
 
