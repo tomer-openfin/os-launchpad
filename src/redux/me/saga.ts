@@ -86,60 +86,66 @@ function* watchLoginError(action: LoginError) {
   console.log('Error Message:', message);
 }
 
+function setBounds(finWindow, position, width, height, offsetX, offsetY, autoHide) {
+  if (!finWindow) return;
+
+  const currentScreenObj = finWindow.getNativeWindow().screen;
+
+  let leftPosition;
+  let topPosition;
+  let autoHideDelta;
+
+  const SHOW_LAUNCHER_ADJUSTMENT = 5;
+
+  switch (position) {
+    case 'RIGHT': {
+      autoHideDelta = autoHide ? width - SHOW_LAUNCHER_ADJUSTMENT : 0;
+      leftPosition = currentScreenObj.availWidth - width + autoHideDelta;
+      topPosition = currentScreenObj.availHeight / 2 - height / 2;
+      break;
+    }
+    case 'BOTTOM': {
+      autoHideDelta = autoHide ? height - SHOW_LAUNCHER_ADJUSTMENT : 0;
+      leftPosition = currentScreenObj.availWidth / 2 - width / 2;
+      topPosition = currentScreenObj.height - height + autoHideDelta;
+      break;
+    }
+    case 'LEFT': {
+      autoHideDelta = autoHide ? width - SHOW_LAUNCHER_ADJUSTMENT : 0;
+      leftPosition = 0 - autoHideDelta;
+      topPosition = currentScreenObj.availHeight / 2 - height / 2;
+      break;
+    }
+    default: {
+      autoHideDelta = autoHide ? height - SHOW_LAUNCHER_ADJUSTMENT : 0;
+      leftPosition = currentScreenObj.availWidth / 2 - width / 2 + offsetX;
+      topPosition = currentScreenObj.height - currentScreenObj.availHeight - autoHideDelta + offsetY;
+    }
+  }
+
+  return finWindow.setBounds(leftPosition, topPosition, width, height);
+}
+
 function setBoundsFactory(windowId, position, width, height, offsetX, offsetY, autoHide = false) {
   // fin.Application.getCurrent()
   const finApplication = fin.desktop.Application.getCurrent();
 
   let finWindow;
 
-  // TODO: refactor to use promisified verson of API
-  finApplication.getChildWindows(windows => {
-    if (windowId === MAIN_WINDOW) {
-      finWindow = fin.desktop.Window.getCurrent();
-    } else {
+  if (windowId === MAIN_WINDOW) {
+    finWindow = fin.desktop.Window.getCurrent();
+
+    setBounds(finWindow, position, width, height, offsetX, offsetY, autoHide);
+  } else {
+    // TODO: refactor to use promisified verson of API
+    finApplication.getChildWindows(windows => {
       finWindow = windows.find(window => {
         return window.name === windowId;
       });
 
-      if (!finWindow) return;
-
-      const currentScreenObj = finWindow.getNativeWindow().screen;
-
-      let leftPosition;
-      let topPosition;
-      let autoHideDelta;
-
-      const SHOW_LAUNCHER_ADJUSTMENT = 5;
-
-      switch (position) {
-        case 'RIGHT': {
-          autoHideDelta = autoHide ? width - SHOW_LAUNCHER_ADJUSTMENT : 0;
-          leftPosition = currentScreenObj.availWidth - width + autoHideDelta;
-          topPosition = currentScreenObj.availHeight / 2 - height / 2;
-          break;
-        }
-        case 'BOTTOM': {
-          autoHideDelta = autoHide ? height - SHOW_LAUNCHER_ADJUSTMENT : 0;
-          leftPosition = currentScreenObj.availWidth / 2 - width / 2;
-          topPosition = currentScreenObj.height - height + autoHideDelta;
-          break;
-        }
-        case 'LEFT': {
-          autoHideDelta = autoHide ? width - SHOW_LAUNCHER_ADJUSTMENT : 0;
-          leftPosition = 0 - autoHideDelta;
-          topPosition = currentScreenObj.availHeight / 2 - height / 2;
-          break;
-        }
-        default: {
-          autoHideDelta = autoHide ? height - SHOW_LAUNCHER_ADJUSTMENT : 0;
-          leftPosition = currentScreenObj.availWidth / 2 - width / 2 + offsetX;
-          topPosition = currentScreenObj.height - currentScreenObj.availHeight - autoHideDelta + offsetY;
-        }
-      }
-
-      return finWindow.setBounds(leftPosition, topPosition, width, height);
-    }
-  });
+      setBounds(finWindow, position, width, height, offsetX, offsetY, autoHide);
+    });
+  }
 }
 
 export function* setLauncherBounds() {
@@ -162,16 +168,16 @@ export function* setLauncherBounds() {
       setBoundsFactory(windowId, 'TOP', largestDimension, smallestDimension, 0, 0, autoHide);
       break;
     case 'RIGHT':
-      setBoundsFactory(windowState, 'RIGHT', smallestDimension, largestDimension, 0, 0, autoHide);
+      setBoundsFactory(windowId, 'RIGHT', smallestDimension, largestDimension, 0, 0, autoHide);
       break;
     case 'BOTTOM':
-      setBoundsFactory(windowState, 'BOTTOM', largestDimension, smallestDimension, 0, 0, autoHide);
+      setBoundsFactory(windowId, 'BOTTOM', largestDimension, smallestDimension, 0, 0, autoHide);
       break;
     case 'LEFT':
-      setBoundsFactory(windowState, 'LEFT', smallestDimension, largestDimension, 0, 0, autoHide);
+      setBoundsFactory(windowId, 'LEFT', smallestDimension, largestDimension, 0, 0, autoHide);
       break;
     default:
-      setBoundsFactory(windowState, 'TOP', largestDimension, smallestDimension, 0, 0, autoHide);
+      setBoundsFactory(windowId, 'TOP', largestDimension, smallestDimension, 0, 0, autoHide);
   }
 }
 
