@@ -18,8 +18,8 @@ function* watchLaunchWindow(action: LaunchWindow) {
   const window = yield select(getWindowById, id);
 
   if (window) {
-    yield put(Window.showWindow(id));
-    yield put(Window.focusWindow(id));
+    yield put(Window.showWindow({ id }));
+    yield put(Window.focusWindow({ id }));
   } else {
     yield put(Window.openWindow(payload));
   }

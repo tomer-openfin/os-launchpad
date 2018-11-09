@@ -9,12 +9,17 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   color: ${Color.WHITE};
-  height: 68px;
-  margin: 24px 32px;
+  height: 92px;
+  padding: 12px 32px;
+  background: ${Color.CHARCOAL};
 
   ${Icon} {
     height: 68px;
     width: 68px;
+  }
+
+  &:hover {
+    background: ${Color.DUSTY_GREY};
   }
 `;
 

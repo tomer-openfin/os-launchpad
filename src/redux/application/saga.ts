@@ -1,6 +1,7 @@
 import { all, call, put, select, take, takeEvery } from 'redux-saga/effects';
 
 import windowsConfig from '../../config/windows';
+import config from '../../config/windows';
 import { getNewPos } from '../../utils/coordinateHelpers';
 import getAppUuid from '../../utils/getAppUuid';
 import { animateWindow, getSystemMonitorInfo } from '../../utils/openfinPromises';
@@ -60,6 +61,8 @@ function* openfinSetup(action: OpenfinReadyAction) {
     fin.desktop.Application.getCurrent()
       .getWindow()
       .hide();
+
+    yield put(launchWindow(config.appDirectory));
 
     if (isEnterprise && !isLoggedIn) {
       // Show Login

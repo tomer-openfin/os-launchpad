@@ -6,29 +6,14 @@ import { WindowConfig } from '../../redux/windows/types';
 
 import * as plusIcon from '../../assets/AddApp.svg';
 
+import createFromManifest from '../../utils/createFromManifest';
 import IconSpace from '../IconSpace';
 import { Ellipsis, TinyX, TinyXWrapper, Wrapper } from './AppList.css';
 
 const handleClickCreator = (manifestUrl: string, altFn: () => void) => {
   if (!manifestUrl) return altFn;
 
-  return () => {
-    window.fin.desktop.Application.createFromManifest(
-      manifestUrl,
-      (createdApp: fin.OpenFinApplication): void => {
-        createdApp.run(
-          (): void => {
-            /* tslint:disable-next-line:no-console */
-            console.info('Launched Successfully: ', createdApp);
-          },
-          (): void => {
-            /* tslint:disable-next-line:no-console */
-            console.info('Launch Error: ', createdApp);
-          },
-        );
-      },
-    );
-  };
+  return () => createFromManifest(manifestUrl);
 };
 
 /* tslint:disable-next-line:ban Array constructor is here used properly, with a single argument for length https://eslint.org/docs/rules/no-array-constructor */

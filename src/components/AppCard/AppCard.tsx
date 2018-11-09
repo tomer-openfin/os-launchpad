@@ -4,6 +4,7 @@ import { AppDescription, AppName, CTA, InfoWrapper, Row, Wrapper } from './AppCa
 
 import { App } from '../../redux/apps/types';
 
+import createFromManifest from '../../utils/createFromManifest';
 import IconSpace from '../IconSpace';
 
 interface Props {
@@ -13,23 +14,28 @@ interface Props {
   removeFromLauncher: (id: string) => void;
 }
 
+const handleClickCreator = (manifestUrl: string) => () => createFromManifest(manifestUrl);
+
 const renderCTAText = (isLauncherApp: boolean) =>
   isLauncherApp ? '- Remove Shortcut' : '+ Add Shortcut';
 
-const AppCard = ({ addToLauncher, app, isLauncherApp, removeFromLauncher }: Props) => (
-  <Wrapper>
-    <IconSpace iconImg={app.icon} large />
+const AppCard = ({ addToLauncher, app, isLauncherApp, removeFromLauncher }: Props) => {
+  const handleClick = handleClickCreator(app.manifest_url);
 
-    <InfoWrapper>
-      <Row>
-        <AppName>{app.name}</AppName>
+  return (
+    <Wrapper>
+      <IconSpace onClick={handleClick} iconImg={app.icon} large />
 
-        <CTA onClick={isLauncherApp ? () => removeFromLauncher(`${app.id}`) : () => addToLauncher(`${app.id}`)}>{renderCTAText(isLauncherApp)}</CTA>
-      </Row>
+      <InfoWrapper>
+        <Row>
+          <AppName onClick={handleClick}>{app.name}</AppName>
 
-      <AppDescription>{app.description}</AppDescription>
-    </InfoWrapper>
-  </Wrapper>
-);
+          <CTA onClick={isLauncherApp ? () => removeFromLauncher(`${app.id}`) : () => addToLauncher(`${app.id}`)}>{renderCTAText(isLauncherApp)}</CTA>
+        </Row>
+
+        <AppDescription>{app.description}</AppDescription>
+      </InfoWrapper>
+    </Wrapper>);
+  };
 
 export default AppCard;

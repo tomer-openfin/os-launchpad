@@ -5,13 +5,13 @@ import createSagaMiddleware from 'redux-saga';
 import rootReducer from './redux/rootReducer';
 import rootSaga from './redux/rootSaga';
 
-// import createActionLoggerMiddleware from './utils/createActionLoggerMiddleware';
+import createActionLoggerMiddleware from './utils/createActionLoggerMiddleware';
 
 // Middleware
 const openFinMiddleware = reduxOpenFin(window.fin);
 const sagaMiddleware = createSagaMiddleware();
-// const actionLoggerMiddleware = createActionLoggerMiddleware();
-const middleware = applyMiddleware(openFinMiddleware, sagaMiddleware);
+const actionLoggerMiddleware = createActionLoggerMiddleware();
+const middleware = applyMiddleware(openFinMiddleware, sagaMiddleware, actionLoggerMiddleware);
 
 // Middleware enhancers
 const enhancers: StoreEnhancer[] = [];

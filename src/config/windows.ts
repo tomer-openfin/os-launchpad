@@ -11,12 +11,13 @@ const isProduction = NODE_ENV === 'production';
 const config = {
   appDirectory: {
     alwaysOnTop: true,
-    autoShow: true,
+    autoShow: false,
     contextMenu: !isProduction,
     defaultCentered: true,
     defaultHeight: 400,
     defaultWidth: 540,
     frame: false,
+    id: APP_DIRECTORY_WINDOW,
     maxHeight: -1,
     maximizable: false,
     minHeight: 0,
@@ -38,6 +39,7 @@ const config = {
     defaultHeight: 500,
     defaultWidth: 400,
     frame: false,
+    id: LOGIN_WINDOW,
     maxHeight: -1,
     maximizable: false,
     minHeight: 0,
