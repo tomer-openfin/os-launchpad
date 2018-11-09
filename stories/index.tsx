@@ -7,4 +7,5 @@ import '../src/components/EditUserForm';
 import '../src/components/HMRTest';
 import '../src/components/Login';
 import '../src/components/NewUserForm';
+import '../src/components/UserDirectory';
 import '../src/styles/';

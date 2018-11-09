@@ -1,8 +1,8 @@
 import Component from './NewUserForm';
 
-export * from './NewUserForm.css';
-
 import * as Story from './NewUserForm.story';
+
+export * from './NewUserForm.css';
 
 export { Story };
 

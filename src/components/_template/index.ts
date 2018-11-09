@@ -1,8 +1,8 @@
 import Component from './_template';
 
-export * from './_template.css';
-
 import * as Story from './_template.story';
+
+export * from './_template.css';
 
 export { Story };
 

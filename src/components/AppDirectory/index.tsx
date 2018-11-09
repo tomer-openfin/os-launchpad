@@ -1,8 +1,8 @@
 import Component from './AppDirectoryContainer';
 
-export * from './AppDirectory.css';
-
 import * as Story from './AppDirectory.story';
+
+export * from './AppDirectory.css';
 
 export { Story };
 
