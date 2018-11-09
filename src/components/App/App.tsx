@@ -16,7 +16,7 @@ import { isPosInBounds } from '../../utils/coordinateHelpers';
 
 import AppList from '../AppList';
 import IconSpace from '../IconSpace';
-import { Separator, Wrapper } from './App.css';
+import { Ellipsis, Separator, Wrapper } from './App.css';
 
 interface Props {
   autoHide: boolean;
@@ -111,7 +111,9 @@ class App extends React.PureComponent<Props> {
 
         <Separator launcherPosition={launcherPosition} />
 
-        <AppList />
+        <AppList spaceCount={4} />
+
+        <Ellipsis onClick={launchWindowCreator(config.appLauncherOverflow)} launcherPosition={launcherPosition} />
 
         <Separator launcherPosition={launcherPosition} />
 

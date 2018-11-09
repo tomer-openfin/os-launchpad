@@ -1,24 +1,18 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import * as ellipsis from '../../assets/Ellipsis.svg';
 import * as tinyx from '../../assets/TinyX.svg';
 import { Color } from '../../styles/index';
-
-interface LauncherPositionProps {
-  launcherPosition: string;
-}
-
-const isLeftOrRight = (props: LauncherPositionProps) => props.launcherPosition === 'RIGHT' || props.launcherPosition === 'LEFT';
+import { isLeftOrRight, LauncherPositionProps } from '../../utils/launcherPosition';
 
 export const Wrapper = styled.div<LauncherPositionProps>`
-  display: flex;
+  display: block;
   flex-direction: ${props => (isLeftOrRight(props) ? 'column' : 'row')};
   justify-content: space-between;
-  height: ${props => (isLeftOrRight(props) ? '225px' : 'auto')};
-  width: ${props => (isLeftOrRight(props) ? 'auto' : '225px')};
+  height: ${props => (isLeftOrRight(props) ? '200px' : 'auto')};
+  width: ${props => (isLeftOrRight(props) ? 'auto' : '200px')};
 `;
 
-export const TinyX = styled.div`
+export const CloseButton = styled.div`
   display: none;
   position: absolute;
   background: url(${tinyx});
@@ -42,30 +36,18 @@ export const TinyX = styled.div`
   }
 `;
 
-export const TinyXWrapper = styled.div`
+export const Space = styled.div<{ withClose?: boolean }>`
   position: relative;
   cursor: pointer;
+  display: inline-block;
 
-  &:hover {
-    ${TinyX} {
-      display: block;
-    }
-`;
-
-export const Ellipsis = styled.div<LauncherPositionProps>`
-  background: url(${ellipsis});
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin: 8px 4px;
-  height: 34px;
-  width: 17px;
-  cursor: pointer;
-  transform: rotate(${props => (isLeftOrRight(props) ? '90' : '0')});
-
-  &:hover {
-    background-color: ${Color.GREY};
-    border-radius: 2px;
-    cursor: pointer;
-    fill: ${Color.SEAGULL} !important;
-  }
+  ${props =>
+    props.withClose &&
+    css`
+      &:hover {
+        ${CloseButton} {
+          display: block;
+        }
+      }
+    `}
 `;

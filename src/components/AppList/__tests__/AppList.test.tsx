@@ -8,6 +8,8 @@ import AppList from '../AppList';
 
 describe('<AppList />', () => {
   it('renders a <div>', () => {
-    expect(enzyme.shallow(<AppList removeFromLauncher={noopCreator} launcherPosition="TOP" appList={AppData} launchWindowCreator={noopCreator} />).is('div'));
+    expect(enzyme.shallow(
+      <AppList removeFromLauncher={noopCreator} launcherPosition="TOP" appList={AppData} launchWindowCreator={noopCreator} spaceCount={4} />,
+    ).is('div'));
   });
 });

@@ -19,6 +19,7 @@ import {
   setMe,
 } from './';
 
+import { APP_LAUNCHER_OVERFLOW_WINDOW, MAIN_WINDOW } from '../../config/windows';
 import { getPosition, getWindowById } from '../windows/selectors';
 import { SET_AUTO_HIDE } from './actions';
 import { getAutoHide } from './selectors';
@@ -85,73 +86,112 @@ function* watchLoginError(action: LoginError) {
   console.log('Error Message:', message);
 }
 
-function setBoundsFactory(position, width, height, autoHide) {
-  const launcherWindow = fin.desktop.Window.getCurrent();
-  const currentScreenObj = launcherWindow.getNativeWindow().screen;
+function setBoundsFactory(windowId, position, width, height, offsetX, offsetY, autoHide = false) {
+  // fin.Application.getCurrent()
+  const finApplication = fin.desktop.Application.getCurrent();
 
-  let leftPosition;
-  let topPosition;
-  let autoHideDelta;
+  let finWindow;
 
-  const SHOW_LAUNCHER_ADJUSTMENT = 5;
+  // TODO: refactor to use promisified verson of API
+  finApplication.getChildWindows(windows => {
+    if (windowId === MAIN_WINDOW) {
+      finWindow = fin.desktop.Window.getCurrent();
+    } else {
+      finWindow = windows.find(window => {
+        return window.name === windowId;
+      });
 
-  switch (position) {
-    case 'RIGHT': {
-      autoHideDelta = autoHide ? width - SHOW_LAUNCHER_ADJUSTMENT : 0;
-      leftPosition = currentScreenObj.availWidth - width + autoHideDelta;
-      topPosition = currentScreenObj.availHeight / 2 - height / 2;
-      break;
-    }
-    case 'BOTTOM': {
-      autoHideDelta = autoHide ? height - SHOW_LAUNCHER_ADJUSTMENT : 0;
-      leftPosition = currentScreenObj.availWidth / 2 - width / 2;
-      topPosition = currentScreenObj.height - height + autoHideDelta;
-      break;
-    }
-    case 'LEFT': {
-      autoHideDelta = autoHide ? width - SHOW_LAUNCHER_ADJUSTMENT : 0;
-      leftPosition = 0 - autoHideDelta;
-      topPosition = currentScreenObj.availHeight / 2 - height / 2;
-      break;
-    }
-    default: {
-      autoHideDelta = autoHide ? height - SHOW_LAUNCHER_ADJUSTMENT : 0;
-      leftPosition = currentScreenObj.availWidth / 2 - width / 2;
-      topPosition = currentScreenObj.height - currentScreenObj.availHeight - autoHideDelta;
-    }
-  }
+      if (!finWindow) return;
 
-  return launcherWindow.setBounds(leftPosition, topPosition, width, height);
+      const currentScreenObj = finWindow.getNativeWindow().screen;
+
+      let leftPosition;
+      let topPosition;
+      let autoHideDelta;
+
+      const SHOW_LAUNCHER_ADJUSTMENT = 5;
+
+      switch (position) {
+        case 'RIGHT': {
+          autoHideDelta = autoHide ? width - SHOW_LAUNCHER_ADJUSTMENT : 0;
+          leftPosition = currentScreenObj.availWidth - width + autoHideDelta;
+          topPosition = currentScreenObj.availHeight / 2 - height / 2;
+          break;
+        }
+        case 'BOTTOM': {
+          autoHideDelta = autoHide ? height - SHOW_LAUNCHER_ADJUSTMENT : 0;
+          leftPosition = currentScreenObj.availWidth / 2 - width / 2;
+          topPosition = currentScreenObj.height - height + autoHideDelta;
+          break;
+        }
+        case 'LEFT': {
+          autoHideDelta = autoHide ? width - SHOW_LAUNCHER_ADJUSTMENT : 0;
+          leftPosition = 0 - autoHideDelta;
+          topPosition = currentScreenObj.availHeight / 2 - height / 2;
+          break;
+        }
+        default: {
+          autoHideDelta = autoHide ? height - SHOW_LAUNCHER_ADJUSTMENT : 0;
+          leftPosition = currentScreenObj.availWidth / 2 - width / 2 + offsetX;
+          topPosition = currentScreenObj.height - currentScreenObj.availHeight - autoHideDelta + offsetY;
+        }
+      }
+
+      return finWindow.setBounds(leftPosition, topPosition, width, height);
+    }
+  });
 }
 
 export function* setLauncherBounds() {
   const autoHide = yield select(getAutoHide);
   // get bounds of launcher window
-  const launchbarId = 'osLaunchpadMain';
-  const state = yield select(getWindowById, launchbarId);
-  const { width, height } = state.bounds;
+  const windowId = MAIN_WINDOW;
 
-  const largestDim = Math.max(width, height);
-  const smallestDim = Math.min(width, height);
+  const windowState = yield select(getWindowById, windowId);
+
+  const { width, height } = windowState.bounds;
+
+  const largestDimension = Math.max(width, height);
+  const smallestDimension = Math.min(width, height);
 
   // get position of launchbar from store
   const position = yield select(getPosition);
 
   switch (position) {
     case 'TOP':
-      setBoundsFactory('TOP', largestDim, smallestDim, autoHide);
+      setBoundsFactory(windowId, 'TOP', largestDimension, smallestDimension, 0, 0, autoHide);
       break;
     case 'RIGHT':
-      setBoundsFactory('RIGHT', smallestDim, largestDim, autoHide);
+      setBoundsFactory(windowState, 'RIGHT', smallestDimension, largestDimension, 0, 0, autoHide);
       break;
     case 'BOTTOM':
-      setBoundsFactory('BOTTOM', largestDim, smallestDim, autoHide);
+      setBoundsFactory(windowState, 'BOTTOM', largestDimension, smallestDimension, 0, 0, autoHide);
       break;
     case 'LEFT':
-      setBoundsFactory('LEFT', smallestDim, largestDim, autoHide);
+      setBoundsFactory(windowState, 'LEFT', smallestDimension, largestDimension, 0, 0, autoHide);
       break;
     default:
-      setBoundsFactory('TOP', largestDim, smallestDim, autoHide);
+      setBoundsFactory(windowState, 'TOP', largestDimension, smallestDimension, 0, 0, autoHide);
+  }
+}
+
+export function* setAppOverflowBounds() {
+  // get bounds of launcher window
+  const windowId = APP_LAUNCHER_OVERFLOW_WINDOW;
+
+  const windowState = yield select(getWindowById, windowId);
+
+  const { width, height } = windowState.bounds;
+
+  const largestDimension = Math.max(width, height);
+  const smallestDimension = Math.min(width, height);
+
+  // get position of launchbar from store
+  const position = yield select(getPosition);
+
+  switch (position) {
+    default:
+      setBoundsFactory(windowId, 'TOP', smallestDimension, largestDimension, -88, 0);
   }
 }
 

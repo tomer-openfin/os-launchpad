@@ -62,7 +62,8 @@ function* openfinSetup(action: OpenfinReadyAction) {
       .getWindow()
       .hide();
 
-    yield put(launchWindow(config.appDirectory));
+    // Launch all windows on init, windows are hidden by default unless they have autoShow: true
+    yield all(Object.keys(config).map(window => put(launchWindow(config[window]))));
 
     if (isEnterprise && !isLoggedIn) {
       // Show Login
