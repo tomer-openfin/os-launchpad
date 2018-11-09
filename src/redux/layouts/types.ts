@@ -1,14 +1,6 @@
 import { Layout } from 'openfin-layouts/dist/client/types';
 
-import {
-  getLayoutsError,
-  getLayoutsRequest,
-  getLayoutsSuccess,
-  restoreLayout,
-  saveLayoutError,
-  saveLayoutRequest,
-  saveLayoutSuccess,
-} from './';
+import { getLayoutsError, getLayoutsRequest, getLayoutsSuccess, restoreLayout, saveLayoutError, saveLayoutRequest, saveLayoutSuccess } from './';
 
 // State
 export interface LayoutsState {
@@ -30,11 +22,4 @@ export type SaveLayoutError = ReturnType<typeof saveLayoutError>;
 export type SaveLayoutRequest = ReturnType<typeof saveLayoutRequest>;
 export type SaveLayoutSuccess = ReturnType<typeof saveLayoutSuccess>;
 
-export type LayoutsActions =
-  GetLayoutsError
-  | GetLayoutsRequest
-  | GetLayoutsSuccess
-  | RestoreLayout
-  | SaveLayoutRequest
-  | SaveLayoutSuccess
-  | SaveLayoutError;
+export type LayoutsActions = GetLayoutsError | GetLayoutsRequest | GetLayoutsSuccess | RestoreLayout | SaveLayoutRequest | SaveLayoutSuccess | SaveLayoutError;

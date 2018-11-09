@@ -1,6 +1,5 @@
 import { Window } from '@giantmachines/redux-openfin';
-import { takeLatest } from 'redux-saga';
-import { call, put, select } from 'redux-saga/effects';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 import { launchAppLauncher } from '../application';

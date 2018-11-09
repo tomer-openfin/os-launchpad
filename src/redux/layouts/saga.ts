@@ -1,15 +1,9 @@
 import { generateLayout, restoreLayout } from 'openfin-layouts';
 import { Layout } from 'openfin-layouts/dist/client/types';
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
-import {
-  GET_LAYOUTS,
-  getLayoutsSuccess,
-  RESTORE_LAYOUT,
-  SAVE_LAYOUT,
-  saveLayoutSuccess,
- } from './actions';
+import { GET_LAYOUTS, getLayoutsSuccess, RESTORE_LAYOUT, SAVE_LAYOUT, saveLayoutSuccess } from './actions';
 import { RestoreLayout, SaveLayoutRequest } from './types';
 
 function* watchGetLayoutRequest() {
@@ -19,7 +13,7 @@ function* watchGetLayoutRequest() {
 
 function* watchRestoreLayout(action: RestoreLayout) {
   const layout = action.payload;
-  if (!layout) {
+  if (!layout || layout.apps === undefined) {
     return;
   }
 
@@ -31,6 +25,12 @@ function* watchSaveLayoutRequest(action: SaveLayoutRequest) {
   if (!layout) {
     layout = yield call(generateLayout);
   }
+
+  // tslint:disable-next-line:no-console
+  console.log('watchSaveLayoutRequest', action);
+
+  // tslint:disable:no-console
+  console.log('-- attempting to save layout--', layout);
 
   yield call(ApiService.saveLayout, layout as Layout);
   yield put(saveLayoutSuccess());

@@ -28,6 +28,8 @@ interface Props {
   launchWindowCreator: (window: WindowConfig) => () => void;
   monitorInfo: object;
   setMonitorInfo: (monitorInfo: object) => void;
+  saveCurrentLayout: Function;
+  restoreCurrentLayout: Function;
 }
 
 // TODO - move to an HOC
@@ -97,7 +99,7 @@ class App extends React.PureComponent<Props> {
   }
 
   render() {
-    const { launchWindowCreator, launcherPosition } = this.props;
+    const { launchWindowCreator, launcherPosition, saveCurrentLayout, restoreCurrentLayout } = this.props;
 
     return (
       <Wrapper launcherPosition={launcherPosition}>
@@ -121,9 +123,9 @@ class App extends React.PureComponent<Props> {
 
         <Separator launcherPosition={launcherPosition} />
 
-        <IconSpace iconImg={saveLayout} hover />
+        <IconSpace iconImg={saveLayout} onClick={() => saveCurrentLayout()} hover />
 
-        <IconSpace iconImg={restoreLayout} hover />
+        <IconSpace iconImg={restoreLayout} onClick={() => restoreCurrentLayout()} hover />
 
         <Separator launcherPosition={launcherPosition} />
 

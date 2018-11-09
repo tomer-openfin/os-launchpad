@@ -45,6 +45,7 @@ export const checkIsEnterprise = () => {
  * @returns {Promise<string[]>}
  */
 export const getApps = () => {
+  // Disable this for demo?
   if (checkIsEnterprise()) {
     const options = createGetOptions();
     return fetch(APPS_URL, options)
@@ -61,6 +62,7 @@ export const getApps = () => {
  * @returns {Promise<void>}
  */
 export const saveApps = (apps: string[]) => {
+  // Disable this for demo?
   if (checkIsEnterprise()) {
     const options = createPostOptions({ apps });
     return fetch(APPS_URL, options).then(resp => resp.json());
@@ -75,12 +77,13 @@ export const saveApps = (apps: string[]) => {
  * @returns {Promise<Layout[]>}
  */
 export const getLayouts = () => {
-  if (checkIsEnterprise()) {
-    const options = createGetOptions();
-    return fetch(LAYOUTS_URL, options)
-      .then(resp => resp.json())
-      .then(resp => resp.map(r => r.layout) as Layout[]);
-  }
+  // Disable enterprise check for demo
+  // if (checkIsEnterprise()) {
+  //   const options = createGetOptions();
+  //   return fetch(LAYOUTS_URL, options)
+  //     .then(resp => resp.json())
+  //     .then(resp => resp.map(r => r.layout) as Layout[]);
+  // }
 
   return getLocalStorage<Layout[]>(LOCAL_STORAGE_KEYS.LAYOUTS, []);
 };
@@ -91,10 +94,11 @@ export const getLayouts = () => {
  * @returns {Promise<void>}
  */
 export const saveLayout = (layout: Layout) => {
-  if (checkIsEnterprise()) {
-    const options = createPostOptions({ layout });
-    return fetch(LAYOUTS_URL, options).then(resp => resp.json());
-  }
+  // Disable enterprise check for demo
+  // if (checkIsEnterprise()) {
+  //   const options = createPostOptions({ layout });
+  //   return fetch(LAYOUTS_URL, options).then(resp => resp.json());
+  // }
 
   return setLocalStorage<Layout[]>(LOCAL_STORAGE_KEYS.LAYOUTS, [layout]);
 };
@@ -105,7 +109,8 @@ export const saveLayout = (layout: Layout) => {
  * @returns {Promise<>}
  */
 export const login = payload => {
-  if (checkIsEnterprise() && document.location && document.location.hostname.indexOf('local') === -1) {
+  // TEMP: host 8080 for demo purposes
+  if (checkIsEnterprise() && document.location && document.location.host.indexOf('8080') === -1) {
     const options = createPostOptions(payload);
 
     return fetch(LOGIN_URL, options)
