@@ -26,6 +26,7 @@ export const Separator = styled.div<LauncherPositionProps>`
 `;
 
 export const Ellipsis = styled.div<LauncherPositionProps>`
+  align-self: ${props => isLeftOrRight(props) && 'center'};
   background: url(${ellipsis});
   background-size: cover;
   background-repeat: no-repeat;
@@ -33,7 +34,7 @@ export const Ellipsis = styled.div<LauncherPositionProps>`
   height: 34px;
   width: 17px;
   cursor: pointer;
-  transform: rotate(${props => (isLeftOrRight(props) ? '90' : '0')});
+  transform: rotate(${props => (isLeftOrRight(props) ? '90deg' : '0')});
 
   &:hover {
     background-color: ${Color.GREY};
