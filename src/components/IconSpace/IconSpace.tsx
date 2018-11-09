@@ -4,11 +4,12 @@ import { Background, Icon } from './IconSpace.css';
 
 interface Props {
   backgroundImg?;
-  iconImg?;
+  className?: string;
   draggable?: boolean;
-  onClick?: () => void;
-  large?: boolean;
   hover?: boolean;
+  iconImg?;
+  large?: boolean;
+  onClick?: () => void;
 }
 
 const IconSpace = ({ backgroundImg, iconImg, draggable, onClick, large, hover }: Props) => (

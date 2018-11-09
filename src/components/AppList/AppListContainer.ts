@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
-import { getAppsLauncherAppList } from '../../redux/apps';
+import { getAppsLauncherAppList, removeFromAppLauncher } from '../../redux/apps';
+
 import { launchWindow, WindowConfig } from '../../redux/windows';
 
 import AppList from './AppList';
@@ -12,6 +13,7 @@ const stateProps = state => ({
 
 const dispatchProps = dispatch => ({
   launchWindowCreator: (window: WindowConfig) => () => dispatch(launchWindow(window)),
+  removeFromLauncher: (appId: string) => dispatch(removeFromAppLauncher(appId)),
 });
 
 export default connect(

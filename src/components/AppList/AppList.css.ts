@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import * as ellipsis from '../../assets/Ellipsis.svg';
+import * as tinyx from '../../assets/TinyX.svg';
 import { Color } from '../../styles/index';
 
 interface LauncherPositionProps {
@@ -15,6 +16,40 @@ export const Wrapper = styled.div<LauncherPositionProps>`
   justify-content: space-between;
   height: ${props => (isLeftOrRight(props) ? '225px' : 'auto')};
   width: ${props => (isLeftOrRight(props) ? 'auto' : '225px')};
+`;
+
+export const TinyX = styled.div`
+  display: none;
+  position: absolute;
+  background: url(${tinyx});
+  background-repeat: no-repeat;
+  height: 10px;
+  width: 10px;
+  top: 3px;
+  left: 3px;
+  background-position: center;
+  background-size: contain;
+  background-color: ${Color.DUSTY_GREY};
+  border: 2px solid ${Color.DUSTY_GREY}
+  border-radius: 5px;
+  z-index: 3;
+
+  &:hover {
+    height: 12px;
+    width: 12px;
+    top: 2px;
+    left: 2px;
+  }
+`;
+
+export const TinyXWrapper = styled.div`
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    ${TinyX} {
+      display: block;
+    }
 `;
 
 export const Ellipsis = styled.div<LauncherPositionProps>`

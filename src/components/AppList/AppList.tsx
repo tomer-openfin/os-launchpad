@@ -7,7 +7,7 @@ import { WindowConfig } from '../../redux/windows/types';
 import * as plusIcon from '../../assets/AddApp.svg';
 
 import IconSpace from '../IconSpace';
-import { Ellipsis, Wrapper } from './AppList.css';
+import { Ellipsis, TinyX, TinyXWrapper, Wrapper } from './AppList.css';
 
 const handleClickCreator = (manifestUrl: string, altFn: () => void) => {
   if (!manifestUrl) return altFn;
@@ -35,22 +35,27 @@ const handleClickCreator = (manifestUrl: string, altFn: () => void) => {
 const spaces = (spaceCount: number, mapFn: (item, index: number) => JSX.Element) => Array.from(Array(spaceCount).keys()).map(mapFn);
 
 interface Props {
+  removeFromLauncher: (id: string) => void;
   launcherPosition: string;
   appList: App[];
   launchWindowCreator: (window: WindowConfig) => () => void;
 }
 
-const AppList = ({ appList, launchWindowCreator, launcherPosition }: Props) => (
+const AppList = ({ appList, launchWindowCreator, launcherPosition, removeFromLauncher }: Props) => (
   <Wrapper launcherPosition={launcherPosition}>
     {spaces(4, (item, index) => {
       const app = appList[index];
 
       return app ? (
-        <IconSpace
-          key={app.manifest_url || index}
-          onClick={handleClickCreator(app.manifest_url, launchWindowCreator(config.appDirectory))}
-          iconImg={app ? app.icon : plusIcon}
-        />
+        <TinyXWrapper key={app.manifest_url || index} >
+          <IconSpace
+            onClick={handleClickCreator(app.manifest_url, launchWindowCreator(config.appDirectory))}
+            iconImg={app ? app.icon : plusIcon}
+          />
+
+          {/* tslint:disable:jsx-no-lambda */}
+          <TinyX onClick={() => removeFromLauncher(`${app.id}`)} />
+        </TinyXWrapper>
       ) : (
         <IconSpace key={index} onClick={launchWindowCreator(config.appDirectory)} iconImg={plusIcon} hover />
       );

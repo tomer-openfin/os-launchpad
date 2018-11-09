@@ -7,4 +7,6 @@ import { noopCreator } from '../../utils/noop';
 
 import AppList from './AppList';
 
-storiesOf('AppList', module).add('default', () => <AppList launcherPosition="TOP" appList={AppData} launchWindowCreator={noopCreator} />);
+storiesOf('AppList', module).add('default', () => (
+  <AppList removeFromLauncher={noopCreator} launcherPosition="TOP" appList={AppData} launchWindowCreator={noopCreator} />
+));
