@@ -73,5 +73,6 @@ function* watchOpenedWindow(action) {
 
 export function* windowsSaga() {
   yield takeLatest(LAUNCH_WINDOW, watchLaunchWindow);
+  // TODO: import action type
   yield takeLatest('REDUX_OPENFIN::WINDOW_OPENED', watchOpenedWindow);
 }

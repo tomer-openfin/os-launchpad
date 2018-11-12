@@ -1,9 +1,10 @@
-import { APP_DIRECTORY_ROUTE, APP_LAUNCHER_OVERFLOW_ROUTE, HOME_ROUTE, LOGIN_ROUTE } from './const';
+import { APP_DIRECTORY_ROUTE, APP_LAUNCHER_OVERFLOW_ROUTE, HOME_ROUTE, LOGIN_ROUTE, SETTINGS_ROUTE } from './const';
 
 import App from '../App';
 import AppDirectory from '../AppDirectory';
 import AppOverflow from '../AppOverflow';
 import Login from '../Login';
+import Settings from '../Settings';
 
 export default [
   {
@@ -25,5 +26,10 @@ export default [
     component: AppOverflow,
     exact: true,
     path: APP_LAUNCHER_OVERFLOW_ROUTE,
+  },
+  {
+    component: Settings,
+    exact: true,
+    path: SETTINGS_ROUTE,
   },
 ];

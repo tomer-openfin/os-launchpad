@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import * as searchIcon from '../../assets/Search.svg';
-
 import {
   Window,
 } from './AppOverflow.css';

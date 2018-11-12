@@ -1,4 +1,4 @@
-import { APP_DIRECTORY_ROUTE, APP_LAUNCHER_OVERFLOW_ROUTE, LOGIN_ROUTE } from '../components/Router/const';
+import { APP_DIRECTORY_ROUTE, APP_LAUNCHER_OVERFLOW_ROUTE, LOGIN_ROUTE, SETTINGS_ROUTE } from '../components/Router/const';
 
 const { NODE_ENV } = process.env;
 
@@ -7,6 +7,7 @@ export const MAIN_WINDOW = 'osLaunchpadMain';
 export const LOGIN_WINDOW = `${WINDOW_PREFIX}Login`;
 export const APP_DIRECTORY_WINDOW = `${WINDOW_PREFIX}AppDirectory`;
 export const APP_LAUNCHER_OVERFLOW_WINDOW = `${WINDOW_PREFIX}AppLauncherOverflow`;
+export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
 
 const isProduction = NODE_ENV === 'production';
 
@@ -57,12 +58,12 @@ const config = {
   },
   login: {
     alwaysOnTop: false,
-    autoShow: false,
+    autoShow: true,
     contextMenu: !isProduction,
     defaultCentered: true,
     defaultHeight: 500,
     defaultWidth: 400,
-    frame: false,
+    frame: true,
     id: LOGIN_WINDOW,
     maxHeight: -1,
     maximizable: false,
@@ -75,6 +76,28 @@ const config = {
     showTaskbarIcon: true,
     // smallWindow: false,
     url: LOGIN_ROUTE,
+    waitForPageLoad: true,
+  },
+  settings: {
+    alwaysOnTop: true,
+    autoShow: false,
+    contextMenu: !isProduction,
+    defaultCentered: true,
+    defaultHeight: 300,
+    defaultWidth: 200,
+    frame: false,
+    id: SETTINGS_WINDOW,
+    maxHeight: -1,
+    maximizable: false,
+    minHeight: 0,
+    minWidth: 0,
+    minimizable: false,
+    name: SETTINGS_WINDOW,
+    resizable: false,
+    saveWindowState: false,
+    showTaskbarIcon: true,
+    // smallWindow: false,
+    url: SETTINGS_ROUTE,
     waitForPageLoad: true,
   },
 };

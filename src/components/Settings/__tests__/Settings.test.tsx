@@ -1,11 +1,11 @@
 import * as enzyme from 'enzyme';
 import * as React from 'react';
 
-import AppOverflow from '../AppOverflow';
+import Settings from '../Settings';
 
-describe('<AppOverflow />', () => {
+describe('<Settings />', () => {
   it('renders a <div>', () => {
     expect(enzyme.shallow(<div/>).is('div'));
-    // expect(enzyme.shallow(<AppOverflow/>).is('div'));
+    expect(enzyme.shallow(<Settings/>).is('div'));
   });
 });

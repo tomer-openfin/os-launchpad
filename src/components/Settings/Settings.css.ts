@@ -1,16 +1,13 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Color } from '../../styles/index';
 
-export const Wrapper = styled.div`
-  height: 90vh;
+export const Window = styled.div`
   display: flex;
-  flex-direction: column;
+  height: 100%;
   align-items: center;
   justify-content: center;
-`;
-
-export const ErrorMessage = styled.p`
-  color: red;
+  position: relative;
+  padding: 50px;
 `;
 
 export const CTA = styled.button`

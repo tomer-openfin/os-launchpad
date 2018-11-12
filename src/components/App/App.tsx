@@ -9,7 +9,7 @@ import * as saveLayout from '../../assets/SaveLayout.svg';
 import * as searchIcon from '../../assets/Search.svg';
 import * as Settings from '../../assets/Settings.svg';
 
-import config from '../../config/windows';
+import windowsConfig from '../../config/windows';
 import { Bounds } from '../../redux/types';
 import { WindowConfig } from '../../redux/windows/types';
 import { isPosInBounds } from '../../utils/coordinateHelpers';
@@ -52,10 +52,6 @@ class App extends React.PureComponent<Props> {
   }
 
   bindMouseEvents = () => {
-    if (!this.props.autoHide) {
-      return;
-    }
-
     this.interval = window.setInterval(this.handleInterval, 250);
     window.addEventListener('mouseover', this.handleMouseEnterOnWindow);
   };
@@ -87,12 +83,20 @@ class App extends React.PureComponent<Props> {
   };
 
   handleMouseEnterOnWindow() {
+    if (!this.props.autoHide) {
+      return;
+    }
+
     if (!this.props.isExpanded) {
       this.props.expandApp();
     }
   }
 
   handleMouseLeaveOnWindow() {
+    if (!this.props.autoHide) {
+      return;
+    }
+
     if (this.props.isExpanded) {
       this.props.collapseApp();
     }
@@ -107,13 +111,13 @@ class App extends React.PureComponent<Props> {
 
         <Separator launcherPosition={launcherPosition} />
 
-        <IconSpace iconImg={searchIcon} onClick={launchWindowCreator(config.appDirectory)} hover />
+        <IconSpace iconImg={searchIcon} onClick={launchWindowCreator(windowsConfig.appDirectory)} hover />
 
         <Separator launcherPosition={launcherPosition} />
 
         <AppList spaceCount={4} />
 
-        <Ellipsis onClick={launchWindowCreator(config.appLauncherOverflow)} launcherPosition={launcherPosition} />
+        <Ellipsis onClick={launchWindowCreator(windowsConfig.appLauncherOverflow)} launcherPosition={launcherPosition} />
 
         <Separator launcherPosition={launcherPosition} />
 
@@ -121,7 +125,7 @@ class App extends React.PureComponent<Props> {
 
         <Separator launcherPosition={launcherPosition} />
 
-        <IconSpace iconImg={Settings} hover />
+        <IconSpace iconImg={Settings} onClick={launchWindowCreator(windowsConfig.settings)} hover />
 
         <Separator launcherPosition={launcherPosition} />
 

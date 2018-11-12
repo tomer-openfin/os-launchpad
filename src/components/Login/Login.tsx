@@ -1,6 +1,6 @@
 import { Field, Form, Formik } from 'formik';
 import * as React from 'react';
-import { Wrapper } from './Login.css';
+import { CTA, Wrapper } from './Login.css';
 
 interface SubmitPayload {
   email: string;
@@ -48,9 +48,9 @@ const LoginForm = () => (
 
     <br />
 
-    <button type="submit">
+    <CTA type="submit">
       Login
-    </button>
+    </CTA>
   </Form>
 );
 
