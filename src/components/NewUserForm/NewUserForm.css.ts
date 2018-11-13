@@ -15,12 +15,13 @@ export const Label = styled.label`
 
 export const Form = styled.form`
   align-items: center;
-  justify-content: center;
-  display: flex;
   border: 2px solid dodgerblue;
+  display: flex;
   flex-direction: column;
+  height: 100vh;
   justify-content: center;
-  max-width: 800px;
+  justify-content: center;
+  width: 100vw;
 `;
 
 // placeholder message until design/flow comes in

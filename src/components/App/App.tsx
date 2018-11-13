@@ -121,7 +121,7 @@ class App extends React.PureComponent<Props> {
 
         <Separator launcherPosition={launcherPosition} />
 
-        <IconSpace iconImg={AdminIcon} hover />
+        <IconSpace iconImg={AdminIcon} onClick={launchWindowCreator(windowsConfig.admin)} hover />
 
         <Separator launcherPosition={launcherPosition} />
 

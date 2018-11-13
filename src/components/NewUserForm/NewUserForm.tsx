@@ -1,6 +1,7 @@
 /* tslint:disable:no-console */
 
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import { ErrorMessage, Form, Input, Label, Message, Select } from './NewUserForm.css';
 
@@ -111,6 +112,9 @@ class NewUserForm extends React.Component<Props, State> {
 
     return (
       <Form onSubmit={this.handleFormSubmit}>
+        {/* temp until admin flow is determined */}
+        <Link to="/admin">Back to Admin Dashboard</Link>
+
         {this.renderMessage(result)}
 
         <Label>

@@ -70,8 +70,8 @@ export const Wrapper = styled.div`
   background-color: #edeeef;
   display: flex;
   flex-direction: column;
-  height: 75vh;
-  width: 75vw;
+  height: 100vh;
+  width: 100vw;
 
   & > ul {
     list-style: none;

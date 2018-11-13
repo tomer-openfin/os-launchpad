@@ -62,7 +62,12 @@ function* openfinSetup(action: OpenfinReadyAction) {
       .hide();
 
     // Launch all windows on init, windows are hidden by default unless they have autoShow: true
-    yield all([put(launchWindow(windowsConfig.appDirectory)), put(launchWindow(windowsConfig.appLauncherOverflow)), put(launchWindow(windowsConfig.settings))]);
+    yield all([
+      put(launchWindow(windowsConfig.admin)),
+      put(launchWindow(windowsConfig.appDirectory)),
+      put(launchWindow(windowsConfig.appLauncherOverflow)),
+      put(launchWindow(windowsConfig.settings)),
+    ]);
 
     if (isEnterprise && !isLoggedIn) {
       // Show Login

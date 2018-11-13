@@ -1,17 +1,51 @@
-import { APP_DIRECTORY_ROUTE, APP_LAUNCHER_OVERFLOW_ROUTE, LOGIN_ROUTE, SETTINGS_ROUTE } from '../components/Router/const';
+import {
+  ADMIN_ROUTE,
+  APP_DIRECTORY_ROUTE,
+  APP_LAUNCHER_OVERFLOW_ROUTE,
+  LOGIN_ROUTE,
+  NEW_USER_ROUTE,
+  SETTINGS_ROUTE,
+  USER_DIRECTORY_ROUTE,
+} from '../components/Router/const';
 
 const { NODE_ENV } = process.env;
 
 const WINDOW_PREFIX = 'osLaunchpad';
+export const ADMIN_WINDOW = `${WINDOW_PREFIX}Admin`;
 export const MAIN_WINDOW = 'osLaunchpadMain';
 export const LOGIN_WINDOW = `${WINDOW_PREFIX}Login`;
 export const APP_DIRECTORY_WINDOW = `${WINDOW_PREFIX}AppDirectory`;
 export const APP_LAUNCHER_OVERFLOW_WINDOW = `${WINDOW_PREFIX}AppLauncherOverflow`;
 export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
+export const USER_DIRECTORY_WINDOW = `${WINDOW_PREFIX}UserDirectory`;
+export const NEW_USER_WINDOW = `${WINDOW_PREFIX}NewUser`;
 
 const isProduction = NODE_ENV === 'production';
 
 const config = {
+  admin: {
+    alwaysOnTop: false,
+    autoShow: false,
+    contextMenu: !isProduction,
+    defaultCentered: true,
+    defaultHeight: 960,
+    defaultWidth: 960,
+    // temp until designs come in for custom frame
+    frame: true,
+    id: ADMIN_WINDOW,
+    maxHeight: -1,
+    maximizable: false,
+    minHeight: 0,
+    minWidth: 0,
+    minimizable: true,
+    name: ADMIN_WINDOW,
+    resizable: false,
+    saveWindowState: false,
+    showTaskbarIcon: true,
+    // smallWindow: false,
+    url: ADMIN_ROUTE,
+    waitForPageLoad: true,
+  },
   appDirectory: {
     alwaysOnTop: true,
     autoShow: false,
