@@ -2,22 +2,18 @@
 
 import * as React from 'react';
 
-import { CTA, Window } from './Settings.css';
+import { CTA, Heading, Section, Window } from './Settings.css';
 
 import noop from '../../utils/noop';
 
 interface Props {
-  addHideOnBlurListener;
   autoHide: boolean;
-  removeHideOnBlurListener;
   setAutoHide;
   setLaunchbarPosition;
 }
 
 const defaultProps: Props = {
-  addHideOnBlurListener: noop,
   autoHide: false,
-  removeHideOnBlurListener: noop,
   setAutoHide: noop,
   setLaunchbarPosition: noop,
 };
@@ -25,28 +21,30 @@ const defaultProps: Props = {
 class AppOverflow extends React.Component<Props, {}> {
   static defaultProps = defaultProps;
 
-  componentDidMount() {
-    this.props.addHideOnBlurListener();
-  }
-
-  componentWillUnmount() {
-    this.props.removeHideOnBlurListener();
-  }
-
   render() {
     const { autoHide, setAutoHide, setLaunchbarPosition } = this.props;
 
     return (
       <Window>
-        <CTA onClick={() => (autoHide ? setAutoHide(false) : setAutoHide(true))}>{autoHide ? 'Auto Show' : 'Auto Hide'}</CTA>
+        <Section>
+          <Heading>Auto Hide</Heading>
 
-        <CTA onClick={() => setLaunchbarPosition('TOP')}>Top</CTA>
+          <CTA onClick={() => (autoHide ? setAutoHide(false) : setAutoHide(true))}>{autoHide ? 'ON' : 'OFF'}</CTA>
+        </Section>
 
-        <CTA onClick={() => setLaunchbarPosition('RIGHT')}>Right</CTA>
+        <Section>
+          <Heading>Launcher Position</Heading>
 
-        <CTA onClick={() => setLaunchbarPosition('LEFT')}>Left</CTA>
+          <CTA onClick={() => setLaunchbarPosition('TOP')}>Top</CTA>
 
-        <CTA onClick={() => setLaunchbarPosition('BOTTOM')}>Bottom</CTA>
+          <div>
+            <CTA onClick={() => setLaunchbarPosition('LEFT')}>Left</CTA>
+
+            <CTA onClick={() => setLaunchbarPosition('RIGHT')}>Right</CTA>
+          </div>
+
+          <CTA onClick={() => setLaunchbarPosition('BOTTOM')}>Bottom</CTA>
+        </Section>
       </Window>
     );
   }

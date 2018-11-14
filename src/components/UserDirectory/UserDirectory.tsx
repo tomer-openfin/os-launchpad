@@ -1,7 +1,8 @@
-import debounce from 'lodash-es/debounce';
-import escapeRegExp from 'lodash-es/escapeRegExp';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+
+import debounce from 'lodash-es/debounce';
+import escapeRegExp from 'lodash-es/escapeRegExp';
 
 import { ButtonWrapper, LinkButton, ListWrapper, StyledH1, StyledInput, StyledSelect, Wrapper } from './';
 

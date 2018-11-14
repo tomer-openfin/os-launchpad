@@ -11,14 +11,17 @@ import {
 
 import { App } from '../../redux/apps/types';
 
+import { APP_DIRECTORY_WINDOW } from '../../config/windows';
 import noop from '../../utils/noop';
+
 import AppCard from '../AppCard';
 import IconSpace from '../IconSpace';
 
 interface Props {
   appList: App[];
-  addHideOnBlurListener;
-  removeHideOnBlurListener;
+  addWindowListener: Function;
+  hideWindow: Function;
+  removeWindowListener: Function;
 }
 
 interface State {
@@ -26,9 +29,10 @@ interface State {
 }
 
 const defaultProps: Props = {
-  addHideOnBlurListener: noop,
+  addWindowListener: noop,
   appList: [],
-  removeHideOnBlurListener: noop,
+  hideWindow: noop,
+  removeWindowListener: noop,
 };
 
 class AppDirectory extends React.Component<Props, State> {
@@ -42,13 +46,13 @@ class AppDirectory extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    this.props.addHideOnBlurListener();
+    this.props.addWindowListener(APP_DIRECTORY_WINDOW, 'blurred', () => this.props.hideWindow(APP_DIRECTORY_WINDOW));
 
     if (this.searchInput) this.searchInput.focus();
   }
 
   componentWillUnmount() {
-    this.props.removeHideOnBlurListener();
+    this.props.removeWindowListener(APP_DIRECTORY_WINDOW, 'blurred', () => this.props.hideWindow(APP_DIRECTORY_WINDOW));
   }
 
   handleChange = (e: React.FormEvent<HTMLInputElement>) => {

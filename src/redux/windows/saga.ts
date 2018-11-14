@@ -1,8 +1,8 @@
 import { Window } from '@giantmachines/redux-openfin';
 import { put, select, takeLatest } from 'redux-saga/effects';
 
-import { APP_LAUNCHER_OVERFLOW_WINDOW } from '../../config/windows';
-import { setAppOverflowBounds } from '../me';
+import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW } from '../../config/windows';
+import { setAppOverflowWindowBounds, setLayoutsWindowBounds } from '../me';
 import { LAUNCH_WINDOW } from './actions';
 import { getWindowById } from './selectors';
 import { LaunchWindow } from './types';
@@ -67,7 +67,11 @@ function* watchOpenedWindow(action) {
   }
 
   if (window.id === APP_LAUNCHER_OVERFLOW_WINDOW) {
-    yield setAppOverflowBounds();
+    yield setAppOverflowWindowBounds();
+  }
+
+  if (window.id === LAYOUTS_WINDOW) {
+    yield setLayoutsWindowBounds();
   }
 }
 

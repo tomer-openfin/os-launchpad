@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 import { Color } from '../../styles';
 
-import * as TinyDownArrow from '../../assets/TinyDownArrow.svg';
-import * as TinyUpArrow from '../../assets/TinyUpArrow.svg';
+import * as TinyDownArrowIcon from '../../assets/TinyDownArrow.svg';
+import * as TinyUpArrowIcon from '../../assets/TinyUpArrow.svg';
 
 export const Wrapper = styled.div`
   background: ${Color.CHARCOAL};
@@ -38,7 +38,7 @@ export const Directory = styled.div`
   ::-webkit-scrollbar-button {
     &:start {
       &:decrement {
-        background: url(${TinyUpArrow}) ${Color.CHARCOAL};
+        background: url(${TinyUpArrowIcon}) ${Color.CHARCOAL};
         background-size: 8px 8px;
         background-position: center;
         background-repeat: no-repeat;
@@ -48,7 +48,7 @@ export const Directory = styled.div`
     }
     &:end {
       &:increment {
-        background: url(${TinyDownArrow}) ${Color.CHARCOAL};
+        background: url(${TinyDownArrowIcon}) ${Color.CHARCOAL};
         background-size: 8px 8px;
         background-position: center;
         background-repeat: no-repeat;

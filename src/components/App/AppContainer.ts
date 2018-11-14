@@ -25,7 +25,7 @@ const mapState = (state: State) => ({
 const mapDispatch = dispatch => ({
   collapseApp: () => dispatch(collapseApp()),
   expandApp: () => dispatch(expandApp()),
-  launchWindowCreator: (window: WindowConfig) => () => dispatch(launchWindow(window)),
+  launchWindow: (window: WindowConfig) => dispatch(launchWindow(window)),
   restoreCurrentLayout: () => dispatch(restoreLayout(JSON.parse(localStorage.layouts)[0] as Layout)),
   // force the generation of current layout on save by passing in undefined
   saveCurrentLayout: () => dispatch(saveLayoutRequest((undefined as unknown) as Layout)),

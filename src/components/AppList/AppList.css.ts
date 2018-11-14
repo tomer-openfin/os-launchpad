@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import * as tinyx from '../../assets/TinyX.svg';
+import * as XIcon from '../../assets/TinyX.svg';
 import { Color } from '../../styles/index';
 import { isLeftOrRight, LauncherPositionProps } from '../../utils/launcherPosition';
 
@@ -15,7 +15,7 @@ export const Wrapper = styled.div<LauncherPositionProps>`
 export const CloseButton = styled.div`
   display: none;
   position: absolute;
-  background: url(${tinyx});
+  background: url(${XIcon});
   background-repeat: no-repeat;
   height: 10px;
   width: 10px;

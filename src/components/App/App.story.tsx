@@ -26,7 +26,7 @@ storiesOf('App', module)
       expandApp={noop}
       isExpanded
       launcherPosition="TOP"
-      launchWindowCreator={noopCreator}
+      launchWindow={noop}
       monitorInfo={{}}
       setMonitorInfo={noop}
     />

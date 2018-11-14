@@ -19,7 +19,8 @@ import {
   setMe,
 } from './';
 
-import { APP_LAUNCHER_OVERFLOW_WINDOW, MAIN_WINDOW } from '../../config/windows';
+import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, MAIN_WINDOW } from '../../config/windows';
+import setWindowBounds from '../../utils/setWindowBounds';
 import { getPosition, getWindowById } from '../windows/selectors';
 import { SET_AUTO_HIDE } from './actions';
 import { getAutoHide } from './selectors';
@@ -41,11 +42,7 @@ function* watchLoginRequest(action: LoginRequest) {
   }
   const { email } = payload;
 
-  console.log('login', payload);
-
   const result = yield call(ApiService.login, payload);
-
-  console.log('result', result);
 
   const { status } = result;
 
@@ -86,68 +83,6 @@ function* watchLoginError(action: LoginError) {
   console.log('Error Message:', message);
 }
 
-function setBounds(finWindow, position, width, height, offsetX, offsetY, autoHide) {
-  if (!finWindow) return;
-
-  const currentScreenObj = finWindow.getNativeWindow().screen;
-
-  let leftPosition;
-  let topPosition;
-  let autoHideDelta;
-
-  const SHOW_LAUNCHER_ADJUSTMENT = 5;
-
-  switch (position) {
-    case 'RIGHT': {
-      autoHideDelta = autoHide ? width - SHOW_LAUNCHER_ADJUSTMENT : 0;
-      leftPosition = currentScreenObj.availWidth - width + autoHideDelta;
-      topPosition = currentScreenObj.availHeight / 2 - height / 2;
-      break;
-    }
-    case 'BOTTOM': {
-      autoHideDelta = autoHide ? height - SHOW_LAUNCHER_ADJUSTMENT : 0;
-      leftPosition = currentScreenObj.availWidth / 2 - width / 2;
-      topPosition = currentScreenObj.height - height + autoHideDelta;
-      break;
-    }
-    case 'LEFT': {
-      autoHideDelta = autoHide ? width - SHOW_LAUNCHER_ADJUSTMENT : 0;
-      leftPosition = 0 - autoHideDelta;
-      topPosition = currentScreenObj.availHeight / 2 - height / 2;
-      break;
-    }
-    default: {
-      autoHideDelta = autoHide ? height - SHOW_LAUNCHER_ADJUSTMENT : 0;
-      leftPosition = currentScreenObj.availWidth / 2 - width / 2 + offsetX;
-      topPosition = currentScreenObj.height - currentScreenObj.availHeight - autoHideDelta + offsetY;
-    }
-  }
-
-  return finWindow.setBounds(leftPosition, topPosition, width, height);
-}
-
-function setBoundsFactory(windowId, position, width, height, offsetX, offsetY, autoHide = false) {
-  // fin.Application.getCurrent()
-  const finApplication = fin.desktop.Application.getCurrent();
-
-  let finWindow;
-
-  if (windowId === MAIN_WINDOW) {
-    finWindow = fin.desktop.Window.getCurrent();
-
-    setBounds(finWindow, position, width, height, offsetX, offsetY, autoHide);
-  } else {
-    // TODO: refactor to use promisified verson of API
-    finApplication.getChildWindows(windows => {
-      finWindow = windows.find(window => {
-        return window.name === windowId;
-      });
-
-      setBounds(finWindow, position, width, height, offsetX, offsetY, autoHide);
-    });
-  }
-}
-
 export function* setLauncherBounds() {
   const autoHide = yield select(getAutoHide);
   // get bounds of launcher window
@@ -164,24 +99,22 @@ export function* setLauncherBounds() {
   const position = yield select(getPosition);
 
   switch (position) {
-    case 'TOP':
-      setBoundsFactory(windowId, 'TOP', largestDimension, smallestDimension, 0, 0, autoHide);
-      break;
     case 'RIGHT':
-      setBoundsFactory(windowId, 'RIGHT', smallestDimension, largestDimension, 0, 0, autoHide);
+      setWindowBounds(windowId, 'RIGHT', smallestDimension, largestDimension, 0, 0, autoHide);
       break;
     case 'BOTTOM':
-      setBoundsFactory(windowId, 'BOTTOM', largestDimension, smallestDimension, 0, 0, autoHide);
+      setWindowBounds(windowId, 'BOTTOM', largestDimension, smallestDimension, 0, 0, autoHide);
       break;
     case 'LEFT':
-      setBoundsFactory(windowId, 'LEFT', smallestDimension, largestDimension, 0, 0, autoHide);
+      setWindowBounds(windowId, 'LEFT', smallestDimension, largestDimension, 0, 0, autoHide);
       break;
+    case 'TOP':
     default:
-      setBoundsFactory(windowId, 'TOP', largestDimension, smallestDimension, 0, 0, autoHide);
+      setWindowBounds(windowId, 'TOP', largestDimension, smallestDimension, 0, 0, autoHide);
   }
 }
 
-export function* setAppOverflowBounds() {
+export function* setAppOverflowWindowBounds() {
   // get bounds of launcher window
   const windowId = APP_LAUNCHER_OVERFLOW_WINDOW;
 
@@ -196,9 +129,55 @@ export function* setAppOverflowBounds() {
   const position = yield select(getPosition);
 
   switch (position) {
+    case 'RIGHT':
+      setWindowBounds(windowId, 'RIGHT', largestDimension, smallestDimension, -63, 0);
+      break;
+    case 'BOTTOM':
+      setWindowBounds(windowId, 'BOTTOM', smallestDimension, largestDimension, -63, 0);
+      break;
+    case 'LEFT':
+      setWindowBounds(windowId, 'LEFT', largestDimension, smallestDimension, -63, 0);
+      break;
+    case 'TOP':
     default:
-      setBoundsFactory(windowId, 'TOP', smallestDimension, largestDimension, -88, 0);
+      setWindowBounds(windowId, 'TOP', smallestDimension, largestDimension, -63, 0);
   }
+}
+
+export function* setLayoutsWindowBounds() {
+  // get bounds of launcher window
+  const windowId = LAYOUTS_WINDOW;
+
+  const windowState = yield select(getWindowById, windowId);
+
+  const { width, height } = windowState.bounds;
+
+  const largestDimension = Math.max(width, height);
+  const smallestDimension = Math.min(width, height);
+
+  // get position of launchbar from store
+  const position = yield select(getPosition);
+
+  switch (position) {
+    case 'RIGHT':
+      setWindowBounds(windowId, 'RIGHT', largestDimension, smallestDimension, 188, 45);
+      break;
+    case 'BOTTOM':
+      setWindowBounds(windowId, 'BOTTOM', smallestDimension, largestDimension, 188, 45);
+      break;
+    case 'LEFT':
+      setWindowBounds(windowId, 'LEFT', largestDimension, smallestDimension, 188, 45);
+      break;
+    case 'TOP':
+    default:
+      setWindowBounds(windowId, 'TOP', smallestDimension, largestDimension, 188, 45);
+  }
+}
+
+function* watchSetLaunchbarPosition() {
+  yield call(setLauncherBounds);
+  yield call(setAppOverflowWindowBounds);
+  yield call(setLayoutsWindowBounds);
 }
 
 function* watchSaveSettingsRequest() {
@@ -213,6 +192,6 @@ export function* meSaga() {
   yield takeLatest(LOGIN.SUCCESS, watchLoginSuccess);
   yield takeLatest(LOGIN.ERROR, watchLoginError);
   yield takeLatest(SAVE_SETTINGS.REQUEST, watchSaveSettingsRequest);
-  yield takeLatest(SET_LAUNCHBAR_POSITION, setLauncherBounds);
+  yield takeLatest(SET_LAUNCHBAR_POSITION, watchSetLaunchbarPosition);
   yield takeLatest(SET_AUTO_HIDE, setLauncherBounds);
 }

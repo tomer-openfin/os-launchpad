@@ -1,13 +1,13 @@
-import throttle = require('lodash.throttle');
 import * as React from 'react';
 
-import * as AdminIcon from '../../assets/AdminSettings.svg';
-import * as logo from '../../assets/Logo.svg';
-import * as notifications from '../../assets/Notifications.svg';
-import * as restoreLayout from '../../assets/RestoreLayout.svg';
-import * as saveLayout from '../../assets/SaveLayout.svg';
+import throttle from 'lodash-es/throttle';
+
+import * as adminIcon from '../../assets/AdminSettings.svg';
+import * as logoIcon from '../../assets/Logo.svg';
+import * as notificationsIcon from '../../assets/Notifications.svg';
+import * as saveLayoutIcon from '../../assets/SaveLayout.svg';
 import * as searchIcon from '../../assets/Search.svg';
-import * as Settings from '../../assets/Settings.svg';
+import * as settingsIcon from '../../assets/Settings.svg';
 
 import windowsConfig from '../../config/windows';
 import { Bounds } from '../../redux/types';
@@ -16,7 +16,7 @@ import { isPosInBounds } from '../../utils/coordinateHelpers';
 
 import AppList from '../AppList';
 import IconSpace from '../IconSpace';
-import { Ellipsis, Separator, Wrapper } from './App.css';
+import { EllipsisImage, EllipsisWrapper, Separator, Wrapper } from './App.css';
 
 interface Props {
   autoHide: boolean;
@@ -25,7 +25,7 @@ interface Props {
   expandApp: () => void;
   isExpanded: boolean;
   launcherPosition: string;
-  launchWindowCreator: (window: WindowConfig) => () => void;
+  launchWindow: (window: WindowConfig) => void;
   monitorInfo: object;
   setMonitorInfo: (monitorInfo: object) => void;
   saveCurrentLayout: Function;
@@ -102,40 +102,49 @@ class App extends React.PureComponent<Props> {
     }
   }
 
+  handleSaveCurrentLayout = () => this.props.saveCurrentLayout();
+  handleRestoreCurrentLayout = () => this.props.restoreCurrentLayout();
+
+  handleLaunchAdminWindow = () => this.props.launchWindow(windowsConfig.admin);
+  handleLaunchAppDirectoryWindow = () => this.props.launchWindow(windowsConfig.appDirectory);
+  handleLaunchAppOverflowWindow = () => this.props.launchWindow(windowsConfig.appLauncherOverflow);
+  handleLaunchSettingsWindow = () => this.props.launchWindow(windowsConfig.settings);
+  handleLaunchLayoutsWindow = () => this.props.launchWindow(windowsConfig.layouts);
+
   render() {
-    const { launchWindowCreator, launcherPosition, saveCurrentLayout, restoreCurrentLayout } = this.props;
+    const { launcherPosition } = this.props;
 
     return (
       <Wrapper launcherPosition={launcherPosition}>
-        <IconSpace iconImg={logo} />
+        <IconSpace iconImg={logoIcon} />
 
         <Separator launcherPosition={launcherPosition} />
 
-        <IconSpace iconImg={searchIcon} onClick={launchWindowCreator(windowsConfig.appDirectory)} hover />
+        <IconSpace iconImg={searchIcon} onClick={this.handleLaunchAppDirectoryWindow} hover />
 
         <Separator launcherPosition={launcherPosition} />
 
         <AppList spaceCount={4} />
 
-        <Ellipsis onClick={launchWindowCreator(windowsConfig.appLauncherOverflow)} launcherPosition={launcherPosition} />
+        <EllipsisWrapper onClick={this.handleLaunchAppOverflowWindow} launcherPosition={launcherPosition}>
+          <EllipsisImage launcherPosition={launcherPosition} />
+        </EllipsisWrapper>
 
         <Separator launcherPosition={launcherPosition} />
 
-        <IconSpace iconImg={AdminIcon} onClick={launchWindowCreator(windowsConfig.admin)} hover />
+        <IconSpace iconImg={adminIcon} onClick={this.handleLaunchAdminWindow} hover />
 
         <Separator launcherPosition={launcherPosition} />
 
-        <IconSpace iconImg={Settings} onClick={launchWindowCreator(windowsConfig.settings)} hover />
+        <IconSpace iconImg={settingsIcon} onClick={this.handleLaunchSettingsWindow} hover />
 
         <Separator launcherPosition={launcherPosition} />
 
-        <IconSpace iconImg={saveLayout} onClick={() => saveCurrentLayout()} hover />
-
-        <IconSpace iconImg={restoreLayout} onClick={() => restoreCurrentLayout()} hover />
+        <IconSpace iconImg={saveLayoutIcon} onClick={this.handleLaunchLayoutsWindow} hover />
 
         <Separator launcherPosition={launcherPosition} />
 
-        <IconSpace iconImg={notifications} hover />
+        <IconSpace iconImg={notificationsIcon} hover />
       </Wrapper>
     );
   }

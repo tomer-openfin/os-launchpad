@@ -10,20 +10,10 @@ const stateProps = state => ({
 });
 
 /* tslint:disable:no-console */
-const dispatchProps = dispatch => {
-  const listener = () => {
-    console.log('BLUR', '\n');
-    dispatch(Window.hideWindow({ id: SETTINGS_WINDOW }));
-  };
-  return {
-    addHideOnBlurListener: () =>
-      dispatch(Window.addWindowEventListener({ id: SETTINGS_WINDOW, type: 'blurred', listener }, () => console.log('HERE'), e => console.error(e))),
-    removeHideOnBlurListener: () =>
-      dispatch(Window.removeWindowEventListener({ id: SETTINGS_WINDOW, type: 'blurred', listener }, () => console.log('HERE'), e => console.error(e))),
-    setAutoHide: (bool: boolean) => dispatch(setAutoHide({ autoHide: bool })),
-    setLaunchbarPosition: (launcherPosition: 'TOP' | 'RIGHT' | 'LEFT' | 'BOTTOM') => dispatch(setLaunchbarPosition(launcherPosition)),
-  };
-};
+const dispatchProps = dispatch => ({
+  setAutoHide: (bool: boolean) => dispatch(setAutoHide({ autoHide: bool })),
+  setLaunchbarPosition: (launcherPosition: 'TOP' | 'RIGHT' | 'LEFT' | 'BOTTOM') => dispatch(setLaunchbarPosition(launcherPosition)),
+});
 
 export default connect(
   stateProps,

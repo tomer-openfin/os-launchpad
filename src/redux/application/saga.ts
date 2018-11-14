@@ -1,6 +1,6 @@
 import { all, call, put, select, take, takeEvery } from 'redux-saga/effects';
 
-import windowsConfig from '../../config/windows';
+import windowsConfig, { initOnStartWindows } from '../../config/windows';
 import { getNewPos } from '../../utils/coordinateHelpers';
 import getAppUuid from '../../utils/getAppUuid';
 import { animateWindow, getSystemMonitorInfo } from '../../utils/openfinPromises';
@@ -62,12 +62,7 @@ function* openfinSetup(action: OpenfinReadyAction) {
       .hide();
 
     // Launch all windows on init, windows are hidden by default unless they have autoShow: true
-    yield all([
-      put(launchWindow(windowsConfig.admin)),
-      put(launchWindow(windowsConfig.appDirectory)),
-      put(launchWindow(windowsConfig.appLauncherOverflow)),
-      put(launchWindow(windowsConfig.settings)),
-    ]);
+    yield all(Object.keys(initOnStartWindows).map(window => put(launchWindow(initOnStartWindows[window]))));
 
     if (isEnterprise && !isLoggedIn) {
       // Show Login

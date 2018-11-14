@@ -1,9 +1,8 @@
 import { Window } from '@giantmachines/redux-openfin';
 import { connect } from 'react-redux';
 
-import { addToAppLauncher, getAppsDirectoryAppList, getAppsLauncherIds, removeFromAppLauncher } from '../../redux/apps';
+import { getAppsDirectoryAppList, getAppsLauncherIds } from '../../redux/apps';
 
-import { APP_DIRECTORY_WINDOW } from '../../config/windows';
 import AppDirectory from './AppDirectory';
 
 const stateProps = state => ({
@@ -13,15 +12,15 @@ const stateProps = state => ({
 
 /* tslint:disable:no-console */
 const dispatchProps = dispatch => {
-  const listener = () => {
-    console.log('BLUR', '\n');
-    dispatch(Window.hideWindow({ id: APP_DIRECTORY_WINDOW }));
-  };
   return {
-    addHideOnBlurListener: () =>
-      dispatch(Window.addWindowEventListener({ id: APP_DIRECTORY_WINDOW, type: 'blurred', listener }, () => console.log('HERE'), e => console.error(e))),
-    removeHideOnBlurListener: () =>
-      dispatch(Window.removeWindowEventListener({ id: APP_DIRECTORY_WINDOW, type: 'blurred', listener }, () => console.log('HERE'), e => console.error(e))),
+    addWindowListener: (id, type, listener) =>
+      dispatch(Window.addWindowEventListener({ id, type, listener }, () => console.log('HERE'), e => console.error(e))),
+    hideWindow: id => {
+      console.log('BLUR', '\n');
+      dispatch(Window.hideWindow({ id }));
+    },
+    removeWindowListener: (id, type, listener) =>
+      dispatch(Window.removeWindowEventListener({ id, type, listener }, () => console.log('HERE'), e => console.error(e))),
   };
 };
 

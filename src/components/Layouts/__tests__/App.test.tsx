@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import noop, { noopCreator } from '../../../utils/noop';
 
-import App from '../App';
+import App from '../Layouts';
 
 const bounds = {
   height: 0,

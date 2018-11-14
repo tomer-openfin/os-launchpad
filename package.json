@@ -19,7 +19,9 @@
     "@types/storybook__react": "3.0.9",
     "@types/styled-components": "4.0.2",
     "awesome-typescript-loader": "5.2.1",
+    "babel-jest": "23.6.0",
     "babel-loader": "8.0.4",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
     "copy-webpack-plugin": "4.5.4",
     "dotenv": "6.1.0",
     "express": "4.16.4",
@@ -53,7 +55,6 @@
     "enzyme-adapter-react-16": "1.6.0",
     "formik": "1.3.1",
     "lodash-es": "4.17.11",
-    "lodash.throttle": "4.1.1",
     "openfin-layouts": "0.9.3",
     "openfin-notifications": "0.9.4",
     "popper.js": "1.14.4",
@@ -98,7 +99,8 @@
       "\\.(svg|jpg|png)$": "<rootDir>/src/utils/empty-module.ts"
     },
     "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
+      "^.+\\.(ts|tsx)$": "ts-jest",
+      "^.+\\.js$": "babel-jest"
     },
     "globals": {
       "ts-jest": {
@@ -110,6 +112,9 @@
     ],
     "testMatch": [
       "**/__tests__/*.+(ts|tsx|js)"
+    ],
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!lodash-es)"
     ],
     "setupTestFrameworkScriptFile": "<rootDir>src/setupTests.ts"
   }

@@ -3,6 +3,7 @@ import {
   APP_DIRECTORY_ROUTE,
   APP_LAUNCHER_OVERFLOW_ROUTE,
   HOME_ROUTE,
+  LAYOUTS_ROUTE,
   LOGIN_ROUTE,
   NEW_USER_ROUTE,
   SETTINGS_ROUTE,
@@ -13,10 +14,11 @@ import Admin from '../Admin';
 import App from '../App';
 import AppDirectory from '../AppDirectory';
 import AppOverflow from '../AppOverflow';
+import Layouts from '../Layouts';
 import Login from '../Login';
-import NewUserForm from '../NewUserForm/NewUserForm';
+import NewUserForm from '../NewUserForm';
 import Settings from '../Settings';
-import UserDirectory from '../UserDirectory/UserDirectory';
+import UserDirectory from '../UserDirectory';
 
 export default [
   {
@@ -48,6 +50,11 @@ export default [
     component: Settings,
     exact: true,
     path: SETTINGS_ROUTE,
+  },
+  {
+    component: Layouts,
+    exact: true,
+    path: LAYOUTS_ROUTE,
   },
   {
     component: UserDirectory,
