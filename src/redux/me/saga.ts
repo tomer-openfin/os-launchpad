@@ -61,10 +61,17 @@ function* watchLoginSuccess(action: LoginSuccess) {
   }
 
   const { email } = payload;
+
+  const { IS_ADMIN } = process.env;
+  const isAdmin = IS_ADMIN === 'true';
+
   // tslint:disable-next-line:no-console
   console.log('Login Success for', email);
 
-  yield put(setMe(email));
+  // tslint:disable-next-line:no-console
+  console.log('Is newly logged in user an admin?', isAdmin);
+
+  yield put(setMe(isAdmin, email));
   // TODO: Use window config
   yield put(Window.closeWindow({ id: 'osLaunchpadLogin' }));
 

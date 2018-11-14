@@ -1,13 +1,4 @@
-import {
-  ADMIN_ROUTE,
-  APP_DIRECTORY_ROUTE,
-  APP_LAUNCHER_OVERFLOW_ROUTE,
-  LAYOUTS_ROUTE,
-  LOGIN_ROUTE,
-  NEW_USER_ROUTE,
-  SETTINGS_ROUTE,
-  USER_DIRECTORY_ROUTE,
-} from '../components/Router/const';
+import { ADMIN_ROUTE, APP_DIRECTORY_ROUTE, APP_LAUNCHER_OVERFLOW_ROUTE, LAYOUTS_ROUTE, LOGIN_ROUTE, SETTINGS_ROUTE } from '../components/Router/const';
 
 const { NODE_ENV } = process.env;
 
@@ -31,8 +22,8 @@ export const initOnStartWindows = {
     autoShow: false,
     contextMenu: !isProduction,
     defaultCentered: true,
-    defaultHeight: 960,
-    defaultWidth: 960,
+    defaultHeight: 700,
+    defaultWidth: 600,
     // temp until designs come in for custom frame
     frame: true,
     id: ADMIN_WINDOW,

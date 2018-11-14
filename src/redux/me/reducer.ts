@@ -9,6 +9,7 @@ export enum Position {
 }
 
 export const defaultState: MeState = {
+  isAdmin: false,
   settings: {
     autoHide: false,
     launcherPosition: 'TOP',
@@ -38,6 +39,7 @@ export default (state: MeState = defaultState, action: MeActions) => {
     case SET_ME: {
       return {
         ...state,
+        isAdmin: (action.payload! as SetMePayload).isAdmin,
         username: (action.payload! as SetMePayload).username,
       };
     }

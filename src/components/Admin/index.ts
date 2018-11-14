@@ -1,4 +1,4 @@
-import Component from './Admin';
+import Component from './AdminContainer';
 
 import * as Story from './Admin.story';
 

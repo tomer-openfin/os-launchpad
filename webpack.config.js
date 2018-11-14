@@ -52,6 +52,7 @@ module.exports = {
         API_URL: JSON.stringify(process.env.API_URL),
         APP_UUID: JSON.stringify(appJson.startup_app.uuid),
         ENTERPRISE: JSON.stringify(process.env.ENTERPRISE),
+        IS_ADMIN: JSON.stringify(process.env.IS_ADMIN),
         LOGGER: JSON.stringify(process.env.LOGGER),
         MOCK_POSTMAN_URI: JSON.stringify(process.env.MOCK_POSTMAN_URI),
         NODE_ENV: JSON.stringify(NODE_ENV),

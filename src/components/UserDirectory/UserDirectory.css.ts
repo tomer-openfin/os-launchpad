@@ -21,13 +21,6 @@ export const StyledInput = styled.input`
   }
 `;
 
-export const StyledH1 = styled.h1`
-  text-transform: uppercase;
-  color: dodgerblue;
-  font-family: 'Garamond', sans-serif;
-  margin: 10px;
-`;
-
 export const StyledSelect = styled.select`
   margin: 10px;
   width: 15%;

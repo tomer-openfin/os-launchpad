@@ -5,9 +5,9 @@ import {
   HOME_ROUTE,
   LAYOUTS_ROUTE,
   LOGIN_ROUTE,
-  NEW_USER_ROUTE,
+  NEW_USER_SUB_ROUTE,
   SETTINGS_ROUTE,
-  USER_DIRECTORY_ROUTE,
+  USER_DIRECTORY_SUB_ROUTE,
 } from './const';
 
 import Admin from '../Admin';
@@ -59,11 +59,11 @@ export default [
   {
     component: UserDirectory,
     exact: true,
-    path: USER_DIRECTORY_ROUTE,
+    path: USER_DIRECTORY_SUB_ROUTE,
   },
   {
     component: NewUserForm,
     exact: true,
-    path: NEW_USER_ROUTE,
+    path: NEW_USER_SUB_ROUTE,
   },
 ];

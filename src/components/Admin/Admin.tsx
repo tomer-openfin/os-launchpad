@@ -1,40 +1,73 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
-import { Wrapper } from './';
+import UserDirectory from '../UserDirectory';
 
-import noop from '../../utils/noop';
+import { LinksWrapper, TabsWrapper, TabWrapper, Wrapper } from './';
 
-// interface Props {}
+import { APP_MANAGER_SUB_ROUTE, IMPORT_USERS_SUB_ROUTE, NEW_USER_SUB_ROUTE, THEME_SETTINGS_SUB_ROUTE, USER_DIRECTORY_SUB_ROUTE } from '../Router/const';
 
-// interface State {}
+interface Props {
+  isAdmin: boolean;
+}
 
-const Admin = ({}) => (
-  <Wrapper>
-    <h1>Administration Dashboard</h1>
+const Tabs = () => {
+  return (
+    <Router>
+      <TabsWrapper>
+        <LinksWrapper>
+          <TabWrapper>
+            <TabLink activeOnlyWhenExact={true} label="App Manager" to={APP_MANAGER_SUB_ROUTE} />
+          </TabWrapper>
 
-    <a href="/new-user">Create New User</a>
+          <TabWrapper>
+            <TabLink activeOnlyWhenExact={true} label="User Directory" to={USER_DIRECTORY_SUB_ROUTE} />
+          </TabWrapper>
 
-    <br />
+          <TabWrapper>
+            <TabLink activeOnlyWhenExact={true} label="Theme Settings" to={THEME_SETTINGS_SUB_ROUTE} />
+          </TabWrapper>
+        </LinksWrapper>
 
-    <Link to="/import-user">Import Users</Link>
+        <Route exact path={APP_MANAGER_SUB_ROUTE} component={AppManager} />
 
-    <ul>
-      <li>
-        <a href="/user-directory">User Directory</a>
-      </li>
+        <Route exact path={USER_DIRECTORY_SUB_ROUTE} component={UserDirectory} />
 
-      <li>
-        {/* todo WHIT-68: wire up and setup this new screen */}
-        <Link to="/app-manager">App Manager</Link>
-      </li>
+        <Route exact path={THEME_SETTINGS_SUB_ROUTE} component={ThemeSettings} />
+      </TabsWrapper>
+    </Router>
+  );
+};
 
-      <li>
-        {/* todo WHIT-111: wire up and setup this new screen */}
-        <Link to="/theme-settings">Theme Settings</Link>
-      </li>
-    </ul>
-  </Wrapper>
-);
+const TabLink = ({ label, to, activeOnlyWhenExact }) => {
+  // todo: look into simplifying this via styled-component
+  // tslint:disable:jsx-no-lambda
+  return (
+    <Route
+      path={to}
+      exact={activeOnlyWhenExact}
+      children={({ match }) => (
+        <div className={match ? 'active-tab' : ''}>
+          <Link to={to}>{label}</Link>
+        </div>
+      )}
+    />
+  );
+};
+
+const renderDashboard = () => {
+  return (
+    <>
+      <Link to={NEW_USER_SUB_ROUTE}>Create New User</Link> <Link to={IMPORT_USERS_SUB_ROUTE}>Import Users</Link>
+      <Tabs />
+    </>
+  );
+};
+
+const Admin = ({ isAdmin }: Props) => <Wrapper>{isAdmin ? renderDashboard() : <h1>You do not have clearance to see the admin tools.</h1>}</Wrapper>;
+
+// Temp, extract these components out to own files when ready to create these pages
+const AppManager = ({}) => <p>App Manager</p>;
+const ThemeSettings = ({}) => <p>Theme Settings</p>;
 
 export default Admin;

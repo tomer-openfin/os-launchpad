@@ -2,6 +2,6 @@ import * as React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import AdminWindow from './';
+import Admin from './';
 
-storiesOf('AdminWindow', module).add('default', () => <AdminWindow />);
+storiesOf('Admin', module).add('default', () => <Admin />);

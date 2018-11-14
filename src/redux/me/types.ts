@@ -22,6 +22,7 @@ export interface MeStateSettings {
 export interface MeState {
   username: string;
   settings: MeStateSettings;
+  isAdmin: boolean;
 }
 
 // Action payloads
@@ -39,6 +40,7 @@ export interface LoginSuccessPayload {
 }
 export interface SetMePayload {
   username: string;
+  isAdmin: boolean;
 }
 
 // Actions creators

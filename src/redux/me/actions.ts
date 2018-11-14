@@ -23,7 +23,8 @@ export const loginError = createAction<ErrorResponse>(LOGIN.ERROR);
 export const saveSettingsRequest = createAction<MeStateSettings>(SAVE_SETTINGS.REQUEST);
 export const saveSettingsSuccess = createAction(SAVE_SETTINGS.SUCCESS);
 export const saveSettingsError = createAction<ErrorResponse>(SAVE_SETTINGS.ERROR);
-export const setMe = createAction<SetMePayload, string>(SET_ME, username => ({
+export const setMe = createAction<SetMePayload, boolean, string>(SET_ME, (isAdmin, username) => ({
+  isAdmin,
   username,
 }));
 export const setLaunchbarPosition = createAction<SetLaunchbarPayload, 'TOP' | 'RIGHT' | 'LEFT' | 'BOTTOM'>(SET_LAUNCHBAR_POSITION, launcherPosition => ({

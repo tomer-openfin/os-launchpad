@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 
 import debounce from 'lodash-es/debounce';
 import escapeRegExp from 'lodash-es/escapeRegExp';
 
-import { ButtonWrapper, LinkButton, ListWrapper, StyledH1, StyledInput, StyledSelect, Wrapper } from './';
+import { ButtonWrapper, LinkButton, ListWrapper, StyledInput, StyledSelect, Wrapper } from './';
 
 import noop from '../../utils/noop';
 import MockUserData from './MockUserData';
@@ -59,11 +58,6 @@ class UserDirectory extends React.Component<Props, State> {
 
     return (
       <Wrapper>
-        <StyledH1>User Directory</StyledH1>
-
-        {/* temp until admin flow is determined */}
-        <Link to="/admin">Back to Admin Dashboard</Link>
-
         <StyledInput name="search" value={inputValue} onChange={this.handleInputChange} placeholder="Search users..." type="text" />
 
         {/* TODO: alphabetize by first name and last name */}
