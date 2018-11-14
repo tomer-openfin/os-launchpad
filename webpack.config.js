@@ -1,14 +1,16 @@
 require('dotenv').config();
 
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 const webpack = require('webpack');
 
 const appJson = require('./src/app.json');
 
+const HOST = process.env.HOST || '0.0.0.0';
 const PORT = process.env.PORT || 8080;
 const NODE_ENV = process.env.NODE_ENV || 'development';
+const BACKEND = process.env.BACKEND || process.env.MOCK_POSTMAN_URI;
 
 module.exports = {
   mode: NODE_ENV,
@@ -32,6 +34,18 @@ module.exports = {
       { test: /\.(png|svg|jpg|gif)$/, loader: 'file-loader' },
     ],
   },
+  devServer: {
+    historyApiFallback: true,
+    host: HOST,
+    port: PORT,
+    proxy: {
+      '/api/**' : {
+        changeOrigin: true,
+        logLevel: 'debug',
+        target: BACKEND,
+      },
+    },
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -53,7 +67,7 @@ module.exports = {
         from: './src/app.json',
         transform: content => {
           const confString = '' + content;
-          return prepConfig(confString);
+          return transformOpenFinConfig(confString);
         },
         to: '.',
       },
@@ -65,7 +79,7 @@ module.exports = {
   ],
 };
 
-function prepConfig(configString) {
+function transformOpenFinConfig(configString) {
   const devConfigPath = `http://localhost:${PORT}`;
 
   const deployLocation = process.env.DEPLOY_LOCATION || devConfigPath;

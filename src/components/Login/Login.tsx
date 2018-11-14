@@ -33,9 +33,9 @@ const handleSubmit = (onSubmit: SubmitFn) => (values: SubmitPayload) => {
 const LoginForm = () => (
   <Form>
     <Field
-      name="email"
-      placeholder="Email"
-      type="email"
+      name="username"
+      placeholder="Username"
+      type="text"
     />
 
     <br />

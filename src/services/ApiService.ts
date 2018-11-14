@@ -4,10 +4,10 @@ import { getIsEnterprise } from '../redux/application';
 import { defaultState, MeStateSettings } from '../redux/me';
 import { getLocalStorage, setLocalStorage } from './localStorageAdapter';
 
-const API_URL = process.env.API_URL || 'http://localhost:9001/';
+const API_URL = process.env.API_URL; // || 'http://localhost:9001/';
 const APPS_URL = `${API_URL}api/apps`;
 const LAYOUTS_URL = `${API_URL}api/layouts`;
-const LOGIN_URL = `${API_URL}/login`;
+const LOGIN_URL = `${API_URL}/api/auth/login`;
 const SETTINGS_URL = `${API_URL}api/settings`;
 
 const LOCAL_STORAGE_KEYS = {
@@ -109,9 +109,10 @@ export const saveLayout = (layout: Layout) => {
  * @returns {Promise<>}
  */
 export const login = payload => {
-  // TEMP: host 8080 for demo purposes
-  if (checkIsEnterprise() && document.location && document.location.host.indexOf('8080') === -1) {
+  if (checkIsEnterprise()) {
     const options = createPostOptions(payload);
+
+    options.credentials = 'include';
 
     return fetch(LOGIN_URL, options)
       .then(resp => resp.json())

@@ -76,7 +76,7 @@
     "check": "gts check",
     "clean": "gts clean && rimraf build",
     "dev": "node scripts/dev.js",
-    "docs": "redoc-cli bundle -o ./dist/docs/index.html ./docs/api.yml",
+    "docs": "redoc-cli bundle -o ./build/docs/index.html ./docs/api.yml",
     "fix": "gts fix",
     "openfin": "node openfin.js",
     "serve": "node server.js",
