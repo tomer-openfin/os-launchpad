@@ -5,32 +5,41 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
+const transformOpenFinConfig = require('./scripts/utils/transformOpenFinConfig');
 const appJson = require('./src/app.json');
 
-const HOST = process.env.HOST || '0.0.0.0';
-const PORT = process.env.PORT || 8080;
-const NODE_ENV = process.env.NODE_ENV || 'development';
-const BACKEND = process.env.BACKEND || process.env.MOCK_POSTMAN_URI;
+const {
+  API_URL,
+  ENTERPRISE,
+  HOST = '0.0.0.0',
+  IS_ADMIN,
+  LOGGER,
+  MOCK_POSTMAN_URI,
+  NODE_ENV = 'development',
+  PORT = 8080,
+  POSTMAN_API_KEY,
+  RUNTIME_VERSION,
+} = process.env;
+
+const BACKEND = process.env.BACKEND || MOCK_POSTMAN_URI;
+const DEPLOY_LOCATION = process.env.DEPLOY_LOCATION || `http://${HOST}:${PORT}`;
+const isProduction = NODE_ENV === 'production';
 
 module.exports = {
   mode: NODE_ENV,
+  devtool: 'source-map',
   entry: './src/index.tsx',
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, '/build'),
   },
-  // Enable sourcemaps for debugging webpack's output.
-  devtool: 'source-map',
   resolve: {
-    // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   module: {
     rules: [
-      // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
       { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
-      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
+      { test: /\.js$/, enforce: 'pre', loader: 'source-map-loader' },
       { test: /\.(png|svg|jpg|gif)$/, loader: 'file-loader' },
     ],
   },
@@ -49,14 +58,14 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        API_URL: JSON.stringify(process.env.API_URL),
+        API_URL: JSON.stringify(API_URL),
         APP_UUID: JSON.stringify(appJson.startup_app.uuid),
-        ENTERPRISE: JSON.stringify(process.env.ENTERPRISE),
-        IS_ADMIN: JSON.stringify(process.env.IS_ADMIN),
-        LOGGER: JSON.stringify(process.env.LOGGER),
-        MOCK_POSTMAN_URI: JSON.stringify(process.env.MOCK_POSTMAN_URI),
+        ENTERPRISE: JSON.stringify(ENTERPRISE),
+        IS_ADMIN: JSON.stringify(IS_ADMIN),
+        LOGGER: JSON.stringify(LOGGER),
+        MOCK_POSTMAN_URI: JSON.stringify(MOCK_POSTMAN_URI),
         NODE_ENV: JSON.stringify(NODE_ENV),
-        POSTMAN_API_KEY: JSON.stringify(process.env.POSTMAN_API_KEY),
+        POSTMAN_API_KEY: JSON.stringify(POSTMAN_API_KEY),
       },
     }),
     new HtmlWebpackPlugin({
@@ -66,11 +75,14 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: './src/app.json',
-        transform: content => {
-          const confString = '' + content;
-          return transformOpenFinConfig(confString);
-        },
         to: '.',
+        transform: content => (
+          transformOpenFinConfig(`${content}`, {
+            rootUrl: DEPLOY_LOCATION,
+            runtimeVersion: RUNTIME_VERSION,
+            isProduction,
+          })
+        ),
       },
       {
         from: './public',
@@ -79,25 +91,3 @@ module.exports = {
     ]),
   ],
 };
-
-function transformOpenFinConfig(configString) {
-  const devConfigPath = `http://localhost:${PORT}`;
-
-  const deployLocation = process.env.DEPLOY_LOCATION || devConfigPath;
-  const runtimeVersion = process.env.RUNTIME_VERSION;
-  const isProduction = NODE_ENV === 'production';
-
-  configString = configString.replace(/%ROOT_URL%/g, deployLocation);
-  const config = JSON.parse(configString);
-
-  if (runtimeVersion !== undefined && runtimeVersion !== '') {
-    config.runtime.version = runtimeVersion;
-  }
-
-  if (isProduction) {
-    config.startup_app.contextMenu = false;
-  }
-
-  configString = JSON.stringify(config, null, 4);
-  return configString;
-}
