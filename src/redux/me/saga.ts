@@ -1,29 +1,30 @@
 import { Window } from '@giantmachines/redux-openfin';
-import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { all, call, put, select, takeLatest } from 'redux-saga/effects';
 
+import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, MAIN_WINDOW } from '../../config/windows';
 import ApiService from '../../services/ApiService';
+import { isTopOrBottom } from '../../utils/launcherPosition';
+import setWindowBounds from '../../utils/setWindowBounds';
 import { launchAppLauncher } from '../application';
+import { getPosition, getWindowById } from '../windows/selectors';
 import {
   GET_SETTINGS,
-  getMeSettings,
   getSettingsSuccess,
   LOGIN,
-  LoginError,
   loginError,
-  LoginRequest,
-  LoginSuccess,
   loginSuccess,
   SAVE_SETTINGS,
   saveSettingsSuccess,
-  SET_LAUNCHBAR_POSITION,
+  SET_AUTO_HIDE,
+  SET_LAUNCHER_POSITION,
   setMe,
-} from './';
-
-import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, MAIN_WINDOW } from '../../config/windows';
-import setWindowBounds from '../../utils/setWindowBounds';
-import { getPosition, getWindowById } from '../windows/selectors';
-import { SET_AUTO_HIDE } from './actions';
-import { getAutoHide } from './selectors';
+} from './actions';
+import { getAutoHide, getMeSettings } from './selectors';
+import {
+  LoginError,
+  LoginRequest,
+  LoginSuccess,
+} from './types';
 
 function* watchGetSettingsRequest() {
   const result = yield call(ApiService.getSettings);
@@ -90,95 +91,36 @@ function* watchLoginError(action: LoginError) {
   console.log('Error Message:', message);
 }
 
-export function* setLauncherBounds() {
-  const autoHide = yield select(getAutoHide);
-  // get bounds of launcher window
-  const windowId = MAIN_WINDOW;
+function* setWindowBoundsWatcher(windowId, offsetX, offsetY, autoHide = false, invert = false) {
+  const [windowState, position] = yield all([
+    select(getWindowById, windowId),
+    select(getPosition),
+  ]);
 
-  const windowState = yield select(getWindowById, windowId);
-
+  const isTopOrBottomPosition = isTopOrBottom(position);
   const { width, height } = windowState.bounds;
 
   const largestDimension = Math.max(width, height);
   const smallestDimension = Math.min(width, height);
+  // TODO - Find a better way to solve inverting
+  const xDimension = (isTopOrBottomPosition && !invert) ? largestDimension : smallestDimension;
+  const yDimension = (isTopOrBottomPosition && !invert) ? smallestDimension : largestDimension;
 
   // get position of launchbar from store
-  const position = yield select(getPosition);
+  setWindowBounds(windowId, position, xDimension, yDimension, offsetX, offsetY, autoHide);
+}
 
-  switch (position) {
-    case 'RIGHT':
-      setWindowBounds(windowId, 'RIGHT', smallestDimension, largestDimension, 0, 0, autoHide);
-      break;
-    case 'BOTTOM':
-      setWindowBounds(windowId, 'BOTTOM', largestDimension, smallestDimension, 0, 0, autoHide);
-      break;
-    case 'LEFT':
-      setWindowBounds(windowId, 'LEFT', smallestDimension, largestDimension, 0, 0, autoHide);
-      break;
-    case 'TOP':
-    default:
-      setWindowBounds(windowId, 'TOP', largestDimension, smallestDimension, 0, 0, autoHide);
-  }
+export function* setLauncherBounds() {
+  const autoHide = yield select(getAutoHide);
+  yield call(setWindowBoundsWatcher, MAIN_WINDOW, 0, 0, autoHide);
 }
 
 export function* setAppOverflowWindowBounds() {
-  // get bounds of launcher window
-  const windowId = APP_LAUNCHER_OVERFLOW_WINDOW;
-
-  const windowState = yield select(getWindowById, windowId);
-
-  const { width, height } = windowState.bounds;
-
-  const largestDimension = Math.max(width, height);
-  const smallestDimension = Math.min(width, height);
-
-  // get position of launchbar from store
-  const position = yield select(getPosition);
-
-  switch (position) {
-    case 'RIGHT':
-      setWindowBounds(windowId, 'RIGHT', largestDimension, smallestDimension, -63, 0);
-      break;
-    case 'BOTTOM':
-      setWindowBounds(windowId, 'BOTTOM', smallestDimension, largestDimension, -63, 0);
-      break;
-    case 'LEFT':
-      setWindowBounds(windowId, 'LEFT', largestDimension, smallestDimension, -63, 0);
-      break;
-    case 'TOP':
-    default:
-      setWindowBounds(windowId, 'TOP', smallestDimension, largestDimension, -63, 0);
-  }
+  yield call(setWindowBoundsWatcher, APP_LAUNCHER_OVERFLOW_WINDOW, -63, 0, false, true);
 }
 
 export function* setLayoutsWindowBounds() {
-  // get bounds of launcher window
-  const windowId = LAYOUTS_WINDOW;
-
-  const windowState = yield select(getWindowById, windowId);
-
-  const { width, height } = windowState.bounds;
-
-  const largestDimension = Math.max(width, height);
-  const smallestDimension = Math.min(width, height);
-
-  // get position of launchbar from store
-  const position = yield select(getPosition);
-
-  switch (position) {
-    case 'RIGHT':
-      setWindowBounds(windowId, 'RIGHT', largestDimension, smallestDimension, 188, 45);
-      break;
-    case 'BOTTOM':
-      setWindowBounds(windowId, 'BOTTOM', smallestDimension, largestDimension, 188, 45);
-      break;
-    case 'LEFT':
-      setWindowBounds(windowId, 'LEFT', largestDimension, smallestDimension, 188, 45);
-      break;
-    case 'TOP':
-    default:
-      setWindowBounds(windowId, 'TOP', smallestDimension, largestDimension, 188, 45);
-  }
+  yield call(setWindowBoundsWatcher, LAYOUTS_WINDOW, 188, 45, false, true);
 }
 
 function* watchSetLaunchbarPosition() {
@@ -199,6 +141,6 @@ export function* meSaga() {
   yield takeLatest(LOGIN.SUCCESS, watchLoginSuccess);
   yield takeLatest(LOGIN.ERROR, watchLoginError);
   yield takeLatest(SAVE_SETTINGS.REQUEST, watchSaveSettingsRequest);
-  yield takeLatest(SET_LAUNCHBAR_POSITION, watchSetLaunchbarPosition);
+  yield takeLatest(SET_LAUNCHER_POSITION, watchSetLaunchbarPosition);
   yield takeLatest(SET_AUTO_HIDE, setLauncherBounds);
 }

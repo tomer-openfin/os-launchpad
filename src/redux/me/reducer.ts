@@ -1,18 +1,24 @@
-import { GET_SETTINGS, LOGIN, SET_AUTO_HIDE, SET_LAUNCHBAR_POSITION, SET_ME } from './actions';
-import { GetSettingsSuccess, MeActions, MeState, SetLaunchbarPayload, SetMePayload } from './types';
-
-export enum Position {
-  TOP = 'TOP',
-  RIGHT = 'RIGHT',
-  BOTTOM = 'BOTTOM',
-  LEFT = 'LEFT',
-}
+import {
+  GET_SETTINGS,
+  LOGIN,
+  SET_AUTO_HIDE,
+  SET_LAUNCHER_POSITION,
+  SET_ME,
+} from './actions';
+import {
+  GetSettingsSuccess,
+  LauncherPosition,
+  MeActions,
+  MeState,
+  SetLaunchbarPayload,
+  SetMePayload,
+} from './types';
 
 export const defaultState: MeState = {
   isAdmin: false,
   settings: {
     autoHide: false,
-    launcherPosition: 'TOP',
+    launcherPosition: LauncherPosition.Top,
   },
   username: '',
 };
@@ -61,7 +67,7 @@ export default (state: MeState = defaultState, action: MeActions) => {
         loginError: true,
       };
     }
-    case SET_LAUNCHBAR_POSITION: {
+    case SET_LAUNCHER_POSITION: {
       return {
         ...state,
         settings: {

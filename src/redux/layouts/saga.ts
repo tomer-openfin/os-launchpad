@@ -1,8 +1,8 @@
-import { generateLayout, restoreLayout } from 'openfin-layouts';
 import { Layout } from 'openfin-layouts/dist/client/types';
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
+import { generateLayout, restoreLayout } from '../../utils/openfinLayouts';
 import { GET_LAYOUTS, getLayoutsSuccess, RESTORE_LAYOUT, SAVE_LAYOUT, saveLayoutSuccess } from './actions';
 import { RestoreLayout, SaveLayoutRequest } from './types';
 

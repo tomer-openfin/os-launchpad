@@ -11,11 +11,20 @@ import {
   setAutoHide,
   setLaunchbarPosition,
   setMe,
-} from './';
+} from './actions';
 
+// Enums
+export enum LauncherPosition {
+  Top = 'TOP',
+  Right = 'RIGHT',
+  Bottom = 'BOTTOM',
+  Left = 'LEFT',
+}
+
+// State
 export interface MeStateSettings {
   autoHide: boolean;
-  launcherPosition: 'TOP' | 'RIGHT' | 'BOTTOM' | 'LEFT';
+  launcherPosition: LauncherPosition;
 }
 
 // Reducer
@@ -27,9 +36,8 @@ export interface MeState {
 
 // Action payloads
 export interface SetLaunchbarPayload {
-  launcherPosition: 'TOP' | 'RIGHT' | 'BOTTOM' | 'LEFT';
+  launcherPosition: LauncherPosition;
 }
-
 export interface LoginRequestPayload {
   email: string;
   password: string;
@@ -37,6 +45,9 @@ export interface LoginRequestPayload {
 export interface LoginSuccessPayload {
   token: string;
   email: string;
+}
+export interface SetAutoHidePayload {
+  autoHide: boolean;
 }
 export interface SetMePayload {
   username: string;

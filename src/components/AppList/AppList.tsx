@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import config from '../../config/windows';
-import { App } from '../../redux/apps/types';
-import { WindowConfig } from '../../redux/windows/types';
-
 import * as plusIcon from '../../assets/AddApp.svg';
 
+import config from '../../config/windows';
+import { App } from '../../redux/apps/types';
+import { LauncherPosition } from '../../redux/me';
+import { WindowConfig } from '../../redux/windows/types';
 import createFromManifest from '../../utils/createFromManifest';
 import IconSpace from '../IconSpace';
 import { CloseButton, Space, Wrapper } from './AppList.css';
@@ -23,7 +23,7 @@ const renderSpaces = (spaceCount: number) => (mapFn: (item, index: number) => JS
 
 interface Props {
   removeFromLauncher: (id: string) => void;
-  launcherPosition: string;
+  launcherPosition: LauncherPosition;
   appList: App[];
   launchWindowCreator: (window: WindowConfig) => () => void;
   spaceCount?: number;

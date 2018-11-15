@@ -4,4 +4,4 @@ import { storiesOf } from '@storybook/react';
 
 import Admin from './';
 
-storiesOf('Admin', module).add('default', () => <Admin />);
+storiesOf('Components/Admin', module).add('default', () => <Admin />);

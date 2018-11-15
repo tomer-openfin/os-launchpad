@@ -3,7 +3,5 @@ import * as React from 'react';
 
 import Settings from './Settings';
 
-storiesOf('Settings', module)
-  .add('default', () => (
-    <Settings/>
-  ));
+storiesOf('Components/Settings', module)
+  .add('default', () => <Settings/>);

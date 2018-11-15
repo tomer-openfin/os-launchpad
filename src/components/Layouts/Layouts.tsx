@@ -5,13 +5,14 @@ import * as saveLayoutIcon from '../../assets/SaveLayout.svg';
 
 import { noop } from 'redux-saga/utils';
 import { LAYOUTS_WINDOW } from '../../config/windows';
+import { LauncherPosition } from '../../redux/me/types';
 import IconSpace from '../IconSpace/index';
 import { Wrapper } from './Layouts.css';
 
 interface Props {
   addWindowListener: Function;
   hideWindow: Function;
-  launcherPosition: string;
+  launcherPosition: LauncherPosition;
   removeWindowListener: Function;
   restoreCurrentLayout: Function;
   saveCurrentLayout: Function;
@@ -20,7 +21,7 @@ interface Props {
 const defaultProps = {
   addWindowListener: noop,
   hideWindow: noop,
-  launcherPosition: 'TOP',
+  launcherPosition: LauncherPosition.Top,
   removeWindowListener: noop,
   restoreCurrentLayout: noop,
   saveCurrentLayout: noop,

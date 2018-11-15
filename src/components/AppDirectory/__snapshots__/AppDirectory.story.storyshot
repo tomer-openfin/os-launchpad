@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots AppDirectory default 1`] = `
+exports[`Storyshots Components/AppDirectory default 1`] = `
 <div>
   <div
     style={
@@ -11,1311 +11,358 @@ exports[`Storyshots AppDirectory default 1`] = `
     }
   >
     <div
-      className="sc-iwsKbI jNqqNd"
+      className="sc-ifAKCX dHpvV"
     >
-      <h3
-        className="sc-jzJRlG kBVZwc"
+      <div
+        className="sc-bZQynM kVKBlt"
       >
         <div
-          className="sc-bxivhb kOpAdl"
-          draggable={true}
+          className="sc-htoDjs ezjflJ"
         >
           <div
-            className="sc-ifAKCX UULrc"
-            draggable={true}
+            className="sc-dnqmqq UIYYa"
           />
         </div>
-      </h3>
+        <input
+          className="sc-gzVnrw hQnWLQ"
+          onChange={[Function]}
+          placeholder="Search for app..."
+        />
+      </div>
       <div
-        className="sc-gZMcBi dZCFCL"
+        className="sc-EHOje diuGfR"
       >
         <div
-          className="sc-kAzzGY dqQxXb"
+          className="sc-iwsKbI bbQsN"
         >
           <div
-            className="sc-bxivhb jYiZLA"
+            className="sc-htoDjs ezZtZR"
+            onClick={[Function]}
           >
             <div
-              className="sc-ifAKCX EgJMq"
+              className="sc-dnqmqq kYMSoc"
             />
           </div>
           <div
-            className="sc-cSHVUG faNHYI"
+            className="sc-gZMcBi euzWLD"
           >
             <div
-              className="sc-gqjmRU kqhgpu"
+              className="sc-jTzLTM gArCnl"
             >
               <div
-                className="sc-VigVT cHthuz"
+                className="sc-gqjmRU gaoTrn"
+                onClick={[Function]}
               >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX EgJMq"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gDynAn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
+                fintech-studios
               </div>
-              <div
-                className="sc-VigVT cHthuz"
+              <button
+                className="sc-fjdhpX etSFY"
+                onClick={[Function]}
               >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  fintech-studios
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  Using cutting edge artificial intelligence and machine learning, FTS delivers actionable news, research, market analytics, and analytics from millions of sources.
-                </div>
-              </div>
+                + Add Shortcut
+              </button>
+            </div>
+            <div
+              className="sc-VigVT klUiXK"
+            >
+              Using cutting edge artificial intelligence and machine learning, FTS delivers actionable news, research, market analytics, and analytics from millions of sources.
             </div>
           </div>
         </div>
         <div
-          className="sc-kAzzGY dqQxXb"
+          className="sc-iwsKbI bbQsN"
         >
           <div
-            className="sc-bxivhb jYiZLA"
+            className="sc-htoDjs ezZtZR"
+            onClick={[Function]}
           >
             <div
-              className="sc-ifAKCX cFFMKB"
+              className="sc-dnqmqq iJsrxD"
             />
           </div>
           <div
-            className="sc-cSHVUG faNHYI"
+            className="sc-gZMcBi euzWLD"
           >
             <div
-              className="sc-gqjmRU kqhgpu"
+              className="sc-jTzLTM gArCnl"
             >
               <div
-                className="sc-VigVT cHthuz"
+                className="sc-gqjmRU gaoTrn"
+                onClick={[Function]}
               >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX cFFMKB"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gDynAn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
+                greenkey
               </div>
-              <div
-                className="sc-VigVT cHthuz"
+              <button
+                className="sc-fjdhpX etSFY"
+                onClick={[Function]}
               >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  greenkey
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  We are where voice becomes data for the financial markets. Green Key’s voice platform and API includes integrated speech recognition for domain specific workflows. The programmable platform enables firms to integrate sophisticated voice and/or transcription capabilities into their own solutions without telecom or data science knowledge.
-                </div>
-              </div>
+                + Add Shortcut
+              </button>
+            </div>
+            <div
+              className="sc-VigVT klUiXK"
+            >
+              We are where voice becomes data for the financial markets. Green Key’s voice platform and API includes integrated speech recognition for domain specific workflows. The programmable platform enables firms to integrate sophisticated voice and/or transcription capabilities into their own solutions without telecom or data science knowledge.
             </div>
           </div>
         </div>
         <div
-          className="sc-kAzzGY dqQxXb"
+          className="sc-iwsKbI bbQsN"
         >
           <div
-            className="sc-bxivhb jYiZLA"
+            className="sc-htoDjs ezZtZR"
+            onClick={[Function]}
           >
             <div
-              className="sc-ifAKCX cRGkcz"
+              className="sc-dnqmqq hztDVY"
             />
           </div>
           <div
-            className="sc-cSHVUG faNHYI"
+            className="sc-gZMcBi euzWLD"
           >
             <div
-              className="sc-gqjmRU kqhgpu"
+              className="sc-jTzLTM gArCnl"
             >
               <div
-                className="sc-VigVT cHthuz"
+                className="sc-gqjmRU gaoTrn"
+                onClick={[Function]}
               >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX cRGkcz"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gDynAn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
+                hammerstone-markets
               </div>
-              <div
-                className="sc-VigVT cHthuz"
+              <button
+                className="sc-fjdhpX etSFY"
+                onClick={[Function]}
               >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  hammerstone-markets
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  The Hammerstone Markets App is both real-time news and real-time analysis sent via compliant messaging platforms including Openfin, Bloomberg, Pivot, and Symphony. Our primary demographic is Institutional Buy and Sell-side traders, who are active in U.S. equities. Founded in 2001, we currently have 165 companies and over 1,000 users of the product.
-                </div>
-              </div>
+                + Add Shortcut
+              </button>
+            </div>
+            <div
+              className="sc-VigVT klUiXK"
+            >
+              The Hammerstone Markets App is both real-time news and real-time analysis sent via compliant messaging platforms including Openfin, Bloomberg, Pivot, and Symphony. Our primary demographic is Institutional Buy and Sell-side traders, who are active in U.S. equities. Founded in 2001, we currently have 165 companies and over 1,000 users of the product.
             </div>
           </div>
         </div>
         <div
-          className="sc-kAzzGY dqQxXb"
+          className="sc-iwsKbI bbQsN"
         >
           <div
-            className="sc-bxivhb jYiZLA"
+            className="sc-htoDjs ezZtZR"
+            onClick={[Function]}
           >
             <div
-              className="sc-ifAKCX fIxkFH"
+              className="sc-dnqmqq eUCPZm"
             />
           </div>
           <div
-            className="sc-cSHVUG faNHYI"
+            className="sc-gZMcBi euzWLD"
           >
             <div
-              className="sc-gqjmRU kqhgpu"
+              className="sc-jTzLTM gArCnl"
             >
               <div
-                className="sc-VigVT cHthuz"
+                className="sc-gqjmRU gaoTrn"
+                onClick={[Function]}
               >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX fIxkFH"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gckqn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
+                neptune
               </div>
-              <div
-                className="sc-VigVT cHthuz"
+              <button
+                className="sc-fjdhpX etSFY"
+                onClick={[Function]}
               >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  neptune
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  At Neptune Networks, we deliver high-quality bond market data (mostly axes) from sell-side banks to buy-side clients. Our technology enables real-time connectivity between banks and investors which leads to meaningful conversations, satisfying the immediate requirements of each party and ultimately, increasing trade volumes.
-                </div>
-              </div>
+                - Remove Shortcut
+              </button>
+            </div>
+            <div
+              className="sc-VigVT klUiXK"
+            >
+              At Neptune Networks, we deliver high-quality bond market data (mostly axes) from sell-side banks to buy-side clients. Our technology enables real-time connectivity between banks and investors which leads to meaningful conversations, satisfying the immediate requirements of each party and ultimately, increasing trade volumes.
             </div>
           </div>
         </div>
         <div
-          className="sc-kAzzGY dqQxXb"
+          className="sc-iwsKbI bbQsN"
         >
           <div
-            className="sc-bxivhb jYiZLA"
+            className="sc-htoDjs ezZtZR"
+            onClick={[Function]}
           >
             <div
-              className="sc-ifAKCX cAkeNR"
+              className="sc-dnqmqq boeDRh"
             />
           </div>
           <div
-            className="sc-cSHVUG faNHYI"
+            className="sc-gZMcBi euzWLD"
           >
             <div
-              className="sc-gqjmRU kqhgpu"
+              className="sc-jTzLTM gArCnl"
             >
               <div
-                className="sc-VigVT cHthuz"
+                className="sc-gqjmRU gaoTrn"
+                onClick={[Function]}
               >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX cAkeNR"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gckqn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
+                opendoor
               </div>
-              <div
-                className="sc-VigVT cHthuz"
+              <button
+                className="sc-fjdhpX etSFY"
+                onClick={[Function]}
               >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  opendoor
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  Launching the first all-to-all, session-based trading platform for off-the-run US Treasuries and TIPS, OpenDoor fills the liquidity vacuum. Our customers include many of the world’s largest asset managers, central banks, primary dealers, hedge funds and trading firms.
-                </div>
-              </div>
+                - Remove Shortcut
+              </button>
+            </div>
+            <div
+              className="sc-VigVT klUiXK"
+            >
+              Launching the first all-to-all, session-based trading platform for off-the-run US Treasuries and TIPS, OpenDoor fills the liquidity vacuum. Our customers include many of the world’s largest asset managers, central banks, primary dealers, hedge funds and trading firms.
             </div>
           </div>
         </div>
         <div
-          className="sc-kAzzGY dqQxXb"
+          className="sc-iwsKbI bbQsN"
         >
           <div
-            className="sc-bxivhb jYiZLA"
+            className="sc-htoDjs ezZtZR"
+            onClick={[Function]}
           >
             <div
-              className="sc-ifAKCX EgJMq"
+              className="sc-dnqmqq cSSsbe"
             />
           </div>
           <div
-            className="sc-cSHVUG faNHYI"
+            className="sc-gZMcBi euzWLD"
           >
             <div
-              className="sc-gqjmRU kqhgpu"
+              className="sc-jTzLTM gArCnl"
             >
               <div
-                className="sc-VigVT cHthuz"
+                className="sc-gqjmRU gaoTrn"
+                onClick={[Function]}
               >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX EgJMq"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gDynAn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
+                parityone
               </div>
-              <div
-                className="sc-VigVT cHthuz"
+              <button
+                className="sc-fjdhpX etSFY"
+                onClick={[Function]}
               >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  fintech-studios
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  Using cutting edge artificial intelligence and machine learning, FTS delivers actionable news, research, market analytics, and analytics from millions of sources.
-                </div>
-              </div>
+                + Add Shortcut
+              </button>
             </div>
-          </div>
-        </div>
-        <div
-          className="sc-kAzzGY dqQxXb"
-        >
-          <div
-            className="sc-bxivhb jYiZLA"
-          >
             <div
-              className="sc-ifAKCX cFFMKB"
-            />
-          </div>
-          <div
-            className="sc-cSHVUG faNHYI"
-          >
-            <div
-              className="sc-gqjmRU kqhgpu"
+              className="sc-VigVT klUiXK"
             >
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX cFFMKB"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gDynAn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  greenkey
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  We are where voice becomes data for the financial markets. Green Key’s voice platform and API includes integrated speech recognition for domain specific workflows. The programmable platform enables firms to integrate sophisticated voice and/or transcription capabilities into their own solutions without telecom or data science knowledge.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="sc-kAzzGY dqQxXb"
-        >
-          <div
-            className="sc-bxivhb jYiZLA"
-          >
-            <div
-              className="sc-ifAKCX cRGkcz"
-            />
-          </div>
-          <div
-            className="sc-cSHVUG faNHYI"
-          >
-            <div
-              className="sc-gqjmRU kqhgpu"
-            >
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX cRGkcz"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gDynAn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  hammerstone-markets
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  The Hammerstone Markets App is both real-time news and real-time analysis sent via compliant messaging platforms including Openfin, Bloomberg, Pivot, and Symphony. Our primary demographic is Institutional Buy and Sell-side traders, who are active in U.S. equities. Founded in 2001, we currently have 165 companies and over 1,000 users of the product.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="sc-kAzzGY dqQxXb"
-        >
-          <div
-            className="sc-bxivhb jYiZLA"
-          >
-            <div
-              className="sc-ifAKCX fIxkFH"
-            />
-          </div>
-          <div
-            className="sc-cSHVUG faNHYI"
-          >
-            <div
-              className="sc-gqjmRU kqhgpu"
-            >
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX fIxkFH"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gckqn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  neptune
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  At Neptune Networks, we deliver high-quality bond market data (mostly axes) from sell-side banks to buy-side clients. Our technology enables real-time connectivity between banks and investors which leads to meaningful conversations, satisfying the immediate requirements of each party and ultimately, increasing trade volumes.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="sc-kAzzGY dqQxXb"
-        >
-          <div
-            className="sc-bxivhb jYiZLA"
-          >
-            <div
-              className="sc-ifAKCX cAkeNR"
-            />
-          </div>
-          <div
-            className="sc-cSHVUG faNHYI"
-          >
-            <div
-              className="sc-gqjmRU kqhgpu"
-            >
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX cAkeNR"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gckqn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  opendoor
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  Launching the first all-to-all, session-based trading platform for off-the-run US Treasuries and TIPS, OpenDoor fills the liquidity vacuum. Our customers include many of the world’s largest asset managers, central banks, primary dealers, hedge funds and trading firms.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="sc-kAzzGY dqQxXb"
-        >
-          <div
-            className="sc-bxivhb jYiZLA"
-          >
-            <div
-              className="sc-ifAKCX hoeJtv"
-            />
-          </div>
-          <div
-            className="sc-cSHVUG faNHYI"
-          >
-            <div
-              className="sc-gqjmRU kqhgpu"
-            >
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX hoeJtv"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gDynAn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  parityone
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  Parity One transforms investment ideas into smart investment portfolios.
+              Parity One transforms investment ideas into smart investment portfolios.
 Parity One’s sophisticated back-testing framework enables simulating the most advanced factor-based investment strategies and converts them into fully managed bespoke benchmarks and model portfolios.
-                </div>
-              </div>
             </div>
           </div>
         </div>
         <div
-          className="sc-kAzzGY dqQxXb"
+          className="sc-iwsKbI bbQsN"
         >
           <div
-            className="sc-bxivhb jYiZLA"
+            className="sc-htoDjs ezZtZR"
+            onClick={[Function]}
           >
             <div
-              className="sc-ifAKCX dcrhQP"
+              className="sc-dnqmqq jLcusg"
             />
           </div>
           <div
-            className="sc-cSHVUG faNHYI"
+            className="sc-gZMcBi euzWLD"
           >
             <div
-              className="sc-gqjmRU kqhgpu"
+              className="sc-jTzLTM gArCnl"
             >
               <div
-                className="sc-VigVT cHthuz"
+                className="sc-gqjmRU gaoTrn"
+                onClick={[Function]}
               >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX dcrhQP"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gDynAn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
+                rsrchx
               </div>
-              <div
-                className="sc-VigVT cHthuz"
+              <button
+                className="sc-fjdhpX etSFY"
+                onClick={[Function]}
               >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  rsrchx
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  RSRCHX is a one-stop-shop for accessing the newly evolving paid-for research market and consuming research in compliance with global best practice.  Founded in 2014, the award-winning RSRCHX platform is used by more than 1,200 buy side firms and over 300 banks, brokers and independent research providers as both a regulatory solution and technology-led research management tool and venue for buying and selling research.
-                </div>
-              </div>
+                + Add Shortcut
+              </button>
+            </div>
+            <div
+              className="sc-VigVT klUiXK"
+            >
+              RSRCHX is a one-stop-shop for accessing the newly evolving paid-for research market and consuming research in compliance with global best practice.  Founded in 2014, the award-winning RSRCHX platform is used by more than 1,200 buy side firms and over 300 banks, brokers and independent research providers as both a regulatory solution and technology-led research management tool and venue for buying and selling research.
             </div>
           </div>
         </div>
         <div
-          className="sc-kAzzGY dqQxXb"
+          className="sc-iwsKbI bbQsN"
         >
           <div
-            className="sc-bxivhb jYiZLA"
+            className="sc-htoDjs ezZtZR"
+            onClick={[Function]}
           >
             <div
-              className="sc-ifAKCX cKFBba"
+              className="sc-dnqmqq kjSoLg"
             />
           </div>
           <div
-            className="sc-cSHVUG faNHYI"
+            className="sc-gZMcBi euzWLD"
           >
             <div
-              className="sc-gqjmRU kqhgpu"
+              className="sc-jTzLTM gArCnl"
             >
               <div
-                className="sc-VigVT cHthuz"
+                className="sc-gqjmRU gaoTrn"
+                onClick={[Function]}
               >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX cKFBba"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gckqn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
+                trumid
               </div>
-              <div
-                className="sc-VigVT cHthuz"
+              <button
+                className="sc-fjdhpX etSFY"
+                onClick={[Function]}
               >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  trumid
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  Trumid is a financial technology startup bringing efficiency to credit trading through data, technology and beautifully simple products. Trumid was founded in 2014 by credit professionals with over 100 years of trading experience and is headquartered in New York.
-                </div>
-              </div>
+                - Remove Shortcut
+              </button>
+            </div>
+            <div
+              className="sc-VigVT klUiXK"
+            >
+              Trumid is a financial technology startup bringing efficiency to credit trading through data, technology and beautifully simple products. Trumid was founded in 2014 by credit professionals with over 100 years of trading experience and is headquartered in New York.
             </div>
           </div>
         </div>
         <div
-          className="sc-kAzzGY dqQxXb"
+          className="sc-iwsKbI bbQsN"
         >
           <div
-            className="sc-bxivhb jYiZLA"
+            className="sc-htoDjs ezZtZR"
+            onClick={[Function]}
           >
             <div
-              className="sc-ifAKCX dYhahG"
+              className="sc-dnqmqq jugEQA"
             />
           </div>
           <div
-            className="sc-cSHVUG faNHYI"
+            className="sc-gZMcBi euzWLD"
           >
             <div
-              className="sc-gqjmRU kqhgpu"
+              className="sc-jTzLTM gArCnl"
             >
               <div
-                className="sc-VigVT cHthuz"
+                className="sc-gqjmRU gaoTrn"
+                onClick={[Function]}
               >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX dYhahG"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gDynAn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
+                tt-desktop
               </div>
-              <div
-                className="sc-VigVT cHthuz"
+              <button
+                className="sc-fjdhpX etSFY"
+                onClick={[Function]}
               >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  tt-desktop
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  Trading Technologies’ ultra-low-latency platform, TT, leverages a hybrid-cloud infrastructure to provide a streamlined, go-anywhere, high-performance experience for professional traders worldwide. TT’s most performant front-end app, TT Desktop, utilizes the OpenFin platform to deliver an HTML5-based trading experience.
-                </div>
-              </div>
+                + Add Shortcut
+              </button>
             </div>
-          </div>
-        </div>
-        <div
-          className="sc-kAzzGY dqQxXb"
-        >
-          <div
-            className="sc-bxivhb jYiZLA"
-          >
             <div
-              className="sc-ifAKCX EgJMq"
-            />
-          </div>
-          <div
-            className="sc-cSHVUG faNHYI"
-          >
-            <div
-              className="sc-gqjmRU kqhgpu"
+              className="sc-VigVT klUiXK"
             >
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX EgJMq"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gDynAn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  fintech-studios
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  Using cutting edge artificial intelligence and machine learning, FTS delivers actionable news, research, market analytics, and analytics from millions of sources.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="sc-kAzzGY dqQxXb"
-        >
-          <div
-            className="sc-bxivhb jYiZLA"
-          >
-            <div
-              className="sc-ifAKCX cFFMKB"
-            />
-          </div>
-          <div
-            className="sc-cSHVUG faNHYI"
-          >
-            <div
-              className="sc-gqjmRU kqhgpu"
-            >
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX cFFMKB"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gDynAn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  greenkey
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  We are where voice becomes data for the financial markets. Green Key’s voice platform and API includes integrated speech recognition for domain specific workflows. The programmable platform enables firms to integrate sophisticated voice and/or transcription capabilities into their own solutions without telecom or data science knowledge.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="sc-kAzzGY dqQxXb"
-        >
-          <div
-            className="sc-bxivhb jYiZLA"
-          >
-            <div
-              className="sc-ifAKCX cRGkcz"
-            />
-          </div>
-          <div
-            className="sc-cSHVUG faNHYI"
-          >
-            <div
-              className="sc-gqjmRU kqhgpu"
-            >
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX cRGkcz"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gDynAn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  hammerstone-markets
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  The Hammerstone Markets App is both real-time news and real-time analysis sent via compliant messaging platforms including Openfin, Bloomberg, Pivot, and Symphony. Our primary demographic is Institutional Buy and Sell-side traders, who are active in U.S. equities. Founded in 2001, we currently have 165 companies and over 1,000 users of the product.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="sc-kAzzGY dqQxXb"
-        >
-          <div
-            className="sc-bxivhb jYiZLA"
-          >
-            <div
-              className="sc-ifAKCX fIxkFH"
-            />
-          </div>
-          <div
-            className="sc-cSHVUG faNHYI"
-          >
-            <div
-              className="sc-gqjmRU kqhgpu"
-            >
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX fIxkFH"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gckqn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  neptune
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  At Neptune Networks, we deliver high-quality bond market data (mostly axes) from sell-side banks to buy-side clients. Our technology enables real-time connectivity between banks and investors which leads to meaningful conversations, satisfying the immediate requirements of each party and ultimately, increasing trade volumes.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="sc-kAzzGY dqQxXb"
-        >
-          <div
-            className="sc-bxivhb jYiZLA"
-          >
-            <div
-              className="sc-ifAKCX cAkeNR"
-            />
-          </div>
-          <div
-            className="sc-cSHVUG faNHYI"
-          >
-            <div
-              className="sc-gqjmRU kqhgpu"
-            >
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX cAkeNR"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gckqn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  opendoor
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  Launching the first all-to-all, session-based trading platform for off-the-run US Treasuries and TIPS, OpenDoor fills the liquidity vacuum. Our customers include many of the world’s largest asset managers, central banks, primary dealers, hedge funds and trading firms.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="sc-kAzzGY dqQxXb"
-        >
-          <div
-            className="sc-bxivhb jYiZLA"
-          >
-            <div
-              className="sc-ifAKCX hoeJtv"
-            />
-          </div>
-          <div
-            className="sc-cSHVUG faNHYI"
-          >
-            <div
-              className="sc-gqjmRU kqhgpu"
-            >
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX hoeJtv"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gDynAn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  parityone
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  Parity One transforms investment ideas into smart investment portfolios.
-Parity One’s sophisticated back-testing framework enables simulating the most advanced factor-based investment strategies and converts them into fully managed bespoke benchmarks and model portfolios.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="sc-kAzzGY dqQxXb"
-        >
-          <div
-            className="sc-bxivhb jYiZLA"
-          >
-            <div
-              className="sc-ifAKCX dcrhQP"
-            />
-          </div>
-          <div
-            className="sc-cSHVUG faNHYI"
-          >
-            <div
-              className="sc-gqjmRU kqhgpu"
-            >
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX dcrhQP"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gDynAn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  rsrchx
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  RSRCHX is a one-stop-shop for accessing the newly evolving paid-for research market and consuming research in compliance with global best practice.  Founded in 2014, the award-winning RSRCHX platform is used by more than 1,200 buy side firms and over 300 banks, brokers and independent research providers as both a regulatory solution and technology-led research management tool and venue for buying and selling research.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="sc-kAzzGY dqQxXb"
-        >
-          <div
-            className="sc-bxivhb jYiZLA"
-          >
-            <div
-              className="sc-ifAKCX cKFBba"
-            />
-          </div>
-          <div
-            className="sc-cSHVUG faNHYI"
-          >
-            <div
-              className="sc-gqjmRU kqhgpu"
-            >
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX cKFBba"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gckqn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  trumid
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  Trumid is a financial technology startup bringing efficiency to credit trading through data, technology and beautifully simple products. Trumid was founded in 2014 by credit professionals with over 100 years of trading experience and is headquartered in New York.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="sc-kAzzGY dqQxXb"
-        >
-          <div
-            className="sc-bxivhb jYiZLA"
-          >
-            <div
-              className="sc-ifAKCX dYhahG"
-            />
-          </div>
-          <div
-            className="sc-cSHVUG faNHYI"
-          >
-            <div
-              className="sc-gqjmRU kqhgpu"
-            >
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <div
-                  className="sc-bxivhb jYiZLA"
-                >
-                  <div
-                    className="sc-ifAKCX dYhahG"
-                  />
-                </div>
-                <div
-                  className="sc-chPdSV gDynAn"
-                >
-                  <div
-                    className="sc-bxivhb epZbQo"
-                    onClick={[Function]}
-                  >
-                    <div
-                      className="sc-ifAKCX elFKrS"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="sc-VigVT cHthuz"
-              >
-                <h3
-                  className="sc-jTzLTM kDEwsT"
-                >
-                  tt-desktop
-                </h3>
-                <div
-                  className="sc-fjdhpX jYKveX"
-                >
-                  Trading Technologies’ ultra-low-latency platform, TT, leverages a hybrid-cloud infrastructure to provide a streamlined, go-anywhere, high-performance experience for professional traders worldwide. TT’s most performant front-end app, TT Desktop, utilizes the OpenFin platform to deliver an HTML5-based trading experience.
-                </div>
-              </div>
+              Trading Technologies’ ultra-low-latency platform, TT, leverages a hybrid-cloud infrastructure to provide a streamlined, go-anywhere, high-performance experience for professional traders worldwide. TT’s most performant front-end app, TT Desktop, utilizes the OpenFin platform to deliver an HTML5-based trading experience.
             </div>
           </div>
         </div>
@@ -1419,7 +466,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               }
             }
           >
-            AppDirectory
+            Components/AppDirectory
           </h1>
           <h2
             style={
@@ -1452,479 +499,287 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
             className="css-r8d96o eyvlbql0"
           >
             <div>
-              <div
-                style={
-                  Object {
-                    "paddingLeft": 18,
-                    "paddingRight": 3,
-                  }
-                }
-              >
-                <span
+              <div>
+                <div
                   style={
                     Object {
-                      "color": "#777",
+                      "paddingLeft": 18,
+                      "paddingRight": 3,
                     }
                   }
                 >
-                  &lt;
-                  AppDirectory
-                </span>
-                <span>
+                  <span
+                    style={
+                      Object {
+                        "color": "#777",
+                      }
+                    }
+                  >
+                    &lt;
+                    Provider
+                  </span>
                   <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      appList
-                    </span>
                     <span>
-                      =
+                       
                       <span
                         style={Object {}}
                       >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#666",
-                            }
-                          }
-                        >
-                          [
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              {
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  id
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#a11",
-                                  }
-                                }
-                              >
-                                2
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  name
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#22a",
-                                    "wordBreak": "break-word",
-                                  }
-                                }
-                              >
-                                'fintech-studios'
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  title
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#22a",
-                                    "wordBreak": "break-word",
-                                  }
-                                }
-                              >
-                                'FinTech Studios'
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                …
-                              </span>
-                              <span>
-                                <br />
-                                    
-                              </span>
-                              }
-                            </span>
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              {
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  id
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#a11",
-                                  }
-                                }
-                              >
-                                3
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  name
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#22a",
-                                    "wordBreak": "break-word",
-                                  }
-                                }
-                              >
-                                'greenkey'
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  title
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#22a",
-                                    "wordBreak": "break-word",
-                                  }
-                                }
-                              >
-                                'GreenKey'
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                …
-                              </span>
-                              <span>
-                                <br />
-                                    
-                              </span>
-                              }
-                            </span>
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              {
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  id
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#a11",
-                                  }
-                                }
-                              >
-                                5
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  name
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#22a",
-                                    "wordBreak": "break-word",
-                                  }
-                                }
-                              >
-                                'hammerstone-markets'
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  title
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#22a",
-                                    "wordBreak": "break-word",
-                                  }
-                                }
-                              >
-                                'Hammerstone Markets App'
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                …
-                              </span>
-                              <span>
-                                <br />
-                                    
-                              </span>
-                              }
-                            </span>
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            …
-                          </span>
-                          <span>
-                            <br />
-                              
-                          </span>
-                          ]
-                        </span>
-                        }
+                        store
                       </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#666",
+                              }
+                            }
+                          >
+                            {
+                            <span>
+                              <span>
+                                <br />
+                                  
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                dispatch
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#170",
+                                }
+                              }
+                            >
+                              anonymous
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                  
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                subscribe
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#170",
+                                }
+                              }
+                            >
+                              subscribe
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                  
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                getState
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#170",
+                                }
+                              }
+                            >
+                              getState
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                  
+                                  
+                              </span>
+                              …
+                            </span>
+                            <span>
+                              <br />
+                                
+                            </span>
+                            }
+                          </span>
+                          }
+                        </span>
+                      </span>
+                      
                     </span>
                   </span>
-                  <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      launcherAppIds
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#666",
-                            }
-                          }
-                        >
-                          [
-                          <span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              '12'
-                            </span>
-                          </span>
-                          ,
-                          <span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              '6'
-                            </span>
-                          </span>
-                          ,
-                          <span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              '7'
-                            </span>
-                          </span>
-                          ]
-                        </span>
-                        }
-                      </span>
-                    </span>
-                     
+                  <span
+                    style={
+                      Object {
+                        "color": "#777",
+                      }
+                    }
+                  >
+                    &gt;
                   </span>
-                </span>
-                <span
+                </div>
+                <div
                   style={
                     Object {
-                      "color": "#777",
+                      "paddingLeft": 33,
+                      "paddingRight": 3,
                     }
                   }
                 >
-                  /&gt;
-                </span>
+                  <span
+                    style={
+                      Object {
+                        "color": "#777",
+                      }
+                    }
+                  >
+                    &lt;
+                    StoryRouter
+                  </span>
+                  <span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        story
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#170",
+                              }
+                            }
+                          >
+                            anonymous
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        links
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#777",
+                              }
+                            }
+                          >
+                            null
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        routerProps
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#777",
+                              }
+                            }
+                          >
+                            null
+                          </span>
+                          }
+                        </span>
+                      </span>
+                       
+                    </span>
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "color": "#777",
+                      }
+                    }
+                  >
+                    /&gt;
+                  </span>
+                </div>
+                <div
+                  style={
+                    Object {
+                      "paddingLeft": 18,
+                      "paddingRight": 3,
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "color": "#777",
+                      }
+                    }
+                  >
+                    &lt;/
+                    Provider
+                    &gt;
+                  </span>
+                </div>
               </div>
             </div>
             <button
@@ -1972,7 +827,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               }
             >
               "
-              AppDirectory
+              Provider
               " Component
             </h2>
             <table
@@ -2012,32 +867,22 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                   <td
                     className="css-1qcb1f7 e6fp4ir0"
                   >
-                    addToLauncher
+                    store
                   </td>
                   <td
                     className="css-1qcb1f7 e6fp4ir0"
                   >
-                    <span>
-                      unknown
-                    </span>
+                    <span />
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    yes
                   </td>
                   <td
                     className="css-11b5gui e6fp4ir0"
                   >
                     -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#170",
-                        }
-                      }
-                    >
-                      noop
-                    </span>
                   </td>
                   <td
                     className="css-11b5gui e6fp4ir0"
@@ -2047,14 +892,17 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                   <td
                     className="css-1qcb1f7 e6fp4ir0"
                   >
-                    appList
+                    children
                   </td>
                   <td
                     className="css-1qcb1f7 e6fp4ir0"
                   >
-                    <span>
-                      unknown
-                    </span>
+                    <span />
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    yes
                   </td>
                   <td
                     className="css-11b5gui e6fp4ir0"
@@ -2063,17 +911,76 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                   </td>
                   <td
                     className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h2
+              style={
+                Object {
+                  "margin": "20px 0 0 0",
+                }
+              }
+            >
+              "
+              StoryRouter
+              " Component
+            </h2>
+            <table
+              className="css-1uhv8nx e1vdo5380"
+            >
+              <thead>
+                <tr>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
                   >
-                    <span
-                      style={
-                        Object {
-                          "color": "#666",
-                        }
-                      }
-                    >
-                      [
-                      ]
-                    </span>
+                    property
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    propType
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    required
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    default
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    story
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span />
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    yes
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
                   </td>
                   <td
                     className="css-11b5gui e6fp4ir0"
@@ -2083,14 +990,12 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                   <td
                     className="css-1qcb1f7 e6fp4ir0"
                   >
-                    launcherAppIds
+                    links
                   </td>
                   <td
                     className="css-1qcb1f7 e6fp4ir0"
                   >
-                    <span>
-                      unknown
-                    </span>
+                    <span />
                   </td>
                   <td
                     className="css-11b5gui e6fp4ir0"
@@ -2100,16 +1005,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                   <td
                     className="css-11b5gui e6fp4ir0"
                   >
-                    <span
-                      style={
-                        Object {
-                          "color": "#666",
-                        }
-                      }
-                    >
-                      [
-                      ]
-                    </span>
+                    -
                   </td>
                   <td
                     className="css-11b5gui e6fp4ir0"
@@ -2119,14 +1015,12 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                   <td
                     className="css-1qcb1f7 e6fp4ir0"
                   >
-                    removeFromLauncher
+                    routerProps
                   </td>
                   <td
                     className="css-1qcb1f7 e6fp4ir0"
                   >
-                    <span>
-                      unknown
-                    </span>
+                    <span />
                   </td>
                   <td
                     className="css-11b5gui e6fp4ir0"
@@ -2136,15 +1030,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                   <td
                     className="css-11b5gui e6fp4ir0"
                   >
-                    <span
-                      style={
-                        Object {
-                          "color": "#170",
-                        }
-                      }
-                    >
-                      noop
-                    </span>
+                    -
                   </td>
                   <td
                     className="css-11b5gui e6fp4ir0"

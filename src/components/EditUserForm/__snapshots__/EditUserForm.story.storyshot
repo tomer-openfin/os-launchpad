@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots EditUserForm default 1`] = `
+exports[`Storyshots Components/EditUserForm default 1`] = `
 <div>
   <div
     style={
@@ -11,7 +11,7 @@ exports[`Storyshots EditUserForm default 1`] = `
     }
   >
     <div
-      className="sc-ckVGcZ kIlodE"
+      className="sc-dxgOiQ hXcOpM"
     >
       <form
         onSubmit={[Function]}
@@ -20,7 +20,7 @@ exports[`Storyshots EditUserForm default 1`] = `
           Edit User Details
         </h3>
         <label
-          className="sc-dxgOiQ iQRfWq"
+          className="sc-kpOJdX jmpXnk"
         >
           Email:
           <input
@@ -32,7 +32,7 @@ exports[`Storyshots EditUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-dxgOiQ iQRfWq"
+          className="sc-kpOJdX jmpXnk"
         >
           First Name:
           <input
@@ -44,7 +44,7 @@ exports[`Storyshots EditUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-dxgOiQ iQRfWq"
+          className="sc-kpOJdX jmpXnk"
         >
           Last Name:
           <input
@@ -56,7 +56,7 @@ exports[`Storyshots EditUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-dxgOiQ iQRfWq"
+          className="sc-kpOJdX jmpXnk"
         >
           Middle Initial:
           <input
@@ -68,7 +68,7 @@ exports[`Storyshots EditUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-dxgOiQ iQRfWq"
+          className="sc-kpOJdX jmpXnk"
         >
           Username:
           <input
@@ -80,7 +80,7 @@ exports[`Storyshots EditUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-dxgOiQ iQRfWq"
+          className="sc-kpOJdX jmpXnk"
         >
           Is administrator?
           <select
@@ -103,14 +103,14 @@ exports[`Storyshots EditUserForm default 1`] = `
           </select>
         </label>
         <button
-          className="sc-kGXeez gkXHWH"
+          className="sc-kgoBCf kcsXpd"
           disabled={true}
           type="submit"
         >
           Submit
         </button>
         <button
-          className="sc-kGXeez gkXHWH"
+          className="sc-kgoBCf kcsXpd"
           onClick={[Function]}
           type="button"
         >
@@ -216,7 +216,7 @@ exports[`Storyshots EditUserForm default 1`] = `
               }
             }
           >
-            EditUserForm
+            Components/EditUserForm
           </h1>
           <h2
             style={
@@ -249,184 +249,287 @@ exports[`Storyshots EditUserForm default 1`] = `
             className="css-r8d96o eyvlbql0"
           >
             <div>
-              <div
-                style={
-                  Object {
-                    "paddingLeft": 18,
-                    "paddingRight": 3,
-                  }
-                }
-              >
-                <span
+              <div>
+                <div
                   style={
                     Object {
-                      "color": "#777",
+                      "paddingLeft": 18,
+                      "paddingRight": 3,
                     }
                   }
                 >
-                  &lt;
-                  EditUserForm
-                </span>
-                <span>
+                  <span
+                    style={
+                      Object {
+                        "color": "#777",
+                      }
+                    }
+                  >
+                    &lt;
+                    Provider
+                  </span>
                   <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      currentUserData
-                    </span>
                     <span>
-                      =
+                       
                       <span
                         style={Object {}}
                       >
-                        {
+                        store
+                      </span>
+                      <span>
+                        =
                         <span
-                          style={
-                            Object {
-                              "color": "#666",
-                            }
-                          }
+                          style={Object {}}
                         >
                           {
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              email
-                            </span>
-                          </span>
-                          : 
                           <span
                             style={
                               Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
+                                "color": "#666",
                               }
                             }
                           >
-                            'testEmail@gmail.com'
-                          </span>
-                          ,
-                          <span>
+                            {
                             <span>
-                              <br />
-                                
-                                
+                              <span>
+                                <br />
+                                  
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                dispatch
+                              </span>
                             </span>
+                            : 
                             <span
                               style={
                                 Object {
-                                  "color": "#666",
+                                  "color": "#170",
                                 }
                               }
                             >
-                              firstName
+                              anonymous
                             </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            'testFirstName'
-                          </span>
-                          ,
-                          <span>
+                            ,
                             <span>
-                              <br />
-                                
-                                
+                              <span>
+                                <br />
+                                  
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                subscribe
+                              </span>
                             </span>
+                            : 
                             <span
                               style={
                                 Object {
-                                  "color": "#666",
+                                  "color": "#170",
                                 }
                               }
                             >
-                              isAdmin
+                              subscribe
                             </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                  
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                getState
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#170",
+                                }
                               }
-                            }
-                          >
-                            true
-                          </span>
-                          ,
-                          <span>
+                            >
+                              getState
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                  
+                                  
+                              </span>
+                              …
+                            </span>
                             <span>
                               <br />
                                 
-                                
                             </span>
-                            …
-                          </span>
-                          <span>
-                            <br />
-                              
+                            }
                           </span>
                           }
                         </span>
-                        }
                       </span>
+                      
                     </span>
                   </span>
-                  <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      updateUser
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          updateUser
-                        </span>
-                        }
-                      </span>
-                    </span>
-                     
+                  <span
+                    style={
+                      Object {
+                        "color": "#777",
+                      }
+                    }
+                  >
+                    &gt;
                   </span>
-                </span>
-                <span
+                </div>
+                <div
                   style={
                     Object {
-                      "color": "#777",
+                      "paddingLeft": 33,
+                      "paddingRight": 3,
                     }
                   }
                 >
-                  /&gt;
-                </span>
+                  <span
+                    style={
+                      Object {
+                        "color": "#777",
+                      }
+                    }
+                  >
+                    &lt;
+                    StoryRouter
+                  </span>
+                  <span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        story
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#170",
+                              }
+                            }
+                          >
+                            anonymous
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        links
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#777",
+                              }
+                            }
+                          >
+                            null
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        routerProps
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#777",
+                              }
+                            }
+                          >
+                            null
+                          </span>
+                          }
+                        </span>
+                      </span>
+                       
+                    </span>
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "color": "#777",
+                      }
+                    }
+                  >
+                    /&gt;
+                  </span>
+                </div>
+                <div
+                  style={
+                    Object {
+                      "paddingLeft": 18,
+                      "paddingRight": 3,
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "color": "#777",
+                      }
+                    }
+                  >
+                    &lt;/
+                    Provider
+                    &gt;
+                  </span>
+                </div>
               </div>
             </div>
             <button
@@ -474,12 +577,217 @@ exports[`Storyshots EditUserForm default 1`] = `
               }
             >
               "
-              EditUserForm
+              Provider
               " Component
             </h2>
-            <small>
-              No propTypes defined!
-            </small>
+            <table
+              className="css-1uhv8nx e1vdo5380"
+            >
+              <thead>
+                <tr>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    property
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    propType
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    required
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    default
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    store
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span />
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    yes
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    children
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span />
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    yes
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h2
+              style={
+                Object {
+                  "margin": "20px 0 0 0",
+                }
+              }
+            >
+              "
+              StoryRouter
+              " Component
+            </h2>
+            <table
+              className="css-1uhv8nx e1vdo5380"
+            >
+              <thead>
+                <tr>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    property
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    propType
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    required
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    default
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    story
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span />
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    yes
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    links
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span />
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    routerProps
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span />
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

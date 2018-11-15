@@ -1,3 +1,5 @@
+import { isTopOrBottom } from './launcherPosition';
+
 export const isPosInBounds = (pos, bounds) => {
   const {
     left: posLeft,
@@ -18,16 +20,16 @@ export const isPosInBounds = (pos, bounds) => {
 
 export const getNewPos = (bounds, launcherPosition, expand) => {
   const { width, height } = bounds;
-  const isHorizontal = launcherPosition === 'TOP' || launcherPosition === 'BOTTOM';
+  const isTopOrBottomPosition = isTopOrBottom(launcherPosition);
   const isTopOrLeft = launcherPosition === 'TOP' || launcherPosition === 'LEFT';
   const directionMultiplier = (expand && isTopOrLeft) || (!expand && !isTopOrLeft)
     ? 1
     : -1;
 
-  const delta = (isHorizontal ? height - 5 : width - 5) * directionMultiplier;
+  const delta = (isTopOrBottomPosition ? height - 5 : width - 5) * directionMultiplier;
 
   return {
-    left: isHorizontal ? 0 : delta,
-    top: isHorizontal ? delta : 0,
+    left: isTopOrBottomPosition ? 0 : delta,
+    top: isTopOrBottomPosition ? delta : 0,
   };
 };

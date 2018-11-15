@@ -4,4 +4,5 @@ import { storiesOf } from '@storybook/react';
 
 import HMRTest from './';
 
-storiesOf('HMRTest', module).add('default', () => <HMRTest />);
+storiesOf('HMRTest', module)
+  .add('default', () => <HMRTest />);

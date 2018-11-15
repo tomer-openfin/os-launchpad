@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Template default 1`] = `
+exports[`Storyshots AppCard default 1`] = `
 <div>
   <div
     style={
@@ -11,9 +11,41 @@ exports[`Storyshots Template default 1`] = `
     }
   >
     <div
-      className="sc-bdVaJa bDWFJH"
+      className="sc-kAzzGY eEeraj"
     >
-      Template
+      <div
+        className="sc-EHOje fSHRkc"
+        onClick={[Function]}
+      >
+        <div
+          className="sc-bZQynM jXocUg"
+        />
+      </div>
+      <div
+        className="sc-chPdSV bimIIr"
+      >
+        <div
+          className="sc-kpOJdX blbJjL"
+        >
+          <div
+            className="sc-kgoBCf gykksO"
+            onClick={[Function]}
+          >
+            fintech-studios
+          </div>
+          <button
+            className="sc-dxgOiQ kZZzJd"
+            onClick={[Function]}
+          >
+            + Add Shortcut
+          </button>
+        </div>
+        <div
+          className="sc-kGXeez gKdfCJ"
+        >
+          Using cutting edge artificial intelligence and machine learning, FTS delivers actionable news, research, market analytics, and analytics from millions of sources.
+        </div>
+      </div>
     </div>
   </div>
   <button
@@ -113,7 +145,7 @@ exports[`Storyshots Template default 1`] = `
               }
             }
           >
-            Template
+            AppCard
           </h1>
           <h2
             style={

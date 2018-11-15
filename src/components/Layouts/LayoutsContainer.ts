@@ -1,15 +1,15 @@
 import { Window } from '@giantmachines/redux-openfin';
 import { connect } from 'react-redux';
 
-import { restoreLayout, saveLayoutRequest } from '../../redux/layouts/index';
-
 import { Layout } from 'openfin-layouts/dist/client/types';
+import { restoreLayout, saveLayoutRequest } from '../../redux/layouts';
+import { getLauncherPosition } from '../../redux/me';
 import { State } from '../../redux/types';
 
 import Layouts from './Layouts';
 
 const mapState = (state: State) => ({
-  launcherPosition: state.me.settings.launcherPosition,
+  launcherPosition: getLauncherPosition(state),
 });
 
 /* tslint:disable:no-console */

@@ -11,85 +11,132 @@ exports[`Storyshots App default 1`] = `
     }
   >
     <div
-      className="sc-bwzfXH cZoxyw"
+      className="sc-iwsKbI jzxdYB"
     >
       <div
-        className="sc-bxivhb iYrWYR"
-        draggable={true}
+        className="sc-EHOje cCYnG"
       >
         <div
-          className="sc-ifAKCX UULrc"
-          draggable={true}
+          className="sc-bZQynM kTdIdn"
         />
       </div>
       <div
-        className="sc-bxivhb vPQpJ"
-      >
-        <div
-          className="sc-ifAKCX elFKrS"
-        />
-      </div>
+        className="sc-gZMcBi ihNxHP"
+      />
       <div
-        className="sc-EHOje dgGcyU"
-      >
-        <div
-          className="sc-bxivhb epZbQo"
-          onClick={[Function]}
-        >
-          <div
-            className="sc-ifAKCX elFKrS"
-          />
-        </div>
-        <div
-          className="sc-bxivhb epZbQo"
-          onClick={[Function]}
-        >
-          <div
-            className="sc-ifAKCX elFKrS"
-          />
-        </div>
-        <div
-          className="sc-bxivhb epZbQo"
-          onClick={[Function]}
-        >
-          <div
-            className="sc-ifAKCX elFKrS"
-          />
-        </div>
-        <div
-          className="sc-bxivhb epZbQo"
-          onClick={[Function]}
-        >
-          <div
-            className="sc-ifAKCX elFKrS"
-          />
-        </div>
-        <div
-          className="sc-bxivhb vPQpJ"
-        >
-          <div
-            className="sc-ifAKCX elFKrS"
-          />
-        </div>
-      </div>
-      <div
-        className="sc-bxivhb epZbQo"
+        className="sc-EHOje jfUViZ"
         onClick={[Function]}
       >
         <div
-          className="sc-ifAKCX elFKrS"
+          className="sc-bZQynM dnLxqC"
         />
       </div>
       <div
-        className="sc-bxivhb vPQpJ"
+        className="sc-gZMcBi ihNxHP"
+      />
+      <div
+        className="sc-gzVnrw jHJdsq"
       >
         <div
-          className="sc-ifAKCX elFKrS"
+          className="sc-dnqmqq duHLdV"
+        >
+          <div
+            className="sc-EHOje jfUViZ"
+            onClick={[Function]}
+          >
+            <div
+              className="sc-bZQynM dnLxqC"
+            />
+          </div>
+        </div>
+        <div
+          className="sc-dnqmqq duHLdV"
+        >
+          <div
+            className="sc-EHOje jfUViZ"
+            onClick={[Function]}
+          >
+            <div
+              className="sc-bZQynM dnLxqC"
+            />
+          </div>
+        </div>
+        <div
+          className="sc-dnqmqq duHLdV"
+        >
+          <div
+            className="sc-EHOje jfUViZ"
+            onClick={[Function]}
+          >
+            <div
+              className="sc-bZQynM dnLxqC"
+            />
+          </div>
+        </div>
+        <div
+          className="sc-dnqmqq duHLdV"
+        >
+          <div
+            className="sc-EHOje jfUViZ"
+            onClick={[Function]}
+          >
+            <div
+              className="sc-bZQynM dnLxqC"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="sc-VigVT bKKsva"
+        onClick={[Function]}
+      >
+        <div
+          className="sc-gqjmRU hxYmQS"
         />
       </div>
       <div
-        className="sc-htpNat jFcKWm"
+        className="sc-gZMcBi ihNxHP"
       />
+      <div
+        className="sc-EHOje jfUViZ"
+        onClick={[Function]}
+      >
+        <div
+          className="sc-bZQynM dnLxqC"
+        />
+      </div>
+      <div
+        className="sc-gZMcBi ihNxHP"
+      />
+      <div
+        className="sc-EHOje jfUViZ"
+        onClick={[Function]}
+      >
+        <div
+          className="sc-bZQynM dnLxqC"
+        />
+      </div>
+      <div
+        className="sc-gZMcBi ihNxHP"
+      />
+      <div
+        className="sc-EHOje jfUViZ"
+        onClick={[Function]}
+      >
+        <div
+          className="sc-bZQynM dnLxqC"
+        />
+      </div>
+      <div
+        className="sc-gZMcBi ihNxHP"
+      />
+      <div
+        className="sc-EHOje cCYnG"
+      >
+        <div
+          className="sc-bZQynM dnLxqC"
+        />
+      </div>
     </div>
   </div>
   <button
@@ -390,7 +437,7 @@ exports[`Storyshots App default 1`] = `
                     }
                   >
                     &lt;
-                    App
+                    StoryRouter
                   </span>
                   <span>
                     <span>
@@ -398,7 +445,7 @@ exports[`Storyshots App default 1`] = `
                       <span
                         style={Object {}}
                       >
-                        launchWindowCreator
+                        story
                       </span>
                       <span>
                         =
@@ -414,6 +461,58 @@ exports[`Storyshots App default 1`] = `
                             }
                           >
                             anonymous
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        links
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#777",
+                              }
+                            }
+                          >
+                            null
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        routerProps
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#777",
+                              }
+                            }
+                          >
+                            null
                           </span>
                           }
                         </span>
@@ -489,22 +588,6 @@ exports[`Storyshots App default 1`] = `
           >
             Prop Types
           </h1>
-          <div>
-            <h2
-              style={
-                Object {
-                  "margin": "20px 0 0 0",
-                }
-              }
-            >
-              "
-              App
-              " Component
-            </h2>
-            <small>
-              No propTypes defined!
-            </small>
-          </div>
           <div>
             <h2
               style={
@@ -590,6 +673,129 @@ exports[`Storyshots App default 1`] = `
                     className="css-11b5gui e6fp4ir0"
                   >
                     yes
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h2
+              style={
+                Object {
+                  "margin": "20px 0 0 0",
+                }
+              }
+            >
+              "
+              StoryRouter
+              " Component
+            </h2>
+            <table
+              className="css-1uhv8nx e1vdo5380"
+            >
+              <thead>
+                <tr>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    property
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    propType
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    required
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    default
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    story
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span />
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    yes
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    links
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span />
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    routerProps
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span />
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
                   </td>
                   <td
                     className="css-11b5gui e6fp4ir0"

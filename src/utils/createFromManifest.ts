@@ -1,5 +1,11 @@
-export default (manifestUrl: string) =>
-  window.fin.desktop.Application.createFromManifest(
+export default (manifestUrl: string) => {
+  const { fin } = window;
+
+  if (!fin) {
+    return;
+  }
+
+  fin.desktop.Application.createFromManifest(
     manifestUrl,
     (createdApp: fin.OpenFinApplication): void => {
       createdApp.run(
@@ -14,3 +20,4 @@ export default (manifestUrl: string) =>
       );
     },
   );
+};

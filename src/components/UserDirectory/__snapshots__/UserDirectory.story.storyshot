@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Template default 1`] = `
+exports[`Storyshots Components/UserDirectory default 1`] = `
 <div>
   <div
     style={
@@ -11,9 +11,259 @@ exports[`Storyshots Template default 1`] = `
     }
   >
     <div
-      className="sc-bdVaJa bDWFJH"
+      className="sc-iRbamj bBDbFa"
     >
-      Template
+      <input
+        className="sc-cMljjf dowFbi"
+        name="search"
+        onChange={[Function]}
+        placeholder="Search users..."
+        type="text"
+        value=""
+      />
+      <select
+        className="sc-jAaTju jQdZjO"
+      >
+        <option
+          value="sort"
+        >
+          Sort by...
+        </option>
+        <option
+          value="lastName"
+        >
+          Last Name
+        </option>
+        <option
+          value="firstName"
+        >
+          First Name
+        </option>
+      </select>
+      <ul
+        className="sc-gPEVay bDRsrD"
+      >
+        <li>
+          Doe
+          , 
+          John
+           
+          <div
+            className="sc-brqgnP imFuXm"
+          >
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Edit
+            </button>
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Delete
+            </button>
+          </div>
+        </li>
+        <li>
+          Williams
+          , 
+          Ashley
+           
+          <div
+            className="sc-brqgnP imFuXm"
+          >
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Edit
+            </button>
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Delete
+            </button>
+          </div>
+        </li>
+        <li>
+          Taylor
+          , 
+          Matt
+           
+          <div
+            className="sc-brqgnP imFuXm"
+          >
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Edit
+            </button>
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Delete
+            </button>
+          </div>
+        </li>
+        <li>
+          Johnson
+          , 
+          Dan
+           
+          <div
+            className="sc-brqgnP imFuXm"
+          >
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Edit
+            </button>
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Delete
+            </button>
+          </div>
+        </li>
+        <li>
+          Moore
+          , 
+          Andy
+           
+          <div
+            className="sc-brqgnP imFuXm"
+          >
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Edit
+            </button>
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Delete
+            </button>
+          </div>
+        </li>
+        <li>
+          Conseco
+          , 
+          Jose
+           
+          <div
+            className="sc-brqgnP imFuXm"
+          >
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Edit
+            </button>
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Delete
+            </button>
+          </div>
+        </li>
+        <li>
+          Fire
+          , 
+          Jon
+           
+          <div
+            className="sc-brqgnP imFuXm"
+          >
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Edit
+            </button>
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Delete
+            </button>
+          </div>
+        </li>
+        <li>
+          Knot
+          , 
+          James
+           
+          <div
+            className="sc-brqgnP imFuXm"
+          >
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Edit
+            </button>
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Delete
+            </button>
+          </div>
+        </li>
+        <li>
+          Del Toro
+          , 
+          Guillermo
+           
+          <div
+            className="sc-brqgnP imFuXm"
+          >
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Edit
+            </button>
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Delete
+            </button>
+          </div>
+        </li>
+        <li>
+          Martin
+          , 
+          Robert
+           
+          <div
+            className="sc-brqgnP imFuXm"
+          >
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Edit
+            </button>
+            <button
+              className="sc-jDwBTQ dvHWMq"
+              onClick={[Function]}
+            >
+              Delete
+            </button>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
   <button
@@ -113,7 +363,7 @@ exports[`Storyshots Template default 1`] = `
               }
             }
           >
-            Template
+            Components/UserDirectory
           </h1>
           <h2
             style={

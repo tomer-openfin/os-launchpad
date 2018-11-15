@@ -7,6 +7,8 @@ export default (pattern, saga, ...args) =>
       // TypeScript compile error on call with unknown number of args
       // This is why its a JS file
       // takeFirst may be included in redux-saga@1.0.0
+      // may be called takeLeading based on beta.1
+      // https://github.com/redux-saga/redux-saga/releases/tag/v1.0.0-beta.1
       yield call(saga, ...args.concat(action));
     }
   });

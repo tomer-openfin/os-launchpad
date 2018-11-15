@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import throttle from 'lodash-es/throttle';
-
 import * as adminIcon from '../../assets/AdminSettings.svg';
 import * as logoIcon from '../../assets/Logo.svg';
 import * as notificationsIcon from '../../assets/Notifications.svg';
@@ -10,144 +8,79 @@ import * as searchIcon from '../../assets/Search.svg';
 import * as settingsIcon from '../../assets/Settings.svg';
 
 import windowsConfig from '../../config/windows';
-import { Bounds } from '../../redux/types';
+import { LauncherPosition } from '../../redux/me';
 import { WindowConfig } from '../../redux/windows/types';
-import { isPosInBounds } from '../../utils/coordinateHelpers';
 
 import AppList from '../AppList';
 import IconSpace from '../IconSpace';
 import { EllipsisImage, EllipsisWrapper, Separator, Wrapper } from './App.css';
 
-interface Props {
-  autoHide: boolean;
-  bounds: Bounds;
-  collapseApp: () => void;
-  expandApp: () => void;
-  isExpanded: boolean;
-  launcherPosition: string;
+export interface Props {
+  launcherPosition: LauncherPosition;
   launchWindow: (window: WindowConfig) => void;
-  monitorInfo: object;
-  setMonitorInfo: (monitorInfo: object) => void;
-  saveCurrentLayout: Function;
-  restoreCurrentLayout: Function;
 }
 
-// TODO - move to an HOC
-class App extends React.PureComponent<Props> {
-  interval?: number;
+const App = (props: Props) => {
+  const { launcherPosition, launchWindow } = props;
 
-  constructor(props: Props) {
-    super(props);
+  const handleLaunchAdminWindow = () => launchWindow(windowsConfig.admin);
+  const handleLaunchAppDirectoryWindow = () => launchWindow(windowsConfig.appDirectory);
+  const handleLaunchAppOverflowWindow = () => launchWindow(windowsConfig.appLauncherOverflow);
+  const handleLaunchSettingsWindow = () => launchWindow(windowsConfig.settings);
+  const handleLaunchLayoutsWindow = () => launchWindow(windowsConfig.layouts);
 
-    this.handleMouseEnterOnWindow = throttle(this.handleMouseEnterOnWindow.bind(this), 225, { leading: true, trailing: false });
-    this.handleMouseLeaveOnWindow = throttle(this.handleMouseLeaveOnWindow.bind(this), 225, { leading: true, trailing: false });
-  }
+  return (
+    <Wrapper launcherPosition={launcherPosition}>
+      <IconSpace iconImg={logoIcon} />
 
-  componentDidMount() {
-    this.bindMouseEvents();
-  }
+      <Separator launcherPosition={launcherPosition} />
 
-  componentWillUnmount() {
-    this.unbindMouseEvents();
-  }
+      <IconSpace
+        hover
+        iconImg={searchIcon}
+        onClick={handleLaunchAppDirectoryWindow}
+      />
 
-  bindMouseEvents = () => {
-    this.interval = window.setInterval(this.handleInterval, 250);
-    window.addEventListener('mouseover', this.handleMouseEnterOnWindow);
-  };
+      <Separator launcherPosition={launcherPosition} />
 
-  unbindMouseEvents = () => {
-    this.clearInterval();
-    window.removeEventListener('mouseover', this.handleMouseEnterOnWindow);
-  };
+      <AppList spaceCount={4} />
 
-  clearInterval = () => {
-    if (this.interval) {
-      clearInterval(this.interval);
-    }
-  };
+      <EllipsisWrapper
+        onClick={handleLaunchAppOverflowWindow}
+        launcherPosition={launcherPosition}
+      >
+        <EllipsisImage launcherPosition={launcherPosition} />
+      </EllipsisWrapper>
 
-  handleInterval = () => {
-    const { fin } = window;
-    const { bounds, isExpanded } = this.props;
+      <Separator launcherPosition={launcherPosition} />
 
-    if (!fin || !isExpanded) {
-      return;
-    }
+      <IconSpace
+        hover
+        iconImg={adminIcon}
+        onClick={handleLaunchAdminWindow}
+      />
 
-    fin.desktop.System.getMousePosition(pos => {
-      if (!isPosInBounds(pos, bounds)) {
-        this.handleMouseLeaveOnWindow();
-      }
-    });
-  };
+      <Separator launcherPosition={launcherPosition} />
 
-  handleMouseEnterOnWindow() {
-    if (!this.props.autoHide) {
-      return;
-    }
+      <IconSpace
+        hover
+        iconImg={settingsIcon}
+        onClick={handleLaunchSettingsWindow}
+      />
 
-    if (!this.props.isExpanded) {
-      this.props.expandApp();
-    }
-  }
+      <Separator launcherPosition={launcherPosition} />
 
-  handleMouseLeaveOnWindow() {
-    if (!this.props.autoHide) {
-      return;
-    }
+      <IconSpace
+        hover
+        iconImg={saveLayoutIcon}
+        onClick={handleLaunchLayoutsWindow}
+      />
 
-    if (this.props.isExpanded) {
-      this.props.collapseApp();
-    }
-  }
+      <Separator launcherPosition={launcherPosition} />
 
-  handleSaveCurrentLayout = () => this.props.saveCurrentLayout();
-  handleRestoreCurrentLayout = () => this.props.restoreCurrentLayout();
-
-  handleLaunchAdminWindow = () => this.props.launchWindow(windowsConfig.admin);
-  handleLaunchAppDirectoryWindow = () => this.props.launchWindow(windowsConfig.appDirectory);
-  handleLaunchAppOverflowWindow = () => this.props.launchWindow(windowsConfig.appLauncherOverflow);
-  handleLaunchSettingsWindow = () => this.props.launchWindow(windowsConfig.settings);
-  handleLaunchLayoutsWindow = () => this.props.launchWindow(windowsConfig.layouts);
-
-  render() {
-    const { launcherPosition } = this.props;
-
-    return (
-      <Wrapper launcherPosition={launcherPosition}>
-        <IconSpace iconImg={logoIcon} />
-
-        <Separator launcherPosition={launcherPosition} />
-
-        <IconSpace iconImg={searchIcon} onClick={this.handleLaunchAppDirectoryWindow} hover />
-
-        <Separator launcherPosition={launcherPosition} />
-
-        <AppList spaceCount={4} />
-
-        <EllipsisWrapper onClick={this.handleLaunchAppOverflowWindow} launcherPosition={launcherPosition}>
-          <EllipsisImage launcherPosition={launcherPosition} />
-        </EllipsisWrapper>
-
-        <Separator launcherPosition={launcherPosition} />
-
-        <IconSpace iconImg={adminIcon} onClick={this.handleLaunchAdminWindow} hover />
-
-        <Separator launcherPosition={launcherPosition} />
-
-        <IconSpace iconImg={settingsIcon} onClick={this.handleLaunchSettingsWindow} hover />
-
-        <Separator launcherPosition={launcherPosition} />
-
-        <IconSpace iconImg={saveLayoutIcon} onClick={this.handleLaunchLayoutsWindow} hover />
-
-        <Separator launcherPosition={launcherPosition} />
-
-        <IconSpace iconImg={notificationsIcon} hover />
-      </Wrapper>
-    );
-  }
-}
+      <IconSpace hover iconImg={notificationsIcon} />
+    </Wrapper>
+  );
+};
 
 export default App;
