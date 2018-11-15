@@ -26,4 +26,4 @@ const mockUserData = {
 };
 
 // tslint:disable-next-line:max-line-length
-storiesOf('EditUserForm', module).add('default', () => <EditUserForm currentUserData={mockUserData} updateUser={updateUser} />);
+storiesOf('Components/EditUserForm', module).add('default', () => <EditUserForm currentUserData={mockUserData} updateUser={updateUser} />);

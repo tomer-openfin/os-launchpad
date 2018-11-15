@@ -1,11 +1,11 @@
-import '../src/components/_template';
-import '../src/components/App';
-import '../src/components/AppDirectory';
-import '../src/components/AppList';
-import '../src/components/Button';
-import '../src/components/EditUserForm';
-import '../src/components/HMRTest';
-import '../src/components/Login';
-import '../src/components/NewUserForm';
-import '../src/components/UserDirectory';
+// import '../src/components/App/App.story';
+
+import '../src/components/AppDirectory/AppDirectory.story';
+import '../src/components/AppList/AppList.story';
+import '../src/components/Button/Button.story';
+import '../src/components/EditUserForm/EditUserForm.story';
+import '../src/components/Login/Login.story';
+import '../src/components/NewUserForm/NewUserForm.story';
+import '../src/components/UserDirectory/UserDirectory.story';
+
 import '../src/styles/';

@@ -16,6 +16,6 @@ const createUser = (payload, statusCode = '200') =>
     method: 'POST',
   }).then(response => response.json());
 
-const stories = storiesOf('NewUserForm', module);
+const stories = storiesOf('Components/NewUserForm', module);
 
 stories.add('default', () => <NewUserForm createUser={createUser} />);

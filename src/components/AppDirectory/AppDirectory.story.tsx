@@ -6,6 +6,6 @@ import appData from '../../const/AppData';
 
 import AppDirectory from './AppDirectory';
 
-storiesOf('AppDirectory', module).add('default', () =>
+storiesOf('Components/AppDirectory', module).add('default', () =>
   <AppDirectory appList={appData} />,
 );

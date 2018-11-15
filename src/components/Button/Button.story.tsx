@@ -6,7 +6,7 @@ import { storiesOf } from '@storybook/react';
 
 import Button from './Button';
 
-storiesOf('Button', module)
+storiesOf('Components/Button', module)
   .addDecorator(withKnobs)
   .add('default', () => <Button onClick={action('Button Click')}>Button Text</Button>)
   .add('with knobs', () => {

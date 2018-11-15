@@ -14,7 +14,7 @@ const bounds = {
   width: 0,
 };
 
-storiesOf('App', module)
+storiesOf('Components/App', module)
   .addDecorator(story => <Provider store={store}>{story()}</Provider>)
   .add('default', () => (
     <App
