@@ -4,7 +4,7 @@ import windowsConfig, { initOnStartWindows } from '../../config/windows';
 import { getNewPos } from '../../utils/coordinateHelpers';
 import getAppUuid from '../../utils/getAppUuid';
 import { animateWindow, getSystemMonitorInfo } from '../../utils/openfinPromises';
-import takeFirst from '../../utils/takeFirst.js';
+import takeFirst from '../../utils/takeFirst';
 import { getAppDirectoryList, getLauncherAppIdsRequest } from '../apps';
 import { getLayoutById, getLayoutsIds, getLayoutsRequest, restoreLayout } from '../layouts';
 import { getAutoHide, getLauncherPosition, getSettingsRequest, setLauncherBounds } from '../me';

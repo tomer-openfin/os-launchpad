@@ -12,7 +12,7 @@
     "openfin": "node scripts/openfin.js",
     "serve": "node server.js",
     "start": "node scripts/start.js",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "STORYBOOK_ENV=true start-storybook -p 6006",
     "storyshots": "jest -u",
     "test": "jest"
   },
