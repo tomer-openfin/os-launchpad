@@ -45,7 +45,6 @@ export const checkIsEnterprise = () => {
  * @returns {Promise<string[]>}
  */
 export const getApps = () => {
-  // Disable this for demo?
   if (checkIsEnterprise()) {
     const options = createGetOptions();
     return fetch(APPS_URL, options)
@@ -62,7 +61,6 @@ export const getApps = () => {
  * @returns {Promise<void>}
  */
 export const saveApps = (apps: string[]) => {
-  // Disable this for demo?
   if (checkIsEnterprise()) {
     const options = createPostOptions({ apps });
     return fetch(APPS_URL, options).then(resp => resp.json());
@@ -158,6 +156,21 @@ export const saveSettings = (settings: MeStateSettings) => {
   return setLocalStorage<MeStateSettings>(LOCAL_STORAGE_KEYS.SETTINGS, settings);
 };
 
+// pass statusCode of '400' to simulate failure response
+// todo: type interfaces for these paramaters & create consts for various methods/statuscodes
+const defaultEndpoint = `${process.env.MOCK_POSTMAN_URI}/api/admin/users`;
+export const tempFetch = (endpoint = defaultEndpoint, method, payload, statusCode = '200') => {
+  return fetch(endpoint, {
+    body: JSON.stringify(payload),
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      'x-api-key': `${process.env.POSTMAN_API_KEY}`,
+      'x-mock-response-code': `${statusCode}`, // postman specific
+    },
+    method,
+  }).then(response => response.json());
+};
+
 export default {
   getApps,
   getLayouts,
@@ -166,4 +179,5 @@ export default {
   saveApps,
   saveLayout,
   saveSettings,
+  tempFetch,
 };

@@ -1,40 +1,66 @@
 import styled from 'styled-components';
 
-// placeholder styles until designs come in
-export const Input = styled.input`
-  margin-left: 10px;
-`;
-
-export const Select = styled.select`
-  margin-left: 10px;
-`;
-
 export const Label = styled.label`
-  padding: 10px;
+  display: block;
+  height: 20px;
+  margin: 30px 5px;
+  & > input,
+  & > select {
+    margin-left: 15px;
+  }
 `;
 
-export const Form = styled.form`
-  align-items: center;
-  border: 2px solid dodgerblue;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: center;
-  justify-content: center;
-  width: 100vw;
-`;
-
-// placeholder message until design/flow comes in
 export const Message = styled.div`
   background-color: #4dba2c;
   display: flex;
   color: black;
-  font-size: 1.5em;
-  margin: 10px 10px;
-  padding: 10px 10px;
+  font-size: 12px;
+  margin: 5px 5px;
+  padding: 5px 5px;
 `;
 
-export const ErrorMessage = styled(Message)`
-  background-color: #f46542;
-  color: white;
+export const Error = styled.div`
+  background-color: crimson;
+  color: offwhite;
+  display: block;
+  height: auto;
+`;
+
+export const Wrapper = styled.div`
+  align-items: center;
+  background-color: #edeeef;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+
+  & > button {
+    margin-right: 5px;
+  }
+`;
+
+export const Button = styled.button`
+  background-color: dodgerblue;
+  border: none;
+  border-radius: 3px;
+  margin: 10px 5px;
+  padding: 5px;
+
+  &:hover {
+    background-color: salmon;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: grey;
+    cursor: default;
+  }
+`;
+
+export const H3 = styled.h3`
+  text-align: center;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  font-size: 1.25rem;
+  color: dodgerblue;
 `;

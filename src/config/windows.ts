@@ -22,7 +22,7 @@ export const initOnStartWindows = {
     autoShow: false,
     contextMenu: !isProduction,
     defaultCentered: true,
-    defaultHeight: 700,
+    defaultHeight: 600,
     defaultWidth: 600,
     // temp until designs come in for custom frame
     frame: true,

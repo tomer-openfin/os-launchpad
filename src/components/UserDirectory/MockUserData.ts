@@ -10,6 +10,8 @@ export default [
     middleInitial: 'M1',
     organizationId: 'o1',
     isAdmin: true,
+    isInitialized: true,
+    dateStarted: 'Thu Nov 15 2018',
   },
   {
     id: 2,
@@ -21,6 +23,8 @@ export default [
     middleInitial: 'M2',
     organizationId: 'o2',
     isAdmin: true,
+    isInitialized: true,
+    dateStarted: 'Thu Nov 15 2018',
   },
   {
     id: 3,
@@ -32,6 +36,8 @@ export default [
     middleInitial: 'M3',
     organizationId: 'o3',
     isAdmin: true,
+    isInitialized: true,
+    dateStarted: 'Thu Nov 15 2018',
   },
   {
     id: 4,
@@ -43,6 +49,8 @@ export default [
     middleInitial: 'M4',
     organizationId: 'o4',
     isAdmin: true,
+    isInitialized: true,
+    dateStarted: 'Thu Nov 15 2018',
   },
   {
     id: 5,
@@ -54,6 +62,8 @@ export default [
     middleInitial: 'M5',
     organizationId: 'o5',
     isAdmin: true,
+    isInitialized: true,
+    dateStarted: 'Thu Nov 15 2018',
   },
   {
     id: 6,
@@ -65,6 +75,8 @@ export default [
     middleInitial: 'M6',
     organizationId: 'o6',
     isAdmin: true,
+    isInitialized: true,
+    dateStarted: 'Thu Nov 15 2018',
   },
   {
     id: 7,
@@ -76,6 +88,8 @@ export default [
     middleInitial: 'M7',
     organizationId: 'o7',
     isAdmin: true,
+    isInitialized: true,
+    dateStarted: 'Thu Nov 15 2018',
   },
   {
     id: 8,
@@ -87,6 +101,8 @@ export default [
     middleInitial: 'M8',
     organizationId: 'o8',
     isAdmin: true,
+    isInitialized: true,
+    dateStarted: 'Thu Nov 15 2018',
   },
   {
     id: 9,
@@ -98,6 +114,8 @@ export default [
     middleInitial: 'M9',
     organizationId: 'o9',
     isAdmin: true,
+    isInitialized: true,
+    dateStarted: 'Thu Nov 15 2018',
   },
   {
     id: 10,
@@ -109,5 +127,7 @@ export default [
     middleInitial: 'M10',
     organizationId: 'o10',
     isAdmin: true,
+    isInitialized: true,
+    dateStarted: 'Thu Nov 15 2018',
   },
 ];

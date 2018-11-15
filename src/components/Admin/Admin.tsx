@@ -1,15 +1,22 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
+import { tempFetch } from '../../services/ApiService';
+import NewUserForm from '../NewUserForm';
 import UserDirectory from '../UserDirectory';
 
 import { LinksWrapper, TabsWrapper, TabWrapper, Wrapper } from './';
 
-import { APP_MANAGER_SUB_ROUTE, IMPORT_USERS_SUB_ROUTE, NEW_USER_SUB_ROUTE, THEME_SETTINGS_SUB_ROUTE, USER_DIRECTORY_SUB_ROUTE } from '../Router/const';
+import { APP_MANAGER_SUB_ROUTE, NEW_USER_SUB_ROUTE, THEME_SETTINGS_SUB_ROUTE, USER_DIRECTORY_SUB_ROUTE } from '../Router/const';
 
 interface Props {
   isAdmin: boolean;
 }
+
+const NewUserFormWithProps = props => {
+  // todo: update with real POST once API is ready
+  return <NewUserForm createUser={tempFetch} {...props} />;
+};
 
 const Tabs = () => {
   return (
@@ -21,7 +28,7 @@ const Tabs = () => {
           </TabWrapper>
 
           <TabWrapper>
-            <TabLink activeOnlyWhenExact={true} label="User Directory" to={USER_DIRECTORY_SUB_ROUTE} />
+            <TabLink activeOnlyWhenExact={true} label="User Manager" to={USER_DIRECTORY_SUB_ROUTE} />
           </TabWrapper>
 
           <TabWrapper>
@@ -34,6 +41,9 @@ const Tabs = () => {
         <Route exact path={USER_DIRECTORY_SUB_ROUTE} component={UserDirectory} />
 
         <Route exact path={THEME_SETTINGS_SUB_ROUTE} component={ThemeSettings} />
+
+        {/* render the new user form with passed in props */}
+        <Route exact path={NEW_USER_SUB_ROUTE} render={NewUserFormWithProps} />
       </TabsWrapper>
     </Router>
   );
@@ -56,12 +66,7 @@ const TabLink = ({ label, to, activeOnlyWhenExact }) => {
 };
 
 const renderDashboard = () => {
-  return (
-    <>
-      <Link to={NEW_USER_SUB_ROUTE}>Create New User</Link> <Link to={IMPORT_USERS_SUB_ROUTE}>Import Users</Link>
-      <Tabs />
-    </>
-  );
+  return <Tabs />;
 };
 
 const Admin = ({ isAdmin }: Props) => <Wrapper>{isAdmin ? renderDashboard() : <h1>You do not have clearance to see the admin tools.</h1>}</Wrapper>;

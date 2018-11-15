@@ -13,7 +13,7 @@ export const TabsWrapper = styled.div`
 export const LinksWrapper = styled.div`
   display: flex;
   flex-wrap: nowrap;
-  margin: 30px 0;
+  margin: 10px 0;
   justify-content: space-evenly;
   text-transform: uppercase;
 `;

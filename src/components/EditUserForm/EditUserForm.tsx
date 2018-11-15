@@ -3,9 +3,9 @@ import * as React from 'react';
 
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 
-import { ErrorResponse, Response, StyledButton, StyledError, StyledLabel, StyledWrapper } from './EditUserForm.css';
-
 import noop from '../../utils/noop';
+import { validateEmail, validateTextField } from '../../utils/validators';
+import { ErrorResponse, Response, StyledButton, StyledError, StyledLabel, StyledWrapper } from './EditUserForm.css';
 
 interface CurrentUserData {
   email: string;
@@ -36,38 +36,6 @@ interface State {
   responseReceived: boolean;
   result: Result;
 }
-
-// extract validation utilities to seperate file OR decide if want to use YUP library
-const validateEmail = value => {
-  let error;
-
-  // temp regex email validation, using RegExp Constructor to avoid max-line 160
-  const EMAIL_REGEXP = new RegExp(
-    [
-      '^(([^<>()[\\]\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\.,;:\\s@"]+)*)',
-      '|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.',
-      '[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+',
-      '[a-zA-Z]{2,}))$',
-    ].join(''),
-  );
-
-  if (!value) {
-    error = 'Email Input Field Required';
-  } else if (!EMAIL_REGEXP.test(value)) {
-    error = 'Invalid Email format';
-  }
-  return error;
-};
-
-const validateTextField = value => {
-  let error;
-
-  if (!value) {
-    error = 'Input Field Required';
-  }
-
-  return error;
-};
 
 class EditUserForm extends React.Component<Props, State> {
   state = {
@@ -123,7 +91,7 @@ class EditUserForm extends React.Component<Props, State> {
         }}
         onSubmit={(inputValues, actions) => {
           // PUT on /users
-          updateUser(inputValues)
+          updateUser(undefined, 'PUT', inputValues, undefined)
             .then(response => {
               // 400 received
               if (response.status === 'error') {
