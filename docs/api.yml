@@ -450,7 +450,7 @@ definitions:
       username:
         type: string
         description: Username (email)
-      password:
+      session:
         type: string
         description: Old Password
       newPassword:
