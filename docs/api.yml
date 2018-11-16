@@ -44,7 +44,7 @@ paths:
         '401':
           description: Login Unsuccessful
           schema:
-            $ref: '#/definitions/AuthError'
+            $ref: '#/definitions/AuthChallengeError'
 
   /auth/logout:
     post:
@@ -74,7 +74,7 @@ paths:
         '401':
           description: Password update unsuccessful
           schema:
-            $ref: '#/definitions/NewPasswordError'
+            $ref: '#/definitions/AuthChallengeError'
         '400':
           description: Bad Request
 
@@ -525,19 +525,22 @@ definitions:
         type: string
         description: error message
 
-  NewPasswordError:
-    title: authentication error payload
+  AuthChallengeError:
+    title: authentication challenge error
     type: object
     properties:
       status:
         type: string
-        description: error status/type
+        description: challenge type
       message:
         type: string
         description: error message
+      session:
+        type: string
+        description: challenge session id
       requiredFields:
         type: array
-        description: required addition user properties (initial login)
+        description: any required user properties (initial login)
         items:
           type: string
 
@@ -548,10 +551,10 @@ definitions:
       email:
         type: string
         description: email
-      firstname:
+      firstName:
         type: string
         description: first name
-      lastname:
+      lastName:
         type: string
         description: last name
       isAdmin:
