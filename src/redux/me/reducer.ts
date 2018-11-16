@@ -1,18 +1,7 @@
-import {
-  GET_SETTINGS,
-  LOGIN,
-  SET_AUTO_HIDE,
-  SET_LAUNCHER_POSITION,
-  SET_ME,
-} from './actions';
-import {
-  GetSettingsSuccess,
-  LauncherPosition,
-  MeActions,
-  MeState,
-  SetLaunchbarPayload,
-  SetMePayload,
-} from './types';
+import { GET_SETTINGS, LOGIN, SET_AUTO_HIDE, SET_LAUNCHER_POSITION, SET_ME } from './actions';
+
+import { LauncherPosition } from '../../types/commons';
+import { GetSettingsSuccess, MeActions, MeState, SetLaunchbarPayload, SetMePayload } from './types';
 
 export const defaultState: MeState = {
   isAdmin: false,

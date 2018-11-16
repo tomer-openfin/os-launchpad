@@ -32,6 +32,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, '/build'),
+    publicPath: '/',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
@@ -48,7 +49,7 @@ module.exports = {
     host: HOST,
     port: PORT,
     proxy: {
-      '/api/**' : {
+      '/api/**': {
         changeOrigin: true,
         logLevel: 'debug',
         target: BACKEND,

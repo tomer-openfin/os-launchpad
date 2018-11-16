@@ -1,5 +1,7 @@
 import { ADD_TO_APP_LAUNCHER, GET_APP_DIRECTORY_LIST, REMOVE_FROM_APP_LAUNCHER, SET_APP_DIRECTORY_LIST, SET_APP_LAUNCHER_IDS } from './actions';
-import { App, AppsById, AppsState } from './types';
+
+import { App } from '../../types/commons';
+import { AppsById, AppsState } from './types';
 
 const formatByIds = (appList: App[]) =>
   appList.reduce((appsById: AppsById, app: App) => {

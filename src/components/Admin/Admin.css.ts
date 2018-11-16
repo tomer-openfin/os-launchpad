@@ -1,42 +1,56 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
+import { NavLink } from 'react-router-dom';
 import { Color } from '../../styles';
+
+const TABS_SIZE = '25px';
 
 // placeholder tabs until design finalized
 export const TabsWrapper = styled.div`
-  width: auto;
-  height: auto;
-  margin: 0;
-  padding: 0;
-`;
-
-export const LinksWrapper = styled.div`
   display: flex;
+  width: 100%;
   flex-wrap: nowrap;
-  margin: 10px 0;
   justify-content: space-evenly;
-  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: ${TABS_SIZE};
 `;
 
-export const TabWrapper = styled.div`
-  padding: 1rem;
-  background: ${Color.WHITE};
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  color: ${Color.BLACK};
-  text-decoration: none !important;
+const activeClassName = 'active-link';
 
-  .active-tab {
-    color: crimson;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-bottom: 2px solid black;
-  }
+export const TabLink = styled(NavLink).attrs({ activeClassName })`
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  background: ${Color.DUSTY_GREY};
+  color: ${Color.SEAGULL};
+  text-decoration: none;
+  font-weight: 200;
+  font-size: 10px;
 
-  &:hover,
-  &:active {
+  &:hover {
     background: ${Color.LIGHTER_GREY};
   }
+
+  &.${activeClassName} {
+    background: ${Color.SEAGULL};
+    color: ${Color.DUSTY_GREY};
+  }
 `;
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+`;
+
+export const ContentWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  margin-top: ${TABS_SIZE};
+  overflow: hidden;
+`;

@@ -1,4 +1,4 @@
-import { ADMIN_ROUTE, APP_DIRECTORY_ROUTE, APP_LAUNCHER_OVERFLOW_ROUTE, LAYOUTS_ROUTE, LOGIN_ROUTE, SETTINGS_ROUTE } from '../components/Router/const';
+import ROUTES from '../components/Router/const';
 
 const { NODE_ENV } = process.env;
 
@@ -37,7 +37,7 @@ export const initOnStartWindows = {
     saveWindowState: false,
     showTaskbarIcon: true,
     // smallWindow: false,
-    url: ADMIN_ROUTE,
+    url: ROUTES.ADMIN,
     waitForPageLoad: true,
   },
   appDirectory: {
@@ -59,7 +59,7 @@ export const initOnStartWindows = {
     saveWindowState: false,
     showTaskbarIcon: true,
     // smallWindow: false,
-    url: APP_DIRECTORY_ROUTE,
+    url: ROUTES.APP_DIRECTORY,
     waitForPageLoad: true,
   },
   appLauncherOverflow: {
@@ -81,7 +81,7 @@ export const initOnStartWindows = {
     saveWindowState: false,
     showTaskbarIcon: true,
     // smallWindow: false,
-    url: APP_LAUNCHER_OVERFLOW_ROUTE,
+    url: ROUTES.APP_LAUNCHER_OVERFLOW,
     waitForPageLoad: true,
   },
   layouts: {
@@ -103,7 +103,7 @@ export const initOnStartWindows = {
     saveWindowState: false,
     showTaskbarIcon: true,
     // smallWindow: false,
-    url: LAYOUTS_ROUTE,
+    url: ROUTES.LAYOUTS,
     waitForPageLoad: true,
   },
   settings: {
@@ -125,7 +125,7 @@ export const initOnStartWindows = {
     saveWindowState: false,
     showTaskbarIcon: true,
     // smallWindow: false,
-    url: SETTINGS_ROUTE,
+    url: ROUTES.SETTINGS,
     waitForPageLoad: true,
   },
 };
@@ -151,7 +151,7 @@ const config = {
     saveWindowState: true,
     showTaskbarIcon: true,
     // smallWindow: false,
-    url: LOGIN_ROUTE,
+    url: ROUTES.LOGIN,
     waitForPageLoad: true,
   },
 };

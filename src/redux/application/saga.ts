@@ -56,7 +56,7 @@ function* openfinSetup(action: OpenfinReadyAction) {
     // sets to TOP on initial load
     yield setLauncherBounds();
 
-    // TODO - Move to redux
+    // Hide launcher
     fin.desktop.Application.getCurrent()
       .getWindow()
       .hide();

@@ -1,14 +1,17 @@
-// todo: export as a ROUTES object
-export const ADMIN_ROUTE = '/admin';
-export const ADMIN_USERS_SUB_ROUTE = `${ADMIN_ROUTE}/users`;
-export const APP_DIRECTORY_ROUTE = '/app-directory';
-export const APP_LAUNCHER_OVERFLOW_ROUTE = '/app-overflow';
-export const APP_MANAGER_SUB_ROUTE = `${ADMIN_USERS_SUB_ROUTE}/app-manager`;
-export const HOME_ROUTE = '/';
-export const IMPORT_USERS_SUB_ROUTE = `${ADMIN_USERS_SUB_ROUTE}/import-users`;
-export const LAYOUTS_ROUTE = '/layouts';
-export const LOGIN_ROUTE = '/login';
-export const NEW_USER_SUB_ROUTE = `${ADMIN_USERS_SUB_ROUTE}/new-user`;
-export const SETTINGS_ROUTE = '/settings';
-export const THEME_SETTINGS_SUB_ROUTE = `${ADMIN_USERS_SUB_ROUTE}/theme-settings`;
-export const USER_DIRECTORY_SUB_ROUTE = `${ADMIN_USERS_SUB_ROUTE}/user-directory`;
+const ROUTES = {
+  ADMIN: '/admin',
+  ADMIN_APPS: '/admin/apps',
+  ADMIN_APPS_NEW: '/admin/apps/new',
+  ADMIN_SETTINGS: `/admin/settings`,
+  ADMIN_USERS: '/admin/users',
+  ADMIN_USERS_IMPORT: `/admin/users/import`,
+  ADMIN_USERS_NEW: `/admin/users/new`,
+  APP_DIRECTORY: '/app-directory',
+  APP_LAUNCHER_OVERFLOW: '/app-overflow',
+  HOME: '/',
+  LAYOUTS: '/layouts',
+  LOGIN: '/login',
+  SETTINGS: '/settings',
+};
+
+export default ROUTES;

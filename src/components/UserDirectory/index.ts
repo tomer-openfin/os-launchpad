@@ -1,4 +1,4 @@
-import Component from './UserDirectory';
+import Component from './UserDirectoryContainer';
 
 export * from './UserDirectory.css';
 

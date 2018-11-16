@@ -5,8 +5,11 @@ import * as saveLayoutIcon from '../../assets/SaveLayout.svg';
 
 import { noop } from 'redux-saga/utils';
 import { LAYOUTS_WINDOW } from '../../config/windows';
-import { LauncherPosition } from '../../redux/me/types';
-import IconSpace from '../IconSpace/index';
+
+import IconSpace from '../IconSpace';
+
+import { LauncherPosition } from '../../types/commons';
+
 import { Wrapper } from './Layouts.css';
 
 interface Props {

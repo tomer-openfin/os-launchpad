@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { AppDescription, AppName, CTA, InfoWrapper, Row, Wrapper } from './AppCard.css';
 
-import { App } from '../../redux/apps/types';
+import { App } from '../../types/commons';
 
 import createFromManifest from '../../utils/createFromManifest';
 import IconSpace from '../IconSpace';

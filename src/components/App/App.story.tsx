@@ -1,8 +1,9 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { LauncherPosition } from '../../redux/me/types';
 import noop from '../../utils/noop';
+
+import { LauncherPosition } from '../../types/commons';
 
 import App from './App';
 

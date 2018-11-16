@@ -1,79 +1,81 @@
 import * as React from 'react';
 
-import debounce from 'lodash-es/debounce';
-import escapeRegExp from 'lodash-es/escapeRegExp';
-import { Link } from 'react-router-dom';
+import { ButtonLink, HeadingWrapper, Input, Label, LinkButton, LinkWrapper, ListElement, ListWrapper, Select, Wrapper } from './UserDirectory.css';
 
-import { Button, HeadingWrapper, Input, Label, LinkButton, ListWrapper, Select, Wrapper } from './';
+import { User } from '../../types/commons';
 
 import noop from '../../utils/noop';
-import { IMPORT_USERS_SUB_ROUTE, NEW_USER_SUB_ROUTE } from '../Router/const';
-import MockUserData from './MockUserData';
-import { LinkWrapper } from './UserDirectory.css';
-
-interface Props {
-  // will GET a list from api/admin/users eventually, pass in as props
-  listOfUsers?: {};
-}
-
-interface State {
-  inputValue: string;
-  isSortingByLast: boolean;
-  selectValue: string;
-}
+import ROUTES from '../Router/const';
 
 const FIRST_NAME = 'firstName';
 const LAST_NAME = 'lastName';
 
-class UserDirectory extends React.Component<Props, State> {
+interface Props {
+  users: User[];
+}
+
+interface State {
+  search: string;
+  sort: string;
+}
+
+const defaultProps: Props = {
+  users: [],
+};
+
+class UserDirectory extends React.PureComponent<Props, State> {
+  static defaultProps = defaultProps;
+
   constructor(props) {
     super(props);
 
     this.state = {
-      inputValue: '',
-      isSortingByLast: true,
-      selectValue: 'lastName',
+      search: '',
+      sort: LAST_NAME,
     };
-
-    this.debouncedSearch = debounce(this.debouncedSearch, 500);
   }
 
-  debouncedSearch = inputValue => this.setState({ inputValue });
+  handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const { currentTarget } = e;
+    if (!currentTarget) return;
+    const { value } = currentTarget;
+    if (typeof value !== 'string') return;
 
-  handleInputChange = ({ target: { value } }) => {
-    // prevents re-renders from crashing due to expected regex statement
-    // i.e in search box: '\' or other regex chars need to be closed \ \ to be valid
-    const escapedRegexValue = escapeRegExp(value);
-    const cleanString = escapedRegexValue.replace(/[\\|&;$%@"<>()+,*]/g, '');
-    this.setState({ inputValue: cleanString });
+    const search = value;
 
-    this.debouncedSearch(cleanString);
+    this.setState({ search });
   };
 
-  handleSelectChange = ({ target: { value } }) => {
-    if (value === FIRST_NAME) {
-      this.setState(prevState => ({
-        isSortingByLast: !prevState.isSortingByLast,
-        selectValue: FIRST_NAME,
-      }));
-    } else {
-      this.setState({ isSortingByLast: true, selectValue: LAST_NAME });
-    }
+  handleSelectChange = (e: React.FormEvent<HTMLSelectElement>) => {
+    const { currentTarget } = e;
+    if (!currentTarget) return;
+    const { value } = currentTarget;
+    if (typeof value !== 'string') return;
+
+    const sort = value;
+
+    this.setState({ sort });
   };
 
-  sortIncomingData = data => {
-    const sortedData = data.sort((a, b) => {
-      const nameA = a.firstName.toUpperCase();
-      const nameB = b.firstName.toUpperCase();
+  // TODO: only sort on sort change and props update instead of every render,
+  // store derived (sorted) state to filter in render
+  sortUserData = (userData: User[], sortKey: string) =>
+    userData.sort((userA, userB) => {
+      const A = userA[sortKey];
+      const B = userB[sortKey];
 
-      if (nameA < nameB) return -1;
-      if (nameA > nameB) return 1;
+      if (A < B) return -1;
+      if (A > B) return 1;
 
       return 0;
     });
 
-    return sortedData;
-  };
+  filterUserList = search =>
+    this.props.users.filter(user =>
+      user.firstName
+        .concat(user.lastName)
+        .toLowerCase()
+        .indexOf(search.toLowerCase()) !== -1);
 
   renderButtons = () => {
     // TODO: unique user id can be used to eventually pass correct props to EDIT/DELETE
@@ -85,49 +87,36 @@ class UserDirectory extends React.Component<Props, State> {
     );
   };
 
-  // tslint:disable:jsx-no-multiline-js
   render() {
-    const { inputValue, isSortingByLast, selectValue } = this.state;
-    const regex = new RegExp(inputValue, 'i');
+    const { search, sort } = this.state;
 
     return (
       <Wrapper>
         <HeadingWrapper>
           <Label>
             Sort by
-            <Select onChange={this.handleSelectChange} value={selectValue}>
-              <option value="lastName">Last Name</option>
-              <option value="firstName">First Name</option>
+            <Select onChange={this.handleSelectChange} value={sort}>
+              <option value={LAST_NAME}>Last Name</option>
+              <option value={FIRST_NAME}>First Name</option>
             </Select>
           </Label>
 
-          <Input name="search" value={inputValue} onChange={this.handleInputChange} placeholder="Search users..." type="text" />
+          <Input name="search" value={search} onChange={this.handleInputChange} placeholder="Search users..." type="text" />
 
-          <Button>
-            <Link to={NEW_USER_SUB_ROUTE}>Create New User</Link>
-          </Button>
+          <ButtonLink to={ROUTES.ADMIN_USERS_NEW}>Create New User</ButtonLink>
 
-          <Button>
-            <Link to={IMPORT_USERS_SUB_ROUTE}>Import Users</Link>
-          </Button>
+          <ButtonLink to={ROUTES.ADMIN_USERS_IMPORT}>Import Users</ButtonLink>
         </HeadingWrapper>
 
         <ListWrapper>
-          {isSortingByLast
-            ? MockUserData.filter(user => user.lastName.match(regex)).map(user => (
-                <li key={user.id}>
-                  {user.lastName}, {user.firstName} | {user.email} | Admin: {user.isAdmin ? 'Yes' : 'No'} | Initialized: {user.isInitialized ? 'Yes' : 'No'} |
-                  Started: {user.dateStarted} {this.renderButtons()}
-                </li>
-              ))
-            : this.sortIncomingData(MockUserData)
-                .filter(user => user.firstName.match(regex))
-                .map(user => (
-                  <li key={user.id}>
-                    {`${user.firstName} ${user.lastName}`} | {user.email} | Admin: {user.isAdmin ? 'Yes' : 'No'} | Initialized:{' '}
-                    {user.isInitialized ? 'Yes' : 'No'} | Started: {user.dateStarted} {this.renderButtons()}
-                  </li>
-                ))}
+          {this.sortUserData(this.filterUserList(search), sort).map(user => (
+            <li key={user.id}>
+              <ListElement>{user.lastName}, {user.firstName}</ListElement>
+              <ListElement>{user.email}</ListElement>
+              <ListElement>Admin: {user.isAdmin ? 'Yes' : 'No'}</ListElement>
+              <ListElement>{this.renderButtons()}</ListElement>
+            </li>
+          ))}
         </ListWrapper>
       </Wrapper>
     );

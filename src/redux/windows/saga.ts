@@ -1,7 +1,7 @@
 import { Window } from '@giantmachines/redux-openfin';
 import { put, select, takeLatest } from 'redux-saga/effects';
 
-import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW } from '../../config/windows';
+import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGIN_WINDOW } from '../../config/windows';
 import { setAppOverflowWindowBounds, setLayoutsWindowBounds } from '../me';
 import { LAUNCH_WINDOW } from './actions';
 import { getWindowById } from './selectors';
@@ -73,10 +73,14 @@ function* watchOpenedWindow(action) {
   if (window.id === LAYOUTS_WINDOW) {
     yield setLayoutsWindowBounds();
   }
+
+  if (window.id === LOGIN_WINDOW) {
+    yield put(Window.showWindow({ ...window }));
+    yield put(Window.focusWindow({ ...window }));
+  }
 }
 
 export function* windowsSaga() {
   yield takeLatest(LAUNCH_WINDOW, watchLaunchWindow);
-  // TODO: import action type
   yield takeLatest(Window.WINDOW_OPENED, watchOpenedWindow);
 }

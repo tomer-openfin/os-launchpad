@@ -7,7 +7,7 @@ interface State {
   counter: number;
 }
 
-class App extends React.Component<{}, State> {
+class HMRTest extends React.Component<{}, State> {
   interval?: number;
 
   constructor(props) {
@@ -44,4 +44,4 @@ class App extends React.Component<{}, State> {
   }
 }
 
-export default App;
+export default HMRTest;

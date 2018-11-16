@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import routes from './routes';
 
@@ -15,13 +15,14 @@ const renderRoute = ({ component, exact, path }) => (
 );
 
 const Router = () => (
-  <BrowserRouter>
-    <div>
-      <GlobalStyle />
-
-      {routes.map(renderRoute)}
-    </div>
-  </BrowserRouter>
+  <>
+    <GlobalStyle />
+    <BrowserRouter>
+      <Switch>
+        {routes.map(renderRoute)}
+      </Switch>
+    </BrowserRouter>
+  </>
 );
 
 export default Router;

@@ -2,9 +2,10 @@ import styled, { css } from 'styled-components';
 
 import * as XIcon from '../../assets/TinyX.svg';
 
-import { LauncherPosition } from '../../redux/me';
 import { Color } from '../../styles/index';
 import { isLeftOrRight } from '../../utils/launcherPosition';
+
+import { LauncherPosition } from '../../types/commons';
 
 interface WrapperProps {
   launcherPosition: LauncherPosition;

@@ -4,8 +4,8 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
 
 import { validateEmail, validateTextField } from '../../utils/validators';
-import { USER_DIRECTORY_SUB_ROUTE } from '../Router/const';
-import { Button, Error, H3, Label, Message, Wrapper } from './NewUserForm.css';
+import ROUTES from '../Router/const';
+import { Button, ButtonLink, Error, Heading, Label, Message, Row, Wrapper } from './NewUserForm.css';
 
 interface Result {
   status: string;
@@ -118,7 +118,7 @@ class NewUserForm extends React.Component<Props, State> {
             {this.renderMessage(result)}
 
             <Form>
-              <H3>Create New User</H3>
+              <Heading>Create New User</Heading>
 
               <Label>
                 Username:
@@ -164,13 +164,13 @@ class NewUserForm extends React.Component<Props, State> {
                 </Field>
               </Label>
 
-              <Button type="submit" disabled={isSubmitting || !isValid}>
-                Submit
-              </Button>
+              <Row>
+                <Button type="submit" disabled={isSubmitting || !isValid}>
+                  Submit
+                </Button>
 
-              <Button>
-                <Link to={USER_DIRECTORY_SUB_ROUTE}>Back</Link>
-              </Button>
+                <ButtonLink to={ROUTES.ADMIN_USERS}>Back</ButtonLink>
+              </Row>
             </Form>
           </Wrapper>
         )}

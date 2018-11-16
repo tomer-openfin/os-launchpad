@@ -9,7 +9,7 @@ import {
   Wrapper,
 } from './AppDirectory.css';
 
-import { App } from '../../redux/apps/types';
+import { App } from '../../types/commons';
 
 import { APP_DIRECTORY_WINDOW } from '../../config/windows';
 import noop from '../../utils/noop';
@@ -35,7 +35,7 @@ const defaultProps: Props = {
   removeWindowListener: noop,
 };
 
-class AppDirectory extends React.Component<Props, State> {
+class AppDirectory extends React.PureComponent<Props, State> {
   static defaultProps = defaultProps;
   private searchInput: HTMLInputElement | undefined;
 
@@ -61,23 +61,22 @@ class AppDirectory extends React.Component<Props, State> {
     const { value } = currentTarget;
     if (typeof value !== 'string') return;
 
+    const search = value;
+
     this.setState({
-      search: value,
+      search,
     });
   };
 
-  filteredAppList() {
-    const { appList } = this.props;
-    const { search } = this.state;
-
-    return appList.filter(app => app.name.toLowerCase().indexOf(search.toLowerCase()) !== -1);
-  }
+  filterAppList = search => this.props.appList.filter(app => app.name.toLowerCase().indexOf(search.toLowerCase()) !== -1);
 
   setSearchInputRef = input => {
     this.searchInput = input;
   };
 
   render() {
+    const { search } = this.state;
+
     return(
       <Wrapper>
         <SearchHeader>
@@ -87,7 +86,7 @@ class AppDirectory extends React.Component<Props, State> {
         </SearchHeader>
 
         <Directory>
-          {this.filteredAppList().map((app: App) => <AppCard key={app.id} app={app} />)}
+          {this.filterAppList(search).map((app: App) => <AppCard key={app.id} app={app} />)}
         </Directory>
       </Wrapper>
     );

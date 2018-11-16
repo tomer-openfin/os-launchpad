@@ -3,8 +3,9 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import AppData from '../../const/AppData';
-import { LauncherPosition } from '../../redux/me/types';
 import { noopCreator } from '../../utils/noop';
+
+import { LauncherPosition } from '../../types/commons';
 
 import AppList from './AppList';
 

@@ -1,16 +1,8 @@
 import { createAction } from 'redux-actions';
 
-import { ErrorResponse } from '../../types/commons';
+import { ErrorResponse, LauncherPosition } from '../../types/commons';
 import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
-import {
-  LauncherPosition,
-  LoginRequestPayload,
-  LoginSuccessPayload,
-  MeStateSettings,
-  SetAutoHidePayload,
-  SetLaunchbarPayload,
-  SetMePayload,
-} from './types';
+import { LoginRequestPayload, LoginSuccessPayload, MeStateSettings, SetAutoHidePayload, SetLaunchbarPayload, SetMePayload } from './types';
 
 // Action Types
 export const GET_SETTINGS = generateAsyncActionTypes('GET_SETTINGS');
@@ -31,15 +23,6 @@ export const loginError = createAction<ErrorResponse>(LOGIN.ERROR);
 export const saveSettingsRequest = createAction<MeStateSettings>(SAVE_SETTINGS.REQUEST);
 export const saveSettingsSuccess = createAction(SAVE_SETTINGS.SUCCESS);
 export const saveSettingsError = createAction<ErrorResponse>(SAVE_SETTINGS.ERROR);
-export const setMe = createAction<SetMePayload, boolean, string>(
-  SET_ME,
-  (isAdmin, username) => ({ isAdmin, username }),
-);
-export const setLaunchbarPosition = createAction<SetLaunchbarPayload, LauncherPosition>(
-  SET_LAUNCHER_POSITION,
-  launcherPosition => ({ launcherPosition }),
-);
-export const setAutoHide = createAction<SetAutoHidePayload, boolean>(
-  SET_AUTO_HIDE,
-  autoHide => ({ autoHide }),
-);
+export const setMe = createAction<SetMePayload, boolean, string>(SET_ME, (isAdmin, username) => ({ isAdmin, username }));
+export const setLaunchbarPosition = createAction<SetLaunchbarPayload, LauncherPosition>(SET_LAUNCHER_POSITION, launcherPosition => ({ launcherPosition }));
+export const setAutoHide = createAction<SetAutoHidePayload, boolean>(SET_AUTO_HIDE, autoHide => ({ autoHide }));

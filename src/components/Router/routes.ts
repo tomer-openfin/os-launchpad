@@ -1,14 +1,4 @@
-import {
-  ADMIN_ROUTE,
-  APP_DIRECTORY_ROUTE,
-  APP_LAUNCHER_OVERFLOW_ROUTE,
-  HOME_ROUTE,
-  LAYOUTS_ROUTE,
-  LOGIN_ROUTE,
-  NEW_USER_SUB_ROUTE,
-  SETTINGS_ROUTE,
-  USER_DIRECTORY_SUB_ROUTE,
-} from './const';
+import ROUTES from './const';
 
 import Admin from '../Admin';
 import App from '../App';
@@ -16,54 +6,42 @@ import AppDirectory from '../AppDirectory';
 import AppOverflow from '../AppOverflow';
 import Layouts from '../Layouts';
 import Login from '../Login';
-import NewUserForm from '../NewUserForm';
 import Settings from '../Settings';
-import UserDirectory from '../UserDirectory';
 
 export default [
   {
     component: Admin,
-    exact: true,
-    path: ADMIN_ROUTE,
+    exact: false,
+    path: ROUTES.ADMIN,
   },
   {
     component: App,
     exact: true,
-    path: HOME_ROUTE,
+    path: ROUTES.HOME,
   },
   {
     component: Login,
     exact: true,
-    path: LOGIN_ROUTE,
+    path: ROUTES.LOGIN,
   },
   {
     component: AppDirectory,
     exact: true,
-    path: APP_DIRECTORY_ROUTE,
+    path: ROUTES.APP_DIRECTORY,
   },
   {
     component: AppOverflow,
     exact: true,
-    path: APP_LAUNCHER_OVERFLOW_ROUTE,
+    path: ROUTES.APP_LAUNCHER_OVERFLOW,
   },
   {
     component: Settings,
     exact: true,
-    path: SETTINGS_ROUTE,
+    path: ROUTES.SETTINGS,
   },
   {
     component: Layouts,
     exact: true,
-    path: LAYOUTS_ROUTE,
-  },
-  {
-    component: UserDirectory,
-    exact: true,
-    path: USER_DIRECTORY_SUB_ROUTE,
-  },
-  {
-    component: NewUserForm,
-    exact: true,
-    path: NEW_USER_SUB_ROUTE,
+    path: ROUTES.LAYOUTS,
   },
 ];

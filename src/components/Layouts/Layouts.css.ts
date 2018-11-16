@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-import { LauncherPosition } from '../../redux/me';
+import { LauncherPosition } from '../../types/commons';
+
 import { isLeftOrRight } from '../../utils/launcherPosition';
 
 interface WrapperProps {

@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 import * as ellipsisIcon from '../../assets/Ellipsis.svg';
 
-import { LauncherPosition } from '../../redux/me';
 import { Color } from '../../styles/index';
 import { isLeftOrRight } from '../../utils/launcherPosition';
+
+import { LauncherPosition } from '../../types/commons';
 
 interface CommonProps {
   launcherPosition: LauncherPosition;

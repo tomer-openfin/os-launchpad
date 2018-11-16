@@ -10,135 +10,132 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
       }
     }
   >
-    <form
-      className="sc-eHgmQL jOpCAL"
-      onSubmit={[Function]}
+    <div
+      className="sc-eHgmQL kDUNvi"
     >
-      <a
-        href="/admin"
-        onClick={[Function]}
+      <form
+        onSubmit={[Function]}
       >
-        Back to Admin Dashboard
-      </a>
-      <label
-        className="sc-hSdWYo cQPnHM"
-      >
-        Username
-        <input
-          className="sc-kkGfuU kFkMsl"
-          name="username"
-          onChange={[Function]}
-          required={true}
-          type="text"
-          value=""
-        />
-      </label>
-      <label
-        className="sc-hSdWYo cQPnHM"
-      >
-        Email
-        <input
-          className="sc-kkGfuU kFkMsl"
-          name="email"
-          onChange={[Function]}
-          required={true}
-          type="email"
-          value=""
-        />
-      </label>
-      <label
-        className="sc-hSdWYo cQPnHM"
-      >
-        Password
-        <input
-          className="sc-kkGfuU kFkMsl"
-          name="password"
-          onChange={[Function]}
-          required={true}
-          type="password"
-          value=""
-        />
-      </label>
-      <label
-        className="sc-hSdWYo cQPnHM"
-      >
-        First Name
-        <input
-          className="sc-kkGfuU kFkMsl"
-          name="firstName"
-          onChange={[Function]}
-          required={true}
-          type="text"
-          value=""
-        />
-      </label>
-      <label
-        className="sc-hSdWYo cQPnHM"
-      >
-        Last Name
-        <input
-          className="sc-kkGfuU kFkMsl"
-          name="lastName"
-          onChange={[Function]}
-          required={true}
-          type="text"
-          value=""
-        />
-      </label>
-      <label
-        className="sc-hSdWYo cQPnHM"
-      >
-        Middle Initial
-        <input
-          className="sc-kkGfuU kFkMsl"
-          name="middleInitial"
-          onChange={[Function]}
-          required={false}
-          type="text"
-          value=""
-        />
-      </label>
-      <label
-        className="sc-hSdWYo cQPnHM"
-      >
-        OrganizationId
-        <input
-          className="sc-kkGfuU kFkMsl"
-          name="organizationId"
-          onChange={[Function]}
-          required={true}
-          type="text"
-          value=""
-        />
-      </label>
-      <label
-        className="sc-hSdWYo cQPnHM"
-      >
-        Make an administrator?
-        <select
-          className="sc-iAyFgw eKAoBT"
-          name="isAdmin"
-          onChange={[Function]}
-          value="no"
+        <div
+          className="sc-brqgnP lilieR"
         >
-          <option
-            value="yes"
+          Create New User
+        </div>
+        <label
+          className="sc-kkGfuU cGHGbU"
+        >
+          Username:
+          <input
+            name="username"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </label>
+        <label
+          className="sc-kkGfuU cGHGbU"
+        >
+          Email:
+          <input
+            name="email"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="email"
+            value=""
+          />
+        </label>
+        <label
+          className="sc-kkGfuU cGHGbU"
+        >
+          Password:
+          <input
+            name="password"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="password"
+            value=""
+          />
+        </label>
+        <label
+          className="sc-kkGfuU cGHGbU"
+        >
+          First Name:
+          <input
+            name="firstName"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </label>
+        <label
+          className="sc-kkGfuU cGHGbU"
+        >
+          Last Name:
+          <input
+            name="lastName"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </label>
+        <label
+          className="sc-kkGfuU cGHGbU"
+        >
+          Middle Initial:
+          <input
+            name="middleInitial"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </label>
+        <label
+          className="sc-kkGfuU cGHGbU"
+        >
+          Make an administrator?
+          <select
+            name="isAdmin"
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder="no"
+            value={false}
           >
-            Yes
-          </option>
-          <option
-            value="no"
+            <option
+              value="no"
+            >
+              No
+            </option>
+            <option
+              value="yes"
+            >
+              Yes
+            </option>
+          </select>
+        </label>
+        <div
+          className="sc-cMljjf hWmwxl"
+        >
+          <button
+            className="sc-cvbbAY gQYeUJ"
+            disabled={true}
+            type="submit"
           >
-            No
-          </option>
-        </select>
-      </label>
-      <input
-        className="sc-kkGfuU kFkMsl"
-        type="submit"
-        value="Submit"
-      />
-    </form>
+            Submit
+          </button>
+          <a
+            className="sc-jWBwVP hLaaUt"
+            href="/admin/users"
+            onClick={[Function]}
+          >
+            Back
+          </a>
+        </div>
+      </form>
+    </div>
   </div>
   <button
     onClick={[Function]}

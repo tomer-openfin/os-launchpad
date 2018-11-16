@@ -13,13 +13,7 @@ import {
   setMe,
 } from './actions';
 
-// Enums
-export enum LauncherPosition {
-  Top = 'TOP',
-  Right = 'RIGHT',
-  Bottom = 'BOTTOM',
-  Left = 'LEFT',
-}
+import { LauncherPosition } from '../../types/commons';
 
 // State
 export interface MeStateSettings {

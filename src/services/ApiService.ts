@@ -107,23 +107,13 @@ export const saveLayout = (layout: Layout) => {
  * @returns {Promise<>}
  */
 export const login = payload => {
-  if (checkIsEnterprise()) {
-    const options = createPostOptions(payload);
+  const options = createPostOptions(payload);
 
-    options.credentials = 'include';
+  options.credentials = 'include';
 
-    return fetch(LOGIN_URL, options)
-      .then(resp => resp.json())
-      .then(resp => resp);
-  }
-
-  const { email, password } = payload;
-
-  if (email === 'test@test.com' && password === 'test') {
-    return Promise.resolve({ status: 'ok' });
-  }
-
-  return Promise.resolve({ status: 'authFailure' });
+  return fetch(LOGIN_URL, options)
+    .then(resp => resp.json())
+    .then(resp => resp);
 };
 
 /**

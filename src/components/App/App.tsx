@@ -8,9 +8,9 @@ import * as searchIcon from '../../assets/Search.svg';
 import * as settingsIcon from '../../assets/Settings.svg';
 
 import windowsConfig from '../../config/windows';
-import { LauncherPosition } from '../../redux/me';
 import { WindowConfig } from '../../redux/windows/types';
 
+import { LauncherPosition } from '../../types/commons';
 import AppList from '../AppList';
 import IconSpace from '../IconSpace';
 import { EllipsisImage, EllipsisWrapper, Separator, Wrapper } from './App.css';

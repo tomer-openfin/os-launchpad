@@ -1,19 +1,4 @@
-import { Action } from 'redux';
-
-export interface App {
-  appPage: string;
-  contact_email: string;
-  description: string;
-  icon: string;
-  id: number;
-  images: Array<{}>;
-  manifest_url: string;
-  name: string;
-  publisher: string;
-  signature: string;
-  support_email: string | null;
-  title: string;
-}
+import { App } from '../../types/commons';
 
 // Reducer
 export interface AppsById {

@@ -1,10 +1,9 @@
 import { createAction } from 'redux-actions';
 
-import { ErrorResponse } from '../../types/commons';
+import { App, ErrorResponse } from '../../types/commons';
 import noop from '../../utils/noop';
 
 import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
-import { App } from './types';
 
 // Action Types
 export const GET_APP_DIRECTORY_LIST = 'GET_APP_DIRECTORY_LIST';
