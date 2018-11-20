@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/EditUserForm default 1`] = `
+exports[`Storyshots Components/Admin default 1`] = `
 <div>
   <div
     style={
@@ -11,118 +11,11 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
     }
   >
     <div
-      className="sc-brqgnP kkFaSd"
+      className="sc-fMiknA kRVcYV"
     >
-      <form
-        onSubmit={[Function]}
-      >
-        <div
-          className="sc-hSdWYo cdIZTt"
-        >
-          Edit User Details
-        </div>
-        <label
-          className="sc-eHgmQL hnpKyC"
-        >
-          Email:
-          <input
-            name="email"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="email"
-            value="testEmail@gmail.com"
-          />
-        </label>
-        <label
-          className="sc-eHgmQL hnpKyC"
-        >
-          First Name:
-          <input
-            name="firstName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value="testFirstName"
-          />
-        </label>
-        <label
-          className="sc-eHgmQL hnpKyC"
-        >
-          Last Name:
-          <input
-            name="lastName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value="testLastName"
-          />
-        </label>
-        <label
-          className="sc-eHgmQL hnpKyC"
-        >
-          Middle Initial:
-          <input
-            name="middleInitial"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value="testMI"
-          />
-        </label>
-        <label
-          className="sc-eHgmQL hnpKyC"
-        >
-          Username:
-          <input
-            name="username"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value="testUsername"
-          />
-        </label>
-        <label
-          className="sc-eHgmQL hnpKyC"
-        >
-          Is administrator?
-          <select
-            name="isAdmin"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="yes"
-            value={true}
-          >
-            <option
-              value="yes"
-            >
-              Yes
-            </option>
-            <option
-              value="no"
-            >
-              No
-            </option>
-          </select>
-        </label>
-        <div
-          className="sc-jWBwVP iObkww"
-        >
-          <button
-            className="sc-kEYyzF hYFGjk"
-            disabled={true}
-            type="submit"
-          >
-            Submit
-          </button>
-          <a
-            className="sc-kkGfuU hWvzIG"
-            href="/admin/users"
-            onClick={[Function]}
-          >
-            Cancel
-          </a>
-        </div>
-      </form>
+      <h1>
+        You do not have clearance to see the admin tools.
+      </h1>
     </div>
   </div>
   <button
@@ -222,7 +115,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
               }
             }
           >
-            Components/EditUserForm
+            Components/Admin
           </h1>
           <h2
             style={

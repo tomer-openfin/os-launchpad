@@ -1,22 +1,22 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { Link } from 'react-router-dom';
 
 import { Color } from '../../styles/index';
 
 export const Button = styled.button`
-  background-color: none;
-  color: ${Color.DUSTY_GREY};
-  border: 1px solid ${Color.DUSTY_GREY};
-  border-radius: 3px;
-  margin: 10px 5px;
-  height: 25px;
-  padding: 0 10px;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  font-weight: 200;
+  background-color: none;
+  border-radius: 3px;
+  border: 1px solid ${Color.DUSTY_GREY};
+  color: ${Color.DUSTY_GREY};
+  display: flex;
   font-size: 12px;
-  flex: 1;
+  font-weight: 200;
+  height: 25px;
+  justify-content: center;
+  margin: 10px 5px;
+  padding: 0 10px;
 
   &:hover {
     background-color: ${Color.SEAGULL};
@@ -24,25 +24,24 @@ export const Button = styled.button`
   }
 
   &:disabled {
-    background-color: ${Color.GREY};
+    background-color: grey;
     cursor: default;
   }
 `;
 
 export const ButtonLink = styled(Link)`
-  background-color: none;
-  color: ${Color.DUSTY_GREY};
-  border: 1px solid ${Color.DUSTY_GREY};
-  border-radius: 3px;
-  margin: 10px 5px;
-  height: 25px;
-  padding: 0 10px;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  font-weight: 200;
+  background-color: none;
+  border-radius: 3px;
+  border: 1px solid ${Color.DUSTY_GREY};
+  color: ${Color.DUSTY_GREY};
+  display: flex;
   font-size: 12px;
-  flex: 1;
+  font-weight: 200;
+  height: 25px;
+  justify-content: center;
+  margin: 10px 5px;
+  padding: 0 10px;
 
   &:hover {
     background-color: ${Color.SEAGULL};
@@ -50,9 +49,16 @@ export const ButtonLink = styled(Link)`
   }
 
   &:disabled {
-    background-color: ${Color.GREY};
+    background-color: grey;
     cursor: default;
   }
+`;
+
+export const Copy = styled.div`
+  color: ${Color.SEAGULL};
+  font-size: 12px;
+  font-weight: bold;
+  margin: 25px;
 `;
 
 export const Error = styled.div`
@@ -63,28 +69,18 @@ export const Error = styled.div`
 `;
 
 export const Heading = styled.div`
-  text-align: center;
-  text-transform: uppercase;
+  color: ${Color.SEAGULL};
   font-family: sans-serif;
   font-size: 14px;
   font-weight: 200;
-  color: ${Color.SEAGULL};
-`;
-
-export const Label = styled.label`
-  display: block;
-  height: 20px;
-  margin: 30px 5px;
-  & > input,
-  & > select {
-    margin-left: 15px;
-  }
+  text-align: center;
+  text-transform: uppercase;
 `;
 
 export const Message = styled.div`
   background-color: ${Color.SUCCESS};
-  display: flex;
   color: ${Color.BLACK};
+  display: flex;
   font-size: 12px;
   margin: 5px 5px;
   padding: 5px 5px;
@@ -92,6 +88,7 @@ export const Message = styled.div`
 
 export const Row = styled.div`
   display: flex;
+  justify-content: center;
   width: 100%;
 `;
 
@@ -102,7 +99,7 @@ export const Wrapper = styled.div`
   border: 1px solid ${Color.LIGHTER_GREY};
   display: flex;
   flex-direction: column;
-  height: 475px;
+  height: 450px;
   justify-content: flex-start;
   padding: 25px;
   width: 250px;

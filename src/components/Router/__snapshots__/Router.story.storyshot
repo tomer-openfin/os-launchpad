@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/EditUserForm default 1`] = `
+exports[`Storyshots Components/Router default 1`] = `
 <div>
   <div
     style={
@@ -10,119 +10,141 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
       }
     }
   >
-    <div
-      className="sc-brqgnP kkFaSd"
-    >
-      <form
-        onSubmit={[Function]}
+    <div>
+      <a
+        href="/admin"
+        onClick={[Function]}
+      >
+        Admin
+      </a>
+      <div
+        className="sc-eqIVtm iGiSfH"
       >
         <div
-          className="sc-hSdWYo cdIZTt"
+          className="sc-htoDjs ezjflJ"
         >
-          Edit User Details
+          <div
+            className="sc-dnqmqq UIYYa"
+          />
         </div>
-        <label
-          className="sc-eHgmQL hnpKyC"
-        >
-          Email:
-          <input
-            name="email"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="email"
-            value="testEmail@gmail.com"
-          />
-        </label>
-        <label
-          className="sc-eHgmQL hnpKyC"
-        >
-          First Name:
-          <input
-            name="firstName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value="testFirstName"
-          />
-        </label>
-        <label
-          className="sc-eHgmQL hnpKyC"
-        >
-          Last Name:
-          <input
-            name="lastName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value="testLastName"
-          />
-        </label>
-        <label
-          className="sc-eHgmQL hnpKyC"
-        >
-          Middle Initial:
-          <input
-            name="middleInitial"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value="testMI"
-          />
-        </label>
-        <label
-          className="sc-eHgmQL hnpKyC"
-        >
-          Username:
-          <input
-            name="username"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value="testUsername"
-          />
-        </label>
-        <label
-          className="sc-eHgmQL hnpKyC"
-        >
-          Is administrator?
-          <select
-            name="isAdmin"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="yes"
-            value={true}
-          >
-            <option
-              value="yes"
-            >
-              Yes
-            </option>
-            <option
-              value="no"
-            >
-              No
-            </option>
-          </select>
-        </label>
         <div
-          className="sc-jWBwVP iObkww"
+          className="sc-fAjcbJ ftVYne"
+        />
+        <div
+          className="sc-htoDjs cilmlp"
+          onClick={[Function]}
         >
-          <button
-            className="sc-kEYyzF hYFGjk"
-            disabled={true}
-            type="submit"
-          >
-            Submit
-          </button>
-          <a
-            className="sc-kkGfuU hWvzIG"
-            href="/admin/users"
-            onClick={[Function]}
-          >
-            Cancel
-          </a>
+          <div
+            className="sc-dnqmqq gNafnQ"
+          />
         </div>
-      </form>
+        <div
+          className="sc-fAjcbJ ftVYne"
+        />
+        <div
+          className="sc-jzJRlG iwbwuJ"
+        >
+          <div
+            className="sc-kAzzGY bWpkEw"
+          >
+            <div
+              className="sc-htoDjs cilmlp"
+              onClick={[Function]}
+            >
+              <div
+                className="sc-dnqmqq gNafnQ"
+              />
+            </div>
+          </div>
+          <div
+            className="sc-kAzzGY bWpkEw"
+          >
+            <div
+              className="sc-htoDjs cilmlp"
+              onClick={[Function]}
+            >
+              <div
+                className="sc-dnqmqq gNafnQ"
+              />
+            </div>
+          </div>
+          <div
+            className="sc-kAzzGY bWpkEw"
+          >
+            <div
+              className="sc-htoDjs cilmlp"
+              onClick={[Function]}
+            >
+              <div
+                className="sc-dnqmqq gNafnQ"
+              />
+            </div>
+          </div>
+          <div
+            className="sc-kAzzGY bWpkEw"
+          >
+            <div
+              className="sc-htoDjs cilmlp"
+              onClick={[Function]}
+            >
+              <div
+                className="sc-dnqmqq gNafnQ"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-gisBJw gpFrOV"
+          onClick={[Function]}
+        >
+          <div
+            className="sc-caSCKo iUJjNf"
+          />
+        </div>
+        <div
+          className="sc-fAjcbJ ftVYne"
+        />
+        <div
+          className="sc-htoDjs cilmlp"
+          onClick={[Function]}
+        >
+          <div
+            className="sc-dnqmqq gNafnQ"
+          />
+        </div>
+        <div
+          className="sc-fAjcbJ ftVYne"
+        />
+        <div
+          className="sc-htoDjs cilmlp"
+          onClick={[Function]}
+        >
+          <div
+            className="sc-dnqmqq gNafnQ"
+          />
+        </div>
+        <div
+          className="sc-fAjcbJ ftVYne"
+        />
+        <div
+          className="sc-htoDjs cilmlp"
+          onClick={[Function]}
+        >
+          <div
+            className="sc-dnqmqq gNafnQ"
+          />
+        </div>
+        <div
+          className="sc-fAjcbJ ftVYne"
+        />
+        <div
+          className="sc-htoDjs ezjflJ"
+        >
+          <div
+            className="sc-dnqmqq gNafnQ"
+          />
+        </div>
+      </div>
     </div>
   </div>
   <button
@@ -222,7 +244,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
               }
             }
           >
-            Components/EditUserForm
+            Components/Router
           </h1>
           <h2
             style={

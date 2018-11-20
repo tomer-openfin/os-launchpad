@@ -1,31 +1,78 @@
 import styled from 'styled-components';
 
-// placeholder styling until designs come in
-export const StyledButton = styled.button`
-  background-color: dodgerblue;
-  border: none;
+import { Link } from 'react-router-dom';
+
+import { Color } from '../../styles/index';
+
+export const Button = styled.button`
+  background-color: none;
+  color: ${Color.DUSTY_GREY};
+  border: 1px solid ${Color.DUSTY_GREY};
   border-radius: 3px;
   margin: 10px 5px;
-  padding: 5px;
+  height: 25px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 200;
+  font-size: 12px;
+  flex: 1;
 
   &:hover {
-    background-color: salmon;
+    background-color: ${Color.SEAGULL};
     cursor: pointer;
   }
 
   &:disabled {
-    background-color: grey;
+    background-color: ${Color.GREY};
     cursor: default;
   }
 `;
 
-export const StyledError = styled.div`
-  background-color: crimson;
-  color: offwhite;
-  display: block;
+export const ButtonLink = styled(Link)`
+  background-color: none;
+  color: ${Color.DUSTY_GREY};
+  border: 1px solid ${Color.DUSTY_GREY};
+  border-radius: 3px;
+  margin: 10px 5px;
+  height: 25px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 200;
+  font-size: 12px;
+  flex: 1;
+
+  &:hover {
+    background-color: ${Color.SEAGULL};
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: ${Color.GREY};
+    cursor: default;
+  }
 `;
 
-export const StyledLabel = styled.label`
+export const Error = styled.div`
+  background-color: ${Color.FAIL};
+  color: ${Color.BASEBALL};
+  display: block;
+  height: auto;
+`;
+
+export const Heading = styled.div`
+  color: ${Color.SEAGULL};
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 200;
+  text-align: center;
+  text-transform: uppercase;
+`;
+
+export const Label = styled.label`
   display: block;
   height: 20px;
   margin: 30px 5px;
@@ -35,31 +82,29 @@ export const StyledLabel = styled.label`
   }
 `;
 
-export const StyledWrapper = styled.div`
-  align-items: center;
+export const Message = styled.div`
+  background-color: ${Color.SUCCESS};
+  display: flex;
+  color: ${Color.BLACK};
+  font-size: 12px;
+  margin: 5px 5px;
+  padding: 5px 5px;
+`;
+
+export const Row = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+export const Wrapper = styled.div`
+  border: 1px solid ${Color.LIGHTER_GREY};
   border-radius: 3px;
-  border: 1px solid dodgerblue;
+  align-items: center;
+  background-color: ${Color.BASEBALL};
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  max-width: 500px;
-
-  & > button {
-    margin-right: 5px;
-  }
-`;
-
-// placeholder message until design/flow comes in
-export const Response = styled.div`
-  background-color: #4dba2c;
-  display: flex;
-  color: black;
-  font-size: 1.25em;
-  margin: 10px 10px;
-  padding: 10px 10px;
-`;
-
-export const ErrorResponse = styled(Response)`
-  background-color: #f46542;
-  color: white;
+  justify-content: flex-start;
+  height: 450px;
+  width: 250px;
+  padding: 25px;
 `;

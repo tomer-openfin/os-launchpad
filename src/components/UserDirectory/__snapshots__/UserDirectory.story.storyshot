@@ -11,17 +11,17 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
     }
   >
     <div
-      className="sc-bRBYWo kiPCnM"
+      className="sc-gGBfsJ jcGhxZ"
     >
       <div
-        className="sc-jAaTju kdBVsO"
+        className="sc-frDJqD gFrUok"
       >
         <label
-          className="sc-jlyJG hOoojk"
+          className="sc-dNLxif eGQzEl"
         >
           Sort by
           <select
-            className="sc-iRbamj kOqHqv"
+            className="sc-jbKcbu hRoKoj"
             onChange={[Function]}
             value="lastName"
           >
@@ -38,7 +38,7 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
           </select>
         </label>
         <input
-          className="sc-gPEVay fVBQfF"
+          className="sc-hqyNC esqjBu"
           name="search"
           onChange={[Function]}
           placeholder="Search users..."
@@ -46,14 +46,14 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
           value=""
         />
         <a
-          className="sc-gipzik GLIxz"
+          className="sc-jqCOkK bbOiBC"
           href="/admin/users/new"
           onClick={[Function]}
         >
           Create New User
         </a>
         <a
-          className="sc-gipzik GLIxz"
+          className="sc-jqCOkK bbOiBC"
           href="/admin/users/import"
           onClick={[Function]}
         >
@@ -61,306 +61,426 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
         </a>
       </div>
       <ul
-        className="sc-Rmtcm gCBYyT"
+        className="sc-bbmXgH jAMiUC"
       >
         <li>
-          Doe
-          , 
-          John
-           | 
-          test@gmail.com
-           | Admin: 
-          Yes
-           | Initialized: 
-          Yes
-           | Started: 
-          Thu Nov 15 2018
-           
           <div
-            className="sc-jDwBTQ gNMZhM"
+            className="sc-jnlKLf byOYnB"
           >
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
+            Conseco
+            , 
+            Jose
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            test@gmail.com
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            Admin: 
+            Yes
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            <div
+              className="sc-kvZOFW byIFfa"
             >
-              Edit
-            </button>
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
-            >
-              Delete
-            </button>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/edit"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/delete"
+                onClick={[Function]}
+              >
+                Delete
+              </a>
+            </div>
           </div>
         </li>
         <li>
-          Williams
-          , 
-          Ashley
-           | 
-          test@gmail.com
-           | Admin: 
-          Yes
-           | Initialized: 
-          Yes
-           | Started: 
-          Thu Nov 15 2018
-           
           <div
-            className="sc-jDwBTQ gNMZhM"
+            className="sc-jnlKLf byOYnB"
           >
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
+            Del Toro
+            , 
+            Guillermo
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            test@gmail.com
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            Admin: 
+            Yes
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            <div
+              className="sc-kvZOFW byIFfa"
             >
-              Edit
-            </button>
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
-            >
-              Delete
-            </button>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/edit"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/delete"
+                onClick={[Function]}
+              >
+                Delete
+              </a>
+            </div>
           </div>
         </li>
         <li>
-          Taylor
-          , 
-          Matt
-           | 
-          test@gmail.com
-           | Admin: 
-          Yes
-           | Initialized: 
-          Yes
-           | Started: 
-          Thu Nov 15 2018
-           
           <div
-            className="sc-jDwBTQ gNMZhM"
+            className="sc-jnlKLf byOYnB"
           >
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
+            Doe
+            , 
+            John
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            test@gmail.com
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            Admin: 
+            Yes
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            <div
+              className="sc-kvZOFW byIFfa"
             >
-              Edit
-            </button>
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
-            >
-              Delete
-            </button>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/edit"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/delete"
+                onClick={[Function]}
+              >
+                Delete
+              </a>
+            </div>
           </div>
         </li>
         <li>
-          Johnson
-          , 
-          Dan
-           | 
-          test@gmail.com
-           | Admin: 
-          Yes
-           | Initialized: 
-          Yes
-           | Started: 
-          Thu Nov 15 2018
-           
           <div
-            className="sc-jDwBTQ gNMZhM"
+            className="sc-jnlKLf byOYnB"
           >
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
+            Fire
+            , 
+            Jon
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            test@gmail.com
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            Admin: 
+            Yes
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            <div
+              className="sc-kvZOFW byIFfa"
             >
-              Edit
-            </button>
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
-            >
-              Delete
-            </button>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/edit"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/delete"
+                onClick={[Function]}
+              >
+                Delete
+              </a>
+            </div>
           </div>
         </li>
         <li>
-          Moore
-          , 
-          Andy
-           | 
-          test@gmail.com
-           | Admin: 
-          Yes
-           | Initialized: 
-          Yes
-           | Started: 
-          Thu Nov 15 2018
-           
           <div
-            className="sc-jDwBTQ gNMZhM"
+            className="sc-jnlKLf byOYnB"
           >
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
+            Johnson
+            , 
+            Dan
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            test@gmail.com
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            Admin: 
+            Yes
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            <div
+              className="sc-kvZOFW byIFfa"
             >
-              Edit
-            </button>
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
-            >
-              Delete
-            </button>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/edit"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/delete"
+                onClick={[Function]}
+              >
+                Delete
+              </a>
+            </div>
           </div>
         </li>
         <li>
-          Conseco
-          , 
-          Jose
-           | 
-          test@gmail.com
-           | Admin: 
-          Yes
-           | Initialized: 
-          Yes
-           | Started: 
-          Thu Nov 15 2018
-           
           <div
-            className="sc-jDwBTQ gNMZhM"
+            className="sc-jnlKLf byOYnB"
           >
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
+            Knot
+            , 
+            James
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            test@gmail.com
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            Admin: 
+            Yes
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            <div
+              className="sc-kvZOFW byIFfa"
             >
-              Edit
-            </button>
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
-            >
-              Delete
-            </button>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/edit"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/delete"
+                onClick={[Function]}
+              >
+                Delete
+              </a>
+            </div>
           </div>
         </li>
         <li>
-          Fire
-          , 
-          Jon
-           | 
-          test@gmail.com
-           | Admin: 
-          Yes
-           | Initialized: 
-          Yes
-           | Started: 
-          Thu Nov 15 2018
-           
           <div
-            className="sc-jDwBTQ gNMZhM"
+            className="sc-jnlKLf byOYnB"
           >
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
+            Martin
+            , 
+            Robert
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            test@gmail.com
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            Admin: 
+            Yes
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            <div
+              className="sc-kvZOFW byIFfa"
             >
-              Edit
-            </button>
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
-            >
-              Delete
-            </button>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/edit"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/delete"
+                onClick={[Function]}
+              >
+                Delete
+              </a>
+            </div>
           </div>
         </li>
         <li>
-          Knot
-          , 
-          James
-           | 
-          test@gmail.com
-           | Admin: 
-          Yes
-           | Initialized: 
-          Yes
-           | Started: 
-          Thu Nov 15 2018
-           
           <div
-            className="sc-jDwBTQ gNMZhM"
+            className="sc-jnlKLf byOYnB"
           >
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
+            Moore
+            , 
+            Andy
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            test@gmail.com
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            Admin: 
+            Yes
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            <div
+              className="sc-kvZOFW byIFfa"
             >
-              Edit
-            </button>
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
-            >
-              Delete
-            </button>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/edit"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/delete"
+                onClick={[Function]}
+              >
+                Delete
+              </a>
+            </div>
           </div>
         </li>
         <li>
-          Del Toro
-          , 
-          Guillermo
-           | 
-          test@gmail.com
-           | Admin: 
-          Yes
-           | Initialized: 
-          Yes
-           | Started: 
-          Thu Nov 15 2018
-           
           <div
-            className="sc-jDwBTQ gNMZhM"
+            className="sc-jnlKLf byOYnB"
           >
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
+            Taylor
+            , 
+            Matt
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            test@gmail.com
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            Admin: 
+            Yes
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            <div
+              className="sc-kvZOFW byIFfa"
             >
-              Edit
-            </button>
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
-            >
-              Delete
-            </button>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/edit"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/delete"
+                onClick={[Function]}
+              >
+                Delete
+              </a>
+            </div>
           </div>
         </li>
         <li>
-          Martin
-          , 
-          Robert
-           | 
-          test@gmail.com
-           | Admin: 
-          Yes
-           | Initialized: 
-          Yes
-           | Started: 
-          Thu Nov 15 2018
-           
           <div
-            className="sc-jDwBTQ gNMZhM"
+            className="sc-jnlKLf byOYnB"
           >
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
+            Williams
+            , 
+            Ashley
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            test@gmail.com
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            Admin: 
+            Yes
+          </div>
+          <div
+            className="sc-jnlKLf byOYnB"
+          >
+            <div
+              className="sc-kvZOFW byIFfa"
             >
-              Edit
-            </button>
-            <button
-              className="sc-csuQGl gsDnbE"
-              onClick={[Function]}
-            >
-              Delete
-            </button>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/edit"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+              <a
+                className="sc-jqCOkK bbOiBC"
+                href="/admin/users/delete"
+                onClick={[Function]}
+              >
+                Delete
+              </a>
+            </div>
           </div>
         </li>
       </ul>

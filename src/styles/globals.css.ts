@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     background: ${Color.CHARCOAL};
     font-family: 'Muli', sans-serif;
   }
+
   a {
     text-decoration: none;
   }

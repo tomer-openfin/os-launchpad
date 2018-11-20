@@ -7,13 +7,14 @@ import { Color } from '../../styles/index';
 import * as TinyDownArrowIcon from '../../assets/TinyDownArrow.svg';
 import * as TinyUpArrowIcon from '../../assets/TinyUpArrow.svg';
 
-const HEADING_HEIGHT = '50px';
+const HEADING_HEIGHT = '30px';
 
 export const HeadingWrapper = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-evenly;
   height: ${HEADING_HEIGHT};
+  margin-top: 30px;
   width: 100%;
 `;
 
@@ -94,7 +95,7 @@ export const LinkButton = styled.button`
 export const ListWrapper = styled.ul`
   color: ${Color.CHARCOAL};
   font-size: 10px;
-  height: calc(100% - ${HEADING_HEIGHT});
+  height: calc(100vh - 2 * ${HEADING_HEIGHT});
   overflow-y: scroll;
 
   & > li {

@@ -7,12 +7,16 @@ import EditUserForm from './';
 import noop from '../../utils/noop';
 
 const mockData = {
-  email: 'testEmail@gmail.com',
-  firstName: 'testFirstName',
-  isAdmin: true,
-  lastName: 'testLastName',
-  middleInitial: 'testMI',
-  username: 'testUsername',
+  location: {
+    state: {
+      email: 'testEmail@gmail.com',
+      firstName: 'testFirstName',
+      isAdmin: true,
+      lastName: 'testLastName',
+      middleInitial: 'testMI',
+      username: 'testUsername',
+    },
+  },
 };
 
-storiesOf('Components/EditUserForm', module).add('default', () => <EditUserForm currentUserData={mockData} updateUser={noop} />);
+storiesOf('Components/EditUserForm', module).add('default', () => <EditUserForm location={mockData.location} updateUser={noop} />);

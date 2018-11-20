@@ -1,26 +1,28 @@
 import * as React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import routes from './routes';
+import routes, { AppRoute } from './routes';
 
 import { GlobalStyle } from '../../styles/globals.css';
 
-const renderRoute = ({ component, exact, path }) => (
-  <Route
-    key={path}
-    component={component}
-    exact={exact}
-    path={path}
-  />
-);
+const renderNestedRoute = (Component, children) => props => {
+  return <Component {...props}>{children.map(renderRoute)}</Component>;
+};
+
+export const renderRoute = ({ children, Component, exact, path }: AppRoute) => {
+  if (!children) {
+    return <Route key={path} component={Component} exact={exact} path={path} />;
+  }
+
+  return <Route key={path} exact={exact} path={path} render={renderNestedRoute(Component, children)} />;
+};
 
 const Router = () => (
   <>
     <GlobalStyle />
+
     <BrowserRouter>
-      <Switch>
-        {routes.map(renderRoute)}
-      </Switch>
+      <Switch>{routes.map(renderRoute)}</Switch>
     </BrowserRouter>
   </>
 );

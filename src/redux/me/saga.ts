@@ -20,11 +20,7 @@ import {
   setMe,
 } from './actions';
 import { getAutoHide, getMeSettings } from './selectors';
-import {
-  LoginError,
-  LoginRequest,
-  LoginSuccess,
-} from './types';
+import { LoginError, LoginRequest, LoginSuccess } from './types';
 
 function* watchGetSettingsRequest() {
   const result = yield call(ApiService.getSettings);
@@ -47,7 +43,7 @@ function* watchLoginRequest(action: LoginRequest) {
 
   const { status } = result;
 
-  if (status === 'ok') {
+  if (!status) {
     yield put(loginSuccess({ token: 'success', email }));
   } else {
     yield put(loginError({ status, message: 'Login failed' }));
@@ -92,10 +88,7 @@ function* watchLoginError(action: LoginError) {
 }
 
 function* setWindowBoundsWatcher(windowId, offsetX, offsetY, autoHide = false, invert = false) {
-  const [windowState, position] = yield all([
-    select(getWindowById, windowId),
-    select(getPosition),
-  ]);
+  const [windowState, position] = yield all([select(getWindowById, windowId), select(getPosition)]);
 
   const isTopOrBottomPosition = isTopOrBottom(position);
   const { width, height } = windowState.bounds;
@@ -103,8 +96,8 @@ function* setWindowBoundsWatcher(windowId, offsetX, offsetY, autoHide = false, i
   const largestDimension = Math.max(width, height);
   const smallestDimension = Math.min(width, height);
   // TODO - Find a better way to solve inverting
-  const xDimension = (isTopOrBottomPosition && !invert) ? largestDimension : smallestDimension;
-  const yDimension = (isTopOrBottomPosition && !invert) ? smallestDimension : largestDimension;
+  const xDimension = isTopOrBottomPosition && !invert ? largestDimension : smallestDimension;
+  const yDimension = isTopOrBottomPosition && !invert ? smallestDimension : largestDimension;
 
   // get position of launchbar from store
   setWindowBounds(windowId, position, xDimension, yDimension, offsetX, offsetY, autoHide);

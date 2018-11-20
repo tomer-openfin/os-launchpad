@@ -1,24 +1,19 @@
-// tslint:disable:no-console
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as React from 'react';
 
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-
-import noop from '../../utils/noop';
 import { validateEmail, validateTextField } from '../../utils/validators';
-import { ErrorResponse, Response, StyledButton, StyledError, StyledLabel, StyledWrapper } from './EditUserForm.css';
+import ROUTES from '../Router/const';
+import { Button, ButtonLink, Error, Heading, Label, Message, Row, Wrapper } from './EditUserForm.css';
 
-interface CurrentUserData {
+interface ResponseContents {
   email: string;
   firstName: string;
+  isAdmin: boolean;
   lastName: string;
   middleInitial?: string;
-  username: string;
-  isAdmin: boolean;
-}
-
-interface ResponseContents extends CurrentUserData {
-  password: string;
   organizationId: string;
+  password: string;
+  username: string;
 }
 
 interface Result {
@@ -28,7 +23,16 @@ interface Result {
 
 interface Props {
   updateUser: Function;
-  currentUserData: CurrentUserData;
+  location: {
+    state: {
+      email: string;
+      firstName: string;
+      lastName: string;
+      middleInitial?: string;
+      username: string;
+      isAdmin: boolean;
+    };
+  };
 }
 
 interface State {
@@ -60,10 +64,10 @@ class EditUserForm extends React.Component<Props, State> {
     const { responseReceived, responseContents } = this.state;
     if (responseReceived) {
       if (result.status === 'error') {
-        return <ErrorResponse>Error: {result.message}</ErrorResponse>;
+        return <Error>Error: {result.message}</Error>;
       }
       if (responseContents.username) {
-        return <Response>Success! User '{responseContents.username}' was succesfully updated.</Response>;
+        return <Message>Success! User '{responseContents.username}' was succesfully updated.</Message>;
       }
     }
     return null;
@@ -72,10 +76,9 @@ class EditUserForm extends React.Component<Props, State> {
   render() {
     const { result } = this.state;
 
-    const {
-      updateUser,
-      currentUserData: { email, firstName, isAdmin, lastName, middleInitial, username },
-    } = this.props;
+    const { updateUser, location } = this.props;
+
+    const { email, firstName, isAdmin, lastName, middleInitial, username } = location.state;
 
     // tslint:disable:jsx-no-multiline-js
     // tslint:disable:jsx-no-lambda
@@ -116,60 +119,59 @@ class EditUserForm extends React.Component<Props, State> {
         }}
         validateOnChange={false}
         render={({ isSubmitting, isValid }) => (
-          <StyledWrapper>
-            {/* placeholder until admin flow is determined */}
+          <Wrapper>
             {this.renderResponse(result)}
 
             <Form>
-              <h3>Edit User Details</h3>
+              <Heading>Edit User Details</Heading>
 
-              <StyledLabel>
+              <Label>
                 Email:
                 <Field type="email" name="email" validate={validateEmail} />
-                <ErrorMessage component={StyledError} name="email" />
-              </StyledLabel>
+                <ErrorMessage component={Error} name="email" />
+              </Label>
 
-              <StyledLabel>
+              <Label>
                 First Name:
                 <Field type="text" name="firstName" validate={validateTextField} />
-                <ErrorMessage component={StyledError} name="firstName" />
-              </StyledLabel>
+                <ErrorMessage component={Error} name="firstName" />
+              </Label>
 
-              <StyledLabel>
+              <Label>
                 Last Name:
                 <Field type="text" name="lastName" validate={validateTextField} />
-                <ErrorMessage component={StyledError} name="lastName" />
-              </StyledLabel>
+                <ErrorMessage component={Error} name="lastName" />
+              </Label>
 
-              <StyledLabel>
+              <Label>
                 Middle Initial:
                 <Field type="text" name="middleInitial" />
-                <ErrorMessage component={StyledError} name="middleInitial" />
-              </StyledLabel>
+                <ErrorMessage component={Error} name="middleInitial" />
+              </Label>
 
-              <StyledLabel>
+              <Label>
                 Username:
                 <Field type="text" name="username" validate={validateTextField} />
-                <ErrorMessage component={StyledError} name="username" />
-              </StyledLabel>
+                <ErrorMessage component={Error} name="username" />
+              </Label>
 
-              <StyledLabel>
+              <Label>
                 Is administrator?
                 <Field component="select" name="isAdmin" placeholder={isAdmin ? 'yes' : 'no'}>
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </Field>
-              </StyledLabel>
+              </Label>
 
-              <StyledButton type="submit" disabled={isSubmitting || !isValid}>
-                Submit
-              </StyledButton>
-
-              <StyledButton type="button" onClick={noop}>
-                Exit
-              </StyledButton>
+              <Row>
+                <Button type="submit" disabled={isSubmitting || !isValid}>
+                  Submit
+                </Button>
+                {/* todo: use handle close click handler instead of Link */}
+                <ButtonLink to={ROUTES.ADMIN_USERS}>Cancel</ButtonLink>
+              </Row>
             </Form>
-          </StyledWrapper>
+          </Wrapper>
         )}
       />
     );

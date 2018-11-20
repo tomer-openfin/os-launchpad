@@ -1,11 +1,13 @@
 import * as React from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
-import { ButtonLink, HeadingWrapper, Input, Label, LinkButton, LinkWrapper, ListElement, ListWrapper, Select, Wrapper } from './UserDirectory.css';
+import Modal from '../Modal';
+import { ButtonLink, HeadingWrapper, Input, Label, LinkWrapper, ListElement, ListWrapper, Select, Wrapper } from './UserDirectory.css';
 
 import { User } from '../../types/commons';
-
-import noop from '../../utils/noop';
+import { doesCurrentPathMatch } from '../../utils/routeHelpers';
 import ROUTES from '../Router/const';
+import { userRoutes } from '../Router/routes';
 
 const FIRST_NAME = 'firstName';
 const LAST_NAME = 'lastName';
@@ -23,7 +25,7 @@ const defaultProps: Props = {
   users: [],
 };
 
-class UserDirectory extends React.PureComponent<Props, State> {
+class UserDirectory extends React.PureComponent<Props & RouteComponentProps, State> {
   static defaultProps = defaultProps;
 
   constructor(props) {
@@ -34,6 +36,11 @@ class UserDirectory extends React.PureComponent<Props, State> {
       sort: LAST_NAME,
     };
   }
+
+  handleClose = () => {
+    const { history } = this.props;
+    history.goBack();
+  };
 
   handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
     const { currentTarget } = e;
@@ -71,23 +78,41 @@ class UserDirectory extends React.PureComponent<Props, State> {
     });
 
   filterUserList = search =>
-    this.props.users.filter(user =>
-      user.firstName
-        .concat(user.lastName)
-        .toLowerCase()
-        .indexOf(search.toLowerCase()) !== -1);
+    this.props.users.filter(
+      user =>
+        user.firstName
+          .concat(user.lastName)
+          .toLowerCase()
+          .indexOf(search.toLowerCase()) !== -1,
+    );
 
-  renderButtons = () => {
-    // TODO: unique user id can be used to eventually pass correct props to EDIT/DELETE
+  sortIncomingDataByLastName = data => {
+    const sortedData = data.sort((a, b) => {
+      const nameA = a.lastName.toUpperCase();
+      const nameB = b.lastName.toUpperCase();
+
+      if (nameA < nameB) return -1;
+      if (nameA > nameB) return 1;
+
+      return 0;
+    });
+
+    return sortedData;
+  };
+
+  renderButtons = user => {
     return (
       <LinkWrapper>
-        <LinkButton onClick={noop}>Edit</LinkButton>
-        <LinkButton onClick={noop}>Delete</LinkButton>
+        {/* passing user object to edit form and delete confirmation */}
+        <ButtonLink to={{ pathname: ROUTES.ADMIN_USERS_EDIT, state: user }}>Edit</ButtonLink>
+
+        <ButtonLink to={{ pathname: ROUTES.ADMIN_USERS_DELETE, state: user }}>Delete</ButtonLink>
       </LinkWrapper>
     );
   };
 
   render() {
+    const { children } = this.props;
     const { search, sort } = this.state;
 
     return (
@@ -111,13 +136,17 @@ class UserDirectory extends React.PureComponent<Props, State> {
         <ListWrapper>
           {this.sortUserData(this.filterUserList(search), sort).map(user => (
             <li key={user.id}>
-              <ListElement>{user.lastName}, {user.firstName}</ListElement>
+              <ListElement>
+                {user.lastName}, {user.firstName}
+              </ListElement>
               <ListElement>{user.email}</ListElement>
               <ListElement>Admin: {user.isAdmin ? 'Yes' : 'No'}</ListElement>
-              <ListElement>{this.renderButtons()}</ListElement>
+              <ListElement>{this.renderButtons(user)}</ListElement>
             </li>
           ))}
         </ListWrapper>
+
+        {doesCurrentPathMatch(userRoutes, location.pathname) && <Modal handleClose={this.handleClose}>{children}</Modal>}
       </Wrapper>
     );
   }

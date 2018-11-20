@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { Link } from 'react-router-dom';
 
 import { validateEmail, validateTextField } from '../../utils/validators';
 import ROUTES from '../Router/const';
