@@ -2,7 +2,8 @@ import * as React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import UserDirectory from './index';
+import AdminApps from './AdminApps';
 
-storiesOf('Components/UserDirectory', module)
-  .add('default', () => <UserDirectory />);
+import appData from '../../const/AppData';
+
+// storiesOf('Components/AdminApps', module).add('default', () => <AdminApps apps={appData} />);

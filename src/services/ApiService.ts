@@ -4,6 +4,8 @@ import { getIsEnterprise } from '../redux/application';
 import { defaultState, MeStateSettings } from '../redux/me';
 import { getLocalStorage, setLocalStorage } from './localStorageAdapter';
 
+import { DeleteAppResponse } from '../types/commons';
+
 const API_URL = process.env.API_URL; // || 'http://localhost:9001/';
 const APPS_URL = `${API_URL}api/apps`;
 const LAYOUTS_URL = `${API_URL}api/layouts`;
@@ -30,6 +32,14 @@ const createPostOptions = (body): RequestInit => ({
     'content-type': 'application/json',
   },
   method: 'POST',
+  mode: 'cors',
+});
+
+const createDeleteOptions = (): RequestInit => ({
+  headers: {
+    'content-type': 'application/json',
+  },
+  method: 'DELETE',
   mode: 'cors',
 });
 
@@ -67,6 +77,17 @@ export const saveApps = (apps: string[]) => {
   }
 
   return setLocalStorage<string[]>(LOCAL_STORAGE_KEYS.APPS, apps);
+};
+
+/**
+ * Delete apps
+ *
+ * @returns {Promise<DeleteAppResponse>}
+ */
+export const deleteApp = (appId: string) => {
+  const options = createDeleteOptions({ appId });
+
+  return fetch(`${APPS_URL}/${appId}`, options).then(resp => (resp.json() as unknown) as DeleteAppResponse);
 };
 
 /**

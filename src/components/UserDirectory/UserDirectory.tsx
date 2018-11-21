@@ -37,11 +37,6 @@ class UserDirectory extends React.PureComponent<Props & RouteComponentProps, Sta
     };
   }
 
-  handleClose = () => {
-    const { history } = this.props;
-    history.goBack();
-  };
-
   handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
     const { currentTarget } = e;
     if (!currentTarget) return;
@@ -103,7 +98,6 @@ class UserDirectory extends React.PureComponent<Props & RouteComponentProps, Sta
   renderButtons = user => {
     return (
       <LinkWrapper>
-        {/* passing user object to edit form and delete confirmation */}
         <ButtonLink to={{ pathname: ROUTES.ADMIN_USERS_EDIT, state: user }}>Edit</ButtonLink>
 
         <ButtonLink to={{ pathname: ROUTES.ADMIN_USERS_DELETE, state: user }}>Delete</ButtonLink>
@@ -112,7 +106,7 @@ class UserDirectory extends React.PureComponent<Props & RouteComponentProps, Sta
   };
 
   render() {
-    const { children } = this.props;
+    const { children, history } = this.props;
     const { search, sort } = this.state;
 
     return (
@@ -128,7 +122,7 @@ class UserDirectory extends React.PureComponent<Props & RouteComponentProps, Sta
 
           <Input name="search" value={search} onChange={this.handleInputChange} placeholder="Search users..." type="text" />
 
-          <ButtonLink to={ROUTES.ADMIN_USERS_NEW}>Create New User</ButtonLink>
+          <ButtonLink to={ROUTES.ADMIN_USERS_NEW}>Add User</ButtonLink>
 
           <ButtonLink to={ROUTES.ADMIN_USERS_IMPORT}>Import Users</ButtonLink>
         </HeadingWrapper>
@@ -146,7 +140,7 @@ class UserDirectory extends React.PureComponent<Props & RouteComponentProps, Sta
           ))}
         </ListWrapper>
 
-        {doesCurrentPathMatch(userRoutes, location.pathname) && <Modal handleClose={this.handleClose}>{children}</Modal>}
+        {doesCurrentPathMatch(userRoutes, location.pathname) && <Modal handleClose={history.goBack}>{children}</Modal>}
       </Wrapper>
     );
   }

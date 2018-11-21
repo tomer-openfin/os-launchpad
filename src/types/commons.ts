@@ -1,3 +1,8 @@
+export interface DeleteAppResponse {
+  status: 'ok' | 'failure';
+  message?: string;
+}
+
 export interface LoginErrorResponse {
   status: string | 'newPassword';
   message?: string;
@@ -33,6 +38,7 @@ export interface User {
   middleInitial: string;
   organizationId: string;
   username: string;
+  password: string;
 }
 
 export enum LauncherPosition {

@@ -18,7 +18,7 @@ exports[`Storyshots Components/Router default 1`] = `
         Admin
       </a>
       <div
-        className="sc-eqIVtm iGiSfH"
+        className="sc-frDJqD gHEmyx"
       >
         <div
           className="sc-htoDjs ezjflJ"
@@ -28,7 +28,7 @@ exports[`Storyshots Components/Router default 1`] = `
           />
         </div>
         <div
-          className="sc-fAjcbJ ftVYne"
+          className="sc-kvZOFW gKzFET"
         />
         <div
           className="sc-htoDjs cilmlp"
@@ -39,7 +39,7 @@ exports[`Storyshots Components/Router default 1`] = `
           />
         </div>
         <div
-          className="sc-fAjcbJ ftVYne"
+          className="sc-kvZOFW gKzFET"
         />
         <div
           className="sc-jzJRlG iwbwuJ"
@@ -94,15 +94,15 @@ exports[`Storyshots Components/Router default 1`] = `
           </div>
         </div>
         <div
-          className="sc-gisBJw gpFrOV"
+          className="sc-jbKcbu jLNoHn"
           onClick={[Function]}
         >
           <div
-            className="sc-caSCKo iUJjNf"
+            className="sc-hqyNC lntkMj"
           />
         </div>
         <div
-          className="sc-fAjcbJ ftVYne"
+          className="sc-kvZOFW gKzFET"
         />
         <div
           className="sc-htoDjs cilmlp"
@@ -113,7 +113,7 @@ exports[`Storyshots Components/Router default 1`] = `
           />
         </div>
         <div
-          className="sc-fAjcbJ ftVYne"
+          className="sc-kvZOFW gKzFET"
         />
         <div
           className="sc-htoDjs cilmlp"
@@ -124,7 +124,7 @@ exports[`Storyshots Components/Router default 1`] = `
           />
         </div>
         <div
-          className="sc-fAjcbJ ftVYne"
+          className="sc-kvZOFW gKzFET"
         />
         <div
           className="sc-htoDjs cilmlp"
@@ -135,7 +135,7 @@ exports[`Storyshots Components/Router default 1`] = `
           />
         </div>
         <div
-          className="sc-fAjcbJ ftVYne"
+          className="sc-kvZOFW gKzFET"
         />
         <div
           className="sc-htoDjs ezjflJ"

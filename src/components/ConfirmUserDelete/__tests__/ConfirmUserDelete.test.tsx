@@ -9,8 +9,9 @@ import noop from '../../../utils/noop';
 const currentUserData = {
   location: {
     state: {
+      firstName: 'John',
       id: '1',
-      username: 'jon',
+      lastName: 'Doe',
     },
   },
 };

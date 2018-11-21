@@ -9,14 +9,14 @@ export const Button = styled.button`
   color: ${Color.DUSTY_GREY};
   border: 1px solid ${Color.DUSTY_GREY};
   border-radius: 3px;
-  margin: 10px 5px;
+  margin: 10px 0;
   height: 25px;
   padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 200;
-  font-size: 12px;
+  font-size: 11px;
   flex: 1;
 
   &:hover {

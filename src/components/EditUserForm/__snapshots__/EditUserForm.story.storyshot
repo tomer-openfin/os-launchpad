@@ -107,13 +107,6 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
         <div
           className="sc-jWBwVP iObkww"
         >
-          <button
-            className="sc-kEYyzF hYFGjk"
-            disabled={true}
-            type="submit"
-          >
-            Submit
-          </button>
           <a
             className="sc-kkGfuU hWvzIG"
             href="/admin/users"
@@ -121,6 +114,13 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
           >
             Cancel
           </a>
+          <button
+            className="sc-kEYyzF fxOnlf"
+            disabled={true}
+            type="submit"
+          >
+            Save Updates
+          </button>
         </div>
       </form>
     </div>

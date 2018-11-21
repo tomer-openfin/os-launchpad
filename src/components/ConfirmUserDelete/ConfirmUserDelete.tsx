@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button, ButtonLink, Copy, Error, Heading, Message, Row, Wrapper } from './';
+import { Button, ButtonLink, Copy, Error, Heading, Message, Row, Wrapper } from './ConfirmUserDelete.css';
 
 import ROUTES from '../Router/const';
 
@@ -9,7 +9,8 @@ interface Props {
   location: {
     state: {
       id: string;
-      username: string;
+      firstName: string;
+      lastName: string;
     };
   };
 }
@@ -17,7 +18,8 @@ interface Props {
 interface State {
   deleteDisabled: boolean;
   responseContents: {
-    username: string;
+    firstName: string;
+    lastName: string;
   };
   responseReceived: boolean;
   result: {
@@ -33,7 +35,8 @@ class ConfirmUserDelete extends React.Component<Props, State> {
     this.state = {
       deleteDisabled: false,
       responseContents: {
-        username: '',
+        firstName: '',
+        lastName: '',
       },
       responseReceived: false,
       result: {
@@ -45,7 +48,7 @@ class ConfirmUserDelete extends React.Component<Props, State> {
 
   handleDeleteUser = () => {
     const { location } = this.props;
-    const { id } = location.state;
+    const { firstName, lastName } = location.state;
 
     // simulate failure (uncomment to try, test when API is up)
     // this.setState({
@@ -60,7 +63,8 @@ class ConfirmUserDelete extends React.Component<Props, State> {
     this.setState({
       deleteDisabled: true,
       responseContents: {
-        username: id,
+        firstName,
+        lastName,
       },
       responseReceived: true,
       result: {
@@ -78,14 +82,14 @@ class ConfirmUserDelete extends React.Component<Props, State> {
     const { responseReceived, responseContents } = this.state;
 
     const { location } = this.props;
-    const { username } = location.state;
+    const { firstName, lastName } = location.state;
 
     if (responseReceived) {
       if (result.status === 'error') {
-        return <Error>There was an error trying to delete {username}. Please try again.</Error>;
+        return <Error>There was an error trying to delete {`${firstName} ${lastName}`}. Please try again.</Error>;
       }
-      if (responseContents.username) {
-        return <Message>Success! '{username}' was succesfully deleted.</Message>;
+      if (responseContents.firstName && responseContents.lastName) {
+        return <Message>Success! '{`${firstName} ${lastName}`}' was succesfully deleted.</Message>;
       }
     }
     return null;
@@ -94,18 +98,22 @@ class ConfirmUserDelete extends React.Component<Props, State> {
   render() {
     const { result, deleteDisabled } = this.state;
     const { location } = this.props;
-    const { username } = location.state;
+    const { firstName, lastName } = location.state;
 
     return (
       <Wrapper>
         <Heading>Delete User</Heading>
 
-        <Copy>Are you sure you want to delete {username}?</Copy>
+        <Copy>
+          You are about to delete the following user: {firstName} {lastName}?
+        </Copy>
 
         <Row>
-          {deleteDisabled ? null : <Button onClick={this.handleDeleteUser}>Yes</Button>}
+          <ButtonLink to={ROUTES.ADMIN_USERS}>Cancel</ButtonLink>
 
-          <ButtonLink to={ROUTES.ADMIN_USERS}>Back</ButtonLink>
+          <Button disabled={deleteDisabled} onClick={this.handleDeleteUser}>
+            Delete User
+          </Button>
         </Row>
 
         {this.renderResponse(result)}

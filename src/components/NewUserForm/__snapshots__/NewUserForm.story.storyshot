@@ -119,6 +119,13 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
         <div
           className="sc-bRBYWo gFnYBw"
         >
+          <a
+            className="sc-iRbamj hcgNOy"
+            href="/admin/users"
+            onClick={[Function]}
+          >
+            Cancel
+          </a>
           <button
             className="sc-gPEVay gDMeFr"
             disabled={true}
@@ -126,13 +133,6 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
           >
             Submit
           </button>
-          <a
-            className="sc-iRbamj hcgNOy"
-            href="/admin/users"
-            onClick={[Function]}
-          >
-            Back
-          </a>
         </div>
       </form>
     </div>

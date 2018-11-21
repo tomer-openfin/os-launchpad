@@ -11,17 +11,17 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
     }
   >
     <div
-      className="sc-gGBfsJ jcGhxZ"
+      className="sc-ksYbfQ fTEEXJ"
     >
       <div
-        className="sc-frDJqD gFrUok"
+        className="sc-fAjcbJ iijWDn"
       >
         <label
-          className="sc-dNLxif eGQzEl"
+          className="sc-cHGsZl jiWKAL"
         >
           Sort by
           <select
-            className="sc-jbKcbu hRoKoj"
+            className="sc-kjoXOD kqmctt"
             onChange={[Function]}
             value="lastName"
           >
@@ -38,7 +38,7 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
           </select>
         </label>
         <input
-          className="sc-hqyNC esqjBu"
+          className="sc-gisBJw ksjEqb"
           name="search"
           onChange={[Function]}
           placeholder="Search users..."
@@ -46,14 +46,14 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
           value=""
         />
         <a
-          className="sc-jqCOkK bbOiBC"
+          className="sc-TOsTZ fAJIxw"
           href="/admin/users/new"
           onClick={[Function]}
         >
-          Create New User
+          Add User
         </a>
         <a
-          className="sc-jqCOkK bbOiBC"
+          className="sc-TOsTZ fAJIxw"
           href="/admin/users/import"
           onClick={[Function]}
         >
@@ -61,42 +61,42 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
         </a>
       </div>
       <ul
-        className="sc-bbmXgH jAMiUC"
+        className="sc-cJSrbW buVZTc"
       >
         <li>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Conseco
             , 
             Jose
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             test@gmail.com
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Admin: 
             Yes
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             <div
-              className="sc-kvZOFW byIFfa"
+              className="sc-caSCKo dfnHzX"
             >
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/edit"
                 onClick={[Function]}
               >
                 Edit
               </a>
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/delete"
                 onClick={[Function]}
               >
@@ -107,38 +107,38 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
         </li>
         <li>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Del Toro
             , 
             Guillermo
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             test@gmail.com
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Admin: 
             Yes
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             <div
-              className="sc-kvZOFW byIFfa"
+              className="sc-caSCKo dfnHzX"
             >
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/edit"
                 onClick={[Function]}
               >
                 Edit
               </a>
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/delete"
                 onClick={[Function]}
               >
@@ -149,38 +149,38 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
         </li>
         <li>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Doe
             , 
             John
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             test@gmail.com
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Admin: 
             Yes
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             <div
-              className="sc-kvZOFW byIFfa"
+              className="sc-caSCKo dfnHzX"
             >
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/edit"
                 onClick={[Function]}
               >
                 Edit
               </a>
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/delete"
                 onClick={[Function]}
               >
@@ -191,38 +191,38 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
         </li>
         <li>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Fire
             , 
             Jon
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             test@gmail.com
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Admin: 
             Yes
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             <div
-              className="sc-kvZOFW byIFfa"
+              className="sc-caSCKo dfnHzX"
             >
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/edit"
                 onClick={[Function]}
               >
                 Edit
               </a>
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/delete"
                 onClick={[Function]}
               >
@@ -233,38 +233,38 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
         </li>
         <li>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Johnson
             , 
             Dan
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             test@gmail.com
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Admin: 
             Yes
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             <div
-              className="sc-kvZOFW byIFfa"
+              className="sc-caSCKo dfnHzX"
             >
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/edit"
                 onClick={[Function]}
               >
                 Edit
               </a>
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/delete"
                 onClick={[Function]}
               >
@@ -275,38 +275,38 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
         </li>
         <li>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Knot
             , 
             James
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             test@gmail.com
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Admin: 
             Yes
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             <div
-              className="sc-kvZOFW byIFfa"
+              className="sc-caSCKo dfnHzX"
             >
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/edit"
                 onClick={[Function]}
               >
                 Edit
               </a>
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/delete"
                 onClick={[Function]}
               >
@@ -317,38 +317,38 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
         </li>
         <li>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Martin
             , 
             Robert
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             test@gmail.com
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Admin: 
             Yes
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             <div
-              className="sc-kvZOFW byIFfa"
+              className="sc-caSCKo dfnHzX"
             >
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/edit"
                 onClick={[Function]}
               >
                 Edit
               </a>
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/delete"
                 onClick={[Function]}
               >
@@ -359,38 +359,38 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
         </li>
         <li>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Moore
             , 
             Andy
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             test@gmail.com
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Admin: 
             Yes
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             <div
-              className="sc-kvZOFW byIFfa"
+              className="sc-caSCKo dfnHzX"
             >
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/edit"
                 onClick={[Function]}
               >
                 Edit
               </a>
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/delete"
                 onClick={[Function]}
               >
@@ -401,38 +401,38 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
         </li>
         <li>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Taylor
             , 
             Matt
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             test@gmail.com
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Admin: 
             Yes
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             <div
-              className="sc-kvZOFW byIFfa"
+              className="sc-caSCKo dfnHzX"
             >
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/edit"
                 onClick={[Function]}
               >
                 Edit
               </a>
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/delete"
                 onClick={[Function]}
               >
@@ -443,38 +443,38 @@ exports[`Storyshots Components/UserDirectory default 1`] = `
         </li>
         <li>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Williams
             , 
             Ashley
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             test@gmail.com
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             Admin: 
             Yes
           </div>
           <div
-            className="sc-jnlKLf byOYnB"
+            className="sc-hmzhuo ciggmQ"
           >
             <div
-              className="sc-kvZOFW byIFfa"
+              className="sc-caSCKo dfnHzX"
             >
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/edit"
                 onClick={[Function]}
               >
                 Edit
               </a>
               <a
-                className="sc-jqCOkK bbOiBC"
+                className="sc-TOsTZ fAJIxw"
                 href="/admin/users/delete"
                 onClick={[Function]}
               >

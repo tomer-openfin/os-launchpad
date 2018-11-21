@@ -21,26 +21,29 @@ exports[`Storyshots ConfirmUserDelete default 1`] = `
       <div
         className="sc-kpOJdX edkFGj"
       >
-        Are you sure you want to delete 
-        jon
+        You are about to delete the following user: 
+        John
+         
+        Doe
         ?
       </div>
       <div
         className="sc-eNQAEJ dkVXBK"
       >
-        <button
-          className="sc-kgoBCf ktfrjL"
-          onClick={[Function]}
-        >
-          Yes
-        </button>
         <a
           className="sc-kGXeez jjgmDw"
           href="/admin/users"
           onClick={[Function]}
         >
-          Back
+          Cancel
         </a>
+        <button
+          className="sc-kgoBCf ktfrjL"
+          disabled={false}
+          onClick={[Function]}
+        >
+          Delete User
+        </button>
       </div>
     </div>
   </div>

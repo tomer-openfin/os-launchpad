@@ -1,6 +1,8 @@
 const ROUTES = {
   ADMIN: '/admin',
   ADMIN_APPS: '/admin/apps',
+  ADMIN_APPS_DELETE: '/admin/apps/delete',
+  ADMIN_APPS_EDIT: '/admin/apps/edit',
   ADMIN_APPS_NEW: '/admin/apps/new',
   ADMIN_SETTINGS: `/admin/settings`,
   ADMIN_USERS: '/admin/users',

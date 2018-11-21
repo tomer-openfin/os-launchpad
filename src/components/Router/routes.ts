@@ -1,9 +1,10 @@
 import * as React from 'react';
 
 import Admin from '../Admin';
+import AdminApps from '../AdminApps';
 import App from '../App';
-import AppDirectory from '../AppDirectory';
 import AppOverflow from '../AppOverflow';
+import ConfirmAppDelete from '../ConfirmAppDelete';
 import ConfirmUserDelete from '../ConfirmUserDelete';
 import EditUserForm from '../EditUserForm';
 import Layouts from '../Layouts';
@@ -39,6 +40,24 @@ export const userRoutes: AppRoute[] = [
   },
 ];
 
+export const appRoutes: AppRoute[] = [
+  // { // WHIT-94
+  //   Component: NewAppForm,
+  //   exact: false,
+  //   path: ROUTES.ADMIN_APPS_NEW,
+  // },
+  // { // WHIT-120
+  //   Component: EditAppForm,
+  //   exact: false,
+  //   path: ROUTES.ADMIN_APPS_EDIT,
+  // },
+  {
+    Component: ConfirmAppDelete,
+    exact: false,
+    path: ROUTES.ADMIN_APPS_DELETE,
+  },
+];
+
 const routes: AppRoute[] = [
   {
     Component: Admin,
@@ -50,7 +69,8 @@ const routes: AppRoute[] = [
         path: ROUTES.ADMIN_USERS,
       },
       {
-        Component: AppDirectory,
+        Component: AdminApps,
+        children: appRoutes,
         exact: false,
         path: ROUTES.ADMIN_APPS,
       },

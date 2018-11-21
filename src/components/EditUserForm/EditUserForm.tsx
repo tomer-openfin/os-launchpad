@@ -164,11 +164,12 @@ class EditUserForm extends React.Component<Props, State> {
               </Label>
 
               <Row>
-                <Button type="submit" disabled={isSubmitting || !isValid}>
-                  Submit
-                </Button>
                 {/* todo: use handle close click handler instead of Link */}
                 <ButtonLink to={ROUTES.ADMIN_USERS}>Cancel</ButtonLink>
+
+                <Button type="submit" disabled={isSubmitting || !isValid}>
+                  Save Updates
+                </Button>
               </Row>
             </Form>
           </Wrapper>

@@ -1,10 +1,13 @@
 import * as React from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
-import { HeadingWrapper, Input, LinkButton, LinkWrapper, ListElement, ListWrapper, Wrapper } from '../UserDirectory';
+import Modal from '../Modal';
+import { ButtonLink, HeadingWrapper, Input, LinkWrapper, ListElement, ListWrapper, Wrapper } from '../UserDirectory/UserDirectory.css';
 
 import { App } from '../../types/commons';
-
-import noop from '../../utils/noop';
+import { doesCurrentPathMatch } from '../../utils/routeHelpers';
+import ROUTES from '../Router/const';
+import { appRoutes } from '../Router/routes';
 
 interface Props {
   apps: App[];
@@ -14,7 +17,13 @@ interface State {
   search: string;
 }
 
-class AdminApps extends React.PureComponent<Props, State> {
+const defaultProps: Props = {
+  apps: [],
+};
+
+class AdminApps extends React.PureComponent<Props & RouteComponentProps, State> {
+  static defaultProps = defaultProps;
+
   constructor(props) {
     super(props);
 
@@ -34,22 +43,21 @@ class AdminApps extends React.PureComponent<Props, State> {
     this.setState({ search });
   };
 
-  filterAppsList = search =>
-    this.props.apps.filter(app =>
-      app.title
-        .toLowerCase()
-        .indexOf(search.toLowerCase()) !== -1);
+  filterAppsList = search => this.props.apps.filter(app => app.title.toLowerCase().indexOf(search.toLowerCase()) !== -1);
 
-  renderButtons = () => {
+  renderButtons = app => {
     return (
       <LinkWrapper>
-        <LinkButton onClick={noop}>Edit</LinkButton>
-        <LinkButton onClick={noop}>Delete</LinkButton>
+        {/* todo: edit app modal WHIT-121 */}
+        <ButtonLink to={{ pathname: ROUTES.ADMIN_APPS_EDIT, state: app }}>Edit</ButtonLink>
+
+        <ButtonLink to={{ pathname: ROUTES.ADMIN_APPS_DELETE, state: app }}>Delete</ButtonLink>
       </LinkWrapper>
     );
   };
 
   render() {
+    const { children, history } = this.props;
     const { search } = this.state;
 
     return (
@@ -62,10 +70,12 @@ class AdminApps extends React.PureComponent<Props, State> {
           {this.filterAppsList(search).map(app => (
             <li key={app.id}>
               <ListElement>{app.title}</ListElement>
-              <ListElement>{this.renderButtons()}</ListElement>
+              <ListElement>{this.renderButtons(app)}</ListElement>
             </li>
           ))}
         </ListWrapper>
+
+        {doesCurrentPathMatch(appRoutes, location.pathname) && <Modal handleClose={history.goBack}>{children}</Modal>}
       </Wrapper>
     );
   }

@@ -164,11 +164,11 @@ class NewUserForm extends React.Component<Props, State> {
               </Label>
 
               <Row>
+                <ButtonLink to={ROUTES.ADMIN_USERS}>Cancel</ButtonLink>
+
                 <Button type="submit" disabled={isSubmitting || !isValid}>
                   Submit
                 </Button>
-
-                <ButtonLink to={ROUTES.ADMIN_USERS}>Back</ButtonLink>
               </Row>
             </Form>
           </Wrapper>

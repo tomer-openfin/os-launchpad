@@ -2,7 +2,8 @@ import * as React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import UserDirectory from './';
+import UserDirectory from './UserDirectory';
 
-storiesOf('Components/UserDirectory', module)
-  .add('default', () => <UserDirectory />);
+import userData from './MockUserData';
+
+// storiesOf('Components/UserDirectory', module).add('default', () => <UserDirectory users={userData} />);
