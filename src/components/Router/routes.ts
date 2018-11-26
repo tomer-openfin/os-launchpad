@@ -12,7 +12,7 @@ import Layouts from '../Layouts';
 import Login from '../Login';
 import NewUserForm from '../NewUserForm';
 import OrganizationSettings from '../OrganizationSettings';
-// import Settings from '../Settings';
+import Settings from '../Settings';
 import UserDirectory from '../UserDirectory';
 
 import ROUTES from './const';
