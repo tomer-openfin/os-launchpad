@@ -20,7 +20,7 @@ export const Background = styled.div<ImgProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: ${props => (props.clickable ? 'pointer' : 'default')};
+  cursor: ${props => (props.clickable ? 'pointer' : 'inherit')};
   -webkit-app-region: ${props => (props.draggable ? 'drag' : 'no-drag')};
 `;
 

@@ -1,18 +1,25 @@
 import styled from 'styled-components';
+import { Color } from '../../styles/index';
 
 interface ButtonProps {
-  backgroundColor: string;
-  color: string;
-  width: number;
+  isDark?: boolean;
+  width?: number;
 }
 
-export const StyledButton = styled.button<ButtonProps>`
+export default styled.button<ButtonProps>`
   align-items: center;
-  background-color: ${props => props.backgroundColor};
-  color: ${props => props.color};
+  background-color: ${props => (props.isDark ? Color.DOVE_GRAY : Color.GALLERY)};
+  color: ${props => (props.isDark ? Color.WHITE : Color.BLACK)};
+  cursor: pointer;
   display: flex;
   display: inline-block;
+  font-size: 14px;
   justify-content: center;
-  padding: 10px 20px;
-  width: ${props => props.width}px;
+  padding: 12px 10px;
+  ${props => (props.width ? `width: ${props.width}px;` : '')}
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
 `;

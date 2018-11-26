@@ -15,7 +15,9 @@ const mapDispatch = dispatch => ({
   launchWindow: (window: WindowConfig) => dispatch(launchWindow(window)),
 });
 
-export default withAutoHideApp(connect(
-  mapState,
-  mapDispatch,
-)(App));
+export default withAutoHideApp(
+  connect(
+    mapState,
+    mapDispatch,
+  )(App),
+);

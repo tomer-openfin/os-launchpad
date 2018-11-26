@@ -11,7 +11,8 @@ import EditUserForm from '../EditUserForm';
 import Layouts from '../Layouts';
 import Login from '../Login';
 import NewUserForm from '../NewUserForm';
-import Settings from '../Settings';
+import OrganizationSettings from '../OrganizationSettings';
+// import Settings from '../Settings';
 import UserDirectory from '../UserDirectory';
 
 import ROUTES from './const';
@@ -76,7 +77,7 @@ const routes: AppRoute[] = [
         path: ROUTES.ADMIN_APPS,
       },
       {
-        Component: Settings,
+        Component: OrganizationSettings,
         exact: false,
         path: ROUTES.ADMIN_SETTINGS,
       },

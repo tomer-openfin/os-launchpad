@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import routes, { AppRoute } from './routes';
 
 import { GlobalStyle } from '../../styles/globals.css';
+import ConnectedThemeProvider from '../ConnectedThemeProvider';
 
 const renderNestedRoute = (Component, children) => props => {
   return <Component {...props}>{children.map(renderRoute)}</Component>;
@@ -18,13 +19,15 @@ export const renderRoute = ({ children, Component, exact, path }: AppRoute) => {
 };
 
 const Router = () => (
-  <>
-    <GlobalStyle />
+  <ConnectedThemeProvider>
+    <>
+      <GlobalStyle />
 
-    <BrowserRouter>
-      <Switch>{routes.map(renderRoute)}</Switch>
-    </BrowserRouter>
-  </>
+      <BrowserRouter>
+        <Switch>{routes.map(renderRoute)}</Switch>
+      </BrowserRouter>
+    </>
+  </ConnectedThemeProvider>
 );
 
 export default Router;

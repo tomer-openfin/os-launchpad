@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import * as Color from './color';
+
+import { getBackgroundColor } from '../components/ConnectedThemeProvider';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -8,11 +9,11 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     margin: 0;
-    background: ${Color.CHARCOAL};
+    background-color: ${getBackgroundColor};
     font-family: 'Muli', sans-serif;
   }
 
   a {
     text-decoration: none;
   }
-  `;
+`;

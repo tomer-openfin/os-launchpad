@@ -1,36 +1,32 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { NavLink } from 'react-router-dom';
 import { Color } from '../../styles';
 
 const TABS_SIZE = '25px';
 
-// placeholder tabs until design finalized
-export const TabsWrapper = styled.div`
+export const ContentWrapper = styled.div`
+  background-color: ${Color.ALTO};
   display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
   width: 100%;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: ${TABS_SIZE};
 `;
 
 const activeClassName = 'active-link';
-
 export const TabLink = styled(NavLink).attrs({ activeClassName })`
-  flex: 1;
-  height: 100%;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  outline: none;
   background: ${Color.DUSTY_GREY};
   color: ${Color.SEAGULL};
-  text-decoration: none;
-  font-weight: 200;
+  display: flex;
+  flex: 1;
   font-size: 10px;
+  font-weight: 200;
+  height: 100%;
+  justify-content: center;
+  outline: none;
+  text-decoration: none;
 
   &:hover {
     background: ${Color.LIGHTER_GREY};
@@ -42,15 +38,18 @@ export const TabLink = styled(NavLink).attrs({ activeClassName })`
   }
 `;
 
-export const Wrapper = styled.div`
-  height: 100vh;
-  width: 100vw;
+// placeholder tabs until design finalized
+export const TabsWrapper = styled.div`
   display: flex;
+  flex-wrap: nowrap;
+  height: ${TABS_SIZE};
+  justify-content: space-evenly;
+  width: 100%;
 `;
 
-export const ContentWrapper = styled.div`
-  width: 100%;
+export const Wrapper = styled.div`
   display: flex;
-  margin-top: ${TABS_SIZE};
-  overflow: hidden;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
 `;

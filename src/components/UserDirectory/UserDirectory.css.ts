@@ -12,8 +12,8 @@ const HEADING_HEIGHT = '30px';
 export const HeadingWrapper = styled.div`
   align-items: center;
   display: flex;
-  justify-content: space-evenly;
   height: ${HEADING_HEIGHT};
+  justify-content: space-evenly;
   margin-top: 30px;
   width: 100%;
 `;

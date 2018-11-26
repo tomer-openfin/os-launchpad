@@ -12,7 +12,15 @@ export function getLocalStorage<P>(key: string, defaultPayload: P): Promise<P> {
     return Promise.resolve(payload === null ? defaultPayload : (JSON.parse(payload) as P));
   } catch (e) {
     /* tslint:disable-next-line:no-console */
-    console.error('Failed to get local storage key:', key, '\n', e);
+    console.error(
+      'Failed to get local storage key:',
+      key,
+      '\n',
+      'Unable to parse payload:',
+      payload,
+      '\n',
+      e,
+    );
 
     return Promise.resolve(defaultPayload);
   }

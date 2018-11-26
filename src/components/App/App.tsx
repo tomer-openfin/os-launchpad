@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import * as adminIcon from '../../assets/AdminSettings.svg';
-import * as logoIcon from '../../assets/Logo.svg';
 import * as notificationsIcon from '../../assets/Notifications.svg';
 import * as saveLayoutIcon from '../../assets/SaveLayout.svg';
 import * as searchIcon from '../../assets/Search.svg';
@@ -13,6 +12,7 @@ import { WindowConfig } from '../../redux/windows/types';
 import { LauncherPosition } from '../../types/commons';
 import AppList from '../AppList';
 import IconSpace from '../IconSpace';
+import Logo from '../Logo';
 import { EllipsisImage, EllipsisWrapper, Separator, Wrapper } from './App.css';
 
 export interface Props {
@@ -31,7 +31,7 @@ const App = (props: Props) => {
 
   return (
     <Wrapper launcherPosition={launcherPosition}>
-      <IconSpace iconImg={logoIcon} />
+      <Logo />
 
       <Separator launcherPosition={launcherPosition} />
 

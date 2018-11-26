@@ -6,8 +6,11 @@ import '../src/components/Button/Button.story';
 import '../src/components/ConfirmUserDelete/ConfirmUserDelete.story';
 import '../src/components/EditUserForm/EditUserForm.story';
 import '../src/components/Login/Login.story';
+import '../src/components/LogoForm/LogoForm.story';
 import '../src/components/NewUserForm/NewUserForm.story';
+import '../src/components/OrganizationSettings/OrganizationSettings.story';
 import '../src/components/Router/Router.story';
+import '../src/components/ThemesForm/ThemesForm.story';
 import '../src/components/UserDirectory/UserDirectory.story';
 
 import '../src/styles/';

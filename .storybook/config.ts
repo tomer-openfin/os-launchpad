@@ -1,13 +1,16 @@
+// tslint:disable-next-line:no-var-requires
+const StoryRouter = require('storybook-react-router').default;
 import { withInfo } from '@storybook/addon-info';
 import { addDecorator, configure } from '@storybook/react';
-import StoryRouter from 'storybook-react-router';
 
 import reduxDecorator from './reduxDecorator';
+import themeDecorator from './themeDecorator';
 
 // Global decorators
-addDecorator(StoryRouter());
-addDecorator(reduxDecorator);
 addDecorator(withInfo);
+addDecorator(StoryRouter());
+addDecorator(themeDecorator);
+addDecorator(reduxDecorator);
 
 function loadStories() {
   require('../stories');

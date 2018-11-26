@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { TabLink, TabsWrapper, Wrapper } from './Admin.css';
+import { ContentWrapper, TabLink, TabsWrapper, Wrapper } from './Admin.css';
 
 import ROUTES from '../Router/const';
 
@@ -32,11 +32,13 @@ const renderAdminTab = ({ path, label }) => (
 
 const renderAdmin = children => {
   return (
-    <Wrapper>
+    <>
       <TabsWrapper>{ADMIN_TABBED_ROUTES.map(renderAdminTab)}</TabsWrapper>
 
-      {children}
-    </Wrapper>
+      <ContentWrapper>
+        {children}
+      </ContentWrapper>
+    </>
   );
 };
 

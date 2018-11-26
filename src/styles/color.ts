@@ -12,3 +12,7 @@ export const FAIL = '#dc143c';
 export const FOG = '#d3d3d3';
 export const OVERCAST = '#b3b3b3';
 export const CEMENT = '#aaa';
+export const ALTO = '#d8d8d8';
+export const EMPEROR = '#545454';
+export const DOVE_GRAY = '#666';
+export const GALLERY = '#eee';

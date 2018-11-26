@@ -1,7 +1,12 @@
 import { Layout } from 'openfin-layouts/dist/client/types';
 
+import * as logoIcon from '../assets/Logo.svg';
+
 import { getIsEnterprise } from '../redux/application';
 import { defaultState, MeStateSettings } from '../redux/me';
+import { OrganizationState } from '../redux/organization/types';
+import { Theme } from '../redux/types';
+import DEFAULT_THEMES from '../utils/defaultThemes';
 import { getLocalStorage, setLocalStorage } from './localStorageAdapter';
 
 import { DeleteAppResponse } from '../types/commons';
@@ -11,6 +16,7 @@ const APPS_URL = `${API_URL}api/apps`;
 const LAYOUTS_URL = `${API_URL}api/layouts`;
 const LOGIN_URL = `${API_URL}/api/auth/login`;
 const SETTINGS_URL = `${API_URL}api/settings`;
+const THEMES_URL = `${API_URL}api/themes`;
 
 const LOCAL_STORAGE_KEYS = {
   APPS: 'apps',
@@ -54,7 +60,7 @@ export const checkIsEnterprise = () => {
  *
  * @returns {Promise<string[]>}
  */
-export const getApps = () => {
+export const getApps = (): Promise<string[]> => {
   if (checkIsEnterprise()) {
     const options = createGetOptions();
     return fetch(APPS_URL, options)
@@ -95,7 +101,7 @@ export const deleteApp = (appId: string) => {
  *
  * @returns {Promise<Layout[]>}
  */
-export const getLayouts = () => {
+export const getLayouts = (): Promise<Layout[]> => {
   // Disable enterprise check for demo
   // if (checkIsEnterprise()) {
   //   const options = createGetOptions();
@@ -142,7 +148,7 @@ export const login = payload => {
  *
  * @returns {Promise<MeStateSettings>}
  */
-export const getSettings = () => {
+export const getSettings = (): Promise<MeStateSettings> => {
   if (checkIsEnterprise()) {
     const options = createGetOptions();
     return fetch(SETTINGS_URL, options)
@@ -165,6 +171,39 @@ export const saveSettings = (settings: MeStateSettings) => {
   }
 
   return setLocalStorage<MeStateSettings>(LOCAL_STORAGE_KEYS.SETTINGS, settings);
+};
+
+export const getOrganizationSettings = (): Promise<OrganizationState> => {
+  return Promise.resolve({
+    logo: logoIcon,
+    theme: DEFAULT_THEMES[0],
+  });
+};
+
+/**
+ * Get themes
+ *
+ * @returns {Promise<Theme[]>}
+ */
+export const getThemes = (): Promise<Theme[]> => {
+  return Promise.resolve(DEFAULT_THEMES);
+  // const options = createGetOptions();
+  // return fetch(THEMES_URL, options)
+  //   .then(resp => resp.json())
+  //   .then(resp => resp.themes as Theme[]);
+};
+
+export const saveTheme = (theme: Theme) => {
+  // tslint:disable-next-line:no-console
+  console.log('Saving organization theme as:', theme);
+  return Promise.resolve();
+};
+
+export const saveLogo = (file: File) => {
+  // tslint:disable-next-line:no-console
+  console.log('Saving organization logo file:', file);
+  const newFileUrl = URL.createObjectURL(file);
+  return Promise.resolve(newFileUrl);
 };
 
 // pass statusCode of '400' to simulate failure response
