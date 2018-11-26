@@ -85,7 +85,7 @@ export const saveApps = (apps: string[]) => {
  * @returns {Promise<DeleteAppResponse>}
  */
 export const deleteApp = (appId: string) => {
-  const options = createDeleteOptions({ appId });
+  const options = createDeleteOptions();
 
   return fetch(`${APPS_URL}/${appId}`, options).then(resp => (resp.json() as unknown) as DeleteAppResponse);
 };
