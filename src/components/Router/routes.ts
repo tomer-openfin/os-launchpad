@@ -3,6 +3,7 @@ import * as React from 'react';
 import Admin from '../Admin';
 import AdminApps from '../AdminApps';
 import App from '../App';
+import AppDirectory from '../AppDirectory';
 import AppOverflow from '../AppOverflow';
 import ConfirmAppDelete from '../ConfirmAppDelete';
 import ConfirmUserDelete from '../ConfirmUserDelete';
@@ -102,6 +103,16 @@ const routes: AppRoute[] = [
     Component: Layouts,
     exact: true,
     path: ROUTES.LAYOUTS,
+  },
+  {
+    Component: AppDirectory,
+    exact: true,
+    path: ROUTES.APP_DIRECTORY,
+  },
+  {
+    Component: Settings,
+    exact: true,
+    path: ROUTES.SETTINGS,
   },
 ];
 

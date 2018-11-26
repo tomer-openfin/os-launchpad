@@ -71,10 +71,10 @@ export const getApps = () => {
  * @returns {Promise<void>}
  */
 export const saveApps = (apps: string[]) => {
-  if (checkIsEnterprise()) {
-    const options = createPostOptions({ apps });
-    return fetch(APPS_URL, options).then(resp => resp.json());
-  }
+  // if (checkIsEnterprise()) {
+  //   const options = createPostOptions({ apps });
+  //   return fetch(APPS_URL, options).then(resp => resp.json());
+  // }
 
   return setLocalStorage<string[]>(LOCAL_STORAGE_KEYS.APPS, apps);
 };
