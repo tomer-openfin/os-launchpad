@@ -58,7 +58,7 @@
     "webpack-dev-server": "3.1.10"
   },
   "dependencies": {
-    "@giantmachines/redux-openfin": "0.7.3",
+    "@giantmachines/redux-openfin": "0.7.4",
     "@storybook/addon-actions": "4.0.0",
     "@storybook/addon-info": "4.0.0",
     "@storybook/addon-knobs": "4.0.0",
