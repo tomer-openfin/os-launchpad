@@ -8,7 +8,6 @@ export interface AppsById {
 export interface AppsState {
   ids: string[];
   byId: AppsById;
-  launcherIds: string[];
 }
 
 // Payloads

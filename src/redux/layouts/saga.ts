@@ -7,7 +7,7 @@ import { GET_LAYOUTS, getLayoutsSuccess, RESTORE_LAYOUT, SAVE_LAYOUT, saveLayout
 import { RestoreLayout, SaveLayoutRequest } from './types';
 
 function* watchGetLayoutRequest() {
-  const result = yield call(ApiService.getLayouts);
+  const result = yield call(ApiService.getUserLayouts);
   yield put(getLayoutsSuccess(result));
 }
 
@@ -32,7 +32,7 @@ function* watchSaveLayoutRequest(action: SaveLayoutRequest) {
   // tslint:disable:no-console
   console.log('-- attempting to save layout--', layout);
 
-  yield call(ApiService.saveLayout, layout as Layout);
+  yield call(ApiService.saveUserLayout, layout as Layout);
   yield put(saveLayoutSuccess());
 }
 

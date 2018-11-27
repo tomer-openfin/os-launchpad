@@ -5,16 +5,19 @@ import * as logoIcon from '../assets/Logo.svg';
 import { getIsEnterprise } from '../redux/application';
 import { defaultState, MeStateSettings } from '../redux/me';
 import { OrganizationState } from '../redux/organization/types';
-import { DeleteAppResponse, Theme } from '../types/commons';
+import { App, DeleteAppResponse, Theme } from '../types/commons';
 import DEFAULT_THEMES from '../utils/defaultThemes';
 import { getLocalStorage, setLocalStorage } from './localStorageAdapter';
 
-const API_URL = process.env.API_URL; // || 'http://localhost:9001/';
+const API_URL = process.env.API_URL || '/';
+
 const APPS_URL = `${API_URL}api/apps`;
 const LAYOUTS_URL = `${API_URL}api/layouts`;
-const LOGIN_URL = `${API_URL}/api/auth/login`;
-const SETTINGS_URL = `${API_URL}api/settings`;
+const LOGIN_URL = `${API_URL}api/auth/login`;
+const SETTINGS_URL = `${API_URL}api/user/settings`;
 const THEMES_URL = `${API_URL}api/themes`;
+
+const PUBLIC_APPS_URL = 'https://app-directory.openfin.co/api/v1/apps';
 
 const LOCAL_STORAGE_KEYS = {
   APPS: 'apps',
@@ -23,6 +26,7 @@ const LOCAL_STORAGE_KEYS = {
 };
 
 const createGetOptions = (): RequestInit => ({
+  credentials: 'include',
   headers: {
     'content-type': 'application/json',
   },
@@ -32,6 +36,7 @@ const createGetOptions = (): RequestInit => ({
 
 const createPostOptions = (body): RequestInit => ({
   body: JSON.stringify(body),
+  credentials: 'include',
   headers: {
     'content-type': 'application/json',
   },
@@ -40,6 +45,7 @@ const createPostOptions = (body): RequestInit => ({
 });
 
 const createDeleteOptions = (): RequestInit => ({
+  credentials: 'include',
   headers: {
     'content-type': 'application/json',
   },
@@ -58,29 +64,13 @@ export const checkIsEnterprise = () => {
  *
  * @returns {Promise<string[]>}
  */
-export const getApps = (): Promise<string[]> => {
-  if (checkIsEnterprise()) {
-    const options = createGetOptions();
-    return fetch(APPS_URL, options)
-      .then(resp => resp.json())
-      .then(resp => resp.apps as string[]);
-  }
-
-  return getLocalStorage<string[]>(LOCAL_STORAGE_KEYS.APPS, []);
-};
-
-/**
- * Save apps
- *
- * @returns {Promise<void>}
- */
-export const saveApps = (apps: string[]) => {
+export const getDirectoryAppList = (): Promise<App[]> => {
   // if (checkIsEnterprise()) {
-  //   const options = createPostOptions({ apps });
+  //   const options = createGetOptions();
   //   return fetch(APPS_URL, options).then(resp => resp.json());
   // }
 
-  return setLocalStorage<string[]>(LOCAL_STORAGE_KEYS.APPS, apps);
+  return fetch(PUBLIC_APPS_URL).then(res => res.json());
 };
 
 /**
@@ -99,7 +89,7 @@ export const deleteApp = (appId: string) => {
  *
  * @returns {Promise<Layout[]>}
  */
-export const getLayouts = (): Promise<Layout[]> => {
+export const getUserLayouts = (): Promise<Layout[]> => {
   // Disable enterprise check for demo
   // if (checkIsEnterprise()) {
   //   const options = createGetOptions();
@@ -116,7 +106,7 @@ export const getLayouts = (): Promise<Layout[]> => {
  *
  * @returns {Promise<void>}
  */
-export const saveLayout = (layout: Layout) => {
+export const saveUserLayout = (layout: Layout) => {
   // Disable enterprise check for demo
   // if (checkIsEnterprise()) {
   //   const options = createPostOptions({ layout });
@@ -134,8 +124,6 @@ export const saveLayout = (layout: Layout) => {
 export const login = payload => {
   const options = createPostOptions(payload);
 
-  options.credentials = 'include';
-
   return fetch(LOGIN_URL, options)
     .then(resp => resp.json())
     .then(resp => resp);
@@ -146,12 +134,11 @@ export const login = payload => {
  *
  * @returns {Promise<MeStateSettings>}
  */
-export const getSettings = (): Promise<MeStateSettings> => {
+export const getUserSettings = (): Promise<MeStateSettings> => {
   if (checkIsEnterprise()) {
     const options = createGetOptions();
-    return fetch(SETTINGS_URL, options)
-      .then(resp => resp.json())
-      .then(resp => resp.settings as MeStateSettings);
+
+    return fetch(SETTINGS_URL, options).then(resp => resp.json());
   }
 
   return getLocalStorage<MeStateSettings>(LOCAL_STORAGE_KEYS.SETTINGS, defaultState.settings);
@@ -162,7 +149,7 @@ export const getSettings = (): Promise<MeStateSettings> => {
  *
  * @returns {Promise<void>}
  */
-export const saveSettings = (settings: MeStateSettings) => {
+export const saveUserSettings = (settings: MeStateSettings) => {
   if (checkIsEnterprise()) {
     const options = createPostOptions({ settings });
     return fetch(SETTINGS_URL, options).then(resp => resp.json());
@@ -207,6 +194,7 @@ export const saveLogo = (file: File) => {
 // pass statusCode of '400' to simulate failure response
 // todo: type interfaces for these paramaters & create consts for various methods/statuscodes
 const defaultEndpoint = `${process.env.MOCK_POSTMAN_URI}/api/admin/users`;
+
 export const tempFetch = (endpoint = defaultEndpoint, method, payload, statusCode = '200') => {
   return fetch(endpoint, {
     body: JSON.stringify(payload),
@@ -220,12 +208,11 @@ export const tempFetch = (endpoint = defaultEndpoint, method, payload, statusCod
 };
 
 export default {
-  getApps,
-  getLayouts,
-  getSettings,
+  getDirectoryAppList,
+  getUserLayouts,
+  getUserSettings,
   login,
-  saveApps,
-  saveLayout,
-  saveSettings,
+  saveUserLayout,
+  saveUserSettings,
   tempFetch,
 };

@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 
-import { addToAppLauncher, removeFromAppLauncher } from '../../redux/apps/actions';
-import { getIsLauncherAppFromId } from '../../redux/apps/selectors';
+import { addToAppLauncher, getIsLauncherAppFromId, removeFromAppLauncher } from '../../redux/me';
 
 import AppCard from './AppCard';
 

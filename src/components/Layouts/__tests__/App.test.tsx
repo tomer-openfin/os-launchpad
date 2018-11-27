@@ -20,7 +20,7 @@ describe('<App />', () => {
     //   collapseApp={noop}
     //   expandApp={noop}
     //   isExpanded
-    //   launcherPosition="TOP"
+    //   launcherPosition="top"
     //   launchWindow={noop}
     //   monitorInfo={{}}
     //   setMonitorInfo={noop}

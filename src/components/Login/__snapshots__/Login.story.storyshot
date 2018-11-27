@@ -22,6 +22,7 @@ exports[`Storyshots Components/Login default 1`] = `
           onChange={[Function]}
           placeholder="Username"
           type="text"
+          value=""
         />
         <br />
         <input

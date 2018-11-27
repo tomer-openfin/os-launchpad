@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { loginRequest } from '../../redux/me';
+import { loginRequest, LoginRequestPayload } from '../../redux/me';
 
 import Login from './Login';
 
@@ -9,7 +9,7 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
-  onSubmit: (options: { email: string, password: string }) => dispatch(loginRequest(options)),
+  onSubmit: (options: LoginRequestPayload) => dispatch(loginRequest(options)),
 });
 
 export default connect(mapState, mapDispatch)(Login);

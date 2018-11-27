@@ -7,7 +7,7 @@ import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
 import { animateWindow, getSystemMonitorInfo } from '../../utils/openfinPromises';
 import takeFirst from '../../utils/takeFirst';
 import { LAUNCHER_HIDDEN_VISIBILITY_DELTA } from '../../utils/windowPositionHelpers';
-import { getAppDirectoryList, getLauncherAppIdsRequest } from '../apps';
+import { getAppDirectoryList } from '../apps';
 import { getLayoutById, getLayoutsIds, getLayoutsRequest, restoreLayout } from '../layouts';
 import { getAutoHide, getLauncherPosition, getSettingsRequest } from '../me';
 import { setMonitorInfo, setupSystemHandlers } from '../system';
@@ -37,7 +37,7 @@ function* applicationStart() {
   // tslint:disable-next-line:no-console
   console.log('application started');
 
-  yield all([put(getAppDirectoryList()), put(getLayoutsRequest()), put(getLauncherAppIdsRequest()), put(getSettingsRequest())]);
+  yield put(getAppDirectoryList());
 }
 
 /**
@@ -73,6 +73,8 @@ function* openfinSetup(action: OpenfinReadyAction) {
       // Show Login
       yield put(launchWindow(windowsConfig.login));
     } else {
+      yield all([put(getLayoutsRequest()), put(getSettingsRequest())]);
+
       // Show Launchbar
       yield put(launchAppLauncher());
     }

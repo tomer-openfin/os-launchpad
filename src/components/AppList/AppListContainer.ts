@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getAppsLauncherAppList, removeFromAppLauncher } from '../../redux/apps';
+import { getAppsLauncherAppList, removeFromAppLauncher } from '../../redux/me';
 
 import { launchWindow, WindowConfig } from '../../redux/windows';
 

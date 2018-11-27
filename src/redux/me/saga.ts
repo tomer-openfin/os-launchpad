@@ -1,15 +1,21 @@
 import { Window } from '@giantmachines/redux-openfin';
-import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { all, call, put, select, take, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 import { launchAppLauncher, setLauncherBounds } from '../application';
+import { getAppDirectoryList } from '../apps';
+import { getLayoutsRequest } from '../layouts';
 import {
+  ADD_TO_APP_LAUNCHER,
   GET_SETTINGS,
+  getSettingsRequest,
   getSettingsSuccess,
   LOGIN,
   loginError,
   loginSuccess,
+  REMOVE_FROM_APP_LAUNCHER,
   SAVE_SETTINGS,
+  saveSettingsRequest,
   saveSettingsSuccess,
   SET_AUTO_HIDE,
   SET_LAUNCHER_POSITION,
@@ -18,29 +24,19 @@ import {
 import { getMeSettings } from './selectors';
 import { LoginError, LoginRequest, LoginSuccess } from './types';
 
-function* watchGetSettingsRequest() {
-  const result = yield call(ApiService.getSettings);
-
-  yield put(getSettingsSuccess(result));
-}
-
 function* watchLoginRequest(action: LoginRequest) {
-  // tslint:disable-next-line:no-console
-  console.log('Login Request', action);
-
   const { payload } = action;
 
   if (!payload) {
     return;
   }
-  const { email } = payload;
 
   const result = yield call(ApiService.login, payload);
 
-  const { status } = result;
+  const { email, firstName, lastName, isAdmin, status } = result;
 
   if (!status) {
-    yield put(loginSuccess({ token: 'success', email }));
+    yield put(loginSuccess({ isAdmin, email, firstName, lastName }));
   } else {
     yield put(loginError({ status, message: 'Login failed' }));
   }
@@ -53,18 +49,11 @@ function* watchLoginSuccess(action: LoginSuccess) {
     return;
   }
 
-  const { email } = payload;
+  yield put(setMe(payload));
 
-  const { IS_ADMIN } = process.env;
-  const isAdmin = IS_ADMIN === 'true';
+  // take(GET_SETTINGS.SUCCESS) to wait for launcher position before showing launcher
+  yield all([take([GET_SETTINGS.SUCCESS, GET_SETTINGS.ERROR]), put(getAppDirectoryList()), put(getLayoutsRequest()), put(getSettingsRequest())]);
 
-  // tslint:disable-next-line:no-console
-  console.log('Login Success for', email);
-
-  // tslint:disable-next-line:no-console
-  console.log('Is newly logged in user an admin?', isAdmin);
-
-  yield put(setMe(isAdmin, email));
   // TODO: Use window config
   yield put(Window.closeWindow({ id: 'osLaunchpadLogin' }));
 
@@ -83,18 +72,53 @@ function* watchLoginError(action: LoginError) {
   console.log('Error Message:', message);
 }
 
+function* watchGetSettingsRequest() {
+  const result = yield call(ApiService.getUserSettings);
+
+  // TODO validate result against settings state (e.g. invalid position issue)
+  // if invalid fall back to defaults and save in api
+
+  yield put(getSettingsSuccess(result));
+}
+
+function* watchGetSettingsSuccess() {
+  yield call(setLauncherBounds);
+}
+
+function* watchSetAutoHide() {
+  yield call(setLauncherBounds);
+
+  yield put(saveSettingsRequest());
+}
+
+function* watchSetLaunchbarPosition() {
+  yield call(setLauncherBounds);
+
+  yield put(saveSettingsRequest());
+}
+
 function* watchSaveSettingsRequest() {
   const settings = yield select(getMeSettings);
-  yield call(ApiService.saveSettings, settings);
+
+  // TODO: error handling
+  yield call(ApiService.saveUserSettings, settings);
+
   yield put(saveSettingsSuccess());
+}
+
+function* watchUpdateLauncherApps() {
+  yield put(saveSettingsRequest());
 }
 
 export function* meSaga() {
   yield takeLatest(GET_SETTINGS.REQUEST, watchGetSettingsRequest);
+  yield takeLatest(GET_SETTINGS.SUCCESS, watchGetSettingsSuccess);
   yield takeLatest(LOGIN.REQUEST, watchLoginRequest);
   yield takeLatest(LOGIN.SUCCESS, watchLoginSuccess);
   yield takeLatest(LOGIN.ERROR, watchLoginError);
   yield takeLatest(SAVE_SETTINGS.REQUEST, watchSaveSettingsRequest);
-  yield takeLatest(SET_LAUNCHER_POSITION, setLauncherBounds);
-  yield takeLatest(SET_AUTO_HIDE, setLauncherBounds);
+  yield takeLatest(ADD_TO_APP_LAUNCHER, watchUpdateLauncherApps);
+  yield takeLatest(REMOVE_FROM_APP_LAUNCHER, watchUpdateLauncherApps);
+  yield takeLatest(SET_LAUNCHER_POSITION, watchSetLaunchbarPosition);
+  yield takeLatest(SET_AUTO_HIDE, watchSetAutoHide);
 }

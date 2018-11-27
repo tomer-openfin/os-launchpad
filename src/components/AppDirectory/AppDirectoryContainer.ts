@@ -1,7 +1,8 @@
 import { Window } from '@giantmachines/redux-openfin';
 import { connect } from 'react-redux';
 
-import { getAppsDirectoryAppList, getAppsLauncherIds } from '../../redux/apps';
+import { getAppsDirectoryAppList } from '../../redux/apps';
+import { getAppsLauncherIds } from '../../redux/me';
 
 import AppDirectory from './AppDirectory';
 

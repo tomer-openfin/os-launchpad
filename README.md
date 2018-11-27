@@ -51,6 +51,8 @@ _(alternatively, you can run the application and OpenFin separately by doing the
 | `MOCK_POSTMAN_URI` | Postman mock server URI. | ✅ |
 | `PORT` | Set the port for the application. | ✅ |
 | `POSTMAN_API_KEY` | Postman API key. | ✅ |
+| `USERNAME` | Default login Username. | ✅ |
+| `PASSWORD` | Default login password. | ✅ |
 | `RUNTIME_VERSION` | Set the `runtime` in the manifest. | |
 
 ### Develping on macOS

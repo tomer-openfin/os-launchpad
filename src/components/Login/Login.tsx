@@ -1,27 +1,31 @@
 import { Field, Form, Formik } from 'formik';
 import * as React from 'react';
+
+import { LoginRequestPayload } from '../../redux/me';
+
 import { CTA, Wrapper } from './Login.css';
 
-interface SubmitPayload {
-  email: string;
-  password: string;
-}
-
-type SubmitFn = (payload: SubmitPayload) => void;
+type SubmitFn = (payload: LoginRequestPayload) => void;
 
 interface Props {
   onSubmit: SubmitFn;
   loginError: boolean;
 }
 
+const { USERNAME, PASSWORD } = process.env;
+
+const initialValues: LoginRequestPayload = USERNAME && PASSWORD && document.location && document.location.host.indexOf('8080') !== -1
+  ? { username: USERNAME, password: PASSWORD }
+  : { username: '', password: '' };
+
 /**
  * Higher order function to pass a function to Formik's onSubmit
  *
  * @param {SubmitFn}
  *
- * @returns {SubmitPayload => void}
+ * @returns {LoginRequestPayload => void}
  */
-const handleSubmit = (onSubmit: SubmitFn) => (values: SubmitPayload) => {
+const handleSubmit = (onSubmit: SubmitFn) => (values: LoginRequestPayload) => {
   onSubmit(values);
 };
 
@@ -68,7 +72,7 @@ const Login = ({ loginError, onSubmit }: Props) => (
     )}
 
     <Formik
-      initialValues={{ email: '', password: '' }}
+      initialValues={initialValues}
       onSubmit={handleSubmit(onSubmit)}
       render={LoginForm}
     />

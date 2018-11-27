@@ -12,7 +12,8 @@ const {
   API_URL,
   ENTERPRISE,
   HOST = '0.0.0.0',
-  IS_ADMIN,
+  USERNAME,
+  PASSWORD,
   LOGGER,
   MOCK_POSTMAN_URI,
   NODE_ENV = 'development',
@@ -62,11 +63,12 @@ module.exports = {
         API_URL: JSON.stringify(API_URL),
         APP_UUID: JSON.stringify(appJson.startup_app.uuid),
         ENTERPRISE: JSON.stringify(ENTERPRISE),
-        IS_ADMIN: JSON.stringify(IS_ADMIN),
         LOGGER: JSON.stringify(LOGGER),
         MOCK_POSTMAN_URI: JSON.stringify(MOCK_POSTMAN_URI),
         NODE_ENV: JSON.stringify(NODE_ENV),
         POSTMAN_API_KEY: JSON.stringify(POSTMAN_API_KEY),
+        USERNAME: JSON.stringify(USERNAME),
+        PASSWORD: JSON.stringify(PASSWORD),
       },
     }),
     new HtmlWebpackPlugin({
@@ -77,13 +79,12 @@ module.exports = {
       {
         from: './src/app.json',
         to: '.',
-        transform: content => (
+        transform: content =>
           transformOpenFinConfig(`${content}`, {
             rootUrl: DEPLOY_LOCATION,
             runtimeVersion: RUNTIME_VERSION,
             isProduction,
-          })
-        ),
+          }),
       },
       {
         from: './public',

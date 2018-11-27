@@ -170,7 +170,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
                 className="sc-fjdhpX etSFY"
                 onClick={[Function]}
               >
-                - Remove Shortcut
+                + Add Shortcut
               </button>
             </div>
             <div
@@ -207,7 +207,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
                 className="sc-fjdhpX etSFY"
                 onClick={[Function]}
               >
-                - Remove Shortcut
+                + Add Shortcut
               </button>
             </div>
             <div
@@ -319,7 +319,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                 className="sc-fjdhpX etSFY"
                 onClick={[Function]}
               >
-                - Remove Shortcut
+                + Add Shortcut
               </button>
             </div>
             <div

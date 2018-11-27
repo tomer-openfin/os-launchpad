@@ -17,15 +17,18 @@ import { LauncherPosition } from '../../types/commons';
 
 // State
 export interface MeStateSettings {
+  appIds: string[];
   autoHide: boolean;
   launcherPosition: LauncherPosition;
 }
 
 // Reducer
 export interface MeState {
-  username: string;
+  firstName: string;
+  email: string;
   settings: MeStateSettings;
   isAdmin: boolean;
+  lastName: string;
 }
 
 // Action payloads
@@ -33,19 +36,23 @@ export interface SetLaunchbarPayload {
   launcherPosition: LauncherPosition;
 }
 export interface LoginRequestPayload {
-  email: string;
+  username: string;
   password: string;
 }
 export interface LoginSuccessPayload {
-  token: string;
+  firstName: string;
   email: string;
+  isAdmin: boolean;
+  lastName: string;
 }
 export interface SetAutoHidePayload {
   autoHide: boolean;
 }
 export interface SetMePayload {
-  username: string;
+  firstName: string;
+  email: string;
   isAdmin: boolean;
+  lastName: string;
 }
 
 // Actions creators
