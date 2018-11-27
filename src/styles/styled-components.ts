@@ -4,7 +4,7 @@ import * as styledComponents from '../../node_modules/styled-components';
 
 import { ThemedStyledComponentsModule } from '../../node_modules/@types/styled-components';
 
-import { Theme } from '../redux/types';
+import { Theme } from '../types/commons';
 
 const { default: styled, css, createGlobalStyle, keyframes, ThemeProvider } = styledComponents as ThemedStyledComponentsModule<Theme>;
 

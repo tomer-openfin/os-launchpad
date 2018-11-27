@@ -1,9 +1,8 @@
-/* tslint:disable:jsx-no-lambda */
-
 import * as React from 'react';
 
 import { CTA, Heading, Section, Window } from './Settings.css';
 
+import { LauncherPosition } from '../../types/commons';
 import noop from '../../utils/noop';
 
 interface Props {
@@ -24,26 +23,34 @@ class AppOverflow extends React.Component<Props, {}> {
   render() {
     const { autoHide, setAutoHide, setLaunchbarPosition } = this.props;
 
+    const setLauncherPositonTop = () => setLaunchbarPosition(LauncherPosition.Top);
+    const setLauncherPositonLeft = () => setLaunchbarPosition(LauncherPosition.Left);
+    const setLauncherPositonRight = () => setLaunchbarPosition(LauncherPosition.Right);
+    const setLauncherPositonBottom = () => setLaunchbarPosition(LauncherPosition.Bottom);
+    const handleAutoHide = () => {
+      autoHide ? setAutoHide(false) : setAutoHide(true);
+    };
+
     return (
       <Window>
         <Section>
           <Heading>Auto Hide</Heading>
 
-          <CTA onClick={() => (autoHide ? setAutoHide(false) : setAutoHide(true))}>{autoHide ? 'ON' : 'OFF'}</CTA>
+          <CTA onClick={handleAutoHide}>{autoHide ? 'ON' : 'OFF'}</CTA>
         </Section>
 
         <Section>
           <Heading>Launcher Position</Heading>
 
-          <CTA onClick={() => setLaunchbarPosition('TOP')}>Top</CTA>
+          <CTA onClick={setLauncherPositonTop}>Top</CTA>
 
           <div>
-            <CTA onClick={() => setLaunchbarPosition('LEFT')}>Left</CTA>
+            <CTA onClick={setLauncherPositonLeft}>Left</CTA>
 
-            <CTA onClick={() => setLaunchbarPosition('RIGHT')}>Right</CTA>
+            <CTA onClick={setLauncherPositonRight}>Right</CTA>
           </div>
 
-          <CTA onClick={() => setLaunchbarPosition('BOTTOM')}>Bottom</CTA>
+          <CTA onClick={setLauncherPositonBottom}>Bottom</CTA>
         </Section>
       </Window>
     );

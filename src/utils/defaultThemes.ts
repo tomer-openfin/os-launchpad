@@ -1,6 +1,5 @@
-import { Theme } from '../redux/types';
-
 import { Color } from '../styles';
+import { Theme } from '../types/commons';
 
 export enum DefaultThemeIds {
   Dark = 'dark',

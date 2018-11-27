@@ -633,7 +633,7 @@ exports[`Storyshots Components/AppList default 1`] = `
                             }
                           }
                         >
-                          TOP
+                          top
                         </span>
                         "
                       </span>

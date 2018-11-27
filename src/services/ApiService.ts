@@ -5,11 +5,9 @@ import * as logoIcon from '../assets/Logo.svg';
 import { getIsEnterprise } from '../redux/application';
 import { defaultState, MeStateSettings } from '../redux/me';
 import { OrganizationState } from '../redux/organization/types';
-import { Theme } from '../redux/types';
+import { DeleteAppResponse, Theme } from '../types/commons';
 import DEFAULT_THEMES from '../utils/defaultThemes';
 import { getLocalStorage, setLocalStorage } from './localStorageAdapter';
-
-import { DeleteAppResponse } from '../types/commons';
 
 const API_URL = process.env.API_URL; // || 'http://localhost:9001/';
 const APPS_URL = `${API_URL}api/apps`;

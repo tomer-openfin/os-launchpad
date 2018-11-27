@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import * as XIcon from '../../assets/TinyX.svg';
 
 import { Color } from '../../styles/index';
-import { isLeftOrRight } from '../../utils/launcherPosition';
+import { isLeftOrRight } from '../../utils/windowPositionHelpers';
 
 import { LauncherPosition } from '../../types/commons';
 

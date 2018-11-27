@@ -1,11 +1,4 @@
-import {
-  ApplicationActions,
-  ApplicationState,
-  SET_IS_ENTERPRISE,
-  SET_IS_EXPANDED,
-  SetIsEnterpriseAction,
-  SetIsExpandedAction,
-} from './';
+import { ApplicationActions, ApplicationState, SET_IS_ENTERPRISE, SET_IS_EXPANDED, SetIsEnterpriseAction, SetIsExpandedAction } from './';
 
 const defaultState: ApplicationState = {
   isEnterprise: false,

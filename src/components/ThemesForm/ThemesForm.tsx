@@ -1,8 +1,8 @@
 import { Field, FieldProps, Form, Formik, FormikHandlers, FormikProps } from 'formik';
 import * as React from 'react';
 
-import { Theme } from '../../redux/types';
 import { saveTheme } from '../../services/ApiService';
+import { Theme } from '../../types/commons';
 
 import { InputWrapper, Label, Select, StyledButton, Wrapper } from './ThemesForm.css';
 

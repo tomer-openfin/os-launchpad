@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Omit } from 'react-redux';
 
-import { Theme } from '../redux/types';
 import { getThemes } from '../services/ApiService';
+import { Theme } from '../types/commons';
 
 enum Consts {
   Themes = 'themes',
@@ -17,7 +17,7 @@ interface State {
   themes: Theme[] | null;
 }
 
-const withThemes = <P extends WithThemesProps>(Component: React.ComponentType<P>) => (
+const withThemes = <P extends WithThemesProps>(Component: React.ComponentType<P>) =>
   class ComponentWithThemes extends React.PureComponent<Omit<P, Consts.Themes>, State> {
     state = {
       error: null,
@@ -41,14 +41,8 @@ const withThemes = <P extends WithThemesProps>(Component: React.ComponentType<P>
         return <div>Loading Themes...</div>;
       }
 
-      return (
-        <Component
-          {...this.props}
-          themes={themes}
-        />
-      );
+      return <Component {...this.props} themes={themes} />;
     }
-  }
-);
+  };
 
 export default withThemes;

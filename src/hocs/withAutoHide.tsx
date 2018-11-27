@@ -1,13 +1,13 @@
 import throttle from 'lodash-es/throttle';
 import * as React from 'react';
 
-import { Bounds } from '../redux/types';
+import { Bounds, DirectionalCoordinates } from '../types/commons';
 import { isPosInBounds } from '../utils/coordinateHelpers';
 import { getSystemMousePosition } from '../utils/openfinPromises';
 
 interface Props {
   autoHide: boolean;
-  bounds: Bounds;
+  bounds: Bounds | undefined;
   collapse: () => void;
   expand: () => void;
   isExpanded: boolean;
@@ -20,7 +20,7 @@ interface Props {
  *
  * @returns Component
  */
-const withAutoHide = <P extends Props>(Component: React.ComponentType<P>) => (
+const withAutoHide = <P extends Props>(Component: React.ComponentType<P>) =>
   class ComponentWithAutoHide extends React.PureComponent<P> {
     interval?: number;
 
@@ -58,12 +58,12 @@ const withAutoHide = <P extends Props>(Component: React.ComponentType<P>) => (
     handleInterval = async () => {
       const { bounds, isExpanded } = this.props;
 
-      if (!isExpanded) {
+      if (!isExpanded || !bounds) {
         return;
       }
 
       const pos = await getSystemMousePosition();
-      if (pos && !isPosInBounds(pos, bounds)) {
+      if (pos && !isPosInBounds(pos as DirectionalCoordinates, bounds as Bounds)) {
         this.handleMouseLeaveWindow();
       }
     };
@@ -91,7 +91,6 @@ const withAutoHide = <P extends Props>(Component: React.ComponentType<P>) => (
     render() {
       return <Component {...this.props} />;
     }
-  }
-);
+  };
 
 export default withAutoHide;

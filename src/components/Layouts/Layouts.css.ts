@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { LauncherPosition } from '../../types/commons';
 
-import { isLeftOrRight } from '../../utils/launcherPosition';
+import { isLeftOrRight } from '../../utils/windowPositionHelpers';
 
 interface WrapperProps {
   launcherPosition: LauncherPosition;

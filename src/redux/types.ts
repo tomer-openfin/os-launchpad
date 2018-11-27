@@ -1,22 +1,11 @@
+import { Bounds } from '../types/commons';
+
 import { ApplicationState } from './application';
 import { AppsState } from './apps';
 import { LayoutsState } from './layouts';
 import { MeState } from './me';
 import { OrganizationState } from './organization';
 import { SystemState } from './system';
-
-export interface Theme {
-  backgroundColor: string;
-  id: string;
-  name: string;
-}
-
-export interface Bounds {
-  height: number;
-  left: number;
-  top: number;
-  width: number;
-}
 
 interface Windows {
   byId: {

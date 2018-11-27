@@ -1,14 +1,16 @@
-import { all, call, put, select, take, takeEvery } from 'redux-saga/effects';
+import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 
 import windowsConfig, { initOnStartWindows } from '../../config/windows';
-import { getNewPos } from '../../utils/coordinateHelpers';
+import { getNewPosDelta } from '../../utils/coordinateHelpers';
 import getAppUuid from '../../utils/getAppUuid';
+import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
 import { animateWindow, getSystemMonitorInfo } from '../../utils/openfinPromises';
 import takeFirst from '../../utils/takeFirst';
+import { LAUNCHER_HIDDEN_VISIBILITY_DELTA } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList, getLauncherAppIdsRequest } from '../apps';
 import { getLayoutById, getLayoutsIds, getLayoutsRequest, restoreLayout } from '../layouts';
-import { getAutoHide, getLauncherPosition, getSettingsRequest, setLauncherBounds } from '../me';
-import { setMonitorInfo } from '../system';
+import { getAutoHide, getLauncherPosition, getSettingsRequest } from '../me';
+import { setMonitorInfo, setupSystemHandlers } from '../system';
 import { getWindowBounds, launchWindow } from '../windows';
 import {
   APPLICATION_STARTED,
@@ -22,6 +24,7 @@ import {
 } from './actions';
 import { getApplicationIsExpanded } from './selectors';
 import { OpenfinReadyAction } from './types';
+import { setLauncherBounds } from './utils';
 
 const APP_UUID = getAppUuid();
 
@@ -49,17 +52,19 @@ function* openfinSetup(action: OpenfinReadyAction) {
     const isEnterprise = ENTERPRISE === 'true';
     yield put(setIsEnterprise(isEnterprise));
 
-    // Setup main window and hide
-    const monitorInfo = yield call(getSystemMonitorInfo);
-    yield put(setMonitorInfo(monitorInfo));
+    // Initial system monitor info
+    // and setup system event handlers
+    const systemMonitorInfo = yield call(getSystemMonitorInfo);
+    yield all([put(setMonitorInfo(systemMonitorInfo)), call(setupSystemHandlers, fin, window.store || window.opener.store)]);
 
-    // sets to TOP on initial load
-    yield setLauncherBounds();
-
+    const launcherFinWindow = yield call(getLauncherFinWindow);
     // Hide launcher
-    fin.desktop.Application.getCurrent()
-      .getWindow()
-      .hide();
+    if (launcherFinWindow) {
+      launcherFinWindow.hide();
+    }
+
+    // Position launcher
+    yield call(setLauncherBounds);
 
     // Launch all windows on init, windows are hidden by default unless they have autoShow: true
     yield all(Object.keys(initOnStartWindows).map(window => put(launchWindow(initOnStartWindows[window]))));
@@ -84,10 +89,10 @@ function* watchLaunchAppLauncher() {
   // When all done show main app bar
   const { fin } = window;
   if (fin) {
-    // TODO - Maybe move to a redux action
-    fin.desktop.Application.getCurrent()
-      .getWindow()
-      .show();
+    const launcherFinWindow = yield call(getLauncherFinWindow);
+    if (launcherFinWindow) {
+      launcherFinWindow.show();
+    }
   }
 }
 
@@ -98,12 +103,16 @@ function* watchCollapseApp() {
     return;
   }
 
+  const launcherFinWindow = yield call(getLauncherFinWindow);
+  if (!launcherFinWindow) {
+    return;
+  }
   const [bounds, launcherPosition] = yield all([select(getWindowBounds, APP_UUID), select(getLauncherPosition)]);
-  const { left, top } = getNewPos(bounds, launcherPosition, false);
+  const { left, top } = getNewPosDelta(bounds, launcherPosition, false, LAUNCHER_HIDDEN_VISIBILITY_DELTA);
 
   yield call(
     animateWindow,
-    fin.desktop.Application.getCurrent().getWindow(),
+    launcherFinWindow,
     {
       position: {
         duration: 200,
@@ -116,6 +125,7 @@ function* watchCollapseApp() {
       interupt: false,
     },
   );
+
   yield put(setIsExpanded(false));
 }
 
@@ -126,12 +136,16 @@ function* watchExpandApp() {
     return;
   }
 
+  const launcherFinWindow = yield call(getLauncherFinWindow);
   const [bounds, launcherPosition] = yield all([select(getWindowBounds, APP_UUID), select(getLauncherPosition)]);
-  const { left, top } = getNewPos(bounds, launcherPosition, true);
+  if (!launcherFinWindow || !bounds) {
+    return;
+  }
+  const { left, top } = getNewPosDelta(bounds, launcherPosition, true, LAUNCHER_HIDDEN_VISIBILITY_DELTA);
 
   yield call(
     animateWindow,
-    fin.desktop.Application.getCurrent().getWindow(),
+    launcherFinWindow,
     {
       position: {
         duration: 200,

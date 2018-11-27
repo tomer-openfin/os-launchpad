@@ -1,11 +1,4 @@
-import {
-  applicationStarted,
-  collapseApp,
-  expandApp,
-  openfinReady,
-  setIsEnterprise,
-  setIsExpanded,
-} from './actions';
+import { applicationStarted, collapseApp, expandApp, openfinReady, setIsEnterprise, setIsExpanded } from './actions';
 
 // State
 export interface ApplicationState {
@@ -27,7 +20,7 @@ export type SetIsEnterpriseAction = ReturnType<typeof setIsEnterprise>;
 export type SetIsExpandedAction = ReturnType<typeof setIsExpanded>;
 
 export type ApplicationActions =
-  ApplicationStartedAction
+  | ApplicationStartedAction
   | CollapseAppAction
   | ExpandAppAction
   | OpenfinReadyAction

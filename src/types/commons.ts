@@ -1,19 +1,3 @@
-export interface DeleteAppResponse {
-  status: 'ok' | 'failure';
-  message?: string;
-}
-
-export interface LoginErrorResponse {
-  status: string | 'newPassword';
-  message?: string;
-  requiredFields?: string[];
-}
-
-export interface ErrorResponse {
-  status: string;
-  message?: string;
-}
-
 export interface App {
   appPage: string;
   contact_email: string;
@@ -29,6 +13,49 @@ export interface App {
   title: string;
 }
 
+export interface Bounds extends Dimensions, DirectionalCoordinates {}
+
+export interface DeleteAppResponse {
+  status: 'ok' | 'failure';
+  message?: string;
+}
+
+export interface Dimensions {
+  height: number;
+  width: number;
+}
+
+export interface ErrorResponse {
+  status: string;
+  message?: string;
+}
+
+export type MonitorInfo = fin.MonitorInfo;
+
+export interface Theme {
+  backgroundColor: string;
+  id: string;
+  name: string;
+}
+
+export enum LauncherPosition {
+  Top = 'top',
+  Right = 'right',
+  Bottom = 'bottom',
+  Left = 'left',
+}
+
+export interface LoginErrorResponse {
+  status: string | 'newPassword';
+  message?: string;
+  requiredFields?: string[];
+}
+
+export interface DirectionalCoordinates {
+  left: number;
+  top: number;
+}
+
 export interface User {
   email: string;
   firstName: string;
@@ -39,11 +66,4 @@ export interface User {
   organizationId: string;
   username: string;
   password: string;
-}
-
-export enum LauncherPosition {
-  Top = 'TOP',
-  Right = 'RIGHT',
-  Bottom = 'BOTTOM',
-  Left = 'LEFT',
 }

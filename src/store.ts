@@ -12,9 +12,11 @@ const { LOGGER, NODE_ENV } = process.env;
 // Middleware
 const openFinMiddleware = reduxOpenFin(window.fin);
 const sagaMiddleware = createSagaMiddleware();
-const actionLoggerMiddleware = createActionLoggerMiddleware();
-
-const middlewareArgs = LOGGER ? [openFinMiddleware, sagaMiddleware, actionLoggerMiddleware] : [openFinMiddleware, sagaMiddleware];
+const middlewareArgs = [openFinMiddleware, sagaMiddleware];
+if (LOGGER) {
+  const actionLoggerMiddleware = createActionLoggerMiddleware();
+  middlewareArgs.push(actionLoggerMiddleware);
+}
 
 const middleware = applyMiddleware(...middlewareArgs);
 

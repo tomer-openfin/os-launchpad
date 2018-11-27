@@ -10,8 +10,6 @@ export const APP_DIRECTORY_WINDOW = `${WINDOW_PREFIX}AppDirectory`;
 export const APP_LAUNCHER_OVERFLOW_WINDOW = `${WINDOW_PREFIX}AppLauncherOverflow`;
 export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
 export const LAYOUTS_WINDOW = `${WINDOW_PREFIX}Layouts`;
-export const USER_DIRECTORY_WINDOW = `${WINDOW_PREFIX}UserDirectory`;
-export const NEW_USER_WINDOW = `${WINDOW_PREFIX}NewUser`;
 
 const isProduction = NODE_ENV === 'production';
 
