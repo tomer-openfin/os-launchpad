@@ -14,7 +14,8 @@
     "start": "node scripts/start.js",
     "storybook": "STORYBOOK_ENV=true start-storybook -p 6006",
     "storyshots": "jest -u",
-    "test": "jest"
+    "test": "jest",
+    "test:api": "node scripts/testApi.js"
   },
   "devDependencies": {
     "@babel/core": "7.1.2",
@@ -72,6 +73,7 @@
     "execa": "1.0.0",
     "formik": "1.3.1",
     "lodash-es": "4.17.11",
+    "newman": "4.2.2",
     "openfin-layouts": "0.9.3",
     "openfin-notifications": "0.9.4",
     "popper.js": "1.14.4",
