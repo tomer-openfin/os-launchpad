@@ -310,7 +310,7 @@ paths:
           name: body
           in: body
           schema:
-            $ref: '#/definitions/AdminUserProperties'
+            $ref: '#/definitions/AdminCreateUserProperties'
 
       responses:
         '200':
@@ -354,6 +354,12 @@ paths:
           required: true
           name: id
           type: string
+        - in: body
+          name: body
+          description: User Payload
+          required: true
+          schema:
+            $ref: '#/definitions/AdminUpdateUserProperties'
 
       responses:
         '200':
@@ -557,6 +563,9 @@ definitions:
       lastName:
         type: string
         description: last name
+      phone:
+        type: string
+        description: phone number
       isAdmin:
         type: boolean
         description: user is an admin
@@ -565,15 +574,73 @@ definitions:
     title: admin users properties
     type: object
     properties:
+      username:
+        type: string
+        description: user GUID
       email:
         type: string
         description: email
-      firstname:
+      firstName:
         type: string
         description: first name
-      lastname:
+      lastName:
         type: string
         description: last name
+      phone:
+        type: string
+        description: phone number
+      isAdmin:
+        type: boolean
+        description: user is an admin
+      created:
+        type: string
+        description: user created at
+      lastModified:
+        type: string
+        description: user last modified at
+      status:
+        type: string
+        description: user status
+      enabled:
+        type: boolean
+        description: user enabled
+
+  AdminCreateUserProperties:
+    title: admin users properties
+    type: object
+    properties:
+      email:
+        type: string
+        description: email
+      firstName:
+        type: string
+        description: first name
+      lastName:
+        type: string
+        description: last name
+      phone:
+        type: string
+        description: phone number
+      tmpPassword:
+        type: string
+        description: temporary password
+    required:
+      - email
+      - tmpPassword
+
+  AdminUpdateUserProperties:
+    title: admin users properties
+    type: object
+    properties:
+      firstName:
+        type: string
+        description: first name
+      lastName:
+        type: string
+        description: last name
+      phone:
+        type: string
+        description: phone number
 
   Config:
     title: 'organization configuration (theme, etc)'
