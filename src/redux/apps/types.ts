@@ -2,7 +2,7 @@ import { App } from '../../types/commons';
 
 // Reducer
 export interface AppsById {
-  [n: number]: App;
+  [n: string]: App;
 }
 
 export interface AppsState {

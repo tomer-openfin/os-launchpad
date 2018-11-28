@@ -1,5 +1,6 @@
 import { Bounds } from '../types/commons';
 
+import { AdminState } from './admin';
 import { ApplicationState } from './application';
 import { AppsState } from './apps';
 import { LayoutsState } from './layouts';
@@ -18,6 +19,7 @@ interface Windows {
 }
 
 export interface State {
+  admin: AdminState;
   apps: AppsState;
   application: ApplicationState;
   layouts: LayoutsState;

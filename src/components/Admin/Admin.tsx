@@ -6,8 +6,9 @@ import ROUTES from '../Router/const';
 
 const ADMIN_TABBED_ROUTES = [
   {
+    exact: true,
     label: 'Organization Settings',
-    path: ROUTES.ADMIN_SETTINGS,
+    path: ROUTES.ADMIN,
   },
   {
     label: 'App Manager',
@@ -24,8 +25,8 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const renderAdminTab = ({ path, label }) => (
-  <TabLink key={path} to={path}>
+const renderAdminTab = ({ exact = false, path, label }) => (
+  <TabLink exact={exact} key={path} to={path}>
     {label}
   </TabLink>
 );

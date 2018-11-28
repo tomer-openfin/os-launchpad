@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Button, ButtonLink, Copy, Error, Heading, Message, Row, Wrapper } from '../ConfirmUserDelete/ConfirmUserDelete.css';
 
-import { deleteApp } from '../../services/ApiService';
+import ApiService from '../../services/ApiService';
 import ROUTES from '../Router/const';
 
 interface Props {
@@ -51,7 +51,7 @@ class ConfirmAppDelete extends React.Component<Props, State> {
     const { location } = this.props;
     const { id } = location.state;
 
-    deleteApp(id)
+    ApiService.deleteAdminApp(id)
       .then(resp => {
         if (resp.status === RESPONSE_OK) {
           this.setState({

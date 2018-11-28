@@ -59,11 +59,19 @@ export interface DirectionalCoordinates {
 export interface User {
   email: string;
   firstName: string;
-  id: number;
+  id: string;
   isAdmin: boolean;
   lastName: string;
   middleInitial: string;
   organizationId: string;
   username: string;
   password: string;
+}
+
+export interface ObjectWithId {
+  id: string | number;
+}
+
+export interface ById<T extends ObjectWithId> {
+  [n: string]: T;
 }

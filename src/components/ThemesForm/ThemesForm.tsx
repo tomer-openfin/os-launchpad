@@ -1,7 +1,7 @@
 import { Field, FieldProps, Form, Formik, FormikHandlers, FormikProps } from 'formik';
 import * as React from 'react';
 
-import { saveTheme } from '../../services/ApiService';
+import ApiService from '../../services/ApiService';
 import { Theme } from '../../types/commons';
 
 import { InputWrapper, Label, Select, StyledButton, Wrapper } from './ThemesForm.css';
@@ -52,7 +52,7 @@ class ThemesForm extends React.PureComponent<Props> {
   handleSubmit = () => {
     const { theme } = this.props;
 
-    saveTheme(theme)
+    ApiService.saveAdminTheme(theme)
       .then(() => {
         this.currentTheme = theme;
         this.forceUpdate();

@@ -1,9 +1,10 @@
 import { createSelector } from 'reselect';
 
-import appsFromIds from '../../utils/appsFromIds';
+import { objectsFromIds } from '../../utils/byIds';
+import { State } from '../types';
 import { AppsState } from './types';
 
-export const getAppsState = state => state.apps;
+export const getAppsState = (state: State): AppsState => state.apps;
 
 export const getAppsById = createSelector(
   getAppsState,
@@ -22,5 +23,5 @@ export const getAppFromId = createSelector(
 export const getAppsDirectoryAppList = createSelector(
   getAppsById,
   getAppsIds,
-  appsFromIds,
+  objectsFromIds,
 );

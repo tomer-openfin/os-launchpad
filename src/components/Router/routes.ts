@@ -80,7 +80,7 @@ const routes: AppRoute[] = [
       {
         Component: OrganizationSettings,
         exact: false,
-        path: ROUTES.ADMIN_SETTINGS,
+        path: ROUTES.ADMIN,
       },
     ],
     exact: false,

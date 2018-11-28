@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Omit } from 'react-redux';
 
-import { getThemes } from '../services/ApiService';
+import ApiService from '../services/ApiService';
 import { Theme } from '../types/commons';
 
 enum Consts {
@@ -25,7 +25,7 @@ const withThemes = <P extends WithThemesProps>(Component: React.ComponentType<P>
     };
 
     componentDidMount() {
-      getThemes()
+      ApiService.getAdminThemes()
         .then(themes => this.setState({ themes }))
         .catch(error => this.setState({ error }));
     }

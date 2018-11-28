@@ -1,7 +1,7 @@
 import { Field, FieldProps, Formik, FormikHandlers, FormikProps } from 'formik';
 import * as React from 'react';
 
-import { saveLogo } from '../../services/ApiService';
+import ApiService from '../../services/ApiService';
 
 import Logo from '../Logo';
 import { Anchor, Input, InputWrapper, Label, Placeholder, StyledButton, StyledForm, Wrapper } from './LogoForm.css';
@@ -52,7 +52,7 @@ class LogoForm extends React.PureComponent<Props, State> {
       return;
     }
 
-    saveLogo(file)
+    ApiService.saveAdminLogo(file)
       .then(nextLogo => {
         URL.revokeObjectURL(logo);
         this.currentLogo = nextLogo;

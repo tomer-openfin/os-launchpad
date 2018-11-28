@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import MockUserData from './MockUserData';
+import { getAdminUsersList } from '../../redux/admin/index';
 import UserDirectory from './UserDirectory';
 
 // TODO: pull up into redux and mock consumption as it would be in API, then pull in here with selector
 const stateProps = state => ({
-  users: MockUserData,
+  users: getAdminUsersList(state),
 });
 
 export default connect(stateProps)(UserDirectory);

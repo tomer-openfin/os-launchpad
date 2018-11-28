@@ -2,6 +2,8 @@ import { Window } from '@giantmachines/redux-openfin';
 import { all, call, put, select, take, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
+
+import { getAdminAppsRequest, getAdminUsersRequest } from '../admin';
 import { launchAppLauncher, setLauncherBounds } from '../application';
 import { getAppDirectoryList } from '../apps';
 import { getLayoutsRequest } from '../layouts';
@@ -50,6 +52,10 @@ function* watchLoginSuccess(action: LoginSuccess) {
   }
 
   yield put(setMe(payload));
+
+  if (payload.isAdmin) {
+    yield all([put(getAdminAppsRequest()), put(getAdminUsersRequest())]);
+  }
 
   // take(GET_SETTINGS.SUCCESS) to wait for launcher position before showing launcher
   yield all([take([GET_SETTINGS.SUCCESS, GET_SETTINGS.ERROR]), put(getAppDirectoryList()), put(getLayoutsRequest()), put(getSettingsRequest())]);

@@ -2,14 +2,18 @@ import { Layout } from 'openfin-layouts/dist/client/types';
 
 import * as logoIcon from '../assets/Logo.svg';
 
+import AppData from '../const/AppData';
+
 import { getIsEnterprise } from '../redux/application';
 import { defaultState, MeStateSettings } from '../redux/me';
 import { OrganizationState } from '../redux/organization/types';
-import { App, DeleteAppResponse, Theme } from '../types/commons';
+import { App, DeleteAppResponse, Theme, User } from '../types/commons';
 import DEFAULT_THEMES from '../utils/defaultThemes';
 import { getLocalStorage, setLocalStorage } from './localStorageAdapter';
 
 const API_URL = process.env.API_URL || '/';
+
+const PUBLIC_APPS_URL = 'https://app-directory.openfin.co/api/v1/apps';
 
 const APPS_URL = `${API_URL}api/apps`;
 const LAYOUTS_URL = `${API_URL}api/layouts`;
@@ -17,7 +21,8 @@ const LOGIN_URL = `${API_URL}api/auth/login`;
 const SETTINGS_URL = `${API_URL}api/user/settings`;
 const THEMES_URL = `${API_URL}api/themes`;
 
-const PUBLIC_APPS_URL = 'https://app-directory.openfin.co/api/v1/apps';
+const ADMIN_APPS_URL = `${API_URL}api/admin/apps`;
+const ADMIN_USERS_URL = `${API_URL}api/admin/users`;
 
 const LOCAL_STORAGE_KEYS = {
   APPS: 'apps',
@@ -44,6 +49,16 @@ const createPostOptions = (body): RequestInit => ({
   mode: 'cors',
 });
 
+const createPutOptions = (body): RequestInit => ({
+  body: JSON.stringify(body),
+  credentials: 'include',
+  headers: {
+    'content-type': 'application/json',
+  },
+  method: 'PUT',
+  mode: 'cors',
+});
+
 const createDeleteOptions = (): RequestInit => ({
   credentials: 'include',
   headers: {
@@ -62,9 +77,9 @@ export const checkIsEnterprise = () => {
 /**
  * Get apps
  *
- * @returns {Promise<string[]>}
+ * @returns {Promise<App[]>}
  */
-export const getDirectoryAppList = (): Promise<App[]> => {
+const getDirectoryAppList = (): Promise<App[]> => {
   // if (checkIsEnterprise()) {
   //   const options = createGetOptions();
   //   return fetch(APPS_URL, options).then(resp => resp.json());
@@ -74,14 +89,81 @@ export const getDirectoryAppList = (): Promise<App[]> => {
 };
 
 /**
+ * Get admin apps
+ *
+ * @returns {Promise<App[]>}
+ */
+const getAdminApps = (): Promise<App[]> => {
+  // const options = createGetOptions();
+  // return fetch(`${ADMIN_APPS_URL}`, options).then(resp => resp.json());
+
+  return Promise.resolve(AppData);
+};
+
+/**
+ * Get admin users
+ *
+ * @returns {Promise<User[]>}
+ */
+const getAdminUsers = (): Promise<User[]> => {
+  const options = createGetOptions();
+
+  return fetch(`${ADMIN_USERS_URL}`, options).then(resp => resp.json());
+};
+
+/**
+ * Get admin user
+ *
+ * @returns {Promise<User>}
+ */
+const getAdminUser = (user: User): Promise<User> => {
+  const options = createGetOptions();
+
+  return fetch(`${ADMIN_USERS_URL}/${user.username}`, options).then(resp => resp.json());
+};
+
+/**
+ * Create new admin user
+ *
+ * @returns {Promise<User>}
+ */
+const createAdminUser = (user: User): Promise<User> => {
+  const options = createPostOptions(user);
+
+  return fetch(`${ADMIN_USERS_URL}/${user.username}`, options).then(resp => resp.json());
+};
+
+/**
+ * Update an admin user
+ *
+ * @returns {Promise<User>}
+ */
+const updateAdminUser = (user: User): Promise<User> => {
+  const options = createPutOptions(user);
+
+  return fetch(`${ADMIN_USERS_URL}/${user.username}`, options).then(resp => resp.json());
+};
+
+/**
+ * Delete an admin user
+ *
+ * @returns {Promise<User>}
+ */
+const deleteAdminUser = (user: User): Promise<User> => {
+  const options = createDeleteOptions();
+
+  return fetch(`${ADMIN_USERS_URL}/${user.username}`, options).then(resp => resp.json());
+};
+
+/**
  * Delete apps
  *
  * @returns {Promise<DeleteAppResponse>}
  */
-export const deleteApp = (appId: string) => {
+const deleteAdminApp = (appId: string) => {
   const options = createDeleteOptions();
 
-  return fetch(`${APPS_URL}/${appId}`, options).then(resp => (resp.json() as unknown) as DeleteAppResponse);
+  return fetch(`${ADMIN_APPS_URL}/${appId}`, options).then(resp => (resp.json() as unknown) as DeleteAppResponse);
 };
 
 /**
@@ -89,7 +171,7 @@ export const deleteApp = (appId: string) => {
  *
  * @returns {Promise<Layout[]>}
  */
-export const getUserLayouts = (): Promise<Layout[]> => {
+const getUserLayouts = (): Promise<Layout[]> => {
   // Disable enterprise check for demo
   // if (checkIsEnterprise()) {
   //   const options = createGetOptions();
@@ -106,7 +188,7 @@ export const getUserLayouts = (): Promise<Layout[]> => {
  *
  * @returns {Promise<void>}
  */
-export const saveUserLayout = (layout: Layout) => {
+const saveUserLayout = (layout: Layout) => {
   // Disable enterprise check for demo
   // if (checkIsEnterprise()) {
   //   const options = createPostOptions({ layout });
@@ -121,7 +203,7 @@ export const saveUserLayout = (layout: Layout) => {
  *
  * @returns {Promise<>}
  */
-export const login = payload => {
+const login = payload => {
   const options = createPostOptions(payload);
 
   return fetch(LOGIN_URL, options)
@@ -134,7 +216,7 @@ export const login = payload => {
  *
  * @returns {Promise<MeStateSettings>}
  */
-export const getUserSettings = (): Promise<MeStateSettings> => {
+const getUserSettings = (): Promise<MeStateSettings> => {
   if (checkIsEnterprise()) {
     const options = createGetOptions();
 
@@ -149,7 +231,7 @@ export const getUserSettings = (): Promise<MeStateSettings> => {
  *
  * @returns {Promise<void>}
  */
-export const saveUserSettings = (settings: MeStateSettings) => {
+const saveUserSettings = (settings: MeStateSettings) => {
   if (checkIsEnterprise()) {
     const options = createPostOptions({ settings });
     return fetch(SETTINGS_URL, options).then(resp => resp.json());
@@ -158,7 +240,7 @@ export const saveUserSettings = (settings: MeStateSettings) => {
   return setLocalStorage<MeStateSettings>(LOCAL_STORAGE_KEYS.SETTINGS, settings);
 };
 
-export const getOrganizationSettings = (): Promise<OrganizationState> => {
+const getAdminOrganizationSettings = (): Promise<OrganizationState> => {
   return Promise.resolve({
     logo: logoIcon,
     theme: DEFAULT_THEMES[0],
@@ -170,7 +252,7 @@ export const getOrganizationSettings = (): Promise<OrganizationState> => {
  *
  * @returns {Promise<Theme[]>}
  */
-export const getThemes = (): Promise<Theme[]> => {
+const getAdminThemes = (): Promise<Theme[]> => {
   return Promise.resolve(DEFAULT_THEMES);
   // const options = createGetOptions();
   // return fetch(THEMES_URL, options)
@@ -178,13 +260,13 @@ export const getThemes = (): Promise<Theme[]> => {
   //   .then(resp => resp.themes as Theme[]);
 };
 
-export const saveTheme = (theme: Theme) => {
+const saveAdminTheme = (theme: Theme) => {
   // tslint:disable-next-line:no-console
   console.log('Saving organization theme as:', theme);
   return Promise.resolve();
 };
 
-export const saveLogo = (file: File) => {
+const saveAdminLogo = (file: File) => {
   // tslint:disable-next-line:no-console
   console.log('Saving organization logo file:', file);
   const newFileUrl = URL.createObjectURL(file);
@@ -195,7 +277,7 @@ export const saveLogo = (file: File) => {
 // todo: type interfaces for these paramaters & create consts for various methods/statuscodes
 const defaultEndpoint = `${process.env.MOCK_POSTMAN_URI}/api/admin/users`;
 
-export const tempFetch = (endpoint = defaultEndpoint, method, payload, statusCode = '200') => {
+const tempFetch = (endpoint = defaultEndpoint, method, payload, statusCode = '200') => {
   return fetch(endpoint, {
     body: JSON.stringify(payload),
     headers: {
@@ -208,11 +290,22 @@ export const tempFetch = (endpoint = defaultEndpoint, method, payload, statusCod
 };
 
 export default {
+  createAdminUser,
+  deleteAdminApp,
+  deleteAdminUser,
+  getAdminApps,
+  getAdminOrganizationSettings,
+  getAdminThemes,
+  getAdminUser,
+  getAdminUsers,
   getDirectoryAppList,
   getUserLayouts,
   getUserSettings,
   login,
+  saveAdminLogo,
+  saveAdminTheme,
   saveUserLayout,
   saveUserSettings,
   tempFetch,
+  updateAdminUser,
 };

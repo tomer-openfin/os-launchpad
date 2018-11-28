@@ -3,8 +3,7 @@ import { createSelector } from 'reselect';
 import { getAppsById } from '../apps';
 import { State } from '../types';
 
-import appsFromIds from '../../utils/appsFromIds';
-import { MeStateSettings } from './types';
+import { objectsFromIds } from '../../utils/byIds';
 
 export const getMeState = (state: State) => state.me;
 
@@ -22,7 +21,7 @@ export const getAppsLauncherAppList = createSelector(
   // imported selector is undefined at module resolution,
   // must delay invocation by putting behind anon func until resolved
   // https://github.com/reduxjs/reselect/issues/169
-  state => getAppsById(state),
+  (state: State) => getAppsById(state),
   getAppsLauncherIds,
-  appsFromIds,
+  objectsFromIds,
 );
