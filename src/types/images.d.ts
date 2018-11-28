@@ -1,9 +1,9 @@
 declare module '*.png' {
-  const value: any;
+  const value;
   export = value;
 }
 
 declare module '*.svg' {
-  const value: any;
+  const value;
   export = value;
 }

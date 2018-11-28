@@ -18,6 +18,7 @@ import UserDirectory from '../UserDirectory';
 import ROUTES from './const';
 
 export interface AppRoute {
+  // tslint:disable:no-any
   Component: React.ComponentType<any>;
   exact: boolean;
   path: string;

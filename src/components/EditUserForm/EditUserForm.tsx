@@ -80,8 +80,7 @@ class EditUserForm extends React.Component<Props, State> {
 
     const { email, firstName, isAdmin, lastName, middleInitial, username } = location.state;
 
-    // tslint:disable:jsx-no-multiline-js
-    // tslint:disable:jsx-no-lambda
+    // tslint:disable:jsx-no-multiline-js jsx-no-lambda no-console
     return (
       <Formik
         initialValues={{
