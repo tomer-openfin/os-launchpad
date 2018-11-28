@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/EditUserForm default 1`] = `
+exports[`Storyshots Components/EditAppForm default 1`] = `
 <div>
   <div
     style={
@@ -11,115 +11,157 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
     }
   >
     <div
-      className="sc-gisBJw kGgYcP"
+      className="sc-hzDkRC cavWkY"
     >
+      <div
+        className="sc-gPEVay loAlxJ"
+      >
+        Edit App
+      </div>
+      <p
+        className="sc-jAaTju WHwCJ"
+      >
+        Please verify and/or update the following fields:
+      </p>
+      <form
+        onSubmit={[Function]}
+      >
+        <label
+          className="sc-gipzik klkOjX"
+        >
+          Logo
+          <div
+            className="sc-jWBwVP buUcBd"
+          >
+            <div
+              className="sc-htoDjs edCAeo"
+            >
+              <div
+                className="sc-dnqmqq kYMSoc"
+              />
+            </div>
+            <div
+              className="sc-iAyFgw eRVLVT"
+            >
+              <div
+                className="sc-kEYyzF eQCTnN"
+              >
+                Change Logo
+              </div>
+              <div
+                className="sc-eHgmQL fEZohB"
+              >
+                Files must be at least 200 x 200 pixels square.
+                <br />
+                File size cannot exceed 20kb.
+              </div>
+              <input
+                accept="image/*"
+                className="sc-kkGfuU chNTof"
+                name="AppLogo"
+                onBlur={[Function]}
+                onChange={[Function]}
+                type="file"
+                value=""
+              />
+            </div>
+          </div>
+        </label>
+      </form>
       <form
         onSubmit={[Function]}
       >
         <div
-          className="sc-dVhcbM loNcgd"
+          className="sc-iRbamj jZzcjp"
         >
-          Edit User Details
-        </div>
-        <label
-          className="sc-eqIVtm gBTCWD"
-        >
-          Email:
-          <input
-            name="email"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="email"
-            value="testEmail@gmail.com"
-          />
-        </label>
-        <label
-          className="sc-eqIVtm gBTCWD"
-        >
-          First Name:
-          <input
-            name="firstName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value="testFirstName"
-          />
-        </label>
-        <label
-          className="sc-eqIVtm gBTCWD"
-        >
-          Last Name:
-          <input
-            name="lastName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value="testLastName"
-          />
-        </label>
-        <label
-          className="sc-eqIVtm gBTCWD"
-        >
-          Middle Initial:
-          <input
-            name="middleInitial"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value="testMI"
-          />
-        </label>
-        <label
-          className="sc-eqIVtm gBTCWD"
-        >
-          Username:
-          <input
-            name="username"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value="testUsername"
-          />
-        </label>
-        <label
-          className="sc-eqIVtm gBTCWD"
-        >
-          Is administrator?
-          <select
-            name="isAdmin"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="yes"
-            value={true}
+          <label
+            className="sc-jlyJG hJrvbb"
           >
-            <option
-              value="yes"
-            >
-              Yes
-            </option>
-            <option
-              value="no"
-            >
-              No
-            </option>
-          </select>
-        </label>
+            Manifest URL
+            <input
+              name="manifest_url"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="text"
+              value="https://openfin.fintechstudios.com/openfin_config.json"
+            />
+          </label>
+          <label
+            className="sc-jlyJG hJrvbb"
+          >
+            Accepted Intent(s)
+            <select
+              multiple={true}
+              name="intents"
+              onBlur={[Function]}
+              onChange={[Function]}
+              value={Array []}
+            />
+          </label>
+          <label
+            className="sc-jlyJG hJrvbb"
+          >
+            Title
+            <input
+              name="title"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="text"
+              value="FinTech Studios"
+            />
+          </label>
+          <label
+            className="sc-jlyJG hJrvbb"
+          >
+            Accepted Context(s)
+            <select
+              multiple={true}
+              name="contexts"
+              onBlur={[Function]}
+              onChange={[Function]}
+              value={Array []}
+            />
+          </label>
+          <label
+            className="sc-jlyJG hJrvbb"
+          >
+            Name
+            <input
+              name="name"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="text"
+              value="fintech-studios"
+            />
+          </label>
+          <label
+            className="sc-jlyJG hJrvbb"
+          >
+            Description
+            <textarea
+              name="description"
+              onBlur={[Function]}
+              onChange={[Function]}
+              value="Using cutting edge artificial intelligence and machine learning,       FTS delivers actionable news, research, market analytics, and analytics from millions of sources."
+            />
+          </label>
+        </div>
         <div
-          className="sc-caSCKo gxSECN"
+          className="sc-bRBYWo bWOubC"
         >
           <a
-            className="sc-fBuWsC lodAaZ"
-            href="/admin/users"
+            className="sc-cMljjf cFlMGF"
+            href="/admin/apps"
             onClick={[Function]}
           >
             Cancel
           </a>
           <button
-            className="sc-jhAzac flJAOt"
+            className="sc-brqgnP dCLAPx"
             disabled={true}
             type="submit"
           >
-            Save Updates
+            Save
           </button>
         </div>
       </form>
@@ -222,7 +264,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
               }
             }
           >
-            Components/EditUserForm
+            Components/EditAppForm
           </h1>
           <h2
             style={
@@ -271,7 +313,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                   }
                 >
                   &lt;
-                  EditUserForm
+                  EditAppForm
                 </span>
                 <span>
                   <span>
@@ -328,7 +370,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                                   }
                                 }
                               >
-                                email
+                                appPage
                               </span>
                             </span>
                             : 
@@ -340,7 +382,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                                 }
                               }
                             >
-                              'testEmail@gmail.com'
+                              '/apps/fintech-studios'
                             </span>
                             ,
                             <span>
@@ -356,7 +398,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                                   }
                                 }
                               >
-                                firstName
+                                contact_email
                               </span>
                             </span>
                             : 
@@ -368,7 +410,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                                 }
                               }
                             >
-                              'testFirstName'
+                              'jim@fintechstudios.com'
                             </span>
                             ,
                             <span>
@@ -384,18 +426,19 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                                   }
                                 }
                               >
-                                isAdmin
+                                contexts
                               </span>
                             </span>
                             : 
                             <span
                               style={
                                 Object {
-                                  "color": "#a11",
+                                  "color": "#666",
                                 }
                               }
                             >
-                              true
+                              [
+                              ]
                             </span>
                             ,
                             <span>
@@ -423,7 +466,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      updateUser
+                      updateApp
                     </span>
                     <span>
                       =
@@ -502,7 +545,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
               }
             >
               "
-              EditUserForm
+              EditAppForm
               " Component
             </h2>
             <small>

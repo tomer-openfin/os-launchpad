@@ -7,7 +7,7 @@ import AppData from '../const/AppData';
 import { getIsEnterprise } from '../redux/application';
 import { defaultState, MeStateSettings } from '../redux/me';
 import { OrganizationState } from '../redux/organization/types';
-import { App, DeleteAppResponse, Theme, User } from '../types/commons';
+import { App, CreateAppResponse, DeleteAppResponse, Theme, UpdateAppResponse, User } from '../types/commons';
 import DEFAULT_THEMES from '../utils/defaultThemes';
 import { getLocalStorage, setLocalStorage } from './localStorageAdapter';
 
@@ -29,6 +29,11 @@ const LOCAL_STORAGE_KEYS = {
   LAYOUTS: 'layouts',
   SETTINGS: 'settings',
 };
+
+// API constants
+export const FILE_ACCEPT = 'image/*';
+export const RESPONSE_OK = 'ok';
+export const RESPONSE_FAILURE = 'failure';
 
 const createGetOptions = (): RequestInit => ({
   credentials: 'include',
@@ -167,6 +172,28 @@ const deleteAdminApp = (appId: string) => {
 };
 
 /**
+ * Create new apps
+ *
+ * @returns {Promise<CreateAppResponse>}
+ */
+export const createApp = app => {
+  const options = createPostOptions({ app });
+
+  return fetch(`${APPS_URL}`, options).then(resp => (resp.json() as unknown) as CreateAppResponse);
+};
+
+/**
+ * Update apps
+ *
+ * @returns {Promise<UpdateAppResponse>}
+ */
+export const updateApp = app => {
+  const options = createPutOptions({ app });
+
+  return fetch(`${APPS_URL}/${app.id}`, options).then(resp => (resp.json() as unknown) as UpdateAppResponse);
+};
+
+/**
  * Get layouts
  *
  * @returns {Promise<Layout[]>}
@@ -269,6 +296,13 @@ const saveAdminTheme = (theme: Theme) => {
 const saveAdminLogo = (file: File) => {
   // tslint:disable-next-line:no-console
   console.log('Saving organization logo file:', file);
+  const newFileUrl = URL.createObjectURL(file);
+  return Promise.resolve(newFileUrl);
+};
+
+export const saveAppLogo = (file: File) => {
+  // tslint:disable-next-line:no-console
+  console.log('Saving new app logo file:', file);
   const newFileUrl = URL.createObjectURL(file);
   return Promise.resolve(newFileUrl);
 };

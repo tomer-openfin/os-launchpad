@@ -10,14 +10,18 @@ import { LauncherPosition } from '../../../types/commons';
 
 describe('<AppList />', () => {
   it('renders a <div>', () => {
-    expect(enzyme.shallow(
-      <AppList
-        appList={AppData}
-        launcherPosition={LauncherPosition.Top}
-        launchWindowCreator={noopCreator}
-        removeFromLauncher={noopCreator}
-        spaceCount={4}
-      />,
-    ).is('div'));
+    expect(
+      enzyme
+        .shallow(
+          <AppList
+            appList={AppData}
+            launcherPosition={LauncherPosition.Top}
+            launchWindowCreator={noopCreator}
+            removeFromLauncher={noopCreator}
+            spaceCount={4}
+          />,
+        )
+        .is('div'),
+    );
   });
 });

@@ -11,7 +11,7 @@ exports[`Storyshots Components/Login default 1`] = `
     }
   >
     <div
-      className="sc-cMljjf fCTRtj"
+      className="sc-kjoXOD fANwhA"
     >
       <form
         onSubmit={[Function]}
@@ -35,7 +35,7 @@ exports[`Storyshots Components/Login default 1`] = `
         />
         <br />
         <button
-          className="sc-jDwBTQ fFuNNQ"
+          className="sc-TOsTZ eEfWUW"
           type="submit"
         >
           Login

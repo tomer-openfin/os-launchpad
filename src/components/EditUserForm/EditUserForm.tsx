@@ -119,8 +119,6 @@ class EditUserForm extends React.Component<Props, State> {
         validateOnChange={false}
         render={({ isSubmitting, isValid }) => (
           <Wrapper>
-            {this.renderResponse(result)}
-
             <Form>
               <Heading>Edit User Details</Heading>
 
@@ -171,6 +169,7 @@ class EditUserForm extends React.Component<Props, State> {
                 </Button>
               </Row>
             </Form>
+            {this.renderResponse(result)}
           </Wrapper>
         )}
       />

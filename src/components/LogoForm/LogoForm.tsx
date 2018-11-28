@@ -1,10 +1,10 @@
-import { Field, FieldProps, Formik, FormikHandlers, FormikProps } from 'formik';
+import { Formik, FormikHandlers, FormikProps } from 'formik';
 import * as React from 'react';
 
 import ApiService from '../../services/ApiService';
 
-import Logo from '../Logo';
-import { Anchor, Input, InputWrapper, Label, Placeholder, StyledButton, StyledForm, Wrapper } from './LogoForm.css';
+import LogoInput from '../LogoInput';
+import { Label, StyledButton, StyledForm, Wrapper } from './LogoForm.css';
 
 const BASE_ID = 'LogoForm';
 const FILE_INPUT_ID = `${BASE_ID}FileInput`;
@@ -111,28 +111,12 @@ class LogoForm extends React.PureComponent<Props, State> {
     }
   };
 
-  renderFileInput = ({ field }: FieldProps) => {
-    return <Input {...field} accept={FILE_ACCEPT} id={FILE_INPUT_ID} onChange={this.handleFileChange(field.onChange)} type="file" />;
-  };
-
   renderForm = (formikProps: FormikProps<FormikInitialValues>) => {
+    const { logo } = this.props;
     return (
       <StyledForm>
         <Label htmlFor={FILE_INPUT_ID}>
-          <Logo large />
-
-          <InputWrapper>
-            <Anchor>Change Logo</Anchor>
-
-            <Placeholder>
-              {/* TODO: do the check for max file dimensions of 200x200 and size of 20kb */}
-              Files must be at least 200 x 200 pixels square.
-              <br />
-              File size cannot exceed 20kb.
-            </Placeholder>
-
-            <Field name={FormNames.Logo} render={this.renderFileInput} />
-          </InputWrapper>
+          <LogoInput fileInputId={FILE_INPUT_ID} logo={logo} name={FormNames.Logo} handleFileChange={this.handleFileChange} />
         </Label>
 
         <StyledButton disabled={!formikProps.dirty} onClick={this.handleReset(formikProps.handleReset)} type="button" width={120}>

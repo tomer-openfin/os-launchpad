@@ -78,7 +78,7 @@ class ConfirmAppDelete extends React.Component<Props, State> {
         this.setState({ responseReceived: true, result: { status: RESPONSE_ERROR } });
 
         // tslint:disable-next-line:no-console
-        console.log('There was an error with the API', err);
+        console.log('There was an error with the API for deleteApp:', err);
       });
   };
 

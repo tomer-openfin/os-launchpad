@@ -4,6 +4,7 @@ import '../src/components/AppDirectory/AppDirectory.story';
 import '../src/components/AppList/AppList.story';
 import '../src/components/Button/Button.story';
 import '../src/components/ConfirmUserDelete/ConfirmUserDelete.story';
+import '../src/components/EditAppForm/EditAppForm.story';
 import '../src/components/EditUserForm/EditUserForm.story';
 import '../src/components/Login/Login.story';
 import '../src/components/LogoForm/LogoForm.story';

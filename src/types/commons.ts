@@ -1,10 +1,12 @@
 export interface App {
   appPage: string;
+  contexts: Array<{ $type: string }>;
   contact_email: string;
   description: string;
   icon: string;
-  id: number;
-  images: Array<{}>;
+  id: string | number;
+  images: Array<{ url: string }>;
+  intents: Array<{ displayName: string; name: string }>;
   manifest_url: string;
   name: string;
   publisher: string;
@@ -15,9 +17,23 @@ export interface App {
 
 export interface Bounds extends Dimensions, DirectionalCoordinates {}
 
+export interface CreateAppResponse {
+  status: 'ok' | 'failure';
+  message?: string;
+}
+
 export interface DeleteAppResponse {
   status: 'ok' | 'failure';
   message?: string;
+}
+
+export interface UpdateAppResponse {
+  status: 'ok' | 'failure';
+  message?: string;
+}
+
+export enum AppFormNames {
+  Logo = 'AppLogo',
 }
 
 export interface Dimensions {

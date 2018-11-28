@@ -1,3 +1,6 @@
+// tslint:disable-next-line
+const urlRegex = require('url-regex');
+
 export const validateEmail = value => {
   let error;
 
@@ -24,6 +27,19 @@ export const validateTextField = value => {
 
   if (!value) {
     error = 'Input Field Required';
+  }
+
+  return error;
+};
+
+// todo: fix URL regex to only accept URLs ending in ".json"
+export const validateURL = value => {
+  let error;
+
+  if (!value) {
+    error = 'Input Field Required';
+  } else if (!urlRegex().test(value)) {
+    error = 'Invalid Manifest URL, must end in .json file extension.';
   }
 
   return error;

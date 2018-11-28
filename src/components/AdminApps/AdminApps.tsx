@@ -64,6 +64,8 @@ class AdminApps extends React.PureComponent<Props & RouteComponentProps, State> 
       <Wrapper>
         <HeadingWrapper>
           <Input name="search" value={search} onChange={this.handleInputChange} placeholder="Search apps..." type="text" />
+
+          <ButtonLink to={ROUTES.ADMIN_APPS_NEW}>Add App</ButtonLink>
         </HeadingWrapper>
 
         <ListWrapper>

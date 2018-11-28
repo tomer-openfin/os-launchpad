@@ -11,18 +11,18 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
     }
   >
     <div
-      className="sc-gisBJw dJjrqN"
+      className="sc-tilXH jlMNNw"
     >
       <form
         onSubmit={[Function]}
       >
         <div
-          className="sc-dVhcbM gonDRU"
+          className="sc-bbmXgH dcixxT"
         >
           Create New User
         </div>
         <label
-          className="sc-eqIVtm gBTCWD"
+          className="sc-gGBfsJ ciczPZ"
         >
           Username:
           <input
@@ -34,7 +34,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-eqIVtm gBTCWD"
+          className="sc-gGBfsJ ciczPZ"
         >
           Email:
           <input
@@ -46,7 +46,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-eqIVtm gBTCWD"
+          className="sc-gGBfsJ ciczPZ"
         >
           Password:
           <input
@@ -58,7 +58,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-eqIVtm gBTCWD"
+          className="sc-gGBfsJ ciczPZ"
         >
           First Name:
           <input
@@ -70,7 +70,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-eqIVtm gBTCWD"
+          className="sc-gGBfsJ ciczPZ"
         >
           Last Name:
           <input
@@ -82,7 +82,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-eqIVtm gBTCWD"
+          className="sc-gGBfsJ ciczPZ"
         >
           Middle Initial:
           <input
@@ -94,7 +94,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-eqIVtm gBTCWD"
+          className="sc-gGBfsJ ciczPZ"
         >
           Make an administrator?
           <select
@@ -117,17 +117,17 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
           </select>
         </label>
         <div
-          className="sc-caSCKo gxSECN"
+          className="sc-fYxtnH izPscg"
         >
           <a
-            className="sc-fBuWsC lodAaZ"
+            className="sc-jqCOkK egAxXy"
             href="/admin/users"
             onClick={[Function]}
           >
             Cancel
           </a>
           <button
-            className="sc-jhAzac fHBKro"
+            className="sc-dNLxif dFkNVR"
             disabled={true}
             type="submit"
           >

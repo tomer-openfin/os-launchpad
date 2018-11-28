@@ -1,7 +1,58 @@
 /* tslint:disable:object-literal-sort-keys max-line-length */
 export default [
   {
+    contexts: [
+      {
+        $type: 'fdc3.instrument',
+      },
+      {
+        $type: 'fdc3.contact',
+      },
+      {
+        $type: 'fdc3.organization',
+      },
+      {
+        $type: 'fdc3.contactList',
+      },
+      {
+        $type: 'fdc3.position',
+      },
+    ],
     id: 2,
+    intents: [
+      {
+        name: 'StartCall',
+        displayName: 'Call',
+      },
+      {
+        name: 'StartChat',
+        displayName: 'Chat',
+      },
+      {
+        name: 'ViewChart',
+        displayName: 'Chart',
+      },
+      {
+        name: 'ViewContact',
+        displayName: 'View',
+      },
+      {
+        name: 'ViewQuote',
+        displayName: 'Quote',
+      },
+      {
+        name: 'ViewNews',
+        displayName: 'News',
+      },
+      {
+        name: 'ViewInstrument',
+        displayName: 'Details',
+      },
+      {
+        name: 'ViewAnalysis',
+        displayName: 'Analyze',
+      },
+    ],
     name: 'fintech-studios',
     title: 'FinTech Studios',
     manifest_url: 'https://openfin.fintechstudios.com/openfin_config.json',
@@ -26,7 +77,58 @@ export default [
     ],
   },
   {
+    contexts: [
+      {
+        $type: 'fdc3.instrument',
+      },
+      {
+        $type: 'fdc3.contact',
+      },
+      {
+        $type: 'fdc3.organization',
+      },
+      {
+        $type: 'fdc3.contactList',
+      },
+      {
+        $type: 'fdc3.position',
+      },
+    ],
     id: 3,
+    intents: [
+      {
+        name: 'StartCall',
+        displayName: 'Call',
+      },
+      {
+        name: 'StartChat',
+        displayName: 'Chat',
+      },
+      {
+        name: 'ViewChart',
+        displayName: 'Chart',
+      },
+      {
+        name: 'ViewContact',
+        displayName: 'View',
+      },
+      {
+        name: 'ViewQuote',
+        displayName: 'Quote',
+      },
+      {
+        name: 'ViewNews',
+        displayName: 'News',
+      },
+      {
+        name: 'ViewInstrument',
+        displayName: 'Details',
+      },
+      {
+        name: 'ViewAnalysis',
+        displayName: 'Analyze',
+      },
+    ],
     name: 'greenkey',
     title: 'GreenKey',
     manifest_url: 'https://openfin.greenkeytech.com/openfin-config.json',
@@ -45,7 +147,58 @@ export default [
     ],
   },
   {
+    contexts: [
+      {
+        $type: 'fdc3.instrument',
+      },
+      {
+        $type: 'fdc3.contact',
+      },
+      {
+        $type: 'fdc3.organization',
+      },
+      {
+        $type: 'fdc3.contactList',
+      },
+      {
+        $type: 'fdc3.position',
+      },
+    ],
     id: 5,
+    intents: [
+      {
+        name: 'StartCall',
+        displayName: 'Call',
+      },
+      {
+        name: 'StartChat',
+        displayName: 'Chat',
+      },
+      {
+        name: 'ViewChart',
+        displayName: 'Chart',
+      },
+      {
+        name: 'ViewContact',
+        displayName: 'View',
+      },
+      {
+        name: 'ViewQuote',
+        displayName: 'Quote',
+      },
+      {
+        name: 'ViewNews',
+        displayName: 'News',
+      },
+      {
+        name: 'ViewInstrument',
+        displayName: 'Details',
+      },
+      {
+        name: 'ViewAnalysis',
+        displayName: 'Analyze',
+      },
+    ],
     name: 'hammerstone-markets',
     title: 'Hammerstone Markets App',
     manifest_url: 'http://desktop.hammerstone.us/app_local.json',
@@ -64,7 +217,58 @@ export default [
     ],
   },
   {
+    contexts: [
+      {
+        $type: 'fdc3.instrument',
+      },
+      {
+        $type: 'fdc3.contact',
+      },
+      {
+        $type: 'fdc3.organization',
+      },
+      {
+        $type: 'fdc3.contactList',
+      },
+      {
+        $type: 'fdc3.position',
+      },
+    ],
     id: 6,
+    intents: [
+      {
+        name: 'StartCall',
+        displayName: 'Call',
+      },
+      {
+        name: 'StartChat',
+        displayName: 'Chat',
+      },
+      {
+        name: 'ViewChart',
+        displayName: 'Chart',
+      },
+      {
+        name: 'ViewContact',
+        displayName: 'View',
+      },
+      {
+        name: 'ViewQuote',
+        displayName: 'Quote',
+      },
+      {
+        name: 'ViewNews',
+        displayName: 'News',
+      },
+      {
+        name: 'ViewInstrument',
+        displayName: 'Details',
+      },
+      {
+        name: 'ViewAnalysis',
+        displayName: 'Analyze',
+      },
+    ],
     name: 'neptune',
     title: 'Neptune',
     manifest_url: 'https://live.neptunefi.com/app.json',
@@ -83,7 +287,58 @@ export default [
     ],
   },
   {
+    contexts: [
+      {
+        $type: 'fdc3.instrument',
+      },
+      {
+        $type: 'fdc3.contact',
+      },
+      {
+        $type: 'fdc3.organization',
+      },
+      {
+        $type: 'fdc3.contactList',
+      },
+      {
+        $type: 'fdc3.position',
+      },
+    ],
     id: 7,
+    intents: [
+      {
+        name: 'StartCall',
+        displayName: 'Call',
+      },
+      {
+        name: 'StartChat',
+        displayName: 'Chat',
+      },
+      {
+        name: 'ViewChart',
+        displayName: 'Chart',
+      },
+      {
+        name: 'ViewContact',
+        displayName: 'View',
+      },
+      {
+        name: 'ViewQuote',
+        displayName: 'Quote',
+      },
+      {
+        name: 'ViewNews',
+        displayName: 'News',
+      },
+      {
+        name: 'ViewInstrument',
+        displayName: 'Details',
+      },
+      {
+        name: 'ViewAnalysis',
+        displayName: 'Analyze',
+      },
+    ],
     name: 'opendoor',
     title: 'OpenDoor',
     manifest_url: 'https://trading.opendoorllc.com/app.json',
@@ -108,7 +363,58 @@ export default [
     ],
   },
   {
+    contexts: [
+      {
+        $type: 'fdc3.instrument',
+      },
+      {
+        $type: 'fdc3.contact',
+      },
+      {
+        $type: 'fdc3.organization',
+      },
+      {
+        $type: 'fdc3.contactList',
+      },
+      {
+        $type: 'fdc3.position',
+      },
+    ],
     id: 13,
+    intents: [
+      {
+        name: 'StartCall',
+        displayName: 'Call',
+      },
+      {
+        name: 'StartChat',
+        displayName: 'Chat',
+      },
+      {
+        name: 'ViewChart',
+        displayName: 'Chart',
+      },
+      {
+        name: 'ViewContact',
+        displayName: 'View',
+      },
+      {
+        name: 'ViewQuote',
+        displayName: 'Quote',
+      },
+      {
+        name: 'ViewNews',
+        displayName: 'News',
+      },
+      {
+        name: 'ViewInstrument',
+        displayName: 'Details',
+      },
+      {
+        name: 'ViewAnalysis',
+        displayName: 'Analyze',
+      },
+    ],
     name: 'parityone',
     title: 'Parity One',
     manifest_url: 'https://parity1.com/manifest.json',
@@ -136,7 +442,58 @@ export default [
     ],
   },
   {
+    contexts: [
+      {
+        $type: 'fdc3.instrument',
+      },
+      {
+        $type: 'fdc3.contact',
+      },
+      {
+        $type: 'fdc3.organization',
+      },
+      {
+        $type: 'fdc3.contactList',
+      },
+      {
+        $type: 'fdc3.position',
+      },
+    ],
     id: 8,
+    intents: [
+      {
+        name: 'StartCall',
+        displayName: 'Call',
+      },
+      {
+        name: 'StartChat',
+        displayName: 'Chat',
+      },
+      {
+        name: 'ViewChart',
+        displayName: 'Chart',
+      },
+      {
+        name: 'ViewContact',
+        displayName: 'View',
+      },
+      {
+        name: 'ViewQuote',
+        displayName: 'Quote',
+      },
+      {
+        name: 'ViewNews',
+        displayName: 'News',
+      },
+      {
+        name: 'ViewInstrument',
+        displayName: 'Details',
+      },
+      {
+        name: 'ViewAnalysis',
+        displayName: 'Analyze',
+      },
+    ],
     name: 'rsrchx',
     title: 'RSRCHXChange',
     manifest_url: 'https://rsrchx.com/api/openfin/1/rex.main.app.json',
@@ -155,7 +512,58 @@ export default [
     ],
   },
   {
+    contexts: [
+      {
+        $type: 'fdc3.instrument',
+      },
+      {
+        $type: 'fdc3.contact',
+      },
+      {
+        $type: 'fdc3.organization',
+      },
+      {
+        $type: 'fdc3.contactList',
+      },
+      {
+        $type: 'fdc3.position',
+      },
+    ],
     id: 12,
+    intents: [
+      {
+        name: 'StartCall',
+        displayName: 'Call',
+      },
+      {
+        name: 'StartChat',
+        displayName: 'Chat',
+      },
+      {
+        name: 'ViewChart',
+        displayName: 'Chart',
+      },
+      {
+        name: 'ViewContact',
+        displayName: 'View',
+      },
+      {
+        name: 'ViewQuote',
+        displayName: 'Quote',
+      },
+      {
+        name: 'ViewNews',
+        displayName: 'News',
+      },
+      {
+        name: 'ViewInstrument',
+        displayName: 'Details',
+      },
+      {
+        name: 'ViewAnalysis',
+        displayName: 'Analyze',
+      },
+    ],
     name: 'trumid',
     title: 'Trumid',
     manifest_url: 'https://production.trumid.com/content/trading/app.json',
@@ -180,7 +588,58 @@ export default [
     ],
   },
   {
+    contexts: [
+      {
+        $type: 'fdc3.instrument',
+      },
+      {
+        $type: 'fdc3.contact',
+      },
+      {
+        $type: 'fdc3.organization',
+      },
+      {
+        $type: 'fdc3.contactList',
+      },
+      {
+        $type: 'fdc3.position',
+      },
+    ],
     id: 9,
+    intents: [
+      {
+        name: 'StartCall',
+        displayName: 'Call',
+      },
+      {
+        name: 'StartChat',
+        displayName: 'Chat',
+      },
+      {
+        name: 'ViewChart',
+        displayName: 'Chart',
+      },
+      {
+        name: 'ViewContact',
+        displayName: 'View',
+      },
+      {
+        name: 'ViewQuote',
+        displayName: 'Quote',
+      },
+      {
+        name: 'ViewNews',
+        displayName: 'News',
+      },
+      {
+        name: 'ViewInstrument',
+        displayName: 'Details',
+      },
+      {
+        name: 'ViewAnalysis',
+        displayName: 'Analyze',
+      },
+    ],
     name: 'tt-desktop',
     title: 'TT Desktop',
     manifest_url: 'https://trade.tt/desktop/config',

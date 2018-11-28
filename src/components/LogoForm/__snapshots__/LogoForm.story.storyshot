@@ -11,52 +11,56 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
     }
   >
     <div
-      className="sc-hzDkRC kpsoyz"
+      className="sc-jbKcbu cWSlbe"
     >
       <form
-        className="sc-bRBYWo bhewGY"
+        className="sc-hqyNC cewdpG"
         onSubmit={[Function]}
       >
         <label
-          className="sc-gipzik dGAVjs"
+          className="sc-hmzhuo ehymcL"
           htmlFor="LogoFormFileInput"
         >
           <div
-            className="sc-htoDjs kcRLEW"
+            className="sc-jWBwVP buUcBd"
           >
             <div
-              className="sc-dnqmqq klHNcP"
-            />
-          </div>
-          <div
-            className="sc-jlyJG fEdsvT"
-          >
-            <div
-              className="sc-gPEVay bJVbgE"
+              className="sc-htoDjs edCAeo"
             >
-              Change Logo
+              <div
+                className="sc-dnqmqq UIYYa"
+              />
             </div>
             <div
-              className="sc-csuQGl FCaTi"
+              className="sc-iAyFgw eRVLVT"
             >
-              Files must be at least 200 x 200 pixels square.
-              <br />
-              File size cannot exceed 20kb.
+              <div
+                className="sc-kEYyzF eQCTnN"
+              >
+                Change Logo
+              </div>
+              <div
+                className="sc-eHgmQL fEZohB"
+              >
+                Files must be at least 200 x 200 pixels square.
+                <br />
+                File size cannot exceed 20kb.
+              </div>
+              <input
+                accept="image/*"
+                className="sc-kkGfuU chNTof"
+                id="LogoFormFileInput"
+                name="logo"
+                onBlur={[Function]}
+                onChange={[Function]}
+                type="file"
+                value=""
+              />
             </div>
-            <input
-              accept="image/*"
-              className="sc-iRbamj hARxYt"
-              id="LogoFormFileInput"
-              name="logo"
-              onBlur={[Function]}
-              onChange={[Function]}
-              type="file"
-              value=""
-            />
           </div>
         </label>
         <button
-          className="sc-Rmtcm cKZppp"
+          className="sc-kvZOFW gtbaRv"
           disabled={true}
           onClick={[Function]}
           type="button"
@@ -65,7 +69,7 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
           Cancel
         </button>
         <button
-          className="sc-Rmtcm gHhrsb"
+          className="sc-kvZOFW gKheiP"
           disabled={true}
           type="submit"
           width={120}

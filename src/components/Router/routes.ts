@@ -7,9 +7,11 @@ import AppDirectory from '../AppDirectory';
 import AppOverflow from '../AppOverflow';
 import ConfirmAppDelete from '../ConfirmAppDelete';
 import ConfirmUserDelete from '../ConfirmUserDelete';
+import EditAppForm from '../EditAppForm';
 import EditUserForm from '../EditUserForm';
 import Layouts from '../Layouts';
 import Login from '../Login';
+import NewAppForm from '../NewAppForm';
 import NewUserForm from '../NewUserForm';
 import OrganizationSettings from '../OrganizationSettings';
 import Settings from '../Settings';
@@ -44,16 +46,16 @@ export const userRoutes: AppRoute[] = [
 ];
 
 export const appRoutes: AppRoute[] = [
-  // { // WHIT-94
-  //   Component: NewAppForm,
-  //   exact: false,
-  //   path: ROUTES.ADMIN_APPS_NEW,
-  // },
-  // { // WHIT-120
-  //   Component: EditAppForm,
-  //   exact: false,
-  //   path: ROUTES.ADMIN_APPS_EDIT,
-  // },
+  {
+    Component: NewAppForm,
+    exact: false,
+    path: ROUTES.ADMIN_APPS_NEW,
+  },
+  {
+    Component: EditAppForm,
+    exact: false,
+    path: ROUTES.ADMIN_APPS_EDIT,
+  },
   {
     Component: ConfirmAppDelete,
     exact: false,
