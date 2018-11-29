@@ -5,40 +5,40 @@ const { Bottom: BOTTOM, Left: LEFT, Right: RIGHT, Top: TOP } = LauncherPosition;
 
 const OFFSETS = {
   [APP_LAUNCHER_OVERFLOW_WINDOW]: {
-    [LauncherPosition.Top]: {
-      offsetX: 100,
-      offsetY: 0,
-    },
-    [LauncherPosition.Right]: {
+    [LauncherPosition.Top]: () => ({
       offsetX: 50,
-      offsetY: 100,
-    },
-    [LauncherPosition.Bottom]: {
-      offsetX: 100,
+      offsetY: 0,
+    }),
+    [LauncherPosition.Right]: () => ({
+      offsetX: 50,
       offsetY: 50,
-    },
-    [LauncherPosition.Left]: {
+    }),
+    [LauncherPosition.Bottom]: () => ({
+      offsetX: 50,
+      offsetY: 50,
+    }),
+    [LauncherPosition.Left]: () => ({
       offsetX: 0,
-      offsetY: 100,
-    },
+      offsetY: 50,
+    }),
   },
   [LAYOUTS_WINDOW]: {
-    [LauncherPosition.Top]: {
-      offsetX: 425,
+    [LauncherPosition.Top]: (launcherBounds: Bounds) => ({
+      offsetX: launcherBounds.width - 100,
       offsetY: 45,
-    },
-    [LauncherPosition.Right]: {
+    }),
+    [LauncherPosition.Right]: (launcherBounds: Bounds) => ({
       offsetX: 0,
-      offsetY: 425,
-    },
-    [LauncherPosition.Bottom]: {
-      offsetX: 425,
+      offsetY: launcherBounds.height - 100,
+    }),
+    [LauncherPosition.Bottom]: (launcherBounds: Bounds) => ({
+      offsetX: launcherBounds.width - 100,
       offsetY: 0,
-    },
-    [LauncherPosition.Left]: {
+    }),
+    [LauncherPosition.Left]: (launcherBounds: Bounds) => ({
       offsetX: 45,
-      offsetY: 425,
-    },
+      offsetY: launcherBounds.height - 100,
+    }),
   },
 };
 
@@ -197,7 +197,7 @@ export const calcCoordinatesRelativeToLauncherBounds = (
  * @returns {Bounds}
  */
 export const calcBoundsRelativeToLauncher = (finName: string, bounds: Bounds, launcherBounds: Bounds, launcherPosition: LauncherPosition): Bounds => {
-  const { offsetX, offsetY } = OFFSETS[finName] ? OFFSETS[finName][launcherPosition] : { offsetX: 0, offsetY: 0 };
+  const { offsetX, offsetY } = OFFSETS[finName] ? OFFSETS[finName][launcherPosition](launcherBounds) : { offsetX: 0, offsetY: 0 };
   const dimensions = calcDimensionsByLauncherPosition(bounds, launcherPosition, true);
   const coordinates = calcCoordinatesRelativeToLauncherBounds(dimensions, offsetX, offsetY, launcherBounds, launcherPosition);
 

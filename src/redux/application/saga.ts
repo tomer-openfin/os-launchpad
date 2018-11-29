@@ -1,15 +1,17 @@
+import { Window } from '@giantmachines/redux-openfin';
+import { delay } from 'redux-saga';
 import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 
 import windowsConfig, { initOnStartWindows } from '../../config/windows';
 import { getNewPosDelta } from '../../utils/coordinateHelpers';
 import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
-import { animateWindow, getSystemMonitorInfo } from '../../utils/openfinPromises';
+import { animateWindow, getSystemMonitorInfo, setWindowBoundsPromise } from '../../utils/openfinPromises';
 import takeFirst from '../../utils/takeFirst';
 import { LAUNCHER_HIDDEN_VISIBILITY_DELTA } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList } from '../apps';
 import { getLayoutById, getLayoutsIds, getLayoutsRequest, restoreLayout } from '../layouts';
-import { getAutoHide, getLauncherPosition, getSettingsRequest } from '../me';
+import { getAutoHide, getIsAdmin, getLauncherPosition, getSettingsRequest } from '../me';
 import { setMonitorInfo, setupSystemHandlers } from '../system';
 import { getWindowBounds, launchWindow } from '../windows';
 import {
@@ -95,13 +97,21 @@ function* watchLaunchAppLauncher() {
     yield put(restoreLayout(layout));
   }
 
+  // TODO: Remove once app launchers width is set to screen size width || height
+  const isAdmin = yield select(getIsAdmin);
+  const bounds = yield select(getWindowBounds, APP_UUID);
+  const finWindow = yield call(getLauncherFinWindow);
+  const width = isAdmin ? 525 : 475;
+  const height = 50;
+  yield call(setWindowBoundsPromise, finWindow, { ...bounds, width, height });
+
   // When all done show main app bar
   const { fin } = window;
   if (fin) {
-    const launcherFinWindow = yield call(getLauncherFinWindow);
-    if (launcherFinWindow) {
-      launcherFinWindow.show();
-    }
+    // TODO: Remove once app launchers width is set to screen size width || height
+    //       Delay helps with the dom shuffling
+    yield delay(100);
+    yield put(Window.showWindow({ id: APP_UUID }));
   }
 }
 

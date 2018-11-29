@@ -6,6 +6,9 @@ const defaultState: ContextMenuState = {
   bounds: undefined,
   isOpen: false,
   options: [],
+  // TODO: Add origin window name to know where context menu is attached,
+  //       will be needed if context menu is attached to
+  //       a window other than the main app launcher
 };
 
 export default (state: ContextMenuState = defaultState, action) => {

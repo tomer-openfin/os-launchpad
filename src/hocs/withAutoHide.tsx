@@ -1,7 +1,7 @@
 import throttle from 'lodash-es/throttle';
 import * as React from 'react';
 
-import { Bounds, PrimaryDirectionalCoordinates } from '../types/commons';
+import { Bounds } from '../types/commons';
 import { isPosInBounds } from '../utils/coordinateHelpers';
 import { getSystemMousePosition } from '../utils/openfinPromises';
 
@@ -10,6 +10,7 @@ interface Props {
   bounds: Bounds | undefined;
   collapse: () => void;
   expand: () => void;
+  isContextMenuOpen: boolean;
   isExpanded: boolean;
 }
 
@@ -56,9 +57,9 @@ const withAutoHide = <P extends Props>(Component: React.ComponentType<P>) =>
     };
 
     handleInterval = async () => {
-      const { bounds, isExpanded } = this.props;
+      const { bounds, isContextMenuOpen, isExpanded } = this.props;
 
-      if (!isExpanded || !bounds) {
+      if (!isExpanded || !bounds || isContextMenuOpen) {
         return;
       }
 

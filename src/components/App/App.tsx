@@ -16,12 +16,13 @@ import Logo from '../Logo';
 import { EllipsisImage, EllipsisWrapper, Separator, Wrapper } from './App.css';
 
 export interface Props {
+  isAdmin?: boolean;
   launcherPosition: LauncherPosition;
   launchWindow: (window: WindowConfig) => void;
 }
 
 const App = (props: Props) => {
-  const { launcherPosition, launchWindow } = props;
+  const { isAdmin, launcherPosition, launchWindow } = props;
 
   const handleLaunchAdminWindow = () => launchWindow(windowsConfig.admin);
   const handleLaunchAppDirectoryWindow = () => launchWindow(windowsConfig.appDirectory);
@@ -35,46 +36,31 @@ const App = (props: Props) => {
 
       <Separator launcherPosition={launcherPosition} />
 
-      <IconSpace
-        hover
-        iconImg={searchIcon}
-        onClick={handleLaunchAppDirectoryWindow}
-      />
-
-      <Separator launcherPosition={launcherPosition} />
-
       <AppList spaceCount={4} />
 
-      <EllipsisWrapper
-        onClick={handleLaunchAppOverflowWindow}
-        launcherPosition={launcherPosition}
-      >
+      <EllipsisWrapper launcherPosition={launcherPosition} onClick={handleLaunchAppOverflowWindow}>
         <EllipsisImage launcherPosition={launcherPosition} />
       </EllipsisWrapper>
 
       <Separator launcherPosition={launcherPosition} />
 
-      <IconSpace
-        hover
-        iconImg={adminIcon}
-        onClick={handleLaunchAdminWindow}
-      />
+      {isAdmin && (
+        <>
+          <IconSpace hover iconImg={adminIcon} onClick={handleLaunchAdminWindow} />
+
+          <Separator launcherPosition={launcherPosition} />
+        </>
+      )}
+
+      <IconSpace hover iconImg={settingsIcon} onClick={handleLaunchSettingsWindow} />
 
       <Separator launcherPosition={launcherPosition} />
 
-      <IconSpace
-        hover
-        iconImg={settingsIcon}
-        onClick={handleLaunchSettingsWindow}
-      />
+      <IconSpace hover iconImg={searchIcon} onClick={handleLaunchAppDirectoryWindow} />
 
       <Separator launcherPosition={launcherPosition} />
 
-      <IconSpace
-        hover
-        iconImg={saveLayoutIcon}
-        onClick={handleLaunchLayoutsWindow}
-      />
+      <IconSpace hover iconImg={saveLayoutIcon} onClick={handleLaunchLayoutsWindow} />
 
       <Separator launcherPosition={launcherPosition} />
 
