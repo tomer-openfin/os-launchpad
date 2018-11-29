@@ -11,10 +11,13 @@ OpenFin OS centralizes app discovery and can be customized with your own brandin
 ## Getting started
 
 1. Clone this repository
+
+Now set your `node` version. The version we're standardizing is in the `.nvmrc` file. If you're using [`nvm`](https://github.com/creationix/nvm) (which we recommenend that you do), you can simply `cd` into this directory and type `nvm use`. After that, continue with the next steps:
+
 2. `npm i`
 3. `npm start`
 
-_(alternatively, you can run the application and OpenFin separately by doing the following:)_
+_alternatively, you can run the application and OpenFin separately by doing the following:_
 
 1. `npm run dev`
 2. `npm run openfin`
