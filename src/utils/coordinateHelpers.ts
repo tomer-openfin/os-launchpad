@@ -1,7 +1,12 @@
-import { Bounds, DirectionalCoordinates, LauncherPosition } from '../types/commons';
+import { Bounds, DirectionalCoordinates, LauncherPosition, PrimaryDirectionalCoordinates } from '../types/commons';
 import { isTopOrBottom } from './windowPositionHelpers';
 
-export const getNewPosDelta = (bounds: Bounds, launcherPosition: LauncherPosition, expand: boolean, visbilityDelta: number = 0): DirectionalCoordinates => {
+export const getNewPosDelta = (
+  bounds: Bounds,
+  launcherPosition: LauncherPosition,
+  expand: boolean,
+  visbilityDelta: number = 0,
+): PrimaryDirectionalCoordinates => {
   const { width, height } = bounds;
   const isTopOrBottomPosition = isTopOrBottom(launcherPosition);
   const isTopOrLeft = launcherPosition === LauncherPosition.Top || launcherPosition === LauncherPosition.Left;
@@ -15,7 +20,7 @@ export const getNewPosDelta = (bounds: Bounds, launcherPosition: LauncherPositio
   };
 };
 
-export const isPosInBounds = (pos: DirectionalCoordinates, bounds: Bounds) => {
+export const isPosInBounds = (pos: PrimaryDirectionalCoordinates, bounds: Bounds) => {
   const { left: posLeft, top: posTop } = pos;
   const { height, left: boundsLeft, top: boundsTop, width } = bounds;
 
@@ -23,4 +28,30 @@ export const isPosInBounds = (pos: DirectionalCoordinates, bounds: Bounds) => {
   const isWithinY = posTop >= boundsTop && posTop <= boundsTop + height;
 
   return isWithinX && isWithinY;
+};
+
+export const isPosInCoordinates = (pos: PrimaryDirectionalCoordinates, coordinates: DirectionalCoordinates) => {
+  const { left: posLeft, top: posTop } = pos;
+  const { bottom: coordBottom, left: coordLeft, right: coordRight, top: coordTop } = coordinates;
+
+  const isWithinX = posLeft >= coordLeft && posLeft <= coordRight;
+  const isWithinY = posTop >= coordTop && posTop <= coordBottom;
+
+  return isWithinX && isWithinY;
+};
+
+export const isBoundsInCoordinates = (bounds: Bounds, coordinates: DirectionalCoordinates) => {
+  const { height, left, top, width } = bounds;
+
+  const topLeftPos = { left, top };
+  const topRightPos = { left: left + width, top };
+  const bottomRightPos = { left: left + width, top: top + height };
+  const bottomLeftPos = { left, top: top + height };
+
+  return (
+    isPosInCoordinates(topLeftPos, coordinates) &&
+    isPosInCoordinates(topRightPos, coordinates) &&
+    isPosInCoordinates(bottomRightPos, coordinates) &&
+    isPosInCoordinates(bottomLeftPos, coordinates)
+  );
 };

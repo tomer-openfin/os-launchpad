@@ -3,9 +3,6 @@ import * as React from 'react';
 import * as restoreLayoutIcon from '../../assets/RestoreLayout.svg';
 import * as saveLayoutIcon from '../../assets/SaveLayout.svg';
 
-import { noop } from 'redux-saga/utils';
-import { LAYOUTS_WINDOW } from '../../config/windows';
-
 import IconSpace from '../IconSpace';
 
 import { LauncherPosition } from '../../types/commons';
@@ -13,48 +10,25 @@ import { LauncherPosition } from '../../types/commons';
 import { Wrapper } from './Layouts.css';
 
 interface Props {
-  addWindowListener: Function;
-  hideWindow: Function;
   launcherPosition: LauncherPosition;
-  removeWindowListener: Function;
-  restoreCurrentLayout: Function;
-  saveCurrentLayout: Function;
+  onBlur: () => void;
+  restoreCurrentLayout: () => void;
+  saveCurrentLayout: () => void;
 }
 
-const defaultProps = {
-  addWindowListener: noop,
-  hideWindow: noop,
-  launcherPosition: LauncherPosition.Top,
-  removeWindowListener: noop,
-  restoreCurrentLayout: noop,
-  saveCurrentLayout: noop,
+const Layouts = ({ launcherPosition, saveCurrentLayout, onBlur, restoreCurrentLayout }: Props) => {
+  const handleClickCreator = fn => () => {
+    onBlur();
+    fn();
+  };
+
+  return (
+    <Wrapper launcherPosition={launcherPosition}>
+      <IconSpace iconImg={saveLayoutIcon} onClick={handleClickCreator(saveCurrentLayout)} hover />
+
+      <IconSpace iconImg={restoreLayoutIcon} onClick={handleClickCreator(restoreCurrentLayout)} hover />
+    </Wrapper>
+  );
 };
-
-class Layouts extends React.PureComponent<Props> {
-  static defaultProps = defaultProps;
-
-  componentDidMount() {
-    this.props.addWindowListener(LAYOUTS_WINDOW, 'blurred', () => this.props.hideWindow(LAYOUTS_WINDOW));
-  }
-
-  componentWillUnmount() {
-    this.props.removeWindowListener(LAYOUTS_WINDOW, 'blurred', () => this.props.hideWindow(LAYOUTS_WINDOW));
-  }
-
-  handleSaveCurrentLayout = () => this.props.saveCurrentLayout();
-  handleRestoreCurrentLayout = () => this.props.restoreCurrentLayout();
-
-  render() {
-    const { launcherPosition } = this.props;
-
-    return (
-      <Wrapper launcherPosition={launcherPosition}>
-        <IconSpace iconImg={saveLayoutIcon} onClick={this.handleSaveCurrentLayout} hover />
-
-        <IconSpace iconImg={restoreLayoutIcon} onClick={this.handleRestoreCurrentLayout} hover />
-      </Wrapper>
-    );
-  }
-}
 
 export default Layouts;

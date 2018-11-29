@@ -7,7 +7,7 @@ export interface OrganizationState {
   theme: Theme;
 }
 
-// Action creators
+// Actions
 export type SaveOrgSettingsRequest = ReturnType<typeof saveOrgSettingsRequest>;
 export type SaveOrgSettingsSuccess = ReturnType<typeof saveOrgSettingsSuccess>;
 export type SaveOrgSettingsError = ReturnType<typeof saveOrgSettingsError>;

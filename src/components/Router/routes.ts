@@ -7,6 +7,7 @@ import AppDirectory from '../AppDirectory';
 import AppOverflow from '../AppOverflow';
 import ConfirmAppDelete from '../ConfirmAppDelete';
 import ConfirmUserDelete from '../ConfirmUserDelete';
+import ContextMenu from '../ContextMenu';
 import EditAppForm from '../EditAppForm';
 import EditUserForm from '../EditUserForm';
 import Layouts from '../Layouts';
@@ -17,7 +18,7 @@ import OrganizationSettings from '../OrganizationSettings';
 import Settings from '../Settings';
 import UserDirectory from '../UserDirectory';
 
-import ROUTES from './const';
+import { ROUTES } from './consts';
 
 export interface AppRoute {
   // tslint:disable:no-any
@@ -63,7 +64,7 @@ export const appRoutes: AppRoute[] = [
   },
 ];
 
-const routes: AppRoute[] = [
+export const routes: AppRoute[] = [
   {
     Component: Admin,
     children: [
@@ -118,6 +119,9 @@ const routes: AppRoute[] = [
     exact: true,
     path: ROUTES.SETTINGS,
   },
+  {
+    Component: ContextMenu,
+    exact: true,
+    path: ROUTES.CONTEXT_MENU,
+  },
 ];
-
-export default routes;

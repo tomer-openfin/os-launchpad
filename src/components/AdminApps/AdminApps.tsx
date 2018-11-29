@@ -6,8 +6,8 @@ import { ButtonLink, HeadingWrapper, Input, LinkWrapper, ListElement, ListWrappe
 
 import { App } from '../../types/commons';
 import { doesCurrentPathMatch } from '../../utils/routeHelpers';
-import ROUTES from '../Router/const';
-import { appRoutes } from '../Router/routes';
+import { appRoutes } from '../Router';
+import { ROUTES } from '../Router/consts';
 
 interface Props {
   apps: App[];

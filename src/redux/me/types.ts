@@ -55,7 +55,7 @@ export interface SetMePayload {
   lastName: string;
 }
 
-// Actions creators
+// Actions
 export type GetSettingsRequest = ReturnType<typeof getSettingsRequest>;
 export type GetSettingsSuccess = ReturnType<typeof getSettingsSuccess>;
 export type GetSettingsError = ReturnType<typeof getSettingsError>;

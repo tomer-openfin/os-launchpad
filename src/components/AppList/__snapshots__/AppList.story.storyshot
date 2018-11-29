@@ -17,65 +17,81 @@ exports[`Storyshots Components/AppList default 1`] = `
         className="sc-kAzzGY imGzNb"
       >
         <div
-          className="sc-htoDjs cilmlp"
-          onClick={[Function]}
+          onContextMenu={[Function]}
         >
           <div
-            className="sc-dnqmqq kYMSoc"
+            className="sc-htoDjs cilmlp"
+            onClick={[Function]}
+          >
+            <div
+              className="sc-dnqmqq kYMSoc"
+            />
+          </div>
+          <div
+            className="sc-cSHVUG bGNZIL"
+            onClick={[Function]}
           />
         </div>
-        <div
-          className="sc-cSHVUG bGNZIL"
-          onClick={[Function]}
-        />
       </div>
       <div
         className="sc-kAzzGY imGzNb"
       >
         <div
-          className="sc-htoDjs cilmlp"
-          onClick={[Function]}
+          onContextMenu={[Function]}
         >
           <div
-            className="sc-dnqmqq iJsrxD"
+            className="sc-htoDjs cilmlp"
+            onClick={[Function]}
+          >
+            <div
+              className="sc-dnqmqq iJsrxD"
+            />
+          </div>
+          <div
+            className="sc-cSHVUG bGNZIL"
+            onClick={[Function]}
           />
         </div>
-        <div
-          className="sc-cSHVUG bGNZIL"
-          onClick={[Function]}
-        />
       </div>
       <div
         className="sc-kAzzGY imGzNb"
       >
         <div
-          className="sc-htoDjs cilmlp"
-          onClick={[Function]}
+          onContextMenu={[Function]}
         >
           <div
-            className="sc-dnqmqq hztDVY"
+            className="sc-htoDjs cilmlp"
+            onClick={[Function]}
+          >
+            <div
+              className="sc-dnqmqq hztDVY"
+            />
+          </div>
+          <div
+            className="sc-cSHVUG bGNZIL"
+            onClick={[Function]}
           />
         </div>
-        <div
-          className="sc-cSHVUG bGNZIL"
-          onClick={[Function]}
-        />
       </div>
       <div
         className="sc-kAzzGY imGzNb"
       >
         <div
-          className="sc-htoDjs cilmlp"
-          onClick={[Function]}
+          onContextMenu={[Function]}
         >
           <div
-            className="sc-dnqmqq eUCPZm"
+            className="sc-htoDjs cilmlp"
+            onClick={[Function]}
+          >
+            <div
+              className="sc-dnqmqq eUCPZm"
+            />
+          </div>
+          <div
+            className="sc-cSHVUG bGNZIL"
+            onClick={[Function]}
           />
         </div>
-        <div
-          className="sc-cSHVUG bGNZIL"
-          onClick={[Function]}
-        />
       </div>
     </div>
   </div>
@@ -1603,6 +1619,65 @@ exports[`Storyshots Components/AppList default 1`] = `
                               
                           </span>
                           ]
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      appsStatusByName
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#666",
+                            }
+                          }
+                        >
+                          {
+                          }
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      launchApp
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
                         </span>
                         }
                       </span>

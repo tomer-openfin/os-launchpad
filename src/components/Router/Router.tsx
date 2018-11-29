@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import routes, { AppRoute } from './routes';
+import { AppRoute, routes } from './routes';
 
 import { GlobalStyle } from '../../styles/globals.css';
 import ConnectedThemeProvider from '../ConnectedThemeProvider';

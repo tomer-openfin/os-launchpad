@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Button, ButtonLink, Copy, Error, Heading, Message, Row, Wrapper } from './ConfirmUserDelete.css';
 
-import ROUTES from '../Router/const';
+import { ROUTES } from '../Router/consts';
 
 interface Props {
   deleteUser: Function;

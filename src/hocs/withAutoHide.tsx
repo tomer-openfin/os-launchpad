@@ -1,7 +1,7 @@
 import throttle from 'lodash-es/throttle';
 import * as React from 'react';
 
-import { Bounds, DirectionalCoordinates } from '../types/commons';
+import { Bounds, PrimaryDirectionalCoordinates } from '../types/commons';
 import { isPosInBounds } from '../utils/coordinateHelpers';
 import { getSystemMousePosition } from '../utils/openfinPromises';
 
@@ -62,9 +62,13 @@ const withAutoHide = <P extends Props>(Component: React.ComponentType<P>) =>
         return;
       }
 
-      const pos = await getSystemMousePosition();
-      if (pos && !isPosInBounds(pos as DirectionalCoordinates, bounds as Bounds)) {
-        this.handleMouseLeaveWindow();
+      try {
+        const pos = await getSystemMousePosition();
+        if (!isPosInBounds(pos, bounds as Bounds)) {
+          this.handleMouseLeaveWindow();
+        }
+      } catch {
+        return;
       }
     };
 

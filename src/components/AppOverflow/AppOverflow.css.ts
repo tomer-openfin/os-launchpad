@@ -9,11 +9,11 @@ export const Window = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   ${AppList} {
     height: 100%;
     width: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
   }
 `;

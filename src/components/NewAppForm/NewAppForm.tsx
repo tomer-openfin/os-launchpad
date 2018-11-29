@@ -9,7 +9,7 @@ import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../const/Samples';
 import { createApp, FILE_ACCEPT, RESPONSE_FAILURE, RESPONSE_OK, saveAppLogo } from '../../services/ApiService';
 import { App, AppFormNames, CreateAppResponse } from '../../types/commons';
 import { validateTextField, validateURL } from '../../utils/validators';
-import ROUTES from '../Router/const';
+import { ROUTES } from '../Router/consts';
 
 interface Props {
   createApp: Function;

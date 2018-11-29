@@ -4,7 +4,6 @@ import { AppDescription, AppName, CTA, InfoWrapper, Row, Wrapper } from './AppCa
 
 import { App } from '../../types/commons';
 
-import createFromManifest from '../../utils/createFromManifest';
 import IconSpace from '../IconSpace';
 
 interface Props {
@@ -12,15 +11,13 @@ interface Props {
   app: App;
   isLauncherApp: boolean;
   removeFromLauncher: (id: string) => void;
+  launchApp: (app: App) => void;
 }
 
-const handleClickCreator = (manifestUrl: string) => () => createFromManifest(manifestUrl);
+const renderCTAText = (isLauncherApp: boolean) => (isLauncherApp ? '- Remove Shortcut' : '+ Add Shortcut');
 
-const renderCTAText = (isLauncherApp: boolean) =>
-  isLauncherApp ? '- Remove Shortcut' : '+ Add Shortcut';
-
-const AppCard = ({ addToLauncher, app, isLauncherApp, removeFromLauncher }: Props) => {
-  const handleClick = handleClickCreator(app.manifest_url);
+const AppCard = ({ addToLauncher, app, isLauncherApp, launchApp, removeFromLauncher }: Props) => {
+  const handleClick = () => launchApp(app);
 
   return (
     <Wrapper>
@@ -35,7 +32,8 @@ const AppCard = ({ addToLauncher, app, isLauncherApp, removeFromLauncher }: Prop
 
         <AppDescription>{app.description}</AppDescription>
       </InfoWrapper>
-    </Wrapper>);
-  };
+    </Wrapper>
+  );
+};
 
 export default AppCard;

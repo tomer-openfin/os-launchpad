@@ -11,7 +11,7 @@ export interface OpenfinReadyPayload {
   finName: string;
 }
 
-// Actions creators
+// Actions
 export type ApplicationStartedAction = ReturnType<typeof applicationStarted>;
 export type CollapseAppAction = ReturnType<typeof collapseApp>;
 export type ExpandAppAction = ReturnType<typeof expandApp>;

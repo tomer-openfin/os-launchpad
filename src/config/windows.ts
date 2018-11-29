@@ -1,15 +1,16 @@
-import ROUTES from '../components/Router/const';
+import { ROUTES } from '../components/Router/consts';
 
 const { NODE_ENV } = process.env;
 
 const WINDOW_PREFIX = 'osLaunchpad';
 export const ADMIN_WINDOW = `${WINDOW_PREFIX}Admin`;
-export const MAIN_WINDOW = 'osLaunchpadMain';
-export const LOGIN_WINDOW = `${WINDOW_PREFIX}Login`;
 export const APP_DIRECTORY_WINDOW = `${WINDOW_PREFIX}AppDirectory`;
 export const APP_LAUNCHER_OVERFLOW_WINDOW = `${WINDOW_PREFIX}AppLauncherOverflow`;
-export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
+export const CONTEXT_MENU = `${WINDOW_PREFIX}ContextMenu`;
 export const LAYOUTS_WINDOW = `${WINDOW_PREFIX}Layouts`;
+export const LOGIN_WINDOW = `${WINDOW_PREFIX}Login`;
+export const MAIN_WINDOW = 'osLaunchpadMain';
+export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
 
 const isProduction = NODE_ENV === 'production';
 
@@ -77,9 +78,31 @@ export const initOnStartWindows = {
     name: APP_LAUNCHER_OVERFLOW_WINDOW,
     resizable: false,
     saveWindowState: false,
-    showTaskbarIcon: true,
+    showTaskbarIcon: false,
     // smallWindow: false,
     url: ROUTES.APP_LAUNCHER_OVERFLOW,
+    waitForPageLoad: true,
+  },
+  contextMenu: {
+    alwaysOnTop: true,
+    autoShow: false,
+    contextMenu: !isProduction,
+    defaultCentered: true,
+    defaultHeight: 30,
+    defaultWidth: 80,
+    frame: false,
+    id: CONTEXT_MENU,
+    maxHeight: -1,
+    maximizable: false,
+    minHeight: 0,
+    minWidth: 0,
+    minimizable: false,
+    name: CONTEXT_MENU,
+    resizable: false,
+    saveWindowState: false,
+    showTaskbarIcon: false,
+    // smallWindow: false,
+    url: ROUTES.CONTEXT_MENU,
     waitForPageLoad: true,
   },
   layouts: {
@@ -99,7 +122,7 @@ export const initOnStartWindows = {
     name: LAYOUTS_WINDOW,
     resizable: false,
     saveWindowState: false,
-    showTaskbarIcon: true,
+    showTaskbarIcon: false,
     // smallWindow: false,
     url: ROUTES.LAYOUTS,
     waitForPageLoad: true,

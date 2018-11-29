@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as React from 'react';
 
 import { validateEmail, validateTextField } from '../../utils/validators';
-import ROUTES from '../Router/const';
+import { ROUTES } from '../Router/consts';
 import { Button, ButtonLink, Error, Heading, Label, Message, Row, Wrapper } from './EditUserForm.css';
 
 interface ResponseContents {

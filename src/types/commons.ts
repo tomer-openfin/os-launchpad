@@ -15,7 +15,7 @@ export interface App {
   title: string;
 }
 
-export interface Bounds extends Dimensions, DirectionalCoordinates {}
+export interface Bounds extends Dimensions, PrimaryDirectionalCoordinates {}
 
 export interface CreateAppResponse {
   status: 'ok' | 'failure';
@@ -47,6 +47,8 @@ export interface ErrorResponse {
 }
 
 export type MonitorInfo = fin.MonitorInfo;
+export type OpenFinApplication = fin.OpenFinApplication;
+export type VirtualScreenCoordinates = fin.VirtualScreenCoordinates;
 
 export interface Theme {
   backgroundColor: string;
@@ -67,9 +69,14 @@ export interface LoginErrorResponse {
   requiredFields?: string[];
 }
 
-export interface DirectionalCoordinates {
+export interface PrimaryDirectionalCoordinates {
   left: number;
   top: number;
+}
+
+export interface DirectionalCoordinates extends PrimaryDirectionalCoordinates {
+  bottom: number;
+  right: number;
 }
 
 export interface User {

@@ -11,7 +11,7 @@ exports[`Storyshots Components/Layouts default 1`] = `
     }
   >
     <div
-      className="sc-bwCtUz iuQggL"
+      className="sc-eTuwsz biOdzO"
     >
       <div
         className="sc-htoDjs cilmlp"
@@ -179,7 +179,126 @@ exports[`Storyshots Components/Layouts default 1`] = `
                   &lt;
                   Layouts
                 </span>
-                <span />
+                <span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      launcherPosition
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        "
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          top
+                        </span>
+                        "
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      restoreCurrentLayout
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      saveCurrentLayout
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      onBlur
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
+                        </span>
+                        }
+                      </span>
+                    </span>
+                    <br />
+                  </span>
+                </span>
                 <span
                   style={
                     Object {
@@ -239,252 +358,9 @@ exports[`Storyshots Components/Layouts default 1`] = `
               Layouts
               " Component
             </h2>
-            <table
-              className="css-1uhv8nx e1vdo5380"
-            >
-              <thead>
-                <tr>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    property
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    propType
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    required
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    default
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    description
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    addWindowListener
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#170",
-                        }
-                      }
-                    >
-                      noop
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    hideWindow
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#170",
-                        }
-                      }
-                    >
-                      noop
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    launcherPosition
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#22a",
-                          "wordBreak": "break-word",
-                        }
-                      }
-                    >
-                      top
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    removeWindowListener
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#170",
-                        }
-                      }
-                    >
-                      noop
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    restoreCurrentLayout
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#170",
-                        }
-                      }
-                    >
-                      noop
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    saveCurrentLayout
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#170",
-                        }
-                      }
-                    >
-                      noop
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-              </tbody>
-            </table>
+            <small>
+              No propTypes defined!
+            </small>
           </div>
         </div>
       </div>

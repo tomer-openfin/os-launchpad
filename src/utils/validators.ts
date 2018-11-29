@@ -1,5 +1,4 @@
-// tslint:disable-next-line
-const urlRegex = require('url-regex');
+import urlRegex from 'url-regex';
 
 export const validateEmail = value => {
   let error;

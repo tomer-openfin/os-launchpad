@@ -6,8 +6,8 @@ import { ButtonLink, HeadingWrapper, Input, Label, LinkWrapper, ListElement, Lis
 
 import { User } from '../../types/commons';
 import { doesCurrentPathMatch } from '../../utils/routeHelpers';
-import ROUTES from '../Router/const';
-import { userRoutes } from '../Router/routes';
+import { userRoutes } from '../Router';
+import { ROUTES } from '../Router/consts';
 
 const FIRST_NAME = 'firstName';
 const LAST_NAME = 'lastName';

@@ -1,11 +1,18 @@
 import { LauncherPosition } from '../../types/commons';
-import { getNewPosDelta, isPosInBounds } from '../coordinateHelpers';
+import { getNewPosDelta, isPosInBounds, isPosInCoordinates } from '../coordinateHelpers';
 
 const bounds = {
   height: 100,
   left: 0,
   top: 0,
   width: 200,
+};
+
+const coordinates = {
+  bottom: 100,
+  left: 10,
+  right: 200,
+  top: 10,
 };
 
 const VISIBILITY_DELTA = 5;
@@ -94,6 +101,43 @@ describe('coordinateHelpers', () => {
       ];
 
       tests.forEach(test => expect(isPosInBounds(test, bounds)).toBeTruthy());
+    });
+  });
+
+  describe('isPosInCoordinates', () => {
+    it('should return false for positions that are out of coordinates', () => {
+      const pos = { left: 201, top: 101 };
+
+      expect(isPosInCoordinates(pos, coordinates)).toBeFalsy();
+    });
+
+    it('should return true for positions that are in coordinates', () => {
+      const pos = { left: 100, top: 50 };
+
+      expect(isPosInCoordinates(pos, coordinates)).toBeTruthy();
+    });
+
+    it('should return true for positions that are exactly on bounds border line', () => {
+      const tests = [
+        {
+          left: 10,
+          top: 10,
+        },
+        {
+          left: 100,
+          top: 100,
+        },
+        {
+          left: 200,
+          top: 50,
+        },
+        {
+          left: 200,
+          top: 100,
+        },
+      ];
+
+      tests.forEach(test => expect(isPosInCoordinates(test, coordinates)).toBeTruthy());
     });
   });
 });

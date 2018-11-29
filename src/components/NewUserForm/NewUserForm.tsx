@@ -3,7 +3,7 @@ import * as React from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 
 import { validateEmail, validateTextField } from '../../utils/validators';
-import ROUTES from '../Router/const';
+import { ROUTES } from '../Router/consts';
 import { Button, ButtonLink, Error, Heading, Label, Message, Row, Wrapper } from './NewUserForm.css';
 
 interface Result {

@@ -13,7 +13,7 @@ export interface LayoutsState {
 // Action payloads
 export type GetLayoutsSuccessPayload = Layout[];
 
-// Action creators
+// Actions
 export type GetLayoutsError = ReturnType<typeof getLayoutsError>;
 export type GetLayoutsRequest = ReturnType<typeof getLayoutsRequest>;
 export type GetLayoutsSuccess = ReturnType<typeof getLayoutsSuccess>;

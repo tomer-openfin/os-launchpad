@@ -7,7 +7,7 @@ import { Button, ButtonLink, Copy, Error, GridContainer, Heading, Label, LogoLab
 import { FILE_ACCEPT, RESPONSE_FAILURE, RESPONSE_OK, saveAppLogo, updateApp } from '../../services/ApiService';
 import { App, AppFormNames, UpdateAppResponse } from '../../types/commons';
 import { validateTextField, validateURL } from '../../utils/validators';
-import ROUTES from '../Router/const';
+import { ROUTES } from '../Router/consts';
 
 interface Props {
   updateApp: Function;

@@ -1,4 +1,4 @@
-const ROUTES = {
+export const ROUTES = {
   ADMIN: '/admin',
   ADMIN_APPS: '/admin/apps',
   ADMIN_APPS_DELETE: '/admin/apps/delete',
@@ -12,10 +12,9 @@ const ROUTES = {
   ADMIN_USERS_NEW: `/admin/users/new`,
   APP_DIRECTORY: '/app-directory',
   APP_LAUNCHER_OVERFLOW: '/app-overflow',
+  CONTEXT_MENU: '/context-menu',
   HOME: '/',
   LAYOUTS: '/layouts',
   LOGIN: '/login',
   SETTINGS: '/settings',
 };
-
-export default ROUTES;

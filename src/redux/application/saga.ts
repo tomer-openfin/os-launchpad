@@ -54,8 +54,15 @@ function* openfinSetup(action: OpenfinReadyAction) {
 
     // Initial system monitor info
     // and setup system event handlers
-    const systemMonitorInfo = yield call(getSystemMonitorInfo);
-    yield all([put(setMonitorInfo(systemMonitorInfo)), call(setupSystemHandlers, fin, window.store || window.opener.store)]);
+    try {
+      const systemMonitorInfo = yield call(getSystemMonitorInfo);
+      yield put(setMonitorInfo(systemMonitorInfo));
+    } catch (e) {
+      // tslint:disable-next-line:no-console
+      console.log(e);
+    }
+
+    yield call(setupSystemHandlers, fin, window.store || window.opener.store);
 
     const launcherFinWindow = yield call(getLauncherFinWindow);
     // Hide launcher

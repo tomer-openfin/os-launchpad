@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { ContentWrapper, TabLink, TabsWrapper, Wrapper } from './Admin.css';
 
-import ROUTES from '../Router/const';
+import { ROUTES } from '../Router/consts';
 
 const ADMIN_TABBED_ROUTES = [
   {
@@ -36,9 +36,7 @@ const renderAdmin = children => {
     <>
       <TabsWrapper>{ADMIN_TABBED_ROUTES.map(renderAdminTab)}</TabsWrapper>
 
-      <ContentWrapper>
-        {children}
-      </ContentWrapper>
+      <ContentWrapper>{children}</ContentWrapper>
     </>
   );
 };

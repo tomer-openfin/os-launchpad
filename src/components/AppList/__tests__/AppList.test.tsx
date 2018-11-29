@@ -2,7 +2,7 @@ import * as enzyme from 'enzyme';
 import * as React from 'react';
 
 import AppData from '../../../const/AppData';
-import { noopCreator } from '../../../utils/noop';
+import noop, { noopCreator } from '../../../utils/noop';
 
 import AppList from '../AppList';
 
@@ -15,6 +15,8 @@ describe('<AppList />', () => {
         .shallow(
           <AppList
             appList={AppData}
+            appsStatusByName={{}}
+            launchApp={noop}
             launcherPosition={LauncherPosition.Top}
             launchWindowCreator={noopCreator}
             removeFromLauncher={noopCreator}

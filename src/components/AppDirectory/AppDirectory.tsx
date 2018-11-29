@@ -2,41 +2,24 @@ import * as React from 'react';
 
 import * as searchIcon from '../../assets/Search.svg';
 
-import {
-  Directory,
-  SearchHeader,
-  SearchInput,
-  Wrapper,
-} from './AppDirectory.css';
+import { Directory, SearchHeader, SearchInput, Wrapper } from './AppDirectory.css';
 
 import { App } from '../../types/commons';
-
-import { APP_DIRECTORY_WINDOW } from '../../config/windows';
-import noop from '../../utils/noop';
 
 import AppCard from '../AppCard';
 import IconSpace from '../IconSpace';
 
 interface Props {
   appList: App[];
-  addWindowListener: Function;
-  hideWindow: Function;
-  removeWindowListener: Function;
+  onBlur: () => void;
 }
 
 interface State {
   search: string;
 }
 
-const defaultProps: Props = {
-  addWindowListener: noop,
-  appList: [],
-  hideWindow: noop,
-  removeWindowListener: noop,
-};
-
 class AppDirectory extends React.PureComponent<Props, State> {
-  static defaultProps = defaultProps;
+  // static defaultProps = defaultProps;
   private searchInput: HTMLInputElement | undefined;
 
   constructor(props) {
@@ -46,13 +29,7 @@ class AppDirectory extends React.PureComponent<Props, State> {
   }
 
   componentDidMount() {
-    this.props.addWindowListener(APP_DIRECTORY_WINDOW, 'blurred', () => this.props.hideWindow(APP_DIRECTORY_WINDOW));
-
     if (this.searchInput) this.searchInput.focus();
-  }
-
-  componentWillUnmount() {
-    this.props.removeWindowListener(APP_DIRECTORY_WINDOW, 'blurred', () => this.props.hideWindow(APP_DIRECTORY_WINDOW));
   }
 
   handleChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -77,7 +54,7 @@ class AppDirectory extends React.PureComponent<Props, State> {
   render() {
     const { search } = this.state;
 
-    return(
+    return (
       <Wrapper>
         <SearchHeader>
           <IconSpace iconImg={searchIcon} />
@@ -86,7 +63,9 @@ class AppDirectory extends React.PureComponent<Props, State> {
         </SearchHeader>
 
         <Directory>
-          {this.filterAppList(search).map((app: App) => <AppCard key={app.id} app={app} />)}
+          {this.filterAppList(search).map((app: App) => (
+            <AppCard key={app.id} app={app} />
+          ))}
         </Directory>
       </Wrapper>
     );

@@ -30,7 +30,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
         />
       </div>
       <div
-        className="sc-EHOje diuGfR"
+        className="sc-EHOje jRLsBs"
       >
         <div
           className="sc-iwsKbI bbQsN"
@@ -1894,6 +1894,32 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                         }
                       </span>
                     </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      onBlur
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
+                        </span>
+                        }
+                      </span>
+                    </span>
                      
                   </span>
                 </span>
@@ -1956,182 +1982,9 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               AppDirectory
               " Component
             </h2>
-            <table
-              className="css-1uhv8nx e1vdo5380"
-            >
-              <thead>
-                <tr>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    property
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    propType
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    required
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    default
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    description
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    addWindowListener
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#170",
-                        }
-                      }
-                    >
-                      noop
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    appList
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#666",
-                        }
-                      }
-                    >
-                      [
-                      ]
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    hideWindow
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#170",
-                        }
-                      }
-                    >
-                      noop
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    removeWindowListener
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#170",
-                        }
-                      }
-                    >
-                      noop
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-              </tbody>
-            </table>
+            <small>
+              No propTypes defined!
+            </small>
           </div>
         </div>
       </div>

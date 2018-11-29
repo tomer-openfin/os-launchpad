@@ -8,4 +8,5 @@
  *
  * @returns {Promise<*>}
  */
-export default (instance: {}, method: string, ...args) => new Promise(resolve => instance[method](...args, resolve, resolve));
+export default <P = undefined>(instance: {}, method: string, ...args): Promise<P> =>
+  new Promise((resolve, reject) => instance[method](...args, resolve, reject));

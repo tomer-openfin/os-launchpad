@@ -1,40 +1,15 @@
 import * as React from 'react';
 
-import {
-  Window,
-} from './AppOverflow.css';
+import { Window } from './AppOverflow.css';
 
-import noop from '../../utils/noop';
 import AppList from '../AppList';
 
-interface Props {
-  addHideOnBlurListener;
-  removeHideOnBlurListener;
-}
-
-const defaultProps: Props = {
-  addHideOnBlurListener: noop,
-  removeHideOnBlurListener: noop,
+const AppOverflow = () => {
+  return (
+    <Window>
+      <AppList />
+    </Window>
+  );
 };
-
-class AppOverflow extends React.Component<Props, {}> {
-  static defaultProps = defaultProps;
-
-  componentDidMount() {
-    this.props.addHideOnBlurListener();
-  }
-
-  componentWillUnmount() {
-    this.props.removeHideOnBlurListener();
-  }
-
-  render() {
-    return(
-      <Window>
-        <AppList />
-      </Window>
-    );
-  }
-}
 
 export default AppOverflow;

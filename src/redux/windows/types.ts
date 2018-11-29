@@ -23,5 +23,5 @@ export interface WindowConfig {
   waitForPageLoad: boolean;
 }
 
-// Actions creators
+// Actions
 export type LaunchWindow = ReturnType<typeof launchWindow>;

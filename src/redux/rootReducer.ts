@@ -4,6 +4,7 @@ import { combineReducers } from 'redux';
 import admin from './admin';
 import application from './application';
 import apps from './apps';
+import contextMenu from './contextMenu';
 import layouts from './layouts';
 import me from './me';
 import organization from './organization';
@@ -14,6 +15,7 @@ export default combineReducers<State>({
   admin,
   application,
   apps,
+  contextMenu,
   layouts,
   me,
   organization,
