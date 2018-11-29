@@ -16,7 +16,8 @@
     "storybook": "STORYBOOK_ENV=true start-storybook -p 6006",
     "storyshots": "jest -u",
     "test": "jest",
-    "test:api": "node scripts/testApi.js"
+    "test:api": "node scripts/testApi.js",
+    "test:ci": "run-p test test:api lint"
   },
   "devDependencies": {
     "@babel/core": "7.1.2",
