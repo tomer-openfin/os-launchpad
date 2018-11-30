@@ -24,7 +24,7 @@ export const initOnStartWindows = {
     defaultHeight: 600,
     defaultWidth: 800,
     // temp until designs come in for custom frame
-    frame: true,
+    frame: false,
     id: ADMIN_WINDOW,
     maxHeight: -1,
     maximizable: false,
@@ -134,7 +134,7 @@ export const initOnStartWindows = {
     defaultCentered: true,
     defaultHeight: 300,
     defaultWidth: 300,
-    frame: true,
+    frame: false,
     id: SETTINGS_WINDOW,
     maxHeight: -1,
     maximizable: false,

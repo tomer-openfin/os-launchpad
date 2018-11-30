@@ -1,8 +1,8 @@
 import * as React from 'react';
-
-import { ContentWrapper, TabLink, TabsWrapper, Wrapper } from './Admin.css';
-
 import { ROUTES } from '../Router/consts';
+
+import WindowHeader from '../WindowHeader';
+import { ContentWrapper, TabLink, TabsWrapper, Wrapper } from './Admin.css';
 
 const ADMIN_TABBED_ROUTES = [
   {
@@ -43,7 +43,13 @@ const renderAdmin = children => {
 
 const Admin = (props: Props) => {
   const { isAdmin, children } = props;
-  return <Wrapper>{isAdmin ? renderAdmin(children) : <h1>You do not have clearance to see the admin tools.</h1>}</Wrapper>;
+  return (
+    <Wrapper>
+      <WindowHeader />
+
+      {isAdmin ? renderAdmin(children) : <h1>You do not have clearance to see the admin tools.</h1>}
+    </Wrapper>
+  );
 };
 
 export default Admin;

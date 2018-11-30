@@ -1,9 +1,10 @@
 import * as React from 'react';
 
-import { CTA, Heading, Section, Window } from './Settings.css';
-
 import { LauncherPosition } from '../../types/commons';
 import noop from '../../utils/noop';
+
+import WindowHeader from '../WindowHeader';
+import { CTA, Heading, Section, Window } from './Settings.css';
 
 interface Props {
   autoHide: boolean;
@@ -33,6 +34,8 @@ class AppOverflow extends React.Component<Props, {}> {
 
     return (
       <Window>
+        <WindowHeader />
+
         <Section>
           <Heading>Auto Hide</Heading>
 
