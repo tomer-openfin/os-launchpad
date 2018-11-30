@@ -1,7 +1,7 @@
 import { App } from '../../types/commons';
 import { closeFinAppRequest, finAppClosed, finAppLoading, openFinAppError, openFinAppRequest, openFinAppSuccess } from './actions';
 
-export enum AppStatusTypes {
+export enum AppStatusStates {
   Loading = 'loading',
   Running = 'running',
   Closed = 'closed',
@@ -13,10 +13,12 @@ export interface AppsById {
 }
 
 export interface AppStatus {
-  [name: string]: {
-    state: AppStatusTypes;
-    uuid: string | undefined;
-  };
+  [name: string]:
+    | {
+        state: AppStatusStates;
+        uuid: string | undefined;
+      }
+    | undefined;
 }
 
 export interface AppsState {

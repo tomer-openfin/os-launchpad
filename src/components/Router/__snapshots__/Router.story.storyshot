@@ -18,7 +18,7 @@ exports[`Storyshots Components/Router default 1`] = `
         Admin
       </a>
       <div
-        className="sc-lhVmIH kIURnX"
+        className="sc-elJkPf hqKpbk"
       >
         <div
           className="sc-htoDjs edCAeo"
@@ -28,13 +28,13 @@ exports[`Storyshots Components/Router default 1`] = `
           />
         </div>
         <div
-          className="sc-bYSBpT eWtMGe"
+          className="sc-jtRfpW dIathJ"
         />
         <div
-          className="sc-jzJRlG iwbwuJ"
+          className="sc-cSHVUG jXBQNy"
         >
           <div
-            className="sc-kAzzGY bWpkEw"
+            className="sc-chPdSV cehRIT"
           >
             <div
               className="sc-htoDjs cilmlp"
@@ -46,7 +46,7 @@ exports[`Storyshots Components/Router default 1`] = `
             </div>
           </div>
           <div
-            className="sc-kAzzGY bWpkEw"
+            className="sc-chPdSV cehRIT"
           >
             <div
               className="sc-htoDjs cilmlp"
@@ -58,7 +58,7 @@ exports[`Storyshots Components/Router default 1`] = `
             </div>
           </div>
           <div
-            className="sc-kAzzGY bWpkEw"
+            className="sc-chPdSV cehRIT"
           >
             <div
               className="sc-htoDjs cilmlp"
@@ -70,7 +70,7 @@ exports[`Storyshots Components/Router default 1`] = `
             </div>
           </div>
           <div
-            className="sc-kAzzGY bWpkEw"
+            className="sc-chPdSV cehRIT"
           >
             <div
               className="sc-htoDjs cilmlp"
@@ -83,26 +83,15 @@ exports[`Storyshots Components/Router default 1`] = `
           </div>
         </div>
         <div
-          className="sc-jtRfpW edvykb"
+          className="sc-dqBHgY eKqLFT"
           onClick={[Function]}
         >
           <div
-            className="sc-elJkPf zRVIE"
+            className="sc-kTUwUJ FSvMU"
           />
         </div>
         <div
-          className="sc-bYSBpT eWtMGe"
-        />
-        <div
-          className="sc-htoDjs cilmlp"
-          onClick={[Function]}
-        >
-          <div
-            className="sc-dnqmqq gNafnQ"
-          />
-        </div>
-        <div
-          className="sc-bYSBpT eWtMGe"
+          className="sc-jtRfpW dIathJ"
         />
         <div
           className="sc-htoDjs cilmlp"
@@ -113,7 +102,7 @@ exports[`Storyshots Components/Router default 1`] = `
           />
         </div>
         <div
-          className="sc-bYSBpT eWtMGe"
+          className="sc-jtRfpW dIathJ"
         />
         <div
           className="sc-htoDjs cilmlp"
@@ -124,7 +113,18 @@ exports[`Storyshots Components/Router default 1`] = `
           />
         </div>
         <div
-          className="sc-bYSBpT eWtMGe"
+          className="sc-jtRfpW dIathJ"
+        />
+        <div
+          className="sc-htoDjs cilmlp"
+          onClick={[Function]}
+        >
+          <div
+            className="sc-dnqmqq gNafnQ"
+          />
+        </div>
+        <div
+          className="sc-jtRfpW dIathJ"
         />
         <div
           className="sc-htoDjs edCAeo"

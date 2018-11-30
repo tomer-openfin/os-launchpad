@@ -11,24 +11,24 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
     }
   >
     <div
-      className="sc-kEYyzF glVCgf"
+      className="sc-iAyFgw eFUJkT"
     >
       <form
         onSubmit={[Function]}
       >
         <div
-          className="sc-ckVGcZ XAPuk"
+          className="sc-eNQAEJ iPOzxN"
         >
           Edit User Details
         </div>
         <label
-          className="sc-jKJlTe kqnRlJ"
+          className="sc-hMqMXs gsZEgf"
         >
           Email: 
           string
         </label>
         <label
-          className="sc-jKJlTe kqnRlJ"
+          className="sc-hMqMXs gsZEgf"
         >
           First Name:
           <input
@@ -40,7 +40,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-jKJlTe kqnRlJ"
+          className="sc-hMqMXs gsZEgf"
         >
           Last Name:
           <input
@@ -52,7 +52,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-jKJlTe kqnRlJ"
+          className="sc-hMqMXs gsZEgf"
         >
           Middle Initial:
           <input
@@ -64,7 +64,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-jKJlTe kqnRlJ"
+          className="sc-hMqMXs gsZEgf"
         >
           Phone Number:
           <input
@@ -76,7 +76,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-jKJlTe kqnRlJ"
+          className="sc-hMqMXs gsZEgf"
         >
           Is administrator?
           <select
@@ -99,17 +99,17 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
           </select>
         </label>
         <div
-          className="sc-hMqMXs cKjkFQ"
+          className="sc-kkGfuU gbgTA"
         >
           <a
-            className="sc-kpOJdX dvqpbC"
+            className="sc-ckVGcZ dtqKoZ"
             href="/admin/users"
             onClick={[Function]}
           >
             Cancel
           </a>
           <button
-            className="sc-kgoBCf gvBXmf"
+            className="sc-kpOJdX hkDZlY"
             disabled={true}
             type="submit"
           >

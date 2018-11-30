@@ -11,15 +11,15 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
     }
   >
     <div
-      className="sc-jhAzac hpmQvd"
+      className="sc-fMiknA hBtgHl"
     >
       <div
-        className="sc-iRbamj loKgxC"
+        className="sc-gipzik iVBmiX"
       >
         Edit App
       </div>
       <p
-        className="sc-jDwBTQ oKGfn"
+        className="sc-iRbamj fkFqNS"
       >
         Please verify and/or update the following fields:
       </p>
@@ -27,11 +27,11 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
         onSubmit={[Function]}
       >
         <label
-          className="sc-csuQGl dVmWYO"
+          className="sc-bRBYWo gTLMgl"
         >
           Logo
           <div
-            className="sc-brqgnP TSnyS"
+            className="sc-jAaTju hfDFXA"
           >
             <div
               className="sc-htoDjs edCAeo"
@@ -41,15 +41,15 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
               />
             </div>
             <div
-              className="sc-hSdWYo oXYQR"
+              className="sc-cvbbAY lejVGb"
             >
               <div
-                className="sc-kkGfuU eZguYF"
+                className="sc-hSdWYo kVXAJB"
               >
                 Change Logo
               </div>
               <div
-                className="sc-cvbbAY kkxCWb"
+                className="sc-brqgnP fsYmMj"
               >
                 Files must be at least 200 x 200 pixels square.
                 <br />
@@ -57,7 +57,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
               </div>
               <input
                 accept="image/*"
-                className="sc-iAyFgw eeWrqf"
+                className="sc-eHgmQL LusBu"
                 name="AppLogo"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -72,10 +72,10 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
         onSubmit={[Function]}
       >
         <div
-          className="sc-jlyJG jaBeSq"
+          className="sc-csuQGl hLlKPb"
         >
           <label
-            className="sc-gipzik dnGwFl"
+            className="sc-Rmtcm bwJwUZ"
           >
             Manifest URL
             <input
@@ -87,7 +87,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-gipzik dnGwFl"
+            className="sc-Rmtcm bwJwUZ"
           >
             Accepted Intent(s)
             <select
@@ -99,7 +99,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-gipzik dnGwFl"
+            className="sc-Rmtcm bwJwUZ"
           >
             Title
             <input
@@ -111,7 +111,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-gipzik dnGwFl"
+            className="sc-Rmtcm bwJwUZ"
           >
             Accepted Context(s)
             <select
@@ -123,7 +123,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-gipzik dnGwFl"
+            className="sc-Rmtcm bwJwUZ"
           >
             Name
             <input
@@ -135,7 +135,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-gipzik dnGwFl"
+            className="sc-Rmtcm bwJwUZ"
           >
             Description
             <textarea
@@ -147,17 +147,17 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
           </label>
         </div>
         <div
-          className="sc-hzDkRC eKKRUA"
+          className="sc-fBuWsC gdAIvz"
         >
           <a
-            className="sc-jAaTju cyVwJG"
+            className="sc-gPEVay dkQngO"
             href="/admin/apps"
             onClick={[Function]}
           >
             Cancel
           </a>
           <button
-            className="sc-cMljjf jjDBpP"
+            className="sc-jDwBTQ gJpUKs"
             disabled={true}
             type="submit"
           >

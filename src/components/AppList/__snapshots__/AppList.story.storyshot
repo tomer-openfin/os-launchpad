@@ -11,10 +11,10 @@ exports[`Storyshots Components/AppList default 1`] = `
     }
   >
     <div
-      className="sc-jzJRlG iwbwuJ"
+      className="sc-cSHVUG jXBQNy"
     >
       <div
-        className="sc-kAzzGY imGzNb"
+        className="sc-chPdSV jkwwpc"
       >
         <div
           onContextMenu={[Function]}
@@ -28,13 +28,16 @@ exports[`Storyshots Components/AppList default 1`] = `
             />
           </div>
           <div
-            className="sc-cSHVUG bGNZIL"
+            className="sc-kAzzGY ILHhW"
             onClick={[Function]}
+          />
+          <div
+            className="sc-kgoBCf aJsWL sc-jzJRlG kwVzIy"
           />
         </div>
       </div>
       <div
-        className="sc-kAzzGY imGzNb"
+        className="sc-chPdSV jkwwpc"
       >
         <div
           onContextMenu={[Function]}
@@ -48,13 +51,16 @@ exports[`Storyshots Components/AppList default 1`] = `
             />
           </div>
           <div
-            className="sc-cSHVUG bGNZIL"
+            className="sc-kAzzGY ILHhW"
             onClick={[Function]}
+          />
+          <div
+            className="sc-kgoBCf aJsWL sc-jzJRlG kwVzIy"
           />
         </div>
       </div>
       <div
-        className="sc-kAzzGY imGzNb"
+        className="sc-chPdSV jkwwpc"
       >
         <div
           onContextMenu={[Function]}
@@ -68,13 +74,16 @@ exports[`Storyshots Components/AppList default 1`] = `
             />
           </div>
           <div
-            className="sc-cSHVUG bGNZIL"
+            className="sc-kAzzGY ILHhW"
             onClick={[Function]}
+          />
+          <div
+            className="sc-kgoBCf aJsWL sc-jzJRlG kwVzIy"
           />
         </div>
       </div>
       <div
-        className="sc-kAzzGY imGzNb"
+        className="sc-chPdSV jkwwpc"
       >
         <div
           onContextMenu={[Function]}
@@ -88,8 +97,11 @@ exports[`Storyshots Components/AppList default 1`] = `
             />
           </div>
           <div
-            className="sc-cSHVUG bGNZIL"
+            className="sc-kAzzGY ILHhW"
             onClick={[Function]}
+          />
+          <div
+            className="sc-kgoBCf aJsWL sc-jzJRlG kwVzIy"
           />
         </div>
       </div>

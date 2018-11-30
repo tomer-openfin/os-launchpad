@@ -15,7 +15,7 @@ import {
   setAppDirectoryList,
 } from './actions';
 import { getAppStatusByName } from './selectors';
-import { AppStatusTypes, CloseFinAppRequest, OpenFinAppRequest } from './types';
+import { AppStatusStates, CloseFinAppRequest, OpenFinAppRequest } from './types';
 
 function* watchGetAppDirectoryList() {
   const appList = yield call(ApiService.getDirectoryAppList);
@@ -31,7 +31,7 @@ function* watchOpenFinAppRequest(action: OpenFinAppRequest) {
 
   const { name, manifest_url: manifestUrl } = payload;
   const status = yield select(getAppStatusByName, name);
-  if (status === AppStatusTypes.Loading || status === AppStatusTypes.Running) {
+  if (status && (status.state === AppStatusStates.Loading || status.state === AppStatusStates.Running)) {
     return;
   }
 

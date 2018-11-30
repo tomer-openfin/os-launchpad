@@ -3,9 +3,10 @@ import styled, { css } from 'styled-components';
 import * as XIcon from '../../assets/TinyX.svg';
 
 import { Color } from '../../styles/index';
+import { LauncherPosition } from '../../types/commons';
 import { isLeftOrRight } from '../../utils/windowPositionHelpers';
 
-import { LauncherPosition } from '../../types/commons';
+import AppIndicator from '../AppIndicator';
 
 interface WrapperProps {
   launcherPosition: LauncherPosition;
@@ -44,9 +45,10 @@ export const CloseButton = styled.div`
 `;
 
 export const Space = styled.div<{ withClose?: boolean }>`
-  position: relative;
   cursor: pointer;
   display: inline-block;
+  min-width: 50px;
+  position: relative;
 
   ${props =>
     props.withClose &&
@@ -57,4 +59,10 @@ export const Space = styled.div<{ withClose?: boolean }>`
         }
       }
     `}
+`;
+
+export const StyledAppIndicator = styled(AppIndicator)`
+  bottom: 3px;
+  left: calc(50% - 3px);
+  position: absolute;
 `;

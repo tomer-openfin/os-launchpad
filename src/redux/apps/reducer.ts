@@ -1,7 +1,7 @@
 import { FIN_APP_CLOSED, FIN_APP_LOADING, OPEN_FIN_APP, SET_APP_DIRECTORY_LIST } from './actions';
 
 import { App } from '../../types/commons';
-import { AppsById, AppsState, AppStatusTypes, FinAppClosed, FinAppLoading, OpenFinAppError, OpenFinAppSuccess } from './types';
+import { AppsById, AppsState, AppStatusStates, FinAppClosed, FinAppLoading, OpenFinAppError, OpenFinAppSuccess } from './types';
 
 const formatByIds = (appList: App[]) =>
   appList.reduce((appsById: AppsById, app: App) => {
@@ -38,7 +38,7 @@ export default (state: AppsState = defaultState, action): AppsState => {
         statusByName: {
           ...state.statusByName,
           [name]: {
-            state: AppStatusTypes.Loading,
+            state: AppStatusStates.Loading,
             uuid: undefined,
           },
         },
@@ -57,7 +57,7 @@ export default (state: AppsState = defaultState, action): AppsState => {
         statusByName: {
           ...state.statusByName,
           [name]: {
-            state: AppStatusTypes.Running,
+            state: AppStatusStates.Running,
             uuid,
           },
         },
@@ -77,7 +77,7 @@ export default (state: AppsState = defaultState, action): AppsState => {
         statusByName: {
           ...state.statusByName,
           [name]: {
-            state: AppStatusTypes.Closed,
+            state: AppStatusStates.Closed,
             uuid: undefined,
           },
         },

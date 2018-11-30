@@ -4,7 +4,7 @@ import * as plusIcon from '../../assets/AddApp.svg';
 
 import config from '../../config/windows';
 import { closeFinAppRequest, openFinAppRequest } from '../../redux/apps';
-import { AppStatus, AppStatusTypes } from '../../redux/apps/types';
+import { AppStatus, AppStatusStates } from '../../redux/apps/types';
 import { ContextMenuOption } from '../../redux/contextMenu/types';
 import { removeFromAppLauncher } from '../../redux/me';
 import { WindowConfig } from '../../redux/windows/types';
@@ -12,7 +12,7 @@ import { App, LauncherPosition } from '../../types/commons';
 
 import ContextMenuZone from '../ContextMenuZone';
 import IconSpace from '../IconSpace';
-import { CloseButton, Space, Wrapper } from './AppList.css';
+import { CloseButton, Space, StyledAppIndicator, Wrapper } from './AppList.css';
 
 const handleClickCreator = (app: App, fn: (app: App) => void, altFn: () => void) => {
   if (!app.manifest_url) return altFn;
@@ -55,10 +55,10 @@ const AppList = ({ appList, appsStatusByName, launchApp, launchWindowCreator, la
         const handleClose = () => removeFromLauncher(`${app.id}`);
         const appStatus = appsStatusByName[app.name];
         const contextMenuOptions: ContextMenuOption[] = [{ label: 'Remove Shortcut', action: removeFromAppLauncher(`${app.id}`) }];
-        if (!appStatus || appStatus.state === AppStatusTypes.Closed) {
+        if (!appStatus || appStatus.state === AppStatusStates.Closed) {
           contextMenuOptions.unshift({ label: 'Open', action: openFinAppRequest(app) });
         }
-        if (appStatus && appStatus.state === AppStatusTypes.Running && appStatus.uuid) {
+        if (appStatus && appStatus.state === AppStatusStates.Running && appStatus.uuid) {
           contextMenuOptions.unshift({ label: 'Close', action: closeFinAppRequest({ uuid: appStatus.uuid }) });
         }
 
@@ -68,6 +68,8 @@ const AppList = ({ appList, appsStatusByName, launchApp, launchWindowCreator, la
               <IconSpace onClick={handleClickCreator(app, launchApp, launchWindowCreator(config.appDirectory))} iconImg={app ? app.icon : plusIcon} />
 
               <CloseButton onClick={handleClose} />
+
+              <StyledAppIndicator appName={app.name} />
             </ContextMenuZone>
           </Space>
         );
