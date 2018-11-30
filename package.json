@@ -78,7 +78,7 @@
     "lodash-es": "4.17.11",
     "newman": "4.2.2",
     "openfin-layouts": "0.9.3",
-    "openfin-notifications": "0.9.4",
+    "openfin-notifications": "0.9.5",
     "popper.js": "1.14.4",
     "react": "16.6.0",
     "react-dom": "16.6.0",

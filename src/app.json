@@ -19,7 +19,7 @@
     "minHeight:": 10,
     "minWidth:": 10
   },
-  "services": [{ "name": "layouts" }],
+  "services": [{ "name": "notifications" }, { "name": "layouts" }],
   "runtime": {
     "version": "9.61.36.36"
   },
