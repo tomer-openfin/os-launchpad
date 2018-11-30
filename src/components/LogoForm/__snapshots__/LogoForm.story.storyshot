@@ -11,18 +11,18 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
     }
   >
     <div
-      className="sc-jbKcbu cWSlbe"
+      className="sc-cJSrbW dLwzxs"
     >
       <form
-        className="sc-hqyNC cewdpG"
+        className="sc-kgAjT gBsKRb"
         onSubmit={[Function]}
       >
         <label
-          className="sc-hmzhuo ehymcL"
+          className="sc-kjoXOD bdovMb"
           htmlFor="LogoFormFileInput"
         >
           <div
-            className="sc-jWBwVP buUcBd"
+            className="sc-brqgnP TSnyS"
           >
             <div
               className="sc-htoDjs edCAeo"
@@ -32,15 +32,15 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
               />
             </div>
             <div
-              className="sc-iAyFgw eRVLVT"
+              className="sc-hSdWYo oXYQR"
             >
               <div
-                className="sc-kEYyzF eQCTnN"
+                className="sc-kkGfuU eZguYF"
               >
                 Change Logo
               </div>
               <div
-                className="sc-eHgmQL fEZohB"
+                className="sc-cvbbAY kkxCWb"
               >
                 Files must be at least 200 x 200 pixels square.
                 <br />
@@ -48,7 +48,7 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
               </div>
               <input
                 accept="image/*"
-                className="sc-kkGfuU chNTof"
+                className="sc-iAyFgw eeWrqf"
                 id="LogoFormFileInput"
                 name="logo"
                 onBlur={[Function]}
@@ -60,7 +60,7 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
           </div>
         </label>
         <button
-          className="sc-kvZOFW gtbaRv"
+          className="sc-TOsTZ dTndRn"
           disabled={true}
           onClick={[Function]}
           type="button"
@@ -69,7 +69,7 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
           Cancel
         </button>
         <button
-          className="sc-kvZOFW gKheiP"
+          className="sc-TOsTZ idSmOY"
           disabled={true}
           type="submit"
           width={120}

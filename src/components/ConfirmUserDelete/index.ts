@@ -1,5 +1,3 @@
-import Component from './ConfirmUserDelete';
-
-export * from './ConfirmUserDelete.css';
+import Component from './ConfirmUserDeleteContainer';
 
 export default Component;

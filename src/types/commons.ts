@@ -32,6 +32,21 @@ export interface UpdateAppResponse {
   message?: string;
 }
 
+export interface CreateUserResponse {
+  status: 'ok' | 'failure';
+  message?: string;
+}
+
+export interface DeleteUserResponse {
+  status: 'ok' | 'failure';
+  message?: string;
+}
+
+export interface UpdateUserResponse {
+  status: 'ok' | 'failure';
+  message?: string;
+}
+
 export enum AppFormNames {
   Logo = 'AppLogo',
 }
@@ -87,8 +102,9 @@ export interface User {
   lastName: string;
   middleInitial: string;
   organizationId: string;
+  tmpPassword: string;
   username: string;
-  password: string;
+  phoneNumber: string;
 }
 
 export interface ObjectWithId {

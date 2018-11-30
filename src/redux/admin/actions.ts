@@ -4,6 +4,15 @@ import { App, ErrorResponse, User } from '../../types/commons';
 import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
 import noop from '../../utils/noop';
 
+interface MetaWithCallbacks {
+  successCb: Function;
+  errorCb: Function;
+}
+
+const payloadIdentityCreator = <T>(payload: T): T => payload;
+
+const metaWithCallbacksCreator = <T extends MetaWithCallbacks>(_, meta: T): T => meta;
+
 // Action Types
 export const GET_ADMIN_APPS = generateAsyncActionTypes('GET_ADMIN_APPS');
 export const CREATE_ADMIN_APP = generateAsyncActionTypes('CREATE_ADMIN_APP');
@@ -20,7 +29,7 @@ export const getAdminAppsRequest = createAction(GET_ADMIN_APPS.REQUEST, noop);
 export const getAdminAppsSuccess = createAction<App[]>(GET_ADMIN_APPS.SUCCESS);
 export const getAdminAppsError = createAction<ErrorResponse>(GET_ADMIN_APPS.ERROR);
 
-export const createAdminAppRequest = createAction<App>(CREATE_ADMIN_APP.REQUEST);
+export const createAdminAppRequest = createAction<App, MetaWithCallbacks>(CREATE_ADMIN_APP.REQUEST, payloadIdentityCreator, metaWithCallbacksCreator);
 export const createAdminAppSuccess = createAction<App>(CREATE_ADMIN_APP.SUCCESS);
 export const createAdminAppError = createAction<ErrorResponse>(CREATE_ADMIN_APP.ERROR);
 
@@ -36,14 +45,14 @@ export const getAdminUsersRequest = createAction(GET_ADMIN_USERS.REQUEST, noop);
 export const getAdminUsersSuccess = createAction<User[]>(GET_ADMIN_USERS.SUCCESS);
 export const getAdminUsersError = createAction<ErrorResponse>(GET_ADMIN_USERS.ERROR);
 
-export const createAdminUserRequest = createAction<User>(CREATE_ADMIN_USER.REQUEST);
-export const createAdminUserSuccess = createAction<User>(CREATE_ADMIN_USER.SUCCESS);
-export const createAdminUserError = createAction<ErrorResponse>(CREATE_ADMIN_USER.ERROR);
+export const createAdminUserRequest = createAction<User, MetaWithCallbacks>(CREATE_ADMIN_USER.REQUEST, payloadIdentityCreator, metaWithCallbacksCreator);
+export const createAdminUserSuccess = createAction<User, MetaWithCallbacks>(CREATE_ADMIN_USER.SUCCESS, payloadIdentityCreator, metaWithCallbacksCreator);
+export const createAdminUserError = createAction<ErrorResponse, MetaWithCallbacks>(CREATE_ADMIN_USER.ERROR, payloadIdentityCreator, metaWithCallbacksCreator);
 
-export const updateAdminUserRequest = createAction<User>(UPDATE_ADMIN_USER.REQUEST);
-export const updateAdminUserSuccess = createAction<User>(UPDATE_ADMIN_USER.SUCCESS);
-export const updateAdminUserError = createAction<ErrorResponse>(UPDATE_ADMIN_USER.ERROR);
+export const updateAdminUserRequest = createAction<User, MetaWithCallbacks>(UPDATE_ADMIN_USER.REQUEST, payloadIdentityCreator, metaWithCallbacksCreator);
+export const updateAdminUserSuccess = createAction<User, MetaWithCallbacks>(UPDATE_ADMIN_USER.SUCCESS, payloadIdentityCreator, metaWithCallbacksCreator);
+export const updateAdminUserError = createAction<ErrorResponse, MetaWithCallbacks>(UPDATE_ADMIN_USER.ERROR, payloadIdentityCreator, metaWithCallbacksCreator);
 
-export const deleteAdminUserRequest = createAction<User>(DELETE_ADMIN_USER.REQUEST);
-export const deleteAdminUserSuccess = createAction<User>(DELETE_ADMIN_USER.SUCCESS);
-export const deleteAdminUserError = createAction<ErrorResponse>(DELETE_ADMIN_USER.ERROR);
+export const deleteAdminUserRequest = createAction<User, MetaWithCallbacks>(DELETE_ADMIN_USER.REQUEST, payloadIdentityCreator, metaWithCallbacksCreator);
+export const deleteAdminUserSuccess = createAction<User, MetaWithCallbacks>(DELETE_ADMIN_USER.SUCCESS, payloadIdentityCreator, metaWithCallbacksCreator);
+export const deleteAdminUserError = createAction<ErrorResponse, MetaWithCallbacks>(DELETE_ADMIN_USER.ERROR, payloadIdentityCreator, metaWithCallbacksCreator);

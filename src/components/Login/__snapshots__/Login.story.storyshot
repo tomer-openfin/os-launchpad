@@ -11,35 +11,52 @@ exports[`Storyshots Components/Login default 1`] = `
     }
   >
     <div
-      className="sc-kjoXOD fANwhA"
+      className="sc-fBuWsC dEyqob"
     >
+      <div
+        className="sc-htoDjs kcRLEW"
+      >
+        <div
+          className="sc-dnqmqq klHNcP"
+        />
+      </div>
       <form
         onSubmit={[Function]}
       >
-        <input
-          name="username"
-          onBlur={[Function]}
-          onChange={[Function]}
-          placeholder="Username"
-          type="text"
-          value=""
-        />
-        <br />
-        <input
-          name="password"
-          onBlur={[Function]}
-          onChange={[Function]}
-          placeholder="Password"
-          type="password"
-          value=""
-        />
-        <br />
-        <button
-          className="sc-TOsTZ eEfWUW"
-          type="submit"
+        <label
+          className="sc-fMiknA kPdpCd"
         >
-          Login
-        </button>
+          <input
+            name="username"
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder="Username"
+            type="text"
+            value=""
+          />
+        </label>
+        <label
+          className="sc-fMiknA kPdpCd"
+        >
+          <input
+            name="password"
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder="Password"
+            type="password"
+            value=""
+          />
+        </label>
+        <label
+          className="sc-fMiknA kPdpCd"
+        >
+          <button
+            className="sc-eqIVtm kEbDli"
+            type="submit"
+          >
+            Login
+          </button>
+        </label>
       </form>
     </div>
   </div>

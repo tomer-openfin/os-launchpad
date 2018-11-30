@@ -1,9 +1,8 @@
 import * as enzyme from 'enzyme';
 import * as React from 'react';
 
-import NewUserForm from '../NewUserForm';
-
 import noop from '../../../utils/noop';
+import NewUserForm from '../NewUserForm';
 
 describe('<NewUserForm />', () => {
   it('to render without a css class', () => {

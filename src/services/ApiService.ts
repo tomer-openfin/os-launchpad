@@ -7,7 +7,17 @@ import AppData from '../const/AppData';
 import { getIsEnterprise } from '../redux/application';
 import { defaultState, MeStateSettings } from '../redux/me';
 import { OrganizationState } from '../redux/organization/types';
-import { App, CreateAppResponse, DeleteAppResponse, Theme, UpdateAppResponse, User } from '../types/commons';
+import {
+  App,
+  CreateAppResponse,
+  CreateUserResponse,
+  DeleteAppResponse,
+  DeleteUserResponse,
+  Theme,
+  UpdateAppResponse,
+  UpdateUserResponse,
+  User,
+} from '../types/commons';
 import DEFAULT_THEMES from '../utils/defaultThemes';
 import { getLocalStorage, setLocalStorage } from './localStorageAdapter';
 
@@ -130,21 +140,23 @@ const getAdminUser = (user: User): Promise<User> => {
 /**
  * Create new admin user
  *
- * @returns {Promise<User>}
+ * @returns {Promise<CreateUserResponse>}
  */
-const createAdminUser = (user: User): Promise<User> => {
+const createAdminUser = (user: User): Promise<CreateUserResponse> => {
   const options = createPostOptions(user);
 
-  return fetch(`${ADMIN_USERS_URL}/${user.username}`, options).then(resp => resp.json());
+  return fetch(`${ADMIN_USERS_URL}`, options).then(resp => resp.json());
 };
 
 /**
  * Update an admin user
  *
- * @returns {Promise<User>}
+ * @returns {Promise<UpdateUserResponse>}
  */
-const updateAdminUser = (user: User): Promise<User> => {
-  const options = createPutOptions(user);
+const updateAdminUser = (user: User): Promise<UpdateUserResponse> => {
+  const { email, ...restOfUser } = user;
+
+  const options = createPutOptions(restOfUser);
 
   return fetch(`${ADMIN_USERS_URL}/${user.username}`, options).then(resp => resp.json());
 };
@@ -152,9 +164,9 @@ const updateAdminUser = (user: User): Promise<User> => {
 /**
  * Delete an admin user
  *
- * @returns {Promise<User>}
+ * @returns {Promise<DeleteUserResponse>}
  */
-const deleteAdminUser = (user: User): Promise<User> => {
+const deleteAdminUser = (user: User): Promise<DeleteUserResponse> => {
   const options = createDeleteOptions();
 
   return fetch(`${ADMIN_USERS_URL}/${user.username}`, options).then(resp => resp.json());

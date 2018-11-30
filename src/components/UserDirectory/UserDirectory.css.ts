@@ -7,14 +7,12 @@ import { Color } from '../../styles/index';
 import * as TinyDownArrowIcon from '../../assets/TinyDownArrow.svg';
 import * as TinyUpArrowIcon from '../../assets/TinyUpArrow.svg';
 
-const HEADING_HEIGHT = '30px';
-
 export const HeadingWrapper = styled.div`
   align-items: center;
   display: flex;
-  height: ${HEADING_HEIGHT};
+  min-height: 30px;
   justify-content: space-evenly;
-  margin-top: 30px;
+  margin: 15px 0;
   width: 100%;
 `;
 
@@ -95,19 +93,19 @@ export const LinkButton = styled.button`
 export const ListWrapper = styled.ul`
   color: ${Color.CHARCOAL};
   font-size: 10px;
-  height: calc(100vh - 2 * ${HEADING_HEIGHT});
   overflow-y: scroll;
+  flex: 1;
 
   & > li {
     align-items: center;
     border-bottom: 1px solid ${Color.FOG};
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
     width: 100%;
     margin: 25px 0;
     height: 25px;
     padding-right: 25px;
+    padding-bottom: 25px;
   }
 
   ::-webkit-scrollbar {
@@ -154,6 +152,9 @@ export const Wrapper = styled.div`
   background-color: ${Color.BASEBALL};
   height: 100%;
   width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 
   & > ul {
     list-style: none;
@@ -163,4 +164,5 @@ export const Wrapper = styled.div`
 
 export const ListElement = styled.div`
   flex: 1;
+  text-align: left;
 `;

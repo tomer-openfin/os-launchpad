@@ -1,29 +1,23 @@
 import * as React from 'react';
 
-import { Button, ButtonLink, Copy, Error, Heading, Message, Row, Wrapper } from './ConfirmUserDelete.css';
+import { Button, ButtonLink, Copy, Error, Heading, Message, Row, Wrapper } from '../NewUserForm';
 
+import { RESPONSE_FAILURE, RESPONSE_OK } from '../../services/ApiService';
+import { User } from '../../types/commons';
 import { ROUTES } from '../Router/consts';
 
 interface Props {
   deleteUser: Function;
   location: {
-    state: {
-      id: string;
-      firstName: string;
-      lastName: string;
-    };
+    state: User;
   };
 }
 
 interface State {
   deleteDisabled: boolean;
-  responseContents: {
-    firstName: string;
-    lastName: string;
-  };
   responseReceived: boolean;
   result: {
-    message: string;
+    message?: string;
     status: string;
   };
 }
@@ -34,10 +28,6 @@ class ConfirmUserDelete extends React.Component<Props, State> {
 
     this.state = {
       deleteDisabled: false,
-      responseContents: {
-        firstName: '',
-        lastName: '',
-      },
       responseReceived: false,
       result: {
         message: '',
@@ -46,78 +36,81 @@ class ConfirmUserDelete extends React.Component<Props, State> {
     };
   }
 
-  handleDeleteUser = () => {
-    const { location } = this.props;
-    const { firstName, lastName } = location.state;
-
-    // simulate failure (uncomment to try, test when API is up)
-    // this.setState({
-    //   responseReceived: true,
-    //   result: {
-    //     message: 'Resource deletion failed.', // placeholder
-    //     status: 'error', // placeholder
-    //   },
-    // });
-
-    // simulate success
+  errorCb = message =>
     this.setState({
-      deleteDisabled: true,
-      responseContents: {
-        firstName,
-        lastName,
-      },
       responseReceived: true,
       result: {
-        message: 'Resource deleted.', // placeholder
-        status: 'success', // placeholder
+        message,
+        status: RESPONSE_FAILURE,
       },
     });
 
-    // DELETE on /api/admin/users/:id
-    // Todo: hook up to API once endpoint is finalized
-    // deleteUser()
+  successCb = () =>
+    this.setState({
+      deleteDisabled: true,
+      responseReceived: true,
+      result: {
+        status: RESPONSE_OK,
+      },
+    });
+
+  handleDeleteUser = () => {
+    const { location, deleteUser } = this.props;
+
+    const meta = { successCb: this.successCb, errorCb: this.errorCb };
+
+    deleteUser(location.state, meta);
   };
 
-  renderResponse = result => {
-    const { responseReceived, responseContents } = this.state;
-
+  renderMessage = () => {
+    const { responseReceived, result } = this.state;
     const { location } = this.props;
     const { firstName, lastName } = location.state;
 
     if (responseReceived) {
-      if (result.status === 'error') {
-        return <Error>There was an error trying to delete {`${firstName} ${lastName}`}. Please try again.</Error>;
+      if (result.status === RESPONSE_FAILURE) {
+        return (
+          <Error>
+            There was an error trying to delete {`${firstName} ${lastName}`}: {result.message}
+          </Error>
+        );
       }
-      if (responseContents.firstName && responseContents.lastName) {
-        return <Message>Success! '{`${firstName} ${lastName}`}' was succesfully deleted.</Message>;
-      }
+      return <Message>Success! '{`${firstName} ${lastName}`}' was succesfully deleted.</Message>;
     }
     return null;
   };
 
   render() {
-    const { result, deleteDisabled } = this.state;
     const { location } = this.props;
+    const { deleteDisabled, responseReceived, result } = this.state;
     const { firstName, lastName } = location.state;
 
     return (
-      <Wrapper>
-        <Heading>Delete User</Heading>
+      responseReceived && result.status === RESPONSE_OK ? (
+        <Wrapper>
+          {this.renderMessage()}
 
-        <Copy>
-          You are about to delete the following user: {firstName} {lastName}?
-        </Copy>
+          <ButtonLink to={ROUTES.ADMIN_USERS}>Continue</ButtonLink>
+        </Wrapper>
+      ) : (
+        <Wrapper>
+          <Heading>Delete User</Heading>
 
-        <Row>
-          <ButtonLink to={ROUTES.ADMIN_USERS}>Cancel</ButtonLink>
+          <Copy>
+            You are about to delete the following user: {firstName} {lastName}?
+          </Copy>
 
-          <Button disabled={deleteDisabled} onClick={this.handleDeleteUser}>
-            Delete User
-          </Button>
-        </Row>
+          <Row>
+            <ButtonLink to={ROUTES.ADMIN_USERS}>Cancel</ButtonLink>
 
-        {this.renderResponse(result)}
-      </Wrapper>
+            <Button disabled={deleteDisabled} onClick={this.handleDeleteUser}>
+              Delete User
+            </Button>
+          </Row>
+
+          {this.renderMessage()}
+        </Wrapper>
+      )
     );
   }
 }

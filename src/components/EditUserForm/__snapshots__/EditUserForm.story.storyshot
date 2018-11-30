@@ -11,30 +11,24 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
     }
   >
     <div
-      className="sc-gisBJw kGgYcP"
+      className="sc-kEYyzF glVCgf"
     >
       <form
         onSubmit={[Function]}
       >
         <div
-          className="sc-dVhcbM loNcgd"
+          className="sc-ckVGcZ XAPuk"
         >
           Edit User Details
         </div>
         <label
-          className="sc-eqIVtm gBTCWD"
+          className="sc-jKJlTe kqnRlJ"
         >
-          Email:
-          <input
-            name="email"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="email"
-            value="testEmail@gmail.com"
-          />
+          Email: 
+          string
         </label>
         <label
-          className="sc-eqIVtm gBTCWD"
+          className="sc-jKJlTe kqnRlJ"
         >
           First Name:
           <input
@@ -42,11 +36,11 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             type="text"
-            value="testFirstName"
+            value="string"
           />
         </label>
         <label
-          className="sc-eqIVtm gBTCWD"
+          className="sc-jKJlTe kqnRlJ"
         >
           Last Name:
           <input
@@ -54,11 +48,11 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             type="text"
-            value="testLastName"
+            value="string"
           />
         </label>
         <label
-          className="sc-eqIVtm gBTCWD"
+          className="sc-jKJlTe kqnRlJ"
         >
           Middle Initial:
           <input
@@ -66,31 +60,31 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             type="text"
-            value="testMI"
+            value="string"
           />
         </label>
         <label
-          className="sc-eqIVtm gBTCWD"
+          className="sc-jKJlTe kqnRlJ"
         >
-          Username:
+          Phone Number:
           <input
-            name="username"
+            name="phoneNumber"
             onBlur={[Function]}
             onChange={[Function]}
             type="text"
-            value="testUsername"
+            value="string"
           />
         </label>
         <label
-          className="sc-eqIVtm gBTCWD"
+          className="sc-jKJlTe kqnRlJ"
         >
           Is administrator?
           <select
             name="isAdmin"
             onBlur={[Function]}
             onChange={[Function]}
-            placeholder="yes"
-            value={true}
+            placeholder="no"
+            value={false}
           >
             <option
               value="yes"
@@ -105,17 +99,17 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
           </select>
         </label>
         <div
-          className="sc-caSCKo gxSECN"
+          className="sc-hMqMXs cKjkFQ"
         >
           <a
-            className="sc-fBuWsC lodAaZ"
+            className="sc-kpOJdX dvqpbC"
             href="/admin/users"
             onClick={[Function]}
           >
             Cancel
           </a>
           <button
-            className="sc-jhAzac flJAOt"
+            className="sc-kgoBCf gvBXmf"
             disabled={true}
             type="submit"
           >
@@ -279,6 +273,32 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                     <span
                       style={Object {}}
                     >
+                      updateUser
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
                       location
                     </span>
                     <span>
@@ -340,7 +360,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                                 }
                               }
                             >
-                              'testEmail@gmail.com'
+                              'string'
                             </span>
                             ,
                             <span>
@@ -368,7 +388,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                                 }
                               }
                             >
-                              'testFirstName'
+                              'string'
                             </span>
                             ,
                             <span>
@@ -384,18 +404,19 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                                   }
                                 }
                               >
-                                isAdmin
+                                id
                               </span>
                             </span>
                             : 
                             <span
                               style={
                                 Object {
-                                  "color": "#a11",
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
                                 }
                               }
                             >
-                              true
+                              'string'
                             </span>
                             ,
                             <span>
@@ -413,32 +434,6 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                             }
                           </span>
                           }
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      updateUser
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          noop
                         </span>
                         }
                       </span>

@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     background-color: ${getBackgroundColor};
     font-family: 'Muli', sans-serif;
+    overflow: hidden;
   }
 
   a {

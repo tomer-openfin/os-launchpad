@@ -124,7 +124,7 @@ class UserDirectory extends React.PureComponent<Props & RouteComponentProps, Sta
 
           <ButtonLink to={ROUTES.ADMIN_USERS_NEW}>Add User</ButtonLink>
 
-          <ButtonLink to={ROUTES.ADMIN_USERS_IMPORT}>Import Users</ButtonLink>
+          {/* <ButtonLink to={ROUTES.ADMIN_USERS_IMPORT}>Import Users</ButtonLink> */}
         </HeadingWrapper>
 
         <ListWrapper>
@@ -134,7 +134,7 @@ class UserDirectory extends React.PureComponent<Props & RouteComponentProps, Sta
                 {user.lastName}, {user.firstName}
               </ListElement>
               <ListElement>{user.email}</ListElement>
-              <ListElement>Admin: {user.isAdmin ? 'Yes' : 'No'}</ListElement>
+              <ListElement>{user.isAdmin ? 'Admin' : ''}</ListElement>
               <ListElement>{this.renderButtons(user)}</ListElement>
             </li>
           ))}

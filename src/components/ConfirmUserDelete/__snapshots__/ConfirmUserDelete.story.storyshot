@@ -11,34 +11,34 @@ exports[`Storyshots ConfirmUserDelete default 1`] = `
     }
   >
     <div
-      className="sc-hMqMXs bhYNsT"
+      className="sc-kEYyzF glVCgf"
     >
       <div
-        className="sc-ckVGcZ ernSJT"
+        className="sc-ckVGcZ XAPuk"
       >
         Delete User
       </div>
       <div
-        className="sc-kpOJdX edkFGj"
+        className="sc-kGXeez enUWSr"
       >
         You are about to delete the following user: 
-        John
+        string
          
-        Doe
+        string
         ?
       </div>
       <div
-        className="sc-eNQAEJ dkVXBK"
+        className="sc-hMqMXs cKjkFQ"
       >
         <a
-          className="sc-kGXeez jjgmDw"
+          className="sc-kpOJdX dvqpbC"
           href="/admin/users"
           onClick={[Function]}
         >
           Cancel
         </a>
         <button
-          className="sc-kgoBCf ktfrjL"
+          className="sc-kgoBCf gvBXmf"
           disabled={false}
           onClick={[Function]}
         >
@@ -264,6 +264,39 @@ exports[`Storyshots ConfirmUserDelete default 1`] = `
                           >
                             {
                             <span>
+                              <span>
+                                <br />
+                                    
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                email
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              'string'
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                    
+                                  
+                              </span>
                               <span
                                 style={
                                   Object {
@@ -283,10 +316,15 @@ exports[`Storyshots ConfirmUserDelete default 1`] = `
                                 }
                               }
                             >
-                              'John'
+                              'string'
                             </span>
                             ,
                             <span>
+                              <span>
+                                <br />
+                                    
+                                  
+                              </span>
                               <span
                                 style={
                                   Object {
@@ -306,30 +344,20 @@ exports[`Storyshots ConfirmUserDelete default 1`] = `
                                 }
                               }
                             >
-                              '1'
+                              'string'
                             </span>
                             ,
                             <span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                lastName
+                              <span>
+                                <br />
+                                    
+                                  
                               </span>
+                              …
                             </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              'Doe'
+                            <span>
+                              <br />
+                                  
                             </span>
                             }
                           </span>

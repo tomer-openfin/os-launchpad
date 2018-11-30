@@ -1,56 +1,41 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as React from 'react';
 
-import { validateEmail, validateTextField } from '../../utils/validators';
+import { RESPONSE_FAILURE, RESPONSE_OK } from '../../services/ApiService';
+import { User } from '../../types/commons';
+import { validateTextField } from '../../utils/validators';
+import { Button, ButtonLink, Error, Heading, Label, Message, Row, Wrapper } from '../NewUserForm';
 import { ROUTES } from '../Router/consts';
-import { Button, ButtonLink, Error, Heading, Label, Message, Row, Wrapper } from './EditUserForm.css';
-
-interface ResponseContents {
-  email: string;
-  firstName: string;
-  isAdmin: boolean;
-  lastName: string;
-  middleInitial?: string;
-  organizationId: string;
-  password: string;
-  username: string;
-}
-
-interface Result {
-  message: string;
-  status: string;
-}
 
 interface Props {
   updateUser: Function;
   location: {
-    state: {
-      email: string;
-      firstName: string;
-      lastName: string;
-      middleInitial?: string;
-      username: string;
-      isAdmin: boolean;
-    };
+    state: User;
   };
 }
 
 interface State {
-  responseContents: ResponseContents;
+  formContents: User;
   responseReceived: boolean;
-  result: Result;
+  result: {
+    message?: string;
+    status: string;
+  };
+  saveDisabled: boolean;
 }
 
 class EditUserForm extends React.Component<Props, State> {
   state = {
-    responseContents: {
+    formContents: {
       email: '',
       firstName: '',
+      id: '',
       isAdmin: false,
       lastName: '',
       middleInitial: '',
       organizationId: '',
-      password: '',
+      phoneNumber: '',
+      tmpPassword: '',
       username: '',
     },
     responseReceived: false,
@@ -58,121 +43,137 @@ class EditUserForm extends React.Component<Props, State> {
       message: '',
       status: '',
     },
+    saveDisabled: false,
   };
 
-  renderResponse = result => {
-    const { responseReceived, responseContents } = this.state;
+  errorCb = message =>
+    this.setState({
+      responseReceived: true,
+      result: {
+        message,
+        status: RESPONSE_FAILURE,
+      },
+    });
+
+  successCb = () =>
+    this.setState({
+      responseReceived: true,
+      result: {
+        status: RESPONSE_OK,
+      },
+      saveDisabled: true,
+    });
+
+  handleFormSubmit = (payload, actions) => {
+    const { updateUser } = this.props;
+
+    const meta = { successCb: this.successCb, errorCb: this.errorCb };
+
+    updateUser(payload, meta);
+
+    actions.setSubmitting(false);
+  };
+
+  renderForm = ({ isSubmitting, isValid }) => {
+    const { location } = this.props;
+    const { email, isAdmin } = location.state;
+
+    return (
+      <Wrapper>
+        <Form>
+          <Heading>Edit User Details</Heading>
+
+          <Label>Email: {email}</Label>
+
+          <Label>
+            First Name:
+            <Field type="text" name="firstName" validate={validateTextField} />
+            <ErrorMessage component={Error} name="firstName" />
+          </Label>
+
+          <Label>
+            Last Name:
+            <Field type="text" name="lastName" validate={validateTextField} />
+            <ErrorMessage component={Error} name="lastName" />
+          </Label>
+
+          <Label>
+            Middle Initial:
+            <Field type="text" name="middleInitial" />
+            <ErrorMessage component={Error} name="middleInitial" />
+          </Label>
+
+          {/* todo: add basic client-side phone validator */}
+          <Label>
+            Phone Number:
+            <Field type="text" name="phoneNumber" />
+            <ErrorMessage component={Error} name="phoneNumber" />
+          </Label>
+
+          <Label>
+            Is administrator?
+            <Field component="select" name="isAdmin" placeholder={isAdmin ? 'yes' : 'no'}>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </Field>
+          </Label>
+
+          <Row>
+            <ButtonLink to={ROUTES.ADMIN_USERS}>Cancel</ButtonLink>
+
+            <Button type="submit" disabled={isSubmitting || !isValid}>
+              Save Updates
+            </Button>
+          </Row>
+        </Form>
+
+        {this.renderMessage()}
+      </Wrapper>
+    );
+  };
+
+  renderMessage = () => {
+    const { responseReceived, result } = this.state;
+
     if (responseReceived) {
-      if (result.status === 'error') {
-        return <Error>Error: {result.message}</Error>;
+      if (result.status === RESPONSE_FAILURE) {
+        return <Error>There was an error tyring to update this user: {result.message}. Please try again.</Error>;
       }
-      if (responseContents.username) {
-        return <Message>Success! User '{responseContents.username}' was succesfully updated.</Message>;
-      }
+
+      return <Message>Success! This user was succesfully modified.</Message>;
     }
+
     return null;
   };
 
   render() {
-    const { result } = this.state;
+    const { location } = this.props;
+    const { responseReceived, result } = this.state;
+    const { firstName, isAdmin, lastName, middleInitial, phoneNumber, id, username } = location.state;
 
-    const { updateUser, location } = this.props;
-
-    const { email, firstName, isAdmin, lastName, middleInitial, username } = location.state;
-
-    // tslint:disable:jsx-no-multiline-js jsx-no-lambda no-console
     return (
-      <Formik
-        initialValues={{
-          email,
-          firstName,
-          isAdmin,
-          lastName,
-          middleInitial,
-          username,
-        }}
-        onSubmit={(inputValues, actions) => {
-          // PUT on /users
-          updateUser(undefined, 'PUT', inputValues, undefined)
-            .then(response => {
-              // 400 received
-              if (response.status === 'error') {
-                this.setState({
-                  responseReceived: true,
-                  result: {
-                    message: response.message,
-                    status: response.status,
-                  },
-                });
-              }
-
-              // 200 received
-              return this.setState({
-                responseContents: response,
-                responseReceived: true,
-              });
-            })
-            .catch(err => console.log('error in EditUserForm:', err));
-
-          actions.setSubmitting(false);
-        }}
-        validateOnChange={false}
-        render={({ isSubmitting, isValid }) => (
+      responseReceived && result.status === RESPONSE_OK ? (
           <Wrapper>
-            <Form>
-              <Heading>Edit User Details</Heading>
+            {this.renderMessage()}
 
-              <Label>
-                Email:
-                <Field type="email" name="email" validate={validateEmail} />
-                <ErrorMessage component={Error} name="email" />
-              </Label>
-
-              <Label>
-                First Name:
-                <Field type="text" name="firstName" validate={validateTextField} />
-                <ErrorMessage component={Error} name="firstName" />
-              </Label>
-
-              <Label>
-                Last Name:
-                <Field type="text" name="lastName" validate={validateTextField} />
-                <ErrorMessage component={Error} name="lastName" />
-              </Label>
-
-              <Label>
-                Middle Initial:
-                <Field type="text" name="middleInitial" />
-                <ErrorMessage component={Error} name="middleInitial" />
-              </Label>
-
-              <Label>
-                Username:
-                <Field type="text" name="username" validate={validateTextField} />
-                <ErrorMessage component={Error} name="username" />
-              </Label>
-
-              <Label>
-                Is administrator?
-                <Field component="select" name="isAdmin" placeholder={isAdmin ? 'yes' : 'no'}>
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                </Field>
-              </Label>
-
-              <Row>
-                {/* todo: use handle close click handler instead of Link */}
-                <ButtonLink to={ROUTES.ADMIN_USERS}>Cancel</ButtonLink>
-
-                <Button type="submit" disabled={isSubmitting || !isValid}>
-                  Save Updates
-                </Button>
-              </Row>
-            </Form>
-            {this.renderResponse(result)}
+            <ButtonLink to={ROUTES.ADMIN_USERS}>Continue</ButtonLink>
           </Wrapper>
-        )}
-      />
+        ) : (
+          <Formik
+            initialValues={{
+              firstName,
+              id,
+              isAdmin,
+              lastName,
+              middleInitial,
+              phoneNumber,
+              username,
+            }}
+            onSubmit={this.handleFormSubmit}
+            validateOnChange={false}
+            render={this.renderForm}
+          />
+      )
     );
   }
 }

@@ -2,21 +2,24 @@ import * as React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import EditUserForm from './';
-
 import noop from '../../utils/noop';
+import EditUserForm from './EditUserForm';
 
 const mockData = {
   location: {
     state: {
-      email: 'testEmail@gmail.com',
-      firstName: 'testFirstName',
-      isAdmin: true,
-      lastName: 'testLastName',
-      middleInitial: 'testMI',
-      username: 'testUsername',
+      email: 'string',
+      firstName: 'string',
+      id: 'string',
+      isAdmin: false,
+      lastName: 'string',
+      middleInitial: 'string',
+      organizationId: 'string',
+      phoneNumber: 'string',
+      tmpPassword: 'string',
+      username: 'string',
     },
   },
 };
 
-storiesOf('Components/EditUserForm', module).add('default', () => <EditUserForm location={mockData.location} updateUser={noop} />);
+storiesOf('Components/EditUserForm', module).add('default', () => <EditUserForm updateUser={noop} location={mockData.location} />);

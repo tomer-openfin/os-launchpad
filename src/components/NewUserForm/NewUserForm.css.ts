@@ -29,6 +29,13 @@ export const Button = styled.button`
   }
 `;
 
+export const Copy = styled.div`
+  color: ${Color.SEAGULL};
+  font-size: 12px;
+  font-weight: bold;
+  margin: 25px;
+`;
+
 export const ButtonLink = styled(Link)`
   background-color: none;
   color: ${Color.DUSTY_GREY};
@@ -42,7 +49,6 @@ export const ButtonLink = styled(Link)`
   justify-content: center;
   font-weight: 200;
   font-size: 12px;
-  flex: 1;
 
   &:hover {
     background-color: ${Color.SEAGULL};
@@ -59,6 +65,7 @@ export const Error = styled.div`
   background-color: ${Color.FAIL};
   color: ${Color.BASEBALL};
   display: block;
+  font-size: 10px;
   height: auto;
 `;
 
@@ -82,12 +89,14 @@ export const Label = styled.label`
 `;
 
 export const Message = styled.div`
+  align-items: center;
   background-color: ${Color.SUCCESS};
-  display: flex;
   color: ${Color.BLACK};
-  font-size: 12px;
-  margin: 5px 5px;
+  display: flex;
+  font-size: 10px;
+  justify-content: center;
   padding: 5px 5px;
+  width: 100%;
 `;
 
 export const Row = styled.div`
@@ -102,8 +111,8 @@ export const Wrapper = styled.div`
   border: 1px solid ${Color.LIGHTER_GREY};
   display: flex;
   flex-direction: column;
-  height: 475px;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 25px;
-  width: 250px;
+  min-width: 200px;
+  min-height: 200px;
 `;

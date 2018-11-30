@@ -3,15 +3,13 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { Color } from '../../styles';
 
-const TABS_SIZE = '25px';
-
 export const ContentWrapper = styled.div`
   background-color: ${Color.ALTO};
   display: flex;
   flex-direction: column;
-  height: 100%;
   overflow: hidden;
   width: 100%;
+  flex: 1;
 `;
 
 const activeClassName = 'active-link';
@@ -23,7 +21,7 @@ export const TabLink = styled(NavLink).attrs({ activeClassName })`
   flex: 1;
   font-size: 10px;
   font-weight: 200;
-  height: 100%;
+  min-height: 25px;
   justify-content: center;
   outline: none;
   text-decoration: none;
@@ -42,7 +40,7 @@ export const TabLink = styled(NavLink).attrs({ activeClassName })`
 export const TabsWrapper = styled.div`
   display: flex;
   flex-wrap: nowrap;
-  height: ${TABS_SIZE};
+  min-height: 25px;
   justify-content: space-evenly;
   width: 100%;
 `;
@@ -50,6 +48,8 @@ export const TabsWrapper = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
 `;

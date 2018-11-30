@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button, ButtonLink, Copy, Error, Heading, Message, Row, Wrapper } from '../ConfirmUserDelete/ConfirmUserDelete.css';
+import { Button, ButtonLink, Copy, Error, Heading, Message, Row, Wrapper } from '../NewUserForm';
 
 import ApiService from '../../services/ApiService';
 import { ROUTES } from '../Router/consts';

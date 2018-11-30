@@ -1,4 +1,4 @@
-import Component from './NewUserForm';
+import Component from './NewUserFormContainer';
 
 export * from './NewUserForm.css';
 

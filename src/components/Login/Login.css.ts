@@ -2,11 +2,36 @@ import styled, { css } from 'styled-components';
 import { Color } from '../../styles/index';
 
 export const Wrapper = styled.div`
-  height: 90vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`;
+
+export const FieldWrapper = styled.label`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px;
+
+  & input {
+    color: ${Color.SEAGULL};
+    background: ${Color.TRANSPARENT};
+    border: 1px solid ${Color.SEAGULL};
+    border-radius: 3px;
+    padding: 5px 25px;
+    outline: none;
+    width: 200px;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: ${Color.CHALK};
+      border-color: ${Color.CHALK};
+      background: ${Color.DUSTY_GREY};
+    }
+  }
 `;
 
 export const ErrorMessage = styled.p`
@@ -14,11 +39,12 @@ export const ErrorMessage = styled.p`
 `;
 
 export const CTA = styled.button`
-  width: 100px;
   height: 24px;
   font-size: 9px;
-  color: ${Color.SEAGULL};
-  background: ${Color.TRANSPARENT};
+  width: 200px;
+  padding: auto;
+  color: ${Color.CHARCOAL};
+  background: ${Color.SEAGULL};
   border: 1px solid ${Color.SEAGULL};
   border-radius: 3px;
   outline: none;
@@ -26,6 +52,7 @@ export const CTA = styled.button`
 
   &:hover {
     color: ${Color.CHARCOAL};
-    background: ${Color.SEAGULL};
+    background: ${Color.CHALK};
+    border-color: ${Color.CHALK};
   }
 `;

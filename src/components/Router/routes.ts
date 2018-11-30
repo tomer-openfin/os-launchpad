@@ -31,17 +31,17 @@ export interface AppRoute {
 export const userRoutes: AppRoute[] = [
   {
     Component: NewUserForm,
-    exact: false,
+    exact: true,
     path: ROUTES.ADMIN_USERS_NEW,
   },
   {
     Component: EditUserForm,
-    exact: false,
+    exact: true,
     path: ROUTES.ADMIN_USERS_EDIT,
   },
   {
     Component: ConfirmUserDelete,
-    exact: false,
+    exact: true,
     path: ROUTES.ADMIN_USERS_DELETE,
   },
 ];
@@ -49,17 +49,17 @@ export const userRoutes: AppRoute[] = [
 export const appRoutes: AppRoute[] = [
   {
     Component: NewAppForm,
-    exact: false,
+    exact: true,
     path: ROUTES.ADMIN_APPS_NEW,
   },
   {
     Component: EditAppForm,
-    exact: false,
+    exact: true,
     path: ROUTES.ADMIN_APPS_EDIT,
   },
   {
     Component: ConfirmAppDelete,
-    exact: false,
+    exact: true,
     path: ROUTES.ADMIN_APPS_DELETE,
   },
 ];
@@ -82,7 +82,7 @@ export const routes: AppRoute[] = [
       },
       {
         Component: OrganizationSettings,
-        exact: false,
+        exact: true,
         path: ROUTES.ADMIN,
       },
     ],

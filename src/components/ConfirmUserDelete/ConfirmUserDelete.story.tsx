@@ -2,17 +2,23 @@ import * as React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import ConfirmUserDelete from './';
-
 import noop from '../../utils/noop';
+import ConfirmUserDelete from './ConfirmUserDelete';
 
 // mock .location.state structure from using react-router
 const currentUserData = {
   location: {
     state: {
-      firstName: 'John',
-      id: '1',
-      lastName: 'Doe',
+      email: 'string',
+      firstName: 'string',
+      id: 'string',
+      isAdmin: false,
+      lastName: 'string',
+      middleInitial: 'string',
+      organizationId: 'string',
+      phoneNumber: 'string',
+      tmpPassword: 'string',
+      username: 'string',
     },
   },
 };

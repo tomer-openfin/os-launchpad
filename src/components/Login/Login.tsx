@@ -3,7 +3,8 @@ import * as React from 'react';
 
 import { LoginRequestPayload } from '../../redux/me';
 
-import { CTA, Wrapper } from './Login.css';
+import Logo from '../Logo';
+import { CTA, FieldWrapper, Wrapper } from './Login.css';
 
 type SubmitFn = (payload: LoginRequestPayload) => void;
 
@@ -36,25 +37,27 @@ const handleSubmit = (onSubmit: SubmitFn) => (values: LoginRequestPayload) => {
  */
 const LoginForm = () => (
   <Form>
-    <Field
-      name="username"
-      placeholder="Username"
-      type="text"
-    />
+    <FieldWrapper>
+      <Field
+        name="username"
+        placeholder="Username"
+        type="text"
+      />
+    </FieldWrapper>
 
-    <br />
+    <FieldWrapper>
+      <Field
+        name="password"
+        placeholder="Password"
+        type="password"
+      />
+    </FieldWrapper>
 
-    <Field
-      name="password"
-      placeholder="Password"
-      type="password"
-    />
-
-    <br />
-
-    <CTA type="submit">
-      Login
-    </CTA>
+    <FieldWrapper>
+      <CTA type="submit">
+        Login
+      </CTA>
+    </FieldWrapper>
   </Form>
 );
 
@@ -67,6 +70,8 @@ const LoginForm = () => (
  */
 const Login = ({ loginError, onSubmit }: Props) => (
   <Wrapper>
+    <Logo large />
+
     {loginError && (
       <p style={{ color: 'red' }}>Login failed. Please try again.</p>
     )}
