@@ -1,10 +1,13 @@
 import { Window } from '@giantmachines/redux-openfin';
+import { delay } from 'redux-saga';
 import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 
 import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGIN_WINDOW } from '../../config/windows';
 import getAppUuid from '../../utils/getAppUuid';
-import { setWindowRelativeToLauncherBounds } from '../application/utils';
-import { LAUNCH_WINDOW } from './actions';
+import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
+import { hideWindow } from '../../utils/openfinPromises';
+import { getBlurringWindowByName, setBlurringWindow, setWindowRelativeToLauncherBounds } from '../application';
+import { BLUR_WINDOW_WITH_DELAY, LAUNCH_WINDOW } from './actions';
 import { getWindowBounds, getWindowById } from './selectors';
 import { LaunchWindow } from './types';
 
@@ -26,6 +29,11 @@ function* watchLaunchWindow(action: LaunchWindow) {
   const window = yield select(getWindowById, id);
 
   if (window) {
+    const isBlurring = yield select(getBlurringWindowByName, id);
+    if (!!isBlurring) {
+      return;
+    }
+
     yield put(Window.showWindow({ id }));
     yield put(Window.focusWindow({ id }));
   } else {
@@ -89,7 +97,25 @@ function* watchWindowBoundsChanged(action) {
   }
 }
 
+function* watchBlurWindowWithDelay(action) {
+  const { payload } = action;
+  if (!payload) {
+    return;
+  }
+
+  const { name } = payload;
+  const finWindow = yield call(getFinWindowByName, name);
+  if (!finWindow) {
+    return;
+  }
+
+  yield put(setBlurringWindow(name, true));
+  yield all([call(hideWindow, finWindow), delay(100)]);
+  yield put(setBlurringWindow(name, false));
+}
+
 export function* windowsSaga() {
+  yield takeEvery(BLUR_WINDOW_WITH_DELAY, watchBlurWindowWithDelay);
   yield takeEvery(LAUNCH_WINDOW, watchLaunchWindow);
   yield takeEvery(Window.WINDOW_OPENED, watchOpenedWindow);
   yield takeEvery(Window.BOUNDS_CHANGED, watchWindowBoundsChanged);

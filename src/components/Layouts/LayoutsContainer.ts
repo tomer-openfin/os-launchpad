@@ -1,4 +1,3 @@
-import { Window } from '@giantmachines/redux-openfin';
 import { connect } from 'react-redux';
 
 import { Layout } from 'openfin-layouts/dist/client/types';
@@ -7,6 +6,7 @@ import withFinBlur from '../../hocs/withFinBlur';
 import { restoreLayout, saveLayoutRequest } from '../../redux/layouts';
 import { getLauncherPosition } from '../../redux/me';
 import { State } from '../../redux/types';
+import { blurWindowWithDelay } from '../../redux/windows/index';
 
 import Layouts from './Layouts';
 
@@ -16,7 +16,7 @@ const mapState = (state: State) => ({
 
 const mapDispatch = dispatch => ({
   onBlur: () => {
-    dispatch(Window.hideWindow({ id: LAYOUTS_WINDOW }));
+    dispatch(blurWindowWithDelay(LAYOUTS_WINDOW));
   },
   restoreCurrentLayout: () => dispatch(restoreLayout(JSON.parse(localStorage.layouts)[0] as Layout)),
   // force the generation of current layout on save by passing in undefined

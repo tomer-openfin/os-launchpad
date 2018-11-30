@@ -22,6 +22,10 @@ export const animateWindow = (finWindow, animation, options) => {
   return promisifyOpenfin(finWindow, 'animate', animation, options);
 };
 
+export const hideWindow = (finWindow, ...args) => {
+  return promisifyOpenfin(finWindow, 'hide', ...args);
+};
+
 export const setWindowBoundsPromise = (finWindow, { left, top, width, height }: Bounds) => {
   return promisifyOpenfin(finWindow, 'setBounds', left, top, width, height);
 };

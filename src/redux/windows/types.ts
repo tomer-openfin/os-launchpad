@@ -1,6 +1,9 @@
-import { launchWindow } from './actions';
+import { blurWindowWithDelay, launchWindow } from './actions';
 
 // Action payloads
+export interface BlurWindowWithDelayPayload {
+  name: string;
+}
 export interface WindowConfig {
   alwaysOnTop: boolean;
   autoShow: boolean;
@@ -24,4 +27,5 @@ export interface WindowConfig {
 }
 
 // Actions
+export type BlurWindowWithDelayAction = ReturnType<typeof blurWindowWithDelay>;
 export type LaunchWindow = ReturnType<typeof launchWindow>;
