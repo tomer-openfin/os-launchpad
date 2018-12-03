@@ -20,7 +20,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
           className="sc-htoDjs edCAeo"
         >
           <div
-            className="sc-dnqmqq UIYYa"
+            className="sc-dnqmqq kXbMtk"
           />
         </div>
         <input
@@ -40,7 +40,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq kYMSoc"
+              className="sc-dnqmqq bzKpCd"
             />
           </div>
           <div
@@ -53,7 +53,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
                 className="sc-gqjmRU gaoTrn"
                 onClick={[Function]}
               >
-                fintech-studios
+                FinTech Studios
               </div>
               <button
                 className="sc-fjdhpX etSFY"
@@ -77,7 +77,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq iJsrxD"
+              className="sc-dnqmqq kibmEf"
             />
           </div>
           <div
@@ -90,7 +90,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
                 className="sc-gqjmRU gaoTrn"
                 onClick={[Function]}
               >
-                greenkey
+                GreenKey
               </div>
               <button
                 className="sc-fjdhpX etSFY"
@@ -114,7 +114,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq hztDVY"
+              className="sc-dnqmqq gOzwOY"
             />
           </div>
           <div
@@ -127,7 +127,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
                 className="sc-gqjmRU gaoTrn"
                 onClick={[Function]}
               >
-                hammerstone-markets
+                Hammerstone Markets App
               </div>
               <button
                 className="sc-fjdhpX etSFY"
@@ -151,7 +151,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq eUCPZm"
+              className="sc-dnqmqq ezNXNZ"
             />
           </div>
           <div
@@ -164,7 +164,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
                 className="sc-gqjmRU gaoTrn"
                 onClick={[Function]}
               >
-                neptune
+                Neptune
               </div>
               <button
                 className="sc-fjdhpX etSFY"
@@ -188,7 +188,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq boeDRh"
+              className="sc-dnqmqq ksZbAS"
             />
           </div>
           <div
@@ -201,7 +201,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
                 className="sc-gqjmRU gaoTrn"
                 onClick={[Function]}
               >
-                opendoor
+                OpenDoor
               </div>
               <button
                 className="sc-fjdhpX etSFY"
@@ -225,7 +225,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq cSSsbe"
+              className="sc-dnqmqq iKxeQR"
             />
           </div>
           <div
@@ -238,7 +238,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
                 className="sc-gqjmRU gaoTrn"
                 onClick={[Function]}
               >
-                parityone
+                Parity One
               </div>
               <button
                 className="sc-fjdhpX etSFY"
@@ -263,7 +263,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq jLcusg"
+              className="sc-dnqmqq jkwVUr"
             />
           </div>
           <div
@@ -276,7 +276,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                 className="sc-gqjmRU gaoTrn"
                 onClick={[Function]}
               >
-                rsrchx
+                RSRCHXChange
               </div>
               <button
                 className="sc-fjdhpX etSFY"
@@ -300,7 +300,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq kjSoLg"
+              className="sc-dnqmqq dAfxMM"
             />
           </div>
           <div
@@ -313,7 +313,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                 className="sc-gqjmRU gaoTrn"
                 onClick={[Function]}
               >
-                trumid
+                Trumid
               </div>
               <button
                 className="sc-fjdhpX etSFY"
@@ -337,7 +337,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq jugEQA"
+              className="sc-dnqmqq kmkYZF"
             />
           </div>
           <div
@@ -350,7 +350,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                 className="sc-gqjmRU gaoTrn"
                 onClick={[Function]}
               >
-                tt-desktop
+                TT Desktop
               </div>
               <button
                 className="sc-fjdhpX etSFY"
@@ -726,33 +726,6 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                                     }
                                   }
                                 >
-                                  id
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#a11",
-                                  }
-                                }
-                              >
-                                2
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
                                   intents
                                 </span>
                               </span>
@@ -967,6 +940,34 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                                         
                                 </span>
                                 ]
+                              </span>
+                              ,
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  name
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#22a",
+                                    "wordBreak": "break-word",
+                                  }
+                                }
+                              >
+                                'fintech-studios'
                               </span>
                               ,
                               <span>
@@ -1172,33 +1173,6 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                                     }
                                   }
                                 >
-                                  id
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#a11",
-                                  }
-                                }
-                              >
-                                3
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
                                   intents
                                 </span>
                               </span>
@@ -1413,6 +1387,34 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                                         
                                 </span>
                                 ]
+                              </span>
+                              ,
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  name
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#22a",
+                                    "wordBreak": "break-word",
+                                  }
+                                }
+                              >
+                                'greenkey'
                               </span>
                               ,
                               <span>
@@ -1618,33 +1620,6 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                                     }
                                   }
                                 >
-                                  id
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#a11",
-                                  }
-                                }
-                              >
-                                5
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
                                   intents
                                 </span>
                               </span>
@@ -1859,6 +1834,34 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                                         
                                 </span>
                                 ]
+                              </span>
+                              ,
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  name
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#22a",
+                                    "wordBreak": "break-word",
+                                  }
+                                }
+                              >
+                                'hammerstone-markets'
                               </span>
                               ,
                               <span>

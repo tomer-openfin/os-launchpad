@@ -22,6 +22,10 @@ export const Wrapper = styled.div<CommonProps>`
 `;
 
 export const Separator = styled.div<CommonProps>`
+  position: relative
+  height: ${({ launcherPosition }) => (isLeftOrRight(launcherPosition) ? '0' : '100%')};
+  width: ${({ launcherPosition }) => (isLeftOrRight(launcherPosition) ? '100%' : '0')};
+
   &:before {
     background-color: ${Color.DUSTY_GREY};
     content: '';

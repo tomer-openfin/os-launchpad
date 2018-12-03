@@ -24,11 +24,11 @@ exports[`Storyshots Components/Router default 1`] = `
           className="sc-htoDjs edCAeo"
         >
           <div
-            className="sc-dnqmqq UIYYa"
+            className="sc-dnqmqq kXbMtk"
           />
         </div>
         <div
-          className="sc-gxMtzJ cJoAXO"
+          className="sc-gxMtzJ ddMpnL"
         />
         <div
           className="sc-cSHVUG jXBQNy"
@@ -41,7 +41,7 @@ exports[`Storyshots Components/Router default 1`] = `
               onClick={[Function]}
             >
               <div
-                className="sc-dnqmqq gNafnQ"
+                className="sc-dnqmqq hOEUSm"
               />
             </div>
           </div>
@@ -53,7 +53,7 @@ exports[`Storyshots Components/Router default 1`] = `
               onClick={[Function]}
             >
               <div
-                className="sc-dnqmqq gNafnQ"
+                className="sc-dnqmqq hOEUSm"
               />
             </div>
           </div>
@@ -65,7 +65,7 @@ exports[`Storyshots Components/Router default 1`] = `
               onClick={[Function]}
             >
               <div
-                className="sc-dnqmqq gNafnQ"
+                className="sc-dnqmqq hOEUSm"
               />
             </div>
           </div>
@@ -77,7 +77,7 @@ exports[`Storyshots Components/Router default 1`] = `
               onClick={[Function]}
             >
               <div
-                className="sc-dnqmqq gNafnQ"
+                className="sc-dnqmqq hOEUSm"
               />
             </div>
           </div>
@@ -91,46 +91,46 @@ exports[`Storyshots Components/Router default 1`] = `
           />
         </div>
         <div
-          className="sc-gxMtzJ cJoAXO"
+          className="sc-gxMtzJ ddMpnL"
         />
         <div
           className="sc-htoDjs cilmlp"
           onClick={[Function]}
         >
           <div
-            className="sc-dnqmqq gNafnQ"
+            className="sc-dnqmqq hOEUSm"
           />
         </div>
         <div
-          className="sc-gxMtzJ cJoAXO"
+          className="sc-gxMtzJ ddMpnL"
         />
         <div
           className="sc-htoDjs cilmlp"
           onClick={[Function]}
         >
           <div
-            className="sc-dnqmqq gNafnQ"
+            className="sc-dnqmqq hOEUSm"
           />
         </div>
         <div
-          className="sc-gxMtzJ cJoAXO"
+          className="sc-gxMtzJ ddMpnL"
         />
         <div
           className="sc-htoDjs cilmlp"
           onClick={[Function]}
         >
           <div
-            className="sc-dnqmqq gNafnQ"
+            className="sc-dnqmqq hOEUSm"
           />
         </div>
         <div
-          className="sc-gxMtzJ cJoAXO"
+          className="sc-gxMtzJ ddMpnL"
         />
         <div
           className="sc-htoDjs edCAeo"
         >
           <div
-            className="sc-dnqmqq gNafnQ"
+            className="sc-dnqmqq hOEUSm"
           />
         </div>
       </div>

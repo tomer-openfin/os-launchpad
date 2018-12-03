@@ -25,7 +25,7 @@ const AppCard = ({ addToLauncher, app, isLauncherApp, launchApp, removeFromLaunc
 
       <InfoWrapper>
         <Row>
-          <AppName onClick={handleClick}>{app.name}</AppName>
+          <AppName onClick={handleClick}>{app.title}</AppName>
 
           <CTA onClick={isLauncherApp ? () => removeFromLauncher(`${app.id}`) : () => addToLauncher(`${app.id}`)}>{renderCTAText(isLauncherApp)}</CTA>
         </Row>

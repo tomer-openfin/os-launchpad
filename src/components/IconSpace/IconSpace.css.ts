@@ -27,6 +27,7 @@ export const Background = styled.div<ImgProps>`
 export const Icon = styled.div<ImgProps>`
   background: url(${props => props.imgSrc || ''});
   background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
   height: 34px;
   width: 34px;

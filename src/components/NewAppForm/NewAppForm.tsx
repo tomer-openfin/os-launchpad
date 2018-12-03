@@ -6,8 +6,8 @@ import { Button, ButtonLink, Copy, Error, GridContainer, Heading, Label, LogoLab
 import LogoInput from '../LogoInput/LogoInput';
 
 import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../const/Samples';
-import { createApp, FILE_ACCEPT, RESPONSE_FAILURE, RESPONSE_OK, saveAppLogo } from '../../services/ApiService';
-import { App, AppFormNames, CreateAppResponse } from '../../types/commons';
+import ApiService, { FILE_ACCEPT, RESPONSE_FAILURE, RESPONSE_OK } from '../../services/ApiService';
+import { App, AppFormNames } from '../../types/commons';
 import { validateTextField, validateURL } from '../../utils/validators';
 import { ROUTES } from '../Router/consts';
 
@@ -22,10 +22,28 @@ interface State {
   updatedLogo: string;
   file: File | null;
   formContents: App;
-  responseContents: App;
   responseReceived: boolean;
-  result: CreateAppResponse;
+  result: {
+    message?: string;
+    status: string;
+  };
 }
+
+const mapSelectedOptions = (event: React.FormEvent<HTMLSelectElement>) => Array.from(event.currentTarget.selectedOptions).map(option => option.value);
+
+const renderMockIntents = () =>
+  MOCK_INTENTS.map((intent, index) => (
+    <option key={index} value={intent.displayName}>
+      {intent.displayName}
+    </option>
+  ));
+
+const renderMockContexts = () =>
+  MOCK_CONTEXTS.map((context, index) => (
+    <option key={index} value={context.$type}>
+      {context.$type}
+    </option>
+  ));
 
 class NewAppForm extends React.Component<Props, State> {
   currentLogo: string;
@@ -36,22 +54,6 @@ class NewAppForm extends React.Component<Props, State> {
     this.state = {
       file: null,
       formContents: {
-        appPage: '',
-        contact_email: '',
-        contexts: [],
-        description: '',
-        icon: '',
-        id: '',
-        images: [],
-        intents: [],
-        manifest_url: '',
-        name: '',
-        publisher: '',
-        signature: '',
-        support_email: '',
-        title: '',
-      },
-      responseContents: {
         appPage: '',
         contact_email: '',
         contexts: [],
@@ -78,125 +80,30 @@ class NewAppForm extends React.Component<Props, State> {
     this.currentLogo = EmptyLogo;
   }
 
-  componentWillUnmount() {
-    this.handleResetProps();
-  }
-
-  handleResetProps = () => {
-    const { updatedLogo } = this.state;
-
-    if (this.currentLogo !== updatedLogo) {
-      URL.revokeObjectURL(updatedLogo);
-      this.currentLogo = updatedLogo;
-    }
+  errorCb = message => {
+    this.setState({
+      responseReceived: true,
+      result: {
+        message,
+        status: RESPONSE_FAILURE,
+      },
+    });
   };
 
-  handleReset = (fn: FormikHandlers['handleReset']) => () => {
-    // Execute Formik default handleReset functionality
-    fn();
+  successCb = () =>
+    this.setState({
+      responseReceived: true,
+      result: {
+        status: RESPONSE_OK,
+      },
+    });
 
-    // But also reset custom side effects needed in redux and state
-    this.handleResetProps();
-    const { file } = this.state;
-    if (file) {
-      this.setState({ file: null });
-    }
-  };
+  handleFormSubmit = (payload, actions) => {
+    const { createApp } = this.props;
 
-  handleLogoFileChange = (fn: FormikHandlers['handleChange']) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
+    const meta = { successCb: this.successCb, errorCb: this.errorCb };
 
-    // Must pass checks to change file input
-    // 1 - Files must exist
-    // 2 - Must have at least 1 file
-    // 3 - First file must pass accepted file type
-    if (!files || !files.length || files[0].type.indexOf(FILE_ACCEPT.replace('*', '')) !== 0) {
-      return;
-    }
-
-    // Execute Formik default handleChange functionality
-    fn(e);
-
-    // Formik does not keep file objects
-    // So we must add in additonal logic to the default
-    // to handle this cause with local state
-    const { updatedLogo } = this.state;
-
-    const file = files[0];
-    URL.revokeObjectURL(updatedLogo);
-    const fileBlob = URL.createObjectURL(file);
-
-    this.setState({ file, updatedLogo: fileBlob });
-  };
-
-  handleAppLogoSubmit = () => {
-    const { file, updatedLogo } = this.state;
-
-    if (!file) {
-      return;
-    }
-
-    saveAppLogo(file)
-      .then(nextLogo => {
-        URL.revokeObjectURL(updatedLogo);
-        this.currentLogo = nextLogo;
-        this.forceUpdate();
-      })
-      .catch(e => {
-        // tslint:disable-next-line:no-console
-        console.log('Error saving logo:', e);
-      });
-
-    // need to PUT new logo path on /app/:id
-  };
-
-  handleFormSubmit = (inputValues, actions) => {
-    const { formContents } = this.state;
-    const { appPage, contact_email, contexts, description, id, icon, title, images, intents, manifest_url, publisher, signature, support_email } = formContents;
-    // try to update the app logo
-    // this.handleAppLogoSubmit();
-
-    createApp(inputValues)
-      .then(resp => {
-        if (resp.status === RESPONSE_OK) {
-          this.setState({
-            responseContents: {
-              appPage,
-              contact_email,
-              contexts,
-              description,
-              icon,
-              id,
-              images,
-              intents,
-              manifest_url,
-              name,
-              publisher,
-              signature,
-              support_email,
-              title,
-            },
-            responseReceived: true,
-            result: {
-              status: RESPONSE_OK,
-            },
-          });
-        }
-
-        this.setState({
-          responseReceived: true,
-          result: {
-            status: RESPONSE_FAILURE,
-          },
-        });
-      })
-      .catch(err => {
-        // temp force error flow message
-        this.setState({ responseReceived: true, result: { status: RESPONSE_FAILURE } });
-
-        // tslint:disable-next-line:no-console
-        console.log('There was an error with the API for createApp:', err);
-      });
+    createApp(payload, meta);
 
     actions.setSubmitting(false);
   };
@@ -204,6 +111,12 @@ class NewAppForm extends React.Component<Props, State> {
   renderFormSection = ({ setFieldValue, handleReset, isValid, dirty }) => (
     <Form>
       <GridContainer>
+        <Label>
+          Icon URL
+          <Field type="text" name="icon" validate={validateURL} />
+          <ErrorMessage component={Error} name="icon" />
+        </Label>
+
         <Label>
           Manifest URL
           <Field type="text" name="manifest_url" validate={validateURL} />
@@ -217,13 +130,9 @@ class NewAppForm extends React.Component<Props, State> {
             multiple={true}
             name="intents"
             // tslint:disable:jsx-no-lambda
-            onChange={event => setFieldValue('intents', [].slice.call(event.target.selectedOptions).map(option => option.value))}
+            onChange={event => setFieldValue('intents', mapSelectedOptions(event))}
           >
-            {MOCK_INTENTS.map((intent, index) => (
-              <option key={index} value={intent.displayName}>
-                {intent.displayName}
-              </option>
-            ))}
+            {renderMockIntents()}
           </Field>
         </Label>
 
@@ -240,13 +149,9 @@ class NewAppForm extends React.Component<Props, State> {
             multiple={true}
             name="contexts"
             // tslint:disable:jsx-no-lambda
-            onChange={event => setFieldValue('contexts', [].slice.call(event.target.selectedOptions).map(option => option.value))}
+            onChange={event => setFieldValue('contexts', mapSelectedOptions(event))}
           >
-            {MOCK_CONTEXTS.map((context, index) => (
-              <option key={index} value={context.$type}>
-                {context.$type}
-              </option>
-            ))}
+            {renderMockContexts()}
           </Field>
         </Label>
 
@@ -266,7 +171,7 @@ class NewAppForm extends React.Component<Props, State> {
       </GridContainer>
 
       <Row>
-        <ButtonLink to={ROUTES.ADMIN_APPS} onClick={this.handleReset(handleReset)}>
+        <ButtonLink to={ROUTES.ADMIN_APPS} >
           Cancel
         </ButtonLink>
 
@@ -277,28 +182,15 @@ class NewAppForm extends React.Component<Props, State> {
     </Form>
   );
 
-  renderLogoSection = () => {
-    const { updatedLogo } = this.state;
-
-    return (
-      <Form>
-        <LogoLabel>
-          Logo
-          <LogoInput name={AppFormNames.Logo} logo={updatedLogo} handleFileChange={this.handleLogoFileChange} />
-        </LogoLabel>
-      </Form>
-    );
-  };
-
-  renderResponse = result => {
-    const { responseReceived, formContents } = this.state;
+  renderMessage = () => {
+    const { responseReceived, formContents, result } = this.state;
     const { title } = formContents;
 
     if (responseReceived) {
-      if (result.status === RESPONSE_OK) {
-        return <Message>Success! The App '{title}' was succesfully updated.</Message>;
+      if (result.status === RESPONSE_FAILURE) {
+        return <Error>There was an error trying to create {title} app: {result.message}. Please try again.</Error>;
       }
-      return <Error>There was an error trying to create {title} app. Please try again.</Error>;
+      return <Message>Success! The App '{title}' was succesfully created.</Message>;
     }
 
     return null;
@@ -320,45 +212,42 @@ class NewAppForm extends React.Component<Props, State> {
   };
 
   render() {
-    const { result, formContents } = this.state;
+    const { result, formContents, responseReceived } = this.state;
     const { id, manifest_url, name, title, description, icon, images } = formContents;
 
-    // tslint:disable:jsx-no-multiline-js
-    // tslint:disable:jsx-no-lambda
     return (
-      <Wrapper>
-        <Heading>Add App</Heading>
+      responseReceived && result.status === RESPONSE_OK ? (
+        <Wrapper>
+          {this.renderMessage()}
 
-        <Copy>Please verify and/or update the following fields:</Copy>
+          <ButtonLink to={ROUTES.ADMIN_APPS}>Continue</ButtonLink>
+        </Wrapper>
+      ) : (
+        <Wrapper>
+          <Heading>Add App</Heading>
 
-        <Formik
-          initialValues={{
-            [AppFormNames.Logo]: '',
-          }}
-          key={this.currentLogo}
-          onSubmit={this.handleAppLogoSubmit}
-          render={this.renderLogoSection}
-        />
+          <Copy>Please verify and/or update the following fields:</Copy>
 
-        <Formik
-          initialValues={{
-            contexts: MOCK_CONTEXTS,
-            description,
-            icon,
-            id,
-            images,
-            intents: MOCK_INTENTS,
-            manifest_url,
-            name,
-            title,
-          }}
-          onSubmit={this.handleFormSubmit}
-          validateOnChange={false}
-          render={this.renderFormSection}
-        />
+          <Formik
+            initialValues={{
+              contexts: MOCK_CONTEXTS,
+              description,
+              icon,
+              id,
+              images,
+              intents: MOCK_INTENTS,
+              manifest_url,
+              name,
+              title,
+            }}
+            onSubmit={this.handleFormSubmit}
+            validateOnChange={false}
+            render={this.renderFormSection}
+          />
 
-        {this.renderResponse(result)}
-      </Wrapper>
+          {this.renderMessage()}
+        </Wrapper>
+      )
     );
   }
 }

@@ -30,25 +30,25 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             htmlFor="LogoFormFileInput"
           >
             <div
-              className="sc-jAaTju hfDFXA"
+              className="sc-caSCKo kkGZTj"
             >
               <div
                 className="sc-htoDjs edCAeo"
               >
                 <div
-                  className="sc-dnqmqq UIYYa"
+                  className="sc-dnqmqq kXbMtk"
                 />
               </div>
               <div
-                className="sc-cvbbAY lejVGb"
+                className="sc-fMiknA cMHHUQ"
               >
                 <div
-                  className="sc-hSdWYo kVXAJB"
+                  className="sc-jhAzac jFzWob"
                 >
                   Change Logo
                 </div>
                 <div
-                  className="sc-brqgnP fsYmMj"
+                  className="sc-eqIVtm gZHlJB"
                 >
                   Files must be at least 200 x 200 pixels square.
                   <br />
@@ -56,7 +56,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
                 </div>
                 <input
                   accept="image/*"
-                  className="sc-eHgmQL LusBu"
+                  className="sc-fBuWsC eisJQY"
                   id="LogoFormFileInput"
                   name="logo"
                   onBlur={[Function]}

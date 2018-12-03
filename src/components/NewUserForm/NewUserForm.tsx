@@ -60,7 +60,6 @@ class NewUserForm extends React.Component<Props, State> {
       result: {
         status: RESPONSE_OK,
       },
-      submitDisabled: true,
     });
 
   handleFormSubmit = (payload, actions) => {

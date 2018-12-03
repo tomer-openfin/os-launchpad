@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import noop, { noopCreator } from '../../../utils/noop';
 
+import { LauncherPosition } from '../../../types/commons';
 import App from '../App';
 
 const bounds = {
@@ -14,16 +15,11 @@ const bounds = {
 
 describe('<App />', () => {
   it('renders a <div>', () => {
-    expect(enzyme.shallow(<div/>).is('div'));
-    // expect(enzyme.shallow(<App
-    //   bounds={bounds}
-    //   collapseApp={noop}
-    //   expandApp={noop}
-    //   isExpanded
-    //   launcherPosition="top"
-    //   launchWindow={noop}
-    //   monitorInfo={{}}
-    //   setMonitorInfo={noop}
-    // />).is('div'));
+    expect(enzyme.shallow(
+      <App
+        launcherPosition={LauncherPosition.Top}
+        launchWindow={noop}
+      />,
+    ).is('div'));
   });
 });

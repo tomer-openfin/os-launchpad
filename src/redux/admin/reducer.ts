@@ -1,4 +1,13 @@
-import { CREATE_ADMIN_USER, DELETE_ADMIN_USER, GET_ADMIN_APPS, GET_ADMIN_USERS, UPDATE_ADMIN_USER } from './actions';
+import {
+  CREATE_ADMIN_APP,
+  CREATE_ADMIN_USER,
+  DELETE_ADMIN_APP,
+  DELETE_ADMIN_USER,
+  GET_ADMIN_APPS,
+  GET_ADMIN_USERS,
+  UPDATE_ADMIN_APP,
+  UPDATE_ADMIN_USER,
+} from './actions';
 
 import { formatByIds } from '../../utils/byIds';
 
@@ -30,6 +39,47 @@ export default (state: AdminState = defaultState, action): AdminState => {
         apps: {
           byId,
           ids,
+        },
+      };
+    }
+    case CREATE_ADMIN_APP.SUCCESS: {
+      const app: App = action.payload;
+
+      return {
+        ...state,
+        apps: {
+          byId: {
+            ...state.apps.byId,
+            [app.id]: app,
+          },
+          ids: [...state.apps.ids, app.id],
+        },
+      };
+    }
+    case UPDATE_ADMIN_APP.SUCCESS: {
+      const app: App = action.payload;
+
+      return {
+        ...state,
+        apps: {
+          ...state.apps,
+          byId: {
+            ...state.apps.byId,
+            [app.id]: app,
+          },
+        },
+      };
+    }
+    case DELETE_ADMIN_APP.SUCCESS: {
+      const app: App = action.payload;
+
+      const { [app.id]: deletedItem, ...byId } = state.apps.byId;
+
+      return {
+        ...state,
+        apps: {
+          ...state.apps,
+          byId,
         },
       };
     }

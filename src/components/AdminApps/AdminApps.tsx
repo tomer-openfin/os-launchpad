@@ -43,7 +43,10 @@ class AdminApps extends React.PureComponent<Props & RouteComponentProps, State> 
     this.setState({ search });
   };
 
-  filterAppsList = search => this.props.apps.filter(app => app.title.toLowerCase().indexOf(search.toLowerCase()) !== -1);
+  filterAppsList = search =>
+    search
+      ? this.props.apps.filter(app => app.title && app.title.toLowerCase().indexOf(search.toLowerCase()) !== -1)
+      : this.props.apps;
 
   renderButtons = app => {
     return (
@@ -70,7 +73,7 @@ class AdminApps extends React.PureComponent<Props & RouteComponentProps, State> 
 
         <ListWrapper>
           {this.filterAppsList(search).map(app => (
-            <li key={app.id}>
+            <li key={app.name}>
               <ListElement>{app.title}</ListElement>
               <ListElement>{this.renderButtons(app)}</ListElement>
             </li>

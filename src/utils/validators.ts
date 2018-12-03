@@ -1,4 +1,5 @@
-import urlRegex from 'url-regex';
+/* tslint:disable-next-line:no-var-requires */
+const urlRegex = require('url-regex');
 
 export const validateEmail = value => {
   let error;
@@ -33,13 +34,11 @@ export const validateTextField = value => {
 
 // todo: fix URL regex to only accept URLs ending in ".json"
 export const validateURL = value => {
-  let error;
+  if (!value) return 'Input Field Required';
 
-  if (!value) {
-    error = 'Input Field Required';
-  } else if (!urlRegex().test(value)) {
-    error = 'Invalid Manifest URL, must end in .json file extension.';
-  }
+  const validateCheck = urlRegex().test(value);
 
-  return error;
+  if (!validateCheck) return 'Invalid Manifest URL, must end in .json file extension.';
+
+  return;
 };

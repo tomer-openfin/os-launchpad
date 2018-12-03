@@ -4,7 +4,7 @@ export interface App {
   contact_email: string;
   description: string;
   icon: string;
-  id: string | number;
+  id: string;
   images: Array<{ url: string }>;
   intents: Array<{ displayName: string; name: string }>;
   manifest_url: string;

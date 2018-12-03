@@ -18,7 +18,6 @@ export default [
         $type: 'fdc3.position',
       },
     ],
-    id: 2,
     intents: [
       {
         name: 'StartCall',
@@ -54,6 +53,7 @@ export default [
       },
     ],
     name: 'fintech-studios',
+    id: 'fintech-studios',
     title: 'FinTech Studios',
     manifest_url: 'https://openfin.fintechstudios.com/openfin_config.json',
     description:
@@ -94,7 +94,6 @@ export default [
         $type: 'fdc3.position',
       },
     ],
-    id: 3,
     intents: [
       {
         name: 'StartCall',
@@ -130,6 +129,7 @@ export default [
       },
     ],
     name: 'greenkey',
+    id: 'greenkey',
     title: 'GreenKey',
     manifest_url: 'https://openfin.greenkeytech.com/openfin-config.json',
     description:
@@ -164,7 +164,6 @@ export default [
         $type: 'fdc3.position',
       },
     ],
-    id: 5,
     intents: [
       {
         name: 'StartCall',
@@ -200,6 +199,7 @@ export default [
       },
     ],
     name: 'hammerstone-markets',
+    id: 'hammerstone-markets',
     title: 'Hammerstone Markets App',
     manifest_url: 'http://desktop.hammerstone.us/app_local.json',
     description:
@@ -234,7 +234,6 @@ export default [
         $type: 'fdc3.position',
       },
     ],
-    id: 6,
     intents: [
       {
         name: 'StartCall',
@@ -270,6 +269,7 @@ export default [
       },
     ],
     name: 'neptune',
+    id: 'neptune',
     title: 'Neptune',
     manifest_url: 'https://live.neptunefi.com/app.json',
     description:
@@ -304,7 +304,6 @@ export default [
         $type: 'fdc3.position',
       },
     ],
-    id: 7,
     intents: [
       {
         name: 'StartCall',
@@ -340,6 +339,7 @@ export default [
       },
     ],
     name: 'opendoor',
+    id: 'opendoor',
     title: 'OpenDoor',
     manifest_url: 'https://trading.opendoorllc.com/app.json',
     description:
@@ -380,7 +380,6 @@ export default [
         $type: 'fdc3.position',
       },
     ],
-    id: 13,
     intents: [
       {
         name: 'StartCall',
@@ -416,6 +415,7 @@ export default [
       },
     ],
     name: 'parityone',
+    id: 'parityone',
     title: 'Parity One',
     manifest_url: 'https://parity1.com/manifest.json',
     description:
@@ -459,7 +459,6 @@ export default [
         $type: 'fdc3.position',
       },
     ],
-    id: 8,
     intents: [
       {
         name: 'StartCall',
@@ -495,6 +494,7 @@ export default [
       },
     ],
     name: 'rsrchx',
+    id: 'rsrchx',
     title: 'RSRCHXChange',
     manifest_url: 'https://rsrchx.com/api/openfin/1/rex.main.app.json',
     description:
@@ -529,7 +529,6 @@ export default [
         $type: 'fdc3.position',
       },
     ],
-    id: 12,
     intents: [
       {
         name: 'StartCall',
@@ -565,6 +564,7 @@ export default [
       },
     ],
     name: 'trumid',
+    id: 'trumid',
     title: 'Trumid',
     manifest_url: 'https://production.trumid.com/content/trading/app.json',
     description:
@@ -605,7 +605,6 @@ export default [
         $type: 'fdc3.position',
       },
     ],
-    id: 9,
     intents: [
       {
         name: 'StartCall',
@@ -641,6 +640,7 @@ export default [
       },
     ],
     name: 'tt-desktop',
+    id: 'tt-desktop',
     title: 'TT Desktop',
     manifest_url: 'https://trade.tt/desktop/config',
     description:

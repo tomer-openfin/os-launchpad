@@ -1,4 +1,4 @@
-import Component from './EditAppForm';
+import Component from './EditAppFormContainer';
 
 export * from './EditAppForm.css';
 

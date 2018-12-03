@@ -3,6 +3,7 @@ import { call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 import ApiService from '../../services/ApiService';
 
 import { closeApplication, createAndRunFromManifest, wrapApplication } from '../../utils/openfinPromises';
+import { addIdFromKey } from '../admin/saga';
 import {
   CLOSE_FIN_APP,
   closeFinAppError,
@@ -18,7 +19,9 @@ import { getAppStatusByName } from './selectors';
 import { AppStatusStates, CloseFinAppRequest, OpenFinAppRequest } from './types';
 
 function* watchGetAppDirectoryList() {
-  const appList = yield call(ApiService.getDirectoryAppList);
+  const response = yield call(ApiService.getDirectoryAppList);
+
+  const appList = response.map(addIdFromKey('name'));
 
   yield put(setAppDirectoryList(appList));
 }

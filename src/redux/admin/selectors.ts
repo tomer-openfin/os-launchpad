@@ -2,22 +2,16 @@ import { createSelector } from 'reselect';
 
 import { objectsFromIds } from '../../utils/byIds';
 import { State } from '../types';
-import { AdminAppsState, AdminState, AdminUsersState } from './types';
+import { AdminAppsById, AdminAppsState, AdminState, AdminUsersState } from './types';
 
 export const getAdminState = (state: State): AdminState => state.admin;
 
 // Apps
 export const getAdminAppsState = (state: State): AdminAppsState => state.admin.apps;
 
-export const getAdminAppsById = createSelector(
-  getAdminAppsState,
-  (adminAppsState: AdminAppsState) => adminAppsState.byId,
-);
+export const getAdminAppsById = (state: State): AdminAppsById => getAdminAppsState(state).byId;
 
-export const getAdminAppsIds = createSelector(
-  getAdminAppsState,
-  (adminAppsState: AdminAppsState) => adminAppsState.ids,
-);
+export const getAdminAppsIds = (state: State) => getAdminAppsState(state).ids;
 
 export const getAdminAppFromId = createSelector(
   [getAdminAppsById, (_, appId) => appId],

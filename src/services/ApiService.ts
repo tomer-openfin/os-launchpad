@@ -18,6 +18,7 @@ import {
   UpdateUserResponse,
   User,
 } from '../types/commons';
+import { checkIsEnterprise } from '../utils/checkIsEnterprise';
 import DEFAULT_THEMES from '../utils/defaultThemes';
 import { getLocalStorage, setLocalStorage } from './localStorageAdapter';
 
@@ -25,7 +26,7 @@ const API_URL = process.env.API_URL || '/';
 
 const PUBLIC_APPS_URL = 'https://app-directory.openfin.co/api/v1/apps';
 
-const APPS_URL = `${API_URL}api/apps`;
+const APPS_URL = `${API_URL}api/user/apps`;
 const LAYOUTS_URL = `${API_URL}api/layouts`;
 const LOGIN_URL = `${API_URL}api/auth/login`;
 const SETTINGS_URL = `${API_URL}api/user/settings`;
@@ -83,36 +84,18 @@ const createDeleteOptions = (): RequestInit => ({
   mode: 'cors',
 });
 
-export const checkIsEnterprise = () => {
-  const store = window.opener ? window.opener.store : window.store;
-  const state = store.getState();
-  return getIsEnterprise(state);
-};
-
 /**
  * Get apps
  *
  * @returns {Promise<App[]>}
  */
 const getDirectoryAppList = (): Promise<App[]> => {
-  // if (checkIsEnterprise()) {
-  //   const options = createGetOptions();
-  //   return fetch(APPS_URL, options).then(resp => resp.json());
-  // }
+  if (checkIsEnterprise()) {
+    const options = createGetOptions();
+    return fetch(`${APPS_URL}?scope=all`, options).then(resp => resp.json());
+  }
 
   return fetch(PUBLIC_APPS_URL).then(res => res.json());
-};
-
-/**
- * Get admin apps
- *
- * @returns {Promise<App[]>}
- */
-const getAdminApps = (): Promise<App[]> => {
-  // const options = createGetOptions();
-  // return fetch(`${ADMIN_APPS_URL}`, options).then(resp => resp.json());
-
-  return Promise.resolve(AppData);
 };
 
 /**
@@ -173,37 +156,60 @@ const deleteAdminUser = (user: User): Promise<DeleteUserResponse> => {
 };
 
 /**
- * Delete apps
+ * Get admin apps
  *
- * @returns {Promise<DeleteAppResponse>}
+ * @returns {Promise<App[]>}
  */
-const deleteAdminApp = (appId: string) => {
-  const options = createDeleteOptions();
-
-  return fetch(`${ADMIN_APPS_URL}/${appId}`, options).then(resp => (resp.json() as unknown) as DeleteAppResponse);
+const getAdminApps = (): Promise<App[]> => {
+  const options = createGetOptions();
+  return fetch(`${APPS_URL}?scope=all`, options).then(resp => resp.json());
 };
 
 /**
- * Create new apps
+ * Get admin app
+ *
+ * @returns {Promise<App>}
+ */
+const getAdminApp = (app: App): Promise<App> => {
+  const options = createGetOptions();
+
+  return fetch(`${ADMIN_APPS_URL}/${app.name}`, options).then(resp => resp.json());
+};
+
+/**
+ * Create new admin app
  *
  * @returns {Promise<CreateAppResponse>}
  */
-export const createApp = app => {
-  const options = createPostOptions({ app });
+const createAdminApp = (app: App): Promise<CreateAppResponse> => {
+  const options = createPostOptions({ application: app });
 
-  return fetch(`${APPS_URL}`, options).then(resp => (resp.json() as unknown) as CreateAppResponse);
+  return fetch(`${ADMIN_APPS_URL}`, options).then(resp => resp.json());
 };
 
 /**
- * Update apps
+ * Update an admin app
  *
  * @returns {Promise<UpdateAppResponse>}
  */
-export const updateApp = app => {
-  const options = createPutOptions({ app });
+const updateAdminApp = (app: App): Promise<UpdateAppResponse> => {
+  const options = createPutOptions({ application: app });
 
-  return fetch(`${APPS_URL}/${app.id}`, options).then(resp => (resp.json() as unknown) as UpdateAppResponse);
+  return fetch(`${ADMIN_APPS_URL}/${app.name}`, options).then(resp => resp.json());
 };
+
+/**
+ * Delete an admin app
+ *
+ * @returns {Promise<DeleteAppResponse>}
+ */
+const deleteAdminApp = (app: App): Promise<DeleteAppResponse> => {
+  const options = createDeleteOptions();
+
+  return fetch(`${ADMIN_APPS_URL}/${app.name}`, options).then(resp => resp.json());
+};
+
+// LAYOUTS
 
 /**
  * Get layouts
@@ -312,7 +318,7 @@ const saveAdminLogo = (file: File) => {
   return Promise.resolve(newFileUrl);
 };
 
-export const saveAppLogo = (file: File) => {
+const saveAppLogo = (file: File) => {
   // tslint:disable-next-line:no-console
   console.log('Saving new app logo file:', file);
   const newFileUrl = URL.createObjectURL(file);
@@ -336,9 +342,11 @@ const tempFetch = (endpoint = defaultEndpoint, method, payload, statusCode = '20
 };
 
 export default {
+  createAdminApp,
   createAdminUser,
   deleteAdminApp,
   deleteAdminUser,
+  getAdminApp,
   getAdminApps,
   getAdminOrganizationSettings,
   getAdminThemes,
@@ -350,8 +358,10 @@ export default {
   login,
   saveAdminLogo,
   saveAdminTheme,
+  saveAppLogo,
   saveUserLayout,
   saveUserSettings,
   tempFetch,
+  updateAdminApp,
   updateAdminUser,
 };

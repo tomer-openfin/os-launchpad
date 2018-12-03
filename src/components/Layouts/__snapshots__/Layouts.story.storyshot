@@ -18,7 +18,7 @@ exports[`Storyshots Components/Layouts default 1`] = `
         onClick={[Function]}
       >
         <div
-          className="sc-dnqmqq gNafnQ"
+          className="sc-dnqmqq hOEUSm"
         />
       </div>
       <div
@@ -26,7 +26,7 @@ exports[`Storyshots Components/Layouts default 1`] = `
         onClick={[Function]}
       >
         <div
-          className="sc-dnqmqq gNafnQ"
+          className="sc-dnqmqq hOEUSm"
         />
       </div>
     </div>

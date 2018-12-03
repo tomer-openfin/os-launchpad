@@ -11,20 +11,20 @@ exports[`Storyshots Components/Login default 1`] = `
     }
   >
     <div
-      className="sc-dVhcbM iaFmfr"
+      className="sc-csuQGl cFSQfu"
     >
       <div
         className="sc-htoDjs kcRLEW"
       >
         <div
-          className="sc-dnqmqq klHNcP"
+          className="sc-dnqmqq eNdlBn"
         />
       </div>
       <form
         onSubmit={[Function]}
       >
         <label
-          className="sc-eqIVtm MmmUp"
+          className="sc-Rmtcm gPKrlD"
         >
           <input
             name="username"
@@ -36,7 +36,7 @@ exports[`Storyshots Components/Login default 1`] = `
           />
         </label>
         <label
-          className="sc-eqIVtm MmmUp"
+          className="sc-Rmtcm gPKrlD"
         >
           <input
             name="password"
@@ -48,10 +48,10 @@ exports[`Storyshots Components/Login default 1`] = `
           />
         </label>
         <label
-          className="sc-eqIVtm MmmUp"
+          className="sc-Rmtcm gPKrlD"
         >
           <button
-            className="sc-caSCKo enArWP"
+            className="sc-hzDkRC bzetJd"
             type="submit"
           >
             Login

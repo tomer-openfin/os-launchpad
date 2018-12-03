@@ -2,16 +2,14 @@ import * as React from 'react';
 
 import { Button, ButtonLink, Copy, Error, Heading, Message, Row, Wrapper } from '../NewUserForm';
 
-import ApiService from '../../services/ApiService';
+import { RESPONSE_FAILURE, RESPONSE_OK } from '../../services/ApiService';
+import { App } from '../../types/commons';
 import { ROUTES } from '../Router/consts';
 
 interface Props {
   deleteApp: Function;
   location: {
-    state: {
-      id: string;
-      title: string;
-    };
+    state: App;
   };
 }
 
@@ -26,9 +24,6 @@ interface State {
     status: string;
   };
 }
-
-const RESPONSE_OK = 'ok';
-const RESPONSE_ERROR = 'error';
 
 class ConfirmAppDelete extends React.Component<Props, State> {
   constructor(props) {
@@ -47,78 +42,76 @@ class ConfirmAppDelete extends React.Component<Props, State> {
     };
   }
 
+  errorCb = message =>
+    this.setState({
+      responseReceived: true,
+      result: {
+        message,
+        status: RESPONSE_FAILURE,
+      },
+    });
+
+  successCb = () =>
+    this.setState({
+      deleteDisabled: true,
+      responseReceived: true,
+      result: {
+        status: RESPONSE_OK,
+      },
+    });
+
   handleDeleteApp = () => {
-    const { location } = this.props;
-    const { id } = location.state;
+    const { location, deleteApp } = this.props;
 
-    ApiService.deleteAdminApp(id)
-      .then(resp => {
-        if (resp.status === RESPONSE_OK) {
-          this.setState({
-            deleteDisabled: true,
-            responseContents: {
-              title: id,
-            },
-            responseReceived: true,
-            result: {
-              status: RESPONSE_OK,
-            },
-          });
-        }
+    const meta = { successCb: this.successCb, errorCb: this.errorCb };
 
-        this.setState({
-          responseReceived: true,
-          result: {
-            status: RESPONSE_ERROR,
-          },
-        });
-      })
-      .catch(err => {
-        // temp force failure flow message
-        this.setState({ responseReceived: true, result: { status: RESPONSE_ERROR } });
-
-        // tslint:disable-next-line:no-console
-        console.log('There was an error with the API for deleteApp:', err);
-      });
+    deleteApp(location.state, meta);
   };
 
-  renderResponse = result => {
-    const { responseReceived } = this.state;
-
+  renderMessage = () => {
+    const { responseReceived, result } = this.state;
     const { location } = this.props;
     const { title } = location.state;
 
     if (responseReceived) {
-      if (result.status === RESPONSE_OK) {
-        return <Message>Success! '{title}' was succesfully deleted.</Message>;
+      if (result.status === RESPONSE_FAILURE) {
+        return <Error>There was an error trying to delete {title}. Please try again.</Error>;
       }
-      return <Error>There was an error trying to delete {title}. Please try again.</Error>;
+      return <Message>Success! '{title}' was succesfully deleted.</Message>;
     }
 
     return null;
   };
 
   render() {
-    const { result, deleteDisabled } = this.state;
+    const { deleteDisabled, responseReceived, result } = this.state;
     const { location } = this.props;
     const { title } = location.state;
 
     return (
-      <Wrapper>
-        <Heading>Delete App</Heading>
+      responseReceived && result.status === RESPONSE_OK ? (
+        <Wrapper>
+          {this.renderMessage()}
 
-        <Copy>Are you sure you want to delete {title} from your App Directory?</Copy>
+          <ButtonLink to={ROUTES.ADMIN_APPS}>Continue</ButtonLink>
+        </Wrapper>
+      ) : (
+        <Wrapper>
+          <Heading>Delete App</Heading>
 
-        <Row>
-          <ButtonLink to={ROUTES.ADMIN_APPS}>Cancel</ButtonLink>
+          <Copy>Are you sure you want to delete {title} from your App Directory?</Copy>
 
-          <Button disabled={deleteDisabled} onClick={this.handleDeleteApp}>
-            Delete App
-          </Button>
-        </Row>
+          <Row>
+            <ButtonLink to={ROUTES.ADMIN_APPS}>Cancel</ButtonLink>
 
-        {this.renderResponse(result)}
-      </Wrapper>
+            <Button disabled={deleteDisabled} onClick={this.handleDeleteApp}>
+              Delete App
+            </Button>
+          </Row>
+
+          {this.renderMessage()}
+        </Wrapper>
+      )
     );
   }
 }

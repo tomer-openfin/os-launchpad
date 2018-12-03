@@ -24,7 +24,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq gNafnQ"
+              className="sc-dnqmqq hOEUSm"
             />
           </div>
         </div>

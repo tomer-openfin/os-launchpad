@@ -11,71 +11,38 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
     }
   >
     <div
-      className="sc-fMiknA hBtgHl"
+      className="sc-gipzik fGqjGc"
     >
       <div
-        className="sc-gipzik iVBmiX"
+        className="sc-brqgnP dGWbvO"
       >
         Edit App
       </div>
       <p
-        className="sc-iRbamj fkFqNS"
+        className="sc-cvbbAY eWfizt"
       >
         Please verify and/or update the following fields:
       </p>
       <form
         onSubmit={[Function]}
       >
-        <label
-          className="sc-bRBYWo gTLMgl"
-        >
-          Logo
-          <div
-            className="sc-jAaTju hfDFXA"
-          >
-            <div
-              className="sc-htoDjs edCAeo"
-            >
-              <div
-                className="sc-dnqmqq kYMSoc"
-              />
-            </div>
-            <div
-              className="sc-cvbbAY lejVGb"
-            >
-              <div
-                className="sc-hSdWYo kVXAJB"
-              >
-                Change Logo
-              </div>
-              <div
-                className="sc-brqgnP fsYmMj"
-              >
-                Files must be at least 200 x 200 pixels square.
-                <br />
-                File size cannot exceed 20kb.
-              </div>
-              <input
-                accept="image/*"
-                className="sc-eHgmQL LusBu"
-                name="AppLogo"
-                onBlur={[Function]}
-                onChange={[Function]}
-                type="file"
-                value=""
-              />
-            </div>
-          </div>
-        </label>
-      </form>
-      <form
-        onSubmit={[Function]}
-      >
         <div
-          className="sc-csuQGl hLlKPb"
+          className="sc-cMljjf gMCcct"
         >
           <label
-            className="sc-Rmtcm bwJwUZ"
+            className="sc-jAaTju bWwYTP"
+          >
+            Icon URL
+            <input
+              name="icon"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="text"
+              value="https://cdn.openfin.co/app_directory/img/1525196541056.jpg"
+            />
+          </label>
+          <label
+            className="sc-jAaTju bWwYTP"
           >
             Manifest URL
             <input
@@ -87,7 +54,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-Rmtcm bwJwUZ"
+            className="sc-jAaTju bWwYTP"
           >
             Accepted Intent(s)
             <select
@@ -99,7 +66,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-Rmtcm bwJwUZ"
+            className="sc-jAaTju bWwYTP"
           >
             Title
             <input
@@ -111,7 +78,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-Rmtcm bwJwUZ"
+            className="sc-jAaTju bWwYTP"
           >
             Accepted Context(s)
             <select
@@ -123,7 +90,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-Rmtcm bwJwUZ"
+            className="sc-jAaTju bWwYTP"
           >
             Name
             <input
@@ -135,7 +102,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-Rmtcm bwJwUZ"
+            className="sc-jAaTju bWwYTP"
           >
             Description
             <textarea
@@ -147,17 +114,17 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
           </label>
         </div>
         <div
-          className="sc-fBuWsC gdAIvz"
+          className="sc-jlyJG daZeuX"
         >
           <a
-            className="sc-gPEVay dkQngO"
+            className="sc-eHgmQL gAvtQA"
             href="/admin/apps"
             onClick={[Function]}
           >
             Cancel
           </a>
           <button
-            className="sc-jDwBTQ gJpUKs"
+            className="sc-hSdWYo cIOjkt"
             disabled={true}
             type="submit"
           >
@@ -313,7 +280,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
                   }
                 >
                   &lt;
-                  EditAppForm
+                  Connect(EditAppForm)
                 </span>
                 <span>
                   <span>
@@ -545,12 +512,94 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
               }
             >
               "
-              EditAppForm
+              Connect(EditAppForm)
               " Component
             </h2>
-            <small>
-              No propTypes defined!
-            </small>
+            <table
+              className="css-1uhv8nx e1vdo5380"
+            >
+              <thead>
+                <tr>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    property
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    propType
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    required
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    default
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    store
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span />
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    storeSubscription
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span />
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
