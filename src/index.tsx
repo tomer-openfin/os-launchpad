@@ -1,3 +1,4 @@
+import { deregister } from 'openfin-layouts';
 import { applicationStarted, openfinReady } from './redux/application/actions';
 import store from './store';
 import renderWindow from './utils/renderWindow';
@@ -34,6 +35,19 @@ document.addEventListener('DOMContentLoaded', async () => {
       // Dispatch the action for when openfin window is ready.
       // TODO: may want to add key for what window is ready.
       window.store.dispatch(openfinReady(window.name));
+
+      if (window.name) {
+        const config = {
+          name: window.name,
+          uuid: window.name,
+        };
+
+        deregister(config)
+          // tslint:disable-next-line:no-console
+          .then(() => console.log(`Deregistering ${window.name} from Layouts service.`))
+          // tslint:disable-next-line:no-console
+          .catch(err => console.log(`${window.name} has already been deregistred from Layouts service. Service returned the following error: ${err}`));
+      }
     });
   }
 });
