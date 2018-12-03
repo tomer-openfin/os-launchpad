@@ -49,6 +49,7 @@ module.exports = {
     historyApiFallback: true,
     host: HOST,
     port: PORT,
+    contentBase: path.join(__dirname, 'build'),
     proxy: {
       '/api/**': {
         changeOrigin: true,

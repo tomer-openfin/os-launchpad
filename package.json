@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "scripts": {
     "lint": "tslint -s node_modules/custom-tslint-formatters/formatters -t grouped 'src/**/*.{ts,tsx}'",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -o build/storybook",
     "build": "npm run clean && webpack",
     "check": "gts check",
     "clean": "gts clean && rimraf build",

@@ -24,6 +24,8 @@ pipeline {
                 }
                 sh "npm i"
                 sh "ENTERPRISE=true API_URL=\"/\" DEPLOY_LOCATION=\"https://os-launchpad-dev.openfin.co\" npm run build"
+                sh "npm run docs"
+                sh "npm run build-storybook"
                 sh "echo ${GIT_SHORT_SHA} > ./build/SHA.txt"
                 sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*.svg'"
                 sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*' --include '*.svg' --content-type 'image/svg+xml'"
