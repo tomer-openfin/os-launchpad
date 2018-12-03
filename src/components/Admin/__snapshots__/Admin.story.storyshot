@@ -11,8 +11,20 @@ exports[`Storyshots Components/Admin default 1`] = `
     }
   >
     <div
-      className="sc-tilXH bUaaUl"
+      className="sc-cIShpX jZVvcX"
     >
+      <div
+        className="sc-gGBfsJ cXkcOl"
+      >
+        <button
+          className="sc-jnlKLf fPqggm"
+          onClick={[Function]}
+        >
+          <span
+            className="sc-fYxtnH jZHIDX"
+          />
+        </button>
+      </div>
       <h1>
         You do not have clearance to see the admin tools.
       </h1>
