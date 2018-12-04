@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  -webkit-app-region: drag;
 `;
 
 export const FieldWrapper = styled.label`
