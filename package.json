@@ -2,7 +2,6 @@
   "name": "os-launchpad",
   "version": "2.0.0",
   "scripts": {
-    "lint": "tslint -s node_modules/custom-tslint-formatters/formatters -t grouped 'src/**/*.{ts,tsx}'",
     "build-storybook": "build-storybook -o build/storybook",
     "build": "npm run clean && webpack",
     "check": "gts check",
@@ -10,14 +9,16 @@
     "dev": "webpack-dev-server --hot",
     "docs": "redoc-cli bundle -o ./build/docs/index.html ./docs/api.yml",
     "fix": "gts fix",
+    "lint": "tslint -s node_modules/custom-tslint-formatters/formatters -t grouped 'src/**/*.{ts,tsx}'",
     "openfin": "node scripts/openfin.js",
+    "react-devtools": "react-devtools",
     "serve": "node server.js",
     "start": "node scripts/start.js",
     "storybook": "STORYBOOK_ENV=true start-storybook -p 6006",
     "storyshots": "jest -u",
-    "test": "jest",
     "test:api": "node scripts/testApi.js",
-    "test:ci": "run-p test test:api lint"
+    "test:ci": "run-p test test:api lint",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/core": "7.1.2",
@@ -50,6 +51,7 @@
     "html-webpack-plugin": "3.2.0",
     "jest": "23.6.0",
     "npm": "6.4.1",
+    "react-devtools": "3.4.3",
     "react-docgen-typescript-webpack-plugin": "1.1.0",
     "redoc-cli": "0.6.4",
     "rimraf": "2.6.2",
@@ -89,6 +91,7 @@
     "redux": "4.0.1",
     "redux-actions": "2.6.3",
     "redux-saga": "0.16.2",
+    "remote-redux-devtools": "0.5.13",
     "reselect": "4.0.0",
     "storybook-react-router": "1.0.1",
     "styled-components": "4.0.3",

@@ -9,5 +9,9 @@
   <body>
     <div id="main"></div>
     <div id="modals"></div>
+
+    <% if (htmlWebpackPlugin.options.env === 'development') { %>
+      <script src="http://localhost:8097"></script>
+    <% } %>
   </body>
 </html>

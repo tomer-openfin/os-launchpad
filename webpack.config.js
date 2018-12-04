@@ -14,7 +14,6 @@ const {
   HOST = '0.0.0.0',
   USERNAME,
   PASSWORD,
-  LOGGER,
   MOCK_POSTMAN_URI,
   NODE_ENV = 'development',
   PORT = 8080,
@@ -64,7 +63,6 @@ module.exports = {
         API_URL: JSON.stringify(API_URL),
         APP_UUID: JSON.stringify(appJson.startup_app.uuid),
         ENTERPRISE: JSON.stringify(ENTERPRISE),
-        LOGGER: JSON.stringify(LOGGER),
         MOCK_POSTMAN_URI: JSON.stringify(MOCK_POSTMAN_URI),
         NODE_ENV: JSON.stringify(NODE_ENV),
         POSTMAN_API_KEY: JSON.stringify(POSTMAN_API_KEY),
@@ -74,6 +72,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'index.html'),
+      env: NODE_ENV,
     }),
     new webpack.NamedModulesPlugin(),
     new CopyWebpackPlugin([
