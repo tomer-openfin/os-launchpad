@@ -1,8 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as React from 'react';
 
-import { RESPONSE_FAILURE, RESPONSE_OK } from '../../services/ApiService';
-import { User } from '../../types/commons';
+import { ResponseStatus, User } from '../../types/commons';
 import { validateTextField } from '../../utils/validators';
 import { Button, ButtonLink, Error, Heading, Label, Message, Row, Wrapper } from '../NewUserForm';
 import { ROUTES } from '../Router/consts';
@@ -51,7 +50,7 @@ class EditUserForm extends React.Component<Props, State> {
       responseReceived: true,
       result: {
         message,
-        status: RESPONSE_FAILURE,
+        status: ResponseStatus.FAILURE,
       },
     });
 
@@ -59,7 +58,7 @@ class EditUserForm extends React.Component<Props, State> {
     this.setState({
       responseReceived: true,
       result: {
-        status: RESPONSE_OK,
+        status: ResponseStatus.SUCCESS,
       },
       saveDisabled: true,
     });
@@ -136,7 +135,7 @@ class EditUserForm extends React.Component<Props, State> {
     const { responseReceived, result } = this.state;
 
     if (responseReceived) {
-      if (result.status === RESPONSE_FAILURE) {
+      if (result.status === ResponseStatus.FAILURE) {
         return <Error>There was an error tyring to update this user: {result.message}. Please try again.</Error>;
       }
 
@@ -152,7 +151,7 @@ class EditUserForm extends React.Component<Props, State> {
     const { firstName, isAdmin, lastName, middleInitial, phoneNumber, id, username } = location.state;
 
     return (
-      responseReceived && result.status === RESPONSE_OK ? (
+      responseReceived && result.status === ResponseStatus.SUCCESS ? (
           <Wrapper>
             {this.renderMessage()}
 

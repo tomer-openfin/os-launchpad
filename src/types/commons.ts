@@ -17,48 +17,33 @@ export interface App {
 
 export interface Bounds extends Dimensions, PrimaryDirectionalCoordinates {}
 
-export interface CreateAppResponse {
-  status: 'ok' | 'failure';
-  message?: string;
-}
-
-export interface DeleteAppResponse {
-  status: 'ok' | 'failure';
-  message?: string;
-}
-
-export interface UpdateAppResponse {
-  status: 'ok' | 'failure';
-  message?: string;
-}
-
-export interface CreateUserResponse {
-  status: 'ok' | 'failure';
-  message?: string;
-}
-
-export interface DeleteUserResponse {
-  status: 'ok' | 'failure';
-  message?: string;
-}
-
-export interface UpdateUserResponse {
-  status: 'ok' | 'failure';
-  message?: string;
-}
-
-export enum AppFormNames {
-  Logo = 'AppLogo',
-}
-
 export interface Dimensions {
   height: number;
   width: number;
 }
 
-export interface ErrorResponse {
-  status: string;
+interface Response {
+  status: ResponseStatus;
   message?: string;
+}
+
+// TODO: ensure type consistency across all Api Response objects
+// Ideal types are:
+//
+// export interface APIResponse<T> extends Response {
+//   status: ResponseStatus;
+//   message?: string;
+//   data?: T;
+// }
+//
+// export interface ErrorResponse<T> extends APIResponse<T> {
+//   status: ResponseStatus.FAILURE;
+// }
+
+export type APIResponse = Response | any;
+
+export interface ErrorResponse extends APIResponse {
+  status: ResponseStatus.FAILURE;
 }
 
 export type MonitorInfo = fin.MonitorInfo;
@@ -82,6 +67,11 @@ export interface LoginErrorResponse {
   status: string | 'newPassword';
   message?: string;
   requiredFields?: string[];
+}
+
+export enum ResponseStatus {
+  SUCCESS = 'ok',
+  FAILURE = 'error',
 }
 
 export interface PrimaryDirectionalCoordinates {

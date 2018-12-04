@@ -3,9 +3,7 @@ import { createAction } from 'redux-actions';
 
 import { ErrorResponse } from '../../types/commons';
 import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
-import {
-  GetLayoutsSuccessPayload,
-} from './types';
+import { GetLayoutsSuccessPayload } from './types';
 
 // Action types
 export const GET_LAYOUTS = generateAsyncActionTypes('GET_LAYOUTS');

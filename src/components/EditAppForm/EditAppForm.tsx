@@ -1,11 +1,9 @@
-import { ErrorMessage, Field, Form, Formik, FormikHandlers } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as React from 'react';
 
-import LogoInput from '../LogoInput/LogoInput';
-import { Button, ButtonLink, Copy, Error, GridContainer, Heading, Label, LogoLabel, Message, Row, Wrapper } from './EditAppForm.css';
+import { Button, ButtonLink, Copy, Error, GridContainer, Heading, Label, Message, Row, Wrapper } from './EditAppForm.css';
 
-import ApiService, { FILE_ACCEPT, RESPONSE_FAILURE, RESPONSE_OK } from '../../services/ApiService';
-import { App, AppFormNames, UpdateAppResponse } from '../../types/commons';
+import { App, ResponseStatus } from '../../types/commons';
 import { validateTextField, validateURL } from '../../utils/validators';
 import { ROUTES } from '../Router/consts';
 
@@ -45,7 +43,7 @@ class EditAppForm extends React.Component<Props, State> {
       responseReceived: true,
       result: {
         message,
-        status: RESPONSE_FAILURE,
+        status: ResponseStatus.FAILURE,
       },
     });
   };
@@ -54,7 +52,7 @@ class EditAppForm extends React.Component<Props, State> {
     this.setState({
       responseReceived: true,
       result: {
-        status: RESPONSE_OK,
+        status: ResponseStatus.SUCCESS,
       },
     });
 
@@ -162,7 +160,7 @@ class EditAppForm extends React.Component<Props, State> {
     const { title } = location.state;
 
     if (responseReceived) {
-      if (result.status === RESPONSE_FAILURE) {
+      if (result.status === ResponseStatus.FAILURE) {
         return <Error>There was an error trying to update {title}. Please try again.</Error>;
       }
       return <Message>Success! The App '{title}' was succesfully updated.</Message>;
@@ -193,7 +191,7 @@ class EditAppForm extends React.Component<Props, State> {
     const { id, manifest_url, name, title, description, icon, images, intents, contexts } = location.state;
 
     return (
-      responseReceived && result.status === RESPONSE_OK ? (
+      responseReceived && result.status === ResponseStatus.SUCCESS ? (
         <Wrapper>
           {this.renderMessage()}
 

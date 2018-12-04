@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import ApiService from '../../services/ApiService';
 
+import { ResponseStatus } from '../../types/commons';
 import LogoInput from '../LogoInput';
 import { Label, StyledButton, StyledForm, Wrapper } from './LogoForm.css';
 
@@ -53,10 +54,14 @@ class LogoForm extends React.PureComponent<Props, State> {
     }
 
     ApiService.saveAdminLogo(file)
-      .then(nextLogo => {
-        URL.revokeObjectURL(logo);
-        this.currentLogo = nextLogo;
-        this.forceUpdate();
+      .then(response => {
+        if (response && response.status !== ResponseStatus.FAILURE) {
+          URL.revokeObjectURL(logo);
+
+          this.currentLogo = response;
+
+          this.forceUpdate();
+        }
       })
       .catch(e => {
         // tslint:disable-next-line:no-console

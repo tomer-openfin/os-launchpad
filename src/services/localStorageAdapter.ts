@@ -1,3 +1,11 @@
+import { APIResponse, ResponseStatus } from '../types/commons';
+
+export const LOCAL_STORAGE_KEYS = {
+  APPS: 'apps',
+  LAYOUTS: 'layouts',
+  SETTINGS: 'settings',
+};
+
 /**
  * Get data from specified localStorage key.
  *
@@ -12,15 +20,7 @@ export function getLocalStorage<P>(key: string, defaultPayload: P): Promise<P> {
     return Promise.resolve(payload === null ? defaultPayload : (JSON.parse(payload) as P));
   } catch (e) {
     /* tslint:disable-next-line:no-console */
-    console.error(
-      'Failed to get local storage key:',
-      key,
-      '\n',
-      'Unable to parse payload:',
-      payload,
-      '\n',
-      e,
-    );
+    console.error('Failed to get local storage key:', key, '\n', 'Unable to parse payload:', payload, '\n', e);
 
     return Promise.resolve(defaultPayload);
   }
@@ -34,12 +34,8 @@ export function getLocalStorage<P>(key: string, defaultPayload: P): Promise<P> {
  *
  * @return {Promise<>}
  */
-export function setLocalStorage<P, T = void>(key: string, payload: P, resolvePayload?: T): Promise<T | void> {
+export function setLocalStorage<P>(key: string, payload: P, resolvePayload: APIResponse = { status: ResponseStatus.SUCCESS }): Promise<APIResponse> {
   localStorage.setItem(key, JSON.stringify(payload));
 
-  if (resolvePayload) {
-    return Promise.resolve(resolvePayload);
-  }
-
-  return Promise.resolve();
+  return Promise.resolve(resolvePayload);
 }

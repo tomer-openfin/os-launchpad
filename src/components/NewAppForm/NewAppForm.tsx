@@ -1,15 +1,14 @@
-import { ErrorMessage, Field, Form, Formik, FormikHandlers } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as React from 'react';
 import * as EmptyLogo from '../../assets/empty-logo.svg';
 
-import { Button, ButtonLink, Copy, Error, GridContainer, Heading, Label, LogoLabel, Message, Row, Wrapper } from '../EditAppForm/EditAppForm.css';
-import LogoInput from '../LogoInput/LogoInput';
-
 import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../const/Samples';
-import ApiService, { FILE_ACCEPT, RESPONSE_FAILURE, RESPONSE_OK } from '../../services/ApiService';
-import { App, AppFormNames } from '../../types/commons';
 import { validateTextField, validateURL } from '../../utils/validators';
 import { ROUTES } from '../Router/consts';
+
+import { App, ResponseStatus } from '../../types/commons';
+
+import { Button, ButtonLink, Copy, Error, GridContainer, Heading, Label, Message, Row, Wrapper } from '../EditAppForm/EditAppForm.css';
 
 interface Props {
   createApp: Function;
@@ -85,7 +84,7 @@ class NewAppForm extends React.Component<Props, State> {
       responseReceived: true,
       result: {
         message,
-        status: RESPONSE_FAILURE,
+        status: ResponseStatus.FAILURE,
       },
     });
   };
@@ -94,7 +93,7 @@ class NewAppForm extends React.Component<Props, State> {
     this.setState({
       responseReceived: true,
       result: {
-        status: RESPONSE_OK,
+        status: ResponseStatus.SUCCESS,
       },
     });
 
@@ -187,7 +186,7 @@ class NewAppForm extends React.Component<Props, State> {
     const { title } = formContents;
 
     if (responseReceived) {
-      if (result.status === RESPONSE_FAILURE) {
+      if (result.status === ResponseStatus.FAILURE) {
         return <Error>There was an error trying to create {title} app: {result.message}. Please try again.</Error>;
       }
       return <Message>Success! The App '{title}' was succesfully created.</Message>;
@@ -216,7 +215,7 @@ class NewAppForm extends React.Component<Props, State> {
     const { id, manifest_url, name, title, description, icon, images } = formContents;
 
     return (
-      responseReceived && result.status === RESPONSE_OK ? (
+      responseReceived && result.status === ResponseStatus.SUCCESS ? (
         <Wrapper>
           {this.renderMessage()}
 

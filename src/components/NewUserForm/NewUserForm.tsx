@@ -2,10 +2,11 @@ import * as React from 'react';
 
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 
-import { RESPONSE_FAILURE, RESPONSE_OK } from '../../services/ApiService';
-import { User } from '../../types/commons';
 import { validateEmail, validateTextField } from '../../utils/validators';
 import { ROUTES } from '../Router/consts';
+
+import { ResponseStatus, User } from '../../types/commons';
+
 import { Button, ButtonLink, Error, Heading, Label, Message, Row, Wrapper } from './NewUserForm.css';
 
 interface Props {
@@ -49,7 +50,7 @@ class NewUserForm extends React.Component<Props, State> {
       responseReceived: true,
       result: {
         message,
-        status: RESPONSE_FAILURE,
+        status: ResponseStatus.FAILURE,
       },
     });
   };
@@ -58,7 +59,7 @@ class NewUserForm extends React.Component<Props, State> {
     this.setState({
       responseReceived: true,
       result: {
-        status: RESPONSE_OK,
+        status: ResponseStatus.SUCCESS,
       },
     });
 
@@ -144,7 +145,7 @@ class NewUserForm extends React.Component<Props, State> {
     const { responseReceived, result } = this.state;
 
     if (responseReceived) {
-      if (result.status === RESPONSE_FAILURE) {
+      if (result.status === ResponseStatus.FAILURE) {
         return <Error>There was an error tyring to create this user: {result.message}. Please try again.</Error>;
       }
 
@@ -160,7 +161,7 @@ class NewUserForm extends React.Component<Props, State> {
     const { id, email, firstName, isAdmin, lastName, middleInitial, organizationId, tmpPassword, phoneNumber } = formContents;
 
     return (
-      responseReceived && result.status === RESPONSE_OK ? (
+      responseReceived && result.status === ResponseStatus.SUCCESS ? (
         <Wrapper>
           {this.renderMessage()}
 

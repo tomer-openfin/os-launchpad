@@ -2,8 +2,7 @@ import * as React from 'react';
 
 import { Button, ButtonLink, Copy, Error, Heading, Message, Row, Wrapper } from '../NewUserForm';
 
-import { RESPONSE_FAILURE, RESPONSE_OK } from '../../services/ApiService';
-import { User } from '../../types/commons';
+import { ResponseStatus, User } from '../../types/commons';
 import { ROUTES } from '../Router/consts';
 
 interface Props {
@@ -41,7 +40,7 @@ class ConfirmUserDelete extends React.Component<Props, State> {
       responseReceived: true,
       result: {
         message,
-        status: RESPONSE_FAILURE,
+        status: ResponseStatus.FAILURE,
       },
     });
 
@@ -50,7 +49,7 @@ class ConfirmUserDelete extends React.Component<Props, State> {
       deleteDisabled: true,
       responseReceived: true,
       result: {
-        status: RESPONSE_OK,
+        status: ResponseStatus.SUCCESS,
       },
     });
 
@@ -68,7 +67,7 @@ class ConfirmUserDelete extends React.Component<Props, State> {
     const { firstName, lastName } = location.state;
 
     if (responseReceived) {
-      if (result.status === RESPONSE_FAILURE) {
+      if (result.status === ResponseStatus.FAILURE) {
         return (
           <Error>
             There was an error trying to delete {`${firstName} ${lastName}`}: {result.message}
@@ -86,7 +85,7 @@ class ConfirmUserDelete extends React.Component<Props, State> {
     const { firstName, lastName } = location.state;
 
     return (
-      responseReceived && result.status === RESPONSE_OK ? (
+      responseReceived && result.status === ResponseStatus.SUCCESS ? (
         <Wrapper>
           {this.renderMessage()}
 

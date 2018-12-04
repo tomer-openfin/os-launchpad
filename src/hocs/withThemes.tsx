@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Omit } from 'react-redux';
 
 import ApiService from '../services/ApiService';
-import { Theme } from '../types/commons';
+import { ResponseStatus, Theme } from '../types/commons';
 
 enum Consts {
   Themes = 'themes',
@@ -26,7 +26,11 @@ const withThemes = <P extends WithThemesProps>(Component: React.ComponentType<P>
 
     componentDidMount() {
       ApiService.getAdminThemes()
-        .then(themes => this.setState({ themes }))
+        .then(response => {
+          if (response && response.status !== ResponseStatus.FAILURE) {
+            this.setState({ themes: response });
+          }
+        })
         .catch(error => this.setState({ error }));
     }
 

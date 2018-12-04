@@ -2,8 +2,7 @@ import * as React from 'react';
 
 import { Button, ButtonLink, Copy, Error, Heading, Message, Row, Wrapper } from '../NewUserForm';
 
-import { RESPONSE_FAILURE, RESPONSE_OK } from '../../services/ApiService';
-import { App } from '../../types/commons';
+import { App, ResponseStatus } from '../../types/commons';
 import { ROUTES } from '../Router/consts';
 
 interface Props {
@@ -47,7 +46,7 @@ class ConfirmAppDelete extends React.Component<Props, State> {
       responseReceived: true,
       result: {
         message,
-        status: RESPONSE_FAILURE,
+        status: ResponseStatus.FAILURE,
       },
     });
 
@@ -56,7 +55,7 @@ class ConfirmAppDelete extends React.Component<Props, State> {
       deleteDisabled: true,
       responseReceived: true,
       result: {
-        status: RESPONSE_OK,
+        status: ResponseStatus.SUCCESS,
       },
     });
 
@@ -74,7 +73,7 @@ class ConfirmAppDelete extends React.Component<Props, State> {
     const { title } = location.state;
 
     if (responseReceived) {
-      if (result.status === RESPONSE_FAILURE) {
+      if (result.status === ResponseStatus.FAILURE) {
         return <Error>There was an error trying to delete {title}. Please try again.</Error>;
       }
       return <Message>Success! '{title}' was succesfully deleted.</Message>;
@@ -89,7 +88,7 @@ class ConfirmAppDelete extends React.Component<Props, State> {
     const { title } = location.state;
 
     return (
-      responseReceived && result.status === RESPONSE_OK ? (
+      responseReceived && result.status === ResponseStatus.SUCCESS ? (
         <Wrapper>
           {this.renderMessage()}
 

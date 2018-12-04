@@ -2,6 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 
+import { ResponseStatus } from '../../types/commons';
 import { getAppDirectoryList } from '../apps/index';
 import {
   CREATE_ADMIN_APP,
@@ -39,7 +40,7 @@ function* watchGetAdminAppsRequest() {
   const response = yield call(ApiService.getAdminApps);
 
   // TODO: hone the criteria for error response once it is more than empty object
-  if (response.length && response.status !== 'error') {
+  if (response.length && response.status !== ResponseStatus.FAILURE) {
     const appList = response.map(addIdFromKey('name'));
 
     yield put(getAdminAppsSuccess(appList));
@@ -51,7 +52,7 @@ function* watchGetAdminAppsRequest() {
 function* watchCreateAdminAppRequest(action) {
   const response = yield call(ApiService.createAdminApp, action.payload);
 
-  if (response.status === 'error' || response === 'Internal Server Error') {
+  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
     yield put(createAdminAppError(response, action.meta));
   } else {
     // modify after api updated
@@ -75,7 +76,7 @@ function* watchCreateAdminAppRequest(action) {
 function* watchUpdateAdminAppRequest(action) {
   const response = yield call(ApiService.updateAdminApp, action.payload);
 
-  if (response.status === 'error' || response === 'Internal Server Error') {
+  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
     yield put(updateAdminAppError(response, action.meta));
   } else {
     // modify after api updated
@@ -91,7 +92,7 @@ function* watchUpdateAdminAppRequest(action) {
 function* watchDeleteAdminAppRequest(action) {
   const response = yield call(ApiService.deleteAdminApp, action.payload);
 
-  if (response.status === 'error' || response === 'Internal Server Error') {
+  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
     yield put(deleteAdminAppError(response, action.meta));
   } else {
     yield put(deleteAdminAppSuccess(action.payload, action.meta));
@@ -103,7 +104,7 @@ function* watchGetAdminUsersRequest() {
   const response = yield call(ApiService.getAdminUsers);
 
   // TODO: hone the criteria for error response once it is more than empty object
-  if (response.length && response.status !== 'error') {
+  if (response.length && response.status !== ResponseStatus.FAILURE) {
     const userList = response.map(addIdFromKey('username'));
 
     yield put(getAdminUsersSuccess(userList));
@@ -115,7 +116,7 @@ function* watchGetAdminUsersRequest() {
 function* watchCreateAdminUserRequest(action) {
   const response = yield call(ApiService.createAdminUser, action.payload);
 
-  if (response.status === 'error' || response === 'Internal Server Error') {
+  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
     yield put(createAdminUserError(response, action.meta));
   } else {
     // modify after api updated
@@ -138,7 +139,7 @@ function* watchCreateAdminUserRequest(action) {
 function* watchUpdateAdminUserRequest(action) {
   const response = yield call(ApiService.updateAdminUser, action.payload);
 
-  if (response.status === 'error' || response === 'Internal Server Error') {
+  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
     yield put(updateAdminUserError(response, action.meta));
   } else {
     // modify after api updated
@@ -153,7 +154,7 @@ function* watchUpdateAdminUserRequest(action) {
 function* watchDeleteAdminUserRequest(action) {
   const response = yield call(ApiService.deleteAdminUser, action.payload);
 
-  if (response.status === 'error' || response === 'Internal Server Error') {
+  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
     yield put(deleteAdminUserError(response, action.meta));
   } else {
     yield put(deleteAdminUserSuccess(action.payload, action.meta));
