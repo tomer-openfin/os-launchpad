@@ -63,7 +63,7 @@ const AppList = ({ appList, appsStatusByName, launchApp, launchWindowCreator, la
         }
 
         return (
-          <Space key={app.manifest_url || index} withClose>
+          <Space key={app.name || index} withClose>
             <ContextMenuZone options={contextMenuOptions}>
               <IconSpace onClick={handleClickCreator(app, launchApp, launchWindowCreator(config.appDirectory))} iconImg={app ? app.icon : plusIcon} />
 

@@ -15,6 +15,7 @@ const mockLayout = {
   type: OpenfinLayout.type,
 };
 
+const mockDeregister = () => Promise.resolve(undefined);
 const mockGenerateLayout = (): Promise<Layout> => Promise.resolve(mockLayout);
 const mockRestoreLayout = (layout: Layout): Promise<Layout> => Promise.resolve(layout);
 
@@ -28,3 +29,5 @@ const mockRestoreLayout = (layout: Layout): Promise<Layout> => Promise.resolve(l
 export const generateLayout = isNotFin ? mockGenerateLayout : require('openfin-layouts').generateLayout;
 // tslint:disable-next-line:no-var-requires
 export const restoreLayout = isNotFin ? mockRestoreLayout : require('openfin-layouts').restoreLayout;
+// tslint:disable-next-line:no-var-requires
+export const deregister = isNotFin ? mockDeregister : require('openfin-layouts').deregister;

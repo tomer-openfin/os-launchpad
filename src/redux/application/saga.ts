@@ -2,10 +2,11 @@ import { Window } from '@giantmachines/redux-openfin';
 import { delay } from 'redux-saga';
 import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 
-import windowsConfig, { initOnStartWindows } from '../../config/windows';
+import windowsConfig, { createConfig, initOnStartWindows, MAIN_WINDOW } from '../../config/windows';
 import { getNewPosDelta } from '../../utils/coordinateHelpers';
 import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
+import { deregister } from '../../utils/openfinLayouts';
 import { animateWindow, getSystemMonitorInfo } from '../../utils/openfinPromises';
 import takeFirst from '../../utils/takeFirst';
 import { LAUNCHER_HIDDEN_VISIBILITY_DELTA } from '../../utils/windowPositionHelpers';
@@ -111,6 +112,19 @@ function* watchLaunchAppLauncher() {
     //       Delay helps with the dom shuffling
     yield delay(100);
     yield put(Window.showWindow({ id: APP_UUID }));
+
+    // Deregister all child windows
+    (async function deregisterAllWindows() {
+      const names = Object.keys(windowsConfig).map(window => windowsConfig[window].name);
+      for (let i = 0; i < names.length; i++) {
+        // UUID (i.e MAIN_WINDOW) shared across child windows
+        await deregister(createConfig(MAIN_WINDOW, names[i]))
+          // tslint:disable-next-line:no-console
+          .then(() => console.log(`Deregistering ${names[i]} from Layouts service.`))
+          // tslint:disable-next-line:no-console
+          .catch(err => console.log(`${names[i]} has already been deregistred from Layouts service. ${err}`));
+      }
+    })();
   }
 }
 
