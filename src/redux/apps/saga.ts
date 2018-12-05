@@ -4,6 +4,7 @@ import ApiService from '../../services/ApiService';
 
 import { closeApplication, createAndRunFromManifest, wrapApplication } from '../../utils/openfinPromises';
 import { addIdFromKey } from '../admin/saga';
+import { reboundLauncherRequest } from '../application/index';
 import {
   CLOSE_FIN_APP,
   closeFinAppError,
@@ -13,6 +14,7 @@ import {
   OPEN_FIN_APP,
   openFinAppError,
   openFinAppSuccess,
+  SET_APP_DIRECTORY_LIST,
   setAppDirectoryList,
 } from './actions';
 import { getAppStatusByName } from './selectors';
@@ -68,8 +70,13 @@ function* watchCloseFinAppRequest(action: CloseFinAppRequest) {
   }
 }
 
+function* watchSetAppDirectoryList() {
+  yield put(reboundLauncherRequest(false));
+}
+
 export function* appsSaga() {
   yield takeLatest(GET_APP_DIRECTORY_LIST, watchGetAppDirectoryList);
   yield takeEvery(OPEN_FIN_APP.REQUEST, watchOpenFinAppRequest);
   yield takeEvery(CLOSE_FIN_APP.REQUEST, watchCloseFinAppRequest);
+  yield takeEvery(SET_APP_DIRECTORY_LIST, watchSetAppDirectoryList);
 }

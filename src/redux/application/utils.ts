@@ -1,36 +1,57 @@
 import { all, call, select } from 'redux-saga/effects';
 
 import { Bounds } from '../../types/commons';
-import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName, getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
-import { setWindowBoundsPromise } from '../../utils/openfinPromises';
-import { calcBoundsRelativeToLauncher, calcLauncherPosition } from '../../utils/windowPositionHelpers';
+import { animateWindow, setWindowBoundsPromise } from '../../utils/openfinPromises';
+import { calcBoundsRelativeToLauncher, calcLauncherPosition, isBottom, isRight } from '../../utils/windowPositionHelpers';
 import { getAutoHide, getLauncherPosition } from '../me';
-import { getMonitorInfo } from '../system';
+import { getTotalLauncherCtas } from '../selectors';
+import { getMonitorInfo } from '../system/index';
+import { State } from '../types';
 import { getWindowBounds } from '../windows';
 
-const APP_UUID = getAppUuid();
+const ANIMATION_DURATION = 200;
 
-/**
- * Generator for setting the Launcher bounds
- */
-export function* setLauncherBounds() {
+export function* animateLauncherCollapseExpand(isExpanded: State['application']['isExpanded']) {
   const launcherFinWindow = yield call(getLauncherFinWindow);
   if (!launcherFinWindow) {
     return;
   }
 
-  const [bounds, monitorInfo, launcherPosition, autoHide] = yield all([
-    select(getWindowBounds, APP_UUID),
+  const [totalCtas, monitorInfo, launcherPosition, autoHide] = yield all([
+    select(getTotalLauncherCtas),
     select(getMonitorInfo),
     select(getLauncherPosition),
     select(getAutoHide),
   ]);
-  if (!bounds) {
-    return;
+  const { height, width, top, left } = calcLauncherPosition(totalCtas, monitorInfo, launcherPosition, autoHide, isExpanded);
+  const transitions: fin.AnimationTransition = {
+    size: {
+      duration: ANIMATION_DURATION,
+      height,
+      relative: false,
+      width,
+    },
+  };
+  if (isBottom(launcherPosition)) {
+    transitions.position = {
+      duration: ANIMATION_DURATION,
+      left,
+      relative: false,
+      top,
+    };
+  } else if (isRight(launcherPosition)) {
+    transitions.position = {
+      duration: ANIMATION_DURATION,
+      left,
+      relative: false,
+      top,
+    };
   }
-  const launcherBounds = calcLauncherPosition(bounds, monitorInfo, launcherPosition, autoHide);
-  yield call(setWindowBoundsPromise, launcherFinWindow, launcherBounds);
+
+  yield call(animateWindow, launcherFinWindow, transitions, {
+    interrupt: false,
+  });
 }
 
 /**

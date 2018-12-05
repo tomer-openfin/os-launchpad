@@ -24,10 +24,10 @@ class AppOverflow extends React.Component<Props, {}> {
   render() {
     const { autoHide, setAutoHide, setLaunchbarPosition } = this.props;
 
-    const setLauncherPositonTop = () => setLaunchbarPosition(LauncherPosition.Top);
-    const setLauncherPositonLeft = () => setLaunchbarPosition(LauncherPosition.Left);
-    const setLauncherPositonRight = () => setLaunchbarPosition(LauncherPosition.Right);
-    const setLauncherPositonBottom = () => setLaunchbarPosition(LauncherPosition.Bottom);
+    const setLauncherPositionTop = () => setLaunchbarPosition(LauncherPosition.Top);
+    const setLauncherPositionLeft = () => setLaunchbarPosition(LauncherPosition.Left);
+    const setLauncherPositionRight = () => setLaunchbarPosition(LauncherPosition.Right);
+    const setLauncherPositionBottom = () => setLaunchbarPosition(LauncherPosition.Bottom);
     const handleAutoHide = () => {
       autoHide ? setAutoHide(false) : setAutoHide(true);
     };
@@ -45,15 +45,15 @@ class AppOverflow extends React.Component<Props, {}> {
         <Section>
           <Heading>Launcher Position</Heading>
 
-          <CTA onClick={setLauncherPositonTop}>Top</CTA>
+          <CTA onClick={setLauncherPositionTop}>Top</CTA>
 
           <div>
-            <CTA onClick={setLauncherPositonLeft}>Left</CTA>
+            <CTA onClick={setLauncherPositionLeft}>Left</CTA>
 
-            <CTA onClick={setLauncherPositonRight}>Right</CTA>
+            <CTA onClick={setLauncherPositionRight}>Right</CTA>
           </div>
 
-          <CTA onClick={setLauncherPositonBottom}>Bottom</CTA>
+          <CTA onClick={setLauncherPositionBottom}>Bottom</CTA>
         </Section>
       </Window>
     );

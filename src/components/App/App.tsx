@@ -1,70 +1,44 @@
 import * as React from 'react';
 
-import * as adminIcon from '../../assets/AdminSettings.svg';
-import * as notificationsIcon from '../../assets/Notifications.svg';
-import * as saveLayoutIcon from '../../assets/SaveLayout.svg';
-import * as searchIcon from '../../assets/Search.svg';
-import * as settingsIcon from '../../assets/Settings.svg';
-
-import windowsConfig from '../../config/windows';
-import { WindowConfig } from '../../redux/windows/types';
-
-import { LauncherPosition } from '../../types/commons';
-import AppList from '../AppList';
+import { App, LauncherPosition } from '../../types/commons';
 import IconSpace from '../IconSpace';
 import Logo from '../Logo';
-import { EllipsisImage, EllipsisWrapper, Separator, Wrapper } from './App.css';
+import { Separator, StyledAppIcon, Wrapper } from './App.css';
+
+interface LauncherIcon {
+  cta: () => void;
+  icon: string;
+  key: string;
+}
 
 export interface Props {
-  isAdmin?: boolean;
+  apps: App[];
   launcherPosition: LauncherPosition;
-  launchWindow: (window: WindowConfig) => void;
+  icons: LauncherIcon[];
 }
 
 const App = (props: Props) => {
-  const { isAdmin, launcherPosition, launchWindow } = props;
-
-  const handleLaunchAdminWindow = () => launchWindow(windowsConfig.admin);
-  const handleLaunchAppDirectoryWindow = () => launchWindow(windowsConfig.appDirectory);
-  const handleLaunchAppOverflowWindow = () => launchWindow(windowsConfig.appLauncherOverflow);
-  const handleLaunchSettingsWindow = () => launchWindow(windowsConfig.settings);
-  const handleLaunchLayoutsWindow = () => launchWindow(windowsConfig.layouts);
+  const { apps, launcherPosition, icons } = props;
 
   return (
     <Wrapper launcherPosition={launcherPosition}>
       <Logo />
 
-      <Separator launcherPosition={launcherPosition} />
-
-      <AppList spaceCount={4} />
-
-      <EllipsisWrapper launcherPosition={launcherPosition} onClick={handleLaunchAppOverflowWindow}>
-        <EllipsisImage launcherPosition={launcherPosition} />
-      </EllipsisWrapper>
-
-      <Separator launcherPosition={launcherPosition} />
-
-      {isAdmin && (
-        <>
-          <IconSpace hover iconImg={adminIcon} onClick={handleLaunchAdminWindow} />
-
+      {apps.map(app => (
+        <React.Fragment key={app.name}>
           <Separator launcherPosition={launcherPosition} />
-        </>
-      )}
 
-      <IconSpace hover iconImg={settingsIcon} onClick={handleLaunchSettingsWindow} />
+          <StyledAppIcon launcherPosition={launcherPosition} name={app.name} withContextMenu />
+        </React.Fragment>
+      ))}
 
-      <Separator launcherPosition={launcherPosition} />
+      {icons.map(icon => (
+        <React.Fragment key={icon.key}>
+          <Separator launcherPosition={launcherPosition} />
 
-      <IconSpace hover iconImg={searchIcon} onClick={handleLaunchAppDirectoryWindow} />
-
-      <Separator launcherPosition={launcherPosition} />
-
-      <IconSpace hover iconImg={saveLayoutIcon} onClick={handleLaunchLayoutsWindow} />
-
-      <Separator launcherPosition={launcherPosition} />
-
-      <IconSpace hover iconImg={notificationsIcon} />
+          <IconSpace hover iconImg={icon.icon} onClick={icon.cta} />
+        </React.Fragment>
+      ))}
     </Wrapper>
   );
 };

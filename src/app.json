@@ -16,8 +16,11 @@
     "alwaysOnTop": true,
     "icon": "%ROOT_URL%/public/logo-new.ico",
     "applicationIcon": "%ROOT_URL%/public/logo-new.png",
-    "minHeight:": 10,
-    "minWidth:": 10
+    "minHeight:": 0,
+    "minWidth:": 0,
+    "smallWindow": true,
+    "maximizable": false,
+    "minimizable": false
   },
   "services": [{ "name": "notifications" }, { "name": "layouts" }],
   "runtime": {

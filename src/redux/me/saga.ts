@@ -4,7 +4,7 @@ import { all, call, put, select, take, takeLatest } from 'redux-saga/effects';
 import ApiService from '../../services/ApiService';
 
 import { getAdminAppsRequest, getAdminUsersRequest } from '../admin';
-import { launchAppLauncher, setLauncherBounds } from '../application';
+import { launchAppLauncher, reboundLauncherRequest } from '../application';
 import { getAppDirectoryList } from '../apps';
 import { getLayoutsRequest } from '../layouts';
 import {
@@ -88,17 +88,17 @@ function* watchGetSettingsRequest() {
 }
 
 function* watchGetSettingsSuccess() {
-  yield call(setLauncherBounds);
+  yield put(reboundLauncherRequest(false));
 }
 
 function* watchSetAutoHide() {
-  yield call(setLauncherBounds);
+  yield put(reboundLauncherRequest(false));
 
   yield put(saveSettingsRequest());
 }
 
 function* watchSetLaunchbarPosition() {
-  yield call(setLauncherBounds);
+  yield put(reboundLauncherRequest(false));
 
   yield put(saveSettingsRequest());
 }
@@ -113,6 +113,8 @@ function* watchSaveSettingsRequest() {
 }
 
 function* watchUpdateLauncherApps() {
+  yield put(reboundLauncherRequest(true));
+
   yield put(saveSettingsRequest());
 }
 

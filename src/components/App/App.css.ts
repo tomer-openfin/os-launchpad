@@ -3,26 +3,27 @@ import styled from 'styled-components';
 import * as ellipsisIcon from '../../assets/Ellipsis.svg';
 
 import { Color } from '../../styles/index';
-import { isLeftOrRight } from '../../utils/windowPositionHelpers';
-
 import { LauncherPosition } from '../../types/commons';
+import { isBottomOrRight, isLeftOrRight } from '../../utils/windowPositionHelpers';
+
+import AppIcon from '../AppIcon';
 
 interface CommonProps {
   launcherPosition: LauncherPosition;
 }
 
 export const Wrapper = styled.div<CommonProps>`
+  align-items: ${({ launcherPosition }) => (isBottomOrRight(launcherPosition) ? 'flex-start' : 'flex-end')};
   display: flex;
-  height: 100vh;
-  width: 100vw;
   flex-direction: ${({ launcherPosition }) => (isLeftOrRight(launcherPosition) ? 'column' : 'row')};
+  height: 100vh;
   justify-content: space-between;
-  align-items: center;
   position: relative;
+  width: 100vw;
 `;
 
 export const Separator = styled.div<CommonProps>`
-  position: relative
+  position: relative;
   height: ${({ launcherPosition }) => (isLeftOrRight(launcherPosition) ? '0' : '100%')};
   width: ${({ launcherPosition }) => (isLeftOrRight(launcherPosition) ? '100%' : '0')};
 
@@ -63,4 +64,8 @@ export const EllipsisWrapper = styled.div<CommonProps>`
   height: ${({ launcherPosition }) => (isLeftOrRight(launcherPosition) ? '25px' : '50px')};
   width: ${({ launcherPosition }) => (isLeftOrRight(launcherPosition) ? '50px' : '25px')};
   padding: ${({ launcherPosition }) => (isLeftOrRight(launcherPosition) ? '4px 8px' : '8px 4px')};
+`;
+
+export const StyledAppIcon = styled(AppIcon)<CommonProps>`
+  display: ${({ launcherPosition }) => (isLeftOrRight(launcherPosition) ? 'block' : 'inline-block')};
 `;

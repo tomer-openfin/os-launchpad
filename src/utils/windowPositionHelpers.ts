@@ -44,8 +44,13 @@ const OFFSETS = {
 
 export const LAUNCHER_HIDDEN_VISIBILITY_DELTA = 5;
 
-export const isTopOrBottom = (position: LauncherPosition) => position === TOP || position === BOTTOM;
-export const isLeftOrRight = (position: LauncherPosition) => position === LEFT || position === RIGHT;
+export const isBottom = (position: LauncherPosition) => position === BOTTOM;
+export const isLeft = (position: LauncherPosition) => position === LEFT;
+export const isRight = (position: LauncherPosition) => position === RIGHT;
+export const isTop = (position: LauncherPosition) => position === TOP;
+export const isTopOrBottom = (position: LauncherPosition) => isTop(position) || isBottom(position);
+export const isLeftOrRight = (position: LauncherPosition) => isLeft(position) || isRight(position);
+export const isBottomOrRight = (position: LauncherPosition) => isBottom(position) || isRight(position);
 
 /**
  * Returns new dimensions based on launcher position.
@@ -74,6 +79,33 @@ export const calcDimensionsByLauncherPosition = (bounds: Bounds, launcherPositio
 };
 
 /**
+ * Returns the dimensions of the launcher based on the number of ctas and its position.
+ *
+ * @param ctaCount - number of ctas in launcher
+ * @param launcherPosition - current launcher position
+ *
+ * @returns {Dimensions}
+ */
+export const calcLauncherDimensions = (ctaCount: number, launcherPosition: LauncherPosition, autoHide: boolean, isExpanded: boolean): Dimensions => {
+  const collapsed = autoHide && !isExpanded;
+  const isOnTopOrBottom = isTopOrBottom(launcherPosition);
+  const LOGO_SIZE = 50;
+  const ICON_SIZE = 50;
+  // const OVERFLOW = 25;
+  const STATIC_DIMENSION = collapsed ? LAUNCHER_HIDDEN_VISIBILITY_DELTA : 50;
+  // const dynamicDimension = ctaCount * ICON_SIZE + LOGO_SIZE + OVERFLOW;
+  const dynamicDimension = ctaCount * ICON_SIZE + LOGO_SIZE;
+
+  const height = isOnTopOrBottom ? STATIC_DIMENSION : dynamicDimension;
+  const width = isOnTopOrBottom ? dynamicDimension : STATIC_DIMENSION;
+
+  return {
+    height,
+    width,
+  };
+};
+
+/**
  * Returns coordinates of where the launcher should be.
  *
  * @param dimensions - dimensions of window
@@ -87,7 +119,6 @@ export const calcLauncherCoordinates = (
   dimensions: Dimensions,
   monitorInfo: MonitorInfo,
   launcherPosition: LauncherPosition,
-  autoHide: boolean,
 ): PrimaryDirectionalCoordinates => {
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);
   const { height, width } = dimensions;
@@ -103,35 +134,35 @@ export const calcLauncherCoordinates = (
 
   switch (launcherPosition) {
     case LauncherPosition.Bottom: {
-      const delta = autoHide ? LAUNCHER_HIDDEN_VISIBILITY_DELTA : height;
+      // const delta = autoHide ? LAUNCHER_HIDDEN_VISIBILITY_DELTA : height;
 
       return {
         left: midpoint - edgeDelta,
-        top: bottom - delta,
+        top: bottom - height,
       };
     }
     case LauncherPosition.Left: {
-      const delta = autoHide ? LAUNCHER_HIDDEN_VISIBILITY_DELTA - width : 0;
+      // const delta = autoHide ? LAUNCHER_HIDDEN_VISIBILITY_DELTA - width : 0;
 
       return {
-        left: left + delta,
+        left,
         top: midpoint - edgeDelta,
       };
     }
     case LauncherPosition.Right: {
-      const delta = autoHide ? LAUNCHER_HIDDEN_VISIBILITY_DELTA : width;
+      // const delta = autoHide ? LAUNCHER_HIDDEN_VISIBILITY_DELTA : width;
 
       return {
-        left: right - delta,
+        left: right - width,
         top: midpoint - edgeDelta,
       };
     }
     default: {
-      const delta = autoHide ? LAUNCHER_HIDDEN_VISIBILITY_DELTA - height : 0;
+      // const delta = autoHide ? LAUNCHER_HIDDEN_VISIBILITY_DELTA - height : 0;
 
       return {
         left: midpoint - edgeDelta,
-        top: top + delta,
+        top,
       };
     }
   }
@@ -140,16 +171,22 @@ export const calcLauncherCoordinates = (
 /**
  * Calculates launcher bounds.
  *
- * @param bounds - launcher window bounds
+ * @param ctaCount - number of ctas in launcher
  * @param monitorInfo - monitor information
  * @param launcherPosition - current launcher position
  * @param autoHide - flag for weather or not launcher is in autohide mode
  *
  * @returns {Bounds}
  */
-export const calcLauncherPosition = (bounds: Bounds, monitorInfo: MonitorInfo, launcherPosition: LauncherPosition, autoHide: boolean): Bounds => {
-  const dimensions = calcDimensionsByLauncherPosition(bounds, launcherPosition);
-  const coordinates = calcLauncherCoordinates(dimensions, monitorInfo, launcherPosition, autoHide);
+export const calcLauncherPosition = (
+  ctaCount: number,
+  monitorInfo: MonitorInfo,
+  launcherPosition: LauncherPosition,
+  autoHide: boolean,
+  isExpanded: boolean,
+): Bounds => {
+  const dimensions = calcLauncherDimensions(ctaCount, launcherPosition, autoHide, isExpanded);
+  const coordinates = calcLauncherCoordinates(dimensions, monitorInfo, launcherPosition);
 
   return {
     ...coordinates,

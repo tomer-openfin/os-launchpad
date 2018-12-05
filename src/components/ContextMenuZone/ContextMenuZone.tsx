@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ContextMenuOption, ContextMenuRequestPayload } from '../../redux/contextMenu/types';
 
 interface Props {
+  className?: string;
   children: React.ReactNode;
   openContextMenu: (options: ContextMenuRequestPayload) => void;
   options: ContextMenuOption[];
@@ -17,8 +18,12 @@ class ContextMenuZone extends React.PureComponent<Props> {
   };
 
   render() {
-    const { children } = this.props;
-    return <div onContextMenu={this.handleContextMenu}>{children}</div>;
+    const { children, className } = this.props;
+    return (
+      <div className={className} onContextMenu={this.handleContextMenu}>
+        {children}
+      </div>
+    );
   }
 }
 

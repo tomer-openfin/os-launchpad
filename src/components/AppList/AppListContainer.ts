@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 
 import { getAppsStatusByName, openFinAppRequest } from '../../redux/apps/index';
-import { getAppsLauncherAppList, removeFromAppLauncher } from '../../redux/me';
+import { removeFromAppLauncher } from '../../redux/me';
+import { getAppsLauncherAppList } from '../../redux/selectors';
 import { launchWindow, WindowConfig } from '../../redux/windows';
 
 import { App } from '../../types/commons';

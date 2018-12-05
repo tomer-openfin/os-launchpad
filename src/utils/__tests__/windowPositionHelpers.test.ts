@@ -1,5 +1,13 @@
 import { LauncherPosition } from '../../types/commons';
-import { calcDimensionsByLauncherPosition, calcLauncherCoordinates, calcLauncherPosition, isLeftOrRight, isTopOrBottom } from '../windowPositionHelpers';
+import {
+  calcDimensionsByLauncherPosition,
+  calcLauncherCoordinates,
+  calcLauncherDimensions,
+  calcLauncherPosition,
+  isBottomOrRight,
+  isLeftOrRight,
+  isTopOrBottom,
+} from '../windowPositionHelpers';
 
 const { Bottom: BOTTOM, Left: LEFT, Right: RIGHT, Top: TOP } = LauncherPosition;
 
@@ -56,7 +64,7 @@ const monitorInfo = {
 
 describe('windowPositionHelpers', () => {
   describe('isTopOrBottom', () => {
-    it('should return true for a positon on top or bottom else false', () => {
+    it('should return true for a position on top or bottom, otherwise false', () => {
       const tests = [
         { position: BOTTOM, result: true },
         { position: TOP, result: true },
@@ -69,7 +77,7 @@ describe('windowPositionHelpers', () => {
   });
 
   describe('isLeftOrRight', () => {
-    it('should return true for a positon on left or right else false', () => {
+    it('should return true for a position on left or right, otherwise false', () => {
       const tests = [
         { position: BOTTOM, result: false },
         { position: TOP, result: false },
@@ -78,6 +86,19 @@ describe('windowPositionHelpers', () => {
       ];
 
       tests.forEach(({ position, result }) => expect(isLeftOrRight(position)).toBe(result));
+    });
+  });
+
+  describe('isBottomOrRight', () => {
+    it('should return true for a position on bottom or right, otherwise false', () => {
+      const tests = [
+        { position: BOTTOM, result: true },
+        { position: TOP, result: false },
+        { position: LEFT, result: false },
+        { position: RIGHT, result: true },
+      ];
+
+      tests.forEach(({ position, result }) => expect(isBottomOrRight(position)).toBe(result));
     });
   });
 
@@ -105,36 +126,66 @@ describe('windowPositionHelpers', () => {
     });
   });
 
-  describe('calcLauncherCoordinates', () => {
+  describe('calcLauncherDimensions', () => {
+    const ctaCount = 8;
     const tests = [
-      { autoHide: false, launcherPosition: TOP, result: { left: 592, top: 0 } },
-      { autoHide: true, launcherPosition: TOP, result: { left: 592, top: -95 } },
-      { autoHide: false, launcherPosition: BOTTOM, result: { left: 592, top: 997 } },
-      { autoHide: true, launcherPosition: BOTTOM, result: { left: 592, top: 1092 } },
-      { autoHide: false, launcherPosition: LEFT, result: { left: 0, top: 498.5 } },
-      { autoHide: true, launcherPosition: LEFT, result: { left: -195, top: 498.5 } },
-      { autoHide: false, launcherPosition: RIGHT, result: { left: 1184, top: 498.5 } },
-      { autoHide: true, launcherPosition: RIGHT, result: { left: 1379, top: 498.5 } },
+      { autoHide: false, isExpanded: false, launcherPosition: TOP, result: { height: 50, width: 450 } },
+      { autoHide: false, isExpanded: true, launcherPosition: TOP, result: { height: 50, width: 450 } },
+      { autoHide: true, isExpanded: false, launcherPosition: TOP, result: { height: 5, width: 450 } },
+      { autoHide: true, isExpanded: true, launcherPosition: TOP, result: { height: 50, width: 450 } },
+      { autoHide: false, isExpanded: false, launcherPosition: BOTTOM, result: { height: 50, width: 450 } },
+      { autoHide: false, isExpanded: true, launcherPosition: BOTTOM, result: { height: 50, width: 450 } },
+      { autoHide: true, isExpanded: false, launcherPosition: BOTTOM, result: { height: 5, width: 450 } },
+      { autoHide: true, isExpanded: true, launcherPosition: BOTTOM, result: { height: 50, width: 450 } },
+      { autoHide: false, isExpanded: false, launcherPosition: LEFT, result: { height: 450, width: 50 } },
+      { autoHide: false, isExpanded: true, launcherPosition: LEFT, result: { height: 450, width: 50 } },
+      { autoHide: true, isExpanded: false, launcherPosition: LEFT, result: { height: 450, width: 5 } },
+      { autoHide: true, isExpanded: true, launcherPosition: LEFT, result: { height: 450, width: 50 } },
+      { autoHide: false, isExpanded: false, launcherPosition: RIGHT, result: { height: 450, width: 50 } },
+      { autoHide: false, isExpanded: true, launcherPosition: RIGHT, result: { height: 450, width: 50 } },
+      { autoHide: true, isExpanded: false, launcherPosition: RIGHT, result: { height: 450, width: 5 } },
+      { autoHide: true, isExpanded: true, launcherPosition: RIGHT, result: { height: 450, width: 50 } },
     ];
 
-    tests.forEach(({ autoHide, launcherPosition, result }) =>
-      expect(calcLauncherCoordinates(dimensions, monitorInfo, launcherPosition, autoHide)).toEqual(result),
+    tests.forEach(({ autoHide, isExpanded, launcherPosition, result }) =>
+      expect(calcLauncherDimensions(ctaCount, launcherPosition, autoHide, isExpanded)).toEqual(result),
     );
   });
 
-  describe('calcLauncherPosition', () => {
-    const invertedBoundsDimensions = { height: bounds.width, width: bounds.height };
+  describe('calcLauncherCoordinates', () => {
     const tests = [
-      { autoHide: false, launcherPosition: TOP, result: { ...bounds, left: 592, top: 0 } },
-      { autoHide: true, launcherPosition: TOP, result: { ...bounds, left: 592, top: -95 } },
-      { autoHide: false, launcherPosition: BOTTOM, result: { ...bounds, left: 592, top: 997 } },
-      { autoHide: true, launcherPosition: BOTTOM, result: { ...bounds, left: 592, top: 1092 } },
-      { autoHide: false, launcherPosition: LEFT, result: { ...invertedBoundsDimensions, left: 0, top: 448.5 } },
-      { autoHide: true, launcherPosition: LEFT, result: { ...invertedBoundsDimensions, left: -95, top: 448.5 } },
-      { autoHide: false, launcherPosition: RIGHT, result: { ...invertedBoundsDimensions, left: 1284, top: 448.5 } },
-      { autoHide: true, launcherPosition: RIGHT, result: { ...invertedBoundsDimensions, left: 1379, top: 448.5 } },
+      { launcherPosition: TOP, result: { left: 592, top: 0 } },
+      { launcherPosition: BOTTOM, result: { left: 592, top: 997 } },
+      { launcherPosition: LEFT, result: { left: 0, top: 498.5 } },
+      { launcherPosition: RIGHT, result: { left: 1184, top: 498.5 } },
     ];
 
-    tests.forEach(({ autoHide, launcherPosition, result }) => expect(calcLauncherPosition(bounds, monitorInfo, launcherPosition, autoHide)).toEqual(result));
+    tests.forEach(({ launcherPosition, result }) => expect(calcLauncherCoordinates(dimensions, monitorInfo, launcherPosition)).toEqual(result));
+  });
+
+  describe('calcLauncherPosition', () => {
+    const ctaCount = 8;
+    const tests = [
+      { autoHide: false, isExpanded: false, launcherPosition: TOP, result: { height: 50, left: 467, top: 0, width: 450 } },
+      { autoHide: false, isExpanded: true, launcherPosition: TOP, result: { height: 50, left: 467, top: 0, width: 450 } },
+      { autoHide: true, isExpanded: false, launcherPosition: TOP, result: { height: 5, left: 467, top: 0, width: 450 } },
+      { autoHide: true, isExpanded: true, launcherPosition: TOP, result: { height: 50, left: 467, top: 0, width: 450 } },
+      { autoHide: false, isExpanded: false, launcherPosition: BOTTOM, result: { height: 50, left: 467, top: 1047, width: 450 } },
+      { autoHide: false, isExpanded: true, launcherPosition: BOTTOM, result: { height: 50, left: 467, top: 1047, width: 450 } },
+      { autoHide: true, isExpanded: false, launcherPosition: BOTTOM, result: { height: 5, left: 467, top: 1092, width: 450 } },
+      { autoHide: true, isExpanded: true, launcherPosition: BOTTOM, result: { height: 50, left: 467, top: 1047, width: 450 } },
+      { autoHide: false, isExpanded: false, launcherPosition: LEFT, result: { height: 450, left: 0, top: 323.5, width: 50 } },
+      { autoHide: false, isExpanded: true, launcherPosition: LEFT, result: { height: 450, left: 0, top: 323.5, width: 50 } },
+      { autoHide: true, isExpanded: false, launcherPosition: LEFT, result: { height: 450, left: 0, top: 323.5, width: 5 } },
+      { autoHide: true, isExpanded: true, launcherPosition: LEFT, result: { height: 450, left: 0, top: 323.5, width: 50 } },
+      { autoHide: false, isExpanded: false, launcherPosition: RIGHT, result: { height: 450, left: 1334, top: 323.5, width: 50 } },
+      { autoHide: false, isExpanded: true, launcherPosition: RIGHT, result: { height: 450, left: 1334, top: 323.5, width: 50 } },
+      { autoHide: true, isExpanded: false, launcherPosition: RIGHT, result: { height: 450, left: 1379, top: 323.5, width: 5 } },
+      { autoHide: true, isExpanded: true, launcherPosition: RIGHT, result: { height: 450, left: 1334, top: 323.5, width: 50 } },
+    ];
+
+    tests.forEach(({ autoHide, isExpanded, launcherPosition, result }) =>
+      expect(calcLauncherPosition(ctaCount, monitorInfo, launcherPosition, autoHide, isExpanded)).toEqual(result),
+    );
   });
 });
