@@ -25,10 +25,11 @@ const withThemes = <P extends WithThemesProps>(Component: React.ComponentType<P>
     };
 
     componentDidMount() {
-      ApiService.getAdminThemes()
+      ApiService.getOrgSettings()
         .then(response => {
-          if (response && response.status !== ResponseStatus.FAILURE) {
-            this.setState({ themes: response });
+          if (response && response.themes && response.status !== ResponseStatus.FAILURE) {
+            const { themes } = response;
+            this.setState({ themes });
           }
         })
         .catch(error => this.setState({ error }));

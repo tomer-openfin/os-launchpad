@@ -11,22 +11,23 @@ import { Wrapper } from './Layouts.css';
 
 interface Props {
   launcherPosition: LauncherPosition;
+  layoutIds: string[];
   onBlur: () => void;
-  restoreCurrentLayout: () => void;
-  saveCurrentLayout: () => void;
+  restoreLayout: (id: string) => void;
+  saveLayout: (id: string) => void;
 }
 
-const Layouts = ({ launcherPosition, saveCurrentLayout, onBlur, restoreCurrentLayout }: Props) => {
-  const handleClickCreator = fn => () => {
+const Layouts = ({ launcherPosition, layoutIds, saveLayout, onBlur, restoreLayout }: Props) => {
+  const handleClickCreator = (fn, ...args) => () => {
     onBlur();
-    fn();
+    fn(...args);
   };
 
   return (
     <Wrapper launcherPosition={launcherPosition}>
-      <IconSpace iconImg={saveLayoutIcon} onClick={handleClickCreator(saveCurrentLayout)} hover />
+      <IconSpace iconImg={saveLayoutIcon} onClick={handleClickCreator(saveLayout, layoutIds[0])} hover />
 
-      <IconSpace iconImg={restoreLayoutIcon} onClick={handleClickCreator(restoreCurrentLayout)} hover />
+      <IconSpace iconImg={restoreLayoutIcon} onClick={handleClickCreator(restoreLayout, layoutIds[0])} hover />
     </Wrapper>
   );
 };

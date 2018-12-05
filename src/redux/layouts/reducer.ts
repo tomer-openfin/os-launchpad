@@ -1,9 +1,8 @@
-import { Layout } from 'openfin-layouts/dist/client/types';
-
 import normalizeRedux from '../../utils/normalizeRedux';
 
-import { GET_LAYOUTS, RESTORE_LAYOUT, SAVE_LAYOUT } from './actions';
-import { GetLayoutsSuccess, LayoutsActions, LayoutsState, SaveLayoutRequest, SaveLayoutSuccess } from './types';
+import { UserLayout } from '../../types/commons';
+import { CREATE_LAYOUT, DELETE_LAYOUT, GET_LAYOUTS, UPDATE_LAYOUT } from './actions';
+import { GetLayoutsSuccess, LayoutsActions, LayoutsState } from './types';
 
 const defaultState: LayoutsState = {
   byId: {},
@@ -13,35 +12,34 @@ const defaultState: LayoutsState = {
 export default (state: LayoutsState = defaultState, action: LayoutsActions) => {
   switch (action.type) {
     case GET_LAYOUTS.SUCCESS: {
-      return normalizeRedux<Layout>((action as GetLayoutsSuccess).payload!, 'customData');
+      return normalizeRedux<UserLayout>((action as GetLayoutsSuccess).payload!);
     }
+    case UPDATE_LAYOUT.SUCCESS:
+    case CREATE_LAYOUT.SUCCESS: {
+      const { id } = action.payload;
 
-    case SAVE_LAYOUT.REQUEST: {
+      const ids = state.ids.includes(id) ? state.ids : [...state.ids, id];
+
       return {
-        ...state,
         byId: {
-          ...(action as SaveLayoutRequest).payload!,
+          ...state.byId,
+          [id]: action.payload,
         },
+        ids,
       };
     }
+    case DELETE_LAYOUT.SUCCESS: {
+      const { id } = action.payload;
 
-    case SAVE_LAYOUT.SUCCESS: {
+      const { [id]: deletedItem, ...byId } = state.byId;
+
+      const ids: string[] = Object.keys(byId);
+
       return {
-        ...state,
-        byId: {
-          ...(action as SaveLayoutSuccess).payload!,
-        },
+        byId,
+        ids,
       };
     }
-
-    case RESTORE_LAYOUT: {
-      // tslint:disable:no-console
-      console.log('Attempting to restore layout...');
-      return {
-        ...state,
-      };
-    }
-
     default: {
       return state;
     }

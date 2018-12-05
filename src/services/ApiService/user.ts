@@ -1,43 +1,71 @@
-import { Layout } from 'openfin-layouts/dist/client/types';
-
 import { defaultState, MeStateSettings } from '../../redux/me';
 
-import { APIResponse } from '../../types/commons';
+import { APIResponse, NewUserLayout, ResponseStatus, UserLayout } from '../../types/commons';
 import { checkIsEnterprise } from '../../utils/checkIsEnterprise';
 import { getLocalStorage, LOCAL_STORAGE_KEYS, setLocalStorage } from '../localStorageAdapter';
 import API from './api';
-import { createGetOptions, createPostOptions } from './requestOptions';
+import { createGetOptions, createPostOptions, createPutOptions } from './requestOptions';
 
 /**
- * Get layouts
+ * Get user layouts
  *
  * @returns {Promise<Layout[]>}
  */
-export const getUserLayouts = (): Promise<Layout[]> => {
-  // Disable enterprise check for demo
-  // if (checkIsEnterprise()) {
-  //   const options = createGetOptions();
-  //   return fetch(API.LAYOUTS, options)
-  //     .then(resp => resp.json())
-  //     .then(resp => resp.map(r => r.layout) as Layout[]);
-  // }
+export const getUserLayouts = (): Promise<UserLayout[]> => {
+  if (checkIsEnterprise()) {
+    const options = createGetOptions();
 
-  return getLocalStorage<Layout[]>(LOCAL_STORAGE_KEYS.LAYOUTS, []);
+    return fetch(API.USER_LAYOUTS, options).then(resp => resp.json());
+  }
+
+  return getLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, { status: ResponseStatus.SUCCESS, data: [] });
 };
 
 /**
- * Save layouts
+ * Get user layout
  *
  * @returns {Promise<APIResponse>}
  */
-export const saveUserLayout = (layout: Layout): Promise<APIResponse> => {
-  // Disable enterprise check for demo
-  // if (checkIsEnterprise()) {
-  //   const options = createPostOptions({ layout });
-  //   return fetch(API.LAYOUTS, options).then(resp => resp.json());
-  // }
+export const getUserLayout = (id: UserLayout['id']): Promise<APIResponse> => {
+  if (checkIsEnterprise()) {
+    const options = createGetOptions();
 
-  return setLocalStorage<Layout[]>(LOCAL_STORAGE_KEYS.LAYOUTS, [layout]);
+    return fetch(`${API.USER_LAYOUTS}/${id}`, options).then(resp => resp.json());
+  }
+
+  return getLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS);
+};
+
+/**
+ * Create user layout
+ *
+ * @returns {Promise<APIResponse>}
+ */
+export const createUserLayout = (newUserLayout: NewUserLayout): Promise<APIResponse> => {
+  if (checkIsEnterprise()) {
+    const options = createPostOptions(newUserLayout);
+
+    return fetch(API.USER_LAYOUTS, options).then(resp => resp.json());
+  }
+
+  const localUserLayout: UserLayout = { ...newUserLayout, id: 'layout' };
+
+  return setLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, [localUserLayout]);
+};
+
+/**
+ * Update user layout
+ *
+ * @returns {Promise<APIResponse>}
+ */
+export const updateUserLayout = (userLayout: UserLayout): Promise<APIResponse> => {
+  if (checkIsEnterprise()) {
+    const options = createPutOptions(userLayout);
+
+    return fetch(`${API.USER_LAYOUTS}/${userLayout.id}`, options).then(resp => resp.json());
+  }
+
+  return setLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, [userLayout]);
 };
 
 /**
@@ -52,7 +80,7 @@ export const getUserSettings = (): Promise<MeStateSettings | APIResponse> => {
     return fetch(API.USER_SETTINGS, options).then(resp => resp.json());
   }
 
-  return getLocalStorage<MeStateSettings>(LOCAL_STORAGE_KEYS.SETTINGS, defaultState.settings);
+  return getLocalStorage(LOCAL_STORAGE_KEYS.SETTINGS, { data: defaultState.settings, status: ResponseStatus.SUCCESS });
 };
 
 /**
@@ -67,5 +95,5 @@ export const saveUserSettings = (settings: MeStateSettings): Promise<APIResponse
     return fetch(API.USER_SETTINGS, options).then(resp => resp.json());
   }
 
-  return setLocalStorage<MeStateSettings>(LOCAL_STORAGE_KEYS.SETTINGS, settings);
+  return setLocalStorage(LOCAL_STORAGE_KEYS.SETTINGS, settings);
 };

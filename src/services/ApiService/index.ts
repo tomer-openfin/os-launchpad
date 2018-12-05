@@ -1,10 +1,10 @@
 import * as serializeError from 'serialize-error';
 
 import { APIResponse, ResponseStatus } from '../../types/commons';
-import { getAdminOrganizationSettings, getAdminThemes, saveAdminLogo, saveAdminTheme } from './admin';
+import { getAdminOrgSettings, getOrgSettings, saveAdminLogo, saveAdminTheme } from './admin';
 import { createAdminApp, deleteAdminApp, getAdminApp, getAdminApps, getDirectoryAppList, updateAdminApp } from './apps';
 import { login } from './auth';
-import { getUserLayouts, getUserSettings, saveUserLayout, saveUserSettings } from './user';
+import { createUserLayout, getUserLayouts, getUserSettings, saveUserSettings, updateUserLayout } from './user';
 import { createAdminUser, deleteAdminUser, getAdminUser, getAdminUsers, updateAdminUser } from './users';
 
 const handleError = e => {
@@ -24,23 +24,31 @@ const withTry = <R>(fn: (T1?, T2?) => Promise<R>): ((T1?, T2?) => Promise<R | AP
 
 export default {
   createAdminApp: withTry(createAdminApp),
-  createAdminUser: withTry(createAdminUser),
   deleteAdminApp: withTry(deleteAdminApp),
-  deleteAdminUser: withTry(deleteAdminUser),
   getAdminApp: withTry(getAdminApp),
   getAdminApps: withTry(getAdminApps),
-  getAdminOrganizationSettings: withTry(getAdminOrganizationSettings),
-  getAdminThemes: withTry(getAdminThemes),
+  updateAdminApp: withTry(updateAdminApp),
+
+  createAdminUser: withTry(createAdminUser),
+  deleteAdminUser: withTry(deleteAdminUser),
   getAdminUser: withTry(getAdminUser),
   getAdminUsers: withTry(getAdminUsers),
+  updateAdminUser: withTry(updateAdminUser),
+
   getDirectoryAppList: withTry(getDirectoryAppList),
-  getUserLayouts: withTry(getUserLayouts),
-  getUserSettings: withTry(getUserSettings),
+
+  getOrgSettings: withTry(getOrgSettings),
+
   login: withTry(login),
+
+  getAdminOrgSettings: withTry(getAdminOrgSettings),
   saveAdminLogo: withTry(saveAdminLogo),
   saveAdminTheme: withTry(saveAdminTheme),
-  saveUserLayout: withTry(saveUserLayout),
+
+  createUserLayout: withTry(createUserLayout),
+  getUserLayouts: withTry(getUserLayouts),
+  updateUserLayout: withTry(updateUserLayout),
+
+  getUserSettings: withTry(getUserSettings),
   saveUserSettings: withTry(saveUserSettings),
-  updateAdminApp: withTry(updateAdminApp),
-  updateAdminUser: withTry(updateAdminUser),
 };

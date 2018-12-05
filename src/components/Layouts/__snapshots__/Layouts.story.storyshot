@@ -188,6 +188,48 @@ exports[`Storyshots Components/Layouts default 1`] = `
                     <span
                       style={Object {}}
                     >
+                      layoutIds
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#666",
+                            }
+                          }
+                        >
+                          [
+                          <span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              'layout'
+                            </span>
+                          </span>
+                          ]
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
                       launcherPosition
                     </span>
                     <span>
@@ -218,7 +260,7 @@ exports[`Storyshots Components/Layouts default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      restoreCurrentLayout
+                      restoreLayout
                     </span>
                     <span>
                       =
@@ -247,7 +289,7 @@ exports[`Storyshots Components/Layouts default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      saveCurrentLayout
+                      saveLayout
                     </span>
                     <span>
                       =

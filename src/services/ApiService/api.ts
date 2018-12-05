@@ -5,12 +5,14 @@ const API = {
 
   LOGIN: `${API_URL}api/auth/login`,
 
-  LAYOUTS: `${API_URL}api/layouts`,
-  THEMES: `${API_URL}api/themes`,
+  ORG_SETTINGS: `${API_URL}api/config`,
 
   USER_APPS: `${API_URL}api/user/apps`,
+  USER_LAYOUTS: `${API_URL}api/user/layouts`,
   USER_SETTINGS: `${API_URL}api/user/settings`,
 
+  ADMIN_APPS: `${API_URL}api/admin/apps`,
+  ADMIN_SETTINGS: `${API_URL}api/admin/settings`,
   ADMIN_USERS: `${API_URL}api/admin/users`,
 };
 

@@ -1,3 +1,5 @@
+import { Layout } from 'openfin-layouts/dist/client/types';
+
 import { ResponseStatus } from './enums';
 
 export interface App {
@@ -89,4 +91,20 @@ export interface ObjectWithId {
 
 export interface ById<T extends ObjectWithId> {
   [n: string]: T;
+}
+
+export interface UserLayout {
+  id: string;
+  name: string;
+  layout: Layout;
+}
+
+export interface NewUserLayout {
+  name: string;
+  layout: Layout;
+}
+
+export interface MetaWithCallbacks {
+  successCb: Function;
+  errorCb: Function;
 }

@@ -1,26 +1,26 @@
 import { connect } from 'react-redux';
 
-import { Layout } from 'openfin-layouts/dist/client/types';
+import { State } from '../../redux/types';
+
 import { LAYOUTS_WINDOW } from '../../config/windows';
 import withFinBlur from '../../hocs/withFinBlur';
-import { restoreLayout, saveLayoutRequest } from '../../redux/layouts';
+import { getLayoutsIds, restoreLayoutRequest, saveLayout } from '../../redux/layouts';
 import { getLauncherPosition } from '../../redux/me';
-import { State } from '../../redux/types';
-import { blurWindowWithDelay } from '../../redux/windows/index';
+import { blurWindowWithDelay } from '../../redux/windows';
 
 import Layouts from './Layouts';
 
 const mapState = (state: State) => ({
   launcherPosition: getLauncherPosition(state),
+  layoutIds: getLayoutsIds(state),
 });
 
 const mapDispatch = dispatch => ({
   onBlur: () => {
     dispatch(blurWindowWithDelay(LAYOUTS_WINDOW));
   },
-  restoreCurrentLayout: () => dispatch(restoreLayout(JSON.parse(localStorage.layouts)[0] as Layout)),
-  // force the generation of current layout on save by passing in undefined
-  saveCurrentLayout: () => dispatch(saveLayoutRequest((undefined as unknown) as Layout)),
+  restoreLayout: (id: string) => dispatch(restoreLayoutRequest(id)),
+  saveLayout: (id: string) => dispatch(saveLayout(id)),
 });
 
 export default connect(

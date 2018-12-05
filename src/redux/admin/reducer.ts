@@ -75,11 +75,13 @@ export default (state: AdminState = defaultState, action): AdminState => {
 
       const { [app.id]: deletedItem, ...byId } = state.apps.byId;
 
+      const ids: string[] = Object.keys(byId);
+
       return {
         ...state,
         apps: {
-          ...state.apps,
           byId,
+          ids,
         },
       };
     }
@@ -131,11 +133,13 @@ export default (state: AdminState = defaultState, action): AdminState => {
 
       const { [user.id]: deletedItem, ...byId } = state.users.byId;
 
+      const ids: string[] = Object.keys(byId);
+
       return {
         ...state,
         users: {
-          ...state.users,
           byId,
+          ids,
         },
       };
     }

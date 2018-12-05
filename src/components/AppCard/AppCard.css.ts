@@ -31,6 +31,7 @@ export const InfoWrapper = styled.div`
   font-weight: 200;
   padding: 0 0 0 16px;
   height: 100%;
+  flex: 1;
 `;
 
 export const AppName = styled.div`

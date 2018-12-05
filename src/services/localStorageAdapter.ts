@@ -12,12 +12,14 @@ export const LOCAL_STORAGE_KEYS = {
  * @param key - localStorage key
  * @param defaultPayload - payload to be returned if get from localStorage is null
  *
- * @return {Promise<P>} - Returned Promise of specified type T in function call
+ * @return {Promise<APIResponse>} - Returned Promise of specified type T in function call
  */
-export function getLocalStorage<P>(key: string, defaultPayload: P): Promise<P> {
-  const payload = localStorage.getItem(key);
+export function getLocalStorage(key: string, defaultPayload: APIResponse = { status: ResponseStatus.FAILURE }): Promise<APIResponse> {
+  const item = localStorage.getItem(key);
+
+  const payload = item === null ? defaultPayload : { data: JSON.parse(item), status: ResponseStatus.SUCCESS };
   try {
-    return Promise.resolve(payload === null ? defaultPayload : (JSON.parse(payload) as P));
+    return Promise.resolve();
   } catch (e) {
     /* tslint:disable-next-line:no-console */
     console.error('Failed to get local storage key:', key, '\n', 'Unable to parse payload:', payload, '\n', e);
@@ -34,7 +36,7 @@ export function getLocalStorage<P>(key: string, defaultPayload: P): Promise<P> {
  *
  * @return {Promise<>}
  */
-export function setLocalStorage<P>(key: string, payload: P, resolvePayload: APIResponse = { status: ResponseStatus.SUCCESS }): Promise<APIResponse> {
+export function setLocalStorage(key: string, payload: APIResponse, resolvePayload: APIResponse = { status: ResponseStatus.SUCCESS }): Promise<APIResponse> {
   localStorage.setItem(key, JSON.stringify(payload));
 
   return Promise.resolve(resolvePayload);

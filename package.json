@@ -55,7 +55,7 @@
     "react-devtools": "3.4.3",
     "react-docgen-typescript-webpack-plugin": "1.1.0",
     "redoc-cli": "0.6.4",
-    "remotedev-server": "0.2.7",
+    "remotedev-server": "^0.3.0",
     "rimraf": "2.6.2",
     "source-map-loader": "0.2.4",
     "ts-jest": "23.10.4",

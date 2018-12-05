@@ -1,13 +1,8 @@
 import { createAction } from 'redux-actions';
 
-import { App, ErrorResponse, User } from '../../types/commons';
+import { App, ErrorResponse, MetaWithCallbacks, User } from '../../types/commons';
 import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
 import noop from '../../utils/noop';
-
-interface MetaWithCallbacks {
-  successCb: Function;
-  errorCb: Function;
-}
 
 const payloadIdentityCreator = <T>(payload: T): T => payload;
 

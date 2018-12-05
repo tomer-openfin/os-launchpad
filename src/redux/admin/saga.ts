@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 
@@ -181,33 +181,33 @@ function* watchRequestSuccess(action) {
 }
 
 export function* adminSaga() {
-  yield takeLatest(GET_ADMIN_APPS.REQUEST, watchGetAdminAppsRequest);
-  yield takeLatest(GET_ADMIN_USERS.REQUEST, watchGetAdminUsersRequest);
+  yield takeEvery(GET_ADMIN_APPS.REQUEST, watchGetAdminAppsRequest);
+  yield takeEvery(GET_ADMIN_USERS.REQUEST, watchGetAdminUsersRequest);
 
-  yield takeLatest(CREATE_ADMIN_USER.REQUEST, watchCreateAdminUserRequest);
-  yield takeLatest(UPDATE_ADMIN_USER.REQUEST, watchUpdateAdminUserRequest);
-  yield takeLatest(DELETE_ADMIN_USER.REQUEST, watchDeleteAdminUserRequest);
+  yield takeEvery(CREATE_ADMIN_USER.REQUEST, watchCreateAdminUserRequest);
+  yield takeEvery(UPDATE_ADMIN_USER.REQUEST, watchUpdateAdminUserRequest);
+  yield takeEvery(DELETE_ADMIN_USER.REQUEST, watchDeleteAdminUserRequest);
 
-  yield takeLatest(CREATE_ADMIN_APP.REQUEST, watchCreateAdminAppRequest);
-  yield takeLatest(UPDATE_ADMIN_APP.REQUEST, watchUpdateAdminAppRequest);
-  yield takeLatest(DELETE_ADMIN_APP.REQUEST, watchDeleteAdminAppRequest);
+  yield takeEvery(CREATE_ADMIN_APP.REQUEST, watchCreateAdminAppRequest);
+  yield takeEvery(UPDATE_ADMIN_APP.REQUEST, watchUpdateAdminAppRequest);
+  yield takeEvery(DELETE_ADMIN_APP.REQUEST, watchDeleteAdminAppRequest);
 
-  yield takeLatest(GET_ADMIN_APPS.ERROR, watchRequestError);
-  yield takeLatest(GET_ADMIN_USERS.ERROR, watchRequestError);
+  yield takeEvery(CREATE_ADMIN_USER.SUCCESS, watchRequestSuccess);
+  yield takeEvery(UPDATE_ADMIN_USER.SUCCESS, watchRequestSuccess);
+  yield takeEvery(DELETE_ADMIN_USER.SUCCESS, watchRequestSuccess);
 
-  yield takeLatest(CREATE_ADMIN_USER.ERROR, watchRequestError);
-  yield takeLatest(UPDATE_ADMIN_USER.ERROR, watchRequestError);
-  yield takeLatest(DELETE_ADMIN_USER.ERROR, watchRequestError);
+  yield takeEvery(CREATE_ADMIN_APP.SUCCESS, watchRequestSuccess);
+  yield takeEvery(UPDATE_ADMIN_APP.SUCCESS, watchRequestSuccess);
+  yield takeEvery(DELETE_ADMIN_APP.SUCCESS, watchRequestSuccess);
 
-  yield takeLatest(CREATE_ADMIN_APP.ERROR, watchRequestError);
-  yield takeLatest(UPDATE_ADMIN_APP.ERROR, watchRequestError);
-  yield takeLatest(DELETE_ADMIN_APP.ERROR, watchRequestError);
+  yield takeEvery(GET_ADMIN_APPS.ERROR, watchRequestError);
+  yield takeEvery(GET_ADMIN_USERS.ERROR, watchRequestError);
 
-  yield takeLatest(CREATE_ADMIN_USER.SUCCESS, watchRequestSuccess);
-  yield takeLatest(UPDATE_ADMIN_USER.SUCCESS, watchRequestSuccess);
-  yield takeLatest(DELETE_ADMIN_USER.SUCCESS, watchRequestSuccess);
+  yield takeEvery(CREATE_ADMIN_USER.ERROR, watchRequestError);
+  yield takeEvery(UPDATE_ADMIN_USER.ERROR, watchRequestError);
+  yield takeEvery(DELETE_ADMIN_USER.ERROR, watchRequestError);
 
-  yield takeLatest(CREATE_ADMIN_APP.SUCCESS, watchRequestSuccess);
-  yield takeLatest(UPDATE_ADMIN_APP.SUCCESS, watchRequestSuccess);
-  yield takeLatest(DELETE_ADMIN_APP.SUCCESS, watchRequestSuccess);
+  yield takeEvery(CREATE_ADMIN_APP.ERROR, watchRequestError);
+  yield takeEvery(UPDATE_ADMIN_APP.ERROR, watchRequestError);
+  yield takeEvery(DELETE_ADMIN_APP.ERROR, watchRequestError);
 }
