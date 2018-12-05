@@ -16,7 +16,7 @@ const sagaMiddleware = createSagaMiddleware();
 const middlewareArgs = [openFinMiddleware, sagaMiddleware];
 
 const middleware = NODE_ENV === 'development'
-  ? composeWithDevTools(applyMiddleware(...middlewareArgs))
+  ? composeWithDevTools({ hostname: 'localhost', port: 8000 })(applyMiddleware(...middlewareArgs))
   : applyMiddleware(...middlewareArgs);
 
 // Middleware enhancers

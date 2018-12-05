@@ -3,6 +3,7 @@ require('dotenv').config();
 const execa = require('execa');
 const waitOn = require('wait-on');
 const chalk = require('chalk');
+const remotedev = require('remotedev-server');
 
 const {
   NODE_ENV = 'development',
@@ -33,6 +34,9 @@ waitOn({
   if (err) {
     throw err;
   }
+
+  // Start the remote Redux dev server.
+  remotedev({ hostname: 'localhost', port: 8000 });
 
   // Now start OpenFin.
   const openfin = execa('npm', ['run', 'openfin'], { env: { FORCE_COLOR: true }});
