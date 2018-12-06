@@ -68,35 +68,13 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
         >
           Phone Number:
           <input
-            name="phoneNumber"
+            maxLength="10"
+            name="phone"
             onBlur={[Function]}
             onChange={[Function]}
             type="text"
-            value="string"
+            value="ring"
           />
-        </label>
-        <label
-          className="sc-hMqMXs gsZEgf"
-        >
-          Is administrator?
-          <select
-            name="isAdmin"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="no"
-            value={false}
-          >
-            <option
-              value="yes"
-            >
-              Yes
-            </option>
-            <option
-              value="no"
-            >
-              No
-            </option>
-          </select>
         </label>
         <div
           className="sc-kkGfuU gbgTA"

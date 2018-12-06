@@ -11,32 +11,20 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
     }
   >
     <div
-      className="sc-tilXH jlMNNw"
+      className="sc-iAyFgw eFUJkT"
     >
       <form
         onSubmit={[Function]}
       >
         <div
-          className="sc-bbmXgH dcixxT"
+          className="sc-eNQAEJ iPOzxN"
         >
           Create New User
         </div>
         <label
-          className="sc-gGBfsJ ciczPZ"
+          className="sc-hMqMXs gsZEgf"
         >
-          Username:
-          <input
-            name="username"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value=""
-          />
-        </label>
-        <label
-          className="sc-gGBfsJ ciczPZ"
-        >
-          Email:
+          Email
           <input
             name="email"
             onBlur={[Function]}
@@ -46,11 +34,24 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-gGBfsJ ciczPZ"
+          className="sc-hMqMXs gsZEgf"
         >
-          Password:
+          Phone Number
           <input
-            name="password"
+            maxLength="10"
+            name="phone"
+            onBlur={[Function]}
+            onChange={[Function]}
+            type="text"
+            value=""
+          />
+        </label>
+        <label
+          className="sc-hMqMXs gsZEgf"
+        >
+          Password
+          <input
+            name="tmpPassword"
             onBlur={[Function]}
             onChange={[Function]}
             type="password"
@@ -58,9 +59,9 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-gGBfsJ ciczPZ"
+          className="sc-hMqMXs gsZEgf"
         >
-          First Name:
+          First Name
           <input
             name="firstName"
             onBlur={[Function]}
@@ -70,9 +71,9 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-gGBfsJ ciczPZ"
+          className="sc-hMqMXs gsZEgf"
         >
-          Last Name:
+          Last Name
           <input
             name="lastName"
             onBlur={[Function]}
@@ -82,9 +83,9 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
           />
         </label>
         <label
-          className="sc-gGBfsJ ciczPZ"
+          className="sc-hMqMXs gsZEgf"
         >
-          Middle Initial:
+          Middle Initial
           <input
             name="middleInitial"
             onBlur={[Function]}
@@ -93,41 +94,18 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
             value=""
           />
         </label>
-        <label
-          className="sc-gGBfsJ ciczPZ"
-        >
-          Make an administrator?
-          <select
-            name="isAdmin"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="no"
-            value={false}
-          >
-            <option
-              value="no"
-            >
-              No
-            </option>
-            <option
-              value="yes"
-            >
-              Yes
-            </option>
-          </select>
-        </label>
         <div
-          className="sc-fYxtnH izPscg"
+          className="sc-kkGfuU gbgTA"
         >
           <a
-            className="sc-jqCOkK egAxXy"
+            className="sc-ckVGcZ dtqKoZ"
             href="/admin/users"
             onClick={[Function]}
           >
             Cancel
           </a>
           <button
-            className="sc-dNLxif dFkNVR"
+            className="sc-kpOJdX hkDZlY"
             disabled={true}
             type="submit"
           >

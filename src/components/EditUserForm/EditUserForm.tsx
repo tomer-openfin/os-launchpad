@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as React from 'react';
 
 import { ResponseStatus, User } from '../../types/commons';
-import { validateTextField } from '../../utils/validators';
+import { validatePhone, validateTextField } from '../../utils/validators';
 import { Button, ButtonLink, Error, Heading, Label, Message, Row, Wrapper } from '../NewUserForm';
 import { ROUTES } from '../Router/consts';
 
@@ -33,7 +33,7 @@ class EditUserForm extends React.Component<Props, State> {
       lastName: '',
       middleInitial: '',
       organizationId: '',
-      phoneNumber: '',
+      phone: '',
       tmpPassword: '',
       username: '',
     },
@@ -68,6 +68,9 @@ class EditUserForm extends React.Component<Props, State> {
 
     const meta = { successCb: this.successCb, errorCb: this.errorCb };
 
+    // default to +1 for country code for now
+    payload.phone = `+1${payload.phone}`;
+
     updateUser(payload, meta);
 
     actions.setSubmitting(false);
@@ -75,7 +78,7 @@ class EditUserForm extends React.Component<Props, State> {
 
   renderForm = ({ isSubmitting, isValid }) => {
     const { location } = this.props;
-    const { email, isAdmin } = location.state;
+    const { email } = location.state;
 
     return (
       <Wrapper>
@@ -102,19 +105,10 @@ class EditUserForm extends React.Component<Props, State> {
             <ErrorMessage component={Error} name="middleInitial" />
           </Label>
 
-          {/* todo: add basic client-side phone validator */}
           <Label>
             Phone Number:
-            <Field type="text" name="phoneNumber" />
-            <ErrorMessage component={Error} name="phoneNumber" />
-          </Label>
-
-          <Label>
-            Is administrator?
-            <Field component="select" name="isAdmin" placeholder={isAdmin ? 'yes' : 'no'}>
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </Field>
+            <Field type="text" name="phone" maxLength="10" validate={validatePhone} />
+            <ErrorMessage component={Error} name="phone" />
           </Label>
 
           <Row>
@@ -136,7 +130,7 @@ class EditUserForm extends React.Component<Props, State> {
 
     if (responseReceived) {
       if (result.status === ResponseStatus.FAILURE) {
-        return <Error>There was an error tyring to update this user: {result.message}. Please try again.</Error>;
+        return <Error>Sorry, there was an error tyring to update this user, please try again. Error: {result.message}</Error>;
       }
 
       return <Message>Success! This user was succesfully modified.</Message>;
@@ -148,31 +142,28 @@ class EditUserForm extends React.Component<Props, State> {
   render() {
     const { location } = this.props;
     const { responseReceived, result } = this.state;
-    const { firstName, isAdmin, lastName, middleInitial, phoneNumber, id, username } = location.state;
+    const { firstName, lastName, middleInitial, phone, id, username } = location.state;
 
-    return (
-      responseReceived && result.status === ResponseStatus.SUCCESS ? (
-          <Wrapper>
-            {this.renderMessage()}
+    return responseReceived && result.status === ResponseStatus.SUCCESS ? (
+      <Wrapper>
+        {this.renderMessage()}
 
-            <ButtonLink to={ROUTES.ADMIN_USERS}>Continue</ButtonLink>
-          </Wrapper>
-        ) : (
-          <Formik
-            initialValues={{
-              firstName,
-              id,
-              isAdmin,
-              lastName,
-              middleInitial,
-              phoneNumber,
-              username,
-            }}
-            onSubmit={this.handleFormSubmit}
-            validateOnChange={false}
-            render={this.renderForm}
-          />
-      )
+        <ButtonLink to={ROUTES.ADMIN_USERS}>Continue</ButtonLink>
+      </Wrapper>
+    ) : (
+      <Formik
+        initialValues={{
+          firstName,
+          id,
+          lastName,
+          middleInitial,
+          phone: phone!.slice(2),
+          username,
+        }}
+        onSubmit={this.handleFormSubmit}
+        validateOnChange={false}
+        render={this.renderForm}
+      />
     );
   }
 }

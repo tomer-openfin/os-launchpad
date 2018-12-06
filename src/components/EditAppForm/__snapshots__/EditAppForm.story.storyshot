@@ -63,7 +63,49 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               value={Array []}
-            />
+            >
+              <option
+                value="Call"
+              >
+                Call
+              </option>
+              <option
+                value="Chat"
+              >
+                Chat
+              </option>
+              <option
+                value="Chart"
+              >
+                Chart
+              </option>
+              <option
+                value="View"
+              >
+                View
+              </option>
+              <option
+                value="Quote"
+              >
+                Quote
+              </option>
+              <option
+                value="News"
+              >
+                News
+              </option>
+              <option
+                value="Details"
+              >
+                Details
+              </option>
+              <option
+                value="Analyze"
+              >
+                Analyze
+              </option>
+              }
+            </select>
           </label>
           <label
             className="sc-jAaTju bWwYTP"
@@ -87,7 +129,34 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
               onBlur={[Function]}
               onChange={[Function]}
               value={Array []}
-            />
+            >
+              <option
+                value="fdc3.instrument"
+              >
+                fdc3.instrument
+              </option>
+              <option
+                value="fdc3.contact"
+              >
+                fdc3.contact
+              </option>
+              <option
+                value="fdc3.organization"
+              >
+                fdc3.organization
+              </option>
+              <option
+                value="fdc3.contactList"
+              >
+                fdc3.contactList
+              </option>
+              <option
+                value="fdc3.position"
+              >
+                fdc3.position
+              </option>
+              }
+            </select>
           </label>
           <label
             className="sc-jAaTju bWwYTP"

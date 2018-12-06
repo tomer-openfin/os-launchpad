@@ -22,18 +22,14 @@ interface State {
 }
 
 class ConfirmUserDelete extends React.Component<Props, State> {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      deleteDisabled: false,
-      responseReceived: false,
-      result: {
-        message: '',
-        status: '',
-      },
-    };
-  }
+  state = {
+    deleteDisabled: false,
+    responseReceived: false,
+    result: {
+      message: '',
+      status: '',
+    },
+  };
 
   errorCb = message =>
     this.setState({
@@ -70,7 +66,7 @@ class ConfirmUserDelete extends React.Component<Props, State> {
       if (result.status === ResponseStatus.FAILURE) {
         return (
           <Error>
-            There was an error trying to delete {`${firstName} ${lastName}`}: {result.message}
+            Sorry, there was an error trying to delete {`${firstName} ${lastName}`}, please try again. Error: {result.message}
           </Error>
         );
       }
@@ -84,32 +80,30 @@ class ConfirmUserDelete extends React.Component<Props, State> {
     const { deleteDisabled, responseReceived, result } = this.state;
     const { firstName, lastName } = location.state;
 
-    return (
-      responseReceived && result.status === ResponseStatus.SUCCESS ? (
-        <Wrapper>
-          {this.renderMessage()}
+    return responseReceived && result.status === ResponseStatus.SUCCESS ? (
+      <Wrapper>
+        {this.renderMessage()}
 
-          <ButtonLink to={ROUTES.ADMIN_USERS}>Continue</ButtonLink>
-        </Wrapper>
-      ) : (
-        <Wrapper>
-          <Heading>Delete User</Heading>
+        <ButtonLink to={ROUTES.ADMIN_USERS}>Continue</ButtonLink>
+      </Wrapper>
+    ) : (
+      <Wrapper>
+        <Heading>Delete User</Heading>
 
-          <Copy>
-            You are about to delete the following user: {firstName} {lastName}?
-          </Copy>
+        <Copy>
+          You are about to delete the following user: {firstName} {lastName}?
+        </Copy>
 
-          <Row>
-            <ButtonLink to={ROUTES.ADMIN_USERS}>Cancel</ButtonLink>
+        <Row>
+          <ButtonLink to={ROUTES.ADMIN_USERS}>Cancel</ButtonLink>
 
-            <Button disabled={deleteDisabled} onClick={this.handleDeleteUser}>
-              Delete User
-            </Button>
-          </Row>
+          <Button disabled={deleteDisabled} onClick={this.handleDeleteUser}>
+            Delete User
+          </Button>
+        </Row>
 
-          {this.renderMessage()}
-        </Wrapper>
-      )
+        {this.renderMessage()}
+      </Wrapper>
     );
   }
 }

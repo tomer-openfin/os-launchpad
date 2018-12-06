@@ -107,7 +107,7 @@ class NewAppForm extends React.Component<Props, State> {
     actions.setSubmitting(false);
   };
 
-  renderFormSection = ({ setFieldValue, handleReset, isValid, dirty }) => (
+  renderFormSection = ({ setFieldValue, isValid, dirty }) => (
     <Form>
       <GridContainer>
         <Label>
@@ -170,9 +170,7 @@ class NewAppForm extends React.Component<Props, State> {
       </GridContainer>
 
       <Row>
-        <ButtonLink to={ROUTES.ADMIN_APPS} >
-          Cancel
-        </ButtonLink>
+        <ButtonLink to={ROUTES.ADMIN_APPS}>Cancel</ButtonLink>
 
         <Button type="submit" disabled={!isValid || !dirty}>
           Save
@@ -187,7 +185,11 @@ class NewAppForm extends React.Component<Props, State> {
 
     if (responseReceived) {
       if (result.status === ResponseStatus.FAILURE) {
-        return <Error>There was an error trying to create {title} app: {result.message}. Please try again.</Error>;
+        return (
+          <Error>
+            There was an error trying to create {title} app: {result.message}. Please try again.
+          </Error>
+        );
       }
       return <Message>Success! The App '{title}' was succesfully created.</Message>;
     }
@@ -214,39 +216,37 @@ class NewAppForm extends React.Component<Props, State> {
     const { result, formContents, responseReceived } = this.state;
     const { id, manifest_url, name, title, description, icon, images } = formContents;
 
-    return (
-      responseReceived && result.status === ResponseStatus.SUCCESS ? (
-        <Wrapper>
-          {this.renderMessage()}
+    return responseReceived && result.status === ResponseStatus.SUCCESS ? (
+      <Wrapper>
+        {this.renderMessage()}
 
-          <ButtonLink to={ROUTES.ADMIN_APPS}>Continue</ButtonLink>
-        </Wrapper>
-      ) : (
-        <Wrapper>
-          <Heading>Add App</Heading>
+        <ButtonLink to={ROUTES.ADMIN_APPS}>Continue</ButtonLink>
+      </Wrapper>
+    ) : (
+      <Wrapper>
+        <Heading>Add App</Heading>
 
-          <Copy>Please verify and/or update the following fields:</Copy>
+        <Copy>Please verify and/or update the following fields:</Copy>
 
-          <Formik
-            initialValues={{
-              contexts: MOCK_CONTEXTS,
-              description,
-              icon,
-              id,
-              images,
-              intents: MOCK_INTENTS,
-              manifest_url,
-              name,
-              title,
-            }}
-            onSubmit={this.handleFormSubmit}
-            validateOnChange={false}
-            render={this.renderFormSection}
-          />
+        <Formik
+          initialValues={{
+            contexts: MOCK_CONTEXTS,
+            description,
+            icon,
+            id,
+            images,
+            intents: MOCK_INTENTS,
+            manifest_url,
+            name,
+            title,
+          }}
+          onSubmit={this.handleFormSubmit}
+          validateOnChange={false}
+          render={this.renderFormSection}
+        />
 
-          {this.renderMessage()}
-        </Wrapper>
-      )
+        {this.renderMessage()}
+      </Wrapper>
     );
   }
 }

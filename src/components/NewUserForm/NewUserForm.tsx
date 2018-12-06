@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 
-import { validateEmail, validateTextField } from '../../utils/validators';
+import { validateEmail, validatePhone, validateTextField } from '../../utils/validators';
 import { ROUTES } from '../Router/consts';
 
 import { ResponseStatus, User } from '../../types/commons';
@@ -33,7 +33,7 @@ class NewUserForm extends React.Component<Props, State> {
       lastName: '',
       middleInitial: '',
       organizationId: '',
-      phoneNumber: '',
+      phone: '',
       tmpPassword: '',
       username: '',
     },
@@ -68,14 +68,16 @@ class NewUserForm extends React.Component<Props, State> {
 
     const meta = { successCb: this.successCb, errorCb: this.errorCb };
 
+    // default to +1 for country code for now
+    payload.phone = `+1${payload.phone}`;
+
     createUser(payload, meta);
 
     actions.setSubmitting(false);
   };
 
   renderForm = ({ isSubmitting, isValid }) => {
-    const { formContents, submitDisabled } = this.state;
-    const { isAdmin } = formContents;
+    const { submitDisabled } = this.state;
 
     return (
       <Wrapper>
@@ -88,13 +90,13 @@ class NewUserForm extends React.Component<Props, State> {
             <ErrorMessage component={Error} name="email" />
           </Label>
 
-          {/* todo: add basic client-side phone validator */}
           <Label>
             Phone Number
-            <Field type="text" name="phoneNumber" />
-            <ErrorMessage component={Error} name="phoneNumber" />
+            <Field type="text" name="phone" maxLength="10" validate={validatePhone} />
+            <ErrorMessage component={Error} name="phone" />
           </Label>
 
+          {/* todo: add password validation rules based on what BE expects */}
           <Label>
             Password
             <Field type="password" name="tmpPassword" validate={validateTextField} />
@@ -119,14 +121,6 @@ class NewUserForm extends React.Component<Props, State> {
             <ErrorMessage component={Error} name="middleInitial" />
           </Label>
 
-          <Label>
-            Make an administrator?
-            <Field component="select" name="isAdmin" placeholder={isAdmin ? 'yes' : 'no'}>
-              <option value="no">No</option>
-              <option value="yes">Yes</option>
-            </Field>
-          </Label>
-
           <Row>
             <ButtonLink to={ROUTES.ADMIN_USERS}>Cancel</ButtonLink>
 
@@ -146,7 +140,7 @@ class NewUserForm extends React.Component<Props, State> {
 
     if (responseReceived) {
       if (result.status === ResponseStatus.FAILURE) {
-        return <Error>There was an error tyring to create this user: {result.message}. Please try again.</Error>;
+        return <Error>Sorry, there was an error tyring to create this user, please try again. Error: {result.message}</Error>;
       }
 
       return <Message>Success! New user succesfully created.</Message>;
@@ -157,34 +151,31 @@ class NewUserForm extends React.Component<Props, State> {
 
   render() {
     const { formContents } = this.state;
+    const { id, email, firstName, lastName, middleInitial, organizationId, tmpPassword, phone } = formContents;
     const { responseReceived, result } = this.state;
-    const { id, email, firstName, isAdmin, lastName, middleInitial, organizationId, tmpPassword, phoneNumber } = formContents;
 
-    return (
-      responseReceived && result.status === ResponseStatus.SUCCESS ? (
-        <Wrapper>
-          {this.renderMessage()}
+    return responseReceived && result.status === ResponseStatus.SUCCESS ? (
+      <Wrapper>
+        {this.renderMessage()}
 
-          <ButtonLink to={ROUTES.ADMIN_USERS}>Continue</ButtonLink>
-        </Wrapper>
-      ) : (
-        <Formik
-          initialValues={{
-            email,
-            firstName,
-            id,
-            isAdmin,
-            lastName,
-            middleInitial,
-            organizationId,
-            phoneNumber,
-            tmpPassword,
-          }}
-          onSubmit={this.handleFormSubmit}
-          validateOnChange={false}
-          render={this.renderForm}
-        />
-      )
+        <ButtonLink to={ROUTES.ADMIN_USERS}>Continue</ButtonLink>
+      </Wrapper>
+    ) : (
+      <Formik
+        initialValues={{
+          email,
+          firstName,
+          id,
+          lastName,
+          middleInitial,
+          organizationId,
+          phone,
+          tmpPassword,
+        }}
+        onSubmit={this.handleFormSubmit}
+        validateOnChange={false}
+        render={this.renderForm}
+      />
     );
   }
 }

@@ -42,3 +42,16 @@ export const validateURL = value => {
 
   return;
 };
+
+// todo: check with product team what phone numbers they'd like to store
+// can have multiple country codes in the future
+export const validatePhone = value => {
+  if (!value) return;
+
+  const coercedValue = Number(value);
+  if (isNaN(coercedValue)) return 'Valid phone number required, no alphabetic characters allowed.';
+
+  if (value.length < 10) return '10 digits required for a valid phone number.';
+
+  return;
+};

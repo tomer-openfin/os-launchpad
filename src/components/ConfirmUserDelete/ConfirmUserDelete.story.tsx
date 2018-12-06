@@ -16,7 +16,7 @@ const currentUserData = {
       lastName: 'string',
       middleInitial: 'string',
       organizationId: 'string',
-      phoneNumber: 'string',
+      phone: 'string',
       tmpPassword: 'string',
       username: 'string',
     },

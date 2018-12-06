@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import { Button, ButtonLink, Copy, Error, GridContainer, Heading, Label, Message, Row, Wrapper } from './EditAppForm.css';
 
+import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../const/Samples';
 import { App, ResponseStatus } from '../../types/commons';
 import { validateTextField, validateURL } from '../../utils/validators';
 import { ROUTES } from '../Router/consts';
@@ -24,8 +25,21 @@ interface State {
 
 const mapSelectedOptions = (event: React.FormEvent<HTMLSelectElement>) => Array.from(event.currentTarget.selectedOptions).map(option => option.value);
 
-class EditAppForm extends React.Component<Props, State> {
+const renderMockIntents = () =>
+  MOCK_INTENTS.map((intent, index) => (
+    <option key={index} value={intent.displayName}>
+      {intent.displayName}
+    </option>
+  ));
 
+const renderMockContexts = () =>
+  MOCK_CONTEXTS.map((context, index) => (
+    <option key={index} value={context.$type}>
+      {context.$type}
+    </option>
+  ));
+
+class EditAppForm extends React.Component<Props, State> {
   constructor(props) {
     super(props);
 
@@ -61,15 +75,17 @@ class EditAppForm extends React.Component<Props, State> {
 
     const meta = { successCb: this.successCb, errorCb: this.errorCb };
 
+    // Modify payload to match expected shapes (TEMP)
+    payload.intents = payload.intents.map(intent => ({ name: intent, displayName: intent }));
+    payload.contexts = payload.contexts.map(context => ({ $type: context, id: context, name: context }));
+
+    // todo: come back to, currently all PUTs failing. Investigate desired shape.
     updateApp(payload, meta);
 
     actions.setSubmitting(false);
   };
 
-  renderFormSection = ({ setFieldValue, handleReset, isValid, dirty }) => {
-    const { location } = this.props;
-    const { intents, contexts } = location.state;
-
+  renderFormSection = ({ setFieldValue, isValid, dirty }) => {
     return (
       <Form>
         <GridContainer>
@@ -94,11 +110,7 @@ class EditAppForm extends React.Component<Props, State> {
               // tslint:disable:jsx-no-lambda
               onChange={event => setFieldValue('intents', mapSelectedOptions(event))}
             >
-              {intents && intents.map((intent, index) => (
-                <option key={index} value={intent.displayName}>
-                  {intent.displayName}
-                </option>
-              ))}
+              {renderMockIntents()}}
             </Field>
           </Label>
 
@@ -117,11 +129,7 @@ class EditAppForm extends React.Component<Props, State> {
               // tslint:disable:jsx-no-lambda
               onChange={event => setFieldValue('contexts', mapSelectedOptions(event))}
             >
-              {contexts && contexts.map((context, index) => (
-                <option key={index} value={context.$type}>
-                  {context.$type}
-                </option>
-              ))}
+              {renderMockContexts()}}
             </Field>
           </Label>
 
@@ -141,9 +149,7 @@ class EditAppForm extends React.Component<Props, State> {
         </GridContainer>
 
         <Row>
-          <ButtonLink to={ROUTES.ADMIN_APPS} >
-            Cancel
-          </ButtonLink>
+          <ButtonLink to={ROUTES.ADMIN_APPS}>Cancel</ButtonLink>
 
           <Button type="submit" disabled={!isValid || !dirty}>
             Save
@@ -161,13 +167,17 @@ class EditAppForm extends React.Component<Props, State> {
 
     if (responseReceived) {
       if (result.status === ResponseStatus.FAILURE) {
-        return <Error>There was an error trying to update {title}. Please try again.</Error>;
+        return (
+          <Error>
+            Sorry, there was an error tyring to update {title}, please try again. Error: {result.message}
+          </Error>
+        );
       }
       return <Message>Success! The App '{title}' was succesfully updated.</Message>;
     }
 
     return null;
-  }
+  };
 
   renderScreenshots = () => {
     const { location } = this.props;
@@ -177,7 +187,7 @@ class EditAppForm extends React.Component<Props, State> {
     // todo: append/PUT new screenshots to end of images array in /apps/:id
     return (
       <Label>
-        Screenshot(s): only render 1 image for now until cycle w/ carousel
+        {/* Screenshot(s): only render 1 image for now until cycle w/ carousel */}
         {images.slice(0, 1).map(image => (
           <img src={image.url} key={image.url} />
         ))}
@@ -190,39 +200,37 @@ class EditAppForm extends React.Component<Props, State> {
     const { location } = this.props;
     const { id, manifest_url, name, title, description, icon, images, intents, contexts } = location.state;
 
-    return (
-      responseReceived && result.status === ResponseStatus.SUCCESS ? (
-        <Wrapper>
-          {this.renderMessage()}
+    return responseReceived && result.status === ResponseStatus.SUCCESS ? (
+      <Wrapper>
+        {this.renderMessage()}
 
-          <ButtonLink to={ROUTES.ADMIN_APPS}>Continue</ButtonLink>
-        </Wrapper>
-      ) : (
-        <Wrapper>
-          <Heading>Edit App</Heading>
+        <ButtonLink to={ROUTES.ADMIN_APPS}>Continue</ButtonLink>
+      </Wrapper>
+    ) : (
+      <Wrapper>
+        <Heading>Edit App</Heading>
 
-          <Copy>Please verify and/or update the following fields:</Copy>
+        <Copy>Please verify and/or update the following fields:</Copy>
 
-          <Formik
-            initialValues={{
-              contexts,
-              description,
-              icon,
-              id,
-              images,
-              intents,
-              manifest_url,
-              name,
-              title,
-            }}
-            onSubmit={this.handleFormSubmit}
-            validateOnChange={false}
-            render={this.renderFormSection}
-          />
+        <Formik
+          initialValues={{
+            contexts,
+            description,
+            icon,
+            id,
+            images,
+            intents,
+            manifest_url,
+            name,
+            title,
+          }}
+          onSubmit={this.handleFormSubmit}
+          validateOnChange={false}
+          render={this.renderFormSection}
+        />
 
-          {this.renderMessage()}
-        </Wrapper>
-      )
+        {this.renderMessage()}
+      </Wrapper>
     );
   }
 }
