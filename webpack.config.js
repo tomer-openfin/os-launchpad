@@ -60,6 +60,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
+        HOST: JSON.stringify(HOST),
         API_URL: JSON.stringify(API_URL),
         APP_UUID: JSON.stringify(appJson.startup_app.uuid),
         ENTERPRISE: JSON.stringify(ENTERPRISE),
