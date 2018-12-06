@@ -8,14 +8,20 @@ import rootSaga from './redux/rootSaga';
 
 const {
   NODE_ENV,
+  STORYBOOK_ENV,
 } = process.env;
 
 // Middleware
 const openFinMiddleware = reduxOpenFin(window.fin);
 const sagaMiddleware = createSagaMiddleware();
-const middlewareArgs = [openFinMiddleware, sagaMiddleware];
 
-const middleware = NODE_ENV === 'development'
+// Don't include redux-openfin when running in Storybook.
+const middlewareArgs = STORYBOOK_ENV === 'true'
+  ? [sagaMiddleware]
+  : [openFinMiddleware, sagaMiddleware];
+
+// Include the extra Redux dev tools when running in development, but not in Storybook.
+const middleware = NODE_ENV === 'development' && STORYBOOK_ENV === 'false'
   ? composeWithDevTools({ hostname: 'localhost', port: 8000 })(applyMiddleware(...middlewareArgs))
   : applyMiddleware(...middlewareArgs);
 
@@ -27,6 +33,7 @@ if (NODE_ENV !== 'production') {
 
   if (typeof devToolsExtension === 'function') {
     const enhancer = devToolsExtension();
+
     if (enhancer) {
       enhancers.push(enhancer);
     }
