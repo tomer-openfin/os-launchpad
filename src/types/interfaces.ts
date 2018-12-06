@@ -82,7 +82,7 @@ export interface User {
   organizationId: string;
   tmpPassword: string;
   username: string;
-  phoneNumber: string;
+  phone: string;
 }
 
 export interface ObjectWithId {
