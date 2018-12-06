@@ -73,7 +73,7 @@ export const createAndRunFromManifest = (manifestUrl: string, name: string) => {
             resolve(app.uuid);
           },
           // Run app ERROR callback
-          () => {
+          e => {
             // Remove all event listeners if running app fails
             closedEvents.forEach(event => {
               app.removeEventListener(event, finAppClosedHandler);
@@ -81,7 +81,7 @@ export const createAndRunFromManifest = (manifestUrl: string, name: string) => {
             // startedEvents.forEach(event => {
             //   app.removeEventListener(event, finAppStartedHandler);
             // });
-            reject();
+            reject(e);
           },
         );
 
