@@ -5,6 +5,7 @@ import * as searchIcon from '../assets/Search.svg';
 import * as settingsIcon from '../assets/Settings.svg';
 
 import windowsConfig from '../config/windows';
+import { toggleNotificationCenterRequest } from '../redux/notifications/index';
 import { launchWindow } from '../redux/windows/index';
 
 export const getLauncherIcons = (isAdmin: boolean) => {
@@ -25,7 +26,7 @@ export const getLauncherIcons = (isAdmin: boolean) => {
       key: 'layouts',
     },
     {
-      action: { type: 'TOGGLE_NOTIFICATION_CENTER' },
+      action: toggleNotificationCenterRequest(),
       icon: notificationsIcon,
       key: 'notifications',
     },

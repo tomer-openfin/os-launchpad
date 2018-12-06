@@ -1,5 +1,5 @@
 import { finAppClosed } from '../redux/apps/index';
-import { Bounds, MonitorInfo, OpenFinApplication, VirtualScreenCoordinates } from '../types/commons';
+import { Bounds, MonitorInfo, OpenFinApplication, PointTopLeft } from '../types/commons';
 import promisifyOpenfin from './promisifyOpenfin';
 
 // TODO - move these functions to redux-openfin
@@ -16,7 +16,7 @@ const getSystemPromise = <T = undefined>(method: string) => (...args) => {
 
 export const addSystemEventListener = getSystemPromise('addEventListener');
 export const getSystemMonitorInfo = getSystemPromise<MonitorInfo>('getMonitorInfo');
-export const getSystemMousePosition = getSystemPromise<VirtualScreenCoordinates>('getMousePosition');
+export const getSystemMousePosition = getSystemPromise<PointTopLeft>('getMousePosition');
 
 export const animateWindow = (finWindow, animation, options) => {
   return promisifyOpenfin(finWindow, 'animate', animation, options);

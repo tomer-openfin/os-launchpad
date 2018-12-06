@@ -11,11 +11,6 @@ import {
 
 const { Bottom: BOTTOM, Left: LEFT, Right: RIGHT, Top: TOP } = DirectionalPosition;
 
-type MONITOR_INFO_TOPIC = 'system';
-type MONITOR_INFO_TYPE = 'monitor-info-changed';
-const TOPIC: MONITOR_INFO_TOPIC = 'system';
-const TYPE: MONITOR_INFO_TYPE = 'monitor-info-changed';
-
 const dimensions = { height: 100, width: 200 };
 const bounds = {
   ...dimensions,
@@ -24,8 +19,27 @@ const bounds = {
 };
 
 const monitorInfo = {
+  deviceScaleFactor: 0,
+  dpi: {
+    x: 0,
+    y: 0,
+  },
   nonPrimaryMonitors: [],
   primaryMonitor: {
+    available: {
+      dipRect: {
+        bottom: 1097,
+        left: 0,
+        right: 1384,
+        top: 0,
+      },
+      scaledRect: {
+        bottom: 1097,
+        left: 0,
+        right: 1384,
+        top: 0,
+      },
+    },
     availableRect: {
       bottom: 1097,
       left: 0,
@@ -33,17 +47,42 @@ const monitorInfo = {
       top: 0,
     },
     deviceId: 'test-device',
+    deviceScaleFactor: 1,
     displayDeviceActive: true,
+    dpi: {
+      x: 0,
+      y: 0,
+    },
+    monitor: {
+      dipRect: {
+        bottom: 1137,
+        left: 0,
+        right: 1384,
+        top: 0,
+      },
+      scaledRect: {
+        bottom: 1137,
+        left: 0,
+        right: 1384,
+        top: 0,
+      },
+    },
     monitorRect: {
       bottom: 1137,
       left: 0,
       right: 1384,
       top: 0,
     },
-    name: 'test-monitor',
+    name: 0,
   },
   reason: 'display',
-  taskbar: {
+  taskBar: {
+    dipRect: {
+      bottom: 1137,
+      left: 0,
+      right: 1384,
+      top: 1097,
+    },
     edge: BOTTOM,
     rect: {
       bottom: 1137,
@@ -51,13 +90,29 @@ const monitorInfo = {
       right: 1384,
       top: 1097,
     },
+    scaledRect: {
+      bottom: 1137,
+      left: 0,
+      right: 1384,
+      top: 1097,
+    },
   },
-  topic: TOPIC,
-  type: TYPE,
   virtualScreen: {
     bottom: 1137,
+    dipRect: {
+      bottom: 1137,
+      left: 0,
+      right: 1384,
+      top: 0,
+    },
     left: 0,
     right: 1384,
+    scaledRect: {
+      bottom: 1137,
+      left: 0,
+      right: 1384,
+      top: 0,
+    },
     top: 0,
   },
 };

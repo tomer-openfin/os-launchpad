@@ -6,8 +6,9 @@ import { appsSaga } from './apps';
 import { contextMenuSaga } from './contextMenu';
 import { layoutsSaga } from './layouts';
 import { meSaga } from './me';
+import { notificationsSaga } from './notifications';
 import { windowsSaga } from './windows';
 
 export default function* rootSaga() {
-  yield all([adminSaga(), applicationSaga(), appsSaga(), contextMenuSaga(), layoutsSaga(), meSaga(), windowsSaga()]);
+  yield all([adminSaga(), applicationSaga(), appsSaga(), contextMenuSaga(), layoutsSaga(), meSaga(), notificationsSaga(), windowsSaga()]);
 }

@@ -25,7 +25,7 @@ export function* animateLauncherCollapseExpand(isExpanded: State['application'][
     select(getAutoHide),
   ]);
   const { height, width, top, left } = calcLauncherPosition(totalCtas, monitorInfo, launcherPosition, autoHide, isExpanded);
-  const transitions: fin.AnimationTransition = {
+  const transitions: fin.Transition = {
     size: {
       duration: ANIMATION_DURATION,
       height,
