@@ -25,10 +25,10 @@ const App = (props: Props) => {
       <Logo />
 
       {apps.map(app => (
-        <React.Fragment key={app.name}>
+        <React.Fragment key={app.id}>
           <Separator launcherPosition={launcherPosition} />
 
-          <StyledAppIcon launcherPosition={launcherPosition} name={app.name} withContextMenu />
+          <StyledAppIcon launcherPosition={launcherPosition} appId={app.id} withContextMenu />
         </React.Fragment>
       ))}
 

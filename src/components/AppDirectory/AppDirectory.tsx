@@ -45,7 +45,7 @@ class AppDirectory extends React.PureComponent<Props, State> {
     });
   };
 
-  filterAppList = search => this.props.appList.filter(app => app.name.toLowerCase().indexOf(search.toLowerCase()) !== -1);
+  filterAppList = search => this.props.appList.filter(app => app.title.toLowerCase().indexOf(search.toLowerCase()) !== -1);
 
   setSearchInputRef = input => {
     this.searchInput = input;

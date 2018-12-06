@@ -37,7 +37,7 @@ export const getAdminApps = (): Promise<App[] | APIResponse> => {
 export const getAdminApp = (app: App): Promise<App | APIResponse> => {
   const options = createGetOptions();
 
-  return fetch(`${API.ADMIN_APPS}/${app.name}`, options).then(resp => resp.json());
+  return fetch(`${API.ADMIN_APPS}/${app.id}`, options).then(resp => resp.json());
 };
 
 /**
@@ -59,7 +59,7 @@ export const createAdminApp = (app: App): Promise<APIResponse> => {
 export const updateAdminApp = (app: App): Promise<APIResponse> => {
   const options = createPutOptions({ application: app });
 
-  return fetch(`${API.ADMIN_APPS}/${app.name}`, options).then(resp => resp.json());
+  return fetch(`${API.ADMIN_APPS}/${app.id}`, options).then(resp => resp.json());
 };
 
 /**
@@ -70,5 +70,5 @@ export const updateAdminApp = (app: App): Promise<APIResponse> => {
 export const deleteAdminApp = (app: App): Promise<APIResponse> => {
   const options = createDeleteOptions();
 
-  return fetch(`${API.ADMIN_APPS}/${app.name}`, options).then(resp => resp.json());
+  return fetch(`${API.ADMIN_APPS}/${app.id}`, options).then(resp => resp.json());
 };

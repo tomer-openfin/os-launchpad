@@ -11,26 +11,26 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
     }
   >
     <div
-      className="sc-gipzik fGqjGc"
+      className="sc-iAyFgw eFUJkT"
     >
       <div
-        className="sc-brqgnP dGWbvO"
+        className="sc-eNQAEJ xGIss"
       >
         Edit App
       </div>
-      <p
-        className="sc-cvbbAY eWfizt"
+      <div
+        className="sc-dxgOiQ fKhfBr"
       >
         Please verify and/or update the following fields:
-      </p>
+      </div>
       <form
         onSubmit={[Function]}
       >
         <div
-          className="sc-cMljjf gMCcct"
+          className="sc-hSdWYo iGDHmA"
         >
           <label
-            className="sc-jAaTju bWwYTP"
+            className="sc-hMqMXs dWtibL"
           >
             Icon URL
             <input
@@ -42,7 +42,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-jAaTju bWwYTP"
+            className="sc-hMqMXs dWtibL"
           >
             Manifest URL
             <input
@@ -54,7 +54,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-jAaTju bWwYTP"
+            className="sc-hMqMXs dWtibL"
           >
             Accepted Intent(s)
             <select
@@ -65,42 +65,42 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
               value={Array []}
             >
               <option
-                value="Call"
+                value={0}
               >
                 Call
               </option>
               <option
-                value="Chat"
+                value={1}
               >
                 Chat
               </option>
               <option
-                value="Chart"
+                value={2}
               >
                 Chart
               </option>
               <option
-                value="View"
+                value={3}
               >
                 View
               </option>
               <option
-                value="Quote"
+                value={4}
               >
                 Quote
               </option>
               <option
-                value="News"
+                value={5}
               >
                 News
               </option>
               <option
-                value="Details"
+                value={6}
               >
                 Details
               </option>
               <option
-                value="Analyze"
+                value={7}
               >
                 Analyze
               </option>
@@ -108,7 +108,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             </select>
           </label>
           <label
-            className="sc-jAaTju bWwYTP"
+            className="sc-hMqMXs dWtibL"
           >
             Title
             <input
@@ -120,7 +120,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-jAaTju bWwYTP"
+            className="sc-hMqMXs dWtibL"
           >
             Accepted Context(s)
             <select
@@ -131,27 +131,27 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
               value={Array []}
             >
               <option
-                value="fdc3.instrument"
+                value={0}
               >
                 fdc3.instrument
               </option>
               <option
-                value="fdc3.contact"
+                value={1}
               >
                 fdc3.contact
               </option>
               <option
-                value="fdc3.organization"
+                value={2}
               >
                 fdc3.organization
               </option>
               <option
-                value="fdc3.contactList"
+                value={3}
               >
                 fdc3.contactList
               </option>
               <option
-                value="fdc3.position"
+                value={4}
               >
                 fdc3.position
               </option>
@@ -159,7 +159,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             </select>
           </label>
           <label
-            className="sc-jAaTju bWwYTP"
+            className="sc-hMqMXs dWtibL"
           >
             Name
             <input
@@ -171,7 +171,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-jAaTju bWwYTP"
+            className="sc-hMqMXs dWtibL"
           >
             Description
             <textarea
@@ -183,17 +183,17 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
           </label>
         </div>
         <div
-          className="sc-jlyJG daZeuX"
+          className="sc-kkGfuU hfNRCV"
         >
           <a
-            className="sc-eHgmQL gAvtQA"
+            className="sc-ckVGcZ hMJJkx"
             href="/admin/apps"
             onClick={[Function]}
           >
             Cancel
           </a>
           <button
-            className="sc-hSdWYo cIOjkt"
+            className="sc-kpOJdX hXueXJ"
             disabled={true}
             type="submit"
           >

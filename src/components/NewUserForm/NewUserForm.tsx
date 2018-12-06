@@ -7,7 +7,7 @@ import { ROUTES } from '../Router/consts';
 
 import { ResponseStatus, User } from '../../types/commons';
 
-import { Button, ButtonLink, Error, Heading, Label, Message, Row, Wrapper } from './NewUserForm.css';
+import { Button, ButtonLink, Error, GridWrapper, Heading, Label, Message, Row, Wrapper } from './NewUserForm.css';
 
 interface Props {
   createUser: Function;
@@ -81,45 +81,47 @@ class NewUserForm extends React.Component<Props, State> {
 
     return (
       <Wrapper>
+        <Heading>Create New User</Heading>
+
         <Form>
-          <Heading>Create New User</Heading>
+          <GridWrapper>
+            <Label>
+              Email
+              <Field type="email" name="email" validate={validateEmail} />
+              <ErrorMessage component={Error} name="email" />
+            </Label>
 
-          <Label>
-            Email
-            <Field type="email" name="email" validate={validateEmail} />
-            <ErrorMessage component={Error} name="email" />
-          </Label>
+            <Label>
+              Phone Number
+              <Field type="text" name="phone" maxLength="10" validate={validatePhone} />
+              <ErrorMessage component={Error} name="phone" />
+            </Label>
 
-          <Label>
-            Phone Number
-            <Field type="text" name="phone" maxLength="10" validate={validatePhone} />
-            <ErrorMessage component={Error} name="phone" />
-          </Label>
+            {/* todo: add password validation rules based on what BE expects */}
+            <Label>
+              Password
+              <Field type="password" name="tmpPassword" validate={validateTextField} />
+              <ErrorMessage component={Error} name="tmpPassword" />
+            </Label>
 
-          {/* todo: add password validation rules based on what BE expects */}
-          <Label>
-            Password
-            <Field type="password" name="tmpPassword" validate={validateTextField} />
-            <ErrorMessage component={Error} name="tmpPassword" />
-          </Label>
+            <Label>
+              First Name
+              <Field type="text" name="firstName" validate={validateTextField} />
+              <ErrorMessage component={Error} name="firstName" />
+            </Label>
 
-          <Label>
-            First Name
-            <Field type="text" name="firstName" validate={validateTextField} />
-            <ErrorMessage component={Error} name="firstName" />
-          </Label>
+            <Label>
+              Last Name
+              <Field type="text" name="lastName" validate={validateTextField} />
+              <ErrorMessage component={Error} name="lastName" />
+            </Label>
 
-          <Label>
-            Last Name
-            <Field type="text" name="lastName" validate={validateTextField} />
-            <ErrorMessage component={Error} name="lastName" />
-          </Label>
-
-          <Label>
-            Middle Initial
-            <Field type="text" name="middleInitial" />
-            <ErrorMessage component={Error} name="middleInitial" />
-          </Label>
+            <Label>
+              Middle Initial
+              <Field type="text" name="middleInitial" />
+              <ErrorMessage component={Error} name="middleInitial" />
+            </Label>
+          </GridWrapper>
 
           <Row>
             <ButtonLink to={ROUTES.ADMIN_USERS}>Cancel</ButtonLink>

@@ -63,13 +63,13 @@ const AppList = ({ appList, appsStatusByName, launchApp, launchWindowCreator, la
         }
 
         return (
-          <Space key={app.name || index} withClose>
+          <Space key={app.id || index} withClose>
             <ContextMenuZone options={contextMenuOptions}>
               <IconSpace onClick={handleClickCreator(app, launchApp, launchWindowCreator(config.appDirectory))} iconImg={app ? app.icon : plusIcon} />
 
               <CloseButton onClick={handleClose} />
 
-              <StyledAppIndicator appName={app.name} position={launcherPosition} />
+              <StyledAppIndicator appId={app.id} position={launcherPosition} />
             </ContextMenuZone>
           </Space>
         );

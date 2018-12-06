@@ -13,99 +13,103 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
     <div
       className="sc-iAyFgw eFUJkT"
     >
+      <div
+        className="sc-eNQAEJ xGIss"
+      >
+        Create New User
+      </div>
       <form
         onSubmit={[Function]}
       >
         <div
-          className="sc-eNQAEJ iPOzxN"
+          className="sc-hSdWYo iGDHmA"
         >
-          Create New User
+          <label
+            className="sc-hMqMXs dWtibL"
+          >
+            Email
+            <input
+              name="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="email"
+              value=""
+            />
+          </label>
+          <label
+            className="sc-hMqMXs dWtibL"
+          >
+            Phone Number
+            <input
+              maxLength="10"
+              name="phone"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+          </label>
+          <label
+            className="sc-hMqMXs dWtibL"
+          >
+            Password
+            <input
+              name="tmpPassword"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="password"
+              value=""
+            />
+          </label>
+          <label
+            className="sc-hMqMXs dWtibL"
+          >
+            First Name
+            <input
+              name="firstName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+          </label>
+          <label
+            className="sc-hMqMXs dWtibL"
+          >
+            Last Name
+            <input
+              name="lastName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+          </label>
+          <label
+            className="sc-hMqMXs dWtibL"
+          >
+            Middle Initial
+            <input
+              name="middleInitial"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="text"
+              value=""
+            />
+          </label>
         </div>
-        <label
-          className="sc-hMqMXs gsZEgf"
-        >
-          Email
-          <input
-            name="email"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="email"
-            value=""
-          />
-        </label>
-        <label
-          className="sc-hMqMXs gsZEgf"
-        >
-          Phone Number
-          <input
-            maxLength="10"
-            name="phone"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value=""
-          />
-        </label>
-        <label
-          className="sc-hMqMXs gsZEgf"
-        >
-          Password
-          <input
-            name="tmpPassword"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="password"
-            value=""
-          />
-        </label>
-        <label
-          className="sc-hMqMXs gsZEgf"
-        >
-          First Name
-          <input
-            name="firstName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value=""
-          />
-        </label>
-        <label
-          className="sc-hMqMXs gsZEgf"
-        >
-          Last Name
-          <input
-            name="lastName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value=""
-          />
-        </label>
-        <label
-          className="sc-hMqMXs gsZEgf"
-        >
-          Middle Initial
-          <input
-            name="middleInitial"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value=""
-          />
-        </label>
         <div
-          className="sc-kkGfuU gbgTA"
+          className="sc-kkGfuU hfNRCV"
         >
           <a
-            className="sc-ckVGcZ dtqKoZ"
+            className="sc-ckVGcZ hMJJkx"
             href="/admin/users"
             onClick={[Function]}
           >
             Cancel
           </a>
           <button
-            className="sc-kpOJdX hkDZlY"
+            className="sc-kpOJdX hXueXJ"
             disabled={true}
             type="submit"
           >

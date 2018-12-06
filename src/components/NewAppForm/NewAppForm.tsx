@@ -8,7 +8,7 @@ import { ROUTES } from '../Router/consts';
 
 import { App, ResponseStatus } from '../../types/commons';
 
-import { Button, ButtonLink, Copy, Error, GridContainer, Heading, Label, Message, Row, Wrapper } from '../EditAppForm/EditAppForm.css';
+import { Button, ButtonLink, Copy, Error, GridWrapper, Heading, Label, Message, Row, Wrapper } from '../NewUserForm';
 
 interface Props {
   createApp: Function;
@@ -109,7 +109,7 @@ class NewAppForm extends React.Component<Props, State> {
 
   renderFormSection = ({ setFieldValue, isValid, dirty }) => (
     <Form>
-      <GridContainer>
+      <GridWrapper>
         <Label>
           Icon URL
           <Field type="text" name="icon" validate={validateURL} />
@@ -167,7 +167,7 @@ class NewAppForm extends React.Component<Props, State> {
           <Field component="textarea" name="description" validate={validateTextField} />
           <ErrorMessage component={Error} name="description" />
         </Label>
-      </GridContainer>
+      </GridWrapper>
 
       <Row>
         <ButtonLink to={ROUTES.ADMIN_APPS}>Cancel</ButtonLink>

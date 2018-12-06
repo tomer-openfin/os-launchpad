@@ -30,7 +30,7 @@ export const setWindowBoundsPromise = (finWindow, { left, top, width, height }: 
   return promisifyOpenfin(finWindow, 'setBounds', left, top, width, height);
 };
 
-export const createAndRunFromManifest = (manifestUrl: string, name: string) => {
+export const createAndRunFromManifest = (manifestUrl: string, id: string) => {
   const { fin } = window;
 
   if (!fin) {
@@ -44,7 +44,7 @@ export const createAndRunFromManifest = (manifestUrl: string, name: string) => {
         const closedEvents: fin.OpenFinApplicationEventType[] = ['closed', 'crashed'];
         // const startedEvents: fin.OpenFinApplicationEventType[] = ['started'];
         const finAppClosedHandler = () => {
-          window.store.dispatch(finAppClosed({ name }));
+          window.store.dispatch(finAppClosed({ id }));
           closedEvents.forEach(event => {
             app.removeEventListener(event, finAppClosedHandler);
           });

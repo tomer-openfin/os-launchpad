@@ -11,17 +11,17 @@ exports[`Storyshots Components/Admin default 1`] = `
     }
   >
     <div
-      className="sc-cIShpX jZVvcX"
+      className="sc-jbKcbu jdREuX"
     >
       <div
-        className="sc-gGBfsJ cXkcOl"
+        className="sc-cJSrbW ivGxWp"
       >
         <button
-          className="sc-jnlKLf fPqggm"
+          className="sc-ksYbfQ fgAPAg"
           onClick={[Function]}
         >
           <span
-            className="sc-fYxtnH jZHIDX"
+            className="sc-hmzhuo fypdGF"
           />
         </button>
       </div>

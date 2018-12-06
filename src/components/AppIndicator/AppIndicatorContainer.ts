@@ -7,11 +7,11 @@ import { State } from '../../redux/types';
 import AppIndicator from './AppIndicator';
 
 interface Props {
-  appName: string;
+  appId: string;
 }
 
-const mapState = (state: State, { appName }: Props) => {
-  const status = getAppStatusByName(state, appName);
+const mapState = (state: State, { appId }: Props) => {
+  const status = getAppStatusByName(state, appId);
 
   return {
     statusState: status ? status.state : AppStatusStates.Closed,

@@ -41,7 +41,7 @@ function* watchGetAdminAppsRequest() {
 
   // TODO: hone the criteria for error response once it is more than empty object
   if (response.length && response.status !== ResponseStatus.FAILURE) {
-    const appList = response.map(addIdFromKey('name'));
+    const appList = response;
 
     yield put(getAdminAppsSuccess(appList));
   } else {
@@ -52,23 +52,15 @@ function* watchGetAdminAppsRequest() {
 function* watchCreateAdminAppRequest(action) {
   const response = yield call(ApiService.createAdminApp, action.payload);
 
-  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
+  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error' || !response.app) {
     yield put(createAdminAppError(response, action.meta));
   } else {
-    // modify after api updated
-    const getAppResponse = yield call(ApiService.getAdminApps);
+    const app = response.app;
 
-    const desiredApp = getAppResponse.find(app => app.name === action.payload.name);
+    if (!app) return yield put(createAdminAppError(response, action.meta));
 
-    if (!desiredApp) {
-      yield put(createAdminAppError(response, action.meta));
+    yield put(createAdminAppSuccess(app, action.meta));
 
-      return;
-    }
-
-    const newApp = addIdFromKey('name')(desiredApp);
-
-    yield put(createAdminAppSuccess(newApp, action.meta));
     yield put(getAppDirectoryList());
   }
 }
@@ -79,12 +71,12 @@ function* watchUpdateAdminAppRequest(action) {
   if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
     yield put(updateAdminAppError(response, action.meta));
   } else {
-    // modify after api updated
-    const getAppResponse = yield call(ApiService.getAdminApp, action.payload);
+    const app = response.app;
 
-    const updatedApp = addIdFromKey('name')(getAppResponse);
+    if (!app) return yield put(updateAdminAppError(response, action.meta));
 
-    yield put(updateAdminAppSuccess(updatedApp, action.meta));
+    yield put(updateAdminAppSuccess(app, action.meta));
+
     yield put(getAppDirectoryList());
   }
 }
@@ -96,6 +88,7 @@ function* watchDeleteAdminAppRequest(action) {
     yield put(deleteAdminAppError(response, action.meta));
   } else {
     yield put(deleteAdminAppSuccess(action.payload, action.meta));
+
     yield put(getAppDirectoryList());
   }
 }

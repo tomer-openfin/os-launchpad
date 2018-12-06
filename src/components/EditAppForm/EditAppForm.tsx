@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as React from 'react';
 
-import { Button, ButtonLink, Copy, Error, GridContainer, Heading, Label, Message, Row, Wrapper } from './EditAppForm.css';
+import { Button, ButtonLink, Copy, Error, GridWrapper, Heading, Label,  Message, Row, Wrapper } from '../NewUserForm';
 
 import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../const/Samples';
 import { App, ResponseStatus } from '../../types/commons';
@@ -27,14 +27,14 @@ const mapSelectedOptions = (event: React.FormEvent<HTMLSelectElement>) => Array.
 
 const renderMockIntents = () =>
   MOCK_INTENTS.map((intent, index) => (
-    <option key={index} value={intent.displayName}>
+    <option key={index} value={index}>
       {intent.displayName}
     </option>
   ));
 
 const renderMockContexts = () =>
   MOCK_CONTEXTS.map((context, index) => (
-    <option key={index} value={context.$type}>
+    <option key={index} value={index}>
       {context.$type}
     </option>
   ));
@@ -76,8 +76,8 @@ class EditAppForm extends React.Component<Props, State> {
     const meta = { successCb: this.successCb, errorCb: this.errorCb };
 
     // Modify payload to match expected shapes (TEMP)
-    payload.intents = payload.intents.map(intent => ({ name: intent, displayName: intent }));
-    payload.contexts = payload.contexts.map(context => ({ $type: context, id: context, name: context }));
+    payload.intents = payload.intents.map(index => (MOCK_INTENTS[index]));
+    payload.contexts = payload.contexts.map(index => (MOCK_CONTEXTS[index]));
 
     // todo: come back to, currently all PUTs failing. Investigate desired shape.
     updateApp(payload, meta);
@@ -88,7 +88,7 @@ class EditAppForm extends React.Component<Props, State> {
   renderFormSection = ({ setFieldValue, isValid, dirty }) => {
     return (
       <Form>
-        <GridContainer>
+        <GridWrapper>
           <Label>
             Icon URL
             <Field type="text" name="icon" validate={validateURL} />
@@ -146,7 +146,7 @@ class EditAppForm extends React.Component<Props, State> {
             <Field component="textarea" name="description" validate={validateTextField} />
             <ErrorMessage component={Error} name="description" />
           </Label>
-        </GridContainer>
+        </GridWrapper>
 
         <Row>
           <ButtonLink to={ROUTES.ADMIN_APPS}>Cancel</ButtonLink>
@@ -214,12 +214,12 @@ class EditAppForm extends React.Component<Props, State> {
 
         <Formik
           initialValues={{
-            contexts,
+            contexts: [],
             description,
             icon,
             id,
             images,
-            intents,
+            intents: [],
             manifest_url,
             name,
             title,

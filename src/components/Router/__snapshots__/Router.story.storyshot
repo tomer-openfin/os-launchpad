@@ -18,7 +18,7 @@ exports[`Storyshots Components/Router default 1`] = `
         Admin
       </a>
       <div
-        className="sc-gzOgki hQgRVx"
+        className="sc-cmTdod fxZPWp"
       >
         <div
           className="sc-htoDjs edCAeo"
@@ -28,7 +28,7 @@ exports[`Storyshots Components/Router default 1`] = `
           />
         </div>
         <div
-          className="sc-iyvyFf PKKdp"
+          className="sc-jwKygS dTaxAp"
         />
         <div
           className="sc-htoDjs cilmlp"
@@ -39,7 +39,7 @@ exports[`Storyshots Components/Router default 1`] = `
           />
         </div>
         <div
-          className="sc-iyvyFf PKKdp"
+          className="sc-jwKygS dTaxAp"
         />
         <div
           className="sc-htoDjs cilmlp"
@@ -50,7 +50,7 @@ exports[`Storyshots Components/Router default 1`] = `
           />
         </div>
         <div
-          className="sc-iyvyFf PKKdp"
+          className="sc-jwKygS dTaxAp"
         />
         <div
           className="sc-htoDjs cilmlp"
@@ -61,7 +61,7 @@ exports[`Storyshots Components/Router default 1`] = `
           />
         </div>
         <div
-          className="sc-iyvyFf PKKdp"
+          className="sc-jwKygS dTaxAp"
         />
         <div
           className="sc-htoDjs cilmlp"

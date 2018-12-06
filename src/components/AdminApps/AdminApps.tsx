@@ -73,7 +73,7 @@ class AdminApps extends React.PureComponent<Props & RouteComponentProps, State> 
 
         <ListWrapper>
           {this.filterAppsList(search).map(app => (
-            <li key={app.name}>
+            <li key={app.id}>
               <ListElement>{app.title}</ListElement>
               <ListElement>{this.renderButtons(app)}</ListElement>
             </li>

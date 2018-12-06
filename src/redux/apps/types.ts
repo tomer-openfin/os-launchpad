@@ -13,7 +13,7 @@ export interface AppsById {
 }
 
 export interface AppStatus {
-  [name: string]:
+  [id: string]:
     | {
         state: AppStatusStates;
         uuid: string | undefined;
@@ -37,11 +37,11 @@ export interface CloseFinAppPayload {
 }
 
 export interface FinAppPayload {
-  name: string;
+  id: string;
 }
 
 export interface OpenFinAppSuccessPayload {
-  name: string;
+  id: string;
   uuid: string;
 }
 

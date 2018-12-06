@@ -11,19 +11,19 @@ export interface Props {
   contextMenuOptions?: ContextMenuOption[];
   imgSrc: string;
   launchApp: () => void;
-  name: string;
+  appId: string;
   size?: AppIconSizes;
   indicatorPosition: DirectionalPosition;
 }
 
-const AppIcon = ({ className, contextMenuOptions, imgSrc, indicatorPosition, launchApp, name, size = AppIconSizes.Medium }: Props) => {
+const AppIcon = ({ className, contextMenuOptions, imgSrc, indicatorPosition, launchApp, appId, size = AppIconSizes.Medium }: Props) => {
   if (contextMenuOptions) {
     return (
       <ContextMenuZone className={className} options={contextMenuOptions}>
         <Wrapper onClick={launchApp}>
           <Icon imgSrc={imgSrc} size={size} />
 
-          <StyledAppIndicator appName={name} position={indicatorPosition} />
+          <StyledAppIndicator appId={appId} position={indicatorPosition} />
         </Wrapper>
       </ContextMenuZone>
     );
@@ -33,7 +33,7 @@ const AppIcon = ({ className, contextMenuOptions, imgSrc, indicatorPosition, lau
     <Wrapper className={className} onClick={launchApp}>
       <Icon imgSrc={imgSrc} size={size} />
 
-      <StyledAppIndicator appName={name} position={indicatorPosition} />
+      <StyledAppIndicator appId={appId} position={indicatorPosition} />
     </Wrapper>
   );
 };

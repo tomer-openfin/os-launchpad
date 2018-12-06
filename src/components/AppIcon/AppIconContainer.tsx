@@ -27,15 +27,15 @@ const invertPosition = (position: DirectionalPosition): DirectionalPosition => {
 };
 
 interface Props {
-  name: string;
+  appId: string;
   size?: AppIconSizes;
   withContextMenu?: boolean;
 }
 
-const mapState = (state, { name }) => ({
-  app: getAppById(state, name),
+const mapState = (state, { appId }) => ({
+  app: getAppById(state, appId),
   launcherPosition: getLauncherPosition(state),
-  status: getAppStatusByName(state, name),
+  status: getAppStatusByName(state, appId),
 });
 
 const mapDispatch = {
@@ -44,11 +44,11 @@ const mapDispatch = {
 
 const mergeProps = (stateProps, dispatchProps, ownProps: Props) => {
   const { app, launcherPosition, status } = stateProps;
-  const { name, withContextMenu } = ownProps;
+  const { appId, withContextMenu } = ownProps;
 
   let contextMenuOptions;
   if (withContextMenu) {
-    contextMenuOptions = [{ label: 'Remove Shortcut', action: removeFromAppLauncher(`${name}`) }];
+    contextMenuOptions = [{ label: 'Remove Shortcut', action: removeFromAppLauncher(`${appId}`) }];
     if ((!status || status.state === AppStatusStates.Closed) && app) {
       contextMenuOptions.unshift({ label: 'Open', action: openFinAppRequest(app) });
     }

@@ -2,8 +2,8 @@ import { call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 
+import { ResponseStatus } from '../../types/enums';
 import { closeApplication, createAndRunFromManifest, wrapApplication } from '../../utils/openfinPromises';
-import { addIdFromKey } from '../admin/saga';
 import { reboundLauncherRequest } from '../application/index';
 import {
   CLOSE_FIN_APP,
@@ -23,32 +23,36 @@ import { AppStatusStates, CloseFinAppRequest, OpenFinAppRequest } from './types'
 function* watchGetAppDirectoryList() {
   const response = yield call(ApiService.getDirectoryAppList);
 
-  const appList = response.map(addIdFromKey('name'));
+  if (response.length && response.status !== ResponseStatus.FAILURE) {
+    const appList = response;
 
-  yield put(setAppDirectoryList(appList));
+    yield put(setAppDirectoryList(appList));
+  }
 }
 
 function* watchOpenFinAppRequest(action: OpenFinAppRequest) {
   const { payload } = action;
-  if (!payload) {
-    return;
-  }
 
-  const { name, manifest_url: manifestUrl } = payload;
-  const status = yield select(getAppStatusByName, name);
+  if (!payload) return;
+
+  const { id, manifest_url: manifestUrl } = payload;
+  const status = yield select(getAppStatusByName, id);
+
   if (status && (status.state === AppStatusStates.Loading || status.state === AppStatusStates.Running)) {
     return;
   }
 
-  yield put(finAppLoading({ name }));
+  yield put(finAppLoading({ id }));
 
   try {
-    const uuid = yield call(createAndRunFromManifest, manifestUrl, name);
-    yield put(openFinAppSuccess({ name, uuid }));
+    const uuid = yield call(createAndRunFromManifest, manifestUrl, id);
+
+    yield put(openFinAppSuccess({ id, uuid }));
   } catch (e) {
     // tslint:disable-next-line:no-console
     console.log('Error running app:', payload, '\n', e);
-    yield put(openFinAppError({ name }));
+
+    yield put(openFinAppError({ id }));
   }
 }
 
@@ -61,11 +65,14 @@ function* watchCloseFinAppRequest(action: CloseFinAppRequest) {
   const { uuid } = payload;
   try {
     const app = yield call(wrapApplication, uuid);
+
     yield call(closeApplication, app);
+
     yield put(closeFinAppSuccess({ uuid }));
   } catch (e) {
     // tslint:disable-next-line:no-console
     console.log('Failed to close app with uuid:', uuid, '\n', e);
+
     yield put(closeFinAppError({ uuid }));
   }
 }

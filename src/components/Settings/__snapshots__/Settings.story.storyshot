@@ -11,65 +11,65 @@ exports[`Storyshots Components/Settings default 1`] = `
     }
   >
     <div
-      className="sc-RefOD hnJfBP"
+      className="sc-gxMtzJ hJVeoq"
     >
       <div
-        className="sc-gGBfsJ cXkcOl"
+        className="sc-cJSrbW ivGxWp"
       >
         <button
-          className="sc-jnlKLf fPqggm"
+          className="sc-ksYbfQ fgAPAg"
           onClick={[Function]}
         >
           <span
-            className="sc-fYxtnH jZHIDX"
+            className="sc-hmzhuo fypdGF"
           />
         </button>
       </div>
       <div
-        className="sc-hrWEMg hiVAou"
+        className="sc-iyvyFf bRACFp"
       >
         <div
-          className="sc-bwCtUz cBAIhs"
+          className="sc-gzOgki mMBWN"
         >
           Auto Hide
         </div>
         <button
-          className="sc-iQKALj jzUXub"
+          className="sc-dfVpRl eEhKXc"
           onClick={[Function]}
         >
           OFF
         </button>
       </div>
       <div
-        className="sc-hrWEMg hiVAou"
+        className="sc-iyvyFf bRACFp"
       >
         <div
-          className="sc-bwCtUz cBAIhs"
+          className="sc-gzOgki mMBWN"
         >
           Launcher Position
         </div>
         <button
-          className="sc-iQKALj jzUXub"
+          className="sc-dfVpRl eEhKXc"
           onClick={[Function]}
         >
           Top
         </button>
         <div>
           <button
-            className="sc-iQKALj jzUXub"
+            className="sc-dfVpRl eEhKXc"
             onClick={[Function]}
           >
             Left
           </button>
           <button
-            className="sc-iQKALj jzUXub"
+            className="sc-dfVpRl eEhKXc"
             onClick={[Function]}
           >
             Right
           </button>
         </div>
         <button
-          className="sc-iQKALj jzUXub"
+          className="sc-dfVpRl eEhKXc"
           onClick={[Function]}
         >
           Bottom

@@ -13,81 +13,85 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
     <div
       className="sc-iAyFgw eFUJkT"
     >
+      <div
+        className="sc-eNQAEJ xGIss"
+      >
+        Edit User Details
+      </div>
+      <label
+        className="sc-hMqMXs dWtibL"
+      >
+        Email: 
+        string
+      </label>
       <form
         onSubmit={[Function]}
       >
         <div
-          className="sc-eNQAEJ iPOzxN"
+          className="sc-hSdWYo iGDHmA"
         >
-          Edit User Details
+          <label
+            className="sc-hMqMXs dWtibL"
+          >
+            First Name:
+            <input
+              name="firstName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="text"
+              value="string"
+            />
+          </label>
+          <label
+            className="sc-hMqMXs dWtibL"
+          >
+            Last Name:
+            <input
+              name="lastName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="text"
+              value="string"
+            />
+          </label>
+          <label
+            className="sc-hMqMXs dWtibL"
+          >
+            Middle Initial:
+            <input
+              name="middleInitial"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="text"
+              value="string"
+            />
+          </label>
+          <label
+            className="sc-hMqMXs dWtibL"
+          >
+            Phone Number:
+            <input
+              maxLength="10"
+              name="phone"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="text"
+              value="ring"
+            />
+          </label>
         </div>
-        <label
-          className="sc-hMqMXs gsZEgf"
-        >
-          Email: 
-          string
-        </label>
-        <label
-          className="sc-hMqMXs gsZEgf"
-        >
-          First Name:
-          <input
-            name="firstName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value="string"
-          />
-        </label>
-        <label
-          className="sc-hMqMXs gsZEgf"
-        >
-          Last Name:
-          <input
-            name="lastName"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value="string"
-          />
-        </label>
-        <label
-          className="sc-hMqMXs gsZEgf"
-        >
-          Middle Initial:
-          <input
-            name="middleInitial"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value="string"
-          />
-        </label>
-        <label
-          className="sc-hMqMXs gsZEgf"
-        >
-          Phone Number:
-          <input
-            maxLength="10"
-            name="phone"
-            onBlur={[Function]}
-            onChange={[Function]}
-            type="text"
-            value="ring"
-          />
-        </label>
         <div
-          className="sc-kkGfuU gbgTA"
+          className="sc-kkGfuU hfNRCV"
         >
           <a
-            className="sc-ckVGcZ dtqKoZ"
+            className="sc-ckVGcZ hMJJkx"
             href="/admin/users"
             onClick={[Function]}
           >
             Cancel
           </a>
           <button
-            className="sc-kpOJdX hkDZlY"
+            className="sc-kpOJdX hXueXJ"
             disabled={true}
             type="submit"
           >

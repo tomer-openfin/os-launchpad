@@ -31,13 +31,13 @@ export default (state: AppsState = defaultState, action): AppsState => {
         return state;
       }
 
-      const { name } = payload;
+      const { id } = payload;
 
       return {
         ...state,
         statusByName: {
           ...state.statusByName,
-          [name]: {
+          [id]: {
             state: AppStatusStates.Loading,
             uuid: undefined,
           },
@@ -50,13 +50,13 @@ export default (state: AppsState = defaultState, action): AppsState => {
         return state;
       }
 
-      const { name, uuid } = payload;
+      const { id, uuid } = payload;
 
       return {
         ...state,
         statusByName: {
           ...state.statusByName,
-          [name]: {
+          [id]: {
             state: AppStatusStates.Running,
             uuid,
           },
@@ -70,13 +70,13 @@ export default (state: AppsState = defaultState, action): AppsState => {
         return state;
       }
 
-      const { name } = payload;
+      const { id } = payload;
 
       return {
         ...state,
         statusByName: {
           ...state.statusByName,
-          [name]: {
+          [id]: {
             state: AppStatusStates.Closed,
             uuid: undefined,
           },

@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { ResponseStatus, User } from '../../types/commons';
 import { validatePhone, validateTextField } from '../../utils/validators';
-import { Button, ButtonLink, Error, Heading, Label, Message, Row, Wrapper } from '../NewUserForm';
+import { Button, ButtonLink, Error, GridWrapper, Heading, Label, Message, Row, Wrapper } from '../NewUserForm';
 import { ROUTES } from '../Router/consts';
 
 interface Props {
@@ -82,34 +82,36 @@ class EditUserForm extends React.Component<Props, State> {
 
     return (
       <Wrapper>
+        <Heading>Edit User Details</Heading>
+
+        <Label>Email: {email}</Label>
+
         <Form>
-          <Heading>Edit User Details</Heading>
+          <GridWrapper>
+            <Label>
+              First Name:
+              <Field type="text" name="firstName" validate={validateTextField} />
+              <ErrorMessage component={Error} name="firstName" />
+            </Label>
 
-          <Label>Email: {email}</Label>
+            <Label>
+              Last Name:
+              <Field type="text" name="lastName" validate={validateTextField} />
+              <ErrorMessage component={Error} name="lastName" />
+            </Label>
 
-          <Label>
-            First Name:
-            <Field type="text" name="firstName" validate={validateTextField} />
-            <ErrorMessage component={Error} name="firstName" />
-          </Label>
+            <Label>
+              Middle Initial:
+              <Field type="text" name="middleInitial" />
+              <ErrorMessage component={Error} name="middleInitial" />
+            </Label>
 
-          <Label>
-            Last Name:
-            <Field type="text" name="lastName" validate={validateTextField} />
-            <ErrorMessage component={Error} name="lastName" />
-          </Label>
-
-          <Label>
-            Middle Initial:
-            <Field type="text" name="middleInitial" />
-            <ErrorMessage component={Error} name="middleInitial" />
-          </Label>
-
-          <Label>
-            Phone Number:
-            <Field type="text" name="phone" maxLength="10" validate={validatePhone} />
-            <ErrorMessage component={Error} name="phone" />
-          </Label>
+            <Label>
+              Phone Number:
+              <Field type="text" name="phone" maxLength="10" validate={validatePhone} />
+              <ErrorMessage component={Error} name="phone" />
+            </Label>
+          </GridWrapper>
 
           <Row>
             <ButtonLink to={ROUTES.ADMIN_USERS}>Cancel</ButtonLink>
