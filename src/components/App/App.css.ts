@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import * as ellipsisIcon from '../../assets/Ellipsis.svg';
 
 import { Color } from '../../styles/index';
-import { LauncherPosition } from '../../types/commons';
+import { DirectionalPosition } from '../../types/commons';
 import { isBottomOrRight, isLeftOrRight } from '../../utils/windowPositionHelpers';
 
 import AppIcon from '../AppIcon';
 
 interface CommonProps {
-  launcherPosition: LauncherPosition;
+  launcherPosition: DirectionalPosition;
 }
 
 export const Wrapper = styled.div<CommonProps>`

@@ -13,13 +13,13 @@ import {
   setMe,
 } from './actions';
 
-import { LauncherPosition } from '../../types/commons';
+import { DirectionalPosition } from '../../types/commons';
 
 // State
 export interface MeStateSettings {
   appIds: string[];
   autoHide: boolean;
-  launcherPosition: LauncherPosition;
+  launcherPosition: DirectionalPosition;
 }
 
 // Reducer
@@ -33,7 +33,7 @@ export interface MeState {
 
 // Action payloads
 export interface SetLaunchbarPayload {
-  launcherPosition: LauncherPosition;
+  launcherPosition: DirectionalPosition;
 }
 export interface LoginRequestPayload {
   username: string;

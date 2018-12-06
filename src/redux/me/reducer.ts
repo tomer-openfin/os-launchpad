@@ -1,6 +1,6 @@
 import { ADD_TO_APP_LAUNCHER, GET_SETTINGS, LOGIN, REMOVE_FROM_APP_LAUNCHER, SET_AUTO_HIDE, SET_LAUNCHER_POSITION, SET_ME } from './actions';
 
-import { LauncherPosition } from '../../types/commons';
+import { DirectionalPosition } from '../../types/commons';
 import { GetSettingsSuccess, MeActions, MeState, SetLaunchbarPayload, SetMePayload } from './types';
 
 export const defaultState: MeState = {
@@ -11,7 +11,7 @@ export const defaultState: MeState = {
   settings: {
     appIds: [],
     autoHide: false,
-    launcherPosition: LauncherPosition.Top,
+    launcherPosition: DirectionalPosition.Top,
   },
 };
 

@@ -1,4 +1,4 @@
-import { LauncherPosition } from '../../types/commons';
+import { DirectionalPosition } from '../../types/commons';
 import {
   calcDimensionsByLauncherPosition,
   calcLauncherCoordinates,
@@ -9,7 +9,7 @@ import {
   isTopOrBottom,
 } from '../windowPositionHelpers';
 
-const { Bottom: BOTTOM, Left: LEFT, Right: RIGHT, Top: TOP } = LauncherPosition;
+const { Bottom: BOTTOM, Left: LEFT, Right: RIGHT, Top: TOP } = DirectionalPosition;
 
 type MONITOR_INFO_TOPIC = 'system';
 type MONITOR_INFO_TYPE = 'monitor-info-changed';

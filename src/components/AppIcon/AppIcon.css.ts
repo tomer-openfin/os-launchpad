@@ -25,42 +25,35 @@ export const Icon = styled.div<Partial<Props>>`
 `;
 
 export const StyledAppIndicator = styled(AppIndicator)<StyledAppIndicatorProps>`
-  bottom: 3px;
-  left: calc(50% - 3px);
   position: absolute;
-`;
 
-// ${props => {
-//   switch (props.position) {
-//     case DirectionalPosition.Top: {
-//       return `
-//         top: 3px;
-//         left: calc(50% - 3px);
-//       `;
-//     }
-//     case DirectionalPosition.Right: {
-//       return `
-//         right: 3px;
-//         top: calc(50% - 3px);
-//       `;
-//     }
-//     case DirectionalPosition.Bottom: {
-//       return `
-//         bottom: 3px;
-//         left: calc(50% - 3px);
-//       `;
-//     }
-//     case DirectionalPosition.Left: {
-//       return `
-//         left: 3px;
-//         top: calc(50% - 3px);
-//       `;
-//     }
-//     default: {
-//       return `
-//         top: 3px;
-//         left: calc(50% - 3px);
-//       `;
-//     }
-//   }
-// }}
+  ${props => {
+    switch (props.position) {
+      case DirectionalPosition.Right: {
+        return `
+          right: 1px;
+          top: calc(50% - 3px);
+        `;
+      }
+      case DirectionalPosition.Bottom: {
+        return `
+          bottom: 3px;
+          left: calc(50% - 3px);
+        `;
+      }
+      case DirectionalPosition.Left: {
+        return `
+          left: 1px;
+          top: calc(50% - 3px);
+        `;
+      }
+      case DirectionalPosition.Top:
+      default: {
+        return `
+          top: 3px;
+          left: calc(50% - 3px);
+        `;
+      }
+    }
+  }}
+`;

@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-import { LauncherPosition } from '../../types/commons';
+import { DirectionalPosition } from '../../types/commons';
 
 import { isLeftOrRight } from '../../utils/windowPositionHelpers';
 
 interface WrapperProps {
-  launcherPosition: LauncherPosition;
+  launcherPosition: DirectionalPosition;
 }
 
 export const Wrapper = styled.div<WrapperProps>`

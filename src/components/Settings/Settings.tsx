@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { LauncherPosition } from '../../types/commons';
+import { DirectionalPosition } from '../../types/commons';
 import noop from '../../utils/noop';
 
 import WindowHeader from '../WindowHeader';
@@ -24,10 +24,10 @@ class AppOverflow extends React.Component<Props, {}> {
   render() {
     const { autoHide, setAutoHide, setLaunchbarPosition } = this.props;
 
-    const setLauncherPositionTop = () => setLaunchbarPosition(LauncherPosition.Top);
-    const setLauncherPositionLeft = () => setLaunchbarPosition(LauncherPosition.Left);
-    const setLauncherPositionRight = () => setLaunchbarPosition(LauncherPosition.Right);
-    const setLauncherPositionBottom = () => setLaunchbarPosition(LauncherPosition.Bottom);
+    const setLauncherPositionTop = () => setLaunchbarPosition(DirectionalPosition.Top);
+    const setLauncherPositionLeft = () => setLaunchbarPosition(DirectionalPosition.Left);
+    const setLauncherPositionRight = () => setLaunchbarPosition(DirectionalPosition.Right);
+    const setLauncherPositionBottom = () => setLaunchbarPosition(DirectionalPosition.Bottom);
     const handleAutoHide = () => {
       autoHide ? setAutoHide(false) : setAutoHide(true);
     };

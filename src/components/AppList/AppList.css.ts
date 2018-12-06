@@ -3,13 +3,17 @@ import styled, { css } from 'styled-components';
 import * as XIcon from '../../assets/TinyX.svg';
 
 import { Color } from '../../styles/index';
-import { LauncherPosition } from '../../types/commons';
+import { DirectionalPosition } from '../../types/commons';
 import { isLeftOrRight } from '../../utils/windowPositionHelpers';
 
 import AppIndicator from '../AppIndicator';
 
 interface WrapperProps {
-  launcherPosition: LauncherPosition;
+  launcherPosition: DirectionalPosition;
+}
+
+interface StyledAppIndicatorProps {
+  position: DirectionalPosition;
 }
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -61,7 +65,7 @@ export const Space = styled.div<{ withClose?: boolean }>`
     `}
 `;
 
-export const StyledAppIndicator = styled(AppIndicator)`
+export const StyledAppIndicator = styled(AppIndicator)<StyledAppIndicatorProps>`
   bottom: 3px;
   left: calc(50% - 3px);
   position: absolute;

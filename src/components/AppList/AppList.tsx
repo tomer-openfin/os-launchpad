@@ -8,7 +8,7 @@ import { AppStatus, AppStatusStates } from '../../redux/apps/types';
 import { ContextMenuOption } from '../../redux/contextMenu/types';
 import { removeFromAppLauncher } from '../../redux/me';
 import { WindowConfig } from '../../redux/windows/types';
-import { App, LauncherPosition } from '../../types/commons';
+import { App, DirectionalPosition } from '../../types/commons';
 
 import ContextMenuZone from '../ContextMenuZone';
 import IconSpace from '../IconSpace';
@@ -29,7 +29,7 @@ interface Props {
   appList: App[];
   appsStatusByName: AppStatus;
   launchApp: (App: App) => void;
-  launcherPosition: LauncherPosition;
+  launcherPosition: DirectionalPosition;
   launchWindowCreator: (window: WindowConfig) => () => void;
   removeFromLauncher: (id: string) => void;
   spaceCount?: number;
@@ -69,7 +69,7 @@ const AppList = ({ appList, appsStatusByName, launchApp, launchWindowCreator, la
 
               <CloseButton onClick={handleClose} />
 
-              <StyledAppIndicator appName={app.name} />
+              <StyledAppIndicator appName={app.name} position={launcherPosition} />
             </ContextMenuZone>
           </Space>
         );

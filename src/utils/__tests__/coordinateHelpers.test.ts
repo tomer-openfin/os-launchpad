@@ -1,4 +1,4 @@
-import { LauncherPosition } from '../../types/commons';
+import { DirectionalPosition } from '../../types/commons';
 import { getNewPosDelta, isPosInBounds, isPosInCoordinates } from '../coordinateHelpers';
 
 const bounds = {
@@ -23,42 +23,42 @@ describe('coordinateHelpers', () => {
       const tests = [
         {
           expand: false,
-          launcherPosition: LauncherPosition.Bottom,
+          launcherPosition: DirectionalPosition.Bottom,
           result: { left: 0, top: bounds.height - VISIBILITY_DELTA },
         },
         {
           expand: true,
-          launcherPosition: LauncherPosition.Bottom,
+          launcherPosition: DirectionalPosition.Bottom,
           result: { left: 0, top: VISIBILITY_DELTA - bounds.height },
         },
         {
           expand: false,
-          launcherPosition: LauncherPosition.Left,
+          launcherPosition: DirectionalPosition.Left,
           result: { left: VISIBILITY_DELTA - bounds.width, top: 0 },
         },
         {
           expand: true,
-          launcherPosition: LauncherPosition.Left,
+          launcherPosition: DirectionalPosition.Left,
           result: { left: bounds.width - VISIBILITY_DELTA, top: 0 },
         },
         {
           expand: false,
-          launcherPosition: LauncherPosition.Right,
+          launcherPosition: DirectionalPosition.Right,
           result: { left: bounds.width - VISIBILITY_DELTA, top: 0 },
         },
         {
           expand: true,
-          launcherPosition: LauncherPosition.Right,
+          launcherPosition: DirectionalPosition.Right,
           result: { left: VISIBILITY_DELTA - bounds.width, top: 0 },
         },
         {
           expand: false,
-          launcherPosition: LauncherPosition.Top,
+          launcherPosition: DirectionalPosition.Top,
           result: { left: 0, top: VISIBILITY_DELTA - bounds.height },
         },
         {
           expand: true,
-          launcherPosition: LauncherPosition.Top,
+          launcherPosition: DirectionalPosition.Top,
           result: { left: 0, top: bounds.height - VISIBILITY_DELTA },
         },
       ];

@@ -5,12 +5,12 @@ import * as saveLayoutIcon from '../../assets/SaveLayout.svg';
 
 import IconSpace from '../IconSpace';
 
-import { LauncherPosition } from '../../types/commons';
+import { DirectionalPosition } from '../../types/commons';
 
 import { Wrapper } from './Layouts.css';
 
 interface Props {
-  launcherPosition: LauncherPosition;
+  launcherPosition: DirectionalPosition;
   layoutIds: string[];
   onBlur: () => void;
   restoreLayout: (id: string) => void;

@@ -2,22 +2,22 @@ import { connect } from 'react-redux';
 
 import { AppStatusStates, closeFinAppRequest, getAppById, getAppStatusByName, openFinAppRequest } from '../../redux/apps';
 import { getLauncherPosition, removeFromAppLauncher } from '../../redux/me';
-import { AppIconSizes, DirectionalPosition, LauncherPosition } from '../../types/enums';
+import { AppIconSizes, DirectionalPosition } from '../../types/enums';
 
 import AppIcon from './AppIcon';
 
-const invertPosition = (position: LauncherPosition): DirectionalPosition => {
+const invertPosition = (position: DirectionalPosition): DirectionalPosition => {
   switch (position) {
-    case LauncherPosition.Top: {
+    case DirectionalPosition.Top: {
       return DirectionalPosition.Bottom;
     }
-    case LauncherPosition.Right: {
+    case DirectionalPosition.Right: {
       return DirectionalPosition.Left;
     }
-    case LauncherPosition.Bottom: {
+    case DirectionalPosition.Bottom: {
       return DirectionalPosition.Top;
     }
-    case LauncherPosition.Left: {
+    case DirectionalPosition.Left: {
       return DirectionalPosition.Right;
     }
     default: {

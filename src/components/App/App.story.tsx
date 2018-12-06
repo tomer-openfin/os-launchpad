@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
 import AppData from '../../const/AppData';
-import { LauncherPosition } from '../../types/commons';
+import { DirectionalPosition } from '../../types/commons';
 import { getLauncherIcons } from '../../utils/getLauncherIcons';
 
 import App from './App';
@@ -15,5 +15,5 @@ const MOCK_ICONS = getLauncherIcons(false).map(icon => ({
 }));
 
 storiesOf('Components/App', module).add('default', () => {
-  return <App apps={AppData} launcherPosition={LauncherPosition.Top} icons={MOCK_ICONS} />;
+  return <App apps={AppData} launcherPosition={DirectionalPosition.Top} icons={MOCK_ICONS} />;
 });

@@ -1,15 +1,15 @@
-import { Bounds, DirectionalCoordinates, LauncherPosition, PrimaryDirectionalCoordinates } from '../types/commons';
+import { Bounds, DirectionalCoordinates, DirectionalPosition, PrimaryDirectionalCoordinates } from '../types/commons';
 import { isTopOrBottom } from './windowPositionHelpers';
 
 export const getNewPosDelta = (
   bounds: Bounds,
-  launcherPosition: LauncherPosition,
+  launcherPosition: DirectionalPosition,
   expand: boolean,
   visbilityDelta: number = 0,
 ): PrimaryDirectionalCoordinates => {
   const { width, height } = bounds;
   const isTopOrBottomPosition = isTopOrBottom(launcherPosition);
-  const isTopOrLeft = launcherPosition === LauncherPosition.Top || launcherPosition === LauncherPosition.Left;
+  const isTopOrLeft = launcherPosition === DirectionalPosition.Top || launcherPosition === DirectionalPosition.Left;
   const directionMultiplier = (expand && isTopOrLeft) || (!expand && !isTopOrLeft) ? 1 : -1;
 
   const delta = (isTopOrBottomPosition ? height - visbilityDelta : width - visbilityDelta) * directionMultiplier;

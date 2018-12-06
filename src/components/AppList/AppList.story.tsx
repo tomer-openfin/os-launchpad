@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react';
 import AppData from '../../const/AppData';
 import noop, { noopCreator } from '../../utils/noop';
 
-import { LauncherPosition } from '../../types/commons';
+import { DirectionalPosition } from '../../types/commons';
 
 import AppList from './AppList';
 
@@ -14,7 +14,7 @@ storiesOf('Components/AppList', module).add('default', () => (
     appList={AppData}
     appsStatusByName={{}}
     launchApp={noop}
-    launcherPosition={LauncherPosition.Top}
+    launcherPosition={DirectionalPosition.Top}
     launchWindowCreator={noopCreator}
     removeFromLauncher={noopCreator}
     spaceCount={4}

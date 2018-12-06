@@ -1,41 +1,41 @@
 import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW } from '../config/windows';
-import { Bounds, Dimensions, LauncherPosition, MonitorInfo, PrimaryDirectionalCoordinates } from '../types/commons';
+import { Bounds, Dimensions, DirectionalPosition, MonitorInfo, PrimaryDirectionalCoordinates } from '../types/commons';
 
-const { Bottom: BOTTOM, Left: LEFT, Right: RIGHT, Top: TOP } = LauncherPosition;
+const { Bottom: BOTTOM, Left: LEFT, Right: RIGHT, Top: TOP } = DirectionalPosition;
 
 const OFFSETS = {
   [APP_LAUNCHER_OVERFLOW_WINDOW]: {
-    [LauncherPosition.Top]: () => ({
+    [DirectionalPosition.Top]: () => ({
       offsetX: 50,
       offsetY: 0,
     }),
-    [LauncherPosition.Right]: () => ({
+    [DirectionalPosition.Right]: () => ({
       offsetX: 50,
       offsetY: 50,
     }),
-    [LauncherPosition.Bottom]: () => ({
+    [DirectionalPosition.Bottom]: () => ({
       offsetX: 50,
       offsetY: 50,
     }),
-    [LauncherPosition.Left]: () => ({
+    [DirectionalPosition.Left]: () => ({
       offsetX: 0,
       offsetY: 50,
     }),
   },
   [LAYOUTS_WINDOW]: {
-    [LauncherPosition.Top]: (launcherBounds: Bounds) => ({
+    [DirectionalPosition.Top]: (launcherBounds: Bounds) => ({
       offsetX: launcherBounds.width - 100,
       offsetY: 45,
     }),
-    [LauncherPosition.Right]: (launcherBounds: Bounds) => ({
+    [DirectionalPosition.Right]: (launcherBounds: Bounds) => ({
       offsetX: 0,
       offsetY: launcherBounds.height - 100,
     }),
-    [LauncherPosition.Bottom]: (launcherBounds: Bounds) => ({
+    [DirectionalPosition.Bottom]: (launcherBounds: Bounds) => ({
       offsetX: launcherBounds.width - 100,
       offsetY: 0,
     }),
-    [LauncherPosition.Left]: (launcherBounds: Bounds) => ({
+    [DirectionalPosition.Left]: (launcherBounds: Bounds) => ({
       offsetX: 45,
       offsetY: launcherBounds.height - 100,
     }),
@@ -44,13 +44,13 @@ const OFFSETS = {
 
 export const LAUNCHER_HIDDEN_VISIBILITY_DELTA = 5;
 
-export const isBottom = (position: LauncherPosition) => position === BOTTOM;
-export const isLeft = (position: LauncherPosition) => position === LEFT;
-export const isRight = (position: LauncherPosition) => position === RIGHT;
-export const isTop = (position: LauncherPosition) => position === TOP;
-export const isTopOrBottom = (position: LauncherPosition) => isTop(position) || isBottom(position);
-export const isLeftOrRight = (position: LauncherPosition) => isLeft(position) || isRight(position);
-export const isBottomOrRight = (position: LauncherPosition) => isBottom(position) || isRight(position);
+export const isBottom = (position: DirectionalPosition) => position === BOTTOM;
+export const isLeft = (position: DirectionalPosition) => position === LEFT;
+export const isRight = (position: DirectionalPosition) => position === RIGHT;
+export const isTop = (position: DirectionalPosition) => position === TOP;
+export const isTopOrBottom = (position: DirectionalPosition) => isTop(position) || isBottom(position);
+export const isLeftOrRight = (position: DirectionalPosition) => isLeft(position) || isRight(position);
+export const isBottomOrRight = (position: DirectionalPosition) => isBottom(position) || isRight(position);
 
 /**
  * Returns new dimensions based on launcher position.
@@ -63,7 +63,7 @@ export const isBottomOrRight = (position: LauncherPosition) => isBottom(position
  *
  * @returns {Dimensions}
  */
-export const calcDimensionsByLauncherPosition = (bounds: Bounds, launcherPosition: LauncherPosition, invert: boolean = false): Dimensions => {
+export const calcDimensionsByLauncherPosition = (bounds: Bounds, launcherPosition: DirectionalPosition, invert: boolean = false): Dimensions => {
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);
   const { height, width } = bounds;
 
@@ -86,7 +86,7 @@ export const calcDimensionsByLauncherPosition = (bounds: Bounds, launcherPositio
  *
  * @returns {Dimensions}
  */
-export const calcLauncherDimensions = (ctaCount: number, launcherPosition: LauncherPosition, autoHide: boolean, isExpanded: boolean): Dimensions => {
+export const calcLauncherDimensions = (ctaCount: number, launcherPosition: DirectionalPosition, autoHide: boolean, isExpanded: boolean): Dimensions => {
   const collapsed = autoHide && !isExpanded;
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);
   const LOGO_SIZE = 50;
@@ -118,7 +118,7 @@ export const calcLauncherDimensions = (ctaCount: number, launcherPosition: Launc
 export const calcLauncherCoordinates = (
   dimensions: Dimensions,
   monitorInfo: MonitorInfo,
-  launcherPosition: LauncherPosition,
+  launcherPosition: DirectionalPosition,
 ): PrimaryDirectionalCoordinates => {
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);
   const { height, width } = dimensions;
@@ -133,7 +133,7 @@ export const calcLauncherCoordinates = (
   const midpoint = (isOnTopOrBottom ? right - left : bottom - top) / 2;
 
   switch (launcherPosition) {
-    case LauncherPosition.Bottom: {
+    case DirectionalPosition.Bottom: {
       // const delta = autoHide ? LAUNCHER_HIDDEN_VISIBILITY_DELTA : height;
 
       return {
@@ -141,7 +141,7 @@ export const calcLauncherCoordinates = (
         top: bottom - height,
       };
     }
-    case LauncherPosition.Left: {
+    case DirectionalPosition.Left: {
       // const delta = autoHide ? LAUNCHER_HIDDEN_VISIBILITY_DELTA - width : 0;
 
       return {
@@ -149,7 +149,7 @@ export const calcLauncherCoordinates = (
         top: midpoint - edgeDelta,
       };
     }
-    case LauncherPosition.Right: {
+    case DirectionalPosition.Right: {
       // const delta = autoHide ? LAUNCHER_HIDDEN_VISIBILITY_DELTA : width;
 
       return {
@@ -181,7 +181,7 @@ export const calcLauncherCoordinates = (
 export const calcLauncherPosition = (
   ctaCount: number,
   monitorInfo: MonitorInfo,
-  launcherPosition: LauncherPosition,
+  launcherPosition: DirectionalPosition,
   autoHide: boolean,
   isExpanded: boolean,
 ): Bounds => {
@@ -210,12 +210,12 @@ export const calcCoordinatesRelativeToLauncherBounds = (
   offsetX: number,
   offsetY: number,
   launcherBounds: Bounds,
-  launcherPosition: LauncherPosition,
+  launcherPosition: DirectionalPosition,
 ): PrimaryDirectionalCoordinates => {
   const { left, top } = launcherBounds;
 
-  const isBottomOffset = launcherPosition === LauncherPosition.Bottom ? dimensions.height : 0;
-  const isRightOffset = launcherPosition === LauncherPosition.Right ? dimensions.width : 0;
+  const isBottomOffset = launcherPosition === DirectionalPosition.Bottom ? dimensions.height : 0;
+  const isRightOffset = launcherPosition === DirectionalPosition.Right ? dimensions.width : 0;
 
   return {
     left: left + offsetX - isRightOffset,
@@ -233,7 +233,7 @@ export const calcCoordinatesRelativeToLauncherBounds = (
  *
  * @returns {Bounds}
  */
-export const calcBoundsRelativeToLauncher = (finName: string, bounds: Bounds, launcherBounds: Bounds, launcherPosition: LauncherPosition): Bounds => {
+export const calcBoundsRelativeToLauncher = (finName: string, bounds: Bounds, launcherBounds: Bounds, launcherPosition: DirectionalPosition): Bounds => {
   const { offsetX, offsetY } = OFFSETS[finName] ? OFFSETS[finName][launcherPosition](launcherBounds) : { offsetX: 0, offsetY: 0 };
   const dimensions = calcDimensionsByLauncherPosition(bounds, launcherPosition, true);
   const coordinates = calcCoordinatesRelativeToLauncherBounds(dimensions, offsetX, offsetY, launcherBounds, launcherPosition);

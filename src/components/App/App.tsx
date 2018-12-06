@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { App, LauncherPosition } from '../../types/commons';
+import { App, DirectionalPosition } from '../../types/commons';
 import IconSpace from '../IconSpace';
 import Logo from '../Logo';
 import { Separator, StyledAppIcon, Wrapper } from './App.css';
@@ -13,7 +13,7 @@ interface LauncherIcon {
 
 export interface Props {
   apps: App[];
-  launcherPosition: LauncherPosition;
+  launcherPosition: DirectionalPosition;
   icons: LauncherIcon[];
 }
 

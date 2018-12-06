@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 
-import { ErrorResponse, LauncherPosition } from '../../types/commons';
+import { DirectionalPosition, ErrorResponse } from '../../types/commons';
 import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
 import { LoginRequestPayload, LoginSuccessPayload, MeStateSettings, SetAutoHidePayload, SetLaunchbarPayload, SetMePayload } from './types';
 
@@ -34,7 +34,7 @@ export const saveSettingsError = createAction<ErrorResponse>(SAVE_SETTINGS.ERROR
 
 export const setMe = createAction<SetMePayload>(SET_ME);
 
-export const setLaunchbarPosition = createAction<SetLaunchbarPayload, LauncherPosition>(SET_LAUNCHER_POSITION, launcherPosition => ({ launcherPosition }));
+export const setLaunchbarPosition = createAction<SetLaunchbarPayload, DirectionalPosition>(SET_LAUNCHER_POSITION, launcherPosition => ({ launcherPosition }));
 export const setAutoHide = createAction<SetAutoHidePayload, boolean>(SET_AUTO_HIDE, autoHide => ({ autoHide }));
 
 export const addToAppLauncher = createAction<string>(ADD_TO_APP_LAUNCHER);

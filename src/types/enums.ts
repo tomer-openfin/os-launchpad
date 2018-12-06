@@ -4,14 +4,6 @@ export enum AppIconSizes {
   Large = 54,
 }
 
-export enum LauncherPosition {
-  Top = 'top',
-  Right = 'right',
-  Bottom = 'bottom',
-  Left = 'left',
-}
-
-// TODO: Move off LauncherPosition in favor for DirectionalPosition
 export enum DirectionalPosition {
   Top = 'top',
   Right = 'right',
