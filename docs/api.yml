@@ -530,6 +530,7 @@ definitions:
       - username
       - password
       - newPassword
+      - session
 
   ChangePassword:
     title: Change password payload
