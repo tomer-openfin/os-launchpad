@@ -28,25 +28,5 @@ const app = execa('webpack-dev-server', ['--hot'], { env: { FORCE_COLOR: true }}
 app.stdout.pipe(process.stdout);
 app.stderr.pipe(process.stderr);
 
-// Wait for the app to be up and running before starting OpenFin.
-waitOn({
-  resources: [`http-get://${HOST}:8080`],
-}, (err) => {
-  if (err) {
-    throw err;
-  }
-
-  // Start the remote Redux dev server.
-  remotedev({ hostname: HOST, port: 8000 });
-
-  // Now start OpenFin.
-  const openfin = execa('npm', ['run', 'openfin'], { env: { FORCE_COLOR: true }});
-
-  openfin.stdout.pipe(process.stdout);
-  openfin.stderr.pipe(process.stderr);
-
-  // When OpenFin closes, exit this process as well.
-  openfin.on('close', () => {
-    process.exit();
-  });
-});
+// Start the remote Redux dev server.
+remotedev({ hostname: HOST, port: 8000 });

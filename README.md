@@ -16,11 +16,7 @@ Now set your `node` version. The version we're standardizing is in the `.nvmrc` 
 
 2. `npm i`
 3. `npm start`
-
-_alternatively, you can run the application and OpenFin separately by doing the following:_
-
-1. `npm run dev`
-2. `npm run openfin`
+4. `npm run openfin`
 
 ## Development
 

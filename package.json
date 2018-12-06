@@ -6,7 +6,6 @@
     "build": "npm run clean && webpack",
     "check": "gts check",
     "clean": "gts clean && rimraf build",
-    "dev": "webpack-dev-server --hot",
     "docs": "redoc-cli bundle -o ./build/docs/index.html ./docs/api.yml",
     "fix": "gts fix",
     "lint": "tslint -s node_modules/custom-tslint-formatters/formatters -t grouped 'src/**/*.{ts,tsx}'",
