@@ -7,8 +7,9 @@ import rootReducer from './redux/rootReducer';
 import rootSaga from './redux/rootSaga';
 
 const {
-  NODE_ENV,
-  STORYBOOK_ENV,
+  NODE_ENV = 'development',
+  STORYBOOK_ENV = 'false',
+  HOST = '0.0.0.0',
 } = process.env;
 
 // Middleware
@@ -22,7 +23,7 @@ const middlewareArgs = STORYBOOK_ENV === 'true'
 
 // Include the extra Redux dev tools when running in development, but not in Storybook.
 const middleware = NODE_ENV === 'development' && STORYBOOK_ENV === 'false'
-  ? composeWithDevTools({ hostname: 'localhost', port: 8000 })(applyMiddleware(...middlewareArgs))
+  ? composeWithDevTools({ hostname: HOST, port: 8000 })(applyMiddleware(...middlewareArgs))
   : applyMiddleware(...middlewareArgs);
 
 // Middleware enhancers

@@ -6,6 +6,7 @@ const chalk = require('chalk');
 const remotedev = require('remotedev-server');
 
 const {
+  HOST = '0.0.0.0',
   NODE_ENV = 'development',
 } = process.env;
 
@@ -29,14 +30,14 @@ app.stderr.pipe(process.stderr);
 
 // Wait for the app to be up and running before starting OpenFin.
 waitOn({
-  resources: ['http-get://localhost:8080'],
+  resources: [`http-get://${HOST}:8080`],
 }, (err) => {
   if (err) {
     throw err;
   }
 
   // Start the remote Redux dev server.
-  remotedev({ hostname: 'localhost', port: 8000 });
+  remotedev({ hostname: HOST, port: 8000 });
 
   // Now start OpenFin.
   const openfin = execa('npm', ['run', 'openfin'], { env: { FORCE_COLOR: true }});
