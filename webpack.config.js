@@ -30,7 +30,7 @@ module.exports = {
   devtool: 'source-map',
   entry: './src/index.tsx',
   output: {
-    filename: 'bundle.js',
+    filename: `bundle${isProduction ? '.[contentHash]' : ''}.js`,
     path: path.join(__dirname, '/build'),
     publicPath: '/',
   },
