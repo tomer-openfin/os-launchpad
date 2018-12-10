@@ -23,6 +23,7 @@ const ADMIN_TABBED_ROUTES = [
 interface Props {
   isAdmin: boolean;
   children?: React.ReactNode;
+  onEscDown: () => void;
 }
 
 const renderAdminTab = ({ exact = false, path, label }) => (
@@ -43,6 +44,7 @@ const renderAdmin = children => {
 
 const Admin = (props: Props) => {
   const { isAdmin, children } = props;
+
   return (
     <Wrapper>
       <WindowHeader />

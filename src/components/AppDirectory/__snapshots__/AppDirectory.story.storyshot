@@ -1903,6 +1903,32 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                     <span
                       style={Object {}}
                     >
+                      onEscDown
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
                       onBlur
                     </span>
                     <span>

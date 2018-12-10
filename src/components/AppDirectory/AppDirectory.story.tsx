@@ -7,4 +7,4 @@ import noop from '../../utils/noop';
 
 import AppDirectory from './AppDirectory';
 
-storiesOf('Components/AppDirectory', module).add('default', () => <AppDirectory appList={appData} onBlur={noop} />);
+storiesOf('Components/AppDirectory', module).add('default', () => <AppDirectory appList={appData} onEscDown={noop} onBlur={noop} />);

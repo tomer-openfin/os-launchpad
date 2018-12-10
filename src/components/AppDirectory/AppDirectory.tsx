@@ -12,6 +12,7 @@ import IconSpace from '../IconSpace';
 interface Props {
   appList: App[];
   onBlur: () => void;
+  onEscDown: () => void;
 }
 
 interface State {

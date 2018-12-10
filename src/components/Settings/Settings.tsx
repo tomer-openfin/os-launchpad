@@ -10,15 +10,17 @@ interface Props {
   autoHide: boolean;
   setAutoHide;
   setLaunchbarPosition;
+  onEscDown: () => void;
 }
 
 const defaultProps: Props = {
   autoHide: false,
+  onEscDown: noop,
   setAutoHide: noop,
   setLaunchbarPosition: noop,
 };
 
-class AppOverflow extends React.Component<Props, {}> {
+class Settings extends React.Component<Props, {}> {
   static defaultProps = defaultProps;
 
   render() {
@@ -60,4 +62,4 @@ class AppOverflow extends React.Component<Props, {}> {
   }
 }
 
-export default AppOverflow;
+export default Settings;

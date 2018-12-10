@@ -8,6 +8,6 @@ import AppDirectory from '../AppDirectory';
 
 describe('<AppDirectory />', () => {
   it('renders a <div>', () => {
-    expect(enzyme.shallow(<AppDirectory appList={appData} onBlur={noop} />).is('div'));
+    expect(enzyme.shallow(<AppDirectory appList={appData} onEscDown={noop} onBlur={noop} />).is('div'));
   });
 });
