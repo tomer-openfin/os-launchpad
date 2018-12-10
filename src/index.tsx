@@ -1,10 +1,13 @@
 import { deregister } from 'openfin-layouts';
+
+import Router from './components/Router';
+
 import { applicationStarted, openfinReady } from './redux/application/actions';
+import { globalHotkeyPressed } from './redux/globalHotkeys/actions';
+import { GlobalHotkeys } from './redux/globalHotkeys/enums';
 import store from './store';
 import renderWindow from './utils/renderWindow';
 import setupReactCleanUp from './utils/setupReactCleanup';
-
-import Router from './components/Router';
 
 // If there is no global store, and there's _not_ a window.opener
 // this is the main window
@@ -25,6 +28,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (fin) {
     const finWindow = fin.desktop.Window.getCurrent();
     setupReactCleanUp(finWindow);
+
+    // Register global hotkeys
+    for (const hotkey in GlobalHotkeys) {
+      if (GlobalHotkeys.hasOwnProperty(hotkey)) {
+        const hotkeyToRegister = GlobalHotkeys[hotkey];
+
+        const cb = () => {
+          store.dispatch(globalHotkeyPressed(hotkeyToRegister));
+        };
+
+        fin.GlobalHotkey.register(hotkeyToRegister, cb);
+      }
+    }
   }
 
   renderWindow(Router);
