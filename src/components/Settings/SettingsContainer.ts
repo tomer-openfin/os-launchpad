@@ -15,8 +15,8 @@ const dispatchProps = dispatch => ({
   onEscDown: () => {
     dispatch(Window.hideWindow({ id: SETTINGS_WINDOW }));
   },
-  setAutoHide,
-  setLaunchbarPosition,
+  setAutoHide: autoHide => dispatch(setAutoHide(autoHide)),
+  setLaunchbarPosition: position => dispatch(setLaunchbarPosition(position)),
 });
 
 export default connect(
