@@ -1,4 +1,4 @@
-import { call, put, select, takeEvery } from 'redux-saga/effects';
+import { call, put, race, select, take, takeEvery } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 import { ErrorResponse, ResponseStatus, UserLayout } from '../../types/commons';
@@ -12,6 +12,7 @@ import {
   deleteLayoutError,
   deleteLayoutSuccess,
   GET_LAYOUTS,
+  getLayoutsError,
   getLayoutsRequest,
   getLayoutsSuccess,
   RESTORE_LAYOUT,
@@ -29,9 +30,13 @@ import { CreateLayoutRequest, RestoreLayoutRequest, UpdateLayoutRequest } from '
 const buildErrorResponse = (message: string): ErrorResponse => ({ status: ResponseStatus.FAILURE, message });
 
 function* watchGetLayoutRequest() {
-  const result = yield call(ApiService.getUserLayouts);
+  const response = yield call(ApiService.getUserLayouts);
 
-  yield put(getLayoutsSuccess(result));
+  if (!response || !response.length || response.status === ResponseStatus.FAILURE) {
+    yield put(getLayoutsError(response));
+  } else {
+    yield put(getLayoutsSuccess(response));
+  }
 }
 
 function* watchRestoreLayout(action: RestoreLayoutRequest) {
@@ -57,15 +62,19 @@ function* watchRestoreLayout(action: RestoreLayoutRequest) {
 function* watchSaveLayout() {
   yield put(getLayoutsRequest());
 
-  const layoutIds = yield select(getLayoutsIds);
-  const firstLayoutId: UserLayout['id'] = layoutIds[0];
-  const firstLayout: UserLayout = yield select(getLayoutById, firstLayoutId);
+  const { success, failure } = yield race({ success: take(GET_LAYOUTS.SUCCESS), failure: take(GET_LAYOUTS.ERROR) });
 
-  if (!firstLayout) {
-    yield put(createLayoutRequest('newLayout'));
-  } else {
-    const { id, name } = firstLayout;
-    yield put(updateLayoutRequest({ id, name, updateLayout: true }));
+  if (success) {
+    const layoutIds = yield select(getLayoutsIds);
+    const firstLayoutId: UserLayout['id'] = layoutIds[0];
+    const firstLayout: UserLayout = yield select(getLayoutById, firstLayoutId);
+
+    if (!firstLayout) {
+      yield put(createLayoutRequest('newLayout'));
+    } else {
+      const { id, name } = firstLayout;
+      yield put(updateLayoutRequest({ id, name, updateLayout: true }));
+    }
   }
 }
 
@@ -145,6 +154,7 @@ export function* layoutsSaga() {
   yield takeEvery(UPDATE_LAYOUT.REQUEST, watchUpdateLayoutRequest);
   yield takeEvery(DELETE_LAYOUT.REQUEST, watchDeleteLayoutRequest);
 
+  yield takeEvery(GET_LAYOUTS.ERROR, watchRequestError);
   yield takeEvery(CREATE_LAYOUT.ERROR, watchRequestError);
   yield takeEvery(UPDATE_LAYOUT.ERROR, watchRequestError);
   yield takeEvery(DELETE_LAYOUT.ERROR, watchRequestError);
