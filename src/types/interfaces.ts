@@ -44,6 +44,7 @@ interface Response {
 //   status: ResponseStatus.FAILURE;
 // }
 
+/* tslint:disable-next-line:no-any */
 export type APIResponse = Response | any;
 
 export interface ErrorResponse extends APIResponse {
