@@ -133,7 +133,7 @@ function* watchCollapseApp() {
   }
 
   const nextIsExpanded = false;
-  yield call(animateLauncherCollapseExpand, nextIsExpanded);
+  yield call(animateLauncherCollapseExpand, nextIsExpanded, 333);
 
   yield put(setIsExpanded(nextIsExpanded));
 }
@@ -146,7 +146,7 @@ function* watchExpandApp() {
   }
 
   const nextIsExpanded = true;
-  yield call(animateLauncherCollapseExpand, nextIsExpanded);
+  yield call(animateLauncherCollapseExpand, nextIsExpanded, 500);
 
   yield put(setIsExpanded(nextIsExpanded));
 }

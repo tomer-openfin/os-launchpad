@@ -10,9 +10,7 @@ import { getMonitorInfo } from '../system/index';
 import { State } from '../types';
 import { getWindowBounds } from '../windows';
 
-const ANIMATION_DURATION = 200;
-
-export function* animateLauncherCollapseExpand(isExpanded: State['application']['isExpanded']) {
+export function* animateLauncherCollapseExpand(isExpanded: State['application']['isExpanded'], duration: number) {
   const launcherFinWindow = yield call(getLauncherFinWindow);
   if (!launcherFinWindow) {
     return;
@@ -27,7 +25,7 @@ export function* animateLauncherCollapseExpand(isExpanded: State['application'][
   const { height, width, top, left } = calcLauncherPosition(totalCtas, monitorInfo, launcherPosition, autoHide, isExpanded);
   const transitions: fin.Transition = {
     size: {
-      duration: ANIMATION_DURATION,
+      duration,
       height,
       relative: false,
       width,
@@ -35,14 +33,14 @@ export function* animateLauncherCollapseExpand(isExpanded: State['application'][
   };
   if (isBottom(launcherPosition)) {
     transitions.position = {
-      duration: ANIMATION_DURATION,
+      duration,
       left,
       relative: false,
       top,
     };
   } else if (isRight(launcherPosition)) {
     transitions.position = {
-      duration: ANIMATION_DURATION,
+      duration,
       left,
       relative: false,
       top,
