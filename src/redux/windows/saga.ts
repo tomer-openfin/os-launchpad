@@ -6,14 +6,14 @@ import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGIN_WINDOW } from '../.
 import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
 import { hideWindow } from '../../utils/openfinPromises';
-import { getBlurringWindowByName, setBlurringWindow, setWindowRelativeToLauncherBounds } from '../application';
-import { BLUR_WINDOW_WITH_DELAY, LAUNCH_WINDOW } from './actions';
-import { getWindowBounds, getWindowById } from './selectors';
-import { LaunchWindow } from './types';
+import { expandApp, getApplicationIsExpanded, getBlurringWindowByName, setBlurringWindow, setWindowRelativeToLauncherBounds } from '../application';
+import { BLUR_WINDOW_WITH_DELAY, LAUNCH_WINDOW, WINDOW_SHOWN } from './actions';
+import { getLauncherIsForceExpanded, getWindowBounds, getWindowById } from './selectors';
+import { BlurWindowWithDelayAction, LaunchWindowAction } from './types';
 
 const APP_UUID = getAppUuid();
 
-function* watchLaunchWindow(action: LaunchWindow) {
+function* watchLaunchWindow(action: LaunchWindowAction) {
   // tslint:disable-next-line:no-console
   console.log('Launch window called with', action);
 
@@ -97,7 +97,7 @@ function* watchWindowBoundsChanged(action) {
   }
 }
 
-function* watchBlurWindowWithDelay(action) {
+function* watchBlurWindowWithDelay(action: BlurWindowWithDelayAction) {
   const { payload } = action;
   if (!payload) {
     return;
@@ -114,9 +114,19 @@ function* watchBlurWindowWithDelay(action) {
   yield put(setBlurringWindow(name, false));
 }
 
+function* watchWindowShown() {
+  const isExpanded = yield select(getApplicationIsExpanded);
+  const isForceExpanded = yield select(getLauncherIsForceExpanded);
+
+  if (!isExpanded && isForceExpanded) {
+    yield put(expandApp());
+  }
+}
+
 export function* windowsSaga() {
   yield takeEvery(BLUR_WINDOW_WITH_DELAY, watchBlurWindowWithDelay);
   yield takeEvery(LAUNCH_WINDOW, watchLaunchWindow);
   yield takeEvery(Window.WINDOW_OPENED, watchOpenedWindow);
   yield takeEvery(Window.BOUNDS_CHANGED, watchWindowBoundsChanged);
+  yield takeEvery(WINDOW_SHOWN, watchWindowShown);
 }

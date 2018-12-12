@@ -5,6 +5,7 @@ import { AppRoute, routes } from './routes';
 
 import { GlobalStyle } from '../../styles/globals.css';
 import ConnectedThemeProvider from '../ConnectedThemeProvider';
+import FinHideShowTracker from '../FinHideShowTracker';
 
 const renderNestedRoute = (Component, children) => props => {
   return <Component {...props}>{children.map(renderRoute)}</Component>;
@@ -20,13 +21,13 @@ export const renderRoute = ({ children, Component, exact, path }: AppRoute) => {
 
 const Router = () => (
   <ConnectedThemeProvider>
-    <>
+    <FinHideShowTracker>
       <GlobalStyle />
 
       <BrowserRouter>
         <Switch>{routes.map(renderRoute)}</Switch>
       </BrowserRouter>
-    </>
+    </FinHideShowTracker>
   </ConnectedThemeProvider>
 );
 

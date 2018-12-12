@@ -5,13 +5,15 @@ import { Bounds } from '../types/commons';
 import { isPosInBounds } from '../utils/coordinateHelpers';
 import { getSystemMousePosition } from '../utils/openfinPromises';
 
+const CHECK_MOUSE_INTERVAL = 200;
+
 interface Props {
   autoHide: boolean;
   bounds: Bounds | undefined;
   collapse: () => void;
   expand: () => void;
-  isContextMenuOpen: boolean;
   isExpanded: boolean;
+  isForceExpanded: boolean;
 }
 
 /**
@@ -41,7 +43,7 @@ const withAutoHide = <P extends Props>(Component: React.ComponentType<P>) =>
     }
 
     bindMouseEvents = () => {
-      this.interval = window.setInterval(this.handleInterval, 250);
+      this.interval = window.setInterval(this.handleInterval, CHECK_MOUSE_INTERVAL);
       window.addEventListener('mouseover', this.handleMouseEnterWindow);
     };
 
@@ -57,9 +59,9 @@ const withAutoHide = <P extends Props>(Component: React.ComponentType<P>) =>
     };
 
     handleInterval = async () => {
-      const { bounds, isContextMenuOpen, isExpanded } = this.props;
+      const { bounds, isExpanded, isForceExpanded } = this.props;
 
-      if (!isExpanded || !bounds || isContextMenuOpen) {
+      if (!isExpanded || !bounds || isForceExpanded) {
         return;
       }
 

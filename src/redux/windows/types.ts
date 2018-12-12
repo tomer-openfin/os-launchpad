@@ -1,7 +1,20 @@
-import { blurWindowWithDelay, launchWindow } from './actions';
+import { Bounds } from '../../types/commons';
+import { blurWindowWithDelay, launchWindow, windowHidden, windowShown } from './actions';
+
+// State
+export interface WindowsState {
+  byId: {
+    [id: string]: {
+      bounds: Bounds;
+      id: string;
+      isShowing?: boolean;
+    };
+  };
+  ids: string[];
+}
 
 // Action payloads
-export interface BlurWindowWithDelayPayload {
+export interface WindowNamePayload {
   name: string;
 }
 export interface WindowConfig {
@@ -28,4 +41,8 @@ export interface WindowConfig {
 
 // Actions
 export type BlurWindowWithDelayAction = ReturnType<typeof blurWindowWithDelay>;
-export type LaunchWindow = ReturnType<typeof launchWindow>;
+export type LaunchWindowAction = ReturnType<typeof launchWindow>;
+export type WindowHiddenAction = ReturnType<typeof windowHidden>;
+export type WindowShownAction = ReturnType<typeof windowShown>;
+
+export type WindowsActions = BlurWindowWithDelayAction | LaunchWindowAction | WindowHiddenAction | WindowShownAction;

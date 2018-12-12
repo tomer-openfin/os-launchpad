@@ -1,4 +1,3 @@
-import { Window } from '@giantmachines/redux-openfin';
 import { combineReducers } from 'redux';
 
 import admin from './admin';
@@ -9,6 +8,8 @@ import layouts from './layouts';
 import me from './me';
 import organization from './organization';
 import system from './system';
+import windows from './windows';
+
 import { State } from './types';
 
 export default combineReducers<State>({
@@ -20,5 +21,5 @@ export default combineReducers<State>({
   me,
   organization,
   system,
-  windows: Window.reducer,
+  windows,
 });

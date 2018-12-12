@@ -4,7 +4,6 @@ import { ContextMenuState, OpenContextMenuSuccess } from './types';
 const defaultState: ContextMenuState = {
   anchor: undefined,
   bounds: undefined,
-  isOpen: false,
   options: [],
   // TODO: Add origin window name to know where context menu is attached,
   //       will be needed if context menu is attached to
@@ -24,7 +23,6 @@ export default (state: ContextMenuState = defaultState, action) => {
         ...state,
         anchor,
         bounds,
-        isOpen: true,
         options,
       };
     }

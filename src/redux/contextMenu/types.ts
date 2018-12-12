@@ -12,7 +12,6 @@ export interface ContextMenuOption {
 // Reducer
 export interface ContextMenuState {
   anchor: PrimaryDirectionalCoordinates | undefined;
-  isOpen: boolean;
   options: ContextMenuOption[];
   bounds: Bounds | undefined;
 }
