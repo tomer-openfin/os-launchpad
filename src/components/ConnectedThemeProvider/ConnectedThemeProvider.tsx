@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
-import { getOrganizationTheme } from '../../redux/organization/index';
+import { getOrganizationActiveTheme } from '../../redux/organization/index';
 import { State } from '../../redux/types';
 import { Theme } from '../../types/commons';
 
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const mapState = (state: State) => ({
-  theme: getOrganizationTheme(state),
+  theme: getOrganizationActiveTheme(state),
 });
 
 const ConnectedThemeProvider = ({ children, theme }: Props) => {

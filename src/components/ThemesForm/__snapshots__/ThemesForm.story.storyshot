@@ -10,8 +10,60 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
       }
     }
   >
-    <div>
-      Loading Themes...
+    <div
+      className="sc-kgAjT cuzzPp"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div
+          className="sc-gisBJw ippVNs"
+        >
+          <label
+            className="sc-kjoXOD dzaIFe"
+          >
+            Choose theme to set appearance of App Launcher and accompanying windows:
+          </label>
+          <select
+            className="sc-cHGsZl cEypfa"
+            disabled={false}
+            id="ThemesFormSelectInput"
+            name="theme"
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder="Select Theme..."
+            value="dark"
+          >
+            <option
+              value="dark"
+            >
+              Dark
+            </option>
+            <option
+              value="light"
+            >
+              Light
+            </option>
+          </select>
+        </div>
+        <button
+          className="sc-TOsTZ dTndRn"
+          disabled={true}
+          onClick={[Function]}
+          type="button"
+          width={120}
+        >
+          Cancel
+        </button>
+        <button
+          className="sc-TOsTZ idSmOY"
+          disabled={true}
+          type="submit"
+          width={120}
+        >
+          Set Theme
+        </button>
+      </form>
     </div>
   </div>
   <button
@@ -160,11 +212,44 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
                   }
                 >
                   &lt;
-                  Connect(ComponentWithThemes)
+                  ThemesForm
                 </span>
                 <span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      activeThemeId
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        "
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          dark
+                        </span>
+                        "
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -350,7 +435,65 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
                         }
                       </span>
                     </span>
-                     
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      setActiveThemeId
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      saveActiveThemeId
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
+                        </span>
+                        }
+                      </span>
+                    </span>
+                    <br />
                   </span>
                 </span>
                 <span
@@ -409,94 +552,12 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
               }
             >
               "
-              Connect(ComponentWithThemes)
+              ThemesForm
               " Component
             </h2>
-            <table
-              className="css-1uhv8nx e1vdo5380"
-            >
-              <thead>
-                <tr>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    property
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    propType
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    required
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    default
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    description
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    store
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span />
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    storeSubscription
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span />
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-              </tbody>
-            </table>
+            <small>
+              No propTypes defined!
+            </small>
           </div>
         </div>
       </div>

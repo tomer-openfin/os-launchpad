@@ -8,6 +8,7 @@ import { getAdminAppsRequest, getAdminUsersRequest } from '../admin';
 import { launchAppLauncher, reboundLauncherRequest } from '../application';
 import { getAppDirectoryList } from '../apps';
 import { getLayoutsRequest } from '../layouts';
+import { getAdminOrgSettingsRequest } from '../organization/index';
 import {
   ADD_TO_APP_LAUNCHER,
   changePassword,
@@ -79,7 +80,7 @@ function* watchLoginSuccess(action: LoginSuccess) {
   yield put(setMe(payload));
 
   if (payload.isAdmin) {
-    yield all([put(getAdminAppsRequest()), put(getAdminUsersRequest())]);
+    yield all([put(getAdminAppsRequest()), put(getAdminUsersRequest()), put(getAdminOrgSettingsRequest())]);
   }
 
   // take(GET_SETTINGS.SUCCESS) to wait for launcher position before showing launcher

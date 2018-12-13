@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getOrganizationLogo, setLogo } from '../../redux/organization';
+import { getOrganizationLogo, saveLogo, setLogo } from '../../redux/organization';
 import LogoForm from './LogoForm';
 
 const mapState = state => ({
@@ -8,6 +8,7 @@ const mapState = state => ({
 });
 
 const mapDispatch = {
+  saveLogo,
   setLogo,
 };
 

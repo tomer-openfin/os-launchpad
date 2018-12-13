@@ -1,9 +1,6 @@
 import { Formik, FormikHandlers, FormikProps } from 'formik';
 import * as React from 'react';
 
-import ApiService from '../../services/ApiService';
-
-import { ResponseStatus } from '../../types/commons';
 import LogoInput from '../LogoInput';
 import { Label, StyledButton, StyledForm, Wrapper } from './LogoForm.css';
 
@@ -22,6 +19,7 @@ interface FormikInitialValues {
 interface Props {
   logo: string;
   setLogo: (logo: string) => void;
+  saveLogo: (logo: File) => void;
 }
 
 interface State {
@@ -46,27 +44,14 @@ class LogoForm extends React.PureComponent<Props, State> {
   }
 
   handleSubmit = () => {
-    const { logo } = this.props;
+    const { saveLogo } = this.props;
     const { file } = this.state;
 
     if (!file) {
       return;
     }
 
-    ApiService.saveAdminLogo(file)
-      .then(response => {
-        if (response && response.status !== ResponseStatus.FAILURE) {
-          URL.revokeObjectURL(logo);
-
-          this.currentLogo = response;
-
-          this.forceUpdate();
-        }
-      })
-      .catch(e => {
-        // tslint:disable-next-line:no-console
-        console.log('Error saving logo:', e);
-      });
+    saveLogo(file);
   };
 
   handleFileChange = (fn: FormikHandlers['handleChange']) => (e: React.ChangeEvent<HTMLInputElement>) => {

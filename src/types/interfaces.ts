@@ -107,5 +107,5 @@ export interface NewUserLayout {
 
 export interface MetaWithCallbacks {
   successCb: Function;
-  errorCb: Function;
+  errorCb?: Function;
 }

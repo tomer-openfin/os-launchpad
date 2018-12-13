@@ -1,8 +1,7 @@
 import { Field, FieldProps, Form, Formik, FormikHandlers, FormikProps } from 'formik';
 import * as React from 'react';
 
-import ApiService from '../../services/ApiService';
-import { Theme } from '../../types/commons';
+import { MetaWithCallbacks, Theme } from '../../types/commons';
 
 import { InputWrapper, Label, Select, StyledButton, Wrapper } from './ThemesForm.css';
 
@@ -14,22 +13,29 @@ enum FormNames {
 }
 
 interface FormikInitialValues {
-  [FormNames.Theme]: string;
+  [FormNames.Theme]: Theme['id'];
 }
 
 interface Props {
   themes: Theme[];
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
+  activeThemeId: Theme['id'];
+  setActiveThemeId: (themeId: Theme['id']) => void;
+  saveActiveThemeId: (themeId: Theme['id'], meta?: MetaWithCallbacks) => void;
 }
 
-class ThemesForm extends React.PureComponent<Props> {
-  currentTheme: Theme;
+interface State {
+  currentThemeId: string;
+  loading: boolean;
+}
 
+class ThemesForm extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    this.currentTheme = props.theme;
+    this.state = {
+      currentThemeId: props.activeThemeId,
+      loading: false,
+    };
   }
 
   componentWillUnmount() {
@@ -40,27 +46,30 @@ class ThemesForm extends React.PureComponent<Props> {
     // Execute Formik default handleChange functionality
     fn(e);
 
-    const { themes, setTheme } = this.props;
+    const { themes, setActiveThemeId } = this.props;
     // But as a side effect, set selected theme in redux
     // so admin can see a preview of selected theme
     const selectedTheme = themes.find(theme => theme.id === e.currentTarget.value);
+
     if (selectedTheme) {
-      setTheme(selectedTheme);
+      setActiveThemeId(selectedTheme.id);
     }
   };
 
   handleSubmit = () => {
-    const { theme } = this.props;
+    const { activeThemeId, saveActiveThemeId } = this.props;
 
-    ApiService.saveAdminTheme(theme)
-      .then(() => {
-        this.currentTheme = theme;
-        this.forceUpdate();
-      })
-      .catch(e => {
-        // tslint:disable-next-line:no-console
-        console.log('Error saving logo:', e);
+    const successCb = () => {
+      this.setState({
+        currentThemeId: activeThemeId,
+        loading: false,
       });
+    };
+    const meta = { successCb };
+
+    this.setState({
+      loading: true,
+    }, () => saveActiveThemeId(activeThemeId, meta));
   };
 
   handleReset = (fn: FormikHandlers['handleReset']) => () => {
@@ -72,17 +81,19 @@ class ThemesForm extends React.PureComponent<Props> {
   };
 
   handleResetProps = () => {
-    const { setTheme, theme } = this.props;
+    const { setActiveThemeId, activeThemeId } = this.props;
 
-    if (this.currentTheme !== theme) {
-      setTheme(this.currentTheme);
+    if (this.state.currentThemeId !== activeThemeId) {
+      setActiveThemeId(this.state.currentThemeId);
     }
   };
 
   renderSelectInput = ({ field }: FieldProps) => {
     const { themes } = this.props;
+    const { loading} = this.state;
+
     return (
-      <Select {...field} id={SELECT_ID} onChange={this.createHandleSelectChange(field.onChange)} placeholder="Select Theme...">
+      <Select {...field} id={SELECT_ID} onChange={this.createHandleSelectChange(field.onChange)} placeholder="Select Theme..." disabled={loading}>
         {themes.map(({ id, name }) => (
           <option key={id} value={id}>
             {name}
@@ -93,6 +104,8 @@ class ThemesForm extends React.PureComponent<Props> {
   };
 
   renderForm = (formikProps: FormikProps<FormikInitialValues>) => {
+    const { loading} = this.state;
+
     return (
       <Form>
         <InputWrapper>
@@ -101,11 +114,11 @@ class ThemesForm extends React.PureComponent<Props> {
           <Field name={FormNames.Theme} render={this.renderSelectInput} />
         </InputWrapper>
 
-        <StyledButton disabled={!formikProps.dirty} onClick={this.handleReset(formikProps.handleReset)} type="button" width={120}>
+        <StyledButton disabled={!formikProps.dirty || loading} onClick={this.handleReset(formikProps.handleReset)} type="button" width={120}>
           Cancel
         </StyledButton>
 
-        <StyledButton disabled={!formikProps.dirty} isDark type="submit" width={120}>
+        <StyledButton disabled={!formikProps.dirty || loading} isDark type="submit" width={120}>
           Set Theme
         </StyledButton>
       </Form>
@@ -117,9 +130,9 @@ class ThemesForm extends React.PureComponent<Props> {
       <Wrapper>
         <Formik
           initialValues={{
-            [FormNames.Theme]: this.currentTheme.id,
+            [FormNames.Theme]: this.state.currentThemeId,
           }}
-          key={this.currentTheme.id}
+          key={this.state.currentThemeId}
           onSubmit={this.handleSubmit}
           render={this.renderForm}
         />

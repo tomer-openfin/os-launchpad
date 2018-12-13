@@ -94,8 +94,60 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
       >
         Set Theme
       </h3>
-      <div>
-        Loading Themes...
+      <div
+        className="sc-kgAjT cuzzPp"
+      >
+        <form
+          onSubmit={[Function]}
+        >
+          <div
+            className="sc-gisBJw ippVNs"
+          >
+            <label
+              className="sc-kjoXOD dzaIFe"
+            >
+              Choose theme to set appearance of App Launcher and accompanying windows:
+            </label>
+            <select
+              className="sc-cHGsZl cEypfa"
+              disabled={false}
+              id="ThemesFormSelectInput"
+              name="theme"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Select Theme..."
+              value="dark"
+            >
+              <option
+                value="dark"
+              >
+                Dark
+              </option>
+              <option
+                value="light"
+              >
+                Light
+              </option>
+            </select>
+          </div>
+          <button
+            className="sc-TOsTZ dTndRn"
+            disabled={true}
+            onClick={[Function]}
+            type="button"
+            width={120}
+          >
+            Cancel
+          </button>
+          <button
+            className="sc-TOsTZ idSmOY"
+            disabled={true}
+            type="submit"
+            width={120}
+          >
+            Set Theme
+          </button>
+        </form>
       </div>
     </div>
   </div>

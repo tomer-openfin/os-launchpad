@@ -2,6 +2,8 @@ import { Window } from '@giantmachines/redux-openfin';
 import { delay } from 'redux-saga';
 import { all, call, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
+import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
+
 import windowsConfig, { createConfig, initOnStartWindows, MAIN_WINDOW } from '../../config/windows';
 import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
@@ -12,6 +14,7 @@ import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList } from '../apps';
 import { getLayoutsRequest } from '../layouts';
 import { getAutoHide, getLauncherPosition, getSettingsRequest } from '../me';
+import { getOrgSettingsRequest } from '../organization/index';
 import { getTotalLauncherCtas } from '../selectors';
 import { getMonitorInfo, setMonitorInfo, setupSystemHandlers } from '../system';
 import { launchWindow } from '../windows';
@@ -30,7 +33,6 @@ import {
   setIsExpanded,
 } from './actions';
 import { getApplicationIsExpanded } from './selectors';
-import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
 import { animateLauncherCollapseExpand } from './utils';
 
 const APP_UUID = getAppUuid();
@@ -39,13 +41,15 @@ const ANIMATION_DURATION = 150;
 const { ENTERPRISE = false } = process.env;
 
 /**w
- * Applcation Start
+ * Application Start
  */
 function* applicationStart() {
   // tslint:disable-next-line:no-console
   console.log('application started');
 
   yield put(getAppDirectoryList());
+
+  yield put(getOrgSettingsRequest());
 }
 
 /**

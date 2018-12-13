@@ -1,18 +1,19 @@
 import { connect } from 'react-redux';
 
-import withThemes from '../../hocs/withThemes';
-import { getOrganizationTheme, setTheme } from '../../redux/organization';
+import { getOrganizationActiveThemeId, getOrganizationThemes, saveActiveThemeId, setActiveThemeId } from '../../redux/organization';
 import ThemesForm from './ThemesForm';
 
 const mapState = state => ({
-  theme: getOrganizationTheme(state),
+  activeThemeId: getOrganizationActiveThemeId(state),
+  themes: getOrganizationThemes(state),
 });
 
 const mapDispatch = {
-  setTheme,
+  saveActiveThemeId,
+  setActiveThemeId,
 };
 
 export default connect(
   mapState,
   mapDispatch,
-)(withThemes(ThemesForm));
+)(ThemesForm);

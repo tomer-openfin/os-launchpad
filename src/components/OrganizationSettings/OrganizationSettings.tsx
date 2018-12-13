@@ -15,8 +15,7 @@ const OrganizationSettings = () => (
 
     <Header>Set Theme</Header>
 
-    {/* TODO: (chenghw) Figure out how to properly type HOC to omit props */}
-    <ThemesForm themes={[]} />
+    <ThemesForm />
   </Wrapper>
 );
 

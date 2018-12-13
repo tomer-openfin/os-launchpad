@@ -2,11 +2,8 @@ import { createAction } from 'redux-actions';
 
 import { App, ErrorResponse, MetaWithCallbacks, User } from '../../types/commons';
 import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
+import { metaWithCallbacksCreator, payloadIdentityCreator } from '../../utils/metaAndPayloadCreators';
 import noop from '../../utils/noop';
-
-const payloadIdentityCreator = <T>(payload: T): T => payload;
-
-const metaWithCallbacksCreator = <T extends MetaWithCallbacks>(_, meta: T): T => meta;
 
 // Action Types
 export const GET_ADMIN_APPS = generateAsyncActionTypes('GET_ADMIN_APPS');
