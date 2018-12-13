@@ -8,7 +8,7 @@ pipeline {
             agent { label 'linux-slave' }
             steps {
                 sh "npm i"
-                sh "npm test:ci"
+                sh "npm run test:ci"
             }
         }
 
