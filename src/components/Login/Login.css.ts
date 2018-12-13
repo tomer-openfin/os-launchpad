@@ -35,8 +35,18 @@ export const FieldWrapper = styled.label`
   }
 `;
 
-export const ErrorMessage = styled.p`
-  color: red;
+export const ResponseMessage = styled.div<{ error: boolean }>`
+  color: ${props => (props.error ? Color.FAIL : Color.BASEBALL)};
+  position: absolute;
+  bottom: 10px;
+  height: 60px;
+  font-size: 12px;
+  padding: 25px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  display: flex;
 `;
 
 export const CTA = styled.button`

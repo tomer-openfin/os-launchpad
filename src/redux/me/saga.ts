@@ -3,16 +3,19 @@ import { all, call, put, select, take, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 
+import { ResponseStatus } from '../../types/enums';
 import { getAdminAppsRequest, getAdminUsersRequest } from '../admin';
 import { launchAppLauncher, reboundLauncherRequest } from '../application';
 import { getAppDirectoryList } from '../apps';
 import { getLayoutsRequest } from '../layouts';
 import {
   ADD_TO_APP_LAUNCHER,
+  changePassword,
   GET_SETTINGS,
   getSettingsRequest,
   getSettingsSuccess,
   LOGIN,
+  LOGIN_WITH_NEW_PASSWORD,
   loginError,
   loginSuccess,
   REMOVE_FROM_APP_LAUNCHER,
@@ -24,7 +27,7 @@ import {
   setMe,
 } from './actions';
 import { getMeSettings } from './selectors';
-import { LoginError, LoginRequest, LoginSuccess } from './types';
+import { LoginError, LoginRequest, LoginSuccess, LoginWithNewPassword } from './types';
 
 function* watchLoginRequest(action: LoginRequest) {
   const { payload } = action;
@@ -35,12 +38,34 @@ function* watchLoginRequest(action: LoginRequest) {
 
   const result = yield call(ApiService.login, payload);
 
-  const { email, firstName, lastName, isAdmin, status } = result;
+  const { status, code, message, session } = result;
 
-  if (!status) {
-    yield put(loginSuccess({ isAdmin, email, firstName, lastName }));
+  if (status === ResponseStatus.FAILURE) {
+    yield put(loginError({ status, code, message, session }));
   } else {
-    yield put(loginError({ status, message: 'Login failed' }));
+    const { email, firstName, lastName, isAdmin } = result;
+
+    yield put(loginSuccess({ isAdmin, email, firstName, lastName }));
+  }
+}
+
+function* watchLoginWithNewPassword(action: LoginWithNewPassword) {
+  const { payload } = action;
+
+  if (!payload) {
+    return;
+  }
+
+  const result = yield call(ApiService.newPasswordLogin, payload);
+
+  const { status, code, message, session } = result;
+
+  if (status === ResponseStatus.FAILURE) {
+    yield put(loginError({ status, code, message, session }));
+  } else {
+    const { email, firstName, lastName, isAdmin } = result;
+
+    yield put(loginSuccess({ isAdmin, email, firstName, lastName }));
   }
 }
 
@@ -73,9 +98,14 @@ function* watchLoginError(action: LoginError) {
     return;
   }
 
-  const { message } = payload;
-  // tslint:disable-next-line:no-console
-  console.log('Error Message:', message);
+  const { code, session, message } = payload;
+
+  if (code === 'NewPasswordRequired' && session) {
+    yield put(changePassword({ session, message }));
+  } else {
+    // tslint:disable-next-line:no-console
+    console.log('Error Message:', message);
+  }
 }
 
 function* watchGetSettingsRequest() {
@@ -124,6 +154,7 @@ export function* meSaga() {
   yield takeLatest(LOGIN.REQUEST, watchLoginRequest);
   yield takeLatest(LOGIN.SUCCESS, watchLoginSuccess);
   yield takeLatest(LOGIN.ERROR, watchLoginError);
+  yield takeLatest(LOGIN_WITH_NEW_PASSWORD, watchLoginWithNewPassword);
   yield takeLatest(SAVE_SETTINGS.REQUEST, watchSaveSettingsRequest);
   yield takeLatest(ADD_TO_APP_LAUNCHER, watchUpdateLauncherApps);
   yield takeLatest(REMOVE_FROM_APP_LAUNCHER, watchUpdateLauncherApps);

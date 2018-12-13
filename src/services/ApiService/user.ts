@@ -1,4 +1,4 @@
-import { defaultState, MeStateSettings } from '../../redux/me';
+import { defaultState, MeSettingsState } from '../../redux/me';
 
 import { APIResponse, NewUserLayout, ResponseStatus, UserLayout } from '../../types/commons';
 import { checkIsEnterprise } from '../../utils/checkIsEnterprise';
@@ -71,9 +71,9 @@ export const updateUserLayout = (userLayout: UserLayout): Promise<APIResponse> =
 /**
  * Get settings
  *
- * @returns {Promise<MeStateSettings | APIResponse>}
+ * @returns {Promise<MeSettingsState | APIResponse>}
  */
-export const getUserSettings = (): Promise<MeStateSettings | APIResponse> => {
+export const getUserSettings = (): Promise<MeSettingsState | APIResponse> => {
   if (checkIsEnterprise()) {
     const options = createGetOptions();
 
@@ -88,7 +88,7 @@ export const getUserSettings = (): Promise<MeStateSettings | APIResponse> => {
  *
  * @returns {Promise<APIResponse>}
  */
-export const saveUserSettings = (settings: MeStateSettings): Promise<APIResponse> => {
+export const saveUserSettings = (settings: MeSettingsState): Promise<APIResponse> => {
   if (checkIsEnterprise()) {
     const options = createPostOptions({ settings });
 

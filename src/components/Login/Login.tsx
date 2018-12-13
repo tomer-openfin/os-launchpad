@@ -1,16 +1,15 @@
 import { Field, Form, Formik } from 'formik';
 import * as React from 'react';
 
-import { LoginRequestPayload } from '../../redux/me';
+import { LoginRequestPayload, LoginWithNewPasswordPayload, MeLoginState } from '../../redux/me';
 
 import Logo from '../Logo';
-import { CTA, FieldWrapper, Wrapper } from './Login.css';
-
-type SubmitFn = (payload: LoginRequestPayload) => void;
+import { CTA, FieldWrapper, ResponseMessage, Wrapper } from './Login.css';
 
 interface Props {
-  onSubmit: SubmitFn;
-  loginError: boolean;
+  login: (options: LoginRequestPayload) => void;
+  loginWithNewPassword: (options: LoginWithNewPasswordPayload) => void;
+  loginState: MeLoginState;
 }
 
 const { USERNAME, PASSWORD } = process.env;
@@ -26,9 +25,22 @@ const initialValues: LoginRequestPayload = USERNAME && PASSWORD && document.loca
  *
  * @returns {LoginRequestPayload => void}
  */
-const handleSubmit = (onSubmit: SubmitFn) => (values: LoginRequestPayload) => {
-  onSubmit(values);
+const handleSubmit = (loginState: MeLoginState, login: Props['login'], loginWithNewPassword: Props['loginWithNewPassword']) => values => {
+  const { changePassword, session } = loginState;
+
+  const { username, password, newPassword } = values;
+
+  if (changePassword) {
+    loginWithNewPassword({ username, newPassword, session });
+  } else {
+    login({ username, password });
+  }
 };
+
+const renderMessage = ({ error, message }: MeLoginState) =>
+  (error || message) && (
+    <ResponseMessage error={error} >{message || 'Login failed. Please try again.'}</ResponseMessage>
+  );
 
 /**
  * LoginForm component
@@ -36,7 +48,7 @@ const handleSubmit = (onSubmit: SubmitFn) => (values: LoginRequestPayload) => {
  * @returns {React.StatelessComponent}
  */
 const LoginForm = () => (
-  <Form>
+  <Form key="login">
     <FieldWrapper>
       <Field
         name="username"
@@ -62,24 +74,53 @@ const LoginForm = () => (
 );
 
 /**
+ * ChangePasswordForm component
+ *
+ * @returns {React.StatelessComponent}
+ */
+const ChangePasswordForm = () => (
+  <Form key="changePassword">
+    <FieldWrapper>
+      <Field
+        name="newPassword"
+        placeholder="New Password"
+        type="password"
+      />
+    </FieldWrapper>
+
+    <FieldWrapper>
+      <Field
+        name="newPasswordConfirmation"
+        placeholder="Confirm Password"
+        type="password"
+      />
+    </FieldWrapper>
+
+    <FieldWrapper>
+      <CTA type="submit">
+        Create New Password
+      </CTA>
+    </FieldWrapper>
+  </Form>
+);
+
+/**
  * Login component
  *
  * @param {Props} - Login props
  *
  * @returns {React.StatelessComponent}
  */
-const Login = ({ loginError, onSubmit }: Props) => (
+const Login = ({ loginState, login, loginWithNewPassword }: Props) => (
   <Wrapper>
     <Logo large />
 
-    {loginError && (
-      <p style={{ color: 'red' }}>Login failed. Please try again.</p>
-    )}
+    {renderMessage(loginState)}
 
     <Formik
       initialValues={initialValues}
-      onSubmit={handleSubmit(onSubmit)}
-      render={LoginForm}
+      onSubmit={handleSubmit(loginState, login, loginWithNewPassword)}
+      render={loginState.changePassword ? ChangePasswordForm :  LoginForm}
     />
   </Wrapper>
 );

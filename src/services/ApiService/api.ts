@@ -4,6 +4,7 @@ const API = {
   PUBLIC_APPS: 'https://app-directory.openfin.co/api/v1/apps',
 
   LOGIN: `${API_URL}api/auth/login`,
+  NEW_PASSWORD: `${API_URL}api/auth/password/new`,
 
   ORG_SETTINGS: `${API_URL}api/config`,
 

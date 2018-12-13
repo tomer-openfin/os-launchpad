@@ -1,13 +1,21 @@
-import { ADD_TO_APP_LAUNCHER, GET_SETTINGS, LOGIN, REMOVE_FROM_APP_LAUNCHER, SET_AUTO_HIDE, SET_LAUNCHER_POSITION, SET_ME } from './actions';
+import { ADD_TO_APP_LAUNCHER, CHANGE_PASSWORD, GET_SETTINGS, LOGIN, REMOVE_FROM_APP_LAUNCHER, SET_AUTO_HIDE, SET_LAUNCHER_POSITION, SET_ME } from './actions';
 
 import { DirectionalPosition } from '../../types/commons';
 import { GetSettingsSuccess, MeActions, MeState, SetLaunchbarPayload, SetMePayload } from './types';
+
+const defaultLoginState = {
+  changePassword: false,
+  error: false,
+  message: '',
+  session: '',
+};
 
 export const defaultState: MeState = {
   email: '',
   firstName: '',
   isAdmin: false,
   lastName: '',
+  login: defaultLoginState,
   settings: {
     appIds: [],
     autoHide: false,
@@ -15,7 +23,7 @@ export const defaultState: MeState = {
   },
 };
 
-export default (state: MeState = defaultState, action: MeActions) => {
+export default (state: MeState = defaultState, action: MeActions): MeState => {
   switch (action.type) {
     case GET_SETTINGS.SUCCESS: {
       return {
@@ -38,19 +46,44 @@ export default (state: MeState = defaultState, action: MeActions) => {
     case LOGIN.REQUEST: {
       return {
         ...state,
-        loginError: false,
+        login: {
+          ...state.login,
+          error: false,
+          message: '',
+        },
       };
     }
     case LOGIN.SUCCESS: {
       return {
         ...state,
-        loginError: false,
+        login: {
+          ...defaultLoginState,
+          changePassword: state.login.changePassword,
+        },
       };
     }
     case LOGIN.ERROR: {
+      const { message } = action.payload;
+
       return {
         ...state,
-        loginError: true,
+        login: {
+          ...state.login,
+          error: true,
+          message,
+        },
+      };
+    }
+    case CHANGE_PASSWORD: {
+      const { session, message } = action.payload;
+      return {
+        ...state,
+        login: {
+          changePassword: true,
+          error: false,
+          message,
+          session,
+        },
       };
     }
     case SET_AUTO_HIDE: {
