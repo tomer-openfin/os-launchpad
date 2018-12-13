@@ -510,7 +510,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                 <span
                   style={
                     Object {
-                      "color": "#777",
+                      "color": "#444",
                     }
                   }
                 >
@@ -1955,7 +1955,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                 <span
                   style={
                     Object {
-                      "color": "#777",
+                      "color": "#444",
                     }
                   }
                 >

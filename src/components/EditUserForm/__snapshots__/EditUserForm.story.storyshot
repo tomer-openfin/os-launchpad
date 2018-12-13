@@ -242,7 +242,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                 <span
                   style={
                     Object {
-                      "color": "#777",
+                      "color": "#444",
                     }
                   }
                 >
@@ -426,7 +426,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                 <span
                   style={
                     Object {
-                      "color": "#777",
+                      "color": "#444",
                     }
                   }
                 >
