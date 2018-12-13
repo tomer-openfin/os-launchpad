@@ -7,6 +7,11 @@ pipeline {
         stage ('test'){
             agent { label 'linux-slave' }
             steps {
+                sh "echo POSTMAN_API_KEY=80a856812f61421091e2ccb948296523 > .env"
+                sh "echo >> .env"
+                sh "echo POSTMAN_COLLECTION_UID=5696387-4787f9ce-1443-403c-8e6a-0f76e0f5a14e >> .env"
+                sh "echo >> .env"
+                sh "echo POSTMAN_ENVIRONMENT_UID=5696387-b195de02-209e-492c-a81a-1b613e9d59bc >> .env"
                 sh "npm i"
                 sh "npm run test:ci"
             }
