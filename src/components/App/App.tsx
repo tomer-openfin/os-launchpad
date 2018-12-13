@@ -1,45 +1,86 @@
 import * as React from 'react';
 
-import { App, DirectionalPosition } from '../../types/commons';
-import IconSpace from '../IconSpace';
-import Logo from '../Logo';
-import { Separator, StyledAppIcon, Wrapper } from './App.css';
+import * as arrowIcon from '../../assets/ArrowCircle.svg';
+import * as arrowDownIcon from '../../assets/ArrowDown.svg';
+import * as closeIcon from '../../assets/CloseCircle.svg';
 
-interface LauncherIcon {
+import { App, DirectionalPosition } from '../../types/commons';
+import { SystemIcon } from '../../utils/getSystemIcons';
+import { calcCollapsedSystemSize, calcExpandedSystemSize } from '../../utils/windowPositionHelpers';
+
+import Logo from '../Logo';
+import {
+  ArrowIcon,
+  Main,
+  Overlay,
+  StyledAppIcon,
+  StyledSvgIcon,
+  SystemDrawerWrapper,
+  SystemIconsWrapper,
+  SystemIconWrapper,
+  ToggleIcon,
+  Wrapper,
+} from './App.css';
+
+export interface LauncherIcon {
   cta: () => void;
+  default: boolean;
   icon: string;
   key: string;
+  hasExtendedWindow: boolean;
 }
 
 export interface Props {
   apps: App[];
   launcherPosition: DirectionalPosition;
   icons: LauncherIcon[];
+  isDrawerExpanded: boolean;
+  systemIcons: SystemIcon[];
+  toggleDrawer: () => void;
 }
 
 const App = (props: Props) => {
-  const { apps, launcherPosition, icons } = props;
+  const { apps, launcherPosition, icons, systemIcons, toggleDrawer, isDrawerExpanded } = props;
+
+  const drawerSize = isDrawerExpanded ? calcExpandedSystemSize(systemIcons) : calcCollapsedSystemSize(systemIcons);
 
   return (
-    <Wrapper launcherPosition={launcherPosition}>
-      <Logo />
+    <Main launcherPosition={launcherPosition}>
+      <Wrapper endPadding={calcCollapsedSystemSize(systemIcons)} launcherPosition={launcherPosition}>
+        <Logo backgroundColor="rgba(0,0,0,.16)" />
 
-      {apps.map(app => (
-        <React.Fragment key={app.id}>
-          <Separator launcherPosition={launcherPosition} />
+        {apps.map(app => (
+          <React.Fragment key={app.id}>
+            <StyledAppIcon isDisabled={isDrawerExpanded} launcherPosition={launcherPosition} appId={app.id} withContextMenu />
+          </React.Fragment>
+        ))}
 
-          <StyledAppIcon launcherPosition={launcherPosition} appId={app.id} withContextMenu />
-        </React.Fragment>
-      ))}
+        <SystemDrawerWrapper isDrawerExpanded={isDrawerExpanded} size={drawerSize} launcherPosition={launcherPosition}>
+          <Overlay isDrawerExpanded={isDrawerExpanded} onClick={toggleDrawer} />
 
-      {icons.map(icon => (
-        <React.Fragment key={icon.key}>
-          <Separator launcherPosition={launcherPosition} />
+          <SystemIconsWrapper isDrawerExpanded={isDrawerExpanded} size={drawerSize} launcherPosition={launcherPosition}>
+            <ToggleIcon
+              isDrawerExpanded={isDrawerExpanded}
+              launcherPosition={launcherPosition}
+              imgSrc={isDrawerExpanded ? closeIcon : arrowIcon}
+              size={isDrawerExpanded ? 25 : 20}
+              onClick={toggleDrawer}
+            />
 
-          <IconSpace hover iconImg={icon.icon} onClick={icon.cta} />
-        </React.Fragment>
-      ))}
-    </Wrapper>
+            {icons.map(
+              icon =>
+                (icon.default || isDrawerExpanded) && (
+                  <SystemIconWrapper key={icon.key} isDrawerExpanded={isDrawerExpanded} launcherPosition={launcherPosition}>
+                    <StyledSvgIcon imgSrc={icon.icon} onClick={icon.cta} />
+
+                    {icon.hasExtendedWindow && <ArrowIcon size={25} launcherPosition={launcherPosition} imgSrc={arrowDownIcon} />}
+                  </SystemIconWrapper>
+                ),
+            )}
+          </SystemIconsWrapper>
+        </SystemDrawerWrapper>
+      </Wrapper>
+    </Main>
   );
 };
 

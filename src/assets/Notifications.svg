@@ -1,16 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
-    <title>Notifications</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Notifications" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g>
-            <rect id="Rectangle" x="0" y="0" width="34" height="34"></rect>
-            <g transform="translate(7.000000, 5.000000)" id="Path" stroke="#8BA7B9" stroke-linecap="round" stroke-width="1.8">
-                <path d="M6.888,20.232 C6.92225744,21.0374635 7.27547028,21.7962279 7.86975782,22.3409915 C8.46404535,22.885755 9.2506027,23.17178 10.056,23.136 C10.9644889,23.1396638 11.8337041,22.7659013 12.456,22.104"></path>
-                <path d="M10.056,3.876 C0.384,3.876 0.9,15.504 0.9,19.476 L19.2,19.476 C19.2,15.504 19.716,3.876 10.056,3.876 Z" stroke-linejoin="round"></path>
-                <path d="M11.796,3.072 C11.796,2.4 11.892,0.9 10.056,0.9 C8.22,0.9 8.304,2.4 8.304,3.072" stroke-linejoin="round"></path>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg width="41" height="42" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M24.677 4.8a8.773 8.773 0 0 0-.332 2.4c0 4.64 3.59 8.4 8.019 8.4.796 0 1.565-.122 2.29-.348V30c0 3.314-2.564 6-5.727 6H10.6c-3.163 0-5.727-2.686-5.727-6V10.8c0-3.314 2.564-6 5.727-6h14.077zm7.687 7.2c-2.53 0-4.582-2.149-4.582-4.8s2.051-4.8 4.582-4.8c2.53 0 4.581 2.149 4.581 4.8s-2.05 4.8-4.581 4.8z" fill="#FBC23C"/><text font-family="Helvetica" font-size="16.8" letter-spacing="-.48" fill="#FFF" transform="translate(-2)"><tspan x="6.3" y="28">1</tspan> <tspan x="15.163" y="28">2</tspan></text></g></svg>

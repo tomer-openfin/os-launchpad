@@ -1,22 +1,12 @@
 import * as React from 'react';
 
-import * as EmptyLogo from '../../assets/empty-logo.svg';
+import { LogoIcon } from './Logo.css';
 
-import IconSpace from '../IconSpace';
-
-interface Props {
-  large?: boolean;
-  logo: string;
+export interface Props {
+  imgSrc: string;
+  backgroundColor?: string;
 }
 
-const Logo = ({ large, logo }: Props) => {
-  if (large) {
-    return (
-      <IconSpace large={large} backgroundImg={logo || EmptyLogo} />
-    );
-  }
-
-  return <IconSpace iconImg={logo || EmptyLogo} />;
-};
+const Logo = ({ imgSrc, backgroundColor }: Props) => <LogoIcon backgroundColor={backgroundColor} imgSrc={imgSrc} />;
 
 export default Logo;

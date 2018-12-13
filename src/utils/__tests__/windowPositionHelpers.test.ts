@@ -117,6 +117,23 @@ const monitorInfo = {
   },
 };
 
+const SYSTEM_ICONS = [
+  {
+    action: { type: 'FAKE_TEST_TYPE' },
+    default: true,
+    hasExtendedWindow: false,
+    icon: 'testIcon',
+    key: 'testIcon',
+  },
+  {
+    action: { type: 'FAKE_MOCK_TYPE' },
+    default: false,
+    hasExtendedWindow: true,
+    icon: 'mockIcon',
+    key: 'mockIcon',
+  },
+];
+
 describe('windowPositionHelpers', () => {
   describe('isTopOrBottom', () => {
     it('should return true for a position on top or bottom, otherwise false', () => {
@@ -182,28 +199,28 @@ describe('windowPositionHelpers', () => {
   });
 
   describe('calcLauncherDimensions', () => {
-    const ctaCount = 8;
+    const appCount = 8;
     const tests = [
-      { autoHide: false, isExpanded: false, launcherPosition: TOP, result: { height: 50, width: 450 } },
-      { autoHide: false, isExpanded: true, launcherPosition: TOP, result: { height: 50, width: 450 } },
-      { autoHide: true, isExpanded: false, launcherPosition: TOP, result: { height: 5, width: 450 } },
-      { autoHide: true, isExpanded: true, launcherPosition: TOP, result: { height: 50, width: 450 } },
-      { autoHide: false, isExpanded: false, launcherPosition: BOTTOM, result: { height: 50, width: 450 } },
-      { autoHide: false, isExpanded: true, launcherPosition: BOTTOM, result: { height: 50, width: 450 } },
-      { autoHide: true, isExpanded: false, launcherPosition: BOTTOM, result: { height: 5, width: 450 } },
-      { autoHide: true, isExpanded: true, launcherPosition: BOTTOM, result: { height: 50, width: 450 } },
-      { autoHide: false, isExpanded: false, launcherPosition: LEFT, result: { height: 450, width: 50 } },
-      { autoHide: false, isExpanded: true, launcherPosition: LEFT, result: { height: 450, width: 50 } },
-      { autoHide: true, isExpanded: false, launcherPosition: LEFT, result: { height: 450, width: 5 } },
-      { autoHide: true, isExpanded: true, launcherPosition: LEFT, result: { height: 450, width: 50 } },
-      { autoHide: false, isExpanded: false, launcherPosition: RIGHT, result: { height: 450, width: 50 } },
-      { autoHide: false, isExpanded: true, launcherPosition: RIGHT, result: { height: 450, width: 50 } },
-      { autoHide: true, isExpanded: false, launcherPosition: RIGHT, result: { height: 450, width: 5 } },
-      { autoHide: true, isExpanded: true, launcherPosition: RIGHT, result: { height: 450, width: 50 } },
+      { autoHide: false, isExpanded: false, launcherPosition: TOP, result: { height: 80, width: 732 } },
+      { autoHide: false, isExpanded: true, launcherPosition: TOP, result: { height: 80, width: 732 } },
+      { autoHide: true, isExpanded: false, launcherPosition: TOP, result: { height: 5, width: 732 } },
+      { autoHide: true, isExpanded: true, launcherPosition: TOP, result: { height: 80, width: 732 } },
+      { autoHide: false, isExpanded: false, launcherPosition: BOTTOM, result: { height: 80, width: 732 } },
+      { autoHide: false, isExpanded: true, launcherPosition: BOTTOM, result: { height: 80, width: 732 } },
+      { autoHide: true, isExpanded: false, launcherPosition: BOTTOM, result: { height: 5, width: 732 } },
+      { autoHide: true, isExpanded: true, launcherPosition: BOTTOM, result: { height: 80, width: 732 } },
+      { autoHide: false, isExpanded: false, launcherPosition: LEFT, result: { height: 732, width: 80 } },
+      { autoHide: false, isExpanded: true, launcherPosition: LEFT, result: { height: 732, width: 80 } },
+      { autoHide: true, isExpanded: false, launcherPosition: LEFT, result: { height: 732, width: 5 } },
+      { autoHide: true, isExpanded: true, launcherPosition: LEFT, result: { height: 732, width: 80 } },
+      { autoHide: false, isExpanded: false, launcherPosition: RIGHT, result: { height: 732, width: 80 } },
+      { autoHide: false, isExpanded: true, launcherPosition: RIGHT, result: { height: 732, width: 80 } },
+      { autoHide: true, isExpanded: false, launcherPosition: RIGHT, result: { height: 732, width: 5 } },
+      { autoHide: true, isExpanded: true, launcherPosition: RIGHT, result: { height: 732, width: 80 } },
     ];
 
     tests.forEach(({ autoHide, isExpanded, launcherPosition, result }) =>
-      expect(calcLauncherDimensions(ctaCount, launcherPosition, autoHide, isExpanded)).toEqual(result),
+      expect(calcLauncherDimensions(appCount, SYSTEM_ICONS, launcherPosition, autoHide, isExpanded)).toEqual(result),
     );
   });
 
@@ -219,28 +236,28 @@ describe('windowPositionHelpers', () => {
   });
 
   describe('calcLauncherPosition', () => {
-    const ctaCount = 8;
+    const appCount = 8;
     const tests = [
-      { autoHide: false, isExpanded: false, launcherPosition: TOP, result: { height: 50, left: 467, top: 0, width: 450 } },
-      { autoHide: false, isExpanded: true, launcherPosition: TOP, result: { height: 50, left: 467, top: 0, width: 450 } },
-      { autoHide: true, isExpanded: false, launcherPosition: TOP, result: { height: 5, left: 467, top: 0, width: 450 } },
-      { autoHide: true, isExpanded: true, launcherPosition: TOP, result: { height: 50, left: 467, top: 0, width: 450 } },
-      { autoHide: false, isExpanded: false, launcherPosition: BOTTOM, result: { height: 50, left: 467, top: 1047, width: 450 } },
-      { autoHide: false, isExpanded: true, launcherPosition: BOTTOM, result: { height: 50, left: 467, top: 1047, width: 450 } },
-      { autoHide: true, isExpanded: false, launcherPosition: BOTTOM, result: { height: 5, left: 467, top: 1092, width: 450 } },
-      { autoHide: true, isExpanded: true, launcherPosition: BOTTOM, result: { height: 50, left: 467, top: 1047, width: 450 } },
-      { autoHide: false, isExpanded: false, launcherPosition: LEFT, result: { height: 450, left: 0, top: 323.5, width: 50 } },
-      { autoHide: false, isExpanded: true, launcherPosition: LEFT, result: { height: 450, left: 0, top: 323.5, width: 50 } },
-      { autoHide: true, isExpanded: false, launcherPosition: LEFT, result: { height: 450, left: 0, top: 323.5, width: 5 } },
-      { autoHide: true, isExpanded: true, launcherPosition: LEFT, result: { height: 450, left: 0, top: 323.5, width: 50 } },
-      { autoHide: false, isExpanded: false, launcherPosition: RIGHT, result: { height: 450, left: 1334, top: 323.5, width: 50 } },
-      { autoHide: false, isExpanded: true, launcherPosition: RIGHT, result: { height: 450, left: 1334, top: 323.5, width: 50 } },
-      { autoHide: true, isExpanded: false, launcherPosition: RIGHT, result: { height: 450, left: 1379, top: 323.5, width: 5 } },
-      { autoHide: true, isExpanded: true, launcherPosition: RIGHT, result: { height: 450, left: 1334, top: 323.5, width: 50 } },
+      { autoHide: false, isExpanded: false, launcherPosition: TOP, result: { height: 80, left: 326, top: 0, width: 732 } },
+      { autoHide: false, isExpanded: true, launcherPosition: TOP, result: { height: 80, left: 326, top: 0, width: 732 } },
+      { autoHide: true, isExpanded: false, launcherPosition: TOP, result: { height: 5, left: 326, top: 0, width: 732 } },
+      { autoHide: true, isExpanded: true, launcherPosition: TOP, result: { height: 80, left: 326, top: 0, width: 732 } },
+      { autoHide: false, isExpanded: false, launcherPosition: BOTTOM, result: { height: 80, left: 326, top: 1017, width: 732 } },
+      { autoHide: false, isExpanded: true, launcherPosition: BOTTOM, result: { height: 80, left: 326, top: 1017, width: 732 } },
+      { autoHide: true, isExpanded: false, launcherPosition: BOTTOM, result: { height: 5, left: 326, top: 1092, width: 732 } },
+      { autoHide: true, isExpanded: true, launcherPosition: BOTTOM, result: { height: 80, left: 326, top: 1017, width: 732 } },
+      { autoHide: false, isExpanded: false, launcherPosition: LEFT, result: { height: 732, left: 0, top: 182.5, width: 80 } },
+      { autoHide: false, isExpanded: true, launcherPosition: LEFT, result: { height: 732, left: 0, top: 182.5, width: 80 } },
+      { autoHide: true, isExpanded: false, launcherPosition: LEFT, result: { height: 732, left: 0, top: 182.5, width: 5 } },
+      { autoHide: true, isExpanded: true, launcherPosition: LEFT, result: { height: 732, left: 0, top: 182.5, width: 80 } },
+      { autoHide: false, isExpanded: false, launcherPosition: RIGHT, result: { height: 732, left: 1304, top: 182.5, width: 80 } },
+      { autoHide: false, isExpanded: true, launcherPosition: RIGHT, result: { height: 732, left: 1304, top: 182.5, width: 80 } },
+      { autoHide: true, isExpanded: false, launcherPosition: RIGHT, result: { height: 732, left: 1379, top: 182.5, width: 5 } },
+      { autoHide: true, isExpanded: true, launcherPosition: RIGHT, result: { height: 732, left: 1304, top: 182.5, width: 80 } },
     ];
 
     tests.forEach(({ autoHide, isExpanded, launcherPosition, result }) =>
-      expect(calcLauncherPosition(ctaCount, monitorInfo, launcherPosition, autoHide, isExpanded)).toEqual(result),
+      expect(calcLauncherPosition(appCount, SYSTEM_ICONS, monitorInfo, launcherPosition, autoHide, isExpanded)).toEqual(result),
     );
   });
 });

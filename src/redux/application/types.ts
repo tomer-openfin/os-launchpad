@@ -1,4 +1,14 @@
-import { applicationStarted, collapseApp, expandApp, openfinReady, reboundLauncherRequest, setBlurringWindow, setIsEnterprise, setIsExpanded } from './actions';
+import {
+  applicationStarted,
+  collapseApp,
+  expandApp,
+  openfinReady,
+  reboundLauncherRequest,
+  setBlurringWindow,
+  setIsDrawerExpanded,
+  setIsEnterprise,
+  setIsExpanded,
+} from './actions';
 
 // State
 export interface ApplicationState {
@@ -7,6 +17,7 @@ export interface ApplicationState {
   };
   isEnterprise: boolean;
   isExpanded: boolean;
+  isDrawerExpanded: boolean;
 }
 
 // Action payloads
@@ -32,6 +43,7 @@ export type ReboundLauncherRequestAction = ReturnType<typeof reboundLauncherRequ
 export type SetBlurringWindowAction = ReturnType<typeof setBlurringWindow>;
 export type SetIsEnterpriseAction = ReturnType<typeof setIsEnterprise>;
 export type SetIsExpandedAction = ReturnType<typeof setIsExpanded>;
+export type SetIsDrawerExpandedAction = ReturnType<typeof setIsDrawerExpanded>;
 
 export type ApplicationActions =
   | ApplicationStartedAction
@@ -40,4 +52,5 @@ export type ApplicationActions =
   | OpenfinReadyAction
   | ReboundLauncherRequestAction
   | SetIsEnterpriseAction
-  | SetIsExpandedAction;
+  | SetIsExpandedAction
+  | SetIsDrawerExpandedAction;

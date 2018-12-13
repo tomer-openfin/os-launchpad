@@ -11,10 +11,10 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
     }
   >
     <div
-      className="sc-iAyFgw eFUJkT"
+      className="sc-hzDkRC eVpFXG"
     >
       <div
-        className="sc-eNQAEJ xGIss"
+        className="sc-gipzik jpXZHE"
       >
         Create New User
       </div>
@@ -22,10 +22,10 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
         onSubmit={[Function]}
       >
         <div
-          className="sc-hSdWYo iGDHmA"
+          className="sc-jhAzac kyEniB"
         >
           <label
-            className="sc-hMqMXs dWtibL"
+            className="sc-csuQGl cGuxnZ"
           >
             Email
             <input
@@ -37,7 +37,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
             />
           </label>
           <label
-            className="sc-hMqMXs dWtibL"
+            className="sc-csuQGl cGuxnZ"
           >
             Phone Number
             <input
@@ -50,7 +50,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
             />
           </label>
           <label
-            className="sc-hMqMXs dWtibL"
+            className="sc-csuQGl cGuxnZ"
           >
             Password
             <input
@@ -62,7 +62,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
             />
           </label>
           <label
-            className="sc-hMqMXs dWtibL"
+            className="sc-csuQGl cGuxnZ"
           >
             First Name
             <input
@@ -74,7 +74,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
             />
           </label>
           <label
-            className="sc-hMqMXs dWtibL"
+            className="sc-csuQGl cGuxnZ"
           >
             Last Name
             <input
@@ -86,7 +86,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
             />
           </label>
           <label
-            className="sc-hMqMXs dWtibL"
+            className="sc-csuQGl cGuxnZ"
           >
             Middle Initial
             <input
@@ -99,17 +99,17 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
           </label>
         </div>
         <div
-          className="sc-kkGfuU hfNRCV"
+          className="sc-bRBYWo cfRogV"
         >
           <a
-            className="sc-ckVGcZ hMJJkx"
+            className="sc-iRbamj bWiubd"
             href="/admin/users"
             onClick={[Function]}
           >
             Cancel
           </a>
           <button
-            className="sc-kpOJdX hXueXJ"
+            className="sc-jDwBTQ dTljqn"
             disabled={true}
             type="submit"
           >

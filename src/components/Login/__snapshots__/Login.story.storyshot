@@ -11,17 +11,13 @@ exports[`Storyshots Components/Login Change Password 1`] = `
     }
   >
     <div
-      className="sc-eHgmQL jKraud"
+      className="sc-fBuWsC kUiHil"
     >
       <div
-        className="sc-htoDjs kcRLEW"
-      >
-        <div
-          className="sc-dnqmqq eNdlBn"
-        />
-      </div>
+        className="sc-ifAKCX hsYukX"
+      />
       <div
-        className="sc-jWBwVP eSGzRY"
+        className="sc-dVhcbM exAzDF"
       >
         Please create a new password
       </div>
@@ -29,7 +25,7 @@ exports[`Storyshots Components/Login Change Password 1`] = `
         onSubmit={[Function]}
       >
         <label
-          className="sc-cvbbAY bqyiKv"
+          className="sc-fMiknA kPdpCd"
         >
           <input
             name="newPassword"
@@ -40,7 +36,7 @@ exports[`Storyshots Components/Login Change Password 1`] = `
           />
         </label>
         <label
-          className="sc-cvbbAY bqyiKv"
+          className="sc-fMiknA kPdpCd"
         >
           <input
             name="newPasswordConfirmation"
@@ -51,10 +47,10 @@ exports[`Storyshots Components/Login Change Password 1`] = `
           />
         </label>
         <label
-          className="sc-cvbbAY bqyiKv"
+          className="sc-fMiknA kPdpCd"
         >
           <button
-            className="sc-brqgnP eShDkO"
+            className="sc-eqIVtm kEbDli"
             type="submit"
           >
             Create New Password
@@ -468,17 +464,13 @@ exports[`Storyshots Components/Login With Error 1`] = `
     }
   >
     <div
-      className="sc-eHgmQL jKraud"
+      className="sc-fBuWsC kUiHil"
     >
       <div
-        className="sc-htoDjs kcRLEW"
-      >
-        <div
-          className="sc-dnqmqq eNdlBn"
-        />
-      </div>
+        className="sc-ifAKCX hsYukX"
+      />
       <div
-        className="sc-jWBwVP jFSXAb"
+        className="sc-dVhcbM jLoRMj"
       >
         Invalid username or password
       </div>
@@ -486,7 +478,7 @@ exports[`Storyshots Components/Login With Error 1`] = `
         onSubmit={[Function]}
       >
         <label
-          className="sc-cvbbAY bqyiKv"
+          className="sc-fMiknA kPdpCd"
         >
           <input
             name="username"
@@ -498,7 +490,7 @@ exports[`Storyshots Components/Login With Error 1`] = `
           />
         </label>
         <label
-          className="sc-cvbbAY bqyiKv"
+          className="sc-fMiknA kPdpCd"
         >
           <input
             name="password"
@@ -510,10 +502,10 @@ exports[`Storyshots Components/Login With Error 1`] = `
           />
         </label>
         <label
-          className="sc-cvbbAY bqyiKv"
+          className="sc-fMiknA kPdpCd"
         >
           <button
-            className="sc-brqgnP eShDkO"
+            className="sc-eqIVtm kEbDli"
             type="submit"
           >
             Login
@@ -927,21 +919,17 @@ exports[`Storyshots Components/Login default 1`] = `
     }
   >
     <div
-      className="sc-eHgmQL jKraud"
+      className="sc-fBuWsC kUiHil"
     >
       <div
-        className="sc-htoDjs kcRLEW"
-      >
-        <div
-          className="sc-dnqmqq eNdlBn"
-        />
-      </div>
+        className="sc-ifAKCX hsYukX"
+      />
       
       <form
         onSubmit={[Function]}
       >
         <label
-          className="sc-cvbbAY bqyiKv"
+          className="sc-fMiknA kPdpCd"
         >
           <input
             name="username"
@@ -953,7 +941,7 @@ exports[`Storyshots Components/Login default 1`] = `
           />
         </label>
         <label
-          className="sc-cvbbAY bqyiKv"
+          className="sc-fMiknA kPdpCd"
         >
           <input
             name="password"
@@ -965,10 +953,10 @@ exports[`Storyshots Components/Login default 1`] = `
           />
         </label>
         <label
-          className="sc-cvbbAY bqyiKv"
+          className="sc-fMiknA kPdpCd"
         >
           <button
-            className="sc-brqgnP eShDkO"
+            className="sc-eqIVtm kEbDli"
             type="submit"
           >
             Login

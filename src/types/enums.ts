@@ -1,8 +1,30 @@
 export enum AppIconSizes {
-  Small = 14,
-  Medium = 34,
-  Large = 54,
+  Small = 'small',
+  Medium = 45,
+  Large = 76,
 }
+
+// todo: use more general obj for sizes across all app
+const obj = {
+  [AppIconSizes.Small]: {
+    caret: 'tbd',
+    icon: 'tbd',
+    logo: 'tbd',
+    spacing: 'tbd',
+  },
+  [AppIconSizes.Medium]: {
+    caret: 'tbd',
+    icon: 45,
+    logo: 76,
+    spacing: 'tbd',
+  },
+  [AppIconSizes.Large]: {
+    caret: 'tbd',
+    icon: 'tbd',
+    logo: 'tbd',
+    spacing: 'tbd',
+  },
+};
 
 export enum DirectionalPosition {
   Top = 'top',

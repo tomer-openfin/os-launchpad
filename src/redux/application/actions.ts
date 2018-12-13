@@ -13,6 +13,7 @@ export const REBOUND_LAUNCHER = generateAsyncActionTypes('REBOUND_LAUNCHER');
 export const SET_BLURRING_WINDOW = 'SET_BLURRING_WINDOW';
 export const SET_IS_ENTERPRISE = 'SET_IS_ENTERPRISE';
 export const SET_IS_EXPANDED = 'SET_IS_EXPANDED';
+export const SET_IS_DRAWER_EXPANDED = 'SET_IS_DRAWER_EXPANDED';
 
 // Action Creators
 export const applicationStarted = createAction(APPLICATION_STARTED);
@@ -28,3 +29,4 @@ export const reboundLauncherError = createAction(REBOUND_LAUNCHER.ERROR);
 export const setBlurringWindow = createAction<SetBlurringWindowPayload, string, boolean>(SET_BLURRING_WINDOW, (name, isBlurring) => ({ name, isBlurring }));
 export const setIsEnterprise = createAction(SET_IS_ENTERPRISE);
 export const setIsExpanded = createAction(SET_IS_EXPANDED);
+export const setIsDrawerExpanded = createAction(SET_IS_DRAWER_EXPANDED);

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots ConfirmUserDelete default 1`] = `
+exports[`Storyshots Components/ConfirmUserDelete default 1`] = `
 <div>
   <div
     style={
@@ -11,15 +11,15 @@ exports[`Storyshots ConfirmUserDelete default 1`] = `
     }
   >
     <div
-      className="sc-iAyFgw eFUJkT"
+      className="sc-hzDkRC eVpFXG"
     >
       <div
-        className="sc-eNQAEJ xGIss"
+        className="sc-gipzik jpXZHE"
       >
         Delete User
       </div>
       <div
-        className="sc-dxgOiQ fKhfBr"
+        className="sc-gPEVay kCaTDV"
       >
         You are about to delete the following user: 
         string
@@ -28,17 +28,17 @@ exports[`Storyshots ConfirmUserDelete default 1`] = `
         ?
       </div>
       <div
-        className="sc-kkGfuU hfNRCV"
+        className="sc-bRBYWo cfRogV"
       >
         <a
-          className="sc-ckVGcZ hMJJkx"
+          className="sc-iRbamj bWiubd"
           href="/admin/users"
           onClick={[Function]}
         >
           Cancel
         </a>
         <button
-          className="sc-kpOJdX hXueXJ"
+          className="sc-jDwBTQ dTljqn"
           disabled={false}
           onClick={[Function]}
         >
@@ -144,7 +144,7 @@ exports[`Storyshots ConfirmUserDelete default 1`] = `
               }
             }
           >
-            ConfirmUserDelete
+            Components/ConfirmUserDelete
           </h1>
           <h2
             style={

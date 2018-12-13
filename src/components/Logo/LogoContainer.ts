@@ -6,7 +6,7 @@ import { State } from '../../redux/types';
 import Logo from './Logo';
 
 const mapState = (state: State) => ({
-  logo: getOrganizationLogo(state),
+  imgSrc: getOrganizationLogo(state),
 });
 
 export default connect(mapState)(Logo);

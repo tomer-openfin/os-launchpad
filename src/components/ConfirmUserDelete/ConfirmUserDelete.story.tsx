@@ -23,4 +23,4 @@ const currentUserData = {
   },
 };
 
-storiesOf('ConfirmUserDelete', module).add('default', () => <ConfirmUserDelete deleteUser={noop} location={currentUserData.location} />);
+storiesOf('Components/ConfirmUserDelete', module).add('default', () => <ConfirmUserDelete deleteUser={noop} location={currentUserData.location} />);

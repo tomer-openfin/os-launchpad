@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 import { objectsFromIds } from '../utils/byIds';
-import { getLauncherIcons } from '../utils/getLauncherIcons';
+import { getSystemIcons } from '../utils/getSystemIcons';
 import { getAppsById } from './apps/selectors';
 import { getAppsLauncherIds, getIsAdmin } from './me/selectors';
 
@@ -11,8 +11,7 @@ export const getAppsLauncherAppList = createSelector(
   objectsFromIds,
 );
 
-export const getTotalLauncherCtas = createSelector(
+export const getSystemIconsSelector = createSelector(
   getIsAdmin,
-  getAppsLauncherAppList,
-  (isAdmin, apps) => apps.length + getLauncherIcons(isAdmin).length,
+  isAdmin => getSystemIcons(isAdmin),
 );

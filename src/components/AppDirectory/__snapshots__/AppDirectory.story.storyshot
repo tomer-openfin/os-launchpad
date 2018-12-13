@@ -11,244 +11,244 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
     }
   >
     <div
-      className="sc-ifAKCX dHpvV"
+      className="sc-kGXeez KDNVb"
     >
       <div
-        className="sc-bZQynM kVKBlt"
+        className="sc-dxgOiQ iZpusg"
       >
         <div
-          className="sc-htoDjs edCAeo"
+          className="sc-jKJlTe gcwOiN"
         >
           <div
-            className="sc-dnqmqq kXbMtk"
+            className="sc-eNQAEJ fhgfFg"
           />
         </div>
         <input
-          className="sc-gzVnrw hQnWLQ"
+          className="sc-ckVGcZ dsbxJk"
           onChange={[Function]}
           placeholder="Search for app..."
         />
       </div>
       <div
-        className="sc-EHOje jRLsBs"
+        className="sc-kpOJdX kVXPNX"
       >
         <div
-          className="sc-iwsKbI bbQsN"
+          className="sc-hMqMXs gOhhoU"
         >
           <div
-            className="sc-htoDjs ezZtZR"
+            className="sc-jKJlTe PAVvt"
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq bzKpCd"
+              className="sc-eNQAEJ erlquT"
             />
           </div>
           <div
-            className="sc-gZMcBi kiNLh"
+            className="sc-kEYyzF kQVzTZ"
           >
             <div
-              className="sc-jTzLTM gArCnl"
+              className="sc-hSdWYo kvtSmF"
             >
               <div
-                className="sc-gqjmRU gaoTrn"
+                className="sc-kkGfuU gSJFLc"
                 onClick={[Function]}
               >
                 FinTech Studios
               </div>
               <button
-                className="sc-fjdhpX etSFY"
+                className="sc-eHgmQL dXuejq"
                 onClick={[Function]}
               >
                 + Add Shortcut
               </button>
             </div>
             <div
-              className="sc-VigVT klUiXK"
+              className="sc-iAyFgw emfikB"
             >
               Using cutting edge artificial intelligence and machine learning, FTS delivers actionable news, research, market analytics, and analytics from millions of sources.
             </div>
           </div>
         </div>
         <div
-          className="sc-iwsKbI bbQsN"
+          className="sc-hMqMXs gOhhoU"
         >
           <div
-            className="sc-htoDjs ezZtZR"
+            className="sc-jKJlTe PAVvt"
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq kibmEf"
+              className="sc-eNQAEJ eEqKhH"
             />
           </div>
           <div
-            className="sc-gZMcBi kiNLh"
+            className="sc-kEYyzF kQVzTZ"
           >
             <div
-              className="sc-jTzLTM gArCnl"
+              className="sc-hSdWYo kvtSmF"
             >
               <div
-                className="sc-gqjmRU gaoTrn"
+                className="sc-kkGfuU gSJFLc"
                 onClick={[Function]}
               >
                 GreenKey
               </div>
               <button
-                className="sc-fjdhpX etSFY"
+                className="sc-eHgmQL dXuejq"
                 onClick={[Function]}
               >
                 + Add Shortcut
               </button>
             </div>
             <div
-              className="sc-VigVT klUiXK"
+              className="sc-iAyFgw emfikB"
             >
               We are where voice becomes data for the financial markets. Green Key’s voice platform and API includes integrated speech recognition for domain specific workflows. The programmable platform enables firms to integrate sophisticated voice and/or transcription capabilities into their own solutions without telecom or data science knowledge.
             </div>
           </div>
         </div>
         <div
-          className="sc-iwsKbI bbQsN"
+          className="sc-hMqMXs gOhhoU"
         >
           <div
-            className="sc-htoDjs ezZtZR"
+            className="sc-jKJlTe PAVvt"
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq gOzwOY"
+              className="sc-eNQAEJ kwZVIV"
             />
           </div>
           <div
-            className="sc-gZMcBi kiNLh"
+            className="sc-kEYyzF kQVzTZ"
           >
             <div
-              className="sc-jTzLTM gArCnl"
+              className="sc-hSdWYo kvtSmF"
             >
               <div
-                className="sc-gqjmRU gaoTrn"
+                className="sc-kkGfuU gSJFLc"
                 onClick={[Function]}
               >
                 Hammerstone Markets App
               </div>
               <button
-                className="sc-fjdhpX etSFY"
+                className="sc-eHgmQL dXuejq"
                 onClick={[Function]}
               >
                 + Add Shortcut
               </button>
             </div>
             <div
-              className="sc-VigVT klUiXK"
+              className="sc-iAyFgw emfikB"
             >
               The Hammerstone Markets App is both real-time news and real-time analysis sent via compliant messaging platforms including Openfin, Bloomberg, Pivot, and Symphony. Our primary demographic is Institutional Buy and Sell-side traders, who are active in U.S. equities. Founded in 2001, we currently have 165 companies and over 1,000 users of the product.
             </div>
           </div>
         </div>
         <div
-          className="sc-iwsKbI bbQsN"
+          className="sc-hMqMXs gOhhoU"
         >
           <div
-            className="sc-htoDjs ezZtZR"
+            className="sc-jKJlTe PAVvt"
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq ezNXNZ"
+              className="sc-eNQAEJ bpSpFm"
             />
           </div>
           <div
-            className="sc-gZMcBi kiNLh"
+            className="sc-kEYyzF kQVzTZ"
           >
             <div
-              className="sc-jTzLTM gArCnl"
+              className="sc-hSdWYo kvtSmF"
             >
               <div
-                className="sc-gqjmRU gaoTrn"
+                className="sc-kkGfuU gSJFLc"
                 onClick={[Function]}
               >
                 Neptune
               </div>
               <button
-                className="sc-fjdhpX etSFY"
+                className="sc-eHgmQL dXuejq"
                 onClick={[Function]}
               >
                 + Add Shortcut
               </button>
             </div>
             <div
-              className="sc-VigVT klUiXK"
+              className="sc-iAyFgw emfikB"
             >
               At Neptune Networks, we deliver high-quality bond market data (mostly axes) from sell-side banks to buy-side clients. Our technology enables real-time connectivity between banks and investors which leads to meaningful conversations, satisfying the immediate requirements of each party and ultimately, increasing trade volumes.
             </div>
           </div>
         </div>
         <div
-          className="sc-iwsKbI bbQsN"
+          className="sc-hMqMXs gOhhoU"
         >
           <div
-            className="sc-htoDjs ezZtZR"
+            className="sc-jKJlTe PAVvt"
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq ksZbAS"
+              className="sc-eNQAEJ bOWTzv"
             />
           </div>
           <div
-            className="sc-gZMcBi kiNLh"
+            className="sc-kEYyzF kQVzTZ"
           >
             <div
-              className="sc-jTzLTM gArCnl"
+              className="sc-hSdWYo kvtSmF"
             >
               <div
-                className="sc-gqjmRU gaoTrn"
+                className="sc-kkGfuU gSJFLc"
                 onClick={[Function]}
               >
                 OpenDoor
               </div>
               <button
-                className="sc-fjdhpX etSFY"
+                className="sc-eHgmQL dXuejq"
                 onClick={[Function]}
               >
                 + Add Shortcut
               </button>
             </div>
             <div
-              className="sc-VigVT klUiXK"
+              className="sc-iAyFgw emfikB"
             >
               Launching the first all-to-all, session-based trading platform for off-the-run US Treasuries and TIPS, OpenDoor fills the liquidity vacuum. Our customers include many of the world’s largest asset managers, central banks, primary dealers, hedge funds and trading firms.
             </div>
           </div>
         </div>
         <div
-          className="sc-iwsKbI bbQsN"
+          className="sc-hMqMXs gOhhoU"
         >
           <div
-            className="sc-htoDjs ezZtZR"
+            className="sc-jKJlTe PAVvt"
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq iKxeQR"
+              className="sc-eNQAEJ kxsIPq"
             />
           </div>
           <div
-            className="sc-gZMcBi kiNLh"
+            className="sc-kEYyzF kQVzTZ"
           >
             <div
-              className="sc-jTzLTM gArCnl"
+              className="sc-hSdWYo kvtSmF"
             >
               <div
-                className="sc-gqjmRU gaoTrn"
+                className="sc-kkGfuU gSJFLc"
                 onClick={[Function]}
               >
                 Parity One
               </div>
               <button
-                className="sc-fjdhpX etSFY"
+                className="sc-eHgmQL dXuejq"
                 onClick={[Function]}
               >
                 + Add Shortcut
               </button>
             </div>
             <div
-              className="sc-VigVT klUiXK"
+              className="sc-iAyFgw emfikB"
             >
               Parity One transforms investment ideas into smart investment portfolios.
 Parity One’s sophisticated back-testing framework enables simulating the most advanced factor-based investment strategies and converts them into fully managed bespoke benchmarks and model portfolios.
@@ -256,111 +256,111 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           </div>
         </div>
         <div
-          className="sc-iwsKbI bbQsN"
+          className="sc-hMqMXs gOhhoU"
         >
           <div
-            className="sc-htoDjs ezZtZR"
+            className="sc-jKJlTe PAVvt"
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq jkwVUr"
+              className="sc-eNQAEJ dAlllM"
             />
           </div>
           <div
-            className="sc-gZMcBi kiNLh"
+            className="sc-kEYyzF kQVzTZ"
           >
             <div
-              className="sc-jTzLTM gArCnl"
+              className="sc-hSdWYo kvtSmF"
             >
               <div
-                className="sc-gqjmRU gaoTrn"
+                className="sc-kkGfuU gSJFLc"
                 onClick={[Function]}
               >
                 RSRCHXChange
               </div>
               <button
-                className="sc-fjdhpX etSFY"
+                className="sc-eHgmQL dXuejq"
                 onClick={[Function]}
               >
                 + Add Shortcut
               </button>
             </div>
             <div
-              className="sc-VigVT klUiXK"
+              className="sc-iAyFgw emfikB"
             >
               RSRCHX is a one-stop-shop for accessing the newly evolving paid-for research market and consuming research in compliance with global best practice.  Founded in 2014, the award-winning RSRCHX platform is used by more than 1,200 buy side firms and over 300 banks, brokers and independent research providers as both a regulatory solution and technology-led research management tool and venue for buying and selling research.
             </div>
           </div>
         </div>
         <div
-          className="sc-iwsKbI bbQsN"
+          className="sc-hMqMXs gOhhoU"
         >
           <div
-            className="sc-htoDjs ezZtZR"
+            className="sc-jKJlTe PAVvt"
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq dAfxMM"
+              className="sc-eNQAEJ fVtKnr"
             />
           </div>
           <div
-            className="sc-gZMcBi kiNLh"
+            className="sc-kEYyzF kQVzTZ"
           >
             <div
-              className="sc-jTzLTM gArCnl"
+              className="sc-hSdWYo kvtSmF"
             >
               <div
-                className="sc-gqjmRU gaoTrn"
+                className="sc-kkGfuU gSJFLc"
                 onClick={[Function]}
               >
                 Trumid
               </div>
               <button
-                className="sc-fjdhpX etSFY"
+                className="sc-eHgmQL dXuejq"
                 onClick={[Function]}
               >
                 + Add Shortcut
               </button>
             </div>
             <div
-              className="sc-VigVT klUiXK"
+              className="sc-iAyFgw emfikB"
             >
               Trumid is a financial technology startup bringing efficiency to credit trading through data, technology and beautifully simple products. Trumid was founded in 2014 by credit professionals with over 100 years of trading experience and is headquartered in New York.
             </div>
           </div>
         </div>
         <div
-          className="sc-iwsKbI bbQsN"
+          className="sc-hMqMXs gOhhoU"
         >
           <div
-            className="sc-htoDjs ezZtZR"
+            className="sc-jKJlTe PAVvt"
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq kmkYZF"
+              className="sc-eNQAEJ gisJGQ"
             />
           </div>
           <div
-            className="sc-gZMcBi kiNLh"
+            className="sc-kEYyzF kQVzTZ"
           >
             <div
-              className="sc-jTzLTM gArCnl"
+              className="sc-hSdWYo kvtSmF"
             >
               <div
-                className="sc-gqjmRU gaoTrn"
+                className="sc-kkGfuU gSJFLc"
                 onClick={[Function]}
               >
                 TT Desktop
               </div>
               <button
-                className="sc-fjdhpX etSFY"
+                className="sc-eHgmQL dXuejq"
                 onClick={[Function]}
               >
                 + Add Shortcut
               </button>
             </div>
             <div
-              className="sc-VigVT klUiXK"
+              className="sc-iAyFgw emfikB"
             >
               Trading Technologies’ ultra-low-latency platform, TT, leverages a hybrid-cloud infrastructure to provide a streamlined, go-anywhere, high-performance experience for professional traders worldwide. TT’s most performant front-end app, TT Desktop, utilizes the OpenFin platform to deliver an HTML5-based trading experience.
             </div>

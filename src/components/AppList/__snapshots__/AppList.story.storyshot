@@ -11,97 +11,97 @@ exports[`Storyshots Components/AppList default 1`] = `
     }
   >
     <div
-      className="sc-cSHVUG jXBQNy"
+      className="sc-cvbbAY kIIqpP"
     >
       <div
-        className="sc-chPdSV jkwwpc"
+        className="sc-brqgnP ePXIHc"
       >
         <div
           onContextMenu={[Function]}
         >
           <div
-            className="sc-htoDjs cilmlp"
+            className="sc-jKJlTe hQJVqj"
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq bzKpCd"
+              className="sc-eNQAEJ eDyTyY"
             />
           </div>
           <div
-            className="sc-kAzzGY ILHhW"
+            className="sc-jWBwVP jdkMmK"
             onClick={[Function]}
           />
           <div
-            className="sc-kgoBCf aJsWL sc-jzJRlG huQGmm"
+            className="sc-cMljjf dhQCEa sc-EHOje blPIpy"
           />
         </div>
       </div>
       <div
-        className="sc-chPdSV jkwwpc"
+        className="sc-brqgnP ePXIHc"
       >
         <div
           onContextMenu={[Function]}
         >
           <div
-            className="sc-htoDjs cilmlp"
+            className="sc-jKJlTe hQJVqj"
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq kibmEf"
+              className="sc-eNQAEJ gBbxjl"
             />
           </div>
           <div
-            className="sc-kAzzGY ILHhW"
+            className="sc-jWBwVP jdkMmK"
             onClick={[Function]}
           />
           <div
-            className="sc-kgoBCf aJsWL sc-jzJRlG huQGmm"
+            className="sc-cMljjf dhQCEa sc-EHOje blPIpy"
           />
         </div>
       </div>
       <div
-        className="sc-chPdSV jkwwpc"
+        className="sc-brqgnP ePXIHc"
       >
         <div
           onContextMenu={[Function]}
         >
           <div
-            className="sc-htoDjs cilmlp"
+            className="sc-jKJlTe hQJVqj"
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq gOzwOY"
+              className="sc-eNQAEJ emfVyc"
             />
           </div>
           <div
-            className="sc-kAzzGY ILHhW"
+            className="sc-jWBwVP jdkMmK"
             onClick={[Function]}
           />
           <div
-            className="sc-kgoBCf aJsWL sc-jzJRlG huQGmm"
+            className="sc-cMljjf dhQCEa sc-EHOje blPIpy"
           />
         </div>
       </div>
       <div
-        className="sc-chPdSV jkwwpc"
+        className="sc-brqgnP ePXIHc"
       >
         <div
           onContextMenu={[Function]}
         >
           <div
-            className="sc-htoDjs cilmlp"
+            className="sc-jKJlTe hQJVqj"
             onClick={[Function]}
           >
             <div
-              className="sc-dnqmqq ezNXNZ"
+              className="sc-eNQAEJ gbjXxo"
             />
           </div>
           <div
-            className="sc-kAzzGY ILHhW"
+            className="sc-jWBwVP jdkMmK"
             onClick={[Function]}
           />
           <div
-            className="sc-kgoBCf aJsWL sc-jzJRlG huQGmm"
+            className="sc-cMljjf dhQCEa sc-EHOje blPIpy"
           />
         </div>
       </div>

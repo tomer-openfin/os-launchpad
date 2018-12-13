@@ -7,5 +7,5 @@ import noop from '../../utils/noop';
 import Layouts from './Layouts';
 
 storiesOf('Components/Layouts', module).add('default', () => (
-  <Layouts layoutIds={['layout']} launcherPosition={DirectionalPosition.Top} restoreLayout={noop} saveLayout={noop} onBlur={noop} />
+  <Layouts isApplicationDrawerExpanded layoutIds={['layout']} launcherPosition={DirectionalPosition.Top} restoreLayout={noop} saveLayout={noop} onBlur={noop} />
 ));

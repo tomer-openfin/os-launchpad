@@ -2,9 +2,7 @@ import { Window } from '@giantmachines/redux-openfin';
 import { delay } from 'redux-saga';
 import { all, call, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
-import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
-
-import windowsConfig, { createConfig, initOnStartWindows, MAIN_WINDOW } from '../../config/windows';
+import windowsConfig, { createConfig, initOnStartWindows, LAYOUTS_WINDOW, MAIN_WINDOW } from '../../config/windows';
 import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
 import { deregister } from '../../utils/openfinLayouts';
@@ -14,10 +12,10 @@ import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList } from '../apps';
 import { getLayoutsRequest } from '../layouts';
 import { getAutoHide, getLauncherPosition, getSettingsRequest } from '../me';
-import { getOrgSettingsRequest } from '../organization/index';
-import { getTotalLauncherCtas } from '../selectors';
+import { getOrgSettingsRequest } from '../organization';
+import { getAppsLauncherAppList, getSystemIconsSelector } from '../selectors';
 import { getMonitorInfo, setMonitorInfo, setupSystemHandlers } from '../system';
-import { launchWindow } from '../windows';
+import { getWindowBounds, launchWindow } from '../windows';
 import {
   APPLICATION_STARTED,
   COLLAPSE_APP,
@@ -29,11 +27,13 @@ import {
   reboundLauncherError,
   reboundLauncherRequest,
   reboundLauncherSuccess,
+  SET_IS_DRAWER_EXPANDED,
   setIsEnterprise,
   setIsExpanded,
 } from './actions';
 import { getApplicationIsExpanded } from './selectors';
-import { animateLauncherCollapseExpand } from './utils';
+import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
+import { animateLauncherCollapseExpand, setWindowRelativeToLauncherBounds } from './utils';
 
 const APP_UUID = getAppUuid();
 const ANIMATION_DURATION = 150;
@@ -163,8 +163,9 @@ function* watchReboundLauncherRequest(action: ReboundLauncherRequestAction) {
     return;
   }
 
-  const [totalCtas, monitorInfo, launcherPosition, autoHide, isExpanded] = yield all([
-    select(getTotalLauncherCtas),
+  const [appList, systemIcons, monitorInfo, launcherPosition, autoHide, isExpanded] = yield all([
+    select(getAppsLauncherAppList),
+    select(getSystemIconsSelector),
     select(getMonitorInfo),
     select(getLauncherPosition),
     select(getAutoHide),
@@ -173,7 +174,7 @@ function* watchReboundLauncherRequest(action: ReboundLauncherRequestAction) {
   if (!monitorInfo) {
     return;
   }
-  const { width, height, left, top } = calcLauncherPosition(totalCtas, monitorInfo, launcherPosition, autoHide, isExpanded);
+  const { width, height, left, top } = calcLauncherPosition(appList.length, systemIcons, monitorInfo, launcherPosition, autoHide, isExpanded);
 
   const { shouldAnimate } = payload;
   yield call(
@@ -202,6 +203,11 @@ function* watchReboundLauncherRequest(action: ReboundLauncherRequestAction) {
   yield put(reboundLauncherSuccess());
 }
 
+function* watchSetIsDrawerExpanded() {
+  const bounds = yield select(getWindowBounds, APP_UUID);
+  yield call(setWindowRelativeToLauncherBounds, LAYOUTS_WINDOW, bounds);
+}
+
 export function* applicationSaga() {
   yield takeEvery(APPLICATION_STARTED, applicationStart);
   yield takeEvery(LAUNCH_APP_LAUNCHER, watchLaunchAppLauncher);
@@ -209,4 +215,5 @@ export function* applicationSaga() {
   yield takeFirst(COLLAPSE_APP, watchCollapseApp);
   yield takeFirst(EXPAND_APP, watchExpandApp);
   yield takeLatest(REBOUND_LAUNCHER.REQUEST, watchReboundLauncherRequest);
+  yield takeEvery(SET_IS_DRAWER_EXPANDED, watchSetIsDrawerExpanded);
 }

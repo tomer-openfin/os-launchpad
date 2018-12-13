@@ -5,3 +5,4 @@ export const getBlurringWindows = (state: State) => getApplicationState(state).b
 export const getBlurringWindowByName = (state: State, name) => getBlurringWindows(state)[name];
 export const getIsEnterprise = (state: State) => getApplicationState(state).isEnterprise;
 export const getApplicationIsExpanded = (state: State) => getApplicationState(state).isExpanded;
+export const getDrawerIsExpanded = (state: State) => getApplicationState(state).isDrawerExpanded;

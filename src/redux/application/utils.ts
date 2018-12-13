@@ -5,10 +5,11 @@ import { getFinWindowByName, getLauncherFinWindow } from '../../utils/getLaunche
 import { animateWindow, setWindowBoundsPromise } from '../../utils/openfinPromises';
 import { calcBoundsRelativeToLauncher, calcLauncherPosition, isBottom, isRight } from '../../utils/windowPositionHelpers';
 import { getAutoHide, getLauncherPosition } from '../me';
-import { getTotalLauncherCtas } from '../selectors';
+import { getAppsLauncherAppList, getSystemIconsSelector } from '../selectors';
 import { getMonitorInfo } from '../system/index';
 import { State } from '../types';
 import { getWindowBounds } from '../windows';
+import { getDrawerIsExpanded } from './selectors';
 
 export function* animateLauncherCollapseExpand(isExpanded: State['application']['isExpanded'], duration: number) {
   const launcherFinWindow = yield call(getLauncherFinWindow);
@@ -16,13 +17,14 @@ export function* animateLauncherCollapseExpand(isExpanded: State['application'][
     return;
   }
 
-  const [totalCtas, monitorInfo, launcherPosition, autoHide] = yield all([
-    select(getTotalLauncherCtas),
+  const [appList, systemIcons, monitorInfo, launcherPosition, autoHide] = yield all([
+    select(getAppsLauncherAppList),
+    select(getSystemIconsSelector),
     select(getMonitorInfo),
     select(getLauncherPosition),
     select(getAutoHide),
   ]);
-  const { height, width, top, left } = calcLauncherPosition(totalCtas, monitorInfo, launcherPosition, autoHide, isExpanded);
+  const { height, width, top, left } = calcLauncherPosition(appList.length, systemIcons, monitorInfo, launcherPosition, autoHide, isExpanded);
   const transitions: fin.Transition = {
     size: {
       duration,
@@ -62,10 +64,15 @@ export function* setWindowRelativeToLauncherBounds(finName: string, launcherBoun
     return;
   }
 
-  const [windowBounds, launcherPosition] = yield all([select(getWindowBounds, finName), select(getLauncherPosition)]);
+  const [windowBounds, launcherPosition, isLauncherDrawerExpanded] = yield all([
+    select(getWindowBounds, finName),
+    select(getLauncherPosition),
+    select(getDrawerIsExpanded),
+  ]);
   if (!windowBounds) {
     return;
   }
-  const bounds = calcBoundsRelativeToLauncher(finName, windowBounds, launcherBounds, launcherPosition);
+
+  const bounds = calcBoundsRelativeToLauncher(finName, windowBounds, launcherBounds, launcherPosition, isLauncherDrawerExpanded);
   yield call(setWindowBoundsPromise, finWindow, bounds);
 }

@@ -45,7 +45,7 @@ class LogoInput extends React.PureComponent<Props, {}> {
 
     return (
       <Wrapper>
-        <Logo logo={logo} />
+        <Logo imgSrc={logo} />
 
         {this.renderInput()}
       </Wrapper>

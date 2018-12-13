@@ -1,48 +1,49 @@
 import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW } from '../config/windows';
 import { Bounds, Dimensions, DirectionalPosition, MonitorInfo, PrimaryDirectionalCoordinates } from '../types/commons';
 
+import { SystemIcon } from './getSystemIcons';
+import * as SIZE from './sizingConstants';
+
 const { Bottom: BOTTOM, Left: LEFT, Right: RIGHT, Top: TOP } = DirectionalPosition;
 
 const OFFSETS = {
   [APP_LAUNCHER_OVERFLOW_WINDOW]: {
     [DirectionalPosition.Top]: () => ({
-      offsetX: 50,
+      offsetX: SIZE.MAX_STATIC_DIMENSION,
       offsetY: 0,
     }),
     [DirectionalPosition.Right]: () => ({
-      offsetX: 50,
-      offsetY: 50,
+      offsetX: SIZE.MAX_STATIC_DIMENSION,
+      offsetY: SIZE.MAX_STATIC_DIMENSION,
     }),
     [DirectionalPosition.Bottom]: () => ({
-      offsetX: 50,
-      offsetY: 50,
+      offsetX: SIZE.MAX_STATIC_DIMENSION,
+      offsetY: SIZE.MAX_STATIC_DIMENSION,
     }),
     [DirectionalPosition.Left]: () => ({
       offsetX: 0,
-      offsetY: 50,
+      offsetY: SIZE.MAX_STATIC_DIMENSION,
     }),
   },
   [LAYOUTS_WINDOW]: {
-    [DirectionalPosition.Top]: (launcherBounds: Bounds) => ({
-      offsetX: launcherBounds.width - 100,
-      offsetY: 45,
+    [DirectionalPosition.Top]: (launcherBounds: Bounds, isLauncherDrawerExpanded: boolean) => ({
+      offsetX: launcherBounds.width - (isLauncherDrawerExpanded ? 160 : 135),
+      offsetY: SIZE.MAX_STATIC_DIMENSION - SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA,
     }),
-    [DirectionalPosition.Right]: (launcherBounds: Bounds) => ({
-      offsetX: 0,
-      offsetY: launcherBounds.height - 100,
+    [DirectionalPosition.Right]: (launcherBounds: Bounds, isLauncherDrawerExpanded: boolean) => ({
+      offsetX: SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA,
+      offsetY: launcherBounds.height - (isLauncherDrawerExpanded ? 160 : 135),
     }),
-    [DirectionalPosition.Bottom]: (launcherBounds: Bounds) => ({
-      offsetX: launcherBounds.width - 100,
-      offsetY: 0,
+    [DirectionalPosition.Bottom]: (launcherBounds: Bounds, isLauncherDrawerExpanded: boolean) => ({
+      offsetX: launcherBounds.width - (isLauncherDrawerExpanded ? 160 : 135),
+      offsetY: SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA,
     }),
-    [DirectionalPosition.Left]: (launcherBounds: Bounds) => ({
-      offsetX: 45,
-      offsetY: launcherBounds.height - 100,
+    [DirectionalPosition.Left]: (launcherBounds: Bounds, isLauncherDrawerExpanded: boolean) => ({
+      offsetX: SIZE.MAX_STATIC_DIMENSION - SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA,
+      offsetY: launcherBounds.height - (isLauncherDrawerExpanded ? 160 : 135),
     }),
   },
 };
-
-export const LAUNCHER_HIDDEN_VISIBILITY_DELTA = 5;
 
 export const isBottom = (position: DirectionalPosition) => position === BOTTOM;
 export const isLeft = (position: DirectionalPosition) => position === LEFT;
@@ -51,6 +52,21 @@ export const isTop = (position: DirectionalPosition) => position === TOP;
 export const isTopOrBottom = (position: DirectionalPosition) => isTop(position) || isBottom(position);
 export const isLeftOrRight = (position: DirectionalPosition) => isLeft(position) || isRight(position);
 export const isBottomOrRight = (position: DirectionalPosition) => isBottom(position) || isRight(position);
+
+export const calcExpandedSystemSize = (systemIcons: SystemIcon[]) => {
+  const totalSystemIconSize = systemIcons.length * SIZE.SYSTEM_ICON;
+  const totalExpandedSystemPadding = 2 * SIZE.EXPANDED_SYSTEM_PADDING;
+  const totalSystemGutter = (systemIcons.length - 1) * SIZE.SYSTEM_GUTTER;
+
+  return SIZE.COLLAPSE_ICON + totalSystemIconSize + totalExpandedSystemPadding + totalSystemGutter;
+};
+
+export const calcCollapsedSystemSize = (systemIcons: SystemIcon[]) => {
+  const totalDefaultSystemIconSizes = systemIcons.reduce((acc, icon) => (icon.default ? acc + SIZE.SYSTEM_ICON : acc), 0);
+  const totalCollapsedSystemPadding = 2 * SIZE.COLLAPSED_SYSTEM_PADDING;
+
+  return SIZE.EXPAND_ICON + totalDefaultSystemIconSizes + totalCollapsedSystemPadding;
+};
 
 /**
  * Returns new dimensions based on launcher position.
@@ -81,20 +97,35 @@ export const calcDimensionsByLauncherPosition = (bounds: Bounds, launcherPositio
 /**
  * Returns the dimensions of the launcher based on the number of ctas and its position.
  *
- * @param ctaCount - number of ctas in launcher
+ * @param appCount - number of apps in launcher
+ * @param systemIcons - SystemIcon[]
  * @param launcherPosition - current launcher position
  *
  * @returns {Dimensions}
  */
-export const calcLauncherDimensions = (ctaCount: number, launcherPosition: DirectionalPosition, autoHide: boolean, isExpanded: boolean): Dimensions => {
+export const calcLauncherDimensions = (
+  appCount: number,
+  systemIcons: SystemIcon[],
+  launcherPosition: DirectionalPosition,
+  autoHide: boolean,
+  isExpanded: boolean,
+): Dimensions => {
   const collapsed = autoHide && !isExpanded;
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);
-  const LOGO_SIZE = 50;
-  const ICON_SIZE = 50;
-  // const OVERFLOW = 25;
-  const STATIC_DIMENSION = collapsed ? LAUNCHER_HIDDEN_VISIBILITY_DELTA : 50;
-  // const dynamicDimension = ctaCount * ICON_SIZE + LOGO_SIZE + OVERFLOW;
-  const dynamicDimension = ctaCount * ICON_SIZE + LOGO_SIZE;
+  const STATIC_DIMENSION = collapsed ? SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA : SIZE.LOGO;
+
+  const totalSystemExpandedSize = calcExpandedSystemSize(systemIcons);
+
+  const minimumDynamicDimension = SIZE.LOGO + totalSystemExpandedSize;
+
+  const totalAppIconSize = appCount * SIZE.APP_ICON;
+
+  const totalDefaultSystemSize = calcCollapsedSystemSize(systemIcons);
+
+  const totalAppGutter = (appCount + 1) * SIZE.APP_GUTTER;
+
+  const rawDynamicDimension = SIZE.LOGO + totalAppIconSize + totalDefaultSystemSize + totalAppGutter;
+  const dynamicDimension = Math.max(minimumDynamicDimension, rawDynamicDimension);
 
   const height = isOnTopOrBottom ? STATIC_DIMENSION : dynamicDimension;
   const width = isOnTopOrBottom ? dynamicDimension : STATIC_DIMENSION;
@@ -134,7 +165,7 @@ export const calcLauncherCoordinates = (
 
   switch (launcherPosition) {
     case DirectionalPosition.Bottom: {
-      // const delta = autoHide ? LAUNCHER_HIDDEN_VISIBILITY_DELTA : height;
+      // const delta = autoHide ? SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA : height;
 
       return {
         left: midpoint - edgeDelta,
@@ -142,7 +173,7 @@ export const calcLauncherCoordinates = (
       };
     }
     case DirectionalPosition.Left: {
-      // const delta = autoHide ? LAUNCHER_HIDDEN_VISIBILITY_DELTA - width : 0;
+      // const delta = autoHide ? SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA - width : 0;
 
       return {
         left,
@@ -150,7 +181,7 @@ export const calcLauncherCoordinates = (
       };
     }
     case DirectionalPosition.Right: {
-      // const delta = autoHide ? LAUNCHER_HIDDEN_VISIBILITY_DELTA : width;
+      // const delta = autoHide ? SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA : width;
 
       return {
         left: right - width,
@@ -158,7 +189,7 @@ export const calcLauncherCoordinates = (
       };
     }
     default: {
-      // const delta = autoHide ? LAUNCHER_HIDDEN_VISIBILITY_DELTA - height : 0;
+      // const delta = autoHide ? SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA - height : 0;
 
       return {
         left: midpoint - edgeDelta,
@@ -171,7 +202,8 @@ export const calcLauncherCoordinates = (
 /**
  * Calculates launcher bounds.
  *
- * @param ctaCount - number of ctas in launcher
+ * @param appCount - number of apps in launcher
+ * @param systemIcons - SystemIcon[]
  * @param monitorInfo - monitor information
  * @param launcherPosition - current launcher position
  * @param autoHide - flag for weather or not launcher is in autohide mode
@@ -179,13 +211,14 @@ export const calcLauncherCoordinates = (
  * @returns {Bounds}
  */
 export const calcLauncherPosition = (
-  ctaCount: number,
+  appCount: number,
+  systemIcons: SystemIcon[],
   monitorInfo: MonitorInfo,
   launcherPosition: DirectionalPosition,
   autoHide: boolean,
   isExpanded: boolean,
 ): Bounds => {
-  const dimensions = calcLauncherDimensions(ctaCount, launcherPosition, autoHide, isExpanded);
+  const dimensions = calcLauncherDimensions(appCount, systemIcons, launcherPosition, autoHide, isExpanded);
   const coordinates = calcLauncherCoordinates(dimensions, monitorInfo, launcherPosition);
 
   return {
@@ -233,8 +266,14 @@ export const calcCoordinatesRelativeToLauncherBounds = (
  *
  * @returns {Bounds}
  */
-export const calcBoundsRelativeToLauncher = (finName: string, bounds: Bounds, launcherBounds: Bounds, launcherPosition: DirectionalPosition): Bounds => {
-  const { offsetX, offsetY } = OFFSETS[finName] ? OFFSETS[finName][launcherPosition](launcherBounds) : { offsetX: 0, offsetY: 0 };
+export const calcBoundsRelativeToLauncher = (
+  finName: string,
+  bounds: Bounds,
+  launcherBounds: Bounds,
+  launcherPosition: DirectionalPosition,
+  isLauncherDrawerExpanded: boolean,
+): Bounds => {
+  const { offsetX, offsetY } = OFFSETS[finName] ? OFFSETS[finName][launcherPosition](launcherBounds, isLauncherDrawerExpanded) : { offsetX: 0, offsetY: 0 };
   const dimensions = calcDimensionsByLauncherPosition(bounds, launcherPosition, true);
   const coordinates = calcCoordinatesRelativeToLauncherBounds(dimensions, offsetX, offsetY, launcherBounds, launcherPosition);
 

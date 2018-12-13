@@ -45,8 +45,8 @@ export const StyledButton = styled(Button)`
 
 export const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 40px 180px;
+  grid-template-columns: 80px 180px;
   margin-top: -5px;
-  max-height: 35px;
+  max-height: 80px;
   text-transform: none;
 `;

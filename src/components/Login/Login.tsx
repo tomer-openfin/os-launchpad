@@ -14,9 +14,10 @@ interface Props {
 
 const { USERNAME, PASSWORD } = process.env;
 
-const initialValues: LoginRequestPayload = USERNAME && PASSWORD && document.location && document.location.host.indexOf('8080') !== -1
-  ? { username: USERNAME, password: PASSWORD }
-  : { username: '', password: '' };
+const initialValues: LoginRequestPayload =
+  USERNAME && PASSWORD && document.location && document.location.host.indexOf('8080') !== -1
+    ? { username: USERNAME, password: PASSWORD }
+    : { username: '', password: '' };
 
 /**
  * Higher order function to pass a function to Formik's onSubmit
@@ -38,9 +39,7 @@ const handleSubmit = (loginState: MeLoginState, login: Props['login'], loginWith
 };
 
 const renderMessage = ({ error, message }: MeLoginState) =>
-  (error || message) && (
-    <ResponseMessage error={error} >{message || 'Login failed. Please try again.'}</ResponseMessage>
-  );
+  (error || message) && <ResponseMessage error={error}>{message || 'Login failed. Please try again.'}</ResponseMessage>;
 
 /**
  * LoginForm component
@@ -50,25 +49,15 @@ const renderMessage = ({ error, message }: MeLoginState) =>
 const LoginForm = () => (
   <Form key="login">
     <FieldWrapper>
-      <Field
-        name="username"
-        placeholder="Username"
-        type="text"
-      />
+      <Field name="username" placeholder="Username" type="text" />
     </FieldWrapper>
 
     <FieldWrapper>
-      <Field
-        name="password"
-        placeholder="Password"
-        type="password"
-      />
+      <Field name="password" placeholder="Password" type="password" />
     </FieldWrapper>
 
     <FieldWrapper>
-      <CTA type="submit">
-        Login
-      </CTA>
+      <CTA type="submit">Login</CTA>
     </FieldWrapper>
   </Form>
 );
@@ -81,25 +70,15 @@ const LoginForm = () => (
 const ChangePasswordForm = () => (
   <Form key="changePassword">
     <FieldWrapper>
-      <Field
-        name="newPassword"
-        placeholder="New Password"
-        type="password"
-      />
+      <Field name="newPassword" placeholder="New Password" type="password" />
     </FieldWrapper>
 
     <FieldWrapper>
-      <Field
-        name="newPasswordConfirmation"
-        placeholder="Confirm Password"
-        type="password"
-      />
+      <Field name="newPasswordConfirmation" placeholder="Confirm Password" type="password" />
     </FieldWrapper>
 
     <FieldWrapper>
-      <CTA type="submit">
-        Create New Password
-      </CTA>
+      <CTA type="submit">Create New Password</CTA>
     </FieldWrapper>
   </Form>
 );
@@ -113,14 +92,14 @@ const ChangePasswordForm = () => (
  */
 const Login = ({ loginState, login, loginWithNewPassword }: Props) => (
   <Wrapper>
-    <Logo large />
+    <Logo />
 
     {renderMessage(loginState)}
 
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit(loginState, login, loginWithNewPassword)}
-      render={loginState.changePassword ? ChangePasswordForm :  LoginForm}
+      render={loginState.changePassword ? ChangePasswordForm : LoginForm}
     />
   </Wrapper>
 );

@@ -4,6 +4,7 @@ import { State } from '../../redux/types';
 
 import { LAYOUTS_WINDOW } from '../../config/windows';
 import withFinBlur from '../../hocs/withFinBlur';
+import { getDrawerIsExpanded } from '../../redux/application';
 import { getLayoutsIds, restoreLayoutRequest, saveLayout } from '../../redux/layouts';
 import { getLauncherPosition } from '../../redux/me';
 import { blurWindowWithDelay } from '../../redux/windows';
@@ -11,6 +12,7 @@ import { blurWindowWithDelay } from '../../redux/windows';
 import Layouts from './Layouts';
 
 const mapState = (state: State) => ({
+  isApplicationDrawerExpanded: getDrawerIsExpanded(state),
   launcherPosition: getLauncherPosition(state),
   layoutIds: getLayoutsIds(state),
 });

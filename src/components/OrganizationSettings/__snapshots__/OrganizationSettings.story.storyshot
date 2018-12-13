@@ -11,44 +11,40 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
     }
   >
     <div
-      className="sc-caSCKo jBtomd"
+      className="sc-bbmXgH ioLMTH"
     >
       <h3
-        className="sc-eqIVtm efBODd"
+        className="sc-jqCOkK fJBZaa"
       >
         Set Logo
       </h3>
       <div
-        className="sc-dVhcbM fghLuF"
+        className="sc-dNLxif KzmkZ"
       >
         <form
-          className="sc-fMiknA haupI"
+          className="sc-jbKcbu jxlXpL"
           onSubmit={[Function]}
         >
           <label
-            className="sc-hzDkRC dJcycP"
+            className="sc-frDJqD iJfZJz"
             htmlFor="LogoFormFileInput"
           >
             <div
-              className="sc-gipzik epuENr"
+              className="sc-kgAjT kPCZXu"
             >
               <div
-                className="sc-htoDjs edCAeo"
-              >
-                <div
-                  className="sc-dnqmqq kXbMtk"
-                />
-              </div>
+                className="sc-ifAKCX hsYukX"
+              />
               <div
-                className="sc-jDwBTQ dqmVyk"
+                className="sc-gisBJw DxEZF"
               >
                 <div
-                  className="sc-cMljjf iOAszh"
+                  className="sc-fAjcbJ fmpeIh"
                 >
                   Change Logo
                 </div>
                 <div
-                  className="sc-iRbamj coHdZw"
+                  className="sc-cHGsZl cVTcre"
                 >
                   Files must be at least 200 x 200 pixels square.
                   <br />
@@ -56,7 +52,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
                 </div>
                 <input
                   accept="image/*"
-                  className="sc-jAaTju igrCju"
+                  className="sc-caSCKo jsKMfd"
                   id="LogoFormFileInput"
                   name="logo"
                   onBlur={[Function]}
@@ -68,7 +64,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             </div>
           </label>
           <button
-            className="sc-fBuWsC grLNCs"
+            className="sc-hqyNC bJllnS"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -77,7 +73,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             Cancel
           </button>
           <button
-            className="sc-fBuWsC fuxVKf"
+            className="sc-hqyNC dgSduu"
             disabled={true}
             type="submit"
             width={120}
@@ -87,29 +83,29 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
         </form>
       </div>
       <div
-        className="sc-fAjcbJ bGQkNt"
+        className="sc-uJMKN hllbJ"
       />
       <h3
-        className="sc-eqIVtm efBODd"
+        className="sc-jqCOkK fJBZaa"
       >
         Set Theme
       </h3>
       <div
-        className="sc-kgAjT cuzzPp"
+        className="sc-hEsumM epeevU"
       >
         <form
           onSubmit={[Function]}
         >
           <div
-            className="sc-gisBJw ippVNs"
+            className="sc-gGBfsJ ghndCJ"
           >
             <label
-              className="sc-kjoXOD dzaIFe"
+              className="sc-jnlKLf dcleFX"
             >
               Choose theme to set appearance of App Launcher and accompanying windows:
             </label>
             <select
-              className="sc-cHGsZl cEypfa"
+              className="sc-fYxtnH dCnmlv"
               disabled={false}
               id="ThemesFormSelectInput"
               name="theme"
@@ -131,7 +127,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             </select>
           </div>
           <button
-            className="sc-TOsTZ dTndRn"
+            className="sc-tilXH cKByoB"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -140,7 +136,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             Cancel
           </button>
           <button
-            className="sc-TOsTZ idSmOY"
+            className="sc-tilXH iMscsa"
             disabled={true}
             type="submit"
             width={120}

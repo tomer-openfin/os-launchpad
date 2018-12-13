@@ -2,26 +2,30 @@ import * as React from 'react';
 
 import { ContextMenuOption } from '../../redux/contextMenu/types';
 import { AppIconSizes, DirectionalPosition } from '../../types/commons';
+import * as SIZE from '../../utils/sizingConstants';
 
 import ContextMenuZone from '../ContextMenuZone';
-import { Icon, StyledAppIndicator, Wrapper } from './AppIcon.css';
+import { Icon, IconWrapper, StyledAppIndicator, Wrapper } from './AppIcon.css';
 
 export interface Props {
+  appId: string;
   className?: string;
   contextMenuOptions?: ContextMenuOption[];
   imgSrc: string;
-  launchApp: () => void;
-  appId: string;
-  size?: AppIconSizes;
   indicatorPosition: DirectionalPosition;
+  isDisabled: boolean;
+  launchApp: () => void;
+  size?: AppIconSizes;
 }
 
-const AppIcon = ({ className, contextMenuOptions, imgSrc, indicatorPosition, launchApp, appId, size = AppIconSizes.Medium }: Props) => {
+const AppIcon = ({ className, contextMenuOptions, isDisabled, imgSrc, indicatorPosition, launchApp, appId, size = SIZE.APP_ICON }: Props) => {
   if (contextMenuOptions) {
     return (
       <ContextMenuZone className={className} options={contextMenuOptions}>
-        <Wrapper onClick={launchApp}>
-          <Icon imgSrc={imgSrc} size={size} />
+        <Wrapper isDisabled={isDisabled} onClick={launchApp}>
+          <IconWrapper size={size}>
+            <Icon imgSrc={imgSrc} />
+          </IconWrapper>
 
           <StyledAppIndicator appId={appId} position={indicatorPosition} />
         </Wrapper>
@@ -30,8 +34,10 @@ const AppIcon = ({ className, contextMenuOptions, imgSrc, indicatorPosition, lau
   }
 
   return (
-    <Wrapper className={className} onClick={launchApp}>
-      <Icon imgSrc={imgSrc} size={size} />
+    <Wrapper isDisabled={isDisabled} className={className} onClick={launchApp}>
+      <IconWrapper size={size}>
+        <Icon imgSrc={imgSrc} />
+      </IconWrapper>
 
       <StyledAppIndicator appId={appId} position={indicatorPosition} />
     </Wrapper>
