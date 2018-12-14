@@ -81,9 +81,9 @@ export interface User {
   lastName: string;
   middleInitial: string;
   organizationId: string;
-  tmpPassword: string;
+  tmpPassword?: string;
   username: string;
-  phone: string;
+  phone?: string;
 }
 
 export interface ObjectWithId {

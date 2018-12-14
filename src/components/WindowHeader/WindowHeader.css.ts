@@ -6,33 +6,16 @@ import { Color } from '../../styles';
 
 export const Header = styled.div`
   -webkit-app-region: drag !important;
-  background-color: ${Color.LIGHTER_GREY};
-  border: 1px solid ${Color.LIGHTER_GREY};
+  background-color: ${Color.CHARCOAL};
+  color: ${Color.SUN}
   display: flex;
-  height: 20px;
-  justify-content: flex-end;
-  text-align: right;
+  height: 60px;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
   width: 100%;
 `;
 
-export const CloseButton = styled.button`
-  -webkit-app-region: no-drag !important;
-  align-items: center;
-  background: red;
-  border: none;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  margin: 0;
-  outline: none;
-  width: 40px;
-`;
-
-export const CloseIcon = styled.span`
-  background-color: white;
-  height: 6px;
-  mask-position: center;
-  mask-repeat: no-repeat;
-  mask-image: url(${XIcon});
-  width: 7px;
+export const Title = styled.div`
+  padding: 20px;
 `;

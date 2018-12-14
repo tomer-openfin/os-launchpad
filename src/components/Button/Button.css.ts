@@ -8,8 +8,8 @@ interface ButtonProps {
 
 export default styled.button<ButtonProps>`
   align-items: center;
-  background-color: ${props => (props.isDark ? Color.DOVE_GRAY : Color.GALLERY)};
-  color: ${props => (props.isDark ? Color.WHITE : Color.BLACK)};
+  background-color: ${props => (props.isDark ? Color.DOVE_GREY : Color.COMET)};
+  color: ${props => (props.isDark ? Color.SUN : Color.VACUUM)};
   cursor: pointer;
   display: flex;
   display: inline-block;

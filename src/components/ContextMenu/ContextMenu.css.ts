@@ -7,7 +7,7 @@ export const Menu = styled.div``;
 
 export const Option = styled.div`
   background-color: ${getBackgroundColor};
-  color: ${props => (props.theme.id === 'dark' ? Color.WHITE : Color.BLACK)};
+  color: ${props => (props.theme.id === 'dark' ? Color.SUN : Color.VACUUM)};
   cursor: pointer;
   font-size: 11px;
   padding: 10px;

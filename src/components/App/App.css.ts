@@ -4,6 +4,8 @@ import { DirectionalPosition } from '../../types/commons';
 import * as SIZE from '../../utils/sizingConstants';
 import { isBottomOrRight, isLeftOrRight, isTopOrBottom } from '../../utils/windowPositionHelpers';
 
+import { Color } from '../../styles';
+
 import Logo from '../Logo';
 import SvgIcon from '../SvgIcon';
 
@@ -145,7 +147,7 @@ export const ToggleIcon = styled(SvgIcon)<ExpandedPositionProp>`
   ${props =>
     props.isDrawerExpanded &&
     css`
-      background-color: #df5353;
+      background-color: ${Color.MARS};
     `}
 `;
 
@@ -172,7 +174,7 @@ export const StyledSvgIcon = styled(SvgIcon)`
 
   &:hover {
     + ${ArrowIcon} {
-      background-color: #7bd5c1;
+      background-color: ${Color.URANUS};
     }
   }
 `;

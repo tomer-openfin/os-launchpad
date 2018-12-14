@@ -9,10 +9,5 @@ import AppCard from './index';
 
 storiesOf('Components/AppCard', module)
   .add('default', () => (
-    <AppCard
-      addToLauncher={noopCreator}
-      app={AppData[0]}
-      isLauncherApp={false}
-      removeFromLauncher={noopCreator}
-    />
+    <AppCard app={AppData[0]} />
   ));

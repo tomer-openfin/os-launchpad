@@ -11,15 +11,15 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
     }
   >
     <div
-      className="sc-hzDkRC eVpFXG"
+      className="sc-caSCKo JKzNo"
     >
       <div
-        className="sc-gipzik jpXZHE"
+        className="sc-fMiknA kdCqoF"
       >
         Edit App
       </div>
       <div
-        className="sc-gPEVay kCaTDV"
+        className="sc-hzDkRC bykoDF"
       >
         Please verify and/or update the following fields:
       </div>
@@ -27,10 +27,10 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
         onSubmit={[Function]}
       >
         <div
-          className="sc-jhAzac kyEniB"
+          className="sc-gisBJw bbmcme"
         >
           <label
-            className="sc-csuQGl cGuxnZ"
+            className="sc-dVhcbM cHYzKT"
           >
             Icon URL
             <input
@@ -42,7 +42,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-csuQGl cGuxnZ"
+            className="sc-dVhcbM cHYzKT"
           >
             Manifest URL
             <input
@@ -54,7 +54,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-csuQGl cGuxnZ"
+            className="sc-dVhcbM cHYzKT"
           >
             Accepted Intent(s)
             <select
@@ -108,7 +108,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             </select>
           </label>
           <label
-            className="sc-csuQGl cGuxnZ"
+            className="sc-dVhcbM cHYzKT"
           >
             Title
             <input
@@ -120,7 +120,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-csuQGl cGuxnZ"
+            className="sc-dVhcbM cHYzKT"
           >
             Accepted Context(s)
             <select
@@ -159,7 +159,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             </select>
           </label>
           <label
-            className="sc-csuQGl cGuxnZ"
+            className="sc-dVhcbM cHYzKT"
           >
             Name
             <input
@@ -171,7 +171,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
             />
           </label>
           <label
-            className="sc-csuQGl cGuxnZ"
+            className="sc-dVhcbM cHYzKT"
           >
             Description
             <textarea
@@ -183,17 +183,17 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
           </label>
         </div>
         <div
-          className="sc-bRBYWo cfRogV"
+          className="sc-fAjcbJ cjoVoA"
         >
           <a
-            className="sc-iRbamj bWiubd"
+            className="sc-jhAzac gBAIjX"
             href="/admin/apps"
             onClick={[Function]}
           >
             Cancel
           </a>
           <button
-            className="sc-jDwBTQ dTljqn"
+            className="sc-bRBYWo eySiXU"
             disabled={true}
             type="submit"
           >

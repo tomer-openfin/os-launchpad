@@ -2,15 +2,19 @@ import * as React from 'react';
 
 import * as searchIcon from '../../assets/Search.svg';
 
-import { Directory, SearchHeader, SearchInput, Wrapper } from './AppDirectory.css';
+import { CTA, Directory, Row, SearchHeader, SearchInput, Wrapper } from './AppDirectory.css';
 
 import { App } from '../../types/commons';
 
-import AppCard from '../AppCard';
+import AppCard, { IconWrapper } from '../AppCard';
 import IconSpace from '../IconSpace';
+import WindowHeader from '../WindowHeader';
 
 interface Props {
+  addToLauncher: (appId: App['id']) => void;
   appList: App[];
+  getIsLauncherApp: (appId: App['id']) => boolean;
+  removeFromLauncher: (appId: App['id']) => void;
   onBlur: () => void;
   onEscDown: () => void;
 }
@@ -18,6 +22,8 @@ interface Props {
 interface State {
   search: string;
 }
+
+const renderCTAText = (isLauncherApp: boolean) => (isLauncherApp ? '-' : '+');
 
 class AppDirectory extends React.PureComponent<Props, State> {
   // static defaultProps = defaultProps;
@@ -52,20 +58,38 @@ class AppDirectory extends React.PureComponent<Props, State> {
     this.searchInput = input;
   };
 
+  renderAppCTA(app: App) {
+    const { getIsLauncherApp, addToLauncher, removeFromLauncher } = this.props;
+
+    const isLauncherApp = getIsLauncherApp(app.id);
+
+    return (
+      <CTA onClick={isLauncherApp ? () => removeFromLauncher(`${app.id}`) : () => addToLauncher(`${app.id}`)}>
+        {renderCTAText(isLauncherApp)}
+      </CTA>
+    );
+  }
+
   render() {
     const { search } = this.state;
 
     return (
       <Wrapper>
-        <SearchHeader>
-          <IconSpace iconImg={searchIcon} />
+        <WindowHeader>
+          <SearchHeader>
+            <IconWrapper>
+              <IconSpace iconImg={searchIcon} />
+            </IconWrapper>
 
-          <SearchInput ref={this.setSearchInputRef} onChange={this.handleChange} placeholder="Search for app..." />
-        </SearchHeader>
+            <SearchInput ref={this.setSearchInputRef} onChange={this.handleChange} placeholder="Search for app..." />
+          </SearchHeader>
+        </WindowHeader>
 
         <Directory>
           {this.filterAppList(search).map((app: App) => (
-            <AppCard key={app.id} app={app} />
+            <Row key={app.id}>
+              <AppCard app={app} ctas={this.renderAppCTA(app)} />
+            </Row>
           ))}
         </Directory>
       </Wrapper>

@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 import { Color } from '../../styles';
-import * as SIZE from '../../utils/sizingConstants';
 
 interface ImgProps {
   clickable?: boolean;
@@ -14,8 +13,8 @@ interface ImgProps {
 
 export const Background = styled.div<ImgProps>`
   background: url(${props => props.imgSrc || ''});
-  height: ${props => (props.large ? `80px` : `80px`)};
-  width: ${props => (props.large ? `80px` : `80px`)};
+  height: ${props => (props.large ? `80px` : `60px`)};
+  width: ${props => (props.large ? `80px` : `60px`)};
 
   ${props =>
     props.large &&
@@ -40,7 +39,7 @@ export const Background = styled.div<ImgProps>`
 // IF TRAY ICON -> NO MARGIN/PADDING
 
 export const Icon = styled.div<ImgProps>`
-  background-color: #e7e7e7;
+  background-color: ${Color.COMET};
   mask: url(${props => props.imgSrc || ''});
   mask-size: contain;
   mask-position: center;
@@ -60,7 +59,7 @@ export const Icon = styled.div<ImgProps>`
     props.hover &&
     css`
       &:hover {
-        background-color: ${Color.GREY};
+        background-color: ${Color.DOVE_GREY};
         cursor: pointer;
       }
     `}

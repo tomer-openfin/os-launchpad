@@ -28,7 +28,7 @@ export const Button = styled.button`
   }
 
   &:disabled {
-    background-color: ${Color.GREY};
+    background-color: ${Color.DOVE_GREY};
     cursor: default;
   }
 `;
@@ -61,14 +61,14 @@ export const ButtonLink = styled(Link)`
   }
 
   &:disabled {
-    background-color: ${Color.GREY};
+    background-color: ${Color.DOVE_GREY};
     cursor: default;
   }
 `;
 
 export const Error = styled.div`
-  background-color: ${Color.FAIL};
-  color: ${Color.BASEBALL};
+  background-color: ${Color.MARS};
+  color: ${Color.COMET};
   display: block;
   font-size: 10px;
   height: auto;
@@ -117,8 +117,8 @@ export const Label = styled.label`
 
 export const Message = styled.div`
   align-items: center;
-  background-color: ${Color.SUCCESS};
-  color: ${Color.BLACK};
+  background-color: ${Color.SATURN};
+  color: ${Color.VACUUM};
   display: flex;
   font-size: 10px;
   justify-content: center;
@@ -134,7 +134,7 @@ export const Row = styled.div`
 
 export const Wrapper = styled.div`
   align-items: center;
-  background-color: ${Color.BASEBALL};
+  background-color: ${Color.COMET};
   border-radius: 3px;
   border: 1px solid ${Color.LIGHTER_GREY};
   display: flex;
@@ -161,7 +161,7 @@ export const GridWrapper = styled.div`
   }
 
   ::-webkit-scrollbar-track {
-    background: ${Color.WHITE};
+    background: ${Color.SUN};
   }
 
   ::-webkit-scrollbar-thumb {
@@ -175,7 +175,7 @@ export const GridWrapper = styled.div`
   ::-webkit-scrollbar-button {
     &:start {
       &:decrement {
-        background: url(${TinyUpArrowIcon}) ${Color.WHITE};
+        background: url(${TinyUpArrowIcon}) ${Color.SUN};
         background-size: 5px 5px;
         background-position: center;
         background-repeat: no-repeat;
@@ -184,7 +184,7 @@ export const GridWrapper = styled.div`
     }
     &:end {
       &:increment {
-        background: url(${TinyDownArrowIcon}) ${Color.WHITE};
+        background: url(${TinyDownArrowIcon}) ${Color.SUN};
         background-size: 5px 5px;
         background-position: center;
         background-repeat: no-repeat;

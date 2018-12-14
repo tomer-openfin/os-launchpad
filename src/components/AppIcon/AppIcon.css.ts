@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { AppIconSizes, DirectionalPosition } from '../../types/commons';
 
+import { Color } from '../../styles';
 import AppIndicator from '../AppIndicator';
 import ContextMenuZone from '../ContextMenuZone';
 import { Props } from './AppIcon';
@@ -26,7 +27,7 @@ export const APP_ICON_TRANSITION_CLASSNAMES = 'app-icon-transition';
 export const APP_ICON_TRANSITION_DURATION = 450;
 
 export const Icon = styled.div<Pick<Props, 'imgSrc'>>`
-  background: url(${props => props.imgSrc || ''});
+  background: url(${props => props.imgSrc || ''}), ${Color.SUN};
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

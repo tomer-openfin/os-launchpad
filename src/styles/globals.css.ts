@@ -1,10 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
-import * as TinyDownArrowIcon from '../assets/TinyDownArrow.svg';
-import * as TinyUpArrowIcon from '../assets/TinyUpArrow.svg';
-
 import { getBackgroundColor } from '../components/ConnectedThemeProvider';
-import * as Color from './color';
+import { Color } from './index';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -14,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     background-color: ${getBackgroundColor};
-    font-family: 'Muli', sans-serif;
+    font-family: 'Nunito', sans-serif;
     overflow: hidden;
   }
 
@@ -23,41 +20,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar {
-    width: 16px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: ${Color.DUSTY_GREY};
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: ${Color.GREY};
-
-    &:hover {
-      background: ${Color.LIGHTER_GREY};
-    }
-  }
-
-  ::-webkit-scrollbar-button {
-    &:start {
-      &:decrement {
-        background: url(${TinyUpArrowIcon}) ${Color.CHARCOAL};
-        background-size: 8px 8px;
-        background-position: center;
-        background-repeat: no-repeat;
-        display: block;
-        border-left: 1px solid ${Color.DUSTY_GREY};
-      }
-    }
-    &:end {
-      &:increment {
-        background: url(${TinyDownArrowIcon}) ${Color.CHARCOAL};
-        background-size: 8px 8px;
-        background-position: center;
-        background-repeat: no-repeat;
-        display: block;
-        border-left: 1px solid ${Color.DUSTY_GREY};
-      }
-    }
+    display: none;
   }
 `;

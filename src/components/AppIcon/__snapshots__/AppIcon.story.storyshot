@@ -20,7 +20,7 @@ exports[`Storyshots Components/AppIcon default 1`] = `
         onContextMenu={[Function]}
       >
         <div
-          className="sc-EHOje fMQyvv"
+          className="sc-EHOje kFtiuS"
         />
       </div>
       <div
@@ -454,7 +454,7 @@ exports[`Storyshots Components/AppIcon with parent background color 1`] = `
           onContextMenu={[Function]}
         >
           <div
-            className="sc-EHOje BSzEV"
+            className="sc-EHOje gHOpvM"
           />
         </div>
         <div

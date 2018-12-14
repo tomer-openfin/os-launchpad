@@ -34,7 +34,7 @@ export const Label = styled.label`
 
 export const Placeholder = styled.div`
   font-size: 8px;
-  color: ${Color.APPLE};
+  color: ${Color.MARS};
 `;
 
 export const StyledButton = styled(Button)`

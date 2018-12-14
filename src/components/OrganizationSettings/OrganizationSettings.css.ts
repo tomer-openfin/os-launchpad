@@ -9,7 +9,7 @@ export const Header = styled.h3`
 `;
 
 export const Separator = styled.div`
-  background-color: ${Color.WHITE};
+  background-color: ${Color.SUN};
   width: 100%;
   height: 1px;
   margin: 25px 0;

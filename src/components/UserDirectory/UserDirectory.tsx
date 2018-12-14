@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
-import Modal from '../Modal';
-import { ButtonLink, HeadingWrapper, Input, Label, LinkWrapper, ListElement, ListWrapper, Select, Wrapper } from './UserDirectory.css';
+import { ButtonLink, DeleteIconLink, EditIconLink, HeadingWrapper, Input, LinkWrapper, ListWrapper, Select, SortWrapper, Wrapper } from './UserDirectory.css';
 
 import { User } from '../../types/commons';
+
 import { doesCurrentPathMatch } from '../../utils/routeHelpers';
 import { userRoutes } from '../Router';
 import { ROUTES } from '../Router/consts';
+
+import { Row } from '../AppDirectory';
+import Modal from '../Modal';
+import UserCard from '../UserCard';
 
 const FIRST_NAME = 'firstName';
 const LAST_NAME = 'lastName';
@@ -98,9 +102,9 @@ class UserDirectory extends React.PureComponent<Props & RouteComponentProps, Sta
   renderButtons = user => {
     return (
       <LinkWrapper>
-        <ButtonLink to={{ pathname: ROUTES.ADMIN_USERS_EDIT, state: user }}>Edit</ButtonLink>
+        <EditIconLink to={{ pathname: ROUTES.ADMIN_USERS_EDIT, state: user }} />
 
-        <ButtonLink to={{ pathname: ROUTES.ADMIN_USERS_DELETE, state: user }}>Delete</ButtonLink>
+        <DeleteIconLink to={{ pathname: ROUTES.ADMIN_USERS_DELETE, state: user }} />
       </LinkWrapper>
     );
   };
@@ -112,31 +116,24 @@ class UserDirectory extends React.PureComponent<Props & RouteComponentProps, Sta
     return (
       <Wrapper>
         <HeadingWrapper>
-          <Label>
+          <Input name="search" value={search} onChange={this.handleInputChange} placeholder="Search users..." type="text" />
+
+          <SortWrapper>
             Sort by
             <Select onChange={this.handleSelectChange} value={sort}>
               <option value={LAST_NAME}>Last Name</option>
               <option value={FIRST_NAME}>First Name</option>
             </Select>
-          </Label>
-
-          <Input name="search" value={search} onChange={this.handleInputChange} placeholder="Search users..." type="text" />
+          </SortWrapper>
 
           <ButtonLink to={ROUTES.ADMIN_USERS_NEW}>Add User</ButtonLink>
-
-          {/* <ButtonLink to={ROUTES.ADMIN_USERS_IMPORT}>Import Users</ButtonLink> */}
         </HeadingWrapper>
 
         <ListWrapper>
           {this.sortUserData(this.filterUserList(search), sort).map(user => (
-            <li key={user.id}>
-              <ListElement>
-                {user.lastName}, {user.firstName}
-              </ListElement>
-              <ListElement>{user.email}</ListElement>
-              <ListElement>{user.isAdmin ? 'Admin' : ''}</ListElement>
-              <ListElement>{this.renderButtons(user)}</ListElement>
-            </li>
+            <Row key={user.id}>
+              <UserCard user={user} ctas={this.renderButtons(user)} />
+            </Row>
           ))}
         </ListWrapper>
 

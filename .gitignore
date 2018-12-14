@@ -1,6 +1,7 @@
 .awcache
 .env
 .cache
+.git
 
 build
 dist

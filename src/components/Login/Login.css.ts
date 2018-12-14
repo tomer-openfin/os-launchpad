@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Color } from '../../styles/index';
 
 export const Wrapper = styled.div`
@@ -17,26 +17,30 @@ export const FieldWrapper = styled.label`
   margin: 30px;
 
   & input {
-    color: ${Color.SEAGULL};
-    background: ${Color.TRANSPARENT};
-    border: 1px solid ${Color.SEAGULL};
+    color: ${Color.MERCURY};
+    background: ${Color.VOID};
+    border: 1px solid ${Color.MERCURY};
     border-radius: 3px;
     padding: 5px 25px;
     outline: none;
     width: 200px;
 
     &:hover,
-    &:focus,
     &:active {
-      color: ${Color.CHALK};
-      border-color: ${Color.CHALK};
-      background: ${Color.DUSTY_GREY};
+      color: ${Color.COMET};
+      background: ${Color.ASTEROID_BELT};
+      border-color: ${Color.COMET};
+    }
+    &:focus {
+      color: ${Color.NEBULA};
+      background: ${Color.ASTEROID_BELT};
+      border-color: ${Color.NEBULA};
     }
   }
 `;
 
 export const ResponseMessage = styled.div<{ error: boolean }>`
-  color: ${props => (props.error ? Color.FAIL : Color.BASEBALL)};
+  color: ${props => (props.error ? Color.MARS : Color.SATURN)};
   position: absolute;
   bottom: 10px;
   height: 60px;
@@ -54,16 +58,16 @@ export const CTA = styled.button`
   font-size: 9px;
   width: 200px;
   padding: auto;
-  color: ${Color.CHARCOAL};
-  background: ${Color.SEAGULL};
-  border: 1px solid ${Color.SEAGULL};
+  color: ${Color.KUIPER_BELT};
+  background: ${Color.MERCURY};
+  border: 1px solid ${Color.MERCURY};
   border-radius: 3px;
   outline: none;
   cursor: pointer;
 
   &:hover {
-    color: ${Color.CHARCOAL};
-    background: ${Color.CHALK};
-    border-color: ${Color.CHALK};
+    color: ${Color.KUIPER_BELT};
+    background: ${Color.COMET};
+    border-color: ${Color.COMET};
   }
 `;

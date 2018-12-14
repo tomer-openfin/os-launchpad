@@ -2,9 +2,20 @@ import * as React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import appData from '../../const/AppData';
-import noop from '../../utils/noop';
+import AppData from '../../const/AppData';
+import noop, { noopCreator } from '../../utils/noop';
 
 import AppDirectory from './AppDirectory';
 
-storiesOf('Components/AppDirectory', module).add('default', () => <AppDirectory appList={appData} onEscDown={noop} onBlur={noop} />);
+const getIsLauncherApp = () => false;
+
+storiesOf('Components/AppDirectory', module).add('default', () => (
+  <AppDirectory
+    addToLauncher={noopCreator}
+    appList={AppData}
+    getIsLauncherApp={getIsLauncherApp}
+    onBlur={noop}
+    onEscDown={noop}
+    removeFromLauncher={noopCreator}
+  />),
+);

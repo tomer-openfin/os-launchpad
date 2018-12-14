@@ -11,21 +11,21 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
     }
   >
     <div
-      className="sc-hEsumM epeevU"
+      className="sc-jwKygS fBWxJW"
     >
       <form
         onSubmit={[Function]}
       >
         <div
-          className="sc-gGBfsJ ghndCJ"
+          className="sc-kafWEX jaIhry"
         >
           <label
-            className="sc-jnlKLf dcleFX"
+            className="sc-feJyhm ewNoUr"
           >
             Choose theme to set appearance of App Launcher and accompanying windows:
           </label>
           <select
-            className="sc-fYxtnH dCnmlv"
+            className="sc-iELTvK gPSpcN"
             disabled={false}
             id="ThemesFormSelectInput"
             name="theme"
@@ -47,7 +47,7 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
           </select>
         </div>
         <button
-          className="sc-tilXH cKByoB"
+          className="sc-cmTdod kbwKWD"
           disabled={true}
           onClick={[Function]}
           type="button"
@@ -56,7 +56,7 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
           Cancel
         </button>
         <button
-          className="sc-tilXH iMscsa"
+          className="sc-cmTdod jYmgWu"
           disabled={true}
           type="submit"
           width={120}
@@ -298,7 +298,7 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
                                   }
                                 }
                               >
-                                '#303030'
+                                '#3A3A3A'
                               </span>
                               ,
                               <span>
@@ -379,7 +379,7 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
                                   }
                                 }
                               >
-                                '#edeeef'
+                                '#E7E7E7'
                               </span>
                               ,
                               <span>

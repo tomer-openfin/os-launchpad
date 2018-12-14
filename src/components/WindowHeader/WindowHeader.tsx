@@ -1,16 +1,17 @@
 import * as React from 'react';
 
-import { CloseButton, CloseIcon, Header } from './WindowHeader.css';
+import CloseButton from '../CloseButton';
+import { Header, Title } from './WindowHeader.css';
 
-const handleClose = () => {
-  fin.desktop.Window.getCurrent().hide();
-};
+interface Props {
+  bottomBorder?: boolean;
+  children?: React.ReactNode;
+}
 
-const WindowHeader = () => (
+const WindowHeader = ({ bottomBorder, children }: Props) => (
   <Header>
-    <CloseButton onClick={handleClose}>
-      <CloseIcon />
-    </CloseButton>
+    {typeof children === 'string' ? <Title>{children}</Title> : children}
+    <CloseButton bottomBorder={bottomBorder} />
   </Header>
 );
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="83px" height="83px" viewBox="0 0 83 83" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>icons/trash</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,13.6460159 L48,13.6460159 L42.6666667,65 L5.33333333,65 L0,13.6460159 Z M0,2.72920318 L18.8335898,2.72920318 L18.8335898,3.10425981e-13 L29.3262178,0 L29.3262178,2.72920318 L48,2.72920318 L48,8.18760955 L0,8.18760955 L0,2.72920318 Z M22.6666667,21.8336255 L22.6666667,57.3132668 L25.3333333,57.3132668 L25.3333333,21.8336255 L22.6666667,21.8336255 Z M33.3333333,21.8336255 L33.3333333,57.3132668 L36,57.3132668 L36,21.8336255 L33.3333333,21.8336255 Z M12,21.8336255 L12,57.3132668 L14.6666667,57.3132668 L14.6666667,21.8336255 L12,21.8336255 Z" id="path-1"></path>
+    </defs>
+    <g id="icons/trash" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="color" transform="translate(17.000000, 9.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#D8D8D8" xlink:href="#path-1"></use>
+            <g id="fills/light-grey" mask="url(#mask-2)" fill="#E7E7E7">
+                <g transform="translate(-8.000000, 0.000000)" id="Rectangle">
+                    <rect x="0" y="0" width="65" height="65"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

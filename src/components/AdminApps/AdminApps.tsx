@@ -2,12 +2,15 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
 import Modal from '../Modal';
-import { ButtonLink, HeadingWrapper, Input, LinkWrapper, ListElement, ListWrapper, Wrapper } from '../UserDirectory/UserDirectory.css';
+import { ButtonLink, DeleteIconLink, EditIconLink, HeadingWrapper, Input, LinkWrapper, ListWrapper, Wrapper } from '../UserDirectory/UserDirectory.css';
 
 import { App } from '../../types/commons';
 import { doesCurrentPathMatch } from '../../utils/routeHelpers';
 import { appRoutes } from '../Router';
 import { ROUTES } from '../Router/consts';
+
+import AppCard from '../AppCard';
+import { Row } from '../AppDirectory';
 
 interface Props {
   apps: App[];
@@ -44,17 +47,14 @@ class AdminApps extends React.PureComponent<Props & RouteComponentProps, State> 
   };
 
   filterAppsList = search =>
-    search
-      ? this.props.apps.filter(app => app.title && app.title.toLowerCase().indexOf(search.toLowerCase()) !== -1)
-      : this.props.apps;
+    search ? this.props.apps.filter(app => app.title && app.title.toLowerCase().indexOf(search.toLowerCase()) !== -1) : this.props.apps;
 
   renderButtons = app => {
     return (
-      <LinkWrapper>
-        {/* todo: edit app modal WHIT-121 */}
-        <ButtonLink to={{ pathname: ROUTES.ADMIN_APPS_EDIT, state: app }}>Edit</ButtonLink>
+      <LinkWrapper vertical>
+        <EditIconLink to={{ pathname: ROUTES.ADMIN_APPS_EDIT, state: app }} />
 
-        <ButtonLink to={{ pathname: ROUTES.ADMIN_APPS_DELETE, state: app }}>Delete</ButtonLink>
+        <DeleteIconLink to={{ pathname: ROUTES.ADMIN_APPS_DELETE, state: app }} />
       </LinkWrapper>
     );
   };
@@ -73,10 +73,9 @@ class AdminApps extends React.PureComponent<Props & RouteComponentProps, State> 
 
         <ListWrapper>
           {this.filterAppsList(search).map(app => (
-            <li key={app.id}>
-              <ListElement>{app.title}</ListElement>
-              <ListElement>{this.renderButtons(app)}</ListElement>
-            </li>
+            <Row key={app.id}>
+              <AppCard app={app} ctas={this.renderButtons(app)} />
+            </Row>
           ))}
         </ListWrapper>
 

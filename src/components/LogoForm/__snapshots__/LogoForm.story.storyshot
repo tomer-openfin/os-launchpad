@@ -11,32 +11,32 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
     }
   >
     <div
-      className="sc-dNLxif KzmkZ"
+      className="sc-tilXH jMVAVb"
     >
       <form
-        className="sc-jbKcbu jxlXpL"
+        className="sc-fYxtnH dCovrf"
         onSubmit={[Function]}
       >
         <label
-          className="sc-frDJqD iJfZJz"
+          className="sc-bbmXgH cdMKTe"
           htmlFor="LogoFormFileInput"
         >
           <div
-            className="sc-kgAjT kPCZXu"
+            className="sc-jbKcbu iCroTy"
           >
             <div
               className="sc-dnqmqq eqCERZ"
             />
             <div
-              className="sc-gisBJw DxEZF"
+              className="sc-hmzhuo gHDVAw"
             >
               <div
-                className="sc-fAjcbJ fmpeIh"
+                className="sc-cJSrbW EbCOS"
               >
                 Change Logo
               </div>
               <div
-                className="sc-cHGsZl cVTcre"
+                className="sc-kvZOFW hJoAPu"
               >
                 Files must be at least 200 x 200 pixels square.
                 <br />
@@ -44,7 +44,7 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
               </div>
               <input
                 accept="image/*"
-                className="sc-caSCKo jsKMfd"
+                className="sc-ksYbfQ hAwLYh"
                 id="LogoFormFileInput"
                 name="logo"
                 onBlur={[Function]}
@@ -56,7 +56,7 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
           </div>
         </label>
         <button
-          className="sc-hqyNC bJllnS"
+          className="sc-jnlKLf hXszXA"
           disabled={true}
           onClick={[Function]}
           type="button"
@@ -65,7 +65,7 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
           Cancel
         </button>
         <button
-          className="sc-hqyNC dgSduu"
+          className="sc-jnlKLf hZKkbE"
           disabled={true}
           type="submit"
           width={120}

@@ -10,12 +10,12 @@ export const DEFAULT_THEME_ID = DefaultThemeIds.Dark;
 
 const DEFAULT_THEMES: Theme[] = [
   {
-    backgroundColor: Color.CHARCOAL,
+    backgroundColor: Color.ASTEROID_BELT,
     id: DefaultThemeIds.Dark,
     name: 'Dark',
   },
   {
-    backgroundColor: Color.BASEBALL,
+    backgroundColor: Color.COMET,
     id: DefaultThemeIds.Light,
     name: 'Light',
   },

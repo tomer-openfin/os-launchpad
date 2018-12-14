@@ -2,20 +2,20 @@ import * as React from 'react';
 import { ROUTES } from '../Router/consts';
 
 import WindowHeader from '../WindowHeader';
-import { ContentWrapper, TabLink, TabsWrapper, Wrapper } from './Admin.css';
+import { ContentWrapper, TabLink, Wrapper } from './Admin.css';
 
 const ADMIN_TABBED_ROUTES = [
   {
     exact: true,
-    label: 'Organization Settings',
+    label: 'Enterprise',
     path: ROUTES.ADMIN,
   },
   {
-    label: 'App Manager',
+    label: 'Apps',
     path: ROUTES.ADMIN_APPS,
   },
   {
-    label: 'User Directory',
+    label: 'Users',
     path: ROUTES.ADMIN_USERS,
   },
 ];
@@ -35,7 +35,9 @@ const renderAdminTab = ({ exact = false, path, label }) => (
 const renderAdmin = children => {
   return (
     <>
-      <TabsWrapper>{ADMIN_TABBED_ROUTES.map(renderAdminTab)}</TabsWrapper>
+      <WindowHeader bottomBorder>
+        {ADMIN_TABBED_ROUTES.map(renderAdminTab)}
+      </WindowHeader>
 
       <ContentWrapper>{children}</ContentWrapper>
     </>
@@ -47,8 +49,6 @@ const Admin = (props: Props) => {
 
   return (
     <Wrapper>
-      <WindowHeader />
-
       {isAdmin ? renderAdmin(children) : <h1>You do not have clearance to see the admin tools.</h1>}
     </Wrapper>
   );

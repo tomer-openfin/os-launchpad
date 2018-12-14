@@ -28,7 +28,7 @@ exports[`Storyshots Components/App default 1`] = `
             onContextMenu={[Function]}
           >
             <div
-              className="sc-EHOje eQVvwy"
+              className="sc-EHOje hltsbQ"
             />
           </div>
           <div
@@ -44,7 +44,7 @@ exports[`Storyshots Components/App default 1`] = `
             onContextMenu={[Function]}
           >
             <div
-              className="sc-EHOje eQVvwy"
+              className="sc-EHOje hltsbQ"
             />
           </div>
           <div
@@ -60,7 +60,7 @@ exports[`Storyshots Components/App default 1`] = `
             onContextMenu={[Function]}
           >
             <div
-              className="sc-EHOje eQVvwy"
+              className="sc-EHOje hltsbQ"
             />
           </div>
           <div
@@ -76,7 +76,7 @@ exports[`Storyshots Components/App default 1`] = `
             onContextMenu={[Function]}
           >
             <div
-              className="sc-EHOje eQVvwy"
+              className="sc-EHOje hltsbQ"
             />
           </div>
           <div
@@ -92,7 +92,7 @@ exports[`Storyshots Components/App default 1`] = `
             onContextMenu={[Function]}
           >
             <div
-              className="sc-EHOje eQVvwy"
+              className="sc-EHOje hltsbQ"
             />
           </div>
           <div
@@ -108,7 +108,7 @@ exports[`Storyshots Components/App default 1`] = `
             onContextMenu={[Function]}
           >
             <div
-              className="sc-EHOje eQVvwy"
+              className="sc-EHOje hltsbQ"
             />
           </div>
           <div
@@ -124,7 +124,7 @@ exports[`Storyshots Components/App default 1`] = `
             onContextMenu={[Function]}
           >
             <div
-              className="sc-EHOje eQVvwy"
+              className="sc-EHOje hltsbQ"
             />
           </div>
           <div
@@ -140,7 +140,7 @@ exports[`Storyshots Components/App default 1`] = `
             onContextMenu={[Function]}
           >
             <div
-              className="sc-EHOje eQVvwy"
+              className="sc-EHOje hltsbQ"
             />
           </div>
           <div
@@ -156,7 +156,7 @@ exports[`Storyshots Components/App default 1`] = `
             onContextMenu={[Function]}
           >
             <div
-              className="sc-EHOje eQVvwy"
+              className="sc-EHOje hltsbQ"
             />
           </div>
           <div
@@ -176,7 +176,7 @@ exports[`Storyshots Components/App default 1`] = `
             size={343}
           >
             <div
-              className="sc-cSHVUG ePxWij sc-iwsKbI jjbrTx"
+              className="sc-cSHVUG hRiDvQ sc-iwsKbI cqLbSe"
               onClick={[Function]}
               size={25}
             />
@@ -184,7 +184,7 @@ exports[`Storyshots Components/App default 1`] = `
               className="sc-jzJRlG gaLFPP"
             >
               <div
-                className="sc-kgoBCf dUULHZ sc-iwsKbI bziQis"
+                className="sc-kgoBCf fMWVse sc-iwsKbI kolxsh"
                 onClick={[Function]}
                 size={42}
               />
@@ -193,12 +193,12 @@ exports[`Storyshots Components/App default 1`] = `
               className="sc-jzJRlG gaLFPP"
             >
               <div
-                className="sc-kgoBCf dUULHZ sc-iwsKbI bziQis"
+                className="sc-kgoBCf fMWVse sc-iwsKbI kolxsh"
                 onClick={[Function]}
                 size={42}
               />
               <div
-                className="sc-gZMcBi jpAamr sc-iwsKbI fflwWz"
+                className="sc-gZMcBi jpAamr sc-iwsKbI byDggX"
                 size={25}
               />
             </div>
@@ -206,7 +206,7 @@ exports[`Storyshots Components/App default 1`] = `
               className="sc-jzJRlG gaLFPP"
             >
               <div
-                className="sc-kgoBCf dUULHZ sc-iwsKbI bziQis"
+                className="sc-kgoBCf fMWVse sc-iwsKbI kolxsh"
                 onClick={[Function]}
                 size={42}
               />
@@ -215,12 +215,12 @@ exports[`Storyshots Components/App default 1`] = `
               className="sc-jzJRlG gaLFPP"
             >
               <div
-                className="sc-kgoBCf dUULHZ sc-iwsKbI bziQis"
+                className="sc-kgoBCf fMWVse sc-iwsKbI kolxsh"
                 onClick={[Function]}
                 size={42}
               />
               <div
-                className="sc-gZMcBi jpAamr sc-iwsKbI fflwWz"
+                className="sc-gZMcBi jpAamr sc-iwsKbI byDggX"
                 size={25}
               />
             </div>
@@ -228,7 +228,7 @@ exports[`Storyshots Components/App default 1`] = `
               className="sc-jzJRlG gaLFPP"
             >
               <div
-                className="sc-kgoBCf dUULHZ sc-iwsKbI bziQis"
+                className="sc-kgoBCf fMWVse sc-iwsKbI kolxsh"
                 onClick={[Function]}
                 size={42}
               />
@@ -237,7 +237,7 @@ exports[`Storyshots Components/App default 1`] = `
               className="sc-jzJRlG gaLFPP"
             >
               <div
-                className="sc-kgoBCf dUULHZ sc-iwsKbI bziQis"
+                className="sc-kgoBCf fMWVse sc-iwsKbI kolxsh"
                 onClick={[Function]}
                 size={42}
               />

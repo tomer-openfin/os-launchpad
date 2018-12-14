@@ -36,7 +36,9 @@ class Settings extends React.Component<Props, {}> {
 
     return (
       <Window>
-        <WindowHeader />
+        <WindowHeader>
+          My Settings
+        </WindowHeader>
 
         <Section>
           <Heading>Auto Hide</Heading>

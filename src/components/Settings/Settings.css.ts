@@ -15,7 +15,7 @@ export const CTA = styled.button`
   height: 24px;
   font-size: 9px;
   color: ${Color.SEAGULL};
-  background: ${Color.TRANSPARENT};
+  background: ${Color.VOID};
   border: 1px solid ${Color.SEAGULL};
   border-radius: 3px;
   outline: none;
@@ -29,7 +29,7 @@ export const CTA = styled.button`
 `;
 
 export const Heading = styled.div`
-  color: ${Color.WHITE};
+  color: ${Color.SUN};
   font-weight: 200;
   padding: 10px;
 `;

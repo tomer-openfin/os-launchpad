@@ -11,40 +11,40 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
     }
   >
     <div
-      className="sc-bbmXgH ioLMTH"
+      className="sc-cIShpX Xgqhs"
     >
       <h3
-        className="sc-jqCOkK fJBZaa"
+        className="sc-hEsumM jqzUmg"
       >
         Set Logo
       </h3>
       <div
-        className="sc-dNLxif KzmkZ"
+        className="sc-tilXH jMVAVb"
       >
         <form
-          className="sc-jbKcbu jxlXpL"
+          className="sc-fYxtnH dCovrf"
           onSubmit={[Function]}
         >
           <label
-            className="sc-frDJqD iJfZJz"
+            className="sc-bbmXgH cdMKTe"
             htmlFor="LogoFormFileInput"
           >
             <div
-              className="sc-kgAjT kPCZXu"
+              className="sc-jbKcbu iCroTy"
             >
               <div
                 className="sc-dnqmqq eqCERZ"
               />
               <div
-                className="sc-gisBJw DxEZF"
+                className="sc-hmzhuo gHDVAw"
               >
                 <div
-                  className="sc-fAjcbJ fmpeIh"
+                  className="sc-cJSrbW EbCOS"
                 >
                   Change Logo
                 </div>
                 <div
-                  className="sc-cHGsZl cVTcre"
+                  className="sc-kvZOFW hJoAPu"
                 >
                   Files must be at least 200 x 200 pixels square.
                   <br />
@@ -52,7 +52,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
                 </div>
                 <input
                   accept="image/*"
-                  className="sc-caSCKo jsKMfd"
+                  className="sc-ksYbfQ hAwLYh"
                   id="LogoFormFileInput"
                   name="logo"
                   onBlur={[Function]}
@@ -64,7 +64,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             </div>
           </label>
           <button
-            className="sc-hqyNC bJllnS"
+            className="sc-jnlKLf hXszXA"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -73,7 +73,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             Cancel
           </button>
           <button
-            className="sc-hqyNC dgSduu"
+            className="sc-jnlKLf hZKkbE"
             disabled={true}
             type="submit"
             width={120}
@@ -83,29 +83,29 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
         </form>
       </div>
       <div
-        className="sc-uJMKN hllbJ"
+        className="sc-ktHwxA eAvhpq"
       />
       <h3
-        className="sc-jqCOkK fJBZaa"
+        className="sc-hEsumM jqzUmg"
       >
         Set Theme
       </h3>
       <div
-        className="sc-hEsumM epeevU"
+        className="sc-jwKygS fBWxJW"
       >
         <form
           onSubmit={[Function]}
         >
           <div
-            className="sc-gGBfsJ ghndCJ"
+            className="sc-kafWEX jaIhry"
           >
             <label
-              className="sc-jnlKLf dcleFX"
+              className="sc-feJyhm ewNoUr"
             >
               Choose theme to set appearance of App Launcher and accompanying windows:
             </label>
             <select
-              className="sc-fYxtnH dCnmlv"
+              className="sc-iELTvK gPSpcN"
               disabled={false}
               id="ThemesFormSelectInput"
               name="theme"
@@ -127,7 +127,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             </select>
           </div>
           <button
-            className="sc-tilXH cKByoB"
+            className="sc-cmTdod kbwKWD"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -136,7 +136,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             Cancel
           </button>
           <button
-            className="sc-tilXH iMscsa"
+            className="sc-cmTdod jYmgWu"
             disabled={true}
             type="submit"
             width={120}

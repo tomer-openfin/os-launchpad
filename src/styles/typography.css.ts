@@ -9,7 +9,7 @@ export interface HProps {
 
 const H = css<HProps>`
   font-weight: 400;
-  color: ${props => props.color || Color.BLACK};
+  color: ${props => props.color || Color.VACUUM};
   margin: ${props => props.margin || '0'};
 `;
 

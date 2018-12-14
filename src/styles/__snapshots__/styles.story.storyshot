@@ -3,22 +3,22 @@
 exports[`Storyshots Styleguide/Typography default 1`] = `
 Array [
   <h1
-    className="sc-bdVaJa hvSaha"
+    className="sc-bdVaJa CBmns"
   >
     H1
   </h1>,
   <h2
-    className="sc-bwzfXH kCkdHy"
+    className="sc-bwzfXH WvSAa"
   >
     H2
   </h2>,
   <h3
-    className="sc-htpNat fZgjDd"
+    className="sc-htpNat kRPzzm"
   >
     H3
   </h3>,
   <h4
-    className="sc-bxivhb fyBihh"
+    className="sc-bxivhb iRikhx"
   >
     H4
   </h4>,

@@ -2,95 +2,151 @@ import styled from 'styled-components';
 
 import { Link } from 'react-router-dom';
 
+import * as EditIcon from '../../assets/Edit.svg';
+import * as SearchIcon from '../../assets/Search.svg';
+import * as TrashIcon from '../../assets/Trash.svg';
+
 import { Color } from '../../styles/index';
 
-import * as TinyDownArrowIcon from '../../assets/TinyDownArrow.svg';
-import * as TinyUpArrowIcon from '../../assets/TinyUpArrow.svg';
+export const Wrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: ${Color.COMET};
+
+  & > ul {
+    list-style: none;
+    margin: 0;
+  }
+`;
 
 export const HeadingWrapper = styled.div`
   align-items: center;
   display: flex;
-  min-height: 30px;
-  justify-content: space-evenly;
-  margin: 15px 0;
+  justify-content: space-between;
+  padding: 17px 20px 10px;
   width: 100%;
 `;
 
-export const LinkWrapper = styled.div`
+export const LinkWrapper = styled.div<{ vertical?: boolean }>`
   align-items: baseline;
   display: flex;
-  justify-content: space-evenly;
+  ${props => props.vertical && 'flex-direction: column;'}
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 `;
 
 export const Input = styled.input`
   border-radius: 3px;
   border: none;
-  font-size: 12px;
-  height: 25px;
-  padding: 0 10px;
+  font-size: 14px;
+  height: 36px;
+  padding: 0 10px 0 36px;
   min-width: 200px;
-  outline: 0;
+  max-width: 290px;
+  outline: none;
+  color: ${Color.MERCURY};
+  background: url(${SearchIcon}) ${Color.VACUUM};
+  background-repeat: no-repeat;
+  flex: 1;
 `;
 
 export const Select = styled.select`
-  border: 2px solid ${Color.SEAGULL};
-  margin-left: 10px;
+  border: 1px solid ${Color.NEBULA};
   border-radius: 2px;
-  font-weight: 400;
   line-height: normal;
+  color: ${Color.MERCURY};
+  background-color: ${Color.VACUUM};
+  outline: none;
 `;
 
-export const Label = styled.label`
+export const SortWrapper = styled.label`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   font-size: 11px;
   font-weight: bold;
+  flex-shrink: 0;
+  padding: 0 10px;
+`;
+
+export const DeleteIconLink = styled(Link)`
+  background-color: ${Color.MERCURY};
+  mask: url(${TrashIcon});
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  color: ${Color.COMET};
+  margin: 5px;
+  height: 40px;
+  width: 40px;
+
+  &:hover {
+    background-color: ${Color.MARS};
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: ${Color.PLUTO};
+    cursor: default;
+  }
+`;
+
+export const EditIconLink = styled(Link)`
+  background-color: ${Color.MERCURY};
+  mask: url(${EditIcon});
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  color: ${Color.COMET};
+  border-radius: 3px;
+  margin: 5px;
+  height: 40px;
+  width: 40px;
+
+  &:hover {
+    background-color: ${Color.JUPITER};
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: ${Color.PLUTO};
+    cursor: default;
+  }
 `;
 
 export const ButtonLink = styled(Link)`
-  background-color: none;
-  color: ${Color.DUSTY_GREY};
-  border: 1px solid ${Color.DUSTY_GREY};
+  background-color: ${Color.NEPTUNE};
+  color: ${Color.COMET};
   border-radius: 3px;
   margin: 10px 5px;
-  height: 25px;
+  height: 36px;
+  min-width: 109px;
   padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 200;
   font-size: 12px;
+  flex-shrink: 0;
 
   &:hover {
-    background-color: ${Color.SEAGULL};
+    background-color: ${Color.NEBULA};
     cursor: pointer;
   }
 
   &:disabled {
-    background-color: grey;
+    background-color: ${Color.MERCURY};
     cursor: default;
   }
 `;
 
-export const LinkButton = styled.button`
-  background: none;
-  border-width: 0;
-  color: ${Color.SEAGULL};
-  margin: 5px;
-  padding: 0;
-  text-decoration: none;
-  text-transform: none;
-
-  &:hover {
-    background: none;
-    color: grey;
-    cursor: pointer;
-  }
-
-  &:focus {
-    outline: none;
-  }
-`;
-
-export const ListWrapper = styled.ul`
+export const ListWrapper = styled.div`
   color: ${Color.CHARCOAL};
   font-size: 10px;
   overflow-y: scroll;
@@ -106,59 +162,6 @@ export const ListWrapper = styled.ul`
     height: 25px;
     padding-right: 25px;
     padding-bottom: 25px;
-  }
-
-  ::-webkit-scrollbar {
-    width: 16px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: ${Color.FOG};
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: ${Color.OVERCAST};
-
-    &:hover {
-      background: ${Color.CEMENT};
-    }
-  }
-
-  ::-webkit-scrollbar-button {
-    &:start {
-      &:decrement {
-        background: url(${TinyUpArrowIcon}) ${Color.BASEBALL};
-        background-size: 8px 8px;
-        background-position: center;
-        background-repeat: no-repeat;
-        display: block;
-        border-left: 1px solid ${Color.FOG};
-      }
-    }
-    &:end {
-      &:increment {
-        background: url(${TinyDownArrowIcon}) ${Color.BASEBALL};
-        background-size: 8px 8px;
-        background-position: center;
-        background-repeat: no-repeat;
-        display: block;
-        border-left: 1px solid ${Color.FOG};
-      }
-    }
-  }
-`;
-
-export const Wrapper = styled.div`
-  background-color: ${Color.BASEBALL};
-  height: 100%;
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
-  & > ul {
-    list-style: none;
-    margin: 0;
   }
 `;
 
