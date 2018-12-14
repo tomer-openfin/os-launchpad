@@ -3,10 +3,10 @@ import * as React from 'react';
 import { LogoIcon } from './Logo.css';
 
 export interface Props {
+  className?: string;
   imgSrc: string;
-  backgroundColor?: string;
 }
 
-const Logo = ({ imgSrc, backgroundColor }: Props) => <LogoIcon backgroundColor={backgroundColor} imgSrc={imgSrc} />;
+const Logo = ({ className, imgSrc }: Props) => <LogoIcon className={className} imgSrc={imgSrc} />;
 
 export default Logo;

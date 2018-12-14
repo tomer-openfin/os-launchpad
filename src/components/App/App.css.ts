@@ -4,7 +4,7 @@ import { DirectionalPosition } from '../../types/commons';
 import * as SIZE from '../../utils/sizingConstants';
 import { isBottomOrRight, isLeftOrRight, isTopOrBottom } from '../../utils/windowPositionHelpers';
 
-import AppIcon from '../AppIcon';
+import Logo from '../Logo';
 import SvgIcon from '../SvgIcon';
 
 interface PositionProp {
@@ -162,16 +162,9 @@ export const Wrapper = styled.div<EndPaddingPositionProp>`
 `;
 
 /* Styled Imports */
-export const StyledAppIcon = styled(AppIcon)<PositionProp>`
-  align-items: center;
-  justify-content: center;
-  margin-bottom: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? '0' : '20px')};
-  margin-right: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? '20px' : '0')};
-
-  &:nth-child(2) {
-    margin-left: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? '20px' : '0')};
-    margin-top: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? '0' : '20px')};
-  }
+export const StyledLogo = styled(Logo)<PositionProp>`
+  background-color: rgba(0, 0, 0, 0.16);
+  ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? `margin-right: 10px;` : `margin-bottom: 10px;`)}
 `;
 
 export const StyledSvgIcon = styled(SvgIcon)`

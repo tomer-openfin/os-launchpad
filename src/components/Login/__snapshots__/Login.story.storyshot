@@ -14,7 +14,7 @@ exports[`Storyshots Components/Login Change Password 1`] = `
       className="sc-fBuWsC kUiHil"
     >
       <div
-        className="sc-ifAKCX hsYukX"
+        className="sc-dnqmqq eqCERZ"
       />
       <div
         className="sc-dVhcbM exAzDF"
@@ -467,7 +467,7 @@ exports[`Storyshots Components/Login With Error 1`] = `
       className="sc-fBuWsC kUiHil"
     >
       <div
-        className="sc-ifAKCX hsYukX"
+        className="sc-dnqmqq eqCERZ"
       />
       <div
         className="sc-dVhcbM jLoRMj"
@@ -922,7 +922,7 @@ exports[`Storyshots Components/Login default 1`] = `
       className="sc-fBuWsC kUiHil"
     >
       <div
-        className="sc-ifAKCX hsYukX"
+        className="sc-dnqmqq eqCERZ"
       />
       
       <form

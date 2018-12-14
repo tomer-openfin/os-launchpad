@@ -119,17 +119,17 @@ function* watchGetSettingsRequest() {
 }
 
 function* watchGetSettingsSuccess() {
-  yield put(reboundLauncherRequest(false));
+  yield put(reboundLauncherRequest(false, 0));
 }
 
 function* watchSetAutoHide() {
-  yield put(reboundLauncherRequest(false));
+  yield put(reboundLauncherRequest(false, 0));
 
   yield put(saveSettingsRequest());
 }
 
 function* watchSetLaunchbarPosition() {
-  yield put(reboundLauncherRequest(false));
+  yield put(reboundLauncherRequest(false, 0));
 
   yield put(saveSettingsRequest());
 }
@@ -143,8 +143,8 @@ function* watchSaveSettingsRequest() {
   yield put(saveSettingsSuccess());
 }
 
-function* watchUpdateLauncherApps() {
-  yield put(reboundLauncherRequest(true));
+function* watchUpdateLauncherApps(delay: number) {
+  yield put(reboundLauncherRequest(true, delay));
 
   yield put(saveSettingsRequest());
 }
@@ -157,8 +157,8 @@ export function* meSaga() {
   yield takeLatest(LOGIN.ERROR, watchLoginError);
   yield takeLatest(LOGIN_WITH_NEW_PASSWORD, watchLoginWithNewPassword);
   yield takeLatest(SAVE_SETTINGS.REQUEST, watchSaveSettingsRequest);
-  yield takeLatest(ADD_TO_APP_LAUNCHER, watchUpdateLauncherApps);
-  yield takeLatest(REMOVE_FROM_APP_LAUNCHER, watchUpdateLauncherApps);
+  yield takeLatest(ADD_TO_APP_LAUNCHER, watchUpdateLauncherApps, 0);
+  yield takeLatest(REMOVE_FROM_APP_LAUNCHER, watchUpdateLauncherApps, 150);
   yield takeLatest(SET_LAUNCHER_POSITION, watchSetLaunchbarPosition);
   yield takeLatest(SET_AUTO_HIDE, watchSetAutoHide);
 }

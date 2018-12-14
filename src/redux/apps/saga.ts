@@ -78,7 +78,7 @@ function* watchCloseFinAppRequest(action: CloseFinAppRequest) {
 }
 
 function* watchSetAppDirectoryList() {
-  yield put(reboundLauncherRequest(false));
+  yield put(reboundLauncherRequest(false, 0));
 }
 
 export function* appsSaga() {

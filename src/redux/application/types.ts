@@ -26,6 +26,7 @@ export interface OpenfinReadyPayload {
 }
 
 export interface ReboundLauncherRequestPayload {
+  delay: number;
   shouldAnimate: boolean;
 }
 

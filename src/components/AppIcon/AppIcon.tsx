@@ -4,40 +4,48 @@ import { ContextMenuOption } from '../../redux/contextMenu/types';
 import { AppIconSizes, DirectionalPosition } from '../../types/commons';
 import * as SIZE from '../../utils/sizingConstants';
 
-import ContextMenuZone from '../ContextMenuZone';
-import { Icon, IconWrapper, StyledAppIndicator, Wrapper } from './AppIcon.css';
+import { Icon, StyledAppIndicator, StyledContextMenuZone, Wrapper } from './AppIcon.css';
 
 export interface Props {
   appId: string;
+  backgroundColor?: string;
   className?: string;
   contextMenuOptions?: ContextMenuOption[];
+  hasTransition?: boolean;
   imgSrc: string;
   indicatorPosition: DirectionalPosition;
-  isDisabled: boolean;
+  isDisabled?: boolean;
   launchApp: () => void;
+  margin?: number;
   size?: AppIconSizes;
 }
 
-const AppIcon = ({ className, contextMenuOptions, isDisabled, imgSrc, indicatorPosition, launchApp, appId, size = SIZE.APP_ICON }: Props) => {
-  if (contextMenuOptions) {
-    return (
-      <ContextMenuZone className={className} options={contextMenuOptions}>
-        <Wrapper isDisabled={isDisabled} onClick={launchApp}>
-          <IconWrapper size={size}>
-            <Icon imgSrc={imgSrc} />
-          </IconWrapper>
-
-          <StyledAppIndicator appId={appId} position={indicatorPosition} />
-        </Wrapper>
-      </ContextMenuZone>
-    );
-  }
-
+const AppIcon = ({
+  appId,
+  backgroundColor,
+  className,
+  contextMenuOptions,
+  hasTransition = false,
+  isDisabled = false,
+  imgSrc,
+  indicatorPosition,
+  launchApp,
+  margin = 0,
+  size = SIZE.APP_ICON,
+}: Props) => {
   return (
-    <Wrapper isDisabled={isDisabled} className={className} onClick={launchApp}>
-      <IconWrapper size={size}>
+    <Wrapper
+      backgroundColor={backgroundColor}
+      className={className}
+      hasTransition={hasTransition}
+      isDisabled={isDisabled}
+      margin={margin}
+      onClick={isDisabled ? undefined : launchApp}
+      size={size}
+    >
+      <StyledContextMenuZone size={size} options={contextMenuOptions}>
         <Icon imgSrc={imgSrc} />
-      </IconWrapper>
+      </StyledContextMenuZone>
 
       <StyledAppIndicator appId={appId} position={indicatorPosition} />
     </Wrapper>

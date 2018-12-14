@@ -36,7 +36,7 @@ import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
 import { animateLauncherCollapseExpand, setWindowRelativeToLauncherBounds } from './utils';
 
 const APP_UUID = getAppUuid();
-const ANIMATION_DURATION = 150;
+const ANIMATION_DURATION = 300;
 
 const { ENTERPRISE = false } = process.env;
 
@@ -104,7 +104,7 @@ function* watchLaunchAppLauncher() {
   //   yield put(restoreLayout(layout));
   // }
 
-  yield all([take([REBOUND_LAUNCHER.ERROR, REBOUND_LAUNCHER.SUCCESS]), put(reboundLauncherRequest(false))]);
+  yield all([take([REBOUND_LAUNCHER.ERROR, REBOUND_LAUNCHER.SUCCESS]), put(reboundLauncherRequest(false, 0))]);
 
   // When all done show main app bar
   const { fin } = window;
@@ -176,7 +176,10 @@ function* watchReboundLauncherRequest(action: ReboundLauncherRequestAction) {
   }
   const { width, height, left, top } = calcLauncherPosition(appList.length, systemIcons, monitorInfo, launcherPosition, autoHide, isExpanded);
 
-  const { shouldAnimate } = payload;
+  const { shouldAnimate, delay: animationDelay } = payload;
+  if (animationDelay) {
+    yield call(delay, animationDelay);
+  }
   yield call(
     animateWindow,
     launcherFinWindow,

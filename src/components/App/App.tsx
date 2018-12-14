@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import * as arrowIcon from '../../assets/ArrowCircle.svg';
 import * as arrowDownIcon from '../../assets/ArrowDown.svg';
@@ -8,12 +9,12 @@ import { App, DirectionalPosition } from '../../types/commons';
 import { SystemIcon } from '../../utils/getSystemIcons';
 import { calcCollapsedSystemSize, calcExpandedSystemSize } from '../../utils/windowPositionHelpers';
 
-import Logo from '../Logo';
+import AppIcon, { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from '../AppIcon';
 import {
   ArrowIcon,
   Main,
   Overlay,
-  StyledAppIcon,
+  StyledLogo,
   StyledSvgIcon,
   SystemDrawerWrapper,
   SystemIconsWrapper,
@@ -47,13 +48,15 @@ const App = (props: Props) => {
   return (
     <Main launcherPosition={launcherPosition}>
       <Wrapper endPadding={calcCollapsedSystemSize(systemIcons)} launcherPosition={launcherPosition}>
-        <Logo backgroundColor="rgba(0,0,0,.16)" />
+        <StyledLogo launcherPosition={launcherPosition} />
 
-        {apps.map(app => (
-          <React.Fragment key={app.id}>
-            <StyledAppIcon isDisabled={isDrawerExpanded} launcherPosition={launcherPosition} appId={app.id} withContextMenu />
-          </React.Fragment>
-        ))}
+        <TransitionGroup component={null}>
+          {apps.map(app => (
+            <CSSTransition key={app.id} classNames={APP_ICON_TRANSITION_CLASSNAMES} timeout={APP_ICON_TRANSITION_DURATION} unmountOnExit>
+              <AppIcon hasTransition isDisabled={isDrawerExpanded} margin={10} appId={app.id} withContextMenu />
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
 
         <SystemDrawerWrapper isDrawerExpanded={isDrawerExpanded} size={drawerSize} launcherPosition={launcherPosition}>
           <Overlay isDrawerExpanded={isDrawerExpanded} onClick={toggleDrawer} />
