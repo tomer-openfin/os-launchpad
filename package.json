@@ -2,7 +2,7 @@
   "name": "os-launchpad",
   "version": "2.0.0",
   "scripts": {
-    "build-storybook": "build-storybook -o build/storybook",
+    "build-storybook": "STORYBOOK_ENV=true build-storybook -o build/storybook",
     "build": "npm run clean && webpack",
     "check": "gts check",
     "clean": "gts clean && rimraf build",
