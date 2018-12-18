@@ -2,14 +2,14 @@ import { Window } from '@giantmachines/redux-openfin';
 import { delay } from 'redux-saga';
 import { all, call, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
-import windowsConfig, { createConfig, initOnStartWindows, LAYOUTS_WINDOW, MAIN_WINDOW } from '../../config/windows';
+import windowsConfig, { initOnStartWindows, LAYOUTS_WINDOW } from '../../config/windows';
 import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
-import { deregister } from '../../utils/openfinLayouts';
 import { animateWindow, getSystemMonitorInfo } from '../../utils/openfinPromises';
 import takeFirst from '../../utils/takeFirst';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList } from '../apps';
+import { registerGlobalHotkeys } from '../globalHotkeys/utils';
 import { getLayoutsRequest } from '../layouts';
 import { getAutoHide, getLauncherPosition, getSettingsRequest } from '../me';
 import { getOrgSettingsRequest } from '../organization';
@@ -33,7 +33,7 @@ import {
 } from './actions';
 import { getApplicationIsExpanded } from './selectors';
 import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
-import { animateLauncherCollapseExpand, setWindowRelativeToLauncherBounds } from './utils';
+import { animateLauncherCollapseExpand, deregisterWindowsFromLayoutsService, setWindowRelativeToLauncherBounds } from './utils';
 
 const APP_UUID = getAppUuid();
 const ANIMATION_DURATION = 300;
@@ -98,34 +98,24 @@ function* openfinSetup(action: OpenfinReadyAction) {
 }
 
 function* watchLaunchAppLauncher() {
+  // Register global hotkeys
+  registerGlobalHotkeys(window.store.dispatch);
+
   // const ids = yield select(getLayoutsIds);
   // if (ids[0]) {
   //   const layout = yield select(getLayoutById, ids[0]);
   //   yield put(restoreLayout(layout));
   // }
-
   yield all([take([REBOUND_LAUNCHER.ERROR, REBOUND_LAUNCHER.SUCCESS]), put(reboundLauncherRequest(false, 0))]);
 
   // When all done show main app bar
   const { fin } = window;
   if (fin) {
-    // TODO: Remove once app launchers width is set to screen size width || height
-    //       Delay helps with the dom shuffling
-    yield delay(100);
+    // Delay helps with the dom shuffling and initial animations
+    yield delay(150);
     yield put(Window.showWindow({ id: APP_UUID }));
-
-    // Deregister all child windows
-    (async function deregisterAllWindows() {
-      const names = Object.keys(windowsConfig).map(window => windowsConfig[window].name);
-      for (let i = 0; i < names.length; i++) {
-        // UUID (i.e MAIN_WINDOW) shared across child windows
-        await deregister(createConfig(MAIN_WINDOW, names[i]))
-          // tslint:disable-next-line:no-console
-          .then(() => console.log(`Deregistering ${names[i]} from Layouts service.`))
-          // tslint:disable-next-line:no-console
-          .catch(err => console.log(`${names[i]} has already been deregistred from Layouts service. ${err}`));
-      }
-    })();
+    // Deregister all child windows from layouts service
+    yield call(deregisterWindowsFromLayoutsService, Object.keys(windowsConfig).map(configKey => windowsConfig[configKey].name));
   }
 }
 

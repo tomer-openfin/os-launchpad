@@ -14,8 +14,6 @@ export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
 
 const isProduction = NODE_ENV === 'production';
 
-export const createConfig = (uuid, name) => ({ uuid, name });
-
 export const initOnStartWindows = {
   // eventually move admin window out of initOnStartWindows and only initialize on login if isAdmin
   admin: {

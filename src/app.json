@@ -22,9 +22,18 @@
     "maximizable": false,
     "minimizable": false
   },
-  "services": [{ "name": "notifications" }, { "name": "layouts" }],
+  "services": [
+    {
+      "name": "notifications",
+      "manifestUrl": "https://cdn.openfin.co/services/openfin/notifications/app.staging.json"
+    },
+    {
+      "name": "layouts",
+      "manifestUrl": "https://cdn.openfin.co/services/openfin/layouts/app.staging.json"
+    }
+  ],
   "runtime": {
-    "version": "9.61.36.36"
+    "version": "9.61.37.46"
   },
   "shortcut": {
     "company": "OpenFin",
