@@ -1,0 +1,57 @@
+import * as React from 'react';
+import { ROUTES } from '../Router/consts';
+
+import WindowHeader from '../WindowHeader';
+import { ContentWrapper, TabLink, Wrapper } from './Admin.css';
+
+const ADMIN_TABBED_ROUTES = [
+  {
+    exact: true,
+    label: 'Enterprise',
+    path: ROUTES.ADMIN,
+  },
+  {
+    label: 'Apps',
+    path: ROUTES.ADMIN_APPS,
+  },
+  {
+    label: 'Users',
+    path: ROUTES.ADMIN_USERS,
+  },
+];
+
+interface Props {
+  isAdmin: boolean;
+  children?: React.ReactNode;
+  onEscDown: () => void;
+}
+
+const renderAdminTab = ({ exact = false, path, label }) => (
+  <TabLink exact={exact} key={path} to={path}>
+    {label}
+  </TabLink>
+);
+
+const renderAdmin = children => {
+  return (
+    <>
+      <WindowHeader bottomBorder>
+        {ADMIN_TABBED_ROUTES.map(renderAdminTab)}
+      </WindowHeader>
+
+      <ContentWrapper>{children}</ContentWrapper>
+    </>
+  );
+};
+
+const Admin = (props: Props) => {
+  const { isAdmin, children } = props;
+
+  return (
+    <Wrapper>
+      {isAdmin ? renderAdmin(children) : <h1>You do not have clearance to see the admin tools.</h1>}
+    </Wrapper>
+  );
+};
+
+export default Admin;

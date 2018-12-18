@@ -1,3 +1,10 @@
+.awcache
+.env
+.cache
+.git
+
+build
 dist
 staging
 node_modules
+storybook-static

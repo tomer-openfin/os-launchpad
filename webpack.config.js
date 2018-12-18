@@ -1,72 +1,96 @@
-const path = require('path');
+require('dotenv').config();
+
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
 
-/**
- * creates a webpack config to be exported when npm run build in run
- * @param {string} entryPoint The entry points to the application
- * @return {Object} A webpack module for the project
- */
-function createWebpackConfigForProject(entryPoint) {
-    return {
-        entry: entryPoint,
-        output: {
-            path: path.resolve(__dirname, './dist/pack'),
-            filename: '[name]-bundle.js'
-        },
-        resolve: {
-            extensions: ['.js']
-        },
-        devtool: 'source-map',
-        module: {
-            rules: [
-                {
-                    test: /\.(png|jpg|gif|otf|svg)$/,
-                    use: [
-                        {
-                            loader: 'url-loader',
-                            options: {
-                                limit: 8192
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        plugins: [
-            new CopyWebpackPlugin([ { from: './src', to: '..', ignore: ['*.ts', 'app.json'] } ]),
-            new CopyWebpackPlugin([
-                { 
-                    from: './src/app.json', 
-                    transform: (content) => {
-                        const confString = '' + content;
-                        return prepConfig(confString);
-                    },
-                    to: '..'
-                }
-            ])
-        ]
-    };
-}
+const transformOpenFinConfig = require('./scripts/utils/transformOpenFinConfig');
+const appJson = require('./src/app.json');
 
-function prepConfig(configString) {
-    const deployLocation = process.env.DEPLOY_LOCATION;
-    const runtimeVersion = process.env.RUNTIME_VERSION;
+const {
+  API_URL,
+  ENTERPRISE,
+  HOST = '0.0.0.0',
+  USERNAME,
+  PASSWORD,
+  MOCK_POSTMAN_URI,
+  NODE_ENV = 'development',
+  PORT = 8080,
+  POSTMAN_API_KEY,
+  RUNTIME_VERSION,
+} = process.env;
 
-    if (deployLocation !== undefined && deployLocation !== '') {
-        configString = configString.replace(/http\:\/\/localhost\:9001/g, deployLocation);
-    }
+const BACKEND = process.env.BACKEND || MOCK_POSTMAN_URI;
+const DEPLOY_LOCATION = process.env.DEPLOY_LOCATION || `http://${HOST}:${PORT}`;
+const isProduction = NODE_ENV === 'production';
 
-    if (runtimeVersion !== undefined && runtimeVersion !== '') {
-        const config = JSON.parse(configString);
-        config.runtime.version = runtimeVersion;
-        configString = JSON.stringify(config, null, 4);
-    }
-    return configString;
-}
-
-/**
- * Modules to be exported
- */
-module.exports = [
-    createWebpackConfigForProject({'launcher': './staging/src/index.js'})
-];
+module.exports = {
+  mode: NODE_ENV,
+  devtool: 'source-map',
+  entry: './src/index.tsx',
+  output: {
+    filename: `bundle${isProduction ? '.[contentHash]' : ''}.js`,
+    path: path.join(__dirname, '/build'),
+    publicPath: '/',
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json'],
+  },
+  module: {
+    rules: [
+      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
+      { test: /\.js$/, enforce: 'pre', loader: 'source-map-loader' },
+      { test: /\.(png|svg|jpg|gif)$/, loader: 'file-loader' },
+    ],
+  },
+  devServer: {
+    historyApiFallback: true,
+    host: HOST,
+    port: PORT,
+    contentBase: path.join(__dirname, 'build'),
+    proxy: {
+      '/api/**': {
+        changeOrigin: true,
+        logLevel: 'debug',
+        target: BACKEND,
+      },
+    },
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        HOST: JSON.stringify(HOST),
+        API_URL: JSON.stringify(API_URL),
+        APP_UUID: JSON.stringify(appJson.startup_app.uuid),
+        ENTERPRISE: JSON.stringify(ENTERPRISE),
+        MOCK_POSTMAN_URI: JSON.stringify(MOCK_POSTMAN_URI),
+        NODE_ENV: JSON.stringify(NODE_ENV),
+        POSTMAN_API_KEY: JSON.stringify(POSTMAN_API_KEY),
+        USERNAME: JSON.stringify(USERNAME),
+        PASSWORD: JSON.stringify(PASSWORD),
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'index.html'),
+      env: NODE_ENV,
+    }),
+    new webpack.NamedModulesPlugin(),
+    new CopyWebpackPlugin([
+      {
+        from: './src/app.json',
+        to: '.',
+        transform: content =>
+          transformOpenFinConfig(`${content}`, {
+            rootUrl: DEPLOY_LOCATION,
+            runtimeVersion: RUNTIME_VERSION,
+            isProduction,
+          }),
+      },
+      {
+        from: './public',
+        to: './public',
+      },
+    ]),
+  ],
+};

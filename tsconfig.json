@@ -1,12 +1,17 @@
 {
   "extends": "./node_modules/gts/tsconfig-google.json",
   "compilerOptions": {
-    "outDir": "staging",
+    "baseUrl": "./",
     "declaration": false,
+    "jsx": "react",
+    "lib": ["dom", "es2018"],
+    "noImplicitAny": false,
+    "outDir": "build",
+    "paths": {
+      "styled-components": ["src/styles/styled-components.ts"]
+    },
     "rootDir": ".",
-    "lib": [ "dom", "es2018" ]
+    "rootDirs": ["src", "stories"]
   },
-  "include": [
-    "src/**/*.ts"
-  ]
+  "include": ["src/**/*"]
 }

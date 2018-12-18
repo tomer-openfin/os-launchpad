@@ -1,0 +1,297 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Styleguide/Color default 1`] = `
+<div
+  className="sc-htpNat iYVSdT"
+>
+  <div
+    className="sc-bxivhb fCDqOv"
+    name="Sun"
+  />
+  <div
+    className="sc-bxivhb gchMiF"
+    name="Mercury"
+  />
+  <div
+    className="sc-bxivhb ciAhxt"
+    name="Venus"
+  />
+  <div
+    className="sc-bxivhb eOghXW"
+    name="Earth"
+  />
+  <div
+    className="sc-bxivhb eJzEmW"
+    name="Mars"
+  />
+  <div
+    className="sc-bxivhb hEWfdU"
+    name="Asteroid_Belt"
+  />
+  <div
+    className="sc-bxivhb gzMpzH"
+    name="Jupiter"
+  />
+  <div
+    className="sc-bxivhb eceLUx"
+    name="Saturn"
+  />
+  <div
+    className="sc-bxivhb iQLOdN"
+    name="Uranus"
+  />
+  <div
+    className="sc-bxivhb zhnEX"
+    name="Neptune"
+  />
+  <div
+    className="sc-bxivhb gZzfFi"
+    name="Kuiper_Belt"
+  />
+  <div
+    className="sc-bxivhb elMfIG"
+    name="Pluto"
+  />
+  <div
+    className="sc-bxivhb bRSwfK"
+    name="Nebula"
+  />
+  <div
+    className="sc-bxivhb ktGsWd"
+    name="Comet"
+  />
+  <div
+    className="sc-bxivhb dmMJnP"
+    name="Vacuum"
+  />
+  <div
+    className="sc-bxivhb fWitVi"
+    name="Void"
+  />
+</div>
+`;
+
+exports[`Storyshots Styleguide/Typography default 1`] = `
+<div
+  className="sc-htpNat iYVSdT"
+>
+  <div
+    className="sc-bwzfXH eIxfGp"
+  >
+    <div
+      className="sc-btzYZH htaujE"
+    >
+      Sirius
+    </div>
+    <div
+      className="sc-bdVaJa bfSdRF"
+    >
+      font-size: 14px;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: -0.09px;
+
+    </div>
+  </div>
+  <div
+    className="sc-bwzfXH eIxfGp"
+  >
+    <div
+      className="sc-lhVmIH eTultk"
+    >
+      Canopus
+    </div>
+    <div
+      className="sc-bdVaJa bfSdRF"
+    >
+      font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: -0.09px;
+
+    </div>
+  </div>
+  <div
+    className="sc-bwzfXH eIxfGp"
+  >
+    <div
+      className="sc-bYSBpT bRQwzE"
+    >
+      Arcturus
+    </div>
+    <div
+      className="sc-bdVaJa bfSdRF"
+    >
+      font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.1px;
+
+    </div>
+  </div>
+  <div
+    className="sc-bwzfXH eIxfGp"
+  >
+    <div
+      className="sc-elJkPf beTwjh"
+    >
+      Procyon
+    </div>
+    <div
+      className="sc-bdVaJa bfSdRF"
+    >
+      font-size: 16px;
+  font-weight: 800;
+  line-height: 22px;
+  letter-spacing: -0.1px;
+
+    </div>
+  </div>
+  <div
+    className="sc-bwzfXH eIxfGp"
+  >
+    <div
+      className="sc-jtRfpW gVXjio"
+    >
+      Deneb
+    </div>
+    <div
+      className="sc-bdVaJa bfSdRF"
+    >
+      font-size: 13px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 16px;
+  letter-spacing: -0.08px;
+
+    </div>
+  </div>
+  <div
+    className="sc-bwzfXH eIxfGp"
+  >
+    <div
+      className="sc-kTUwUJ fFWlBC"
+    >
+      Pollux
+    </div>
+    <div
+      className="sc-bdVaJa bfSdRF"
+    >
+      font-size: 13px;
+  font-weight: 800;
+  font-style: italic;
+  line-height: 18px;
+  letter-spacing: -0.24px;
+
+    </div>
+  </div>
+  <div
+    className="sc-bwzfXH eIxfGp"
+  >
+    <div
+      className="sc-dqBHgY kxXVvB"
+    >
+      Bellatrix
+    </div>
+    <div
+      className="sc-bdVaJa bfSdRF"
+    >
+      font-size: 11px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 1.5px;
+
+    </div>
+  </div>
+  <div
+    className="sc-bwzfXH eIxfGp"
+  >
+    <div
+      className="sc-gxMtzJ ezkPZO"
+    >
+      Polaris
+    </div>
+    <div
+      className="sc-bdVaJa bfSdRF"
+    >
+      font-size: 20px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: -0.5px;
+
+    </div>
+  </div>
+  <div
+    className="sc-bwzfXH eIxfGp"
+  >
+    <div
+      className="sc-dfVpRl exNSkB"
+    >
+      Algol
+    </div>
+    <div
+      className="sc-bdVaJa bfSdRF"
+    >
+      font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: -0.35px;
+
+    </div>
+  </div>
+  <div
+    className="sc-bwzfXH eIxfGp"
+  >
+    <div
+      className="sc-gzOgki jRkFZY"
+    >
+      Enif
+    </div>
+    <div
+      className="sc-bdVaJa bfSdRF"
+    >
+      font-size: 11px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 2px;
+
+    </div>
+  </div>
+  <div
+    className="sc-bwzfXH eIxfGp"
+  >
+    <div
+      className="sc-iyvyFf dvelAh"
+    >
+      Naos
+    </div>
+    <div
+      className="sc-bdVaJa bfSdRF"
+    >
+      font-size: 11px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 1px;
+
+    </div>
+  </div>
+  <div
+    className="sc-bwzfXH eIxfGp"
+  >
+    <div
+      className="sc-hwwEjo klREid"
+    >
+      Sol
+    </div>
+    <div
+      className="sc-bdVaJa bfSdRF"
+    >
+      font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.09px;
+
+    </div>
+  </div>
+</div>
+`;

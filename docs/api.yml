@@ -1,0 +1,720 @@
+swagger: '2.0'
+
+host: 'localhost:8081'
+
+basePath: /api
+
+info:
+  title: whiteboard api
+  version: 0.0.1
+
+paths:
+
+  /config:
+    get:
+      summary: Get Configuration
+      description: theme settings, etc
+
+      responses:
+        '200':
+          description: Configuration
+          schema:
+            $ref: '#/definitions/Config'
+        '404':
+          description: Configuration not found
+
+
+  /auth/login:
+    post:
+      summary: Login
+
+      tags:
+        - Auth
+
+      parameters:
+        - description: Login credentials json
+          required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/Login'
+
+      responses:
+        '200':
+          description: Login Successful
+          schema:
+            $ref: '#/definitions/CurrentUserProperties'
+        '401':
+          description: Login Unsuccessful
+          schema:
+            $ref: '#/definitions/AuthChallengeError'
+
+  /auth/logout:
+    post:
+      summary: Logout
+
+      tags:
+        - Auth
+
+      responses:
+        '200':
+          description: Logout Successful
+
+  /auth/password/new:
+    post:
+      summary: New Password
+
+      tags:
+        - Auth
+
+      parameters:
+        - description: New password json
+          required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/NewPassword'
+
+      responses:
+        '200':
+          description: Password update successful
+          schema:
+            $ref: '#/definitions/CurrentUserProperties'
+        '401':
+          description: Password update unsuccessful
+          schema:
+            $ref: '#/definitions/AuthChallengeError'
+        '400':
+          description: Bad Request
+
+  /auth/password/change:
+    post:
+      summary: Change Password
+
+      tags:
+        - Auth
+
+      parameters:
+        - description: Change password json
+          required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/ChangePassword'
+
+      responses:
+        '200':
+          description: Password update successful
+        '401':
+          description: Password update failed
+        '400':
+          description: Bad Request
+
+  /auth/password/forgot:
+    post:
+      summary: Forgot Password
+
+      tags:
+        - Auth
+
+      responses:
+        '200':
+          description: Password update successful
+
+  /auth/password/confirm:
+    post:
+      summary: Confirm Forgot Password
+
+      tags:
+        - Auth
+
+      parameters:
+        - description: Change password json
+          required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/ConfirmPassword'
+
+      responses:
+        '200':
+          description: Password update successful
+        '401':
+          description: Password update unsuccessful
+
+
+  /user/layouts:
+    get:
+      summary: Get Layouts
+
+      tags:
+        - User
+
+      responses:
+        '200':
+          description: Layout List
+          schema:
+            title: layouts array
+            type: array
+            items:
+              $ref: '#/definitions/Layout'
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+        '500':
+          description: Server Error
+
+    post:
+      summary: Save New Layout
+
+      tags:
+        - User
+
+      parameters:
+        - description: Layout json
+          required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/NewLayout'
+
+      responses:
+        '200':
+          description: Layout Saved
+          schema:
+            $ref: '#/definitions/Layout'
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+        '400':
+          description: Bad request
+        '500':
+          description: Server Error
+
+  /user/layouts/{name}:
+    get:
+      summary: Get Layout
+
+      tags:
+        - User
+
+      parameters:
+        - in: path
+          required: true
+          name: name
+          type: string
+
+      responses:
+        '200':
+          description: Layout
+          schema:
+            $ref: '#/definitions/Layout'
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+        '404':
+          description: Layout not Found
+        '500':
+          description: Server Error
+
+    put:
+      summary: Update Layout
+
+      tags:
+        - User
+
+      parameters:
+        - in: path
+          required: true
+          name: name
+          type: string
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/Layout'
+          description: Layout json
+
+      responses:
+        '200':
+          description: Layout Updated
+          schema:
+            $ref: '#/definitions/Layout'
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+        '400':
+          description: Bad request
+        '404':
+          description: Layout not Found
+        '500':
+          description: Server Error
+
+    delete:
+      summary: Delete Layout
+
+      tags:
+        - User
+
+      parameters:
+        - in: path
+          required: true
+          name: name
+          type: string
+
+      responses:
+        '200':
+          description: Layout Deleted
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+        '404':
+          description: Layout not Found
+        '500':
+          description: Server Error
+
+  /user/settings:
+    get:
+      summary: Get User Settings
+
+      tags:
+        - User
+
+      responses:
+        '200':
+          description: Settings Object
+          schema:
+            $ref: '#/definitions/Settings'
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+        '500':
+          description: Server Error
+
+    post:
+      summary: Save User Settings
+
+      tags:
+        - User
+
+      parameters:
+        - description: Settings json
+          required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/Settings'
+
+      responses:
+        '200':
+          description: Settings saved
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+        '400':
+          description: Bad request
+        '500':
+          description: Server Error
+
+
+  /admin/users:
+    get:
+      summary: Get Users
+
+      tags:
+        - Admin
+
+      responses:
+        '200':
+          description: User List
+          schema:
+            title: Users array
+            type: array
+            items:
+              $ref: '#/definitions/AdminUserProperties'
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+
+    post:
+      summary: Create User
+
+      tags:
+        - Admin
+
+      parameters:
+        - description: User payload
+          required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/AdminCreateUserProperties'
+
+      responses:
+        '200':
+          description: User created
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+        '400':
+          description: Bad request
+
+  /admin/users/{id}:
+    get:
+      summary: Get User
+
+      tags:
+        - Admin
+
+      parameters:
+        - in: path
+          required: true
+          name: id
+          type: string
+
+      responses:
+        '200':
+          description: User
+          schema:
+            $ref: '#/definitions/AdminUserProperties'
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+        '400':
+          description: Bad request
+        '404':
+          description: User not Found
+
+    put:
+      summary: Update User
+
+      tags:
+        - Admin
+
+      parameters:
+        - in: path
+          required: true
+          name: id
+          type: string
+        - in: body
+          name: body
+          description: User Payload
+          required: true
+          schema:
+            $ref: '#/definitions/AdminUpdateUserProperties'
+
+      responses:
+        '200':
+          description: User updated
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+        '400':
+          description: Bad request
+        '404':
+          description: User not Found
+
+    delete:
+      summary: Delete User
+
+      tags:
+        - Admin
+
+      parameters:
+        - in: path
+          required: true
+          name: id
+          type: string
+
+      responses:
+        '200':
+          description: User deleted
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+        '400':
+          description: Bad request
+        '404':
+          description: User not Found
+
+  /admin/settings:
+    get:
+      summary: Get Org Settings
+
+      tags:
+        - Admin
+
+      responses:
+        '200':
+          description: Settings Object
+          schema:
+            $ref: '#/definitions/Settings'
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+        '500':
+          description: Server Error
+
+    post:
+      summary: Save Org Settings
+
+      tags:
+        - Admin
+
+      parameters:
+        - description: Settings json
+          required: true
+          name: body
+          in: body
+          schema:
+            $ref: '#/definitions/Settings'
+
+      responses:
+        '200':
+          description: Settings saved
+        '401':
+          description: Access Denied
+          schema:
+            $ref: '#/definitions/AuthError'
+        '400':
+          description: Bad request
+        '500':
+          description: Server Error
+
+
+definitions:
+  Login:
+    title: Login credentials payload
+    type: object
+    properties:
+      username:
+        type: string
+        description: Username (email)
+      password:
+        type: string
+        description: Password
+    required:
+      - username
+      - password
+
+  NewPassword:
+    title: New password and credentials payload
+    type: object
+    properties:
+      username:
+        type: string
+        description: Username (email)
+      session:
+        type: string
+        description: Old Password
+      newPassword:
+        type: string
+        description: New Password
+      fields:
+        type: object
+        description: required fields
+    required:
+      - username
+      - password
+      - newPassword
+      - session
+
+  ChangePassword:
+    title: Change password payload
+    type: object
+    properties:
+      password:
+        type: string
+        description: Old Password
+      newPassword:
+        type: string
+        description: New Password
+    required:
+      - password
+      - newPassword
+
+  ConfirmPassword:
+    title: Confirm forgot password payload
+    type: object
+    properties:
+      password:
+        type: string
+        description: Old Password
+      newPassword:
+        type: string
+        description: New Password
+    required:
+      - password
+      - newPassword
+
+  Layout:
+    title: layout json request payload
+    type: object
+    properties:
+      name:
+        type: string
+        description: layout name
+      layout:
+        type: object
+        description: layout data
+
+  NewLayout:
+    title: layout json request payload
+    type: object
+    properties:
+      name:
+        type: string
+        description: layout name
+      layout:
+        type: object
+        description: layout data
+
+  AuthError:
+    title: authentication error payload
+    type: object
+    properties:
+      status:
+        type: string
+        description: error status/type
+      message:
+        type: string
+        description: error message
+
+  AuthChallengeError:
+    title: authentication challenge error
+    type: object
+    properties:
+      status:
+        type: string
+        description: challenge type
+      message:
+        type: string
+        description: error message
+      session:
+        type: string
+        description: challenge session id
+      requiredFields:
+        type: array
+        description: any required user properties (initial login)
+        items:
+          type: string
+
+  CurrentUserProperties:
+    title: current user properties payload
+    type: object
+    properties:
+      email:
+        type: string
+        description: email
+      firstName:
+        type: string
+        description: first name
+      lastName:
+        type: string
+        description: last name
+      phone:
+        type: string
+        description: phone number
+      isAdmin:
+        type: boolean
+        description: user is an admin
+
+  AdminUserProperties:
+    title: admin users properties
+    type: object
+    properties:
+      username:
+        type: string
+        description: user GUID
+      email:
+        type: string
+        description: email
+      firstName:
+        type: string
+        description: first name
+      lastName:
+        type: string
+        description: last name
+      phone:
+        type: string
+        description: phone number
+      isAdmin:
+        type: boolean
+        description: user is an admin
+      created:
+        type: string
+        description: user created at
+      lastModified:
+        type: string
+        description: user last modified at
+      status:
+        type: string
+        description: user status
+      enabled:
+        type: boolean
+        description: user enabled
+
+  AdminCreateUserProperties:
+    title: admin users properties
+    type: object
+    properties:
+      email:
+        type: string
+        description: email
+      firstName:
+        type: string
+        description: first name
+      lastName:
+        type: string
+        description: last name
+      phone:
+        type: string
+        description: phone number
+      tmpPassword:
+        type: string
+        description: temporary password
+    required:
+      - email
+      - tmpPassword
+
+  AdminUpdateUserProperties:
+    title: admin users properties
+    type: object
+    properties:
+      firstName:
+        type: string
+        description: first name
+      lastName:
+        type: string
+        description: last name
+      phone:
+        type: string
+        description: phone number
+
+  Config:
+    title: 'organization configuration (theme, etc)'
+    type: object
+    properties:
+      config:
+        type: object
+
+  Settings:
+    title: user settings
+    type: object
+    properties:
+      settings:
+        type: object
+        description: user settings object

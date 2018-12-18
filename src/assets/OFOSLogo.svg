@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
+    <title>Logo</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(1.000000, 1.000000)">
+            <rect id="Rectangle" x="0" y="0" width="34" height="34"></rect>
+            <g id="Logo2" transform="translate(7.555556, 5.666667)" stroke="#FFFFFF" stroke-width="1.8">
+                <circle id="Oval" cx="4.22763158" cy="5.27149123" r="4.22763158"></circle>
+                <path d="M11.3084795,1.04385965 L11.3084795,9.39473684" id="Path" stroke-linecap="round"></path>
+                <path d="M18.1979532,0.869883041 L11.4824561,0.869883041" id="Path" stroke-linecap="round"></path>
+                <path d="M18.1979532,5.04532164 L11.4824561,5.04532164" id="Path" stroke-linecap="round"></path>
+                <circle id="Oval" cx="4.22763158" cy="16.7539474" r="4.22763158"></circle>
+                <path d="M18.7372807,13.7801827 C17.5617292,12.9391413 16.146189,12.4998357 14.7010234,12.5275511 C12.1609649,12.5275511 11.4824561,13.867171 11.4824561,14.6152704 C11.4824561,15.3633698 12.2479532,16.633399 14.9619883,16.633399 C17.6760234,16.633399 18.8590643,17.5032821 18.8590643,18.9298903 C18.8590643,20.3564984 17.6934211,21.2263815 15.2229532,21.2263815 C12.1957602,21.2263815 11.5172515,19.4866154 11.5172515,19.4866154" id="Path" stroke-linecap="round"></path>
+            </g>
+        </g>
+    </g>
+</svg>
