@@ -7,7 +7,7 @@ import AppList from '../AppList';
 const AppOverflow = () => {
   return (
     <Window>
-      <AppList />
+      <AppList isOverflowExpanded />
     </Window>
   );
 };

@@ -11,32 +11,32 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
     }
   >
     <div
-      className="sc-tilXH jMVAVb"
+      className="sc-fYxtnH hSLfWw"
     >
       <form
-        className="sc-fYxtnH dCovrf"
+        className="sc-jnlKLf EiRVt"
         onSubmit={[Function]}
       >
         <label
-          className="sc-bbmXgH cdMKTe"
+          className="sc-uJMKN dZZWiX"
           htmlFor="LogoFormFileInput"
         >
           <div
-            className="sc-jbKcbu iCroTy"
+            className="sc-hqyNC kqFpsl"
           >
             <div
-              className="sc-dnqmqq eqCERZ"
+              className="sc-VigVT fKFlJE"
             />
             <div
-              className="sc-hmzhuo gHDVAw"
+              className="sc-ksYbfQ cJAlrM"
             >
               <div
-                className="sc-cJSrbW EbCOS"
+                className="sc-kgAjT gLEmkU"
               >
                 Change Logo
               </div>
               <div
-                className="sc-kvZOFW hJoAPu"
+                className="sc-frDJqD kuAZlX"
               >
                 Files must be at least 200 x 200 pixels square.
                 <br />
@@ -44,7 +44,7 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
               </div>
               <input
                 accept="image/*"
-                className="sc-ksYbfQ hAwLYh"
+                className="sc-cJSrbW dDLgtt"
                 id="LogoFormFileInput"
                 name="logo"
                 onBlur={[Function]}
@@ -56,7 +56,7 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
           </div>
         </label>
         <button
-          className="sc-jnlKLf hXszXA"
+          className="sc-gGBfsJ etOPPr"
           disabled={true}
           onClick={[Function]}
           type="button"
@@ -65,7 +65,7 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
           Cancel
         </button>
         <button
-          className="sc-jnlKLf hZKkbE"
+          className="sc-gGBfsJ fhtfnN"
           disabled={true}
           type="submit"
           width={120}

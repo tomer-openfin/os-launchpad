@@ -11,21 +11,21 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
     }
   >
     <div
-      className="sc-jwKygS fBWxJW"
+      className="sc-cmTdod kHxQNt"
     >
       <form
         onSubmit={[Function]}
       >
         <div
-          className="sc-kafWEX jaIhry"
+          className="sc-cIShpX gMSzSu"
         >
           <label
-            className="sc-feJyhm ewNoUr"
+            className="sc-kafWEX nolLE"
           >
             Choose theme to set appearance of App Launcher and accompanying windows:
           </label>
           <select
-            className="sc-iELTvK gPSpcN"
+            className="sc-feJyhm bACkHX"
             disabled={false}
             id="ThemesFormSelectInput"
             name="theme"
@@ -47,7 +47,7 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
           </select>
         </div>
         <button
-          className="sc-cmTdod kbwKWD"
+          className="sc-iELTvK gnGFGW"
           disabled={true}
           onClick={[Function]}
           type="button"
@@ -56,7 +56,7 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
           Cancel
         </button>
         <button
-          className="sc-cmTdod jYmgWu"
+          className="sc-iELTvK bAsLHQ"
           disabled={true}
           type="submit"
           width={120}

@@ -68,6 +68,40 @@ export const calcCollapsedSystemSize = (systemIcons: SystemIcon[]) => {
   return SIZE.EXPAND_ICON + totalDefaultSystemIconSizes + totalCollapsedSystemPadding;
 };
 
+export const calcMaxAppCount = (launcherPosition: DirectionalPosition, systemIcons: SystemIcon[], monitorInfo: MonitorInfo) => {
+  const isOnTopOrBottom = isTopOrBottom(launcherPosition);
+  const totalDefaultSystemSize = calcCollapsedSystemSize(systemIcons);
+  const {
+    primaryMonitor: {
+      availableRect: { bottom, left, right, top },
+    },
+  } = monitorInfo;
+  const monitorGuttersSize = SIZE.LAUNCHER_MONITOR_GUTTER * 2;
+  const maximumEdgeLength = (isOnTopOrBottom ? right - left : bottom - top) - monitorGuttersSize;
+  const maximumAppSpace = maximumEdgeLength - SIZE.LOGO - totalDefaultSystemSize;
+
+  return Math.floor((maximumAppSpace - SIZE.APP_GUTTER) / (SIZE.APP_ICON + SIZE.APP_GUTTER));
+};
+
+export const calcAppListDimensions = (appCount: number, launcherPosition: DirectionalPosition, systemIcons: SystemIcon[], monitorInfo: MonitorInfo) => {
+  const isOnTopOrBottom = isTopOrBottom(launcherPosition);
+  const maxAppCount = calcMaxAppCount(launcherPosition, systemIcons, monitorInfo);
+
+  const appWithGutter = SIZE.APP_ICON + SIZE.APP_GUTTER;
+  const totalAppSpace = appCount ? Math.min(maxAppCount, appCount) * appWithGutter + SIZE.APP_GUTTER : SIZE.APP_GUTTER * 2;
+
+  const overflowRowOrColumnCount = Math.ceil(appCount / maxAppCount);
+  const overflowRowOrColumnSize = overflowRowOrColumnCount * SIZE.LOGO;
+
+  const height = isOnTopOrBottom ? overflowRowOrColumnSize : totalAppSpace;
+  const width = isOnTopOrBottom ? totalAppSpace : overflowRowOrColumnSize;
+
+  return {
+    height,
+    width,
+  };
+};
+
 /**
  * Returns new dimensions based on launcher position.
  *
@@ -106,6 +140,7 @@ export const calcDimensionsByLauncherPosition = (bounds: Bounds, launcherPositio
 export const calcLauncherDimensions = (
   appCount: number,
   systemIcons: SystemIcon[],
+  monitorInfo: MonitorInfo,
   launcherPosition: DirectionalPosition,
   autoHide: boolean,
   isExpanded: boolean,
@@ -114,17 +149,12 @@ export const calcLauncherDimensions = (
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);
   const STATIC_DIMENSION = collapsed ? SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA : SIZE.LOGO;
 
+  const totalDefaultSystemSize = calcCollapsedSystemSize(systemIcons);
   const totalSystemExpandedSize = calcExpandedSystemSize(systemIcons);
 
   const minimumDynamicDimension = SIZE.LOGO + totalSystemExpandedSize;
-
-  const totalAppIconSize = appCount * SIZE.APP_ICON;
-
-  const totalDefaultSystemSize = calcCollapsedSystemSize(systemIcons);
-
-  const totalAppGutter = (appCount + 1) * SIZE.APP_GUTTER;
-
-  const rawDynamicDimension = SIZE.LOGO + totalAppIconSize + totalDefaultSystemSize + totalAppGutter;
+  const appListDimensions = calcAppListDimensions(appCount, launcherPosition, systemIcons, monitorInfo);
+  const rawDynamicDimension = SIZE.LOGO + totalDefaultSystemSize + (isOnTopOrBottom ? appListDimensions.width : appListDimensions.height);
   const dynamicDimension = Math.max(minimumDynamicDimension, rawDynamicDimension);
 
   const height = isOnTopOrBottom ? STATIC_DIMENSION : dynamicDimension;
@@ -163,40 +193,31 @@ export const calcLauncherCoordinates = (
   } = monitorInfo;
   const midpoint = (isOnTopOrBottom ? right - left : bottom - top) / 2;
 
+  let leftCoord;
+  let topCoord;
   switch (launcherPosition) {
     case DirectionalPosition.Bottom: {
-      // const delta = autoHide ? SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA : height;
-
-      return {
-        left: midpoint - edgeDelta,
-        top: bottom - height,
-      };
+      leftCoord = midpoint - edgeDelta;
+      topCoord = bottom - height;
+      break;
     }
     case DirectionalPosition.Left: {
-      // const delta = autoHide ? SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA - width : 0;
-
-      return {
-        left,
-        top: midpoint - edgeDelta,
-      };
+      leftCoord = left;
+      topCoord = midpoint - edgeDelta;
+      break;
     }
     case DirectionalPosition.Right: {
-      // const delta = autoHide ? SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA : width;
-
-      return {
-        left: right - width,
-        top: midpoint - edgeDelta,
-      };
+      leftCoord = right - width;
+      topCoord = midpoint - edgeDelta;
+      break;
     }
     default: {
-      // const delta = autoHide ? SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA - height : 0;
-
-      return {
-        left: midpoint - edgeDelta,
-        top,
-      };
+      leftCoord = midpoint - edgeDelta;
+      topCoord = top;
     }
   }
+
+  return { left: Math.round(leftCoord), top: Math.round(topCoord) };
 };
 
 /**
@@ -218,7 +239,7 @@ export const calcLauncherPosition = (
   autoHide: boolean,
   isExpanded: boolean,
 ): Bounds => {
-  const dimensions = calcLauncherDimensions(appCount, systemIcons, launcherPosition, autoHide, isExpanded);
+  const dimensions = calcLauncherDimensions(appCount, systemIcons, monitorInfo, launcherPosition, autoHide, isExpanded);
   const coordinates = calcLauncherCoordinates(dimensions, monitorInfo, launcherPosition);
 
   return {
@@ -272,9 +293,10 @@ export const calcBoundsRelativeToLauncher = (
   launcherBounds: Bounds,
   launcherPosition: DirectionalPosition,
   isLauncherDrawerExpanded: boolean,
+  invert: boolean,
 ): Bounds => {
   const { offsetX, offsetY } = OFFSETS[finName] ? OFFSETS[finName][launcherPosition](launcherBounds, isLauncherDrawerExpanded) : { offsetX: 0, offsetY: 0 };
-  const dimensions = calcDimensionsByLauncherPosition(bounds, launcherPosition, true);
+  const dimensions = calcDimensionsByLauncherPosition(bounds, launcherPosition, invert);
   const coordinates = calcCoordinatesRelativeToLauncherBounds(dimensions, offsetX, offsetY, launcherBounds, launcherPosition);
 
   return {

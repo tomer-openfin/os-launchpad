@@ -1,80 +1,38 @@
 import * as React from 'react';
+import { CSSTransition } from 'react-transition-group';
 
-import * as plusIcon from '../../assets/AddApp.svg';
+import { AppListItem, AppListTypes, DirectionalPosition } from '../../types/commons';
+import { isTopOrBottom } from '../../utils/windowPositionHelpers';
 
-import config from '../../config/windows';
-import { closeFinAppRequest, openFinAppRequest } from '../../redux/apps';
-import { AppStatus, AppStatusStates } from '../../redux/apps/types';
-import { ContextMenuOption } from '../../redux/contextMenu/types';
-import { removeFromAppLauncher } from '../../redux/me';
-import { WindowConfig } from '../../redux/windows/types';
-import { App, DirectionalPosition } from '../../types/commons';
-
-import ContextMenuZone from '../ContextMenuZone';
-import IconSpace from '../IconSpace';
-import { CloseButton, Space, StyledAppIndicator, Wrapper } from './AppList.css';
-
-const handleClickCreator = (app: App, fn: (app: App) => void, altFn: () => void) => {
-  if (!app.manifest_url) return altFn;
-
-  return () => fn(app);
-};
-
-// Spaces takes a number of spaces
-// and returns a function to render that number of spaces
-/* tslint:disable-next-line:ban Array constructor is here used properly, with a single argument for length https://eslint.org/docs/rules/no-array-constructor */
-const renderSpaces = (spaceCount: number) => (mapFn: (item, index: number) => JSX.Element) => Array.from(Array(spaceCount).keys()).map(mapFn);
+import AppIcon, { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from '../AppIcon';
+import AppListToggle from '../AppListToggle';
+import { StyledTransitionGroup } from './AppList.css';
 
 interface Props {
-  appList: App[];
-  appsStatusByName: AppStatus;
-  launchApp: (App: App) => void;
+  appList: AppListItem[];
+  areAppsDisabled: boolean;
+  height: number;
+  isOverflowExpanded?: boolean;
   launcherPosition: DirectionalPosition;
-  launchWindowCreator: (window: WindowConfig) => () => void;
-  removeFromLauncher: (id: string) => void;
-  spaceCount?: number;
+  width: number;
 }
 
-const AppList = ({ appList, appsStatusByName, launchApp, launchWindowCreator, launcherPosition, removeFromLauncher, spaceCount }: Props) => {
-  // we either render the spaceCount passed in or,
-  // if that is falsy we render the number of apps in your list plus 1 for a final plusIcon
-  const spaces = spaceCount ? spaceCount : appList.length + 1;
+const AppList = ({ appList, areAppsDisabled, height, isOverflowExpanded = false, launcherPosition, width }: Props) => {
+  const margin = isTopOrBottom(launcherPosition) ? '15px 10px' : '10px 15px';
   return (
-    <Wrapper launcherPosition={launcherPosition}>
-      {renderSpaces(spaces)((item, index) => {
-        const app = appList[index];
-
-        if (!app) {
-          return (
-            <Space key={index}>
-              <IconSpace onClick={launchWindowCreator(config.appDirectory)} iconImg={plusIcon} hover />
-            </Space>
-          );
-        }
-
-        const handleClose = () => removeFromLauncher(`${app.id}`);
-        const appStatus = appsStatusByName[app.name];
-        const contextMenuOptions: ContextMenuOption[] = [{ label: 'Remove Shortcut', action: removeFromAppLauncher(`${app.id}`) }];
-        if (!appStatus || appStatus.state === AppStatusStates.Closed) {
-          contextMenuOptions.unshift({ label: 'Open', action: openFinAppRequest(app) });
-        }
-        if (appStatus && appStatus.state === AppStatusStates.Running && appStatus.uuid) {
-          contextMenuOptions.unshift({ label: 'Close', action: closeFinAppRequest({ uuid: appStatus.uuid }) });
-        }
-
+    <StyledTransitionGroup height={height} isExpanded={isOverflowExpanded} launcherPosition={launcherPosition} width={width}>
+      {appList.map(({ id, type }) => {
         return (
-          <Space key={app.id || index} withClose>
-            <ContextMenuZone options={contextMenuOptions}>
-              <IconSpace onClick={handleClickCreator(app, launchApp, launchWindowCreator(config.appDirectory))} iconImg={app ? app.icon : plusIcon} />
-
-              <CloseButton onClick={handleClose} />
-
-              <StyledAppIndicator appId={app.id} position={launcherPosition} />
-            </ContextMenuZone>
-          </Space>
+          <CSSTransition key={id} classNames={APP_ICON_TRANSITION_CLASSNAMES} timeout={APP_ICON_TRANSITION_DURATION} unmountOnExit>
+            {type === AppListTypes.Toggle ? (
+              <AppListToggle hasTransition isExpanded={isOverflowExpanded} isDisabled={areAppsDisabled} margin={margin} />
+            ) : (
+              <AppIcon appId={id} hasTransition isDisabled={areAppsDisabled} margin={margin} withContextMenu />
+            )}
+          </CSSTransition>
         );
       })}
-    </Wrapper>
+    </StyledTransitionGroup>
   );
 };
 

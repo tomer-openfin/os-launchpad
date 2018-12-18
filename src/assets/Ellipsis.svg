@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="17px" height="34px" viewBox="0 0 17 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 52.3 (67297) - http://www.bohemiancoding.com/sketch -->
-    <title>Ellipsis</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Ellipsis" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Rectangle" x="0" y="0" width="17" height="34"></rect>
-        <g id="Dots" transform="translate(7.000000, 8.000000)" fill="#8BA7B9">
-            <circle id="Oval" cx="1.5" cy="17.5" r="1.5"></circle>
-            <circle id="Oval" cx="1.5" cy="9.5" r="1.5"></circle>
-            <circle id="Oval" cx="1.5" cy="1.5" r="1.5"></circle>
-        </g>
-    </g>
-</svg>
+<svg width="24" height="6" xmlns="http://www.w3.org/2000/svg"><path d="M12 6a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm9 0a3 3 0 1 1 0-6 3 3 0 0 1 0 6zM3 6a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" fill="#B6B6B6" fill-rule="evenodd"/></svg>

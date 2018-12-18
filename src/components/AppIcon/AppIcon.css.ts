@@ -1,8 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { AppIconSizes, DirectionalPosition } from '../../types/commons';
 
 import { Color } from '../../styles';
+import { scaleAndFadeIn } from '../../utils/animationHelpers';
 import AppIndicator from '../AppIndicator';
 import ContextMenuZone from '../ContextMenuZone';
 import { Props } from './AppIcon';
@@ -15,7 +16,7 @@ interface WrapperProps {
   backgroundColor?: string;
   hasTransition: boolean;
   isDisabled: boolean;
-  margin: number;
+  margin: string;
   size: AppIconSizes;
 }
 
@@ -83,101 +84,17 @@ export const StyledContextMenuZone = styled(ContextMenuZone)<StyledContextMenuZo
 export const Wrapper = styled.div<WrapperProps>`
   align-items: center;
   display: flex;
+  flex-shrink: 0;
   justify-content: center;
   position: relative;
   transition: opacity 300ms ease-in-out;
 
-  ${({ backgroundColor, hasTransition, isDisabled, margin, size }) => css`
+  ${({ backgroundColor, hasTransition, isDisabled, margin, size }) => `
     ${backgroundColor && `background-color: ${backgroundColor};`}
     cursor: ${isDisabled ? 'default' : 'pointer'};
     opacity: ${isDisabled ? 0.1 : 1};
     height: ${size}px;
     width: ${size}px;
-    margin: ${margin}px
-      ${hasTransition &&
-        `
-        &.${APP_ICON_TRANSITION_CLASSNAMES}-enter {
-          height: 0;
-          width: 0;
-          margin: 0;
-
-          ${StyledContextMenuZone} {
-            opacity: 0;
-            transform: scale(0.7);
-          }
-        }
-        &.${APP_ICON_TRANSITION_CLASSNAMES}-enter-active {
-          height: ${size}px;
-          width: ${size}px;
-          margin: ${margin}px;
-          transition: all 300ms ease-in-out;
-          transition-origin: center center;
-
-          ${StyledContextMenuZone} {
-            opacity: 1;
-            transform: scale(1);
-            transition: all 150ms ease-in-out;
-            transition-delay: 150ms;
-            transition-origin: center center;
-          }
-        }
-        &.${APP_ICON_TRANSITION_CLASSNAMES}-enter-done {
-          height: ${size}px;
-          width: ${size}px;
-          margin: ${margin}px;
-
-          ${StyledContextMenuZone} {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-        &.${APP_ICON_TRANSITION_CLASSNAMES}-exit {
-          height: ${size}px;
-          width: ${size}px;
-          margin: ${margin}px;
-
-          ${StyledContextMenuZone} {
-            opacity: 1;
-            transform: scale(1);
-          }
-
-          ${StyledAppIndicator} {
-            display: none;
-          }
-        }
-        &.${APP_ICON_TRANSITION_CLASSNAMES}-exit-active {
-          height: 0;
-          width: 0;
-          margin: 0;
-          transition: all 300ms ease-in-out;
-          transition-delay: 150ms;
-          transition-origin: center center;
-
-          ${StyledContextMenuZone} {
-            opacity: 0;
-            transform: scale(0.7);
-            transition: all 150ms ease-in-out;
-            transition-origin: center center;
-          }
-
-          ${StyledAppIndicator} {
-            display: none;
-          }
-        }
-        &.${APP_ICON_TRANSITION_CLASSNAMES}-exit-done {
-          height: 0;
-          width: 0;
-          margin: 0;
-
-          ${StyledContextMenuZone} {
-            opacity: 0;
-            transform: scale(0.7);
-          }
-
-          ${StyledAppIndicator} {
-            display: none;
-          }
-        }
-      `};
-  `}
+    margin: ${margin};
+      ${hasTransition && size && margin && scaleAndFadeIn(StyledContextMenuZone, APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION, size, margin)}`}
 `;

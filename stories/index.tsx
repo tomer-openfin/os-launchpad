@@ -1,7 +1,7 @@
 import '../src/components/App/App.story';
 import '../src/components/AppDirectory/AppDirectory.story';
 import '../src/components/AppIcon/AppIcon.story';
-import '../src/components/AppList/AppList.story';
+import '../src/components/AppListToggle/AppListToggle.story';
 import '../src/components/Button/Button.story';
 import '../src/components/ConfirmUserDelete/ConfirmUserDelete.story';
 import '../src/components/EditAppForm/EditAppForm.story';

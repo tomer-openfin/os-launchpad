@@ -1,26 +1,31 @@
 import { connect } from 'react-redux';
 
-import { getAppsStatusByName, openFinAppRequest } from '../../redux/apps/index';
-import { removeFromAppLauncher } from '../../redux/me';
-import { getAppsLauncherAppList } from '../../redux/selectors';
-import { launchWindow, WindowConfig } from '../../redux/windows';
+import { getDrawerIsExpanded } from '../../redux/application';
+import { getLauncherPosition } from '../../redux/me';
+import { getAppListApps, getAppListDimensions } from '../../redux/selectors';
+import * as SIZE from '../../utils/sizingConstants';
+import { isTopOrBottom } from '../../utils/windowPositionHelpers';
 
-import { App } from '../../types/commons';
 import AppList from './AppList';
 
-const stateProps = state => ({
-  appList: getAppsLauncherAppList(state),
-  appsStatusByName: getAppsStatusByName(state),
-  launcherPosition: state.me.settings.launcherPosition,
-});
+const stateProps = (state, { isOverflowExpanded = false }) => {
+  let { height, width } = getAppListDimensions(state);
+  const launcherPosition = getLauncherPosition(state);
+  const isOnTopOrBottom = isTopOrBottom(launcherPosition);
+  if (!isOnTopOrBottom) {
+    height = isOverflowExpanded ? height : 0;
+  }
+  if (isOnTopOrBottom) {
+    width = isOverflowExpanded ? width : 0;
+  }
 
-const dispatchProps = dispatch => ({
-  launchApp: (app: App) => dispatch(openFinAppRequest(app)),
-  launchWindowCreator: (window: WindowConfig) => () => dispatch(launchWindow(window)),
-  removeFromLauncher: (appId: string) => dispatch(removeFromAppLauncher(appId)),
-});
+  return {
+    appList: getAppListApps(state),
+    areAppsDisabled: getDrawerIsExpanded(state),
+    height: isOnTopOrBottom && !isOverflowExpanded ? SIZE.LOGO : height,
+    launcherPosition,
+    width: !isOnTopOrBottom && !isOverflowExpanded ? SIZE.LOGO : width,
+  };
+};
 
-export default connect(
-  stateProps,
-  dispatchProps,
-)(AppList);
+export default connect(stateProps)(AppList);

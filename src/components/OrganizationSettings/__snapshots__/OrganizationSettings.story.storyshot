@@ -11,40 +11,40 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
     }
   >
     <div
-      className="sc-cIShpX Xgqhs"
+      className="sc-ktHwxA kRDigm"
     >
       <h3
-        className="sc-hEsumM jqzUmg"
+        className="sc-tilXH dMgpEz"
       >
         Set Logo
       </h3>
       <div
-        className="sc-tilXH jMVAVb"
+        className="sc-fYxtnH hSLfWw"
       >
         <form
-          className="sc-fYxtnH dCovrf"
+          className="sc-jnlKLf EiRVt"
           onSubmit={[Function]}
         >
           <label
-            className="sc-bbmXgH cdMKTe"
+            className="sc-uJMKN dZZWiX"
             htmlFor="LogoFormFileInput"
           >
             <div
-              className="sc-jbKcbu iCroTy"
+              className="sc-hqyNC kqFpsl"
             >
               <div
-                className="sc-dnqmqq eqCERZ"
+                className="sc-VigVT fKFlJE"
               />
               <div
-                className="sc-hmzhuo gHDVAw"
+                className="sc-ksYbfQ cJAlrM"
               >
                 <div
-                  className="sc-cJSrbW EbCOS"
+                  className="sc-kgAjT gLEmkU"
                 >
                   Change Logo
                 </div>
                 <div
-                  className="sc-kvZOFW hJoAPu"
+                  className="sc-frDJqD kuAZlX"
                 >
                   Files must be at least 200 x 200 pixels square.
                   <br />
@@ -52,7 +52,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
                 </div>
                 <input
                   accept="image/*"
-                  className="sc-ksYbfQ hAwLYh"
+                  className="sc-cJSrbW dDLgtt"
                   id="LogoFormFileInput"
                   name="logo"
                   onBlur={[Function]}
@@ -64,7 +64,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             </div>
           </label>
           <button
-            className="sc-jnlKLf hXszXA"
+            className="sc-gGBfsJ etOPPr"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -73,7 +73,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             Cancel
           </button>
           <button
-            className="sc-jnlKLf hZKkbE"
+            className="sc-gGBfsJ fhtfnN"
             disabled={true}
             type="submit"
             width={120}
@@ -83,29 +83,29 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
         </form>
       </div>
       <div
-        className="sc-ktHwxA eAvhpq"
+        className="sc-hEsumM jdmEtn"
       />
       <h3
-        className="sc-hEsumM jqzUmg"
+        className="sc-tilXH dMgpEz"
       >
         Set Theme
       </h3>
       <div
-        className="sc-jwKygS fBWxJW"
+        className="sc-cmTdod kHxQNt"
       >
         <form
           onSubmit={[Function]}
         >
           <div
-            className="sc-kafWEX jaIhry"
+            className="sc-cIShpX gMSzSu"
           >
             <label
-              className="sc-feJyhm ewNoUr"
+              className="sc-kafWEX nolLE"
             >
               Choose theme to set appearance of App Launcher and accompanying windows:
             </label>
             <select
-              className="sc-iELTvK gPSpcN"
+              className="sc-feJyhm bACkHX"
               disabled={false}
               id="ThemesFormSelectInput"
               name="theme"
@@ -127,7 +127,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             </select>
           </div>
           <button
-            className="sc-cmTdod kbwKWD"
+            className="sc-iELTvK gnGFGW"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -136,7 +136,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             Cancel
           </button>
           <button
-            className="sc-cmTdod jYmgWu"
+            className="sc-iELTvK bAsLHQ"
             disabled={true}
             type="submit"
             width={120}

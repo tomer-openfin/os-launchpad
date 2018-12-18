@@ -5,7 +5,7 @@ import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGIN_WINDOW } from '../../config/windows';
 import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
-import { hideWindow } from '../../utils/openfinPromises';
+import { hideWindowPromise } from '../../utils/openfinPromises';
 import { expandApp, getApplicationIsExpanded, getBlurringWindowByName, setBlurringWindow, setWindowRelativeToLauncherBounds } from '../application';
 import { BLUR_WINDOW_WITH_DELAY, LAUNCH_WINDOW, WINDOW_SHOWN } from './actions';
 import { getLauncherIsForceExpanded, getWindowBounds, getWindowById } from './selectors';
@@ -29,8 +29,9 @@ function* watchLaunchWindow(action: LaunchWindowAction) {
   const window = yield select(getWindowById, id);
 
   if (window) {
+    const finWindow = yield call(getFinWindowByName, id);
     const isBlurring = yield select(getBlurringWindowByName, id);
-    if (!!isBlurring) {
+    if (!!isBlurring || !finWindow) {
       return;
     }
 
@@ -110,7 +111,7 @@ function* watchBlurWindowWithDelay(action: BlurWindowWithDelayAction) {
   }
 
   yield put(setBlurringWindow(name, true));
-  yield all([call(hideWindow, finWindow), delay(100)]);
+  yield all([call(hideWindowPromise, finWindow), delay(50)]);
   yield put(setBlurringWindow(name, false));
 }
 

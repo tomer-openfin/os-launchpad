@@ -11,15 +11,15 @@ exports[`Storyshots Components/ConfirmUserDelete default 1`] = `
     }
   >
     <div
-      className="sc-caSCKo JKzNo"
+      className="sc-fAjcbJ oYrUQ"
     >
       <div
-        className="sc-fMiknA kdCqoF"
+        className="sc-fBuWsC gsUrKy"
       >
         Delete User
       </div>
       <div
-        className="sc-hzDkRC bykoDF"
+        className="sc-bRBYWo glIcpT"
       >
         You are about to delete the following user: 
         string
@@ -28,17 +28,17 @@ exports[`Storyshots Components/ConfirmUserDelete default 1`] = `
         ?
       </div>
       <div
-        className="sc-fAjcbJ cjoVoA"
+        className="sc-eqIVtm eQPmXj"
       >
         <a
-          className="sc-jhAzac gBAIjX"
+          className="sc-hzDkRC gBLjTM"
           href="/admin/users"
           onClick={[Function]}
         >
           Cancel
         </a>
         <button
-          className="sc-bRBYWo eySiXU"
+          className="sc-Rmtcm fdTSiM"
           disabled={false}
           onClick={[Function]}
         >

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import * as arrowIcon from '../../assets/ArrowCircle.svg';
 import * as arrowDownIcon from '../../assets/ArrowDown.svg';
@@ -9,7 +8,7 @@ import { App, DirectionalPosition } from '../../types/commons';
 import { SystemIcon } from '../../utils/getSystemIcons';
 import { calcCollapsedSystemSize, calcExpandedSystemSize } from '../../utils/windowPositionHelpers';
 
-import AppIcon, { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from '../AppIcon';
+import AppList from '../AppList';
 import {
   ArrowIcon,
   Main,
@@ -32,7 +31,6 @@ export interface LauncherIcon {
 }
 
 export interface Props {
-  apps: App[];
   launcherPosition: DirectionalPosition;
   icons: LauncherIcon[];
   isDrawerExpanded: boolean;
@@ -41,22 +39,16 @@ export interface Props {
 }
 
 const App = (props: Props) => {
-  const { apps, launcherPosition, icons, systemIcons, toggleDrawer, isDrawerExpanded } = props;
+  const { launcherPosition, icons, systemIcons, toggleDrawer, isDrawerExpanded } = props;
 
   const drawerSize = isDrawerExpanded ? calcExpandedSystemSize(systemIcons) : calcCollapsedSystemSize(systemIcons);
 
   return (
     <Main launcherPosition={launcherPosition}>
       <Wrapper endPadding={calcCollapsedSystemSize(systemIcons)} launcherPosition={launcherPosition}>
-        <StyledLogo launcherPosition={launcherPosition} />
+        <StyledLogo />
 
-        <TransitionGroup component={null}>
-          {apps.map(app => (
-            <CSSTransition key={app.id} classNames={APP_ICON_TRANSITION_CLASSNAMES} timeout={APP_ICON_TRANSITION_DURATION} unmountOnExit>
-              <AppIcon hasTransition isDisabled={isDrawerExpanded} margin={10} appId={app.id} withContextMenu />
-            </CSSTransition>
-          ))}
-        </TransitionGroup>
+        <AppList />
 
         <SystemDrawerWrapper isDrawerExpanded={isDrawerExpanded} size={drawerSize} launcherPosition={launcherPosition}>
           <Overlay isDrawerExpanded={isDrawerExpanded} onClick={toggleDrawer} />

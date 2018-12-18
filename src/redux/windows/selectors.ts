@@ -14,6 +14,12 @@ export const getWindowBounds = (state: State, id: string) => {
   return win ? win.bounds : undefined;
 };
 
+export const getWindowIsShowing = (state: State, id: string) => {
+  const win = getWindowById(state, id);
+
+  return win ? !!win.isShowing : false;
+};
+
 export const getPosition = (state: State) => state.me.settings.launcherPosition;
 
 /**

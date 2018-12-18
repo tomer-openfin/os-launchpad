@@ -1,6 +1,6 @@
 import { Layout } from 'openfin-layouts/dist/client/types';
 
-import { ResponseStatus } from './enums';
+import { AppListTypes, ResponseStatus } from './enums';
 
 export interface App {
   appPage: string;
@@ -17,6 +17,11 @@ export interface App {
   signature: string;
   support_email: string | null;
   title: string;
+}
+
+export interface AppListItem {
+  id: string;
+  type: AppListTypes;
 }
 
 export interface Bounds extends Dimensions, PrimaryDirectionalCoordinates {}

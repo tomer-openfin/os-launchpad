@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { ContextMenuOption } from '../../redux/contextMenu/types';
 import { AppIconSizes, DirectionalPosition } from '../../types/commons';
-import * as SIZE from '../../utils/sizingConstants';
 
 import { Icon, StyledAppIndicator, StyledContextMenuZone, Wrapper } from './AppIcon.css';
 
@@ -16,7 +15,7 @@ export interface Props {
   indicatorPosition: DirectionalPosition;
   isDisabled?: boolean;
   launchApp: () => void;
-  margin?: number;
+  margin?: string;
   size?: AppIconSizes;
 }
 
@@ -30,8 +29,8 @@ const AppIcon = ({
   imgSrc,
   indicatorPosition,
   launchApp,
-  margin = 0,
-  size = SIZE.APP_ICON,
+  margin = '0',
+  size = AppIconSizes.Medium,
 }: Props) => {
   return (
     <Wrapper

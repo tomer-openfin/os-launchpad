@@ -1,11 +1,12 @@
 import { all, call, select } from 'redux-saga/effects';
 
+import { APP_LAUNCHER_OVERFLOW_WINDOW } from '../../config/windows';
 import { Bounds } from '../../types/commons';
 import { getFinWindowByName, getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
 import { animateWindow, setWindowBoundsPromise } from '../../utils/openfinPromises';
 import { calcBoundsRelativeToLauncher, calcLauncherPosition, isBottom, isRight } from '../../utils/windowPositionHelpers';
 import { getAutoHide, getLauncherPosition } from '../me';
-import { getAppsLauncherAppList, getSystemIconsSelector } from '../selectors';
+import { getAppListDimensions, getAppsLauncherAppList, getSystemIconsSelector } from '../selectors';
 import { getMonitorInfo } from '../system/index';
 import { State } from '../types';
 import { getWindowBounds } from '../windows';
@@ -64,15 +65,23 @@ export function* setWindowRelativeToLauncherBounds(finName: string, launcherBoun
     return;
   }
 
-  const [windowBounds, launcherPosition, isLauncherDrawerExpanded] = yield all([
-    select(getWindowBounds, finName),
-    select(getLauncherPosition),
-    select(getDrawerIsExpanded),
-  ]);
+  let windowBounds = yield select(getWindowBounds, finName);
+  const [launcherPosition, isLauncherDrawerExpanded] = yield all([select(getLauncherPosition), select(getDrawerIsExpanded)]);
   if (!windowBounds) {
     return;
   }
 
-  const bounds = calcBoundsRelativeToLauncher(finName, windowBounds, launcherBounds, launcherPosition, isLauncherDrawerExpanded);
+  let invert = true;
+  if (finName === APP_LAUNCHER_OVERFLOW_WINDOW) {
+    const appListDimensions = yield select(getAppListDimensions);
+
+    windowBounds = {
+      ...windowBounds,
+      ...appListDimensions,
+    };
+    invert = false;
+  }
+
+  const bounds = calcBoundsRelativeToLauncher(finName, windowBounds, launcherBounds, launcherPosition, isLauncherDrawerExpanded, invert);
   yield call(setWindowBoundsPromise, finWindow, bounds);
 }
