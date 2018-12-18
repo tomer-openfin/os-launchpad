@@ -12,7 +12,14 @@ export const getDirectoryAppList = (): Promise<App[] | APIResponse> => {
   if (checkIsEnterprise()) {
     const options = createGetOptions();
 
-    return fetch(`${API.USER_APPS}?scope=all`, options).then(resp => resp.json());
+    return fetch(`${API.USER_APPS}?scope=all`, options)
+      .then(resp => resp.json())
+      .then(json => {
+        if (!json) {
+          throw new Error(`${API.ORG_SETTINGS} did not return a valid resource: ${json}`);
+        }
+        return json;
+      });
   }
 
   return fetch(API.PUBLIC_APPS).then(res => res.json());
@@ -26,7 +33,14 @@ export const getDirectoryAppList = (): Promise<App[] | APIResponse> => {
 export const getAdminApps = (): Promise<App[] | APIResponse> => {
   const options = createGetOptions();
 
-  return fetch(`${API.USER_APPS}?scope=all`, options).then(resp => resp.json());
+  return fetch(`${API.USER_APPS}?scope=all`, options)
+    .then(resp => resp.json())
+    .then(json => {
+      if (!json) {
+        throw new Error(`${API.ORG_SETTINGS} did not return a valid resource: ${json}`);
+      }
+      return json;
+    });
 };
 
 /**
@@ -37,7 +51,14 @@ export const getAdminApps = (): Promise<App[] | APIResponse> => {
 export const getAdminApp = (app: App): Promise<App | APIResponse> => {
   const options = createGetOptions();
 
-  return fetch(`${API.ADMIN_APPS}/${app.id}`, options).then(resp => resp.json());
+  return fetch(`${API.ADMIN_APPS}/${app.id}`, options)
+    .then(resp => resp.json())
+    .then(json => {
+      if (!json) {
+        throw new Error(`${API.ORG_SETTINGS} did not return a valid resource: ${json}`);
+      }
+      return json;
+    });
 };
 
 /**
