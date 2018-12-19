@@ -1,5 +1,8 @@
 import styled from 'styled-components';
-import { Color } from '../../styles/index';
+
+import { Color } from '../../styles';
+import { TypeStyleSirius } from '../../styles/typography.css';
+import Button from '../Button';
 
 export const Wrapper = styled.div`
   height: 100vh;
@@ -17,6 +20,8 @@ export const FieldWrapper = styled.label`
   margin: 30px;
 
   & input {
+    ${TypeStyleSirius};
+
     color: ${Color.MERCURY};
     background: ${Color.VOID};
     border: 1px solid ${Color.MERCURY};
@@ -24,6 +29,7 @@ export const FieldWrapper = styled.label`
     padding: 5px 25px;
     outline: none;
     width: 200px;
+    height: 35px;
 
     &:hover,
     &:active {
@@ -53,21 +59,6 @@ export const ResponseMessage = styled.div<{ error: boolean }>`
   display: flex;
 `;
 
-export const CTA = styled.button`
-  height: 24px;
-  font-size: 9px;
+export const CTA = styled(Button)`
   width: 200px;
-  padding: auto;
-  color: ${Color.KUIPER_BELT};
-  background: ${Color.MERCURY};
-  border: 1px solid ${Color.MERCURY};
-  border-radius: 3px;
-  outline: none;
-  cursor: pointer;
-
-  &:hover {
-    color: ${Color.KUIPER_BELT};
-    background: ${Color.COMET};
-    border-color: ${Color.COMET};
-  }
 `;

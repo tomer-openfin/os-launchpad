@@ -5,67 +5,67 @@ exports[`Storyshots Styleguide/Color default 1`] = `
   className="sc-htpNat iYVSdT"
 >
   <div
-    className="sc-bxivhb fCDqOv"
+    className="sc-bxivhb kBjSwH"
     name="Sun"
   />
   <div
-    className="sc-bxivhb gchMiF"
+    className="sc-bxivhb fvuxbi"
     name="Mercury"
   />
   <div
-    className="sc-bxivhb ciAhxt"
+    className="sc-bxivhb ixZOXx"
     name="Venus"
   />
   <div
-    className="sc-bxivhb eOghXW"
+    className="sc-bxivhb jAZzOk"
     name="Earth"
   />
   <div
-    className="sc-bxivhb eJzEmW"
+    className="sc-bxivhb kAfxZN"
     name="Mars"
   />
   <div
-    className="sc-bxivhb hEWfdU"
+    className="sc-bxivhb eCkESu"
     name="Asteroid_Belt"
   />
   <div
-    className="sc-bxivhb gzMpzH"
+    className="sc-bxivhb egYLoS"
     name="Jupiter"
   />
   <div
-    className="sc-bxivhb eceLUx"
+    className="sc-bxivhb lpllnJ"
     name="Saturn"
   />
   <div
-    className="sc-bxivhb iQLOdN"
+    className="sc-bxivhb kVxnGK"
     name="Uranus"
   />
   <div
-    className="sc-bxivhb zhnEX"
+    className="sc-bxivhb lmGavk"
     name="Neptune"
   />
   <div
-    className="sc-bxivhb gZzfFi"
+    className="sc-bxivhb cMACOI"
     name="Kuiper_Belt"
   />
   <div
-    className="sc-bxivhb elMfIG"
+    className="sc-bxivhb gbxWCu"
     name="Pluto"
   />
   <div
-    className="sc-bxivhb bRSwfK"
+    className="sc-bxivhb bgmZXQ"
     name="Nebula"
   />
   <div
-    className="sc-bxivhb ktGsWd"
+    className="sc-bxivhb hJurFM"
     name="Comet"
   />
   <div
-    className="sc-bxivhb dmMJnP"
+    className="sc-bxivhb debaAW"
     name="Vacuum"
   />
   <div
-    className="sc-bxivhb fWitVi"
+    className="sc-bxivhb eZCVnS"
     name="Void"
   />
 </div>
@@ -79,12 +79,12 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-jwKygS dpoScv"
+      className="sc-gGBfsJ fHePaD"
     >
       Sirius
     </div>
     <div
-      className="sc-bdVaJa bfSdRF"
+      className="sc-bdVaJa ktTxuD"
     >
       font-size: 14px;
   font-weight: 700;
@@ -97,12 +97,12 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-btzYZH jwtTaO"
+      className="sc-jnlKLf iYcjSZ"
     >
       Canopus
     </div>
     <div
-      className="sc-bdVaJa bfSdRF"
+      className="sc-bdVaJa ktTxuD"
     >
       font-size: 14px;
   font-weight: 400;
@@ -115,12 +115,12 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-lhVmIH jWvFF"
+      className="sc-fYxtnH QsTNW"
     >
       Arcturus
     </div>
     <div
-      className="sc-bdVaJa bfSdRF"
+      className="sc-bdVaJa ktTxuD"
     >
       font-size: 16px;
   font-weight: 400;
@@ -133,12 +133,12 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-bYSBpT kPIaQM"
+      className="sc-tilXH iVKaFr"
     >
       Procyon
     </div>
     <div
-      className="sc-bdVaJa bfSdRF"
+      className="sc-bdVaJa ktTxuD"
     >
       font-size: 16px;
   font-weight: 800;
@@ -151,12 +151,12 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-elJkPf eSITjk"
+      className="sc-hEsumM jKqmFP"
     >
       Deneb
     </div>
     <div
-      className="sc-bdVaJa bfSdRF"
+      className="sc-bdVaJa ktTxuD"
     >
       font-size: 13px;
   font-weight: 400;
@@ -170,12 +170,12 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-jtRfpW bHZztD"
+      className="sc-ktHwxA gdhGzV"
     >
       Pollux
     </div>
     <div
-      className="sc-bdVaJa bfSdRF"
+      className="sc-bdVaJa ktTxuD"
     >
       font-size: 13px;
   font-weight: 800;
@@ -189,12 +189,12 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-kTUwUJ jWKmPY"
+      className="sc-cIShpX cTRqeh"
     >
       Bellatrix
     </div>
     <div
-      className="sc-bdVaJa bfSdRF"
+      className="sc-bdVaJa ktTxuD"
     >
       font-size: 11px;
   font-weight: 400;
@@ -207,12 +207,12 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-dqBHgY cjXlbF"
+      className="sc-kafWEX zSkyD"
     >
       Polaris
     </div>
     <div
-      className="sc-bdVaJa bfSdRF"
+      className="sc-bdVaJa ktTxuD"
     >
       font-size: 20px;
   font-weight: 400;
@@ -225,12 +225,12 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-gxMtzJ hDsFPo"
+      className="sc-feJyhm cAYpcx"
     >
       Algol
     </div>
     <div
-      className="sc-bdVaJa bfSdRF"
+      className="sc-bdVaJa ktTxuD"
     >
       font-size: 14px;
   font-weight: 400;
@@ -243,12 +243,12 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-dfVpRl enAzYT"
+      className="sc-iELTvK hAYoOW"
     >
       Enif
     </div>
     <div
-      className="sc-bdVaJa bfSdRF"
+      className="sc-bdVaJa ktTxuD"
     >
       font-size: 11px;
   font-weight: 600;
@@ -261,12 +261,12 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-gzOgki hboGlS"
+      className="sc-cmTdod fBlWpT"
     >
       Naos
     </div>
     <div
-      className="sc-bdVaJa bfSdRF"
+      className="sc-bdVaJa ktTxuD"
     >
       font-size: 11px;
   font-weight: 600;
@@ -279,12 +279,12 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-iyvyFf ffKqyK"
+      className="sc-jwKygS eAANUr"
     >
       Sol
     </div>
     <div
-      className="sc-bdVaJa bfSdRF"
+      className="sc-bdVaJa ktTxuD"
     >
       font-size: 14px;
   font-weight: 400;

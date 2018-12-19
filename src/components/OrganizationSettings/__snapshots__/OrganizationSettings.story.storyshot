@@ -11,140 +11,128 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
     }
   >
     <div
-      className="sc-ktHwxA kRDigm"
+      className="sc-jqCOkK bmYvLF"
     >
       <h3
-        className="sc-tilXH dMgpEz"
+        className="sc-dNLxif dmhDRS"
       >
-        Set Logo
+        Enterprise Branding
       </h3>
-      <div
-        className="sc-fYxtnH hSLfWw"
+      <form
+        className="sc-jbKcbu bccRvZ"
+        onSubmit={[Function]}
       >
-        <form
-          className="sc-jnlKLf EiRVt"
-          onSubmit={[Function]}
+        <label
+          className="sc-kvZOFW dMUPUY"
+          htmlFor="LogoFormFileInput"
         >
-          <label
-            className="sc-uJMKN dZZWiX"
-            htmlFor="LogoFormFileInput"
+          <div
+            className="sc-frDJqD gFrmGz"
           >
             <div
-              className="sc-hqyNC kqFpsl"
+              className="sc-hmzhuo cERbyu"
             >
               <div
                 className="sc-VigVT fKFlJE"
               />
-              <div
-                className="sc-ksYbfQ cJAlrM"
-              >
-                <div
-                  className="sc-kgAjT gLEmkU"
-                >
-                  Change Logo
-                </div>
-                <div
-                  className="sc-frDJqD kuAZlX"
-                >
-                  Files must be at least 200 x 200 pixels square.
-                  <br />
-                  File size cannot exceed 20kb.
-                </div>
-                <input
-                  accept="image/*"
-                  className="sc-cJSrbW dDLgtt"
-                  id="LogoFormFileInput"
-                  name="logo"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  type="file"
-                  value=""
-                />
-              </div>
             </div>
-          </label>
-          <button
-            className="sc-gGBfsJ etOPPr"
-            disabled={true}
-            onClick={[Function]}
-            type="button"
-            width={120}
-          >
-            Cancel
-          </button>
-          <button
-            className="sc-gGBfsJ fhtfnN"
-            disabled={true}
-            type="submit"
-            width={120}
-          >
-            Set Logo
-          </button>
-        </form>
-      </div>
-      <div
-        className="sc-hEsumM jdmEtn"
-      />
-      <h3
-        className="sc-tilXH dMgpEz"
-      >
-        Set Theme
-      </h3>
-      <div
-        className="sc-cmTdod kHxQNt"
-      >
-        <form
-          onSubmit={[Function]}
-        >
-          <div
-            className="sc-cIShpX gMSzSu"
-          >
-            <label
-              className="sc-kafWEX nolLE"
+            <div
+              className="sc-cJSrbW ekJoJA"
             >
-              Choose theme to set appearance of App Launcher and accompanying windows:
-            </label>
-            <select
-              className="sc-feJyhm bACkHX"
-              disabled={false}
-              id="ThemesFormSelectInput"
-              name="theme"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Select Theme..."
-              value="dark"
-            >
-              <option
-                value="dark"
+              <div
+                className="sc-ksYbfQ kpfYbm"
               >
-                Dark
-              </option>
-              <option
-                value="light"
-              >
-                Light
-              </option>
-            </select>
+                Click & drag a new image over the existing one to replace your brand logo.
+              </div>
+              <input
+                accept="image/*"
+                className="sc-kgAjT jXJGPe"
+                id="LogoFormFileInput"
+                name="logo"
+                onBlur={[Function]}
+                onChange={[Function]}
+                type="file"
+                value=""
+              />
+            </div>
           </div>
+        </label>
+        <div
+          className="sc-hqyNC eiijJS"
+        >
           <button
-            className="sc-iELTvK gnGFGW"
+            className="sc-csuQGl jUtksB"
+            disabled={true}
+            type="submit"
+            width={110}
+          >
+            Overwrite
+          </button>
+          <button
+            className="sc-csuQGl iSqGFX"
             disabled={true}
             onClick={[Function]}
             type="button"
-            width={120}
+            width={110}
           >
-            Cancel
+            Reset
           </button>
+        </div>
+      </form>
+      <h3
+        className="sc-dNLxif dmhDRS"
+      >
+        Enterprise Theme
+      </h3>
+      <form
+        className="sc-jbKcbu bccRvZ"
+        onSubmit={[Function]}
+      >
+        <select
+          className="sc-uJMKN jbtXfW"
+          disabled={false}
+          id="ThemesFormSelectInput"
+          name="theme"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Select Theme..."
+          value="dark"
+        >
+          <option
+            className="sc-bbmXgH BwFHb"
+            value="dark"
+          >
+            Dark
+          </option>
+          <option
+            className="sc-bbmXgH BwFHb"
+            value="light"
+          >
+            Light
+          </option>
+        </select>
+        <div
+          className="sc-hqyNC eiijJS"
+        >
           <button
-            className="sc-iELTvK bAsLHQ"
+            className="sc-csuQGl jUtksB"
             disabled={true}
             type="submit"
-            width={120}
+            width={110}
           >
             Set Theme
           </button>
-        </form>
-      </div>
+          <button
+            className="sc-csuQGl iSqGFX"
+            disabled={true}
+            onClick={[Function]}
+            type="button"
+            width={110}
+          >
+            Reset
+          </button>
+        </div>
+      </form>
     </div>
   </div>
   <button

@@ -16,14 +16,11 @@ import {
   TypeStylePolaris,
   TypeStylePollux,
   TypeStyleProcyon,
-  TypeStyleProps,
   TypeStyleSirius,
   TypeStyleSol,
 } from './typography.css';
 
-type StyledCSS = Array<FlattenInterpolation<ThemedStyledProps<TypeStyleProps, Theme>>>;
-
-const TypeStyleDiv = (css: StyledCSS) => styled.div<TypeStyleProps>`
+const TypeStyleDiv = css => styled.div`
   ${css};
   margin: 5px 25px;
   width: 100px;

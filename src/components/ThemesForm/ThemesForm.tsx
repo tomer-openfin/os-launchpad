@@ -3,7 +3,10 @@ import * as React from 'react';
 
 import { MetaWithCallbacks, Theme } from '../../types/commons';
 
-import { InputWrapper, Label, Select, StyledButton, Wrapper } from './ThemesForm.css';
+import { Color } from '../../styles/index';
+import Button from '../Button';
+import { ButtonsWrapper, StyledForm } from '../LogoForm/index';
+import { Option, Select } from './ThemesForm.css';
 
 const BASE_ID = 'ThemesForm';
 const SELECT_ID = `${BASE_ID}SelectInput`;
@@ -67,9 +70,12 @@ class ThemesForm extends React.PureComponent<Props, State> {
     };
     const meta = { successCb };
 
-    this.setState({
-      loading: true,
-    }, () => saveActiveThemeId(activeThemeId, meta));
+    this.setState(
+      {
+        loading: true,
+      },
+      () => saveActiveThemeId(activeThemeId, meta),
+    );
   };
 
   handleReset = (fn: FormikHandlers['handleReset']) => () => {
@@ -90,53 +96,55 @@ class ThemesForm extends React.PureComponent<Props, State> {
 
   renderSelectInput = ({ field }: FieldProps) => {
     const { themes } = this.props;
-    const { loading} = this.state;
+    const { loading } = this.state;
 
     return (
       <Select {...field} id={SELECT_ID} onChange={this.createHandleSelectChange(field.onChange)} placeholder="Select Theme..." disabled={loading}>
         {themes.map(({ id, name }) => (
-          <option key={id} value={id}>
+          <Option key={id} value={id}>
             {name}
-          </option>
+          </Option>
         ))}
       </Select>
     );
   };
 
   renderForm = (formikProps: FormikProps<FormikInitialValues>) => {
-    const { loading} = this.state;
+    const { loading } = this.state;
 
     return (
-      <Form>
-        <InputWrapper>
-          <Label>Choose theme to set appearance of App Launcher and accompanying windows:</Label>
+      <StyledForm>
+        <Field name={FormNames.Theme} render={this.renderSelectInput} />
 
-          <Field name={FormNames.Theme} render={this.renderSelectInput} />
-        </InputWrapper>
+        <ButtonsWrapper>
+          <Button disabled={!formikProps.dirty || loading} isDark type="submit" width={110}>
+            Set Theme
+          </Button>
 
-        <StyledButton disabled={!formikProps.dirty || loading} onClick={this.handleReset(formikProps.handleReset)} type="button" width={120}>
-          Cancel
-        </StyledButton>
-
-        <StyledButton disabled={!formikProps.dirty || loading} isDark type="submit" width={120}>
-          Set Theme
-        </StyledButton>
-      </Form>
+          <Button
+            disabled={!formikProps.dirty || loading}
+            onClick={this.handleReset(formikProps.handleReset)}
+            type="button"
+            width={110}
+            backgroundColor={Color.MARS}
+          >
+            Reset
+          </Button>
+        </ButtonsWrapper>
+      </StyledForm>
     );
   };
 
   render() {
     return (
-      <Wrapper>
-        <Formik
-          initialValues={{
-            [FormNames.Theme]: this.state.currentThemeId,
-          }}
-          key={this.state.currentThemeId}
-          onSubmit={this.handleSubmit}
-          render={this.renderForm}
-        />
-      </Wrapper>
+      <Formik
+        initialValues={{
+          [FormNames.Theme]: this.state.currentThemeId,
+        }}
+        key={this.state.currentThemeId}
+        onSubmit={this.handleSubmit}
+        render={this.renderForm}
+      />
     );
   }
 }

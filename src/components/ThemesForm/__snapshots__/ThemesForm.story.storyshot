@@ -10,61 +10,55 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
       }
     }
   >
-    <div
-      className="sc-cmTdod kHxQNt"
+    <form
+      className="sc-jbKcbu bccRvZ"
+      onSubmit={[Function]}
     >
-      <form
-        onSubmit={[Function]}
+      <select
+        className="sc-uJMKN jbtXfW"
+        disabled={false}
+        id="ThemesFormSelectInput"
+        name="theme"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Select Theme..."
+        value="dark"
       >
-        <div
-          className="sc-cIShpX gMSzSu"
+        <option
+          className="sc-bbmXgH BwFHb"
+          value="dark"
         >
-          <label
-            className="sc-kafWEX nolLE"
-          >
-            Choose theme to set appearance of App Launcher and accompanying windows:
-          </label>
-          <select
-            className="sc-feJyhm bACkHX"
-            disabled={false}
-            id="ThemesFormSelectInput"
-            name="theme"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="Select Theme..."
-            value="dark"
-          >
-            <option
-              value="dark"
-            >
-              Dark
-            </option>
-            <option
-              value="light"
-            >
-              Light
-            </option>
-          </select>
-        </div>
-        <button
-          className="sc-iELTvK gnGFGW"
-          disabled={true}
-          onClick={[Function]}
-          type="button"
-          width={120}
+          Dark
+        </option>
+        <option
+          className="sc-bbmXgH BwFHb"
+          value="light"
         >
-          Cancel
-        </button>
+          Light
+        </option>
+      </select>
+      <div
+        className="sc-hqyNC eiijJS"
+      >
         <button
-          className="sc-iELTvK bAsLHQ"
+          className="sc-csuQGl jUtksB"
           disabled={true}
           type="submit"
-          width={120}
+          width={110}
         >
           Set Theme
         </button>
-      </form>
-    </div>
+        <button
+          className="sc-csuQGl iSqGFX"
+          disabled={true}
+          onClick={[Function]}
+          type="button"
+          width={110}
+        >
+          Reset
+        </button>
+      </div>
+    </form>
   </div>
   <button
     onClick={[Function]}

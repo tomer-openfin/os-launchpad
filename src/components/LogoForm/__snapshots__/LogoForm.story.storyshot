@@ -10,70 +10,67 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
       }
     }
   >
-    <div
-      className="sc-fYxtnH hSLfWw"
+    <form
+      className="sc-jbKcbu bccRvZ"
+      onSubmit={[Function]}
     >
-      <form
-        className="sc-jnlKLf EiRVt"
-        onSubmit={[Function]}
+      <label
+        className="sc-kvZOFW dMUPUY"
+        htmlFor="LogoFormFileInput"
       >
-        <label
-          className="sc-uJMKN dZZWiX"
-          htmlFor="LogoFormFileInput"
+        <div
+          className="sc-frDJqD gFrmGz"
         >
           <div
-            className="sc-hqyNC kqFpsl"
+            className="sc-hmzhuo cERbyu"
           >
             <div
               className="sc-VigVT fKFlJE"
             />
-            <div
-              className="sc-ksYbfQ cJAlrM"
-            >
-              <div
-                className="sc-kgAjT gLEmkU"
-              >
-                Change Logo
-              </div>
-              <div
-                className="sc-frDJqD kuAZlX"
-              >
-                Files must be at least 200 x 200 pixels square.
-                <br />
-                File size cannot exceed 20kb.
-              </div>
-              <input
-                accept="image/*"
-                className="sc-cJSrbW dDLgtt"
-                id="LogoFormFileInput"
-                name="logo"
-                onBlur={[Function]}
-                onChange={[Function]}
-                type="file"
-                value=""
-              />
-            </div>
           </div>
-        </label>
+          <div
+            className="sc-cJSrbW ekJoJA"
+          >
+            <div
+              className="sc-ksYbfQ kpfYbm"
+            >
+              Click & drag a new image over the existing one to replace your brand logo.
+            </div>
+            <input
+              accept="image/*"
+              className="sc-kgAjT jXJGPe"
+              id="LogoFormFileInput"
+              name="logo"
+              onBlur={[Function]}
+              onChange={[Function]}
+              type="file"
+              value=""
+            />
+          </div>
+        </div>
+      </label>
+      <div
+        className="sc-hqyNC eiijJS"
+      >
         <button
-          className="sc-gGBfsJ etOPPr"
+          className="sc-csuQGl jUtksB"
+          disabled={true}
+          type="submit"
+          width={110}
+        >
+          Overwrite
+        </button>
+        <button
+          className="sc-csuQGl iSqGFX"
           disabled={true}
           onClick={[Function]}
           type="button"
-          width={120}
+          width={110}
         >
-          Cancel
+          Reset
         </button>
-        <button
-          className="sc-gGBfsJ fhtfnN"
-          disabled={true}
-          type="submit"
-          width={120}
-        >
-          Set Logo
-        </button>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
   <button
     onClick={[Function]}

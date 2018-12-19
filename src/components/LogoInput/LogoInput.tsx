@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import Logo from '../Logo/Logo';
 
-import { Anchor, Input, InputWrapper, Placeholder, Wrapper } from './LogoInput.css';
+import { Input, InputWrapper, LogoWrapper, Placeholder, Wrapper } from './LogoInput.css';
 
 const FILE_ACCEPT = 'image/*';
 
@@ -26,14 +26,7 @@ class LogoInput extends React.PureComponent<Props, {}> {
 
     return (
       <InputWrapper>
-        <Anchor>Change Logo</Anchor>
-
-        <Placeholder>
-          {/* TODO: do the check for max file dimensions of 200x200 and size of 20kb */}
-          Files must be at least 200 x 200 pixels square.
-          <br />
-          File size cannot exceed 20kb.
-        </Placeholder>
+        <Placeholder>Click & drag a new image over the existing one to replace your brand logo.</Placeholder>
 
         <Field name={name} render={this.renderFileInput} />
       </InputWrapper>
@@ -45,7 +38,9 @@ class LogoInput extends React.PureComponent<Props, {}> {
 
     return (
       <Wrapper>
-        <Logo imgSrc={logo} />
+        <LogoWrapper>
+          <Logo imgSrc={logo} />
+        </LogoWrapper>
 
         {this.renderInput()}
       </Wrapper>

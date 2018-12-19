@@ -1,8 +1,10 @@
 import { Formik, FormikHandlers, FormikProps } from 'formik';
 import * as React from 'react';
 
+import { Color } from '../../styles/index';
+import Button from '../Button';
 import LogoInput from '../LogoInput';
-import { Label, StyledButton, StyledForm, Wrapper } from './LogoForm.css';
+import { ButtonsWrapper, Label, StyledForm } from './LogoForm.css';
 
 const BASE_ID = 'LogoForm';
 const FILE_INPUT_ID = `${BASE_ID}FileInput`;
@@ -109,29 +111,29 @@ class LogoForm extends React.PureComponent<Props, State> {
           <LogoInput fileInputId={FILE_INPUT_ID} logo={logo} name={FormNames.Logo} handleFileChange={this.handleFileChange} />
         </Label>
 
-        <StyledButton disabled={!formikProps.dirty} onClick={this.handleReset(formikProps.handleReset)} type="button" width={120}>
-          Cancel
-        </StyledButton>
+        <ButtonsWrapper>
+          <Button disabled={!formikProps.dirty} type="submit" width={110}>
+            Overwrite
+          </Button>
 
-        <StyledButton disabled={!formikProps.dirty} isDark type="submit" width={120}>
-          Set Logo
-        </StyledButton>
+          <Button disabled={!formikProps.dirty} onClick={this.handleReset(formikProps.handleReset)} type="button" width={110} backgroundColor={Color.MARS}>
+            Reset
+          </Button>
+        </ButtonsWrapper>
       </StyledForm>
     );
   };
 
   render() {
     return (
-      <Wrapper>
-        <Formik
-          initialValues={{
-            [FormNames.Logo]: '',
-          }}
-          key={this.currentLogo}
-          onSubmit={this.handleSubmit}
-          render={this.renderForm}
-        />
-      </Wrapper>
+      <Formik
+        initialValues={{
+          [FormNames.Logo]: '',
+        }}
+        key={this.currentLogo}
+        onSubmit={this.handleSubmit}
+        render={this.renderForm}
+      />
     );
   }
 }

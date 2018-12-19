@@ -1,25 +1,54 @@
 import styled from 'styled-components';
 import { Color } from '../../styles/index';
+import { TypeStyleSirius } from '../../styles/typography.css';
 
 interface ButtonProps {
+  backgroundColor?: string;
+  height?: number;
   isDark?: boolean;
   width?: number;
 }
 
 export default styled.button<ButtonProps>`
+  ${TypeStyleSirius};
+
   align-items: center;
-  background-color: ${props => (props.isDark ? Color.DOVE_GREY : Color.COMET)};
-  color: ${props => (props.isDark ? Color.SUN : Color.VACUUM)};
+  background-color: ${props => props.backgroundColor || Color.VENUS};
+  color: ${Color.SUN};
   cursor: pointer;
   display: flex;
   display: inline-block;
-  font-size: 14px;
   justify-content: center;
-  padding: 12px 10px;
-  ${props => (props.width ? `width: ${props.width}px;` : '')}
+  margin: 0;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  height: ${props => props.height || '35px'};
+  width: ${props => props.width || '110px'};
+  min-width: 110px;
+  position: relative;
+
+  :before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 3px;
+    box-shadow: 0 4px 8px ${Color.VACUUM};
+    opacity: 0.2;
+    transition: opacity 150ms ease-in-out;
+  }
 
   &:disabled {
-    cursor: default;
     opacity: 0.5;
+    cursor: default;
+  }
+
+  &:hover:not([disabled]) {
+    &:before {
+      opacity: 0.4;
+    }
   }
 `;
