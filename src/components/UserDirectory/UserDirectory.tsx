@@ -1,7 +1,21 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
-import { ButtonLink, DeleteIconLink, EditIconLink, HeadingWrapper, Input, LinkWrapper, ListWrapper, Select, SortWrapper, Wrapper } from './UserDirectory.css';
+import {
+  ButtonLink,
+  DeleteIconLink,
+  EditIconLink,
+  Footer,
+  HeadingWrapper,
+  Input,
+  InputWrapper,
+  LinkWrapper,
+  ListWrapper,
+  SortButton,
+  SortHeader,
+  SortWrapper,
+  Wrapper,
+} from './UserDirectory.css';
 
 import { User } from '../../types/commons';
 
@@ -13,8 +27,12 @@ import { Row } from '../AppDirectory';
 import Modal from '../Modal';
 import UserCard from '../UserCard';
 
-const FIRST_NAME = 'firstName';
-const LAST_NAME = 'lastName';
+const SORT_VALUES = {
+  'Admin': 'isAdmin',
+  'Email': 'email',
+  'First Name': 'firstName',
+  'Last Name': 'lastName',
+};
 
 interface Props {
   users: User[];
@@ -37,7 +55,7 @@ class UserDirectory extends React.PureComponent<Props & RouteComponentProps, Sta
 
     this.state = {
       search: '',
-      sort: LAST_NAME,
+      sort: SORT_VALUES['Last Name'],
     };
   }
 
@@ -52,14 +70,7 @@ class UserDirectory extends React.PureComponent<Props & RouteComponentProps, Sta
     this.setState({ search });
   };
 
-  handleSelectChange = (e: React.FormEvent<HTMLSelectElement>) => {
-    const { currentTarget } = e;
-    if (!currentTarget) return;
-    const { value } = currentTarget;
-    if (typeof value !== 'string') return;
-
-    const sort = value;
-
+  handleChangeSortCreator = sort => () => {
     this.setState({ sort });
   };
 
@@ -67,11 +78,19 @@ class UserDirectory extends React.PureComponent<Props & RouteComponentProps, Sta
   // store derived (sorted) state to filter in render
   sortUserData = (userData: User[], sortKey: string) =>
     userData.sort((userA, userB) => {
-      const A = userA[sortKey];
-      const B = userB[sortKey];
+      let A = userA[sortKey];
+      let B = userB[sortKey];
 
-      if (A < B) return -1;
-      if (A > B) return 1;
+      if (typeof A === 'string' && typeof B === 'string') {
+        A = A.toUpperCase();
+        B = B.toUpperCase();
+
+        if (A < B) return -1;
+        if (A > B) return 1;
+      } else if (typeof A === 'boolean' && typeof B === 'boolean') {
+        if (A > B) return -1;
+        if (A < B) return 1;
+      }
 
       return 0;
     });
@@ -84,20 +103,6 @@ class UserDirectory extends React.PureComponent<Props & RouteComponentProps, Sta
           .toLowerCase()
           .indexOf(search.toLowerCase()) !== -1,
     );
-
-  sortIncomingDataByLastName = data => {
-    const sortedData = data.sort((a, b) => {
-      const nameA = a.lastName.toUpperCase();
-      const nameB = b.lastName.toUpperCase();
-
-      if (nameA < nameB) return -1;
-      if (nameA > nameB) return 1;
-
-      return 0;
-    });
-
-    return sortedData;
-  };
 
   renderButtons = user => {
     return (
@@ -116,15 +121,9 @@ class UserDirectory extends React.PureComponent<Props & RouteComponentProps, Sta
     return (
       <Wrapper>
         <HeadingWrapper>
-          <Input name="search" value={search} onChange={this.handleInputChange} placeholder="Search users..." type="text" />
-
-          <SortWrapper>
-            Sort by
-            <Select onChange={this.handleSelectChange} value={sort}>
-              <option value={LAST_NAME}>Last Name</option>
-              <option value={FIRST_NAME}>First Name</option>
-            </Select>
-          </SortWrapper>
+          <InputWrapper>
+            <Input name="search" value={search} onChange={this.handleInputChange} placeholder="Filter Users" type="text" />
+          </InputWrapper>
 
           <ButtonLink to={ROUTES.ADMIN_USERS_NEW}>Add User</ButtonLink>
         </HeadingWrapper>
@@ -138,6 +137,18 @@ class UserDirectory extends React.PureComponent<Props & RouteComponentProps, Sta
         </ListWrapper>
 
         {doesCurrentPathMatch(userRoutes, location.pathname) && <Modal handleClose={history.goBack}>{children}</Modal>}
+
+        <Footer>
+          <SortWrapper>
+            <SortHeader>SORT BY:</SortHeader>
+
+            {Object.keys(SORT_VALUES).map(display => (
+              <SortButton key={display} active={sort === SORT_VALUES[display]} onClick={this.handleChangeSortCreator(SORT_VALUES[display])}>
+                {display}
+              </SortButton>
+            ))}
+          </SortWrapper>
+        </Footer>
       </Wrapper>
     );
   }

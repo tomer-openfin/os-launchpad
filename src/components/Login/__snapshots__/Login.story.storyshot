@@ -50,7 +50,7 @@ exports[`Storyshots Components/Login Change Password 1`] = `
           className="sc-kjoXOD jYiJwF"
         >
           <button
-            className="sc-TOsTZ cxvdVu"
+            className="sc-TOsTZ hoDQoJ"
             type="submit"
           >
             Create New Password
@@ -505,7 +505,7 @@ exports[`Storyshots Components/Login With Error 1`] = `
           className="sc-kjoXOD jYiJwF"
         >
           <button
-            className="sc-TOsTZ cxvdVu"
+            className="sc-TOsTZ hoDQoJ"
             type="submit"
           >
             Login
@@ -956,7 +956,7 @@ exports[`Storyshots Components/Login default 1`] = `
           className="sc-kjoXOD jYiJwF"
         >
           <button
-            className="sc-TOsTZ cxvdVu"
+            className="sc-TOsTZ hoDQoJ"
             type="submit"
           >
             Login

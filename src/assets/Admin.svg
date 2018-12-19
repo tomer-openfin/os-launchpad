@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>icons/star</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="64 86.7695778 34.6107374 107.45085 45.1980143 73.1091355 16.4471742 51.5491503 52.3797338 51.0060756 64 17 75.6202662 51.0060756 111.552826 51.5491503 82.8019857 73.1091355 93.3892626 107.45085"></polygon>
+    </defs>
+    <g id="icons/star" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Star" fill="#FBC23C" xlink:href="#path-1"></use>
+        <g id="fills/comet" mask="url(#mask-2)" fill="#E7E7E7">
+            <g transform="translate(0.000000, -0.000000)" id="Rectangle">
+                <rect x="0" y="0" width="128.02087" height="128.02087"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

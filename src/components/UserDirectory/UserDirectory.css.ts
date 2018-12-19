@@ -7,6 +7,8 @@ import * as SearchIcon from '../../assets/Search.svg';
 import * as TrashIcon from '../../assets/Trash.svg';
 
 import { Color } from '../../styles/index';
+import { TypeStyleAlgol, TypeStyleCanopus, TypeStyleEnif } from '../../styles/typography.css';
+import { ButtonCSS } from '../Button/Button.css';
 
 export const Wrapper = styled.div`
   height: 100%;
@@ -30,6 +32,21 @@ export const HeadingWrapper = styled.div`
   width: 100%;
 `;
 
+export const Footer = styled.div`
+  height: 44px;
+
+  &:after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 44px;
+    background-color: ${Color.KUIPER_BELT};
+    z-index: -1;
+  }
+`;
+
 export const LinkWrapper = styled.div<{ vertical?: boolean }>`
   align-items: baseline;
   display: flex;
@@ -39,40 +56,72 @@ export const LinkWrapper = styled.div<{ vertical?: boolean }>`
   height: 100%;
   width: 100%;
 `;
-
-export const Input = styled.input`
-  border-radius: 3px;
-  border: none;
-  font-size: 14px;
+export const InputWrapper = styled.div`
   height: 36px;
-  padding: 0 10px 0 36px;
   min-width: 200px;
   max-width: 290px;
-  outline: none;
-  color: ${Color.MERCURY};
-  background: url(${SearchIcon}) ${Color.VACUUM};
-  background-repeat: no-repeat;
   flex: 1;
+  position: relative;
+
+  &:before {
+    content: '';
+    height: 36px;
+    width: 36px;
+    top: 0;
+    left: 0;
+    opacity: 0.25;
+    background-color: ${Color.SUN};
+    mask: url(${SearchIcon});
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    position: absolute;
+  }
 `;
 
-export const Select = styled.select`
-  border: 1px solid ${Color.NEBULA};
-  border-radius: 2px;
-  line-height: normal;
-  color: ${Color.MERCURY};
-  background-color: ${Color.VACUUM};
+export const Input = styled.input`
+  ${TypeStyleAlgol};
+
+  border-radius: 3px;
+  padding: 0 10px 0 36px;
+  height: 100%;
+  width: 100%;
+  border: none;
   outline: none;
+  color: ${Color.MERCURY};
+  background-color: ${Color.KUIPER_BELT};
+
+  &::placeholder {
+    ${TypeStyleAlgol};
+
+    opacity: 0.25;
+    color: ${Color.SUN};
+  }
 `;
 
-export const SortWrapper = styled.label`
+export const SortButton = styled.div<{ active: boolean }>`
+  ${TypeStyleCanopus};
+
+  margin: 10px;
+  cursor: pointer;
+  color: ${Color.SUN};
+  opacity: ${props => (props.active ? '1' : '0.5')};
+`;
+
+export const SortWrapper = styled.div`
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: bold;
+  align-items: center;
+  justify-content: flex-start;
   flex-shrink: 0;
-  padding: 0 10px;
+  padding: 12px;
+`;
+
+export const SortHeader = styled.div`
+  ${TypeStyleEnif};
+
+  color: ${Color.JUPITER};
+  margin-right: 10px;
 `;
 
 export const DeleteIconLink = styled(Link)`
@@ -82,9 +131,9 @@ export const DeleteIconLink = styled(Link)`
   mask-position: center;
   mask-repeat: no-repeat;
   color: ${Color.COMET};
-  margin: 5px;
-  height: 40px;
-  width: 40px;
+  margin-left: 10px;
+  height: 30px;
+  width: 30px;
 
   &:hover {
     background-color: ${Color.MARS};
@@ -105,9 +154,9 @@ export const EditIconLink = styled(Link)`
   mask-repeat: no-repeat;
   color: ${Color.COMET};
   border-radius: 3px;
-  margin: 5px;
-  height: 40px;
-  width: 40px;
+  margin-left: 10px;
+  height: 30px;
+  width: 30px;
 
   &:hover {
     background-color: ${Color.JUPITER};
@@ -121,29 +170,7 @@ export const EditIconLink = styled(Link)`
 `;
 
 export const ButtonLink = styled(Link)`
-  background-color: ${Color.NEPTUNE};
-  color: ${Color.COMET};
-  border-radius: 3px;
-  margin: 10px 5px;
-  height: 36px;
-  min-width: 109px;
-  padding: 0 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 200;
-  font-size: 12px;
-  flex-shrink: 0;
-
-  &:hover {
-    background-color: ${Color.NEBULA};
-    cursor: pointer;
-  }
-
-  &:disabled {
-    background-color: ${Color.MERCURY};
-    cursor: default;
-  }
+  ${ButtonCSS}
 `;
 
 export const ListWrapper = styled.div`
@@ -151,6 +178,7 @@ export const ListWrapper = styled.div`
   font-size: 10px;
   overflow-y: scroll;
   flex: 1;
+  padding-bottom: 25px;
 
   & > li {
     align-items: center;

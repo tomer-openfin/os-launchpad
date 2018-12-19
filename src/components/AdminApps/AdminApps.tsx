@@ -2,12 +2,21 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
 import Modal from '../Modal';
-import { ButtonLink, DeleteIconLink, EditIconLink, HeadingWrapper, Input, LinkWrapper, ListWrapper, Wrapper } from '../UserDirectory/UserDirectory.css';
+import {
+  ButtonLink,
+  DeleteIconLink,
+  EditIconLink,
+  HeadingWrapper,
+  Input,
+  InputWrapper,
+  LinkWrapper,
+  ListWrapper,
+  Wrapper,
+} from '../UserDirectory/UserDirectory.css';
 
 import { App } from '../../types/commons';
 import { doesCurrentPathMatch } from '../../utils/routeHelpers';
-import { appRoutes } from '../Router';
-import { ROUTES } from '../Router/consts';
+import { appRoutes, ROUTES } from '../Router';
 
 import AppCard from '../AppCard';
 import { Row } from '../AppDirectory';
@@ -66,7 +75,9 @@ class AdminApps extends React.PureComponent<Props & RouteComponentProps, State> 
     return (
       <Wrapper>
         <HeadingWrapper>
-          <Input name="search" value={search} onChange={this.handleInputChange} placeholder="Search apps..." type="text" />
+          <InputWrapper>
+            <Input name="search" value={search} onChange={this.handleInputChange} placeholder="Search apps..." type="text" />
+          </InputWrapper>
 
           <ButtonLink to={ROUTES.ADMIN_APPS_NEW}>Add App</ButtonLink>
         </HeadingWrapper>

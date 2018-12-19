@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
-import * as XIcon from '../../assets/TinyX.svg';
-
 import { Color } from '../../styles';
 
 export const Header = styled.div`
   -webkit-app-region: drag !important;
-  background-color: ${Color.CHARCOAL};
+  background-color: ${Color.KUIPER_BELT};
   color: ${Color.SUN};
   display: flex;
   height: 60px;

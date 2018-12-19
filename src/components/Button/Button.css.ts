@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Color } from '../../styles/index';
 import { TypeStyleSirius } from '../../styles/typography.css';
 
@@ -9,7 +9,7 @@ interface ButtonProps {
   width?: number;
 }
 
-export default styled.button<ButtonProps>`
+export const ButtonCSS = css<ButtonProps>`
   ${TypeStyleSirius};
 
   align-items: center;
@@ -17,13 +17,12 @@ export default styled.button<ButtonProps>`
   color: ${Color.SUN};
   cursor: pointer;
   display: flex;
-  display: inline-block;
   justify-content: center;
   margin: 0;
   border: none;
   outline: none;
   border-radius: 3px;
-  height: ${props => props.height || '35px'};
+  height: ${props => props.height || '36px'};
   width: ${props => props.width || '110px'};
   min-width: 110px;
   position: relative;
@@ -51,4 +50,8 @@ export default styled.button<ButtonProps>`
       opacity: 0.4;
     }
   }
+`;
+
+export default styled.button<ButtonProps>`
+  ${ButtonCSS};
 `;

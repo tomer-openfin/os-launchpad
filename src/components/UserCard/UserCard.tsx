@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { CTAWrapper, InfoWrapper, UserEmail, UserName, Wrapper } from './UserCard.css';
+import { AdminBadge, CTAWrapper, InfoWrapper, NameAndBadgeWrapper, UserEmail, UserName, Wrapper } from './UserCard.css';
 
 import { User } from '../../types/commons';
 
@@ -13,9 +13,13 @@ const AppCard = ({ user, ctas }: Props) => {
   return (
     <Wrapper>
       <InfoWrapper>
-        <UserName>
-          {user.firstName} {user.lastName}
-        </UserName>
+        <NameAndBadgeWrapper>
+          <UserName>
+            {user.firstName} {user.lastName}
+          </UserName>
+
+          <AdminBadge isAdmin={user.isAdmin} />
+        </NameAndBadgeWrapper>
 
         <UserEmail>{user.email}</UserEmail>
       </InfoWrapper>

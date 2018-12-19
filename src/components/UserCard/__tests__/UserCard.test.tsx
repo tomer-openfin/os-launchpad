@@ -1,7 +1,7 @@
 import * as enzyme from 'enzyme';
 import * as React from 'react';
 
-import MockUserData from '../../UserDirectory/MockUserData';
+import MockUserData from '../../../const/MockUserData';
 import UserCard from '../UserCard';
 
 describe('<UserCard />', () => {
