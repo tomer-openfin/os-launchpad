@@ -5,17 +5,27 @@ import { Color } from '../../styles';
 
 const activeClassName = 'active-link';
 
+export const TabsWrapper = styled.div`
+  background-color: ${Color.VACUUM};
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 50px;
+`;
+
 export const ContentWrapper = styled.div`
-  background-color: ${Color.ASTEROID_BELT};
   display: flex;
   flex-direction: column;
   overflow: hidden;
   width: 100%;
+  max-width: 600px;
+  margin: auto;
   flex: 1;
 `;
 
 export const TabLink = styled(NavLink).attrs({ activeClassName })`
   align-items: center;
+  background-color: ${Color.VACUUM};
   color: ${Color.MERCURY};
   display: flex;
   flex: 1;

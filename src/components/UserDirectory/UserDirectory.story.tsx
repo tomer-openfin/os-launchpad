@@ -4,6 +4,6 @@ import { storiesOf } from '@storybook/react';
 
 import UserDirectory from './UserDirectory';
 
-import userData from './MockUserData';
+import userData from '../../const/MockUserData';
 
 // storiesOf('Components/UserDirectory', module).add('default', () => <UserDirectory users={userData} />);

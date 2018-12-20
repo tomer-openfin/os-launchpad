@@ -164,9 +164,8 @@ export const Wrapper = styled.div<EndPaddingPositionProp>`
 `;
 
 /* Styled Imports */
-export const StyledLogo = styled(Logo)<PositionProp>`
+export const StyledLogo = styled(Logo)`
   background-color: rgba(0, 0, 0, 0.16);
-  ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? `margin-right: 10px;` : `margin-bottom: 10px;`)}
 `;
 
 export const StyledSvgIcon = styled(SvgIcon)`

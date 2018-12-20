@@ -1,3 +1,4 @@
+import { Application } from '@giantmachines/redux-openfin';
 import { put, select, takeEvery } from 'redux-saga/effects';
 
 import windowsConfig from '../../config/windows';
@@ -6,19 +7,21 @@ import { restoreLayoutRequest, SAVE_LAYOUT } from '../layouts/actions';
 import { getLayoutsIds } from '../layouts/selectors';
 import { launchWindow } from '../windows/actions';
 import { GLOBAL_HOTKEY_PRESSED } from './actions';
-import { GlobalHotkeys } from './enums';
+import { DevGlobalHotkeys, GlobalHotkeys } from './enums';
 
 function* watchGlobalHotkeyPressed(action) {
   const hotkey = action.payload;
 
   switch (hotkey) {
-    case GlobalHotkeys.SaveLayout:
+    case GlobalHotkeys.SaveLayout: {
       // tslint:disable-next-line:no-console
       console.log(`${GlobalHotkeys.SaveLayout} pressed`);
 
       yield put({ type: SAVE_LAYOUT });
       break;
-    case GlobalHotkeys.RestoreLayout:
+    }
+
+    case GlobalHotkeys.RestoreLayout: {
       // tslint:disable-next-line:no-console
       console.log(`${GlobalHotkeys.RestoreLayout} pressed`);
 
@@ -29,16 +32,23 @@ function* watchGlobalHotkeyPressed(action) {
 
       yield put(restoreLayoutRequest(firstLayoutId));
       break;
-    case GlobalHotkeys.ShowAppDirectory:
+    }
+
+    case GlobalHotkeys.ShowAppDirectory: {
       // tslint:disable-next-line:no-console
       console.log(`${GlobalHotkeys.ShowAppDirectory} pressed`);
 
       yield put(launchWindow(windowsConfig.appDirectory));
       break;
+    }
+
+    case DevGlobalHotkeys.ReloadApp: {
+      yield put(Application.restart());
+      break;
+    }
     default:
       // tslint:disable-next-line:no-console
       console.log('Not a valid registered hotkey.');
-      break;
   }
 }
 

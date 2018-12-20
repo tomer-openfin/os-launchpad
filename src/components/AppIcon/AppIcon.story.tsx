@@ -68,7 +68,7 @@ storiesOf('Components/AppIcon', module)
             indicatorPosition,
             isDisabled,
             launchApp: action('launchApp clicked'),
-            margin,
+            margin: `${margin}px`,
             size,
           },
         ]

@@ -15,6 +15,7 @@ import {
 
 // Action Types
 export const LOGIN = generateAsyncActionTypes('LOGIN');
+export const LOGOUT = generateAsyncActionTypes('LOGOUT');
 export const LOGIN_WITH_NEW_PASSWORD = 'LOGIN_WITH_NEW_PASSWORD';
 
 export const SET_ME = 'SET_ME';
@@ -39,6 +40,10 @@ export const getSettingsError = createAction<ErrorResponse>(GET_SETTINGS.ERROR);
 export const loginRequest = createAction<LoginRequestPayload>(LOGIN.REQUEST);
 export const loginSuccess = createAction<LoginSuccessPayload>(LOGIN.SUCCESS);
 export const loginError = createAction<ErrorResponse>(LOGIN.ERROR);
+
+export const logoutRequest = createAction(LOGOUT.REQUEST);
+export const logoutSuccess = createAction(LOGOUT.SUCCESS);
+export const logoutError = createAction<ErrorResponse>(LOGOUT.ERROR);
 
 export const loginWithNewPassword = createAction<LoginWithNewPasswordPayload>(LOGIN_WITH_NEW_PASSWORD);
 

@@ -3,42 +3,42 @@ import { UserLayout } from '../types/commons';
 
 export const MOCK_INTENTS = [
   {
-    displayName: 'Call',
+    displayName: 'Start Call',
     name: 'StartCall',
   },
   {
-    displayName: 'Chat',
+    displayName: 'Start Chat',
     name: 'StartChat',
   },
   {
-    displayName: 'Chart',
+    displayName: 'View Chart',
     name: 'ViewChart',
   },
   {
-    displayName: 'View',
+    displayName: 'View Contact',
     name: 'ViewContact',
   },
   {
-    displayName: 'Quote',
+    displayName: 'View Quote',
     name: 'ViewQuote',
   },
-  {
-    displayName: 'News',
-    name: 'ViewNews',
-  },
-  {
-    displayName: 'Details',
-    name: 'ViewInstrument',
-  },
-  {
-    displayName: 'Analyze',
-    name: 'ViewAnalysis',
-  },
+  // {
+  //   displayName: 'View News',
+  //   name: 'ViewNews',
+  // },
+  // {
+  //   displayName: 'View Instrument',
+  //   name: 'ViewInstrument',
+  // },
+  // {
+  //   displayName: 'View Analysis',
+  //   name: 'ViewAnalysis',
+  // },
 ];
 
 export const MOCK_CONTEXTS = [
   {
-    $type: 'fdc3.instrument',
+    $type: 'Instrument',
     id: {
       CUSIP: '037833100',
       FIGI: 'BBG000B9XRY4',
@@ -48,7 +48,7 @@ export const MOCK_CONTEXTS = [
     name: 'Apple',
   },
   {
-    $type: 'fdc3.contact',
+    $type: 'Contact',
     id: {
       email: 'nick@openfin.co',
       phone: '9171234567',
@@ -57,7 +57,7 @@ export const MOCK_CONTEXTS = [
     name: 'Nick Kolba',
   },
   {
-    $type: 'fdc3.organization',
+    $type: 'Organization',
     id: {
       LEI: 'VGRQXHF3J8VDLUA7XE92',
       PERMID: '4295904307',
@@ -65,17 +65,17 @@ export const MOCK_CONTEXTS = [
     name: 'IBM',
   },
   {
-    $type: 'fdc3.contactList',
+    $type: 'Contact List',
     contacts: [
       {
-        $type: 'fdc3.contact',
+        $type: 'contact',
         id: {
           email: 'nick@openfin.co',
         },
         name: 'Nick Kolba',
       },
       {
-        $type: '$fdc3.contact',
+        $type: '$contact',
         id: {
           email: 'espen@openfin.co',
         },
@@ -84,10 +84,10 @@ export const MOCK_CONTEXTS = [
     ],
   },
   {
-    $type: 'fdc3.position',
+    $type: 'Position',
     holding: 500,
     instrument: {
-      $type: 'fdc3.instrument',
+      $type: 'instrument',
       id: {
         ISIN: 'US0378331005',
       },

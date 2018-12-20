@@ -3,7 +3,7 @@ import * as serializeError from 'serialize-error';
 import { APIResponse, ResponseStatus } from '../../types/commons';
 import { getAdminOrgSettings, getOrgSettings, saveAdminOrgSettings } from './admin';
 import { createAdminApp, deleteAdminApp, getAdminApp, getAdminApps, getDirectoryAppList, updateAdminApp } from './apps';
-import { login, newPasswordLogin } from './auth';
+import { login, logout, newPasswordLogin } from './auth';
 import { createUserLayout, getUserLayouts, getUserSettings, saveUserSettings, updateUserLayout } from './user';
 import { createAdminUser, deleteAdminUser, getAdminUser, getAdminUsers, updateAdminUser } from './users';
 
@@ -40,6 +40,7 @@ export default {
   getOrgSettings: withTry(getOrgSettings),
 
   login: withTry(login),
+  logout: withTry(logout),
   newPasswordLogin: withTry(newPasswordLogin),
 
   getAdminOrgSettings: withTry(getAdminOrgSettings),

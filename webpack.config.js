@@ -22,6 +22,7 @@ const {
 } = process.env;
 
 const BACKEND = process.env.BACKEND || MOCK_POSTMAN_URI;
+const BACKEND_ORG = process.env.BACKEND_ORG || 'openfin';
 const DEPLOY_LOCATION = process.env.DEPLOY_LOCATION || `http://${HOST}:${PORT}`;
 const isProduction = NODE_ENV === 'production';
 
@@ -54,6 +55,9 @@ module.exports = {
         changeOrigin: true,
         logLevel: 'debug',
         target: BACKEND,
+        onProxyReq: (req) => {
+            req.setHeader('openfin-os-organization', BACKEND_ORG);
+        }
       },
     },
   },

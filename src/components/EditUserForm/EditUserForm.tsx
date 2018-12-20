@@ -1,13 +1,23 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, Formik } from 'formik';
 import * as React from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
+import * as trashIcon from '../../assets/Trash.svg';
+
+import { Color } from '../../styles';
 import { ResponseStatus, User } from '../../types/commons';
 import { validatePhone, validateTextField } from '../../utils/validators';
-import { Button, ButtonLink, Error, GridWrapper, Heading, Label, Message, Row, Wrapper } from '../NewUserForm';
+import Button, { ButtonLink } from '../Button/Button.css';
+
+import { ButtonWrapper, HeadingText } from '../ConfirmUserDelete/ConfirmDelete.css';
+import { Footer } from '../NewAppForm/AppForms.css';
+import { DeleteIcon, Error, FormWrapper, GridWrapper, Label, LabelText, Message, MiniGridWrapper, ScrollWrapper, Wrapper } from '../NewUserForm/UserForms.css';
 import { ROUTES } from '../Router/consts';
+import WindowHeader from '../WindowHeader/index';
 
 interface Props {
   updateUser: Function;
+  history;
   location: {
     state: User;
   };
@@ -23,7 +33,7 @@ interface State {
   saveDisabled: boolean;
 }
 
-class EditUserForm extends React.Component<Props, State> {
+class EditUserForm extends React.Component<Props & RouteComponentProps, State> {
   state = {
     formContents: {
       email: '',
@@ -76,54 +86,83 @@ class EditUserForm extends React.Component<Props, State> {
     actions.setSubmitting(false);
   };
 
+  handleDeleteIconClick = () => {
+    const { history, location } = this.props;
+
+    history.push(ROUTES.ADMIN_USERS_DELETE, location.state);
+  };
+
   renderForm = ({ isSubmitting, isValid }) => {
+    const { saveDisabled } = this.state;
     const { location } = this.props;
-    const { email } = location.state;
+    const { email, firstName, lastName } = location.state;
 
     return (
-      <Wrapper>
-        <Heading>Edit User Details</Heading>
+      <FormWrapper>
+        <WindowHeader backgroundColor={Color.VACUUM} justifyContent="flex-start" withoutClose>
+          <HeadingText>{`${firstName} ${lastName}`}</HeadingText>
 
-        <Label>Email: {email}</Label>
+          <DeleteIcon size={30} imgSrc={trashIcon} onClick={this.handleDeleteIconClick} />
+        </WindowHeader>
 
-        <Form>
+        <ScrollWrapper>
           <GridWrapper>
-            <Label>
-              First Name:
-              <Field type="text" name="firstName" validate={validateTextField} />
-              <ErrorMessage component={Error} name="firstName" />
-            </Label>
+            <MiniGridWrapper>
+              <Label>
+                <LabelText>First Name</LabelText>
+
+                <Field type="text" name="firstName" validate={validateTextField} placeholder="Enter first name" />
+
+                <ErrorMessage component={Error} name="firstName" />
+              </Label>
+
+              <Label>
+                <LabelText>MI</LabelText>
+
+                <Field type="text" name="middleInitial" />
+
+                <ErrorMessage component={Error} name="middleInitial" />
+              </Label>
+            </MiniGridWrapper>
 
             <Label>
-              Last Name:
-              <Field type="text" name="lastName" validate={validateTextField} />
+              <LabelText>Last Name</LabelText>
+
+              <Field type="text" name="lastName" validate={validateTextField} placeholder="Enter last name" />
+
               <ErrorMessage component={Error} name="lastName" />
             </Label>
 
             <Label>
-              Middle Initial:
-              <Field type="text" name="middleInitial" />
-              <ErrorMessage component={Error} name="middleInitial" />
+              <LabelText>Phone Number</LabelText>
+
+              <Field type="text" name="phone" maxLength="10" validate={validatePhone} placeholder="Enter phone number" />
+
+              <ErrorMessage component={Error} name="phone" />
             </Label>
 
             <Label>
-              Phone Number:
-              <Field type="text" name="phone" maxLength="10" validate={validatePhone} />
-              <ErrorMessage component={Error} name="phone" />
+              <LabelText>Email</LabelText>
+
+              <Field type="text" name="email" disabled placeholder={email} />
             </Label>
           </GridWrapper>
+        </ScrollWrapper>
 
-          <Row>
-            <ButtonLink to={ROUTES.ADMIN_USERS}>Cancel</ButtonLink>
+        <Footer>
+          <ButtonWrapper>
+            <ButtonLink to={ROUTES.ADMIN_USERS} backgroundColor={Color.MERCURY} type="button" width={128}>
+              Cancel
+            </ButtonLink>
 
-            <Button type="submit" disabled={isSubmitting || !isValid}>
-              Save Updates
+            <Button type="submit" width={128} disabled={saveDisabled || isSubmitting || !isValid}>
+              Save
             </Button>
-          </Row>
-        </Form>
+          </ButtonWrapper>
+        </Footer>
 
         {this.renderMessage()}
-      </Wrapper>
+      </FormWrapper>
     );
   };
 
@@ -150,7 +189,9 @@ class EditUserForm extends React.Component<Props, State> {
       <Wrapper>
         {this.renderMessage()}
 
-        <ButtonLink to={ROUTES.ADMIN_USERS}>Continue</ButtonLink>
+        <ButtonLink to={ROUTES.ADMIN_USERS} backgroundColor={Color.MERCURY} type="button" width={128}>
+          Continue
+        </ButtonLink>
       </Wrapper>
     ) : (
       <Formik

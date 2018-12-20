@@ -1,7 +1,12 @@
 export enum AppIconSizes {
-  Small = 'small',
-  Medium = 45,
-  Large = 76,
+  Small = 30,
+  Medium = 50,
+  Large = 80,
+}
+
+export enum AppListTypes {
+  App = 'app',
+  Toggle = 'toggle',
 }
 
 // todo: use more general obj for sizes across all app

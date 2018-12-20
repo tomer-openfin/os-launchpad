@@ -2,12 +2,10 @@ import styled from 'styled-components';
 
 import { Color } from '../../styles/index';
 
-import { Wrapper as AppList } from '../AppList';
+import { StyledTransitionGroup as AppList } from '../AppList';
 
 export const Window = styled.div`
-  background: ${Color.CHARCOAL};
-  display: flex;
-  flex-direction: column;
+  background: ${Color.ASTEROID_BELT};
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;

@@ -1,11 +1,14 @@
 import { all, call, select } from 'redux-saga/effects';
 
+import { APP_LAUNCHER_OVERFLOW_WINDOW } from '../../config/windows';
 import { Bounds } from '../../types/commons';
+import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName, getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
+import { deregister } from '../../utils/openfinLayouts';
 import { animateWindow, setWindowBoundsPromise } from '../../utils/openfinPromises';
 import { calcBoundsRelativeToLauncher, calcLauncherPosition, isBottom, isRight } from '../../utils/windowPositionHelpers';
 import { getAutoHide, getLauncherPosition } from '../me';
-import { getAppsLauncherAppList, getSystemIconsSelector } from '../selectors';
+import { getAppListDimensions, getAppsLauncherAppList, getSystemIconsSelector } from '../selectors';
 import { getMonitorInfo } from '../system/index';
 import { State } from '../types';
 import { getWindowBounds } from '../windows';
@@ -54,6 +57,37 @@ export function* animateLauncherCollapseExpand(isExpanded: State['application'][
   });
 }
 
+export function* deregisterWindowsFromLayoutsService(windowNames: string[]) {
+  const APP_UUID = getAppUuid();
+  const deregisterWithCbs = (config: { uuid: string; name: string }, successCb?: Function, errorCb?: Function) =>
+    deregister(config)
+      .then(() => {
+        if (successCb) {
+          successCb();
+        }
+      })
+      .catch(err => {
+        if (errorCb) {
+          errorCb(err);
+        }
+      });
+
+  yield all(
+    windowNames.map(name => {
+      const successCb = () => {
+        // tslint:disable-next-line:no-console
+        console.log(`Deregistering ${name} from Layouts service.`);
+      };
+      const errorCb = err => {
+        // tslint:disable-next-line:no-console
+        console.log(`${name} has already been deregistred from Layouts service. ${err}`);
+      };
+
+      return call(deregisterWithCbs, { uuid: APP_UUID, name }, successCb, errorCb);
+    }),
+  );
+}
+
 /**
  * Generator for setting the windows relative to Launcher bounds
  */
@@ -64,15 +98,23 @@ export function* setWindowRelativeToLauncherBounds(finName: string, launcherBoun
     return;
   }
 
-  const [windowBounds, launcherPosition, isLauncherDrawerExpanded] = yield all([
-    select(getWindowBounds, finName),
-    select(getLauncherPosition),
-    select(getDrawerIsExpanded),
-  ]);
+  let windowBounds = yield select(getWindowBounds, finName);
+  const [launcherPosition, isLauncherDrawerExpanded] = yield all([select(getLauncherPosition), select(getDrawerIsExpanded)]);
   if (!windowBounds) {
     return;
   }
 
-  const bounds = calcBoundsRelativeToLauncher(finName, windowBounds, launcherBounds, launcherPosition, isLauncherDrawerExpanded);
+  let invert = true;
+  if (finName === APP_LAUNCHER_OVERFLOW_WINDOW) {
+    const appListDimensions = yield select(getAppListDimensions);
+
+    windowBounds = {
+      ...windowBounds,
+      ...appListDimensions,
+    };
+    invert = false;
+  }
+
+  const bounds = calcBoundsRelativeToLauncher(finName, windowBounds, launcherBounds, launcherPosition, isLauncherDrawerExpanded, invert);
   yield call(setWindowBoundsPromise, finWindow, bounds);
 }

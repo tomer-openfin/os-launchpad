@@ -10,7 +10,14 @@ import { createDeleteOptions, createGetOptions, createPostOptions, createPutOpti
 export const getAdminUsers = (): Promise<User[]> => {
   const options = createGetOptions();
 
-  return fetch(`${API.ADMIN_USERS}`, options).then(resp => resp.json());
+  return fetch(`${API.ADMIN_USERS}`, options)
+    .then(resp => resp.json())
+    .then(json => {
+      if (!json) {
+        throw new Error(`${API.ORG_SETTINGS} did not return a valid resource: ${json}`);
+      }
+      return json;
+    });
 };
 
 /**
@@ -21,7 +28,14 @@ export const getAdminUsers = (): Promise<User[]> => {
 export const getAdminUser = (user: User): Promise<User> => {
   const options = createGetOptions();
 
-  return fetch(`${API.ADMIN_USERS}/${user.username}`, options).then(resp => resp.json());
+  return fetch(`${API.ADMIN_USERS}/${user.username}`, options)
+    .then(resp => resp.json())
+    .then(json => {
+      if (!json) {
+        throw new Error(`${API.ORG_SETTINGS} did not return a valid resource: ${json}`);
+      }
+      return json;
+    });
 };
 
 /**

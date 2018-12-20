@@ -4,7 +4,7 @@ import { DirectionalPosition } from '../../types/commons';
 import noop from '../../utils/noop';
 
 import WindowHeader from '../WindowHeader';
-import { CTA, Heading, Section, Window } from './Settings.css';
+import { CTA, Heading, Row, Section, Window } from './Settings.css';
 
 interface Props {
   autoHide: boolean;
@@ -36,9 +36,7 @@ class Settings extends React.Component<Props, {}> {
 
     return (
       <Window>
-        <WindowHeader>
-          My Settings
-        </WindowHeader>
+        <WindowHeader>My Settings</WindowHeader>
 
         <Section>
           <Heading>Auto Hide</Heading>
@@ -51,11 +49,11 @@ class Settings extends React.Component<Props, {}> {
 
           <CTA onClick={setLauncherPositionTop}>Top</CTA>
 
-          <div>
+          <Row>
             <CTA onClick={setLauncherPositionLeft}>Left</CTA>
 
             <CTA onClick={setLauncherPositionRight}>Right</CTA>
-          </div>
+          </Row>
 
           <CTA onClick={setLauncherPositionBottom}>Bottom</CTA>
         </Section>

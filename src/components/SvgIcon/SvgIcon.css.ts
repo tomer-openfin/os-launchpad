@@ -13,13 +13,13 @@ export const Icon = styled.div<Props>`
   height: ${props => props.size}px;
   width: ${props => props.size}px;
 
+  &:hover {
+    background-color: ${Color.URANUS};
+  }
+
   ${props =>
     props.onClick &&
     css`
       cursor: pointer;
-
-      &:hover {
-        background-color: ${Color.URANUS};
-      }
     `}
 `;

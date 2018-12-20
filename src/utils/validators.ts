@@ -15,7 +15,7 @@ export const validateEmail = value => {
   );
 
   if (!value) {
-    error = 'Email Input Field Required';
+    error = 'Email Field Required';
   } else if (!EMAIL_REGEXP.test(value)) {
     error = 'Invalid Email format';
   }
@@ -26,7 +26,7 @@ export const validateTextField = value => {
   let error;
 
   if (!value) {
-    error = 'Input Field Required';
+    error = 'Field Required';
   }
 
   return error;
@@ -34,7 +34,7 @@ export const validateTextField = value => {
 
 // todo: fix URL regex to only accept URLs ending in ".json"
 export const validateURL = value => {
-  if (!value) return 'Input Field Required';
+  if (!value) return 'Field Required';
 
   const validateCheck = urlRegex().test(value);
 
@@ -49,9 +49,9 @@ export const validatePhone = value => {
   if (!value) return;
 
   const coercedValue = Number(value);
-  if (isNaN(coercedValue)) return 'Valid phone number required, no alphabetic characters allowed.';
+  if (isNaN(coercedValue)) return 'No characters allowed';
 
-  if (value.length < 10) return '10 digits required for a valid phone number.';
+  if (value.length < 10) return '10 digits required';
 
   return;
 };

@@ -11,11 +11,12 @@ export const CHARCOAL = '#262626';
 export const SEAGULL = '#83b8da';
 // New per designs, deprecate all above
 export const SUN = '#FFFFFF';
-export const MERCURY = '#9B9B9B';
+export const MERCURY = '#848484';
 export const VENUS = '#6461FF';
 export const EARTH = '#504CFF';
 export const MARS = '#DF5353';
 export const ASTEROID_BELT = '#3A3A3A';
+export const OORT_CLOUD = '#121212';
 export const JUPITER = '#FBC23C';
 export const SATURN = '#95D154';
 export const URANUS = '#7BD5C1';

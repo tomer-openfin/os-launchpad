@@ -7,6 +7,9 @@ import {
   loginRequest,
   loginSuccess,
   loginWithNewPassword,
+  logoutError,
+  logoutRequest,
+  logoutSuccess,
   saveSettingsError,
   saveSettingsRequest,
   saveSettingsSuccess,
@@ -84,6 +87,10 @@ export type GetSettingsError = ReturnType<typeof getSettingsError>;
 export type LoginRequest = ReturnType<typeof loginRequest>;
 export type LoginSuccess = ReturnType<typeof loginSuccess>;
 export type LoginError = ReturnType<typeof loginError>;
+
+export type LogoutRequest = ReturnType<typeof logoutRequest>;
+export type LogoutSuccess = ReturnType<typeof logoutSuccess>;
+export type LogoutError = ReturnType<typeof logoutError>;
 
 export type LoginWithNewPassword = ReturnType<typeof loginWithNewPassword>;
 

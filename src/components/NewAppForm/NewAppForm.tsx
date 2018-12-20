@@ -1,14 +1,22 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, Formik } from 'formik';
 import * as React from 'react';
+
 import * as EmptyLogo from '../../assets/empty-logo.svg';
+// import * as helpIcon from '../../assets/Help.svg';
+import * as refreshIcon from '../../assets/Refresh.svg';
+
+import Button, { ButtonLink } from '../Button/Button.css';
+import Checkbox from '../Checkbox';
+import { Error, FormWrapper, Label, LabelText, Message, ScrollWrapper, Wrapper } from '../NewUserForm';
+import { ButtonWrapper, CheckboxWrapper, Footer, GridWrapper, IconWrapper, RefreshIcon } from './AppForms.css';
 
 import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../const/Samples';
+import { Color } from '../../styles';
+import { App, ResponseStatus } from '../../types/commons';
+import noop from '../../utils/noop';
 import { validateTextField, validateURL } from '../../utils/validators';
 import { ROUTES } from '../Router/consts';
-
-import { App, ResponseStatus } from '../../types/commons';
-
-import { Button, ButtonLink, Copy, Error, GridWrapper, Heading, Label, Message, Row, Wrapper } from '../NewUserForm';
+import WindowHeader from '../WindowHeader/index';
 
 interface Props {
   createApp: Function;
@@ -26,23 +34,12 @@ interface State {
     message?: string;
     status: string;
   };
+  submitDisabled: boolean;
 }
 
-const mapSelectedOptions = (event: React.FormEvent<HTMLSelectElement>) => Array.from(event.currentTarget.selectedOptions).map(option => option.value);
+const renderMockIntents = () => MOCK_INTENTS.map((intent, index) => <Checkbox name="intents" key={index} value={intent.displayName} />);
 
-const renderMockIntents = () =>
-  MOCK_INTENTS.map((intent, index) => (
-    <option key={index} value={intent.displayName}>
-      {intent.displayName}
-    </option>
-  ));
-
-const renderMockContexts = () =>
-  MOCK_CONTEXTS.map((context, index) => (
-    <option key={index} value={context.$type}>
-      {context.$type}
-    </option>
-  ));
+const renderMockContexts = () => MOCK_CONTEXTS.map((context, index) => <Checkbox name="contexts" key={index} value={context.$type} />);
 
 class NewAppForm extends React.Component<Props, State> {
   currentLogo: string;
@@ -73,6 +70,7 @@ class NewAppForm extends React.Component<Props, State> {
         message: '',
         status: 'failure',
       },
+      submitDisabled: false,
       updatedLogo: '',
     };
 
@@ -102,82 +100,95 @@ class NewAppForm extends React.Component<Props, State> {
 
     const meta = { successCb: this.successCb, errorCb: this.errorCb };
 
+    // modify App Title to create the App Name (removed input field for this) and needed for payload
+    // todo: ensure uniqueness -> sync up with OF Brian, how is this being handled on BE?
+    const appTitle = payload.title;
+    payload.name = appTitle.replace(/\s/g, '');
+
     createApp(payload, meta);
 
     actions.setSubmitting(false);
   };
 
-  renderFormSection = ({ setFieldValue, isValid, dirty }) => (
-    <Form>
-      <GridWrapper>
-        <Label>
-          Icon URL
-          <Field type="text" name="icon" validate={validateURL} />
-          <ErrorMessage component={Error} name="icon" />
-        </Label>
+  renderFormSection = ({ isValid, isSubmitting }) => {
+    const { submitDisabled } = this.state;
 
-        <Label>
-          Manifest URL
-          <Field type="text" name="manifest_url" validate={validateURL} />
-          <ErrorMessage component={Error} name="manifest_url" />
-        </Label>
+    return (
+      <FormWrapper>
+        <WindowHeader backgroundColor={Color.VACUUM} withoutClose>
+          Create New App
+        </WindowHeader>
 
-        <Label>
-          Accepted Intent(s)
-          <Field
-            component="select"
-            multiple={true}
-            name="intents"
-            // tslint:disable:jsx-no-lambda
-            onChange={event => setFieldValue('intents', mapSelectedOptions(event))}
-          >
-            {renderMockIntents()}
-          </Field>
-        </Label>
+        <ScrollWrapper>
+          <GridWrapper>
+            <Label>
+              <LabelText>Manifest URL {/*<HelpIcon imgSrc={helpIcon} size={20} />*/}</LabelText>
 
-        <Label>
-          Title
-          <Field type="text" name="title" validate={validateTextField} />
-          <ErrorMessage component={Error} name="title" />
-        </Label>
+              <Field type="text" name="manifest_url" validate={validateURL} placeholder="Enter manifest url" />
 
-        <Label>
-          Accepted Context(s)
-          <Field
-            component="select"
-            multiple={true}
-            name="contexts"
-            // tslint:disable:jsx-no-lambda
-            onChange={event => setFieldValue('contexts', mapSelectedOptions(event))}
-          >
-            {renderMockContexts()}
-          </Field>
-        </Label>
+              <IconWrapper>
+                <RefreshIcon onClick={noop} imgSrc={refreshIcon} size={40} />
+              </IconWrapper>
 
-        <Label>
-          Name
-          <Field type="text" name="name" validate={validateTextField} />
-          <ErrorMessage component={Error} name="name" />
-        </Label>
+              <ErrorMessage component={Error} name="manifest_url" />
+            </Label>
 
-        {/* {this.renderScreenshots()} */}
+            <Label>
+              <LabelText>App Title</LabelText>
 
-        <Label>
-          Description
-          <Field component="textarea" name="description" validate={validateTextField} />
-          <ErrorMessage component={Error} name="description" />
-        </Label>
-      </GridWrapper>
+              <Field type="text" name="title" validate={validateTextField} placeholder="Enter app title" />
 
-      <Row>
-        <ButtonLink to={ROUTES.ADMIN_APPS}>Cancel</ButtonLink>
+              <ErrorMessage component={Error} name="title" />
+            </Label>
 
-        <Button type="submit" disabled={!isValid || !dirty}>
-          Save
-        </Button>
-      </Row>
-    </Form>
-  );
+            <Label>
+              <LabelText>Description</LabelText>
+
+              <Field component="textarea" name="description" validate={validateTextField} placeholder="Enter description" />
+
+              <ErrorMessage component={Error} name="description" />
+            </Label>
+
+            <Label>
+              <LabelText>App Icon URL</LabelText>
+
+              <Field type="text" name="icon" validate={validateURL} placeholder="Enter app icon url" />
+
+              <ErrorMessage component={Error} name="icon" />
+            </Label>
+
+            <Label>
+              <LabelText>Accepted Intent(s)</LabelText>
+
+              <CheckboxWrapper>{renderMockIntents()}</CheckboxWrapper>
+            </Label>
+
+            <Label>
+              <LabelText>Accepted Context(s)</LabelText>
+
+              <CheckboxWrapper>{renderMockContexts()}</CheckboxWrapper>
+            </Label>
+
+            {/* {this.renderScreenshots()} */}
+          </GridWrapper>
+        </ScrollWrapper>
+
+        <Footer>
+          <ButtonWrapper>
+            <ButtonLink to={ROUTES.ADMIN_APPS} backgroundColor={Color.MERCURY} type="button" width={128}>
+              Cancel
+            </ButtonLink>
+
+            <Button type="submit" width={128} disabled={submitDisabled || isSubmitting || !isValid}>
+              Save
+            </Button>
+          </ButtonWrapper>
+        </Footer>
+
+        {this.renderMessage()}
+      </FormWrapper>
+    );
+  };
 
   renderMessage = () => {
     const { responseReceived, formContents, result } = this.state;
@@ -200,7 +211,7 @@ class NewAppForm extends React.Component<Props, State> {
   renderScreenshots = () => {
     const { formContents } = this.state;
     const { images } = formContents;
-    // todo: screenshots punted to next sprint
+    // todo: screenshots punted until we have ability to save images via back-end
     // todo: carousel component to cycle through screenshots
     // todo: append/PUT new screenshots to end of images array in /apps/:id
     return (
@@ -220,33 +231,27 @@ class NewAppForm extends React.Component<Props, State> {
       <Wrapper>
         {this.renderMessage()}
 
-        <ButtonLink to={ROUTES.ADMIN_APPS}>Continue</ButtonLink>
+        <ButtonLink to={ROUTES.ADMIN_APPS} backgroundColor={Color.MERCURY} type="button" width={128}>
+          Continue
+        </ButtonLink>
       </Wrapper>
     ) : (
-      <Wrapper>
-        <Heading>Add App</Heading>
-
-        <Copy>Please verify and/or update the following fields:</Copy>
-
-        <Formik
-          initialValues={{
-            contexts: MOCK_CONTEXTS,
-            description,
-            icon,
-            id,
-            images,
-            intents: MOCK_INTENTS,
-            manifest_url,
-            name,
-            title,
-          }}
-          onSubmit={this.handleFormSubmit}
-          validateOnChange={false}
-          render={this.renderFormSection}
-        />
-
-        {this.renderMessage()}
-      </Wrapper>
+      <Formik
+        initialValues={{
+          contexts: [],
+          description,
+          icon,
+          id,
+          images,
+          intents: [],
+          manifest_url,
+          name,
+          title,
+        }}
+        onSubmit={this.handleFormSubmit}
+        validateOnChange={false}
+        render={this.renderFormSection}
+      />
     );
   }
 }

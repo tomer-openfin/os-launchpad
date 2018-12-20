@@ -1,17 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { Color } from './';
-
-export interface TypeStyleProps {
-  color?: string;
-  opacity?: string;
-}
-
-const DEFAULT_TYPE_STYLES = {
-  color: Color.VACUUM,
-  opacity: '1',
-};
-
 /*
 FONT WEIGHT MAP:
 
@@ -28,13 +16,11 @@ FONT WEIGHT MAP:
 https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight
 */
 
-const TypeStyle = css<TypeStyleProps>`
+const TypeStyle = css`
   font-family: 'Nunito';
-  color: ${props => props.color || DEFAULT_TYPE_STYLES.color};
-  opacity: ${props => props.opacity || DEFAULT_TYPE_STYLES.opacity};
 `;
 
-export const TypeStyleSirius = css<TypeStyleProps>`
+export const TypeStyleSirius = css`
   ${TypeStyle};
   font-size: 14px;
   font-weight: 700;
@@ -42,7 +28,7 @@ export const TypeStyleSirius = css<TypeStyleProps>`
   letter-spacing: -0.09px;
 `;
 
-export const TypeStyleCanopus = css<TypeStyleProps>`
+export const TypeStyleCanopus = css`
   ${TypeStyle};
   font-size: 14px;
   font-weight: 400;
@@ -50,7 +36,7 @@ export const TypeStyleCanopus = css<TypeStyleProps>`
   letter-spacing: -0.09px;
 `;
 
-export const TypeStyleArcturus = css<TypeStyleProps>`
+export const TypeStyleArcturus = css`
   ${TypeStyle};
   font-size: 16px;
   font-weight: 400;
@@ -58,7 +44,7 @@ export const TypeStyleArcturus = css<TypeStyleProps>`
   letter-spacing: -0.1px;
 `;
 
-export const TypeStyleProcyon = css<TypeStyleProps>`
+export const TypeStyleProcyon = css`
   ${TypeStyle};
   font-size: 16px;
   font-weight: 800;
@@ -66,7 +52,7 @@ export const TypeStyleProcyon = css<TypeStyleProps>`
   letter-spacing: -0.1px;
 `;
 
-export const TypeStyleDeneb = css<TypeStyleProps>`
+export const TypeStyleDeneb = css`
   ${TypeStyle};
   font-size: 13px;
   font-weight: 400;
@@ -75,7 +61,7 @@ export const TypeStyleDeneb = css<TypeStyleProps>`
   letter-spacing: -0.08px;
 `;
 
-export const TypeStylePollux = css<TypeStyleProps>`
+export const TypeStylePollux = css`
   ${TypeStyle};
   font-size: 13px;
   font-weight: 800;
@@ -84,7 +70,7 @@ export const TypeStylePollux = css<TypeStyleProps>`
   letter-spacing: -0.24px;
 `;
 
-export const TypeStyleBellatrix = css<TypeStyleProps>`
+export const TypeStyleBellatrix = css`
   ${TypeStyle};
   font-size: 11px;
   font-weight: 400;
@@ -92,7 +78,7 @@ export const TypeStyleBellatrix = css<TypeStyleProps>`
   letter-spacing: 1.5px;
 `;
 
-export const TypeStylePolaris = css<TypeStyleProps>`
+export const TypeStylePolaris = css`
   ${TypeStyle};
   font-size: 20px;
   font-weight: 400;
@@ -100,7 +86,7 @@ export const TypeStylePolaris = css<TypeStyleProps>`
   letter-spacing: -0.5px;
 `;
 
-export const TypeStyleAlgol = css<TypeStyleProps>`
+export const TypeStyleAlgol = css`
   ${TypeStyle};
   font-size: 14px;
   font-weight: 400;
@@ -108,7 +94,7 @@ export const TypeStyleAlgol = css<TypeStyleProps>`
   letter-spacing: -0.35px;
 `;
 
-export const TypeStyleEnif = css<TypeStyleProps>`
+export const TypeStyleEnif = css`
   ${TypeStyle};
   font-size: 11px;
   font-weight: 600;
@@ -116,7 +102,7 @@ export const TypeStyleEnif = css<TypeStyleProps>`
   letter-spacing: 2px;
 `;
 
-export const TypeStyleNaos = css<TypeStyleProps>`
+export const TypeStyleNaos = css`
   ${TypeStyle};
   font-size: 11px;
   font-weight: 600;
@@ -124,7 +110,7 @@ export const TypeStyleNaos = css<TypeStyleProps>`
   letter-spacing: 1px;
 `;
 
-export const TypeStyleSol = css<TypeStyleProps>`
+export const TypeStyleSol = css`
   ${TypeStyle};
   font-size: 14px;
   font-weight: 400;

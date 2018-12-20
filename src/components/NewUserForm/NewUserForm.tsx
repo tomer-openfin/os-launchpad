@@ -1,16 +1,35 @@
+import { ErrorMessage, Field, Formik } from 'formik';
 import * as React from 'react';
 
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import * as passwordIcon from '../../assets/Eye.svg';
 
-import { validateEmail, validatePhone, validateTextField } from '../../utils/validators';
-import { ROUTES } from '../Router/consts';
+import { Footer } from '../NewAppForm/AppForms.css';
+import {
+  ButtonWrapper,
+  Error,
+  ErrorWrapper,
+  FormWrapper,
+  GridWrapper,
+  IconWrapper,
+  Label,
+  LabelText,
+  Message,
+  MiniGridWrapper,
+  PasswordIcon,
+  ScrollWrapper,
+  Wrapper,
+} from './UserForms.css';
 
+import { Color } from '../../styles';
 import { ResponseStatus, User } from '../../types/commons';
-
-import { Button, ButtonLink, Error, GridWrapper, Heading, Label, Message, Row, Wrapper } from './NewUserForm.css';
+import { validateEmail, validatePhone, validateTextField } from '../../utils/validators';
+import Button, { ButtonLink } from '../Button/Button.css';
+import { ROUTES } from '../Router/consts';
+import WindowHeader from '../WindowHeader/index';
 
 interface Props {
   createUser: Function;
+  location;
 }
 
 interface State {
@@ -80,60 +99,83 @@ class NewUserForm extends React.Component<Props, State> {
     const { submitDisabled } = this.state;
 
     return (
-      <Wrapper>
-        <Heading>Create New User</Heading>
+      <FormWrapper>
+        <WindowHeader backgroundColor={Color.VACUUM} withoutClose>
+          Create New User
+        </WindowHeader>
 
-        <Form>
-          <GridWrapper>
-            <Label>
-              Email
-              <Field type="email" name="email" validate={validateEmail} />
-              <ErrorMessage component={Error} name="email" />
-            </Label>
+        <ScrollWrapper>
+          <GridWrapper hasPasswordField>
+            <MiniGridWrapper>
+              <Label>
+                <LabelText>First Name</LabelText>
 
-            <Label>
-              Phone Number
-              <Field type="text" name="phone" maxLength="10" validate={validatePhone} />
-              <ErrorMessage component={Error} name="phone" />
-            </Label>
+                <Field type="text" name="firstName" validate={validateTextField} placeholder="Enter first name" />
 
-            {/* todo: add password validation rules based on what BE expects */}
-            <Label>
-              Password
-              <Field type="password" name="tmpPassword" validate={validateTextField} />
-              <ErrorMessage component={Error} name="tmpPassword" />
-            </Label>
+                <ErrorMessage component={Error} name="firstName" />
+              </Label>
 
-            <Label>
-              First Name
-              <Field type="text" name="firstName" validate={validateTextField} />
-              <ErrorMessage component={Error} name="firstName" />
-            </Label>
+              <Label>
+                <LabelText>MI</LabelText>
+
+                <Field type="text" name="middleInitial" />
+
+                <ErrorMessage component={Error} name="middleInitial" />
+              </Label>
+            </MiniGridWrapper>
 
             <Label>
-              Last Name
-              <Field type="text" name="lastName" validate={validateTextField} />
+              <LabelText>Last Name</LabelText>
+
+              <Field type="text" name="lastName" validate={validateTextField} placeholder="Enter last name" />
+
               <ErrorMessage component={Error} name="lastName" />
             </Label>
 
             <Label>
-              Middle Initial
-              <Field type="text" name="middleInitial" />
-              <ErrorMessage component={Error} name="middleInitial" />
+              <LabelText>Phone Number</LabelText>
+
+              <Field type="text" name="phone" maxLength="10" validate={validatePhone} placeholder="Enter phone number" />
+
+              <ErrorMessage component={Error} name="phone" />
+            </Label>
+
+            <Label>
+              <LabelText>Email</LabelText>
+
+              <Field type="email" name="email" validate={validateEmail} placeholder="Enter email" />
+
+              <ErrorMessage component={Error} name="email" />
+            </Label>
+
+            {/* todo: add password validation rules based on what BE expects */}
+            <Label>
+              <LabelText>Password</LabelText>
+
+              <Field type="password" name="tmpPassword" validate={validateTextField} placeholder="Enter password" />
+              <IconWrapper>
+                <PasswordIcon imgSrc={passwordIcon} size={25} />
+              </IconWrapper>
+
+              <ErrorMessage component={Error} name="tmpPassword" />
             </Label>
           </GridWrapper>
+        </ScrollWrapper>
 
-          <Row>
-            <ButtonLink to={ROUTES.ADMIN_USERS}>Cancel</ButtonLink>
+        <Footer>
+          <ButtonWrapper>
+            <ButtonLink to={ROUTES.ADMIN_USERS} backgroundColor={Color.MERCURY} type="button" width={128}>
+              Cancel
+            </ButtonLink>
 
-            <Button type="submit" disabled={submitDisabled || isSubmitting || !isValid}>
-              Submit
+            <Button type="submit" width={128} disabled={submitDisabled || isSubmitting || !isValid}>
+              Save
             </Button>
-          </Row>
-        </Form>
+          </ButtonWrapper>
+        </Footer>
 
         {this.renderMessage()}
-      </Wrapper>
+      </FormWrapper>
     );
   };
 
@@ -142,7 +184,11 @@ class NewUserForm extends React.Component<Props, State> {
 
     if (responseReceived) {
       if (result.status === ResponseStatus.FAILURE) {
-        return <Error>Sorry, there was an error tyring to create this user, please try again. Error: {result.message}</Error>;
+        return (
+          <ErrorWrapper>
+            <Error>Sorry, there was an error trying to create this user, please try again. Error: {result.message}</Error>
+          </ErrorWrapper>
+        );
       }
 
       return <Message>Success! New user succesfully created.</Message>;
@@ -160,7 +206,9 @@ class NewUserForm extends React.Component<Props, State> {
       <Wrapper>
         {this.renderMessage()}
 
-        <ButtonLink to={ROUTES.ADMIN_USERS}>Continue</ButtonLink>
+        <ButtonLink to={ROUTES.ADMIN_USERS} backgroundColor={Color.MERCURY} type="button" width={128}>
+          Continue
+        </ButtonLink>
       </Wrapper>
     ) : (
       <Formik

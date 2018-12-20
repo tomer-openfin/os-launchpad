@@ -15,7 +15,14 @@ export const getUserLayouts = (): Promise<UserLayout[]> => {
   if (checkIsEnterprise()) {
     const options = createGetOptions();
 
-    return fetch(API.USER_LAYOUTS, options).then(resp => resp.json());
+    return fetch(API.USER_LAYOUTS, options)
+      .then(resp => resp.json())
+      .then(json => {
+        if (!json) {
+          throw new Error(`${API.ORG_SETTINGS} did not return a valid resource: ${json}`);
+        }
+        return json;
+      });
   }
 
   return getLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, { status: ResponseStatus.SUCCESS, data: [] });
@@ -30,7 +37,14 @@ export const getUserLayout = (id: UserLayout['id']): Promise<APIResponse> => {
   if (checkIsEnterprise()) {
     const options = createGetOptions();
 
-    return fetch(`${API.USER_LAYOUTS}/${id}`, options).then(resp => resp.json());
+    return fetch(`${API.USER_LAYOUTS}/${id}`, options)
+      .then(resp => resp.json())
+      .then(json => {
+        if (!json) {
+          throw new Error(`${API.ORG_SETTINGS} did not return a valid resource: ${json}`);
+        }
+        return json;
+      });
   }
 
   return getLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS);
@@ -77,7 +91,14 @@ export const getUserSettings = (): Promise<MeSettingsState | APIResponse> => {
   if (checkIsEnterprise()) {
     const options = createGetOptions();
 
-    return fetch(API.USER_SETTINGS, options).then(resp => resp.json());
+    return fetch(API.USER_SETTINGS, options)
+      .then(resp => resp.json())
+      .then(json => {
+        if (!json) {
+          throw new Error(`${API.ORG_SETTINGS} did not return a valid resource: ${json}`);
+        }
+        return json;
+      });
   }
 
   return getLocalStorage(LOCAL_STORAGE_KEYS.SETTINGS, { data: defaultState.settings, status: ResponseStatus.SUCCESS });

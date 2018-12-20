@@ -7,19 +7,24 @@ import EditUserForm from './EditUserForm';
 
 const mockData = {
   location: {
+    hash: '',
+    pathname: '',
+    search: '',
     state: {
-      email: 'string',
-      firstName: 'string',
+      email: 'name@giantfin.co',
+      firstName: 'Dusya',
       id: 'string',
       isAdmin: false,
-      lastName: 'string',
-      middleInitial: 'string',
+      lastName: 'Sigachyova',
+      middleInitial: 'L',
       organizationId: 'string',
-      phone: 'string',
+      phone: '',
       tmpPassword: 'string',
       username: 'string',
     },
   },
 };
 
-storiesOf('Components/EditUserForm', module).add('default', () => <EditUserForm updateUser={noop} location={mockData.location} />);
+storiesOf('Components/EditUserForm', module).add('default', () => (
+  <EditUserForm match={{ params: '', isExact: true, path: '', url: '' }} history={{}} updateUser={noop} location={mockData.location} />
+));

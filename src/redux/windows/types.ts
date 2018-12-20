@@ -17,6 +17,7 @@ export interface WindowsState {
 export interface WindowNamePayload {
   name: string;
 }
+
 export interface WindowConfig {
   alwaysOnTop: boolean;
   autoShow: boolean;
@@ -31,6 +32,7 @@ export interface WindowConfig {
   minWidth: number;
   minimizable: boolean;
   name: string;
+  opactity?: number;
   resizable: boolean;
   saveWindowState: boolean;
   showTaskbarIcon: boolean;

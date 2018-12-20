@@ -11,12 +11,12 @@ exports[`Storyshots Components/AppIcon default 1`] = `
     }
   >
     <div
-      className="sc-htoDjs bUVveX"
+      className="sc-htoDjs keeYQY"
       onClick={[Function]}
-      size={45}
+      size={50}
     >
       <div
-        className="sc-gzVnrw ixJOqQ"
+        className="sc-gzVnrw iaIjmB"
         onContextMenu={[Function]}
       >
         <div
@@ -348,7 +348,7 @@ exports[`Storyshots Components/AppIcon default 1`] = `
                             }
                           }
                         >
-                          45
+                          50
                         </span>
                         }
                       </span>
@@ -445,12 +445,12 @@ exports[`Storyshots Components/AppIcon with parent background color 1`] = `
       }
     >
       <div
-        className="sc-htoDjs bUVveX"
+        className="sc-htoDjs keeYQY"
         onClick={[Function]}
-        size={45}
+        size={50}
       >
         <div
-          className="sc-gzVnrw ixJOqQ"
+          className="sc-gzVnrw iaIjmB"
           onContextMenu={[Function]}
         >
           <div
@@ -887,7 +887,7 @@ exports[`Storyshots Components/AppIcon with parent background color 1`] = `
                               }
                             }
                           >
-                            45
+                            50
                           </span>
                           }
                         </span>
@@ -1002,9 +1002,9 @@ exports[`Storyshots Components/AppIcon with transition 1`] = `
           "alignItems": "center",
           "backgroundColor": "#343434",
           "display": "inline-flex",
-          "height": "65px",
+          "height": "70px",
           "justifyContent": "center",
-          "width": "65px",
+          "width": "70px",
         }
       }
     />

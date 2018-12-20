@@ -1,19 +1,17 @@
 import * as React from 'react';
 
-import { Header, Separator, Wrapper } from './OrganizationSettings.css';
+import { Header, Wrapper } from './OrganizationSettings.css';
 
 import LogoForm from '../LogoForm';
 import ThemesForm from '../ThemesForm';
 
 const OrganizationSettings = () => (
   <Wrapper>
-    <Header>Set Logo</Header>
+    <Header>Enterprise Branding</Header>
 
     <LogoForm />
 
-    <Separator />
-
-    <Header>Set Theme</Header>
+    <Header>Enterprise Theme</Header>
 
     <ThemesForm />
   </Wrapper>

@@ -1,4 +1,14 @@
-import { ADD_TO_APP_LAUNCHER, CHANGE_PASSWORD, GET_SETTINGS, LOGIN, REMOVE_FROM_APP_LAUNCHER, SET_AUTO_HIDE, SET_LAUNCHER_POSITION, SET_ME } from './actions';
+import {
+  ADD_TO_APP_LAUNCHER,
+  CHANGE_PASSWORD,
+  GET_SETTINGS,
+  LOGIN,
+  LOGOUT,
+  REMOVE_FROM_APP_LAUNCHER,
+  SET_AUTO_HIDE,
+  SET_LAUNCHER_POSITION,
+  SET_ME,
+} from './actions';
 
 import { DirectionalPosition } from '../../types/commons';
 import { GetSettingsSuccess, MeActions, MeState, SetLaunchbarPayload, SetMePayload } from './types';
@@ -48,6 +58,7 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
         ...state,
         login: {
           ...state.login,
+          // reset error and error message
           error: false,
           message: '',
         },
@@ -58,6 +69,8 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
         ...state,
         login: {
           ...defaultLoginState,
+          // if we reset this on success the login screen flickers before closing
+          // plus the likely use of this screen while logged in is for an eventual change password feature
           changePassword: state.login.changePassword,
         },
       };
@@ -73,6 +86,9 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
           message,
         },
       };
+    }
+    case LOGOUT.SUCCESS: {
+      return defaultState;
     }
     case CHANGE_PASSWORD: {
       const { session, message } = action.payload;

@@ -1,7 +1,9 @@
 import * as React from 'react';
 
-import { Button, ButtonLink, Copy, Error, Heading, Message, Row, Wrapper } from '../NewUserForm';
+import Button, { ButtonLink } from '../Button/Button.css';
+import { ButtonWrapper, Copy, CopyWrapper, Error, Heading, HeadingText, Message, Wrapper } from './ConfirmDelete.css';
 
+import { Color } from '../../styles/index';
 import { ResponseStatus, User } from '../../types/commons';
 import { ROUTES } from '../Router/consts';
 
@@ -84,23 +86,31 @@ class ConfirmUserDelete extends React.Component<Props, State> {
       <Wrapper>
         {this.renderMessage()}
 
-        <ButtonLink to={ROUTES.ADMIN_USERS}>Continue</ButtonLink>
+        <ButtonLink to={ROUTES.ADMIN_USERS} backgroundColor={Color.MERCURY} type="button" width={153}>
+          Continue
+        </ButtonLink>
       </Wrapper>
     ) : (
       <Wrapper>
-        <Heading>Delete User</Heading>
+        <Heading>
+          <HeadingText>Are you sure?</HeadingText>
+        </Heading>
 
-        <Copy>
-          You are about to delete the following user: {firstName} {lastName}?
-        </Copy>
+        <CopyWrapper>
+          <Copy>You are about to delete the following user:</Copy>
 
-        <Row>
-          <ButtonLink to={ROUTES.ADMIN_USERS}>Cancel</ButtonLink>
+          <Copy>{`\n ${firstName} ${lastName}`}</Copy>
+        </CopyWrapper>
 
-          <Button disabled={deleteDisabled} onClick={this.handleDeleteUser}>
-            Delete User
+        <ButtonWrapper>
+          <ButtonLink to={ROUTES.ADMIN_USERS} backgroundColor={Color.MERCURY} type="button" width={153}>
+            Cancel
+          </ButtonLink>
+
+          <Button width={153} disabled={deleteDisabled} onClick={this.handleDeleteUser}>
+            Delete
           </Button>
-        </Row>
+        </ButtonWrapper>
 
         {this.renderMessage()}
       </Wrapper>

@@ -14,8 +14,6 @@ export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
 
 const isProduction = NODE_ENV === 'production';
 
-export const createConfig = (uuid, name) => ({ uuid, name });
-
 export const initOnStartWindows = {
   // eventually move admin window out of initOnStartWindows and only initialize on login if isAdmin
   admin: {
@@ -23,17 +21,17 @@ export const initOnStartWindows = {
     autoShow: false,
     contextMenu: !isProduction,
     defaultCentered: true,
-    defaultHeight: 542,
-    defaultWidth: 510,
+    defaultHeight: 621,
+    defaultWidth: 614,
     frame: false,
     id: ADMIN_WINDOW,
     maxHeight: -1,
     maximizable: false,
-    minHeight: 0,
-    minWidth: 0,
+    minHeight: 500,
+    minWidth: 450,
     minimizable: true,
     name: ADMIN_WINDOW,
-    resizable: false,
+    resizable: true,
     saveWindowState: false,
     shadow: true,
     showTaskbarIcon: true,

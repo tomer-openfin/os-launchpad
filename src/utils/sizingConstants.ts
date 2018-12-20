@@ -9,3 +9,4 @@ export const APP_GUTTER = 20;
 export const SYSTEM_GUTTER = 6;
 export const COLLAPSED_SYSTEM_PADDING = 5;
 export const EXPANDED_SYSTEM_PADDING = 18;
+export const LAUNCHER_MONITOR_GUTTER = 20;
