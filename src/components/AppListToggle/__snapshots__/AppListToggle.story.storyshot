@@ -32,7 +32,7 @@ exports[`Storyshots Components/AppListToggle default 1`] = `
           size={50}
         >
           <div
-            className="sc-dnqmqq kfTEKn"
+            className="sc-dnqmqq hiDkKb"
             size={25}
           />
         </div>
@@ -586,7 +586,7 @@ exports[`Storyshots Components/AppListToggle with transition 1`] = `
           size={50}
         >
           <div
-            className="sc-dnqmqq kfTEKn"
+            className="sc-dnqmqq hiDkKb"
             size={25}
           />
         </div>

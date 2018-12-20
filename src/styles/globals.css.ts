@@ -20,6 +20,21 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar {
-    display: none;
+    width: 16px;
+    display: auto;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${Color.DUSTY_GREY};
+    display: auto;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${Color.GREY};
+    display: auto;
+
+    &:hover {
+      background: ${Color.LIGHTER_GREY};
+    }
   }
 `;

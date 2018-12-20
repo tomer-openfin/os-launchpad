@@ -11,13 +11,13 @@ exports[`Storyshots Components/Login Change Password 1`] = `
     }
   >
     <div
-      className="sc-gisBJw ieXekX"
+      className="sc-feJyhm hoppQX"
     >
       <div
         className="sc-VigVT fKFlJE"
       />
       <div
-        className="sc-cHGsZl cMhmIo"
+        className="sc-cmTdod iXpQeA"
       >
         Please create a new password
       </div>
@@ -25,7 +25,7 @@ exports[`Storyshots Components/Login Change Password 1`] = `
         onSubmit={[Function]}
       >
         <label
-          className="sc-kjoXOD jYiJwF"
+          className="sc-iELTvK hXmWfR"
         >
           <input
             name="newPassword"
@@ -36,7 +36,7 @@ exports[`Storyshots Components/Login Change Password 1`] = `
           />
         </label>
         <label
-          className="sc-kjoXOD jYiJwF"
+          className="sc-iELTvK hXmWfR"
         >
           <input
             name="newPasswordConfirmation"
@@ -47,10 +47,10 @@ exports[`Storyshots Components/Login Change Password 1`] = `
           />
         </label>
         <label
-          className="sc-kjoXOD jYiJwF"
+          className="sc-iELTvK hXmWfR"
         >
           <button
-            className="sc-TOsTZ hoDQoJ"
+            className="sc-jwKygS dCDHMu"
             type="submit"
           >
             Create New Password
@@ -464,13 +464,13 @@ exports[`Storyshots Components/Login With Error 1`] = `
     }
   >
     <div
-      className="sc-gisBJw ieXekX"
+      className="sc-feJyhm hoppQX"
     >
       <div
         className="sc-VigVT fKFlJE"
       />
       <div
-        className="sc-cHGsZl iqppTD"
+        className="sc-cmTdod iLEikv"
       >
         Invalid username or password
       </div>
@@ -478,7 +478,7 @@ exports[`Storyshots Components/Login With Error 1`] = `
         onSubmit={[Function]}
       >
         <label
-          className="sc-kjoXOD jYiJwF"
+          className="sc-iELTvK hXmWfR"
         >
           <input
             name="username"
@@ -490,7 +490,7 @@ exports[`Storyshots Components/Login With Error 1`] = `
           />
         </label>
         <label
-          className="sc-kjoXOD jYiJwF"
+          className="sc-iELTvK hXmWfR"
         >
           <input
             name="password"
@@ -502,10 +502,10 @@ exports[`Storyshots Components/Login With Error 1`] = `
           />
         </label>
         <label
-          className="sc-kjoXOD jYiJwF"
+          className="sc-iELTvK hXmWfR"
         >
           <button
-            className="sc-TOsTZ hoDQoJ"
+            className="sc-jwKygS dCDHMu"
             type="submit"
           >
             Login
@@ -919,7 +919,7 @@ exports[`Storyshots Components/Login default 1`] = `
     }
   >
     <div
-      className="sc-gisBJw ieXekX"
+      className="sc-feJyhm hoppQX"
     >
       <div
         className="sc-VigVT fKFlJE"
@@ -929,7 +929,7 @@ exports[`Storyshots Components/Login default 1`] = `
         onSubmit={[Function]}
       >
         <label
-          className="sc-kjoXOD jYiJwF"
+          className="sc-iELTvK hXmWfR"
         >
           <input
             name="username"
@@ -941,7 +941,7 @@ exports[`Storyshots Components/Login default 1`] = `
           />
         </label>
         <label
-          className="sc-kjoXOD jYiJwF"
+          className="sc-iELTvK hXmWfR"
         >
           <input
             name="password"
@@ -953,10 +953,10 @@ exports[`Storyshots Components/Login default 1`] = `
           />
         </label>
         <label
-          className="sc-kjoXOD jYiJwF"
+          className="sc-iELTvK hXmWfR"
         >
           <button
-            className="sc-TOsTZ hoDQoJ"
+            className="sc-jwKygS dCDHMu"
             type="submit"
           >
             Login

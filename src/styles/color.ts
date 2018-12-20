@@ -16,6 +16,7 @@ export const VENUS = '#6461FF';
 export const EARTH = '#504CFF';
 export const MARS = '#DF5353';
 export const ASTEROID_BELT = '#3A3A3A';
+export const OORT_CLOUD = '#121212';
 export const JUPITER = '#FBC23C';
 export const SATURN = '#95D154';
 export const URANUS = '#7BD5C1';

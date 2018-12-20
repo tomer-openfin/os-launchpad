@@ -1,5 +1,5 @@
 import Component from './NewUserFormContainer';
 
-export * from './NewUserForm.css';
+export * from './UserForms.css';
 
 export default Component;

@@ -315,7 +315,7 @@ exports[`Storyshots Components/Button with knobs 1`] = `
     }
   >
     <button
-      className="sc-csuQGl cjRgpw"
+      className="sc-csuQGl guQjRt"
       onClick={[Function]}
       width={150}
     >

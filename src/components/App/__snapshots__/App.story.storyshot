@@ -39,7 +39,7 @@ exports[`Storyshots Components/App default 1`] = `
             size={343}
           >
             <div
-              className="sc-kgoBCf loSVds sc-dnqmqq ihBfCr"
+              className="sc-kgoBCf loSVds sc-dnqmqq cuENRO"
               onClick={[Function]}
               size={25}
             />
@@ -47,7 +47,7 @@ exports[`Storyshots Components/App default 1`] = `
               className="sc-chPdSV iYFTZL"
             >
               <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq vbBqW"
+                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
                 onClick={[Function]}
                 size={42}
               />
@@ -56,7 +56,7 @@ exports[`Storyshots Components/App default 1`] = `
               className="sc-chPdSV iYFTZL"
             >
               <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq vbBqW"
+                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
                 onClick={[Function]}
                 size={42}
               />
@@ -65,7 +65,7 @@ exports[`Storyshots Components/App default 1`] = `
               className="sc-chPdSV iYFTZL"
             >
               <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq vbBqW"
+                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
                 onClick={[Function]}
                 size={42}
               />
@@ -74,7 +74,7 @@ exports[`Storyshots Components/App default 1`] = `
               className="sc-chPdSV iYFTZL"
             >
               <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq vbBqW"
+                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
                 onClick={[Function]}
                 size={42}
               />
@@ -83,12 +83,12 @@ exports[`Storyshots Components/App default 1`] = `
               className="sc-chPdSV iYFTZL"
             >
               <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq vbBqW"
+                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
                 onClick={[Function]}
                 size={42}
               />
               <div
-                className="sc-jTzLTM cIaXTF sc-dnqmqq kfTEKn"
+                className="sc-jTzLTM cIaXTF sc-dnqmqq hiDkKb"
                 size={25}
               />
             </div>
@@ -96,7 +96,7 @@ exports[`Storyshots Components/App default 1`] = `
               className="sc-chPdSV iYFTZL"
             >
               <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq vbBqW"
+                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
                 onClick={[Function]}
                 size={42}
               />

@@ -10,114 +10,168 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
       }
     }
   >
-    <div
-      className="sc-fAjcbJ oYrUQ"
+    <form
+      className="sc-hqyNC fWzciI"
+      onSubmit={[Function]}
     >
       <div
-        className="sc-fBuWsC gsUrKy"
-      >
-        Create New User
-      </div>
-      <form
-        onSubmit={[Function]}
+        className="sc-jlyJG eKNTTZ"
       >
         <div
-          className="sc-caSCKo dTAppf"
+          className="sc-gipzik ftqVKf"
         >
-          <label
-            className="sc-fMiknA fgWhDN"
+          Create New User
+        </div>
+      </div>
+      <div
+        className="sc-dNLxif hNWNSN"
+      >
+        <div
+          className="sc-jqCOkK wRfwx"
+        >
+          <div
+            className="sc-uJMKN ewYqwZ"
           >
-            Email
+            <label
+              className="sc-tilXH cauXVX"
+            >
+              <div
+                className="sc-fYxtnH bxOBNZ"
+              >
+                First Name
+              </div>
+              <input
+                name="firstName"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter first name"
+                type="text"
+                value=""
+              />
+            </label>
+            <label
+              className="sc-tilXH cauXVX"
+            >
+              <div
+                className="sc-fYxtnH bxOBNZ"
+              >
+                MI
+              </div>
+              <input
+                name="middleInitial"
+                onBlur={[Function]}
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+            </label>
+          </div>
+          <label
+            className="sc-tilXH cauXVX"
+          >
+            <div
+              className="sc-fYxtnH bxOBNZ"
+            >
+              Last Name
+            </div>
             <input
-              name="email"
+              name="lastName"
               onBlur={[Function]}
               onChange={[Function]}
-              type="email"
+              placeholder="Enter last name"
+              type="text"
               value=""
             />
           </label>
           <label
-            className="sc-fMiknA fgWhDN"
+            className="sc-tilXH cauXVX"
           >
-            Phone Number
+            <div
+              className="sc-fYxtnH bxOBNZ"
+            >
+              Phone Number
+            </div>
             <input
               maxLength="10"
               name="phone"
               onBlur={[Function]}
               onChange={[Function]}
+              placeholder="Enter phone number"
               type="text"
               value=""
             />
           </label>
           <label
-            className="sc-fMiknA fgWhDN"
+            className="sc-tilXH cauXVX"
           >
-            Password
+            <div
+              className="sc-fYxtnH bxOBNZ"
+            >
+              Email
+            </div>
+            <input
+              name="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Enter email"
+              type="email"
+              value=""
+            />
+          </label>
+          <label
+            className="sc-tilXH cauXVX"
+          >
+            <div
+              className="sc-fYxtnH bxOBNZ"
+            >
+              Password
+            </div>
             <input
               name="tmpPassword"
               onBlur={[Function]}
               onChange={[Function]}
+              placeholder="Enter password"
               type="password"
               value=""
             />
-          </label>
-          <label
-            className="sc-fMiknA fgWhDN"
-          >
-            First Name
-            <input
-              name="firstName"
-              onBlur={[Function]}
-              onChange={[Function]}
-              type="text"
-              value=""
-            />
-          </label>
-          <label
-            className="sc-fMiknA fgWhDN"
-          >
-            Last Name
-            <input
-              name="lastName"
-              onBlur={[Function]}
-              onChange={[Function]}
-              type="text"
-              value=""
-            />
-          </label>
-          <label
-            className="sc-fMiknA fgWhDN"
-          >
-            Middle Initial
-            <input
-              name="middleInitial"
-              onBlur={[Function]}
-              onChange={[Function]}
-              type="text"
-              value=""
-            />
+            <div
+              className="sc-ktHwxA fnfdhu"
+            >
+              <div
+                className="sc-cIShpX fCKPTs sc-dnqmqq hiDkKb"
+                size={25}
+              />
+            </div>
           </label>
         </div>
+      </div>
+      <div
+        className="sc-ksYbfQ bYIWvt"
+      >
         <div
-          className="sc-eqIVtm eQPmXj"
+          className="sc-bbmXgH iKWFpQ"
         >
           <a
-            className="sc-hzDkRC gBLjTM"
+            backgroundColor="#848484"
+            className="sc-Rmtcm fLXfRX"
             href="/admin/users"
             onClick={[Function]}
+            type="button"
+            width={128}
           >
             Cancel
           </a>
           <button
-            className="sc-Rmtcm fdTSiM"
+            className="sc-csuQGl hpiuPo"
             disabled={true}
             type="submit"
+            width={128}
           >
-            Submit
+            Save
           </button>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
   <button
     onClick={[Function]}
@@ -268,6 +322,151 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
                   NewUserForm
                 </span>
                 <span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      location
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#666",
+                            }
+                          }
+                        >
+                          {
+                          <span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              state
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#666",
+                              }
+                            }
+                          >
+                            {
+                            <span>
+                              <span>
+                                <br />
+                                    
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                email
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              'name@giantfin.co'
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                    
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                firstName
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              'Dusya'
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                    
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                id
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              'string'
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                    
+                                  
+                              </span>
+                              …
+                            </span>
+                            <span>
+                              <br />
+                                  
+                            </span>
+                            }
+                          </span>
+                          }
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
                   <span>
                      
                     <span

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { Color } from '../../styles/index';
 import { TypeStyleSirius } from '../../styles/typography.css';
@@ -22,8 +23,8 @@ export const ButtonCSS = css<ButtonProps>`
   border: none;
   outline: none;
   border-radius: 3px;
-  height: ${props => props.height || '36px'};
-  width: ${props => props.width || '110px'};
+  height: ${props => props.height || 36}px;
+  width: ${props => props.width || 110}px;
   min-width: 110px;
   position: relative;
 
@@ -54,4 +55,8 @@ export const ButtonCSS = css<ButtonProps>`
 
 export default styled.button<ButtonProps>`
   ${ButtonCSS};
+`;
+
+export const ButtonLink = styled(Link)`
+  ${ButtonCSS}
 `;

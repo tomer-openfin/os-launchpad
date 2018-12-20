@@ -10,96 +10,148 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
       }
     }
   >
-    <div
-      className="sc-fAjcbJ oYrUQ"
+    <form
+      className="sc-hqyNC fWzciI"
+      onSubmit={[Function]}
     >
       <div
-        className="sc-fBuWsC gsUrKy"
-      >
-        Edit User Details
-      </div>
-      <label
-        className="sc-fMiknA fgWhDN"
-      >
-        Email: 
-        string
-      </label>
-      <form
-        onSubmit={[Function]}
+        className="sc-jlyJG bEbQcz"
       >
         <div
-          className="sc-caSCKo dTAppf"
+          className="sc-hzDkRC cFuUJx"
         >
-          <label
-            className="sc-fMiknA fgWhDN"
+          Dusya Sigachyova
+        </div>
+        <div
+          className="sc-kafWEX kTqXVW sc-dnqmqq eNAsFi"
+          onClick={[Function]}
+          size={30}
+        />
+      </div>
+      <div
+        className="sc-dNLxif hNWNSN"
+      >
+        <div
+          className="sc-jqCOkK cwHYrV"
+        >
+          <div
+            className="sc-uJMKN ewYqwZ"
           >
-            First Name:
-            <input
-              name="firstName"
-              onBlur={[Function]}
-              onChange={[Function]}
-              type="text"
-              value="string"
-            />
-          </label>
+            <label
+              className="sc-tilXH cauXVX"
+            >
+              <div
+                className="sc-fYxtnH bxOBNZ"
+              >
+                First Name
+              </div>
+              <input
+                name="firstName"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter first name"
+                type="text"
+                value="Dusya"
+              />
+            </label>
+            <label
+              className="sc-tilXH cauXVX"
+            >
+              <div
+                className="sc-fYxtnH bxOBNZ"
+              >
+                MI
+              </div>
+              <input
+                name="middleInitial"
+                onBlur={[Function]}
+                onChange={[Function]}
+                type="text"
+                value="L"
+              />
+            </label>
+          </div>
           <label
-            className="sc-fMiknA fgWhDN"
+            className="sc-tilXH cauXVX"
           >
-            Last Name:
+            <div
+              className="sc-fYxtnH bxOBNZ"
+            >
+              Last Name
+            </div>
             <input
               name="lastName"
               onBlur={[Function]}
               onChange={[Function]}
+              placeholder="Enter last name"
               type="text"
-              value="string"
+              value="Sigachyova"
             />
           </label>
           <label
-            className="sc-fMiknA fgWhDN"
+            className="sc-tilXH cauXVX"
           >
-            Middle Initial:
-            <input
-              name="middleInitial"
-              onBlur={[Function]}
-              onChange={[Function]}
-              type="text"
-              value="string"
-            />
-          </label>
-          <label
-            className="sc-fMiknA fgWhDN"
-          >
-            Phone Number:
+            <div
+              className="sc-fYxtnH bxOBNZ"
+            >
+              Phone Number
+            </div>
             <input
               maxLength="10"
               name="phone"
               onBlur={[Function]}
               onChange={[Function]}
+              placeholder="Enter phone number"
               type="text"
-              value="ring"
+              value=""
+            />
+          </label>
+          <label
+            className="sc-tilXH cauXVX"
+          >
+            <div
+              className="sc-fYxtnH bxOBNZ"
+            >
+              Email
+            </div>
+            <input
+              disabled={true}
+              name="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="name@giantfin.co"
+              type="text"
             />
           </label>
         </div>
+      </div>
+      <div
+        className="sc-ksYbfQ bYIWvt"
+      >
         <div
-          className="sc-eqIVtm eQPmXj"
+          className="sc-jhAzac gcWpzl"
         >
           <a
-            className="sc-hzDkRC gBLjTM"
+            backgroundColor="#848484"
+            className="sc-Rmtcm fLXfRX"
             href="/admin/users"
             onClick={[Function]}
+            type="button"
+            width={128}
           >
             Cancel
           </a>
           <button
-            className="sc-Rmtcm fdTSiM"
+            className="sc-csuQGl hpiuPo"
             disabled={true}
             type="submit"
+            width={128}
           >
-            Save Updates
+            Save
           </button>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
   <button
     onClick={[Function]}
@@ -251,7 +303,165 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                 </span>
                 <span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      match
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#666",
+                            }
+                          }
+                        >
+                          {
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              params
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
+                            }
+                          >
+                            ''
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              isExact
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            true
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              path
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
+                            }
+                          >
+                            ''
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            …
+                          </span>
+                          <span>
+                            <br />
+                              
+                          </span>
+                          }
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      history
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#666",
+                            }
+                          }
+                        >
+                          {
+                          }
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -277,7 +487,10 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                     </span>
                   </span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -298,6 +511,11 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                         >
                           {
                           <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
                             <span
                               style={
                                 Object {
@@ -305,122 +523,95 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                                 }
                               }
                             >
-                              state
+                              hash
                             </span>
                           </span>
                           : 
                           <span
                             style={
                               Object {
-                                "color": "#666",
+                                "color": "#22a",
+                                "wordBreak": "break-word",
                               }
                             }
                           >
-                            {
-                            <span>
-                              <span>
-                                <br />
-                                    
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                email
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              'string'
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                    
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                firstName
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              'string'
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                    
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                id
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              'string'
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                    
-                                  
-                              </span>
-                              …
-                            </span>
+                            ''
+                          </span>
+                          ,
+                          <span>
                             <span>
                               <br />
-                                  
+                                
+                                
                             </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              pathname
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
                             }
+                          >
+                            ''
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              search
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
+                            }
+                          >
+                            ''
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            …
+                          </span>
+                          <span>
+                            <br />
+                              
                           </span>
                           }
                         </span>
                         }
                       </span>
                     </span>
-                     
+                    <br />
                   </span>
                 </span>
                 <span

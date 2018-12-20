@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
-import { Link } from 'react-router-dom';
-
 import * as EditIcon from '../../assets/Edit.svg';
 import * as SearchIcon from '../../assets/Search.svg';
 import * as TrashIcon from '../../assets/Trash.svg';
 
+import { Link } from 'react-router-dom';
 import { Color } from '../../styles/index';
 import { TypeStyleAlgol, TypeStyleCanopus, TypeStyleEnif } from '../../styles/typography.css';
 import { ButtonCSS } from '../Button/Button.css';
@@ -167,10 +166,6 @@ export const EditIconLink = styled(Link)`
     background-color: ${Color.PLUTO};
     cursor: default;
   }
-`;
-
-export const ButtonLink = styled(Link)`
-  ${ButtonCSS}
 `;
 
 export const ListWrapper = styled.div`

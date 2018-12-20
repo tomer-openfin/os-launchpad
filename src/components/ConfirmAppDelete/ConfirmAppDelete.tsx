@@ -1,7 +1,9 @@
 import * as React from 'react';
 
-import { Button, ButtonLink, Copy, Error, Heading, Message, Row, Wrapper } from '../NewUserForm';
+import Button, { ButtonLink } from '../Button/Button.css';
+import { ButtonWrapper, Copy, CopyWrapper, Error, Heading, HeadingText, Message, Wrapper } from '../ConfirmUserDelete/ConfirmDelete.css';
 
+import { Color } from '../../styles/index';
 import { App, ResponseStatus } from '../../types/commons';
 import { ROUTES } from '../Router/consts';
 
@@ -87,30 +89,37 @@ class ConfirmAppDelete extends React.Component<Props, State> {
     const { location } = this.props;
     const { title } = location.state;
 
-    return (
-      responseReceived && result.status === ResponseStatus.SUCCESS ? (
-        <Wrapper>
-          {this.renderMessage()}
+    return responseReceived && result.status === ResponseStatus.SUCCESS ? (
+      <Wrapper>
+        {this.renderMessage()}
 
-          <ButtonLink to={ROUTES.ADMIN_APPS}>Continue</ButtonLink>
-        </Wrapper>
-      ) : (
-        <Wrapper>
-          <Heading>Delete App</Heading>
+        <ButtonLink to={ROUTES.ADMIN_APPS} backgroundColor={Color.MERCURY} type="button" width={153}>
+          Continue
+        </ButtonLink>
+      </Wrapper>
+    ) : (
+      <Wrapper>
+        <Heading>
+          <HeadingText>Delete App?</HeadingText>
+        </Heading>
 
-          <Copy>Are you sure you want to delete {title} from your App Directory?</Copy>
+        <CopyWrapper>
+          <Copy>Are you sure you want to delete the app:</Copy>
+          <Copy>{`\n ${title}?`}</Copy>
+        </CopyWrapper>
 
-          <Row>
-            <ButtonLink to={ROUTES.ADMIN_APPS}>Cancel</ButtonLink>
+        <ButtonWrapper>
+          <ButtonLink to={ROUTES.ADMIN_APPS} backgroundColor={Color.MERCURY} type="button" width={153}>
+            Cancel
+          </ButtonLink>
 
-            <Button disabled={deleteDisabled} onClick={this.handleDeleteApp}>
-              Delete App
-            </Button>
-          </Row>
+          <Button width={153} disabled={deleteDisabled} onClick={this.handleDeleteApp}>
+            Delete
+          </Button>
+        </ButtonWrapper>
 
-          {this.renderMessage()}
-        </Wrapper>
-      )
+        {this.renderMessage()}
+      </Wrapper>
     );
   }
 }

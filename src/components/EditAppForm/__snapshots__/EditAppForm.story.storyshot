@@ -10,198 +10,348 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
       }
     }
   >
-    <div
-      className="sc-fAjcbJ oYrUQ"
+    <form
+      className="sc-hqyNC fWzciI"
+      onSubmit={[Function]}
     >
       <div
-        className="sc-fBuWsC gsUrKy"
+        className="sc-jlyJG eKNTTZ"
       >
-        Edit App
+        Edit 
+        FinTech Studios
       </div>
       <div
-        className="sc-bRBYWo glIcpT"
-      >
-        Please verify and/or update the following fields:
-      </div>
-      <form
-        onSubmit={[Function]}
+        className="sc-dNLxif hNWNSN"
       >
         <div
-          className="sc-caSCKo dTAppf"
+          className="sc-cJSrbW cUjbGd"
         >
           <label
-            className="sc-fMiknA fgWhDN"
+            className="sc-tilXH cauXVX"
           >
-            Icon URL
-            <input
-              name="icon"
-              onBlur={[Function]}
-              onChange={[Function]}
-              type="text"
-              value="https://cdn.openfin.co/app_directory/img/1525196541056.jpg"
-            />
-          </label>
-          <label
-            className="sc-fMiknA fgWhDN"
-          >
-            Manifest URL
+            <div
+              className="sc-fYxtnH bxOBNZ"
+            >
+              Manifest URL 
+            </div>
             <input
               name="manifest_url"
               onBlur={[Function]}
               onChange={[Function]}
+              placeholder="Enter manifest url"
               type="text"
               value="https://openfin.fintechstudios.com/openfin_config.json"
             />
+            <div
+              className="sc-frDJqD XIGTw sc-dnqmqq ezxeHc"
+              size={40}
+            />
           </label>
           <label
-            className="sc-fMiknA fgWhDN"
+            className="sc-tilXH cauXVX"
           >
-            Accepted Intent(s)
-            <select
-              multiple={true}
-              name="intents"
-              onBlur={[Function]}
-              onChange={[Function]}
-              value={Array []}
+            <div
+              className="sc-fYxtnH bxOBNZ"
             >
-              <option
-                value={0}
-              >
-                Call
-              </option>
-              <option
-                value={1}
-              >
-                Chat
-              </option>
-              <option
-                value={2}
-              >
-                Chart
-              </option>
-              <option
-                value={3}
-              >
-                View
-              </option>
-              <option
-                value={4}
-              >
-                Quote
-              </option>
-              <option
-                value={5}
-              >
-                News
-              </option>
-              <option
-                value={6}
-              >
-                Details
-              </option>
-              <option
-                value={7}
-              >
-                Analyze
-              </option>
-              }
-            </select>
-          </label>
-          <label
-            className="sc-fMiknA fgWhDN"
-          >
-            Title
+              App Title
+            </div>
             <input
               name="title"
               onBlur={[Function]}
               onChange={[Function]}
+              placeholder="Enter app title"
               type="text"
               value="FinTech Studios"
             />
           </label>
           <label
-            className="sc-fMiknA fgWhDN"
+            className="sc-tilXH cauXVX"
           >
-            Accepted Context(s)
-            <select
-              multiple={true}
-              name="contexts"
-              onBlur={[Function]}
-              onChange={[Function]}
-              value={Array []}
+            <div
+              className="sc-fYxtnH bxOBNZ"
             >
-              <option
-                value={0}
-              >
-                fdc3.instrument
-              </option>
-              <option
-                value={1}
-              >
-                fdc3.contact
-              </option>
-              <option
-                value={2}
-              >
-                fdc3.organization
-              </option>
-              <option
-                value={3}
-              >
-                fdc3.contactList
-              </option>
-              <option
-                value={4}
-              >
-                fdc3.position
-              </option>
-              }
-            </select>
-          </label>
-          <label
-            className="sc-fMiknA fgWhDN"
-          >
-            Name
-            <input
-              name="name"
-              onBlur={[Function]}
-              onChange={[Function]}
-              type="text"
-              value="fintech-studios"
-            />
-          </label>
-          <label
-            className="sc-fMiknA fgWhDN"
-          >
-            Description
+              Description
+            </div>
             <textarea
               name="description"
               onBlur={[Function]}
               onChange={[Function]}
+              placeholder="Enter description"
               value="Using cutting edge artificial intelligence and machine learning,       FTS delivers actionable news, research, market analytics, and analytics from millions of sources."
             />
           </label>
+          <label
+            className="sc-tilXH cauXVX"
+          >
+            <div
+              className="sc-fYxtnH bxOBNZ"
+            >
+              App Icon URL
+            </div>
+            <input
+              name="icon"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Enter app icon url"
+              type="text"
+              value="https://cdn.openfin.co/app_directory/img/1525196541056.jpg"
+            />
+          </label>
+          <label
+            className="sc-tilXH cauXVX"
+          >
+            <div
+              className="sc-fYxtnH bxOBNZ"
+            >
+              Accepted Intent(s)
+            </div>
+            <div
+              className="sc-TOsTZ biHxOh"
+            >
+              <label
+                className="sc-caSCKo jtczcX"
+              >
+                <input
+                  checked={false}
+                  className="sc-cHGsZl qOqcr"
+                  name="intents"
+                  onChange={[Function]}
+                  type="checkbox"
+                  value="Start Call"
+                />
+                <div
+                  className="sc-kjoXOD fCtYjT"
+                />
+                <div
+                  className="sc-gisBJw bWXJLO"
+                >
+                  Start Call
+                </div>
+              </label>
+              <label
+                className="sc-caSCKo jtczcX"
+              >
+                <input
+                  checked={false}
+                  className="sc-cHGsZl qOqcr"
+                  name="intents"
+                  onChange={[Function]}
+                  type="checkbox"
+                  value="Start Chat"
+                />
+                <div
+                  className="sc-kjoXOD fCtYjT"
+                />
+                <div
+                  className="sc-gisBJw bWXJLO"
+                >
+                  Start Chat
+                </div>
+              </label>
+              <label
+                className="sc-caSCKo jtczcX"
+              >
+                <input
+                  checked={false}
+                  className="sc-cHGsZl qOqcr"
+                  name="intents"
+                  onChange={[Function]}
+                  type="checkbox"
+                  value="View Chart"
+                />
+                <div
+                  className="sc-kjoXOD fCtYjT"
+                />
+                <div
+                  className="sc-gisBJw bWXJLO"
+                >
+                  View Chart
+                </div>
+              </label>
+              <label
+                className="sc-caSCKo jtczcX"
+              >
+                <input
+                  checked={false}
+                  className="sc-cHGsZl qOqcr"
+                  name="intents"
+                  onChange={[Function]}
+                  type="checkbox"
+                  value="View Contact"
+                />
+                <div
+                  className="sc-kjoXOD fCtYjT"
+                />
+                <div
+                  className="sc-gisBJw bWXJLO"
+                >
+                  View Contact
+                </div>
+              </label>
+              <label
+                className="sc-caSCKo jtczcX"
+              >
+                <input
+                  checked={false}
+                  className="sc-cHGsZl qOqcr"
+                  name="intents"
+                  onChange={[Function]}
+                  type="checkbox"
+                  value="View Quote"
+                />
+                <div
+                  className="sc-kjoXOD fCtYjT"
+                />
+                <div
+                  className="sc-gisBJw bWXJLO"
+                >
+                  View Quote
+                </div>
+              </label>
+            </div>
+          </label>
+          <label
+            className="sc-tilXH cauXVX"
+          >
+            <div
+              className="sc-fYxtnH bxOBNZ"
+            >
+              Accepted Context(s)
+            </div>
+            <div
+              className="sc-TOsTZ biHxOh"
+            >
+              <label
+                className="sc-caSCKo jtczcX"
+              >
+                <input
+                  checked={false}
+                  className="sc-cHGsZl qOqcr"
+                  name="contexts"
+                  onChange={[Function]}
+                  type="checkbox"
+                  value="Instrument"
+                />
+                <div
+                  className="sc-kjoXOD fCtYjT"
+                />
+                <div
+                  className="sc-gisBJw bWXJLO"
+                >
+                  Instrument
+                </div>
+              </label>
+              <label
+                className="sc-caSCKo jtczcX"
+              >
+                <input
+                  checked={false}
+                  className="sc-cHGsZl qOqcr"
+                  name="contexts"
+                  onChange={[Function]}
+                  type="checkbox"
+                  value="Contact"
+                />
+                <div
+                  className="sc-kjoXOD fCtYjT"
+                />
+                <div
+                  className="sc-gisBJw bWXJLO"
+                >
+                  Contact
+                </div>
+              </label>
+              <label
+                className="sc-caSCKo jtczcX"
+              >
+                <input
+                  checked={false}
+                  className="sc-cHGsZl qOqcr"
+                  name="contexts"
+                  onChange={[Function]}
+                  type="checkbox"
+                  value="Organization"
+                />
+                <div
+                  className="sc-kjoXOD fCtYjT"
+                />
+                <div
+                  className="sc-gisBJw bWXJLO"
+                >
+                  Organization
+                </div>
+              </label>
+              <label
+                className="sc-caSCKo jtczcX"
+              >
+                <input
+                  checked={false}
+                  className="sc-cHGsZl qOqcr"
+                  name="contexts"
+                  onChange={[Function]}
+                  type="checkbox"
+                  value="Contact List"
+                />
+                <div
+                  className="sc-kjoXOD fCtYjT"
+                />
+                <div
+                  className="sc-gisBJw bWXJLO"
+                >
+                  Contact List
+                </div>
+              </label>
+              <label
+                className="sc-caSCKo jtczcX"
+              >
+                <input
+                  checked={false}
+                  className="sc-cHGsZl qOqcr"
+                  name="contexts"
+                  onChange={[Function]}
+                  type="checkbox"
+                  value="Position"
+                />
+                <div
+                  className="sc-kjoXOD fCtYjT"
+                />
+                <div
+                  className="sc-gisBJw bWXJLO"
+                >
+                  Position
+                </div>
+              </label>
+            </div>
+          </label>
         </div>
+      </div>
+      <div
+        className="sc-ksYbfQ bYIWvt"
+      >
         <div
-          className="sc-eqIVtm eQPmXj"
+          className="sc-kgAjT EXLIm"
         >
           <a
-            className="sc-hzDkRC gBLjTM"
+            backgroundColor="#848484"
+            className="sc-Rmtcm fLXfRX"
             href="/admin/apps"
             onClick={[Function]}
+            type="button"
+            width={128}
           >
             Cancel
           </a>
           <button
-            className="sc-Rmtcm fdTSiM"
+            className="sc-csuQGl hpiuPo"
             disabled={true}
             type="submit"
+            width={128}
           >
             Save
           </button>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
   <button
     onClick={[Function]}
@@ -349,7 +499,7 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
                   }
                 >
                   &lt;
-                  Connect(EditAppForm)
+                  EditAppForm
                 </span>
                 <span>
                   <span>
@@ -374,6 +524,11 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
                         >
                           {
                           <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
                             <span
                               style={
                                 Object {
@@ -381,91 +536,27 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
                                 }
                               }
                             >
-                              state
+                              hash
                             </span>
                           </span>
                           : 
                           <span
                             style={
                               Object {
-                                "color": "#666",
+                                "color": "#22a",
+                                "wordBreak": "break-word",
                               }
                             }
                           >
-                            {
+                            'for react-router'
+                          </span>
+                          ,
+                          <span>
                             <span>
-                              <span>
-                                <br />
-                                    
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                appPage
-                              </span>
+                              <br />
+                                
+                                
                             </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              '/apps/fintech-studios'
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                    
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                contact_email
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              'jim@fintechstudios.com'
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                    
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                contexts
-                              </span>
-                            </span>
-                            : 
                             <span
                               style={
                                 Object {
@@ -473,23 +564,60 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
                                 }
                               }
                             >
-                              [
-                              ]
+                              pathname
                             </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                    
-                                  
-                              </span>
-                              …
-                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
+                            }
+                          >
+                            'for react-router'
+                          </span>
+                          ,
+                          <span>
                             <span>
                               <br />
-                                  
+                                
+                                
                             </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              search
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
                             }
+                          >
+                            'for react-router'
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            …
+                          </span>
+                          <span>
+                            <br />
+                              
                           </span>
                           }
                         </span>
@@ -581,94 +709,12 @@ exports[`Storyshots Components/EditAppForm default 1`] = `
               }
             >
               "
-              Connect(EditAppForm)
+              EditAppForm
               " Component
             </h2>
-            <table
-              className="css-1uhv8nx e1vdo5380"
-            >
-              <thead>
-                <tr>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    property
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    propType
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    required
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    default
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    description
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    store
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span />
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    storeSubscription
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span />
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-              </tbody>
-            </table>
+            <small>
+              No propTypes defined!
+            </small>
           </div>
         </div>
       </div>

@@ -2,13 +2,18 @@ import styled from 'styled-components';
 
 import { Color } from '../../styles';
 
-export const Header = styled.div`
+interface CommonProps {
+  backgroundColor?: string;
+  justifyContent?: string;
+}
+
+export const Header = styled.div<CommonProps>`
   -webkit-app-region: drag !important;
-  background-color: ${Color.KUIPER_BELT};
+  background-color: ${props => props.backgroundColor || Color.KUIPER_BELT};
   color: ${Color.SUN};
   display: flex;
   height: 60px;
-  justify-content: space-between;
+  justify-content: ${props => props.justifyContent || 'space-between'};
   align-items: center;
   text-align: center;
   width: 100%;

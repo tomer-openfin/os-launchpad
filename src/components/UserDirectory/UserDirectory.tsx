@@ -2,7 +2,6 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
 import {
-  ButtonLink,
   DeleteIconLink,
   EditIconLink,
   Footer,
@@ -24,6 +23,7 @@ import { userRoutes } from '../Router';
 import { ROUTES } from '../Router/consts';
 
 import { Row } from '../AppDirectory';
+import { ButtonLink } from '../Button/Button.css';
 import Modal from '../Modal';
 import UserCard from '../UserCard';
 

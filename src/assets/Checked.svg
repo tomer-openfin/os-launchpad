@@ -1,0 +1,23 @@
+
+<svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <rect id="path-1" x="0" y="0" width="19" height="19"></rect>
+        <filter x="-21.1%" y="-21.1%" width="142.1%" height="142.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="3" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="2" dy="2" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.147220335 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="🧩-Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ui/inputs/checkbox--checked">
+            <g id="Group-2">
+                <g id="Rectangle-Copy-3">
+                    <use fill="#6461FF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                </g>
+                <path d="M17.1889529,3.73694892 L17.3217869,3.8735119 C17.6993524,4.26167664 17.6993524,4.87985167 17.3217869,5.26801641 L7.60167728,15.2609935 C7.21659549,15.6568854 6.58349116,15.6656488 6.18759918,15.280567 C6.18031868,15.2734854 6.1731465,15.2662932 6.16608512,15.2589929 L2.67438431,11.649197 C2.29865427,11.2607591 2.29951362,10.6440822 2.67632478,10.256693 L2.80813615,10.1211814 C3.19321793,9.72528938 3.82632226,9.71652599 4.22221425,10.1016078 C4.22979676,10.1089832 4.23726178,10.1164786 4.24460648,10.1240909 L6.88284999,12.8584717 L15.7553012,3.73694892 C16.140383,3.34105693 16.7734873,3.33229354 17.1693793,3.71737533 C17.1759938,3.72380924 17.1825189,3.73033439 17.1889529,3.73694892 Z" id="Path-Copy-2" fill="#F2F2F2" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

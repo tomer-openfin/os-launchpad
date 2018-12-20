@@ -2,17 +2,7 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
 import Modal from '../Modal';
-import {
-  ButtonLink,
-  DeleteIconLink,
-  EditIconLink,
-  HeadingWrapper,
-  Input,
-  InputWrapper,
-  LinkWrapper,
-  ListWrapper,
-  Wrapper,
-} from '../UserDirectory/UserDirectory.css';
+import { DeleteIconLink, EditIconLink, HeadingWrapper, Input, InputWrapper, LinkWrapper, ListWrapper, Wrapper } from '../UserDirectory/UserDirectory.css';
 
 import { App } from '../../types/commons';
 import { doesCurrentPathMatch } from '../../utils/routeHelpers';
@@ -20,6 +10,7 @@ import { appRoutes, ROUTES } from '../Router';
 
 import AppCard from '../AppCard';
 import { Row } from '../AppDirectory';
+import { ButtonLink } from '../Button/Button.css';
 
 interface Props {
   apps: App[];

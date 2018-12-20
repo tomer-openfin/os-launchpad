@@ -2,12 +2,15 @@ import * as React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import EditAppForm from './';
+import EditAppForm from './EditAppForm';
 
 import noop from '../../utils/noop';
 
 const mockData = {
   location: {
+    hash: 'for react-router',
+    pathname: 'for react-router',
+    search: 'for react-router',
     state: {
       appPage: '/apps/fintech-studios',
       contact_email: 'jim@fintechstudios.com',
