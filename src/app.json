@@ -41,5 +41,5 @@
     "icon": "%ROOT_URL%/public/logo-new.ico",
     "name": "OS Launcher"
   },
-  "splashScreenImage": "%ROOT_URL%/public/splashscreen-new.png"
+  "splashScreenImage": "%ROOT_URL%/public/splashscreen.png"
 }
