@@ -24,10 +24,10 @@ const mergeProps = ({ systemIcons, isDrawerExpanded, launcherPosition }, dispatc
   ...ownProps,
   icons: systemIcons.map(option => ({
     cta: () => dispatchProps.dispatch(option.action),
-    default: option.default,
     hasExtendedWindow: option.hasExtendedWindow,
     icon: option.icon,
     key: option.key,
+    shownCollapsed: option.shownCollapsed,
   })),
   isDrawerExpanded,
   launcherPosition,

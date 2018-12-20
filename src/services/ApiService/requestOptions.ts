@@ -7,7 +7,7 @@ export const createGetOptions = (): RequestInit => ({
   mode: 'cors',
 });
 
-export const createPostOptions = (body): RequestInit => ({
+export const createPostOptions = (body?): RequestInit => ({
   body: JSON.stringify(body),
   credentials: 'include',
   headers: {

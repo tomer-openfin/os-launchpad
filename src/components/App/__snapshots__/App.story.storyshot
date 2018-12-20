@@ -60,40 +60,36 @@ exports[`Storyshots Components/App default 1`] = `
                 onClick={[Function]}
                 size={42}
               />
+            </div>
+            <div
+              className="sc-chPdSV iYFTZL"
+            >
+              <div
+                className="sc-dxgOiQ eUilLL sc-dnqmqq vbBqW"
+                onClick={[Function]}
+                size={42}
+              />
+            </div>
+            <div
+              className="sc-chPdSV iYFTZL"
+            >
+              <div
+                className="sc-dxgOiQ eUilLL sc-dnqmqq vbBqW"
+                onClick={[Function]}
+                size={42}
+              />
+            </div>
+            <div
+              className="sc-chPdSV iYFTZL"
+            >
+              <div
+                className="sc-dxgOiQ eUilLL sc-dnqmqq vbBqW"
+                onClick={[Function]}
+                size={42}
+              />
               <div
                 className="sc-jTzLTM cIaXTF sc-dnqmqq kfTEKn"
                 size={25}
-              />
-            </div>
-            <div
-              className="sc-chPdSV iYFTZL"
-            >
-              <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq vbBqW"
-                onClick={[Function]}
-                size={42}
-              />
-            </div>
-            <div
-              className="sc-chPdSV iYFTZL"
-            >
-              <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq vbBqW"
-                onClick={[Function]}
-                size={42}
-              />
-              <div
-                className="sc-jTzLTM cIaXTF sc-dnqmqq kfTEKn"
-                size={25}
-              />
-            </div>
-            <div
-              className="sc-chPdSV iYFTZL"
-            >
-              <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq vbBqW"
-                onClick={[Function]}
-                size={42}
               />
             </div>
             <div
@@ -407,7 +403,7 @@ exports[`Storyshots Components/App default 1`] = `
                                     }
                                   }
                                 >
-                                  default
+                                  hasExtendedWindow
                                 </span>
                               </span>
                               : 
@@ -434,18 +430,41 @@ exports[`Storyshots Components/App default 1`] = `
                                     }
                                   }
                                 >
-                                  hasExtendedWindow
+                                  icon
                                 </span>
                               </span>
                               : 
                               <span
                                 style={
                                   Object {
-                                    "color": "#a11",
+                                    "color": "#666",
                                   }
                                 }
                               >
-                                false
+                                {
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    default
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  ''
+                                </span>
+                                }
                               </span>
                               ,
                               <span>
@@ -518,7 +537,7 @@ exports[`Storyshots Components/App default 1`] = `
                                     }
                                   }
                                 >
-                                  default
+                                  hasExtendedWindow
                                 </span>
                               </span>
                               : 
@@ -545,18 +564,41 @@ exports[`Storyshots Components/App default 1`] = `
                                     }
                                   }
                                 >
-                                  hasExtendedWindow
+                                  icon
                                 </span>
                               </span>
                               : 
                               <span
                                 style={
                                   Object {
-                                    "color": "#a11",
+                                    "color": "#666",
                                   }
                                 }
                               >
-                                true
+                                {
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    default
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  ''
+                                </span>
+                                }
                               </span>
                               ,
                               <span>
@@ -629,7 +671,7 @@ exports[`Storyshots Components/App default 1`] = `
                                     }
                                   }
                                 >
-                                  default
+                                  hasExtendedWindow
                                 </span>
                               </span>
                               : 
@@ -656,18 +698,41 @@ exports[`Storyshots Components/App default 1`] = `
                                     }
                                   }
                                 >
-                                  hasExtendedWindow
+                                  icon
                                 </span>
                               </span>
                               : 
                               <span
                                 style={
                                   Object {
-                                    "color": "#a11",
+                                    "color": "#666",
                                   }
                                 }
                               >
-                                false
+                                {
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    default
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  ''
+                                </span>
+                                }
                               </span>
                               ,
                               <span>
@@ -787,6 +852,163 @@ exports[`Storyshots Components/App default 1`] = `
                                     }
                                   }
                                 >
+                                  'LOGOUT_REQUEST'
+                                </span>
+                                }
+                              </span>
+                              ,
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  hasExtendedWindow
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#a11",
+                                  }
+                                }
+                              >
+                                false
+                              </span>
+                              ,
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  icon
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                {
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    default
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  ''
+                                </span>
+                                }
+                              </span>
+                              ,
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                …
+                              </span>
+                              <span>
+                                <br />
+                                    
+                              </span>
+                              }
+                            </span>
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              {
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  action
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                {
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    type
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
                                   'LAUNCH_WINDOW'
                                 </span>
                                 ,
@@ -921,33 +1143,6 @@ exports[`Storyshots Components/App default 1`] = `
                                     }
                                   }
                                 >
-                                  default
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#a11",
-                                  }
-                                }
-                              >
-                                false
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
                                   hasExtendedWindow
                                 </span>
                               </span>
@@ -968,36 +1163,6 @@ exports[`Storyshots Components/App default 1`] = `
                                       
                                     
                                 </span>
-                                …
-                              </span>
-                              <span>
-                                <br />
-                                    
-                              </span>
-                              }
-                            </span>
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              {
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
                                 <span
                                   style={
                                     Object {
@@ -1005,7 +1170,7 @@ exports[`Storyshots Components/App default 1`] = `
                                     }
                                   }
                                 >
-                                  action
+                                  icon
                                 </span>
                               </span>
                               : 
@@ -1025,7 +1190,7 @@ exports[`Storyshots Components/App default 1`] = `
                                       }
                                     }
                                   >
-                                    type
+                                    default
                                   </span>
                                 </span>
                                 : 
@@ -1037,63 +1202,9 @@ exports[`Storyshots Components/App default 1`] = `
                                     }
                                   }
                                 >
-                                  'todo'
+                                  ''
                                 </span>
                                 }
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  default
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#a11",
-                                  }
-                                }
-                              >
-                                false
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  hasExtendedWindow
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#a11",
-                                  }
-                                }
-                              >
-                                true
                               </span>
                               ,
                               <span>
@@ -1305,7 +1416,7 @@ exports[`Storyshots Components/App default 1`] = `
                                     }
                                   }
                                 >
-                                  default
+                                  hasExtendedWindow
                                 </span>
                               </span>
                               : 
@@ -1332,18 +1443,41 @@ exports[`Storyshots Components/App default 1`] = `
                                     }
                                   }
                                 >
-                                  hasExtendedWindow
+                                  icon
                                 </span>
                               </span>
                               : 
                               <span
                                 style={
                                   Object {
-                                    "color": "#a11",
+                                    "color": "#666",
                                   }
                                 }
                               >
-                                false
+                                {
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    default
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  ''
+                                </span>
+                                }
                               </span>
                               ,
                               <span>

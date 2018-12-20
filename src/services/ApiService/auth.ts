@@ -23,3 +23,14 @@ export const newPasswordLogin = ({ username, newPassword, session }: LoginWithNe
 
   return fetch(API.NEW_PASSWORD, options).then(resp => resp.json());
 };
+
+/**
+ * Logout
+ *
+ * @returns {Promise<>}
+ */
+export const logout = () => {
+  const options = createPostOptions();
+
+  return fetch(API.LOGOUT, options).then(resp => resp.json());
+};

@@ -24,10 +24,10 @@ import {
 
 export interface LauncherIcon {
   cta: () => void;
-  default: boolean;
   icon: string;
   key: string;
   hasExtendedWindow: boolean;
+  shownCollapsed: boolean;
 }
 
 export interface Props {
@@ -64,7 +64,7 @@ const App = (props: Props) => {
 
             {icons.map(
               icon =>
-                (icon.default || isDrawerExpanded) && (
+                (icon.shownCollapsed || isDrawerExpanded) && (
                   <SystemIconWrapper key={icon.key} isDrawerExpanded={isDrawerExpanded} launcherPosition={launcherPosition}>
                     <StyledSvgIcon imgSrc={icon.icon} onClick={icon.cta} />
 

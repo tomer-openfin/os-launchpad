@@ -10,10 +10,10 @@ import App from './App';
 
 const MOCK_ICONS = getSystemIcons(true).map(icon => ({
   cta: action('Action to be dispatched:', icon.action),
-  default: icon.default,
   hasExtendedWindow: icon.hasExtendedWindow,
   icon: icon.icon,
   key: icon.key,
+  shownCollapsed: icon.shownCollapsed,
 }));
 
 storiesOf('Components/App', module).add('default', () => {

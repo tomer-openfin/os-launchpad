@@ -1,5 +1,8 @@
 import styled from 'styled-components';
+
 import { Color } from '../../styles/index';
+
+import Button from '../Button';
 
 export const Window = styled.div`
   display: flex;
@@ -10,22 +13,15 @@ export const Window = styled.div`
   position: relative;
 `;
 
-export const CTA = styled.button`
-  width: 50px;
-  height: 24px;
-  font-size: 9px;
-  color: ${Color.SEAGULL};
-  background: ${Color.VOID};
-  border: 1px solid ${Color.SEAGULL};
-  border-radius: 3px;
-  outline: none;
-  cursor: pointer;
+export const CTA = styled(Button)`
   margin: 5px;
+`;
 
-  &:hover {
-    color: ${Color.CHARCOAL};
-    background: ${Color.SEAGULL};
-  }
+export const Row = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Heading = styled.div`

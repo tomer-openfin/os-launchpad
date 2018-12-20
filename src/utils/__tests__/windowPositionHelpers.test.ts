@@ -120,17 +120,17 @@ const monitorInfo = {
 const SYSTEM_ICONS = [
   {
     action: { type: 'FAKE_TEST_TYPE' },
-    default: true,
     hasExtendedWindow: false,
     icon: 'testIcon',
     key: 'testIcon',
+    shownCollapsed: true,
   },
   {
     action: { type: 'FAKE_MOCK_TYPE' },
-    default: false,
     hasExtendedWindow: true,
     icon: 'mockIcon',
     key: 'mockIcon',
+    shownCollapsed: false,
   },
 ];
 

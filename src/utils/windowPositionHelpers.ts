@@ -62,7 +62,7 @@ export const calcExpandedSystemSize = (systemIcons: SystemIcon[]) => {
 };
 
 export const calcCollapsedSystemSize = (systemIcons: SystemIcon[]) => {
-  const totalDefaultSystemIconSizes = systemIcons.reduce((acc, icon) => (icon.default ? acc + SIZE.SYSTEM_ICON : acc), 0);
+  const totalDefaultSystemIconSizes = systemIcons.reduce((acc, icon) => (icon.shownCollapsed ? acc + SIZE.SYSTEM_ICON : acc), 0);
   const totalCollapsedSystemPadding = 2 * SIZE.COLLAPSED_SYSTEM_PADDING;
 
   return SIZE.EXPAND_ICON + totalDefaultSystemIconSizes + totalCollapsedSystemPadding;
