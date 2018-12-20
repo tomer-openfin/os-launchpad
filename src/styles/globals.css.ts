@@ -20,21 +20,21 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar {
-    width: 16px;
+    width: 8px;
     display: auto;
   }
 
   ::-webkit-scrollbar-track {
-    background: ${Color.DUSTY_GREY};
+    background: ${Color.KUIPER_BELT};
     display: auto;
+    border-radius: 4px;
+    border: solid 3px transparent;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: ${Color.GREY};
+    background: ${Color.MERCURY};
     display: auto;
-
-    &:hover {
-      background: ${Color.LIGHTER_GREY};
-    }
+    border-radius: 4px;
+    border: solid 3px transparent;
   }
 `;

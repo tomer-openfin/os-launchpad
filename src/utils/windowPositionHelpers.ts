@@ -27,20 +27,20 @@ const OFFSETS = {
   },
   [LAYOUTS_WINDOW]: {
     [DirectionalPosition.Top]: (launcherBounds: Bounds, isLauncherDrawerExpanded: boolean) => ({
-      offsetX: launcherBounds.width - (isLauncherDrawerExpanded ? 160 : 135),
+      offsetX: launcherBounds.width - (isLauncherDrawerExpanded ? 112 : 93),
       offsetY: SIZE.MAX_STATIC_DIMENSION - SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA,
     }),
     [DirectionalPosition.Right]: (launcherBounds: Bounds, isLauncherDrawerExpanded: boolean) => ({
       offsetX: SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA,
-      offsetY: launcherBounds.height - (isLauncherDrawerExpanded ? 160 : 135),
+      offsetY: launcherBounds.height - (isLauncherDrawerExpanded ? 112 : 93),
     }),
     [DirectionalPosition.Bottom]: (launcherBounds: Bounds, isLauncherDrawerExpanded: boolean) => ({
-      offsetX: launcherBounds.width - (isLauncherDrawerExpanded ? 160 : 135),
+      offsetX: launcherBounds.width - (isLauncherDrawerExpanded ? 112 : 93),
       offsetY: SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA,
     }),
     [DirectionalPosition.Left]: (launcherBounds: Bounds, isLauncherDrawerExpanded: boolean) => ({
       offsetX: SIZE.MAX_STATIC_DIMENSION - SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA,
-      offsetY: launcherBounds.height - (isLauncherDrawerExpanded ? 160 : 135),
+      offsetY: launcherBounds.height - (isLauncherDrawerExpanded ? 112 : 93),
     }),
   },
 };
