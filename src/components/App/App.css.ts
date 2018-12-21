@@ -165,7 +165,7 @@ export const Wrapper = styled.div<EndPaddingPositionProp>`
 
 /* Styled Imports */
 export const StyledLogo = styled(Logo)`
-  background-color: rgba(0, 0, 0, 0.16);
+  background-color: ${Color.KUIPER_BELT};
 `;
 
 export const StyledSvgIcon = styled(SvgIcon)`
