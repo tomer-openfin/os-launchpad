@@ -24,12 +24,10 @@
   },
   "services": [
     {
-      "name": "notifications",
-      "manifestUrl": "https://cdn.openfin.co/services/openfin/notifications/app.staging.json"
+      "name": "notifications"
     },
     {
-      "name": "layouts",
-      "manifestUrl": "https://cdn.openfin.co/services/openfin/layouts/app.staging.json"
+      "name": "layouts"
     }
   ],
   "runtime": {
