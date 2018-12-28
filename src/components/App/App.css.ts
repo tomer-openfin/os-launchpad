@@ -155,17 +155,18 @@ export const Wrapper = styled.div<EndPaddingPositionProp>`
   align-items: center;
   display: flex;
   flex-direction: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? 'row' : 'column')};
-  height: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? `${SIZE.MAX_STATIC_DIMENSION}px` : '100vh')};
+  height: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? `${SIZE.MAX_STATIC_DIMENSION}px` : '100%')};
   justify-content: flex-start;
   padding-bottom: ${({ endPadding, launcherPosition }) => (isTopOrBottom(launcherPosition) ? 0 : endPadding)}px;
   padding-right: ${({ endPadding, launcherPosition }) => (isTopOrBottom(launcherPosition) ? endPadding : 0)}px;
   position: relative;
-  width: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? '100vw' : `${SIZE.MAX_STATIC_DIMENSION}px`)};
+  width: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? '100%' : `${SIZE.MAX_STATIC_DIMENSION}px`)};
 `;
 
 /* Styled Imports */
 export const StyledLogo = styled(Logo)`
   background-color: ${Color.KUIPER_BELT};
+  background-size: 90%;
 `;
 
 export const StyledSvgIcon = styled(SvgIcon)`

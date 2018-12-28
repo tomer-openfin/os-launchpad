@@ -11,21 +11,27 @@ exports[`Storyshots Components/AppIcon default 1`] = `
     }
   >
     <div
-      className="sc-htoDjs keeYQY"
+      className="sc-kAzzGY kYMdtC"
       onClick={[Function]}
       size={50}
     >
       <div
-        className="sc-gzVnrw iaIjmB"
+        className="sc-cSHVUG juzrPm"
         onContextMenu={[Function]}
       >
         <div
-          className="sc-EHOje kFtiuS"
+          className="sc-fjdhpX iSPZRp"
         />
       </div>
       <div
-        className="sc-bZQynM ebLZEB sc-ifAKCX UwCln"
-      />
+        className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+      >
+        <div
+          className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
+          color="rgba(0,0,0,0)"
+          size="53%"
+        />
+      </div>
     </div>
   </div>
   <button
@@ -437,28 +443,25 @@ exports[`Storyshots Components/AppIcon with parent background color 1`] = `
     }
   >
     <div
-      style={
-        Object {
-          "backgroundColor": "#343434",
-          "display": "inline-block",
-        }
-      }
+      className="sc-kAzzGY kYMdtC"
+      onClick={[Function]}
+      size={50}
     >
       <div
-        className="sc-htoDjs keeYQY"
-        onClick={[Function]}
-        size={50}
+        className="sc-cSHVUG juzrPm"
+        onContextMenu={[Function]}
       >
         <div
-          className="sc-gzVnrw iaIjmB"
-          onContextMenu={[Function]}
-        >
-          <div
-            className="sc-EHOje gHOpvM"
-          />
-        </div>
+          className="sc-fjdhpX iSPZRp"
+        />
+      </div>
+      <div
+        className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+      >
         <div
-          className="sc-bZQynM ebLZEB sc-ifAKCX UwCln"
+          className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
+          color="rgba(0,0,0,0)"
+          size="53%"
         />
       </div>
     </div>
@@ -593,338 +596,213 @@ exports[`Storyshots Components/AppIcon with parent background color 1`] = `
             className="css-r8d96o eyvlbql0"
           >
             <div>
-              <div>
-                <div
+              <div
+                style={
+                  Object {
+                    "paddingLeft": 18,
+                    "paddingRight": 3,
+                  }
+                }
+              >
+                <span
                   style={
                     Object {
-                      "paddingLeft": 18,
-                      "paddingRight": 3,
+                      "color": "#444",
                     }
                   }
                 >
-                  <span
-                    style={
-                      Object {
-                        "color": "#444",
-                      }
-                    }
-                  >
-                    &lt;
-                    div
-                  </span>
+                  &lt;
+                  AppIcon
+                </span>
+                <span>
                   <span>
                     <span>
-                       
-                      <span
-                        style={Object {}}
-                      >
-                        style
-                      </span>
-                      <span>
-                        =
-                        <span
-                          style={Object {}}
-                        >
-                          {
-                          <span
-                            style={
-                              Object {
-                                "color": "#666",
-                              }
-                            }
-                          >
-                            {
-                            <span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                backgroundColor
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              '#343434'
-                            </span>
-                            ,
-                            <span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                display
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              'inline-block'
-                            </span>
-                            }
-                          </span>
-                          }
-                        </span>
-                      </span>
-                      
-                    </span>
-                  </span>
-                  <span
-                    style={
-                      Object {
-                        "color": "#444",
-                      }
-                    }
-                  >
-                    &gt;
-                  </span>
-                </div>
-                <div
-                  style={
-                    Object {
-                      "paddingLeft": 33,
-                      "paddingRight": 3,
-                    }
-                  }
-                >
-                  <span
-                    style={
-                      Object {
-                        "color": "#444",
-                      }
-                    }
-                  >
-                    &lt;
-                    AppIcon
-                  </span>
-                  <span>
-                    <span>
-                      <span>
-                        <br />
-                          
-                      </span>
-                      <span
-                        style={Object {}}
-                      >
-                        appId
-                      </span>
-                      <span>
-                        =
-                        <span
-                          style={Object {}}
-                        >
-                          "
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            osLaunchpadMain
-                          </span>
-                          "
-                        </span>
-                      </span>
-                    </span>
-                    <span>
-                      <span>
-                        <br />
-                          
-                      </span>
-                      <span
-                        style={Object {}}
-                      >
-                        imgSrc
-                      </span>
-                      <span>
-                        =
-                        <span
-                          style={Object {}}
-                        >
-                          "
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            https://cdn.openfin.co/demos/whiteboard/apps/share…
-                          </span>
-                          "
-                        </span>
-                      </span>
-                    </span>
-                    <span>
-                      <span>
-                        <br />
-                          
-                      </span>
-                      <span
-                        style={Object {}}
-                      >
-                        indicatorPosition
-                      </span>
-                      <span>
-                        =
-                        <span
-                          style={Object {}}
-                        >
-                          "
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            bottom
-                          </span>
-                          "
-                        </span>
-                      </span>
-                    </span>
-                    <span>
-                      <span>
-                        <br />
-                          
-                      </span>
-                      <span
-                        style={Object {}}
-                      >
-                        isDisabled
-                      </span>
-                      <span>
-                        =
-                        <span
-                          style={Object {}}
-                        >
-                          {
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
-                              }
-                            }
-                          >
-                            false
-                          </span>
-                          }
-                        </span>
-                      </span>
-                    </span>
-                    <span>
-                      <span>
-                        <br />
-                          
-                      </span>
-                      <span
-                        style={Object {}}
-                      >
-                        launchApp
-                      </span>
-                      <span>
-                        =
-                        <span
-                          style={Object {}}
-                        >
-                          {
-                          <span
-                            style={
-                              Object {
-                                "color": "#170",
-                              }
-                            }
-                          >
-                            launchApp clicked
-                          </span>
-                          }
-                        </span>
-                      </span>
-                    </span>
-                    <span>
-                      <span>
-                        <br />
-                          
-                      </span>
-                      <span
-                        style={Object {}}
-                      >
-                        size
-                      </span>
-                      <span>
-                        =
-                        <span
-                          style={Object {}}
-                        >
-                          {
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
-                              }
-                            }
-                          >
-                            50
-                          </span>
-                          }
-                        </span>
-                      </span>
                       <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      appId
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        "
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          osLaunchpadMain
+                        </span>
+                        "
+                      </span>
                     </span>
                   </span>
-                  <span
-                    style={
-                      Object {
-                        "color": "#444",
-                      }
-                    }
-                  >
-                    /&gt;
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      imgSrc
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        "
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          https://github.githubassets.com/images/modules/log…
+                        </span>
+                        "
+                      </span>
+                    </span>
                   </span>
-                </div>
-                <div
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      indicatorPosition
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        "
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          bottom
+                        </span>
+                        "
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      isDisabled
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#a11",
+                            }
+                          }
+                        >
+                          false
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      launchApp
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          launchApp clicked
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      size
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#a11",
+                            }
+                          }
+                        >
+                          50
+                        </span>
+                        }
+                      </span>
+                    </span>
+                    <br />
+                  </span>
+                </span>
+                <span
                   style={
                     Object {
-                      "paddingLeft": 18,
-                      "paddingRight": 3,
+                      "color": "#444",
                     }
                   }
                 >
-                  <span
-                    style={
-                      Object {
-                        "color": "#444",
-                      }
-                    }
-                  >
-                    &lt;/
-                    div
-                    &gt;
-                  </span>
-                </div>
+                  /&gt;
+                </span>
               </div>
             </div>
             <button
@@ -1000,7 +878,6 @@ exports[`Storyshots Components/AppIcon with transition 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "backgroundColor": "#343434",
           "display": "inline-flex",
           "height": "70px",
           "justifyContent": "center",
@@ -1221,7 +1098,7 @@ exports[`Storyshots Components/AppIcon with transition 1`] = `
                                   }
                                 }
                               >
-                                backgroundColor
+                                display
                               </span>
                             </span>
                             : 
@@ -1233,7 +1110,7 @@ exports[`Storyshots Components/AppIcon with transition 1`] = `
                                 }
                               }
                             >
-                              '#343434'
+                              'inline-flex'
                             </span>
                             ,
                             <span>
@@ -1249,7 +1126,7 @@ exports[`Storyshots Components/AppIcon with transition 1`] = `
                                   }
                                 }
                               >
-                                display
+                                height
                               </span>
                             </span>
                             : 
@@ -1261,7 +1138,7 @@ exports[`Storyshots Components/AppIcon with transition 1`] = `
                                 }
                               }
                             >
-                              'inline-flex'
+                              '70px'
                             </span>
                             ,
                             <span>

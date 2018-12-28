@@ -1,6 +1,6 @@
 import { Layout } from 'openfin-layouts/dist/client/types';
 
-import { AppListTypes, ResponseStatus } from './enums';
+import { AppListTypes, ResponseStatus, UserStatus } from './enums';
 
 export interface App {
   appPage: string;
@@ -85,10 +85,14 @@ export interface User {
   isAdmin: boolean;
   lastName: string;
   middleInitial: string;
-  organizationId: string;
   tmpPassword?: string;
   username: string;
   phone?: string;
+  // created on backend
+  created?: string;
+  enabled?: boolean;
+  lastModified?: string;
+  status?: UserStatus;
 }
 
 export interface ObjectWithId {

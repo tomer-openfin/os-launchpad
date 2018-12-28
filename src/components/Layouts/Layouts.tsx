@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as restoreLayoutIcon from '../../assets/RestoreLayout.svg';
 import * as saveLayoutIcon from '../../assets/SaveLayout.svg';
 
-import IconSpace from '../IconSpace';
+import SvgIcon from '../SvgIcon';
 
 import { DirectionalPosition } from '../../types/commons';
 
@@ -26,9 +26,9 @@ const Layouts = ({ isApplicationDrawerExpanded, launcherPosition, layoutIds, sav
 
   return (
     <Wrapper launcherPosition={launcherPosition} isExpanded={isApplicationDrawerExpanded}>
-      <IconSpace iconImg={saveLayoutIcon} onClick={handleClickCreator(saveLayout, layoutIds[0])} hover />
+      <SvgIcon imgSrc={saveLayoutIcon} onClick={handleClickCreator(saveLayout, layoutIds[0])} />
 
-      <IconSpace iconImg={restoreLayoutIcon} onClick={handleClickCreator(restoreLayout, layoutIds[0])} hover />
+      <SvgIcon imgSrc={restoreLayoutIcon} onClick={handleClickCreator(restoreLayout, layoutIds[0])} />
     </Wrapper>
   );
 };

@@ -11,65 +11,74 @@ exports[`Storyshots Components/Settings default 1`] = `
     }
   >
     <div
-      className="sc-gxMtzJ hJVeoq"
+      className="sc-fAjcbJ cEUoiu"
     >
       <div
-        className="sc-cJSrbW ivGxWp"
-      >
-        <button
-          className="sc-ksYbfQ fgAPAg"
-          onClick={[Function]}
-        >
-          <span
-            className="sc-hmzhuo fypdGF"
-          />
-        </button>
-      </div>
-      <div
-        className="sc-iyvyFf bRACFp"
+        className="sc-VigVT jDzIfd"
       >
         <div
-          className="sc-gzOgki mMBWN"
+          className="sc-jTzLTM jxKiyY"
+        >
+          My Settings
+        </div>
+        <div
+          className="sc-gqjmRU dODutD"
+        >
+          <div
+            className="sc-ifAKCX cWlwzh"
+            color="#E7E7E7"
+            onClick={[Function]}
+            size={25}
+          />
+        </div>
+      </div>
+      <div
+        className="sc-cHGsZl ivcqvm"
+      >
+        <div
+          className="sc-kjoXOD gPhBWe"
         >
           Auto Hide
         </div>
         <button
-          className="sc-dfVpRl eEhKXc"
+          className="sc-caSCKo frlXPe"
           onClick={[Function]}
         >
           OFF
         </button>
       </div>
       <div
-        className="sc-iyvyFf bRACFp"
+        className="sc-cHGsZl ivcqvm"
       >
         <div
-          className="sc-gzOgki mMBWN"
+          className="sc-kjoXOD gPhBWe"
         >
           Launcher Position
         </div>
         <button
-          className="sc-dfVpRl eEhKXc"
+          className="sc-caSCKo frlXPe"
           onClick={[Function]}
         >
           Top
         </button>
-        <div>
+        <div
+          className="sc-gisBJw kkfmqr"
+        >
           <button
-            className="sc-dfVpRl eEhKXc"
+            className="sc-caSCKo frlXPe"
             onClick={[Function]}
           >
             Left
           </button>
           <button
-            className="sc-dfVpRl eEhKXc"
+            className="sc-caSCKo frlXPe"
             onClick={[Function]}
           >
             Right
           </button>
         </div>
         <button
-          className="sc-dfVpRl eEhKXc"
+          className="sc-caSCKo frlXPe"
           onClick={[Function]}
         >
           Bottom
@@ -218,18 +227,18 @@ exports[`Storyshots Components/Settings default 1`] = `
                 <span
                   style={
                     Object {
-                      "color": "#777",
+                      "color": "#444",
                     }
                   }
                 >
                   &lt;
-                  AppOverflow
+                  Settings
                 </span>
                 <span />
                 <span
                   style={
                     Object {
-                      "color": "#777",
+                      "color": "#444",
                     }
                   }
                 >
@@ -282,7 +291,7 @@ exports[`Storyshots Components/Settings default 1`] = `
               }
             >
               "
-              AppOverflow
+              Settings
               " Component
             </h2>
             <table
@@ -347,6 +356,41 @@ exports[`Storyshots Components/Settings default 1`] = `
                       }
                     >
                       false
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    onEscDown
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#170",
+                        }
+                      }
+                    >
+                      noop
                     </span>
                   </td>
                   <td

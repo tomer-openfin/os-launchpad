@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/EditUserForm default 1`] = `
+exports[`Storyshots Admin Components/EditUserForm default 1`] = `
 <div>
   <div
     style={
@@ -11,37 +11,38 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
     }
   >
     <form
-      className="sc-hqyNC fWzciI"
+      className="sc-kPVwWT llHzWc"
       onSubmit={[Function]}
     >
       <div
-        className="sc-jlyJG bEbQcz"
+        className="sc-VigVT bitexJ"
       >
         <div
-          className="sc-hzDkRC cFuUJx"
+          className="sc-cIShpX gLHsEo"
         >
-          Dusya Sigachyova
+          John Doe
         </div>
         <div
-          className="sc-kafWEX kTqXVW sc-dnqmqq eNAsFi"
+          className="sc-epnACN jDYON sc-ifAKCX iRgcEH"
+          color="#E7E7E7"
           onClick={[Function]}
           size={30}
         />
       </div>
       <div
-        className="sc-dNLxif hNWNSN"
+        className="sc-esjQYD iNTpje"
       >
         <div
-          className="sc-jqCOkK cwHYrV"
+          className="sc-kIPQKe cykDtg"
         >
           <div
-            className="sc-uJMKN ewYqwZ"
+            className="sc-eXEjpC brCGSf"
           >
             <label
-              className="sc-tilXH cauXVX"
+              className="sc-hrWEMg jLtosn"
             >
               <div
-                className="sc-fYxtnH bxOBNZ"
+                className="sc-bwCtUz hnkycu"
               >
                 First Name
               </div>
@@ -51,14 +52,14 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                 onChange={[Function]}
                 placeholder="Enter first name"
                 type="text"
-                value="Dusya"
+                value="John"
               />
             </label>
             <label
-              className="sc-tilXH cauXVX"
+              className="sc-hrWEMg jLtosn"
             >
               <div
-                className="sc-fYxtnH bxOBNZ"
+                className="sc-bwCtUz hnkycu"
               >
                 MI
               </div>
@@ -67,15 +68,15 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                 onBlur={[Function]}
                 onChange={[Function]}
                 type="text"
-                value="L"
+                value="M1"
               />
             </label>
           </div>
           <label
-            className="sc-tilXH cauXVX"
+            className="sc-hrWEMg jLtosn"
           >
             <div
-              className="sc-fYxtnH bxOBNZ"
+              className="sc-bwCtUz hnkycu"
             >
               Last Name
             </div>
@@ -85,14 +86,14 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
               onChange={[Function]}
               placeholder="Enter last name"
               type="text"
-              value="Sigachyova"
+              value="Doe"
             />
           </label>
           <label
-            className="sc-tilXH cauXVX"
+            className="sc-hrWEMg jLtosn"
           >
             <div
-              className="sc-fYxtnH bxOBNZ"
+              className="sc-bwCtUz hnkycu"
             >
               Phone Number
             </div>
@@ -103,14 +104,14 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
               onChange={[Function]}
               placeholder="Enter phone number"
               type="text"
-              value=""
+              value="234 567 5555"
             />
           </label>
           <label
-            className="sc-tilXH cauXVX"
+            className="sc-hrWEMg jLtosn"
           >
             <div
-              className="sc-fYxtnH bxOBNZ"
+              className="sc-bwCtUz hnkycu"
             >
               Email
             </div>
@@ -119,21 +120,21 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
               name="email"
               onBlur={[Function]}
               onChange={[Function]}
-              placeholder="name@giantfin.co"
+              placeholder="John.Doe@gmail.com"
               type="text"
             />
           </label>
         </div>
       </div>
       <div
-        className="sc-ksYbfQ bYIWvt"
+        className="sc-dfVpRl vBdXS"
       >
         <div
-          className="sc-jhAzac gcWpzl"
+          className="sc-kafWEX kAtgdb"
         >
           <a
             backgroundColor="#848484"
-            className="sc-Rmtcm fLXfRX"
+            className="sc-iwsKbI dYPRyt"
             href="/admin/users"
             onClick={[Function]}
             type="button"
@@ -142,7 +143,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
             Cancel
           </a>
           <button
-            className="sc-csuQGl hpiuPo"
+            className="sc-dnqmqq kVUNrV"
             disabled={true}
             type="submit"
             width={128}
@@ -250,7 +251,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
               }
             }
           >
-            Components/EditUserForm
+            Admin Components/EditUserForm
           </h1>
           <h2
             style={
@@ -480,7 +481,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                             }
                           }
                         >
-                          noop
+                          updateUser
                         </span>
                         }
                       </span>

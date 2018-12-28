@@ -1,25 +1,18 @@
+import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { storiesOf } from '@storybook/react';
+import UserData from '../../samples/UserData';
+import { CATEGORIES } from '../../utils/storyCategories';
 
-import noop from '../../utils/noop';
 import NewUserForm from './NewUserForm';
 
 const mockData = {
   location: {
-    state: {
-      email: 'name@giantfin.co',
-      firstName: 'Dusya',
-      id: 'string',
-      isAdmin: false,
-      lastName: 'Sigachyova',
-      middleInitial: 'L',
-      organizationId: 'string',
-      phone: '',
-      tmpPassword: 'string',
-      username: 'string',
-    },
+    state: UserData[0],
   },
 };
 
-storiesOf('Components/NewUserForm', module).add('default', () => <NewUserForm location={mockData.location} createUser={noop} />);
+const createUser = action('createUser');
+
+storiesOf(`${CATEGORIES.ADMIN}NewUserForm`, module).add('default', () => <NewUserForm location={mockData.location} createUser={createUser} />);

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/Button default 1`] = `
+exports[`Storyshots UI Components/Button default 1`] = `
 <div>
   <div
     style={
@@ -11,7 +11,7 @@ exports[`Storyshots Components/Button default 1`] = `
     }
   >
     <button
-      className="sc-csuQGl jlPfhi"
+      className="sc-dnqmqq hFyscR"
       onClick={[Function]}
     >
       Button Text
@@ -114,7 +114,7 @@ exports[`Storyshots Components/Button default 1`] = `
               }
             }
           >
-            Components/Button
+            UI Components/Button
           </h1>
           <h2
             style={
@@ -304,7 +304,7 @@ exports[`Storyshots Components/Button default 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components/Button with knobs 1`] = `
+exports[`Storyshots UI Components/Button with knobs 1`] = `
 <div>
   <div
     style={
@@ -315,7 +315,7 @@ exports[`Storyshots Components/Button with knobs 1`] = `
     }
   >
     <button
-      className="sc-csuQGl guQjRt"
+      className="sc-dnqmqq gInRaa"
       onClick={[Function]}
       width={150}
     >
@@ -419,7 +419,7 @@ exports[`Storyshots Components/Button with knobs 1`] = `
               }
             }
           >
-            Components/Button
+            UI Components/Button
           </h1>
           <h2
             style={
@@ -635,7 +635,7 @@ exports[`Storyshots Components/Button with knobs 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components/Button with theme 1`] = `
+exports[`Storyshots UI Components/Button with theme 1`] = `
 <div>
   <div
     style={
@@ -646,7 +646,7 @@ exports[`Storyshots Components/Button with theme 1`] = `
     }
   >
     <button
-      className="sc-csuQGl jlPfhi"
+      className="sc-dnqmqq hFyscR"
       onClick={[Function]}
     >
       Theme Me
@@ -749,7 +749,7 @@ exports[`Storyshots Components/Button with theme 1`] = `
               }
             }
           >
-            Components/Button
+            UI Components/Button
           </h1>
           <h2
             style={

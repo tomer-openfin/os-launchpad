@@ -11,20 +11,97 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
     }
   >
     <div
-      className="sc-elJkPf dQotxQ"
+      className="sc-hzDkRC JGwHE"
     >
       <div
-        className="sc-cSHVUG jXBQNy"
+        className="sc-kGXeez Hcrev"
+        height={0}
+        isExpanded={true}
+        launcherPosition="top"
+        width={0}
       >
         <div
-          className="sc-chPdSV cehRIT"
+          className="sc-kgoBCf cVPdkI"
+          onClick={[Function]}
+          size={50}
         >
           <div
-            className="sc-htoDjs cilmlp"
-            onClick={[Function]}
+            className="sc-chPdSV gHvhOH"
+            size={50}
           >
             <div
-              className="sc-dnqmqq hOEUSm"
+              className="sc-ifAKCX gPeNwQ"
+              color="#E7E7E7"
+              size={25}
+            />
+          </div>
+        </div>
+        <div
+          className="sc-kAzzGY nGfKw"
+          onClick={[Function]}
+          size={50}
+        >
+          <div
+            className="sc-cSHVUG juzrPm"
+            onContextMenu={[Function]}
+          >
+            <div
+              className="sc-fjdhpX GtPyZ"
+            />
+          </div>
+          <div
+            className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+          >
+            <div
+              className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
+              color="rgba(0,0,0,0)"
+              size="53%"
+            />
+          </div>
+        </div>
+        <div
+          className="sc-kAzzGY nGfKw"
+          onClick={[Function]}
+          size={50}
+        >
+          <div
+            className="sc-cSHVUG juzrPm"
+            onContextMenu={[Function]}
+          >
+            <div
+              className="sc-fjdhpX cpaCze"
+            />
+          </div>
+          <div
+            className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+          >
+            <div
+              className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
+              color="rgba(0,0,0,0)"
+              size="53%"
+            />
+          </div>
+        </div>
+        <div
+          className="sc-kAzzGY nGfKw"
+          onClick={[Function]}
+          size={50}
+        >
+          <div
+            className="sc-cSHVUG juzrPm"
+            onContextMenu={[Function]}
+          >
+            <div
+              className="sc-fjdhpX eWjmQp"
+            />
+          </div>
+          <div
+            className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+          >
+            <div
+              className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
+              color="rgba(0,0,0,0)"
+              size="53%"
             />
           </div>
         </div>
@@ -172,7 +249,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
                 <span
                   style={
                     Object {
-                      "color": "#777",
+                      "color": "#444",
                     }
                   }
                 >
@@ -183,7 +260,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
                 <span
                   style={
                     Object {
-                      "color": "#777",
+                      "color": "#444",
                     }
                   }
                 >

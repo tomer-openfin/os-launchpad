@@ -90,7 +90,7 @@ export const Wrapper = styled.div<WrapperProps>`
   transition: opacity 300ms ease-in-out;
 
   ${({ backgroundColor, hasTransition, isDisabled, margin, size }) => `
-    ${backgroundColor && `background-color: ${backgroundColor};`}
+    ${backgroundColor ? `background-color: ${backgroundColor};` : ''}
     cursor: ${isDisabled ? 'default' : 'pointer'};
     opacity: ${isDisabled ? 0.1 : 1};
     height: ${size}px;

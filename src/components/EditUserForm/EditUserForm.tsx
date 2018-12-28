@@ -42,7 +42,6 @@ class EditUserForm extends React.Component<Props & RouteComponentProps, State> {
       isAdmin: false,
       lastName: '',
       middleInitial: '',
-      organizationId: '',
       phone: '',
       tmpPassword: '',
       username: '',

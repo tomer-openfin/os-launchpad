@@ -6,13 +6,15 @@ import { DeleteIconLink, EditIconLink, HeadingWrapper, Input, InputWrapper, Link
 
 import { App } from '../../types/commons';
 import { doesCurrentPathMatch } from '../../utils/routeHelpers';
-import { appRoutes, ROUTES } from '../Router';
+import { ADMIN_APPS_ROUTES, ROUTES } from '../Router/consts';
 
 import AppCard from '../AppCard';
 import { Row } from '../AppDirectory';
 import { ButtonLink } from '../Button/Button.css';
 
-interface Props {
+const ADMIN_APPS_PATHS = Object.values(ADMIN_APPS_ROUTES);
+
+interface Props extends RouteComponentProps {
   apps: App[];
 }
 
@@ -20,11 +22,11 @@ interface State {
   search: string;
 }
 
-const defaultProps: Props = {
+const defaultProps: Partial<Props> = {
   apps: [],
 };
 
-class AdminApps extends React.PureComponent<Props & RouteComponentProps, State> {
+class AdminApps extends React.PureComponent<Props, State> {
   static defaultProps = defaultProps;
 
   constructor(props) {
@@ -81,7 +83,7 @@ class AdminApps extends React.PureComponent<Props & RouteComponentProps, State> 
           ))}
         </ListWrapper>
 
-        {doesCurrentPathMatch(appRoutes, location.pathname) && <Modal handleClose={history.goBack}>{children}</Modal>}
+        {doesCurrentPathMatch(ADMIN_APPS_PATHS, location.pathname) && <Modal handleClose={history.goBack}>{children}</Modal>}
       </Wrapper>
     );
   }

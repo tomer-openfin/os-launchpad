@@ -10,7 +10,7 @@ import Checkbox from '../Checkbox';
 import { Error, FormWrapper, Label, LabelText, Message, ScrollWrapper, Wrapper } from '../NewUserForm';
 import { ButtonWrapper, CheckboxWrapper, Footer, GridWrapper, IconWrapper, RefreshIcon } from './AppForms.css';
 
-import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../const/Samples';
+import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../samples/FDC3';
 import { Color } from '../../styles';
 import { App, ResponseStatus } from '../../types/commons';
 import noop from '../../utils/noop';
@@ -20,9 +20,6 @@ import WindowHeader from '../WindowHeader/index';
 
 interface Props {
   createApp: Function;
-  location: {
-    state: App;
-  };
 }
 
 interface State {

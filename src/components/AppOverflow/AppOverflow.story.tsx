@@ -1,8 +1,8 @@
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { storiesOf } from '@storybook/react';
+import { CATEGORIES } from '../../utils/storyCategories';
 
 import AppOverflow from './AppOverflow';
 
-storiesOf('Components/AppOverflow', module)
-  .add('default', () => <AppOverflow />);
+storiesOf(`${CATEGORIES.COMPONENTS}AppOverflow`, module).add('default', () => <AppOverflow />);

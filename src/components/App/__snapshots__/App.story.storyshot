@@ -11,92 +11,156 @@ exports[`Storyshots Components/App default 1`] = `
     }
   >
     <div
-      className="sc-fjdhpX hMQfTf"
+      className="sc-dxgOiQ bHAZOs"
     >
       <div
-        className="sc-kGXeez jXesul"
+        className="sc-kkGfuU zVnke"
       >
         <div
-          className="sc-kpOJdX cvNtS sc-VigVT fKFlJE"
+          className="sc-iAyFgw GTyoN sc-gZMcBi fvMQtS"
         />
         <div
-          className="sc-gqjmRU iMXvse"
+          className="sc-kGXeez eielqN"
           height={80}
           isExpanded={false}
           launcherPosition="top"
           width={0}
-        />
-        <div
-          className="sc-cSHVUG iiByPw"
-          size={343}
         >
           <div
-            className="sc-jzJRlG kGmTLp"
+            className="sc-kgoBCf cVPdkI"
+            onClick={[Function]}
+            size={50}
+          >
+            <div
+              className="sc-chPdSV gHvhOH"
+              size={50}
+            >
+              <div
+                className="sc-ifAKCX gPeNwQ"
+                color="#E7E7E7"
+                size={25}
+              />
+            </div>
+          </div>
+          <div
+            className="sc-kAzzGY nGfKw"
+            onClick={[Function]}
+            size={50}
+          >
+            <div
+              className="sc-cSHVUG juzrPm"
+              onContextMenu={[Function]}
+            >
+              <div
+                className="sc-fjdhpX GtPyZ"
+              />
+            </div>
+            <div
+              className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+            >
+              <div
+                className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
+                color="rgba(0,0,0,0)"
+                size="53%"
+              />
+            </div>
+          </div>
+          <div
+            className="sc-kAzzGY nGfKw"
+            onClick={[Function]}
+            size={50}
+          >
+            <div
+              className="sc-cSHVUG juzrPm"
+              onContextMenu={[Function]}
+            >
+              <div
+                className="sc-fjdhpX cpaCze"
+              />
+            </div>
+            <div
+              className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+            >
+              <div
+                className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
+                color="rgba(0,0,0,0)"
+                size="53%"
+              />
+            </div>
+          </div>
+          <div
+            className="sc-kAzzGY nGfKw"
+            onClick={[Function]}
+            size={50}
+          >
+            <div
+              className="sc-cSHVUG juzrPm"
+              onContextMenu={[Function]}
+            >
+              <div
+                className="sc-fjdhpX eWjmQp"
+              />
+            </div>
+            <div
+              className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+            >
+              <div
+                className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
+                color="rgba(0,0,0,0)"
+                size="53%"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-jKJlTe diXARm"
+          size={156}
+        >
+          <div
+            className="sc-ckVGcZ fMECE"
             onClick={[Function]}
           />
           <div
-            className="sc-kAzzGY fRlTNv"
-            size={343}
+            className="sc-eNQAEJ COYQW"
+            size={156}
           >
             <div
-              className="sc-kgoBCf loSVds sc-dnqmqq cuENRO"
+              className="sc-kEYyzF dDLTzk sc-ifAKCX htvwsj"
+              color="#E7E7E7"
               onClick={[Function]}
-              size={25}
+              size={20}
             />
             <div
-              className="sc-chPdSV iYFTZL"
+              className="sc-hMqMXs fuBDam"
             >
               <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
+                className="sc-hSdWYo hUdAXC sc-ifAKCX eXTbmv"
+                color="#E7E7E7"
                 onClick={[Function]}
                 size={42}
               />
             </div>
             <div
-              className="sc-chPdSV iYFTZL"
+              className="sc-hMqMXs fuBDam"
             >
               <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
-                onClick={[Function]}
-                size={42}
-              />
-            </div>
-            <div
-              className="sc-chPdSV iYFTZL"
-            >
-              <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
-                onClick={[Function]}
-                size={42}
-              />
-            </div>
-            <div
-              className="sc-chPdSV iYFTZL"
-            >
-              <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
-                onClick={[Function]}
-                size={42}
-              />
-            </div>
-            <div
-              className="sc-chPdSV iYFTZL"
-            >
-              <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
+                className="sc-hSdWYo hUdAXC sc-ifAKCX eXTbmv"
+                color="#E7E7E7"
                 onClick={[Function]}
                 size={42}
               />
               <div
-                className="sc-jTzLTM cIaXTF sc-dnqmqq hiDkKb"
+                className="sc-kpOJdX kMXElm sc-ifAKCX gPeNwQ"
+                color="#E7E7E7"
                 size={25}
               />
             </div>
             <div
-              className="sc-chPdSV iYFTZL"
+              className="sc-hMqMXs fuBDam"
             >
               <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
+                className="sc-hSdWYo hUdAXC sc-ifAKCX eXTbmv"
+                color="#E7E7E7"
                 onClick={[Function]}
                 size={42}
               />
@@ -264,6 +328,24 @@ exports[`Storyshots Components/App default 1`] = `
                       style={Object {}}
                     >
                       isDrawerExpanded
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#a11",
+                            }
+                          }
+                        >
+                          false
+                        </span>
+                        }
+                      </span>
                     </span>
                   </span>
                   <span>

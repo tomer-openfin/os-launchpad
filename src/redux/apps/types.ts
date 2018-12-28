@@ -2,9 +2,11 @@ import { App } from '../../types/commons';
 import { closeFinAppRequest, finAppClosed, finAppLoading, openFinAppError, openFinAppRequest, openFinAppSuccess } from './actions';
 
 export enum AppStatusStates {
+  Closed = 'closed',
+  Error = 'error',
   Loading = 'loading',
   Running = 'running',
-  Closed = 'closed',
+  Warning = 'warning',
 }
 
 // Reducer

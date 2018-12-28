@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import ConfirmAppDelete from '../ConfirmAppDelete';
 
-import AppData from '../../../const/AppData';
+import AppData from '../../../samples/AppData';
 import noop from '../../../utils/noop';
 
 const mockAppData = {

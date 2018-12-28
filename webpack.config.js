@@ -40,7 +40,7 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
+      { test: /\.tsx?$/, loader: 'awesome-typescript-loader', options: { useBabel: true } },
       { test: /\.js$/, enforce: 'pre', loader: 'source-map-loader' },
       { test: /\.(png|svg|jpg|gif)$/, loader: 'file-loader' },
     ],
@@ -55,9 +55,9 @@ module.exports = {
         changeOrigin: true,
         logLevel: 'debug',
         target: BACKEND,
-        onProxyReq: (req) => {
-            req.setHeader('openfin-os-organization', BACKEND_ORG);
-        }
+        onProxyReq: req => {
+          req.setHeader('openfin-os-organization', BACKEND_ORG);
+        },
       },
     },
   },

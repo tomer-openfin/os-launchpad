@@ -1,8 +1,9 @@
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { storiesOf } from '@storybook/react';
+import UserData from '../../samples/UserData';
+import { CATEGORIES } from '../../utils/storyCategories';
 
-import MockUserData from '../../const/MockUserData';
-import UserCard from './index';
+import UserCard from './UserCard';
 
-storiesOf('Components/UserCard', module).add('default', () => <UserCard user={MockUserData[0]} />);
+storiesOf(`${CATEGORIES.ADMIN}UserCard`, module).add('default', () => <UserCard user={UserData[0]} />);

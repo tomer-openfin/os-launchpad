@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/ThemesFormContainer default 1`] = `
+exports[`Storyshots Admin Components/ThemesForm default 1`] = `
 <div>
   <div
     style={
@@ -11,11 +11,11 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
     }
   >
     <form
-      className="sc-gxMtzJ iGSZet"
+      className="sc-hMFtBS JdDKy"
       onSubmit={[Function]}
     >
       <select
-        className="sc-iyvyFf kIKmYh"
+        className="sc-hORach dAoFMC"
         disabled={false}
         id="ThemesFormSelectInput"
         name="theme"
@@ -25,23 +25,23 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
         value="dark"
       >
         <option
-          className="sc-hwwEjo hoXFPJ"
+          className="sc-bMVAic cqJWVC"
           value="dark"
         >
           Dark
         </option>
         <option
-          className="sc-hwwEjo hoXFPJ"
+          className="sc-bMVAic cqJWVC"
           value="light"
         >
           Light
         </option>
       </select>
       <div
-        className="sc-dqBHgY bruhBv"
+        className="sc-cmthru gSUwom"
       >
         <button
-          className="sc-csuQGl jlPfhi"
+          className="sc-dnqmqq hFyscR"
           disabled={true}
           type="submit"
           width={110}
@@ -49,7 +49,7 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
           Set Theme
         </button>
         <button
-          className="sc-csuQGl jdMxZi"
+          className="sc-dnqmqq hVnbnQ"
           disabled={true}
           onClick={[Function]}
           type="button"
@@ -157,7 +157,7 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
               }
             }
           >
-            Components/ThemesFormContainer
+            Admin Components/ThemesForm
           </h1>
           <h2
             style={
@@ -438,35 +438,6 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      setActiveThemeId
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          noop
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
                       saveActiveThemeId
                     </span>
                     <span>
@@ -482,7 +453,36 @@ exports[`Storyshots Components/ThemesFormContainer default 1`] = `
                             }
                           }
                         >
-                          noop
+                          saveActiveThemeId
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      setActiveThemeId
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          setActiveThemeId
                         </span>
                         }
                       </span>

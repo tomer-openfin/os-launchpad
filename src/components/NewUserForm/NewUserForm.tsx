@@ -51,7 +51,6 @@ class NewUserForm extends React.Component<Props, State> {
       isAdmin: false,
       lastName: '',
       middleInitial: '',
-      organizationId: '',
       phone: '',
       tmpPassword: '',
       username: '',
@@ -199,7 +198,7 @@ class NewUserForm extends React.Component<Props, State> {
 
   render() {
     const { formContents } = this.state;
-    const { id, email, firstName, lastName, middleInitial, organizationId, tmpPassword, phone } = formContents;
+    const { email, firstName, lastName, middleInitial, tmpPassword, phone } = formContents;
     const { responseReceived, result } = this.state;
 
     return responseReceived && result.status === ResponseStatus.SUCCESS ? (
@@ -215,10 +214,8 @@ class NewUserForm extends React.Component<Props, State> {
         initialValues={{
           email,
           firstName,
-          id,
           lastName,
           middleInitial,
-          organizationId,
           phone,
           tmpPassword,
         }}

@@ -14,7 +14,6 @@ const currentUserData = {
       isAdmin: false,
       lastName: 'string',
       middleInitial: 'string',
-      organizationId: 'string',
       phone: 'string',
       tmpPassword: 'string',
       username: 'string',

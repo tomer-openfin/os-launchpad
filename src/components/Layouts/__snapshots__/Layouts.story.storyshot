@@ -11,24 +11,20 @@ exports[`Storyshots Components/Layouts default 1`] = `
     }
   >
     <div
-      className="sc-dqBHgY dRAxhy"
+      className="sc-jhAzac dEREev"
     >
       <div
-        className="sc-htoDjs cilmlp"
+        className="sc-ifAKCX eXTbmv"
+        color="#E7E7E7"
         onClick={[Function]}
-      >
-        <div
-          className="sc-dnqmqq hOEUSm"
-        />
-      </div>
+        size={42}
+      />
       <div
-        className="sc-htoDjs cilmlp"
+        className="sc-ifAKCX eXTbmv"
+        color="#E7E7E7"
         onClick={[Function]}
-      >
-        <div
-          className="sc-dnqmqq hOEUSm"
-        />
-      </div>
+        size={42}
+      />
     </div>
   </div>
   <button
@@ -172,7 +168,7 @@ exports[`Storyshots Components/Layouts default 1`] = `
                 <span
                   style={
                     Object {
-                      "color": "#777",
+                      "color": "#444",
                     }
                   }
                 >
@@ -180,6 +176,17 @@ exports[`Storyshots Components/Layouts default 1`] = `
                   Layouts
                 </span>
                 <span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      isApplicationDrawerExpanded
+                    </span>
+                  </span>
                   <span>
                     <span>
                       <br />
@@ -344,7 +351,7 @@ exports[`Storyshots Components/Layouts default 1`] = `
                 <span
                   style={
                     Object {
-                      "color": "#777",
+                      "color": "#444",
                     }
                   }
                 >

@@ -1,21 +1,28 @@
 import * as React from 'react';
 
-import { CloseButtonWrapper, CloseCTA, CloseIcon } from './CloseButton.css';
+import * as CloseCircle from '../../assets/CloseCircle.svg';
+import { Color } from '../../styles';
 
-const handleClose = () => {
-  fin.desktop.Window.getCurrent().hide();
-};
+import SvgIcon from '../SvgIcon/SvgIcon';
 
-export interface CloseButtonProps {
-  bottomBorder?: boolean;
+export interface Props {
+  className?: string;
+  color?: string;
+  disabled?: boolean;
+  hoverColor?: string;
+  onClick?: () => void;
+  size?: number;
 }
 
-const CloseButton = ({ bottomBorder }: CloseButtonProps) => (
-  <CloseButtonWrapper bottomBorder={bottomBorder} >
-    <CloseCTA onClick={handleClose}>
-      <CloseIcon />
-    </CloseCTA>
-  </CloseButtonWrapper>
+const defaultProps: Partial<Props> = {
+  hoverColor: Color.MARS,
+  size: 25,
+};
+
+const { size: defaultSize, hoverColor: defaultHoverColor } = defaultProps;
+
+const CloseButton = ({ className, color, disabled, hoverColor = defaultHoverColor, onClick, size = defaultSize }: Props) => (
+  <SvgIcon className={className} color={color} disabled={disabled} hoverColor={hoverColor} imgSrc={CloseCircle} onClick={onClick} size={size} />
 );
 
 export default CloseButton;

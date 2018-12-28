@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/LogoFormContainer default 1`] = `
+exports[`Storyshots Admin Components/LogoForm default 1`] = `
 <div>
   <div
     style={
@@ -11,34 +11,34 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
     }
   >
     <form
-      className="sc-gxMtzJ iGSZet"
+      className="sc-hMFtBS JdDKy"
       onSubmit={[Function]}
     >
       <label
-        className="sc-kTUwUJ bOKLsd"
+        className="sc-esOvli czXDdj"
         htmlFor="LogoFormFileInput"
       >
         <div
-          className="sc-jtRfpW jqYjSS"
+          className="sc-iuJeZd gzNAmL"
         >
           <div
-            className="sc-elJkPf fZvRMv"
+            className="sc-cMhqgX crKqdC"
           >
             <div
-              className="sc-VigVT fKFlJE"
+              className="sc-gZMcBi blJpdx"
             />
           </div>
           <div
-            className="sc-lhVmIH gvlVBR"
+            className="sc-bsbRJL kKBniK"
           >
             <div
-              className="sc-bYSBpT hIJYPg"
+              className="sc-hZSUBg XBfvk"
             >
               Click & drag a new image over the existing one to replace your brand logo.
             </div>
             <input
               accept="image/*"
-              className="sc-btzYZH jUvRia"
+              className="sc-iQNlJl kQUnSm"
               id="LogoFormFileInput"
               name="logo"
               onBlur={[Function]}
@@ -50,10 +50,10 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
         </div>
       </label>
       <div
-        className="sc-dqBHgY bruhBv"
+        className="sc-cmthru gSUwom"
       >
         <button
-          className="sc-csuQGl jlPfhi"
+          className="sc-dnqmqq hFyscR"
           disabled={true}
           type="submit"
           width={110}
@@ -61,7 +61,7 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
           Overwrite
         </button>
         <button
-          className="sc-csuQGl jdMxZi"
+          className="sc-dnqmqq hVnbnQ"
           disabled={true}
           onClick={[Function]}
           type="button"
@@ -169,7 +169,7 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
               }
             }
           >
-            Components/LogoFormContainer
+            Admin Components/LogoForm
           </h1>
           <h2
             style={
@@ -218,9 +218,90 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
                   }
                 >
                   &lt;
-                  Connect(LogoForm)
+                  LogoForm
                 </span>
-                <span />
+                <span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      logo
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        "
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          https://github.githubassets.com/images/modules/log…
+                        </span>
+                        "
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      saveLogo
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          saveLogo
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      setLogo
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          setLogo
+                        </span>
+                        }
+                      </span>
+                    </span>
+                     
+                  </span>
+                </span>
                 <span
                   style={
                     Object {
@@ -277,94 +358,12 @@ exports[`Storyshots Components/LogoFormContainer default 1`] = `
               }
             >
               "
-              Connect(LogoForm)
+              LogoForm
               " Component
             </h2>
-            <table
-              className="css-1uhv8nx e1vdo5380"
-            >
-              <thead>
-                <tr>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    property
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    propType
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    required
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    default
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    description
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    store
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span />
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    storeSubscription
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span />
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-              </tbody>
-            </table>
+            <small>
+              No propTypes defined!
+            </small>
           </div>
         </div>
       </div>

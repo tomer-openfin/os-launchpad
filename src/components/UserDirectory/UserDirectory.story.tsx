@@ -1,9 +1,9 @@
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { storiesOf } from '@storybook/react';
+import userData from '../../samples/UserData';
+import { CATEGORIES } from '../../utils/storyCategories';
 
 import UserDirectory from './UserDirectory';
 
-import userData from '../../const/MockUserData';
-
-// storiesOf('Components/UserDirectory', module).add('default', () => <UserDirectory users={userData} />);
+storiesOf(`${CATEGORIES.ADMIN}UserDirectory`, module).add('default', () => <UserDirectory users={userData} />);

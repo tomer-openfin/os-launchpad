@@ -9,7 +9,7 @@ import Checkbox from '../Checkbox';
 import { ButtonWrapper, CheckboxWrapper, Footer, GridWrapper, RefreshIcon } from '../NewAppForm/AppForms.css';
 import { Error, FormWrapper, Label, LabelText, Message, ScrollWrapper, Wrapper } from '../NewUserForm';
 
-import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../const/Samples';
+import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../samples/FDC3';
 import { Color } from '../../styles';
 import { App, ResponseStatus } from '../../types/commons';
 import { validateTextField, validateURL } from '../../utils/validators';
@@ -90,7 +90,7 @@ class EditAppForm extends React.Component<Props, State> {
     return (
       <FormWrapper>
         <WindowHeader backgroundColor={Color.VACUUM} withoutClose>
-          Edit {title}
+          {`Edit ${title}`}
         </WindowHeader>
 
         <ScrollWrapper>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/NewUserForm default 1`] = `
+exports[`Storyshots Admin Components/NewUserForm default 1`] = `
 <div>
   <div
     style={
@@ -11,32 +11,32 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
     }
   >
     <form
-      className="sc-hqyNC fWzciI"
+      className="sc-kPVwWT llHzWc"
       onSubmit={[Function]}
     >
       <div
-        className="sc-jlyJG eKNTTZ"
+        className="sc-VigVT jfjOhE"
       >
         <div
-          className="sc-gipzik ftqVKf"
+          className="sc-jTzLTM jxKiyY"
         >
           Create New User
         </div>
       </div>
       <div
-        className="sc-dNLxif hNWNSN"
+        className="sc-esjQYD iNTpje"
       >
         <div
-          className="sc-jqCOkK wRfwx"
+          className="sc-kIPQKe gZxVOb"
         >
           <div
-            className="sc-uJMKN ewYqwZ"
+            className="sc-eXEjpC brCGSf"
           >
             <label
-              className="sc-tilXH cauXVX"
+              className="sc-hrWEMg jLtosn"
             >
               <div
-                className="sc-fYxtnH bxOBNZ"
+                className="sc-bwCtUz hnkycu"
               >
                 First Name
               </div>
@@ -50,10 +50,10 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
               />
             </label>
             <label
-              className="sc-tilXH cauXVX"
+              className="sc-hrWEMg jLtosn"
             >
               <div
-                className="sc-fYxtnH bxOBNZ"
+                className="sc-bwCtUz hnkycu"
               >
                 MI
               </div>
@@ -67,10 +67,10 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
             </label>
           </div>
           <label
-            className="sc-tilXH cauXVX"
+            className="sc-hrWEMg jLtosn"
           >
             <div
-              className="sc-fYxtnH bxOBNZ"
+              className="sc-bwCtUz hnkycu"
             >
               Last Name
             </div>
@@ -84,10 +84,10 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
             />
           </label>
           <label
-            className="sc-tilXH cauXVX"
+            className="sc-hrWEMg jLtosn"
           >
             <div
-              className="sc-fYxtnH bxOBNZ"
+              className="sc-bwCtUz hnkycu"
             >
               Phone Number
             </div>
@@ -102,10 +102,10 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
             />
           </label>
           <label
-            className="sc-tilXH cauXVX"
+            className="sc-hrWEMg jLtosn"
           >
             <div
-              className="sc-fYxtnH bxOBNZ"
+              className="sc-bwCtUz hnkycu"
             >
               Email
             </div>
@@ -119,10 +119,10 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
             />
           </label>
           <label
-            className="sc-tilXH cauXVX"
+            className="sc-hrWEMg jLtosn"
           >
             <div
-              className="sc-fYxtnH bxOBNZ"
+              className="sc-bwCtUz hnkycu"
             >
               Password
             </div>
@@ -135,10 +135,11 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
               value=""
             />
             <div
-              className="sc-ktHwxA fnfdhu"
+              className="sc-gwVKww bVnyeQ"
             >
               <div
-                className="sc-cIShpX fCKPTs sc-dnqmqq hiDkKb"
+                className="sc-hXRMBi gbSEuZ sc-ifAKCX gPeNwQ"
+                color="#E7E7E7"
                 size={25}
               />
             </div>
@@ -146,14 +147,14 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
         </div>
       </div>
       <div
-        className="sc-ksYbfQ bYIWvt"
+        className="sc-dfVpRl vBdXS"
       >
         <div
-          className="sc-bbmXgH iKWFpQ"
+          className="sc-ibxdXY bsuZCn"
         >
           <a
             backgroundColor="#848484"
-            className="sc-Rmtcm fLXfRX"
+            className="sc-iwsKbI dYPRyt"
             href="/admin/users"
             onClick={[Function]}
             type="button"
@@ -162,7 +163,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
             Cancel
           </a>
           <button
-            className="sc-csuQGl hpiuPo"
+            className="sc-dnqmqq kVUNrV"
             disabled={true}
             type="submit"
             width={128}
@@ -270,7 +271,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
               }
             }
           >
-            Components/NewUserForm
+            Admin Components/NewUserForm
           </h1>
           <h2
             style={
@@ -388,7 +389,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
                                 }
                               }
                             >
-                              'name@giantfin.co'
+                              'John.Doe@gmail.com'
                             </span>
                             ,
                             <span>
@@ -416,7 +417,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
                                 }
                               }
                             >
-                              'Dusya'
+                              'John'
                             </span>
                             ,
                             <span>
@@ -444,7 +445,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
                                 }
                               }
                             >
-                              'string'
+                              'username1'
                             </span>
                             ,
                             <span>
@@ -487,7 +488,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
                             }
                           }
                         >
-                          noop
+                          createUser
                         </span>
                         }
                       </span>

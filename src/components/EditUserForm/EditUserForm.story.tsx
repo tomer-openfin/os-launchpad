@@ -1,8 +1,10 @@
+import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { storiesOf } from '@storybook/react';
+import UserData from '../../samples/UserData';
+import { CATEGORIES } from '../../utils/storyCategories';
 
-import noop from '../../utils/noop';
 import EditUserForm from './EditUserForm';
 
 const mockData = {
@@ -10,21 +12,12 @@ const mockData = {
     hash: '',
     pathname: '',
     search: '',
-    state: {
-      email: 'name@giantfin.co',
-      firstName: 'Dusya',
-      id: 'string',
-      isAdmin: false,
-      lastName: 'Sigachyova',
-      middleInitial: 'L',
-      organizationId: 'string',
-      phone: '',
-      tmpPassword: 'string',
-      username: 'string',
-    },
+    state: UserData[0],
   },
 };
 
-storiesOf('Components/EditUserForm', module).add('default', () => (
-  <EditUserForm match={{ params: '', isExact: true, path: '', url: '' }} history={{}} updateUser={noop} location={mockData.location} />
+const updateUser = action('updateUser');
+
+storiesOf(`${CATEGORIES.ADMIN}EditUserForm`, module).add('default', () => (
+  <EditUserForm match={{ params: '', isExact: true, path: '', url: '' }} history={{}} updateUser={updateUser} location={mockData.location} />
 ));

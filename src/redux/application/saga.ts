@@ -64,6 +64,7 @@ function* openfinSetup(action: OpenfinReadyAction) {
     const isEnterprise = ENTERPRISE === 'true';
     yield put(setIsEnterprise(isEnterprise));
 
+    const { fin } = window;
     // Initial system monitor info
     // and setup system event handlers
     try {
@@ -74,7 +75,9 @@ function* openfinSetup(action: OpenfinReadyAction) {
       console.log('Failed to get/set monitor information:', e);
     }
 
-    yield call(setupSystemHandlers, fin, window.store || window.opener.store);
+    if (fin) {
+      yield call(setupSystemHandlers, fin, window.store || window.opener.store);
+    }
 
     const launcherFinWindow = yield call(getLauncherFinWindow);
     // Hide launcher

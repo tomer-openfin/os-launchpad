@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/OrganizationSettings default 1`] = `
+exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
 <div>
   <div
     style={
@@ -11,42 +11,42 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
     }
   >
     <div
-      className="sc-gzOgki cJiOyl"
+      className="sc-gqPbQI ekBAjk"
     >
       <h3
-        className="sc-dfVpRl fBUZYP"
+        className="sc-cLQEGU iEPpXb"
       >
         Enterprise Branding
       </h3>
       <form
-        className="sc-gxMtzJ iGSZet"
+        className="sc-hMFtBS JdDKy"
         onSubmit={[Function]}
       >
         <label
-          className="sc-kTUwUJ bOKLsd"
+          className="sc-esOvli czXDdj"
           htmlFor="LogoFormFileInput"
         >
           <div
-            className="sc-jtRfpW jqYjSS"
+            className="sc-iuJeZd gzNAmL"
           >
             <div
-              className="sc-elJkPf fZvRMv"
+              className="sc-cMhqgX crKqdC"
             >
               <div
-                className="sc-VigVT fKFlJE"
+                className="sc-gZMcBi fvMQtS"
               />
             </div>
             <div
-              className="sc-lhVmIH gvlVBR"
+              className="sc-bsbRJL kKBniK"
             >
               <div
-                className="sc-bYSBpT hIJYPg"
+                className="sc-hZSUBg XBfvk"
               >
                 Click & drag a new image over the existing one to replace your brand logo.
               </div>
               <input
                 accept="image/*"
-                className="sc-btzYZH jUvRia"
+                className="sc-iQNlJl kQUnSm"
                 id="LogoFormFileInput"
                 name="logo"
                 onBlur={[Function]}
@@ -58,10 +58,10 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
           </div>
         </label>
         <div
-          className="sc-dqBHgY bruhBv"
+          className="sc-cmthru gSUwom"
         >
           <button
-            className="sc-csuQGl jlPfhi"
+            className="sc-dnqmqq hFyscR"
             disabled={true}
             type="submit"
             width={110}
@@ -69,7 +69,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             Overwrite
           </button>
           <button
-            className="sc-csuQGl jdMxZi"
+            className="sc-dnqmqq hVnbnQ"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -80,16 +80,16 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
         </div>
       </form>
       <h3
-        className="sc-dfVpRl fBUZYP"
+        className="sc-cLQEGU iEPpXb"
       >
         Enterprise Theme
       </h3>
       <form
-        className="sc-gxMtzJ iGSZet"
+        className="sc-hMFtBS JdDKy"
         onSubmit={[Function]}
       >
         <select
-          className="sc-iyvyFf kIKmYh"
+          className="sc-hORach dAoFMC"
           disabled={false}
           id="ThemesFormSelectInput"
           name="theme"
@@ -99,23 +99,23 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
           value="dark"
         >
           <option
-            className="sc-hwwEjo hoXFPJ"
+            className="sc-bMVAic cqJWVC"
             value="dark"
           >
             Dark
           </option>
           <option
-            className="sc-hwwEjo hoXFPJ"
+            className="sc-bMVAic cqJWVC"
             value="light"
           >
             Light
           </option>
         </select>
         <div
-          className="sc-dqBHgY bruhBv"
+          className="sc-cmthru gSUwom"
         >
           <button
-            className="sc-csuQGl jlPfhi"
+            className="sc-dnqmqq hFyscR"
             disabled={true}
             type="submit"
             width={110}
@@ -123,7 +123,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             Set Theme
           </button>
           <button
-            className="sc-csuQGl jdMxZi"
+            className="sc-dnqmqq hVnbnQ"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -232,7 +232,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
               }
             }
           >
-            Components/OrganizationSettings
+            Admin Components/OrganizationSettings
           </h1>
           <h2
             style={

@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
+import { Color } from '../../styles';
 import { AppIconSizes } from '../../types/enums';
 import { scaleAndFadeIn } from '../../utils/animationHelpers';
-import { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from '../AppIcon/index';
+import { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from '../AppIcon';
+
+import { Icon } from '../SvgIcon';
 import { Props } from './AppListToggle';
 
 interface WrapperProps {
@@ -32,11 +35,19 @@ export const Wrapper = styled.div<Partial<Props>>`
   transition: opacity ${APP_ICON_TRANSITION_CLASSNAMES}ms ease-in-out;
 
   ${({ backgroundColor, hasTransition, isDisabled, margin, size }) => `
-    ${backgroundColor && `background-color: ${backgroundColor};`}
+    ${backgroundColor ? `background-color: ${backgroundColor};` : ''}
     cursor: ${isDisabled ? 'default' : 'pointer'};
     opacity: ${isDisabled ? 0.1 : 1};
     height: ${size}px;
     width: ${size}px;
     margin: ${margin};
-      ${hasTransition && size && margin && scaleAndFadeIn(SvgWrapper, APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION, size, margin)}`}
+
+    &:hover {
+      ${Icon} {
+        background-color: ${isDisabled ? `${Color.COMET}` : `${Color.URANUS}`};
+      }
+    }
+
+    ${hasTransition && size && margin && scaleAndFadeIn(SvgWrapper, APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION, size, margin)}
+  `}
 `;

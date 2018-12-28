@@ -1,15 +1,23 @@
 import * as React from 'react';
 
-import { AppStatusStates } from '../../redux/apps/types';
+import * as Exclamation from '../../assets/Exclamation.svg';
 
+import { AppStatusStates } from '../../redux/apps/types';
+import { Color } from '../../styles';
 import { DirectionalPosition } from '../../types/enums';
-import { Indicator } from './AppIndicator.css';
+
+import { Indicator, StyledSvgIcon } from './AppIndicator.css';
 
 export interface Props {
-  statusState: AppStatusStates;
   position: DirectionalPosition;
+  size?: number;
+  statusState: AppStatusStates;
 }
 
-const AppIndicator = (props: Props) => <Indicator {...props} />;
+const AppIndicator = (props: Props) => (
+  <Indicator {...props}>
+    <StyledSvgIcon color={props.statusState === AppStatusStates.Error ? Color.SUN : Color.VOID} imgSrc={Exclamation} size="53%" />
+  </Indicator>
+);
 
 export default AppIndicator;

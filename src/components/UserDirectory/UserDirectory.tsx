@@ -19,22 +19,23 @@ import {
 import { User } from '../../types/commons';
 
 import { doesCurrentPathMatch } from '../../utils/routeHelpers';
-import { userRoutes } from '../Router';
-import { ROUTES } from '../Router/consts';
+import { ADMIN_USERS_ROUTES, ROUTES } from '../Router/consts';
 
 import { Row } from '../AppDirectory';
 import { ButtonLink } from '../Button/Button.css';
 import Modal from '../Modal';
 import UserCard from '../UserCard';
 
+const ADMIN_USERS_PATHS = Object.values(ADMIN_USERS_ROUTES);
+
 const SORT_VALUES = {
-  'Admin': 'isAdmin',
-  'Email': 'email',
-  'First Name': 'firstName',
-  'Last Name': 'lastName',
+  ['Admin']: 'isAdmin',
+  ['Email']: 'email',
+  ['First Name']: 'firstName',
+  ['Last Name']: 'lastName',
 };
 
-interface Props {
+interface Props extends RouteComponentProps {
   users: User[];
 }
 
@@ -43,11 +44,11 @@ interface State {
   sort: string;
 }
 
-const defaultProps: Props = {
+const defaultProps: Partial<Props> = {
   users: [],
 };
 
-class UserDirectory extends React.PureComponent<Props & RouteComponentProps, State> {
+class UserDirectory extends React.PureComponent<Props, State> {
   static defaultProps = defaultProps;
 
   constructor(props) {
@@ -136,7 +137,7 @@ class UserDirectory extends React.PureComponent<Props & RouteComponentProps, Sta
           ))}
         </ListWrapper>
 
-        {doesCurrentPathMatch(userRoutes, location.pathname) && <Modal handleClose={history.goBack}>{children}</Modal>}
+        {doesCurrentPathMatch(ADMIN_USERS_PATHS, location.pathname) && <Modal handleClose={history.goBack}>{children}</Modal>}
 
         <Footer>
           <SortWrapper>

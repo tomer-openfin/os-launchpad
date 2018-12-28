@@ -9,28 +9,6 @@ export enum AppListTypes {
   Toggle = 'toggle',
 }
 
-// todo: use more general obj for sizes across all app
-const obj = {
-  [AppIconSizes.Small]: {
-    caret: 'tbd',
-    icon: 'tbd',
-    logo: 'tbd',
-    spacing: 'tbd',
-  },
-  [AppIconSizes.Medium]: {
-    caret: 'tbd',
-    icon: 45,
-    logo: 76,
-    spacing: 'tbd',
-  },
-  [AppIconSizes.Large]: {
-    caret: 'tbd',
-    icon: 'tbd',
-    logo: 'tbd',
-    spacing: 'tbd',
-  },
-};
-
 export enum DirectionalPosition {
   Top = 'top',
   Right = 'right',
@@ -41,4 +19,10 @@ export enum DirectionalPosition {
 export enum ResponseStatus {
   SUCCESS = 'ok',
   FAILURE = 'error',
+}
+
+export enum UserStatus {
+  Confirmed = 'CONFIRMED',
+  Unconfirmed = 'UNCONFIRMED',
+  ChangePassword = 'FORCE_CHANGE_PASSWORD',
 }
