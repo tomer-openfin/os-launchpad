@@ -2,21 +2,32 @@ import { deregister } from 'openfin-layouts';
 
 import Router from './components/Router';
 
+import configureStore from './configureStore';
 import { applicationStarted, openfinReady } from './redux/application/actions';
-import store from './store';
 import renderWindow from './utils/renderWindow';
 import setupReactCleanUp from './utils/setupReactCleanup';
 
-// If there is no global store, and there's _not_ a window.opener
-// this is the main window
-const isMainWindowInitialized = !window.store && !window.opener;
+const isProduction = process.env.NODE_ENV === 'production';
 
-// If this is the main window, we need to create the application's store.
-if (isMainWindowInitialized) {
-  window.store = store;
+const isMainWindow = !window.opener;
+
+// If this is the main window and there is no store
+// we need to create the application's store
+if (isMainWindow && !window.store) {
+  window.store = configureStore();
 
   // Dispatch the initial app startup action.
-  store.dispatch(applicationStarted());
+  window.store.dispatch(applicationStarted());
+}
+
+if (!isProduction && module.hot) {
+  module.hot.accept('./configureStore', () => {
+    if (isMainWindow) {
+      // tslint:disable-next-line:no-console
+      console.warn('HMR deteched for store. Reattaching store to window.');
+      window.store = require('./configureStore').default(window.store.getState());
+    }
+  });
 }
 
 // Render the window as soon as the DOM is ready.
@@ -31,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderWindow(Router);
 
   // Only fetch data in the main window.
-  if (fin && isMainWindowInitialized) {
+  if (fin && isMainWindow && window.store) {
     fin.desktop.main(() => {
       // Dispatch the action for when openfin window is ready.
       // TODO: may want to add key for what window is ready.

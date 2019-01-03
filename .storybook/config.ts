@@ -4,7 +4,7 @@ import { withInfo } from '@storybook/addon-info';
 import { addDecorator, configure } from '@storybook/react';
 import { Store } from 'redux';
 
-import store from '../src/store';
+import configureStore from '../src/configureStore';
 import { initStorybookStore } from './initStorybookStore';
 
 import reduxDecorator from './reduxDecorator';
@@ -16,8 +16,9 @@ declare global {
   }
 }
 
+const store = configureStore();
+
 initStorybookStore(store);
-window.store = store;
 
 // Global decorators
 addDecorator(withInfo);
