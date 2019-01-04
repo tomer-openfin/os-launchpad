@@ -1,8 +1,17 @@
-import { SET_BLURRING_WINDOW, SET_IS_DRAWER_EXPANDED, SET_IS_ENTERPRISE, SET_IS_EXPANDED } from './actions';
-import { ApplicationActions, ApplicationState, SetBlurringWindowAction, SetIsDrawerExpandedAction, SetIsEnterpriseAction, SetIsExpandedAction } from './types';
+import { SET_BLURRING_WINDOW, SET_IS_DRAG_AND_DROP, SET_IS_DRAWER_EXPANDED, SET_IS_ENTERPRISE, SET_IS_EXPANDED } from './actions';
+import {
+  ApplicationActions,
+  ApplicationState,
+  SetBlurringWindowAction,
+  SetIsDragAndDropAction,
+  SetIsDrawerExpandedAction,
+  SetIsEnterpriseAction,
+  SetIsExpandedAction,
+} from './types';
 
 const defaultState: ApplicationState = {
   blurringWindows: {},
+  isDragAndDrop: false,
   isDrawerExpanded: false,
   isEnterprise: false,
   isExpanded: false,
@@ -35,6 +44,12 @@ export default (state: ApplicationState = defaultState, action: ApplicationActio
       return {
         ...state,
         isExpanded: (action as SetIsExpandedAction).payload,
+      };
+    }
+    case SET_IS_DRAG_AND_DROP: {
+      return {
+        ...state,
+        isDragAndDrop: (action as SetIsDragAndDropAction).payload,
       };
     }
     case SET_IS_DRAWER_EXPANDED: {

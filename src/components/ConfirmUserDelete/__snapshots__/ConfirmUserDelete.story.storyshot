@@ -42,7 +42,7 @@ exports[`Storyshots Admin Components/ConfirmUserDelete default 1`] = `
       >
         <a
           backgroundColor="#848484"
-          className="sc-iwsKbI gQZYLI"
+          className="sc-jzJRlG khBPxp"
           href="/admin/users"
           onClick={[Function]}
           type="button"
@@ -51,7 +51,7 @@ exports[`Storyshots Admin Components/ConfirmUserDelete default 1`] = `
           Cancel
         </a>
         <button
-          className="sc-dnqmqq bfqhFq"
+          className="sc-fjdhpX SuPwv"
           disabled={false}
           onClick={[Function]}
           width={153}

@@ -7,8 +7,9 @@ import { Store } from 'redux';
 import configureStore from '../src/configureStore';
 import { initStorybookStore } from './initStorybookStore';
 
-import reduxDecorator from './reduxDecorator';
-import styledThemeDecorator from './styledThemeDecorator';
+import dragAndDropContextDecorator from './decorators/dragAndDropContextDecorator';
+import reduxDecorator from './decorators/reduxDecorator';
+import styledThemeDecorator from './decorators/styledThemeDecorator';
 
 declare global {
   interface Window {
@@ -24,6 +25,7 @@ initStorybookStore(store);
 addDecorator(withInfo);
 addDecorator(StoryRouter());
 addDecorator(styledThemeDecorator);
+addDecorator(dragAndDropContextDecorator);
 addDecorator(reduxDecorator(store));
 
 function loadStories() {

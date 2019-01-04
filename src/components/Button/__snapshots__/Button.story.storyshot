@@ -11,7 +11,7 @@ exports[`Storyshots UI Components/Button default 1`] = `
     }
   >
     <button
-      className="sc-dnqmqq hFyscR"
+      className="sc-fjdhpX jonYYn"
       onClick={[Function]}
     >
       Button Text
@@ -315,7 +315,7 @@ exports[`Storyshots UI Components/Button with knobs 1`] = `
     }
   >
     <button
-      className="sc-dnqmqq gInRaa"
+      className="sc-fjdhpX cRmLPi"
       onClick={[Function]}
       width={150}
     >
@@ -472,6 +472,33 @@ exports[`Storyshots UI Components/Button with knobs 1`] = `
                     styled.button
                   </span>
                   <span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        backgroundColor
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          "
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
+                            }
+                          >
+                            #6461FF
+                          </span>
+                          "
+                        </span>
+                      </span>
+                    </span>
                     <span>
                        
                       <span
@@ -646,7 +673,7 @@ exports[`Storyshots UI Components/Button with theme 1`] = `
     }
   >
     <button
-      className="sc-dnqmqq hFyscR"
+      className="sc-fjdhpX jonYYn"
       onClick={[Function]}
     >
       Theme Me

@@ -12,6 +12,7 @@ export const LAUNCH_APP_LAUNCHER = 'LAUNCH_APP_LAUNCHER';
 export const OPENFIN_READY = 'OPENFIN_READY';
 export const REBOUND_LAUNCHER = generateAsyncActionTypes('REBOUND_LAUNCHER');
 export const SET_BLURRING_WINDOW = 'SET_BLURRING_WINDOW';
+export const SET_IS_DRAG_AND_DROP = 'SET_IS_DRAG_AND_DROP';
 export const SET_IS_DRAWER_EXPANDED = 'SET_IS_DRAWER_EXPANDED';
 export const SET_IS_ENTERPRISE = 'SET_IS_ENTERPRISE';
 export const SET_IS_EXPANDED = 'SET_IS_EXPANDED';
@@ -33,6 +34,7 @@ export const reboundLauncherRequest = createAction<ReboundLauncherRequestPayload
 export const reboundLauncherSuccess = createAction(REBOUND_LAUNCHER.SUCCESS);
 export const reboundLauncherError = createAction(REBOUND_LAUNCHER.ERROR);
 export const setBlurringWindow = createAction<SetBlurringWindowPayload, string, boolean>(SET_BLURRING_WINDOW, (name, isBlurring) => ({ name, isBlurring }));
+export const setIsDragAndDrop = createAction(SET_IS_DRAG_AND_DROP);
+export const setIsDrawerExpanded = createAction(SET_IS_DRAWER_EXPANDED);
 export const setIsEnterprise = createAction(SET_IS_ENTERPRISE);
 export const setIsExpanded = createAction(SET_IS_EXPANDED);
-export const setIsDrawerExpanded = createAction(SET_IS_DRAWER_EXPANDED);

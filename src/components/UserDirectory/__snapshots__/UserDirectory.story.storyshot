@@ -29,7 +29,7 @@ exports[`Storyshots Admin Components/UserDirectory default 1`] = `
           />
         </div>
         <a
-          className="sc-iwsKbI hIOssy"
+          className="sc-jzJRlG inmYbk"
           href="/admin/users/new"
           onClick={[Function]}
         >

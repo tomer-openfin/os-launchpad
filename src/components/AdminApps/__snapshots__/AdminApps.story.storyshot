@@ -29,7 +29,7 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           />
         </div>
         <a
-          className="sc-iwsKbI hIOssy"
+          className="sc-jzJRlG inmYbk"
           href="/admin/apps/new"
           onClick={[Function]}
         >
@@ -49,20 +49,20 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-gPEVay fvYpEB"
             >
               <div
-                className="sc-kAzzGY kYMdtC"
+                className="sc-iwsKbI bqtotH"
                 onClick={[Function]}
                 size={50}
               >
                 <div
-                  className="sc-cSHVUG juzrPm"
+                  className="sc-dnqmqq gUYUUY"
                   onContextMenu={[Function]}
                 >
                   <div
-                    className="sc-fjdhpX hNxoPg"
+                    className="sc-gzVnrw ioEKXY"
                   />
                 </div>
                 <div
-                  className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+                  className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
                 >
                   <div
                     className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
@@ -117,20 +117,20 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-gPEVay fvYpEB"
             >
               <div
-                className="sc-kAzzGY kYMdtC"
+                className="sc-iwsKbI bqtotH"
                 onClick={[Function]}
                 size={50}
               >
                 <div
-                  className="sc-cSHVUG juzrPm"
+                  className="sc-dnqmqq gUYUUY"
                   onContextMenu={[Function]}
                 >
                   <div
-                    className="sc-fjdhpX eWjmQp"
+                    className="sc-gzVnrw bFrnGv"
                   />
                 </div>
                 <div
-                  className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+                  className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
                 >
                   <div
                     className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
@@ -185,20 +185,20 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-gPEVay fvYpEB"
             >
               <div
-                className="sc-kAzzGY kYMdtC"
+                className="sc-iwsKbI bqtotH"
                 onClick={[Function]}
                 size={50}
               >
                 <div
-                  className="sc-cSHVUG juzrPm"
+                  className="sc-dnqmqq gUYUUY"
                   onContextMenu={[Function]}
                 >
                   <div
-                    className="sc-fjdhpX fUyOZL"
+                    className="sc-gzVnrw fEhDtm"
                   />
                 </div>
                 <div
-                  className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+                  className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
                 >
                   <div
                     className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
@@ -253,20 +253,20 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-gPEVay fvYpEB"
             >
               <div
-                className="sc-kAzzGY kYMdtC"
+                className="sc-iwsKbI bqtotH"
                 onClick={[Function]}
                 size={50}
               >
                 <div
-                  className="sc-cSHVUG juzrPm"
+                  className="sc-dnqmqq gUYUUY"
                   onContextMenu={[Function]}
                 >
                   <div
-                    className="sc-fjdhpX cpaCze"
+                    className="sc-gzVnrw kRTxuL"
                   />
                 </div>
                 <div
-                  className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+                  className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
                 >
                   <div
                     className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
@@ -321,20 +321,20 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-gPEVay fvYpEB"
             >
               <div
-                className="sc-kAzzGY kYMdtC"
+                className="sc-iwsKbI bqtotH"
                 onClick={[Function]}
                 size={50}
               >
                 <div
-                  className="sc-cSHVUG juzrPm"
+                  className="sc-dnqmqq gUYUUY"
                   onContextMenu={[Function]}
                 >
                   <div
-                    className="sc-fjdhpX bDqbns"
+                    className="sc-gzVnrw dnYJPo"
                   />
                 </div>
                 <div
-                  className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+                  className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
                 >
                   <div
                     className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
@@ -389,20 +389,20 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-gPEVay fvYpEB"
             >
               <div
-                className="sc-kAzzGY kYMdtC"
+                className="sc-iwsKbI bqtotH"
                 onClick={[Function]}
                 size={50}
               >
                 <div
-                  className="sc-cSHVUG juzrPm"
+                  className="sc-dnqmqq gUYUUY"
                   onContextMenu={[Function]}
                 >
                   <div
-                    className="sc-fjdhpX gAIyEy"
+                    className="sc-gzVnrw eJlJci"
                   />
                 </div>
                 <div
-                  className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+                  className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
                 >
                   <div
                     className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
@@ -458,20 +458,20 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-gPEVay fvYpEB"
             >
               <div
-                className="sc-kAzzGY kYMdtC"
+                className="sc-iwsKbI bqtotH"
                 onClick={[Function]}
                 size={50}
               >
                 <div
-                  className="sc-cSHVUG juzrPm"
+                  className="sc-dnqmqq gUYUUY"
                   onContextMenu={[Function]}
                 >
                   <div
-                    className="sc-fjdhpX jnmsSs"
+                    className="sc-gzVnrw bsfhnR"
                   />
                 </div>
                 <div
-                  className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+                  className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
                 >
                   <div
                     className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
@@ -526,20 +526,20 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-gPEVay fvYpEB"
             >
               <div
-                className="sc-kAzzGY kYMdtC"
+                className="sc-iwsKbI bqtotH"
                 onClick={[Function]}
                 size={50}
               >
                 <div
-                  className="sc-cSHVUG juzrPm"
+                  className="sc-dnqmqq gUYUUY"
                   onContextMenu={[Function]}
                 >
                   <div
-                    className="sc-fjdhpX GtPyZ"
+                    className="sc-gzVnrw kHYlwv"
                   />
                 </div>
                 <div
-                  className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+                  className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
                 >
                   <div
                     className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
@@ -594,20 +594,20 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-gPEVay fvYpEB"
             >
               <div
-                className="sc-kAzzGY kYMdtC"
+                className="sc-iwsKbI bqtotH"
                 onClick={[Function]}
                 size={50}
               >
                 <div
-                  className="sc-cSHVUG juzrPm"
+                  className="sc-dnqmqq gUYUUY"
                   onContextMenu={[Function]}
                 >
                   <div
-                    className="sc-fjdhpX dELuUH"
+                    className="sc-gzVnrw gitZTS"
                   />
                 </div>
                 <div
-                  className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+                  className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
                 >
                   <div
                     className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"

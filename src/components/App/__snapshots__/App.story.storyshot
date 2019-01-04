@@ -17,7 +17,7 @@ exports[`Storyshots Components/App default 1`] = `
         className="sc-kkGfuU zVnke"
       >
         <div
-          className="sc-iAyFgw GTyoN sc-gZMcBi fvMQtS"
+          className="sc-iAyFgw GTyoN sc-cSHVUG AnXef"
         />
         <div
           className="sc-kGXeez eielqN"
@@ -27,36 +27,56 @@ exports[`Storyshots Components/App default 1`] = `
           width={0}
         >
           <div
-            className="sc-kgoBCf cVPdkI"
+            className="sc-gqjmRU gCpGzj"
             onClick={[Function]}
             size={50}
           >
             <div
-              className="sc-chPdSV gHvhOH"
-              size={50}
+              style={
+                Object {
+                  "display": "inline-block",
+                  "lineHeight": 0,
+                  "opacity": 1,
+                }
+              }
             >
               <div
-                className="sc-ifAKCX gPeNwQ"
-                color="#E7E7E7"
-                size={25}
-              />
+                className="sc-gZMcBi kAlMTl"
+                size={50}
+              >
+                <div
+                  className="sc-ifAKCX gPeNwQ"
+                  color="#E7E7E7"
+                  size={25}
+                />
+              </div>
             </div>
           </div>
           <div
-            className="sc-kAzzGY nGfKw"
+            className="sc-iwsKbI jQQQCh"
             onClick={[Function]}
             size={50}
           >
             <div
-              className="sc-cSHVUG juzrPm"
-              onContextMenu={[Function]}
+              style={
+                Object {
+                  "display": "inline-block",
+                  "lineHeight": 0,
+                  "opacity": 1,
+                }
+              }
             >
               <div
-                className="sc-fjdhpX GtPyZ"
-              />
+                className="sc-dnqmqq gUYUUY"
+                onContextMenu={[Function]}
+              >
+                <div
+                  className="sc-gzVnrw kHYlwv"
+                />
+              </div>
             </div>
             <div
-              className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+              className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
             >
               <div
                 className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
@@ -66,20 +86,30 @@ exports[`Storyshots Components/App default 1`] = `
             </div>
           </div>
           <div
-            className="sc-kAzzGY nGfKw"
+            className="sc-iwsKbI jQQQCh"
             onClick={[Function]}
             size={50}
           >
             <div
-              className="sc-cSHVUG juzrPm"
-              onContextMenu={[Function]}
+              style={
+                Object {
+                  "display": "inline-block",
+                  "lineHeight": 0,
+                  "opacity": 1,
+                }
+              }
             >
               <div
-                className="sc-fjdhpX cpaCze"
-              />
+                className="sc-dnqmqq gUYUUY"
+                onContextMenu={[Function]}
+              >
+                <div
+                  className="sc-gzVnrw kRTxuL"
+                />
+              </div>
             </div>
             <div
-              className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+              className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
             >
               <div
                 className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
@@ -89,20 +119,30 @@ exports[`Storyshots Components/App default 1`] = `
             </div>
           </div>
           <div
-            className="sc-kAzzGY nGfKw"
+            className="sc-iwsKbI jQQQCh"
             onClick={[Function]}
             size={50}
           >
             <div
-              className="sc-cSHVUG juzrPm"
-              onContextMenu={[Function]}
+              style={
+                Object {
+                  "display": "inline-block",
+                  "lineHeight": 0,
+                  "opacity": 1,
+                }
+              }
             >
               <div
-                className="sc-fjdhpX eWjmQp"
-              />
+                className="sc-dnqmqq gUYUUY"
+                onContextMenu={[Function]}
+              >
+                <div
+                  className="sc-gzVnrw bFrnGv"
+                />
+              </div>
             </div>
             <div
-              className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+              className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
             >
               <div
                 className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"

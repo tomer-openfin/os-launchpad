@@ -17,20 +17,20 @@ exports[`Storyshots Components/AppCard default 1`] = `
         className="sc-gPEVay fvYpEB"
       >
         <div
-          className="sc-kAzzGY kYMdtC"
+          className="sc-iwsKbI bqtotH"
           onClick={[Function]}
           size={50}
         >
           <div
-            className="sc-cSHVUG juzrPm"
+            className="sc-dnqmqq gUYUUY"
             onContextMenu={[Function]}
           >
             <div
-              className="sc-fjdhpX hNxoPg"
+              className="sc-gzVnrw ioEKXY"
             />
           </div>
           <div
-            className="sc-jzJRlG fTDadD sc-EHOje hGdYoi"
+            className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
           >
             <div
               className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"

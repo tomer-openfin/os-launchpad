@@ -41,7 +41,7 @@ exports[`Storyshots Admin Components/ThemesForm default 1`] = `
         className="sc-cmthru gSUwom"
       >
         <button
-          className="sc-dnqmqq hFyscR"
+          className="sc-fjdhpX jonYYn"
           disabled={true}
           type="submit"
           width={110}
@@ -49,7 +49,7 @@ exports[`Storyshots Admin Components/ThemesForm default 1`] = `
           Set Theme
         </button>
         <button
-          className="sc-dnqmqq hVnbnQ"
+          className="sc-fjdhpX gXDnzN"
           disabled={true}
           onClick={[Function]}
           type="button"

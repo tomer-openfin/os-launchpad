@@ -3,6 +3,7 @@ import * as React from 'react';
 import { action } from '@storybook/addon-actions';
 import { number, select, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
+import { Color } from '../../styles';
 import { CATEGORIES } from '../../utils/storyCategories';
 
 import Button from './Button.css';
@@ -12,10 +13,11 @@ storiesOf(`${CATEGORIES.UI}Button`, module)
   .add('default', () => <Button onClick={action('Button Click')}>Button Text</Button>)
   .add('with knobs', () => {
     const buttonText = text('Button Text', 'Place Text Here');
+    const backgroundColor = text('backgroundColor', Color.VENUS);
     const width = number('Width', 150);
 
     return (
-      <Button onClick={action('Button Click')} width={width}>
+      <Button backgroundColor={backgroundColor} onClick={action('Button Click')} width={width}>
         {buttonText}
       </Button>
     );

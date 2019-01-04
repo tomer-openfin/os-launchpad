@@ -13,6 +13,7 @@ import {
   saveSettingsError,
   saveSettingsRequest,
   saveSettingsSuccess,
+  setAppIds,
   setAutoHide,
   setLaunchbarPosition,
   setMe,
@@ -45,9 +46,6 @@ export interface MeState {
 }
 
 // Action payloads
-export interface SetLaunchbarPayload {
-  launcherPosition: DirectionalPosition;
-}
 export interface LoginRequestPayload {
   username: string;
   password: string;
@@ -58,20 +56,31 @@ export interface LoginWithNewPasswordPayload {
   newPassword: string;
   session: string;
 }
+
 export interface LoginSuccessPayload {
   firstName: string;
   email: string;
   isAdmin: boolean;
   lastName: string;
 }
-export interface SetAutoHidePayload {
-  autoHide: boolean;
-}
+
 export interface SetMePayload {
   firstName: string;
   email: string;
   isAdmin: boolean;
   lastName: string;
+}
+
+export interface SetAppIdsPayload {
+  appIds: string[];
+}
+
+export interface SetAutoHidePayload {
+  autoHide: boolean;
+}
+
+export interface SetLaunchbarPayload {
+  launcherPosition: DirectionalPosition;
 }
 
 export interface ChangePasswordPayload {
@@ -98,10 +107,10 @@ export type SaveSettingsRequest = ReturnType<typeof saveSettingsRequest>;
 export type SaveSettingsSuccess = ReturnType<typeof saveSettingsSuccess>;
 export type SaveSettingsError = ReturnType<typeof saveSettingsError>;
 
-export type SetAutoHide = ReturnType<typeof setAutoHide>;
-
 export type SetMe = ReturnType<typeof setMe>;
 
+export type SetAppIds = ReturnType<typeof setAppIds>;
+export type SetAutoHide = ReturnType<typeof setAutoHide>;
 export type SetLaunchbarPosition = ReturnType<typeof setLaunchbarPosition>;
 
 export type ChangePassword = ReturnType<typeof changePassword>;

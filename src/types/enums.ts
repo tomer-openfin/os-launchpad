@@ -4,16 +4,16 @@ export enum AppIconSizes {
   Large = 80,
 }
 
-export enum AppListTypes {
-  App = 'app',
-  Toggle = 'toggle',
-}
-
 export enum DirectionalPosition {
   Top = 'top',
   Right = 'right',
   Bottom = 'bottom',
   Left = 'left',
+}
+
+export enum Orientation {
+  Horizontal = 'horizontal',
+  Vertical = 'vertical',
 }
 
 export enum ResponseStatus {

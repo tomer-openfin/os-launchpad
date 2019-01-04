@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 interface Props {
+  preventBlur?: boolean;
   onBlur: () => void;
 }
 
@@ -21,6 +22,10 @@ const withFinBlur = <P extends Props>(Component: React.ComponentType<P>) =>
     }
 
     handleBlur = () => {
+      if (this.props.preventBlur) {
+        return;
+      }
+
       this.props.onBlur();
     };
 

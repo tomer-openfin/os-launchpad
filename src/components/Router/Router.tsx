@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { DragDropContextProvider } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { AppRoute, routes } from './routes';
@@ -20,15 +22,17 @@ export const renderRoute = ({ children, Component, exact, path }: AppRoute) => {
 };
 
 const Router = () => (
-  <ConnectedThemeProvider>
-    <FinHideShowTracker>
-      <GlobalStyle />
+  <DragDropContextProvider backend={HTML5Backend}>
+    <ConnectedThemeProvider>
+      <FinHideShowTracker>
+        <GlobalStyle />
 
-      <BrowserRouter>
-        <Switch>{routes.map(renderRoute)}</Switch>
-      </BrowserRouter>
-    </FinHideShowTracker>
-  </ConnectedThemeProvider>
+        <BrowserRouter>
+          <Switch>{routes.map(renderRoute)}</Switch>
+        </BrowserRouter>
+      </FinHideShowTracker>
+    </ConnectedThemeProvider>
+  </DragDropContextProvider>
 );
 
 export default Router;

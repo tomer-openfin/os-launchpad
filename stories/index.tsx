@@ -14,6 +14,7 @@ import '../src/components/App/App.story';
 import '../src/components/AppCard/AppCard.story';
 import '../src/components/AppDirectory/AppDirectory.story';
 import '../src/components/AppIcon/AppIcon.story';
+import '../src/components/AppList/AppList.story';
 import '../src/components/AppListToggle/AppListToggle.story';
 import '../src/components/AppOverflow/AppOverflow.story';
 import '../src/components/Layouts/Layouts.story';

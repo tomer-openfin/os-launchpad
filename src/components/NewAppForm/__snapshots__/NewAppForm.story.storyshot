@@ -15,10 +15,10 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
       onSubmit={[Function]}
     >
       <div
-        className="sc-VigVT jfjOhE"
+        className="sc-chPdSV hyDAkg"
       >
         <div
-          className="sc-jTzLTM jxKiyY"
+          className="sc-kgoBCf hyfEKq"
         >
           Create New App
         </div>
@@ -342,7 +342,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
         >
           <a
             backgroundColor="#848484"
-            className="sc-iwsKbI dYPRyt"
+            className="sc-jzJRlG fqzrje"
             href="/admin/apps"
             onClick={[Function]}
             type="button"
@@ -351,7 +351,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
             Cancel
           </a>
           <button
-            className="sc-dnqmqq kVUNrV"
+            className="sc-fjdhpX caCFrM"
             disabled={true}
             type="submit"
             width={128}

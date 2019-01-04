@@ -5,13 +5,14 @@ import {
   LOGIN,
   LOGOUT,
   REMOVE_FROM_APP_LAUNCHER,
+  SET_APP_IDS,
   SET_AUTO_HIDE,
   SET_LAUNCHER_POSITION,
   SET_ME,
 } from './actions';
 
 import { DirectionalPosition } from '../../types/commons';
-import { GetSettingsSuccess, MeActions, MeState, SetLaunchbarPayload, SetMePayload } from './types';
+import { GetSettingsSuccess, MeActions, MeState, SetAppIds, SetAutoHide, SetLaunchbarPayload, SetMePayload } from './types';
 
 const defaultLoginState = {
   changePassword: false,
@@ -102,12 +103,13 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
         },
       };
     }
+    case SET_APP_IDS:
     case SET_AUTO_HIDE: {
       return {
         ...state,
         settings: {
           ...state.settings,
-          ...(action as GetSettingsSuccess).payload!,
+          ...(action as SetAutoHide | SetAppIds).payload!,
         },
       };
     }
