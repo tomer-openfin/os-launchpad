@@ -9,7 +9,99 @@ enum OpenfinLayout {
 
 const mockLayout = {
   apps: [],
-  monitorInfo: {},
+  monitorInfo: {
+    deviceScaleFactor: 0,
+    dpi: { x: 0, y: 0 },
+    nonPrimaryMonitors: [],
+    primaryMonitor: {
+      available: {
+        dipRect: {
+          bottom: 0,
+          left: 0,
+          right: 0,
+          top: 0,
+        },
+        scaledRect: {
+          bottom: 0,
+          left: 0,
+          right: 0,
+          top: 0,
+        },
+      },
+      availableRect: {
+        bottom: 0,
+        left: 0,
+        right: 0,
+        top: 0,
+      },
+      deviceId: '',
+      deviceScaleFactor: 0,
+      displayDeviceActive: false,
+      dpi: { x: 0, y: 0 },
+      monitor: {
+        dipRect: {
+          bottom: 0,
+          left: 0,
+          right: 0,
+          top: 0,
+        },
+        scaledRect: {
+          bottom: 0,
+          left: 0,
+          right: 0,
+          top: 0,
+        },
+      },
+      monitorRect: {
+        bottom: 0,
+        left: 0,
+        right: 0,
+        top: 0,
+      },
+      name: 0,
+    },
+    reason: '',
+    taskBar: {
+      dipRect: {
+        bottom: 0,
+        left: 0,
+        right: 0,
+        top: 0,
+      },
+      edge: 'bottom',
+      rect: {
+        bottom: 0,
+        left: 0,
+        right: 0,
+        top: 0,
+      },
+      scaledRect: {
+        bottom: 0,
+        left: 0,
+        right: 0,
+        top: 0,
+      },
+    },
+    virtualScreen: {
+      bottom: 0,
+      dipRect: {
+        bottom: 0,
+        left: 0,
+        right: 0,
+        top: 0,
+      },
+      left: 0,
+      right: 0,
+      scaledRect: {
+        bottom: 0,
+        left: 0,
+        right: 0,
+        top: 0,
+      },
+      top: 0,
+    },
+  },
+  schemaVersion: '',
   tabGroups: [],
   type: OpenfinLayout.type,
 };

@@ -32,7 +32,7 @@ export const exampleLayout: Layout = {
         top: 0,
       },
       deviceId: '\\\\?\\DISPLAY#Default_Monitor#4&10c2e2d6&0&UID0#{e6f07b5f-ee97-4a90-b076-33f57bf4eaa7}',
-      deviceScaleFactor: '1',
+      deviceScaleFactor: 0,
       displayDeviceActive: true,
       dpi: {
         x: 96,
@@ -58,10 +58,10 @@ export const exampleLayout: Layout = {
         right: 3440,
         top: 0,
       },
-      name: '\\\\.\\DISPLAY1',
+      name: 0,
     },
     reason: 'api-query',
-    taskbar: {
+    taskBar: {
       dipRect: {
         bottom: 1440,
         left: 0,
@@ -101,6 +101,7 @@ export const exampleLayout: Layout = {
       top: 0,
     },
   },
+  schemaVersion: '',
   tabGroups: [],
   type: 'layout',
 };
