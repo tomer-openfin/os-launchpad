@@ -3,6 +3,8 @@ import { put, select, takeEvery } from 'redux-saga/effects';
 
 import windowsConfig from '../../config/windows';
 import { UserLayout } from '../../types/commons';
+import getAppUuid from '../../utils/getAppUuid';
+import { isDevelopmentEnv } from '../../utils/processHelpers';
 import { restoreLayoutRequest, SAVE_LAYOUT } from '../layouts/actions';
 import { getLayoutsIds } from '../layouts/selectors';
 import { launchWindow } from '../windows/actions';
@@ -46,6 +48,16 @@ function* watchGlobalHotkeyPressed(action) {
       yield put(Application.restart());
       break;
     }
+
+    case DevGlobalHotkeys.ShowDevTools: {
+      const { fin } = window;
+      if (fin && isDevelopmentEnv()) {
+        const appUuid = getAppUuid();
+        fin.desktop.System.showDeveloperTools(appUuid, appUuid);
+      }
+      break;
+    }
+
     default:
       // tslint:disable-next-line:no-console
       console.log('Not a valid registered hotkey.');

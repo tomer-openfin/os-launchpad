@@ -7,18 +7,20 @@ import { OpenfinReadyPayload, ReboundLauncherRequestPayload, SetBlurringWindowPa
 export const APPLICATION_STARTED = 'APPLICATION_STARTED';
 export const COLLAPSE_APP = 'COLLAPSE_APP';
 export const EXPAND_APP = 'EXPAND_APP';
+export const INIT_DEV_TOOLS = 'INIT_DEV_TOOLS';
 export const LAUNCH_APP_LAUNCHER = 'LAUNCH_APP_LAUNCHER';
 export const OPENFIN_READY = 'OPENFIN_READY';
 export const REBOUND_LAUNCHER = generateAsyncActionTypes('REBOUND_LAUNCHER');
 export const SET_BLURRING_WINDOW = 'SET_BLURRING_WINDOW';
+export const SET_IS_DRAWER_EXPANDED = 'SET_IS_DRAWER_EXPANDED';
 export const SET_IS_ENTERPRISE = 'SET_IS_ENTERPRISE';
 export const SET_IS_EXPANDED = 'SET_IS_EXPANDED';
-export const SET_IS_DRAWER_EXPANDED = 'SET_IS_DRAWER_EXPANDED';
 
 // Action Creators
 export const applicationStarted = createAction(APPLICATION_STARTED);
 export const collapseApp = createAction(COLLAPSE_APP);
 export const expandApp = createAction(EXPAND_APP);
+export const initDevTools = createAction(INIT_DEV_TOOLS);
 export const launchAppLauncher = createAction(LAUNCH_APP_LAUNCHER);
 export const openfinReady = createAction<OpenfinReadyPayload, string>(OPENFIN_READY, finName => ({ finName }));
 export const reboundLauncherRequest = createAction<ReboundLauncherRequestPayload, boolean, number>(

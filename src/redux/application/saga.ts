@@ -6,10 +6,11 @@ import windowsConfig, { initOnStartWindows, LAYOUTS_WINDOW } from '../../config/
 import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
 import { animateWindow, getSystemMonitorInfo } from '../../utils/openfinPromises';
+import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv } from '../../utils/processHelpers';
 import takeFirst from '../../utils/takeFirst';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList } from '../apps';
-import { registerGlobalHotkeys } from '../globalHotkeys/utils';
+import { registerGlobalDevHotKeys, registerGlobalHotkeys } from '../globalHotkeys/utils';
 import { getLayoutsRequest } from '../layouts';
 import { getAutoHide, getLauncherPosition, getSettingsRequest } from '../me';
 import { getOrgSettingsRequest } from '../organization';
@@ -20,6 +21,8 @@ import {
   APPLICATION_STARTED,
   COLLAPSE_APP,
   EXPAND_APP,
+  INIT_DEV_TOOLS,
+  initDevTools,
   LAUNCH_APP_LAUNCHER,
   launchAppLauncher,
   OPENFIN_READY,
@@ -38,8 +41,6 @@ import { animateLauncherCollapseExpand, deregisterWindowsFromLayoutsService, set
 const APP_UUID = getAppUuid();
 const ANIMATION_DURATION = 300;
 
-const { ENTERPRISE = false } = process.env;
-
 /**w
  * Application Start
  */
@@ -52,6 +53,19 @@ function* applicationStart() {
   yield put(getOrgSettingsRequest());
 }
 
+function* watchInitDevTools() {
+  if (isDevelopmentEnv()) {
+    // Register global dev hotkeys
+    registerGlobalDevHotKeys(window.store.dispatch);
+
+    const { fin } = window;
+    if (fin && hasDevToolsOnStartup()) {
+      // Show main windows dev tools on startup
+      fin.desktop.System.showDeveloperTools(APP_UUID, APP_UUID);
+    }
+  }
+}
+
 /**
  * Watcher on when openfin is ready for a window by name
  */
@@ -60,8 +74,12 @@ function* openfinSetup(action: OpenfinReadyAction) {
   console.log('Openfin ready', action);
 
   if (action.payload!.finName === APP_UUID) {
+    if (isDevelopmentEnv()) {
+      yield put(initDevTools());
+    }
+
     const isLoggedIn = false;
-    const isEnterprise = ENTERPRISE === 'true';
+    const isEnterprise = isEnterpriseEnv();
     yield put(setIsEnterprise(isEnterprise));
 
     const { fin } = window;
@@ -206,6 +224,7 @@ function* watchSetIsDrawerExpanded() {
 
 export function* applicationSaga() {
   yield takeEvery(APPLICATION_STARTED, applicationStart);
+  yield takeEvery(INIT_DEV_TOOLS, watchInitDevTools);
   yield takeEvery(LAUNCH_APP_LAUNCHER, watchLaunchAppLauncher);
   yield takeEvery(OPENFIN_READY, openfinSetup);
   yield takeFirst(COLLAPSE_APP, watchCollapseApp);

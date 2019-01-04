@@ -4,10 +4,11 @@ import Router from './components/Router';
 
 import configureStore from './configureStore';
 import { applicationStarted, openfinReady } from './redux/application/actions';
+import { isProductionEnv } from './utils/processHelpers';
 import renderWindow from './utils/renderWindow';
 import setupReactCleanUp from './utils/setupReactCleanup';
 
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = isProductionEnv();
 
 const isMainWindow = !window.opener;
 

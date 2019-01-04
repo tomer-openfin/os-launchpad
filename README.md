@@ -47,6 +47,7 @@ Now set your `node` version. The version we're standardizing is in the `.nvmrc` 
 | `API_URL` | Set the base url for the API host. | |
 | `BACKEND` | API hostname to proxy requests to. | ✅ |
 | `DEPLOY_LOCATION` | Set the `url` in the manifest. | |
+| `DEV_TOOLS_ON_STARTUP` | Opens main application window's dev tools on startup. | ✅ |
 | `ENTERPRISE` | Determine if the app should start in enterprise mode. | ✅ |
 | `HOST` | Set the host for the application. | ✅ |
 | `MOCK_POSTMAN_URI` | Postman mock server URI. | ✅ |

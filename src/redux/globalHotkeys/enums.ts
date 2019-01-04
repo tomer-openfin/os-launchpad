@@ -6,4 +6,5 @@ export enum GlobalHotkeys {
 
 export enum DevGlobalHotkeys {
   ReloadApp = 'Alt+Shift+R',
+  ShowDevTools = 'Alt+Shift+D',
 }

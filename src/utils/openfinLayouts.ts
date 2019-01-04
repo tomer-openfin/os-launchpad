@@ -1,8 +1,7 @@
 import { Layout } from 'openfin-layouts/dist/client/types';
+import { isStorybookEnv, isTestEnv } from './processHelpers';
 
-const { NODE_ENV, STORYBOOK_ENV } = process.env;
-
-const isNotFin = NODE_ENV === 'test' || STORYBOOK_ENV === 'true';
+const isNotFin = isTestEnv() || isStorybookEnv();
 
 enum OpenfinLayout {
   type = 'layout',

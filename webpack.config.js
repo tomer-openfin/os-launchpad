@@ -10,15 +10,16 @@ const appJson = require('./src/app.json');
 
 const {
   API_URL,
+  DEV_TOOLS_ON_STARTUP = false,
   ENTERPRISE,
   HOST = '0.0.0.0',
-  USERNAME,
-  PASSWORD,
   MOCK_POSTMAN_URI,
   NODE_ENV = 'development',
+  PASSWORD,
   PORT = 8080,
   POSTMAN_API_KEY,
   RUNTIME_VERSION,
+  USERNAME,
 } = process.env;
 
 const BACKEND = process.env.BACKEND || MOCK_POSTMAN_URI;
@@ -64,15 +65,16 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        HOST: JSON.stringify(HOST),
         API_URL: JSON.stringify(API_URL),
         APP_UUID: JSON.stringify(appJson.startup_app.uuid),
+        DEV_TOOLS_ON_STARTUP: JSON.stringify(DEV_TOOLS_ON_STARTUP),
         ENTERPRISE: JSON.stringify(ENTERPRISE),
+        HOST: JSON.stringify(HOST),
         MOCK_POSTMAN_URI: JSON.stringify(MOCK_POSTMAN_URI),
         NODE_ENV: JSON.stringify(NODE_ENV),
+        PASSWORD: JSON.stringify(PASSWORD),
         POSTMAN_API_KEY: JSON.stringify(POSTMAN_API_KEY),
         USERNAME: JSON.stringify(USERNAME),
-        PASSWORD: JSON.stringify(PASSWORD),
       },
     }),
     new HtmlWebpackPlugin({

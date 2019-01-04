@@ -3,12 +3,15 @@ import { applyMiddleware, compose, createStore, StoreEnhancer } from 'redux';
 import createSagaMiddleware, { END } from 'redux-saga';
 import { composeWithDevTools } from 'remote-redux-devtools';
 
+import { isDevelopmentEnv, isProductionEnv, isStorybookEnv } from './utils/processHelpers';
+
 import rootReducer from './redux/rootReducer';
 import rootSaga from './redux/rootSaga';
 import { State } from './redux/types';
 
-const { NODE_ENV = 'development', STORYBOOK_ENV = 'false', HOST = '0.0.0.0' } = process.env;
-const isProduction = NODE_ENV === 'production';
+const { HOST = '0.0.0.0' } = process.env;
+const isProduction = isProductionEnv();
+const isStorybook = isStorybookEnv();
 
 export default (state?: State) => {
   // Middleware
@@ -16,11 +19,11 @@ export default (state?: State) => {
   const sagaMiddleware = createSagaMiddleware();
 
   // Don't include redux-openfin when running in Storybook.
-  const middlewareArgs = STORYBOOK_ENV === 'true' ? [sagaMiddleware] : [openFinMiddleware, sagaMiddleware];
+  const middlewareArgs = isStorybook ? [sagaMiddleware] : [openFinMiddleware, sagaMiddleware];
 
   // Include the extra Redux dev tools when running in development, but not in Storybook.
   const middleware =
-    NODE_ENV === 'development' && STORYBOOK_ENV === 'false'
+    isDevelopmentEnv() && !isStorybook
       ? composeWithDevTools({ hostname: HOST, port: 8000 })(applyMiddleware(...middlewareArgs))
       : applyMiddleware(...middlewareArgs);
 

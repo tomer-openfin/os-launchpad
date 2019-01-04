@@ -1,6 +1,5 @@
 import { ROUTES } from '../components/Router/consts';
-
-const { NODE_ENV } = process.env;
+import { isProductionEnv } from '../utils/processHelpers';
 
 const WINDOW_PREFIX = 'osLaunchpad';
 export const ADMIN_WINDOW = `${WINDOW_PREFIX}Admin`;
@@ -12,7 +11,7 @@ export const LOGIN_WINDOW = `${WINDOW_PREFIX}Login`;
 export const MAIN_WINDOW = 'osLaunchpadMain';
 export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
 
-const isProduction = NODE_ENV === 'production';
+const isProduction = isProductionEnv();
 
 export const initOnStartWindows = {
   // eventually move admin window out of initOnStartWindows and only initialize on login if isAdmin
