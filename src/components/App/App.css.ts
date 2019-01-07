@@ -174,7 +174,7 @@ export const StyledSvgIcon = styled(SvgIcon)`
 
   &:hover {
     + ${ArrowIcon} {
-      background-color: ${Color.URANUS};
+      background-color: ${Color.JUPITER};
     }
   }
 `;

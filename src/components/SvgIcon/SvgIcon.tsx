@@ -16,7 +16,7 @@ export interface Props {
 
 const defaultProps: Partial<Props> = {
   color: Color.COMET,
-  hoverColor: Color.URANUS,
+  hoverColor: Color.JUPITER,
   size: 42,
 };
 

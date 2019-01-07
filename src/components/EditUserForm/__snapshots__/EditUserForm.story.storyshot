@@ -23,7 +23,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
           John Doe
         </div>
         <div
-          className="sc-epnACN jDYON sc-ifAKCX iRgcEH"
+          className="sc-epnACN jDYON sc-ifAKCX dlEuPe"
           color="#E7E7E7"
           onClick={[Function]}
           size={30}

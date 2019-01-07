@@ -14,13 +14,13 @@ exports[`Storyshots Components/Layouts default 1`] = `
       className="sc-jhAzac dEREev"
     >
       <div
-        className="sc-ifAKCX eXTbmv"
+        className="sc-ifAKCX dlQxXV"
         color="#E7E7E7"
         onClick={[Function]}
         size={42}
       />
       <div
-        className="sc-ifAKCX eXTbmv"
+        className="sc-ifAKCX dlQxXV"
         color="#E7E7E7"
         onClick={[Function]}
         size={42}

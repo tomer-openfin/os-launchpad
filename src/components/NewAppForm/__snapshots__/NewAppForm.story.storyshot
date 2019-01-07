@@ -49,7 +49,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
               className="sc-gzOgki cXkoqv"
             >
               <div
-                className="sc-iyvyFf fmQwA sc-ifAKCX fZgQSd"
+                className="sc-iyvyFf fmQwA sc-ifAKCX kcXnJc"
                 color="#E7E7E7"
                 onClick={[Function]}
                 size={40}
