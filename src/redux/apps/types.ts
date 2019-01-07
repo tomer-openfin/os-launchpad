@@ -1,5 +1,5 @@
 import { App } from '../../types/commons';
-import { closeFinAppRequest, finAppClosed, finAppLoading, openFinAppError, openFinAppRequest, openFinAppSuccess } from './actions';
+import { closeFinAppRequest, openFinAppError, openFinAppRequest, openFinAppSuccess, setFinAppStatusState } from './actions';
 
 export enum AppStatusStates {
   Closed = 'closed',
@@ -7,6 +7,12 @@ export enum AppStatusStates {
   Loading = 'loading',
   Running = 'running',
   Warning = 'warning',
+}
+
+export enum AppStatusOrigins {
+  Default = 'default',
+  Event = 'event',
+  LayoutRestore = 'layoutRestore',
 }
 
 // Reducer
@@ -17,6 +23,8 @@ export interface AppsById {
 export interface AppStatus {
   [id: string]:
     | {
+        message: string | undefined;
+        origin: AppStatusOrigins | undefined;
         state: AppStatusStates;
         uuid: string | undefined;
       }
@@ -26,7 +34,7 @@ export interface AppStatus {
 export interface AppsState {
   byId: AppsById;
   ids: string[];
-  statusByName: AppStatus;
+  statusById: AppStatus;
 }
 
 // Payloads
@@ -38,19 +46,26 @@ export interface CloseFinAppPayload {
   uuid: string;
 }
 
-export interface FinAppPayload {
+export interface OpenFinAppErrorPayload {
   id: string;
+}
+
+export interface FinAppStatusStatePayload {
+  id: string;
+  statusState: AppStatusStates;
+  origin: AppStatusOrigins;
+  message?: string;
 }
 
 export interface OpenFinAppSuccessPayload {
   id: string;
   uuid: string;
+  origin: AppStatusOrigins;
 }
 
 // Actions
 export type CloseFinAppRequest = ReturnType<typeof closeFinAppRequest>;
-export type FinAppClosed = ReturnType<typeof finAppClosed>;
-export type FinAppLoading = ReturnType<typeof finAppLoading>;
 export type OpenFinAppRequest = ReturnType<typeof openFinAppRequest>;
 export type OpenFinAppSuccess = ReturnType<typeof openFinAppSuccess>;
 export type OpenFinAppError = ReturnType<typeof openFinAppError>;
+export type SetFinAppStatusState = ReturnType<typeof setFinAppStatusState>;

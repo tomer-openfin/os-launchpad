@@ -1,5 +1,5 @@
-import { finAppClosed } from '../redux/apps/index';
 import { Bounds, MonitorInfo, OpenFinApplication, PointTopLeft } from '../types/commons';
+import { bindFinAppEventHandlers } from './finAppEventHandlerHelpers';
 import promisifyOpenfin from './promisifyOpenfin';
 
 // TODO - move these functions to redux-openfin
@@ -45,46 +45,16 @@ export const createAndRunFromManifest = (manifestUrl: string, id: string) => {
     fin.desktop.Application.createFromManifest(
       manifestUrl,
       app => {
-        const closedEvents: fin.OpenFinApplicationEventType[] = ['closed', 'crashed'];
-        // const startedEvents: fin.OpenFinApplicationEventType[] = ['started'];
-        const finAppClosedHandler = () => {
-          window.store.dispatch(finAppClosed({ id }));
-          closedEvents.forEach(event => {
-            app.removeEventListener(event, finAppClosedHandler);
-          });
-        };
-        // const finAppStartedHandler = () => {
-        //   resolve();
-        //   startedEvents.forEach(event => {
-        //     app.removeEventListener(event, finAppStartedHandler);
-        //   });
-        // };
-
-        closedEvents.forEach(event => {
-          app.addEventListener(event, finAppClosedHandler);
-        });
-        // startedEvents.forEach(event => {
-        //   app.addEventListener(event, finAppStartedHandler);
-        // });
-
         app.run(
           // Run app SUCCESS callback
           () => {
-            // Remove just the started app listeners if app actually succeeds
-            // startedEvents.forEach(event => {
-            //   app.removeEventListener(event, finAppStartedHandler);
-            // });
+            // TODO: Come back to this - may want to bind before the app runs
+            //       and remove events on run error cb
+            bindFinAppEventHandlers(window.store.dispatch, app, id);
             resolve(app.uuid);
           },
           // Run app ERROR callback
           e => {
-            // Remove all event listeners if running app fails
-            closedEvents.forEach(event => {
-              app.removeEventListener(event, finAppClosedHandler);
-            });
-            // startedEvents.forEach(event => {
-            //   app.removeEventListener(event, finAppStartedHandler);
-            // });
             reject(e);
           },
         );

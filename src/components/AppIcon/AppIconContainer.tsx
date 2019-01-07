@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { AppStatusStates, closeFinAppRequest, getAppById, getAppStatusByName, openFinAppRequest } from '../../redux/apps';
+import { AppStatusStates, closeFinAppRequest, getAppById, getAppStatusById, openFinAppRequest } from '../../redux/apps';
 import { getLauncherPosition, removeFromAppLauncher } from '../../redux/me';
 import { AppIconSizes, DirectionalPosition } from '../../types/enums';
 
@@ -35,7 +35,7 @@ interface Props {
 const mapState = (state, { appId }) => ({
   app: getAppById(state, appId),
   launcherPosition: getLauncherPosition(state),
-  status: getAppStatusByName(state, appId),
+  status: getAppStatusById(state, appId),
 });
 
 const mapDispatch = {

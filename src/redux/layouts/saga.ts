@@ -1,8 +1,10 @@
-import { call, put, race, select, take, takeEvery } from 'redux-saga/effects';
+import { all, call, put, race, select, take, takeEvery } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 import { ErrorResponse, ResponseStatus, UserLayout } from '../../types/commons';
+import { bindFinAppEventHandlers } from '../../utils/finAppEventHandlerHelpers';
 import { generateLayout, restoreLayout } from '../../utils/openfinLayouts';
+import { AppStatusOrigins, AppStatusStates, getApps, getAppsStatusById, openFinAppSuccess, setFinAppStatusState } from '../apps';
 import {
   CREATE_LAYOUT,
   createLayoutError,
@@ -25,7 +27,7 @@ import {
   updateLayoutSuccess,
 } from './actions';
 import { getLayoutById, getLayoutsIds } from './selectors';
-import { CreateLayoutRequest, RestoreLayoutRequest, UpdateLayoutRequest } from './types';
+import { CreateLayoutRequest, RestoreLayoutRequest, RestoreLayoutSuccess, UpdateLayoutRequest } from './types';
 
 const buildErrorResponse = (message: string): ErrorResponse => ({ status: ResponseStatus.FAILURE, message });
 
@@ -39,7 +41,7 @@ function* watchGetLayoutRequest() {
   }
 }
 
-function* watchRestoreLayout(action: RestoreLayoutRequest) {
+function* watchRestoreLayoutRequest(action: RestoreLayoutRequest) {
   const layoutId: string | undefined = action.payload;
 
   if (!layoutId) return yield put(restoreLayoutError(buildErrorResponse('Error getting layout for restore')));
@@ -52,9 +54,67 @@ function* watchRestoreLayout(action: RestoreLayoutRequest) {
 
   if (!layout) return yield put(restoreLayoutError(buildErrorResponse('Error getting layout for restore')));
 
-  yield call(restoreLayout, layout);
+  try {
+    const apps = yield select(getApps);
+    const appsStatusById = yield select(getAppsStatusById);
 
-  yield put(restoreLayoutSuccess());
+    yield all(
+      layout.apps.map(layoutApp => {
+        const { manifestUrl, uuid } = layoutApp;
+        const matchingApp = apps.find(app => app.manifest_url === manifestUrl);
+        if (!matchingApp) {
+          // tslint:disable-next-line:no-console
+          console.log('Could not find manifestUrl in list of applications.', manifestUrl, uuid);
+          return;
+        }
+
+        const { id } = matchingApp;
+        const appStatus = appsStatusById[id];
+        if (!appStatus || (appStatus && appStatus.state === AppStatusStates.Closed)) {
+          return put(setFinAppStatusState({ id, statusState: AppStatusStates.Loading, origin: AppStatusOrigins.LayoutRestore }));
+        }
+        return;
+      }),
+    );
+    const restoredLayout = yield call(restoreLayout, layout);
+
+    yield put(restoreLayoutSuccess(restoredLayout));
+  } catch (e) {
+    yield put(restoreLayoutError(buildErrorResponse(e)));
+  }
+}
+
+function* watchRestoreLayoutSuccess(action: RestoreLayoutSuccess) {
+  const { fin } = window;
+  const { payload: layout } = action;
+  if (!layout || !fin) {
+    return;
+  }
+
+  const apps = yield select(getApps);
+  const appsStatusById = yield select(getAppsStatusById);
+  yield all(
+    layout.apps.map(layoutApp => {
+      const { manifestUrl, uuid } = layoutApp;
+      const matchingApp = apps.find(app => app.manifest_url === manifestUrl);
+      if (!matchingApp) {
+        // tslint:disable-next-line:no-console
+        console.log('Could not find manifestUrl in list of applications.', manifestUrl, uuid);
+        return;
+      }
+
+      const { id } = matchingApp;
+      const appStatus = appsStatusById[id];
+      if (appStatus && appStatus.state === AppStatusStates.Loading && appStatus.origin === AppStatusOrigins.LayoutRestore) {
+        const wrappedApp = fin.desktop.Application.wrap(uuid);
+        bindFinAppEventHandlers(window.store.dispatch, wrappedApp, id);
+
+        return put(openFinAppSuccess({ id, uuid, origin: AppStatusOrigins.LayoutRestore }));
+      }
+
+      return;
+    }),
+  );
 }
 
 // TEMPORARY while we are only dealing with a single layout (always the first)
@@ -146,7 +206,8 @@ function* watchRequestError(action) {
 export function* layoutsSaga() {
   yield takeEvery(GET_LAYOUTS.REQUEST, watchGetLayoutRequest);
 
-  yield takeEvery(RESTORE_LAYOUT.REQUEST, watchRestoreLayout);
+  yield takeEvery(RESTORE_LAYOUT.REQUEST, watchRestoreLayoutRequest);
+  yield takeEvery(RESTORE_LAYOUT.SUCCESS, watchRestoreLayoutSuccess);
 
   yield takeEvery(SAVE_LAYOUT, watchSaveLayout);
 

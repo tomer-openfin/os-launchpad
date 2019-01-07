@@ -13,13 +13,16 @@ export const getAppById = (state: State, id: string): App | undefined => getApps
 // ids
 export const getAppsIds = (state: State) => getAppsState(state).ids;
 
-// statusByName
-export const getAppsStatusByName = (state: State) => getAppsState(state).statusByName;
-export const getAppStatusByName = (state: State, id: string) => getAppsStatusByName(state)[id];
+// statusById
+export const getAppsStatusById = (state: State) => getAppsState(state).statusById;
+export const getAppStatusById = (state: State, id: string) => getAppsStatusById(state)[id];
 
 // Selectors
+export const getApps = createSelector(
+  [getAppsById, getAppsIds],
+  (byId, ids) => ids.map(id => byId[id]),
+);
 export const getAppsDirectoryAppList = createSelector(
-  getAppsById,
-  getAppsIds,
+  [getAppsById, getAppsIds],
   objectsFromIds,
 );

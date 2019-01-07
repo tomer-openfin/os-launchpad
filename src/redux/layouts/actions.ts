@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 
+import { Layout } from 'openfin-layouts/dist/client/types';
 import { ErrorResponse, UserLayout } from '../../types/commons';
 import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
 import { GetLayoutsSuccessPayload } from './types';
@@ -24,7 +25,7 @@ export const getLayoutsSuccess = createAction<GetLayoutsSuccessPayload>(GET_LAYO
 export const getLayoutsError = createAction<ErrorResponse>(GET_LAYOUTS.ERROR);
 
 export const restoreLayoutRequest = createAction<UserLayout['id']>(RESTORE_LAYOUT.REQUEST);
-export const restoreLayoutSuccess = createAction(RESTORE_LAYOUT.SUCCESS);
+export const restoreLayoutSuccess = createAction<Layout>(RESTORE_LAYOUT.SUCCESS);
 export const restoreLayoutError = createAction<ErrorResponse>(RESTORE_LAYOUT.ERROR);
 
 export const saveLayout = createAction<UserLayout['id']>(SAVE_LAYOUT);
