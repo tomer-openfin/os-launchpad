@@ -11,33 +11,33 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
     }
   >
     <form
-      className="sc-kPVwWT llHzWc"
+      className="sc-kIPQKe htrNAB"
       onReset={[Function]}
       onSubmit={[Function]}
     >
       <div
-        className="sc-chPdSV hyDAkg"
+        className="sc-kGXeez eVMKCi"
       >
         <div
-          className="sc-kgoBCf hyfEKq"
+          className="sc-kpOJdX gnaJDQ"
         >
           Create New User
         </div>
       </div>
       <div
-        className="sc-esjQYD iNTpje"
+        className="sc-ibxdXY jHPZxc"
       >
         <div
-          className="sc-kIPQKe gZxVOb"
+          className="sc-RefOD ctGMVj"
         >
           <div
-            className="sc-eXEjpC brCGSf"
+            className="sc-iQKALj bsewxD"
           >
             <label
-              className="sc-hrWEMg jLtosn"
+              className="sc-hXRMBi syMd"
             >
               <div
-                className="sc-bwCtUz hnkycu"
+                className="sc-gwVKww hqoLKv"
               >
                 First Name
               </div>
@@ -51,10 +51,10 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
               />
             </label>
             <label
-              className="sc-hrWEMg jLtosn"
+              className="sc-hXRMBi syMd"
             >
               <div
-                className="sc-bwCtUz hnkycu"
+                className="sc-gwVKww hqoLKv"
               >
                 MI
               </div>
@@ -68,10 +68,10 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
             </label>
           </div>
           <label
-            className="sc-hrWEMg jLtosn"
+            className="sc-hXRMBi syMd"
           >
             <div
-              className="sc-bwCtUz hnkycu"
+              className="sc-gwVKww hqoLKv"
             >
               Last Name
             </div>
@@ -85,10 +85,10 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
             />
           </label>
           <label
-            className="sc-hrWEMg jLtosn"
+            className="sc-hXRMBi syMd"
           >
             <div
-              className="sc-bwCtUz hnkycu"
+              className="sc-gwVKww hqoLKv"
             >
               Phone Number
             </div>
@@ -103,10 +103,10 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
             />
           </label>
           <label
-            className="sc-hrWEMg jLtosn"
+            className="sc-hXRMBi syMd"
           >
             <div
-              className="sc-bwCtUz hnkycu"
+              className="sc-gwVKww hqoLKv"
             >
               Email
             </div>
@@ -120,10 +120,10 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
             />
           </label>
           <label
-            className="sc-hrWEMg jLtosn"
+            className="sc-hXRMBi syMd"
           >
             <div
-              className="sc-bwCtUz hnkycu"
+              className="sc-gwVKww hqoLKv"
             >
               Password
             </div>
@@ -136,10 +136,10 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
               value=""
             />
             <div
-              className="sc-gwVKww bVnyeQ"
+              className="sc-iQNlJl feFwnX"
             >
               <div
-                className="sc-hXRMBi gbSEuZ sc-ifAKCX gPeNwQ"
+                className="sc-bsbRJL jryxbK sc-ifAKCX gPeNwQ"
                 color="#E7E7E7"
                 size={25}
               />
@@ -148,10 +148,10 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
         </div>
       </div>
       <div
-        className="sc-dfVpRl vBdXS"
+        className="sc-hwwEjo edcAfx"
       >
         <div
-          className="sc-ibxdXY bsuZCn"
+          className="sc-bwCtUz fnULCX"
         >
           <a
             backgroundColor="#848484"

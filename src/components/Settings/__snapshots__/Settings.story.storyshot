@@ -11,18 +11,18 @@ exports[`Storyshots Components/Settings default 1`] = `
     }
   >
     <div
-      className="sc-fAjcbJ cEUoiu"
+      className="sc-gisBJw dVdMXH"
     >
       <div
-        className="sc-chPdSV hrQeZD"
+        className="sc-kGXeez gPuwsT"
       >
         <div
-          className="sc-kgoBCf hyfEKq"
+          className="sc-kpOJdX gnaJDQ"
         >
           My Settings
         </div>
         <div
-          className="sc-kAzzGY bdvSwc"
+          className="sc-kgoBCf dEvGhP"
         >
           <div
             className="sc-ifAKCX cWlwzh"
@@ -33,52 +33,78 @@ exports[`Storyshots Components/Settings default 1`] = `
         </div>
       </div>
       <div
-        className="sc-cHGsZl ivcqvm"
+        className="sc-cJSrbW ioBFxS"
       >
         <div
-          className="sc-kjoXOD gPhBWe"
+          className="sc-kgAjT iiGOsH"
         >
-          Auto Hide
+          Auto-Hide
         </div>
-        <button
-          className="sc-fjdhpX sc-caSCKo frlXPe"
-          onClick={[Function]}
+        <div
+          className="sc-TOsTZ jBjHQV"
         >
-          OFF
-        </button>
+          <label
+            checked={false}
+            className="sc-cHGsZl bHiaRe sc-chPdSV hdpxYd"
+          >
+            <input
+              checked={false}
+              className="sc-cHGsZl bHiaRe sc-kAzzGY iTKEgM"
+              name="autohide-onoff"
+              onChange={[Function]}
+              type="radio"
+              value="on"
+            />
+            On
+          </label>
+          <label
+            checked={true}
+            className="sc-cHGsZl bHiaRe sc-chPdSV jpiFLt"
+          >
+            <input
+              checked={true}
+              className="sc-cHGsZl bHiaRe sc-kAzzGY iTKEgM"
+              name="autohide-onoff"
+              onChange={[Function]}
+              type="radio"
+              value="off"
+            />
+            Off
+          </label>
+        </div>
       </div>
       <div
-        className="sc-cHGsZl ivcqvm"
+        className="sc-cJSrbW ioBFxS"
       >
         <div
-          className="sc-kjoXOD gPhBWe"
+          className="sc-kgAjT iiGOsH"
         >
           Launcher Position
         </div>
         <button
-          className="sc-fjdhpX sc-caSCKo frlXPe"
+          className="sc-fjdhpX sc-kjoXOD caKLJF"
           onClick={[Function]}
         >
           Top
         </button>
         <div
-          className="sc-gisBJw kkfmqr"
+          className="sc-TOsTZ jBjHQV"
         >
           <button
-            className="sc-fjdhpX sc-caSCKo frlXPe"
+            className="sc-fjdhpX sc-kjoXOD caKLJF"
             onClick={[Function]}
           >
             Left
           </button>
           <button
-            className="sc-fjdhpX sc-caSCKo frlXPe"
+            className="sc-fjdhpX sc-kjoXOD caKLJF"
             onClick={[Function]}
           >
             Right
           </button>
         </div>
         <button
-          className="sc-fjdhpX sc-caSCKo frlXPe"
+          className="sc-fjdhpX sc-kjoXOD caKLJF"
           onClick={[Function]}
         >
           Bottom
@@ -234,7 +260,125 @@ exports[`Storyshots Components/Settings default 1`] = `
                   &lt;
                   Settings
                 </span>
-                <span />
+                <span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      autoHide
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#a11",
+                            }
+                          }
+                        >
+                          false
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      setAutoHide
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          setAutoHide
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      setLaunchbarPosition
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          setLaunchbarPosition
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      onEscDown
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          onEscDown
+                        </span>
+                        }
+                      </span>
+                    </span>
+                    <br />
+                  </span>
+                </span>
                 <span
                   style={
                     Object {
@@ -294,181 +438,9 @@ exports[`Storyshots Components/Settings default 1`] = `
               Settings
               " Component
             </h2>
-            <table
-              className="css-1uhv8nx e1vdo5380"
-            >
-              <thead>
-                <tr>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    property
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    propType
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    required
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    default
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    description
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    autoHide
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#a11",
-                        }
-                      }
-                    >
-                      false
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    onEscDown
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#170",
-                        }
-                      }
-                    >
-                      noop
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    setAutoHide
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#170",
-                        }
-                      }
-                    >
-                      noop
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    setLaunchbarPosition
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#170",
-                        }
-                      }
-                    >
-                      noop
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-              </tbody>
-            </table>
+            <small>
+              No propTypes defined!
+            </small>
           </div>
         </div>
       </div>

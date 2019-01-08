@@ -11,10 +11,10 @@ exports[`Storyshots Components/App default 1`] = `
     }
   >
     <div
-      className="sc-dxgOiQ izmIa"
+      className="sc-jKJlTe iJczUe"
     >
       <div
-        className="sc-kkGfuU ddpEXo"
+        className="sc-hSdWYo bxuPCL"
       >
         <div
           className="sc-jTzLTM cDPuoD"
@@ -22,10 +22,10 @@ exports[`Storyshots Components/App default 1`] = `
           width="100%"
         >
           <div
-            className="sc-iAyFgw GTyoN sc-cSHVUG AnXef"
+            className="sc-eHgmQL fQQwww sc-cSHVUG AnXef"
           />
           <div
-            className="sc-kGXeez eielqN"
+            className="sc-dxgOiQ crnIZd"
             height={80}
             isExpanded={false}
             launcherPosition="top"
@@ -158,53 +158,53 @@ exports[`Storyshots Components/App default 1`] = `
             </div>
           </div>
           <div
-            className="sc-jKJlTe diXARm"
+            className="sc-hMqMXs kcYMMG"
             size={156}
           >
             <div
-              className="sc-ckVGcZ fMECE"
+              className="sc-eNQAEJ kDnQFj"
               onClick={[Function]}
             />
             <div
-              className="sc-eNQAEJ COYQW"
+              className="sc-kEYyzF cAdnnL"
               size={156}
             >
               <div
-                className="sc-kEYyzF dDLTzk sc-ifAKCX hwskBS"
+                className="sc-iAyFgw eZHttC sc-ifAKCX hwskBS"
                 color="#E7E7E7"
                 onClick={[Function]}
                 size={20}
               />
               <div
-                className="sc-hMqMXs fuBDam"
+                className="sc-kkGfuU DMEqi"
               >
                 <div
-                  className="sc-hSdWYo botgWf sc-ifAKCX dlQxXV"
+                  className="sc-cvbbAY jJJqTT sc-ifAKCX dlQxXV"
                   color="#E7E7E7"
                   onClick={[Function]}
                   size={42}
                 />
               </div>
               <div
-                className="sc-hMqMXs fuBDam"
+                className="sc-kkGfuU DMEqi"
               >
                 <div
-                  className="sc-hSdWYo botgWf sc-ifAKCX dlQxXV"
+                  className="sc-cvbbAY jJJqTT sc-ifAKCX dlQxXV"
                   color="#E7E7E7"
                   onClick={[Function]}
                   size={42}
                 />
                 <div
-                  className="sc-kpOJdX kMXElm sc-ifAKCX gPeNwQ"
+                  className="sc-ckVGcZ bMfGoc sc-ifAKCX gPeNwQ"
                   color="#E7E7E7"
                   size={25}
                 />
               </div>
               <div
-                className="sc-hMqMXs fuBDam"
+                className="sc-kkGfuU DMEqi"
               >
                 <div
-                  className="sc-hSdWYo botgWf sc-ifAKCX dlQxXV"
+                  className="sc-cvbbAY jJJqTT sc-ifAKCX dlQxXV"
                   color="#E7E7E7"
                   onClick={[Function]}
                   size={42}

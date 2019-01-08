@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-import { Color } from '../../styles/index';
+import { Color } from '../../styles';
 
 import Button from '../Button';
+import RadioButton from '../RadioButton';
 
 export const Window = styled.div`
   display: flex;
@@ -16,6 +17,8 @@ export const Window = styled.div`
 export const CTA = styled(Button)`
   margin: 5px;
 `;
+
+export const StyledRadioButton = styled(RadioButton)``;
 
 export const Row = styled.div`
   width: 100%;
@@ -37,4 +40,8 @@ export const Section = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  ${StyledRadioButton} + ${StyledRadioButton} {
+    margin-left: 15px;
+  }
 `;

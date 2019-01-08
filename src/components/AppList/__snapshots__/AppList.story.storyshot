@@ -29,7 +29,7 @@ exports[`Storyshots Components/AppList default 1`] = `
         }
       >
         <div
-          className="sc-kGXeez dLYXGZ"
+          className="sc-dxgOiQ gNCdzL"
           height={80}
           isExpanded={false}
           launcherPosition="top"

@@ -11,6 +11,11 @@ export enum DirectionalPosition {
   Left = 'left',
 }
 
+export enum OnOff {
+  Off = 'off',
+  On = 'on',
+}
+
 export enum Orientation {
   Horizontal = 'horizontal',
   Vertical = 'vertical',

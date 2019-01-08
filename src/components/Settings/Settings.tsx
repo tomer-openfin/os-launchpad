@@ -1,28 +1,20 @@
 import * as React from 'react';
 
-import { DirectionalPosition } from '../../types/commons';
-import noop from '../../utils/noop';
+import { DirectionalPosition, OnOff } from '../../types/commons';
 
 import WindowHeader from '../WindowHeader';
-import { CTA, Heading, Row, Section, Window } from './Settings.css';
+import { CTA, Heading, Row, Section, StyledRadioButton, Window } from './Settings.css';
+
+const ON_OFF_NAME = 'autohide-onoff';
 
 interface Props {
   autoHide: boolean;
-  setAutoHide;
-  setLaunchbarPosition;
+  setAutoHide: (autoHide: boolean) => void;
+  setLaunchbarPosition: (launcherPosition: DirectionalPosition) => void;
   onEscDown: () => void;
 }
 
-const defaultProps: Props = {
-  autoHide: false,
-  onEscDown: noop,
-  setAutoHide: noop,
-  setLaunchbarPosition: noop,
-};
-
 class Settings extends React.Component<Props, {}> {
-  static defaultProps = defaultProps;
-
   render() {
     const { autoHide, setAutoHide, setLaunchbarPosition } = this.props;
 
@@ -30,8 +22,8 @@ class Settings extends React.Component<Props, {}> {
     const setLauncherPositionLeft = () => setLaunchbarPosition(DirectionalPosition.Left);
     const setLauncherPositionRight = () => setLaunchbarPosition(DirectionalPosition.Right);
     const setLauncherPositionBottom = () => setLaunchbarPosition(DirectionalPosition.Bottom);
-    const handleAutoHide = () => {
-      autoHide ? setAutoHide(false) : setAutoHide(true);
+    const handleAutoHide = (e: React.SyntheticEvent<HTMLInputElement>) => {
+      setAutoHide(e.currentTarget.value === OnOff.On);
     };
 
     return (
@@ -39,9 +31,17 @@ class Settings extends React.Component<Props, {}> {
         <WindowHeader>My Settings</WindowHeader>
 
         <Section>
-          <Heading>Auto Hide</Heading>
+          <Heading>Auto-Hide</Heading>
 
-          <CTA onClick={handleAutoHide}>{autoHide ? 'ON' : 'OFF'}</CTA>
+          <Row>
+            <StyledRadioButton onChange={handleAutoHide} checked={autoHide} name={ON_OFF_NAME} value={OnOff.On}>
+              On
+            </StyledRadioButton>
+
+            <StyledRadioButton onChange={handleAutoHide} checked={!autoHide} name={ON_OFF_NAME} value={OnOff.Off}>
+              Off
+            </StyledRadioButton>
+          </Row>
         </Section>
 
         <Section>
