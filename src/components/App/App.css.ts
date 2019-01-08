@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import * as blobDark from '../../assets/BlobDark.svg';
+
 import { DirectionalPosition } from '../../types/commons';
 import * as SIZE from '../../utils/sizingConstants';
 import { isBottomOrRight, isLeftOrRight, isTopOrBottom } from '../../utils/windowPositionHelpers';
@@ -79,6 +81,21 @@ export const Main = styled.div<PositionProp>`
   flex-direction: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? 'row' : 'column')};
   height: 100vh;
   width: 100vw;
+
+  &:before {
+    content: '';
+    position: absolute;
+    background-image: url(${blobDark});
+    background-repeat: repeat;
+    background-position: center;
+    background-size: auto;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    transform: rotate(${props => (isTopOrBottom(props.launcherPosition) ? '0' : '-180deg')});
+    z-index: -1;
+  }
 `;
 
 export const Overlay = styled.div<ExpandedProp>`
@@ -155,12 +172,11 @@ export const Wrapper = styled.div<EndPaddingPositionProp>`
   align-items: center;
   display: flex;
   flex-direction: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? 'row' : 'column')};
-  height: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? `${SIZE.MAX_STATIC_DIMENSION}px` : '100%')};
+  height: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? `${SIZE.MAX_STATIC_DIMENSION}px` : '100vh')};
   justify-content: flex-start;
-  padding-bottom: ${({ endPadding, launcherPosition }) => (isTopOrBottom(launcherPosition) ? 0 : endPadding)}px;
-  padding-right: ${({ endPadding, launcherPosition }) => (isTopOrBottom(launcherPosition) ? endPadding : 0)}px;
+
   position: relative;
-  width: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? '100%' : `${SIZE.MAX_STATIC_DIMENSION}px`)};
+  width: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? '100vw' : `${SIZE.MAX_STATIC_DIMENSION}px`)};
 `;
 
 /* Styled Imports */

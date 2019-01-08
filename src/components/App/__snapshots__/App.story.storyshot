@@ -11,199 +11,205 @@ exports[`Storyshots Components/App default 1`] = `
     }
   >
     <div
-      className="sc-dxgOiQ bHAZOs"
+      className="sc-dxgOiQ izmIa"
     >
       <div
-        className="sc-kkGfuU zVnke"
+        className="sc-kkGfuU ddpEXo"
       >
         <div
-          className="sc-iAyFgw GTyoN sc-cSHVUG AnXef"
-        />
-        <div
-          className="sc-kGXeez eielqN"
-          height={80}
-          isExpanded={false}
-          launcherPosition="top"
-          width={0}
+          className="sc-jTzLTM cDPuoD"
+          height="100%"
+          width="100%"
         >
           <div
-            className="sc-gqjmRU gCpGzj"
-            onClick={[Function]}
-            size={50}
+            className="sc-iAyFgw GTyoN sc-cSHVUG AnXef"
+          />
+          <div
+            className="sc-kGXeez eielqN"
+            height={80}
+            isExpanded={false}
+            launcherPosition="top"
+            width={0}
           >
             <div
-              style={
-                Object {
-                  "display": "inline-block",
-                  "lineHeight": 0,
-                  "opacity": 1,
-                }
-              }
+              className="sc-gqjmRU gCpGzj"
+              onClick={[Function]}
+              size={50}
             >
               <div
-                className="sc-gZMcBi kAlMTl"
-                size={50}
+                style={
+                  Object {
+                    "display": "inline-block",
+                    "lineHeight": 0,
+                    "opacity": 1,
+                  }
+                }
               >
                 <div
-                  className="sc-ifAKCX gPeNwQ"
+                  className="sc-gZMcBi kAlMTl"
+                  size={50}
+                >
+                  <div
+                    className="sc-ifAKCX gPeNwQ"
+                    color="#E7E7E7"
+                    size={25}
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="sc-iwsKbI jQQQCh"
+              onClick={[Function]}
+              size={50}
+            >
+              <div
+                style={
+                  Object {
+                    "display": "inline-block",
+                    "lineHeight": 0,
+                    "opacity": 1,
+                  }
+                }
+              >
+                <div
+                  className="sc-dnqmqq gUYUUY"
+                  onContextMenu={[Function]}
+                >
+                  <div
+                    className="sc-gzVnrw kHYlwv"
+                  />
+                </div>
+              </div>
+              <div
+                className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
+              >
+                <div
+                  className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
+                  color="rgba(0,0,0,0)"
+                  size="53%"
+                />
+              </div>
+            </div>
+            <div
+              className="sc-iwsKbI jQQQCh"
+              onClick={[Function]}
+              size={50}
+            >
+              <div
+                style={
+                  Object {
+                    "display": "inline-block",
+                    "lineHeight": 0,
+                    "opacity": 1,
+                  }
+                }
+              >
+                <div
+                  className="sc-dnqmqq gUYUUY"
+                  onContextMenu={[Function]}
+                >
+                  <div
+                    className="sc-gzVnrw kRTxuL"
+                  />
+                </div>
+              </div>
+              <div
+                className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
+              >
+                <div
+                  className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
+                  color="rgba(0,0,0,0)"
+                  size="53%"
+                />
+              </div>
+            </div>
+            <div
+              className="sc-iwsKbI jQQQCh"
+              onClick={[Function]}
+              size={50}
+            >
+              <div
+                style={
+                  Object {
+                    "display": "inline-block",
+                    "lineHeight": 0,
+                    "opacity": 1,
+                  }
+                }
+              >
+                <div
+                  className="sc-dnqmqq gUYUUY"
+                  onContextMenu={[Function]}
+                >
+                  <div
+                    className="sc-gzVnrw bFrnGv"
+                  />
+                </div>
+              </div>
+              <div
+                className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
+              >
+                <div
+                  className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
+                  color="rgba(0,0,0,0)"
+                  size="53%"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            className="sc-jKJlTe diXARm"
+            size={156}
+          >
+            <div
+              className="sc-ckVGcZ fMECE"
+              onClick={[Function]}
+            />
+            <div
+              className="sc-eNQAEJ COYQW"
+              size={156}
+            >
+              <div
+                className="sc-kEYyzF dDLTzk sc-ifAKCX hwskBS"
+                color="#E7E7E7"
+                onClick={[Function]}
+                size={20}
+              />
+              <div
+                className="sc-hMqMXs fuBDam"
+              >
+                <div
+                  className="sc-hSdWYo botgWf sc-ifAKCX dlQxXV"
+                  color="#E7E7E7"
+                  onClick={[Function]}
+                  size={42}
+                />
+              </div>
+              <div
+                className="sc-hMqMXs fuBDam"
+              >
+                <div
+                  className="sc-hSdWYo botgWf sc-ifAKCX dlQxXV"
+                  color="#E7E7E7"
+                  onClick={[Function]}
+                  size={42}
+                />
+                <div
+                  className="sc-kpOJdX kMXElm sc-ifAKCX gPeNwQ"
                   color="#E7E7E7"
                   size={25}
                 />
               </div>
-            </div>
-          </div>
-          <div
-            className="sc-iwsKbI jQQQCh"
-            onClick={[Function]}
-            size={50}
-          >
-            <div
-              style={
-                Object {
-                  "display": "inline-block",
-                  "lineHeight": 0,
-                  "opacity": 1,
-                }
-              }
-            >
               <div
-                className="sc-dnqmqq gUYUUY"
-                onContextMenu={[Function]}
+                className="sc-hMqMXs fuBDam"
               >
                 <div
-                  className="sc-gzVnrw kHYlwv"
+                  className="sc-hSdWYo botgWf sc-ifAKCX dlQxXV"
+                  color="#E7E7E7"
+                  onClick={[Function]}
+                  size={42}
                 />
               </div>
-            </div>
-            <div
-              className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
-            >
-              <div
-                className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
-                color="rgba(0,0,0,0)"
-                size="53%"
-              />
-            </div>
-          </div>
-          <div
-            className="sc-iwsKbI jQQQCh"
-            onClick={[Function]}
-            size={50}
-          >
-            <div
-              style={
-                Object {
-                  "display": "inline-block",
-                  "lineHeight": 0,
-                  "opacity": 1,
-                }
-              }
-            >
-              <div
-                className="sc-dnqmqq gUYUUY"
-                onContextMenu={[Function]}
-              >
-                <div
-                  className="sc-gzVnrw kRTxuL"
-                />
-              </div>
-            </div>
-            <div
-              className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
-            >
-              <div
-                className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
-                color="rgba(0,0,0,0)"
-                size="53%"
-              />
-            </div>
-          </div>
-          <div
-            className="sc-iwsKbI jQQQCh"
-            onClick={[Function]}
-            size={50}
-          >
-            <div
-              style={
-                Object {
-                  "display": "inline-block",
-                  "lineHeight": 0,
-                  "opacity": 1,
-                }
-              }
-            >
-              <div
-                className="sc-dnqmqq gUYUUY"
-                onContextMenu={[Function]}
-              >
-                <div
-                  className="sc-gzVnrw bFrnGv"
-                />
-              </div>
-            </div>
-            <div
-              className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
-            >
-              <div
-                className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
-                color="rgba(0,0,0,0)"
-                size="53%"
-              />
-            </div>
-          </div>
-        </div>
-        <div
-          className="sc-jKJlTe diXARm"
-          size={156}
-        >
-          <div
-            className="sc-ckVGcZ fMECE"
-            onClick={[Function]}
-          />
-          <div
-            className="sc-eNQAEJ COYQW"
-            size={156}
-          >
-            <div
-              className="sc-kEYyzF dDLTzk sc-ifAKCX hwskBS"
-              color="#E7E7E7"
-              onClick={[Function]}
-              size={20}
-            />
-            <div
-              className="sc-hMqMXs fuBDam"
-            >
-              <div
-                className="sc-hSdWYo botgWf sc-ifAKCX dlQxXV"
-                color="#E7E7E7"
-                onClick={[Function]}
-                size={42}
-              />
-            </div>
-            <div
-              className="sc-hMqMXs fuBDam"
-            >
-              <div
-                className="sc-hSdWYo botgWf sc-ifAKCX dlQxXV"
-                color="#E7E7E7"
-                onClick={[Function]}
-                size={42}
-              />
-              <div
-                className="sc-kpOJdX kMXElm sc-ifAKCX gPeNwQ"
-                color="#E7E7E7"
-                size={25}
-              />
-            </div>
-            <div
-              className="sc-hMqMXs fuBDam"
-            >
-              <div
-                className="sc-hSdWYo botgWf sc-ifAKCX dlQxXV"
-                color="#E7E7E7"
-                onClick={[Function]}
-                size={42}
-              />
             </div>
           </div>
         </div>

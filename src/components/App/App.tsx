@@ -9,6 +9,7 @@ import { SystemIcon } from '../../utils/getSystemIcons';
 import { calcCollapsedSystemSize, calcExpandedSystemSize } from '../../utils/windowPositionHelpers';
 
 import AppList from '../AppList';
+import Borders from '../Borders';
 import {
   ArrowIcon,
   Main,
@@ -46,34 +47,36 @@ const App = (props: Props) => {
   return (
     <Main launcherPosition={launcherPosition}>
       <Wrapper endPadding={calcCollapsedSystemSize(systemIcons)} launcherPosition={launcherPosition}>
-        <StyledLogo />
+        <Borders height="100%" width="100%" borderRadius="6px">
+          <StyledLogo />
 
-        <AppList />
+          <AppList />
 
-        <SystemDrawerWrapper isDrawerExpanded={isDrawerExpanded} size={drawerSize} launcherPosition={launcherPosition}>
-          <Overlay isDrawerExpanded={isDrawerExpanded} onClick={toggleDrawer} />
+          <SystemDrawerWrapper isDrawerExpanded={isDrawerExpanded} size={drawerSize} launcherPosition={launcherPosition}>
+            <Overlay isDrawerExpanded={isDrawerExpanded} onClick={toggleDrawer} />
 
-          <SystemIconsWrapper isDrawerExpanded={isDrawerExpanded} size={drawerSize} launcherPosition={launcherPosition}>
-            <ToggleIcon
-              isDrawerExpanded={isDrawerExpanded}
-              launcherPosition={launcherPosition}
-              imgSrc={isDrawerExpanded ? closeIcon : arrowIcon}
-              size={isDrawerExpanded ? 25 : 20}
-              onClick={toggleDrawer}
-            />
+            <SystemIconsWrapper isDrawerExpanded={isDrawerExpanded} size={drawerSize} launcherPosition={launcherPosition}>
+              <ToggleIcon
+                isDrawerExpanded={isDrawerExpanded}
+                launcherPosition={launcherPosition}
+                imgSrc={isDrawerExpanded ? closeIcon : arrowIcon}
+                size={isDrawerExpanded ? 25 : 20}
+                onClick={toggleDrawer}
+              />
 
-            {icons.map(
-              icon =>
-                (icon.shownCollapsed || isDrawerExpanded) && (
-                  <SystemIconWrapper key={icon.key} isDrawerExpanded={isDrawerExpanded} launcherPosition={launcherPosition}>
-                    <StyledSvgIcon imgSrc={icon.icon} onClick={icon.cta} />
+              {icons.map(
+                icon =>
+                  (icon.shownCollapsed || isDrawerExpanded) && (
+                    <SystemIconWrapper key={icon.key} isDrawerExpanded={isDrawerExpanded} launcherPosition={launcherPosition}>
+                      <StyledSvgIcon imgSrc={icon.icon} onClick={icon.cta} />
 
-                    {icon.hasExtendedWindow && <ArrowIcon size={25} launcherPosition={launcherPosition} imgSrc={arrowDownIcon} />}
-                  </SystemIconWrapper>
-                ),
-            )}
-          </SystemIconsWrapper>
-        </SystemDrawerWrapper>
+                      {icon.hasExtendedWindow && <ArrowIcon size={25} launcherPosition={launcherPosition} imgSrc={arrowDownIcon} />}
+                    </SystemIconWrapper>
+                  ),
+              )}
+            </SystemIconsWrapper>
+          </SystemDrawerWrapper>
+        </Borders>
       </Wrapper>
     </Main>
   );

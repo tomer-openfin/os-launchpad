@@ -11,7 +11,7 @@ exports[`Storyshots UI Components/Borders default 1`] = `
     }
   >
     <div
-      className="sc-jTzLTM bUNZLz"
+      className="sc-jTzLTM jFafOY"
       height="100vh"
       width="100vw"
     />
