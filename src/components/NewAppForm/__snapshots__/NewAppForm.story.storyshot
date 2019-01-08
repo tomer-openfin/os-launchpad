@@ -10,358 +10,383 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
       }
     }
   >
-    <form
-      className="sc-eXEjpC gYqrWx"
-      onReset={[Function]}
-      onSubmit={[Function]}
+    <div
+      className="sc-bYSBpT gAlJFU"
     >
       <div
-        className="sc-kGXeez eVMKCi"
+        className="sc-ckVGcZ twTIS"
       >
         <div
-          className="sc-kpOJdX gnaJDQ"
+          className="sc-jKJlTe hPbDl"
         >
-          Create New App
+          <div
+            className="sc-eNQAEJ eBlDWY"
+          >
+            Create New App
+          </div>
         </div>
       </div>
-      <div
-        className="sc-RefOD fcrnjo"
+      <form
+        className="sc-lhVmIH iVmLTH"
+        onReset={[Function]}
+        onSubmit={[Function]}
       >
         <div
-          className="sc-hwwEjo gwBXbe"
+          className="sc-elJkPf hmdIDq"
         >
-          <label
-            className="sc-epnACN gHEdOD"
+          <div
+            className="sc-jtRfpW hMBUBe"
           >
             <div
-              className="sc-hXRMBi eqXrjn"
+              className="sc-kTUwUJ hQtpCG"
             >
-              Manifest URL 
+              <label
+                className="sc-chPdSV IhwhY"
+              >
+                <div
+                  className="sc-kAzzGY yPfeN"
+                >
+                  Manifest URL
+                </div>
+                <input
+                  name="manifest_url"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  placeholder="Enter manifest url"
+                  type="text"
+                  value=""
+                />
+              </label>
+              <div
+                className="sc-kfGgVZ kvSZGZ"
+              >
+                <div
+                  className="sc-ifAKCX kZNJii"
+                  color="#FBC23C"
+                  size={40}
+                />
+              </div>
             </div>
-            <input
-              name="manifest_url"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter manifest url"
-              type="text"
-              value=""
-            />
-            <div
-              className="sc-kfGgVZ hcjETP"
+            <label
+              className="sc-chPdSV IhwhY"
             >
               <div
-                className="sc-esjQYD dtKwW sc-ifAKCX kcXnJc"
-                color="#E7E7E7"
-                onClick={[Function]}
-                size={40}
+                className="sc-kAzzGY yPfeN"
+              >
+                App Title
+              </div>
+              <input
+                name="title"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter app title"
+                type="text"
+                value=""
               />
-            </div>
-          </label>
-          <label
-            className="sc-epnACN gHEdOD"
-          >
+            </label>
             <div
-              className="sc-hXRMBi eqXrjn"
-            >
-              App Title
-            </div>
-            <input
-              name="title"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter app title"
-              type="text"
-              value=""
-            />
-          </label>
-          <label
-            className="sc-epnACN gHEdOD"
-          >
-            <div
-              className="sc-hXRMBi eqXrjn"
-            >
-              Description
-            </div>
-            <textarea
-              name="description"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter description"
-              value=""
-            />
-          </label>
-          <label
-            className="sc-epnACN gHEdOD"
-          >
-            <div
-              className="sc-hXRMBi eqXrjn"
-            >
-              App Icon URL
-            </div>
-            <input
-              name="icon"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter app icon url"
-              type="text"
-              value=""
-            />
-          </label>
-          <label
-            className="sc-epnACN gHEdOD"
-          >
-            <div
-              className="sc-hXRMBi eqXrjn"
-            >
-              Accepted Intent(s)
-            </div>
-            <div
-              className="sc-gzOgki PvONu"
+              className="sc-kTUwUJ fXjzfM"
+              height="99px"
             >
               <label
-                className="sc-kTUwUJ jXyDdZ"
+                className="sc-chPdSV IhwhY"
               >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="intents"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="Start Call"
-                />
                 <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
+                  className="sc-kAzzGY yPfeN"
                 >
-                  Start Call
+                  Description
                 </div>
+                <textarea
+                  name="description"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  placeholder="Enter description"
+                  type="text"
+                  value=""
+                />
               </label>
               <label
-                className="sc-kTUwUJ jXyDdZ"
+                className="sc-chPdSV IhwhY"
               >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="intents"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="Start Chat"
-                />
                 <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
+                  className="sc-kAzzGY yPfeN"
                 >
-                  Start Chat
+                  App Icon URL
                 </div>
-              </label>
-              <label
-                className="sc-kTUwUJ jXyDdZ"
-              >
                 <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="intents"
+                  name="icon"
+                  onBlur={[Function]}
                   onChange={[Function]}
-                  type="checkbox"
-                  value="View Chart"
+                  placeholder="Enter app icon url"
+                  type="text"
+                  value=""
                 />
-                <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
-                >
-                  View Chart
-                </div>
               </label>
-              <label
-                className="sc-kTUwUJ jXyDdZ"
-              >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="intents"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="View Contact"
-                />
-                <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
-                >
-                  View Contact
-                </div>
-              </label>
-              <label
-                className="sc-kTUwUJ jXyDdZ"
-              >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="intents"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="View Quote"
-                />
-                <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
-                >
-                  View Quote
-                </div>
-              </label>
-            </div>
-          </label>
-          <label
-            className="sc-epnACN gHEdOD"
-          >
-            <div
-              className="sc-hXRMBi eqXrjn"
-            >
-              Accepted Context(s)
             </div>
             <div
-              className="sc-gzOgki PvONu"
+              className="sc-kTUwUJ bzxxYq"
+              height="161px"
             >
               <label
-                className="sc-kTUwUJ jXyDdZ"
+                className="sc-chPdSV IhwhY"
               >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="contexts"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="Instrument"
-                />
                 <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
+                  className="sc-kAzzGY yPfeN"
                 >
-                  Instrument
+                  Accepted Intent(s)
+                </div>
+                <div
+                  className="sc-hwwEjo OWOGq"
+                >
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="intents"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="Start Call"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      Start Call
+                    </div>
+                  </label>
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="intents"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="Start Chat"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      Start Chat
+                    </div>
+                  </label>
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="intents"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="View Chart"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      View Chart
+                    </div>
+                  </label>
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="intents"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="View Contact"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      View Contact
+                    </div>
+                  </label>
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="intents"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="View Quote"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      View Quote
+                    </div>
+                  </label>
                 </div>
               </label>
               <label
-                className="sc-kTUwUJ jXyDdZ"
+                className="sc-chPdSV IhwhY"
               >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="contexts"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="Contact"
-                />
                 <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
+                  className="sc-kAzzGY yPfeN"
                 >
-                  Contact
+                  Accepted Context(s)
                 </div>
-              </label>
-              <label
-                className="sc-kTUwUJ jXyDdZ"
-              >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="contexts"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="Organization"
-                />
                 <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
+                  className="sc-hwwEjo OWOGq"
                 >
-                  Organization
-                </div>
-              </label>
-              <label
-                className="sc-kTUwUJ jXyDdZ"
-              >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="contexts"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="Contact List"
-                />
-                <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
-                >
-                  Contact List
-                </div>
-              </label>
-              <label
-                className="sc-kTUwUJ jXyDdZ"
-              >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="contexts"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="Position"
-                />
-                <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
-                >
-                  Position
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="contexts"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="Instrument"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      Instrument
+                    </div>
+                  </label>
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="contexts"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="Contact"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      Contact
+                    </div>
+                  </label>
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="contexts"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="Organization"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      Organization
+                    </div>
+                  </label>
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="contexts"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="Contact List"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      Contact List
+                    </div>
+                  </label>
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="contexts"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="Position"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      Position
+                    </div>
+                  </label>
                 </div>
               </label>
             </div>
-          </label>
+          </div>
         </div>
-      </div>
-      <div
-        className="sc-kPVwWT fseksS"
-      >
         <div
-          className="sc-iyvyFf iWjFeD"
+          className="sc-kPVwWT fenHcF"
         >
-          <a
-            backgroundColor="#848484"
-            className="sc-jzJRlG fqzrje"
-            href="/admin/apps"
-            onClick={[Function]}
-            type="button"
-            width={128}
+          <div
+            className="sc-dqBHgY bVyiui"
           >
-            Cancel
-          </a>
-          <button
-            className="sc-fjdhpX caCFrM"
-            disabled={true}
-            type="submit"
-            width={128}
-          >
-            Save
-          </button>
+            <a
+              backgroundColor="#848484"
+              className="sc-jzJRlG fqzrje"
+              href="/admin/apps"
+              onClick={[Function]}
+              type="button"
+              width={128}
+            >
+              Cancel
+            </a>
+            <button
+              className="sc-fjdhpX caCFrM"
+              disabled={true}
+              type="submit"
+              width={128}
+            >
+              Save
+            </button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+      <div
+        className="sc-gxMtzJ fKxZge"
+      />
+    </div>
   </div>
   <button
     onClick={[Function]}

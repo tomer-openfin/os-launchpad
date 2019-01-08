@@ -10,353 +10,389 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
       }
     }
   >
-    <form
-      className="sc-eXEjpC gYqrWx"
-      onReset={[Function]}
-      onSubmit={[Function]}
+    <div
+      className="sc-bYSBpT gAlJFU"
     >
       <div
-        className="sc-kGXeez eVMKCi"
+        className="sc-ckVGcZ twTIS"
       >
         <div
-          className="sc-kpOJdX gnaJDQ"
+          className="sc-jKJlTe hPbDl"
         >
-          Edit FinTech Studios
-        </div>
-      </div>
-      <div
-        className="sc-RefOD fcrnjo"
-      >
-        <div
-          className="sc-hwwEjo gwBXbe"
-        >
-          <label
-            className="sc-epnACN gHEdOD"
+          <div
+            className="sc-iQKALj kOvhfm"
           >
-            <div
-              className="sc-hXRMBi eqXrjn"
-            >
-              Manifest URL 
-            </div>
-            <input
-              name="manifest_url"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter manifest url"
-              type="text"
-              value="https://openfin.fintechstudios.com/openfin_config.json"
-            />
-            <div
-              className="sc-esjQYD dtKwW sc-ifAKCX fIOdyr"
-              color="#E7E7E7"
-              size={40}
-            />
-          </label>
-          <label
-            className="sc-epnACN gHEdOD"
-          >
-            <div
-              className="sc-hXRMBi eqXrjn"
-            >
-              App Title
-            </div>
-            <input
-              name="title"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter app title"
-              type="text"
-              value="FinTech Studios"
-            />
-          </label>
-          <label
-            className="sc-epnACN gHEdOD"
-          >
-            <div
-              className="sc-hXRMBi eqXrjn"
-            >
-              Description
-            </div>
-            <textarea
-              name="description"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter description"
-              value="Using cutting edge artificial intelligence and machine learning, FTS delivers actionable news, research, market analytics, and analytics from millions of sources."
-            />
-          </label>
-          <label
-            className="sc-epnACN gHEdOD"
-          >
-            <div
-              className="sc-hXRMBi eqXrjn"
-            >
-              App Icon URL
-            </div>
-            <input
-              name="icon"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter app icon url"
-              type="text"
-              value="https://cdn.openfin.co/app_directory/img/1525196541056.jpg"
-            />
-          </label>
-          <label
-            className="sc-epnACN gHEdOD"
-          >
-            <div
-              className="sc-hXRMBi eqXrjn"
-            >
-              Accepted Intent(s)
-            </div>
-            <div
-              className="sc-gzOgki PvONu"
-            >
-              <label
-                className="sc-kTUwUJ jXyDdZ"
-              >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="intents"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="Start Call"
-                />
-                <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
-                >
-                  Start Call
-                </div>
-              </label>
-              <label
-                className="sc-kTUwUJ jXyDdZ"
-              >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="intents"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="Start Chat"
-                />
-                <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
-                >
-                  Start Chat
-                </div>
-              </label>
-              <label
-                className="sc-kTUwUJ jXyDdZ"
-              >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="intents"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="View Chart"
-                />
-                <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
-                >
-                  View Chart
-                </div>
-              </label>
-              <label
-                className="sc-kTUwUJ jXyDdZ"
-              >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="intents"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="View Contact"
-                />
-                <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
-                >
-                  View Contact
-                </div>
-              </label>
-              <label
-                className="sc-kTUwUJ jXyDdZ"
-              >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="intents"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="View Quote"
-                />
-                <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
-                >
-                  View Quote
-                </div>
-              </label>
-            </div>
-          </label>
-          <label
-            className="sc-epnACN gHEdOD"
-          >
-            <div
-              className="sc-hXRMBi eqXrjn"
-            >
-              Accepted Context(s)
-            </div>
-            <div
-              className="sc-gzOgki PvONu"
-            >
-              <label
-                className="sc-kTUwUJ jXyDdZ"
-              >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="contexts"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="Instrument"
-                />
-                <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
-                >
-                  Instrument
-                </div>
-              </label>
-              <label
-                className="sc-kTUwUJ jXyDdZ"
-              >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="contexts"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="Contact"
-                />
-                <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
-                >
-                  Contact
-                </div>
-              </label>
-              <label
-                className="sc-kTUwUJ jXyDdZ"
-              >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="contexts"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="Organization"
-                />
-                <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
-                >
-                  Organization
-                </div>
-              </label>
-              <label
-                className="sc-kTUwUJ jXyDdZ"
-              >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="contexts"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="Contact List"
-                />
-                <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
-                >
-                  Contact List
-                </div>
-              </label>
-              <label
-                className="sc-kTUwUJ jXyDdZ"
-              >
-                <input
-                  checked={false}
-                  className="sc-dfVpRl bMWEuz"
-                  name="contexts"
-                  onChange={[Function]}
-                  type="checkbox"
-                  value="Position"
-                />
-                <div
-                  className="sc-gxMtzJ BtPxQ"
-                />
-                <div
-                  className="sc-dqBHgY hNdTbo"
-                >
-                  Position
-                </div>
-              </label>
-            </div>
-          </label>
-        </div>
-      </div>
-      <div
-        className="sc-kPVwWT fseksS"
-      >
-        <div
-          className="sc-iyvyFf iWjFeD"
-        >
-          <a
-            backgroundColor="#848484"
-            className="sc-jzJRlG fqzrje"
-            href="/admin/apps"
+            Edit FinTech Studios
+          </div>
+          <div
+            className="sc-ifAKCX kbLJAY"
+            color="#848484"
             onClick={[Function]}
-            type="button"
-            width={128}
-          >
-            Cancel
-          </a>
-          <button
-            className="sc-fjdhpX caCFrM"
-            disabled={true}
-            type="submit"
-            width={128}
-          >
-            Save
-          </button>
+            size={30}
+          />
         </div>
       </div>
-    </form>
+      <form
+        className="sc-lhVmIH iVmLTH"
+        onReset={[Function]}
+        onSubmit={[Function]}
+      >
+        <div
+          className="sc-elJkPf hmdIDq"
+        >
+          <div
+            className="sc-jtRfpW hMBUBe"
+          >
+            <div
+              className="sc-kTUwUJ hQtpCG"
+            >
+              <label
+                className="sc-chPdSV IhwhY"
+              >
+                <div
+                  className="sc-kAzzGY yPfeN"
+                >
+                  Manifest URL
+                </div>
+                <input
+                  name="manifest_url"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  placeholder="Enter manifest url"
+                  type="text"
+                  value="https://openfin.fintechstudios.com/openfin_config.json"
+                />
+              </label>
+              <div
+                className="sc-kfGgVZ kvSZGZ"
+              >
+                <div
+                  className="sc-ifAKCX kZNJii"
+                  color="#FBC23C"
+                  size={40}
+                />
+              </div>
+            </div>
+            <label
+              className="sc-chPdSV IhwhY"
+            >
+              <div
+                className="sc-kAzzGY yPfeN"
+              >
+                App Title
+              </div>
+              <input
+                name="title"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter app title"
+                type="text"
+                value="FinTech Studios"
+              />
+            </label>
+            <div
+              className="sc-kTUwUJ fXjzfM"
+              height="99px"
+            >
+              <label
+                className="sc-chPdSV IhwhY"
+              >
+                <div
+                  className="sc-kAzzGY yPfeN"
+                >
+                  Description
+                </div>
+                <textarea
+                  name="description"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  placeholder="Enter description"
+                  type="text"
+                  value="Using cutting edge artificial intelligence and machine learning, FTS delivers actionable news, research, market analytics, and analytics from millions of sources."
+                />
+              </label>
+              <label
+                className="sc-chPdSV IhwhY"
+              >
+                <div
+                  className="sc-kAzzGY yPfeN"
+                >
+                  App Icon URL
+                </div>
+                <input
+                  name="icon"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  placeholder="Enter app icon url"
+                  type="text"
+                  value="https://cdn.openfin.co/app_directory/img/1525196541056.jpg"
+                />
+              </label>
+            </div>
+            <div
+              className="sc-kTUwUJ bzxxYq"
+              height="161px"
+            >
+              <label
+                className="sc-chPdSV IhwhY"
+              >
+                <div
+                  className="sc-kAzzGY yPfeN"
+                >
+                  Accepted Intent(s)
+                </div>
+                <div
+                  className="sc-hwwEjo OWOGq"
+                >
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="intents"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="Start Call"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      Start Call
+                    </div>
+                  </label>
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="intents"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="Start Chat"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      Start Chat
+                    </div>
+                  </label>
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="intents"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="View Chart"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      View Chart
+                    </div>
+                  </label>
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="intents"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="View Contact"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      View Contact
+                    </div>
+                  </label>
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="intents"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="View Quote"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      View Quote
+                    </div>
+                  </label>
+                </div>
+              </label>
+              <label
+                className="sc-chPdSV IhwhY"
+              >
+                <div
+                  className="sc-kAzzGY yPfeN"
+                >
+                  Accepted Context(s)
+                </div>
+                <div
+                  className="sc-hwwEjo OWOGq"
+                >
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="contexts"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="Instrument"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      Instrument
+                    </div>
+                  </label>
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="contexts"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="Contact"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      Contact
+                    </div>
+                  </label>
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="contexts"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="Organization"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      Organization
+                    </div>
+                  </label>
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="contexts"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="Contact List"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      Contact List
+                    </div>
+                  </label>
+                  <label
+                    className="sc-esjQYD gmuNQO"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-ibxdXY GiPaW"
+                      name="contexts"
+                      onChange={[Function]}
+                      type="checkbox"
+                      value="Position"
+                    />
+                    <div
+                      className="sc-eXEjpC bqxAO"
+                    />
+                    <div
+                      className="sc-kIPQKe bxueqI"
+                    >
+                      Position
+                    </div>
+                  </label>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-kPVwWT fenHcF"
+        >
+          <div
+            className="sc-dqBHgY bVyiui"
+          >
+            <a
+              backgroundColor="#848484"
+              className="sc-jzJRlG fqzrje"
+              href="/admin/apps"
+              onClick={[Function]}
+              type="button"
+              width={128}
+            >
+              Cancel
+            </a>
+            <button
+              className="sc-fjdhpX caCFrM"
+              disabled={true}
+              type="submit"
+              width={128}
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+      <div
+        className="sc-gxMtzJ fKxZge"
+      />
+    </div>
   </div>
   <button
     onClick={[Function]}
@@ -512,6 +548,32 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                     <span
                       style={Object {}}
                     >
+                      updateApp
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          updateApp
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
                       location
                     </span>
                     <span>
@@ -625,32 +687,6 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                               
                           </span>
                           }
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      updateApp
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          updateApp
                         </span>
                         }
                       </span>

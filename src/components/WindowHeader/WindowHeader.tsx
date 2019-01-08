@@ -3,18 +3,16 @@ import * as React from 'react';
 import { Color } from '../../styles';
 
 import CloseButton from '../CloseButton';
-import { CtaWrapper, Header, Title } from './WindowHeader.css';
+import { Children, CtaWrapper, Header, Title } from './WindowHeader.css';
 
 interface Props {
   backgroundColor?: string;
-  justifyContent?: string;
   withoutClose?: boolean;
   children?: React.ReactNode;
 }
 
 const defaultProps: Partial<Props> = {
   backgroundColor: Color.KUIPER_BELT,
-  justifyContent: 'space-between',
 };
 
 const handleClose = () => {
@@ -24,11 +22,11 @@ const handleClose = () => {
   }
 };
 
-const { backgroundColor: defaultBackgroundColor, justifyContent: defaultJustifyContent } = defaultProps;
+const { backgroundColor: defaultBackgroundColor } = defaultProps;
 
-const WindowHeader = ({ children, withoutClose, backgroundColor = defaultBackgroundColor, justifyContent = defaultJustifyContent }: Props) => (
-  <Header backgroundColor={backgroundColor} justifyContent={justifyContent}>
-    {typeof children === 'string' ? <Title>{children}</Title> : children}
+const WindowHeader = ({ children, withoutClose, backgroundColor = defaultBackgroundColor }: Props) => (
+  <Header backgroundColor={backgroundColor}>
+    <Children>{typeof children === 'string' ? <Title>{children}</Title> : children}</Children>
 
     {!withoutClose && (
       <CtaWrapper>

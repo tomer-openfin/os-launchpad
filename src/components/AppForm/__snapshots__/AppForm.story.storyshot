@@ -1,0 +1,865 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Admin Components/AppForm default 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "position": "relative",
+        "zIndex": 0,
+      }
+    }
+  >
+    <form
+      className="sc-lhVmIH iVmLTH"
+      onReset={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className="sc-elJkPf hmdIDq"
+      >
+        <div
+          className="sc-jtRfpW hMBUBe"
+        >
+          <div
+            className="sc-kTUwUJ hQtpCG"
+          >
+            <label
+              className="sc-chPdSV IhwhY"
+            >
+              <div
+                className="sc-kAzzGY yPfeN"
+              >
+                Manifest URL
+              </div>
+              <input
+                name="manifest_url"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter manifest url"
+                type="text"
+              />
+            </label>
+            <div
+              className="sc-kfGgVZ kvSZGZ"
+            >
+              <div
+                className="sc-ifAKCX kZNJii"
+                color="#FBC23C"
+                size={40}
+              />
+            </div>
+          </div>
+          <label
+            className="sc-chPdSV IhwhY"
+          >
+            <div
+              className="sc-kAzzGY yPfeN"
+            >
+              App Title
+            </div>
+            <input
+              name="title"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Enter app title"
+              type="text"
+            />
+          </label>
+          <div
+            className="sc-kTUwUJ fXjzfM"
+            height="99px"
+          >
+            <label
+              className="sc-chPdSV IhwhY"
+            >
+              <div
+                className="sc-kAzzGY yPfeN"
+              >
+                Description
+              </div>
+              <textarea
+                name="description"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter description"
+                type="text"
+              />
+            </label>
+            <label
+              className="sc-chPdSV IhwhY"
+            >
+              <div
+                className="sc-kAzzGY yPfeN"
+              >
+                App Icon URL
+              </div>
+              <input
+                name="icon"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter app icon url"
+                type="text"
+              />
+            </label>
+          </div>
+          <div
+            className="sc-kTUwUJ bzxxYq"
+            height="161px"
+          >
+            <label
+              className="sc-chPdSV IhwhY"
+            >
+              <div
+                className="sc-kAzzGY yPfeN"
+              >
+                Accepted Intent(s)
+              </div>
+              <div
+                className="sc-hwwEjo OWOGq"
+              >
+                <label
+                  className="sc-esjQYD gmuNQO"
+                >
+                  <input
+                    className="sc-ibxdXY GiPaW"
+                    name="intents"
+                    onChange={[Function]}
+                    type="checkbox"
+                    value="Start Call"
+                  />
+                  <div
+                    className="sc-eXEjpC bqxAO"
+                  />
+                  <div
+                    className="sc-kIPQKe bxueqI"
+                  >
+                    Start Call
+                  </div>
+                </label>
+                <label
+                  className="sc-esjQYD gmuNQO"
+                >
+                  <input
+                    className="sc-ibxdXY GiPaW"
+                    name="intents"
+                    onChange={[Function]}
+                    type="checkbox"
+                    value="Start Chat"
+                  />
+                  <div
+                    className="sc-eXEjpC bqxAO"
+                  />
+                  <div
+                    className="sc-kIPQKe bxueqI"
+                  >
+                    Start Chat
+                  </div>
+                </label>
+                <label
+                  className="sc-esjQYD gmuNQO"
+                >
+                  <input
+                    className="sc-ibxdXY GiPaW"
+                    name="intents"
+                    onChange={[Function]}
+                    type="checkbox"
+                    value="View Chart"
+                  />
+                  <div
+                    className="sc-eXEjpC bqxAO"
+                  />
+                  <div
+                    className="sc-kIPQKe bxueqI"
+                  >
+                    View Chart
+                  </div>
+                </label>
+                <label
+                  className="sc-esjQYD gmuNQO"
+                >
+                  <input
+                    className="sc-ibxdXY GiPaW"
+                    name="intents"
+                    onChange={[Function]}
+                    type="checkbox"
+                    value="View Contact"
+                  />
+                  <div
+                    className="sc-eXEjpC bqxAO"
+                  />
+                  <div
+                    className="sc-kIPQKe bxueqI"
+                  >
+                    View Contact
+                  </div>
+                </label>
+                <label
+                  className="sc-esjQYD gmuNQO"
+                >
+                  <input
+                    className="sc-ibxdXY GiPaW"
+                    name="intents"
+                    onChange={[Function]}
+                    type="checkbox"
+                    value="View Quote"
+                  />
+                  <div
+                    className="sc-eXEjpC bqxAO"
+                  />
+                  <div
+                    className="sc-kIPQKe bxueqI"
+                  >
+                    View Quote
+                  </div>
+                </label>
+              </div>
+            </label>
+            <label
+              className="sc-chPdSV IhwhY"
+            >
+              <div
+                className="sc-kAzzGY yPfeN"
+              >
+                Accepted Context(s)
+              </div>
+              <div
+                className="sc-hwwEjo OWOGq"
+              >
+                <label
+                  className="sc-esjQYD gmuNQO"
+                >
+                  <input
+                    className="sc-ibxdXY GiPaW"
+                    name="contexts"
+                    onChange={[Function]}
+                    type="checkbox"
+                    value="Instrument"
+                  />
+                  <div
+                    className="sc-eXEjpC bqxAO"
+                  />
+                  <div
+                    className="sc-kIPQKe bxueqI"
+                  >
+                    Instrument
+                  </div>
+                </label>
+                <label
+                  className="sc-esjQYD gmuNQO"
+                >
+                  <input
+                    className="sc-ibxdXY GiPaW"
+                    name="contexts"
+                    onChange={[Function]}
+                    type="checkbox"
+                    value="Contact"
+                  />
+                  <div
+                    className="sc-eXEjpC bqxAO"
+                  />
+                  <div
+                    className="sc-kIPQKe bxueqI"
+                  >
+                    Contact
+                  </div>
+                </label>
+                <label
+                  className="sc-esjQYD gmuNQO"
+                >
+                  <input
+                    className="sc-ibxdXY GiPaW"
+                    name="contexts"
+                    onChange={[Function]}
+                    type="checkbox"
+                    value="Organization"
+                  />
+                  <div
+                    className="sc-eXEjpC bqxAO"
+                  />
+                  <div
+                    className="sc-kIPQKe bxueqI"
+                  >
+                    Organization
+                  </div>
+                </label>
+                <label
+                  className="sc-esjQYD gmuNQO"
+                >
+                  <input
+                    className="sc-ibxdXY GiPaW"
+                    name="contexts"
+                    onChange={[Function]}
+                    type="checkbox"
+                    value="Contact List"
+                  />
+                  <div
+                    className="sc-eXEjpC bqxAO"
+                  />
+                  <div
+                    className="sc-kIPQKe bxueqI"
+                  >
+                    Contact List
+                  </div>
+                </label>
+                <label
+                  className="sc-esjQYD gmuNQO"
+                >
+                  <input
+                    className="sc-ibxdXY GiPaW"
+                    name="contexts"
+                    onChange={[Function]}
+                    type="checkbox"
+                    value="Position"
+                  />
+                  <div
+                    className="sc-eXEjpC bqxAO"
+                  />
+                  <div
+                    className="sc-kIPQKe bxueqI"
+                  >
+                    Position
+                  </div>
+                </label>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div
+        className="sc-kPVwWT fenHcF"
+      >
+        <div
+          className="sc-dqBHgY bVyiui"
+        >
+          <a
+            backgroundColor="#848484"
+            className="sc-jzJRlG fqzrje"
+            href="/admin/apps"
+            onClick={[Function]}
+            type="button"
+            width={128}
+          >
+            Cancel
+          </a>
+          <button
+            className="sc-fjdhpX caCFrM"
+            disabled={true}
+            type="submit"
+            width={128}
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <button
+    onClick={[Function]}
+    style={
+      Object {
+        "background": "#28c",
+        "border": "none",
+        "borderRadius": "0 0 0 5px",
+        "color": "#fff",
+        "cursor": "pointer",
+        "display": "block",
+        "fontFamily": "sans-serif",
+        "fontSize": "12px",
+        "padding": "5px 15px",
+        "position": "fixed",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    type="button"
+  >
+    Show Info
+  </button>
+  <div
+    style={
+      Object {
+        "background": "white",
+        "bottom": 0,
+        "display": "none",
+        "left": 0,
+        "overflow": "auto",
+        "padding": "0 40px",
+        "position": "fixed",
+        "right": 0,
+        "top": 0,
+        "zIndex": 99999,
+      }
+    }
+  >
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "#28c",
+          "border": "none",
+          "borderRadius": "0 0 0 5px",
+          "color": "#fff",
+          "cursor": "pointer",
+          "display": "block",
+          "fontFamily": "sans-serif",
+          "fontSize": "12px",
+          "padding": "5px 15px",
+          "position": "fixed",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      type="button"
+    >
+      ×
+    </button>
+    <div>
+      <div
+        style={
+          Object {
+            "WebkitFontSmoothing": "antialiased",
+            "backgroundColor": "#fff",
+            "border": "1px solid #eee",
+            "borderRadius": "2px",
+            "color": "#444",
+            "fontFamily": "-apple-system, \\".SFNSText-Regular\\", \\"San Francisco\\", BlinkMacSystemFont, \\"Segoe UI\\", \\"Roboto\\", \\"Oxygen\\", \\"Ubuntu\\", \\"Cantarell\\", \\"Fira Sans\\", \\"Droid Sans\\", \\"Helvetica Neue\\", \\"Lucida Grande\\", \\"Arial\\", sans-serif",
+            "fontSize": "15px",
+            "fontWeight": 300,
+            "lineHeight": 1.45,
+            "marginBottom": "20px",
+            "marginTop": "20px",
+            "padding": "20px 40px 40px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "borderBottom": "1px solid #eee",
+              "marginBottom": 10,
+              "paddingTop": 10,
+            }
+          }
+        >
+          <h1
+            style={
+              Object {
+                "fontSize": "35px",
+                "margin": 0,
+                "padding": 0,
+              }
+            }
+          >
+            Admin Components/AppForm
+          </h1>
+          <h2
+            style={
+              Object {
+                "fontSize": "22px",
+                "fontWeight": 400,
+                "margin": "0 0 10px 0",
+                "padding": 0,
+              }
+            }
+          >
+            default
+          </h2>
+        </div>
+        
+        <div>
+          <h1
+            style={
+              Object {
+                "borderBottom": "1px solid #EEE",
+                "fontSize": "25px",
+                "margin": "20px 0 0 0",
+                "padding": "0 0 5px 0",
+              }
+            }
+          >
+            Story Source
+          </h1>
+          <pre
+            className="css-r8d96o eyvlbql0"
+          >
+            <div>
+              <div
+                style={
+                  Object {
+                    "paddingLeft": 18,
+                    "paddingRight": 3,
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "color": "#444",
+                    }
+                  }
+                >
+                  &lt;
+                  Formik
+                </span>
+                <span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      initialValues
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#666",
+                            }
+                          }
+                        >
+                          {
+                          }
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      onSubmit
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      validateOnChange
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#a11",
+                            }
+                          }
+                        >
+                          false
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      render
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          AppForm
+                        </span>
+                        }
+                      </span>
+                    </span>
+                    <br />
+                  </span>
+                </span>
+                <span
+                  style={
+                    Object {
+                      "color": "#444",
+                    }
+                  }
+                >
+                  /&gt;
+                </span>
+              </div>
+            </div>
+            <button
+              className="css-1naocv3 eva467m0"
+              onClick={[Function]}
+            >
+              <div
+                className="css-lvl6aa eva467m1"
+              >
+                <div
+                  style={
+                    Object {
+                      "marginBottom": 6,
+                    }
+                  }
+                >
+                  Copied!
+                </div>
+                <div>
+                  Copy
+                </div>
+              </div>
+            </button>
+          </pre>
+        </div>
+        <div>
+          <h1
+            style={
+              Object {
+                "borderBottom": "1px solid #EEE",
+                "fontSize": "25px",
+                "margin": "20px 0 0 0",
+                "padding": "0 0 5px 0",
+              }
+            }
+          >
+            Prop Types
+          </h1>
+          <div>
+            <h2
+              style={
+                Object {
+                  "margin": "20px 0 0 0",
+                }
+              }
+            >
+              "
+              Formik
+              " Component
+            </h2>
+            <table
+              className="css-1uhv8nx e1vdo5380"
+            >
+              <thead>
+                <tr>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    property
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    propType
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    required
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    default
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    validateOnChange
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      true
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    validateOnBlur
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      true
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    isInitialValid
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      false
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    enableReinitialize
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      false
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

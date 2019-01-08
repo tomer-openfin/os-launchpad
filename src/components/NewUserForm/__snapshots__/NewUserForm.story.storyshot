@@ -10,170 +10,183 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
       }
     }
   >
-    <form
-      className="sc-eXEjpC gYqrWx"
-      onReset={[Function]}
-      onSubmit={[Function]}
+    <div
+      className="sc-bYSBpT gAlJFU"
     >
       <div
-        className="sc-kGXeez eVMKCi"
+        className="sc-ckVGcZ twTIS"
       >
         <div
-          className="sc-kpOJdX gnaJDQ"
-        >
-          Create New User
-        </div>
-      </div>
-      <div
-        className="sc-RefOD fcrnjo"
-      >
-        <div
-          className="sc-iQKALj gotMSV"
+          className="sc-jKJlTe hPbDl"
         >
           <div
-            className="sc-bwCtUz idzhld"
+            className="sc-eNQAEJ eBlDWY"
           >
-            <label
-              className="sc-epnACN gHEdOD"
-            >
-              <div
-                className="sc-hXRMBi eqXrjn"
-              >
-                First Name
-              </div>
-              <input
-                name="firstName"
-                onBlur={[Function]}
-                onChange={[Function]}
-                placeholder="Enter first name"
-                type="text"
-                value=""
-              />
-            </label>
-            <label
-              className="sc-epnACN gHEdOD"
-            >
-              <div
-                className="sc-hXRMBi eqXrjn"
-              >
-                MI
-              </div>
-              <input
-                name="middleInitial"
-                onBlur={[Function]}
-                onChange={[Function]}
-                type="text"
-                value=""
-              />
-            </label>
+            Create New User
           </div>
-          <label
-            className="sc-epnACN gHEdOD"
-          >
-            <div
-              className="sc-hXRMBi eqXrjn"
-            >
-              Last Name
-            </div>
-            <input
-              name="lastName"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter last name"
-              type="text"
-              value=""
-            />
-          </label>
-          <label
-            className="sc-epnACN gHEdOD"
-          >
-            <div
-              className="sc-hXRMBi eqXrjn"
-            >
-              Phone Number
-            </div>
-            <input
-              maxLength="10"
-              name="phone"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter phone number"
-              type="text"
-              value=""
-            />
-          </label>
-          <label
-            className="sc-epnACN gHEdOD"
-          >
-            <div
-              className="sc-hXRMBi eqXrjn"
-            >
-              Email
-            </div>
-            <input
-              name="email"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter email"
-              type="email"
-              value=""
-            />
-          </label>
-          <label
-            className="sc-epnACN gHEdOD"
-          >
-            <div
-              className="sc-hXRMBi eqXrjn"
-            >
-              Password
-            </div>
-            <input
-              name="tmpPassword"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter password"
-              type="password"
-              value=""
-            />
-            <div
-              className="sc-bsbRJL gUfiyN"
-            >
-              <div
-                className="sc-hZSUBg xldQO sc-ifAKCX gPeNwQ"
-                color="#E7E7E7"
-                size={25}
-              />
-            </div>
-          </label>
         </div>
       </div>
-      <div
-        className="sc-kPVwWT fseksS"
+      <form
+        className="sc-lhVmIH iVmLTH"
+        onReset={[Function]}
+        onSubmit={[Function]}
       >
         <div
-          className="sc-hrWEMg ftELXs"
+          className="sc-elJkPf hmdIDq"
         >
-          <a
-            backgroundColor="#848484"
-            className="sc-jzJRlG fqzrje"
-            href="/admin/users"
-            onClick={[Function]}
-            type="button"
-            width={128}
+          <div
+            className="sc-jtRfpW hMBUBe"
           >
-            Cancel
-          </a>
-          <button
-            className="sc-fjdhpX caCFrM"
-            disabled={true}
-            type="submit"
-            width={128}
-          >
-            Save
-          </button>
+            <div
+              className="sc-kTUwUJ iyctqy"
+            >
+              <label
+                className="sc-chPdSV IhwhY"
+              >
+                <div
+                  className="sc-kAzzGY yPfeN"
+                >
+                  First Name
+                </div>
+                <input
+                  name="firstName"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  placeholder="Enter first name"
+                  type="text"
+                  value=""
+                />
+              </label>
+              <label
+                className="sc-chPdSV IhwhY"
+              >
+                <div
+                  className="sc-kAzzGY yPfeN"
+                >
+                  MI
+                </div>
+                <input
+                  name="middleInitial"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  type="text"
+                  value=""
+                />
+              </label>
+            </div>
+            <label
+              className="sc-chPdSV IhwhY"
+            >
+              <div
+                className="sc-kAzzGY yPfeN"
+              >
+                Last Name
+              </div>
+              <input
+                name="lastName"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter last name"
+                type="text"
+                value=""
+              />
+            </label>
+            <label
+              className="sc-chPdSV IhwhY"
+            >
+              <div
+                className="sc-kAzzGY yPfeN"
+              >
+                Phone Number
+              </div>
+              <input
+                maxLength="10"
+                name="phone"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter phone number"
+                type="text"
+                value=""
+              />
+            </label>
+            <label
+              className="sc-chPdSV IhwhY"
+            >
+              <div
+                className="sc-kAzzGY yPfeN"
+              >
+                Email
+              </div>
+              <input
+                disabled={false}
+                name="email"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter email"
+                type="email"
+                value=""
+              />
+            </label>
+            <label
+              className="sc-chPdSV IhwhY"
+            >
+              <div
+                className="sc-kAzzGY yPfeN"
+              >
+                Password
+              </div>
+              <input
+                name="tmpPassword"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter password"
+                type="password"
+                value=""
+              />
+              <div
+                className="sc-iyvyFf dzRxhC"
+              >
+                <div
+                  className="sc-ifAKCX xmkOg"
+                  color="#E7E7E7"
+                  onClick={[Function]}
+                  size={25}
+                />
+              </div>
+            </label>
+          </div>
         </div>
-      </div>
-    </form>
+        <div
+          className="sc-kPVwWT fenHcF"
+        >
+          <div
+            className="sc-dqBHgY bVyiui"
+          >
+            <a
+              backgroundColor="#848484"
+              className="sc-jzJRlG fqzrje"
+              href="/admin/users"
+              onClick={[Function]}
+              type="button"
+              width={128}
+            >
+              Cancel
+            </a>
+            <button
+              className="sc-fjdhpX caCFrM"
+              disabled={true}
+              type="submit"
+              width={128}
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+      <div
+        className="sc-gxMtzJ fKxZge"
+      />
+    </div>
   </div>
   <button
     onClick={[Function]}

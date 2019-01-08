@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/Login Change Password 1`] = `
+exports[`Storyshots UI Components/FormField Default 1`] = `
 <div>
   <div
     style={
@@ -10,55 +10,23 @@ exports[`Storyshots Components/Login Change Password 1`] = `
       }
     }
   >
-    <div
-      className="sc-kjoXOD lbrulE"
+    <label
+      className="sc-chPdSV IhwhY"
     >
       <div
-        className="sc-kgoBCf jeyhvI"
-      />
-      <div
-        className="sc-TOsTZ fcavAx"
+        className="sc-kAzzGY yPfeN"
       >
-        Please create a new password
+        Email
       </div>
-      <form
-        onReset={[Function]}
-        onSubmit={[Function]}
-      >
-        <label
-          className="sc-cHGsZl kcXkK"
-        >
-          <input
-            name="newPassword"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="New Password"
-            type="password"
-          />
-        </label>
-        <label
-          className="sc-cHGsZl kcXkK"
-        >
-          <input
-            name="newPasswordConfirmation"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="Confirm Password"
-            type="password"
-          />
-        </label>
-        <label
-          className="sc-cHGsZl kcXkK"
-        >
-          <button
-            className="sc-fjdhpX sc-kgAjT eZamMG"
-            type="submit"
-          >
-            Create New Password
-          </button>
-        </label>
-      </form>
-    </div>
+      <input
+        disabled={false}
+        name="email"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Enter Email"
+        type="text"
+      />
+    </label>
   </div>
   <button
     onClick={[Function]}
@@ -157,7 +125,7 @@ exports[`Storyshots Components/Login Change Password 1`] = `
               }
             }
           >
-            Components/Login
+            UI Components/FormField
           </h1>
           <h2
             style={
@@ -169,7 +137,7 @@ exports[`Storyshots Components/Login Change Password 1`] = `
               }
             }
           >
-            Change Password
+            Default
           </h2>
         </div>
         
@@ -206,15 +174,18 @@ exports[`Storyshots Components/Login Change Password 1`] = `
                   }
                 >
                   &lt;
-                  Login
+                  Formik
                 </span>
                 <span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
-                      loginState
+                      initialValues
                     </span>
                     <span>
                       =
@@ -230,100 +201,6 @@ exports[`Storyshots Components/Login Change Password 1`] = `
                           }
                         >
                           {
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              changePassword
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
-                              }
-                            }
-                          >
-                            true
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              error
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
-                              }
-                            }
-                          >
-                            false
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              message
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            'Please create a new password'
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            …
-                          </span>
-                          <span>
-                            <br />
-                              
-                          </span>
                           }
                         </span>
                         }
@@ -331,11 +208,14 @@ exports[`Storyshots Components/Login Change Password 1`] = `
                     </span>
                   </span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
-                      login
+                      onSubmit
                     </span>
                     <span>
                       =
@@ -350,18 +230,50 @@ exports[`Storyshots Components/Login Change Password 1`] = `
                             }
                           }
                         >
-                          Login options
+                          noop
                         </span>
                         }
                       </span>
                     </span>
                   </span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
-                      loginWithNewPassword
+                      validateOnChange
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#a11",
+                            }
+                          }
+                        >
+                          false
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      render
                     </span>
                     <span>
                       =
@@ -376,12 +288,12 @@ exports[`Storyshots Components/Login Change Password 1`] = `
                             }
                           }
                         >
-                          Login with new password options
+                          renderEmailField
                         </span>
                         }
                       </span>
                     </span>
-                     
+                    <br />
                   </span>
                 </span>
                 <span
@@ -440,12 +352,184 @@ exports[`Storyshots Components/Login Change Password 1`] = `
               }
             >
               "
-              Login
+              Formik
               " Component
             </h2>
-            <small>
-              No propTypes defined!
-            </small>
+            <table
+              className="css-1uhv8nx e1vdo5380"
+            >
+              <thead>
+                <tr>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    property
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    propType
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    required
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    default
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    validateOnChange
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      true
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    validateOnBlur
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      true
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    isInitialValid
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      false
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    enableReinitialize
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      false
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -454,7 +538,7 @@ exports[`Storyshots Components/Login Change Password 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components/Login With Error 1`] = `
+exports[`Storyshots UI Components/FormField Password 1`] = `
 <div>
   <div
     style={
@@ -464,57 +548,23 @@ exports[`Storyshots Components/Login With Error 1`] = `
       }
     }
   >
-    <div
-      className="sc-kjoXOD lbrulE"
+    <label
+      className="sc-chPdSV IhwhY"
     >
       <div
-        className="sc-kgoBCf jeyhvI"
-      />
-      <div
-        className="sc-TOsTZ cpBXKG"
+        className="sc-kAzzGY yPfeN"
       >
-        Invalid username or password
+        Password
       </div>
-      <form
-        onReset={[Function]}
-        onSubmit={[Function]}
-      >
-        <label
-          className="sc-cHGsZl kcXkK"
-        >
-          <input
-            name="username"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="Username"
-            type="text"
-            value=""
-          />
-        </label>
-        <label
-          className="sc-cHGsZl kcXkK"
-        >
-          <input
-            name="password"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="Password"
-            type="password"
-            value=""
-          />
-        </label>
-        <label
-          className="sc-cHGsZl kcXkK"
-        >
-          <button
-            className="sc-fjdhpX sc-kgAjT eZamMG"
-            type="submit"
-          >
-            Login
-          </button>
-        </label>
-      </form>
-    </div>
+      <input
+        disabled={false}
+        name="password"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Enter Password"
+        type="password"
+      />
+    </label>
   </div>
   <button
     onClick={[Function]}
@@ -613,7 +663,7 @@ exports[`Storyshots Components/Login With Error 1`] = `
               }
             }
           >
-            Components/Login
+            UI Components/FormField
           </h1>
           <h2
             style={
@@ -625,7 +675,7 @@ exports[`Storyshots Components/Login With Error 1`] = `
               }
             }
           >
-            With Error
+            Password
           </h2>
         </div>
         
@@ -662,15 +712,18 @@ exports[`Storyshots Components/Login With Error 1`] = `
                   }
                 >
                   &lt;
-                  Login
+                  Formik
                 </span>
                 <span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
-                      loginState
+                      initialValues
                     </span>
                     <span>
                       =
@@ -686,100 +739,6 @@ exports[`Storyshots Components/Login With Error 1`] = `
                           }
                         >
                           {
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              changePassword
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
-                              }
-                            }
-                          >
-                            false
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              error
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
-                              }
-                            }
-                          >
-                            true
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              message
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            'Invalid username or password'
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            …
-                          </span>
-                          <span>
-                            <br />
-                              
-                          </span>
                           }
                         </span>
                         }
@@ -787,11 +746,14 @@ exports[`Storyshots Components/Login With Error 1`] = `
                     </span>
                   </span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
-                      login
+                      onSubmit
                     </span>
                     <span>
                       =
@@ -806,18 +768,50 @@ exports[`Storyshots Components/Login With Error 1`] = `
                             }
                           }
                         >
-                          Login options
+                          noop
                         </span>
                         }
                       </span>
                     </span>
                   </span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
-                      loginWithNewPassword
+                      validateOnChange
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#a11",
+                            }
+                          }
+                        >
+                          false
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      render
                     </span>
                     <span>
                       =
@@ -832,12 +826,12 @@ exports[`Storyshots Components/Login With Error 1`] = `
                             }
                           }
                         >
-                          Login with new password options
+                          renderPasswordField
                         </span>
                         }
                       </span>
                     </span>
-                     
+                    <br />
                   </span>
                 </span>
                 <span
@@ -896,12 +890,184 @@ exports[`Storyshots Components/Login With Error 1`] = `
               }
             >
               "
-              Login
+              Formik
               " Component
             </h2>
-            <small>
-              No propTypes defined!
-            </small>
+            <table
+              className="css-1uhv8nx e1vdo5380"
+            >
+              <thead>
+                <tr>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    property
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    propType
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    required
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    default
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    validateOnChange
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      true
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    validateOnBlur
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      true
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    isInitialValid
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      false
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    enableReinitialize
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      false
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -910,7 +1076,7 @@ exports[`Storyshots Components/Login With Error 1`] = `
 </div>
 `;
 
-exports[`Storyshots Components/Login default 1`] = `
+exports[`Storyshots UI Components/FormField Text Area 1`] = `
 <div>
   <div
     style={
@@ -920,53 +1086,23 @@ exports[`Storyshots Components/Login default 1`] = `
       }
     }
   >
-    <div
-      className="sc-kjoXOD lbrulE"
+    <label
+      className="sc-chPdSV IhwhY"
     >
       <div
-        className="sc-kgoBCf jeyhvI"
-      />
-      
-      <form
-        onReset={[Function]}
-        onSubmit={[Function]}
+        className="sc-kAzzGY yPfeN"
       >
-        <label
-          className="sc-cHGsZl kcXkK"
-        >
-          <input
-            name="username"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="Username"
-            type="text"
-            value=""
-          />
-        </label>
-        <label
-          className="sc-cHGsZl kcXkK"
-        >
-          <input
-            name="password"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="Password"
-            type="password"
-            value=""
-          />
-        </label>
-        <label
-          className="sc-cHGsZl kcXkK"
-        >
-          <button
-            className="sc-fjdhpX sc-kgAjT eZamMG"
-            type="submit"
-          >
-            Login
-          </button>
-        </label>
-      </form>
-    </div>
+        Description
+      </div>
+      <textarea
+        disabled={false}
+        name="description"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Enter Description"
+        type="text"
+      />
+    </label>
   </div>
   <button
     onClick={[Function]}
@@ -1065,7 +1201,7 @@ exports[`Storyshots Components/Login default 1`] = `
               }
             }
           >
-            Components/Login
+            UI Components/FormField
           </h1>
           <h2
             style={
@@ -1077,7 +1213,7 @@ exports[`Storyshots Components/Login default 1`] = `
               }
             }
           >
-            default
+            Text Area
           </h2>
         </div>
         
@@ -1114,15 +1250,18 @@ exports[`Storyshots Components/Login default 1`] = `
                   }
                 >
                   &lt;
-                  Login
+                  Formik
                 </span>
                 <span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
-                      loginState
+                      initialValues
                     </span>
                     <span>
                       =
@@ -1138,100 +1277,6 @@ exports[`Storyshots Components/Login default 1`] = `
                           }
                         >
                           {
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              changePassword
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
-                              }
-                            }
-                          >
-                            false
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              error
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
-                              }
-                            }
-                          >
-                            false
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              message
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            ''
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            …
-                          </span>
-                          <span>
-                            <br />
-                              
-                          </span>
                           }
                         </span>
                         }
@@ -1239,11 +1284,14 @@ exports[`Storyshots Components/Login default 1`] = `
                     </span>
                   </span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
-                      login
+                      onSubmit
                     </span>
                     <span>
                       =
@@ -1258,18 +1306,50 @@ exports[`Storyshots Components/Login default 1`] = `
                             }
                           }
                         >
-                          Login options
+                          noop
                         </span>
                         }
                       </span>
                     </span>
                   </span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
-                      loginWithNewPassword
+                      validateOnChange
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#a11",
+                            }
+                          }
+                        >
+                          false
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      render
                     </span>
                     <span>
                       =
@@ -1284,12 +1364,12 @@ exports[`Storyshots Components/Login default 1`] = `
                             }
                           }
                         >
-                          Login with new password options
+                          renderTextAreaField
                         </span>
                         }
                       </span>
                     </span>
-                     
+                    <br />
                   </span>
                 </span>
                 <span
@@ -1348,12 +1428,184 @@ exports[`Storyshots Components/Login default 1`] = `
               }
             >
               "
-              Login
+              Formik
               " Component
             </h2>
-            <small>
-              No propTypes defined!
-            </small>
+            <table
+              className="css-1uhv8nx e1vdo5380"
+            >
+              <thead>
+                <tr>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    property
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    propType
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    required
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    default
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    validateOnChange
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      true
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    validateOnBlur
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      true
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    isInitialValid
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      false
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    enableReinitialize
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      false
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

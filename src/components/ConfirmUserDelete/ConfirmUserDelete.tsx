@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { Redirect } from 'react-router-dom';
 
 import Button, { ButtonLink } from '../Button/Button.css';
-import { ButtonWrapper, Copy, CopyWrapper, Error, Heading, HeadingText, Message, Wrapper } from './ConfirmDelete.css';
+import { ButtonWrapper, Copy, CopyWrapper, Error, Heading, HeadingText, Wrapper } from './ConfirmDelete.css';
 
 import { Color } from '../../styles/index';
 import { ResponseStatus, User } from '../../types/commons';
@@ -72,25 +73,17 @@ class ConfirmUserDelete extends React.Component<Props, State> {
           </Error>
         );
       }
-      return <Message>Success! '{`${firstName} ${lastName}`}' was succesfully deleted.</Message>;
+      return <Redirect to={ROUTES.ADMIN_USERS} />;
     }
     return null;
   };
 
   render() {
     const { location } = this.props;
-    const { deleteDisabled, responseReceived, result } = this.state;
+    const { deleteDisabled } = this.state;
     const { firstName, lastName } = location.state;
 
-    return responseReceived && result.status === ResponseStatus.SUCCESS ? (
-      <Wrapper>
-        {this.renderMessage()}
-
-        <ButtonLink to={ROUTES.ADMIN_USERS} backgroundColor={Color.MERCURY} type="button" width={153}>
-          Continue
-        </ButtonLink>
-      </Wrapper>
-    ) : (
+    return (
       <Wrapper>
         <Heading>
           <HeadingText>Are you sure?</HeadingText>

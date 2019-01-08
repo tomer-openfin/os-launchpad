@@ -11,12 +11,12 @@ const Checkbox = props => {
           <Input
             type="checkbox"
             {...props}
-            checked={field.value.includes(props.value)}
+            checked={field.value && field.value.includes(props.value)}
             // tslint:disable-next-line:jsx-no-lambda
             onChange={() => {
               // for new app form, incoming array `field.value` starts off as []
               // for edit app form, incoming array `field.value` starts with previously checked items
-              if (field.value.includes(props.value)) {
+              if (field.value && field.value.includes(props.value)) {
                 const nextValue = field.value.filter(value => value !== props.value);
                 form.setFieldValue(props.name, nextValue);
               } else {
@@ -27,7 +27,7 @@ const Checkbox = props => {
             }}
           />
 
-          <CustomCheckbox isChecked={field.value.includes(props.value)} />
+          <CustomCheckbox isChecked={field.value && field.value.includes(props.value)} />
 
           <LabelText>{props.value}</LabelText>
         </Label>

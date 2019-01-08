@@ -4,7 +4,6 @@ import { Color } from '../../styles';
 
 interface CommonProps {
   backgroundColor?: string;
-  justifyContent?: string;
 }
 
 export const CtaWrapper = styled.div`
@@ -22,10 +21,19 @@ export const Header = styled.div<CommonProps>`
   color: ${Color.SUN};
   display: flex;
   height: 60px;
-  justify-content: ${props => props.justifyContent};
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   width: 100%;
+`;
+
+export const Children = styled.div`
+  -webkit-app-region: drag !important;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
 `;
 
 export const Title = styled.div`

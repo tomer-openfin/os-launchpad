@@ -7,15 +7,12 @@ import { CATEGORIES } from '../../utils/storyCategories';
 
 import EditAppForm from './EditAppForm';
 
-const mockData = {
-  location: {
-    hash: 'for react-router',
-    pathname: 'for react-router',
-    search: 'for react-router',
-    state: AppData[0],
-  },
+const mockLocation = {
+  hash: 'for react-router',
+  pathname: 'for react-router',
+  search: 'for react-router',
+  state: AppData[0],
 };
-
 const updateApp = action('updateApp');
 
-storiesOf(`${CATEGORIES.ADMIN}EditAppForm`, module).add('default', () => <EditAppForm location={mockData.location} updateApp={updateApp} />);
+storiesOf(`${CATEGORIES.ADMIN}EditAppForm`, module).add('default', () => <EditAppForm updateApp={updateApp} location={mockLocation} />);

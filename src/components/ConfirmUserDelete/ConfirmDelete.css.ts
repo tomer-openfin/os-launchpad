@@ -44,17 +44,6 @@ export const Error = styled.div`
   height: auto;
 `;
 
-export const Message = styled.div`
-  align-items: center;
-  background-color: ${Color.SATURN};
-  color: ${Color.VACUUM};
-  display: flex;
-  font-size: 10px;
-  justify-content: flex-start;
-  padding: 5px 5px;
-  width: 100%;
-`;
-
 export const Wrapper = styled.div`
   align-items: flex-start;
   background-color: ${Color.ASTEROID_BELT};
