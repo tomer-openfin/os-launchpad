@@ -2,7 +2,7 @@
   "name": "os-launchpad",
   "version": "2.0.0",
   "scripts": {
-    "build-storybook": "STORYBOOK_ENV=true build-storybook -o build/storybook",
+    "build-storybook": "node scripts/buildStorybook.js",
     "build": "npm run clean && webpack",
     "check": "gts check",
     "clean": "gts clean && rimraf build",
@@ -13,7 +13,7 @@
     "react-devtools": "react-devtools",
     "serve": "node server.js",
     "start": "node scripts/start.js",
-    "storybook": "STORYBOOK_ENV=true start-storybook -p 6006",
+    "storybook": "node scripts/startStorybook.js",
     "storyshots": "jest -u",
     "test:api": "node scripts/testApi.js",
     "test:ci": "run-s lint test:unit test:api",

@@ -14,7 +14,7 @@ export interface Props {
   size?: string | number;
 }
 
-const defaultProps: Partial<Props> = {
+export const defaultProps: Partial<Props> = {
   color: Color.COMET,
   hoverColor: Color.JUPITER,
   size: 42,
@@ -23,7 +23,7 @@ const defaultProps: Partial<Props> = {
 const { color: defaultColor, hoverColor: defaultHoverColor, size: defaultSize } = defaultProps;
 
 const SvgIcon = ({ className, color = defaultColor, disabled, hoverColor = defaultHoverColor, imgSrc, onClick, size = defaultSize }: Props) => (
-  <Icon className={className} color={color} disabled={disabled} hoverColor={hoverColor} imgSrc={imgSrc} onClick={onClick} size={size} />
+  <Icon className={className} color={color} disabled={disabled} hoverColor={hoverColor} imgSrc={imgSrc} onClick={disabled ? undefined : onClick} size={size} />
 );
 
 export default SvgIcon;

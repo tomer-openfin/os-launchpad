@@ -11,34 +11,34 @@ exports[`Storyshots Admin Components/ConfirmUserDelete default 1`] = `
     }
   >
     <div
-      className="sc-elJkPf eeKwOP"
+      className="sc-jtRfpW jFlVnC"
     >
       <div
-        className="sc-feJyhm iJKypP"
+        className="sc-iELTvK fzADEc"
       >
         <div
-          className="sc-iELTvK fYAeuE"
+          className="sc-cmTdod jODeGW"
         >
           Are you sure?
         </div>
       </div>
       <div
-        className="sc-jwKygS dpcOUv"
+        className="sc-btzYZH giTrhB"
       >
         <div
-          className="sc-btzYZH laAfvO"
+          className="sc-lhVmIH bEAXdU"
         >
           You are about to delete the following user:
         </div>
         <div
-          className="sc-btzYZH laAfvO"
+          className="sc-lhVmIH bEAXdU"
         >
           
  John Doe
         </div>
       </div>
       <div
-        className="sc-cmTdod fQeusZ"
+        className="sc-jwKygS dKikkj"
       >
         <a
           backgroundColor="#848484"

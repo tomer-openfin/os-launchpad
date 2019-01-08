@@ -42,36 +42,21 @@ const calcSvgIconsMargin = (isDrawerExpanded, launcherPosition) => {
 };
 /* End Helpers */
 
-export const ArrowIcon = styled(SvgIcon)<PositionProp>`
-  position: absolute;
+/* Styled Imports */
+export const StyledLogo = styled(Logo)`
+  background-color: ${Color.KUIPER_BELT};
+  background-size: 90%;
+`;
+/* End Styled Imports */
 
-  ${({ launcherPosition }) => {
-    switch (launcherPosition) {
-      case DirectionalPosition.Bottom:
-        return css`
-          top: -15px;
-          transform: translate3d(-50%, 0, 0) rotate(180deg);
-          left: 50%;
-        `;
-      case DirectionalPosition.Right:
-        return css`
-          left: -15px;
-          transform: translate3d(0, -50%, 0) rotate(90deg);
-          top: 50%;
-        `;
-      case DirectionalPosition.Left:
-        return css`
-          right: -15px;
-          transform: translate3d(0, -50%, 0) rotate(270deg);
-          top: 50%;
-        `;
-      default:
-        return css`
-          bottom: -15px;
-          transform: translate3d(-50%, 0, 0);
-          left: 50%;
-        `;
-    }
+export const AppListWrapper = styled.div<EndPaddingPositionProp>`
+  ${({ endPadding, launcherPosition }) => {
+    const isOnTopOrBottom = isTopOrBottom(launcherPosition);
+
+    return `
+      padding-bottom: ${isOnTopOrBottom ? 0 : endPadding}px;
+      padding-right: ${isOnTopOrBottom ? endPadding : 0}px;
+    `;
   }}
 `;
 
@@ -135,18 +120,18 @@ export const SystemIconsWrapper = styled.div<ExpandedPositionSizeProp>`
     const padding = isDrawerExpanded ? SIZE.EXPANDED_SYSTEM_PADDING : SIZE.COLLAPSED_SYSTEM_PADDING;
 
     return isTopOrBottom(launcherPosition)
-      ? css`
+      ? `
           padding: 0 ${padding}px;
         `
-      : css`
+      : `
           padding: ${padding}px 0;
         `;
   }}
 `;
 
 export const SystemIconWrapper = styled.div<ExpandedPositionProp>`
+  flex-shrink: 0;
   line-height: 0;
-  position: relative;
 
   ${props => css`
     ${calcSvgIconsMargin(props.isDrawerExpanded, props.launcherPosition)}
@@ -177,20 +162,4 @@ export const Wrapper = styled.div<EndPaddingPositionProp>`
 
   position: relative;
   width: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? '100vw' : `${SIZE.MAX_STATIC_DIMENSION}px`)};
-`;
-
-/* Styled Imports */
-export const StyledLogo = styled(Logo)`
-  background-color: ${Color.KUIPER_BELT};
-  background-size: 90%;
-`;
-
-export const StyledSvgIcon = styled(SvgIcon)`
-  flex-shrink: 0;
-
-  &:hover {
-    + ${ArrowIcon} {
-      background-color: ${Color.JUPITER};
-    }
-  }
 `;

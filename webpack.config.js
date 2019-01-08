@@ -19,6 +19,7 @@ const {
   PORT = 8080,
   POSTMAN_API_KEY,
   RUNTIME_VERSION,
+  STORYBOOK_ENV = false,
   USERNAME,
 } = process.env;
 
@@ -74,6 +75,7 @@ module.exports = {
         NODE_ENV: JSON.stringify(NODE_ENV),
         PASSWORD: JSON.stringify(PASSWORD),
         POSTMAN_API_KEY: JSON.stringify(POSTMAN_API_KEY),
+        STORYBOOK_ENV: JSON.stringify(STORYBOOK_ENV),
         USERNAME: JSON.stringify(USERNAME),
       },
     }),

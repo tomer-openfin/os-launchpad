@@ -8,6 +8,7 @@ import '../src/components/Button/Button.story';
 import '../src/components/CloseButton/CloseButton.story';
 import '../src/components/Logo/Logo.story';
 import '../src/components/RadioButton/RadioButton.story';
+import '../src/components/SvgIcon/SvgIcon.story';
 import '../src/components/WindowHeader/WindowHeader.story';
 
 // Components
@@ -21,6 +22,7 @@ import '../src/components/AppOverflow/AppOverflow.story';
 import '../src/components/Layouts/Layouts.story';
 import '../src/components/Login/Login.story';
 import '../src/components/Settings/Settings.story';
+import '../src/components/SvgIconWithExtension/SvgIconWithExtension.story';
 
 // Admin Components
 import '../src/components/Admin/Admin.story';
