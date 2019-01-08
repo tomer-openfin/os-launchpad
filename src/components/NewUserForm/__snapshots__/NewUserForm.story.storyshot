@@ -12,6 +12,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
   >
     <form
       className="sc-kPVwWT llHzWc"
+      onReset={[Function]}
       onSubmit={[Function]}
     >
       <div

@@ -20,6 +20,7 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
       </h3>
       <form
         className="sc-hMFtBS JdDKy"
+        onReset={[Function]}
         onSubmit={[Function]}
       >
         <label
@@ -86,6 +87,7 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
       </h3>
       <form
         className="sc-hMFtBS JdDKy"
+        onReset={[Function]}
         onSubmit={[Function]}
       >
         <select

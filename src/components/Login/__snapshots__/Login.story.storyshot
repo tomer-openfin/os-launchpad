@@ -22,6 +22,7 @@ exports[`Storyshots Components/Login Change Password 1`] = `
         Please create a new password
       </div>
       <form
+        onReset={[Function]}
         onSubmit={[Function]}
       >
         <label
@@ -50,7 +51,7 @@ exports[`Storyshots Components/Login Change Password 1`] = `
           className="sc-fMiknA imrMoI"
         >
           <button
-            className="sc-eqIVtm iMZbli"
+            className="sc-fjdhpX sc-eqIVtm iMZbli"
             type="submit"
           >
             Create New Password
@@ -475,6 +476,7 @@ exports[`Storyshots Components/Login With Error 1`] = `
         Invalid username or password
       </div>
       <form
+        onReset={[Function]}
         onSubmit={[Function]}
       >
         <label
@@ -505,7 +507,7 @@ exports[`Storyshots Components/Login With Error 1`] = `
           className="sc-fMiknA imrMoI"
         >
           <button
-            className="sc-eqIVtm iMZbli"
+            className="sc-fjdhpX sc-eqIVtm iMZbli"
             type="submit"
           >
             Login
@@ -926,6 +928,7 @@ exports[`Storyshots Components/Login default 1`] = `
       />
       
       <form
+        onReset={[Function]}
         onSubmit={[Function]}
       >
         <label
@@ -956,7 +959,7 @@ exports[`Storyshots Components/Login default 1`] = `
           className="sc-fMiknA imrMoI"
         >
           <button
-            className="sc-eqIVtm iMZbli"
+            className="sc-fjdhpX sc-eqIVtm iMZbli"
             type="submit"
           >
             Login

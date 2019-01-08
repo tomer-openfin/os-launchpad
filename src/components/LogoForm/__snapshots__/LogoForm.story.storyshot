@@ -12,6 +12,7 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
   >
     <form
       className="sc-hMFtBS JdDKy"
+      onReset={[Function]}
       onSubmit={[Function]}
     >
       <label

@@ -41,7 +41,7 @@ exports[`Storyshots Components/Settings default 1`] = `
           Auto Hide
         </div>
         <button
-          className="sc-caSCKo frlXPe"
+          className="sc-fjdhpX sc-caSCKo frlXPe"
           onClick={[Function]}
         >
           OFF
@@ -56,7 +56,7 @@ exports[`Storyshots Components/Settings default 1`] = `
           Launcher Position
         </div>
         <button
-          className="sc-caSCKo frlXPe"
+          className="sc-fjdhpX sc-caSCKo frlXPe"
           onClick={[Function]}
         >
           Top
@@ -65,20 +65,20 @@ exports[`Storyshots Components/Settings default 1`] = `
           className="sc-gisBJw kkfmqr"
         >
           <button
-            className="sc-caSCKo frlXPe"
+            className="sc-fjdhpX sc-caSCKo frlXPe"
             onClick={[Function]}
           >
             Left
           </button>
           <button
-            className="sc-caSCKo frlXPe"
+            className="sc-fjdhpX sc-caSCKo frlXPe"
             onClick={[Function]}
           >
             Right
           </button>
         </div>
         <button
-          className="sc-caSCKo frlXPe"
+          className="sc-fjdhpX sc-caSCKo frlXPe"
           onClick={[Function]}
         >
           Bottom

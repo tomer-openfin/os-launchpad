@@ -1,10 +1,10 @@
 import * as enzyme from 'enzyme';
 import * as React from 'react';
 
-import appData from '../../../samples/AppData';
-import noop, { noopCreator } from '../../../utils/noop';
+import appData from '../../samples/AppData';
 
-import AppDirectory from '../AppDirectory';
+import noop, { noopCreator } from '../../utils/noop';
+import AppDirectory from './AppDirectory';
 
 const getIsLauncherApp = () => false;
 

@@ -26,18 +26,44 @@ interface State {
 const renderCTAText = (isLauncherApp: boolean) => (isLauncherApp ? '-' : '+');
 
 class AppDirectory extends React.PureComponent<Props, State> {
-  // static defaultProps = defaultProps;
-  private searchInput: HTMLInputElement | undefined;
+  private searchInput: React.RefObject<HTMLInputElement>;
 
   constructor(props) {
     super(props);
-
+    this.searchInput = React.createRef();
     this.state = { search: '' };
   }
 
   componentDidMount() {
-    if (this.searchInput) this.searchInput.focus();
+    const { fin } = window;
+
+    if (fin) {
+      fin.desktop.Window.getCurrent().addEventListener('focused', this.focusInputField);
+      fin.desktop.Window.getCurrent().addEventListener('hidden', this.clearInputField);
+    }
   }
+
+  componentWillUnmount() {
+    const { fin } = window;
+
+    if (fin) {
+      fin.desktop.Window.getCurrent().removeEventListener('focused', this.focusInputField);
+      fin.desktop.Window.getCurrent().removeEventListener('hidden', this.clearInputField);
+    }
+  }
+
+  clearInputField = () => {
+    if (this.searchInput.current) {
+      this.searchInput.current.value = '';
+      this.setState({ search: this.searchInput.current.value });
+    }
+  };
+
+  focusInputField = () => {
+    if (this.searchInput.current) {
+      this.searchInput.current.focus();
+    }
+  };
 
   handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     const { currentTarget } = e;
@@ -54,20 +80,12 @@ class AppDirectory extends React.PureComponent<Props, State> {
 
   filterAppList = search => this.props.appList.filter(app => app.title.toLowerCase().indexOf(search.toLowerCase()) !== -1);
 
-  setSearchInputRef = input => {
-    this.searchInput = input;
-  };
-
   renderAppCTA(app: App) {
     const { getIsLauncherApp, addToLauncher, removeFromLauncher } = this.props;
 
     const isLauncherApp = getIsLauncherApp(app.id);
 
-    return (
-      <CTA onClick={isLauncherApp ? () => removeFromLauncher(`${app.id}`) : () => addToLauncher(`${app.id}`)}>
-        {renderCTAText(isLauncherApp)}
-      </CTA>
-    );
+    return <CTA onClick={isLauncherApp ? () => removeFromLauncher(`${app.id}`) : () => addToLauncher(`${app.id}`)}>{renderCTAText(isLauncherApp)}</CTA>;
   }
 
   render() {
@@ -81,7 +99,7 @@ class AppDirectory extends React.PureComponent<Props, State> {
               <IconSpace iconImg={searchIcon} />
             </IconWrapper>
 
-            <SearchInput ref={this.setSearchInputRef} onChange={this.handleChange} placeholder="Search for app..." />
+            <SearchInput ref={this.searchInput} onChange={this.handleChange} placeholder="Search for app..." />
           </SearchHeader>
         </WindowHeader>
 
