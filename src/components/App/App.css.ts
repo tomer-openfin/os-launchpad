@@ -50,12 +50,14 @@ export const StyledLogo = styled(Logo)`
 /* End Styled Imports */
 
 export const AppListWrapper = styled.div<EndPaddingPositionProp>`
+  overflow: hidden;
+
   ${({ endPadding, launcherPosition }) => {
     const isOnTopOrBottom = isTopOrBottom(launcherPosition);
 
     return `
-      padding-bottom: ${isOnTopOrBottom ? 0 : endPadding}px;
-      padding-right: ${isOnTopOrBottom ? endPadding : 0}px;
+      margin-bottom: ${isOnTopOrBottom ? 0 : endPadding}px;
+      margin-right: ${isOnTopOrBottom ? endPadding : 0}px;
     `;
   }}
 `;
@@ -159,7 +161,6 @@ export const Wrapper = styled.div<EndPaddingPositionProp>`
   flex-direction: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? 'row' : 'column')};
   height: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? `${SIZE.MAX_STATIC_DIMENSION}px` : '100vh')};
   justify-content: flex-start;
-
   position: relative;
   width: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? '100vw' : `${SIZE.MAX_STATIC_DIMENSION}px`)};
 `;
