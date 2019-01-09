@@ -27,9 +27,6 @@
   },
   "services": [
     {
-      "name": "notifications"
-    },
-    {
       "name": "layouts"
     }
   ],
