@@ -11,33 +11,33 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
     }
   >
     <div
-      className="sc-bMVAic dQjdXA"
+      className="sc-GMQeP dDvHwW"
     >
       <div
-        className="sc-bAeIUo elOZXo"
+        className="sc-exAgwC jqDtRq"
       >
         <div
-          className="sc-iujRgT bToFbN"
+          className="sc-cQFLBn kDhcoc"
         >
           <div
-            className="sc-GMQeP kSNNmo"
+            className="sc-gojNiO jQiToV"
           >
             John
              
             Doe
           </div>
           <div
-            className="sc-exAgwC cFeObp"
+            className="sc-daURTG kMXgnM"
           />
         </div>
         <div
-          className="sc-cQFLBn gqMFMW"
+          className="sc-bXGyLb kRHDVd"
         >
           John.Doe@gmail.com
         </div>
       </div>
       <div
-        className="sc-gojNiO cEKhnF"
+        className="sc-lkqHmb elVtIO"
       />
     </div>
   </div>

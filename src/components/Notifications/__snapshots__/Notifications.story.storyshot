@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Admin Components/Admin default 1`] = `
+exports[`Storyshots Components/Notifications default 1`] = `
 <div>
   <div
     style={
@@ -11,11 +11,19 @@ exports[`Storyshots Admin Components/Admin default 1`] = `
     }
   >
     <div
-      className="sc-jnlKLf fOiGUl"
+      className="sc-hmzhuo gvCBTb"
     >
-      <h1>
-        You do not have clearance to see the admin tools.
-      </h1>
+      <div
+        className="sc-ksYbfQ bFTqbK sc-ifAKCX kGkovX"
+        color="#E7E7E7"
+        size={42}
+      />
+      <div
+        className="sc-cJSrbW hgSull"
+      >
+        23
+      </div>
+      ;
     </div>
   </div>
   <button
@@ -115,7 +123,7 @@ exports[`Storyshots Admin Components/Admin default 1`] = `
               }
             }
           >
-            Admin Components/Admin
+            Components/Notifications
           </h1>
           <h2
             style={
@@ -148,88 +156,102 @@ exports[`Storyshots Admin Components/Admin default 1`] = `
             className="css-r8d96o eyvlbql0"
           >
             <div>
-              <div
-                style={
-                  Object {
-                    "paddingLeft": 18,
-                    "paddingRight": 3,
-                  }
-                }
-              >
-                <span
+              <div>
+                <div
                   style={
                     Object {
-                      "color": "#444",
+                      "paddingLeft": 18,
+                      "paddingRight": 3,
                     }
                   }
                 >
-                  &lt;
-                  Admin
-                </span>
-                <span>
+                  <span
+                    style={
+                      Object {
+                        "color": "#444",
+                      }
+                    }
+                  >
+                    &lt;
+                    Notifications
+                  </span>
                   <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      isAdmin
-                    </span>
                     <span>
-                      =
+                       
                       <span
                         style={Object {}}
                       >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#a11",
-                            }
-                          }
-                        >
-                          false
-                        </span>
-                        }
+                        count
                       </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            23
+                          </span>
+                          }
+                        </span>
+                      </span>
+                      
                     </span>
                   </span>
-                  <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      onEscDown
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          esc down
-                        </span>
-                        }
-                      </span>
-                    </span>
-                     
+                  <span
+                    style={
+                      Object {
+                        "color": "#444",
+                      }
+                    }
+                  >
+                    &gt;
                   </span>
-                </span>
-                <span
+                </div>
+                <div
                   style={
                     Object {
-                      "color": "#444",
+                      "paddingLeft": 33,
+                      "paddingRight": 3,
                     }
                   }
                 >
-                  /&gt;
-                </span>
+                  <span
+                    style={
+                      Object {
+                        "color": "#444",
+                      }
+                    }
+                  >
+                    function String() { [native code] }
+                  </span>
+                </div>
+                <div
+                  style={
+                    Object {
+                      "paddingLeft": 18,
+                      "paddingRight": 3,
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "color": "#444",
+                      }
+                    }
+                  >
+                    &lt;/
+                    Notifications
+                    &gt;
+                  </span>
+                </div>
               </div>
             </div>
             <button
@@ -277,7 +299,7 @@ exports[`Storyshots Admin Components/Admin default 1`] = `
               }
             >
               "
-              Admin
+              Notifications
               " Component
             </h2>
             <small>

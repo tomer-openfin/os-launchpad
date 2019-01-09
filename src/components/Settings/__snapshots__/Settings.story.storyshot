@@ -11,7 +11,7 @@ exports[`Storyshots Components/Settings default 1`] = `
     }
   >
     <div
-      className="sc-cJSrbW jOjHTE"
+      className="sc-frDJqD dcfOih"
     >
       <div
         className="sc-ckVGcZ fbJWjp"
@@ -37,23 +37,23 @@ exports[`Storyshots Components/Settings default 1`] = `
         </div>
       </div>
       <div
-        className="sc-hqyNC hNvmQd"
+        className="sc-jqCOkK ilbpLr"
       >
         <div
-          className="sc-kvZOFW cNckWr"
+          className="sc-dNLxif fcAcqZ"
         >
           Auto-Hide
         </div>
         <div
-          className="sc-frDJqD leaiIP"
+          className="sc-jbKcbu bwaXYm"
         >
           <label
             checked={false}
-            className="sc-hmzhuo eRtqMp sc-kpOJdX elpKgd"
+            className="sc-hqyNC keRCOE sc-kpOJdX elpKgd"
           >
             <input
               checked={false}
-              className="sc-hmzhuo eRtqMp sc-kGXeez juOhHm"
+              className="sc-hqyNC keRCOE sc-kGXeez juOhHm"
               name="autohide-onoff"
               onChange={[Function]}
               type="radio"
@@ -63,11 +63,11 @@ exports[`Storyshots Components/Settings default 1`] = `
           </label>
           <label
             checked={true}
-            className="sc-hmzhuo eRtqMp sc-kpOJdX isenMd"
+            className="sc-hqyNC keRCOE sc-kpOJdX isenMd"
           >
             <input
               checked={true}
-              className="sc-hmzhuo eRtqMp sc-kGXeez juOhHm"
+              className="sc-hqyNC keRCOE sc-kGXeez juOhHm"
               name="autohide-onoff"
               onChange={[Function]}
               type="radio"
@@ -78,37 +78,37 @@ exports[`Storyshots Components/Settings default 1`] = `
         </div>
       </div>
       <div
-        className="sc-hqyNC hNvmQd"
+        className="sc-jqCOkK ilbpLr"
       >
         <div
-          className="sc-kvZOFW cNckWr"
+          className="sc-dNLxif fcAcqZ"
         >
           Launcher Position
         </div>
         <button
-          className="sc-fjdhpX sc-ksYbfQ bqfuPu"
+          className="sc-fjdhpX sc-kvZOFW qwrND"
           onClick={[Function]}
         >
           Top
         </button>
         <div
-          className="sc-frDJqD leaiIP"
+          className="sc-jbKcbu bwaXYm"
         >
           <button
-            className="sc-fjdhpX sc-ksYbfQ bqfuPu"
+            className="sc-fjdhpX sc-kvZOFW qwrND"
             onClick={[Function]}
           >
             Left
           </button>
           <button
-            className="sc-fjdhpX sc-ksYbfQ bqfuPu"
+            className="sc-fjdhpX sc-kvZOFW qwrND"
             onClick={[Function]}
           >
             Right
           </button>
         </div>
         <button
-          className="sc-fjdhpX sc-ksYbfQ bqfuPu"
+          className="sc-fjdhpX sc-kvZOFW qwrND"
           onClick={[Function]}
         >
           Bottom

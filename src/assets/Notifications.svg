@@ -1,1 +1,9 @@
-<svg width="41" height="42" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M24.677 4.8a8.773 8.773 0 0 0-.332 2.4c0 4.64 3.59 8.4 8.019 8.4.796 0 1.565-.122 2.29-.348V30c0 3.314-2.564 6-5.727 6H10.6c-3.163 0-5.727-2.686-5.727-6V10.8c0-3.314 2.564-6 5.727-6h14.077zm7.687 7.2c-2.53 0-4.582-2.149-4.582-4.8s2.051-4.8 4.582-4.8c2.53 0 4.581 2.149 4.581 4.8s-2.05 4.8-4.581 4.8z" fill="#FBC23C"/><text font-family="Helvetica" font-size="16.8" letter-spacing="-.48" fill="#FFF" transform="translate(-2)"><tspan x="6.3" y="28">1</tspan> <tspan x="15.163" y="28">2</tspan></text></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>icons/notifications--have-notifications</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons/notifications--have-notifications" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M78.8970797,19.9285714 C78.2437115,22.1239219 77.8928571,24.4495592 77.8928571,26.8571429 C77.8928571,40.250048 88.749952,51.1071429 102.142857,51.1071429 C104.550441,51.1071429 106.876078,50.7562885 109.071429,50.1029203 L109.071429,92.6785714 C109.071429,102.244932 101.316361,110 91.75,110 L36.3214286,110 C26.7550677,110 19,102.244932 19,92.6785714 L19,37.25 C19,27.6836392 26.7550677,19.9285714 36.3214286,19.9285714 L78.8970797,19.9285714 Z M102.142857,40.7142857 C94.4897685,40.7142857 88.2857143,34.5102315 88.2857143,26.8571429 C88.2857143,19.2040542 94.4897685,13 102.142857,13 C109.795946,13 116,19.2040542 116,26.8571429 C116,34.5102315 109.795946,40.7142857 102.142857,40.7142857 Z" id="Path-2" fill="#FBC23C"></path>
+    </g>
+</svg>

@@ -11,16 +11,16 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
     }
   >
     <div
-      className="sc-gGBfsJ cEdfgl"
+      className="sc-tilXH dUizLh"
     >
       <div
-        className="sc-jnlKLf bkTnsm"
+        className="sc-hEsumM jURSRW"
       >
         <div
-          className="sc-hEsumM fCDsJX"
+          className="sc-kafWEX YoeaH"
         >
           <input
-            className="sc-ktHwxA bivzXL"
+            className="sc-feJyhm pTlWc"
             name="search"
             onChange={[Function]}
             placeholder="Search apps..."
@@ -37,7 +37,7 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
         </a>
       </div>
       <div
-        className="sc-jwKygS evRNyp"
+        className="sc-bYSBpT hmVRQq"
       >
         <div
           className="sc-fAjcbJ lcHpzj"
@@ -91,15 +91,15 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-bRBYWo knWUVJ"
             >
               <div
-                className="sc-tilXH cmIaKp"
+                className="sc-cIShpX jSzsYV"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />
@@ -159,15 +159,15 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-bRBYWo knWUVJ"
             >
               <div
-                className="sc-tilXH cmIaKp"
+                className="sc-cIShpX jSzsYV"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />
@@ -227,15 +227,15 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-bRBYWo knWUVJ"
             >
               <div
-                className="sc-tilXH cmIaKp"
+                className="sc-cIShpX jSzsYV"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />
@@ -295,15 +295,15 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-bRBYWo knWUVJ"
             >
               <div
-                className="sc-tilXH cmIaKp"
+                className="sc-cIShpX jSzsYV"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />
@@ -363,15 +363,15 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-bRBYWo knWUVJ"
             >
               <div
-                className="sc-tilXH cmIaKp"
+                className="sc-cIShpX jSzsYV"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />
@@ -432,15 +432,15 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-bRBYWo knWUVJ"
             >
               <div
-                className="sc-tilXH cmIaKp"
+                className="sc-cIShpX jSzsYV"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />
@@ -500,15 +500,15 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-bRBYWo knWUVJ"
             >
               <div
-                className="sc-tilXH cmIaKp"
+                className="sc-cIShpX jSzsYV"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />
@@ -568,15 +568,15 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-bRBYWo knWUVJ"
             >
               <div
-                className="sc-tilXH cmIaKp"
+                className="sc-cIShpX jSzsYV"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />
@@ -636,15 +636,15 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-bRBYWo knWUVJ"
             >
               <div
-                className="sc-tilXH cmIaKp"
+                className="sc-cIShpX jSzsYV"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />

@@ -11,16 +11,16 @@ exports[`Storyshots Admin Components/UserDirectory default 1`] = `
     }
   >
     <div
-      className="sc-gGBfsJ cEdfgl"
+      className="sc-tilXH dUizLh"
     >
       <div
-        className="sc-jnlKLf bkTnsm"
+        className="sc-hEsumM jURSRW"
       >
         <div
-          className="sc-hEsumM fCDsJX"
+          className="sc-kafWEX YoeaH"
         >
           <input
-            className="sc-ktHwxA bivzXL"
+            className="sc-feJyhm pTlWc"
             name="search"
             onChange={[Function]}
             placeholder="Filter Users"
@@ -37,50 +37,50 @@ exports[`Storyshots Admin Components/UserDirectory default 1`] = `
         </a>
       </div>
       <div
-        className="sc-jwKygS evRNyp"
+        className="sc-bYSBpT hmVRQq"
       >
         <div
           className="sc-fAjcbJ lcHpzj"
         >
           <div
-            className="sc-bMVAic dQjdXA"
+            className="sc-GMQeP dDvHwW"
           >
             <div
-              className="sc-bAeIUo elOZXo"
+              className="sc-exAgwC jqDtRq"
             >
               <div
-                className="sc-iujRgT bToFbN"
+                className="sc-cQFLBn kDhcoc"
               >
                 <div
-                  className="sc-GMQeP kSNNmo"
+                  className="sc-gojNiO jQiToV"
                 >
                   Jose
                    
                   Conseco
                 </div>
                 <div
-                  className="sc-exAgwC CZZkq"
+                  className="sc-daURTG coeUs"
                 />
               </div>
               <div
-                className="sc-cQFLBn gqMFMW"
+                className="sc-bXGyLb kRHDVd"
               >
                 Conseco.Jose@gmail.com
               </div>
             </div>
             <div
-              className="sc-gojNiO cEKhnF"
+              className="sc-lkqHmb elVtIO"
             >
               <div
-                className="sc-tilXH cqacDm"
+                className="sc-cIShpX dpswIs"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/users/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/users/delete"
                   onClick={[Function]}
                 />
@@ -92,44 +92,44 @@ exports[`Storyshots Admin Components/UserDirectory default 1`] = `
           className="sc-fAjcbJ lcHpzj"
         >
           <div
-            className="sc-bMVAic dQjdXA"
+            className="sc-GMQeP dDvHwW"
           >
             <div
-              className="sc-bAeIUo elOZXo"
+              className="sc-exAgwC jqDtRq"
             >
               <div
-                className="sc-iujRgT bToFbN"
+                className="sc-cQFLBn kDhcoc"
               >
                 <div
-                  className="sc-GMQeP kSNNmo"
+                  className="sc-gojNiO jQiToV"
                 >
                   Guillermo
                    
                   Del Toro
                 </div>
                 <div
-                  className="sc-exAgwC CZZkq"
+                  className="sc-daURTG coeUs"
                 />
               </div>
               <div
-                className="sc-cQFLBn gqMFMW"
+                className="sc-bXGyLb kRHDVd"
               >
                 gdt@gmail.com
               </div>
             </div>
             <div
-              className="sc-gojNiO cEKhnF"
+              className="sc-lkqHmb elVtIO"
             >
               <div
-                className="sc-tilXH cqacDm"
+                className="sc-cIShpX dpswIs"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/users/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/users/delete"
                   onClick={[Function]}
                 />
@@ -141,44 +141,44 @@ exports[`Storyshots Admin Components/UserDirectory default 1`] = `
           className="sc-fAjcbJ lcHpzj"
         >
           <div
-            className="sc-bMVAic dQjdXA"
+            className="sc-GMQeP dDvHwW"
           >
             <div
-              className="sc-bAeIUo elOZXo"
+              className="sc-exAgwC jqDtRq"
             >
               <div
-                className="sc-iujRgT bToFbN"
+                className="sc-cQFLBn kDhcoc"
               >
                 <div
-                  className="sc-GMQeP kSNNmo"
+                  className="sc-gojNiO jQiToV"
                 >
                   John
                    
                   Doe
                 </div>
                 <div
-                  className="sc-exAgwC cFeObp"
+                  className="sc-daURTG kMXgnM"
                 />
               </div>
               <div
-                className="sc-cQFLBn gqMFMW"
+                className="sc-bXGyLb kRHDVd"
               >
                 John.Doe@gmail.com
               </div>
             </div>
             <div
-              className="sc-gojNiO cEKhnF"
+              className="sc-lkqHmb elVtIO"
             >
               <div
-                className="sc-tilXH cqacDm"
+                className="sc-cIShpX dpswIs"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/users/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/users/delete"
                   onClick={[Function]}
                 />
@@ -190,44 +190,44 @@ exports[`Storyshots Admin Components/UserDirectory default 1`] = `
           className="sc-fAjcbJ lcHpzj"
         >
           <div
-            className="sc-bMVAic dQjdXA"
+            className="sc-GMQeP dDvHwW"
           >
             <div
-              className="sc-bAeIUo elOZXo"
+              className="sc-exAgwC jqDtRq"
             >
               <div
-                className="sc-iujRgT bToFbN"
+                className="sc-cQFLBn kDhcoc"
               >
                 <div
-                  className="sc-GMQeP kSNNmo"
+                  className="sc-gojNiO jQiToV"
                 >
                   Jon
                    
                   Fire
                 </div>
                 <div
-                  className="sc-exAgwC cFeObp"
+                  className="sc-daURTG kMXgnM"
                 />
               </div>
               <div
-                className="sc-cQFLBn gqMFMW"
+                className="sc-bXGyLb kRHDVd"
               >
                 jire@gmail.com
               </div>
             </div>
             <div
-              className="sc-gojNiO cEKhnF"
+              className="sc-lkqHmb elVtIO"
             >
               <div
-                className="sc-tilXH cqacDm"
+                className="sc-cIShpX dpswIs"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/users/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/users/delete"
                   onClick={[Function]}
                 />
@@ -239,44 +239,44 @@ exports[`Storyshots Admin Components/UserDirectory default 1`] = `
           className="sc-fAjcbJ lcHpzj"
         >
           <div
-            className="sc-bMVAic dQjdXA"
+            className="sc-GMQeP dDvHwW"
           >
             <div
-              className="sc-bAeIUo elOZXo"
+              className="sc-exAgwC jqDtRq"
             >
               <div
-                className="sc-iujRgT bToFbN"
+                className="sc-cQFLBn kDhcoc"
               >
                 <div
-                  className="sc-GMQeP kSNNmo"
+                  className="sc-gojNiO jQiToV"
                 >
                   Dan
                    
                   Johnson
                 </div>
                 <div
-                  className="sc-exAgwC cFeObp"
+                  className="sc-daURTG kMXgnM"
                 />
               </div>
               <div
-                className="sc-cQFLBn gqMFMW"
+                className="sc-bXGyLb kRHDVd"
               >
                 DJohnson@gmail.com
               </div>
             </div>
             <div
-              className="sc-gojNiO cEKhnF"
+              className="sc-lkqHmb elVtIO"
             >
               <div
-                className="sc-tilXH cqacDm"
+                className="sc-cIShpX dpswIs"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/users/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/users/delete"
                   onClick={[Function]}
                 />
@@ -288,44 +288,44 @@ exports[`Storyshots Admin Components/UserDirectory default 1`] = `
           className="sc-fAjcbJ lcHpzj"
         >
           <div
-            className="sc-bMVAic dQjdXA"
+            className="sc-GMQeP dDvHwW"
           >
             <div
-              className="sc-bAeIUo elOZXo"
+              className="sc-exAgwC jqDtRq"
             >
               <div
-                className="sc-iujRgT bToFbN"
+                className="sc-cQFLBn kDhcoc"
               >
                 <div
-                  className="sc-GMQeP kSNNmo"
+                  className="sc-gojNiO jQiToV"
                 >
                   James
                    
                   Knot
                 </div>
                 <div
-                  className="sc-exAgwC cFeObp"
+                  className="sc-daURTG kMXgnM"
                 />
               </div>
               <div
-                className="sc-cQFLBn gqMFMW"
+                className="sc-bXGyLb kRHDVd"
               >
                 jnot@gmail.com
               </div>
             </div>
             <div
-              className="sc-gojNiO cEKhnF"
+              className="sc-lkqHmb elVtIO"
             >
               <div
-                className="sc-tilXH cqacDm"
+                className="sc-cIShpX dpswIs"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/users/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/users/delete"
                   onClick={[Function]}
                 />
@@ -337,44 +337,44 @@ exports[`Storyshots Admin Components/UserDirectory default 1`] = `
           className="sc-fAjcbJ lcHpzj"
         >
           <div
-            className="sc-bMVAic dQjdXA"
+            className="sc-GMQeP dDvHwW"
           >
             <div
-              className="sc-bAeIUo elOZXo"
+              className="sc-exAgwC jqDtRq"
             >
               <div
-                className="sc-iujRgT bToFbN"
+                className="sc-cQFLBn kDhcoc"
               >
                 <div
-                  className="sc-GMQeP kSNNmo"
+                  className="sc-gojNiO jQiToV"
                 >
                   Robert
                    
                   Martin
                 </div>
                 <div
-                  className="sc-exAgwC CZZkq"
+                  className="sc-daURTG coeUs"
                 />
               </div>
               <div
-                className="sc-cQFLBn gqMFMW"
+                className="sc-bXGyLb kRHDVd"
               >
                 mobert@gmail.com
               </div>
             </div>
             <div
-              className="sc-gojNiO cEKhnF"
+              className="sc-lkqHmb elVtIO"
             >
               <div
-                className="sc-tilXH cqacDm"
+                className="sc-cIShpX dpswIs"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/users/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/users/delete"
                   onClick={[Function]}
                 />
@@ -386,44 +386,44 @@ exports[`Storyshots Admin Components/UserDirectory default 1`] = `
           className="sc-fAjcbJ lcHpzj"
         >
           <div
-            className="sc-bMVAic dQjdXA"
+            className="sc-GMQeP dDvHwW"
           >
             <div
-              className="sc-bAeIUo elOZXo"
+              className="sc-exAgwC jqDtRq"
             >
               <div
-                className="sc-iujRgT bToFbN"
+                className="sc-cQFLBn kDhcoc"
               >
                 <div
-                  className="sc-GMQeP kSNNmo"
+                  className="sc-gojNiO jQiToV"
                 >
                   Andy
                    
                   Moore
                 </div>
                 <div
-                  className="sc-exAgwC cFeObp"
+                  className="sc-daURTG kMXgnM"
                 />
               </div>
               <div
-                className="sc-cQFLBn gqMFMW"
+                className="sc-bXGyLb kRHDVd"
               >
                 Moore.Andy@gmail.com
               </div>
             </div>
             <div
-              className="sc-gojNiO cEKhnF"
+              className="sc-lkqHmb elVtIO"
             >
               <div
-                className="sc-tilXH cqacDm"
+                className="sc-cIShpX dpswIs"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/users/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/users/delete"
                   onClick={[Function]}
                 />
@@ -435,44 +435,44 @@ exports[`Storyshots Admin Components/UserDirectory default 1`] = `
           className="sc-fAjcbJ lcHpzj"
         >
           <div
-            className="sc-bMVAic dQjdXA"
+            className="sc-GMQeP dDvHwW"
           >
             <div
-              className="sc-bAeIUo elOZXo"
+              className="sc-exAgwC jqDtRq"
             >
               <div
-                className="sc-iujRgT bToFbN"
+                className="sc-cQFLBn kDhcoc"
               >
                 <div
-                  className="sc-GMQeP kSNNmo"
+                  className="sc-gojNiO jQiToV"
                 >
                   Matt
                    
                   Taylor
                 </div>
                 <div
-                  className="sc-exAgwC CZZkq"
+                  className="sc-daURTG coeUs"
                 />
               </div>
               <div
-                className="sc-cQFLBn gqMFMW"
+                className="sc-bXGyLb kRHDVd"
               >
                 MTaylor@gmail.com
               </div>
             </div>
             <div
-              className="sc-gojNiO cEKhnF"
+              className="sc-lkqHmb elVtIO"
             >
               <div
-                className="sc-tilXH cqacDm"
+                className="sc-cIShpX dpswIs"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/users/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/users/delete"
                   onClick={[Function]}
                 />
@@ -484,44 +484,44 @@ exports[`Storyshots Admin Components/UserDirectory default 1`] = `
           className="sc-fAjcbJ lcHpzj"
         >
           <div
-            className="sc-bMVAic dQjdXA"
+            className="sc-GMQeP dDvHwW"
           >
             <div
-              className="sc-bAeIUo elOZXo"
+              className="sc-exAgwC jqDtRq"
             >
               <div
-                className="sc-iujRgT bToFbN"
+                className="sc-cQFLBn kDhcoc"
               >
                 <div
-                  className="sc-GMQeP kSNNmo"
+                  className="sc-gojNiO jQiToV"
                 >
                   Ashley
                    
                   Williams
                 </div>
                 <div
-                  className="sc-exAgwC CZZkq"
+                  className="sc-daURTG coeUs"
                 />
               </div>
               <div
-                className="sc-cQFLBn gqMFMW"
+                className="sc-bXGyLb kRHDVd"
               >
                 Ashley.Williams@gmail.com
               </div>
             </div>
             <div
-              className="sc-gojNiO cEKhnF"
+              className="sc-lkqHmb elVtIO"
             >
               <div
-                className="sc-tilXH cqacDm"
+                className="sc-cIShpX dpswIs"
               >
                 <a
-                  className="sc-cmTdod dxjRah"
+                  className="sc-lhVmIH GWnnw"
                   href="/admin/users/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-iELTvK fqrgSz"
+                  className="sc-btzYZH krKLnW"
                   href="/admin/users/delete"
                   onClick={[Function]}
                 />
@@ -531,36 +531,36 @@ exports[`Storyshots Admin Components/UserDirectory default 1`] = `
         </div>
       </div>
       <div
-        className="sc-fYxtnH lksRlR"
+        className="sc-ktHwxA dMCsAO"
       >
         <div
-          className="sc-kafWEX iMLWuy"
+          className="sc-cmTdod bZlQEU"
         >
           <div
-            className="sc-feJyhm dDzRwg"
+            className="sc-jwKygS kjXlWI"
           >
             SORT BY:
           </div>
           <div
-            className="sc-cIShpX cbWFUc"
+            className="sc-iELTvK iLvhza"
             onClick={[Function]}
           >
             Admin
           </div>
           <div
-            className="sc-cIShpX cbWFUc"
+            className="sc-iELTvK iLvhza"
             onClick={[Function]}
           >
             Email
           </div>
           <div
-            className="sc-cIShpX cbWFUc"
+            className="sc-iELTvK iLvhza"
             onClick={[Function]}
           >
             First Name
           </div>
           <div
-            className="sc-cIShpX jZezAJ"
+            className="sc-iELTvK gliTTb"
             onClick={[Function]}
           >
             Last Name
