@@ -5,7 +5,7 @@ import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGIN_WINDOW } from '../../config/windows';
 import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
-import { hideWindowPromise } from '../../utils/openfinPromises';
+import { hideWindowPromise, updateWindowOptions } from '../../utils/openfinPromises';
 import { expandApp, getApplicationIsExpanded, getBlurringWindowByName, setBlurringWindow, setWindowRelativeToLauncherBounds } from '../application';
 import { BLUR_WINDOW_WITH_DELAY, LAUNCH_WINDOW, WINDOW_SHOWN } from './actions';
 import { getLauncherIsForceExpanded, getWindowBounds, getWindowById } from './selectors';
@@ -35,7 +35,12 @@ function* watchLaunchWindow(action: LaunchWindowAction) {
       return;
     }
 
-    yield put(Window.showWindow({ id }));
+    // App launcher overflow window will change opacity instead to avoid fade in/out effect
+    if (id === APP_LAUNCHER_OVERFLOW_WINDOW) {
+      yield call(updateWindowOptions, finWindow, { opacity: 1 });
+    } else {
+      yield put(Window.showWindow({ id }));
+    }
     yield put(Window.focusWindow({ id }));
   } else {
     yield put(Window.openWindow(payload));
@@ -104,14 +109,20 @@ function* watchBlurWindowWithDelay(action: BlurWindowWithDelayAction) {
     return;
   }
 
-  const { name } = payload;
+  const { name, delayDuration } = payload;
   const finWindow = yield call(getFinWindowByName, name);
   if (!finWindow) {
     return;
   }
 
   yield put(setBlurringWindow(name, true));
-  yield all([call(hideWindowPromise, finWindow), delay(50)]);
+  // App launcher overflow window will change opacity instead to avoid fade in/out effect
+  if (name === APP_LAUNCHER_OVERFLOW_WINDOW) {
+    yield call(updateWindowOptions, finWindow, { opacity: 0 });
+  } else {
+    yield all([call(hideWindowPromise, finWindow), delay(delayDuration)]);
+  }
+
   yield put(setBlurringWindow(name, false));
 }
 

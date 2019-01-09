@@ -12,7 +12,7 @@ const mapState = state => ({
 });
 
 const dispatchProps = dispatch => ({
-  onBlur: () => dispatch(blurWindowWithDelay(APP_LAUNCHER_OVERFLOW_WINDOW)),
+  onBlur: () => dispatch(blurWindowWithDelay(APP_LAUNCHER_OVERFLOW_WINDOW, 0)),
 });
 
 export default connect(

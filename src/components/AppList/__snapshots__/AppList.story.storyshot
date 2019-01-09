@@ -300,7 +300,7 @@ exports[`Storyshots Components/AppList default 1`] = `
             </div>
           </div>
           <div
-            className="sc-gqjmRU gCpGzj"
+            className="sc-gqjmRU itJWAE"
             onClick={[Function]}
             size={50}
           >

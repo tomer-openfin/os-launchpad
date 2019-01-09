@@ -14,6 +14,11 @@ export interface WindowsState {
 }
 
 // Action payloads
+export interface BlurWindowWithDelayPayload {
+  delayDuration: number;
+  name: string;
+}
+
 export interface WindowNamePayload {
   name: string;
 }

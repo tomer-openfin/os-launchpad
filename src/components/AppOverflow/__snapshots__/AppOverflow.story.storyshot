@@ -21,7 +21,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
         width={0}
       >
         <div
-          className="sc-gqjmRU gCpGzj"
+          className="sc-gqjmRU itJWAE"
           onClick={[Function]}
           size={50}
         >

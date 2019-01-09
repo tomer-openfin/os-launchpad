@@ -7,7 +7,7 @@ import withFinBlur from '../../hocs/withFinBlur';
 import { getDrawerIsExpanded } from '../../redux/application';
 import { getLayoutsIds, restoreLayoutRequest, saveLayout } from '../../redux/layouts';
 import { getLauncherPosition } from '../../redux/me';
-import { blurWindowWithDelay } from '../../redux/windows';
+import { blurWindowWithDelay, DEFAULT_BLUR_WINDOW_DELAY } from '../../redux/windows';
 
 import Layouts from './Layouts';
 
@@ -19,7 +19,7 @@ const mapState = (state: State) => ({
 
 const mapDispatch = dispatch => ({
   onBlur: () => {
-    dispatch(blurWindowWithDelay(LAYOUTS_WINDOW));
+    dispatch(blurWindowWithDelay(LAYOUTS_WINDOW, DEFAULT_BLUR_WINDOW_DELAY));
   },
   restoreLayout: (id: string) => dispatch(restoreLayoutRequest(id)),
   saveLayout: (id: string) => dispatch(saveLayout(id)),

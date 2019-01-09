@@ -42,9 +42,13 @@ export const Wrapper = styled.div<Partial<Props>>`
     width: ${size}px;
     margin: ${margin};
 
+    ${Icon} {
+      cursor: ${isDisabled ? 'default' : 'pointer'};
+    }
+
     &:hover {
       ${Icon} {
-        background-color: ${isDisabled ? `${Color.COMET}` : `${Color.URANUS}`};
+        background-color: ${isDisabled ? `${Color.COMET}` : `${Color.JUPITER}`};
       }
     }
 

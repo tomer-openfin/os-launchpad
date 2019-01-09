@@ -61,7 +61,7 @@ export const initOnStartWindows = {
   },
   appLauncherOverflow: {
     alwaysOnTop: true,
-    autoShow: false,
+    autoShow: true,
     contextMenu: !isProduction,
     defaultCentered: true,
     defaultHeight: 300,
@@ -74,6 +74,7 @@ export const initOnStartWindows = {
     minWidth: 0,
     minimizable: false,
     name: APP_LAUNCHER_OVERFLOW_WINDOW,
+    opacity: 0,
     resizable: false,
     saveWindowState: false,
     showTaskbarIcon: false,

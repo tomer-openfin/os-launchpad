@@ -22,7 +22,7 @@ exports[`Storyshots Components/AppListToggle default 1`] = `
       }
     >
       <div
-        className="sc-gqjmRU WjcCJ"
+        className="sc-gqjmRU gWRbXf"
         onClick={[Function]}
         size={50}
       >
@@ -549,7 +549,7 @@ exports[`Storyshots Components/AppListToggle with transition 1`] = `
       }
     >
       <div
-        className="sc-gqjmRU iRLtAq"
+        className="sc-gqjmRU ipjrAV"
         onClick={[Function]}
         size={50}
       >
