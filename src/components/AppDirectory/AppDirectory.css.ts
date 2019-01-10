@@ -12,8 +12,19 @@ export const Directory = styled.div`
   position: relative;
   width: 100%;
   height: calc(100vh - 60px);
-  overflow-y: auto;
+  overflow-y: overlay;
   overflow-x: hidden;
+
+  &:after {
+    content: '';
+    background-color: ${Color.KUIPER_BELT};
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 60px;
+    z-index: -1;
+  }
 `;
 
 export const SearchHeader = styled.div`
