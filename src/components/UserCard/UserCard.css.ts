@@ -32,6 +32,7 @@ export const InfoWrapper = styled.div`
   font-weight: 200;
   height: 100%;
   flex: 1;
+  max-width: 492px;
 
   @media (max-width: 600px) {
     flex-direction: column;

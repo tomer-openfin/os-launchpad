@@ -169,26 +169,8 @@ export const EditIconLink = styled(Link)`
 `;
 
 export const ListWrapper = styled.div`
-  color: ${Color.CHARCOAL};
   font-size: 10px;
   overflow-y: scroll;
   flex: 1;
   padding-bottom: 25px;
-
-  & > li {
-    align-items: center;
-    border-bottom: 1px solid ${Color.FOG};
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    margin: 25px 0;
-    height: 25px;
-    padding-right: 25px;
-    padding-bottom: 25px;
-  }
-`;
-
-export const ListElement = styled.div`
-  flex: 1;
-  text-align: left;
 `;

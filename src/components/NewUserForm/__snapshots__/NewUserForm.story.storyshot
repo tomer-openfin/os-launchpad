@@ -11,7 +11,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
     }
   >
     <div
-      className="sc-iyvyFf jLXcrW"
+      className="sc-gzOgki bIHLKe"
     >
       <div
         className="sc-hMqMXs fBXLIe"
@@ -27,18 +27,18 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
         </div>
       </div>
       <form
-        className="sc-gzOgki lfJmum"
+        className="sc-dfVpRl hQNKiy"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <div
-          className="sc-hwwEjo faXEjs"
+          className="sc-iyvyFf gWiJJj"
         >
           <div
-            className="sc-kPVwWT llEiWL"
+            className="sc-hwwEjo femkUG"
           >
             <div
-              className="sc-kfGgVZ dOEPLa"
+              className="sc-kPVwWT lkhhFj"
             >
               <label
                 className="sc-chPdSV IhwhY"
@@ -144,7 +144,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
                 value=""
               />
               <div
-                className="sc-RefOD qOQox"
+                className="sc-ibxdXY iyZpjg"
               >
                 <div
                   className="sc-ifAKCX xmkOg"
@@ -157,10 +157,10 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
           </div>
         </div>
         <div
-          className="sc-bwCtUz fFhBGc"
+          className="sc-iQKALj dffyEb"
         >
           <div
-            className="sc-esjQYD exKFgL"
+            className="sc-kfGgVZ ifQckD"
           >
             <a
               backgroundColor="#848484"
@@ -184,7 +184,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
         </div>
       </form>
       <div
-        className="sc-kIPQKe hAVNHG"
+        className="sc-esjQYD gTgPrq"
       />
     </div>
   </div>
