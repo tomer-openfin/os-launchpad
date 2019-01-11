@@ -9,6 +9,7 @@ const ON_OFF_NAME = 'autohide-onoff';
 
 interface Props {
   autoHide: boolean;
+  hideWindow: () => void;
   setAutoHide: (autoHide: boolean) => void;
   setLaunchbarPosition: (launcherPosition: DirectionalPosition) => void;
   onEscDown: () => void;
@@ -16,7 +17,7 @@ interface Props {
 
 class Settings extends React.Component<Props, {}> {
   render() {
-    const { autoHide, setAutoHide, setLaunchbarPosition } = this.props;
+    const { autoHide, hideWindow, setAutoHide, setLaunchbarPosition } = this.props;
 
     const setLauncherPositionTop = () => setLaunchbarPosition(DirectionalPosition.Top);
     const setLauncherPositionLeft = () => setLaunchbarPosition(DirectionalPosition.Left);
@@ -28,7 +29,7 @@ class Settings extends React.Component<Props, {}> {
 
     return (
       <Window>
-        <WindowHeader>My Settings</WindowHeader>
+        <WindowHeader handleClose={hideWindow} >My Settings</WindowHeader>
 
         <Section>
           <Heading>Auto-Hide</Heading>

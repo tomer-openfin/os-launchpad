@@ -17,6 +17,7 @@ describe('<AppDirectory />', () => {
             addToLauncher={noopCreator}
             appList={appData}
             getIsLauncherApp={getIsLauncherApp}
+            hideWindow={noop}
             onBlur={noop}
             onEscDown={noop}
             removeFromLauncher={noopCreator}

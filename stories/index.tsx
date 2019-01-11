@@ -5,6 +5,7 @@ import '../src/styles/styles.story';
 import '../src/components/AppIndicator/AppIndicator.story';
 import '../src/components/Borders/Borders.story';
 import '../src/components/Button/Button.story';
+import '../src/components/Checkbox/Checkbox.story';
 import '../src/components/CloseButton/CloseButton.story';
 import '../src/components/FormField/FormField.story';
 import '../src/components/Logo/Logo.story';

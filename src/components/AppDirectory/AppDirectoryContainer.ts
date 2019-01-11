@@ -17,6 +17,9 @@ const stateProps = state => ({
 
 const dispatchProps = dispatch => ({
   addToLauncher: (appId: App['id']) => dispatch(addToAppLauncher(appId)),
+  hideWindow: () => {
+    dispatch(Window.hideWindow({ id: APP_DIRECTORY_WINDOW }));
+  },
   onBlur: () => {
     dispatch(Window.hideWindow({ id: APP_DIRECTORY_WINDOW }));
   },

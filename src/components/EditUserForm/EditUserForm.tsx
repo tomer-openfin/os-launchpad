@@ -109,7 +109,7 @@ class EditUserForm extends React.Component<Props, State> {
 
     return (
       <Wrapper>
-        <WindowHeader backgroundColor={Color.VACUUM} withoutClose>
+        <WindowHeader backgroundColor={Color.VACUUM}>
           <HeadingText>{`${firstName} ${lastName}`}</HeadingText>
 
           <SvgIcon color={Color.MERCURY} hoverColor={Color.MARS} size={30} imgSrc={trashIcon} onClick={this.handleDeleteIconClick} />

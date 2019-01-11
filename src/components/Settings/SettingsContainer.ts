@@ -12,6 +12,9 @@ const stateProps = state => ({
 });
 
 const dispatchProps = dispatch => ({
+  hideWindow: () => {
+    dispatch(Window.hideWindow({ id: SETTINGS_WINDOW }));
+  },
   onEscDown: () => {
     dispatch(Window.hideWindow({ id: SETTINGS_WINDOW }));
   },

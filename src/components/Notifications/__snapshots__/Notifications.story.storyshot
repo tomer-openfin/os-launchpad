@@ -11,15 +11,15 @@ exports[`Storyshots Components/Notifications default 1`] = `
     }
   >
     <div
-      className="sc-hmzhuo gvCBTb"
+      className="sc-dNLxif eyPJwU"
     >
       <div
-        className="sc-ksYbfQ bFTqbK sc-ifAKCX kGkovX"
+        className="sc-jbKcbu cQVemD sc-ifAKCX kGkovX"
         color="#E7E7E7"
         size={42}
       />
       <div
-        className="sc-cJSrbW hgSull"
+        className="sc-hqyNC hMiGGR"
       >
         23
       </div>

@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import { CATEGORIES } from '../../utils/storyCategories';
 
+import noop from '../../utils/noop';
 import WindowHeader from './WindowHeader';
 
 storiesOf(`${CATEGORIES.UI}WindowHeader`, module)
@@ -12,5 +13,9 @@ storiesOf(`${CATEGORIES.UI}WindowHeader`, module)
     const title = text('title', 'OS Launchpad');
     const withoutClose = boolean('withoutClose', false);
 
-    return <WindowHeader withoutClose={withoutClose}>{title}</WindowHeader>;
+    return (
+      <WindowHeader handleClose={noop}>
+        {title}
+      </WindowHeader>
+    );
   });

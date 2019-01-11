@@ -6,20 +6,14 @@ import * as uncheckedIcon from '../../assets/Unchecked.svg';
 import { Color } from '../../styles/index';
 import { TypeStyleCanopus } from '../../styles/typography.css';
 
-import FormField from '../FormField';
-
 interface CheckedProps {
-  checked: boolean;
+  isChecked: boolean;
 }
 
-export const FormFieldWrapper = styled(FormField)`
+export const Label = styled.label`
   display: flex;
-  flex-direction: row;
   align-items: center;
-
-  & > input {
-    display: none;
-  }
+  width: auto;
 `;
 
 export const LabelText = styled.div`
@@ -28,11 +22,17 @@ export const LabelText = styled.div`
   color: ${Color.SUN};
 `;
 
-export const CheckboxUI = styled.div<CheckedProps>`
-  margin-right: 10px;
+export const CustomCheckbox = styled.div<CheckedProps>`
+  margin: 5px 5px 5px 0;
   height: 19px;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url(${props => (props.checked ? checkedIcon : uncheckedIcon)});
+  background-image: url(${props => (props.isChecked ? checkedIcon : uncheckedIcon)});
   width: 19px;
+`;
+
+export const Input = styled.input`
+  height: 0;
+  width: 0;
+  opacity: 0;
 `;

@@ -11,37 +11,37 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
     }
   >
     <div
-      className="sc-jhAzac hTytEA"
+      className="sc-dVhcbM dqTRDg"
     >
       <div
-        className="sc-ckVGcZ fbJWjp"
+        className="sc-hMqMXs iscbZd"
       >
         <div
-          className="sc-jKJlTe hPbDl"
+          className="sc-kEYyzF qSset"
         >
           <div
-            className="sc-fMiknA gPZvFj"
+            className="sc-fAjcbJ zwPAW"
           >
             <div
-              className="sc-hzDkRC ciJWjL"
+              className="sc-fMiknA hxMNNA"
             >
               <div
-                className="sc-gPEVay gNPTgu"
+                className="sc-gipzik cdJgKb"
               >
                 <div
-                  className="sc-iRbamj eDbvZk"
+                  className="sc-csuQGl gTsDHH"
                 />
               </div>
             </div>
             <input
-              className="sc-dVhcbM RqXeL"
+              className="sc-caSCKo cWjNOz"
               onChange={[Function]}
               placeholder="Search for app..."
             />
           </div>
         </div>
         <div
-          className="sc-dxgOiQ bgfQwF"
+          className="sc-eNQAEJ jYHCcl"
         >
           <div
             className="sc-ifAKCX cWlwzh"
@@ -52,16 +52,16 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
         </div>
       </div>
       <div
-        className="sc-fBuWsC hWswne"
+        className="sc-eqIVtm bDGSOf"
       >
         <div
-          className="sc-fAjcbJ lcHpzj"
+          className="sc-kjoXOD kjNire"
         >
           <div
-            className="sc-jlyJG gZgpqJ"
+            className="sc-Rmtcm bDwczE"
           >
             <div
-              className="sc-hzDkRC ciJWjL"
+              className="sc-fMiknA hxMNNA"
             >
               <div
                 className="sc-iwsKbI bqtotH"
@@ -88,25 +88,25 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
               </div>
             </div>
             <div
-              className="sc-gipzik gFPfla"
+              className="sc-bRBYWo dnqCHu"
             >
               <div
-                className="sc-csuQGl haKJLD"
+                className="sc-hzDkRC eRglbU"
                 onClick={[Function]}
               >
                 FinTech Studios
               </div>
               <div
-                className="sc-Rmtcm fLbqvH"
+                className="sc-jhAzac bRsXDu"
               >
                 Using cutting edge artificial intelligence and machine learning, FTS delivers actionable news, research, market analytics, and analytics from millions of sources.
               </div>
             </div>
             <div
-              className="sc-bRBYWo knWUVJ"
+              className="sc-fBuWsC cmsTAP"
             >
               <div
-                className="sc-eqIVtm kcUVyr"
+                className="sc-gisBJw cYvaZh"
                 onClick={[Function]}
               >
                 +
@@ -115,13 +115,13 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
           </div>
         </div>
         <div
-          className="sc-fAjcbJ lcHpzj"
+          className="sc-kjoXOD kjNire"
         >
           <div
-            className="sc-jlyJG gZgpqJ"
+            className="sc-Rmtcm bDwczE"
           >
             <div
-              className="sc-hzDkRC ciJWjL"
+              className="sc-fMiknA hxMNNA"
             >
               <div
                 className="sc-iwsKbI bqtotH"
@@ -148,25 +148,25 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
               </div>
             </div>
             <div
-              className="sc-gipzik gFPfla"
+              className="sc-bRBYWo dnqCHu"
             >
               <div
-                className="sc-csuQGl haKJLD"
+                className="sc-hzDkRC eRglbU"
                 onClick={[Function]}
               >
                 GreenKey
               </div>
               <div
-                className="sc-Rmtcm fLbqvH"
+                className="sc-jhAzac bRsXDu"
               >
                 We are where voice becomes data for the financial markets. Green Key’s voice platform and API includes integrated speech recognition for domain specific workflows. The programmable platform enables firms to integrate sophisticated voice and/or transcription capabilities into their own solutions without telecom or data science knowledge.
               </div>
             </div>
             <div
-              className="sc-bRBYWo knWUVJ"
+              className="sc-fBuWsC cmsTAP"
             >
               <div
-                className="sc-eqIVtm kcUVyr"
+                className="sc-gisBJw cYvaZh"
                 onClick={[Function]}
               >
                 +
@@ -175,13 +175,13 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
           </div>
         </div>
         <div
-          className="sc-fAjcbJ lcHpzj"
+          className="sc-kjoXOD kjNire"
         >
           <div
-            className="sc-jlyJG gZgpqJ"
+            className="sc-Rmtcm bDwczE"
           >
             <div
-              className="sc-hzDkRC ciJWjL"
+              className="sc-fMiknA hxMNNA"
             >
               <div
                 className="sc-iwsKbI bqtotH"
@@ -208,25 +208,25 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
               </div>
             </div>
             <div
-              className="sc-gipzik gFPfla"
+              className="sc-bRBYWo dnqCHu"
             >
               <div
-                className="sc-csuQGl haKJLD"
+                className="sc-hzDkRC eRglbU"
                 onClick={[Function]}
               >
                 Hammerstone Markets App
               </div>
               <div
-                className="sc-Rmtcm fLbqvH"
+                className="sc-jhAzac bRsXDu"
               >
                 The Hammerstone Markets App is both real-time news and real-time analysis sent via compliant messaging platforms including Openfin, Bloomberg, Pivot, and Symphony. Our primary demographic is Institutional Buy and Sell-side traders, who are active in U.S. equities. Founded in 2001, we currently have 165 companies and over 1,000 users of the product.
               </div>
             </div>
             <div
-              className="sc-bRBYWo knWUVJ"
+              className="sc-fBuWsC cmsTAP"
             >
               <div
-                className="sc-eqIVtm kcUVyr"
+                className="sc-gisBJw cYvaZh"
                 onClick={[Function]}
               >
                 +
@@ -235,13 +235,13 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
           </div>
         </div>
         <div
-          className="sc-fAjcbJ lcHpzj"
+          className="sc-kjoXOD kjNire"
         >
           <div
-            className="sc-jlyJG gZgpqJ"
+            className="sc-Rmtcm bDwczE"
           >
             <div
-              className="sc-hzDkRC ciJWjL"
+              className="sc-fMiknA hxMNNA"
             >
               <div
                 className="sc-iwsKbI bqtotH"
@@ -268,25 +268,25 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
               </div>
             </div>
             <div
-              className="sc-gipzik gFPfla"
+              className="sc-bRBYWo dnqCHu"
             >
               <div
-                className="sc-csuQGl haKJLD"
+                className="sc-hzDkRC eRglbU"
                 onClick={[Function]}
               >
                 Neptune
               </div>
               <div
-                className="sc-Rmtcm fLbqvH"
+                className="sc-jhAzac bRsXDu"
               >
                 At Neptune Networks, we deliver high-quality bond market data (mostly axes) from sell-side banks to buy-side clients. Our technology enables real-time connectivity between banks and investors which leads to meaningful conversations, satisfying the immediate requirements of each party and ultimately, increasing trade volumes.
               </div>
             </div>
             <div
-              className="sc-bRBYWo knWUVJ"
+              className="sc-fBuWsC cmsTAP"
             >
               <div
-                className="sc-eqIVtm kcUVyr"
+                className="sc-gisBJw cYvaZh"
                 onClick={[Function]}
               >
                 +
@@ -295,13 +295,13 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
           </div>
         </div>
         <div
-          className="sc-fAjcbJ lcHpzj"
+          className="sc-kjoXOD kjNire"
         >
           <div
-            className="sc-jlyJG gZgpqJ"
+            className="sc-Rmtcm bDwczE"
           >
             <div
-              className="sc-hzDkRC ciJWjL"
+              className="sc-fMiknA hxMNNA"
             >
               <div
                 className="sc-iwsKbI bqtotH"
@@ -328,25 +328,25 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
               </div>
             </div>
             <div
-              className="sc-gipzik gFPfla"
+              className="sc-bRBYWo dnqCHu"
             >
               <div
-                className="sc-csuQGl haKJLD"
+                className="sc-hzDkRC eRglbU"
                 onClick={[Function]}
               >
                 OpenDoor
               </div>
               <div
-                className="sc-Rmtcm fLbqvH"
+                className="sc-jhAzac bRsXDu"
               >
                 Launching the first all-to-all, session-based trading platform for off-the-run US Treasuries and TIPS, OpenDoor fills the liquidity vacuum. Our customers include many of the world’s largest asset managers, central banks, primary dealers, hedge funds and trading firms.
               </div>
             </div>
             <div
-              className="sc-bRBYWo knWUVJ"
+              className="sc-fBuWsC cmsTAP"
             >
               <div
-                className="sc-eqIVtm kcUVyr"
+                className="sc-gisBJw cYvaZh"
                 onClick={[Function]}
               >
                 +
@@ -355,13 +355,13 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
           </div>
         </div>
         <div
-          className="sc-fAjcbJ lcHpzj"
+          className="sc-kjoXOD kjNire"
         >
           <div
-            className="sc-jlyJG gZgpqJ"
+            className="sc-Rmtcm bDwczE"
           >
             <div
-              className="sc-hzDkRC ciJWjL"
+              className="sc-fMiknA hxMNNA"
             >
               <div
                 className="sc-iwsKbI bqtotH"
@@ -388,26 +388,26 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
               </div>
             </div>
             <div
-              className="sc-gipzik gFPfla"
+              className="sc-bRBYWo dnqCHu"
             >
               <div
-                className="sc-csuQGl haKJLD"
+                className="sc-hzDkRC eRglbU"
                 onClick={[Function]}
               >
                 Parity One
               </div>
               <div
-                className="sc-Rmtcm fLbqvH"
+                className="sc-jhAzac bRsXDu"
               >
                 Parity One transforms investment ideas into smart investment portfolios.
 Parity One’s sophisticated back-testing framework enables simulating the most advanced factor-based investment strategies and converts them into fully managed bespoke benchmarks and model portfolios.
               </div>
             </div>
             <div
-              className="sc-bRBYWo knWUVJ"
+              className="sc-fBuWsC cmsTAP"
             >
               <div
-                className="sc-eqIVtm kcUVyr"
+                className="sc-gisBJw cYvaZh"
                 onClick={[Function]}
               >
                 +
@@ -416,13 +416,13 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           </div>
         </div>
         <div
-          className="sc-fAjcbJ lcHpzj"
+          className="sc-kjoXOD kjNire"
         >
           <div
-            className="sc-jlyJG gZgpqJ"
+            className="sc-Rmtcm bDwczE"
           >
             <div
-              className="sc-hzDkRC ciJWjL"
+              className="sc-fMiknA hxMNNA"
             >
               <div
                 className="sc-iwsKbI bqtotH"
@@ -449,25 +449,25 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               </div>
             </div>
             <div
-              className="sc-gipzik gFPfla"
+              className="sc-bRBYWo dnqCHu"
             >
               <div
-                className="sc-csuQGl haKJLD"
+                className="sc-hzDkRC eRglbU"
                 onClick={[Function]}
               >
                 RSRCHXChange
               </div>
               <div
-                className="sc-Rmtcm fLbqvH"
+                className="sc-jhAzac bRsXDu"
               >
                 RSRCHX is a one-stop-shop for accessing the newly evolving paid-for research market and consuming research in compliance with global best practice.  Founded in 2014, the award-winning RSRCHX platform is used by more than 1,200 buy side firms and over 300 banks, brokers and independent research providers as both a regulatory solution and technology-led research management tool and venue for buying and selling research.
               </div>
             </div>
             <div
-              className="sc-bRBYWo knWUVJ"
+              className="sc-fBuWsC cmsTAP"
             >
               <div
-                className="sc-eqIVtm kcUVyr"
+                className="sc-gisBJw cYvaZh"
                 onClick={[Function]}
               >
                 +
@@ -476,13 +476,13 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           </div>
         </div>
         <div
-          className="sc-fAjcbJ lcHpzj"
+          className="sc-kjoXOD kjNire"
         >
           <div
-            className="sc-jlyJG gZgpqJ"
+            className="sc-Rmtcm bDwczE"
           >
             <div
-              className="sc-hzDkRC ciJWjL"
+              className="sc-fMiknA hxMNNA"
             >
               <div
                 className="sc-iwsKbI bqtotH"
@@ -509,25 +509,25 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               </div>
             </div>
             <div
-              className="sc-gipzik gFPfla"
+              className="sc-bRBYWo dnqCHu"
             >
               <div
-                className="sc-csuQGl haKJLD"
+                className="sc-hzDkRC eRglbU"
                 onClick={[Function]}
               >
                 Trumid
               </div>
               <div
-                className="sc-Rmtcm fLbqvH"
+                className="sc-jhAzac bRsXDu"
               >
                 Trumid is a financial technology startup bringing efficiency to credit trading through data, technology and beautifully simple products. Trumid was founded in 2014 by credit professionals with over 100 years of trading experience and is headquartered in New York.
               </div>
             </div>
             <div
-              className="sc-bRBYWo knWUVJ"
+              className="sc-fBuWsC cmsTAP"
             >
               <div
-                className="sc-eqIVtm kcUVyr"
+                className="sc-gisBJw cYvaZh"
                 onClick={[Function]}
               >
                 +
@@ -536,13 +536,13 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           </div>
         </div>
         <div
-          className="sc-fAjcbJ lcHpzj"
+          className="sc-kjoXOD kjNire"
         >
           <div
-            className="sc-jlyJG gZgpqJ"
+            className="sc-Rmtcm bDwczE"
           >
             <div
-              className="sc-hzDkRC ciJWjL"
+              className="sc-fMiknA hxMNNA"
             >
               <div
                 className="sc-iwsKbI bqtotH"
@@ -569,25 +569,25 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               </div>
             </div>
             <div
-              className="sc-gipzik gFPfla"
+              className="sc-bRBYWo dnqCHu"
             >
               <div
-                className="sc-csuQGl haKJLD"
+                className="sc-hzDkRC eRglbU"
                 onClick={[Function]}
               >
                 TT Desktop
               </div>
               <div
-                className="sc-Rmtcm fLbqvH"
+                className="sc-jhAzac bRsXDu"
               >
                 Trading Technologies’ ultra-low-latency platform, TT, leverages a hybrid-cloud infrastructure to provide a streamlined, go-anywhere, high-performance experience for professional traders worldwide. TT’s most performant front-end app, TT Desktop, utilizes the OpenFin platform to deliver an HTML5-based trading experience.
               </div>
             </div>
             <div
-              className="sc-bRBYWo knWUVJ"
+              className="sc-fBuWsC cmsTAP"
             >
               <div
-                className="sc-eqIVtm kcUVyr"
+                className="sc-gisBJw cYvaZh"
                 onClick={[Function]}
               >
                 +
@@ -2183,6 +2183,35 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                           }
                         >
                           getIsLauncherApp
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      hideWindow
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
                         </span>
                         }
                       </span>

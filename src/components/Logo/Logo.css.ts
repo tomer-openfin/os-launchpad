@@ -10,8 +10,8 @@ export const LogoIcon = styled.div<Props>`
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  height: ${LOGO}px;
-  min-height: ${LOGO}px;
-  min-width: ${LOGO}px;
-  width: ${LOGO}px;
+  height: ${props => props.size || LOGO}px;
+  min-height: ${props => props.size || LOGO}px;
+  min-width: ${props => props.size || LOGO}px;
+  width: ${props => props.size || LOGO}px;
 `;

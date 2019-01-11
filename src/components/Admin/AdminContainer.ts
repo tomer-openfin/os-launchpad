@@ -12,6 +12,9 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
+  hideWindow: () => {
+    dispatch(Window.hideWindow({ id: ADMIN_WINDOW }));
+  },
   onEscDown: () => {
     dispatch(Window.hideWindow({ id: ADMIN_WINDOW }));
   },

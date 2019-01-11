@@ -1,12 +1,16 @@
-import { Field, Form, Formik } from 'formik';
+import { Formik } from 'formik';
 import * as React from 'react';
 
 import { LoginRequestPayload, LoginWithNewPasswordPayload, MeLoginState } from '../../redux/me';
 
-import Logo from '../Logo';
-import { CTA, FieldWrapper, ResponseMessage, Wrapper } from './Login.css';
+import Borders from '../Borders';
+import Checkbox from '../Checkbox';
+import FormField from '../FormField';
+import WindowHeader from '../WindowHeader';
+import { ContentWrapper, CTA, FormWrapper, ResponseMessage, StyledLogo, Wrapper } from './Login.css';
 
 interface Props {
+  closeApplication: () => void;
   login: (options: LoginRequestPayload) => void;
   loginWithNewPassword: (options: LoginWithNewPasswordPayload) => void;
   loginState: MeLoginState;
@@ -14,10 +18,10 @@ interface Props {
 
 const { USERNAME, PASSWORD } = process.env;
 
-const initialValues: LoginRequestPayload =
+const initialValues =
   USERNAME && PASSWORD && document.location && document.location.host.indexOf('8080') !== -1
-    ? { username: USERNAME, password: PASSWORD }
-    : { username: '', password: '' };
+    ? { username: USERNAME, password: PASSWORD, logoutOnQuit: false }
+    : { username: '', password: '', logoutOnQuit: false };
 
 /**
  * Higher order function to pass a function to Formik's onSubmit
@@ -46,21 +50,19 @@ const renderMessage = ({ error, message }: MeLoginState) =>
  *
  * @returns {React.StatelessComponent}
  */
-const LoginForm = () => (
-  <Form key="login">
-    <FieldWrapper>
-      <Field name="username" placeholder="Username" type="text" />
-    </FieldWrapper>
+const LoginForm = ({ values }) => {
+  return (
+    <FormWrapper key="login">
+      <FormField label="Email" name="username" placeholder="Enter Email" type="text" />
 
-    <FieldWrapper>
-      <Field name="password" placeholder="Password" type="password" />
-    </FieldWrapper>
+      <FormField label="Password" name="password" placeholder="Enter Password" type="password" />
 
-    <FieldWrapper>
+      <Checkbox label="Log me out when I quit" name="logoutOnQuit" checked={values.logoutOnQuit} />
+
       <CTA type="submit">Login</CTA>
-    </FieldWrapper>
-  </Form>
-);
+    </FormWrapper>
+  );
+};
 
 /**
  * ChangePasswordForm component
@@ -68,19 +70,13 @@ const LoginForm = () => (
  * @returns {React.StatelessComponent}
  */
 const ChangePasswordForm = () => (
-  <Form key="changePassword">
-    <FieldWrapper>
-      <Field name="newPassword" placeholder="New Password" type="password" />
-    </FieldWrapper>
+  <FormWrapper key="changePassword">
+    <FormField label="New Password" name="newPassword" placeholder="Enter Password" type="password" />
 
-    <FieldWrapper>
-      <Field name="newPasswordConfirmation" placeholder="Confirm Password" type="password" />
-    </FieldWrapper>
+    <FormField label="Password Confirmation" name="newPasswordConfirmation" placeholder="Confirm Password" type="password" />
 
-    <FieldWrapper>
-      <CTA type="submit">Create New Password</CTA>
-    </FieldWrapper>
-  </Form>
+    <CTA type="submit">Create New Password</CTA>
+  </FormWrapper>
 );
 
 /**
@@ -90,17 +86,23 @@ const ChangePasswordForm = () => (
  *
  * @returns {React.StatelessComponent}
  */
-const Login = ({ loginState, login, loginWithNewPassword }: Props) => (
+const Login = ({ closeApplication, loginState, login, loginWithNewPassword }: Props) => (
   <Wrapper>
-    <Logo />
+    <Borders borderRadius="6px">
+      <WindowHeader handleClose={closeApplication}>Log In</WindowHeader>
 
-    {renderMessage(loginState)}
+      <ContentWrapper>
+        <StyledLogo size={90} />
 
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit(loginState, login, loginWithNewPassword)}
-      render={loginState.changePassword ? ChangePasswordForm : LoginForm}
-    />
+        {renderMessage(loginState)}
+
+        <Formik
+          initialValues={initialValues}
+          onSubmit={handleSubmit(loginState, login, loginWithNewPassword)}
+          render={loginState.changePassword ? ChangePasswordForm : LoginForm}
+        />
+      </ContentWrapper>
+    </Borders>
   </Wrapper>
 );
 

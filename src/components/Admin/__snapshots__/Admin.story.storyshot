@@ -11,7 +11,7 @@ exports[`Storyshots Admin Components/Admin default 1`] = `
     }
   >
     <div
-      className="sc-jnlKLf fOiGUl"
+      className="sc-cIShpX jZVvcX"
     >
       <h1>
         You do not have clearance to see the admin tools.
@@ -167,6 +167,32 @@ exports[`Storyshots Admin Components/Admin default 1`] = `
                   Admin
                 </span>
                 <span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      hideWindow
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          anonymous
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
                   <span>
                      
                     <span

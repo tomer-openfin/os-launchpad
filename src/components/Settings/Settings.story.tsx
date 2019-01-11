@@ -3,6 +3,7 @@ import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
+import noop from '../../utils/noop';
 import { CATEGORIES } from '../../utils/storyCategories';
 
 import Settings from './Settings';
@@ -16,5 +17,5 @@ storiesOf(`${CATEGORIES.COMPONENTS}Settings`, module)
   .add('default', () => {
     const autoHide = boolean('autoHide', false);
 
-    return <Settings autoHide={autoHide} setAutoHide={setAutoHide} setLaunchbarPosition={setLaunchbarPosition} onEscDown={onEscDown} />;
+    return <Settings autoHide={autoHide} hideWindow={noop} setAutoHide={setAutoHide} setLaunchbarPosition={setLaunchbarPosition} onEscDown={onEscDown} />;
   });

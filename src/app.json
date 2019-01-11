@@ -11,8 +11,8 @@
     "saveWindowState": false,
     "resizable": false,
     "cornerRounding": {
-      "width": 6,
-      "height": 6
+      "height": 6,
+      "width": 6
     },
     "shadow": true,
     "frame": false,

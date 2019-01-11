@@ -119,7 +119,7 @@ class NewAppForm extends React.Component<Props, State> {
 
     return (
       <Wrapper>
-        <WindowHeader backgroundColor={Color.VACUUM} withoutClose>
+        <WindowHeader backgroundColor={Color.VACUUM}>
           Create New App
         </WindowHeader>
 

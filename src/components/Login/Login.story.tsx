@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import { CATEGORIES } from '../../utils/storyCategories';
 
+import noop from '../../utils/noop';
 import Login from './Login';
 
 const loginState = {
@@ -14,9 +15,12 @@ const loginState = {
 };
 
 storiesOf(`${CATEGORIES.COMPONENTS}Login`, module)
-  .add('default', () => <Login loginState={loginState} login={action('Login options')} loginWithNewPassword={action('Login with new password options')} />)
+  .add('default', () => (
+    <Login closeApplication={noop} loginState={loginState} login={action('Login options')} loginWithNewPassword={action('Login with new password options')} />
+  ))
   .add('Change Password', () => (
     <Login
+      closeApplication={noop}
       loginState={{ ...loginState, changePassword: true, message: 'Please create a new password' }}
       login={action('Login options')}
       loginWithNewPassword={action('Login with new password options')}
@@ -24,6 +28,7 @@ storiesOf(`${CATEGORIES.COMPONENTS}Login`, module)
   ))
   .add('With Error', () => (
     <Login
+      closeApplication={noop}
       loginState={{ ...loginState, error: true, message: 'Invalid username or password' }}
       login={action('Login options')}
       loginWithNewPassword={action('Login with new password options')}

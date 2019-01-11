@@ -105,7 +105,7 @@ class EditAppForm extends React.Component<Props, State> {
 
     return (
       <Wrapper>
-        <WindowHeader backgroundColor={Color.VACUUM} withoutClose>
+        <WindowHeader backgroundColor={Color.VACUUM}>
           <HeadingText>{`Edit ${title}`}</HeadingText>
 
           <SvgIcon color={Color.MERCURY} hoverColor={Color.MARS} size={30} imgSrc={trashIcon} onClick={this.handleDeleteIconClick} />

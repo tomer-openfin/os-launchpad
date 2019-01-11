@@ -11,13 +11,13 @@ import { Color } from '../../styles';
 import Button, { ButtonLink } from '../Button/Button.css';
 import { ButtonWrapper, CheckboxWrapper, Footer, FormWrapper, GridWrapper, RefreshIconWrapper, RowWrapper, ScrollWrapper } from '../UserForm';
 
-import Checkbox from '../Checkbox';
+import CheckboxInArray from '../CheckboxInArray';
 import FormField, { Label, LabelText } from '../FormField';
 import SvgIcon from '../SvgIcon/SvgIcon';
 
-const renderMockIntents = () => MOCK_INTENTS.map((intent, index) => <Checkbox name="intents" key={index} value={intent.displayName} />);
+const renderMockIntents = () => MOCK_INTENTS.map((intent, index) => <CheckboxInArray name="intents" key={index} value={intent.displayName} />);
 
-const renderMockContexts = () => MOCK_CONTEXTS.map((context, index) => <Checkbox name="contexts" key={index} value={context.$type} />);
+const renderMockContexts = () => MOCK_CONTEXTS.map((context, index) => <CheckboxInArray name="contexts" key={index} value={context.$type} />);
 
 const AppForm = ({ isValid, isSubmitting }) => (
   <FormWrapper>

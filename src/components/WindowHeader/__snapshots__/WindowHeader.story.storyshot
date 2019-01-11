@@ -11,19 +11,19 @@ exports[`Storyshots UI Components/WindowHeader default 1`] = `
     }
   >
     <div
-      className="sc-ckVGcZ fbJWjp"
+      className="sc-hMqMXs iscbZd"
     >
       <div
-        className="sc-jKJlTe hPbDl"
+        className="sc-kEYyzF qSset"
       >
         <div
-          className="sc-eNQAEJ eBlDWY"
+          className="sc-kkGfuU iDxKLe"
         >
           OS Launchpad
         </div>
       </div>
       <div
-        className="sc-dxgOiQ bgfQwF"
+        className="sc-eNQAEJ jYHCcl"
       >
         <div
           className="sc-ifAKCX cWlwzh"
@@ -189,7 +189,7 @@ exports[`Storyshots UI Components/WindowHeader default 1`] = `
                       <span
                         style={Object {}}
                       >
-                        withoutClose
+                        handleClose
                       </span>
                       <span>
                         =
@@ -200,11 +200,11 @@ exports[`Storyshots UI Components/WindowHeader default 1`] = `
                           <span
                             style={
                               Object {
-                                "color": "#a11",
+                                "color": "#170",
                               }
                             }
                           >
-                            false
+                            noop
                           </span>
                           }
                         </span>

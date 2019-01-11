@@ -14,9 +14,10 @@ interface Props {
   addToLauncher: (appId: App['id']) => void;
   appList: App[];
   getIsLauncherApp: (appId: App['id']) => boolean;
-  removeFromLauncher: (appId: App['id']) => void;
+  hideWindow: () => void;
   onBlur: () => void;
   onEscDown: () => void;
+  removeFromLauncher: (appId: App['id']) => void;
 }
 
 interface State {
@@ -90,10 +91,11 @@ class AppDirectory extends React.PureComponent<Props, State> {
 
   render() {
     const { search } = this.state;
+    const { hideWindow } = this.props;
 
     return (
       <Wrapper>
-        <WindowHeader>
+        <WindowHeader handleClose={hideWindow}>
           <SearchHeader>
             <IconWrapper>
               <IconSpace iconImg={searchIcon} />

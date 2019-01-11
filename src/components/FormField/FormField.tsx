@@ -5,9 +5,11 @@ import { Error, Label, LabelText } from './FormField.css';
 
 interface Props {
   children?;
+  checked?: boolean;
+  className?: string;
   component?: string;
   disabled?: boolean;
-  label: string;
+  label?: string;
   maxLength?: string;
   name: string;
   placeholder?: string;
@@ -15,11 +17,20 @@ interface Props {
   validate?;
 }
 
-export const FormField = ({ children, component, type, name, maxLength, validate, placeholder, disabled, label }: Props) => (
-  <Label>
-    <LabelText>{label}</LabelText>
+export const FormField = ({ checked, children, className, component, type, name, maxLength, validate, placeholder, disabled, label }: Props) => (
+  <Label className={className}>
+    {label && <LabelText>{label}</LabelText>}
 
-    <Field type={type} component={component} name={name} maxLength={maxLength} validate={validate} placeholder={placeholder} disabled={disabled} />
+    <Field
+      type={type}
+      component={component}
+      name={name}
+      maxLength={maxLength}
+      validate={validate}
+      placeholder={placeholder}
+      disabled={disabled}
+      checked={checked}
+    />
 
     <ErrorMessage component={Error} name={name} />
 
