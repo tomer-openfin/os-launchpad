@@ -24,7 +24,7 @@ import '../src/components/AppOverflow/AppOverflow.story';
 import '../src/components/LauncherAppIcon/LauncherAppIcon.story';
 import '../src/components/Layouts/Layouts.story';
 import '../src/components/Login/Login.story';
-import '../src/components/Notifications/Notifications.story';
+import '../src/components/NotificationsIcon/NotificationsIcon.story';
 import '../src/components/Settings/Settings.story';
 import '../src/components/SvgIconWithExtension/SvgIconWithExtension.story';
 

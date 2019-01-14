@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Admin Components/LogoForm default 1`] = `
+exports[`Storyshots Components/NotificationsIcon default 1`] = `
 <div>
   <div
     style={
@@ -10,71 +10,22 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
       }
     }
   >
-    <form
-      className="sc-cQFLBn kQblwa"
-      onReset={[Function]}
-      onSubmit={[Function]}
+    <div
+      className="sc-bbmXgH lclnVm"
     >
-      <label
-        className="sc-GMQeP kjYkyg"
-        htmlFor="LogoFormFileInput"
-      >
-        <div
-          className="sc-iujRgT jHlJiA"
-        >
-          <div
-            className="sc-bAeIUo ikyMno"
-          >
-            <div
-              className="sc-hMqMXs bhNbEz"
-            />
-          </div>
-          <div
-            className="sc-hORach kvCyqA"
-          >
-            <div
-              className="sc-bMVAic fkovzo"
-            >
-              Click & drag a new image over the existing one to replace your brand logo.
-            </div>
-            <input
-              accept="image/*"
-              className="sc-gqPbQI iqIpaK"
-              id="LogoFormFileInput"
-              name="logo"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onDragEnter={[Function]}
-              onDragLeave={[Function]}
-              onDrop={[Function]}
-              type="file"
-              value=""
-            />
-          </div>
-        </div>
-      </label>
       <div
-        className="sc-exAgwC ixRixg"
+        className="sc-ifAKCX bYrsMz"
+        color="#FBC23C"
+        disabled={false}
+        onClick={[Function]}
+        size="42px"
+      />
+      <div
+        className="sc-uJMKN kZJdjA"
       >
-        <button
-          className="sc-chPdSV hPWyYU"
-          disabled={true}
-          type="submit"
-          width={110}
-        >
-          Overwrite
-        </button>
-        <button
-          className="sc-chPdSV iLdFaL"
-          disabled={true}
-          onClick={[Function]}
-          type="button"
-          width={110}
-        >
-          Reset
-        </button>
+        23
       </div>
-    </form>
+    </div>
   </div>
   <button
     onClick={[Function]}
@@ -173,7 +124,7 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
               }
             }
           >
-            Admin Components/LogoForm
+            Components/NotificationsIcon
           </h1>
           <h2
             style={
@@ -222,15 +173,157 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
                   }
                 >
                   &lt;
-                  LogoForm
+                  NotificationsIcon
                 </span>
                 <span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
-                      logo
+                      disabled
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#a11",
+                            }
+                          }
+                        >
+                          false
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      imgSrc
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#666",
+                            }
+                          }
+                        >
+                          {
+                          <span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              default
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
+                            }
+                          >
+                            ''
+                          </span>
+                          }
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      count
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#a11",
+                            }
+                          }
+                        >
+                          23
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      onClick
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          Click Notification Center Toggle
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      size
                     </span>
                     <span>
                       =
@@ -246,64 +339,12 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
                             }
                           }
                         >
-                          https://github.githubassets.com/images/modules/log…
+                          42px
                         </span>
                         "
                       </span>
                     </span>
-                  </span>
-                  <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      saveLogo
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          saveLogo
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      setLogo
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          setLogo
-                        </span>
-                        }
-                      </span>
-                    </span>
-                     
+                    <br />
                   </span>
                 </span>
                 <span
@@ -362,7 +403,7 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
               }
             >
               "
-              LogoForm
+              NotificationsIcon
               " Component
             </h2>
             <small>

@@ -79,7 +79,7 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-eerKOB kIuxcd"
+      className="sc-eilVRo dlWbAZ"
     >
       Sirius
     </div>
@@ -97,7 +97,7 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-emmjRN iycyqC"
+      className="sc-eerKOB fLYsNC"
     >
       Canopus
     </div>
@@ -115,7 +115,7 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-cpmLhU cfoYAT"
+      className="sc-emmjRN fQVBud"
     >
       Arcturus
     </div>
@@ -133,7 +133,7 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-dymIpo kRzHPO"
+      className="sc-cpmLhU lrXie"
     >
       Procyon
     </div>
@@ -151,7 +151,7 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-bnXvFD jVlKVW"
+      className="sc-dymIpo edDnwL"
     >
       Deneb
     </div>
@@ -170,7 +170,7 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-gFaPwZ iwjpBx"
+      className="sc-bnXvFD fibXVN"
     >
       Pollux
     </div>
@@ -189,7 +189,7 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-fhYwyz dztCcw"
+      className="sc-gFaPwZ uuLLg"
     >
       Bellatrix
     </div>
@@ -207,7 +207,7 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-jzgbtB bJElPd"
+      className="sc-fhYwyz cMaylj"
     >
       Polaris
     </div>
@@ -225,7 +225,7 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-gJWqzi egfCrI"
+      className="sc-jzgbtB jIhEkI"
     >
       Algol
     </div>
@@ -243,7 +243,7 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-rBLzX dKlBxT"
+      className="sc-gJWqzi bnWEIG"
     >
       Enif
     </div>
@@ -261,7 +261,7 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-bMvGRv fewQFP"
+      className="sc-rBLzX bYkgBY"
     >
       Naos
     </div>
@@ -279,7 +279,7 @@ exports[`Storyshots Styleguide/Typography default 1`] = `
     className="sc-bwzfXH eIxfGp"
   >
     <div
-      className="sc-CtfFt gizBHf"
+      className="sc-bMvGRv cNzQMl"
     >
       Sol
     </div>
