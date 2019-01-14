@@ -2,6 +2,7 @@
 import '../src/styles/styles.story';
 
 // UI Components - should have not be connected to the store in any way
+import '../src/components/AppIcon/AppIcon.story';
 import '../src/components/AppIndicator/AppIndicator.story';
 import '../src/components/Borders/Borders.story';
 import '../src/components/Button/Button.story';
@@ -17,10 +18,10 @@ import '../src/components/WindowHeader/WindowHeader.story';
 import '../src/components/App/App.story';
 import '../src/components/AppCard/AppCard.story';
 import '../src/components/AppDirectory/AppDirectory.story';
-import '../src/components/AppIcon/AppIcon.story';
 import '../src/components/AppList/AppList.story';
 import '../src/components/AppListToggle/AppListToggle.story';
 import '../src/components/AppOverflow/AppOverflow.story';
+import '../src/components/LauncherAppIcon/LauncherAppIcon.story';
 import '../src/components/Layouts/Layouts.story';
 import '../src/components/Login/Login.story';
 import '../src/components/Notifications/Notifications.story';

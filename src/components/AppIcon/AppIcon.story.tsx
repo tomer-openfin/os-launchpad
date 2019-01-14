@@ -1,92 +1,22 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, number, select, text, withKnobs } from '@storybook/addon-knobs';
+import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import { AppIconSizes, DirectionalPosition } from '../../types/enums';
+import { AppIconSizes } from '../../types/commons';
+import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
-import AppIcon from './AppIcon';
-import { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from './AppIcon.css';
 
-storiesOf(`${CATEGORIES.COMPONENTS}AppIcon`, module)
+import AppIcon from './AppIcon';
+
+storiesOf(`${CATEGORIES.UI}AppIcon`, module)
   .addDecorator(withKnobs)
+  .addDecorator(withMarginDecorator(15))
   .add('default', () => {
     const imgSrc = text('imgSrc', 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
-    const indicatorPosition = select('indicatorPosition', Object(DirectionalPosition), DirectionalPosition.Bottom);
     const size = select('size', Object(AppIconSizes), AppIconSizes.Medium);
+    const isClickable = boolean('isClickable', false);
     const isDisabled = boolean('isDisabled', false);
 
-    return (
-      <AppIcon
-        appId="osLaunchpadMain"
-        imgSrc={imgSrc}
-        indicatorPosition={indicatorPosition}
-        isDisabled={isDisabled}
-        launchApp={action('launchApp clicked')}
-        size={size}
-      />
-    );
-  })
-  .add('with parent background color', () => {
-    const imgSrc = text('imgSrc', 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
-    const indicatorPosition = select('indicatorPosition', Object(DirectionalPosition), DirectionalPosition.Bottom);
-    const size = select('size', Object(AppIconSizes), AppIconSizes.Medium);
-    const isDisabled = boolean('isDisabled', false);
-
-    return (
-      <AppIcon
-        appId="osLaunchpadMain"
-        imgSrc={imgSrc}
-        indicatorPosition={indicatorPosition}
-        isDisabled={isDisabled}
-        launchApp={action('launchApp clicked')}
-        size={size}
-      />
-    );
-  })
-  .add('with transition', () => {
-    const backgroundColor = text('AppIcon background-color', '#FFCC04');
-    const imgSrc = text('imgSrc', 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
-    const indicatorPosition = select('indicatorPosition', Object(DirectionalPosition), DirectionalPosition.Bottom);
-    const size = select('size', Object(AppIconSizes), AppIconSizes.Medium);
-    const margin = number('margin', 10);
-    const isDisabled = boolean('isDisabled', false);
-    const isMounted = boolean('isMounted', false);
-
-    const icons = isMounted
-      ? [
-          {
-            appId: 'osLaunchpadMain',
-            backgroundColor,
-            hasTransition: true,
-            imgSrc,
-            indicatorPosition,
-            isDisabled,
-            launchApp: action('launchApp clicked'),
-            margin: `${margin}px`,
-            size,
-          },
-        ]
-      : [];
-
-    return (
-      <div
-        style={{
-          alignItems: 'center',
-          display: 'inline-flex',
-          height: `${2 * margin + size}px`,
-          justifyContent: 'center',
-          width: `${2 * margin + size}px`,
-        }}
-      >
-        <TransitionGroup component={null}>
-          {icons.map(icon => (
-            <CSSTransition classNames={APP_ICON_TRANSITION_CLASSNAMES} key={icon.appId} timeout={APP_ICON_TRANSITION_DURATION} unmountOnExit>
-              <AppIcon {...icon} />
-            </CSSTransition>
-          ))}
-        </TransitionGroup>
-      </div>
-    );
+    return <AppIcon imgSrc={imgSrc} isDisabled={isDisabled} onClick={isClickable ? action('AppIcon clicked') : undefined} size={size} />;
   });

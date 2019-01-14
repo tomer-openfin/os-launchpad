@@ -2,29 +2,9 @@ import { connect } from 'react-redux';
 
 import { AppStatusStates, closeFinAppRequest, getAppById, getAppStatusById, openFinAppRequest } from '../../redux/apps';
 import { getLauncherPosition, removeFromAppLauncher } from '../../redux/me';
-import { AppIconSizes, DirectionalPosition } from '../../types/enums';
+import { AppIconSizes } from '../../types/commons';
 
-import AppIcon from './AppIcon';
-
-const invertPosition = (position: DirectionalPosition): DirectionalPosition => {
-  switch (position) {
-    case DirectionalPosition.Top: {
-      return DirectionalPosition.Bottom;
-    }
-    case DirectionalPosition.Right: {
-      return DirectionalPosition.Left;
-    }
-    case DirectionalPosition.Bottom: {
-      return DirectionalPosition.Top;
-    }
-    case DirectionalPosition.Left: {
-      return DirectionalPosition.Right;
-    }
-    default: {
-      return DirectionalPosition.Bottom;
-    }
-  }
-};
+import LauncherAppIcon from './LauncherAppIcon';
 
 interface Props {
   appId: string;
@@ -59,10 +39,11 @@ const mergeProps = (stateProps, dispatchProps, ownProps: Props) => {
 
   return {
     ...ownProps,
+    appStatusState: status ? status.state : AppStatusStates.Closed,
     contextMenuOptions,
-    imgSrc: stateProps.app ? stateProps.app.icon : '',
-    indicatorPosition: invertPosition(launcherPosition),
+    imgSrc: app ? app.icon : '',
     launchApp: app ? () => dispatchProps.openFinAppRequest(app) : () => undefined,
+    launcherPosition,
   };
 };
 
@@ -70,4 +51,4 @@ export default connect(
   mapState,
   mapDispatch,
   mergeProps,
-)(AppIcon);
+)(LauncherAppIcon);

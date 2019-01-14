@@ -11,43 +11,43 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
     }
   >
     <div
-      className="sc-exAgwC jFrPZI"
+      className="sc-bXGyLb kQBnwO"
     >
       <h3
-        className="sc-GMQeP EWxNy"
+        className="sc-daURTG gEiSmi"
       >
         Enterprise Branding
       </h3>
       <form
-        className="sc-iujRgT goFyFb"
+        className="sc-gojNiO iAxjSY"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <label
-          className="sc-bMVAic htQZsB"
+          className="sc-exAgwC blMVFY"
           htmlFor="LogoFormFileInput"
         >
           <div
-            className="sc-hORach cAqICe"
+            className="sc-GMQeP bTPRof"
           >
             <div
-              className="sc-gqPbQI frpjme"
+              className="sc-iujRgT dASBCQ"
             >
               <div
-                className="sc-dxgOiQ drIuSn"
+                className="sc-hMqMXs fJevnH"
               />
             </div>
             <div
-              className="sc-hMFtBS dPrQUA"
+              className="sc-bMVAic jNkmZa"
             >
               <div
-                className="sc-cLQEGU goZDRD"
+                className="sc-bAeIUo ilPDAV"
               >
                 Click & drag a new image over the existing one to replace your brand logo.
               </div>
               <input
                 accept="image/*"
-                className="sc-cmthru hwtFcP"
+                className="sc-hORach KOeUr"
                 id="LogoFormFileInput"
                 name="logo"
                 onBlur={[Function]}
@@ -62,10 +62,10 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
           </div>
         </label>
         <div
-          className="sc-bAeIUo bVIOID"
+          className="sc-cQFLBn jAWcVV"
         >
           <button
-            className="sc-fjdhpX jonYYn"
+            className="sc-chPdSV hPWyYU"
             disabled={true}
             type="submit"
             width={110}
@@ -73,7 +73,7 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
             Overwrite
           </button>
           <button
-            className="sc-fjdhpX gXDnzN"
+            className="sc-chPdSV iLdFaL"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -84,17 +84,17 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
         </div>
       </form>
       <h3
-        className="sc-GMQeP EWxNy"
+        className="sc-daURTG gEiSmi"
       >
         Enterprise Theme
       </h3>
       <form
-        className="sc-iujRgT goFyFb"
+        className="sc-gojNiO iAxjSY"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <select
-          className="sc-cQFLBn kEPMdi"
+          className="sc-lkqHmb iPNjTI"
           disabled={false}
           id="ThemesFormSelectInput"
           name="theme"
@@ -104,23 +104,23 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
           value="dark"
         >
           <option
-            className="sc-gojNiO edBHsA"
+            className="sc-eLExRp djouYR"
             value="dark"
           >
             Dark
           </option>
           <option
-            className="sc-gojNiO edBHsA"
+            className="sc-eLExRp djouYR"
             value="light"
           >
             Light
           </option>
         </select>
         <div
-          className="sc-bAeIUo bVIOID"
+          className="sc-cQFLBn jAWcVV"
         >
           <button
-            className="sc-fjdhpX jonYYn"
+            className="sc-chPdSV hPWyYU"
             disabled={true}
             type="submit"
             width={110}
@@ -128,7 +128,7 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
             Set Theme
           </button>
           <button
-            className="sc-fjdhpX gXDnzN"
+            className="sc-chPdSV iLdFaL"
             disabled={true}
             onClick={[Function]}
             type="button"

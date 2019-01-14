@@ -11,38 +11,38 @@ exports[`Storyshots Admin Components/ConfirmAppDelete default 1`] = `
     }
   >
     <div
-      className="sc-esOvli jESeBQ"
+      className="sc-gqPbQI cMkyKT"
     >
       <div
-        className="sc-epnACN hzYzxG"
+        className="sc-cMhqgX jlXnRq"
       >
         <div
-          className="sc-iQNlJl logwUn"
+          className="sc-iuJeZd kAaOOo"
         >
           Delete App?
         </div>
       </div>
       <div
-        className="sc-hZSUBg isZTBy"
+        className="sc-cmthru jDyRJd"
       >
         <div
-          className="sc-cMhqgX dhTSGI"
+          className="sc-hMFtBS gyeaKN"
         >
           Are you sure you want to delete the app:
         </div>
         <div
-          className="sc-cMhqgX dhTSGI"
+          className="sc-hMFtBS gyeaKN"
         >
           
  FinTech Studios?
         </div>
       </div>
       <div
-        className="sc-bsbRJL bJrvrc"
+        className="sc-esOvli inqTJx"
       >
         <a
           backgroundColor="#848484"
-          className="sc-jzJRlG khBPxp"
+          className="sc-kgoBCf hescZT"
           href="/admin/apps"
           onClick={[Function]}
           type="button"
@@ -51,7 +51,7 @@ exports[`Storyshots Admin Components/ConfirmAppDelete default 1`] = `
           Cancel
         </a>
         <button
-          className="sc-fjdhpX SuPwv"
+          className="sc-chPdSV ibqDSU"
           disabled={false}
           onClick={[Function]}
           width={153}

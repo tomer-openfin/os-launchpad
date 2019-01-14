@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
 import { DirectionalPosition } from '../../types/commons';
-import { withMarginDecoractor } from '../../utils/storybookHelpers';
+import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
 
 import { defaultProps } from '../SvgIcon/index';
@@ -18,7 +18,7 @@ const onClick = action('clicked');
 
 storiesOf(`${CATEGORIES.COMPONENTS}SvgIconWithExtension`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecoractor(15))
+  .addDecorator(withMarginDecorator(15))
   .add('default', () => {
     const extensionPosition = select('extensionPosition', Object(DirectionalPosition), DirectionalPosition.Top);
     const imgSrc = select('Svg', SVGS, SVGS[0]);

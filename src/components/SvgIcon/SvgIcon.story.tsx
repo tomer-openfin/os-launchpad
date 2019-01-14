@@ -3,7 +3,7 @@ import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { withMarginDecoractor } from '../../utils/storybookHelpers';
+import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
 
 import SvgIcon, { defaultProps } from './SvgIcon';
@@ -16,7 +16,7 @@ const onClick = action('clicked');
 
 storiesOf(`${CATEGORIES.UI}SvgIcon`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecoractor(15))
+  .addDecorator(withMarginDecorator(15))
   .add('default', () => {
     const imgSrc = select('Svg', SVGS, SVGS[0]);
     const size = text('size', defaultSize);

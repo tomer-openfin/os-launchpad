@@ -4,8 +4,8 @@ import { CSSTransition } from 'react-transition-group';
 import { DirectionalPosition, Orientation } from '../../types/commons';
 import { isTopOrBottom } from '../../utils/windowPositionHelpers';
 
-import AppIcon, { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from '../AppIcon';
 import AppListToggle, { AppListToggleId } from '../AppListToggle';
+import LauncherAppIcon, { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from '../LauncherAppIcon';
 import { StyledTransitionGroup } from './AppList.css';
 
 interface Props {
@@ -92,7 +92,7 @@ const AppList = ({
                   margin={margin}
                 />
               ) : (
-                <AppIcon
+                <LauncherAppIcon
                   appId={id}
                   dragAndDropOptions={{
                     endSource,

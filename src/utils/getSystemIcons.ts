@@ -17,19 +17,12 @@ export interface SystemIcon {
   action: Action;
   hasExtendedWindow: boolean;
   icon: string;
-  key: string;
   shownCollapsed: boolean;
+  key: string;
 }
 
 export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
   const icons = [
-    // {
-    //   action: { type: 'todo' }, // todo: implement logout
-    //   default: false,
-    //   hasExtendedWindow: true,
-    //   icon: shutdownIcon,
-    //   key: 'shutdown',
-    // },
     {
       action: logoutRequest(),
       hasExtendedWindow: false,

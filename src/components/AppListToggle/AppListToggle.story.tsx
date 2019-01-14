@@ -7,7 +7,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { AppIconSizes } from '../../types/enums';
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from '../AppIcon';
+import { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from '../LauncherAppIcon';
 import AppListToggle from './AppListToggle';
 
 const Wrapper = ({ children, margin, size }) => (

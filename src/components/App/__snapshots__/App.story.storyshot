@@ -11,31 +11,31 @@ exports[`Storyshots Components/App default 1`] = `
     }
   >
     <div
-      className="sc-brqgnP ekIxJt"
+      className="sc-gPEVay kwXhwr"
     >
       <div
-        className="sc-jlyJG hFXCpS"
+        className="sc-bRBYWo KqobU"
       >
         <div
-          className="sc-jTzLTM cDPuoD"
+          className="sc-kAzzGY cxjsyR"
           height="100%"
           width="100%"
         >
           <div
-            className="sc-cvbbAY hiTRNX sc-dxgOiQ drIuSn"
+            className="sc-jAaTju bJRrsC sc-hMqMXs fJevnH"
           />
           <div
-            className="sc-jWBwVP kxCfNV"
+            className="sc-jDwBTQ iUGgCx"
           >
             <div
-              className="sc-iAyFgw elxAsa"
+              className="sc-jWBwVP cOIpYR"
               height={80}
               isExpanded={false}
               launcherPosition="top"
               width={0}
             >
               <div
-                className="sc-gqjmRU itJWAE"
+                className="sc-jzJRlG ggAyuU"
                 onClick={[Function]}
                 size={50}
               >
@@ -49,7 +49,7 @@ exports[`Storyshots Components/App default 1`] = `
                   }
                 >
                   <div
-                    className="sc-gZMcBi kAlMTl"
+                    className="sc-fjdhpX bzZQld"
                     size={50}
                   >
                     <div
@@ -61,8 +61,7 @@ exports[`Storyshots Components/App default 1`] = `
                 </div>
               </div>
               <div
-                className="sc-iwsKbI jQQQCh"
-                onClick={[Function]}
+                className="sc-jTzLTM bMMlEN"
                 size={50}
               >
                 <div
@@ -75,27 +74,39 @@ exports[`Storyshots Components/App default 1`] = `
                   }
                 >
                   <div
-                    className="sc-dnqmqq gUYUUY"
-                    onContextMenu={[Function]}
+                    className="sc-htoDjs bbBQsJ"
+                    direction="top"
+                    onAnimationEnd={[Function]}
+                    onAnimationIteration={[Function]}
                   >
                     <div
-                      className="sc-gzVnrw kHYlwv"
-                    />
+                      className="sc-gzVnrw lmqkGH"
+                      onContextMenu={[Function]}
+                    >
+                      <div
+                        className="sc-bZQynM ftmHVJ"
+                        onClick={[Function]}
+                        size={50}
+                      >
+                        <div
+                          className="sc-EHOje bLVJMg"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div
-                  className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
+                  className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
                 >
                   <div
-                    className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
+                    className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
                     color="rgba(0,0,0,0)"
                     size="53%"
                   />
                 </div>
               </div>
               <div
-                className="sc-iwsKbI jQQQCh"
-                onClick={[Function]}
+                className="sc-jTzLTM bMMlEN"
                 size={50}
               >
                 <div
@@ -108,27 +119,39 @@ exports[`Storyshots Components/App default 1`] = `
                   }
                 >
                   <div
-                    className="sc-dnqmqq gUYUUY"
-                    onContextMenu={[Function]}
+                    className="sc-htoDjs bbBQsJ"
+                    direction="top"
+                    onAnimationEnd={[Function]}
+                    onAnimationIteration={[Function]}
                   >
                     <div
-                      className="sc-gzVnrw kRTxuL"
-                    />
+                      className="sc-gzVnrw lmqkGH"
+                      onContextMenu={[Function]}
+                    >
+                      <div
+                        className="sc-bZQynM ftmHVJ"
+                        onClick={[Function]}
+                        size={50}
+                      >
+                        <div
+                          className="sc-EHOje bITuvo"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div
-                  className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
+                  className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
                 >
                   <div
-                    className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
+                    className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
                     color="rgba(0,0,0,0)"
                     size="53%"
                   />
                 </div>
               </div>
               <div
-                className="sc-iwsKbI jQQQCh"
-                onClick={[Function]}
+                className="sc-jTzLTM bMMlEN"
                 size={50}
               >
                 <div
@@ -141,19 +164,32 @@ exports[`Storyshots Components/App default 1`] = `
                   }
                 >
                   <div
-                    className="sc-dnqmqq gUYUUY"
-                    onContextMenu={[Function]}
+                    className="sc-htoDjs bbBQsJ"
+                    direction="top"
+                    onAnimationEnd={[Function]}
+                    onAnimationIteration={[Function]}
                   >
                     <div
-                      className="sc-gzVnrw bFrnGv"
-                    />
+                      className="sc-gzVnrw lmqkGH"
+                      onContextMenu={[Function]}
+                    >
+                      <div
+                        className="sc-bZQynM ftmHVJ"
+                        onClick={[Function]}
+                        size={50}
+                      >
+                        <div
+                          className="sc-EHOje dcTQGg"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div
-                  className="sc-htoDjs cvwPWj sc-EHOje hGdYoi"
+                  className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
                 >
                   <div
-                    className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
+                    className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
                     color="rgba(0,0,0,0)"
                     size="53%"
                   />
@@ -162,25 +198,25 @@ exports[`Storyshots Components/App default 1`] = `
             </div>
           </div>
           <div
-            className="sc-jAaTju gQkqO"
+            className="sc-jlyJG huUtit"
             size={156}
           >
             <div
-              className="sc-cMljjf lheUtz"
+              className="sc-iRbamj etuKDG"
               onClick={[Function]}
             />
             <div
-              className="sc-jDwBTQ isrEUh"
+              className="sc-gipzik fIKmyj"
               size={156}
             >
               <div
-                className="sc-iRbamj btsAMJ sc-ifAKCX hwskBS"
+                className="sc-Rmtcm gMbjUz sc-ifAKCX hwskBS"
                 color="#E7E7E7"
                 onClick={[Function]}
                 size={20}
               />
               <div
-                className="sc-gPEVay cuChGn"
+                className="sc-csuQGl fvDJbg"
               >
                 <div
                   className="sc-ifAKCX dlQxXV"
@@ -190,10 +226,10 @@ exports[`Storyshots Components/App default 1`] = `
                 />
               </div>
               <div
-                className="sc-gPEVay cuChGn"
+                className="sc-csuQGl fvDJbg"
               >
                 <div
-                  className="sc-eHgmQL cSdENn"
+                  className="sc-cMljjf hdEekE"
                   color="#E7E7E7"
                 >
                   <div
@@ -203,7 +239,7 @@ exports[`Storyshots Components/App default 1`] = `
                     size={42}
                   />
                   <div
-                    className="sc-hSdWYo fzSbsc sc-ifAKCX xmkOg"
+                    className="sc-brqgnP bMdeLo sc-ifAKCX xmkOg"
                     color="#E7E7E7"
                     onClick={[Function]}
                     size={25}
@@ -211,7 +247,7 @@ exports[`Storyshots Components/App default 1`] = `
                 </div>
               </div>
               <div
-                className="sc-gPEVay cuChGn"
+                className="sc-csuQGl fvDJbg"
               >
                 <div
                   className="sc-ifAKCX dlQxXV"

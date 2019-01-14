@@ -11,13 +11,13 @@ exports[`Storyshots UI Components/AppIndicator default 1`] = `
     }
   >
     <div
-      className="sc-VigVT clvUpX"
+      className="sc-cSHVUG gaPSqJ"
     >
       <div
-        className="sc-EHOje fnhqx"
+        className="sc-dnqmqq huyHhL"
       >
         <div
-          className="sc-bZQynM ldCUTk sc-ifAKCX eeoVnb"
+          className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
           color="rgba(0,0,0,0)"
           size="53%"
         />
@@ -235,7 +235,7 @@ exports[`Storyshots UI Components/AppIndicator default 1`] = `
                       <span
                         style={Object {}}
                       >
-                        statusState
+                        appStatusState
                       </span>
                       <span>
                         =

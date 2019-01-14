@@ -18,7 +18,7 @@ const AppCard = ({ app, ctas, launchApp }: Props) => {
   return (
     <Wrapper>
       <IconWrapper>
-        <AppIcon appId={app.id} />
+        <AppIcon imgSrc={app.icon} onClick={handleClick} />
       </IconWrapper>
 
       <InfoWrapper>
@@ -27,9 +27,7 @@ const AppCard = ({ app, ctas, launchApp }: Props) => {
         <AppDescription>{app.description}</AppDescription>
       </InfoWrapper>
 
-      <CTAWrapper>
-        {ctas}
-      </CTAWrapper>
+      <CTAWrapper>{ctas}</CTAWrapper>
     </Wrapper>
   );
 };

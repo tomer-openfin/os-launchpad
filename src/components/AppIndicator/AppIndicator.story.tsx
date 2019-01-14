@@ -21,12 +21,12 @@ const Wrapper = styled.div`
 storiesOf(`${CATEGORIES.UI}AppIndicator`, module)
   .addDecorator(withKnobs)
   .add('default', () => {
-    const statusState = select('status', Object(AppStatusStates), AppStatusStates.Loading);
+    const appStatusState = select('status', Object(AppStatusStates), AppStatusStates.Loading);
     const position = select('position', Object(DirectionalPosition), DirectionalPosition.Top);
 
     return (
       <Wrapper>
-        <AppIndicator position={position} statusState={statusState} />
+        <AppIndicator position={position} appStatusState={appStatusState} />
       </Wrapper>
     );
   });

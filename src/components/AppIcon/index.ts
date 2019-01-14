@@ -1,5 +1,5 @@
-import AppIconContainer from './AppIconContainer';
+import AppIcon from './AppIcon';
 
 export * from './AppIcon.css';
 
-export default AppIconContainer;
+export default AppIcon;

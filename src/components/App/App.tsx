@@ -16,9 +16,9 @@ import { AppListWrapper, Main, Overlay, StyledLogo, SystemDrawerWrapper, SystemI
 
 export interface LauncherIcon {
   cta: () => void;
+  hasExtendedWindow: boolean;
   icon: string;
   key: string;
-  hasExtendedWindow: boolean;
   shownCollapsed: boolean;
 }
 

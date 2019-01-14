@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Color } from '../../styles';
 import { AppIconSizes } from '../../types/enums';
 import { scaleAndFadeIn } from '../../utils/animationHelpers';
-import { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from '../AppIcon';
+import { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from '../LauncherAppIcon';
 
 import { Icon } from '../SvgIcon';
 import { Props } from './AppListToggle';
