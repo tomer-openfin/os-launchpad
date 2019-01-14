@@ -20,7 +20,7 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
         htmlFor="LogoFormFileInput"
       >
         <div
-          className="sc-hORach kufcDf"
+          className="sc-hORach cAqICe"
         >
           <div
             className="sc-gqPbQI frpjme"
@@ -33,17 +33,20 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
             className="sc-hMFtBS dPrQUA"
           >
             <div
-              className="sc-cLQEGU bwFExM"
+              className="sc-cLQEGU goZDRD"
             >
               Click & drag a new image over the existing one to replace your brand logo.
             </div>
             <input
               accept="image/*"
-              className="sc-cmthru fudUWO"
+              className="sc-cmthru hwtFcP"
               id="LogoFormFileInput"
               name="logo"
               onBlur={[Function]}
               onChange={[Function]}
+              onDragEnter={[Function]}
+              onDragLeave={[Function]}
+              onDrop={[Function]}
               type="file"
               value=""
             />

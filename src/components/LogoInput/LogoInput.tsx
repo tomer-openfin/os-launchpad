@@ -14,11 +14,38 @@ interface Props {
   handleFileChange: Function;
 }
 
-class LogoInput extends React.PureComponent<Props, {}> {
+interface State {
+  draggedOver: boolean;
+}
+
+class LogoInput extends React.PureComponent<Props, State> {
+  state = {
+    draggedOver: false,
+  };
+
+  handleDragEnter = () => {
+    this.setState({ draggedOver: true });
+  };
+
+  handleDragExit = () => {
+    this.setState({ draggedOver: false });
+  };
+
   renderFileInput = ({ field }: FieldProps) => {
     const { handleFileChange, fileInputId } = this.props;
 
-    return <Input {...field} accept={FILE_ACCEPT} id={fileInputId} onChange={handleFileChange(field.onChange)} type="file" />;
+    return (
+      <Input
+        {...field}
+        accept={FILE_ACCEPT}
+        id={fileInputId}
+        onChange={handleFileChange(field.onChange)}
+        onDragEnter={this.handleDragEnter}
+        onDragLeave={this.handleDragExit}
+        onDrop={this.handleDragExit}
+        type="file"
+      />
+    );
   };
 
   renderInput = () => {
@@ -35,9 +62,10 @@ class LogoInput extends React.PureComponent<Props, {}> {
 
   render() {
     const { logo } = this.props;
+    const { draggedOver } = this.state;
 
     return (
-      <Wrapper>
+      <Wrapper active={draggedOver}>
         <LogoWrapper>
           <Logo imgSrc={logo} />
         </LogoWrapper>

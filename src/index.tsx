@@ -8,6 +8,14 @@ import { isProductionEnv } from './utils/processHelpers';
 import renderWindow from './utils/renderWindow';
 import setupReactCleanUp from './utils/setupReactCleanup';
 
+const preventDragAndDrop = e => {
+  if (e.target.type !== 'file') {
+    e.preventDefault();
+    e.dataTransfer.effectAllowed = 'none';
+    e.dataTransfer.dropEffect = 'none';
+  }
+};
+
 const isProduction = isProductionEnv();
 
 const isMainWindow = !window.opener;
@@ -33,6 +41,10 @@ if (!isProduction && module.hot) {
 
 // Render the window as soon as the DOM is ready.
 document.addEventListener('DOMContentLoaded', async () => {
+  window.addEventListener('dragenter', preventDragAndDrop);
+  window.addEventListener('dragover', preventDragAndDrop);
+  window.addEventListener('drop', preventDragAndDrop);
+
   const { fin } = window;
 
   if (fin) {
