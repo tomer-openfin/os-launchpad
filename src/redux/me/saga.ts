@@ -135,6 +135,9 @@ function* watchLogoutRequest() {
 function* watchLogoutSuccess() {
   yield put(Application.restart());
 
+  // TODO: instead of restarting app, reset store, hide all windows, and show login window
+  // https://stackoverflow.com/questions/35622588/how-to-reset-the-state-of-a-redux-store
+
   // // RESET SLICES OF STORE
 
   // // Hide Windows

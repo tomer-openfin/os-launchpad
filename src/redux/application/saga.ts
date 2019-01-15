@@ -122,11 +122,7 @@ function* watchLaunchAppLauncher() {
   // Register global hotkeys
   registerGlobalHotkeys(window.store.dispatch);
 
-  // const ids = yield select(getLayoutsIds);
-  // if (ids[0]) {
-  //   const layout = yield select(getLayoutById, ids[0]);
-  //   yield put(restoreLayout(layout));
-  // }
+  // Wait for a full rebound to come through as either error or success before continuing execution
   yield all([take([REBOUND_LAUNCHER.ERROR, REBOUND_LAUNCHER.SUCCESS]), put(reboundLauncherRequest(false, 0))]);
 
   // When all done show main app bar
