@@ -11,34 +11,34 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
     }
   >
     <div
-      className="sc-kPVwWT llHzWc"
+      className="sc-kfGgVZ jjTNua"
     >
       <div
-        className="sc-hSdWYo fBMXRA"
+        className="sc-brqgnP ifgtAb"
       >
         <div
-          className="sc-eHgmQL jgXAhD"
+          className="sc-cMljjf dOwSNg"
         >
           <div
-            className="sc-cvbbAY dQrppq"
+            className="sc-jAaTju kqYwKI"
           >
             Create New User
           </div>
         </div>
       </div>
       <form
-        className="sc-hwwEjo gBjmVP"
+        className="sc-kPVwWT dFTKhX"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <div
-          className="sc-kfGgVZ VNINV"
+          className="sc-esjQYD kpxCIz"
         >
           <div
-            className="sc-esjQYD fSdqBR"
+            className="sc-kIPQKe fqtJBm"
           >
             <div
-              className="sc-kIPQKe iktZUX"
+              className="sc-eXEjpC brCGSf"
             >
               <label
                 className="sc-dxgOiQ cQoZtn"
@@ -144,7 +144,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
                 value=""
               />
               <div
-                className="sc-bwCtUz gRVNeg"
+                className="sc-hrWEMg bVPEyP"
               >
                 <div
                   className="sc-ifAKCX xmkOg"
@@ -157,10 +157,10 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
           </div>
         </div>
         <div
-          className="sc-eTuwsz lmAorQ"
+          className="sc-gwVKww dONJUv"
         >
           <div
-            className="sc-eXEjpC cEynmG"
+            className="sc-ibxdXY bsuZCn"
           >
             <a
               backgroundColor="#848484"
@@ -184,7 +184,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
         </div>
       </form>
       <div
-        className="sc-ibxdXY jmAqY"
+        className="sc-RefOD fBfRqd"
       />
     </div>
   </div>

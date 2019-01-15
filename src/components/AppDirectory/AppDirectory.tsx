@@ -1,13 +1,10 @@
 import * as React from 'react';
 
-import * as searchIcon from '../../assets/Search.svg';
-
-import { CTA, Directory, Row, SearchHeader, SearchInput, Wrapper } from './AppDirectory.css';
+import { CTA, Directory, Row, StyledSearchInput, Wrapper } from './AppDirectory.css';
 
 import { App } from '../../types/commons';
 
-import AppCard, { IconWrapper } from '../AppCard';
-import IconSpace from '../IconSpace';
+import AppCard from '../AppCard';
 import WindowHeader from '../WindowHeader';
 
 interface Props {
@@ -31,7 +28,7 @@ class AppDirectory extends React.PureComponent<Props, State> {
 
   constructor(props) {
     super(props);
-    this.searchInput = React.createRef();
+    this.searchInput = React.createRef<HTMLInputElement>();
     this.state = { search: '' };
   }
 
@@ -54,10 +51,7 @@ class AppDirectory extends React.PureComponent<Props, State> {
   }
 
   clearInputField = () => {
-    if (this.searchInput.current) {
-      this.searchInput.current.value = '';
-      this.setState({ search: this.searchInput.current.value });
-    }
+    this.setState({ search: '' });
   };
 
   focusInputField = () => {
@@ -96,13 +90,13 @@ class AppDirectory extends React.PureComponent<Props, State> {
     return (
       <Wrapper>
         <WindowHeader handleClose={hideWindow}>
-          <SearchHeader>
-            <IconWrapper>
-              <IconSpace iconImg={searchIcon} />
-            </IconWrapper>
-
-            <SearchInput ref={this.searchInput} onChange={this.handleChange} placeholder="Search for app..." />
-          </SearchHeader>
+          <StyledSearchInput
+            htmlInputRef={this.searchInput}
+            onChange={this.handleChange}
+            onClear={this.clearInputField}
+            placeholder="Search for app..."
+            value={search}
+          />
         </WindowHeader>
 
         <Directory>

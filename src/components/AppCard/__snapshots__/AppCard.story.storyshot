@@ -11,10 +11,10 @@ exports[`Storyshots Components/AppCard default 1`] = `
     }
   >
     <div
-      className="sc-fBuWsC idMzvw"
+      className="sc-fAjcbJ huSaOt"
     >
       <div
-        className="sc-caSCKo fMQfhL"
+        className="sc-TOsTZ iPJfNm"
       >
         <div
           className="sc-bZQynM ftmHVJ"
@@ -27,22 +27,22 @@ exports[`Storyshots Components/AppCard default 1`] = `
         </div>
       </div>
       <div
-        className="sc-fMiknA fQOTcH"
+        className="sc-caSCKo fPqPEw"
       >
         <div
-          className="sc-dVhcbM dWuiUq"
+          className="sc-gisBJw jDdoXY"
           onClick={[Function]}
         >
           FinTech Studios
         </div>
         <div
-          className="sc-eqIVtm cZkxwe"
+          className="sc-kjoXOD dPDTTH"
         >
           Using cutting edge artificial intelligence and machine learning, FTS delivers actionable news, research, market analytics, and analytics from millions of sources.
         </div>
       </div>
       <div
-        className="sc-fAjcbJ iktHfC"
+        className="sc-cHGsZl jGxuEh"
       />
     </div>
   </div>

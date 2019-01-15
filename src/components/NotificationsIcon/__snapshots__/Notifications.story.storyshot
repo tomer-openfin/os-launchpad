@@ -138,7 +138,7 @@ exports[`Storyshots Components/Notifications default 1`] = `
             default
           </h2>
         </div>
-        
+
         <div>
           <h1
             style={
@@ -177,7 +177,7 @@ exports[`Storyshots Components/Notifications default 1`] = `
                   </span>
                   <span>
                     <span>
-                       
+
                       <span
                         style={Object {}}
                       >
@@ -201,7 +201,7 @@ exports[`Storyshots Components/Notifications default 1`] = `
                           }
                         </span>
                       </span>
-                      
+
                     </span>
                   </span>
                   <span

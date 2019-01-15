@@ -11,6 +11,7 @@ import '../src/components/CloseButton/CloseButton.story';
 import '../src/components/FormField/FormField.story';
 import '../src/components/Logo/Logo.story';
 import '../src/components/RadioButton/RadioButton.story';
+import '../src/components/SearchInput/SearchInput.story';
 import '../src/components/SvgIcon/SvgIcon.story';
 import '../src/components/WindowHeader/WindowHeader.story';
 

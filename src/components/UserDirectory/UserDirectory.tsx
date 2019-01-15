@@ -6,8 +6,6 @@ import {
   EditIconLink,
   Footer,
   HeadingWrapper,
-  Input,
-  InputWrapper,
   LinkWrapper,
   ListWrapper,
   SortButton,
@@ -24,6 +22,7 @@ import { ADMIN_USERS_ROUTES, ROUTES } from '../Router/consts';
 import { Row } from '../AppDirectory';
 import { ButtonLink } from '../Button/Button.css';
 import Modal from '../Modal';
+import { SearchInputWithState } from '../SearchInput';
 import UserCard from '../UserCard';
 
 const ADMIN_USERS_PATHS = Object.values(ADMIN_USERS_ROUTES);
@@ -60,14 +59,7 @@ class UserDirectory extends React.PureComponent<Props, State> {
     };
   }
 
-  handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const { currentTarget } = e;
-    if (!currentTarget) return;
-    const { value } = currentTarget;
-    if (typeof value !== 'string') return;
-
-    const search = value;
-
+  handleInputChange = (search: string) => {
     this.setState({ search });
   };
 
@@ -122,9 +114,7 @@ class UserDirectory extends React.PureComponent<Props, State> {
     return (
       <Wrapper>
         <HeadingWrapper>
-          <InputWrapper>
-            <Input name="search" value={search} onChange={this.handleInputChange} placeholder="Filter Users" type="text" />
-          </InputWrapper>
+          <SearchInputWithState name="search" placeholder="Filter Users" onChange={this.handleInputChange} />
 
           <ButtonLink to={ROUTES.ADMIN_USERS_NEW}>Add User</ButtonLink>
         </HeadingWrapper>

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-import { Color } from '../../styles';
+import { Color, Typography } from '../../styles';
+import SearchInput, { Input, SearchIcon } from '../SearchInput';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -9,11 +10,11 @@ export const Wrapper = styled.div`
 `;
 
 export const Directory = styled.div`
+  height: calc(100vh - 60px);
+  overflow-x: hidden;
+  overflow-y: overlay;
   position: relative;
   width: 100%;
-  height: calc(100vh - 60px);
-  overflow-y: overlay;
-  overflow-x: hidden;
 
   &:after {
     content: '';
@@ -27,20 +28,20 @@ export const Directory = styled.div`
   }
 `;
 
-export const SearchHeader = styled.div`
-  display: flex;
-  height: 100%;
+export const StyledSearchInput = styled(SearchInput)`
+  border-radius: 0;
   flex: 1;
-  z-index: 3;
-`;
 
-export const SearchInput = styled.input`
-  color: ${Color.SUN};
-  font-size: 20px;
-  font-weight: 100;
-  border: none;
-  outline: none;
-  background: ${Color.VOID};
+  ${Input} {
+    ${Typography.TypeStylePolaris}
+    padding-left: 66px;
+  }
+
+  ${SearchIcon} {
+    width: 50px;
+    height: 50px;
+    left: 16px;
+  }
 `;
 
 export const CTA = styled.div`

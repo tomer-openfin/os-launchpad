@@ -55,51 +55,9 @@ export const LinkWrapper = styled.div<{ vertical?: boolean }>`
   height: 100%;
   width: 100%;
 `;
-export const InputWrapper = styled.div`
-  height: 36px;
-  min-width: 200px;
-  max-width: 290px;
-  flex: 1;
-  position: relative;
-
-  &:before {
-    content: '';
-    height: 36px;
-    width: 36px;
-    top: 0;
-    left: 0;
-    opacity: 0.25;
-    background-color: ${Color.SUN};
-    mask: url(${SearchIcon});
-    mask-size: contain;
-    mask-position: center;
-    mask-repeat: no-repeat;
-    position: absolute;
-  }
-`;
-
-export const Input = styled.input`
-  ${TypeStyleAlgol};
-
-  border-radius: 3px;
-  padding: 0 10px 0 36px;
-  height: 100%;
-  width: 100%;
-  border: none;
-  outline: none;
-  color: ${Color.MERCURY};
-  background-color: ${Color.KUIPER_BELT};
-
-  &::placeholder {
-    ${TypeStyleAlgol};
-
-    opacity: 0.25;
-    color: ${Color.SUN};
-  }
-`;
 
 export const SortButton = styled.div<{ active: boolean }>`
-  ${TypeStyleCanopus};
+  ${TypeStyleCanopus}
 
   margin: 10px;
   cursor: pointer;
@@ -117,7 +75,7 @@ export const SortWrapper = styled.div`
 `;
 
 export const SortHeader = styled.div`
-  ${TypeStyleEnif};
+  ${TypeStyleEnif}
 
   color: ${Color.JUPITER};
   margin-right: 10px;

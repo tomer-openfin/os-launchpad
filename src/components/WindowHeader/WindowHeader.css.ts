@@ -29,10 +29,11 @@ export const Header = styled.div<CommonProps>`
 
 export const Children = styled.div`
   -webkit-app-region: drag !important;
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
+  display: flex;
+  flex: 1;
+  height: 100%;
+  justify-content: flex-start;
   text-align: center;
 `;
 

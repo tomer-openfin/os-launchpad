@@ -2,7 +2,7 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
 import Modal from '../Modal';
-import { DeleteIconLink, EditIconLink, HeadingWrapper, Input, InputWrapper, LinkWrapper, ListWrapper, Wrapper } from '../UserDirectory/UserDirectory.css';
+import { DeleteIconLink, EditIconLink, HeadingWrapper, LinkWrapper, ListWrapper, Wrapper } from '../UserDirectory/UserDirectory.css';
 
 import { App } from '../../types/commons';
 import { doesCurrentPathMatch } from '../../utils/routeHelpers';
@@ -11,6 +11,7 @@ import { ADMIN_APPS_ROUTES, ROUTES } from '../Router/consts';
 import AppCard from '../AppCard';
 import { Row } from '../AppDirectory';
 import { ButtonLink } from '../Button/Button.css';
+import { SearchInputWithState } from '../SearchInput';
 
 const ADMIN_APPS_PATHS = Object.values(ADMIN_APPS_ROUTES);
 
@@ -37,14 +38,7 @@ class AdminApps extends React.PureComponent<Props, State> {
     };
   }
 
-  handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const { currentTarget } = e;
-    if (!currentTarget) return;
-    const { value } = currentTarget;
-    if (typeof value !== 'string') return;
-
-    const search = value;
-
+  handleInputChange = (search: string) => {
     this.setState({ search });
   };
 
@@ -68,9 +62,7 @@ class AdminApps extends React.PureComponent<Props, State> {
     return (
       <Wrapper>
         <HeadingWrapper>
-          <InputWrapper>
-            <Input name="search" value={search} onChange={this.handleInputChange} placeholder="Search apps..." type="text" />
-          </InputWrapper>
+          <SearchInputWithState name="search" onChange={this.handleInputChange} placeholder="Search apps..." />
 
           <ButtonLink to={ROUTES.ADMIN_APPS_NEW}>Add App</ButtonLink>
         </HeadingWrapper>
