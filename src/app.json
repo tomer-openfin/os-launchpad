@@ -37,7 +37,7 @@
     "company": "OpenFin",
     "description": "",
     "icon": "%ROOT_URL%/public/openfin.ico",
-    "name": "OS Launcher"
+    "name": "App Launcher"
   },
   "splashScreenImage": "%ROOT_URL%/public/splashscreen.png"
 }
