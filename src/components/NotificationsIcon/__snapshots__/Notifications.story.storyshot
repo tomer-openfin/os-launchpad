@@ -11,15 +11,26 @@ exports[`Storyshots Components/Notifications default 1`] = `
     }
   >
     <div
+<<<<<<< HEAD:src/components/NotificationsIcon/__snapshots__/Notifications.story.storyshot
       className="sc-gGBfsJ fsWlQ"
     >
       <div
         className="sc-bbmXgH hPWSwX sc-ifAKCX kGkovX"
+=======
+      className="sc-jqCOkK jBJuPY"
+    >
+      <div
+        className="sc-dNLxif dKzbuQ sc-ifAKCX kGkovX"
+>>>>>>> Update storyshots:src/components/Notifications/__snapshots__/Notifications.story.storyshot
         color="#E7E7E7"
         size={42}
       />
       <div
+<<<<<<< HEAD:src/components/NotificationsIcon/__snapshots__/Notifications.story.storyshot
         className="sc-uJMKN gesKxB"
+=======
+        className="sc-jbKcbu dToqBK"
+>>>>>>> Update storyshots:src/components/Notifications/__snapshots__/Notifications.story.storyshot
       >
         23
       </div>

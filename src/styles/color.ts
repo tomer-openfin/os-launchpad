@@ -1,8 +1,5 @@
-export const FOG = '#d3d3d3';
-export const GREY = '#686868';
 export const DOVE_GREY = '#666';
 export const DUSTY_GREY = '#444444';
-export const CHARCOAL = '#262626';
 // New per designs, deprecate all above
 export const SUN = '#FFFFFF';
 export const MOON = '#A7A7A7';

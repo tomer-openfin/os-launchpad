@@ -19,14 +19,31 @@ const SvgIconWithExtension = ({
   disabled,
   hoverColor = defaultHoverColor,
   imgSrc,
+  isActive,
   onClick,
   extensionPosition,
   size = defaultSize,
 }: Props) => (
   <Wrapper className={className} clickable={!disabled && !!onClick} color={color} hoverColor={hoverColor} extensionPosition={extensionPosition}>
-    <SvgIcon color={color} disabled={disabled} hoverColor={hoverColor} imgSrc={imgSrc} onClick={disabled ? undefined : onClick} size={size} />
+    <SvgIcon
+      color={color}
+      disabled={disabled}
+      hoverColor={hoverColor}
+      imgSrc={imgSrc}
+      isActive={isActive}
+      onClick={disabled ? undefined : onClick}
+      size={size}
+    />
 
-    <CaretSvgIcon color={color} disabled={disabled} hoverColor={hoverColor} imgSrc={arrowDownIcon} onClick={disabled ? undefined : onClick} size={25} />
+    <CaretSvgIcon
+      color={color}
+      disabled={disabled}
+      hoverColor={hoverColor}
+      imgSrc={arrowDownIcon}
+      isActive={isActive}
+      onClick={disabled ? undefined : onClick}
+      size={25}
+    />
   </Wrapper>
 );
 

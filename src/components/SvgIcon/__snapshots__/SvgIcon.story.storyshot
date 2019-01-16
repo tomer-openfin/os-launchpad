@@ -383,6 +383,35 @@ exports[`Storyshots UI Components/SvgIcon default 1`] = `
                       <span
                         style={Object {}}
                       >
+                        isActive
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            false
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
                         onClick
                       </span>
                       <span>

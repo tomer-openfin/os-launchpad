@@ -11,10 +11,10 @@ exports[`Storyshots Components/App default 1`] = `
     }
   >
     <div
-      className="sc-csuQGl dEOLoD"
+      className="sc-jhAzac isJaai"
     >
       <div
-        className="sc-fMiknA buLwWT"
+        className="sc-dVhcbM dUsBvs"
       >
         <div
           className="sc-kAzzGY cxjsyR"
@@ -22,10 +22,10 @@ exports[`Storyshots Components/App default 1`] = `
           width="100%"
         >
           <div
-            className="sc-jlyJG gIYPKU sc-hMqMXs fJevnH"
+            className="sc-bRBYWo jerILk sc-hMqMXs fJevnH"
           />
           <div
-            className="sc-gipzik kXtyhF"
+            className="sc-hzDkRC dgaYye"
           >
             <div
               className="sc-jDwBTQ gxYKRx"
@@ -198,35 +198,76 @@ exports[`Storyshots Components/App default 1`] = `
             </div>
           </div>
           <div
-            className="sc-bRBYWo kLWDwK"
-            size={156}
+            className="sc-fMiknA bdBDLC"
           >
             <div
-              className="sc-Rmtcm jYOAqz"
+              className="sc-fBuWsC eomqUp"
               onClick={[Function]}
             />
             <div
-              className="sc-hzDkRC kcDits"
-              size={156}
+              className="sc-Rmtcm ihENIC"
+              orientation="horizontal"
+              size={162}
             >
               <div
-                className="sc-fBuWsC kLmBMx sc-ifAKCX hwskBS"
-                color="#E7E7E7"
-                onClick={[Function]}
-                size={20}
-              />
+                className="sc-gipzik cUxlht"
+                orientation="horizontal"
+              >
+                <div
+                  className="sc-jlyJG dZaLkw sc-ifAKCX hwskBS"
+                  color="#E7E7E7"
+                  onClick={[Function]}
+                  size={20}
+                />
+              </div>
               <div
-                className="sc-jhAzac gdSeNz"
+                className="sc-csuQGl hDuRgl"
+                orientation="horizontal"
+              >
+                <div
+                  className="sc-ifAKCX kGkovX"
+                  color="#E7E7E7"
+                  disabled={true}
+                  size={42}
+                />
+              </div>
+              <div
+                className="sc-csuQGl hDuRgl"
+                orientation="horizontal"
+              >
+                <div
+                  className="sc-ifAKCX kGkovX"
+                  color="#E7E7E7"
+                  disabled={true}
+                  size={42}
+                />
+              </div>
+              <div
+                className="sc-csuQGl hDuRgl"
+                orientation="horizontal"
+              >
+                <div
+                  className="sc-ifAKCX kGkovX"
+                  color="#E7E7E7"
+                  disabled={true}
+                  size={42}
+                />
+              </div>
+              <div
+                className="sc-csuQGl eUczgs"
+                orientation="horizontal"
               >
                 <div
                   className="sc-ifAKCX dlQxXV"
                   color="#E7E7E7"
+                  disabled={false}
                   onClick={[Function]}
                   size={42}
                 />
               </div>
               <div
-                className="sc-jhAzac gdSeNz"
+                className="sc-csuQGl eUczgs"
+                orientation="horizontal"
               >
                 <div
                   className="sc-iRbamj cQrTdH"
@@ -235,23 +276,27 @@ exports[`Storyshots Components/App default 1`] = `
                   <div
                     className="sc-ifAKCX dlQxXV"
                     color="#E7E7E7"
+                    disabled={false}
                     onClick={[Function]}
                     size={42}
                   />
                   <div
                     className="sc-gPEVay fGMXQl sc-ifAKCX xmkOg"
                     color="#E7E7E7"
+                    disabled={false}
                     onClick={[Function]}
                     size={25}
                   />
                 </div>
               </div>
               <div
-                className="sc-jhAzac gdSeNz"
+                className="sc-csuQGl eUczgs"
+                orientation="horizontal"
               >
                 <div
                   className="sc-ifAKCX dlQxXV"
                   color="#E7E7E7"
+                  disabled={false}
                   onClick={[Function]}
                   size={42}
                 />
@@ -496,450 +541,6 @@ exports[`Storyshots Components/App default 1`] = `
                           top
                         </span>
                         "
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      icons
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#666",
-                            }
-                          }
-                        >
-                          [
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              {
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  cta
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#170",
-                                  }
-                                }
-                              >
-                                Action to be dispatched:
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  hasExtendedWindow
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#a11",
-                                  }
-                                }
-                              >
-                                false
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  icon
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                {
-                                <span>
-                                  <span
-                                    style={
-                                      Object {
-                                        "color": "#666",
-                                      }
-                                    }
-                                  >
-                                    default
-                                  </span>
-                                </span>
-                                : 
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#22a",
-                                      "wordBreak": "break-word",
-                                    }
-                                  }
-                                >
-                                  ''
-                                </span>
-                                }
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                …
-                              </span>
-                              <span>
-                                <br />
-                                    
-                              </span>
-                              }
-                            </span>
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              {
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  cta
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#170",
-                                  }
-                                }
-                              >
-                                Action to be dispatched:
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  hasExtendedWindow
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#a11",
-                                  }
-                                }
-                              >
-                                false
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  icon
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                {
-                                <span>
-                                  <span
-                                    style={
-                                      Object {
-                                        "color": "#666",
-                                      }
-                                    }
-                                  >
-                                    default
-                                  </span>
-                                </span>
-                                : 
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#22a",
-                                      "wordBreak": "break-word",
-                                    }
-                                  }
-                                >
-                                  ''
-                                </span>
-                                }
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                …
-                              </span>
-                              <span>
-                                <br />
-                                    
-                              </span>
-                              }
-                            </span>
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              {
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  cta
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#170",
-                                  }
-                                }
-                              >
-                                Action to be dispatched:
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  hasExtendedWindow
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#a11",
-                                  }
-                                }
-                              >
-                                false
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  icon
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                {
-                                <span>
-                                  <span
-                                    style={
-                                      Object {
-                                        "color": "#666",
-                                      }
-                                    }
-                                  >
-                                    default
-                                  </span>
-                                </span>
-                                : 
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#22a",
-                                      "wordBreak": "break-word",
-                                    }
-                                  }
-                                >
-                                  ''
-                                </span>
-                                }
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                …
-                              </span>
-                              <span>
-                                <br />
-                                    
-                              </span>
-                              }
-                            </span>
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            …
-                          </span>
-                          <span>
-                            <br />
-                              
-                          </span>
-                          ]
-                        </span>
-                        }
                       </span>
                     </span>
                   </span>

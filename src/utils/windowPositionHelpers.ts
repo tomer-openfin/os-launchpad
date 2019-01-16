@@ -1,6 +1,7 @@
 import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW } from '../config/windows';
 import { Bounds, Dimensions, DirectionalPosition, MonitorInfo, PrimaryDirectionalCoordinates } from '../types/commons';
 
+import { calcSystemDrawerSize } from '../components/SystemDrawer/utils';
 import { SystemIcon } from './getSystemIcons';
 import * as SIZE from './sizingConstants';
 
@@ -53,20 +54,9 @@ export const isTopOrBottom = (position: DirectionalPosition) => isTop(position) 
 export const isLeftOrRight = (position: DirectionalPosition) => isLeft(position) || isRight(position);
 export const isBottomOrRight = (position: DirectionalPosition) => isBottom(position) || isRight(position);
 
-export const calcExpandedSystemSize = (systemIcons: SystemIcon[]) => {
-  const totalSystemIconSize = systemIcons.length * SIZE.SYSTEM_ICON;
-  const totalExpandedSystemPadding = 2 * SIZE.EXPANDED_SYSTEM_PADDING;
-  const totalSystemGutter = (systemIcons.length - 1) * SIZE.SYSTEM_GUTTER;
+export const calcExpandedSystemSize = (systemIcons: SystemIcon[]) => calcSystemDrawerSize(systemIcons, true);
 
-  return SIZE.COLLAPSE_ICON + totalSystemIconSize + totalExpandedSystemPadding + totalSystemGutter;
-};
-
-export const calcCollapsedSystemSize = (systemIcons: SystemIcon[]) => {
-  const totalDefaultSystemIconSizes = systemIcons.reduce((acc, icon) => (icon.shownCollapsed ? acc + SIZE.SYSTEM_ICON : acc), 0);
-  const totalCollapsedSystemPadding = 2 * SIZE.COLLAPSED_SYSTEM_PADDING;
-
-  return SIZE.EXPAND_ICON + totalDefaultSystemIconSizes + totalCollapsedSystemPadding;
-};
+export const calcCollapsedSystemSize = (systemIcons: SystemIcon[]) => calcSystemDrawerSize(systemIcons, false);
 
 export const calcMaxAppCount = (launcherPosition: DirectionalPosition, systemIcons: SystemIcon[], monitorInfo: MonitorInfo) => {
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);

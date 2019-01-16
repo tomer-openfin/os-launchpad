@@ -28,6 +28,7 @@ import '../src/components/Login/Login.story';
 import '../src/components/NotificationsIcon/NotificationsIcon.story';
 import '../src/components/Settings/Settings.story';
 import '../src/components/SvgIconWithExtension/SvgIconWithExtension.story';
+import '../src/components/SystemDrawer/SystemDrawer.story';
 
 // Admin Components
 import '../src/components/Admin/Admin.story';

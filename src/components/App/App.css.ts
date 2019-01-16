@@ -1,15 +1,15 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import * as blobDark from '../../assets/BlobDark.svg';
 
-import { DirectionalPosition } from '../../types/commons';
+import { DirectionalPosition, Orientation } from '../../types/commons';
+import { getLauncherOrientation } from '../../utils/directionalPositionHelpers';
 import * as SIZE from '../../utils/sizingConstants';
-import { isBottomOrRight, isLeftOrRight, isTopOrBottom } from '../../utils/windowPositionHelpers';
+import { isBottomOrRight, isTopOrBottom } from '../../utils/windowPositionHelpers';
 
 import { Color } from '../../styles';
 
 import Logo from '../Logo';
-import SvgIcon from '../SvgIcon';
 
 interface PositionProp {
   launcherPosition: DirectionalPosition;
@@ -17,30 +17,11 @@ interface PositionProp {
 interface ExpandedProp {
   isDrawerExpanded: boolean;
 }
-interface SizeProp {
-  size: number;
-}
 interface EndPaddingProp {
   endPadding: number;
 }
 
-type ExpandedPositionProp = ExpandedProp & PositionProp;
 type EndPaddingPositionProp = EndPaddingProp & PositionProp;
-type ExpandedPositionSizeProp = ExpandedPositionProp & SizeProp;
-
-/* Helpers */
-const calcSystemDrawerWrapper = (size, evaluator, launcherPosition, isDrawerExpanded, suffix) => {
-  const expandedState = isDrawerExpanded ? `calc(100${suffix} - ${SIZE.MAX_STATIC_DIMENSION}px)` : `${size}px`;
-  return evaluator(launcherPosition) ? `${SIZE.MAX_STATIC_DIMENSION}px` : expandedState;
-};
-
-const calcSvgIconsMargin = (isDrawerExpanded, launcherPosition) => {
-  const property = isTopOrBottom(launcherPosition) ? 'margin-left' : 'margin-top';
-  const value = isDrawerExpanded ? `${SIZE.SYSTEM_GUTTER}px` : 0;
-
-  return `${property}: ${value};`;
-};
-/* End Helpers */
 
 /* Styled Imports */
 export const StyledLogo = styled(Logo)`
@@ -89,78 +70,42 @@ export const Overlay = styled.div<ExpandedProp>`
   position: absolute;
   top: 0;
   left: 0;
-  width: ${({ isDrawerExpanded }) => (isDrawerExpanded ? '100%' : '0')};
-  height: ${({ isDrawerExpanded }) => (isDrawerExpanded ? '100%' : '0')};
-`;
 
-export const SystemDrawerWrapper = styled.div<ExpandedPositionSizeProp>`
-  display: inline-block;
-  position: absolute;
-  height: ${({ size, launcherPosition, isDrawerExpanded }) => calcSystemDrawerWrapper(size, isTopOrBottom, launcherPosition, isDrawerExpanded, 'vh')};
-  width: ${({ size, launcherPosition, isDrawerExpanded }) => calcSystemDrawerWrapper(size, isLeftOrRight, launcherPosition, isDrawerExpanded, 'vw')};
-  top: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? 0 : 'auto')};
-  right: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? 0 : 'auto')};
-  bottom: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? 'auto' : 0)};
-  left: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? 'auto' : 0)};
-`;
-
-export const SystemIconsWrapper = styled.div<ExpandedPositionSizeProp>`
-  align-items: center;
-  background-color: ${({ isDrawerExpanded }) => (isDrawerExpanded ? 'rgba(14,13,21,0.96)' : 'rgba(0,0,0,0.33)')};
-  bottom: 0;
-  display: flex;
-  flex-direction: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? 'row' : 'column')};
-  height: ${({ size, launcherPosition }) => (isTopOrBottom(launcherPosition) ? SIZE.MAX_STATIC_DIMENSION : size)}px;
-  justify-content: flex-end;
-  overflow: hidden;
-  position: absolute;
-  right: 0;
-  white-space: nowrap;
-  width: ${({ size, launcherPosition }) => (isTopOrBottom(launcherPosition) ? size : SIZE.MAX_STATIC_DIMENSION)}px;
-
-  ${({ isDrawerExpanded, launcherPosition }) => {
-    const padding = isDrawerExpanded ? SIZE.EXPANDED_SYSTEM_PADDING : SIZE.COLLAPSED_SYSTEM_PADDING;
-
-    return isTopOrBottom(launcherPosition)
-      ? `
-          padding: 0 ${padding}px;
-        `
-      : `
-          padding: ${padding}px 0;
-        `;
-  }}
-`;
-
-export const SystemIconWrapper = styled.div<ExpandedPositionProp>`
-  flex-shrink: 0;
-  line-height: 0;
-
-  ${props => css`
-    ${calcSvgIconsMargin(props.isDrawerExpanded, props.launcherPosition)}
+  ${({ isDrawerExpanded }) => `
+    width: ${isDrawerExpanded ? '100%' : '0'};
+    height: ${isDrawerExpanded ? '100%' : '0'};
   `}
 `;
 
-export const ToggleIcon = styled(SvgIcon)<ExpandedPositionProp>`
-  ${props =>
-    !props.isDrawerExpanded &&
-    isLeftOrRight(props.launcherPosition) &&
-    css`
-      transform: rotate(90deg);
-    `}
+export const SystemDrawerWrapper = styled.div<PositionProp>`
+  display: inline-block;
+  position: absolute;
 
-  ${props =>
-    props.isDrawerExpanded &&
-    css`
-      background-color: ${Color.MARS};
-    `}
+  ${({ launcherPosition }) => {
+    const isHorizontal = getLauncherOrientation(launcherPosition) === Orientation.Horizontal;
+
+    return `
+    height: ${isHorizontal ? '100%' : 'auto'};
+    width: ${isHorizontal ? 'auto' : '100%'};
+    bottom: ${isHorizontal ? 'initial' : '0'};
+    right: ${isHorizontal ? '0' : 'initial'};
+    `;
+  }}
 `;
 
-export const Wrapper = styled.div<EndPaddingPositionProp>`
+export const Wrapper = styled.div<PositionProp>`
   align-items: center;
   display: flex;
-  flex-direction: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? 'row' : 'column')};
-  height: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? `${SIZE.MAX_STATIC_DIMENSION}px` : '100vh')};
   justify-content: flex-start;
   position: relative;
-  width: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? '100vw' : `${SIZE.MAX_STATIC_DIMENSION}px`)};
+
+  ${({ launcherPosition }) => {
+    const isOnTopOrBottom = isTopOrBottom(launcherPosition);
+
+    return `
+      flex-direction: ${isOnTopOrBottom ? 'row' : 'column'};
+      height: ${isOnTopOrBottom ? `${SIZE.MAX_STATIC_DIMENSION}px` : '100vh'};
+      width: ${isOnTopOrBottom ? '100vw' : `${SIZE.MAX_STATIC_DIMENSION}px`};
+    `;
+  }}
 `;

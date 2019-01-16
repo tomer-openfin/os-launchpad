@@ -24,6 +24,7 @@ storiesOf(`${CATEGORIES.UI}SvgIcon`, module)
     const hoverColor = text('hoverColor', defaultProps.hoverColor!);
     const clickable = boolean('clickable', false);
     const disabled = boolean('disabled', false);
+    const isActive = boolean('isActive', false);
 
     return (
       <SvgIcon
@@ -31,6 +32,7 @@ storiesOf(`${CATEGORIES.UI}SvgIcon`, module)
         disabled={disabled}
         hoverColor={hoverColor}
         imgSrc={imgSrc ? require(`../../assets/${imgSrc}`) : ''}
+        isActive={isActive}
         onClick={clickable ? onClick : null}
         size={size}
       />
