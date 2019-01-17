@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import Admin from '../Admin';
 import AdminApps from '../AdminApps';
+import AdminUsers from '../AdminUsers';
 import App from '../App';
 import AppDirectory from '../AppDirectory';
 import AppOverflow from '../AppOverflow';
@@ -16,7 +17,6 @@ import NewAppForm from '../NewAppForm';
 import NewUserForm from '../NewUserForm';
 import OrganizationSettings from '../OrganizationSettings';
 import Settings from '../Settings';
-import UserDirectory from '../UserDirectory';
 
 import { ROUTES } from './consts';
 
@@ -69,7 +69,7 @@ export const routes: AppRoute[] = [
     Component: Admin,
     children: [
       {
-        Component: UserDirectory,
+        Component: AdminUsers,
         children: userRoutes,
         exact: false,
         path: ROUTES.ADMIN_USERS,

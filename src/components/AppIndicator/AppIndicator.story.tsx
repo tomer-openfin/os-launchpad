@@ -3,10 +3,9 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { AppStatusStates } from '../../redux/apps/types';
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import { DirectionalPosition } from '../../types/enums';
+import { AppStatusStates, DirectionalPosition } from '../../types/enums';
 import AppIndicator from './AppIndicator';
 
 const Wrapper = styled.div`

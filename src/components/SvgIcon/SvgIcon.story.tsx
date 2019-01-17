@@ -19,12 +19,13 @@ storiesOf(`${CATEGORIES.UI}SvgIcon`, module)
   .addDecorator(withMarginDecorator(15))
   .add('default', () => {
     const imgSrc = select('Svg', SVGS, SVGS[0]);
-    const size = text('size', defaultSize);
-    const color = text('color', defaultProps.color!);
-    const hoverColor = text('hoverColor', defaultProps.hoverColor!);
-    const clickable = boolean('clickable', false);
-    const disabled = boolean('disabled', false);
-    const isActive = boolean('isActive', false);
+    const size = text('Size', defaultSize);
+    const color = text('Color', defaultProps.color!);
+    const hoverColor = text('Hover Color', defaultProps.hoverColor!);
+    const clickable = boolean('Clickable', false);
+    const disabled = boolean('Disabled', false);
+    const isActive = boolean('Active', false);
+    const title = text('Hover Title', 'Icon');
 
     return (
       <SvgIcon
@@ -35,6 +36,7 @@ storiesOf(`${CATEGORIES.UI}SvgIcon`, module)
         isActive={isActive}
         onClick={clickable ? onClick : null}
         size={size}
+        title={title}
       />
     );
   });

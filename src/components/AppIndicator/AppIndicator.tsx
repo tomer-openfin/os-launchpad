@@ -2,9 +2,8 @@ import * as React from 'react';
 
 import * as Exclamation from '../../assets/Exclamation.svg';
 
-import { AppStatusStates } from '../../redux/apps/types';
 import { Color } from '../../styles';
-import { DirectionalPosition } from '../../types/enums';
+import { AppStatusStates, DirectionalPosition } from '../../types/enums';
 
 import { Indicator, StyledSvgIcon } from './AppIndicator.css';
 

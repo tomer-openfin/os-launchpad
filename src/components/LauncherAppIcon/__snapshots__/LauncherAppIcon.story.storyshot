@@ -13,6 +13,7 @@ exports[`Storyshots Components/LauncherAppIcon default 1`] = `
     <div
       className="sc-jTzLTM qkcFH"
       size={50}
+      title="Launchpad"
     >
       <div
         className="sc-htoDjs bbBQsJ"
@@ -220,6 +221,36 @@ exports[`Storyshots Components/LauncherAppIcon default 1`] = `
                           }
                         >
                           osLaunchpadMain
+                        </span>
+                        "
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      appTitle
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        "
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          Launchpad
                         </span>
                         "
                       </span>

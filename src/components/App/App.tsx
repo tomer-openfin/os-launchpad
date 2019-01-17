@@ -1,12 +1,14 @@
 import * as React from 'react';
 
 import { App, DirectionalPosition } from '../../types/commons';
+
 import { SystemIcon } from '../../utils/getSystemIcons';
+
+import { AppListWrapper, Main, Overlay, StyledLogo, SystemDrawerWrapper, Wrapper } from './App.css';
 
 import AppList from '../AppList';
 import Borders from '../Borders';
 import SystemDrawer, { calcSystemDrawerSize } from '../SystemDrawer';
-import { AppListWrapper, Main, Overlay, StyledLogo, SystemDrawerWrapper, Wrapper } from './App.css';
 
 export interface Props {
   launcherPosition: DirectionalPosition;

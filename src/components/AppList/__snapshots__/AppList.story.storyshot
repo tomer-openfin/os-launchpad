@@ -29,7 +29,7 @@ exports[`Storyshots Components/AppList default 1`] = `
         }
       >
         <div
-          className="sc-jDwBTQ fovXZy"
+          className="sc-Rmtcm YrVHH"
           height={80}
           isExpanded={false}
           launcherPosition="top"
@@ -38,6 +38,7 @@ exports[`Storyshots Components/AppList default 1`] = `
           <div
             className="sc-jTzLTM bMMlEN"
             size={50}
+            title="FinTech Studios"
           >
             <div
               style={
@@ -83,6 +84,7 @@ exports[`Storyshots Components/AppList default 1`] = `
           <div
             className="sc-jTzLTM bMMlEN"
             size={50}
+            title="GreenKey"
           >
             <div
               style={
@@ -128,6 +130,7 @@ exports[`Storyshots Components/AppList default 1`] = `
           <div
             className="sc-jTzLTM bMMlEN"
             size={50}
+            title="Hammerstone Markets App"
           >
             <div
               style={
@@ -173,6 +176,7 @@ exports[`Storyshots Components/AppList default 1`] = `
           <div
             className="sc-jTzLTM bMMlEN"
             size={50}
+            title="Neptune"
           >
             <div
               style={
@@ -218,6 +222,7 @@ exports[`Storyshots Components/AppList default 1`] = `
           <div
             className="sc-jTzLTM bMMlEN"
             size={50}
+            title="OpenDoor"
           >
             <div
               style={
@@ -263,6 +268,7 @@ exports[`Storyshots Components/AppList default 1`] = `
           <div
             className="sc-jTzLTM bMMlEN"
             size={50}
+            title="Parity One"
           >
             <div
               style={
@@ -308,6 +314,7 @@ exports[`Storyshots Components/AppList default 1`] = `
           <div
             className="sc-jTzLTM bMMlEN"
             size={50}
+            title="RSRCHXChange"
           >
             <div
               style={
@@ -353,6 +360,7 @@ exports[`Storyshots Components/AppList default 1`] = `
           <div
             className="sc-jTzLTM bMMlEN"
             size={50}
+            title="Trumid"
           >
             <div
               style={
@@ -424,6 +432,7 @@ exports[`Storyshots Components/AppList default 1`] = `
           <div
             className="sc-jTzLTM bMMlEN"
             size={50}
+            title="TT Desktop"
           >
             <div
               style={

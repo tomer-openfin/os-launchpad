@@ -11,7 +11,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
     }
   >
     <div
-      className="sc-esjQYD icshgY"
+      className="sc-hrWEMg hpGgZd"
     >
       <div
         className="sc-brqgnP ifgtAb"
@@ -27,18 +27,18 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
         </div>
       </div>
       <form
-        className="sc-kfGgVZ kfempq"
+        className="sc-bwCtUz fQeVoJ"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <div
-          className="sc-kIPQKe etMrqO"
+          className="sc-eTuwsz bQlwID"
         >
           <div
-            className="sc-eXEjpC kGyYVN"
+            className="sc-gwVKww cixCyT"
           >
             <div
-              className="sc-ibxdXY iwrRrR"
+              className="sc-hXRMBi fPDNiI"
             >
               <label
                 className="sc-dxgOiQ cQoZtn"
@@ -58,7 +58,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                 />
               </label>
               <div
-                className="sc-epnACN FMAgw"
+                className="sc-cmthru dRIHyZ"
               >
                 <div
                   className="sc-ifAKCX kZNJii"
@@ -85,7 +85,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
               />
             </label>
             <div
-              className="sc-ibxdXY iaPuQU"
+              className="sc-hXRMBi fvfNRB"
               height="99px"
             >
               <label
@@ -124,7 +124,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
               </label>
             </div>
             <div
-              className="sc-ibxdXY hPqBHt"
+              className="sc-hXRMBi fUisaH"
               height="161px"
             >
               <label
@@ -136,104 +136,104 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                   Accepted Intent(s)
                 </div>
                 <div
-                  className="sc-gwVKww bCzQOv"
+                  className="sc-iuJeZd ibtTNH"
                 >
                   <label
-                    className="sc-iQNlJl iYvBzL"
+                    className="sc-hMFtBS fnYDVt"
                   >
                     <input
                       checked={false}
-                      className="sc-cMhqgX gkMuyQ"
+                      className="sc-hORach jfhiLo"
                       name="intents"
                       onChange={[Function]}
                       type="checkbox"
                       value="Start Call"
                     />
                     <div
-                      className="sc-hZSUBg jxnlLy"
+                      className="sc-gqPbQI bSaCvm"
                     />
                     <div
-                      className="sc-bsbRJL cEVzqW"
+                      className="sc-cLQEGU bPrlZa"
                     >
                       Start Call
                     </div>
                   </label>
                   <label
-                    className="sc-iQNlJl iYvBzL"
+                    className="sc-hMFtBS fnYDVt"
                   >
                     <input
                       checked={false}
-                      className="sc-cMhqgX gkMuyQ"
+                      className="sc-hORach jfhiLo"
                       name="intents"
                       onChange={[Function]}
                       type="checkbox"
                       value="Start Chat"
                     />
                     <div
-                      className="sc-hZSUBg jxnlLy"
+                      className="sc-gqPbQI bSaCvm"
                     />
                     <div
-                      className="sc-bsbRJL cEVzqW"
+                      className="sc-cLQEGU bPrlZa"
                     >
                       Start Chat
                     </div>
                   </label>
                   <label
-                    className="sc-iQNlJl iYvBzL"
+                    className="sc-hMFtBS fnYDVt"
                   >
                     <input
                       checked={false}
-                      className="sc-cMhqgX gkMuyQ"
+                      className="sc-hORach jfhiLo"
                       name="intents"
                       onChange={[Function]}
                       type="checkbox"
                       value="View Chart"
                     />
                     <div
-                      className="sc-hZSUBg jxnlLy"
+                      className="sc-gqPbQI bSaCvm"
                     />
                     <div
-                      className="sc-bsbRJL cEVzqW"
+                      className="sc-cLQEGU bPrlZa"
                     >
                       View Chart
                     </div>
                   </label>
                   <label
-                    className="sc-iQNlJl iYvBzL"
+                    className="sc-hMFtBS fnYDVt"
                   >
                     <input
                       checked={false}
-                      className="sc-cMhqgX gkMuyQ"
+                      className="sc-hORach jfhiLo"
                       name="intents"
                       onChange={[Function]}
                       type="checkbox"
                       value="View Contact"
                     />
                     <div
-                      className="sc-hZSUBg jxnlLy"
+                      className="sc-gqPbQI bSaCvm"
                     />
                     <div
-                      className="sc-bsbRJL cEVzqW"
+                      className="sc-cLQEGU bPrlZa"
                     >
                       View Contact
                     </div>
                   </label>
                   <label
-                    className="sc-iQNlJl iYvBzL"
+                    className="sc-hMFtBS fnYDVt"
                   >
                     <input
                       checked={false}
-                      className="sc-cMhqgX gkMuyQ"
+                      className="sc-hORach jfhiLo"
                       name="intents"
                       onChange={[Function]}
                       type="checkbox"
                       value="View Quote"
                     />
                     <div
-                      className="sc-hZSUBg jxnlLy"
+                      className="sc-gqPbQI bSaCvm"
                     />
                     <div
-                      className="sc-bsbRJL cEVzqW"
+                      className="sc-cLQEGU bPrlZa"
                     >
                       View Quote
                     </div>
@@ -249,104 +249,104 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                   Accepted Context(s)
                 </div>
                 <div
-                  className="sc-gwVKww bCzQOv"
+                  className="sc-iuJeZd ibtTNH"
                 >
                   <label
-                    className="sc-iQNlJl iYvBzL"
+                    className="sc-hMFtBS fnYDVt"
                   >
                     <input
                       checked={false}
-                      className="sc-cMhqgX gkMuyQ"
+                      className="sc-hORach jfhiLo"
                       name="contexts"
                       onChange={[Function]}
                       type="checkbox"
                       value="Instrument"
                     />
                     <div
-                      className="sc-hZSUBg jxnlLy"
+                      className="sc-gqPbQI bSaCvm"
                     />
                     <div
-                      className="sc-bsbRJL cEVzqW"
+                      className="sc-cLQEGU bPrlZa"
                     >
                       Instrument
                     </div>
                   </label>
                   <label
-                    className="sc-iQNlJl iYvBzL"
+                    className="sc-hMFtBS fnYDVt"
                   >
                     <input
                       checked={false}
-                      className="sc-cMhqgX gkMuyQ"
+                      className="sc-hORach jfhiLo"
                       name="contexts"
                       onChange={[Function]}
                       type="checkbox"
                       value="Contact"
                     />
                     <div
-                      className="sc-hZSUBg jxnlLy"
+                      className="sc-gqPbQI bSaCvm"
                     />
                     <div
-                      className="sc-bsbRJL cEVzqW"
+                      className="sc-cLQEGU bPrlZa"
                     >
                       Contact
                     </div>
                   </label>
                   <label
-                    className="sc-iQNlJl iYvBzL"
+                    className="sc-hMFtBS fnYDVt"
                   >
                     <input
                       checked={false}
-                      className="sc-cMhqgX gkMuyQ"
+                      className="sc-hORach jfhiLo"
                       name="contexts"
                       onChange={[Function]}
                       type="checkbox"
                       value="Organization"
                     />
                     <div
-                      className="sc-hZSUBg jxnlLy"
+                      className="sc-gqPbQI bSaCvm"
                     />
                     <div
-                      className="sc-bsbRJL cEVzqW"
+                      className="sc-cLQEGU bPrlZa"
                     >
                       Organization
                     </div>
                   </label>
                   <label
-                    className="sc-iQNlJl iYvBzL"
+                    className="sc-hMFtBS fnYDVt"
                   >
                     <input
                       checked={false}
-                      className="sc-cMhqgX gkMuyQ"
+                      className="sc-hORach jfhiLo"
                       name="contexts"
                       onChange={[Function]}
                       type="checkbox"
                       value="Contact List"
                     />
                     <div
-                      className="sc-hZSUBg jxnlLy"
+                      className="sc-gqPbQI bSaCvm"
                     />
                     <div
-                      className="sc-bsbRJL cEVzqW"
+                      className="sc-cLQEGU bPrlZa"
                     >
                       Contact List
                     </div>
                   </label>
                   <label
-                    className="sc-iQNlJl iYvBzL"
+                    className="sc-hMFtBS fnYDVt"
                   >
                     <input
                       checked={false}
-                      className="sc-cMhqgX gkMuyQ"
+                      className="sc-hORach jfhiLo"
                       name="contexts"
                       onChange={[Function]}
                       type="checkbox"
                       value="Position"
                     />
                     <div
-                      className="sc-hZSUBg jxnlLy"
+                      className="sc-gqPbQI bSaCvm"
                     />
                     <div
-                      className="sc-bsbRJL cEVzqW"
+                      className="sc-cLQEGU bPrlZa"
                     >
                       Position
                     </div>
@@ -357,10 +357,10 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
           </div>
         </div>
         <div
-          className="sc-hXRMBi kLlITr"
+          className="sc-esOvli bqDuoW"
         >
           <div
-            className="sc-RefOD jUAIvL"
+            className="sc-epnACN jpZnVJ"
           >
             <a
               backgroundColor="#848484"
@@ -384,7 +384,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
         </div>
       </form>
       <div
-        className="sc-iQKALj gmzQnW"
+        className="sc-iQNlJl Zaksd"
       />
     </div>
   </div>

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-import { AppStatusStates } from '../../redux/apps/types';
 import { Color, hexToRgb } from '../../styles';
+
+import { AppStatusStates } from '../../types/enums';
 
 import SvgIcon from '../SvgIcon';
 import { Props } from './AppIndicator';

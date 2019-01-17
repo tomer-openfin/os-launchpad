@@ -1,7 +1,7 @@
 import { CLOSE_FIN_APP, OPEN_FIN_APP, SET_APP_DIRECTORY_LIST, SET_FIN_APP_STATUS_STATE } from './actions';
 
-import { App } from '../../types/commons';
-import { AppsById, AppsState, AppStatusOrigins, AppStatusStates, OpenFinAppError, OpenFinAppSuccess, SetFinAppStatusState } from './types';
+import { App, AppStatusOrigins, AppStatusStates } from '../../types/commons';
+import { AppsById, AppsState, OpenFinAppError, OpenFinAppSuccess, SetFinAppStatusState } from './types';
 
 const formatByIds = (appList: App[]) =>
   appList.reduce((appsById: AppsById, app: App) => {

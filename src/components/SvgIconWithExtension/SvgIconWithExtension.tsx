@@ -23,6 +23,7 @@ const SvgIconWithExtension = ({
   onClick,
   extensionPosition,
   size = defaultSize,
+  title,
 }: Props) => (
   <Wrapper className={className} clickable={!disabled && !!onClick} color={color} hoverColor={hoverColor} extensionPosition={extensionPosition}>
     <SvgIcon
@@ -33,6 +34,7 @@ const SvgIconWithExtension = ({
       isActive={isActive}
       onClick={disabled ? undefined : onClick}
       size={size}
+      title={title}
     />
 
     <CaretSvgIcon

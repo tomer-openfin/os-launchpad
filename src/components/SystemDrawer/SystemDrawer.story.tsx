@@ -17,7 +17,7 @@ const getStoryIcons = (isAdmin: boolean) =>
     hasExtendedWindow: icon.hasExtendedWindow,
     icon: icon.icon,
     isShownByDefault: icon.isShownByDefault,
-    key: icon.key,
+    title: icon.title,
   }));
 
 const onClickToggle = action('onClickToggle');

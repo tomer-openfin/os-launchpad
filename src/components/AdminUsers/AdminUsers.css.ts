@@ -7,7 +7,6 @@ import * as TrashIcon from '../../assets/Trash.svg';
 import { Link } from 'react-router-dom';
 import { Color } from '../../styles/index';
 import { TypeStyleAlgol, TypeStyleCanopus, TypeStyleEnif } from '../../styles/typography.css';
-import { ButtonCSS } from '../Button/Button.css';
 
 export const Wrapper = styled.div`
   height: 100%;

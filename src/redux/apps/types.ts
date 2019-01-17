@@ -1,19 +1,5 @@
-import { App } from '../../types/commons';
+import { App, AppStatusOrigins, AppStatusStates } from '../../types/commons';
 import { closeFinAppRequest, openFinAppError, openFinAppRequest, openFinAppSuccess, setFinAppStatusState } from './actions';
-
-export enum AppStatusStates {
-  Closed = 'closed',
-  Error = 'error',
-  Loading = 'loading',
-  Running = 'running',
-  Warning = 'warning',
-}
-
-export enum AppStatusOrigins {
-  Default = 'default',
-  Event = 'event',
-  LayoutRestore = 'layoutRestore',
-}
 
 // Reducer
 export interface AppsById {

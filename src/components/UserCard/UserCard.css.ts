@@ -4,7 +4,9 @@ import { Color } from '../../styles/index';
 import { TypeStyleCanopus, TypeStyleProcyon } from '../../styles/typography.css';
 import { Icon } from '../IconSpace/IconSpace.css';
 
-import * as AdminIcon from '../../assets/Admin.svg';
+import SvgIcon from '../SvgIcon/SvgIcon';
+
+const CTA_WIDTH = 100;
 
 export const Wrapper = styled.div`
   display: flex;
@@ -31,10 +33,11 @@ export const InfoWrapper = styled.div`
   color: ${Color.SUN};
   font-weight: 200;
   height: 100%;
-  flex: 1;
-  max-width: 492px;
+  flex: 0;
+  max-width: calc(100% - ${CTA_WIDTH}px);
 
   @media (max-width: 600px) {
+    padding-top: 5px;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -43,10 +46,13 @@ export const InfoWrapper = styled.div`
 
 export const NameAndBadgeWrapper = styled.div`
   display: flex;
-  flex: 1;
-  flex-shrink: 0;
-  padding: 0 20px;
+  min-width: 200px;
+  max-width: 100%;
+  min-height: 25px;
+  flex: 0;
+  padding: 0 0 0 20px;
   align-items: flex-start;
+  margin: auto 0;
 `;
 
 export const UserName = styled.div`
@@ -54,45 +60,34 @@ export const UserName = styled.div`
 
   text-transform: capitalize;
   min-height: 22px;
-  flex: 0;
+  margin: auto 5px auto 0;
   white-space: nowrap;
-  margin: auto 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
-export const AdminBadge = styled.div<{ isAdmin: boolean }>`
-${props =>
-  props.isAdmin &&
-  `
-  mask:url(${AdminIcon});
-  mask-size: contain;
-  mask-position: center;
-  mask-repeat: no-repeat;
-  `}
-
-  background-color: ${props => (props.isAdmin ? Color.JUPITER : Color.VOID)};
-  height: 16px;
-  width: 16px;
-  margin: auto 0 auto 5px;
+export const Badge = styled(SvgIcon)`
+  margin: auto 0;
+  flex-shrink: 0;
 `;
 
 export const UserEmail = styled.div`
   ${TypeStyleCanopus}
 
-  overflow: hidden;
+  max-width: 100%;
   padding: 0 20px;
   color: ${Color.MERCURY};
   margin: auto 0;
   flex-shrink: 0;
-  flex: 2;
-
-  @media (max-width: 600px) {
-    flex: 1;
-  }
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const CTAWrapper = styled.div`
   height: 100%;
-  width: 100px;
+  width: ${CTA_WIDTH}px;
   padding-right: 10px;
   flex-shrink: 0;
 `;

@@ -1,10 +1,10 @@
 import { all, call, put, race, select, take, takeEvery } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
-import { ErrorResponse, ResponseStatus, UserLayout } from '../../types/commons';
+import { AppStatusOrigins, AppStatusStates, ErrorResponse, ResponseStatus, UserLayout } from '../../types/commons';
 import { bindFinAppEventHandlers } from '../../utils/finAppEventHandlerHelpers';
 import { generateLayout, restoreLayout } from '../../utils/openfinLayouts';
-import { AppStatusOrigins, AppStatusStates, getApps, getAppsStatusById, openFinAppSuccess, setFinAppStatusState } from '../apps';
+import { getApps, getAppsStatusById, openFinAppSuccess, setFinAppStatusState } from '../apps';
 import {
   CREATE_LAYOUT,
   createLayoutError,

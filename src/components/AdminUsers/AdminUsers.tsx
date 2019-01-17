@@ -12,7 +12,7 @@ import {
   SortHeader,
   SortWrapper,
   Wrapper,
-} from './UserDirectory.css';
+} from './AdminUsers.css';
 
 import { User } from '../../types/commons';
 
@@ -47,7 +47,7 @@ const defaultProps: Partial<Props> = {
   users: [],
 };
 
-class UserDirectory extends React.PureComponent<Props, State> {
+class AdminUsers extends React.PureComponent<Props, State> {
   static defaultProps = defaultProps;
 
   constructor(props) {
@@ -145,4 +145,4 @@ class UserDirectory extends React.PureComponent<Props, State> {
   }
 }
 
-export default UserDirectory;
+export default AdminUsers;

@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import { AppStatusStates, closeFinAppRequest, getAppById, getAppStatusById, openFinAppRequest } from '../../redux/apps';
+import { closeFinAppRequest, getAppById, getAppStatusById, openFinAppRequest } from '../../redux/apps';
 import { getLauncherPosition, removeFromAppLauncher } from '../../redux/me';
-import { AppIconSizes } from '../../types/commons';
+import { AppIconSizes, AppStatusStates } from '../../types/commons';
 
 import LauncherAppIcon from './LauncherAppIcon';
 
@@ -40,6 +40,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps: Props) => {
   return {
     ...ownProps,
     appStatusState: status ? status.state : AppStatusStates.Closed,
+    appTitle: app ? app.title : '',
     contextMenuOptions,
     imgSrc: app ? app.icon : '',
     launchApp: app ? () => dispatchProps.openFinAppRequest(app) : () => undefined,

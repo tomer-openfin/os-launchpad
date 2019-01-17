@@ -4,24 +4,26 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import { AppStatusStates } from '../../redux/apps/types';
-import { AppIconSizes, DirectionalPosition } from '../../types/commons';
+import { AppIconSizes, AppStatusStates, DirectionalPosition } from '../../types/commons';
 import { CATEGORIES } from '../../utils/storyCategories';
-import LauncherAppIcon from './LauncherAppIcon';
 import { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from './LauncherAppIcon.css';
+
+import LauncherAppIcon from './LauncherAppIcon';
 
 storiesOf(`${CATEGORIES.COMPONENTS}LauncherAppIcon`, module)
   .addDecorator(withKnobs)
   .add('default', () => {
-    const appStatusState = select('status', Object(AppStatusStates), AppStatusStates.Closed);
-    const imgSrc = text('imgSrc', 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
-    const launcherPosition = select('launcherPosition', Object(DirectionalPosition), DirectionalPosition.Top);
-    const size = select('size', Object(AppIconSizes), AppIconSizes.Medium);
-    const isDisabled = boolean('isDisabled', false);
+    const appStatusState = select('Status', Object(AppStatusStates), AppStatusStates.Closed);
+    const imgSrc = text('Image Url', 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
+    const launcherPosition = select('Launcher Position', Object(DirectionalPosition), DirectionalPosition.Top);
+    const size = select('Size', Object(AppIconSizes), AppIconSizes.Medium);
+    const isDisabled = boolean('Disabled', false);
+    const appTitle = text('Hover Title', 'Launchpad');
 
     return (
       <LauncherAppIcon
         appId="osLaunchpadMain"
+        appTitle={appTitle}
         appStatusState={appStatusState}
         imgSrc={imgSrc}
         launcherPosition={launcherPosition}
@@ -32,20 +34,22 @@ storiesOf(`${CATEGORIES.COMPONENTS}LauncherAppIcon`, module)
     );
   })
   .add('with animations', () => {
-    const appStatusState = select('status', Object(AppStatusStates), AppStatusStates.Closed);
-    const backgroundColor = text('AppIcon background-color', '#FFCC04');
-    const imgSrc = text('imgSrc', 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
-    const launcherPosition = select('launcherPosition', Object(DirectionalPosition), DirectionalPosition.Top);
-    const size = select('size', Object(AppIconSizes), AppIconSizes.Medium);
-    const margin = number('margin', 10);
-    const isDisabled = boolean('isDisabled', false);
-    const isMounted = boolean('isMounted', false);
+    const appStatusState = select('Status', Object(AppStatusStates), AppStatusStates.Closed);
+    const backgroundColor = text('AppIcon Background Color', '#FFCC04');
+    const imgSrc = text('Image Url', 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
+    const launcherPosition = select('Launcher Position', Object(DirectionalPosition), DirectionalPosition.Top);
+    const size = select('Size', Object(AppIconSizes), AppIconSizes.Medium);
+    const margin = number('Margin', 10);
+    const isDisabled = boolean('Disabled', false);
+    const isMounted = boolean('Mounted', false);
+    const appTitle = text('Hover Title', 'Launchpad');
 
     const icons = isMounted
       ? [
           {
             appId: 'osLaunchpadMain',
             appStatusState,
+            appTitle,
             hasTransition: true,
             imgSrc,
             isDisabled,

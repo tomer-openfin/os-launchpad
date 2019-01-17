@@ -16,7 +16,7 @@ interface SystemDrawerIcon {
   hasExtendedWindow: boolean;
   icon: string;
   isShownByDefault: boolean;
-  key: string;
+  title: string;
 }
 
 interface Props {
@@ -58,7 +58,7 @@ class SystemDrawer extends React.Component<Props> {
           />
         </ToggleIconWrapper>
 
-        {icons.map(({ isShownByDefault, cta, hasExtendedWindow, icon, key }) => {
+        {icons.map(({ isShownByDefault, cta, hasExtendedWindow, icon, title }) => {
           const isVisible = isShownByDefault || isExpanded;
           const delayMultiplier = isShownByDefault ? 0 : hiddenIconCount;
           if (!isShownByDefault) {
@@ -66,11 +66,18 @@ class SystemDrawer extends React.Component<Props> {
           }
 
           return (
-            <SvgIconWrapper delayMultiplier={delayMultiplier} isExpanded={isExpanded} isVisible={isVisible} key={key} orientation={orientation}>
+            <SvgIconWrapper delayMultiplier={delayMultiplier} isExpanded={isExpanded} isVisible={isVisible} key={title} orientation={orientation}>
               {hasExtendedWindow ? (
-                <SvgIconWithExtension disabled={!isVisible} extensionPosition={extendedWindowPosition} imgSrc={icon} onClick={cta} size={iconSize} />
+                <SvgIconWithExtension
+                  disabled={!isVisible}
+                  extensionPosition={extendedWindowPosition}
+                  imgSrc={icon}
+                  onClick={cta}
+                  size={iconSize}
+                  title={title}
+                />
               ) : (
-                <SvgIcon disabled={!isVisible} imgSrc={icon} onClick={cta} size={iconSize} />
+                <SvgIcon disabled={!isVisible} imgSrc={icon} onClick={cta} size={iconSize} title={title} />
               )}
             </SvgIconWrapper>
           );

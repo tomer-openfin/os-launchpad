@@ -23,6 +23,7 @@ exports[`Storyshots UI Components/SvgIcon default 1`] = `
         disabled={false}
         onClick={null}
         size="42px"
+        title="Icon"
       />
     </div>
   </div>
@@ -458,6 +459,36 @@ exports[`Storyshots UI Components/SvgIcon default 1`] = `
                             }
                           >
                             42px
+                          </span>
+                          "
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
+                        title
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          "
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
+                            }
+                          >
+                            Icon
                           </span>
                           "
                         </span>

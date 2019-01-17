@@ -11,10 +11,10 @@ exports[`Storyshots Components/App default 1`] = `
     }
   >
     <div
-      className="sc-jhAzac isJaai"
+      className="sc-iRbamj cGZntz"
     >
       <div
-        className="sc-dVhcbM dUsBvs"
+        className="sc-csuQGl gAFbCH"
       >
         <div
           className="sc-kAzzGY cxjsyR"
@@ -22,13 +22,13 @@ exports[`Storyshots Components/App default 1`] = `
           width="100%"
         >
           <div
-            className="sc-bRBYWo jerILk sc-hMqMXs fJevnH"
+            className="sc-jDwBTQ gyiJEJ sc-hMqMXs fJevnH"
           />
           <div
-            className="sc-hzDkRC dgaYye"
+            className="sc-gPEVay jGdazX"
           >
             <div
-              className="sc-jDwBTQ gxYKRx"
+              className="sc-Rmtcm jceNNx"
               height={80}
               isExpanded={false}
               launcherPosition="top"
@@ -63,6 +63,7 @@ exports[`Storyshots Components/App default 1`] = `
               <div
                 className="sc-jTzLTM bMMlEN"
                 size={50}
+                title="Trumid"
               >
                 <div
                   style={
@@ -108,6 +109,7 @@ exports[`Storyshots Components/App default 1`] = `
               <div
                 className="sc-jTzLTM bMMlEN"
                 size={50}
+                title="Neptune"
               >
                 <div
                   style={
@@ -153,6 +155,7 @@ exports[`Storyshots Components/App default 1`] = `
               <div
                 className="sc-jTzLTM bMMlEN"
                 size={50}
+                title="GreenKey"
               >
                 <div
                   style={
@@ -198,30 +201,30 @@ exports[`Storyshots Components/App default 1`] = `
             </div>
           </div>
           <div
-            className="sc-fMiknA bdBDLC"
+            className="sc-gipzik kFJgDo"
           >
             <div
-              className="sc-fBuWsC eomqUp"
+              className="sc-jlyJG fKdHDz"
               onClick={[Function]}
             />
             <div
-              className="sc-Rmtcm ihENIC"
+              className="sc-dVhcbM fCaWHZ"
               orientation="horizontal"
               size={162}
             >
               <div
-                className="sc-gipzik cUxlht"
+                className="sc-fBuWsC dtBJKy"
                 orientation="horizontal"
               >
                 <div
-                  className="sc-jlyJG dZaLkw sc-ifAKCX hwskBS"
+                  className="sc-jhAzac hphHXh sc-ifAKCX hwskBS"
                   color="#E7E7E7"
                   onClick={[Function]}
                   size={20}
                 />
               </div>
               <div
-                className="sc-csuQGl hDuRgl"
+                className="sc-fMiknA laDBDJ"
                 orientation="horizontal"
               >
                 <div
@@ -229,10 +232,11 @@ exports[`Storyshots Components/App default 1`] = `
                   color="#E7E7E7"
                   disabled={true}
                   size={42}
+                  title="Logout"
                 />
               </div>
               <div
-                className="sc-csuQGl hDuRgl"
+                className="sc-fMiknA laDBDJ"
                 orientation="horizontal"
               >
                 <div
@@ -240,10 +244,11 @@ exports[`Storyshots Components/App default 1`] = `
                   color="#E7E7E7"
                   disabled={true}
                   size={42}
+                  title="Admin"
                 />
               </div>
               <div
-                className="sc-csuQGl hDuRgl"
+                className="sc-fMiknA laDBDJ"
                 orientation="horizontal"
               >
                 <div
@@ -251,10 +256,11 @@ exports[`Storyshots Components/App default 1`] = `
                   color="#E7E7E7"
                   disabled={true}
                   size={42}
+                  title="Settings"
                 />
               </div>
               <div
-                className="sc-csuQGl eUczgs"
+                className="sc-fMiknA fxGWiu"
                 orientation="horizontal"
               >
                 <div
@@ -263,14 +269,15 @@ exports[`Storyshots Components/App default 1`] = `
                   disabled={false}
                   onClick={[Function]}
                   size={42}
+                  title="Search"
                 />
               </div>
               <div
-                className="sc-csuQGl eUczgs"
+                className="sc-fMiknA fxGWiu"
                 orientation="horizontal"
               >
                 <div
-                  className="sc-iRbamj cQrTdH"
+                  className="sc-hzDkRC gGdfCW"
                   color="#E7E7E7"
                 >
                   <div
@@ -279,9 +286,10 @@ exports[`Storyshots Components/App default 1`] = `
                     disabled={false}
                     onClick={[Function]}
                     size={42}
+                    title="Layouts"
                   />
                   <div
-                    className="sc-gPEVay fGMXQl sc-ifAKCX xmkOg"
+                    className="sc-bRBYWo cfFjGV sc-ifAKCX xmkOg"
                     color="#E7E7E7"
                     disabled={false}
                     onClick={[Function]}
@@ -290,7 +298,7 @@ exports[`Storyshots Components/App default 1`] = `
                 </div>
               </div>
               <div
-                className="sc-csuQGl eUczgs"
+                className="sc-fMiknA fxGWiu"
                 orientation="horizontal"
               >
                 <div
@@ -299,6 +307,7 @@ exports[`Storyshots Components/App default 1`] = `
                   disabled={false}
                   onClick={[Function]}
                   size={42}
+                  title="Notifications"
                 />
               </div>
             </div>

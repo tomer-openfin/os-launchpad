@@ -11,34 +11,62 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
     }
   >
     <div
-      className="sc-krvtoX ckLMaI"
+      className="sc-emmjRN hFTBJV"
     >
       <div
-        className="sc-fYiAbW fjEFuG"
+        className="sc-kfGgVZ jKRxhF"
       >
         <div
-          className="sc-fOKMvo GAbSv"
+          className="sc-esjQYD kWiyHw"
         >
           <div
-            className="sc-dUjcNx wftpw"
+            className="sc-kIPQKe fvQbxS"
           >
-            John
-             
-            Doe
+            <div
+              className="sc-eXEjpC eCoHYm"
+            >
+              John
+               
+              Doe
+            </div>
+            <div
+              className="sc-ibxdXY foJYon sc-ifAKCX yXyBY"
+              color="#FBC23C"
+              size={16}
+              title="Admin"
+            />
+            <div
+              className="sc-ibxdXY foJYon sc-ifAKCX dXYvlK"
+              color="#DF5353"
+              size={16}
+              title="User has not logged in yet"
+            />
           </div>
           <div
-            className="sc-gHboQg bqOWLJ"
-          />
+            className="sc-RefOD iEhOZt"
+          >
+            John.Doe@gmail.com
+          </div>
         </div>
         <div
-          className="sc-eilVRo fyApwU"
+          className="sc-iQKALj jKikGH"
         >
-          John.Doe@gmail.com
+          <div
+            className="sc-kTUwUJ cMKRvn"
+          >
+            <a
+              className="sc-iyvyFf gIHwLI"
+              href="/admin/users/edit"
+              onClick={[Function]}
+            />
+            <a
+              className="sc-gzOgki hHCkCH"
+              href="/admin/users/delete"
+              onClick={[Function]}
+            />
+          </div>
         </div>
       </div>
-      <div
-        className="sc-eerKOB lnvWSv"
-      />
     </div>
   </div>
   <button
@@ -171,159 +199,263 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
             className="css-r8d96o eyvlbql0"
           >
             <div>
-              <div
-                style={
-                  Object {
-                    "paddingLeft": 18,
-                    "paddingRight": 3,
-                  }
-                }
-              >
-                <span
+              <div>
+                <div
                   style={
                     Object {
-                      "color": "#444",
+                      "paddingLeft": 18,
+                      "paddingRight": 3,
                     }
                   }
                 >
-                  &lt;
-                  AppCard
-                </span>
-                <span>
+                  <span
+                    style={
+                      Object {
+                        "color": "#444",
+                      }
+                    }
+                  >
+                    &lt;
+                    styled.div
+                  </span>
                   <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      user
-                    </span>
                     <span>
-                      =
+                       
                       <span
                         style={Object {}}
                       >
-                        {
+                        withBorder
+                      </span>
+                      <span>
+                        =
                         <span
-                          style={
-                            Object {
-                              "color": "#666",
-                            }
-                          }
+                          style={Object {}}
                         >
                           {
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              email
-                            </span>
-                          </span>
-                          : 
                           <span
                             style={
                               Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
+                                "color": "#a11",
                               }
                             }
                           >
-                            'John.Doe@gmail.com'
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              firstName
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            'John'
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              id
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            'username1'
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            …
-                          </span>
-                          <span>
-                            <br />
-                              
+                            false
                           </span>
                           }
                         </span>
-                        }
                       </span>
+                      
                     </span>
-                     
                   </span>
-                </span>
-                <span
+                  <span
+                    style={
+                      Object {
+                        "color": "#444",
+                      }
+                    }
+                  >
+                    &gt;
+                  </span>
+                </div>
+                <div
                   style={
                     Object {
-                      "color": "#444",
+                      "paddingLeft": 33,
+                      "paddingRight": 3,
                     }
                   }
                 >
-                  /&gt;
-                </span>
+                  <span
+                    style={
+                      Object {
+                        "color": "#444",
+                      }
+                    }
+                  >
+                    &lt;
+                    UserCard
+                  </span>
+                  <span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        user
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#666",
+                              }
+                            }
+                          >
+                            {
+                            <span>
+                              <span>
+                                <br />
+                                  
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                created
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              '2018-10-26T14:02:10.964Z'
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                  
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                email
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              'John.Doe@gmail.com'
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                  
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                enabled
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#a11",
+                                }
+                              }
+                            >
+                              true
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                  
+                                  
+                              </span>
+                              …
+                            </span>
+                            <span>
+                              <br />
+                                
+                            </span>
+                            }
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        ctas
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#666",
+                              }
+                            }
+                          >
+                            &lt;styled.div /&gt;
+                          </span>
+                          }
+                        </span>
+                      </span>
+                       
+                    </span>
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "color": "#444",
+                      }
+                    }
+                  >
+                    /&gt;
+                  </span>
+                </div>
+                <div
+                  style={
+                    Object {
+                      "paddingLeft": 18,
+                      "paddingRight": 3,
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "color": "#444",
+                      }
+                    }
+                  >
+                    &lt;/
+                    styled.div
+                    &gt;
+                  </span>
+                </div>
               </div>
             </div>
             <button
@@ -371,7 +503,23 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
               }
             >
               "
-              AppCard
+              UserCard
+              " Component
+            </h2>
+            <small>
+              No propTypes defined!
+            </small>
+          </div>
+          <div>
+            <h2
+              style={
+                Object {
+                  "margin": "20px 0 0 0",
+                }
+              }
+            >
+              "
+              styled.div
               " Component
             </h2>
             <small>

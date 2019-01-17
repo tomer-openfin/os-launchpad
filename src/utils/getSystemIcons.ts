@@ -18,7 +18,7 @@ export interface SystemIcon {
   hasExtendedWindow: boolean;
   icon: string;
   isShownByDefault: boolean;
-  key: string;
+  title: string;
 }
 
 export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
@@ -28,35 +28,35 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       hasExtendedWindow: false,
       icon: logoutIcon,
       isShownByDefault: false,
-      key: 'logout',
+      title: 'Logout',
     },
     {
       action: launchWindow(windowsConfig.settings),
       hasExtendedWindow: false,
       icon: settingsIcon,
       isShownByDefault: false,
-      key: 'settings',
+      title: 'Settings',
     },
     {
       action: launchWindow(windowsConfig.appDirectory),
       hasExtendedWindow: false,
       icon: directoryIcon,
       isShownByDefault: true,
-      key: 'search',
+      title: 'Search',
     },
     {
       action: launchWindow(windowsConfig.layouts),
       hasExtendedWindow: true,
       icon: saveLayoutIcon,
       isShownByDefault: true,
-      key: 'layouts',
+      title: 'Layouts',
     },
     {
       action: toggleNotificationCenterRequest(),
       hasExtendedWindow: false,
       icon: notificationsIcon,
       isShownByDefault: true,
-      key: 'notifications',
+      title: 'Notifications',
     },
   ];
 
@@ -66,7 +66,7 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       hasExtendedWindow: false,
       icon: adminIcon,
       isShownByDefault: false,
-      key: 'admin',
+      title: 'Admin',
     });
   }
 

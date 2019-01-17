@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
+import { DeleteIconLink, EditIconLink, HeadingWrapper, LinkWrapper, ListWrapper, Wrapper } from '../AdminUsers/AdminUsers.css';
 import Modal from '../Modal';
-import { DeleteIconLink, EditIconLink, HeadingWrapper, LinkWrapper, ListWrapper, Wrapper } from '../UserDirectory/UserDirectory.css';
 
 import { App } from '../../types/commons';
 import { doesCurrentPathMatch } from '../../utils/routeHelpers';

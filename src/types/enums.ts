@@ -31,3 +31,17 @@ export enum UserStatus {
   Unconfirmed = 'UNCONFIRMED',
   ChangePassword = 'FORCE_CHANGE_PASSWORD',
 }
+
+export enum AppStatusStates {
+  Closed = 'closed',
+  Error = 'error',
+  Loading = 'loading',
+  Running = 'running',
+  Warning = 'warning',
+}
+
+export enum AppStatusOrigins {
+  Default = 'default',
+  Event = 'event',
+  LayoutRestore = 'layoutRestore',
+}

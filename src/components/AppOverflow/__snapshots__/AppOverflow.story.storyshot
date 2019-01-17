@@ -11,10 +11,10 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
     }
   >
     <div
-      className="sc-hqyNC gyRdyp"
+      className="sc-hqyNC jMERNQ"
     >
       <div
-        className="sc-jDwBTQ eULUbJ"
+        className="sc-Rmtcm beHQGA"
         height={0}
         isExpanded={true}
         launcherPosition="top"
@@ -49,6 +49,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
         <div
           className="sc-jTzLTM bMMlEN"
           size={50}
+          title="Trumid"
         >
           <div
             style={
@@ -94,6 +95,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
         <div
           className="sc-jTzLTM bMMlEN"
           size={50}
+          title="Neptune"
         >
           <div
             style={
@@ -139,6 +141,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
         <div
           className="sc-jTzLTM bMMlEN"
           size={50}
+          title="GreenKey"
         >
           <div
             style={

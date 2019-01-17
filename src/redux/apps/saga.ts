@@ -2,9 +2,12 @@ import { call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 
-import { ResponseStatus } from '../../types/enums';
+import { AppStatusOrigins, AppStatusStates, ResponseStatus } from '../../types/enums';
+import { CloseFinAppRequest, OpenFinAppRequest } from './types';
+
 import { closeApplication, createAndRunFromManifest, wrapApplication } from '../../utils/openfinPromises';
-import { reboundLauncherRequest } from '../application/index';
+
+import { reboundLauncherRequest } from '../application';
 import {
   CLOSE_FIN_APP,
   closeFinAppError,
@@ -18,7 +21,6 @@ import {
   setFinAppStatusState,
 } from './actions';
 import { getAppStatusById } from './selectors';
-import { AppStatusOrigins, AppStatusStates, CloseFinAppRequest, OpenFinAppRequest } from './types';
 
 function* watchGetAppDirectoryList() {
   const response = yield call(ApiService.getDirectoryAppList);

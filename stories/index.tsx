@@ -33,6 +33,7 @@ import '../src/components/SystemDrawer/SystemDrawer.story';
 // Admin Components
 import '../src/components/Admin/Admin.story';
 import '../src/components/AdminApps/AdminApps.story';
+import '../src/components/AdminUsers/AdminUsers.story';
 import '../src/components/AppForm/AppForm.story';
 import '../src/components/ConfirmAppDelete/ConfirmAppDelete.story';
 import '../src/components/ConfirmUserDelete/ConfirmUserDelete.story';
@@ -44,5 +45,4 @@ import '../src/components/NewUserForm/NewUserForm.story';
 import '../src/components/OrganizationSettings/OrganizationSettings.story';
 import '../src/components/ThemesForm/ThemesForm.story';
 import '../src/components/UserCard/UserCard.story';
-import '../src/components/UserDirectory/UserDirectory.story';
 import '../src/components/UserForm/UserForm.story';

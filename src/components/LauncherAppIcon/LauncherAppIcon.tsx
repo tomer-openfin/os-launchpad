@@ -1,9 +1,8 @@
 import * as React from 'react';
 
 import { ContextMenuOption } from '../../redux/contextMenu/types';
-import { AppIconSizes, DirectionalPosition } from '../../types/commons';
+import { AppIconSizes, AppStatusStates, DirectionalPosition } from '../../types/commons';
 
-import { AppStatusStates } from '../../redux/apps/types';
 import { getOppositeDirection } from '../../utils/directionalPositionHelpers';
 
 import AppIcon from '../AppIcon';
@@ -15,6 +14,7 @@ import { StyledAppIndicator, Wrapper } from './LauncherAppIcon.css';
 export interface Props {
   appId: string;
   appStatusState?: AppStatusStates;
+  appTitle: string;
   className?: string;
   contextMenuOptions?: ContextMenuOption[];
   dragAndDropOptions?: DragAndDropProps;
@@ -48,6 +48,7 @@ const renderAppIconContent = ({ appStatusState, contextMenuOptions, imgSrc, isDi
 const LauncherAppIcon = (props: Props) => {
   const {
     appStatusState = defaultProps.appStatusState,
+    appTitle,
     className,
     dragAndDropOptions,
     hasTransition = defaultProps.hasTransition,
@@ -59,7 +60,7 @@ const LauncherAppIcon = (props: Props) => {
   } = props;
 
   return (
-    <Wrapper className={className} hasTransition={hasTransition} isDisabled={isDisabled} margin={margin} size={size}>
+    <Wrapper className={className} hasTransition={hasTransition} isDisabled={isDisabled} margin={margin} size={size} title={appTitle}>
       {isDragAndDroppable && dragAndDropOptions ? (
         <DragAndDrop {...dragAndDropOptions}>{renderAppIconContent(props)}</DragAndDrop>
       ) : (

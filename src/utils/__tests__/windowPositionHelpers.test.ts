@@ -123,14 +123,14 @@ const SYSTEM_ICONS = [
     hasExtendedWindow: false,
     icon: 'testIcon',
     isShownByDefault: true,
-    key: 'testIcon',
+    title: 'testIcon',
   },
   {
     action: { type: 'FAKE_MOCK_TYPE' },
     hasExtendedWindow: true,
     icon: 'mockIcon',
     isShownByDefault: false,
-    key: 'mockIcon',
+    title: 'mockIcon',
   },
 ];
 

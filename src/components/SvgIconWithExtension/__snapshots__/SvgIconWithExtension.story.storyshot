@@ -18,7 +18,7 @@ exports[`Storyshots Components/SvgIconWithExtension default 1`] = `
       }
     >
       <div
-        className="sc-iRbamj gjlUkl"
+        className="sc-hzDkRC giXJnK"
         color="#E7E7E7"
       >
         <div
@@ -27,9 +27,10 @@ exports[`Storyshots Components/SvgIconWithExtension default 1`] = `
           disabled={false}
           onClick={null}
           size="42px"
+          title="Icon"
         />
         <div
-          className="sc-gPEVay fGMXQl sc-ifAKCX gPeNwQ"
+          className="sc-bRBYWo cfFjGV sc-ifAKCX gPeNwQ"
           color="#E7E7E7"
           disabled={false}
           onClick={null}
@@ -500,6 +501,36 @@ exports[`Storyshots Components/SvgIconWithExtension default 1`] = `
                             }
                           >
                             42px
+                          </span>
+                          "
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
+                        title
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          "
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
+                            }
+                          >
+                            Icon
                           </span>
                           "
                         </span>

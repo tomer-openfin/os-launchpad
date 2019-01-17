@@ -1,32 +1,36 @@
 import * as React from 'react';
 
-import { AdminBadge, CTAWrapper, InfoWrapper, NameAndBadgeWrapper, UserEmail, UserName, Wrapper } from './UserCard.css';
+import { User, UserStatus } from '../../types/commons';
 
-import { User } from '../../types/commons';
+import { Color } from '../../styles';
+import { Badge, CTAWrapper, InfoWrapper, NameAndBadgeWrapper, UserEmail, UserName, Wrapper } from './UserCard.css';
+
+import * as AdminIcon from '../../assets/Admin.svg';
+import * as ClockIcon from '../../assets/Clock.svg';
 
 interface Props {
   user: User;
   ctas?: React.ReactNode;
 }
 
-const AppCard = ({ user, ctas }: Props) => {
-  return (
-    <Wrapper>
-      <InfoWrapper>
-        <NameAndBadgeWrapper>
-          <UserName>
-            {user.firstName} {user.lastName}
-          </UserName>
+const UserCard = ({ user, ctas }: Props) => (
+  <Wrapper>
+    <InfoWrapper>
+      <NameAndBadgeWrapper>
+        <UserName>
+          {user.firstName}&nbsp;{user.lastName}
+        </UserName>
 
-          <AdminBadge isAdmin={user.isAdmin} />
-        </NameAndBadgeWrapper>
+        {user.isAdmin && <Badge size={16} color={Color.JUPITER} imgSrc={AdminIcon} title="Admin" />}
 
-        <UserEmail>{user.email}</UserEmail>
-      </InfoWrapper>
+        {user.status === UserStatus.ChangePassword && <Badge size={16} color={Color.MARS} imgSrc={ClockIcon} title="User has not logged in yet" />}
+      </NameAndBadgeWrapper>
 
-      <CTAWrapper>{ctas}</CTAWrapper>
-    </Wrapper>
-  );
-};
+      <UserEmail>{user.email}</UserEmail>
+    </InfoWrapper>
 
-export default AppCard;
+    <CTAWrapper>{ctas}</CTAWrapper>
+  </Wrapper>
+);
+
+export default UserCard;

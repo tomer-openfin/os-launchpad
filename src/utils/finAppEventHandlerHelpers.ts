@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 
-import { AppStatusOrigins, AppStatusStates, setFinAppStatusState } from '../redux/apps/index';
-import { App, ApplicationBaseEvent, OpenFinApplication, OpenFinApplicationEventType } from '../types/commons';
+import { setFinAppStatusState } from '../redux/apps/index';
+import { App, ApplicationBaseEvent, AppStatusOrigins, AppStatusStates, OpenFinApplication, OpenFinApplicationEventType } from '../types/commons';
 
 export const CLOSED_EVENTS: OpenFinApplicationEventType[] = ['closed', 'crashed'];
 export const ERROR_EVENTS: OpenFinApplicationEventType[] = ['not-responding'];
