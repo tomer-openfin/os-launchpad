@@ -40,7 +40,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
       cta: () => dispatch(action),
       ...iconRest,
     })),
-    onClickToggle: () => setExpanded(!rest.isExpanded),
+    onClickToggle: (isExpanded?: boolean) => (typeof isExpanded !== 'boolean' ? setExpanded(!rest.isExpanded) : setExpanded(isExpanded)),
   };
 };
 

@@ -8,7 +8,6 @@ export const APP_LAUNCHER_OVERFLOW_WINDOW = `${WINDOW_PREFIX}AppLauncherOverflow
 export const CONTEXT_MENU = `${WINDOW_PREFIX}ContextMenu`;
 export const LAYOUTS_WINDOW = `${WINDOW_PREFIX}Layouts`;
 export const LOGIN_WINDOW = `${WINDOW_PREFIX}Login`;
-export const MAIN_WINDOW = 'osLaunchpadMain';
 export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
 
 const isProduction = isProductionEnv();

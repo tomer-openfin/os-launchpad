@@ -25,7 +25,7 @@ interface Props {
   icons: SystemDrawerIcon[];
   iconSize?: AppIconSizes;
   isExpanded: boolean;
-  onClickToggle: () => void;
+  onClickToggle: (isExpanded?: boolean) => void;
   orientation: Orientation;
   size: number;
 }
@@ -38,6 +38,17 @@ class SystemDrawer extends React.Component<Props> {
 
     this.lastOrientation = props.orientation;
   }
+
+  handleCta = (cta: () => void, hasExtendedWindow: boolean) => {
+    if (hasExtendedWindow) {
+      return cta;
+    }
+
+    return () => {
+      cta();
+      this.props.onClickToggle(false);
+    };
+  };
 
   render() {
     const { className, extendedWindowPosition, icons, iconSize, isExpanded, onClickToggle, orientation, size } = this.props;
@@ -61,6 +72,8 @@ class SystemDrawer extends React.Component<Props> {
         {icons.map(({ isShownByDefault, cta, hasExtendedWindow, icon, title }) => {
           const isVisible = isShownByDefault || isExpanded;
           const delayMultiplier = isShownByDefault ? 0 : hiddenIconCount;
+          const handleClick = this.handleCta(cta, hasExtendedWindow);
+
           if (!isShownByDefault) {
             hiddenIconCount = hiddenIconCount - 1;
           }
@@ -72,12 +85,12 @@ class SystemDrawer extends React.Component<Props> {
                   disabled={!isVisible}
                   extensionPosition={extendedWindowPosition}
                   imgSrc={icon}
-                  onClick={cta}
+                  onClick={handleClick}
                   size={iconSize}
                   title={title}
                 />
               ) : (
-                <SvgIcon disabled={!isVisible} imgSrc={icon} onClick={cta} size={iconSize} title={title} />
+                <SvgIcon disabled={!isVisible} imgSrc={icon} onClick={handleClick} size={iconSize} title={title} />
               )}
             </SvgIconWrapper>
           );

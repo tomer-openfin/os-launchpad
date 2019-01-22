@@ -7,6 +7,7 @@ import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
 import { animateWindow, getSystemMonitorInfo } from '../../utils/openfinPromises';
 import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv } from '../../utils/processHelpers';
+import { setupWindow } from '../../utils/setupWindow';
 import takeFirst from '../../utils/takeFirst';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList } from '../apps';
@@ -36,7 +37,7 @@ import {
 } from './actions';
 import { getApplicationIsExpanded } from './selectors';
 import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
-import { animateLauncherCollapseExpand, deregisterWindowsFromLayoutsService, setWindowRelativeToLauncherBounds } from './utils';
+import { animateLauncherCollapseExpand, setWindowRelativeToLauncherBounds } from './utils';
 
 const APP_UUID = getAppUuid();
 const ANIMATION_DURATION = 300;
@@ -73,7 +74,14 @@ function* openfinSetup(action: OpenfinReadyAction) {
   // tslint:disable-next-line:no-console
   console.log('Openfin ready', action);
 
-  if (action.payload!.finName === APP_UUID) {
+  if (!action.payload) {
+    return;
+  }
+
+  const { finName } = action.payload;
+
+  // Only main window should be doing setup.
+  if (finName === APP_UUID) {
     if (isDevelopmentEnv()) {
       yield put(initDevTools());
     }
@@ -116,6 +124,9 @@ function* openfinSetup(action: OpenfinReadyAction) {
       yield put(launchAppLauncher());
     }
   }
+
+  // Add window specific setup
+  yield setupWindow(finName);
 }
 
 function* watchLaunchAppLauncher() {
@@ -131,8 +142,6 @@ function* watchLaunchAppLauncher() {
     // Delay helps with the dom shuffling and initial animations
     yield delay(150);
     yield put(Window.showWindow({ id: APP_UUID }));
-    // Deregister all child windows from layouts service
-    yield call(deregisterWindowsFromLayoutsService, Object.keys(windowsConfig).map(configKey => windowsConfig[configKey].name));
   }
 }
 
@@ -223,8 +232,8 @@ export function* applicationSaga() {
   yield takeEvery(INIT_DEV_TOOLS, watchInitDevTools);
   yield takeEvery(LAUNCH_APP_LAUNCHER, watchLaunchAppLauncher);
   yield takeEvery(OPENFIN_READY, openfinSetup);
+  yield takeEvery(SET_IS_DRAWER_EXPANDED, watchSetIsDrawerExpanded);
   yield takeFirst(COLLAPSE_APP, watchCollapseApp);
   yield takeFirst(EXPAND_APP, watchExpandApp);
   yield takeLatest(REBOUND_LAUNCHER.REQUEST, watchReboundLauncherRequest);
-  yield takeEvery(SET_IS_DRAWER_EXPANDED, watchSetIsDrawerExpanded);
 }

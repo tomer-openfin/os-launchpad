@@ -54,25 +54,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   renderWindow(Router);
 
-  // Only fetch data in the main window.
-  if (fin && isMainWindow && window.store) {
+  if (fin) {
     fin.desktop.main(() => {
-      // Dispatch the action for when openfin window is ready.
-      // TODO: may want to add key for what window is ready.
-      window.store.dispatch(openfinReady(window.name));
+      const finWindow = fin.desktop.Window.getCurrent();
+      const { name, uuid } = finWindow;
+      const action = openfinReady(name);
+      const { dispatch } = window.store || window.opener.store;
+      dispatch(action);
 
-      if (window.name) {
-        const config = {
-          name: window.name,
-          uuid: window.name,
-        };
-
-        deregister(config)
-          // tslint:disable-next-line:no-console
-          .then(() => console.log(`Deregistering ${window.name} from Layouts service.`))
-          // tslint:disable-next-line:no-console
-          .catch(err => console.log(`${window.name} has already been deregistred from Layouts service. Service returned the following error: ${err}`));
-      }
+      deregister({ name, uuid })
+        // tslint:disable-next-line:no-console
+        .then(() => console.log(`Deregistering ${name} from Layouts service.`))
+        // tslint:disable-next-line:no-console
+        .catch(err => console.log(`${name} has already been deregistred from Layouts service. Service returned the following error: ${err}`));
     });
   }
 });

@@ -30,9 +30,9 @@ const App = (props: Props) => {
             <AppList />
           </AppListWrapper>
 
-          <SystemDrawerWrapper launcherPosition={launcherPosition}>
-            <Overlay isDrawerExpanded={isDrawerExpanded} onClick={toggleDrawer} />
+          <Overlay isDrawerExpanded={isDrawerExpanded} onClick={toggleDrawer} />
 
+          <SystemDrawerWrapper launcherPosition={launcherPosition}>
             <SystemDrawer />
           </SystemDrawerWrapper>
         </Borders>
