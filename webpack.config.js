@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -31,9 +32,12 @@ const isProduction = NODE_ENV === 'production';
 module.exports = {
   mode: NODE_ENV,
   devtool: 'source-map',
-  entry: './src/index.tsx',
+  entry: {
+    main: './src/index.tsx',
+    tabStrip: './src/tabStrip/main.ts',
+  },
   output: {
-    filename: `bundle${isProduction ? '.[contentHash]' : ''}.js`,
+    filename: `[name]${isProduction ? '.[contentHash]' : ''}.js`,
     path: path.join(__dirname, '/build'),
     publicPath: '/',
   },
@@ -45,6 +49,10 @@ module.exports = {
       { test: /\.tsx?$/, loader: 'awesome-typescript-loader', options: { useBabel: true } },
       { test: /\.js$/, enforce: 'pre', loader: 'source-map-loader' },
       { test: /\.(png|svg|jpg|gif)$/, loader: 'file-loader' },
+      {
+        test: /\.css$/,
+        use: [isProduction ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader'],
+      },
     ],
   },
   devServer: {
@@ -64,6 +72,9 @@ module.exports = {
     },
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: isProduction ? 'styles.[hash].css' : 'styles.css',
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         API_URL: JSON.stringify(API_URL),
@@ -80,8 +91,16 @@ module.exports = {
       },
     }),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'index.html'),
+      chunks: ['main'],
       env: NODE_ENV,
+      filename: 'index.html',
+      template: path.join(__dirname, 'src', 'index.html'),
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['tabStrip', 'styles.css'],
+      env: NODE_ENV,
+      filename: 'tabStrip.html',
+      template: path.join(__dirname, 'src', 'tabStrip', 'tabStrip.html'),
     }),
     new webpack.NamedModulesPlugin(),
     new CopyWebpackPlugin([
