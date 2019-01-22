@@ -1,37 +1,41 @@
-import { all, call, put, race, select, take, takeEvery } from 'redux-saga/effects';
+import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 
+import { LAYOUTS_WINDOW } from '../../config/windows';
 import ApiService from '../../services/ApiService';
-import { AppStatusOrigins, AppStatusStates, ErrorResponse, ResponseStatus, UserLayout } from '../../types/commons';
+import { AppStatusOrigins, AppStatusStates, ErrorResponse, ResponseStatus, Transition, UserLayout } from '../../types/commons';
 import { bindFinAppEventHandlers } from '../../utils/finAppEventHandlerHelpers';
+import { MAIN_WINDOW } from '../../utils/getAppUuid';
+import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
 import { generateLayout, restoreLayout } from '../../utils/openfinLayouts';
+import { animateWindow } from '../../utils/openfinPromises';
+import { calcBoundsRelativeToLauncher } from '../../utils/windowPositionHelpers';
 import { getApps, getAppsStatusById, openFinAppSuccess, setFinAppStatusState } from '../apps';
+import { getLauncherPosition } from '../me';
+import { getWindowBounds } from '../windows';
 import {
   CREATE_LAYOUT,
   createLayoutError,
-  createLayoutRequest,
   createLayoutSuccess,
   DELETE_LAYOUT,
   deleteLayoutError,
   deleteLayoutSuccess,
   GET_LAYOUTS,
   getLayoutsError,
-  getLayoutsRequest,
   getLayoutsSuccess,
   RESTORE_LAYOUT,
   restoreLayoutError,
   restoreLayoutSuccess,
-  SAVE_LAYOUT,
   UPDATE_LAYOUT,
   updateLayoutError,
-  updateLayoutRequest,
   updateLayoutSuccess,
 } from './actions';
-import { getLayoutById, getLayoutsIds } from './selectors';
-import { CreateLayoutRequest, RestoreLayoutRequest, RestoreLayoutSuccess, UpdateLayoutRequest } from './types';
+import { getLayoutById, getLayouts } from './selectors';
+import { CreateLayoutRequest, DeleteLayoutRequest, RestoreLayoutRequest, RestoreLayoutSuccess, UpdateLayoutRequest } from './types';
+import { calcDesiredLayoutsWindowHeight } from './utils';
 
 const buildErrorResponse = (message: string): ErrorResponse => ({ status: ResponseStatus.FAILURE, message });
 
-function* watchGetLayoutRequest() {
+function* watchGetLayoutsRequest() {
   const response = yield call(ApiService.getUserLayouts);
 
   if (!response || !response.length || response.status === ResponseStatus.FAILURE) {
@@ -117,28 +121,7 @@ function* watchRestoreLayoutSuccess(action: RestoreLayoutSuccess) {
   );
 }
 
-// TEMPORARY while we are only dealing with a single layout (always the first)
-// once users can manipulate an array of layouts we can go straight to create update and delete
-function* watchSaveLayout() {
-  yield put(getLayoutsRequest());
-
-  const { success, failure } = yield race({ success: take(GET_LAYOUTS.SUCCESS), failure: take(GET_LAYOUTS.ERROR) });
-
-  if (success) {
-    const layoutIds = yield select(getLayoutsIds);
-    const firstLayoutId: UserLayout['id'] = layoutIds[0];
-    const firstLayout: UserLayout = yield select(getLayoutById, firstLayoutId);
-
-    if (!firstLayout) {
-      yield put(createLayoutRequest('newLayout'));
-    } else {
-      const { id, name } = firstLayout;
-      yield put(updateLayoutRequest({ id, name, updateLayout: true }));
-    }
-  }
-}
-
-function* watchCreateLayoutRequest(action: CreateLayoutRequest) {
+export function* watchCreateLayoutRequest(action: CreateLayoutRequest) {
   const name = action.payload || 'layout';
 
   const layout = yield call(generateLayout);
@@ -148,9 +131,9 @@ function* watchCreateLayoutRequest(action: CreateLayoutRequest) {
   const response = yield call(ApiService.createUserLayout, userLayout);
 
   if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error' || !response.layout) {
-    yield put(createLayoutError(response));
+    yield put(createLayoutError(response, action.meta));
   } else {
-    yield put(createLayoutSuccess(response.layout));
+    yield put(createLayoutSuccess(response.layout, action.meta));
   }
 }
 
@@ -176,18 +159,54 @@ function* watchUpdateLayoutRequest(action: UpdateLayoutRequest) {
   }
 }
 
-function* watchDeleteLayoutRequest(action: UpdateLayoutRequest) {
+function* watchDeleteLayoutRequest(action: DeleteLayoutRequest) {
   if (!action.payload) return;
 
-  const { id } = action.payload;
+  const id = action.payload;
 
-  const response = yield call(ApiService.updateUserLayout, id);
+  const response = yield call(ApiService.deleteUserLayout, id);
 
   if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
     yield put(deleteLayoutError(response));
   } else {
     yield put(deleteLayoutSuccess(id));
   }
+}
+
+function* watchLayoutsChangesToAnimateWindow() {
+  const launcherPosition = yield select(getLauncherPosition);
+  const layoutsWindow = yield call(getFinWindowByName, LAYOUTS_WINDOW);
+  const launcherBounds = yield select(getWindowBounds, MAIN_WINDOW);
+  const bounds = yield select(getWindowBounds, LAYOUTS_WINDOW);
+  const layouts = yield select(getLayouts);
+
+  if (!bounds || !layouts || !layoutsWindow) {
+    return;
+  }
+
+  const animationBounds = calcBoundsRelativeToLauncher(
+    LAYOUTS_WINDOW,
+    { ...bounds, height: calcDesiredLayoutsWindowHeight(layouts.length) },
+    launcherBounds,
+    launcherPosition,
+  );
+
+  const transitions: Transition = {
+    position: {
+      duration: 80,
+      left: animationBounds.left,
+      relative: false,
+      top: animationBounds.top,
+    },
+    size: {
+      duration: 80,
+      height: animationBounds.height,
+      relative: false,
+      width: animationBounds.width,
+    },
+  };
+
+  yield call(animateWindow, layoutsWindow, transitions, { interrupt: false });
 }
 
 function* watchRequestError(action) {
@@ -203,20 +222,43 @@ function* watchRequestError(action) {
   }
 }
 
+function* watchGetLayoutsSuccess(action) {
+  if (action.meta && action.meta.successCb) {
+    action.meta.successCb();
+  }
+
+  yield call(watchLayoutsChangesToAnimateWindow);
+}
+
+function* watchRequestSuccess(action) {
+  const id = action.payload;
+
+  // pass newly created layout id to successCb on CRUD operations
+  if (action.meta && action.meta.successCb) {
+    action.meta.successCb(id);
+  }
+
+  yield call(watchLayoutsChangesToAnimateWindow);
+}
+
 export function* layoutsSaga() {
-  yield takeEvery(GET_LAYOUTS.REQUEST, watchGetLayoutRequest);
+  yield takeEvery(GET_LAYOUTS.REQUEST, watchGetLayoutsRequest);
+  yield takeEvery(GET_LAYOUTS.SUCCESS, watchGetLayoutsSuccess);
+  yield takeEvery(GET_LAYOUTS.ERROR, watchRequestError);
 
   yield takeEvery(RESTORE_LAYOUT.REQUEST, watchRestoreLayoutRequest);
   yield takeEvery(RESTORE_LAYOUT.SUCCESS, watchRestoreLayoutSuccess);
-
-  yield takeEvery(SAVE_LAYOUT, watchSaveLayout);
+  yield takeEvery(RESTORE_LAYOUT.ERROR, watchRequestError);
 
   yield takeEvery(CREATE_LAYOUT.REQUEST, watchCreateLayoutRequest);
-  yield takeEvery(UPDATE_LAYOUT.REQUEST, watchUpdateLayoutRequest);
-  yield takeEvery(DELETE_LAYOUT.REQUEST, watchDeleteLayoutRequest);
-
-  yield takeEvery(GET_LAYOUTS.ERROR, watchRequestError);
   yield takeEvery(CREATE_LAYOUT.ERROR, watchRequestError);
+  yield takeEvery(CREATE_LAYOUT.SUCCESS, watchRequestSuccess);
+
+  yield takeEvery(UPDATE_LAYOUT.REQUEST, watchUpdateLayoutRequest);
+  yield takeEvery(UPDATE_LAYOUT.SUCCESS, watchRequestSuccess);
   yield takeEvery(UPDATE_LAYOUT.ERROR, watchRequestError);
+
+  yield takeEvery(DELETE_LAYOUT.REQUEST, watchDeleteLayoutRequest);
+  yield takeEvery(DELETE_LAYOUT.SUCCESS, watchRequestSuccess);
   yield takeEvery(DELETE_LAYOUT.ERROR, watchRequestError);
 }

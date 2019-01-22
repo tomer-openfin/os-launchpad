@@ -11,20 +11,82 @@ exports[`Storyshots Components/Layouts default 1`] = `
     }
   >
     <div
-      className="sc-jbKcbu WIBeU"
+      className="sc-elJkPf glfEap"
     >
       <div
-        className="sc-ifAKCX dlQxXV"
-        color="#E7E7E7"
-        onClick={[Function]}
-        size={42}
-      />
+        className="sc-btzYZH eLQfAm"
+      >
+        <div
+          className="sc-lhVmIH dLhqWs"
+        >
+          <div
+            className="sc-bYSBpT clLpPN"
+          >
+            Layouts
+          </div>
+        </div>
+        <div
+          className="sc-cmTdod iHpJPT"
+        >
+          <div
+            className="sc-iELTvK kfUUBb sc-ifAKCX fdgCee"
+            color="#E7E7E7"
+            size={24}
+          />
+          <form
+            className="sc-feJyhm ixoiYh"
+            onSubmit={[Function]}
+          >
+            <input
+              className="sc-kafWEX factzT"
+              onChange={[Function]}
+              placeholder="Layout Name"
+              required={true}
+              type="text"
+            />
+            <button
+              className="sc-cIShpX cxxuDo"
+              type="submit"
+            >
+              <div
+                className="sc-fYxtnH dJGTpS sc-ifAKCX bvrXxy"
+                color="#E7E7E7"
+                onClick={[Function]}
+                size={14}
+              />
+            </button>
+          </form>
+        </div>
+      </div>
       <div
-        className="sc-ifAKCX dlQxXV"
-        color="#E7E7E7"
-        onClick={[Function]}
-        size={42}
-      />
+        className="sc-bbmXgH euFCqH"
+      >
+        <h6
+          className="sc-uJMKN cHHjBb"
+        >
+          Recent Layouts
+        </h6>
+        <ul
+          className="sc-jnlKLf jYySYH"
+        >
+          <div
+            className="sc-dNLxif ksCeVF"
+          >
+            <li
+              className="sc-jbKcbu jCBhFE"
+              onClick={[Function]}
+            >
+              layout
+            </li>
+            <div
+              className="sc-ifAKCX bwWvNt"
+              color="#E7E7E7"
+              onClick={[Function]}
+              size={14}
+            />
+          </div>
+        </ul>
+      </div>
     </div>
   </div>
   <button
@@ -184,7 +246,25 @@ exports[`Storyshots Components/Layouts default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      isApplicationDrawerExpanded
+                      deleteLayout
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          deleteLayout clicked
+                        </span>
+                        }
+                      </span>
                     </span>
                   </span>
                   <span>
@@ -195,7 +275,7 @@ exports[`Storyshots Components/Layouts default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      layoutIds
+                      layouts
                     </span>
                     <span>
                       =
@@ -215,103 +295,317 @@ exports[`Storyshots Components/Layouts default 1`] = `
                             <span
                               style={
                                 Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
+                                  "color": "#666",
                                 }
                               }
                             >
-                              'layout'
+                              {
+                              <span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  id
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#22a",
+                                    "wordBreak": "break-word",
+                                  }
+                                }
+                              >
+                                'layout'
+                              </span>
+                              ,
+                              <span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  layout
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                {
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    apps
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  [
+                                  ]
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    monitorInfo
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  {
+                                  <span>
+                                    <span>
+                                      <br />
+                                              
+                                        
+                                    </span>
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#666",
+                                        }
+                                      }
+                                    >
+                                      deviceScaleFactor
+                                    </span>
+                                  </span>
+                                  : 
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#a11",
+                                      }
+                                    }
+                                  >
+                                    1
+                                  </span>
+                                  ,
+                                  <span>
+                                    <span>
+                                      <br />
+                                              
+                                        
+                                    </span>
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#666",
+                                        }
+                                      }
+                                    >
+                                      dpi
+                                    </span>
+                                  </span>
+                                  : 
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        x
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#a11",
+                                        }
+                                      }
+                                    >
+                                      96
+                                    </span>
+                                    ,
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        y
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#a11",
+                                        }
+                                      }
+                                    >
+                                      96
+                                    </span>
+                                    }
+                                  </span>
+                                  ,
+                                  <span>
+                                    <span>
+                                      <br />
+                                              
+                                        
+                                    </span>
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#666",
+                                        }
+                                      }
+                                    >
+                                      nonPrimaryMonitors
+                                    </span>
+                                  </span>
+                                  : 
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    [
+                                    ]
+                                  </span>
+                                  ,
+                                  <span>
+                                    <span>
+                                      <br />
+                                              
+                                        
+                                    </span>
+                                    …
+                                  </span>
+                                  <span>
+                                    <br />
+                                            
+                                  </span>
+                                  }
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    schemaVersion
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  ''
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  …
+                                </span>
+                                <span>
+                                  <br />
+                                        
+                                </span>
+                                }
+                              </span>
+                              ,
+                              <span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  name
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#22a",
+                                    "wordBreak": "break-word",
+                                  }
+                                }
+                              >
+                                'layout'
+                              </span>
+                              }
                             </span>
                           </span>
                           ]
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      launcherPosition
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        "
-                        <span
-                          style={
-                            Object {
-                              "color": "#22a",
-                              "wordBreak": "break-word",
-                            }
-                          }
-                        >
-                          top
-                        </span>
-                        "
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      restoreLayout
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          noop
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      saveLayout
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          noop
                         </span>
                         }
                       </span>
@@ -341,6 +635,64 @@ exports[`Storyshots Components/Layouts default 1`] = `
                           }
                         >
                           noop
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      restoreLayout
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          restoreLayout clicked
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      saveLayout
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          saveLayout clicked
                         </span>
                         }
                       </span>

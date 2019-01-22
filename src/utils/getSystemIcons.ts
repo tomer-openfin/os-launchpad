@@ -2,9 +2,9 @@ import { Action } from 'redux';
 
 import * as adminIcon from '../assets/AdminSettings.svg';
 import * as directoryIcon from '../assets/Directory.svg';
+import * as layoutsIcon from '../assets/Layouts.svg';
 import * as logoutIcon from '../assets/Logout.svg';
 import * as notificationsIcon from '../assets/Notifications.svg';
-import * as saveLayoutIcon from '../assets/SaveLayout.svg';
 import * as settingsIcon from '../assets/Settings.svg';
 
 import windowsConfig from '../config/windows';
@@ -47,7 +47,7 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
     {
       action: launchWindow(windowsConfig.layouts),
       hasExtendedWindow: true,
-      icon: saveLayoutIcon,
+      icon: layoutsIcon,
       isShownByDefault: true,
       title: 'Layouts',
     },

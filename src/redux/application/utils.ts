@@ -1,7 +1,7 @@
 import { all, call, select } from 'redux-saga/effects';
 
 import { APP_LAUNCHER_OVERFLOW_WINDOW } from '../../config/windows';
-import { Bounds } from '../../types/commons';
+import { Bounds, Transition } from '../../types/commons';
 import { getFinWindowByName, getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
 import { animateWindow, setWindowBoundsPromise } from '../../utils/openfinPromises';
 import { calcBoundsRelativeToLauncher, calcLauncherPosition, isBottom, isRight } from '../../utils/windowPositionHelpers';
@@ -10,7 +10,6 @@ import { getAppListDimensions, getAppsLauncherAppList, getSystemIconsSelector } 
 import { getMonitorInfo } from '../system/index';
 import { State } from '../types';
 import { getWindowBounds } from '../windows';
-import { getDrawerIsExpanded } from './selectors';
 
 export function* animateLauncherCollapseExpand(isExpanded: State['application']['isExpanded'], duration: number) {
   const launcherFinWindow = yield call(getLauncherFinWindow);
@@ -26,7 +25,7 @@ export function* animateLauncherCollapseExpand(isExpanded: State['application'][
     select(getAutoHide),
   ]);
   const { height, width, top, left } = calcLauncherPosition(appList.length, systemIcons, monitorInfo, launcherPosition, autoHide, isExpanded);
-  const transitions: fin.Transition = {
+  const transitions: Transition = {
     size: {
       duration,
       height,
@@ -66,12 +65,11 @@ export function* setWindowRelativeToLauncherBounds(finName: string, launcherBoun
   }
 
   let windowBounds = yield select(getWindowBounds, finName);
-  const [launcherPosition, isLauncherDrawerExpanded] = yield all([select(getLauncherPosition), select(getDrawerIsExpanded)]);
+  const launcherPosition = yield select(getLauncherPosition);
   if (!windowBounds) {
     return;
   }
 
-  let invert = true;
   if (finName === APP_LAUNCHER_OVERFLOW_WINDOW) {
     const appListDimensions = yield select(getAppListDimensions);
 
@@ -79,9 +77,8 @@ export function* setWindowRelativeToLauncherBounds(finName: string, launcherBoun
       ...windowBounds,
       ...appListDimensions,
     };
-    invert = false;
   }
 
-  const bounds = calcBoundsRelativeToLauncher(finName, windowBounds, launcherBounds, launcherPosition, isLauncherDrawerExpanded, invert);
+  const bounds = calcBoundsRelativeToLauncher(finName, windowBounds, launcherBounds, launcherPosition);
   yield call(setWindowBoundsPromise, finWindow, bounds);
 }

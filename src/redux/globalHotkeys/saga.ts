@@ -5,7 +5,7 @@ import windowsConfig from '../../config/windows';
 import { UserLayout } from '../../types/commons';
 import getAppUuid from '../../utils/getAppUuid';
 import { isDevelopmentEnv } from '../../utils/processHelpers';
-import { restoreLayoutRequest, SAVE_LAYOUT } from '../layouts/actions';
+import { restoreLayoutRequest } from '../layouts/actions';
 import { getLayoutsIds } from '../layouts/selectors';
 import { launchWindow } from '../windows/actions';
 import { GLOBAL_HOTKEY_PRESSED } from './actions';
@@ -15,14 +15,6 @@ function* watchGlobalHotkeyPressed(action) {
   const hotkey = action.payload;
 
   switch (hotkey) {
-    case GlobalHotkeys.SaveLayout: {
-      // tslint:disable-next-line:no-console
-      console.log(`${GlobalHotkeys.SaveLayout} pressed`);
-
-      yield put({ type: SAVE_LAYOUT });
-      break;
-    }
-
     case GlobalHotkeys.RestoreLayout: {
       // tslint:disable-next-line:no-console
       console.log(`${GlobalHotkeys.RestoreLayout} pressed`);

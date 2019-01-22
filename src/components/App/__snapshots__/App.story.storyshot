@@ -201,12 +201,12 @@ exports[`Storyshots Components/App default 1`] = `
             </div>
           </div>
           <div
+            className="sc-jlyJG fKdHDz"
+            onClick={[Function]}
+          />
+          <div
             className="sc-gipzik kFJgDo"
           >
-            <div
-              className="sc-jlyJG fKdHDz"
-              onClick={[Function]}
-            />
             <div
               className="sc-dVhcbM fCaWHZ"
               orientation="horizontal"

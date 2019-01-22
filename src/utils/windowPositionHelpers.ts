@@ -27,21 +27,21 @@ const OFFSETS = {
     }),
   },
   [LAYOUTS_WINDOW]: {
-    [DirectionalPosition.Top]: (launcherBounds: Bounds, isLauncherDrawerExpanded: boolean) => ({
-      offsetX: launcherBounds.width - (isLauncherDrawerExpanded ? 112 : 93),
-      offsetY: SIZE.MAX_STATIC_DIMENSION - SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA,
+    [DirectionalPosition.Top]: (bounds: Bounds, launcherBounds: Bounds) => ({
+      offsetX: launcherBounds.width - bounds.width,
+      offsetY: SIZE.MAX_STATIC_DIMENSION,
     }),
-    [DirectionalPosition.Right]: (launcherBounds: Bounds, isLauncherDrawerExpanded: boolean) => ({
-      offsetX: SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA,
-      offsetY: launcherBounds.height - (isLauncherDrawerExpanded ? 112 : 93),
+    [DirectionalPosition.Right]: (bounds: Bounds, launcherBounds: Bounds) => ({
+      offsetX: 0,
+      offsetY: launcherBounds.height - bounds.height,
     }),
-    [DirectionalPosition.Bottom]: (launcherBounds: Bounds, isLauncherDrawerExpanded: boolean) => ({
-      offsetX: launcherBounds.width - (isLauncherDrawerExpanded ? 112 : 93),
-      offsetY: SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA,
+    [DirectionalPosition.Bottom]: (bounds: Bounds, launcherBounds: Bounds) => ({
+      offsetX: launcherBounds.width - bounds.width,
+      offsetY: 0,
     }),
-    [DirectionalPosition.Left]: (launcherBounds: Bounds, isLauncherDrawerExpanded: boolean) => ({
-      offsetX: SIZE.MAX_STATIC_DIMENSION - SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA,
-      offsetY: launcherBounds.height - (isLauncherDrawerExpanded ? 112 : 93),
+    [DirectionalPosition.Left]: (bounds: Bounds, launcherBounds: Bounds) => ({
+      offsetX: SIZE.MAX_STATIC_DIMENSION,
+      offsetY: launcherBounds.height - bounds.height,
     }),
   },
 };
@@ -277,16 +277,9 @@ export const calcCoordinatesRelativeToLauncherBounds = (
  *
  * @returns {Bounds}
  */
-export const calcBoundsRelativeToLauncher = (
-  finName: string,
-  bounds: Bounds,
-  launcherBounds: Bounds,
-  launcherPosition: DirectionalPosition,
-  isLauncherDrawerExpanded: boolean,
-  invert: boolean,
-): Bounds => {
-  const { offsetX, offsetY } = OFFSETS[finName] ? OFFSETS[finName][launcherPosition](launcherBounds, isLauncherDrawerExpanded) : { offsetX: 0, offsetY: 0 };
-  const dimensions = calcDimensionsByLauncherPosition(bounds, launcherPosition, invert);
+export const calcBoundsRelativeToLauncher = (finName: string, bounds: Bounds, launcherBounds: Bounds, launcherPosition: DirectionalPosition): Bounds => {
+  const { offsetX, offsetY } = OFFSETS[finName] ? OFFSETS[finName][launcherPosition](bounds, launcherBounds) : { offsetX: 0, offsetY: 0 };
+  const dimensions = { width: bounds.width, height: bounds.height };
   const coordinates = calcCoordinatesRelativeToLauncherBounds(dimensions, offsetX, offsetY, launcherBounds, launcherPosition);
 
   return {

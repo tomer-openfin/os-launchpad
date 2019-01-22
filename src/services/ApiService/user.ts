@@ -2,9 +2,10 @@ import { defaultState, MeSettingsState } from '../../redux/me';
 
 import { APIResponse, NewUserLayout, ResponseStatus, UserLayout } from '../../types/commons';
 import { checkIsEnterprise } from '../../utils/checkIsEnterprise';
-import { getLocalStorage, LOCAL_STORAGE_KEYS, setLocalStorage } from '../localStorageAdapter';
+import { uuidv4 } from '../../utils/createUuid';
+import { deleteLocalStorageItem, getLocalStorage, LOCAL_STORAGE_KEYS, setItemInLocalStorage, setLocalStorage } from '../localStorageAdapter';
 import API from './api';
-import { createGetOptions, createPostOptions, createPutOptions } from './requestOptions';
+import { createDeleteOptions, createGetOptions, createPostOptions, createPutOptions } from './requestOptions';
 
 /**
  * Get user layouts
@@ -62,9 +63,25 @@ export const createUserLayout = (newUserLayout: NewUserLayout): Promise<APIRespo
     return fetch(API.USER_LAYOUTS, options).then(resp => resp.json());
   }
 
-  const localUserLayout: UserLayout = { ...newUserLayout, id: 'layout' };
+  const localUserLayout: UserLayout = { ...newUserLayout, id: uuidv4() };
 
-  return setLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, [localUserLayout]);
+  // return setLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, [localUserLayout], { status: ResponseStatus.SUCCESS, layout: localUserLayout });
+  return setItemInLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, localUserLayout, { status: ResponseStatus.SUCCESS, layout: localUserLayout }, localUserLayout.id);
+};
+
+/**
+ * Delete user layout
+ *
+ * @returns {Promise<APIResponse>}
+ */
+export const deleteUserLayout = (id: UserLayout['id']): Promise<APIResponse> => {
+  if (checkIsEnterprise()) {
+    const options = createDeleteOptions();
+
+    return fetch(`${API.USER_LAYOUTS}/${id}`, options).then(resp => resp.json());
+  }
+
+  return deleteLocalStorageItem(LOCAL_STORAGE_KEYS.LAYOUTS, { status: ResponseStatus.SUCCESS }, id);
 };
 
 /**

@@ -11,7 +11,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
     }
   >
     <div
-      className="sc-hrWEMg hpGgZd"
+      className="sc-gojNiO gYbzbS"
     >
       <div
         className="sc-brqgnP ifgtAb"
@@ -20,7 +20,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
           className="sc-cMljjf dOwSNg"
         >
           <div
-            className="sc-bAeIUo eMVhyq"
+            className="sc-gFaPwZ cKLqVd"
           >
             John Doe
           </div>
@@ -33,18 +33,18 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
         </div>
       </div>
       <form
-        className="sc-bwCtUz fQeVoJ"
+        className="sc-cQFLBn jXxuQB"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <div
-          className="sc-eTuwsz bQlwID"
+          className="sc-daURTG lksbBu"
         >
           <div
-            className="sc-gwVKww cixCyT"
+            className="sc-bXGyLb bCOlEs"
           >
             <div
-              className="sc-hXRMBi jeJCjB"
+              className="sc-lkqHmb cZOFSd"
             >
               <label
                 className="sc-dxgOiQ cQoZtn"
@@ -136,10 +136,10 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
           </div>
         </div>
         <div
-          className="sc-esOvli bqDuoW"
+          className="sc-gHboQg cozBub"
         >
           <div
-            className="sc-epnACN jpZnVJ"
+            className="sc-eLExRp coMbLp"
           >
             <a
               backgroundColor="#848484"
@@ -163,7 +163,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
         </div>
       </form>
       <div
-        className="sc-iQNlJl Zaksd"
+        className="sc-cbkKFq vvcmh"
       />
     </div>
   </div>

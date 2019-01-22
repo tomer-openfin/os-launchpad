@@ -1,10 +1,11 @@
 import { UserLayout } from '../../types/commons';
 
-import { getLayoutsError, getLayoutsRequest, getLayoutsSuccess, restoreLayoutRequest, saveLayout } from './';
+import { getLayoutsError, getLayoutsRequest, getLayoutsSuccess, restoreLayoutRequest } from './';
 import {
   createLayoutError,
   createLayoutRequest,
   createLayoutSuccess,
+  deleteLayoutRequest,
   restoreLayoutError,
   restoreLayoutSuccess,
   updateLayoutError,
@@ -32,8 +33,6 @@ export type RestoreLayoutRequest = ReturnType<typeof restoreLayoutRequest>;
 export type RestoreLayoutError = ReturnType<typeof restoreLayoutError>;
 export type RestoreLayoutSuccess = ReturnType<typeof restoreLayoutSuccess>;
 
-export type SaveLayout = ReturnType<typeof saveLayout>;
-
 export type CreateLayoutRequest = ReturnType<typeof createLayoutRequest>;
 export type CreateLayoutError = ReturnType<typeof createLayoutError>;
 export type CreateLayoutSuccess = ReturnType<typeof createLayoutSuccess>;
@@ -41,15 +40,16 @@ export type CreateLayoutSuccess = ReturnType<typeof createLayoutSuccess>;
 export type UpdateLayoutRequest = ReturnType<typeof updateLayoutRequest>;
 export type UpdateLayoutError = ReturnType<typeof updateLayoutError>;
 export type UpdateLayoutSuccess = ReturnType<typeof updateLayoutSuccess>;
+export type DeleteLayoutRequest = ReturnType<typeof deleteLayoutRequest>;
 
 export type LayoutsActions =
+  | DeleteLayoutRequest
   | GetLayoutsRequest
   | GetLayoutsError
   | GetLayoutsSuccess
   | RestoreLayoutRequest
   | RestoreLayoutError
   | RestoreLayoutSuccess
-  | SaveLayout
   | CreateLayoutRequest
   | CreateLayoutError
   | CreateLayoutSuccess

@@ -1,4 +1,4 @@
-const MAIN_WINDOW = 'osLaunchpadMain';
+export const MAIN_WINDOW = 'osLaunchpadMain';
 
 export default () => {
   const { fin } = window;
