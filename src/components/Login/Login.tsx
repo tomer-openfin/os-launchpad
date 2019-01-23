@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { LoginRequestPayload, LoginWithNewPasswordPayload, MeLoginState } from '../../redux/me';
 
-import { getLocalStorage, setLocalStorage } from '../../services/localStorageAdapter';
+import { setLocalStorage } from '../../services/localStorageAdapter';
 import Borders from '../Borders';
 import Checkbox from '../Checkbox';
 import FormField from '../FormField';
@@ -20,10 +20,12 @@ interface Props {
 
 const { USERNAME, PASSWORD } = process.env;
 
+const autoLoginLocal = JSON.parse(localStorage.getItem('autoLogin') || 'false');
+
 const initialValues =
   USERNAME && PASSWORD && document.location && document.location.host.indexOf('8080') !== -1
-    ? { username: USERNAME, password: PASSWORD, autoLogin: !!getLocalStorage('autoLogin') }
-    : { username: '', password: '', autoLogin: !!getLocalStorage('autoLogin') };
+    ? { username: USERNAME, password: PASSWORD, autoLogin: autoLoginLocal }
+    : { username: '', password: '', autoLogin: autoLoginLocal };
 
 /**
  * Higher order function to pass a function to Formik's onSubmit

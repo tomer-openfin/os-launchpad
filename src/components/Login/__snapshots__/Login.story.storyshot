@@ -636,14 +636,14 @@ exports[`Storyshots Components/Login With Error 1`] = `
               className="sc-dxgOiQ fABziC sc-kpOJdX fXkmiv"
             >
               <input
-                checked={true}
+                checked={false}
                 name="autoLogin"
                 onBlur={[Function]}
                 onChange={[Function]}
                 type="checkbox"
               />
               <div
-                checked={true}
+                checked={false}
                 className="sc-jKJlTe cSgSty"
               />
               <div
@@ -1196,14 +1196,14 @@ exports[`Storyshots Components/Login default 1`] = `
               className="sc-dxgOiQ fABziC sc-kpOJdX fXkmiv"
             >
               <input
-                checked={true}
+                checked={false}
                 name="autoLogin"
                 onBlur={[Function]}
                 onChange={[Function]}
                 type="checkbox"
               />
               <div
-                checked={true}
+                checked={false}
                 className="sc-jKJlTe cSgSty"
               />
               <div

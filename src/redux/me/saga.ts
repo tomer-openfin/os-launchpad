@@ -132,14 +132,17 @@ function* watchLoginError(action: LoginError) {
     yield put(changePassword({ session, message }));
   } else {
     // tslint:disable-next-line:no-console
-    console.log('Error Message:', message);
+    console.error('Error Message:', message);
   }
 }
 
 function* watchLogoutRequest() {
   const result = yield call(ApiService.logout);
 
-  if (!result) yield put(logoutError(GENERIC_API_ERROR));
+  if (!result) {
+    yield put(logoutError(GENERIC_API_ERROR));
+    return;
+  }
 
   const { status, message } = result;
 
@@ -183,7 +186,11 @@ function* watchLogoutError(action: LogoutError) {
   const { message } = payload;
 
   // tslint:disable-next-line:no-console
-  console.log('Error Message:', message);
+  console.error('Error Message:', message);
+
+  eraseCookie();
+
+  yield put(Application.restart());
 }
 
 function* watchGetSettingsRequest() {
