@@ -1,5 +1,8 @@
 import {
   changePassword,
+  getMeError,
+  getMeRequest,
+  getMeSuccess,
   getSettingsError,
   getSettingsRequest,
   getSettingsSuccess,
@@ -97,6 +100,10 @@ export type LoginRequest = ReturnType<typeof loginRequest>;
 export type LoginSuccess = ReturnType<typeof loginSuccess>;
 export type LoginError = ReturnType<typeof loginError>;
 
+export type GetMeRequest = ReturnType<typeof getMeRequest>;
+export type GetMeSuccess = ReturnType<typeof getMeSuccess>;
+export type GetMeError = ReturnType<typeof getMeError>;
+
 export type LogoutRequest = ReturnType<typeof logoutRequest>;
 export type LogoutSuccess = ReturnType<typeof logoutSuccess>;
 export type LogoutError = ReturnType<typeof logoutError>;
@@ -119,6 +126,9 @@ export type MeActions =
   | GetSettingsRequest
   | GetSettingsSuccess
   | GetSettingsError
+  | GetMeRequest
+  | GetMeSuccess
+  | GetMeError
   | LoginRequest
   | LoginSuccess
   | LoginError

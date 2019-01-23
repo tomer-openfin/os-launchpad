@@ -6,19 +6,21 @@ import {
   getOrgSettingsError,
   getOrgSettingsRequest,
   getOrgSettingsSuccess,
-  saveActiveThemeId,
   saveAdminOrgSettingsError,
   saveAdminOrgSettingsRequest,
   saveAdminOrgSettingsSuccess,
-  saveLogo,
-  setActiveThemeId,
-  setLogo,
+  saveOrgActiveThemeId,
+  saveOrgAutoLogin,
+  saveOrgLogo,
+  setOrgActiveThemeId,
+  setOrgLogo,
 } from './actions';
 
 // State
 export interface OrganizationState {
-  logo: string;
   activeThemeId: Theme['id'];
+  autoLogin: boolean;
+  logo: string;
   themes: Theme[];
 }
 
@@ -35,11 +37,12 @@ export type SaveAdminOrgSettingsRequest = ReturnType<typeof saveAdminOrgSettings
 export type SaveAdminOrgSettingsSuccess = ReturnType<typeof saveAdminOrgSettingsSuccess>;
 export type SaveAdminOrgSettingsError = ReturnType<typeof saveAdminOrgSettingsError>;
 
-export type SaveLogo = ReturnType<typeof saveLogo>;
-export type SaveActiveThemeId = ReturnType<typeof saveActiveThemeId>;
+export type SaveOrgAutoLogin = ReturnType<typeof saveOrgAutoLogin>;
+export type SaveOrgLogo = ReturnType<typeof saveOrgLogo>;
+export type SaveOrgActiveThemeId = ReturnType<typeof saveOrgActiveThemeId>;
 
-export type SetLogo = ReturnType<typeof setLogo>;
-export type SetActiveThemeId = ReturnType<typeof setActiveThemeId>;
+export type SetOrgLogo = ReturnType<typeof setOrgLogo>;
+export type SetOrgActiveThemeId = ReturnType<typeof setOrgActiveThemeId>;
 
 export type OrganizationActions =
   | GetOrgSettingsRequest
@@ -51,7 +54,8 @@ export type OrganizationActions =
   | SaveAdminOrgSettingsRequest
   | SaveAdminOrgSettingsSuccess
   | SaveAdminOrgSettingsError
-  | SaveLogo
-  | SaveActiveThemeId
-  | SetLogo
-  | SetActiveThemeId;
+  | SaveOrgAutoLogin
+  | SaveOrgLogo
+  | SaveOrgActiveThemeId
+  | SetOrgLogo
+  | SetOrgActiveThemeId;

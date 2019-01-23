@@ -89,7 +89,7 @@ exports[`Storyshots Components/Login Change Password 1`] = `
               />
             </label>
             <button
-              className="sc-chPdSV sc-hwwEjo dkBoeK"
+              className="sc-chPdSV sc-hwwEjo fNAoWR"
               type="submit"
             >
               Create New Password
@@ -248,6 +248,17 @@ exports[`Storyshots Components/Login Change Password 1`] = `
                   Login
                 </span>
                 <span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      autoLoginOrg
+                    </span>
+                  </span>
                   <span>
                     <span>
                       <br />
@@ -625,24 +636,24 @@ exports[`Storyshots Components/Login With Error 1`] = `
               className="sc-ckVGcZ iiqFud sc-dxgOiQ cQoZtn"
             >
               <input
-                checked={false}
-                name="logoutOnQuit"
+                checked={true}
+                name="autoLogin"
                 onBlur={[Function]}
                 onChange={[Function]}
                 type="checkbox"
               />
               <div
-                checked={false}
+                checked={true}
                 className="sc-eNQAEJ bKrJGb"
               />
               <div
                 className="sc-jKJlTe YHjGr"
               >
-                Log me out when I quit
+                Keep me logged in
               </div>
             </label>
             <button
-              className="sc-chPdSV sc-hwwEjo dkBoeK"
+              className="sc-chPdSV sc-hwwEjo fNAoWR"
               type="submit"
             >
               Login
@@ -801,6 +812,17 @@ exports[`Storyshots Components/Login With Error 1`] = `
                   Login
                 </span>
                 <span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      autoLoginOrg
+                    </span>
+                  </span>
                   <span>
                     <span>
                       <br />
@@ -1174,24 +1196,24 @@ exports[`Storyshots Components/Login default 1`] = `
               className="sc-ckVGcZ iiqFud sc-dxgOiQ cQoZtn"
             >
               <input
-                checked={false}
-                name="logoutOnQuit"
+                checked={true}
+                name="autoLogin"
                 onBlur={[Function]}
                 onChange={[Function]}
                 type="checkbox"
               />
               <div
-                checked={false}
+                checked={true}
                 className="sc-eNQAEJ bKrJGb"
               />
               <div
                 className="sc-jKJlTe YHjGr"
               >
-                Log me out when I quit
+                Keep me logged in
               </div>
             </label>
             <button
-              className="sc-chPdSV sc-hwwEjo dkBoeK"
+              className="sc-chPdSV sc-hwwEjo fNAoWR"
               type="submit"
             >
               Login
@@ -1350,6 +1372,17 @@ exports[`Storyshots Components/Login default 1`] = `
                   Login
                 </span>
                 <span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      autoLoginOrg
+                    </span>
+                  </span>
                   <span>
                     <span>
                       <br />

@@ -5,20 +5,34 @@ import {
   GET_ADMIN_ORG_SETTINGS,
   GET_ORG_SETTINGS,
   getAdminOrgSettingsError,
+  getAdminOrgSettingsRequest,
   getAdminOrgSettingsSuccess,
   getOrgSettingsError,
   getOrgSettingsSuccess,
-  SAVE_ACTIVE_THEME_ID,
   SAVE_ADMIN_ORG_SETTINGS,
-  SAVE_LOGO,
+  SAVE_ORG_ACTIVE_THEME_ID,
+  SAVE_ORG_AUTO_LOGIN,
+  SAVE_ORG_LOGO,
   saveAdminOrgSettingsError,
   saveAdminOrgSettingsRequest,
   saveAdminOrgSettingsSuccess,
 } from './actions';
 import { getOrganizationSettings } from './selectors';
-import { SaveActiveThemeId, SaveAdminOrgSettingsRequest, SaveLogo } from './types';
+import { SaveAdminOrgSettingsRequest, SaveOrgActiveThemeId, SaveOrgAutoLogin, SaveOrgLogo } from './types';
 
-function* watchSaveLogo(action: SaveLogo) {
+function* watchSaveOrgAutoLogin(action: SaveOrgAutoLogin) {
+  const orgSettings = yield select(getOrganizationSettings);
+
+  const autoLogin = action.payload;
+
+  if (typeof autoLogin !== 'boolean') return;
+
+  orgSettings.autoLogin = autoLogin;
+
+  yield put(saveAdminOrgSettingsRequest(orgSettings, action.meta));
+}
+
+function* watchSaveOrgLogo(action: SaveOrgLogo) {
   const orgSettings = yield select(getOrganizationSettings);
 
   const logo = action.payload;
@@ -30,7 +44,7 @@ function* watchSaveLogo(action: SaveLogo) {
   yield put(saveAdminOrgSettingsRequest(orgSettings, action.meta));
 }
 
-function* watchSaveActiveThemeId(action: SaveActiveThemeId) {
+function* watchSaveOrgActiveThemeId(action: SaveOrgActiveThemeId) {
   const orgSettings = yield select(getOrganizationSettings);
 
   const activeThemeId = action.payload;
@@ -74,6 +88,8 @@ function* watchSaveAdminOrgSettingsRequest(action: SaveAdminOrgSettingsRequest) 
   } else {
     yield put(saveAdminOrgSettingsError(response, action.meta));
   }
+
+  yield put(getAdminOrgSettingsRequest());
 }
 
 function* watchRequestError(action) {
@@ -82,7 +98,7 @@ function* watchRequestError(action) {
   const errorMessage = error ? error.message || error : 'Unknown Error';
 
   // tslint:disable-next-line:no-console
-  console.log('Error on', action.type, ':', errorMessage, '\n');
+  console.error('Error on', action.type, ':', errorMessage, '\n');
 
   if (action.meta && action.meta.errorCb) {
     action.meta.errorCb(errorMessage);
@@ -96,8 +112,9 @@ function* watchRequestSuccess(action) {
 }
 
 export function* organizationSaga() {
-  yield takeLatest(SAVE_LOGO, watchSaveLogo);
-  yield takeLatest(SAVE_ACTIVE_THEME_ID, watchSaveActiveThemeId);
+  yield takeLatest(SAVE_ORG_AUTO_LOGIN, watchSaveOrgAutoLogin);
+  yield takeLatest(SAVE_ORG_LOGO, watchSaveOrgLogo);
+  yield takeLatest(SAVE_ORG_ACTIVE_THEME_ID, watchSaveOrgActiveThemeId);
 
   yield takeLatest(GET_ORG_SETTINGS.REQUEST, watchGetOrgSettingsRequest);
   yield takeLatest(GET_ADMIN_ORG_SETTINGS.REQUEST, watchGetAdminOrgSettingsRequest);

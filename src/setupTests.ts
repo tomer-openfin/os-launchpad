@@ -1,5 +1,6 @@
 import * as enzyme from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
+import noop from './utils/noop';
 
 declare global {
   namespace NodeJS {
@@ -14,12 +15,25 @@ declare global {
   }
 }
 
-const localStorageMock = {
-  clear: jest.fn(),
-  getItem: jest.fn(),
-  removeItem: jest.fn(),
-  setItem: jest.fn(),
+export const MOCK_ITEM_KEY = 'MOCK_ITEM_KEY';
+export const MOCK_ARRAY_KEY = 'MOCK_ARRAY_KEY';
+export const MOCK_ITEM = JSON.stringify({ key: 'value' });
+export const MOCK_ARRAY = JSON.stringify([{ key: 'value' }]);
+
+const mockLocalStorageStore = {
+  [MOCK_ITEM_KEY]: MOCK_ITEM,
+  [MOCK_ARRAY_KEY]: MOCK_ARRAY,
 };
-global.localStorage = localStorageMock;
+
+const localStorageMock = {
+  clear: noop,
+  getItem: (key: string) => mockLocalStorageStore[key] || null,
+  removeItem: noop,
+  setItem: noop,
+};
+
+Object.defineProperty(window, 'localStorage', {
+  value: localStorageMock,
+});
 
 enzyme.configure({ adapter: new Adapter() });

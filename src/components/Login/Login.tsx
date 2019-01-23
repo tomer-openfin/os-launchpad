@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import { LoginRequestPayload, LoginWithNewPasswordPayload, MeLoginState } from '../../redux/me';
 
+import { getLocalStorage, setLocalStorage } from '../../services/localStorageAdapter';
 import Borders from '../Borders';
 import Checkbox from '../Checkbox';
 import FormField from '../FormField';
@@ -10,6 +11,7 @@ import WindowHeader from '../WindowHeader';
 import { ContentWrapper, CTA, FormWrapper, ResponseMessage, StyledLogo, Wrapper } from './Login.css';
 
 interface Props {
+  autoLoginOrg: boolean;
   closeApplication: () => void;
   login: (options: LoginRequestPayload) => void;
   loginWithNewPassword: (options: LoginWithNewPasswordPayload) => void;
@@ -20,8 +22,8 @@ const { USERNAME, PASSWORD } = process.env;
 
 const initialValues =
   USERNAME && PASSWORD && document.location && document.location.host.indexOf('8080') !== -1
-    ? { username: USERNAME, password: PASSWORD, logoutOnQuit: false }
-    : { username: '', password: '', logoutOnQuit: false };
+    ? { username: USERNAME, password: PASSWORD, autoLogin: !!getLocalStorage('autoLogin') }
+    : { username: '', password: '', autoLogin: !!getLocalStorage('autoLogin') };
 
 /**
  * Higher order function to pass a function to Formik's onSubmit
@@ -33,7 +35,9 @@ const initialValues =
 const handleSubmit = (loginState: MeLoginState, login: Props['login'], loginWithNewPassword: Props['loginWithNewPassword']) => values => {
   const { changePassword, session } = loginState;
 
-  const { username, password, newPassword } = values;
+  const { username, password, newPassword, autoLogin } = values;
+
+  setLocalStorage('autoLogin', autoLogin);
 
   if (changePassword) {
     loginWithNewPassword({ username, newPassword, session });
@@ -50,16 +54,18 @@ const renderMessage = ({ error, message }: MeLoginState) =>
  *
  * @returns {React.StatelessComponent}
  */
-const LoginForm = ({ values }) => {
+const LoginForm = ({ autoLoginOrg, values }) => {
   return (
     <FormWrapper key="login">
       <FormField label="Email" name="username" placeholder="Enter Email" type="text" />
 
       <FormField label="Password" name="password" placeholder="Enter Password" type="password" />
 
-      <Checkbox label="Log me out when I quit" name="logoutOnQuit" checked={values.logoutOnQuit} />
+      {autoLoginOrg && <Checkbox label="Keep me logged in" name="autoLogin" checked={values && values.autoLogin} />}
 
-      <CTA type="submit">Login</CTA>
+      <CTA extraSpace={!autoLoginOrg} type="submit">
+        Login
+      </CTA>
     </FormWrapper>
   );
 };
@@ -79,6 +85,9 @@ const ChangePasswordForm = () => (
   </FormWrapper>
 );
 
+const renderFormCreator = (autoLoginOrg, loginState) => ({ values }) =>
+  loginState.changePassword ? <ChangePasswordForm /> : <LoginForm autoLoginOrg={autoLoginOrg} values={values} />;
+
 /**
  * Login component
  *
@@ -86,7 +95,7 @@ const ChangePasswordForm = () => (
  *
  * @returns {React.StatelessComponent}
  */
-const Login = ({ closeApplication, loginState, login, loginWithNewPassword }: Props) => (
+const Login = ({ autoLoginOrg, closeApplication, loginState, login, loginWithNewPassword }: Props) => (
   <Wrapper>
     <Borders borderRadius="6px">
       <WindowHeader handleClose={closeApplication}>Log In</WindowHeader>
@@ -99,7 +108,7 @@ const Login = ({ closeApplication, loginState, login, loginWithNewPassword }: Pr
         <Formik
           initialValues={initialValues}
           onSubmit={handleSubmit(loginState, login, loginWithNewPassword)}
-          render={loginState.changePassword ? ChangePasswordForm : LoginForm}
+          render={renderFormCreator(autoLoginOrg, loginState)}
         />
       </ContentWrapper>
     </Borders>

@@ -6,6 +6,7 @@ import { OkResponse } from './utils/commons';
 
 export const MOCK_ORG_SETTINGS = {
   activeThemeId: DEFAULT_THEMES[0].id,
+  autoLogin: true,
   logo: logoIcon,
   themes: DEFAULT_THEMES,
 };

@@ -1,11 +1,22 @@
-import { defaultState, MeSettingsState } from '../../redux/me';
+import { MeSettingsState } from '../../redux/me';
 
-import { APIResponse, NewUserLayout, ResponseStatus, UserLayout } from '../../types/commons';
+import { APIResponse, NewUserLayout, ResponseStatus, User, UserLayout } from '../../types/commons';
 import { checkIsEnterprise } from '../../utils/checkIsEnterprise';
 import { uuidv4 } from '../../utils/createUuid';
-import { deleteLocalStorageItem, getLocalStorage, LOCAL_STORAGE_KEYS, setItemInLocalStorage, setLocalStorage } from '../localStorageAdapter';
+import { deleteLocalStorageItem, getLocalStorage, LOCAL_STORAGE_KEYS, setItemInLocalStorage, setLocalStorage, SUCCESS_RESPONSE } from '../localStorageAdapter';
 import API from './api';
 import { createDeleteOptions, createGetOptions, createPostOptions, createPutOptions } from './requestOptions';
+
+/**
+ * Get user info
+ *
+ * @returns {Promise<User>}
+ */
+export const getUserInfo = (): Promise<User> => {
+  const options = createGetOptions();
+
+  return fetch(API.USER_INFO, options).then(resp => resp.json());
+};
 
 /**
  * Get user layouts
@@ -26,7 +37,7 @@ export const getUserLayouts = (): Promise<UserLayout[]> => {
       });
   }
 
-  return getLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, { status: ResponseStatus.SUCCESS, data: [] });
+  return getLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS);
 };
 
 /**
@@ -65,8 +76,9 @@ export const createUserLayout = (newUserLayout: NewUserLayout): Promise<APIRespo
 
   const localUserLayout: UserLayout = { ...newUserLayout, id: uuidv4() };
 
-  // return setLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, [localUserLayout], { status: ResponseStatus.SUCCESS, layout: localUserLayout });
-  return setItemInLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, localUserLayout, { status: ResponseStatus.SUCCESS, layout: localUserLayout }, localUserLayout.id);
+  return setItemInLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, localUserLayout, localUserLayout.id).then(response =>
+    response.status === ResponseStatus.FAILURE ? response : { ...SUCCESS_RESPONSE, layout: response },
+  );
 };
 
 /**
@@ -81,7 +93,7 @@ export const deleteUserLayout = (id: UserLayout['id']): Promise<APIResponse> => 
     return fetch(`${API.USER_LAYOUTS}/${id}`, options).then(resp => resp.json());
   }
 
-  return deleteLocalStorageItem(LOCAL_STORAGE_KEYS.LAYOUTS, { status: ResponseStatus.SUCCESS }, id);
+  return deleteLocalStorageItem(LOCAL_STORAGE_KEYS.LAYOUTS, id);
 };
 
 /**
@@ -96,7 +108,9 @@ export const updateUserLayout = (userLayout: UserLayout): Promise<APIResponse> =
     return fetch(`${API.USER_LAYOUTS}/${userLayout.id}`, options).then(resp => resp.json());
   }
 
-  return setLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, [userLayout]);
+  return setItemInLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, userLayout, userLayout.id).then(response =>
+    response.status === ResponseStatus.FAILURE ? response : { ...SUCCESS_RESPONSE, layout: response },
+  );
 };
 
 /**
@@ -118,7 +132,7 @@ export const getUserSettings = (): Promise<MeSettingsState | APIResponse> => {
       });
   }
 
-  return getLocalStorage(LOCAL_STORAGE_KEYS.SETTINGS, { data: defaultState.settings, status: ResponseStatus.SUCCESS });
+  return getLocalStorage(LOCAL_STORAGE_KEYS.SETTINGS);
 };
 
 /**

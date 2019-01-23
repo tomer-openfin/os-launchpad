@@ -1,7 +1,10 @@
 import { ROUTES } from '../components/Router/consts';
 import { isProductionEnv } from '../utils/processHelpers';
 
+export const MAIN_WINDOW = 'osLaunchpadMain';
+
 const WINDOW_PREFIX = 'osLaunchpad';
+
 export const ADMIN_WINDOW = `${WINDOW_PREFIX}Admin`;
 export const APP_DIRECTORY_WINDOW = `${WINDOW_PREFIX}AppDirectory`;
 export const APP_LAUNCHER_OVERFLOW_WINDOW = `${WINDOW_PREFIX}AppLauncherOverflow`;

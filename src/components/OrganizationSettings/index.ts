@@ -1,4 +1,4 @@
-import OrganizationSettings from './OrganizationSettings';
+import OrganizationSettings from './OrganizationSettingsContainer';
 
 export * from './OrganizationSettings.css';
 

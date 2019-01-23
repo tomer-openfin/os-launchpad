@@ -22,8 +22,8 @@ interface FormikInitialValues {
 interface Props {
   themes: Theme[];
   activeThemeId: Theme['id'];
-  setActiveThemeId: (themeId: Theme['id']) => void;
-  saveActiveThemeId: (themeId: Theme['id'], meta?: MetaWithCallbacks) => void;
+  setOrgActiveThemeId: (themeId: Theme['id']) => void;
+  saveOrgActiveThemeId: (themeId: Theme['id'], meta?: MetaWithCallbacks) => void;
 }
 
 interface State {
@@ -49,18 +49,18 @@ class ThemesForm extends React.PureComponent<Props, State> {
     // Execute Formik default handleChange functionality
     fn(e);
 
-    const { themes, setActiveThemeId } = this.props;
+    const { themes, setOrgActiveThemeId } = this.props;
     // But as a side effect, set selected theme in redux
     // so admin can see a preview of selected theme
     const selectedTheme = themes.find(theme => theme.id === e.currentTarget.value);
 
     if (selectedTheme) {
-      setActiveThemeId(selectedTheme.id);
+      setOrgActiveThemeId(selectedTheme.id);
     }
   };
 
   handleSubmit = () => {
-    const { activeThemeId, saveActiveThemeId } = this.props;
+    const { activeThemeId, saveOrgActiveThemeId } = this.props;
 
     const successCb = () => {
       this.setState({
@@ -74,7 +74,7 @@ class ThemesForm extends React.PureComponent<Props, State> {
       {
         loading: true,
       },
-      () => saveActiveThemeId(activeThemeId, meta),
+      () => saveOrgActiveThemeId(activeThemeId, meta),
     );
   };
 
@@ -87,10 +87,10 @@ class ThemesForm extends React.PureComponent<Props, State> {
   };
 
   handleResetProps = () => {
-    const { setActiveThemeId, activeThemeId } = this.props;
+    const { setOrgActiveThemeId, activeThemeId } = this.props;
 
     if (this.state.currentThemeId !== activeThemeId) {
-      setActiveThemeId(this.state.currentThemeId);
+      setOrgActiveThemeId(this.state.currentThemeId);
     }
   };
 

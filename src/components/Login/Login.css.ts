@@ -56,6 +56,7 @@ export const ResponseMessage = styled.div<{ error: boolean }>`
   display: flex;
 `;
 
-export const CTA = styled(Button)`
+export const CTA = styled(Button)<{ extraSpace?: boolean }>`
   width: 109px;
+  ${({ extraSpace }) => extraSpace && 'margin-top: 9px;'}
 `;

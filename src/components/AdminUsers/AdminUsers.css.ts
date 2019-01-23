@@ -127,7 +127,7 @@ export const EditIconLink = styled(Link)`
 
 export const ListWrapper = styled.div`
   font-size: 10px;
-  overflow-y: scroll;
+  overflow-y: auto;
   flex: 1;
   padding-bottom: 25px;
 `;

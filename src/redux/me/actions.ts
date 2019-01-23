@@ -19,6 +19,8 @@ export const LOGIN = generateAsyncActionTypes('LOGIN');
 export const LOGOUT = generateAsyncActionTypes('LOGOUT');
 export const LOGIN_WITH_NEW_PASSWORD = 'LOGIN_WITH_NEW_PASSWORD';
 
+export const GET_ME = generateAsyncActionTypes('GET_ME');
+
 export const SET_ME = 'SET_ME';
 
 export const GET_SETTINGS = generateAsyncActionTypes('GET_SETTINGS');
@@ -53,6 +55,10 @@ export const loginWithNewPassword = createAction<LoginWithNewPasswordPayload>(LO
 export const saveSettingsRequest = createAction(SAVE_SETTINGS.REQUEST);
 export const saveSettingsSuccess = createAction(SAVE_SETTINGS.SUCCESS);
 export const saveSettingsError = createAction<ErrorResponse>(SAVE_SETTINGS.ERROR);
+
+export const getMeRequest = createAction(GET_ME.REQUEST);
+export const getMeSuccess = createAction<LoginSuccessPayload>(GET_ME.SUCCESS);
+export const getMeError = createAction<ErrorResponse>(GET_ME.ERROR);
 
 export const setMe = createAction<SetMePayload>(SET_ME);
 

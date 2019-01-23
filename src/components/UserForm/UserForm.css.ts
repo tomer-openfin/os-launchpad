@@ -30,7 +30,7 @@ export const Wrapper = styled.div`
 
 export const ScrollWrapper = styled.div`
   flex: 1;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 100%;
   padding-bottom: 60px;
   margin-bottom: 60px;

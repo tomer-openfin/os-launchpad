@@ -1,6 +1,7 @@
 import {
   ADD_TO_APP_LAUNCHER,
   CHANGE_PASSWORD,
+  GET_ME,
   GET_SETTINGS,
   LOGIN,
   LOGOUT,
@@ -45,6 +46,7 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
         },
       };
     }
+    case GET_ME.SUCCESS:
     case SET_ME: {
       return {
         ...state,

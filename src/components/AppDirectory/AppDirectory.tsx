@@ -73,7 +73,7 @@ class AppDirectory extends React.PureComponent<Props, State> {
     });
   };
 
-  filterAppList = search => this.props.appList.filter(app => app.title.toLowerCase().indexOf(search.toLowerCase()) !== -1);
+  filterAppList = search => this.props.appList.filter(app => app.title && app.title.toLowerCase().indexOf(search.toLowerCase()) !== -1);
 
   renderAppCTA(app: App) {
     const { getIsLauncherApp, addToLauncher, removeFromLauncher } = this.props;

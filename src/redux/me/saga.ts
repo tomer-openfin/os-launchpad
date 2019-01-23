@@ -1,22 +1,25 @@
 import { Application, Window } from '@giantmachines/redux-openfin';
 import { all, call, put, select, take, takeLatest } from 'redux-saga/effects';
 
-import ApiService from '../../services/ApiService';
-
-import windowsConfig, { initOnStartWindows } from '../../config/windows';
 import { ErrorResponse } from '../../types/commons';
 import { ResponseStatus } from '../../types/enums';
-import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
+
+import ApiService from '../../services/ApiService';
+import eraseCookie from '../../utils/eraseCookie';
+
 import { getAdminAppsRequest, getAdminUsersRequest } from '../admin';
 import { launchAppLauncher, reboundLauncherRequest } from '../application';
 import { getAppDirectoryList } from '../apps';
 import { getLayoutsRequest } from '../layouts';
-import { getAdminOrgSettingsRequest } from '../organization/index';
-import { launchWindow } from '../windows/index';
+import { getAdminOrgSettingsRequest } from '../organization';
 import {
   ADD_TO_APP_LAUNCHER,
   changePassword,
+  GET_ME,
   GET_SETTINGS,
+  getMeError,
+  getMeSuccess,
+  getSettingsError,
   getSettingsRequest,
   getSettingsSuccess,
   LOGIN,
@@ -38,6 +41,20 @@ import { getMeSettings } from './selectors';
 import { LoginError, LoginRequest, LoginSuccess, LoginWithNewPassword, LogoutError } from './types';
 
 const GENERIC_API_ERROR: ErrorResponse = { status: ResponseStatus.FAILURE, message: 'Failed to get response from server' };
+
+function* watchGetMeRequest() {
+  const result = yield call(ApiService.getUserInfo);
+
+  const { status, code, message, session } = result;
+
+  if (status === ResponseStatus.FAILURE) {
+    yield put(getMeError({ status, code, message, session }));
+  } else {
+    const { email, firstName, lastName, isAdmin } = result;
+
+    yield put(getMeSuccess({ isAdmin, email, firstName, lastName }));
+  }
+}
 
 function* watchLoginRequest(action: LoginRequest) {
   const { payload } = action;
@@ -133,6 +150,8 @@ function* watchLogoutRequest() {
 }
 
 function* watchLogoutSuccess() {
+  eraseCookie();
+
   yield put(Application.restart());
 
   // TODO: instead of restarting app, reset store, hide all windows, and show login window
@@ -169,10 +188,13 @@ function* watchLogoutError(action: LogoutError) {
 function* watchGetSettingsRequest() {
   const result = yield call(ApiService.getUserSettings);
 
-  // TODO validate result against settings state (e.g. invalid position issue)
-  // if invalid fall back to defaults and save in api
-
-  yield put(getSettingsSuccess(result));
+  if (result.status === ResponseStatus.FAILURE) {
+    // TODO validate result against settings state (e.g. invalid position issue)
+    // if invalid fall back to defaults and save in api
+    yield put(getSettingsError(result));
+  } else {
+    yield put(getSettingsSuccess(result));
+  }
 }
 
 function* watchGetSettingsSuccess() {
@@ -210,6 +232,10 @@ export function* meSaga() {
   yield takeLatest(LOGIN.REQUEST, watchLoginRequest);
   yield takeLatest(LOGIN.SUCCESS, watchLoginSuccess);
   yield takeLatest(LOGIN.ERROR, watchLoginError);
+
+  yield takeLatest(GET_ME.REQUEST, watchGetMeRequest);
+  yield takeLatest(GET_ME.SUCCESS, watchLoginSuccess);
+  yield takeLatest(GET_ME.ERROR, watchLoginError);
 
   yield takeLatest(LOGOUT.REQUEST, watchLogoutRequest);
   yield takeLatest(LOGOUT.SUCCESS, watchLogoutSuccess);

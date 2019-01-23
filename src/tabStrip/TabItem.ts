@@ -1,3 +1,5 @@
+/* tslint:disable */
+// THIS CODE PULLED DIRECTLY FROM OPENFIN, DO NOT MODIFY
 import * as layouts from 'openfin-layouts';
 import { TabProperties, WindowIdentity } from 'openfin-layouts/dist/client/types';
 

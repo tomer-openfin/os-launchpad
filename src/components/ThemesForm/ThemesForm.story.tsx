@@ -11,5 +11,5 @@ const saveActiveThemeId = action('saveActiveThemeId');
 const setActiveThemeId = action('setActiveThemeId');
 
 storiesOf(`${CATEGORIES.ADMIN}ThemesForm`, module).add('default', () => (
-  <ThemesForm activeThemeId={DEFAULT_THEMES[0].id} themes={DEFAULT_THEMES} saveActiveThemeId={saveActiveThemeId} setActiveThemeId={setActiveThemeId} />
+  <ThemesForm activeThemeId={DEFAULT_THEMES[0].id} themes={DEFAULT_THEMES} saveOrgActiveThemeId={saveActiveThemeId} setOrgActiveThemeId={setActiveThemeId} />
 ));

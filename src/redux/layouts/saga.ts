@@ -66,14 +66,16 @@ function* watchRestoreLayoutRequest(action: RestoreLayoutRequest) {
       layout.apps.map(layoutApp => {
         const { manifestUrl, uuid } = layoutApp;
         const matchingApp = apps.find(app => app.manifest_url === manifestUrl);
+
         if (!matchingApp) {
           // tslint:disable-next-line:no-console
-          console.log('Could not find manifestUrl in list of applications.', manifestUrl, uuid);
+          console.error('Could not find manifestUrl in list of applications.', manifestUrl, uuid);
           return;
         }
 
         const { id } = matchingApp;
         const appStatus = appsStatusById[id];
+
         if (!appStatus || (appStatus && appStatus.state === AppStatusStates.Closed)) {
           return put(setFinAppStatusState({ id, statusState: AppStatusStates.Loading, origin: AppStatusOrigins.LayoutRestore }));
         }
@@ -101,16 +103,19 @@ function* watchRestoreLayoutSuccess(action: RestoreLayoutSuccess) {
     layout.apps.map(layoutApp => {
       const { manifestUrl, uuid } = layoutApp;
       const matchingApp = apps.find(app => app.manifest_url === manifestUrl);
+
       if (!matchingApp) {
         // tslint:disable-next-line:no-console
-        console.log('Could not find manifestUrl in list of applications.', manifestUrl, uuid);
+        console.error('Could not find manifestUrl in list of applications.', manifestUrl, uuid);
         return;
       }
 
       const { id } = matchingApp;
       const appStatus = appsStatusById[id];
+
       if (appStatus && appStatus.state === AppStatusStates.Loading && appStatus.origin === AppStatusOrigins.LayoutRestore) {
         const wrappedApp = fin.desktop.Application.wrap(uuid);
+
         bindFinAppEventHandlers(window.store.dispatch, wrappedApp, id);
 
         return put(openFinAppSuccess({ id, uuid, origin: AppStatusOrigins.LayoutRestore }));
@@ -215,7 +220,7 @@ function* watchRequestError(action) {
   const errorMessage = error ? error.message || error : 'Unknown Error';
 
   // tslint:disable-next-line:no-console
-  console.log('Error on', action.type, ':', errorMessage, '\n');
+  console.error('Error on', action.type, ':', errorMessage, '\n');
 
   if (action.meta && action.meta.errorCb) {
     action.meta.errorCb(errorMessage);
@@ -231,11 +236,8 @@ function* watchGetLayoutsSuccess(action) {
 }
 
 function* watchRequestSuccess(action) {
-  const id = action.payload;
-
-  // pass newly created layout id to successCb on CRUD operations
   if (action.meta && action.meta.successCb) {
-    action.meta.successCb(id);
+    action.meta.successCb(action.payload);
   }
 
   yield call(watchLayoutsChangesToAnimateWindow);

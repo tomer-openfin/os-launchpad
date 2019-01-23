@@ -32,7 +32,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
         onSubmit={[Function]}
       >
         <div
-          className="sc-daURTG lksbBu"
+          className="sc-daURTG fQpFIe"
         >
           <div
             className="sc-bXGyLb bCOlEs"

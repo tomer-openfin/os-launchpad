@@ -3,6 +3,11 @@ import { delay } from 'redux-saga';
 import { all, call, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import windowsConfig, { initOnStartWindows, LAYOUTS_WINDOW } from '../../config/windows';
+
+import { getLocalStorage } from '../../services/localStorageAdapter';
+
+import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
+
 import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
 import { animateWindow, getSystemMonitorInfo } from '../../utils/openfinPromises';
@@ -10,11 +15,13 @@ import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv } from '../../u
 import { setupWindow } from '../../utils/setupWindow';
 import takeFirst from '../../utils/takeFirst';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
-import { getAppDirectoryList } from '../apps';
 import { registerGlobalDevHotKeys, registerGlobalHotkeys } from '../globalHotkeys/utils';
-import { getLayoutsRequest } from '../layouts';
-import { getAutoHide, getLauncherPosition, getSettingsRequest } from '../me';
-import { getOrgSettingsRequest } from '../organization';
+import { animateLauncherCollapseExpand, setWindowRelativeToLauncherBounds } from './utils';
+
+import { getAppDirectoryList } from '../apps';
+import { GET_LAYOUTS, getLayoutsRequest } from '../layouts';
+import { GET_ME, GET_SETTINGS, getAutoHide, getIsLoggedIn, getLauncherPosition, getMeRequest, getSettingsRequest } from '../me';
+import { GET_ORG_SETTINGS, getOrganizationAutoLogin, getOrgSettingsRequest } from '../organization';
 import { getAppsLauncherAppList, getSystemIconsSelector } from '../selectors';
 import { getMonitorInfo, setMonitorInfo, setupSystemHandlers } from '../system';
 import { getWindowBounds, launchWindow } from '../windows';
@@ -36,8 +43,6 @@ import {
   setIsExpanded,
 } from './actions';
 import { getApplicationIsExpanded } from './selectors';
-import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
-import { animateLauncherCollapseExpand, setWindowRelativeToLauncherBounds } from './utils';
 
 const APP_UUID = getAppUuid();
 const ANIMATION_DURATION = 300;
@@ -50,8 +55,6 @@ function* applicationStart() {
   console.log('application started');
 
   yield put(getAppDirectoryList());
-
-  yield put(getOrgSettingsRequest());
 }
 
 function* watchInitDevTools() {
@@ -86,11 +89,21 @@ function* openfinSetup(action: OpenfinReadyAction) {
       yield put(initDevTools());
     }
 
-    const isLoggedIn = false;
+    yield all([take([GET_ORG_SETTINGS.SUCCESS, GET_ORG_SETTINGS.ERROR]), put(getOrgSettingsRequest())]);
+
+    const autoLoginLocal = yield !!getLocalStorage('autoLogin');
+
+    const autoLoginOrg = yield select(getOrganizationAutoLogin);
+
+    if (document.cookie && autoLoginLocal && autoLoginOrg) {
+      yield all([take([GET_ME.SUCCESS, GET_ME.ERROR]), put(getMeRequest())]);
+    }
+
+    const isLoggedIn = yield select(getIsLoggedIn);
+
     const isEnterprise = isEnterpriseEnv();
     yield put(setIsEnterprise(isEnterprise));
 
-    const { fin } = window;
     // Initial system monitor info
     // and setup system event handlers
     try {
@@ -100,6 +113,8 @@ function* openfinSetup(action: OpenfinReadyAction) {
       // tslint:disable-next-line:no-console
       console.log('Failed to get/set monitor information:', e);
     }
+
+    const { fin } = window;
 
     if (fin) {
       yield call(setupSystemHandlers, fin, window.store || window.opener.store);
@@ -112,13 +127,19 @@ function* openfinSetup(action: OpenfinReadyAction) {
     }
 
     // Launch all windows on init, windows are hidden by default unless they have autoShow: true
+    // TODO - block until all windows are created and move to post login
     yield all(Object.keys(initOnStartWindows).map(window => put(launchWindow(initOnStartWindows[window]))));
 
     if (isEnterprise && !isLoggedIn) {
       // Show Login
       yield put(launchWindow(windowsConfig.login));
     } else {
-      yield all([put(getLayoutsRequest()), put(getSettingsRequest())]);
+      yield all([
+        take([GET_LAYOUTS.ERROR, GET_LAYOUTS.SUCCESS]),
+        take([GET_SETTINGS.ERROR, GET_SETTINGS.SUCCESS]),
+        put(getLayoutsRequest()),
+        put(getSettingsRequest()),
+      ]);
 
       // Show Launchbar
       yield put(launchAppLauncher());

@@ -11,7 +11,7 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
     }
   >
     <div
-      className="sc-eMigcr lfgdHz"
+      className="sc-eMigcr dBaPoN"
     >
       <h3
         className="sc-itybZL gatPIt"
@@ -94,7 +94,7 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
         onSubmit={[Function]}
       >
         <select
-          className="sc-fzsDOv fLzhql"
+          className="sc-gPWkxV jZpsTj"
           disabled={false}
           id="ThemesFormSelectInput"
           name="theme"
@@ -104,13 +104,13 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
           value="dark"
         >
           <option
-            className="sc-gPWkxV bzRGdQ"
+            className="sc-jVODtj eQqHaZ"
             value="dark"
           >
             Dark
           </option>
           <option
-            className="sc-gPWkxV bzRGdQ"
+            className="sc-jVODtj eQqHaZ"
             value="light"
           >
             Light
@@ -138,6 +138,39 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
           </button>
         </div>
       </form>
+      <h3
+        className="sc-itybZL gatPIt"
+      >
+        Allow Auto Login
+      </h3>
+      <label
+        checked={true}
+        className="sc-fzsDOv hogTpA sc-kkGfuU ktBgro"
+      >
+        <input
+          checked={true}
+          className="sc-fzsDOv hogTpA sc-kEYyzF MbXgx"
+          name="autologin-onoff"
+          onChange={[Function]}
+          type="radio"
+          value="on"
+        />
+        On
+      </label>
+      <label
+        checked={false}
+        className="sc-fzsDOv hogTpA sc-kkGfuU lmsevc"
+      >
+        <input
+          checked={false}
+          className="sc-fzsDOv hogTpA sc-kEYyzF MbXgx"
+          name="autologin-onoff"
+          onChange={[Function]}
+          type="radio"
+          value="off"
+        />
+        Off
+      </label>
     </div>
   </div>
   <button
@@ -288,7 +321,43 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
                   &lt;
                   OrganizationSettings
                 </span>
-                <span />
+                <span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      autoLoginOrg
+                    </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      setOrgAutoLogin
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          anonymous
+                        </span>
+                        }
+                      </span>
+                    </span>
+                     
+                  </span>
+                </span>
                 <span
                   style={
                     Object {

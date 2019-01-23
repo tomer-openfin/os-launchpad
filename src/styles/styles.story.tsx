@@ -66,7 +66,7 @@ const TypeStory = ({ style, name }) => {
 
 const Wrapper = styled.div`
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 
 storiesOf(`${CATEGORIES.STYLEGUIDE}Typography`, module).add('default', () => (

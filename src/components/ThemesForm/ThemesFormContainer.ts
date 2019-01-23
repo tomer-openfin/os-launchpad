@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getOrganizationActiveThemeId, getOrganizationThemes, saveActiveThemeId, setActiveThemeId } from '../../redux/organization';
+import { getOrganizationActiveThemeId, getOrganizationThemes, saveOrgActiveThemeId, setOrgActiveThemeId } from '../../redux/organization';
 import ThemesForm from './ThemesForm';
 
 const mapState = state => ({
@@ -9,8 +9,8 @@ const mapState = state => ({
 });
 
 const mapDispatch = {
-  saveActiveThemeId,
-  setActiveThemeId,
+  saveOrgActiveThemeId,
+  setOrgActiveThemeId,
 };
 
 export default connect(
