@@ -1,7 +1,7 @@
 import { Window } from '@giantmachines/redux-openfin';
 import { put } from 'redux-saga/effects';
 
-import { LAYOUTS_WINDOW } from '../config/windows';
+import { LAYOUTS_WINDOW, LOGOUT_WINDOW } from '../config/windows';
 import { setIsDrawerExpanded } from '../redux/application';
 import { State } from '../redux/types';
 import { windowHidden, windowShown } from '../redux/windows';
@@ -23,10 +23,19 @@ function* setupMainWindow(finName: string) {
     window.setTimeout(() => {
       const { windows }: State = window.store.getState();
       const layoutWindow = windows.byId[LAYOUTS_WINDOW];
-      if (!layoutWindow || !layoutWindow.isShowing) {
+      const logoutWindow = windows.byId[LOGOUT_WINDOW];
+      if ((!layoutWindow || !layoutWindow.isShowing) && (!logoutWindow || !logoutWindow.isShowing)) {
         window.store.dispatch(setIsDrawerExpanded(false));
       }
     }, 100);
+  };
+
+  yield put(Window.addWindowEventListener({ id: finName, listener: blurredHandler, type: 'blurred' }));
+}
+
+function* setupLogoutWindow(finName: string) {
+  const blurredHandler = () => {
+    window.store.dispatch(Window.hideWindow({ id: finName }));
   };
 
   yield put(Window.addWindowEventListener({ id: finName, listener: blurredHandler, type: 'blurred' }));
@@ -41,6 +50,10 @@ export function* setupWindow(finName: string) {
   switch (finName) {
     case getAppUuid(): {
       yield setupMainWindow(finName);
+      return;
+    }
+    case LOGOUT_WINDOW: {
+      yield setupLogoutWindow(finName);
       return;
     }
     default: {

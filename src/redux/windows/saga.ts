@@ -2,7 +2,7 @@ import { Window } from '@giantmachines/redux-openfin';
 import { delay } from 'redux-saga';
 import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 
-import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGIN_WINDOW } from '../../config/windows';
+import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGIN_WINDOW, LOGOUT_WINDOW } from '../../config/windows';
 import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
 import { hideWindowPromise, updateWindowOptions } from '../../utils/openfinPromises';
@@ -83,7 +83,7 @@ function* watchOpenedWindow(action) {
     return;
   }
 
-  if (id === APP_LAUNCHER_OVERFLOW_WINDOW || id === LAYOUTS_WINDOW) {
+  if (id === APP_LAUNCHER_OVERFLOW_WINDOW || id === LAYOUTS_WINDOW || id === LOGOUT_WINDOW) {
     const bounds = yield select(getWindowBounds, APP_UUID);
     if (bounds) {
       yield call(setWindowRelativeToLauncherBounds, id, bounds);
@@ -99,7 +99,11 @@ function* watchOpenedWindow(action) {
 function* watchWindowBoundsChanged(action) {
   const { bounds, id } = action.payload.options;
   if (id === APP_UUID) {
-    yield all([call(setWindowRelativeToLauncherBounds, APP_LAUNCHER_OVERFLOW_WINDOW, bounds), call(setWindowRelativeToLauncherBounds, LAYOUTS_WINDOW, bounds)]);
+    yield all([
+      call(setWindowRelativeToLauncherBounds, APP_LAUNCHER_OVERFLOW_WINDOW, bounds),
+      call(setWindowRelativeToLauncherBounds, LAYOUTS_WINDOW, bounds),
+      call(setWindowRelativeToLauncherBounds, LOGOUT_WINDOW, bounds),
+    ]);
   }
 }
 

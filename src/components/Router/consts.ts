@@ -28,5 +28,6 @@ export const ROUTES = {
   HOME: '/',
   LAYOUTS: '/layouts',
   LOGIN: '/login',
+  LOGOUT: '/logout',
   SETTINGS: '/settings',
 };

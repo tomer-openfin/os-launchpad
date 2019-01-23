@@ -13,6 +13,7 @@ import EditAppForm from '../EditAppForm';
 import EditUserForm from '../EditUserForm';
 import Layouts from '../Layouts';
 import Login from '../Login';
+import Logout from '../Logout';
 import NewAppForm from '../NewAppForm';
 import NewUserForm from '../NewUserForm';
 import OrganizationSettings from '../OrganizationSettings';
@@ -108,6 +109,11 @@ export const routes: AppRoute[] = [
     Component: Layouts,
     exact: true,
     path: ROUTES.LAYOUTS,
+  },
+  {
+    Component: Logout,
+    exact: true,
+    path: ROUTES.LOGOUT,
   },
   {
     Component: AppDirectory,

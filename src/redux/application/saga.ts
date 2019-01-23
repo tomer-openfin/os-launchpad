@@ -1,4 +1,4 @@
-import { Window } from '@giantmachines/redux-openfin';
+import { Application, Window } from '@giantmachines/redux-openfin';
 import { delay } from 'redux-saga';
 import { all, call, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
@@ -16,7 +16,7 @@ import { setupWindow } from '../../utils/setupWindow';
 import takeFirst from '../../utils/takeFirst';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { registerGlobalDevHotKeys, registerGlobalHotkeys } from '../globalHotkeys/utils';
-import { animateLauncherCollapseExpand, setWindowRelativeToLauncherBounds } from './utils';
+import { animateLauncherCollapseExpand } from './utils';
 
 import { getAppDirectoryList } from '../apps';
 import { GET_LAYOUTS, getLayoutsRequest } from '../layouts';
@@ -24,10 +24,11 @@ import { GET_ME, GET_SETTINGS, getAutoHide, getIsLoggedIn, getLauncherPosition, 
 import { GET_ORG_SETTINGS, getOrganizationAutoLogin, getOrgSettingsRequest } from '../organization';
 import { getAppsLauncherAppList, getSystemIconsSelector } from '../selectors';
 import { getMonitorInfo, setMonitorInfo, setupSystemHandlers } from '../system';
-import { getWindowBounds, launchWindow } from '../windows';
+import { launchWindow } from '../windows';
 import {
   APPLICATION_STARTED,
   COLLAPSE_APP,
+  EXIT_APPLICATION,
   EXPAND_APP,
   INIT_DEV_TOOLS,
   initDevTools,
@@ -38,7 +39,6 @@ import {
   reboundLauncherError,
   reboundLauncherRequest,
   reboundLauncherSuccess,
-  SET_IS_DRAWER_EXPANDED,
   setIsEnterprise,
   setIsExpanded,
   setRuntimeVersion,
@@ -56,6 +56,10 @@ function* applicationStart() {
   console.log('application started');
 
   yield put(getAppDirectoryList());
+}
+
+function* watchExitApplication() {
+  yield put(Application.close());
 }
 
 function* watchInitDevTools() {
@@ -260,17 +264,12 @@ function* watchReboundLauncherRequest(action: ReboundLauncherRequestAction) {
   yield put(reboundLauncherSuccess());
 }
 
-function* watchSetIsDrawerExpanded() {
-  const bounds = yield select(getWindowBounds, APP_UUID);
-  yield call(setWindowRelativeToLauncherBounds, LAYOUTS_WINDOW, bounds);
-}
-
 export function* applicationSaga() {
   yield takeEvery(APPLICATION_STARTED, applicationStart);
+  yield takeEvery(EXIT_APPLICATION, watchExitApplication);
   yield takeEvery(INIT_DEV_TOOLS, watchInitDevTools);
   yield takeEvery(LAUNCH_APP_LAUNCHER, watchLaunchAppLauncher);
   yield takeEvery(OPENFIN_READY, openfinSetup);
-  yield takeEvery(SET_IS_DRAWER_EXPANDED, watchSetIsDrawerExpanded);
   yield takeFirst(COLLAPSE_APP, watchCollapseApp);
   yield takeFirst(EXPAND_APP, watchExpandApp);
   yield takeLatest(REBOUND_LAUNCHER.REQUEST, watchReboundLauncherRequest);

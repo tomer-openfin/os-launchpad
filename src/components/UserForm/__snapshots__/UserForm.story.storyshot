@@ -11,18 +11,18 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
     }
   >
     <form
-      className="sc-GMQeP iwNPMR"
+      className="sc-gojNiO bHPpKH"
       onReset={[Function]}
       onSubmit={[Function]}
     >
       <div
-        className="sc-cQFLBn dSRrww"
+        className="sc-bXGyLb fyzif"
       >
         <div
-          className="sc-gojNiO JkFdU"
+          className="sc-lkqHmb iOFFRw"
         >
           <div
-            className="sc-daURTG jfjHnb"
+            className="sc-eLExRp dgixxo"
           >
             <label
               className="sc-kpOJdX fXkmiv"
@@ -109,10 +109,10 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
         </div>
       </div>
       <div
-        className="sc-fOKMvo kkWhCr"
+        className="sc-eilVRo jlWGYa"
       >
         <div
-          className="sc-bXGyLb UNIIO"
+          className="sc-cbkKFq jlezJR"
         >
           <a
             backgroundColor="#848484"

@@ -9,7 +9,6 @@ import * as settingsIcon from '../assets/Settings.svg';
 
 import windowsConfig from '../config/windows';
 
-import { logoutRequest } from '../redux/me';
 import { toggleNotificationCenterRequest } from '../redux/notifications';
 import { launchWindow } from '../redux/windows';
 
@@ -31,8 +30,8 @@ export interface SystemIcon {
 export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
   const icons = [
     {
-      action: logoutRequest(),
-      hasExtendedWindow: false,
+      action: launchWindow(windowsConfig.logout),
+      hasExtendedWindow: true,
       icon: logoutIcon,
       isShownByDefault: false,
       title: LOGOUT_KEY,

@@ -249,12 +249,23 @@ exports[`Storyshots Components/App default 1`] = `
                 orientation="horizontal"
               >
                 <div
-                  className="sc-ifAKCX kGkovX"
+                  className="sc-gPEVay iEvXNZ"
                   color="#E7E7E7"
-                  disabled={true}
-                  size={42}
-                  title="Logout"
-                />
+                >
+                  <div
+                    className="sc-ifAKCX kGkovX"
+                    color="#E7E7E7"
+                    disabled={true}
+                    size={42}
+                    title="Logout"
+                  />
+                  <div
+                    className="sc-jDwBTQ bhlsFh sc-ifAKCX gPeNwQ"
+                    color="#E7E7E7"
+                    disabled={true}
+                    size={25}
+                  />
+                </div>
               </div>
               <div
                 className="sc-gipzik kuAMyh"
@@ -780,7 +791,123 @@ exports[`Storyshots Components/App default 1`] = `
                                     }
                                   }
                                 >
-                                  'LOGOUT_REQUEST'
+                                  'LAUNCH_WINDOW'
+                                </span>
+                                ,
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    payload
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  {
+                                  <span>
+                                    <span>
+                                      <br />
+                                              
+                                        
+                                    </span>
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#666",
+                                        }
+                                      }
+                                    >
+                                      alwaysOnTop
+                                    </span>
+                                  </span>
+                                  : 
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#a11",
+                                      }
+                                    }
+                                  >
+                                    true
+                                  </span>
+                                  ,
+                                  <span>
+                                    <span>
+                                      <br />
+                                              
+                                        
+                                    </span>
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#666",
+                                        }
+                                      }
+                                    >
+                                      autoShow
+                                    </span>
+                                  </span>
+                                  : 
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#a11",
+                                      }
+                                    }
+                                  >
+                                    false
+                                  </span>
+                                  ,
+                                  <span>
+                                    <span>
+                                      <br />
+                                              
+                                        
+                                    </span>
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#666",
+                                        }
+                                      }
+                                    >
+                                      contextMenu
+                                    </span>
+                                  </span>
+                                  : 
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#a11",
+                                      }
+                                    }
+                                  >
+                                    true
+                                  </span>
+                                  ,
+                                  <span>
+                                    <span>
+                                      <br />
+                                              
+                                        
+                                    </span>
+                                    …
+                                  </span>
+                                  <span>
+                                    <br />
+                                            
+                                  </span>
+                                  }
                                 </span>
                                 }
                               </span>
@@ -809,7 +936,7 @@ exports[`Storyshots Components/App default 1`] = `
                                   }
                                 }
                               >
-                                false
+                                true
                               </span>
                               ,
                               <span>

@@ -1,8 +1,6 @@
 import { ROUTES } from '../components/Router/consts';
 import { isProductionEnv } from '../utils/processHelpers';
 
-export const MAIN_WINDOW = 'osLaunchpadMain';
-
 const WINDOW_PREFIX = 'osLaunchpad';
 
 export const ADMIN_WINDOW = `${WINDOW_PREFIX}Admin`;
@@ -11,6 +9,7 @@ export const APP_LAUNCHER_OVERFLOW_WINDOW = `${WINDOW_PREFIX}AppLauncherOverflow
 export const CONTEXT_MENU = `${WINDOW_PREFIX}ContextMenu`;
 export const LAYOUTS_WINDOW = `${WINDOW_PREFIX}Layouts`;
 export const LOGIN_WINDOW = `${WINDOW_PREFIX}Login`;
+export const LOGOUT_WINDOW = `${WINDOW_PREFIX}Logout`;
 export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
 
 const isProduction = isProductionEnv();
@@ -113,7 +112,7 @@ export const initOnStartWindows = {
       height: 8,
       width: 8,
     },
-    defaultCentered: true,
+    defaultCentered: false,
     defaultHeight: 213,
     defaultWidth: 171,
     frame: false,
@@ -128,6 +127,28 @@ export const initOnStartWindows = {
     saveWindowState: false,
     showTaskbarIcon: false,
     url: ROUTES.LAYOUTS,
+    waitForPageLoad: true,
+  },
+  logout: {
+    alwaysOnTop: true,
+    autoShow: false,
+    contextMenu: !isProduction,
+    cornerRounding: {
+      height: 8,
+      width: 8,
+    },
+    defaultCentered: false,
+    defaultHeight: 102,
+    defaultWidth: 171,
+    frame: false,
+    id: LOGOUT_WINDOW,
+    maximizable: false,
+    minimizable: false,
+    name: LOGOUT_WINDOW,
+    resizable: false,
+    saveWindowState: false,
+    showTaskbarIcon: false,
+    url: ROUTES.LOGOUT,
     waitForPageLoad: true,
   },
   settings: {

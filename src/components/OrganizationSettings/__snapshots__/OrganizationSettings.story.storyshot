@@ -11,27 +11,27 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
     }
   >
     <div
-      className="sc-gPWkxV cLLTzk"
+      className="sc-giadOv iVtLBF"
     >
       <h3
-        className="sc-fzsDOv bQrrgT"
+        className="sc-kUaPvJ kKUdeV"
       >
         Enterprise Branding
       </h3>
       <form
-        className="sc-eMigcr gvnqly"
+        className="sc-jVODtj ftaDph"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <label
-          className="sc-dTdPqK dToOYX"
+          className="sc-fzsDOv egwjrY"
           htmlFor="LogoFormFileInput"
         >
           <div
-            className="sc-krDsej dYNmNZ"
+            className="sc-eMigcr bxdtHz"
           >
             <div
-              className="sc-bHwgHz loApWf"
+              className="sc-itybZL bJWTPI"
             >
               <div
                 className="sc-eNQAEJ WRgnz"
@@ -39,16 +39,16 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
               />
             </div>
             <div
-              className="sc-fjmCvl iDSUdW"
+              className="sc-krDsej hSUoMV"
             >
               <div
-                className="sc-TFwJa iiCTOf"
+                className="sc-dTdPqK gpZCMt"
               >
                 Click & drag a new image over the existing one to replace your brand logo.
               </div>
               <input
                 accept="image/*"
-                className="sc-hGoxap dhvTKW"
+                className="sc-bHwgHz hBAAhW"
                 id="LogoFormFileInput"
                 name="logo"
                 onBlur={[Function]}
@@ -63,7 +63,7 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
           </div>
         </label>
         <div
-          className="sc-itybZL kHswht"
+          className="sc-gPWkxV jjMWzU"
         >
           <button
             className="sc-kAzzGY iCSQhx"
@@ -85,17 +85,17 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
         </div>
       </form>
       <h3
-        className="sc-fzsDOv bQrrgT"
+        className="sc-kUaPvJ kKUdeV"
       >
         Enterprise Theme
       </h3>
       <form
-        className="sc-eMigcr gvnqly"
+        className="sc-jVODtj ftaDph"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <select
-          className="sc-kUaPvJ laWOHb"
+          className="sc-VJcYb bYDQDN"
           disabled={false}
           id="ThemesFormSelectInput"
           name="theme"
@@ -105,20 +105,20 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
           value="dark"
         >
           <option
-            className="sc-giadOv ijmicJ"
+            className="sc-ipXKqB gCjBgY"
             value="dark"
           >
             Dark
           </option>
           <option
-            className="sc-giadOv ijmicJ"
+            className="sc-ipXKqB gCjBgY"
             value="light"
           >
             Light
           </option>
         </select>
         <div
-          className="sc-itybZL kHswht"
+          className="sc-gPWkxV jjMWzU"
         >
           <button
             className="sc-kAzzGY iCSQhx"
@@ -140,17 +140,17 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
         </div>
       </form>
       <h3
-        className="sc-fzsDOv bQrrgT"
+        className="sc-kUaPvJ kKUdeV"
       >
         Allow Auto Login
       </h3>
       <label
         checked={true}
-        className="sc-jVODtj hbBKqT sc-kEYyzF eGRGwQ"
+        className="sc-fONwsr hYmtpU sc-kEYyzF eGRGwQ"
       >
         <input
           checked={true}
-          className="sc-jVODtj hbBKqT sc-hMqMXs bSKuHb"
+          className="sc-fONwsr hYmtpU sc-hMqMXs bSKuHb"
           name="autologin-onoff"
           onChange={[Function]}
           type="radio"
@@ -160,11 +160,11 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
       </label>
       <label
         checked={false}
-        className="sc-jVODtj hbBKqT sc-kEYyzF bLItnJ"
+        className="sc-fONwsr hYmtpU sc-kEYyzF bLItnJ"
       >
         <input
           checked={false}
-          className="sc-jVODtj hbBKqT sc-hMqMXs bSKuHb"
+          className="sc-fONwsr hYmtpU sc-hMqMXs bSKuHb"
           name="autologin-onoff"
           onChange={[Function]}
           type="radio"

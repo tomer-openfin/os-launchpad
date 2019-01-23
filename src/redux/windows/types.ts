@@ -31,10 +31,10 @@ export interface WindowConfig {
   defaultHeight: number;
   defaultWidth: number;
   frame: boolean;
-  maxHeight: number;
+  maxHeight?: number;
   maximizable: boolean;
-  minHeight: number;
-  minWidth: number;
+  minHeight?: number;
+  minWidth?: number;
   minimizable: boolean;
   name: string;
   opactity?: number;

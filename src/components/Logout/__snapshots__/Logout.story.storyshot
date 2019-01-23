@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/NotificationsIcon default 1`] = `
+exports[`Storyshots Components/Logout default 1`] = `
 <div>
   <div
     style={
@@ -11,20 +11,38 @@ exports[`Storyshots Components/NotificationsIcon default 1`] = `
     }
   >
     <div
-      className="sc-kfGgVZ hWDGHv"
+      className="sc-hwwEjo gZInbw"
     >
-      <div
-        className="sc-ifAKCX bYrsMz"
-        color="#FBC23C"
-        disabled={false}
+      <button
+        className="sc-iyvyFf fWTolf"
         onClick={[Function]}
-        size="42px"
-      />
-      <div
-        className="sc-kPVwWT gfMJmb"
       >
-        23
-      </div>
+        <div
+          className="sc-ifAKCX vNQXX"
+          color="#FFFFFF"
+          size={42}
+        />
+        <span
+          className="sc-gzOgki bVhNCa"
+        >
+          Log Out
+        </span>
+      </button>
+      <button
+        className="sc-iyvyFf fWTolf"
+        onClick={[Function]}
+      >
+        <div
+          className="sc-ifAKCX vNQXX"
+          color="#FFFFFF"
+          size={42}
+        />
+        <span
+          className="sc-gzOgki bVhNCa"
+        >
+          Close OpenFin
+        </span>
+      </button>
     </div>
   </div>
   <button
@@ -124,7 +142,7 @@ exports[`Storyshots Components/NotificationsIcon default 1`] = `
               }
             }
           >
-            Components/NotificationsIcon
+            Components/Logout
           </h1>
           <h2
             style={
@@ -173,128 +191,15 @@ exports[`Storyshots Components/NotificationsIcon default 1`] = `
                   }
                 >
                   &lt;
-                  NotificationsIcon
+                  Logout
                 </span>
                 <span>
                   <span>
-                    <span>
-                      <br />
-                        
-                    </span>
+                     
                     <span
                       style={Object {}}
                     >
-                      disabled
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#a11",
-                            }
-                          }
-                        >
-                          false
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      imgSrc
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#666",
-                            }
-                          }
-                        >
-                          {
-                          <span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              default
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            ''
-                          </span>
-                          }
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      count
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#a11",
-                            }
-                          }
-                        >
-                          23
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      onClick
+                      exit
                     </span>
                     <span>
                       =
@@ -309,42 +214,38 @@ exports[`Storyshots Components/NotificationsIcon default 1`] = `
                             }
                           }
                         >
-                          Click Notification Center Toggle
+                          exit
                         </span>
                         }
                       </span>
                     </span>
                   </span>
                   <span>
-                    <span>
-                      <br />
-                        
-                    </span>
+                     
                     <span
                       style={Object {}}
                     >
-                      size
+                      logout
                     </span>
                     <span>
                       =
                       <span
                         style={Object {}}
                       >
-                        "
+                        {
                         <span
                           style={
                             Object {
-                              "color": "#22a",
-                              "wordBreak": "break-word",
+                              "color": "#170",
                             }
                           }
                         >
-                          42px
+                          logout
                         </span>
-                        "
+                        }
                       </span>
                     </span>
-                    <br />
+                     
                   </span>
                 </span>
                 <span
@@ -403,7 +304,7 @@ exports[`Storyshots Components/NotificationsIcon default 1`] = `
               }
             >
               "
-              NotificationsIcon
+              Logout
               " Component
             </h2>
             <small>

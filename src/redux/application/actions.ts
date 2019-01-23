@@ -6,6 +6,7 @@ import { OpenfinReadyPayload, ReboundLauncherRequestPayload, SetBlurringWindowPa
 // Action Types
 export const APPLICATION_STARTED = 'APPLICATION_STARTED';
 export const COLLAPSE_APP = 'COLLAPSE_APP';
+export const EXIT_APPLICATION = 'EXIT_APPLICATION';
 export const EXPAND_APP = 'EXPAND_APP';
 export const INIT_DEV_TOOLS = 'INIT_DEV_TOOLS';
 export const LAUNCH_APP_LAUNCHER = 'LAUNCH_APP_LAUNCHER';
@@ -21,6 +22,7 @@ export const SET_RUNTIME_VERSION = 'SET_RUNTIME_VERSION';
 // Action Creators
 export const applicationStarted = createAction(APPLICATION_STARTED);
 export const collapseApp = createAction(COLLAPSE_APP);
+export const exitApplication = createAction(EXIT_APPLICATION);
 export const expandApp = createAction(EXPAND_APP);
 export const initDevTools = createAction(INIT_DEV_TOOLS);
 export const launchAppLauncher = createAction(LAUNCH_APP_LAUNCHER);
