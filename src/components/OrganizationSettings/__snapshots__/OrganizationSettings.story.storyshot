@@ -34,7 +34,8 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
               className="sc-fjmCvl gFqNed"
             >
               <div
-                className="sc-hMqMXs fJevnH"
+                className="sc-eNQAEJ WRgnz"
+                size={80}
               />
             </div>
             <div
@@ -65,7 +66,7 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
           className="sc-krDsej dwDazK"
         >
           <button
-            className="sc-chPdSV hPWyYU"
+            className="sc-kAzzGY iCSQhx"
             disabled={true}
             type="submit"
             width={110}
@@ -73,7 +74,7 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
             Overwrite
           </button>
           <button
-            className="sc-chPdSV iLdFaL"
+            className="sc-kAzzGY eFRbDe"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -120,7 +121,7 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
           className="sc-krDsej dwDazK"
         >
           <button
-            className="sc-chPdSV hPWyYU"
+            className="sc-kAzzGY iCSQhx"
             disabled={true}
             type="submit"
             width={110}
@@ -128,7 +129,7 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
             Set Theme
           </button>
           <button
-            className="sc-chPdSV iLdFaL"
+            className="sc-kAzzGY eFRbDe"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -145,11 +146,11 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
       </h3>
       <label
         checked={true}
-        className="sc-fzsDOv hogTpA sc-kkGfuU ktBgro"
+        className="sc-fzsDOv hogTpA sc-kEYyzF eGRGwQ"
       >
         <input
           checked={true}
-          className="sc-fzsDOv hogTpA sc-kEYyzF MbXgx"
+          className="sc-fzsDOv hogTpA sc-hMqMXs bSKuHb"
           name="autologin-onoff"
           onChange={[Function]}
           type="radio"
@@ -159,11 +160,11 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
       </label>
       <label
         checked={false}
-        className="sc-fzsDOv hogTpA sc-kkGfuU lmsevc"
+        className="sc-fzsDOv hogTpA sc-kEYyzF bLItnJ"
       >
         <input
           checked={false}
-          className="sc-fzsDOv hogTpA sc-kEYyzF MbXgx"
+          className="sc-fzsDOv hogTpA sc-hMqMXs bSKuHb"
           name="autologin-onoff"
           onChange={[Function]}
           type="radio"

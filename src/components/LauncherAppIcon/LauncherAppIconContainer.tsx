@@ -1,20 +1,21 @@
 import { connect } from 'react-redux';
 
 import { closeFinAppRequest, getAppById, getAppStatusById, openFinAppRequest } from '../../redux/apps';
-import { getLauncherPosition, removeFromAppLauncher } from '../../redux/me';
-import { AppIconSizes, AppStatusStates } from '../../types/commons';
+import { getLauncherPosition, getLauncherSizeConfig, removeFromAppLauncher } from '../../redux/me';
+import { AppStatusStates } from '../../types/commons';
 
 import LauncherAppIcon from './LauncherAppIcon';
 
 interface Props {
   appId: string;
-  size?: AppIconSizes;
+  size?: number;
   withContextMenu?: boolean;
 }
 
 const mapState = (state, { appId }) => ({
   app: getAppById(state, appId),
   launcherPosition: getLauncherPosition(state),
+  launcherSizeConfig: getLauncherSizeConfig(state),
   status: getAppStatusById(state, appId),
 });
 
@@ -23,7 +24,7 @@ const mapDispatch = {
 };
 
 const mergeProps = (stateProps, dispatchProps, ownProps: Props) => {
-  const { app, launcherPosition, status } = stateProps;
+  const { app, launcherPosition, launcherSizeConfig, status } = stateProps;
   const { appId, withContextMenu } = ownProps;
 
   let contextMenuOptions;
@@ -45,6 +46,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps: Props) => {
     imgSrc: app ? app.icon : '',
     launchApp: app ? () => dispatchProps.openFinAppRequest(app) : () => undefined,
     launcherPosition,
+    launcherSizeConfig,
   };
 };
 

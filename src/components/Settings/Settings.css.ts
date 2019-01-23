@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Color } from '../../styles';
+import { Color, Typography } from '../../styles';
 
 import Button from '../Button';
 import RadioButton from '../RadioButton';
@@ -20,28 +20,40 @@ export const CTA = styled(Button)`
 
 export const StyledRadioButton = styled(RadioButton)``;
 
-export const Row = styled.div`
-  width: 100%;
+export const Group = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
 
 export const Heading = styled.div`
+  ${Typography.TypeStyleArcturus}
+
   color: ${Color.SUN};
-  font-weight: 200;
   padding: 10px;
+  white-space: nowrap;
+`;
+
+export const Row = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  width: 100%;
 `;
 
 export const Section = styled.div`
-  width: 100vw;
-  padding: 10px 25px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  padding: 10px 25px;
+  width: 100vw;
 
   ${StyledRadioButton} + ${StyledRadioButton} {
     margin-left: 15px;
+  }
+
+  ${Group} + ${Group} {
+    margin-left: 67px;
   }
 `;

@@ -20,7 +20,7 @@ import { animateLauncherCollapseExpand, setWindowRelativeToLauncherBounds } from
 
 import { getAppDirectoryList } from '../apps';
 import { GET_LAYOUTS, getLayoutsRequest } from '../layouts';
-import { GET_ME, GET_SETTINGS, getAutoHide, getIsLoggedIn, getLauncherPosition, getMeRequest, getSettingsRequest } from '../me';
+import { GET_ME, GET_SETTINGS, getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig, getMeRequest, getSettingsRequest } from '../me';
 import { GET_ORG_SETTINGS, getOrganizationAutoLogin, getOrgSettingsRequest } from '../organization';
 import { getAppsLauncherAppList, getSystemIconsSelector } from '../selectors';
 import { getMonitorInfo, setMonitorInfo, setupSystemHandlers } from '../system';
@@ -141,7 +141,7 @@ function* openfinSetup(action: OpenfinReadyAction) {
         put(getSettingsRequest()),
       ]);
 
-      // Show Launchbar
+      // Show Launcher
       yield put(launchAppLauncher());
     }
   }
@@ -200,18 +200,27 @@ function* watchReboundLauncherRequest(action: ReboundLauncherRequestAction) {
     return;
   }
 
-  const [appList, systemIcons, monitorInfo, launcherPosition, autoHide, isExpanded] = yield all([
+  const [appList, systemIcons, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, isExpanded] = yield all([
     select(getAppsLauncherAppList),
     select(getSystemIconsSelector),
     select(getMonitorInfo),
     select(getLauncherPosition),
+    select(getLauncherSizeConfig),
     select(getAutoHide),
     select(getApplicationIsExpanded),
   ]);
   if (!monitorInfo) {
     return;
   }
-  const { width, height, left, top } = calcLauncherPosition(appList.length, systemIcons, monitorInfo, launcherPosition, autoHide, isExpanded);
+  const { width, height, left, top } = calcLauncherPosition(
+    appList.length,
+    systemIcons,
+    monitorInfo,
+    launcherPosition,
+    launcherSizeConfig,
+    autoHide,
+    isExpanded,
+  );
 
   const { shouldAnimate, delay: animationDelay } = payload;
   if (animationDelay) {

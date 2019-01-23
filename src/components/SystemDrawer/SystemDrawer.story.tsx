@@ -5,9 +5,10 @@ import * as React from 'react';
 
 import SystemDrawer from './SystemDrawer';
 
-import { DirectionalPosition, Orientation } from '../../types/enums';
+import { DirectionalPosition, LauncherSize, Orientation } from '../../types/enums';
 import { getLauncherOrientation, getOppositeDirection } from '../../utils/directionalPositionHelpers';
 import { getSystemIcons } from '../../utils/getSystemIcons';
+import { launcherSizeConfigs } from '../../utils/launcherSizeConfigs';
 import { CATEGORIES } from '../../utils/storyCategories';
 import { calcSystemDrawerSize } from './utils';
 
@@ -32,6 +33,8 @@ interface PositionStyle {
 storiesOf(`${CATEGORIES.COMPONENTS}SystemDrawer`, module)
   .addDecorator(withKnobs)
   .add('default', () => {
+    const launcherSize = select('launcherSize', Object(LauncherSize), LauncherSize.Large);
+    const launcherSizeConfig = launcherSizeConfigs[launcherSize];
     const isAdmin = boolean('isAdmin', false);
     const isExpanded = boolean('isExpanded', false);
     const launcherPosition = select('launcherPosition', Object(DirectionalPosition), DirectionalPosition.Top);
@@ -39,7 +42,7 @@ storiesOf(`${CATEGORIES.COMPONENTS}SystemDrawer`, module)
     const orientation = getLauncherOrientation(launcherPosition);
 
     const icons = getStoryIcons(isAdmin);
-    const size = calcSystemDrawerSize(icons, isExpanded);
+    const size = calcSystemDrawerSize(icons, isExpanded, launcherSizeConfig);
 
     const positionStyle: PositionStyle = {};
     positionStyle[launcherPosition] = 0;
@@ -53,15 +56,16 @@ storiesOf(`${CATEGORIES.COMPONENTS}SystemDrawer`, module)
       <div
         style={{
           ...positionStyle,
-          height: orientation === Orientation.Horizontal ? 80 : 'auto',
+          height: orientation === Orientation.Horizontal ? launcherSizeConfig.launcher : 'auto',
           position: 'fixed',
-          width: orientation === Orientation.Horizontal ? 'auto' : 80,
+          width: orientation === Orientation.Horizontal ? 'auto' : launcherSizeConfig.launcher,
         }}
       >
         <SystemDrawer
           extendedWindowPosition={extendedWindowPosition}
           icons={icons}
           isExpanded={isExpanded}
+          launcherSizeConfig={launcherSizeConfig}
           onClickToggle={onClickToggle}
           orientation={orientation}
           size={size}

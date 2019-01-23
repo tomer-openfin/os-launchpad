@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
+import { boolean, number, select, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
@@ -23,6 +23,7 @@ storiesOf(`${CATEGORIES.COMPONENTS}SvgIconWithExtension`, module)
     const extensionPosition = select('extensionPosition', Object(DirectionalPosition), DirectionalPosition.Top);
     const imgSrc = select('Svg', SVGS, SVGS[0]);
     const size = text('Size', defaultSize);
+    const caretSize = number('Size', 25);
     const color = text('Color', defaultProps.color!);
     const hoverColor = text('Hover Color', defaultProps.hoverColor!);
     const clickable = boolean('Clickable', false);
@@ -32,9 +33,10 @@ storiesOf(`${CATEGORIES.COMPONENTS}SvgIconWithExtension`, module)
 
     return (
       <SvgIconWithExtension
-        extensionPosition={extensionPosition}
+        caretSize={caretSize}
         color={color}
         disabled={disabled}
+        extensionPosition={extensionPosition}
         hoverColor={hoverColor}
         imgSrc={imgSrc ? require(`../../assets/${imgSrc}`) : ''}
         isActive={isActive}

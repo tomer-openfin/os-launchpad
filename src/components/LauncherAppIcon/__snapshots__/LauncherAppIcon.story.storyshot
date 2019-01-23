@@ -11,7 +11,7 @@ exports[`Storyshots Components/LauncherAppIcon default 1`] = `
     }
   >
     <div
-      className="sc-jTzLTM qkcFH"
+      className="sc-VigVT bNNIeH"
       size={50}
       title="Launchpad"
     >
@@ -26,7 +26,7 @@ exports[`Storyshots Components/LauncherAppIcon default 1`] = `
           onContextMenu={[Function]}
         >
           <div
-            className="sc-bZQynM ftmHVJ"
+            className="sc-bZQynM eioviT"
             onClick={[Function]}
             size={50}
           >
@@ -38,6 +38,7 @@ exports[`Storyshots Components/LauncherAppIcon default 1`] = `
       </div>
       <div
         className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
+        size={12}
       >
         <div
           className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
@@ -354,6 +355,129 @@ exports[`Storyshots Components/LauncherAppIcon default 1`] = `
                     <span
                       style={Object {}}
                     >
+                      launcherSizeConfig
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#666",
+                            }
+                          }
+                        >
+                          {
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              appIcon
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            50
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              appIconBorder
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            2.7
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              appIconGutter
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            10
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            …
+                          </span>
+                          <span>
+                            <br />
+                              
+                          </span>
+                          }
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
                       isDisabled
                     </span>
                     <span>
@@ -399,35 +523,6 @@ exports[`Storyshots Components/LauncherAppIcon default 1`] = `
                           }
                         >
                           launchApp clicked
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      size
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#a11",
-                            }
-                          }
-                        >
-                          50
                         </span>
                         }
                       </span>

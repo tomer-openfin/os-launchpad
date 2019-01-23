@@ -1,6 +1,4 @@
-import { AppIconSizes } from '../types/enums';
-
-export const scaleAndFadeIn = (ScaleComponent, transitionName: string, transitionDuration: number, size: AppIconSizes | number, margin: string) => {
+export const scaleAndFadeIn = (ScaleComponent, transitionName: string, transitionDuration: number, size: number, margin: string) => {
   const shortTransitionDuration = (transitionDuration / 3) * 2;
   const longTransitionDuration = transitionDuration / 3;
   const easingCurve = 'ease-in-out';

@@ -26,7 +26,8 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
             className="sc-fjmCvl gFqNed"
           >
             <div
-              className="sc-hMqMXs bhNbEz"
+              className="sc-eNQAEJ gLbfhX"
+              size={80}
             />
           </div>
           <div
@@ -57,7 +58,7 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
         className="sc-krDsej dwDazK"
       >
         <button
-          className="sc-chPdSV hPWyYU"
+          className="sc-kAzzGY iCSQhx"
           disabled={true}
           type="submit"
           width={110}
@@ -65,7 +66,7 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
           Overwrite
         </button>
         <button
-          className="sc-chPdSV iLdFaL"
+          className="sc-kAzzGY eFRbDe"
           disabled={true}
           onClick={[Function]}
           type="button"

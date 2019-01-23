@@ -9,11 +9,12 @@ import {
   SET_APP_IDS,
   SET_AUTO_HIDE,
   SET_LAUNCHER_POSITION,
+  SET_LAUNCHER_SIZE,
   SET_ME,
 } from './actions';
 
-import { DirectionalPosition } from '../../types/commons';
-import { GetSettingsSuccess, MeActions, MeState, SetAppIds, SetAutoHide, SetLaunchbarPayload, SetMePayload } from './types';
+import { DirectionalPosition, LauncherSize } from '../../types/commons';
+import { GetSettingsSuccess, MeActions, MeState, SetAppIds, SetAutoHide, SetLauncherPositionPayload, SetLauncherSizePayload, SetMePayload } from './types';
 
 const defaultLoginState = {
   changePassword: false,
@@ -32,6 +33,7 @@ export const defaultState: MeState = {
     appIds: [],
     autoHide: false,
     launcherPosition: DirectionalPosition.Top,
+    launcherSize: LauncherSize.Large,
   },
 };
 
@@ -120,7 +122,16 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
         ...state,
         settings: {
           ...state.settings,
-          launcherPosition: (action.payload! as SetLaunchbarPayload).launcherPosition,
+          launcherPosition: (action.payload! as SetLauncherPositionPayload).launcherPosition,
+        },
+      };
+    }
+    case SET_LAUNCHER_SIZE: {
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          launcherSize: (action.payload! as SetLauncherSizePayload).launcherSize,
         },
       };
     }

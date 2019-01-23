@@ -5,7 +5,8 @@ import styled from 'styled-components';
 
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import { AppStatusStates, DirectionalPosition } from '../../types/enums';
+import { AppStatusStates, DirectionalPosition, LauncherSize } from '../../types/enums';
+import { launcherSizeConfigs } from '../../utils/launcherSizeConfigs';
 import AppIndicator from './AppIndicator';
 
 const Wrapper = styled.div`
@@ -22,10 +23,12 @@ storiesOf(`${CATEGORIES.UI}AppIndicator`, module)
   .add('default', () => {
     const appStatusState = select('status', Object(AppStatusStates), AppStatusStates.Loading);
     const position = select('position', Object(DirectionalPosition), DirectionalPosition.Top);
+    const launcherSize = select('size', Object(LauncherSize), LauncherSize.Large);
+    const size = launcherSizeConfigs[launcherSize].appIndicator;
 
     return (
       <Wrapper>
-        <AppIndicator position={position} appStatusState={appStatusState} />
+        <AppIndicator appStatusState={appStatusState} position={position} size={size} />
       </Wrapper>
     );
   });

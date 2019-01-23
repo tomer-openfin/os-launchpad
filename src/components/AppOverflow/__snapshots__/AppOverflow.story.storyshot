@@ -11,17 +11,33 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
     }
   >
     <div
-      className="sc-hqyNC jMERNQ"
+      className="sc-kvZOFW eOcKWW"
     >
       <div
-        className="sc-Rmtcm beHQGA"
+        className="sc-jAaTju eaYlzw"
         height={0}
         isExpanded={true}
         launcherPosition="top"
+        sizingConfig={
+          Object {
+            "appIcon": 50,
+            "appIconBorder": 2.7,
+            "appIconGutter": 10,
+            "appIndicator": 12,
+            "launcher": 80,
+            "systemDrawerPaddingEnd": 5,
+            "systemDrawerPaddingStart": 11,
+            "systemDrawerToggleClose": 25,
+            "systemDrawerToggleOpen": 20,
+            "systemIcon": 42,
+            "systemIconCaret": 25,
+            "systemIconGutter": 5,
+          }
+        }
         width={0}
       >
         <div
-          className="sc-jzJRlG ggAyuU"
+          className="sc-fjdhpX kjeTOz"
           onClick={[Function]}
           size={50}
         >
@@ -35,7 +51,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
             }
           >
             <div
-              className="sc-fjdhpX bzZQld"
+              className="sc-jTzLTM blWMYJ"
               size={50}
             >
               <div
@@ -47,7 +63,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
           </div>
         </div>
         <div
-          className="sc-jTzLTM bMMlEN"
+          className="sc-VigVT psSBI"
           size={50}
           title="Trumid"
         >
@@ -71,7 +87,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
                 onContextMenu={[Function]}
               >
                 <div
-                  className="sc-bZQynM ftmHVJ"
+                  className="sc-bZQynM eioviT"
                   onClick={[Function]}
                   size={50}
                 >
@@ -84,6 +100,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
           </div>
           <div
             className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
+            size={12}
           >
             <div
               className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
@@ -93,7 +110,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
           </div>
         </div>
         <div
-          className="sc-jTzLTM bMMlEN"
+          className="sc-VigVT psSBI"
           size={50}
           title="Neptune"
         >
@@ -117,7 +134,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
                 onContextMenu={[Function]}
               >
                 <div
-                  className="sc-bZQynM ftmHVJ"
+                  className="sc-bZQynM eioviT"
                   onClick={[Function]}
                   size={50}
                 >
@@ -130,6 +147,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
           </div>
           <div
             className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
+            size={12}
           >
             <div
               className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
@@ -139,7 +157,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
           </div>
         </div>
         <div
-          className="sc-jTzLTM bMMlEN"
+          className="sc-VigVT psSBI"
           size={50}
           title="GreenKey"
         >
@@ -163,7 +181,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
                 onContextMenu={[Function]}
               >
                 <div
-                  className="sc-bZQynM ftmHVJ"
+                  className="sc-bZQynM eioviT"
                   onClick={[Function]}
                   size={50}
                 >
@@ -176,6 +194,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
           </div>
           <div
             className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
+            size={12}
           >
             <div
               className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"

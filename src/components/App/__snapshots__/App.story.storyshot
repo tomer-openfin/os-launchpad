@@ -11,31 +11,49 @@ exports[`Storyshots Components/App default 1`] = `
     }
   >
     <div
-      className="sc-iRbamj cGZntz"
+      className="sc-hzDkRC juPruO"
     >
       <div
-        className="sc-csuQGl gAFbCH"
+        className="sc-fMiknA cbKkQR"
+        size={80}
       >
         <div
-          className="sc-kAzzGY cxjsyR"
+          className="sc-cSHVUG wIRZh"
           height="100%"
           width="100%"
         >
           <div
-            className="sc-jDwBTQ gyiJEJ sc-hMqMXs fJevnH"
+            className="sc-Rmtcm bBJZrb sc-eNQAEJ WRgnz"
+            size={80}
           />
           <div
-            className="sc-gPEVay jGdazX"
+            className="sc-bRBYWo hlBjN"
           >
             <div
-              className="sc-Rmtcm jceNNx"
+              className="sc-jAaTju hjKYoR"
               height={80}
               isExpanded={false}
               launcherPosition="top"
+              sizingConfig={
+                Object {
+                  "appIcon": 50,
+                  "appIconBorder": 2.7,
+                  "appIconGutter": 10,
+                  "appIndicator": 12,
+                  "launcher": 80,
+                  "systemDrawerPaddingEnd": 5,
+                  "systemDrawerPaddingStart": 11,
+                  "systemDrawerToggleClose": 25,
+                  "systemDrawerToggleOpen": 20,
+                  "systemIcon": 42,
+                  "systemIconCaret": 25,
+                  "systemIconGutter": 5,
+                }
+              }
               width={0}
             >
               <div
-                className="sc-jzJRlG ggAyuU"
+                className="sc-fjdhpX kjeTOz"
                 onClick={[Function]}
                 size={50}
               >
@@ -49,7 +67,7 @@ exports[`Storyshots Components/App default 1`] = `
                   }
                 >
                   <div
-                    className="sc-fjdhpX bzZQld"
+                    className="sc-jTzLTM blWMYJ"
                     size={50}
                   >
                     <div
@@ -61,7 +79,7 @@ exports[`Storyshots Components/App default 1`] = `
                 </div>
               </div>
               <div
-                className="sc-jTzLTM bMMlEN"
+                className="sc-VigVT psSBI"
                 size={50}
                 title="Trumid"
               >
@@ -85,7 +103,7 @@ exports[`Storyshots Components/App default 1`] = `
                       onContextMenu={[Function]}
                     >
                       <div
-                        className="sc-bZQynM ftmHVJ"
+                        className="sc-bZQynM eioviT"
                         onClick={[Function]}
                         size={50}
                       >
@@ -98,6 +116,7 @@ exports[`Storyshots Components/App default 1`] = `
                 </div>
                 <div
                   className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
+                  size={12}
                 >
                   <div
                     className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
@@ -107,7 +126,7 @@ exports[`Storyshots Components/App default 1`] = `
                 </div>
               </div>
               <div
-                className="sc-jTzLTM bMMlEN"
+                className="sc-VigVT psSBI"
                 size={50}
                 title="Neptune"
               >
@@ -131,7 +150,7 @@ exports[`Storyshots Components/App default 1`] = `
                       onContextMenu={[Function]}
                     >
                       <div
-                        className="sc-bZQynM ftmHVJ"
+                        className="sc-bZQynM eioviT"
                         onClick={[Function]}
                         size={50}
                       >
@@ -144,6 +163,7 @@ exports[`Storyshots Components/App default 1`] = `
                 </div>
                 <div
                   className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
+                  size={12}
                 >
                   <div
                     className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
@@ -153,7 +173,7 @@ exports[`Storyshots Components/App default 1`] = `
                 </div>
               </div>
               <div
-                className="sc-jTzLTM bMMlEN"
+                className="sc-VigVT psSBI"
                 size={50}
                 title="GreenKey"
               >
@@ -177,7 +197,7 @@ exports[`Storyshots Components/App default 1`] = `
                       onContextMenu={[Function]}
                     >
                       <div
-                        className="sc-bZQynM ftmHVJ"
+                        className="sc-bZQynM eioviT"
                         onClick={[Function]}
                         size={50}
                       >
@@ -190,6 +210,7 @@ exports[`Storyshots Components/App default 1`] = `
                 </div>
                 <div
                   className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
+                  size={12}
                 >
                   <div
                     className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
@@ -201,30 +222,30 @@ exports[`Storyshots Components/App default 1`] = `
             </div>
           </div>
           <div
-            className="sc-jlyJG fKdHDz"
+            className="sc-jhAzac fABssH"
             onClick={[Function]}
           />
           <div
-            className="sc-gipzik kFJgDo"
+            className="sc-fBuWsC fFeMUO"
           >
             <div
-              className="sc-dVhcbM fCaWHZ"
+              className="sc-csuQGl jjUqEP"
               orientation="horizontal"
               size={162}
             >
               <div
-                className="sc-fBuWsC dtBJKy"
+                className="sc-jlyJG cbrNKe"
                 orientation="horizontal"
               >
                 <div
-                  className="sc-jhAzac hphHXh sc-ifAKCX hwskBS"
+                  className="sc-iRbamj fkKcwQ sc-ifAKCX hwskBS"
                   color="#E7E7E7"
                   onClick={[Function]}
                   size={20}
                 />
               </div>
               <div
-                className="sc-fMiknA laDBDJ"
+                className="sc-gipzik kuAMyh"
                 orientation="horizontal"
               >
                 <div
@@ -236,7 +257,7 @@ exports[`Storyshots Components/App default 1`] = `
                 />
               </div>
               <div
-                className="sc-fMiknA laDBDJ"
+                className="sc-gipzik kuAMyh"
                 orientation="horizontal"
               >
                 <div
@@ -248,7 +269,7 @@ exports[`Storyshots Components/App default 1`] = `
                 />
               </div>
               <div
-                className="sc-fMiknA laDBDJ"
+                className="sc-gipzik kuAMyh"
                 orientation="horizontal"
               >
                 <div
@@ -260,7 +281,7 @@ exports[`Storyshots Components/App default 1`] = `
                 />
               </div>
               <div
-                className="sc-fMiknA fxGWiu"
+                className="sc-gipzik geUIIV"
                 orientation="horizontal"
               >
                 <div
@@ -269,15 +290,15 @@ exports[`Storyshots Components/App default 1`] = `
                   disabled={false}
                   onClick={[Function]}
                   size={42}
-                  title="Search"
+                  title="App Directory"
                 />
               </div>
               <div
-                className="sc-fMiknA fxGWiu"
+                className="sc-gipzik geUIIV"
                 orientation="horizontal"
               >
                 <div
-                  className="sc-hzDkRC gGdfCW"
+                  className="sc-gPEVay jSExIm"
                   color="#E7E7E7"
                 >
                   <div
@@ -289,7 +310,7 @@ exports[`Storyshots Components/App default 1`] = `
                     title="Layouts"
                   />
                   <div
-                    className="sc-bRBYWo cfFjGV sc-ifAKCX xmkOg"
+                    className="sc-jDwBTQ bhlsFh sc-ifAKCX xmkOg"
                     color="#E7E7E7"
                     disabled={false}
                     onClick={[Function]}
@@ -298,7 +319,7 @@ exports[`Storyshots Components/App default 1`] = `
                 </div>
               </div>
               <div
-                className="sc-fMiknA fxGWiu"
+                className="sc-gipzik geUIIV"
                 orientation="horizontal"
               >
                 <div
@@ -502,35 +523,6 @@ exports[`Storyshots Components/App default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      toggleDrawer
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          noop
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
                       launcherPosition
                     </span>
                     <span>
@@ -550,6 +542,158 @@ exports[`Storyshots Components/App default 1`] = `
                           top
                         </span>
                         "
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      launcherSizeConfig
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#666",
+                            }
+                          }
+                        >
+                          {
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              appIcon
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            50
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              appIconBorder
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            2.7
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              appIconGutter
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            10
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            …
+                          </span>
+                          <span>
+                            <br />
+                              
+                          </span>
+                          }
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      toggleDrawer
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
+                        </span>
+                        }
                       </span>
                     </span>
                   </span>

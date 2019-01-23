@@ -4,9 +4,10 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import { AppIconSizes } from '../../types/enums';
+import { LauncherSize } from '../../types/enums';
 import { CATEGORIES } from '../../utils/storyCategories';
 
+import { launcherSizeConfigs } from '../../utils/launcherSizeConfigs';
 import { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from '../LauncherAppIcon';
 import AppListToggle from './AppListToggle';
 
@@ -27,29 +28,40 @@ const Wrapper = ({ children, margin, size }) => (
 storiesOf(`${CATEGORIES.COMPONENTS}AppListToggle`, module)
   .addDecorator(withKnobs)
   .add('default', () => {
-    const size = select('size', Object(AppIconSizes), AppIconSizes.Medium);
+    const launcherSize = select('size', Object(LauncherSize), LauncherSize.Large);
     const margin = number('margin', 10);
     const isExpanded = boolean('isExpanded', false);
     const isDisabled = boolean('isDisabled', false);
     const onClick = action('AppListToggle clicked');
+    const launcherSizeConfig = launcherSizeConfigs[launcherSize];
 
     return (
-      <Wrapper margin={margin} size={size}>
-        <AppListToggle isDisabled={isDisabled} isExpanded={isExpanded} margin={`${margin}px`} onClick={onClick} size={size} />
+      <Wrapper margin={margin} size={launcherSizeConfig.appIcon}>
+        <AppListToggle
+          borderWidth={launcherSizeConfig.appIconBorder}
+          isDisabled={isDisabled}
+          isExpanded={isExpanded}
+          margin={`${margin}px`}
+          onClick={onClick}
+          size={launcherSizeConfig.appIcon}
+        />
       </Wrapper>
     );
   })
   .add('with transition', () => {
-    const size = select('size', Object(AppIconSizes), AppIconSizes.Medium);
+    const launcherSize = select('size', Object(LauncherSize), LauncherSize.Large);
     const margin = number('margin', 10);
     const isExpanded = boolean('isExpanded', false);
     const isDisabled = boolean('isDisabled', false);
     const isMounted = boolean('isMounted', true);
     const onClick = action('AppListToggle clicked');
+    const launcherSizeConfig = launcherSizeConfigs[launcherSize];
+    const size = launcherSizeConfig.appIcon;
 
     const propsList = isMounted
       ? [
           {
+            borderWidth: launcherSizeConfig.appIconBorder,
             hasTransition: true,
             isDisabled,
             isExpanded,

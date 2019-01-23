@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
-import { AppIconSizes } from '../../types/commons';
-
 import { Color } from '../../styles';
 import { Props } from './AppIcon';
 
 interface WrapperProps {
   isDisabled?: boolean;
   onClick?: () => void;
-  size: AppIconSizes;
+  size: number;
+  borderWidth: number;
 }
 
 export const Icon = styled.div<Pick<Props, 'imgSrc'>>`
@@ -22,14 +21,16 @@ export const Icon = styled.div<Pick<Props, 'imgSrc'>>`
 `;
 
 export const Wrapper = styled.div<WrapperProps>`
-  border: 2.7px solid rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.06);
+  border-style: solid;
   border-radius: 9.9px;
   display: inline-block;
   flex-shrink: 0;
   overflow: hidden;
   transition: opacity 300ms ease-in-out;
 
-  ${({ isDisabled, onClick, size }) => `
+  ${({ borderWidth, isDisabled, onClick, size }) => `
+    border-width: ${borderWidth}px;
     cursor: ${!isDisabled && onClick ? 'pointer' : 'default'};
     opacity: ${isDisabled ? 0.1 : 1};
     height: ${size}px;

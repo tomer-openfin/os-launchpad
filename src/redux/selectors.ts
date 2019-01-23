@@ -5,7 +5,7 @@ import { objectsFromIds } from '../utils/byIds';
 import { getSystemIcons } from '../utils/getSystemIcons';
 import { calcAppListDimensions, calcMaxAppCount } from '../utils/windowPositionHelpers';
 import { getAppsById } from './apps/selectors';
-import { getAppsLauncherIds, getIsAdmin, getLauncherPosition } from './me/selectors';
+import { getAppsLauncherIds, getIsAdmin, getLauncherPosition, getLauncherSizeConfig } from './me/selectors';
 import { getMonitorInfo } from './system';
 
 export const getAppsLauncherAppList = createSelector(
@@ -20,8 +20,9 @@ export const getSystemIconsSelector = createSelector(
 );
 
 export const getMaxAppCount = createSelector(
-  [getLauncherPosition, getSystemIconsSelector, getMonitorInfo],
-  (launcherPosition, systemIcons, monitorInfo) => (monitorInfo ? calcMaxAppCount(launcherPosition, systemIcons, monitorInfo) : 0),
+  [getLauncherPosition, getLauncherSizeConfig, getSystemIconsSelector, getMonitorInfo],
+  (launcherPosition, launcherSizeConfig, systemIcons, monitorInfo) =>
+    monitorInfo ? calcMaxAppCount(launcherPosition, launcherSizeConfig, systemIcons, monitorInfo) : 0,
 );
 
 export const getAppListApps = createSelector(
@@ -53,7 +54,7 @@ export const getAppListApps = createSelector(
 );
 
 export const getAppListDimensions = createSelector(
-  [getAppListApps, getLauncherPosition, getSystemIcons, getMonitorInfo],
-  (list, launcherPosition, systemIcons, monitorInfo) =>
-    monitorInfo ? calcAppListDimensions(list.appIds.length, launcherPosition, systemIcons, monitorInfo) : { height: 0, width: 0 },
+  [getAppListApps, getLauncherPosition, getLauncherSizeConfig, getSystemIcons, getMonitorInfo],
+  (list, launcherPosition, launcherSizeConfig, systemIcons, monitorInfo) =>
+    monitorInfo ? calcAppListDimensions(list.appIds.length, launcherPosition, launcherSizeConfig, systemIcons, monitorInfo) : { height: 0, width: 0 },
 );

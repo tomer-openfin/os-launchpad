@@ -11,10 +11,11 @@ exports[`Storyshots UI Components/AppIndicator default 1`] = `
     }
   >
     <div
-      className="sc-cSHVUG gaPSqJ"
+      className="sc-jzJRlG jokxha"
     >
       <div
         className="sc-dnqmqq huyHhL"
+        size={12}
       >
         <div
           className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
@@ -208,6 +209,33 @@ exports[`Storyshots UI Components/AppIndicator default 1`] = `
                       <span
                         style={Object {}}
                       >
+                        appStatusState
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          "
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
+                            }
+                          >
+                            loading
+                          </span>
+                          "
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
                         position
                       </span>
                       <span>
@@ -235,25 +263,24 @@ exports[`Storyshots UI Components/AppIndicator default 1`] = `
                       <span
                         style={Object {}}
                       >
-                        appStatusState
+                        size
                       </span>
                       <span>
                         =
                         <span
                           style={Object {}}
                         >
-                          "
+                          {
                           <span
                             style={
                               Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
+                                "color": "#a11",
                               }
                             }
                           >
-                            loading
+                            12
                           </span>
-                          "
+                          }
                         </span>
                       </span>
                        

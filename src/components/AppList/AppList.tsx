@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import { DirectionalPosition, Orientation } from '../../types/commons';
 import { isTopOrBottom } from '../../utils/windowPositionHelpers';
 
+import { LauncherSizeConfig } from '../../utils/launcherSizeConfigs';
 import AppListToggle, { AppListToggleId } from '../AppListToggle';
 import LauncherAppIcon, { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from '../LauncherAppIcon';
 import { StyledTransitionGroup } from './AppList.css';
@@ -14,6 +15,7 @@ interface Props {
   height: number;
   isOverflowExpanded?: boolean;
   launcherPosition: DirectionalPosition;
+  launcherSizeConfig: LauncherSizeConfig;
   saveSettings: () => void;
   setAppIds: (appIds: string[]) => void;
   setIsDragAndDrop: (isDragAndDroppable: boolean) => void;
@@ -53,6 +55,7 @@ const AppList = ({
   height,
   isOverflowExpanded = false,
   launcherPosition,
+  launcherSizeConfig,
   saveSettings,
   setAppIds,
   setIsDragAndDrop,
@@ -60,7 +63,9 @@ const AppList = ({
   width,
 }: Props) => {
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);
-  const margin = isOnTopOrBottom ? '15px 10px' : '10px 15px';
+  const gutterMargin = launcherSizeConfig.appIconGutter;
+  const edgeMargin = (launcherSizeConfig.launcher - launcherSizeConfig.appIcon) / 2;
+  const margin = isOnTopOrBottom ? `${edgeMargin}px ${gutterMargin}px` : `${gutterMargin}px ${edgeMargin}px`;
   const orientation = isOnTopOrBottom ? Orientation.Horizontal : Orientation.Vertical;
   const endSource = () => {
     setIsDragAndDrop(false);
@@ -71,13 +76,14 @@ const AppList = ({
   };
 
   return (
-    <StyledTransitionGroup height={height} isExpanded={isOverflowExpanded} launcherPosition={launcherPosition} width={width}>
+    <StyledTransitionGroup sizingConfig={launcherSizeConfig} height={height} isExpanded={isOverflowExpanded} launcherPosition={launcherPosition} width={width}>
       {appList.map((id, index) => {
         return (
           <CSSTransition key={id} classNames={APP_ICON_TRANSITION_CLASSNAMES} timeout={APP_ICON_TRANSITION_DURATION} unmountOnExit>
             {status => {
               return id === AppListToggleId ? (
                 <AppListToggle
+                  borderWidth={launcherSizeConfig.appIconBorder}
                   dragAndDropOptions={{
                     dragDisabled: true,
                     id,
@@ -90,6 +96,7 @@ const AppList = ({
                   isDisabled={areAppsDisabled}
                   isDragAndDroppable={status !== 'entering'}
                   margin={margin}
+                  size={launcherSizeConfig.appIcon}
                 />
               ) : (
                 <LauncherAppIcon

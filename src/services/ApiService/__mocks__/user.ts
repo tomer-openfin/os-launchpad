@@ -1,12 +1,13 @@
 import { MeSettingsState } from '../../../redux/me/index';
 import { exampleUserLayout } from '../../../samples/LayoutData';
-import { APIResponse, DirectionalPosition, NewUserLayout, UserLayout } from '../../../types/commons';
+import { APIResponse, DirectionalPosition, LauncherSize, NewUserLayout, UserLayout } from '../../../types/commons';
 import { NotFoundResponse, OkResponse } from './utils/commons';
 
 export const MockUserSettings = {
   appIds: ['trumid', 'neptune', 'greenkey', '3', '2', '5', '6'],
   autoHide: false,
   launcherPosition: DirectionalPosition.Top,
+  launcherSize: LauncherSize.Large,
 };
 
 /**

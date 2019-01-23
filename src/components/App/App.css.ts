@@ -4,7 +4,6 @@ import * as blobDark from '../../assets/BlobDark.svg';
 
 import { DirectionalPosition, Orientation } from '../../types/commons';
 import { getLauncherOrientation } from '../../utils/directionalPositionHelpers';
-import * as SIZE from '../../utils/sizingConstants';
 import { isBottomOrRight, isTopOrBottom } from '../../utils/windowPositionHelpers';
 
 import { Color } from '../../styles';
@@ -14,14 +13,20 @@ import Logo from '../Logo';
 interface PositionProp {
   launcherPosition: DirectionalPosition;
 }
+
 interface ExpandedProp {
   isDrawerExpanded: boolean;
 }
-interface EndPaddingProp {
+
+interface AppListWrapperProps {
   endPadding: number;
+  launcherPosition: DirectionalPosition;
 }
 
-type EndPaddingPositionProp = EndPaddingProp & PositionProp;
+interface WrapperProps {
+  launcherPosition: DirectionalPosition;
+  size: number;
+}
 
 /* Styled Imports */
 export const StyledLogo = styled(Logo)`
@@ -30,7 +35,7 @@ export const StyledLogo = styled(Logo)`
 `;
 /* End Styled Imports */
 
-export const AppListWrapper = styled.div<EndPaddingPositionProp>`
+export const AppListWrapper = styled.div<AppListWrapperProps>`
   overflow: hidden;
 
   ${({ endPadding, launcherPosition }) => {
@@ -78,7 +83,7 @@ export const Overlay = styled.div<ExpandedProp>`
 `;
 
 export const SystemDrawerWrapper = styled.div<PositionProp>`
-  display: inline-block;
+  display: inline-flex;
   position: absolute;
 
   ${({ launcherPosition }) => {
@@ -93,19 +98,19 @@ export const SystemDrawerWrapper = styled.div<PositionProp>`
   }}
 `;
 
-export const Wrapper = styled.div<PositionProp>`
+export const Wrapper = styled.div<WrapperProps>`
   align-items: center;
   display: flex;
   justify-content: flex-start;
   position: relative;
 
-  ${({ launcherPosition }) => {
+  ${({ launcherPosition, size }) => {
     const isOnTopOrBottom = isTopOrBottom(launcherPosition);
 
     return `
       flex-direction: ${isOnTopOrBottom ? 'row' : 'column'};
-      height: ${isOnTopOrBottom ? `${SIZE.MAX_STATIC_DIMENSION}px` : '100vh'};
-      width: ${isOnTopOrBottom ? '100vw' : `${SIZE.MAX_STATIC_DIMENSION}px`};
+      height: ${isOnTopOrBottom ? `${size}px` : '100vh'};
+      width: ${isOnTopOrBottom ? '100vw' : `${size}px`};
     `;
   }}
 `;

@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 
 import { Color, hexToRgb } from '../../styles';
-
-import { AppStatusStates } from '../../types/enums';
+import { AppStatusStates, DirectionalPosition } from '../../types/commons';
 
 import SvgIcon from '../SvgIcon';
-import { Props } from './AppIndicator';
 
 const StatusColors = {
   [AppStatusStates.Closed]: Color.VOID,
@@ -23,11 +21,15 @@ const StatusAlert = {
 const TRANSITION_DURATION = '300ms';
 const TRANSITION_EASING = 'ease-in-out';
 
-const defaultSize = 12;
+interface IndicatorProps {
+  appStatusState: AppStatusStates;
+  position: DirectionalPosition;
+  size: number;
+}
 
-export const Indicator = styled.div<Props>`
-  height: ${({ size = defaultSize }) => size}px;
-  width: ${({ size = defaultSize }) => size}px;
+export const Indicator = styled.div<IndicatorProps>`
+  height: ${({ size }) => size}px;
+  width: ${({ size }) => size}px;
   align-items: center;
   background-color: ${({ appStatusState }) => StatusColors[appStatusState]};
   border-radius: 100%;
@@ -37,7 +39,7 @@ export const Indicator = styled.div<Props>`
   transition: background-color ${TRANSITION_DURATION} ${TRANSITION_EASING}, box-shadow ${TRANSITION_DURATION} ${TRANSITION_EASING},
     margin ${TRANSITION_DURATION} ${TRANSITION_EASING};
 
-  ${({ position, appStatusState, size = defaultSize }) => {
+  ${({ position, appStatusState, size }) => {
     if (!StatusAlert[appStatusState]) {
       return '';
     }
@@ -45,7 +47,7 @@ export const Indicator = styled.div<Props>`
     const { r, g, b } = hexToRgb(StatusColors[appStatusState]);
 
     return `
-      box-shadow: 0 0 12px rgba(${r}, ${g}, ${b}, 0.7);
+      box-shadow: 0 0 ${size} rgba(${r}, ${g}, ${b}, 0.7);
       margin-${position}: -${size / 2}px;
     `;
   }}

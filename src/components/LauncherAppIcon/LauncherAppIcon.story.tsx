@@ -4,10 +4,11 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-import { AppIconSizes, AppStatusStates, DirectionalPosition } from '../../types/commons';
+import { AppStatusStates, DirectionalPosition, LauncherSize } from '../../types/commons';
 import { CATEGORIES } from '../../utils/storyCategories';
 import { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from './LauncherAppIcon.css';
 
+import { launcherSizeConfigs } from '../../utils/launcherSizeConfigs';
 import LauncherAppIcon from './LauncherAppIcon';
 
 storiesOf(`${CATEGORIES.COMPONENTS}LauncherAppIcon`, module)
@@ -15,8 +16,8 @@ storiesOf(`${CATEGORIES.COMPONENTS}LauncherAppIcon`, module)
   .add('default', () => {
     const appStatusState = select('Status', Object(AppStatusStates), AppStatusStates.Closed);
     const imgSrc = text('Image Url', 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
-    const launcherPosition = select('Launcher Position', Object(DirectionalPosition), DirectionalPosition.Top);
-    const size = select('Size', Object(AppIconSizes), AppIconSizes.Medium);
+    const launcherPosition = select('launcherPosition', Object(DirectionalPosition), DirectionalPosition.Top);
+    const launcherSize = select('launcherSize', Object(LauncherSize), LauncherSize.Large);
     const isDisabled = boolean('Disabled', false);
     const appTitle = text('Hover Title', 'Launchpad');
 
@@ -27,9 +28,9 @@ storiesOf(`${CATEGORIES.COMPONENTS}LauncherAppIcon`, module)
         appStatusState={appStatusState}
         imgSrc={imgSrc}
         launcherPosition={launcherPosition}
+        launcherSizeConfig={launcherSizeConfigs[launcherSize]}
         isDisabled={isDisabled}
         launchApp={action('launchApp clicked')}
-        size={size}
       />
     );
   })
@@ -37,12 +38,13 @@ storiesOf(`${CATEGORIES.COMPONENTS}LauncherAppIcon`, module)
     const appStatusState = select('Status', Object(AppStatusStates), AppStatusStates.Closed);
     const backgroundColor = text('AppIcon Background Color', '#FFCC04');
     const imgSrc = text('Image Url', 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
-    const launcherPosition = select('Launcher Position', Object(DirectionalPosition), DirectionalPosition.Top);
-    const size = select('Size', Object(AppIconSizes), AppIconSizes.Medium);
+    const launcherPosition = select('launcherPosition', Object(DirectionalPosition), DirectionalPosition.Top);
+    const launcherSize = select('launcherSize', Object(LauncherSize), LauncherSize.Large);
     const margin = number('Margin', 10);
     const isDisabled = boolean('Disabled', false);
     const isMounted = boolean('Mounted', false);
     const appTitle = text('Hover Title', 'Launchpad');
+    const launcherSizeConfig = launcherSizeConfigs[launcherSize];
 
     const icons = isMounted
       ? [
@@ -55,8 +57,8 @@ storiesOf(`${CATEGORIES.COMPONENTS}LauncherAppIcon`, module)
             isDisabled,
             launchApp: action('launchApp clicked'),
             launcherPosition,
+            launcherSizeConfig,
             margin: `${margin}px`,
-            size,
           },
         ]
       : [];
@@ -66,9 +68,9 @@ storiesOf(`${CATEGORIES.COMPONENTS}LauncherAppIcon`, module)
         style={{
           alignItems: 'center',
           display: 'inline-flex',
-          height: `${2 * margin + size}px`,
+          height: `${2 * margin + launcherSizeConfig.appIcon}px`,
           justifyContent: 'center',
-          width: `${2 * margin + size}px`,
+          width: `${2 * margin + launcherSizeConfig.appIcon}px`,
         }}
       >
         <div

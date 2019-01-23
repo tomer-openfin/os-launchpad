@@ -1,7 +1,6 @@
-export enum AppIconSizes {
-  Small = 30,
-  Medium = 50,
-  Large = 80,
+export enum LauncherSize {
+  Small = 'small',
+  Large = 'large',
 }
 
 export enum DirectionalPosition {

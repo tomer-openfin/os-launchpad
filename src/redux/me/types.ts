@@ -18,17 +18,19 @@ import {
   saveSettingsSuccess,
   setAppIds,
   setAutoHide,
-  setLaunchbarPosition,
+  setLauncherPosition,
+  setLauncherSize,
   setMe,
 } from './actions';
 
-import { DirectionalPosition } from '../../types/commons';
+import { DirectionalPosition, LauncherSize } from '../../types/commons';
 
 // State
 export interface MeSettingsState {
   appIds: string[];
   autoHide: boolean;
   launcherPosition: DirectionalPosition;
+  launcherSize: LauncherSize;
 }
 
 export interface MeLoginState {
@@ -82,8 +84,12 @@ export interface SetAutoHidePayload {
   autoHide: boolean;
 }
 
-export interface SetLaunchbarPayload {
+export interface SetLauncherPositionPayload {
   launcherPosition: DirectionalPosition;
+}
+
+export interface SetLauncherSizePayload {
+  launcherSize: LauncherSize;
 }
 
 export interface ChangePasswordPayload {
@@ -118,7 +124,8 @@ export type SetMe = ReturnType<typeof setMe>;
 
 export type SetAppIds = ReturnType<typeof setAppIds>;
 export type SetAutoHide = ReturnType<typeof setAutoHide>;
-export type SetLaunchbarPosition = ReturnType<typeof setLaunchbarPosition>;
+export type SetLauncherPosition = ReturnType<typeof setLauncherPosition>;
+export type SetLauncherSize = ReturnType<typeof setLauncherSize>;
 
 export type ChangePassword = ReturnType<typeof changePassword>;
 
@@ -136,5 +143,5 @@ export type MeActions =
   | SaveSettingsSuccess
   | SaveSettingsError
   | SetMe
-  | SetLaunchbarPosition
+  | SetLauncherPosition
   | ChangePassword;

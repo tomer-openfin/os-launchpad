@@ -1,19 +1,19 @@
-const ICON_SIZE = 42;
-const ICON_MARGIN = 5;
-export const START_PADDING = 11;
-export const END_PADDING = 5;
+import { LauncherSizeConfig } from '../../utils/launcherSizeConfigs';
 
-export const calcSystemDrawerToggleSize = (isExpanded: boolean) => (isExpanded ? 25 : 20);
+export const calcSystemDrawerToggleSize = (isExpanded: boolean, config: LauncherSizeConfig) =>
+  isExpanded ? config.systemDrawerToggleClose : config.systemDrawerToggleOpen;
 
 interface IsShownByDefault {
   isShownByDefault: boolean;
 }
 
-export const calcSystemDrawerSize = (systemIcons: IsShownByDefault[], isExpanded: boolean) => {
-  const toggleSize = calcSystemDrawerToggleSize(isExpanded);
+export const calcSystemDrawerSize = (systemIcons: IsShownByDefault[], isExpanded: boolean, config: LauncherSizeConfig) => {
+  const toggleSize = calcSystemDrawerToggleSize(isExpanded, config);
 
-  const wrapperSize = toggleSize + START_PADDING + END_PADDING;
-  const iconsSize = isExpanded ? systemIcons.length * (ICON_SIZE + ICON_MARGIN) : systemIcons.filter(icon => icon.isShownByDefault).length * ICON_SIZE;
+  const wrapperSize = toggleSize + config.systemDrawerPaddingStart + config.systemDrawerPaddingEnd;
+  const iconsSize = isExpanded
+    ? systemIcons.length * (config.systemIcon + config.systemIconGutter)
+    : systemIcons.filter(icon => icon.isShownByDefault).length * config.systemIcon;
 
   return wrapperSize + iconsSize;
 };

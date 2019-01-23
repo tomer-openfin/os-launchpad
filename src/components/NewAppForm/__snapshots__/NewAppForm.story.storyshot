@@ -14,13 +14,13 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
       className="sc-gojNiO gYbzbS"
     >
       <div
-        className="sc-brqgnP ifgtAb"
+        className="sc-jWBwVP izFfYu"
       >
         <div
-          className="sc-cMljjf dOwSNg"
+          className="sc-brqgnP hERWLS"
         >
           <div
-            className="sc-jAaTju kqYwKI"
+            className="sc-cMljjf eWlOWR"
           >
             Create New App
           </div>
@@ -41,10 +41,10 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
               className="sc-lkqHmb iHpGUe"
             >
               <label
-                className="sc-dxgOiQ cQoZtn"
+                className="sc-kpOJdX fXkmiv"
               >
                 <div
-                  className="sc-kpOJdX gyruwi"
+                  className="sc-kGXeez dYogoq"
                 >
                   Manifest URL
                 </div>
@@ -68,10 +68,10 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
               </div>
             </div>
             <label
-              className="sc-dxgOiQ cQoZtn"
+              className="sc-kpOJdX fXkmiv"
             >
               <div
-                className="sc-kpOJdX gyruwi"
+                className="sc-kGXeez dYogoq"
               >
                 App Title
               </div>
@@ -89,10 +89,10 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
               height="99px"
             >
               <label
-                className="sc-dxgOiQ cQoZtn"
+                className="sc-kpOJdX fXkmiv"
               >
                 <div
-                  className="sc-kpOJdX gyruwi"
+                  className="sc-kGXeez dYogoq"
                 >
                   Description
                 </div>
@@ -106,10 +106,10 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                 />
               </label>
               <label
-                className="sc-dxgOiQ cQoZtn"
+                className="sc-kpOJdX fXkmiv"
               >
                 <div
-                  className="sc-kpOJdX gyruwi"
+                  className="sc-kGXeez dYogoq"
                 >
                   App Icon URL
                 </div>
@@ -128,10 +128,10 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
               height="161px"
             >
               <label
-                className="sc-dxgOiQ cQoZtn"
+                className="sc-kpOJdX fXkmiv"
               >
                 <div
-                  className="sc-kpOJdX gyruwi"
+                  className="sc-kGXeez dYogoq"
                 >
                   Accepted Intent(s)
                 </div>
@@ -241,10 +241,10 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                 </div>
               </label>
               <label
-                className="sc-dxgOiQ cQoZtn"
+                className="sc-kpOJdX fXkmiv"
               >
                 <div
-                  className="sc-kpOJdX gyruwi"
+                  className="sc-kGXeez dYogoq"
                 >
                   Accepted Context(s)
                 </div>
@@ -364,7 +364,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
           >
             <a
               backgroundColor="#848484"
-              className="sc-kgoBCf kczLwl"
+              className="sc-chPdSV bOsLlZ"
               href="/admin/apps"
               onClick={[Function]}
               type="button"
@@ -373,7 +373,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
               Cancel
             </a>
             <button
-              className="sc-chPdSV jDgmoi"
+              className="sc-kAzzGY iaxaQS"
               disabled={true}
               type="submit"
               width={128}

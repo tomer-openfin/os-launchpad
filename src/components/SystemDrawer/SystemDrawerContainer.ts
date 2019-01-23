@@ -1,36 +1,43 @@
 import { connect } from 'react-redux';
-import { Action } from 'redux';
+import { Action, Dispatch } from 'redux';
 
 import { getDrawerIsExpanded, setIsDrawerExpanded } from '../../redux/application';
-import { getLauncherPosition } from '../../redux/me';
+import { getLauncherPosition, getLauncherSizeConfig } from '../../redux/me';
 import { getSystemIconsSelector } from '../../redux/selectors';
 import { State } from '../../redux/types';
 import { getLauncherOrientation, getOppositeDirection } from '../../utils/directionalPositionHelpers';
+import { LAYOUTS_KEY } from '../../utils/getSystemIcons';
 import { calcSystemDrawerSize } from './utils';
 
-import SystemDrawer from './SystemDrawer';
+import { LAYOUTS_WINDOW } from '../../config/windows';
+import { getWindowIsShowing } from '../../redux/windows/index';
+import SystemDrawer, { Props } from './SystemDrawer';
 
 const mapState = (state: State) => {
+  const launcherSizeConfig = getLauncherSizeConfig(state);
   const isExpanded = getDrawerIsExpanded(state);
   const launcherPosition = getLauncherPosition(state);
   const icons = getSystemIconsSelector(state);
-  const size = calcSystemDrawerSize(icons, isExpanded);
+  const size = calcSystemDrawerSize(icons, isExpanded, launcherSizeConfig);
+  const activeIcons = { [LAYOUTS_KEY]: getWindowIsShowing(state, LAYOUTS_WINDOW) };
 
   return {
+    activeIcons,
     extendedWindowPosition: getOppositeDirection(launcherPosition),
     icons,
     isExpanded,
+    launcherSizeConfig,
     orientation: getLauncherOrientation(launcherPosition),
     size,
   };
 };
 
-const mapDispatch = dispatch => ({
+const mapDispatch = (dispatch: Dispatch) => ({
   dispatch: (action: Action) => dispatch(action),
   setExpanded: (isExpanded: boolean) => dispatch(setIsDrawerExpanded(isExpanded)),
 });
 
-const mergeProps = (stateProps, dispatchProps, ownProps) => {
+const mergeProps = (stateProps, dispatchProps): Props => {
   const { icons: stateIcons, ...rest } = stateProps;
   const { dispatch, setExpanded } = dispatchProps;
 

@@ -18,7 +18,7 @@ exports[`Storyshots UI Components/AppIcon default 1`] = `
       }
     >
       <div
-        className="sc-bZQynM fVffwJ"
+        className="sc-bZQynM ieIHPE"
         size={50}
       >
         <div
@@ -257,6 +257,35 @@ exports[`Storyshots UI Components/AppIcon default 1`] = `
                     AppIcon
                   </span>
                   <span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
+                        borderWidth
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            2.7
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
                     <span>
                       <span>
                         <br />

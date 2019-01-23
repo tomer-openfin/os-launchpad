@@ -4,9 +4,10 @@ import * as arrowIcon from '../../assets/ArrowCircle.svg';
 import * as closeIcon from '../../assets/CloseCircle.svg';
 
 import { Color } from '../../styles';
-import { AppIconSizes, DirectionalPosition, Orientation } from '../../types/commons';
+import { DirectionalPosition, Orientation } from '../../types/commons';
 import { calcSystemDrawerToggleSize } from './utils';
 
+import { LauncherSizeConfig } from '../../utils/launcherSizeConfigs';
 import SvgIcon from '../SvgIcon';
 import SvgIconWithExtension from '../SvgIconWithExtension';
 import { SvgIconWrapper, ToggleIcon, ToggleIconWrapper, Wrapper } from './SystemDrawer.css';
@@ -19,23 +20,32 @@ interface SystemDrawerIcon {
   title: string;
 }
 
-interface Props {
+export interface Props {
+  activeIcons: {
+    [key: string]: boolean;
+  };
   className?: string;
   extendedWindowPosition: DirectionalPosition;
   icons: SystemDrawerIcon[];
-  iconSize?: AppIconSizes;
   isExpanded: boolean;
+  launcherSizeConfig: LauncherSizeConfig;
   onClickToggle: (isExpanded?: boolean) => void;
   orientation: Orientation;
   size: number;
 }
 
+const defaultProps = { activeIcons: {} };
+
 class SystemDrawer extends React.Component<Props> {
+  static defaultProps = defaultProps;
+
+  lastConfig: LauncherSizeConfig;
   lastOrientation: Orientation;
 
   constructor(props: Props) {
     super(props);
 
+    this.lastConfig = props.launcherSizeConfig;
     this.lastOrientation = props.orientation;
   }
 
@@ -51,21 +61,29 @@ class SystemDrawer extends React.Component<Props> {
   };
 
   render() {
-    const { className, extendedWindowPosition, icons, iconSize, isExpanded, onClickToggle, orientation, size } = this.props;
+    const { activeIcons, className, extendedWindowPosition, icons, isExpanded, launcherSizeConfig, onClickToggle, orientation, size } = this.props;
     let hiddenIconCount = icons.reduce((acc, icon) => (!icon.isShownByDefault ? acc + 1 : acc), 0);
     // Do not allow animations/transitions to happen when switch orientation
-    const stopTransition = this.lastOrientation !== this.props.orientation;
+    const stopTransition = this.lastConfig !== this.props.launcherSizeConfig || this.lastOrientation !== this.props.orientation;
+    this.lastConfig = this.props.launcherSizeConfig;
     this.lastOrientation = this.props.orientation;
 
     return (
-      <Wrapper className={className} isExpanded={isExpanded} orientation={orientation} size={size} stopTransition={stopTransition}>
-        <ToggleIconWrapper isExpanded={isExpanded} orientation={orientation}>
+      <Wrapper
+        className={className}
+        sizingConfig={launcherSizeConfig}
+        isExpanded={isExpanded}
+        orientation={orientation}
+        size={size}
+        stopTransition={stopTransition}
+      >
+        <ToggleIconWrapper sizingConfig={launcherSizeConfig} isExpanded={isExpanded} orientation={orientation}>
           <ToggleIcon
             color={isExpanded ? Color.MARS : undefined}
             imgSrc={isExpanded ? closeIcon : arrowIcon}
             onClick={onClickToggle}
             orientation={orientation}
-            size={calcSystemDrawerToggleSize(isExpanded)}
+            size={calcSystemDrawerToggleSize(isExpanded, launcherSizeConfig)}
           />
         </ToggleIconWrapper>
 
@@ -79,18 +97,34 @@ class SystemDrawer extends React.Component<Props> {
           }
 
           return (
-            <SvgIconWrapper delayMultiplier={delayMultiplier} isExpanded={isExpanded} isVisible={isVisible} key={title} orientation={orientation}>
+            <SvgIconWrapper
+              delayMultiplier={delayMultiplier}
+              sizingConfig={launcherSizeConfig}
+              isExpanded={isExpanded}
+              isVisible={isVisible}
+              key={title}
+              orientation={orientation}
+            >
               {hasExtendedWindow ? (
                 <SvgIconWithExtension
+                  caretSize={launcherSizeConfig.systemIconCaret}
                   disabled={!isVisible}
                   extensionPosition={extendedWindowPosition}
                   imgSrc={icon}
+                  isActive={activeIcons[title]}
                   onClick={handleClick}
-                  size={iconSize}
+                  size={launcherSizeConfig.systemIcon}
                   title={title}
                 />
               ) : (
-                <SvgIcon disabled={!isVisible} imgSrc={icon} onClick={handleClick} size={iconSize} title={title} />
+                <SvgIcon
+                  disabled={!isVisible}
+                  imgSrc={icon}
+                  isActive={activeIcons[title]}
+                  onClick={handleClick}
+                  size={launcherSizeConfig.systemIcon}
+                  title={title}
+                />
               )}
             </SvgIconWrapper>
           );

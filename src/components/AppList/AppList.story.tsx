@@ -6,7 +6,8 @@ import * as React from 'react';
 import AppData from '../../samples/AppData';
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import { DirectionalPosition } from '../../types/commons';
+import { DirectionalPosition, LauncherSize } from '../../types/commons';
+import { LauncherSizeConfig, launcherSizeConfigs } from '../../utils/launcherSizeConfigs';
 import { isTopOrBottom } from '../../utils/windowPositionHelpers';
 import { AppListToggleId } from '../AppListToggle/index';
 import AppList from './AppList';
@@ -24,6 +25,7 @@ interface Props {
   height: number;
   isOverflowExpanded: boolean;
   launcherPosition: DirectionalPosition;
+  launcherSizeConfig: LauncherSizeConfig;
   width: number;
 }
 
@@ -51,7 +53,7 @@ class AppListStory extends React.Component<Props, State> {
   };
 
   render() {
-    const { height, isOverflowExpanded, width, launcherPosition } = this.props;
+    const { height, isOverflowExpanded, width, launcherPosition, launcherSizeConfig } = this.props;
     const { appList } = this.state;
 
     return (
@@ -63,6 +65,7 @@ class AppListStory extends React.Component<Props, State> {
             height={height}
             isOverflowExpanded={isOverflowExpanded}
             launcherPosition={launcherPosition}
+            launcherSizeConfig={launcherSizeConfig}
             saveSettings={this.saveSettings}
             setIsDragAndDrop={setIsDragAndDrop}
             setAppIds={this.setAppIds}
@@ -78,6 +81,7 @@ storiesOf(`${CATEGORIES.COMPONENTS}AppList`, module)
   .addDecorator(withKnobs)
   .add('default', () => {
     const launcherPosition = select('launcherPosition', Object(DirectionalPosition), DirectionalPosition.Top);
+    const launcherSize = select('launcherSize', Object(LauncherSize), LauncherSize.Large);
     const isOverflowExpanded = boolean('isExpanded', false);
     const mainAxisLength = 700;
     const secondaryAxisLength = isOverflowExpanded ? 160 : 80;
@@ -85,5 +89,13 @@ storiesOf(`${CATEGORIES.COMPONENTS}AppList`, module)
     const width = isOnTopOrBottom ? mainAxisLength : secondaryAxisLength;
     const height = isOnTopOrBottom ? secondaryAxisLength : mainAxisLength;
 
-    return <AppListStory height={height} isOverflowExpanded={isOverflowExpanded} launcherPosition={launcherPosition} width={width} />;
+    return (
+      <AppListStory
+        height={height}
+        isOverflowExpanded={isOverflowExpanded}
+        launcherPosition={launcherPosition}
+        launcherSizeConfig={launcherSizeConfigs[launcherSize]}
+        width={width}
+      />
+    );
   });

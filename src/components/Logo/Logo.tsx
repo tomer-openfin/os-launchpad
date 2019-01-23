@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { LauncherSize } from '../../types/enums';
+import { launcherSizeConfigs } from '../../utils/launcherSizeConfigs';
 import { LogoIcon } from './Logo.css';
 
 export interface Props {
@@ -8,6 +10,10 @@ export interface Props {
   size?: number;
 }
 
-const Logo = ({ className, imgSrc, size }: Props) => <LogoIcon className={className} imgSrc={imgSrc} size={size} />;
+const defaultProps = {
+  size: launcherSizeConfigs[LauncherSize.Large].launcher,
+};
+
+const Logo = ({ className, imgSrc, size = defaultProps.size }: Props) => <LogoIcon className={className} imgSrc={imgSrc} size={size} />;
 
 export default Logo;

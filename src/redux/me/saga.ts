@@ -35,6 +35,7 @@ import {
   saveSettingsSuccess,
   SET_AUTO_HIDE,
   SET_LAUNCHER_POSITION,
+  SET_LAUNCHER_SIZE,
   setMe,
 } from './actions';
 import { getMeSettings } from './selectors';
@@ -201,18 +202,6 @@ function* watchGetSettingsSuccess() {
   yield put(reboundLauncherRequest(false, 0));
 }
 
-function* watchSetAutoHide() {
-  yield put(reboundLauncherRequest(false, 0));
-
-  yield put(saveSettingsRequest());
-}
-
-function* watchSetLaunchbarPosition() {
-  yield put(reboundLauncherRequest(false, 0));
-
-  yield put(saveSettingsRequest());
-}
-
 function* watchSaveSettingsRequest() {
   const settings = yield select(getMeSettings);
 
@@ -224,6 +213,12 @@ function* watchSaveSettingsRequest() {
 
 function* watchUpdateLauncherApps(delay: number) {
   yield put(reboundLauncherRequest(true, delay));
+
+  yield put(saveSettingsRequest());
+}
+
+function* reboundLauncherAndSaveSettings() {
+  yield put(reboundLauncherRequest(false, 0));
 
   yield put(saveSettingsRequest());
 }
@@ -249,9 +244,7 @@ export function* meSaga() {
   yield takeLatest(SAVE_SETTINGS.REQUEST, watchSaveSettingsRequest);
 
   yield takeLatest(ADD_TO_APP_LAUNCHER, watchUpdateLauncherApps, 0);
-  yield takeLatest(REMOVE_FROM_APP_LAUNCHER, watchUpdateLauncherApps, 150);
+  yield takeLatest(REMOVE_FROM_APP_LAUNCHER, watchUpdateLauncherApps, 200);
 
-  yield takeLatest(SET_LAUNCHER_POSITION, watchSetLaunchbarPosition);
-
-  yield takeLatest(SET_AUTO_HIDE, watchSetAutoHide);
+  yield takeLatest([SET_AUTO_HIDE, SET_LAUNCHER_POSITION, SET_LAUNCHER_SIZE], reboundLauncherAndSaveSettings);
 }

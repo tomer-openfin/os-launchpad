@@ -1,15 +1,16 @@
 import * as React from 'react';
-import { AppIconSizes } from '../../types/enums';
+import { LauncherSize } from '../../types/enums';
 
 import * as Close from '../../assets/Close.svg';
 import * as Ellipsis from '../../assets/Ellipsis.svg';
 
+import { launcherSizeConfigs } from '../../utils/launcherSizeConfigs';
 import DragAndDrop, { Props as DragAndDropProps } from '../DragAndDrop';
 import SvgIcon from '../SvgIcon/SvgIcon';
 import { SvgWrapper, Wrapper } from './AppListToggle.css';
 
 export interface Props {
-  backgroundColor?: string;
+  borderWidth?: number;
   className?: string;
   dragAndDropOptions?: DragAndDropProps;
   hasTransition?: boolean;
@@ -18,29 +19,29 @@ export interface Props {
   isExpanded?: boolean;
   margin?: string;
   onClick: () => void;
-  size?: AppIconSizes;
+  size?: number;
 }
 
 const defaultProps = {
+  borderWidth: launcherSizeConfigs[LauncherSize.Large].appIconBorder,
   hasTransition: false,
   isDisabled: false,
   isDragAndDroppable: false,
   isExpanded: false,
   margin: '0',
-  size: AppIconSizes.Medium,
+  size: launcherSizeConfigs[LauncherSize.Large].appIcon,
 };
 
 export const AppListToggleId = 'osLaunchPadMain::app-list-toggle';
 
-const renderAppListToggleContent = ({ isExpanded, size = defaultProps.size }: Props) => (
-  <SvgWrapper size={size}>
+const renderAppListToggleContent = ({ borderWidth = defaultProps.borderWidth, isExpanded, size = defaultProps.size }: Props) => (
+  <SvgWrapper borderWidth={borderWidth} size={size}>
     <SvgIcon imgSrc={isExpanded ? Close : Ellipsis} size={25} />
   </SvgWrapper>
 );
 
 const AppListToggle = (props: Props) => {
   const {
-    backgroundColor,
     className,
     dragAndDropOptions,
     hasTransition = defaultProps.hasTransition,
@@ -52,15 +53,7 @@ const AppListToggle = (props: Props) => {
   } = props;
 
   return (
-    <Wrapper
-      backgroundColor={backgroundColor}
-      hasTransition={hasTransition}
-      className={className}
-      isDisabled={isDisabled}
-      margin={margin}
-      onClick={isDisabled ? undefined : onClick}
-      size={size}
-    >
+    <Wrapper hasTransition={hasTransition} className={className} isDisabled={isDisabled} margin={margin} onClick={isDisabled ? undefined : onClick} size={size}>
       {isDragAndDroppable && dragAndDropOptions ? (
         <DragAndDrop {...dragAndDropOptions}>{renderAppListToggleContent(props)}</DragAndDrop>
       ) : (

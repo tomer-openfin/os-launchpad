@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 import { Orientation } from '../../types/commons';
+import { LauncherSizeConfig } from '../../utils/launcherSizeConfigs';
 import SvgIcon from '../SvgIcon';
-import { END_PADDING, START_PADDING } from './utils';
 
 interface SvgIconWrapper {
+  sizingConfig: LauncherSizeConfig;
   delayMultiplier: number;
   isExpanded: boolean;
   isVisible: boolean;
@@ -16,11 +17,13 @@ interface ToggleIconProps {
 }
 
 interface ToggleIconWrapperProps {
+  sizingConfig: LauncherSizeConfig;
   isExpanded: boolean;
   orientation: Orientation;
 }
 
 interface WrapperProps {
+  sizingConfig: LauncherSizeConfig;
   isExpanded: boolean;
   orientation: Orientation;
   size: number;
@@ -43,9 +46,9 @@ export const ToggleIconWrapper = styled.div<ToggleIconWrapperProps>`
   position: absolute;
   transition: transform 250ms ease-in-out;
 
-  ${({ isExpanded, orientation }) => `
+  ${({ sizingConfig, isExpanded, orientation }) => `
     transform: ${isExpanded ? 'rotate(180deg)' : 'rotate(0deg)'};
-    ${getIsHorizontal(orientation) ? `left: ${START_PADDING}px;` : `top: ${START_PADDING}px;`}
+    ${getIsHorizontal(orientation) ? `left: ${sizingConfig.systemDrawerPaddingStart}px;` : `top: ${sizingConfig.systemDrawerPaddingStart}px;`}
   `}
 `;
 
@@ -57,11 +60,11 @@ export const SvgIconWrapper = styled.div<SvgIconWrapper>`
   transition-timing-function: ease-in-out;
   transition: margin 250ms, opacity 300ms, transform 300ms, width 300ms;
 
-  ${({ delayMultiplier, isExpanded, isVisible, orientation }) => {
+  ${({ sizingConfig, delayMultiplier, isExpanded, isVisible, orientation }) => {
     const isHorizontal = getIsHorizontal(orientation);
-    const marginSize = isExpanded && isVisible ? '5px' : '0';
-    const transformX = isHorizontal && !isVisible ? '20px' : '0';
-    const transformY = !isHorizontal && !isVisible ? '20px' : '0';
+    const marginSize = isExpanded && isVisible ? `${sizingConfig.systemIconGutter}px` : '0';
+    const transformX = isHorizontal && !isVisible ? '50%' : '0';
+    const transformY = !isHorizontal && !isVisible ? '50%' : '0';
 
     return `
       ${isHorizontal ? `margin-left: ${marginSize}` : `margin-top: ${marginSize}`};
@@ -81,10 +84,10 @@ export const Wrapper = styled.div<WrapperProps>`
   transition-duration: 250ms;
   transition-timing-function: ease-in-out;
 
-  ${({ isExpanded, orientation, size, stopTransition }) => {
+  ${({ sizingConfig, isExpanded, orientation, size, stopTransition }) => {
     const isHorizontal = getIsHorizontal(orientation);
-    const startPadding = `${START_PADDING}px`;
-    const endPadding = `${END_PADDING}px`;
+    const startPadding = `${sizingConfig.systemDrawerPaddingStart}px`;
+    const endPadding = `${sizingConfig.systemDrawerPaddingEnd}px`;
 
     return `
       background-color: ${isExpanded ? 'rgba(14,13,21,0.96)' : 'rgba(0, 0, 0, 0.33)'};

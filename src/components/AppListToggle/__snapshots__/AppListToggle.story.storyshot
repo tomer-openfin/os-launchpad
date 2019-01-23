@@ -22,12 +22,12 @@ exports[`Storyshots Components/AppListToggle default 1`] = `
       }
     >
       <div
-        className="sc-jzJRlG hmwjgP"
+        className="sc-fjdhpX jNcwfi"
         onClick={[Function]}
         size={50}
       >
         <div
-          className="sc-fjdhpX bzZQld"
+          className="sc-jTzLTM blWMYJ"
           size={50}
         >
           <div
@@ -272,6 +272,35 @@ exports[`Storyshots Components/AppListToggle default 1`] = `
                     AppListToggle
                   </span>
                   <span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
+                        borderWidth
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            2.7
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
                     <span>
                       <span>
                         <br />
@@ -549,12 +578,12 @@ exports[`Storyshots Components/AppListToggle with transition 1`] = `
       }
     >
       <div
-        className="sc-jzJRlG gNXygu"
+        className="sc-fjdhpX cCTirk"
         onClick={[Function]}
         size={50}
       >
         <div
-          className="sc-fjdhpX bzZQld"
+          className="sc-jTzLTM blWMYJ"
           size={50}
         >
           <div
@@ -950,6 +979,35 @@ exports[`Storyshots Components/AppListToggle with transition 1`] = `
                         AppListToggle
                       </span>
                       <span>
+                        <span>
+                          <span>
+                            <br />
+                              
+                          </span>
+                          <span
+                            style={Object {}}
+                          >
+                            borderWidth
+                          </span>
+                          <span>
+                            =
+                            <span
+                              style={Object {}}
+                            >
+                              {
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#a11",
+                                  }
+                                }
+                              >
+                                2.7
+                              </span>
+                              }
+                            </span>
+                          </span>
+                        </span>
                         <span>
                           <span>
                             <br />

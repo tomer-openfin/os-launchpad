@@ -11,7 +11,8 @@ exports[`Storyshots UI Components/Logo default 1`] = `
     }
   >
     <div
-      className="sc-hMqMXs bhNbEz"
+      className="sc-eNQAEJ gLbfhX"
+      size={80}
     />
   </div>
   <button

@@ -1,4 +1,5 @@
-import { DirectionalPosition } from '../../types/commons';
+import { DirectionalPosition, LauncherSize } from '../../types/commons';
+import { launcherSizeConfigs } from '../launcherSizeConfigs';
 import {
   calcDimensionsByLauncherPosition,
   calcLauncherCoordinates,
@@ -201,6 +202,7 @@ describe('windowPositionHelpers', () => {
   describe('calcLauncherDimensions', () => {
     it('should return actual launcher dimensions for app count that does not exceed monitor size', () => {
       const appCount = 8;
+      const launcherSizeConfig = launcherSizeConfigs[LauncherSize.Large];
       const tests = [
         { autoHide: false, isExpanded: false, launcherPosition: TOP, result: { height: 80, width: 738 } },
         { autoHide: false, isExpanded: true, launcherPosition: TOP, result: { height: 80, width: 738 } },
@@ -221,12 +223,13 @@ describe('windowPositionHelpers', () => {
       ];
 
       tests.forEach(({ autoHide, isExpanded, launcherPosition, result }) =>
-        expect(calcLauncherDimensions(appCount, SYSTEM_ICONS, monitorInfo, launcherPosition, autoHide, isExpanded)).toEqual(result),
+        expect(calcLauncherDimensions(appCount, SYSTEM_ICONS, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, isExpanded)).toEqual(result),
       );
     });
 
     it('should return maximum launcher dimensions for app count that does exceed monitor size', () => {
       const appCount = 1000;
+      const launcherSizeConfig = launcherSizeConfigs[LauncherSize.Large];
       const tests = [
         { autoHide: false, isExpanded: false, launcherPosition: TOP, result: { height: 80, width: 1298 } },
         { autoHide: false, isExpanded: true, launcherPosition: TOP, result: { height: 80, width: 1298 } },
@@ -247,7 +250,7 @@ describe('windowPositionHelpers', () => {
       ];
 
       tests.forEach(({ autoHide, isExpanded, launcherPosition, result }) =>
-        expect(calcLauncherDimensions(appCount, SYSTEM_ICONS, monitorInfo, launcherPosition, autoHide, isExpanded)).toEqual(result),
+        expect(calcLauncherDimensions(appCount, SYSTEM_ICONS, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, isExpanded)).toEqual(result),
       );
     });
   });
@@ -266,6 +269,7 @@ describe('windowPositionHelpers', () => {
   describe('calcLauncherPosition', () => {
     it('should return actual launcher dimensions/position for app count that does not exceed monitor size', () => {
       const appCount = 8;
+      const launcherSizeConfig = launcherSizeConfigs[LauncherSize.Large];
       const tests = [
         { autoHide: false, isExpanded: false, launcherPosition: TOP, result: { height: 80, left: 323, top: 0, width: 738 } },
         { autoHide: false, isExpanded: true, launcherPosition: TOP, result: { height: 80, left: 323, top: 0, width: 738 } },
@@ -286,13 +290,14 @@ describe('windowPositionHelpers', () => {
       ];
 
       tests.forEach(({ autoHide, isExpanded, launcherPosition, result }) =>
-        expect(calcLauncherPosition(appCount, SYSTEM_ICONS, monitorInfo, launcherPosition, autoHide, isExpanded)).toEqual(result),
+        expect(calcLauncherPosition(appCount, SYSTEM_ICONS, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, isExpanded)).toEqual(result),
       );
     });
   });
 
   it('should return maximum launcher dimensions/position for app count that does exceed monitor size', () => {
     const appCount = 1000;
+    const launcherSizeConfig = launcherSizeConfigs[LauncherSize.Large];
     const tests = [
       { autoHide: false, isExpanded: false, launcherPosition: TOP, result: { height: 80, left: 43, top: 0, width: 1298 } },
       { autoHide: false, isExpanded: true, launcherPosition: TOP, result: { height: 80, left: 43, top: 0, width: 1298 } },
@@ -313,7 +318,7 @@ describe('windowPositionHelpers', () => {
     ];
 
     tests.forEach(({ autoHide, isExpanded, launcherPosition, result }) =>
-      expect(calcLauncherPosition(appCount, SYSTEM_ICONS, monitorInfo, launcherPosition, autoHide, isExpanded)).toEqual(result),
+      expect(calcLauncherPosition(appCount, SYSTEM_ICONS, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, isExpanded)).toEqual(result),
     );
   });
 });

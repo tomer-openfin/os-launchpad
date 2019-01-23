@@ -10,7 +10,7 @@ import { generateLayout, restoreLayout } from '../../utils/openfinLayouts';
 import { animateWindow } from '../../utils/openfinPromises';
 import { calcBoundsRelativeToLauncher } from '../../utils/windowPositionHelpers';
 import { getApps, getAppsStatusById, openFinAppSuccess, setFinAppStatusState } from '../apps';
-import { getLauncherPosition } from '../me';
+import { getLauncherPosition, getLauncherSizeConfig } from '../me';
 import { getWindowBounds } from '../windows';
 import {
   CREATE_LAYOUT,
@@ -180,6 +180,7 @@ function* watchDeleteLayoutRequest(action: DeleteLayoutRequest) {
 
 function* watchLayoutsChangesToAnimateWindow() {
   const launcherPosition = yield select(getLauncherPosition);
+  const launcherSizeConfig = yield select(getLauncherSizeConfig);
   const layoutsWindow = yield call(getFinWindowByName, LAYOUTS_WINDOW);
   const launcherBounds = yield select(getWindowBounds, MAIN_WINDOW);
   const bounds = yield select(getWindowBounds, LAYOUTS_WINDOW);
@@ -194,6 +195,7 @@ function* watchLayoutsChangesToAnimateWindow() {
     { ...bounds, height: calcDesiredLayoutsWindowHeight(layouts.length) },
     launcherBounds,
     launcherPosition,
+    launcherSizeConfig,
   );
 
   const transitions: Transition = {

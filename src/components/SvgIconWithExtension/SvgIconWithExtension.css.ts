@@ -15,25 +15,25 @@ const getCaretRotation = (extensionPosition: DirectionalPosition) => {
   switch (extensionPosition) {
     case DirectionalPosition.Top:
       return `
-        top: -15px;
+        top: -33%;
         transform: translate3d(-50%, 0, 0) rotate(180deg);
         left: 50%;
       `;
     case DirectionalPosition.Left:
       return `
-        left: -15px;
+        left: -33%;
         transform: translate3d(0, -50%, 0) rotate(90deg);
         top: 50%;
       `;
     case DirectionalPosition.Right:
       return `
-        right: -15px;
+        right: -33%;
         transform: translate3d(0, -50%, 0) rotate(270deg);
         top: 50%;
       `;
     default:
       return `
-        bottom: -15px;
+        bottom: -33%;
         transform: translate3d(-50%, 0, 0);
         left: 50%;
       `;

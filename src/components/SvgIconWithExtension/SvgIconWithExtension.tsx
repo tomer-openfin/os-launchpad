@@ -8,12 +8,14 @@ import SvgIcon, { defaultProps, Props as SvgIconProps } from '../SvgIcon';
 import { CaretSvgIcon, Wrapper } from './SvgIconWithExtension.css';
 
 interface Props extends SvgIconProps {
+  caretSize: number;
   extensionPosition: DirectionalPosition;
 }
 
 const { color: defaultColor, hoverColor: defaultHoverColor, size: defaultSize } = defaultProps;
 
 const SvgIconWithExtension = ({
+  caretSize,
   className,
   color = defaultColor,
   disabled,
@@ -44,7 +46,7 @@ const SvgIconWithExtension = ({
       imgSrc={arrowDownIcon}
       isActive={isActive}
       onClick={disabled ? undefined : onClick}
-      size={25}
+      size={caretSize}
     />
   </Wrapper>
 );

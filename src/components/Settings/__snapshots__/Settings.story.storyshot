@@ -11,22 +11,22 @@ exports[`Storyshots Components/Settings default 1`] = `
     }
   >
     <div
-      className="sc-esjQYD ItZpH"
+      className="sc-kfGgVZ gCEcdu"
     >
       <div
-        className="sc-brqgnP ezswLJ"
+        className="sc-jWBwVP jncaxH"
       >
         <div
-          className="sc-cMljjf dOwSNg"
+          className="sc-brqgnP hERWLS"
         >
           <div
-            className="sc-jAaTju kqYwKI"
+            className="sc-cMljjf eWlOWR"
           >
             My Settings
           </div>
         </div>
         <div
-          className="sc-jWBwVP kywBrB"
+          className="sc-cvbbAY kNcqoF"
         >
           <div
             className="sc-ifAKCX cWlwzh"
@@ -37,82 +37,131 @@ exports[`Storyshots Components/Settings default 1`] = `
         </div>
       </div>
       <div
-        className="sc-iQKALj fcqkme"
+        className="sc-iQKALj cuRTRW"
       >
         <div
-          className="sc-RefOD jUFiTA"
+          className="sc-eXEjpC jjfHbT"
         >
-          Auto-Hide
+          <div
+            className="sc-ibxdXY jPTmTl"
+          >
+            Auto-Hide
+          </div>
+          <div
+            className="sc-RefOD jApbnX"
+          >
+            <label
+              checked={false}
+              className="sc-kIPQKe jgMiIX sc-kEYyzF bLItnJ"
+            >
+              <input
+                checked={false}
+                className="sc-kIPQKe jgMiIX sc-hMqMXs bSKuHb"
+                name="autohide-onoff"
+                onChange={[Function]}
+                type="radio"
+                value="on"
+              />
+              On
+            </label>
+            <label
+              checked={true}
+              className="sc-kIPQKe jgMiIX sc-kEYyzF eGRGwQ"
+            >
+              <input
+                checked={true}
+                className="sc-kIPQKe jgMiIX sc-hMqMXs bSKuHb"
+                name="autohide-onoff"
+                onChange={[Function]}
+                type="radio"
+                value="off"
+              />
+              Off
+            </label>
+          </div>
         </div>
         <div
-          className="sc-ibxdXY gGuPJL"
+          className="sc-eXEjpC jjfHbT"
         >
-          <label
-            checked={false}
-            className="sc-eXEjpC fuVqJC sc-kkGfuU lmsevc"
+          <div
+            className="sc-ibxdXY jPTmTl"
           >
-            <input
+            Launcher Size
+          </div>
+          <div
+            className="sc-RefOD jApbnX"
+          >
+            <label
               checked={false}
-              className="sc-eXEjpC fuVqJC sc-kEYyzF MbXgx"
-              name="autohide-onoff"
-              onChange={[Function]}
-              type="radio"
-              value="on"
-            />
-            On
-          </label>
-          <label
-            checked={true}
-            className="sc-eXEjpC fuVqJC sc-kkGfuU ktBgro"
-          >
-            <input
+              className="sc-kIPQKe jgMiIX sc-kEYyzF bLItnJ"
+            >
+              <input
+                checked={false}
+                className="sc-kIPQKe jgMiIX sc-hMqMXs bSKuHb"
+                name="launcherSize-options"
+                onChange={[Function]}
+                type="radio"
+                value="small"
+              />
+              Sm
+            </label>
+            <label
               checked={true}
-              className="sc-eXEjpC fuVqJC sc-kEYyzF MbXgx"
-              name="autohide-onoff"
-              onChange={[Function]}
-              type="radio"
-              value="off"
-            />
-            Off
-          </label>
+              className="sc-kIPQKe jgMiIX sc-kEYyzF eGRGwQ"
+            >
+              <input
+                checked={true}
+                className="sc-kIPQKe jgMiIX sc-hMqMXs bSKuHb"
+                name="launcherSize-options"
+                onChange={[Function]}
+                type="radio"
+                value="large"
+              />
+              Lg
+            </label>
+          </div>
         </div>
       </div>
       <div
-        className="sc-iQKALj fcqkme"
+        className="sc-iQKALj cuRTRW"
       >
         <div
-          className="sc-RefOD jUFiTA"
+          className="sc-eXEjpC jjfHbT"
         >
-          Launcher Position
-        </div>
-        <button
-          className="sc-chPdSV sc-kIPQKe ipTBAV"
-          onClick={[Function]}
-        >
-          Top
-        </button>
-        <div
-          className="sc-ibxdXY gGuPJL"
-        >
+          <div
+            className="sc-ibxdXY jPTmTl"
+          >
+            Launcher Position
+          </div>
           <button
-            className="sc-chPdSV sc-kIPQKe ipTBAV"
+            className="sc-kAzzGY sc-esjQYD eWuLhX"
             onClick={[Function]}
           >
-            Left
+            Top
           </button>
+          <div
+            className="sc-RefOD jApbnX"
+          >
+            <button
+              className="sc-kAzzGY sc-esjQYD eWuLhX"
+              onClick={[Function]}
+            >
+              Left
+            </button>
+            <button
+              className="sc-kAzzGY sc-esjQYD eWuLhX"
+              onClick={[Function]}
+            >
+              Right
+            </button>
+          </div>
           <button
-            className="sc-chPdSV sc-kIPQKe ipTBAV"
+            className="sc-kAzzGY sc-esjQYD eWuLhX"
             onClick={[Function]}
           >
-            Right
+            Bottom
           </button>
         </div>
-        <button
-          className="sc-chPdSV sc-kIPQKe ipTBAV"
-          onClick={[Function]}
-        >
-          Bottom
-        </button>
       </div>
     </div>
   </div>
@@ -331,6 +380,36 @@ exports[`Storyshots Components/Settings default 1`] = `
                     <span
                       style={Object {}}
                     >
+                      launcherSize
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        "
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          large
+                        </span>
+                        "
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
                       setAutoHide
                     </span>
                     <span>
@@ -360,7 +439,7 @@ exports[`Storyshots Components/Settings default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      setLaunchbarPosition
+                      setLauncherPosition
                     </span>
                     <span>
                       =
@@ -375,7 +454,36 @@ exports[`Storyshots Components/Settings default 1`] = `
                             }
                           }
                         >
-                          setLaunchbarPosition
+                          setLauncherPosition
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      setLauncherSize
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          setLauncherSize
                         </span>
                         }
                       </span>

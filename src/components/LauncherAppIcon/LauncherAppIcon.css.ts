@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 
-import { AppIconSizes, DirectionalPosition } from '../../types/commons';
+import { DirectionalPosition } from '../../types/commons';
 
 import { Color } from '../../styles';
 import { scaleAndFadeIn } from '../../utils/animationHelpers';
 
+import { LauncherSizeConfig } from '../../utils/launcherSizeConfigs';
+
 import { Wrapper as AppIconWrapper } from '../AppIcon';
 import AppIndicator from '../AppIndicator';
-import ContextMenuZone from '../ContextMenuZone';
 import { Props } from './LauncherAppIcon';
 
-interface DirectionalPositionProps {
+interface StyledAppIndicatorProps {
+  sizingConfig: LauncherSizeConfig;
   position: DirectionalPosition;
 }
 
@@ -18,11 +20,7 @@ interface WrapperProps {
   hasTransition: boolean;
   isDisabled: boolean;
   margin: string;
-  size: AppIconSizes;
-}
-
-interface StyledContextMenuZoneProps {
-  size: AppIconSizes;
+  size: number;
 }
 
 export const APP_ICON_TRANSITION_CLASSNAMES = 'app-icon-transition';
@@ -37,49 +35,42 @@ export const Icon = styled.div<Pick<Props, 'imgSrc'>>`
   height: 100%;
 `;
 
-export const StyledAppIndicator = styled(AppIndicator)<DirectionalPositionProps>`
+export const StyledAppIndicator = styled(AppIndicator)<StyledAppIndicatorProps>`
   position: absolute;
 
-  ${props => {
-    switch (props.position) {
+  ${({ sizingConfig, position }) => {
+    const { appIcon, appIconGutter, appIndicator, launcher } = sizingConfig;
+    const delta = appIcon + appIconGutter - launcher;
+    const percentDelta = appIndicator / 2;
+
+    switch (position) {
       case DirectionalPosition.Right: {
         return `
-          right: -20px;
-          top: calc(50% - 6px);
+          right: ${delta}px;
+          top: calc(50% - ${percentDelta}px);
         `;
       }
       case DirectionalPosition.Bottom: {
         return `
-          bottom: -20px;
-          left: calc(50% - 6px);
+          bottom: ${delta}px;
+          left: calc(50% - ${percentDelta}px);
         `;
       }
       case DirectionalPosition.Left: {
         return `
-          left: -20px;
-          top: calc(50% - 6px);
+          left: ${delta}px;
+          top: calc(50% - ${percentDelta}px);
         `;
       }
       case DirectionalPosition.Top:
       default: {
         return `
-          top: -20px;
-          left: calc(50% - 6px);
+          top: ${delta}px;
+          left: calc(50% - ${percentDelta}px);
         `;
       }
     }
   }}
-`;
-
-export const StyledContextMenuZone = styled(ContextMenuZone)<StyledContextMenuZoneProps>`
-  border-radius: 9.9px;
-  border: 2.7px solid rgba(255, 255, 255, 0.2);
-  overflow: hidden;
-
-  ${({ size }) => `
-    height: ${size}px;
-    width: ${size}px;
-  `}
 `;
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -88,13 +79,21 @@ export const Wrapper = styled.div<WrapperProps>`
   flex-shrink: 0;
   justify-content: center;
   position: relative;
-  transition: opacity 300ms ease-in-out;
 
   ${({ hasTransition, isDisabled, margin, size }) => `
     cursor: ${isDisabled ? 'default' : 'pointer'};
-    opacity: ${isDisabled ? 0.1 : 1};
     height: ${size}px;
     width: ${size}px;
     margin: ${margin};
-      ${hasTransition && size && margin && scaleAndFadeIn(AppIconWrapper, APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION, size, margin)}`}
+    ${hasTransition && size && margin && scaleAndFadeIn(AppIconWrapper, APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION, size, margin)}
+
+    ${AppIconWrapper} {
+      opacity: ${isDisabled ? 0.1 : 1};
+    }
+
+    ${StyledAppIndicator} {
+      opacity: ${isDisabled ? 0.1 : 1};
+      transition: opacity 300ms ease-in-out;
+    }
+  `}
 `;

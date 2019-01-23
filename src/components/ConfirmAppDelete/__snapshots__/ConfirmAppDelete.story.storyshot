@@ -42,7 +42,7 @@ exports[`Storyshots Admin Components/ConfirmAppDelete default 1`] = `
       >
         <a
           backgroundColor="#848484"
-          className="sc-kgoBCf hescZT"
+          className="sc-chPdSV hdQzLm"
           href="/admin/apps"
           onClick={[Function]}
           type="button"
@@ -51,7 +51,7 @@ exports[`Storyshots Admin Components/ConfirmAppDelete default 1`] = `
           Cancel
         </a>
         <button
-          className="sc-chPdSV ibqDSU"
+          className="sc-kAzzGY dHFEVI"
           disabled={false}
           onClick={[Function]}
           width={153}

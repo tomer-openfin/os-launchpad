@@ -2,13 +2,16 @@ import { Window } from '@giantmachines/redux-openfin';
 import { connect } from 'react-redux';
 
 import { SETTINGS_WINDOW } from '../../config/windows';
-import { getAutoHide, setAutoHide, setLaunchbarPosition } from '../../redux/me';
+import { getAutoHide, getLauncherSize, setAutoHide, setLauncherPosition, setLauncherSize } from '../../redux/me';
+import { State } from '../../redux/types';
+import { DirectionalPosition, LauncherSize } from '../../types/commons';
 
 import withEscapeKey from '../../hocs/withEscapeKey';
 import Settings from './Settings';
 
-const stateProps = state => ({
+const stateProps = (state: State) => ({
   autoHide: getAutoHide(state),
+  launcherSize: getLauncherSize(state),
 });
 
 const dispatchProps = dispatch => ({
@@ -18,8 +21,15 @@ const dispatchProps = dispatch => ({
   onEscDown: () => {
     dispatch(Window.hideWindow({ id: SETTINGS_WINDOW }));
   },
-  setAutoHide: autoHide => dispatch(setAutoHide(autoHide)),
-  setLaunchbarPosition: position => dispatch(setLaunchbarPosition(position)),
+  setAutoHide: (autoHide: boolean) => {
+    dispatch(setAutoHide(autoHide));
+  },
+  setLauncherPosition: (position: DirectionalPosition) => {
+    dispatch(setLauncherPosition(position));
+  },
+  setLauncherSize: (launcherSize: LauncherSize) => {
+    dispatch(setLauncherSize(launcherSize));
+  },
 });
 
 export default connect(

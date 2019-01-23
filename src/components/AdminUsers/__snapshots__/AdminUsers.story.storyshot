@@ -17,16 +17,16 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
         className="sc-epnACN cBZtLA"
       >
         <div
-          className="sc-eHgmQL dpoeWI"
+          className="sc-hSdWYo hwTopM"
           width={291}
         >
           <div
-            className="sc-iAyFgw ddNeXS sc-ifAKCX SRWgK"
+            className="sc-kkGfuU cUouIf sc-ifAKCX SRWgK"
             color="#E7E7E7"
             size={35}
           />
           <input
-            className="sc-cvbbAY jVgCyn"
+            className="sc-eHgmQL hKcHHQ"
             name="nodejs"
             onChange={[Function]}
             placeholder="Filter Users"
@@ -36,7 +36,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
           
         </div>
         <a
-          className="sc-kgoBCf mfNpT"
+          className="sc-chPdSV bMcqtU"
           href="/admin/users/new"
           onClick={[Function]}
         >
@@ -47,10 +47,10 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
         className="sc-hMFtBS hEyytd"
       >
         <div
-          className="sc-kvZOFW jLrdLo"
+          className="sc-frDJqD iYCAOV"
         >
           <div
-            className="sc-gqPbQI coFBRW"
+            className="sc-gqPbQI hWfZLy"
           >
             <div
               className="sc-hORach jeqLWs"
@@ -93,10 +93,10 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
           </div>
         </div>
         <div
-          className="sc-kvZOFW jLrdLo"
+          className="sc-frDJqD iYCAOV"
         >
           <div
-            className="sc-gqPbQI coFBRW"
+            className="sc-gqPbQI hWfZLy"
           >
             <div
               className="sc-hORach jeqLWs"
@@ -139,10 +139,10 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
           </div>
         </div>
         <div
-          className="sc-kvZOFW jLrdLo"
+          className="sc-frDJqD iYCAOV"
         >
           <div
-            className="sc-gqPbQI coFBRW"
+            className="sc-gqPbQI hWfZLy"
           >
             <div
               className="sc-hORach jeqLWs"
@@ -191,10 +191,10 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
           </div>
         </div>
         <div
-          className="sc-kvZOFW jLrdLo"
+          className="sc-frDJqD iYCAOV"
         >
           <div
-            className="sc-gqPbQI coFBRW"
+            className="sc-gqPbQI hWfZLy"
           >
             <div
               className="sc-hORach jeqLWs"
@@ -243,10 +243,10 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
           </div>
         </div>
         <div
-          className="sc-kvZOFW jLrdLo"
+          className="sc-frDJqD iYCAOV"
         >
           <div
-            className="sc-gqPbQI coFBRW"
+            className="sc-gqPbQI hWfZLy"
           >
             <div
               className="sc-hORach jeqLWs"
@@ -295,10 +295,10 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
           </div>
         </div>
         <div
-          className="sc-kvZOFW jLrdLo"
+          className="sc-frDJqD iYCAOV"
         >
           <div
-            className="sc-gqPbQI coFBRW"
+            className="sc-gqPbQI hWfZLy"
           >
             <div
               className="sc-hORach jeqLWs"
@@ -347,10 +347,10 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
           </div>
         </div>
         <div
-          className="sc-kvZOFW jLrdLo"
+          className="sc-frDJqD iYCAOV"
         >
           <div
-            className="sc-gqPbQI coFBRW"
+            className="sc-gqPbQI hWfZLy"
           >
             <div
               className="sc-hORach jeqLWs"
@@ -393,10 +393,10 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
           </div>
         </div>
         <div
-          className="sc-kvZOFW jLrdLo"
+          className="sc-frDJqD iYCAOV"
         >
           <div
-            className="sc-gqPbQI coFBRW"
+            className="sc-gqPbQI hWfZLy"
           >
             <div
               className="sc-hORach jeqLWs"
@@ -445,10 +445,10 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
           </div>
         </div>
         <div
-          className="sc-kvZOFW jLrdLo"
+          className="sc-frDJqD iYCAOV"
         >
           <div
-            className="sc-gqPbQI coFBRW"
+            className="sc-gqPbQI hWfZLy"
           >
             <div
               className="sc-hORach jeqLWs"
@@ -491,10 +491,10 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
           </div>
         </div>
         <div
-          className="sc-kvZOFW jLrdLo"
+          className="sc-frDJqD iYCAOV"
         >
           <div
-            className="sc-gqPbQI coFBRW"
+            className="sc-gqPbQI hWfZLy"
           >
             <div
               className="sc-hORach jeqLWs"
