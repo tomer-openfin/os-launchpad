@@ -3,6 +3,8 @@ const API_URL = process.env.API_URL || '/';
 const API = {
   PUBLIC_APPS: 'https://app-directory.openfin.co/api/v1/apps',
 
+  CREATE_MANIFEST: (runtimeVersion: string, appUrl: string, baseUrl: string) => `${baseUrl}api/app.json?runtime=${runtimeVersion}&appurl=${appUrl}`,
+
   LOGIN: `${API_URL}api/auth/login`,
   LOGOUT: `${API_URL}api/auth/logout`,
   NEW_PASSWORD: `${API_URL}api/auth/password/new`,

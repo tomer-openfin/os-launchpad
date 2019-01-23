@@ -5,7 +5,7 @@ import { CheckboxUI, FormFieldWrapper, LabelText } from './Checkbox.css';
 interface Props {
   checked: boolean;
   name: string;
-  label;
+  label: string;
 }
 
 const Checkbox = ({ checked, name, label }: Props) => {

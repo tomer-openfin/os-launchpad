@@ -1,4 +1,4 @@
-import { Bounds, MonitorInfo, OpenFinApplication, PointTopLeft } from '../types/commons';
+import { Bounds, MonitorInfo, OpenFinApplication, OpenFinApplicationInfo, PointTopLeft } from '../types/commons';
 import { bindFinAppEventHandlers } from './finAppEventHandlerHelpers';
 import promisifyOpenfin from './promisifyOpenfin';
 
@@ -14,9 +14,21 @@ const getSystemPromise = <T = undefined>(method: string) => (...args) => {
   return promisifyOpenfin<T>(fin.desktop.System, method, ...args);
 };
 
+const getCurrentApplicationPromise = <T = undefined>(method: string) => (...args) => {
+  const { fin } = window;
+
+  if (!fin) {
+    return Promise.reject('window.fin is undefined');
+  }
+
+  return promisifyOpenfin<T>(fin.desktop.Application.getCurrent(), method, ...args);
+};
+
 export const addSystemEventListener = getSystemPromise('addEventListener');
 export const getSystemMonitorInfo = getSystemPromise<MonitorInfo>('getMonitorInfo');
 export const getSystemMousePosition = getSystemPromise<PointTopLeft>('getMousePosition');
+
+export const getOpenfinApplicationInfo = getCurrentApplicationPromise<OpenFinApplicationInfo>('getInfo');
 
 export const animateWindow = (finWindow, animation, options) => {
   return promisifyOpenfin(finWindow, 'animate', animation, options);

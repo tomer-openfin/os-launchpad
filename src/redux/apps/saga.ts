@@ -1,13 +1,14 @@
 import { call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
+import API from '../../services/ApiService/api';
 
 import { AppStatusOrigins, AppStatusStates, ResponseStatus } from '../../types/enums';
 import { CloseFinAppRequest, OpenFinAppRequest } from './types';
 
 import { closeApplication, createAndRunFromManifest, wrapApplication } from '../../utils/openfinPromises';
 
-import { reboundLauncherRequest } from '../application';
+import { getRuntimeVersion, reboundLauncherRequest } from '../application';
 import {
   CLOSE_FIN_APP,
   closeFinAppError,
@@ -37,7 +38,20 @@ function* watchOpenFinAppRequest(action: OpenFinAppRequest) {
 
   if (!payload) return;
 
-  const { id, manifest_url: manifestUrl } = payload;
+  const { appUrl, id, manifest_url } = payload;
+
+  let manifestUrl;
+
+  if (manifest_url) {
+    manifestUrl = manifest_url;
+  } else if (appUrl) {
+    const runtimeVersion = yield select(getRuntimeVersion);
+
+    if (!runtimeVersion) return;
+
+    manifestUrl = API.CREATE_MANIFEST(runtimeVersion, appUrl, process.env.API_URL || `${window.location.origin}/`);
+  } else return;
+
   const status = yield select(getAppStatusById, id);
 
   if (status && (status.state === AppStatusStates.Loading || status.state === AppStatusStates.Running)) {

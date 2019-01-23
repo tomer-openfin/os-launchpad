@@ -4,7 +4,7 @@ import { Redirect, RouteComponentProps } from 'react-router-dom';
 
 import * as trashIcon from '../../assets/Trash.svg';
 
-import { App, ResponseStatus } from '../../types/commons';
+import { ResponseStatus } from '../../types/commons';
 
 import { ROUTES } from '../Router/consts';
 
@@ -63,10 +63,21 @@ class EditAppForm extends React.Component<Props, State> {
       },
     });
 
-  handleFormSubmit = (payload, actions) => {
+  handleFormSubmit = (formData, actions) => {
     const { updateApp } = this.props;
 
     const meta = { successCb: this.successCb, errorCb: this.errorCb };
+
+    let payload;
+
+    // Strip out manifest if appUrl and vice versa
+    if (!!formData.withAppUrl) {
+      const { manifest_url, withAppUrl, ...rest } = formData;
+      payload = rest;
+    } else {
+      const { appUrl, withAppUrl, ...rest } = formData;
+      payload = rest;
+    }
 
     updateApp(payload, meta);
 
@@ -101,7 +112,7 @@ class EditAppForm extends React.Component<Props, State> {
 
   render() {
     const { location } = this.props;
-    const { contexts, intents, id, manifest_url, name, title, description, icon, images } = location.state;
+    const { appUrl, contexts, intents, id, manifest_url, name, title, description, icon, images, withAppUrl } = location.state;
 
     return (
       <Wrapper>
@@ -113,6 +124,7 @@ class EditAppForm extends React.Component<Props, State> {
 
         <Formik
           initialValues={{
+            appUrl,
             contexts: contexts || [],
             description,
             icon,
@@ -122,6 +134,7 @@ class EditAppForm extends React.Component<Props, State> {
             manifest_url,
             name,
             title,
+            withAppUrl: !!withAppUrl,
           }}
           onSubmit={this.handleFormSubmit}
           validateOnChange={false}

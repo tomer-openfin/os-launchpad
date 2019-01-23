@@ -11,34 +11,34 @@ exports[`Storyshots Admin Components/ConfirmAppDelete default 1`] = `
     }
   >
     <div
-      className="sc-bMvGRv boSHKW"
+      className="sc-laTMn bWetqE"
     >
       <div
-        className="sc-bnXvFD fmbAPg"
+        className="sc-fhYwyz DkFoA"
       >
         <div
-          className="sc-gFaPwZ cKLqVd"
+          className="sc-jzgbtB gaXmai"
         >
           Delete App?
         </div>
       </div>
       <div
-        className="sc-jzgbtB kvPRpc"
+        className="sc-rBLzX cmfUtd"
       >
         <div
-          className="sc-gJWqzi cSeCjS"
+          className="sc-bMvGRv iEgYRF"
         >
           Are you sure you want to delete the app:
         </div>
         <div
-          className="sc-gJWqzi cSeCjS"
+          className="sc-bMvGRv iEgYRF"
         >
           
  FinTech Studios?
         </div>
       </div>
       <div
-        className="sc-fhYwyz iPTqjt"
+        className="sc-gJWqzi jDIhaj"
       >
         <a
           backgroundColor="#848484"

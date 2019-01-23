@@ -20,14 +20,17 @@ const defaultProps = {
   size: launcherSizeConfigs[LauncherSize.Large].appIcon,
 };
 
-const AppIcon = (props: Props) => {
-  const { borderWidth = defaultProps.borderWidth, className, isDisabled = defaultProps.isDisabled, onClick, size = defaultProps.size, imgSrc } = props;
-
-  return (
-    <Wrapper borderWidth={borderWidth} className={className} isDisabled={isDisabled} onClick={isDisabled ? undefined : onClick} size={size}>
-      <Icon imgSrc={imgSrc} />
-    </Wrapper>
-  );
-};
+const AppIcon = ({
+  borderWidth = defaultProps.borderWidth,
+  className,
+  isDisabled = defaultProps.isDisabled,
+  onClick,
+  size = defaultProps.size,
+  imgSrc,
+}: Props) => (
+  <Wrapper borderWidth={borderWidth} className={className} isDisabled={isDisabled} onClick={isDisabled ? undefined : onClick} size={size}>
+    <Icon imgSrc={imgSrc} />
+  </Wrapper>
+);
 
 export default AppIcon;

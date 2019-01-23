@@ -32,13 +32,12 @@ export const validateTextField = value => {
   return error;
 };
 
-// todo: fix URL regex to only accept URLs ending in ".json"
 export const validateURL = value => {
   if (!value) return 'Required';
 
   const validateCheck = urlRegex().test(value);
 
-  if (!validateCheck) return 'Manifest URL must end in .json file extension.';
+  if (!validateCheck) return 'Must be a valid URL.';
 
   return;
 };

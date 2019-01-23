@@ -11,19 +11,19 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
     }
   >
     <form
-      className="sc-dTdPqK jxIrrx"
+      className="sc-eMigcr gvnqly"
       onReset={[Function]}
       onSubmit={[Function]}
     >
       <label
-        className="sc-bHwgHz fdSmXy"
+        className="sc-dTdPqK dToOYX"
         htmlFor="LogoFormFileInput"
       >
         <div
-          className="sc-TFwJa ejLpSU"
+          className="sc-krDsej dYNmNZ"
         >
           <div
-            className="sc-fjmCvl gFqNed"
+            className="sc-bHwgHz loApWf"
           >
             <div
               className="sc-eNQAEJ gLbfhX"
@@ -31,16 +31,16 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
             />
           </div>
           <div
-            className="sc-laTMn dOPdjX"
+            className="sc-fjmCvl iDSUdW"
           >
             <div
-              className="sc-hGoxap PxbeO"
+              className="sc-TFwJa iiCTOf"
             >
               Click & drag a new image over the existing one to replace your brand logo.
             </div>
             <input
               accept="image/*"
-              className="sc-CtfFt gCiMOP"
+              className="sc-hGoxap dhvTKW"
               id="LogoFormFileInput"
               name="logo"
               onBlur={[Function]}
@@ -55,7 +55,7 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
         </div>
       </label>
       <div
-        className="sc-krDsej dwDazK"
+        className="sc-itybZL kHswht"
       >
         <button
           className="sc-kAzzGY iCSQhx"

@@ -16,6 +16,7 @@ export const SET_IS_DRAG_AND_DROP = 'SET_IS_DRAG_AND_DROP';
 export const SET_IS_DRAWER_EXPANDED = 'SET_IS_DRAWER_EXPANDED';
 export const SET_IS_ENTERPRISE = 'SET_IS_ENTERPRISE';
 export const SET_IS_EXPANDED = 'SET_IS_EXPANDED';
+export const SET_RUNTIME_VERSION = 'SET_RUNTIME_VERSION';
 
 // Action Creators
 export const applicationStarted = createAction(APPLICATION_STARTED);
@@ -38,3 +39,4 @@ export const setIsDragAndDrop = createAction(SET_IS_DRAG_AND_DROP);
 export const setIsDrawerExpanded = createAction(SET_IS_DRAWER_EXPANDED);
 export const setIsEnterprise = createAction(SET_IS_ENTERPRISE);
 export const setIsExpanded = createAction(SET_IS_EXPANDED);
+export const setRuntimeVersion = createAction(SET_RUNTIME_VERSION);

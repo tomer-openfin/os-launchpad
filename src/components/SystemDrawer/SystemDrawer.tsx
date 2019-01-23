@@ -62,7 +62,9 @@ class SystemDrawer extends React.Component<Props> {
 
   render() {
     const { activeIcons, className, extendedWindowPosition, icons, isExpanded, launcherSizeConfig, onClickToggle, orientation, size } = this.props;
+
     let hiddenIconCount = icons.reduce((acc, icon) => (!icon.isShownByDefault ? acc + 1 : acc), 0);
+
     // Do not allow animations/transitions to happen when switch orientation
     const stopTransition = this.lastConfig !== this.props.launcherSizeConfig || this.lastOrientation !== this.props.orientation;
     this.lastConfig = this.props.launcherSizeConfig;

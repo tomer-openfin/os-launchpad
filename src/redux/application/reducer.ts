@@ -1,4 +1,4 @@
-import { SET_BLURRING_WINDOW, SET_IS_DRAG_AND_DROP, SET_IS_DRAWER_EXPANDED, SET_IS_ENTERPRISE, SET_IS_EXPANDED } from './actions';
+import { SET_BLURRING_WINDOW, SET_IS_DRAG_AND_DROP, SET_IS_DRAWER_EXPANDED, SET_IS_ENTERPRISE, SET_IS_EXPANDED, SET_RUNTIME_VERSION } from './actions';
 import {
   ApplicationActions,
   ApplicationState,
@@ -7,6 +7,7 @@ import {
   SetIsDrawerExpandedAction,
   SetIsEnterpriseAction,
   SetIsExpandedAction,
+  SetRuntimeVersion,
 } from './types';
 
 const defaultState: ApplicationState = {
@@ -15,6 +16,7 @@ const defaultState: ApplicationState = {
   isDrawerExpanded: false,
   isEnterprise: false,
   isExpanded: false,
+  runtimeVersion: '',
 };
 
 export default (state: ApplicationState = defaultState, action: ApplicationActions) => {
@@ -56,6 +58,12 @@ export default (state: ApplicationState = defaultState, action: ApplicationActio
       return {
         ...state,
         isDrawerExpanded: (action as SetIsDrawerExpandedAction).payload,
+      };
+    }
+    case SET_RUNTIME_VERSION: {
+      return {
+        ...state,
+        runtimeVersion: (action as SetRuntimeVersion).payload,
       };
     }
     default: {

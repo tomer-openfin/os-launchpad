@@ -11,13 +11,13 @@ exports[`Storyshots Components/LayoutsListItem default 1`] = `
     }
   >
     <div
-      className="sc-jtRfpW fUHGYp"
+      className="sc-bYSBpT hBzvOI"
     >
       <div
-        className="sc-jbKcbu iOsIiD"
+        className="sc-kvZOFW jwgkWL"
       >
         <li
-          className="sc-hqyNC juSVDa"
+          className="sc-frDJqD inRdcM"
           onClick={[Function]}
         >
           layout

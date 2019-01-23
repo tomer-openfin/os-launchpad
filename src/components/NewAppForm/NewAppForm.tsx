@@ -37,6 +37,7 @@ class NewAppForm extends React.Component<Props, State> {
       file: null,
       formContents: {
         appPage: '',
+        appUrl: '',
         contact_email: '',
         contexts: [],
         description: '',
@@ -50,6 +51,7 @@ class NewAppForm extends React.Component<Props, State> {
         signature: '',
         support_email: '',
         title: '',
+        withAppUrl: false,
       },
       responseReceived: false,
       result: {
@@ -80,15 +82,25 @@ class NewAppForm extends React.Component<Props, State> {
       },
     });
 
-  handleFormSubmit = (payload, actions) => {
+  handleFormSubmit = (formData, actions) => {
     const { createApp } = this.props;
 
     const meta = { successCb: this.successCb, errorCb: this.errorCb };
 
-    // modify App Title to create the App Name (removed input field for this) and needed for payload
+    // modify App Title to create the App Name (removed input field for this) and needed for formData
     // todo: ensure uniqueness -> sync up with OF Brian, how is this being handled on BE?
-    const appTitle = payload.title;
-    payload.name = appTitle.replace(/\s/g, '');
+    formData.name = formData.title.replace(/\s/g, '');
+
+    let payload;
+
+    // Strip out manifest if appUrl and vice versa
+    if (!!formData.withAppUrl) {
+      const { manifest_url, withAppUrl, ...rest } = formData;
+      payload = rest;
+    } else {
+      const { appUrl, withAppUrl, ...rest } = formData;
+      payload = rest;
+    }
 
     createApp(payload, meta);
 
@@ -115,7 +127,7 @@ class NewAppForm extends React.Component<Props, State> {
 
   render() {
     const { formContents } = this.state;
-    const { id, manifest_url, name, title, description, icon, images } = formContents;
+    const { id, appUrl, manifest_url, name, title, description, icon, images, withAppUrl } = formContents;
 
     return (
       <Wrapper>
@@ -125,6 +137,7 @@ class NewAppForm extends React.Component<Props, State> {
 
         <Formik
           initialValues={{
+            appUrl,
             contexts: [],
             description,
             icon,
@@ -134,6 +147,7 @@ class NewAppForm extends React.Component<Props, State> {
             manifest_url,
             name,
             title,
+            withAppUrl,
           }}
           onSubmit={this.handleFormSubmit}
           validateOnChange={false}

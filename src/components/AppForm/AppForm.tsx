@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import * as refreshIcon from '../../assets/Refresh.svg';
-
 import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../samples/FDC3';
 import { ROUTES } from '../Router/consts';
 
@@ -9,26 +7,31 @@ import { validateTextField, validateURL } from '../../utils/validators';
 
 import { Color } from '../../styles';
 import Button, { ButtonLink } from '../Button/Button.css';
-import { ButtonWrapper, CheckboxWrapper, Footer, FormWrapper, GridWrapper, RefreshIconWrapper, RowWrapper, ScrollWrapper } from '../UserForm';
+import { ButtonWrapper, CheckboxWrapper, Footer, FormWrapper, GridWrapper, RowWrapper, ScrollWrapper } from '../UserForm';
 
 import CheckboxInArray from '../CheckboxInArray';
 import FormField, { Label, LabelText } from '../FormField';
-import SvgIcon from '../SvgIcon/SvgIcon';
+import RadioToggle from '../RadioToggle';
 
 const renderMockIntents = () => MOCK_INTENTS.map((intent, index) => <CheckboxInArray name="intents" key={index} value={intent.displayName} />);
 
 const renderMockContexts = () => MOCK_CONTEXTS.map((context, index) => <CheckboxInArray name="contexts" key={index} value={context.$type} />);
 
-const AppForm = ({ isValid, isSubmitting }) => (
+const AppForm = ({ isValid, isSubmitting, values }) => (
   <FormWrapper>
     <ScrollWrapper>
       <GridWrapper>
-        <RowWrapper secondElementWidth="33px">
-          <FormField label="Manifest URL" type="text" name="manifest_url" validate={validateURL} placeholder="Enter manifest url" />
+        <RowWrapper firstElementWidth="100px">
+          <RadioToggle label="Config Type" name="withAppUrl" value={values.withAppUrl} firstRadioLabel="App URL" secondRadioLabel="Manifest" />
 
-          <RefreshIconWrapper>
-            <SvgIcon color={Color.JUPITER} hoverColor={Color.JUPITER} imgSrc={refreshIcon} size={40} />
-          </RefreshIconWrapper>
+          <FormField
+            key={values.withAppUrl ? 'appUrl' : 'manifest_url'}
+            label={values.withAppUrl ? 'App URL' : 'Manifest URL'}
+            type="text"
+            name={values.withAppUrl ? 'appUrl' : 'manifest_url'}
+            validate={validateURL}
+            placeholder={`Enter ${values.withAppUrl ? 'app' : 'manifest'} url`}
+          />
         </RowWrapper>
 
         <FormField label="App Title" type="text" name="title" validate={validateTextField} placeholder="Enter app title" />
@@ -65,8 +68,8 @@ const AppForm = ({ isValid, isSubmitting }) => (
           Save
         </Button>
       </ButtonWrapper>
-    </Footer>
-  </FormWrapper>
+    </Footer>;
+  </FormWrapper >
 );
 
 export default AppForm;

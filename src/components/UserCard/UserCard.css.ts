@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import { Color } from '../../styles/index';
 import { TypeStyleCanopus, TypeStyleProcyon } from '../../styles/typography.css';
-import { Icon } from '../IconSpace/IconSpace.css';
 
 import SvgIcon from '../SvgIcon/SvgIcon';
 
@@ -15,11 +14,6 @@ export const Wrapper = styled.div`
   color: ${Color.SUN};
   height: 55px;
   width: 100%;
-
-  ${Icon} {
-    height: 68px;
-    width: 68px;
-  }
 
   &:hover {
     background: ${Color.DUSTY_GREY};

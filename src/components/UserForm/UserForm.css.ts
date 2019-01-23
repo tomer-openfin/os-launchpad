@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components';
 
 import { Form } from 'formik';
-import { Color } from '../../styles/index';
+import { Color } from '../../styles';
+
+const FOOTER_HEIGHT = '60px';
 
 const ResponsiveWidth = css`
   max-width: 469px;
@@ -32,12 +34,13 @@ export const ScrollWrapper = styled.div`
   flex: 1;
   overflow-y: auto;
   width: 100%;
-  padding-bottom: 60px;
-  margin-bottom: 60px;
+  padding-bottom: ${FOOTER_HEIGHT};
+  margin-bottom: ${FOOTER_HEIGHT};
+  min-height: calc(100% - ${FOOTER_HEIGHT});
 `;
 
 export const GridWrapper = styled.div`
-  ${ResponsiveWidth};
+  ${ResponsiveWidth}
 
   display: grid;
   grid-row-gap: 28px;
@@ -45,9 +48,9 @@ export const GridWrapper = styled.div`
   padding: 20px;
 `;
 
-export const RowWrapper = styled.div<{ height?: string; secondElementWidth?: string }>`
+export const RowWrapper = styled.div<{ height?: string; firstElementWidth?: string; secondElementWidth?: string }>`
   display: grid;
-  grid-template-columns: 1fr ${props => props.secondElementWidth || '1fr'};
+  grid-template-columns: ${props => props.firstElementWidth || '1fr'} ${props => props.secondElementWidth || '1fr'};
   grid-template-rows: ${props => props.height || '62px'};
   grid-column-gap: 20px;
 `;
@@ -69,7 +72,7 @@ export const ButtonWrapper = styled.div`
 export const ErrorWrapper = styled.div`
   ${ResponsiveWidth};
 
-  bottom: 60px;
+  bottom: ${FOOTER_HEIGHT};
   position: absolute;
 `;
 
@@ -109,7 +112,7 @@ export const Footer = styled.div`
   bottom: 0;
   right: 0;
   left: 0;
-  height: 60px;
+  height: ${FOOTER_HEIGHT};
   display: flex;
   justify-content: flex-end;
   flex-wrap: nowrap;

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import { Color } from '../../styles';
-import { Icon } from '../IconSpace/IconSpace.css';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -10,11 +9,6 @@ export const Wrapper = styled.div`
   color: ${Color.SUN};
   height: 132px;
   width: 100%;
-
-  ${Icon} {
-    height: 68px;
-    width: 68px;
-  }
 
   &:hover {
     background: ${Color.DUSTY_GREY};

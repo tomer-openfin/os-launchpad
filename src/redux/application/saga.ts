@@ -10,7 +10,7 @@ import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
 
 import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
-import { animateWindow, getSystemMonitorInfo } from '../../utils/openfinPromises';
+import { animateWindow, getOpenfinApplicationInfo, getSystemMonitorInfo } from '../../utils/openfinPromises';
 import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv } from '../../utils/processHelpers';
 import { setupWindow } from '../../utils/setupWindow';
 import takeFirst from '../../utils/takeFirst';
@@ -41,6 +41,7 @@ import {
   SET_IS_DRAWER_EXPANDED,
   setIsEnterprise,
   setIsExpanded,
+  setRuntimeVersion,
 } from './actions';
 import { getApplicationIsExpanded } from './selectors';
 
@@ -117,6 +118,13 @@ function* openfinSetup(action: OpenfinReadyAction) {
     const { fin } = window;
 
     if (fin) {
+      // Set Runtime Version
+      const { runtime } = yield call(getOpenfinApplicationInfo);
+
+      if (runtime) {
+        yield put(setRuntimeVersion((runtime as { version: string }).version));
+      }
+
       yield call(setupSystemHandlers, fin, window.store || window.opener.store);
     }
 

@@ -11,56 +11,56 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
     }
   >
     <div
-      className="sc-kUaPvJ gDtRvT"
+      className="sc-fONwsr gzqvoF"
     >
       <div
-        className="sc-gqPbQI hWfZLy"
+        className="sc-hMFtBS dQOeHN"
       >
         <div
-          className="sc-hORach jeqLWs"
+          className="sc-cLQEGU hnCWyk"
         >
           <div
-            className="sc-bMVAic itfYfR"
+            className="sc-gqPbQI UVTEd"
           >
             <div
-              className="sc-bAeIUo jQEbNk"
+              className="sc-hORach cZzYLg"
             >
               John
                
               Doe
             </div>
             <div
-              className="sc-iujRgT bbMIzo sc-ifAKCX yXyBY"
+              className="sc-bMVAic PtFco sc-ifAKCX yXyBY"
               color="#FBC23C"
               size={16}
               title="Admin"
             />
             <div
-              className="sc-iujRgT bbMIzo sc-ifAKCX dXYvlK"
+              className="sc-bMVAic PtFco sc-ifAKCX dXYvlK"
               color="#DF5353"
               size={16}
               title="User has not logged in yet"
             />
           </div>
           <div
-            className="sc-GMQeP KvcCM"
+            className="sc-bAeIUo ixyzOq"
           >
             John.Doe@gmail.com
           </div>
         </div>
         <div
-          className="sc-exAgwC bdcPIJ"
+          className="sc-iujRgT exdDlI"
         >
           <div
-            className="sc-bsbRJL kjWbas"
+            className="sc-epnACN bhbdCU"
           >
             <a
-              className="sc-cmthru gHuXJA"
+              className="sc-iuJeZd ffaKGb"
               href="/admin/users/edit"
               onClick={[Function]}
             />
             <a
-              className="sc-esOvli jJEfEf"
+              className="sc-cMhqgX fMCTTX"
               href="/admin/users/delete"
               onClick={[Function]}
             />
