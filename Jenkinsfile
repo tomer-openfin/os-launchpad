@@ -5,7 +5,6 @@ pipeline {
     stages {
 
         stage ('test'){
-            agent { label 'linux-slave' }
             steps {
                 sh "echo POSTMAN_API_KEY=80a856812f61421091e2ccb948296523 > .env"
                 sh "echo >> .env"
@@ -18,7 +17,6 @@ pipeline {
         }
 
         stage ('build-dev') {
-            agent { label 'linux-slave' }
             when { branch "develop" }
             steps {
                 script {
@@ -29,7 +27,7 @@ pipeline {
                 sh "npm i"
                 sh "ENTERPRISE=true NODE_ENV=production DEPLOY_LOCATION=\"https://os-dev.openfin.co\" npm run build"
                 sh "npm run docs"
-                sh "npm run build-storybook"
+                // sh "npm run build-storybook"
                 sh "echo ${GIT_SHORT_SHA} > ./build/SHA.txt"
                 sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*.svg' --exclude 'app.json'"
                 sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*' --include '*.svg' --content-type 'image/svg+xml'"
@@ -38,7 +36,6 @@ pipeline {
         }
 
         stage ('build-prod') {
-            agent { label 'linux-slave' }
             when { branch "master" }
             steps {
                 script {
