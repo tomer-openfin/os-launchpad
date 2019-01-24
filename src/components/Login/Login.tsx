@@ -63,7 +63,7 @@ const LoginForm = ({ autoLoginOrg, values }) => {
 
       <FormField label="Password" name="password" placeholder="Enter Password" type="password" />
 
-      {autoLoginOrg && <Checkbox label="Keep me logged in" name="autoLogin" checked={values && values.autoLogin} />}
+      {/* {autoLoginOrg && <Checkbox label="Keep me logged in" name="autoLogin" checked={values && values.autoLogin} />} */}
 
       <CTA extraSpace={!autoLoginOrg} type="submit">
         Login

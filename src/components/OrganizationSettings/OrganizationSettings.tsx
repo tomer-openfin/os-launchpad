@@ -29,7 +29,7 @@ const OrganizationSettings = ({ autoLoginOrg, setOrgAutoLogin }: Props) => {
 
       <ThemesForm />
 
-      <Header>Allow Auto Login</Header>
+      {/* <Header>Allow Auto Login</Header>
 
       <StyledRadioButton onChange={handleSetOrgAutoLogin} checked={autoLoginOrg} name={ON_OFF_NAME} value={OnOff.On}>
         On
@@ -37,8 +37,7 @@ const OrganizationSettings = ({ autoLoginOrg, setOrgAutoLogin }: Props) => {
 
       <StyledRadioButton onChange={handleSetOrgAutoLogin} checked={!autoLoginOrg} name={ON_OFF_NAME} value={OnOff.Off}>
         Off
-      </StyledRadioButton>
-
+      </StyledRadioButton> */}
     </Wrapper>
   );
 };

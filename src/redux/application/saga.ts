@@ -96,13 +96,13 @@ function* openfinSetup(action: OpenfinReadyAction) {
 
     yield all([take([GET_ORG_SETTINGS.SUCCESS, GET_ORG_SETTINGS.ERROR]), put(getOrgSettingsRequest())]);
 
-    const autoLoginLocal = yield !!getLocalStorage('autoLogin');
+    // const autoLoginLocal = yield !!getLocalStorage('autoLogin');
 
-    const autoLoginOrg = yield select(getOrganizationAutoLogin);
+    // const autoLoginOrg = yield select(getOrganizationAutoLogin);
 
-    if (document.cookie && autoLoginLocal && autoLoginOrg) {
-      yield all([take([GET_ME.SUCCESS, GET_ME.ERROR]), put(getMeRequest())]);
-    }
+    // if (document.cookie && autoLoginLocal && autoLoginOrg) {
+    //   yield all([take([GET_ME.SUCCESS, GET_ME.ERROR]), put(getMeRequest())]);
+    // }
 
     const isLoggedIn = yield select(getIsLoggedIn);
 
