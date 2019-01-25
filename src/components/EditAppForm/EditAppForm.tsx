@@ -134,7 +134,7 @@ class EditAppForm extends React.Component<Props, State> {
             manifest_url,
             name,
             title,
-            withAppUrl: !!withAppUrl,
+            withAppUrl: !!appUrl,
           }}
           onSubmit={this.handleFormSubmit}
           validateOnChange={false}

@@ -1,6 +1,6 @@
-import { logoutRequest } from '../../redux/me';
+import { logoutError } from '../../redux/me';
 
-import { APIResponse, HTTPMethods } from '../../types/commons';
+import { APIResponse, HTTPMethods, ResponseStatus } from '../../types/commons';
 
 const createOptions = (requestMethod: HTTPMethods, body?, optionOverrides?): RequestInit => ({
   body: JSON.stringify(body || undefined),
@@ -19,9 +19,13 @@ const fetchJSON = (endpoint: string, requestMethod: HTTPMethods, body?, optionOv
   return fetch(endpoint, options)
     .then(response => {
       if (response.status === 401) {
-        window.store.dispatch(logoutRequest());
+        const err = 'Unauthorized request, now terminating session.';
 
-        throw new Error(`Unauthorized request, now terminating session.`);
+        alert('Your session has expired, logging out.');
+
+        window.store.dispatch(logoutError({ status: ResponseStatus.FAILURE, message: err }));
+
+        throw new Error(err);
       }
       return response;
     })
