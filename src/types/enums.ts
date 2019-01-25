@@ -44,3 +44,10 @@ export enum AppStatusOrigins {
   Event = 'event',
   LayoutRestore = 'layoutRestore',
 }
+
+export enum HTTPMethods {
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
+}

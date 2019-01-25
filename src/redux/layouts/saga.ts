@@ -38,7 +38,7 @@ const buildErrorResponse = (message: string): ErrorResponse => ({ status: Respon
 function* watchGetLayoutsRequest() {
   const response = yield call(ApiService.getUserLayouts);
 
-  if (!response || !response.length || response.status === ResponseStatus.FAILURE) {
+  if (!response || response.status === ResponseStatus.FAILURE) {
     yield put(getLayoutsError(response));
   } else {
     yield put(getLayoutsSuccess(response));

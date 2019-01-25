@@ -1,7 +1,9 @@
-import { APIResponse, App } from '../../types/commons';
+import { APIResponse, App, HTTPMethods } from '../../types/commons';
+
 import { checkIsEnterprise } from '../../utils/checkIsEnterprise';
+
 import API from './api';
-import { createDeleteOptions, createGetOptions, createPostOptions, createPutOptions } from './requestOptions';
+import fetchJSON from './fetchJSON';
 
 /**
  * Get apps
@@ -9,20 +11,11 @@ import { createDeleteOptions, createGetOptions, createPostOptions, createPutOpti
  * @returns {Promise<App[] | APIResponse>}
  */
 export const getDirectoryAppList = (): Promise<App[] | APIResponse> => {
-  if (checkIsEnterprise()) {
-    const options = createGetOptions();
+  const isEnterprise = checkIsEnterprise();
+  const url = isEnterprise ? `${API.USER_APPS}?scope=all` : API.PUBLIC_APPS;
+  const optionOverrides = isEnterprise ? undefined : { headers: undefined, credentials: 'omit' };
 
-    return fetch(`${API.USER_APPS}?scope=all`, options)
-      .then(resp => resp.json())
-      .then(json => {
-        if (!json) {
-          throw new Error(`${API.ORG_SETTINGS} did not return a valid resource: ${json}`);
-        }
-        return json;
-      });
-  }
-
-  return fetch(API.PUBLIC_APPS).then(res => res.json());
+  return fetchJSON(url, HTTPMethods.GET, undefined, optionOverrides);
 };
 
 /**
@@ -30,66 +23,31 @@ export const getDirectoryAppList = (): Promise<App[] | APIResponse> => {
  *
  * @returns {Promise<App[] | APIResponse>}
  */
-export const getAdminApps = (): Promise<App[] | APIResponse> => {
-  const options = createGetOptions();
-
-  return fetch(`${API.USER_APPS}?scope=all`, options)
-    .then(resp => resp.json())
-    .then(json => {
-      if (!json) {
-        throw new Error(`${API.ORG_SETTINGS} did not return a valid resource: ${json}`);
-      }
-      return json;
-    });
-};
+export const getAdminApps = (): Promise<App[] | APIResponse> => fetchJSON(`${API.USER_APPS}?scope=all`, HTTPMethods.GET);
 
 /**
  * Get admin app
  *
  * @returns {Promise<App | APIResponse>}
  */
-export const getAdminApp = (app: App): Promise<App | APIResponse> => {
-  const options = createGetOptions();
-
-  return fetch(`${API.ADMIN_APPS}/${app.id}`, options)
-    .then(resp => resp.json())
-    .then(json => {
-      if (!json) {
-        throw new Error(`${API.ORG_SETTINGS} did not return a valid resource: ${json}`);
-      }
-      return json;
-    });
-};
+export const getAdminApp = (app: App): Promise<App | APIResponse> => fetchJSON(`${API.ADMIN_APPS}/${app.id}`, HTTPMethods.GET);
 
 /**
  * Create new admin app
  *
  * @returns {Promise<APIResponse>}
  */
-export const createAdminApp = (app: App): Promise<APIResponse> => {
-  const options = createPostOptions({ application: app });
-
-  return fetch(`${API.ADMIN_APPS}`, options).then(resp => resp.json());
-};
+export const createAdminApp = (app: App): Promise<APIResponse> => fetchJSON(`${API.ADMIN_APPS}`, HTTPMethods.POST, { application: app });
 
 /**
  * Update an admin app
  *
  * @returns {Promise<APIResponse>}
  */
-export const updateAdminApp = (app: App): Promise<APIResponse> => {
-  const options = createPutOptions({ application: app });
-
-  return fetch(`${API.ADMIN_APPS}/${app.id}`, options).then(resp => resp.json());
-};
-
+export const updateAdminApp = (app: App): Promise<APIResponse> => fetchJSON(`${API.ADMIN_APPS}/${app.id}`, HTTPMethods.PUT, { application: app });
 /**
  * Delete an admin app
  *
  * @returns {Promise<APIResponse>}
  */
-export const deleteAdminApp = (app: App): Promise<APIResponse> => {
-  const options = createDeleteOptions();
-
-  return fetch(`${API.ADMIN_APPS}/${app.id}`, options).then(resp => resp.json());
-};
+export const deleteAdminApp = (app: App): Promise<APIResponse> => fetchJSON(`${API.ADMIN_APPS}/${app.id}`, HTTPMethods.DELETE);

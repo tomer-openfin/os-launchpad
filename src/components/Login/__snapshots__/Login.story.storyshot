@@ -632,28 +632,8 @@ exports[`Storyshots Components/Login With Error 1`] = `
                 value=""
               />
             </label>
-            <label
-              className="sc-dxgOiQ fABziC sc-kpOJdX fXkmiv"
-            >
-              <input
-                checked={false}
-                name="autoLogin"
-                onBlur={[Function]}
-                onChange={[Function]}
-                type="checkbox"
-              />
-              <div
-                checked={false}
-                className="sc-jKJlTe cSgSty"
-              />
-              <div
-                className="sc-ckVGcZ LKQLo"
-              >
-                Keep me logged in
-              </div>
-            </label>
             <button
-              className="sc-kAzzGY sc-dfVpRl khltlA"
+              className="sc-kAzzGY sc-dfVpRl ldXyIs"
               type="submit"
             >
               Login
@@ -1192,28 +1172,8 @@ exports[`Storyshots Components/Login default 1`] = `
                 value=""
               />
             </label>
-            <label
-              className="sc-dxgOiQ fABziC sc-kpOJdX fXkmiv"
-            >
-              <input
-                checked={false}
-                name="autoLogin"
-                onBlur={[Function]}
-                onChange={[Function]}
-                type="checkbox"
-              />
-              <div
-                checked={false}
-                className="sc-jKJlTe cSgSty"
-              />
-              <div
-                className="sc-ckVGcZ LKQLo"
-              >
-                Keep me logged in
-              </div>
-            </label>
             <button
-              className="sc-kAzzGY sc-dfVpRl khltlA"
+              className="sc-kAzzGY sc-dfVpRl ldXyIs"
               type="submit"
             >
               Login

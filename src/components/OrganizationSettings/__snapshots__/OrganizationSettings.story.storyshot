@@ -139,39 +139,6 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
           </button>
         </div>
       </form>
-      <h3
-        className="sc-kUaPvJ kKUdeV"
-      >
-        Allow Auto Login
-      </h3>
-      <label
-        checked={true}
-        className="sc-fONwsr hYmtpU sc-kEYyzF eGRGwQ"
-      >
-        <input
-          checked={true}
-          className="sc-fONwsr hYmtpU sc-hMqMXs bSKuHb"
-          name="autologin-onoff"
-          onChange={[Function]}
-          type="radio"
-          value="on"
-        />
-        On
-      </label>
-      <label
-        checked={false}
-        className="sc-fONwsr hYmtpU sc-kEYyzF bLItnJ"
-      >
-        <input
-          checked={false}
-          className="sc-fONwsr hYmtpU sc-hMqMXs bSKuHb"
-          name="autologin-onoff"
-          onChange={[Function]}
-          type="radio"
-          value="off"
-        />
-        Off
-      </label>
     </div>
   </div>
   <button
