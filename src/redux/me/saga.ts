@@ -1,5 +1,5 @@
 import { Application, Window } from '@giantmachines/redux-openfin';
-import { all, call, put, select, take, takeLatest } from 'redux-saga/effects';
+import { all, call, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import { ErrorResponse } from '../../types/commons';
 import { ResponseStatus } from '../../types/enums';
@@ -14,7 +14,6 @@ import { getLayoutsRequest } from '../layouts';
 import { getAdminOrgSettingsRequest } from '../organization';
 import {
   ADD_TO_APP_LAUNCHER,
-  changePassword,
   GET_ME,
   GET_SETTINGS,
   getMeError,
@@ -37,9 +36,22 @@ import {
   SET_LAUNCHER_POSITION,
   SET_LAUNCHER_SIZE,
   setMe,
+  showSetPasswordForm,
+  UPDATE_PASSWORD,
+  updatePasswordError,
+  updatePasswordSuccess,
 } from './actions';
 import { getMeSettings } from './selectors';
-import { LoginError, LoginRequest, LoginSuccess, LoginWithNewPassword, LogoutError } from './types';
+import {
+  LoginError,
+  LoginRequest,
+  LoginSuccess,
+  LoginWithNewPassword,
+  LogoutError,
+  UpdatePasswordError,
+  UpdatePasswordRequest,
+  UpdatePasswordSuccess,
+} from './types';
 
 const GENERIC_API_ERROR: ErrorResponse = { status: ResponseStatus.FAILURE, message: 'Failed to get response from server' };
 
@@ -129,7 +141,7 @@ function* watchLoginError(action: LoginError) {
   const { code, session, message } = payload;
 
   if (code === 'NewPasswordRequired' && session) {
-    yield put(changePassword({ session, message }));
+    yield put(showSetPasswordForm({ session, message }));
   } else {
     // tslint:disable-next-line:no-console
     console.error('Error Message:', message);
@@ -196,7 +208,7 @@ function* watchLogoutError(action: LogoutError) {
 function* watchGetSettingsRequest() {
   const result = yield call(ApiService.getUserSettings);
 
-  if (result.status === ResponseStatus.FAILURE) {
+  if (!result || result.status === ResponseStatus.FAILURE) {
     // TODO validate result against settings state (e.g. invalid position issue)
     // if invalid fall back to defaults and save in api
     yield put(getSettingsError(result));
@@ -222,6 +234,37 @@ function* watchUpdateLauncherApps(delay: number) {
   yield put(reboundLauncherRequest(true, delay));
 
   yield put(saveSettingsRequest());
+}
+
+function* watchUpdatePasswordRequest(action: UpdatePasswordRequest) {
+  const { payload } = action;
+
+  const response = yield call(ApiService.updateUserPassword, payload);
+
+  if (response.status === ResponseStatus.FAILURE) {
+    yield put(updatePasswordError(response, action.meta));
+  } else {
+    yield put(updatePasswordSuccess(response, action.meta));
+  }
+}
+
+function watchUpdatePasswordSuccess(action: UpdatePasswordSuccess) {
+  if (action.meta && action.meta.successCb) {
+    action.meta.successCb();
+  }
+}
+
+function watchUpdatePasswordError(action: UpdatePasswordError) {
+  const error = action.payload;
+
+  const errorMessage = error ? error.message || error : 'Unknown Error';
+
+  // tslint:disable-next-line:no-console
+  console.log('Error on', action.type, ':', errorMessage, '\n');
+
+  if (action.meta && action.meta.errorCb) {
+    action.meta.errorCb(errorMessage);
+  }
 }
 
 function* reboundLauncherAndSaveSettings() {
@@ -253,5 +296,8 @@ export function* meSaga() {
   yield takeLatest(ADD_TO_APP_LAUNCHER, watchUpdateLauncherApps, 0);
   yield takeLatest(REMOVE_FROM_APP_LAUNCHER, watchUpdateLauncherApps, 200);
 
+  yield takeEvery(UPDATE_PASSWORD.REQUEST, watchUpdatePasswordRequest);
+  yield takeEvery(UPDATE_PASSWORD.SUCCESS, watchUpdatePasswordSuccess);
+  yield takeEvery(UPDATE_PASSWORD.ERROR, watchUpdatePasswordError);
   yield takeLatest([SET_AUTO_HIDE, SET_LAUNCHER_POSITION, SET_LAUNCHER_SIZE], reboundLauncherAndSaveSettings);
 }

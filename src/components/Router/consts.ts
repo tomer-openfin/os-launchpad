@@ -20,6 +20,10 @@ export const ADMIN_ROUTES = {
   ...ADMIN_USERS_ROUTES,
 };
 
+export const SETTINGS_ROUTES = {
+  SETTINGS_UPDATE: '/settings/user/update',
+};
+
 export const ROUTES = {
   ...ADMIN_ROUTES,
   APP_DIRECTORY: '/app-directory',
@@ -30,4 +34,5 @@ export const ROUTES = {
   LOGIN: '/login',
   LOGOUT: '/logout',
   SETTINGS: '/settings',
+  ...SETTINGS_ROUTES,
 };

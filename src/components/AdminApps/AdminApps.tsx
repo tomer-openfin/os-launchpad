@@ -2,7 +2,7 @@ import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
 import { DeleteIconLink, EditIconLink, HeadingWrapper, LinkWrapper, ListWrapper, Wrapper } from '../AdminUsers/AdminUsers.css';
-import Modal from '../Modal';
+import { ButtonLink } from '../Button/Button.css';
 
 import { App } from '../../types/commons';
 import { doesCurrentPathMatch } from '../../utils/routeHelpers';
@@ -10,7 +10,7 @@ import { ADMIN_APPS_ROUTES, ROUTES } from '../Router/consts';
 
 import AppCard from '../AppCard';
 import { Row } from '../AppDirectory';
-import { ButtonLink } from '../Button/Button.css';
+import Modal from '../Modal';
 import { SearchInputWithState } from '../SearchInput';
 
 const ADMIN_APPS_PATHS = Object.values(ADMIN_APPS_ROUTES);

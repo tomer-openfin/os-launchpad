@@ -1,6 +1,5 @@
 import {
   ADD_TO_APP_LAUNCHER,
-  CHANGE_PASSWORD,
   GET_ME,
   GET_SETTINGS,
   LOGIN,
@@ -11,6 +10,7 @@ import {
   SET_LAUNCHER_POSITION,
   SET_LAUNCHER_SIZE,
   SET_ME,
+  SHOW_SET_PASSWORD_FORM,
 } from './actions';
 
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
@@ -95,7 +95,7 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
     case LOGOUT.SUCCESS: {
       return defaultState;
     }
-    case CHANGE_PASSWORD: {
+    case SHOW_SET_PASSWORD_FORM: {
       const { session, message } = action.payload;
       return {
         ...state,

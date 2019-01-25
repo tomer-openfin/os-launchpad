@@ -56,7 +56,7 @@ export const RowWrapper = styled.div<{ height?: string; firstElementWidth?: stri
 `;
 
 export const ButtonWrapper = styled.div`
-  ${ResponsiveWidth};
+  ${ResponsiveWidth}
 
   display: flex;
   flex-wrap: nowrap;
@@ -70,7 +70,7 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const ErrorWrapper = styled.div`
-  ${ResponsiveWidth};
+  ${ResponsiveWidth}
 
   bottom: ${FOOTER_HEIGHT};
   position: absolute;

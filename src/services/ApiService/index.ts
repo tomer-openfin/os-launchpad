@@ -4,7 +4,16 @@ import { APIResponse, ResponseStatus } from '../../types/commons';
 import { getAdminOrgSettings, getOrgSettings, saveAdminOrgSettings } from './admin';
 import { createAdminApp, deleteAdminApp, getAdminApp, getAdminApps, getDirectoryAppList, updateAdminApp } from './apps';
 import { login, logout, newPasswordLogin } from './auth';
-import { createUserLayout, deleteUserLayout, getUserInfo, getUserLayouts, getUserSettings, saveUserSettings, updateUserLayout } from './user';
+import {
+  createUserLayout,
+  deleteUserLayout,
+  getUserInfo,
+  getUserLayouts,
+  getUserSettings,
+  saveUserSettings,
+  updateUserLayout,
+  updateUserPassword,
+} from './user';
 import { createAdminUser, deleteAdminUser, getAdminUser, getAdminUsers, updateAdminUser } from './users';
 
 const handleError = e => {
@@ -55,4 +64,6 @@ export default {
 
   getUserSettings: withTry(getUserSettings),
   saveUserSettings: withTry(saveUserSettings),
+
+  updateUserPassword: withTry(updateUserPassword),
 };

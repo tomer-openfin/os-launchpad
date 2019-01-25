@@ -1,25 +1,29 @@
 import styled from 'styled-components';
 
 import { Color } from '../../styles/index';
-import { TypeStyleArcturus, TypeStyleCanopus } from '../../styles/typography.css';
+import { TypeStyleArcturus, TypeStyleCanopus, TypeStyleDeneb } from '../../styles/typography.css';
+
+interface Props {
+  isValid?: boolean;
+}
 
 export const Error = styled.div`
+  ${TypeStyleDeneb}
+
+  bottom: -20px;
+  color: ${Color.MARS};
+  left: 0;
   position: absolute;
-  padding: 5px 10px;
-  align-self: flex-end;
-  background-color: ${Color.MARS};
-  color: ${Color.SUN};
-  font-size: 10px;
-  height: auto;
 `;
 
 export const LabelText = styled.div`
-  display: flex;
   ${TypeStyleArcturus}
+
+  display: flex;
   color: ${Color.SUN};
 `;
 
-export const Label = styled.label`
+export const Label = styled.label<Props>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -34,6 +38,7 @@ export const Label = styled.label`
 
   & > textarea {
     ${TypeStyleCanopus}
+
     padding: 7px 0 9px 9px;
     margin-top: 5px;
     resize: none;
@@ -42,6 +47,7 @@ export const Label = styled.label`
 
   & > input:focus {
     outline: none;
-    border: 3px solid rgba(251, 194, 60, 0.54);
+    color: ${props => (props.isValid ? `${Color.VACUUM}` : `${Color.MARS}`)};
+    border: 3px solid ${props => (props.isValid ? 'rgba(251, 194, 60, 0.54)' : 'rgba(223,83,83,0.5)')};
   }
 `;

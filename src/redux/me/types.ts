@@ -1,5 +1,4 @@
 import {
-  changePassword,
   getMeError,
   getMeRequest,
   getMeSuccess,
@@ -21,6 +20,10 @@ import {
   setLauncherPosition,
   setLauncherSize,
   setMe,
+  showSetPasswordForm,
+  updatePasswordError,
+  updatePasswordRequest,
+  updatePasswordSuccess,
 } from './actions';
 
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
@@ -92,9 +95,26 @@ export interface SetLauncherSizePayload {
   launcherSize: LauncherSize;
 }
 
-export interface ChangePasswordPayload {
+export interface NewPasswordPayload {
   session: string;
   message: string;
+}
+
+export interface UpdatePasswordRequestPayload {
+  password: string;
+  newPassword: string;
+}
+
+// use APIResponse interface from 'interfaces.ts'
+export interface UpdatePasswordSuccessPayload {
+  status: string;
+  message?: string;
+}
+
+export interface UpdatePasswordErrorPayload {
+  status: string;
+  code?: string;
+  message?: string;
 }
 
 // Actions
@@ -127,7 +147,11 @@ export type SetAutoHide = ReturnType<typeof setAutoHide>;
 export type SetLauncherPosition = ReturnType<typeof setLauncherPosition>;
 export type SetLauncherSize = ReturnType<typeof setLauncherSize>;
 
-export type ChangePassword = ReturnType<typeof changePassword>;
+export type ShowSetPasswordForm = ReturnType<typeof showSetPasswordForm>;
+
+export type UpdatePasswordRequest = ReturnType<typeof updatePasswordRequest>;
+export type UpdatePasswordSuccess = ReturnType<typeof updatePasswordSuccess>;
+export type UpdatePasswordError = ReturnType<typeof updatePasswordError>;
 
 export type MeActions =
   | GetSettingsRequest
@@ -143,5 +167,8 @@ export type MeActions =
   | SaveSettingsSuccess
   | SaveSettingsError
   | SetMe
+  | UpdatePasswordRequest
+  | UpdatePasswordSuccess
+  | UpdatePasswordError
   | SetLauncherPosition
-  | ChangePassword;
+  | ShowSetPasswordForm;

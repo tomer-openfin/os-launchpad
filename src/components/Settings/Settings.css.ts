@@ -5,6 +5,13 @@ import { Color, Typography } from '../../styles';
 import Button from '../Button';
 import RadioButton from '../RadioButton';
 
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 10px 25px 30px 25px;
+  width: 100vw;
+`;
+
 export const Window = styled.div`
   display: flex;
   flex-direction: column;

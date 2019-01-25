@@ -1,15 +1,22 @@
 import * as React from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
 import { DirectionalPosition, LauncherSize, OnOff } from '../../types/commons';
+import { doesCurrentPathMatch } from '../../utils/routeHelpers';
+import { ButtonLink } from '../Button/Button.css';
+import { ROUTES, SETTINGS_ROUTES } from '../Router/consts';
+import { ButtonWrapper, CTA, Group, Heading, Row, Section, StyledRadioButton, Window } from './Settings.css';
 
+import Borders from '../Borders';
+import Modal from '../Modal';
 import WindowHeader from '../WindowHeader';
-import { CTA, Group, Heading, Row, Section, StyledRadioButton, Window } from './Settings.css';
 
 const AUTO_HIDE_NAME = 'autohide-onoff';
 const LAUNCHER_SIZE_NAME = 'launcherSize-options';
 
-interface Props {
+interface Props extends RouteComponentProps {
   autoHide: boolean;
+  isEnterprise: boolean;
   hideWindow: () => void;
   launcherSize: LauncherSize;
   onEscDown: () => void;
@@ -18,9 +25,20 @@ interface Props {
   setLauncherSize: (launcherSize: LauncherSize) => void;
 }
 
-class Settings extends React.Component<Props> {
+const SETTINGS_PATHS = Object.values(SETTINGS_ROUTES);
+
+// defaultProps needed for Settings.story to not complain about missing history prop
+const defaultProps: Partial<Props> = {};
+
+class Settings extends React.Component<Props, {}> {
+  static defaultProps = defaultProps;
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    const { autoHide, hideWindow, launcherSize, setAutoHide, setLauncherPosition, setLauncherSize } = this.props;
+    const { autoHide, children, isEnterprise, history, hideWindow, setAutoHide, setLauncherPosition, setLauncherSize, launcherSize } = this.props;
 
     const setLauncherPositionTop = () => setLauncherPosition(DirectionalPosition.Top);
     const setLauncherPositionLeft = () => setLauncherPosition(DirectionalPosition.Left);
@@ -35,63 +53,75 @@ class Settings extends React.Component<Props> {
 
     return (
       <Window>
-        <WindowHeader handleClose={hideWindow}>My Settings</WindowHeader>
+        <Borders height="100%" width="100%">
+          <WindowHeader handleClose={hideWindow}>My Settings</WindowHeader>
 
-        <Section>
-          <Group>
-            <Heading>Auto-Hide</Heading>
+          <Section>
+            <Group>
+              <Heading>Auto-Hide</Heading>
 
-            <Row>
-              <StyledRadioButton onChange={handleAutoHide} checked={autoHide} name={AUTO_HIDE_NAME} value={OnOff.On}>
-                On
-              </StyledRadioButton>
+              <Row>
+                <StyledRadioButton onChange={handleAutoHide} checked={autoHide} name={AUTO_HIDE_NAME} value={OnOff.On}>
+                  On
+                </StyledRadioButton>
 
-              <StyledRadioButton onChange={handleAutoHide} checked={!autoHide} name={AUTO_HIDE_NAME} value={OnOff.Off}>
-                Off
-              </StyledRadioButton>
-            </Row>
-          </Group>
+                <StyledRadioButton onChange={handleAutoHide} checked={!autoHide} name={AUTO_HIDE_NAME} value={OnOff.Off}>
+                  Off
+                </StyledRadioButton>
+              </Row>
+            </Group>
 
-          <Group>
-            <Heading>Launcher Size</Heading>
+            <Group>
+              <Heading>Launcher Size</Heading>
 
-            <Row>
-              <StyledRadioButton
-                onChange={handleLauncherSize}
-                checked={launcherSize === LauncherSize.Small}
-                name={LAUNCHER_SIZE_NAME}
-                value={LauncherSize.Small}
-              >
-                Sm
-              </StyledRadioButton>
+              <Row>
+                <StyledRadioButton
+                  onChange={handleLauncherSize}
+                  checked={launcherSize === LauncherSize.Small}
+                  name={LAUNCHER_SIZE_NAME}
+                  value={LauncherSize.Small}
+                >
+                  Sm
+                </StyledRadioButton>
 
-              <StyledRadioButton
-                onChange={handleLauncherSize}
-                checked={launcherSize === LauncherSize.Large}
-                name={LAUNCHER_SIZE_NAME}
-                value={LauncherSize.Large}
-              >
-                Lg
-              </StyledRadioButton>
-            </Row>
-          </Group>
-        </Section>
+                <StyledRadioButton
+                  onChange={handleLauncherSize}
+                  checked={launcherSize === LauncherSize.Large}
+                  name={LAUNCHER_SIZE_NAME}
+                  value={LauncherSize.Large}
+                >
+                  Lg
+                </StyledRadioButton>
+              </Row>
+            </Group>
+          </Section>
 
-        <Section>
-          <Group>
-            <Heading>Launcher Position</Heading>
+          <Section>
+            <Group>
+              <Heading>Launcher Position</Heading>
 
-            <CTA onClick={setLauncherPositionTop}>Top</CTA>
+              <CTA onClick={setLauncherPositionTop}>Top</CTA>
 
-            <Row>
-              <CTA onClick={setLauncherPositionLeft}>Left</CTA>
+              <Row>
+                <CTA onClick={setLauncherPositionLeft}>Left</CTA>
 
-              <CTA onClick={setLauncherPositionRight}>Right</CTA>
-            </Row>
+                <CTA onClick={setLauncherPositionRight}>Right</CTA>
+              </Row>
 
-            <CTA onClick={setLauncherPositionBottom}>Bottom</CTA>
-          </Group>
-        </Section>
+              <CTA onClick={setLauncherPositionBottom}>Bottom</CTA>
+            </Group>
+          </Section>
+
+          {isEnterprise && (
+            <ButtonWrapper>
+              <ButtonLink to={ROUTES.SETTINGS_UPDATE} width={147}>
+                Change Password
+              </ButtonLink>
+            </ButtonWrapper>
+          )}
+
+          {doesCurrentPathMatch(SETTINGS_PATHS, location.pathname) && <Modal handleClose={history.goBack}>{children}</Modal>}
+        </Borders>
       </Window>
     );
   }

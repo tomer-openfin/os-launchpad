@@ -57,7 +57,6 @@ const AppForm = ({ isValid, isSubmitting, values }) => (
         </RowWrapper>
       </GridWrapper>
     </ScrollWrapper>
-
     <Footer>
       <ButtonWrapper>
         <ButtonLink to={ROUTES.ADMIN_APPS} backgroundColor={Color.MERCURY} type="button" width={128}>
@@ -68,8 +67,8 @@ const AppForm = ({ isValid, isSubmitting, values }) => (
           Save
         </Button>
       </ButtonWrapper>
-    </Footer>;
-  </FormWrapper >
+    </Footer>
+  </FormWrapper>
 );
 
 export default AppForm;

@@ -11,38 +11,38 @@ exports[`Storyshots Admin Components/ConfirmUserDelete default 1`] = `
     }
   >
     <div
-      className="sc-TFwJa ehGAHw"
+      className="sc-uJMKN cSjwUY"
     >
       <div
-        className="sc-rBLzX bNjCHr"
+        className="sc-frDJqD laUaqc"
       >
         <div
-          className="sc-bMvGRv hQTXkX"
+          className="sc-kvZOFW dNAtOq"
         >
           Are you sure?
         </div>
       </div>
       <div
-        className="sc-laTMn kFwrEO"
+        className="sc-jbKcbu jeRclB"
       >
         <div
-          className="sc-hGoxap gBejph"
+          className="sc-dNLxif fQLVfm"
         >
           You are about to delete the following user:
         </div>
         <div
-          className="sc-hGoxap gBejph"
+          className="sc-dNLxif fQLVfm"
         >
           
  John Doe
         </div>
       </div>
       <div
-        className="sc-CtfFt czOCV"
+        className="sc-hqyNC bLHuPW"
       >
         <a
           backgroundColor="#848484"
-          className="sc-chPdSV hdQzLm"
+          className="sc-chPdSV cmIYmV"
           href="/admin/users"
           onClick={[Function]}
           type="button"
@@ -51,7 +51,7 @@ exports[`Storyshots Admin Components/ConfirmUserDelete default 1`] = `
           Cancel
         </a>
         <button
-          className="sc-kAzzGY dHFEVI"
+          className="sc-kAzzGY fbDaBb"
           disabled={false}
           onClick={[Function]}
           width={153}

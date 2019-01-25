@@ -1,4 +1,4 @@
-import { MeSettingsState } from '../../redux/me';
+import { MeSettingsState, UpdatePasswordRequestPayload } from '../../redux/me';
 
 import { APIResponse, HTTPMethods, NewUserLayout, ResponseStatus, User, UserLayout } from '../../types/commons';
 
@@ -112,4 +112,13 @@ export const saveUserSettings = (settings: MeSettingsState): Promise<APIResponse
   }
 
   return setLocalStorage(LOCAL_STORAGE_KEYS.SETTINGS, settings);
+};
+
+/**
+ * Update user password
+ *
+ * @returns {Promise<APIResponse>}
+ */
+export const updateUserPassword = (payload: UpdatePasswordRequestPayload): Promise<APIResponse> => {
+  return fetchJSON(API.UPDATE_PASSWORD, HTTPMethods.POST, payload);
 };

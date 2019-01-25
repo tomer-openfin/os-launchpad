@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { Color } from '../../styles/index';
+import { Color } from '../../styles';
 import { TypeStyleSirius } from '../../styles/typography.css';
 
 interface ButtonProps {
@@ -11,7 +11,7 @@ interface ButtonProps {
 }
 
 export const ButtonCSS = css<ButtonProps>`
-  ${TypeStyleSirius};
+  ${TypeStyleSirius}
 
   align-items: center;
   background-color: ${props => props.backgroundColor || Color.VENUS};
@@ -54,7 +54,7 @@ export const ButtonCSS = css<ButtonProps>`
 `;
 
 export default styled.button<ButtonProps>`
-  ${ButtonCSS};
+  ${ButtonCSS}
 `;
 
 export const ButtonLink = styled(Link)`

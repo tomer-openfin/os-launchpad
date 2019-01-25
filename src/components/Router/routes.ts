@@ -7,6 +7,7 @@ import App from '../App';
 import AppDirectory from '../AppDirectory';
 import AppOverflow from '../AppOverflow';
 import ConfirmAppDelete from '../ConfirmAppDelete';
+import ConfirmPasswordUpdate from '../ConfirmPasswordUpdate';
 import ConfirmUserDelete from '../ConfirmUserDelete';
 import ContextMenu from '../ContextMenu';
 import EditAppForm from '../EditAppForm';
@@ -18,6 +19,7 @@ import NewAppForm from '../NewAppForm';
 import NewUserForm from '../NewUserForm';
 import OrganizationSettings from '../OrganizationSettings';
 import Settings from '../Settings';
+import UpdatePasswordForm from '../UpdatePasswordForm';
 
 import { ROUTES } from './consts';
 
@@ -62,6 +64,14 @@ export const appRoutes: AppRoute[] = [
     Component: ConfirmAppDelete,
     exact: true,
     path: ROUTES.ADMIN_APPS_DELETE,
+  },
+];
+
+const settingRoutes: AppRoute[] = [
+  {
+    Component: UpdatePasswordForm,
+    exact: true,
+    path: ROUTES.SETTINGS_UPDATE,
   },
 ];
 
@@ -122,7 +132,8 @@ export const routes: AppRoute[] = [
   },
   {
     Component: Settings,
-    exact: true,
+    children: settingRoutes,
+    exact: false,
     path: ROUTES.SETTINGS,
   },
   {

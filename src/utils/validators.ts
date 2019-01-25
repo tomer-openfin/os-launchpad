@@ -32,6 +32,36 @@ export const validateTextField = value => {
   return error;
 };
 
+export const validatePasswordField = value => {
+  let error;
+
+  if (!value) {
+    error = 'Required';
+  }
+
+  if (value.length < 6) {
+    error = 'Must be greater than 6 characters';
+  }
+
+  if (value.length >= 6) {
+    const upperRegex = /\w*[A-Z]\w*/g;
+    const numericRegex = /\w*[1-9]\w*/g;
+
+    if (!upperRegex.test(value)) {
+      error = 'Must have an uppercase character';
+    }
+
+    if (!numericRegex.test(value)) {
+      error = 'Must have a numeric character';
+    }
+
+    // todo: check with OF Brian what symbol(s) (i.e !, @, #, etc) are valid
+  }
+
+  return error;
+};
+
+// todo: fix URL regex to only accept URLs ending in ".json"
 export const validateURL = value => {
   if (!value) return 'Required';
 

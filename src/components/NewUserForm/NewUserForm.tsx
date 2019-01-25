@@ -9,8 +9,6 @@ import { ResponseStatus, User } from '../../types/commons';
 
 import { ROUTES } from '../Router/consts';
 
-import FormField from '../FormField/FormField';
-import SvgIcon from '../SvgIcon';
 import WindowHeader from '../WindowHeader';
 
 interface Props {
@@ -114,9 +112,7 @@ class NewUserForm extends React.Component<Props, State> {
 
     return (
       <Wrapper>
-        <WindowHeader backgroundColor={Color.VACUUM}>
-          Create New User
-        </WindowHeader>
+        <WindowHeader backgroundColor={Color.VACUUM}>Create New User</WindowHeader>
 
         <Formik
           initialValues={{

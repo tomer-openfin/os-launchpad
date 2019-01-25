@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Color } from '../../styles/index';
+import { Color } from '../../styles';
 import { TypeStyleArcturus, TypeStyleProcyon } from '../../styles/typography.css';
 
 export const Heading = styled.div`
@@ -9,7 +9,8 @@ export const Heading = styled.div`
 `;
 
 export const HeadingText = styled.div`
-  ${TypeStyleProcyon};
+  ${TypeStyleProcyon}
+
   padding: 20px 0 18px 20px;
   color: ${Color.SUN};
 `;
@@ -28,11 +29,12 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const CopyWrapper = styled.div`
-  padding: 36px 0 24px 20px;
+  padding: 36px 19px 24px 20px;
 `;
 
 export const Copy = styled.div`
-  ${TypeStyleArcturus};
+  ${TypeStyleArcturus}
+
   color: ${Color.SUN};
 `;
 

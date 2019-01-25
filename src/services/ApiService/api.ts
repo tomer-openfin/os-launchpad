@@ -8,6 +8,7 @@ const API = {
   LOGIN: `${API_URL}api/auth/login`,
   LOGOUT: `${API_URL}api/auth/logout`,
   NEW_PASSWORD: `${API_URL}api/auth/password/new`,
+  UPDATE_PASSWORD: `${API_URL}api/user/password`,
 
   ORG_SETTINGS: `${API_URL}api/config`,
 

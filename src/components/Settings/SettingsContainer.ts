@@ -2,6 +2,7 @@ import { Window } from '@giantmachines/redux-openfin';
 import { connect } from 'react-redux';
 
 import { SETTINGS_WINDOW } from '../../config/windows';
+import { getIsEnterprise } from '../../redux/application';
 import { getAutoHide, getLauncherSize, setAutoHide, setLauncherPosition, setLauncherSize } from '../../redux/me';
 import { State } from '../../redux/types';
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
@@ -11,6 +12,7 @@ import Settings from './Settings';
 
 const stateProps = (state: State) => ({
   autoHide: getAutoHide(state),
+  isEnterprise: getIsEnterprise(state),
   launcherSize: getLauncherSize(state),
 });
 

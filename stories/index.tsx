@@ -22,6 +22,7 @@ import '../src/components/AppDirectory/AppDirectory.story';
 import '../src/components/AppList/AppList.story';
 import '../src/components/AppListToggle/AppListToggle.story';
 import '../src/components/AppOverflow/AppOverflow.story';
+import '../src/components/ConfirmPasswordUpdate/ConfirmPasswordUpdate.story';
 import '../src/components/LauncherAppIcon/LauncherAppIcon.story';
 import '../src/components/Layouts/Layouts.story';
 import '../src/components/LayoutsList/LayoutsList.story';
@@ -30,9 +31,11 @@ import '../src/components/LayoutsUserActions/LayoutsUserActions.story';
 import '../src/components/Login/Login.story';
 import '../src/components/Logout/Logout.story';
 import '../src/components/NotificationsIcon/NotificationsIcon.story';
+import '../src/components/PasswordForm/PasswordForm.story';
 import '../src/components/Settings/Settings.story';
 import '../src/components/SvgIconWithExtension/SvgIconWithExtension.story';
 import '../src/components/SystemDrawer/SystemDrawer.story';
+import '../src/components/UpdatePasswordForm/UpdatePasswordForm.story';
 
 // Admin Components
 import '../src/components/Admin/Admin.story';

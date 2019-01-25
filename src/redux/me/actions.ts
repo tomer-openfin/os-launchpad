@@ -1,18 +1,22 @@
 import { createAction } from 'redux-actions';
 
-import { DirectionalPosition, ErrorResponse, LauncherSize } from '../../types/commons';
+import { DirectionalPosition, ErrorResponse, LauncherSize, MetaWithCallbacks } from '../../types/commons';
 import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
+import { metaWithCallbacksCreator, payloadIdentityCreator } from '../../utils/metaAndPayloadCreators';
 import {
-  ChangePasswordPayload,
   LoginRequestPayload,
   LoginSuccessPayload,
   LoginWithNewPasswordPayload,
   MeSettingsState,
+  NewPasswordPayload,
   SetAppIdsPayload,
   SetAutoHidePayload,
   SetLauncherPositionPayload,
   SetLauncherSizePayload,
   SetMePayload,
+  UpdatePasswordErrorPayload,
+  UpdatePasswordRequestPayload,
+  UpdatePasswordSuccessPayload,
 } from './types';
 
 // Action Types
@@ -37,7 +41,9 @@ export const SET_LAUNCHER_SIZE = 'SET_LAUNCHER_SIZE';
 export const ADD_TO_APP_LAUNCHER = 'ADD_TO_APP_LAUNCHER';
 export const REMOVE_FROM_APP_LAUNCHER = 'REMOVE_FROM_APP_LAUNCHER';
 
-export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
+export const SHOW_SET_PASSWORD_FORM = 'SHOW_SET_PASSWORD_FORM';
+
+export const UPDATE_PASSWORD = generateAsyncActionTypes('UPDATE_PASSWORD');
 
 // Action Creators
 export const getSettingsRequest = createAction(GET_SETTINGS.REQUEST);
@@ -74,4 +80,20 @@ export const setLauncherSize = createAction<SetLauncherSizePayload, LauncherSize
 export const addToAppLauncher = createAction<string>(ADD_TO_APP_LAUNCHER);
 export const removeFromAppLauncher = createAction<string>(REMOVE_FROM_APP_LAUNCHER);
 
-export const changePassword = createAction<ChangePasswordPayload>(CHANGE_PASSWORD);
+export const showSetPasswordForm = createAction<NewPasswordPayload>(SHOW_SET_PASSWORD_FORM);
+
+export const updatePasswordRequest = createAction<UpdatePasswordRequestPayload, MetaWithCallbacks>(
+  UPDATE_PASSWORD.REQUEST,
+  payloadIdentityCreator,
+  metaWithCallbacksCreator,
+);
+export const updatePasswordSuccess = createAction<UpdatePasswordSuccessPayload, MetaWithCallbacks>(
+  UPDATE_PASSWORD.SUCCESS,
+  payloadIdentityCreator,
+  metaWithCallbacksCreator,
+);
+export const updatePasswordError = createAction<UpdatePasswordErrorPayload, MetaWithCallbacks>(
+  UPDATE_PASSWORD.ERROR,
+  payloadIdentityCreator,
+  metaWithCallbacksCreator,
+);

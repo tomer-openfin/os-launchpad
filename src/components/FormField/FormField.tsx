@@ -9,6 +9,7 @@ interface Props {
   className?: string;
   component?: string;
   disabled?: boolean;
+  isInvalid?: boolean;
   label?: string;
   maxLength?: string;
   name: string;
@@ -17,8 +18,8 @@ interface Props {
   validate?;
 }
 
-export const FormField = ({ checked, children, className, component, type, name, maxLength, validate, placeholder, disabled, label }: Props) => (
-  <Label className={className}>
+export const FormField = ({ checked, children, className, component, isInvalid, type, name, maxLength, validate, placeholder, disabled, label }: Props) => (
+  <Label className={className} isValid={!isInvalid}>
     {label && <LabelText>{label}</LabelText>}
 
     <Field
