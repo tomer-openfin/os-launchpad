@@ -83,7 +83,9 @@ const ChangePasswordForm = () => (
 
     <FormField label="Password Confirmation" name="newPasswordConfirmation" placeholder="Confirm Password" type="password" />
 
-    <CTA type="submit">Create New Password</CTA>
+    <CTA type="submit" fullWidth>
+      Create New Password
+    </CTA>
   </FormWrapper>
 );
 

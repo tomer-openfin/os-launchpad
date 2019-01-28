@@ -44,7 +44,7 @@ export const ContentWrapper = styled.div`
 `;
 
 export const ResponseMessage = styled.div<{ error: boolean }>`
-  color: ${props => (props.error ? Color.MARS : Color.SATURN)};
+  color: ${({ error }) => (error ? Color.MARS : Color.SATURN)};
   position: absolute;
   bottom: 10px;
   height: 30px;
@@ -56,7 +56,7 @@ export const ResponseMessage = styled.div<{ error: boolean }>`
   display: flex;
 `;
 
-export const CTA = styled(Button)<{ extraSpace?: boolean }>`
-  width: 109px;
+export const CTA = styled(Button)<{ extraSpace?: boolean; fullWidth?: boolean }>`
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : '109px')};
   ${({ extraSpace }) => extraSpace && 'margin-top: 9px;'}
 `;

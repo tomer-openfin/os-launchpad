@@ -89,7 +89,7 @@ exports[`Storyshots Components/Login Change Password 1`] = `
               />
             </label>
             <button
-              className="sc-kAzzGY sc-RefOD kbpIWn"
+              className="sc-kAzzGY sc-RefOD jDfODP"
               type="submit"
             >
               Create New Password

@@ -18,7 +18,7 @@ const fetchJSON = (endpoint: string, requestMethod: HTTPMethods, body?, optionOv
 
   return fetch(endpoint, options)
     .then(response => {
-      if (response.status === 401) {
+      if (response.status === 401 && document.cookie) {
         const err = 'Unauthorized request, now terminating session.';
 
         alert('Your session has expired, logging out.');
