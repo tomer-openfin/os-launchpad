@@ -26,7 +26,7 @@ exports[`Storyshots Components/LauncherAppIcon default 1`] = `
           onContextMenu={[Function]}
         >
           <div
-            className="sc-bZQynM eioviT"
+            className="sc-bZQynM NYJaE"
             onClick={[Function]}
             size={50}
           >

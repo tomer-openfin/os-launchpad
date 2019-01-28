@@ -118,6 +118,7 @@ function* watchRestoreLayoutSuccess(action: RestoreLayoutSuccess) {
             id,
             origin: AppStatusOrigins.LayoutRestore,
             // TODO: clean up any, maybe upgrade types
+            // tslint:disable-next-line:no-any
             runtimeVersion: (layoutApp as any).runtime ? (layoutApp as any).runtime.version : '',
             uuid,
           }),

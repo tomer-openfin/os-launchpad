@@ -103,7 +103,7 @@ exports[`Storyshots Components/App default 1`] = `
                       onContextMenu={[Function]}
                     >
                       <div
-                        className="sc-bZQynM eioviT"
+                        className="sc-bZQynM NYJaE"
                         onClick={[Function]}
                         size={50}
                       >
@@ -150,7 +150,7 @@ exports[`Storyshots Components/App default 1`] = `
                       onContextMenu={[Function]}
                     >
                       <div
-                        className="sc-bZQynM eioviT"
+                        className="sc-bZQynM NYJaE"
                         onClick={[Function]}
                         size={50}
                       >
@@ -197,7 +197,7 @@ exports[`Storyshots Components/App default 1`] = `
                       onContextMenu={[Function]}
                     >
                       <div
-                        className="sc-bZQynM eioviT"
+                        className="sc-bZQynM NYJaE"
                         onClick={[Function]}
                         size={50}
                       >

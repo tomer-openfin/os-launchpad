@@ -37,7 +37,9 @@ export const addSystemEventListener = getSystemPromise('addEventListener');
 export const getSystemMonitorInfo = getSystemPromise<MonitorInfo>('getMonitorInfo');
 export const getSystemMousePosition = getSystemPromise<PointTopLeft>('getMousePosition');
 
+// tslint:disable-next-line:no-any
 export const getOpenFinApplicationInfo = (uuid: string) => getOpenFinApplicationPromise<any>(uuid, 'getInfo');
+// tslint:disable-next-line:no-any
 export const getOpenFinApplicationManifest = (uuid: string) => getOpenFinApplicationPromise<any>(uuid, 'getManifest');
 
 export const getCurrentOpenfinApplicationInfo = getCurrentApplicationPromise<OpenFinApplicationInfo>('getInfo');
