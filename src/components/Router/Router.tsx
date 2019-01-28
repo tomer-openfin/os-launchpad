@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { DragDropContextProvider } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { AppRoute, routes } from './routes';
 
 import { GlobalStyle } from '../../styles/globals.css';
 import ConnectedThemeProvider from '../ConnectedThemeProvider';
-import FinHideShowTracker from '../FinHideShowTracker';
 
 const renderNestedRoute = (Component, children) => props => {
   return <Component {...props}>{children.map(renderRoute)}</Component>;
@@ -20,15 +21,17 @@ export const renderRoute = ({ children, Component, exact, path }: AppRoute) => {
 };
 
 const Router = () => (
-  <ConnectedThemeProvider>
-    <FinHideShowTracker>
-      <GlobalStyle />
+  <DragDropContextProvider backend={HTML5Backend}>
+    <ConnectedThemeProvider>
+      <>
+        <GlobalStyle />
 
-      <BrowserRouter>
-        <Switch>{routes.map(renderRoute)}</Switch>
-      </BrowserRouter>
-    </FinHideShowTracker>
-  </ConnectedThemeProvider>
+        <BrowserRouter>
+          <Switch>{routes.map(renderRoute)}</Switch>
+        </BrowserRouter>
+      </>
+    </ConnectedThemeProvider>
+  </DragDropContextProvider>
 );
 
 export default Router;

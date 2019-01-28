@@ -21,8 +21,9 @@ const ADMIN_TABBED_ROUTES = [
 ];
 
 interface Props {
-  isAdmin: boolean;
   children?: React.ReactNode;
+  hideWindow: () => void;
+  isAdmin: boolean;
   onEscDown: () => void;
 }
 
@@ -32,10 +33,10 @@ const renderAdminTab = ({ exact = false, path, label }) => (
   </TabLink>
 );
 
-const renderAdmin = children => {
+const renderAdmin = (children, hideWindow) => {
   return (
     <>
-      <WindowHeader>Admin</WindowHeader>
+      <WindowHeader handleClose={hideWindow}>Admin</WindowHeader>
 
       <TabsWrapper>{ADMIN_TABBED_ROUTES.map(renderAdminTab)}</TabsWrapper>
 
@@ -45,9 +46,9 @@ const renderAdmin = children => {
 };
 
 const Admin = (props: Props) => {
-  const { isAdmin, children } = props;
+  const { isAdmin, children, hideWindow } = props;
 
-  return <Wrapper>{isAdmin ? renderAdmin(children) : <h1>You do not have clearance to see the admin tools.</h1>}</Wrapper>;
+  return <Wrapper>{isAdmin ? renderAdmin(children, hideWindow) : <h1>You do not have clearance to see the admin tools.</h1>}</Wrapper>;
 };
 
 export default Admin;

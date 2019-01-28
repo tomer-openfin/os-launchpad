@@ -1,9 +1,10 @@
 import { Layout } from 'openfin-layouts/dist/client/types';
 
-import { AppListTypes, ResponseStatus } from './enums';
+import { ResponseStatus, UserStatus } from './enums';
 
 export interface App {
   appPage: string;
+  appUrl?: string;
   contexts: Array<{ $type: string }>;
   contact_email: string;
   description: string;
@@ -11,17 +12,13 @@ export interface App {
   id: string;
   images: Array<{ url: string }>;
   intents: Array<{ displayName: string; name: string }>;
-  manifest_url: string;
+  manifest_url?: string;
   name: string;
   publisher: string;
   signature: string;
   support_email: string | null;
   title: string;
-}
-
-export interface AppListItem {
-  id: string;
-  type: AppListTypes;
+  withAppUrl?: boolean;
 }
 
 export interface Bounds extends Dimensions, PrimaryDirectionalCoordinates {}
@@ -85,10 +82,14 @@ export interface User {
   isAdmin: boolean;
   lastName: string;
   middleInitial: string;
-  organizationId: string;
   tmpPassword?: string;
   username: string;
   phone?: string;
+  // created on backend
+  created?: string;
+  enabled?: boolean;
+  lastModified?: string;
+  status?: UserStatus;
 }
 
 export interface ObjectWithId {
@@ -113,4 +114,9 @@ export interface NewUserLayout {
 export interface MetaWithCallbacks {
   successCb: Function;
   errorCb?: Function;
+}
+
+export interface XYCoord {
+  x: number;
+  y: number;
 }

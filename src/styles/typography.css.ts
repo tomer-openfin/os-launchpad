@@ -1,5 +1,3 @@
-import styled, { css } from 'styled-components';
-
 /*
 FONT WEIGHT MAP:
 
@@ -16,11 +14,15 @@ FONT WEIGHT MAP:
 https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight
 */
 
-const TypeStyle = css`
+// Global font-family
+// Font family stylesheet needs to be import into
+// src/index.html - for openfin
+// .storybook/preview-head.html - for storybook
+const TypeStyle = `
   font-family: 'Nunito';
 `;
 
-export const TypeStyleSirius = css`
+export const TypeStyleSirius = `
   ${TypeStyle};
   font-size: 14px;
   font-weight: 700;
@@ -28,7 +30,7 @@ export const TypeStyleSirius = css`
   letter-spacing: -0.09px;
 `;
 
-export const TypeStyleCanopus = css`
+export const TypeStyleCanopus = `
   ${TypeStyle};
   font-size: 14px;
   font-weight: 400;
@@ -36,7 +38,7 @@ export const TypeStyleCanopus = css`
   letter-spacing: -0.09px;
 `;
 
-export const TypeStyleArcturus = css`
+export const TypeStyleArcturus = `
   ${TypeStyle};
   font-size: 16px;
   font-weight: 400;
@@ -44,7 +46,7 @@ export const TypeStyleArcturus = css`
   letter-spacing: -0.1px;
 `;
 
-export const TypeStyleProcyon = css`
+export const TypeStyleProcyon = `
   ${TypeStyle};
   font-size: 16px;
   font-weight: 800;
@@ -52,7 +54,7 @@ export const TypeStyleProcyon = css`
   letter-spacing: -0.1px;
 `;
 
-export const TypeStyleDeneb = css`
+export const TypeStyleDeneb = `
   ${TypeStyle};
   font-size: 13px;
   font-weight: 400;
@@ -61,7 +63,7 @@ export const TypeStyleDeneb = css`
   letter-spacing: -0.08px;
 `;
 
-export const TypeStylePollux = css`
+export const TypeStylePollux = `
   ${TypeStyle};
   font-size: 13px;
   font-weight: 800;
@@ -70,7 +72,7 @@ export const TypeStylePollux = css`
   letter-spacing: -0.24px;
 `;
 
-export const TypeStyleBellatrix = css`
+export const TypeStyleBellatrix = `
   ${TypeStyle};
   font-size: 11px;
   font-weight: 400;
@@ -78,7 +80,7 @@ export const TypeStyleBellatrix = css`
   letter-spacing: 1.5px;
 `;
 
-export const TypeStylePolaris = css`
+export const TypeStylePolaris = `
   ${TypeStyle};
   font-size: 20px;
   font-weight: 400;
@@ -86,7 +88,7 @@ export const TypeStylePolaris = css`
   letter-spacing: -0.5px;
 `;
 
-export const TypeStyleAlgol = css`
+export const TypeStyleAlgol = `
   ${TypeStyle};
   font-size: 14px;
   font-weight: 400;
@@ -94,7 +96,7 @@ export const TypeStyleAlgol = css`
   letter-spacing: -0.35px;
 `;
 
-export const TypeStyleEnif = css`
+export const TypeStyleEnif = `
   ${TypeStyle};
   font-size: 11px;
   font-weight: 600;
@@ -102,7 +104,7 @@ export const TypeStyleEnif = css`
   letter-spacing: 2px;
 `;
 
-export const TypeStyleNaos = css`
+export const TypeStyleNaos = `
   ${TypeStyle};
   font-size: 11px;
   font-weight: 600;
@@ -110,7 +112,7 @@ export const TypeStyleNaos = css`
   letter-spacing: 1px;
 `;
 
-export const TypeStyleSol = css`
+export const TypeStyleSol = `
   ${TypeStyle};
   font-size: 14px;
   font-weight: 400;

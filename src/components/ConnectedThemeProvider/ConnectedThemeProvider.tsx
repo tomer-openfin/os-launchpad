@@ -7,7 +7,7 @@ import { State } from '../../redux/types';
 import { Theme } from '../../types/commons';
 
 interface Props {
-  children: React.ReactNode;
+  children: React.ReactChild;
   theme: Theme;
 }
 

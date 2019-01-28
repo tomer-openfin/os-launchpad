@@ -1,17 +1,20 @@
 import {
   ADD_TO_APP_LAUNCHER,
-  CHANGE_PASSWORD,
+  GET_ME,
   GET_SETTINGS,
   LOGIN,
   LOGOUT,
   REMOVE_FROM_APP_LAUNCHER,
+  SET_APP_IDS,
   SET_AUTO_HIDE,
   SET_LAUNCHER_POSITION,
+  SET_LAUNCHER_SIZE,
   SET_ME,
+  SHOW_SET_PASSWORD_FORM,
 } from './actions';
 
-import { DirectionalPosition } from '../../types/commons';
-import { GetSettingsSuccess, MeActions, MeState, SetLaunchbarPayload, SetMePayload } from './types';
+import { DirectionalPosition, LauncherSize } from '../../types/commons';
+import { GetSettingsSuccess, MeActions, MeState, SetAppIds, SetAutoHide, SetLauncherPositionPayload, SetLauncherSizePayload, SetMePayload } from './types';
 
 const defaultLoginState = {
   changePassword: false,
@@ -30,6 +33,7 @@ export const defaultState: MeState = {
     appIds: [],
     autoHide: false,
     launcherPosition: DirectionalPosition.Top,
+    launcherSize: LauncherSize.Large,
   },
 };
 
@@ -44,6 +48,7 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
         },
       };
     }
+    case GET_ME.SUCCESS:
     case SET_ME: {
       return {
         ...state,
@@ -90,7 +95,7 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
     case LOGOUT.SUCCESS: {
       return defaultState;
     }
-    case CHANGE_PASSWORD: {
+    case SHOW_SET_PASSWORD_FORM: {
       const { session, message } = action.payload;
       return {
         ...state,
@@ -102,12 +107,13 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
         },
       };
     }
+    case SET_APP_IDS:
     case SET_AUTO_HIDE: {
       return {
         ...state,
         settings: {
           ...state.settings,
-          ...(action as GetSettingsSuccess).payload!,
+          ...(action as SetAutoHide | SetAppIds).payload!,
         },
       };
     }
@@ -116,7 +122,16 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
         ...state,
         settings: {
           ...state.settings,
-          launcherPosition: (action.payload! as SetLaunchbarPayload).launcherPosition,
+          launcherPosition: (action.payload! as SetLauncherPositionPayload).launcherPosition,
+        },
+      };
+    }
+    case SET_LAUNCHER_SIZE: {
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          launcherSize: (action.payload! as SetLauncherSizePayload).launcherSize,
         },
       };
     }

@@ -1,5 +1,7 @@
 import * as React from 'react';
+
 import { ContextMenuOption, ContextMenuRequestPayload } from '../../redux/contextMenu/types';
+import { Zone } from './ContextMenuZone.css';
 
 interface Props {
   className?: string;
@@ -23,10 +25,11 @@ class ContextMenuZone extends React.PureComponent<Props> {
 
   render() {
     const { children, className, onClick } = this.props;
+
     return (
-      <div className={className} onClick={onClick} onContextMenu={this.handleContextMenu}>
+      <Zone className={className} onClick={onClick} onContextMenu={this.handleContextMenu}>
         {children}
-      </div>
+      </Zone>
     );
   }
 }

@@ -1,18 +1,18 @@
 import { ROUTES } from '../components/Router/consts';
-
-const { NODE_ENV } = process.env;
+import { isProductionEnv } from '../utils/processHelpers';
 
 const WINDOW_PREFIX = 'osLaunchpad';
+
 export const ADMIN_WINDOW = `${WINDOW_PREFIX}Admin`;
 export const APP_DIRECTORY_WINDOW = `${WINDOW_PREFIX}AppDirectory`;
 export const APP_LAUNCHER_OVERFLOW_WINDOW = `${WINDOW_PREFIX}AppLauncherOverflow`;
 export const CONTEXT_MENU = `${WINDOW_PREFIX}ContextMenu`;
 export const LAYOUTS_WINDOW = `${WINDOW_PREFIX}Layouts`;
 export const LOGIN_WINDOW = `${WINDOW_PREFIX}Login`;
-export const MAIN_WINDOW = 'osLaunchpadMain';
+export const LOGOUT_WINDOW = `${WINDOW_PREFIX}Logout`;
 export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
 
-const isProduction = NODE_ENV === 'production';
+const isProduction = isProductionEnv();
 
 export const initOnStartWindows = {
   // eventually move admin window out of initOnStartWindows and only initialize on login if isAdmin
@@ -62,7 +62,7 @@ export const initOnStartWindows = {
   },
   appLauncherOverflow: {
     alwaysOnTop: true,
-    autoShow: false,
+    autoShow: true,
     contextMenu: !isProduction,
     defaultCentered: true,
     defaultHeight: 300,
@@ -75,6 +75,7 @@ export const initOnStartWindows = {
     minWidth: 0,
     minimizable: false,
     name: APP_LAUNCHER_OVERFLOW_WINDOW,
+    opacity: 0,
     resizable: false,
     saveWindowState: false,
     showTaskbarIcon: false,
@@ -107,9 +108,13 @@ export const initOnStartWindows = {
     alwaysOnTop: true,
     autoShow: false,
     contextMenu: !isProduction,
-    defaultCentered: true,
-    defaultHeight: 100,
-    defaultWidth: 50,
+    cornerRounding: {
+      height: 8,
+      width: 8,
+    },
+    defaultCentered: false,
+    defaultHeight: 213,
+    defaultWidth: 171,
     frame: false,
     id: LAYOUTS_WINDOW,
     maxHeight: -1,
@@ -122,6 +127,28 @@ export const initOnStartWindows = {
     saveWindowState: false,
     showTaskbarIcon: false,
     url: ROUTES.LAYOUTS,
+    waitForPageLoad: true,
+  },
+  logout: {
+    alwaysOnTop: true,
+    autoShow: false,
+    contextMenu: !isProduction,
+    cornerRounding: {
+      height: 8,
+      width: 8,
+    },
+    defaultCentered: false,
+    defaultHeight: 102,
+    defaultWidth: 171,
+    frame: false,
+    id: LOGOUT_WINDOW,
+    maximizable: false,
+    minimizable: false,
+    name: LOGOUT_WINDOW,
+    resizable: false,
+    saveWindowState: false,
+    showTaskbarIcon: false,
+    url: ROUTES.LOGOUT,
     waitForPageLoad: true,
   },
   settings: {
@@ -154,9 +181,13 @@ const config = {
     alwaysOnTop: false,
     autoShow: true,
     contextMenu: !isProduction,
+    cornerRounding: {
+      height: 6,
+      width: 6,
+    },
     defaultCentered: true,
-    defaultHeight: 350,
-    defaultWidth: 350,
+    defaultHeight: 478,
+    defaultWidth: 510,
     frame: false,
     id: LOGIN_WINDOW,
     maxHeight: -1,

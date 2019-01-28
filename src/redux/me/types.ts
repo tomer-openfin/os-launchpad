@@ -1,5 +1,7 @@
 import {
-  changePassword,
+  getMeError,
+  getMeRequest,
+  getMeSuccess,
   getSettingsError,
   getSettingsRequest,
   getSettingsSuccess,
@@ -13,18 +15,25 @@ import {
   saveSettingsError,
   saveSettingsRequest,
   saveSettingsSuccess,
+  setAppIds,
   setAutoHide,
-  setLaunchbarPosition,
+  setLauncherPosition,
+  setLauncherSize,
   setMe,
+  showSetPasswordForm,
+  updatePasswordError,
+  updatePasswordRequest,
+  updatePasswordSuccess,
 } from './actions';
 
-import { DirectionalPosition } from '../../types/commons';
+import { DirectionalPosition, LauncherSize } from '../../types/commons';
 
 // State
 export interface MeSettingsState {
   appIds: string[];
   autoHide: boolean;
   launcherPosition: DirectionalPosition;
+  launcherSize: LauncherSize;
 }
 
 export interface MeLoginState {
@@ -45,9 +54,6 @@ export interface MeState {
 }
 
 // Action payloads
-export interface SetLaunchbarPayload {
-  launcherPosition: DirectionalPosition;
-}
 export interface LoginRequestPayload {
   username: string;
   password: string;
@@ -58,15 +64,14 @@ export interface LoginWithNewPasswordPayload {
   newPassword: string;
   session: string;
 }
+
 export interface LoginSuccessPayload {
   firstName: string;
   email: string;
   isAdmin: boolean;
   lastName: string;
 }
-export interface SetAutoHidePayload {
-  autoHide: boolean;
-}
+
 export interface SetMePayload {
   firstName: string;
   email: string;
@@ -74,9 +79,42 @@ export interface SetMePayload {
   lastName: string;
 }
 
-export interface ChangePasswordPayload {
+export interface SetAppIdsPayload {
+  appIds: string[];
+}
+
+export interface SetAutoHidePayload {
+  autoHide: boolean;
+}
+
+export interface SetLauncherPositionPayload {
+  launcherPosition: DirectionalPosition;
+}
+
+export interface SetLauncherSizePayload {
+  launcherSize: LauncherSize;
+}
+
+export interface NewPasswordPayload {
   session: string;
   message: string;
+}
+
+export interface UpdatePasswordRequestPayload {
+  password: string;
+  newPassword: string;
+}
+
+// use APIResponse interface from 'interfaces.ts'
+export interface UpdatePasswordSuccessPayload {
+  status: string;
+  message?: string;
+}
+
+export interface UpdatePasswordErrorPayload {
+  status: string;
+  code?: string;
+  message?: string;
 }
 
 // Actions
@@ -88,6 +126,10 @@ export type LoginRequest = ReturnType<typeof loginRequest>;
 export type LoginSuccess = ReturnType<typeof loginSuccess>;
 export type LoginError = ReturnType<typeof loginError>;
 
+export type GetMeRequest = ReturnType<typeof getMeRequest>;
+export type GetMeSuccess = ReturnType<typeof getMeSuccess>;
+export type GetMeError = ReturnType<typeof getMeError>;
+
 export type LogoutRequest = ReturnType<typeof logoutRequest>;
 export type LogoutSuccess = ReturnType<typeof logoutSuccess>;
 export type LogoutError = ReturnType<typeof logoutError>;
@@ -98,18 +140,26 @@ export type SaveSettingsRequest = ReturnType<typeof saveSettingsRequest>;
 export type SaveSettingsSuccess = ReturnType<typeof saveSettingsSuccess>;
 export type SaveSettingsError = ReturnType<typeof saveSettingsError>;
 
-export type SetAutoHide = ReturnType<typeof setAutoHide>;
-
 export type SetMe = ReturnType<typeof setMe>;
 
-export type SetLaunchbarPosition = ReturnType<typeof setLaunchbarPosition>;
+export type SetAppIds = ReturnType<typeof setAppIds>;
+export type SetAutoHide = ReturnType<typeof setAutoHide>;
+export type SetLauncherPosition = ReturnType<typeof setLauncherPosition>;
+export type SetLauncherSize = ReturnType<typeof setLauncherSize>;
 
-export type ChangePassword = ReturnType<typeof changePassword>;
+export type ShowSetPasswordForm = ReturnType<typeof showSetPasswordForm>;
+
+export type UpdatePasswordRequest = ReturnType<typeof updatePasswordRequest>;
+export type UpdatePasswordSuccess = ReturnType<typeof updatePasswordSuccess>;
+export type UpdatePasswordError = ReturnType<typeof updatePasswordError>;
 
 export type MeActions =
   | GetSettingsRequest
   | GetSettingsSuccess
   | GetSettingsError
+  | GetMeRequest
+  | GetMeSuccess
+  | GetMeError
   | LoginRequest
   | LoginSuccess
   | LoginError
@@ -117,5 +167,8 @@ export type MeActions =
   | SaveSettingsSuccess
   | SaveSettingsError
   | SetMe
-  | SetLaunchbarPosition
-  | ChangePassword;
+  | UpdatePasswordRequest
+  | UpdatePasswordSuccess
+  | UpdatePasswordError
+  | SetLauncherPosition
+  | ShowSetPasswordForm;

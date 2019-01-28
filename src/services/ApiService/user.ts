@@ -1,10 +1,21 @@
-import { defaultState, MeSettingsState } from '../../redux/me';
+import { MeSettingsState, UpdatePasswordRequestPayload } from '../../redux/me';
 
-import { APIResponse, NewUserLayout, ResponseStatus, UserLayout } from '../../types/commons';
+import { APIResponse, HTTPMethods, NewUserLayout, ResponseStatus, User, UserLayout } from '../../types/commons';
+
 import { checkIsEnterprise } from '../../utils/checkIsEnterprise';
-import { getLocalStorage, LOCAL_STORAGE_KEYS, setLocalStorage } from '../localStorageAdapter';
+import { uuidv4 } from '../../utils/createUuid';
+
+import { deleteLocalStorageItem, getLocalStorage, LOCAL_STORAGE_KEYS, setItemInLocalStorage, setLocalStorage, SUCCESS_RESPONSE } from '../localStorageAdapter';
+
 import API from './api';
-import { createGetOptions, createPostOptions, createPutOptions } from './requestOptions';
+import fetchJSON from './fetchJSON';
+
+/**
+ * Get user info
+ *
+ * @returns {Promise<User>}
+ */
+export const getUserInfo = (): Promise<User> => fetchJSON(API.USER_INFO, HTTPMethods.GET);
 
 /**
  * Get user layouts
@@ -13,19 +24,10 @@ import { createGetOptions, createPostOptions, createPutOptions } from './request
  */
 export const getUserLayouts = (): Promise<UserLayout[]> => {
   if (checkIsEnterprise()) {
-    const options = createGetOptions();
-
-    return fetch(API.USER_LAYOUTS, options)
-      .then(resp => resp.json())
-      .then(json => {
-        if (!json) {
-          throw new Error(`${API.ORG_SETTINGS} did not return a valid resource: ${json}`);
-        }
-        return json;
-      });
+    return fetchJSON(API.USER_LAYOUTS, HTTPMethods.GET);
   }
 
-  return getLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, { status: ResponseStatus.SUCCESS, data: [] });
+  return getLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS);
 };
 
 /**
@@ -35,16 +37,7 @@ export const getUserLayouts = (): Promise<UserLayout[]> => {
  */
 export const getUserLayout = (id: UserLayout['id']): Promise<APIResponse> => {
   if (checkIsEnterprise()) {
-    const options = createGetOptions();
-
-    return fetch(`${API.USER_LAYOUTS}/${id}`, options)
-      .then(resp => resp.json())
-      .then(json => {
-        if (!json) {
-          throw new Error(`${API.ORG_SETTINGS} did not return a valid resource: ${json}`);
-        }
-        return json;
-      });
+    return fetchJSON(`${API.USER_LAYOUTS}/${id}`, HTTPMethods.GET);
   }
 
   return getLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS);
@@ -57,14 +50,27 @@ export const getUserLayout = (id: UserLayout['id']): Promise<APIResponse> => {
  */
 export const createUserLayout = (newUserLayout: NewUserLayout): Promise<APIResponse> => {
   if (checkIsEnterprise()) {
-    const options = createPostOptions(newUserLayout);
-
-    return fetch(API.USER_LAYOUTS, options).then(resp => resp.json());
+    return fetchJSON(API.USER_LAYOUTS, HTTPMethods.POST, newUserLayout);
   }
 
-  const localUserLayout: UserLayout = { ...newUserLayout, id: 'layout' };
+  const localUserLayout: UserLayout = { ...newUserLayout, id: uuidv4() };
 
-  return setLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, [localUserLayout]);
+  return setItemInLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, localUserLayout, localUserLayout.id).then(response =>
+    response.status === ResponseStatus.FAILURE ? response : { ...SUCCESS_RESPONSE, layout: response },
+  );
+};
+
+/**
+ * Delete user layout
+ *
+ * @returns {Promise<APIResponse>}
+ */
+export const deleteUserLayout = (id: UserLayout['id']): Promise<APIResponse> => {
+  if (checkIsEnterprise()) {
+    return fetchJSON(`${API.USER_LAYOUTS}/${id}`, HTTPMethods.DELETE);
+  }
+
+  return deleteLocalStorageItem(LOCAL_STORAGE_KEYS.LAYOUTS, id);
 };
 
 /**
@@ -74,12 +80,12 @@ export const createUserLayout = (newUserLayout: NewUserLayout): Promise<APIRespo
  */
 export const updateUserLayout = (userLayout: UserLayout): Promise<APIResponse> => {
   if (checkIsEnterprise()) {
-    const options = createPutOptions(userLayout);
-
-    return fetch(`${API.USER_LAYOUTS}/${userLayout.id}`, options).then(resp => resp.json());
+    return fetchJSON(`${API.USER_LAYOUTS}/${userLayout.id}`, HTTPMethods.PUT, userLayout);
   }
 
-  return setLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, [userLayout]);
+  return setItemInLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, userLayout, userLayout.id).then(response =>
+    response.status === ResponseStatus.FAILURE ? response : { ...SUCCESS_RESPONSE, layout: response },
+  );
 };
 
 /**
@@ -89,19 +95,10 @@ export const updateUserLayout = (userLayout: UserLayout): Promise<APIResponse> =
  */
 export const getUserSettings = (): Promise<MeSettingsState | APIResponse> => {
   if (checkIsEnterprise()) {
-    const options = createGetOptions();
-
-    return fetch(API.USER_SETTINGS, options)
-      .then(resp => resp.json())
-      .then(json => {
-        if (!json) {
-          throw new Error(`${API.ORG_SETTINGS} did not return a valid resource: ${json}`);
-        }
-        return json;
-      });
+    return fetchJSON(API.USER_SETTINGS, HTTPMethods.GET);
   }
 
-  return getLocalStorage(LOCAL_STORAGE_KEYS.SETTINGS, { data: defaultState.settings, status: ResponseStatus.SUCCESS });
+  return getLocalStorage(LOCAL_STORAGE_KEYS.SETTINGS);
 };
 
 /**
@@ -111,10 +108,17 @@ export const getUserSettings = (): Promise<MeSettingsState | APIResponse> => {
  */
 export const saveUserSettings = (settings: MeSettingsState): Promise<APIResponse> => {
   if (checkIsEnterprise()) {
-    const options = createPostOptions({ settings });
-
-    return fetch(API.USER_SETTINGS, options).then(resp => resp.json());
+    return fetchJSON(API.USER_SETTINGS, HTTPMethods.POST, { settings });
   }
 
   return setLocalStorage(LOCAL_STORAGE_KEYS.SETTINGS, settings);
+};
+
+/**
+ * Update user password
+ *
+ * @returns {Promise<APIResponse>}
+ */
+export const updateUserPassword = (payload: UpdatePasswordRequestPayload): Promise<APIResponse> => {
+  return fetchJSON(API.UPDATE_PASSWORD, HTTPMethods.POST, payload);
 };

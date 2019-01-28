@@ -1,14 +1,15 @@
+import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { storiesOf } from '@storybook/react';
+import AppData from '../../samples/AppData';
+import { CATEGORIES } from '../../utils/storyCategories';
 
 import ConfirmAppDelete from './ConfirmAppDelete';
 
-import AppData from '../../const/AppData';
-import noop from '../../utils/noop';
-
+const deleteApp = action('deleteApp');
 const mockAppData = {
   state: AppData[0],
 };
 
-storiesOf('ConfirmAppDelete', module).add('default', () => <ConfirmAppDelete deleteApp={noop} location={mockAppData} />);
+storiesOf(`${CATEGORIES.ADMIN}ConfirmAppDelete`, module).add('default', () => <ConfirmAppDelete deleteApp={deleteApp} location={mockAppData} />);

@@ -1,3 +1,3 @@
-import Component from './Button.css';
+import Button from './Button.css';
 
-export default Component;
+export default Button;

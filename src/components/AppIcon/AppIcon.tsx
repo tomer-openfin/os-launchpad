@@ -1,54 +1,36 @@
 import * as React from 'react';
 
-import { ContextMenuOption } from '../../redux/contextMenu/types';
-import { AppIconSizes, DirectionalPosition } from '../../types/commons';
+import { LauncherSize } from '../../types/commons';
 
-import { Icon, StyledAppIndicator, StyledContextMenuZone, Wrapper } from './AppIcon.css';
+import { launcherSizeConfigs } from '../../utils/launcherSizeConfigs';
+import { Icon, Wrapper } from './AppIcon.css';
 
 export interface Props {
-  appId: string;
-  backgroundColor?: string;
+  borderWidth?: number;
   className?: string;
-  contextMenuOptions?: ContextMenuOption[];
-  hasTransition?: boolean;
   imgSrc: string;
-  indicatorPosition: DirectionalPosition;
   isDisabled?: boolean;
-  launchApp: () => void;
-  margin?: string;
-  size?: AppIconSizes;
+  onClick?: () => void;
+  size?: number;
 }
 
-const AppIcon = ({
-  appId,
-  backgroundColor,
-  className,
-  contextMenuOptions,
-  hasTransition = false,
-  isDisabled = false,
-  imgSrc,
-  indicatorPosition,
-  launchApp,
-  margin = '0',
-  size = AppIconSizes.Medium,
-}: Props) => {
-  return (
-    <Wrapper
-      backgroundColor={backgroundColor}
-      className={className}
-      hasTransition={hasTransition}
-      isDisabled={isDisabled}
-      margin={margin}
-      onClick={isDisabled ? undefined : launchApp}
-      size={size}
-    >
-      <StyledContextMenuZone size={size} options={contextMenuOptions}>
-        <Icon imgSrc={imgSrc} />
-      </StyledContextMenuZone>
-
-      <StyledAppIndicator appId={appId} position={indicatorPosition} />
-    </Wrapper>
-  );
+const defaultProps = {
+  borderWidth: launcherSizeConfigs[LauncherSize.Large].appIconBorder,
+  isDisabled: false,
+  size: launcherSizeConfigs[LauncherSize.Large].appIcon,
 };
+
+const AppIcon = ({
+  borderWidth = defaultProps.borderWidth,
+  className,
+  isDisabled = defaultProps.isDisabled,
+  onClick,
+  size = defaultProps.size,
+  imgSrc,
+}: Props) => (
+  <Wrapper borderWidth={borderWidth} className={className} isDisabled={isDisabled} onClick={isDisabled ? undefined : onClick} size={size}>
+    <Icon imgSrc={imgSrc} />
+  </Wrapper>
+);
 
 export default AppIcon;

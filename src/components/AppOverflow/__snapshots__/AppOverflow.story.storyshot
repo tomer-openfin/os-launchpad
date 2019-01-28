@@ -11,20 +11,195 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
     }
   >
     <div
-      className="sc-elJkPf dQotxQ"
+      className="sc-hmzhuo iVrQrF"
     >
       <div
-        className="sc-cSHVUG jXBQNy"
+        className="sc-jAaTju eaYlzw"
+        height={0}
+        isExpanded={true}
+        launcherPosition="top"
+        sizingConfig={
+          Object {
+            "appIcon": 50,
+            "appIconBorder": 2.7,
+            "appIconGutter": 10,
+            "appIndicator": 12,
+            "launcher": 80,
+            "systemDrawerPaddingEnd": 5,
+            "systemDrawerPaddingStart": 11,
+            "systemDrawerToggleClose": 25,
+            "systemDrawerToggleOpen": 20,
+            "systemIcon": 42,
+            "systemIconCaret": 25,
+            "systemIconGutter": 5,
+          }
+        }
+        width={0}
       >
         <div
-          className="sc-chPdSV cehRIT"
+          className="sc-fjdhpX kjeTOz"
+          onClick={[Function]}
+          size={50}
         >
           <div
-            className="sc-htoDjs cilmlp"
-            onClick={[Function]}
+            style={
+              Object {
+                "display": "inline-block",
+                "lineHeight": 0,
+                "opacity": 1,
+              }
+            }
           >
             <div
-              className="sc-dnqmqq hOEUSm"
+              className="sc-jTzLTM blWMYJ"
+              size={50}
+            >
+              <div
+                className="sc-ifAKCX gPeNwQ"
+                color="#E7E7E7"
+                size={25}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-VigVT psSBI"
+          size={50}
+          title="Trumid"
+        >
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+                "lineHeight": 0,
+                "opacity": 1,
+              }
+            }
+          >
+            <div
+              className="sc-htoDjs bbBQsJ"
+              direction="top"
+              onAnimationEnd={[Function]}
+              onAnimationIteration={[Function]}
+            >
+              <div
+                className="sc-gzVnrw lmqkGH"
+                onContextMenu={[Function]}
+              >
+                <div
+                  className="sc-bZQynM eioviT"
+                  onClick={[Function]}
+                  size={50}
+                >
+                  <div
+                    className="sc-EHOje bLVJMg"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
+            size={12}
+          >
+            <div
+              className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+              color="rgba(0,0,0,0)"
+              size="53%"
+            />
+          </div>
+        </div>
+        <div
+          className="sc-VigVT psSBI"
+          size={50}
+          title="Neptune"
+        >
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+                "lineHeight": 0,
+                "opacity": 1,
+              }
+            }
+          >
+            <div
+              className="sc-htoDjs bbBQsJ"
+              direction="top"
+              onAnimationEnd={[Function]}
+              onAnimationIteration={[Function]}
+            >
+              <div
+                className="sc-gzVnrw lmqkGH"
+                onContextMenu={[Function]}
+              >
+                <div
+                  className="sc-bZQynM eioviT"
+                  onClick={[Function]}
+                  size={50}
+                >
+                  <div
+                    className="sc-EHOje bITuvo"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
+            size={12}
+          >
+            <div
+              className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+              color="rgba(0,0,0,0)"
+              size="53%"
+            />
+          </div>
+        </div>
+        <div
+          className="sc-VigVT psSBI"
+          size={50}
+          title="GreenKey"
+        >
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+                "lineHeight": 0,
+                "opacity": 1,
+              }
+            }
+          >
+            <div
+              className="sc-htoDjs bbBQsJ"
+              direction="top"
+              onAnimationEnd={[Function]}
+              onAnimationIteration={[Function]}
+            >
+              <div
+                className="sc-gzVnrw lmqkGH"
+                onContextMenu={[Function]}
+              >
+                <div
+                  className="sc-bZQynM eioviT"
+                  onClick={[Function]}
+                  size={50}
+                >
+                  <div
+                    className="sc-EHOje dcTQGg"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
+            size={12}
+          >
+            <div
+              className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+              color="rgba(0,0,0,0)"
+              size="53%"
             />
           </div>
         </div>
@@ -172,7 +347,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
                 <span
                   style={
                     Object {
-                      "color": "#777",
+                      "color": "#444",
                     }
                   }
                 >
@@ -183,7 +358,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
                 <span
                   style={
                     Object {
-                      "color": "#777",
+                      "color": "#444",
                     }
                   }
                 >

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/OrganizationSettings default 1`] = `
+exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
 <div>
   <div
     style={
@@ -11,46 +11,51 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
     }
   >
     <div
-      className="sc-gzOgki cJiOyl"
+      className="sc-iGrrsa bWWzjI"
     >
       <h3
-        className="sc-dfVpRl fBUZYP"
+        className="sc-ipZHIp kvmaeC"
       >
         Enterprise Branding
       </h3>
       <form
-        className="sc-gxMtzJ iGSZet"
+        className="sc-iqzUVk ewkcOT"
+        onReset={[Function]}
         onSubmit={[Function]}
       >
         <label
-          className="sc-kTUwUJ bOKLsd"
+          className="sc-kLIISr jfSxOd"
           htmlFor="LogoFormFileInput"
         >
           <div
-            className="sc-jtRfpW jqYjSS"
+            className="sc-dliRfk eVmTvs"
           >
             <div
-              className="sc-elJkPf fZvRMv"
+              className="sc-cqCuEk bJkmLv"
             >
               <div
-                className="sc-VigVT fKFlJE"
+                className="sc-eNQAEJ WRgnz"
+                size={80}
               />
             </div>
             <div
-              className="sc-lhVmIH gvlVBR"
+              className="sc-ipXKqB dZEFem"
             >
               <div
-                className="sc-bYSBpT hIJYPg"
+                className="sc-hmXxxW gKiUhp"
               >
                 Click & drag a new image over the existing one to replace your brand logo.
               </div>
               <input
                 accept="image/*"
-                className="sc-btzYZH jUvRia"
+                className="sc-VJcYb esNJRq"
                 id="LogoFormFileInput"
                 name="logo"
                 onBlur={[Function]}
                 onChange={[Function]}
+                onDragEnter={[Function]}
+                onDragLeave={[Function]}
+                onDrop={[Function]}
                 type="file"
                 value=""
               />
@@ -58,10 +63,10 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
           </div>
         </label>
         <div
-          className="sc-dqBHgY bruhBv"
+          className="sc-qrIAp ecfvUq"
         >
           <button
-            className="sc-csuQGl jlPfhi"
+            className="sc-kAzzGY gnyQHQ"
             disabled={true}
             type="submit"
             width={110}
@@ -69,7 +74,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             Overwrite
           </button>
           <button
-            className="sc-csuQGl jdMxZi"
+            className="sc-kAzzGY hoTeeW"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -80,16 +85,17 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
         </div>
       </form>
       <h3
-        className="sc-dfVpRl fBUZYP"
+        className="sc-ipZHIp kvmaeC"
       >
         Enterprise Theme
       </h3>
       <form
-        className="sc-gxMtzJ iGSZet"
+        className="sc-iqzUVk ewkcOT"
+        onReset={[Function]}
         onSubmit={[Function]}
       >
         <select
-          className="sc-iyvyFf kIKmYh"
+          className="sc-dEoRIm CWipf"
           disabled={false}
           id="ThemesFormSelectInput"
           name="theme"
@@ -99,23 +105,23 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
           value="dark"
         >
           <option
-            className="sc-hwwEjo hoXFPJ"
+            className="sc-jtggT fwVnSB"
             value="dark"
           >
             Dark
           </option>
           <option
-            className="sc-hwwEjo hoXFPJ"
+            className="sc-jtggT fwVnSB"
             value="light"
           >
             Light
           </option>
         </select>
         <div
-          className="sc-dqBHgY bruhBv"
+          className="sc-qrIAp ecfvUq"
         >
           <button
-            className="sc-csuQGl jlPfhi"
+            className="sc-kAzzGY gnyQHQ"
             disabled={true}
             type="submit"
             width={110}
@@ -123,7 +129,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
             Set Theme
           </button>
           <button
-            className="sc-csuQGl jdMxZi"
+            className="sc-kAzzGY hoTeeW"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -232,7 +238,7 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
               }
             }
           >
-            Components/OrganizationSettings
+            Admin Components/OrganizationSettings
           </h1>
           <h2
             style={
@@ -283,7 +289,43 @@ exports[`Storyshots Components/OrganizationSettings default 1`] = `
                   &lt;
                   OrganizationSettings
                 </span>
-                <span />
+                <span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      autoLoginOrg
+                    </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      setOrgAutoLogin
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          anonymous
+                        </span>
+                        }
+                      </span>
+                    </span>
+                     
+                  </span>
+                </span>
                 <span
                   style={
                     Object {

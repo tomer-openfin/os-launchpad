@@ -1,4 +1,10 @@
-import { MAIN_WINDOW } from '../config/windows';
+export const MAIN_WINDOW = 'osLaunchpadMain';
 
-// TODO - Find a way to remove hard coded name
-export default () => process.env.APP_UUID || MAIN_WINDOW;
+export default () => {
+  const { fin } = window;
+  if (!fin) {
+    return process.env.APP_UUID || MAIN_WINDOW;
+  }
+
+  return fin.desktop.Application.getCurrent().uuid;
+};

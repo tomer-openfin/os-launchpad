@@ -15,7 +15,7 @@ export const validateEmail = value => {
   );
 
   if (!value) {
-    error = 'Email Field Required';
+    error = 'Email Required';
   } else if (!EMAIL_REGEXP.test(value)) {
     error = 'Invalid Email format';
   }
@@ -26,7 +26,36 @@ export const validateTextField = value => {
   let error;
 
   if (!value) {
-    error = 'Field Required';
+    error = 'Required';
+  }
+
+  return error;
+};
+
+export const validatePasswordField = value => {
+  let error;
+
+  if (!value) {
+    error = 'Required';
+  }
+
+  if (value.length < 6) {
+    error = 'Must be greater than 6 characters';
+  }
+
+  if (value.length >= 6) {
+    const upperRegex = /\w*[A-Z]\w*/g;
+    const numericRegex = /\w*[1-9]\w*/g;
+
+    if (!upperRegex.test(value)) {
+      error = 'Must have an uppercase character';
+    }
+
+    if (!numericRegex.test(value)) {
+      error = 'Must have a numeric character';
+    }
+
+    // todo: check with OF Brian what symbol(s) (i.e !, @, #, etc) are valid
   }
 
   return error;
@@ -34,11 +63,11 @@ export const validateTextField = value => {
 
 // todo: fix URL regex to only accept URLs ending in ".json"
 export const validateURL = value => {
-  if (!value) return 'Field Required';
+  if (!value) return 'Required';
 
   const validateCheck = urlRegex().test(value);
 
-  if (!validateCheck) return 'Invalid Manifest URL, must end in .json file extension.';
+  if (!validateCheck) return 'Must be a valid URL.';
 
   return;
 };

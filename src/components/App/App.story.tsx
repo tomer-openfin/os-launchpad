@@ -1,21 +1,36 @@
-import { action } from '@storybook/addon-actions';
+import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { DirectionalPosition } from '../../types/commons';
+import { setIsDrawerExpanded } from '../../redux/application';
+import { setLauncherPosition, setLauncherSize } from '../../redux/me';
+import { DirectionalPosition, LauncherSize } from '../../types/commons';
 import { getSystemIcons } from '../../utils/getSystemIcons';
-
+import { launcherSizeConfigs } from '../../utils/launcherSizeConfigs';
 import noop from '../../utils/noop';
+import { CATEGORIES } from '../../utils/storyCategories';
+
 import App from './App';
 
-const MOCK_ICONS = getSystemIcons(true).map(icon => ({
-  cta: action('Action to be dispatched:', icon.action),
-  hasExtendedWindow: icon.hasExtendedWindow,
-  icon: icon.icon,
-  key: icon.key,
-  shownCollapsed: icon.shownCollapsed,
-}));
+storiesOf(`${CATEGORIES.COMPONENTS}App`, module)
+  .addDecorator(withKnobs)
+  .add('default', () => {
+    const launcherSize = select('launcherSize', Object(LauncherSize), LauncherSize.Large);
+    window.store.dispatch(setLauncherSize(launcherSize));
+    const launcherPosition = select('launcherPosition', Object(DirectionalPosition), DirectionalPosition.Top);
+    window.store.dispatch(setLauncherPosition(launcherPosition));
+    const isDrawerExpanded = boolean('isDrawerExpanded', false);
+    window.store.dispatch(setIsDrawerExpanded(isDrawerExpanded));
 
-storiesOf('Components/App', module).add('default', () => {
-  return <App isDrawerExpanded toggleDrawer={noop} launcherPosition={DirectionalPosition.Top} icons={MOCK_ICONS} systemIcons={getSystemIcons(true)} />;
-});
+    const launcherSizeConfig = launcherSizeConfigs[launcherSize];
+
+    return (
+      <App
+        isDrawerExpanded={isDrawerExpanded}
+        launcherPosition={launcherPosition}
+        launcherSizeConfig={launcherSizeConfig}
+        toggleDrawer={noop}
+        systemIcons={getSystemIcons(true)}
+      />
+    );
+  });

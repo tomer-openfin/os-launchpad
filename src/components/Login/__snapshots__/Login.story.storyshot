@@ -11,52 +11,92 @@ exports[`Storyshots Components/Login Change Password 1`] = `
     }
   >
     <div
-      className="sc-feJyhm hoppQX"
+      className="sc-kfGgVZ cnMpOT"
     >
       <div
-        className="sc-VigVT fKFlJE"
-      />
-      <div
-        className="sc-cmTdod iXpQeA"
+        className="sc-cSHVUG icgEVV"
       >
-        Please create a new password
-      </div>
-      <form
-        onSubmit={[Function]}
-      >
-        <label
-          className="sc-iELTvK hXmWfR"
+        <div
+          className="sc-jWBwVP jncaxH"
         >
-          <input
-            name="newPassword"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="New Password"
-            type="password"
-          />
-        </label>
-        <label
-          className="sc-iELTvK hXmWfR"
-        >
-          <input
-            name="newPasswordConfirmation"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="Confirm Password"
-            type="password"
-          />
-        </label>
-        <label
-          className="sc-iELTvK hXmWfR"
-        >
-          <button
-            className="sc-jwKygS dCDHMu"
-            type="submit"
+          <div
+            className="sc-brqgnP hERWLS"
           >
-            Create New Password
-          </button>
-        </label>
-      </form>
+            <div
+              className="sc-cMljjf eWlOWR"
+            >
+              Log In
+            </div>
+          </div>
+          <div
+            className="sc-cvbbAY kNcqoF"
+          >
+            <div
+              className="sc-ifAKCX cWlwzh"
+              color="#E7E7E7"
+              onClick={[Function]}
+              size={25}
+            />
+          </div>
+        </div>
+        <div
+          className="sc-eXEjpC hdGytN"
+        >
+          <div
+            className="sc-esjQYD lfMSkl sc-eNQAEJ jxmcjf"
+            size={90}
+          />
+          <div
+            className="sc-ibxdXY cAWZSJ"
+          >
+            Please create a new password
+          </div>
+          <form
+            className="sc-kIPQKe hogZsr"
+            onReset={[Function]}
+            onSubmit={[Function]}
+          >
+            <label
+              className="sc-kpOJdX cODgu"
+            >
+              <div
+                className="sc-kGXeez hlXPx"
+              >
+                New Password
+              </div>
+              <input
+                name="newPassword"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter Password"
+                type="password"
+              />
+            </label>
+            <label
+              className="sc-kpOJdX cODgu"
+            >
+              <div
+                className="sc-kGXeez hlXPx"
+              >
+                Password Confirmation
+              </div>
+              <input
+                name="newPasswordConfirmation"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Confirm Password"
+                type="password"
+              />
+            </label>
+            <button
+              className="sc-kAzzGY sc-RefOD kbpIWn"
+              type="submit"
+            >
+              Create New Password
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
   <button
@@ -209,7 +249,50 @@ exports[`Storyshots Components/Login Change Password 1`] = `
                 </span>
                 <span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      autoLoginOrg
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      closeApplication
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -330,7 +413,10 @@ exports[`Storyshots Components/Login Change Password 1`] = `
                     </span>
                   </span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -356,7 +442,10 @@ exports[`Storyshots Components/Login Change Password 1`] = `
                     </span>
                   </span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -380,7 +469,7 @@ exports[`Storyshots Components/Login Change Password 1`] = `
                         }
                       </span>
                     </span>
-                     
+                    <br />
                   </span>
                 </span>
                 <span
@@ -464,54 +553,94 @@ exports[`Storyshots Components/Login With Error 1`] = `
     }
   >
     <div
-      className="sc-feJyhm hoppQX"
+      className="sc-kfGgVZ cnMpOT"
     >
       <div
-        className="sc-VigVT fKFlJE"
-      />
-      <div
-        className="sc-cmTdod iLEikv"
+        className="sc-cSHVUG icgEVV"
       >
-        Invalid username or password
-      </div>
-      <form
-        onSubmit={[Function]}
-      >
-        <label
-          className="sc-iELTvK hXmWfR"
+        <div
+          className="sc-jWBwVP jncaxH"
         >
-          <input
-            name="username"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="Username"
-            type="text"
-            value=""
-          />
-        </label>
-        <label
-          className="sc-iELTvK hXmWfR"
-        >
-          <input
-            name="password"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="Password"
-            type="password"
-            value=""
-          />
-        </label>
-        <label
-          className="sc-iELTvK hXmWfR"
-        >
-          <button
-            className="sc-jwKygS dCDHMu"
-            type="submit"
+          <div
+            className="sc-brqgnP hERWLS"
           >
-            Login
-          </button>
-        </label>
-      </form>
+            <div
+              className="sc-cMljjf eWlOWR"
+            >
+              Log In
+            </div>
+          </div>
+          <div
+            className="sc-cvbbAY kNcqoF"
+          >
+            <div
+              className="sc-ifAKCX cWlwzh"
+              color="#E7E7E7"
+              onClick={[Function]}
+              size={25}
+            />
+          </div>
+        </div>
+        <div
+          className="sc-eXEjpC hdGytN"
+        >
+          <div
+            className="sc-esjQYD lfMSkl sc-eNQAEJ jxmcjf"
+            size={90}
+          />
+          <div
+            className="sc-ibxdXY kfbcrL"
+          >
+            Invalid username or password
+          </div>
+          <form
+            className="sc-kIPQKe hogZsr"
+            onReset={[Function]}
+            onSubmit={[Function]}
+          >
+            <label
+              className="sc-kpOJdX cODgu"
+            >
+              <div
+                className="sc-kGXeez hlXPx"
+              >
+                Email
+              </div>
+              <input
+                name="username"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter Email"
+                type="text"
+                value=""
+              />
+            </label>
+            <label
+              className="sc-kpOJdX cODgu"
+            >
+              <div
+                className="sc-kGXeez hlXPx"
+              >
+                Password
+              </div>
+              <input
+                name="password"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter Password"
+                type="password"
+                value=""
+              />
+            </label>
+            <button
+              className="sc-kAzzGY sc-RefOD iqHBQc"
+              type="submit"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
   <button
@@ -664,7 +793,50 @@ exports[`Storyshots Components/Login With Error 1`] = `
                 </span>
                 <span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      autoLoginOrg
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      closeApplication
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -785,7 +957,10 @@ exports[`Storyshots Components/Login With Error 1`] = `
                     </span>
                   </span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -811,7 +986,10 @@ exports[`Storyshots Components/Login With Error 1`] = `
                     </span>
                   </span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -835,7 +1013,7 @@ exports[`Storyshots Components/Login With Error 1`] = `
                         }
                       </span>
                     </span>
-                     
+                    <br />
                   </span>
                 </span>
                 <span
@@ -919,50 +1097,90 @@ exports[`Storyshots Components/Login default 1`] = `
     }
   >
     <div
-      className="sc-feJyhm hoppQX"
+      className="sc-kfGgVZ cnMpOT"
     >
       <div
-        className="sc-VigVT fKFlJE"
-      />
-      
-      <form
-        onSubmit={[Function]}
+        className="sc-cSHVUG icgEVV"
       >
-        <label
-          className="sc-iELTvK hXmWfR"
+        <div
+          className="sc-jWBwVP jncaxH"
         >
-          <input
-            name="username"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="Username"
-            type="text"
-            value=""
-          />
-        </label>
-        <label
-          className="sc-iELTvK hXmWfR"
-        >
-          <input
-            name="password"
-            onBlur={[Function]}
-            onChange={[Function]}
-            placeholder="Password"
-            type="password"
-            value=""
-          />
-        </label>
-        <label
-          className="sc-iELTvK hXmWfR"
-        >
-          <button
-            className="sc-jwKygS dCDHMu"
-            type="submit"
+          <div
+            className="sc-brqgnP hERWLS"
           >
-            Login
-          </button>
-        </label>
-      </form>
+            <div
+              className="sc-cMljjf eWlOWR"
+            >
+              Log In
+            </div>
+          </div>
+          <div
+            className="sc-cvbbAY kNcqoF"
+          >
+            <div
+              className="sc-ifAKCX cWlwzh"
+              color="#E7E7E7"
+              onClick={[Function]}
+              size={25}
+            />
+          </div>
+        </div>
+        <div
+          className="sc-eXEjpC hdGytN"
+        >
+          <div
+            className="sc-esjQYD lfMSkl sc-eNQAEJ jxmcjf"
+            size={90}
+          />
+          
+          <form
+            className="sc-kIPQKe hogZsr"
+            onReset={[Function]}
+            onSubmit={[Function]}
+          >
+            <label
+              className="sc-kpOJdX cODgu"
+            >
+              <div
+                className="sc-kGXeez hlXPx"
+              >
+                Email
+              </div>
+              <input
+                name="username"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter Email"
+                type="text"
+                value=""
+              />
+            </label>
+            <label
+              className="sc-kpOJdX cODgu"
+            >
+              <div
+                className="sc-kGXeez hlXPx"
+              >
+                Password
+              </div>
+              <input
+                name="password"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter Password"
+                type="password"
+                value=""
+              />
+            </label>
+            <button
+              className="sc-kAzzGY sc-RefOD iqHBQc"
+              type="submit"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
   <button
@@ -1115,7 +1333,50 @@ exports[`Storyshots Components/Login default 1`] = `
                 </span>
                 <span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      autoLoginOrg
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      closeApplication
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -1236,7 +1497,10 @@ exports[`Storyshots Components/Login default 1`] = `
                     </span>
                   </span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -1262,7 +1526,10 @@ exports[`Storyshots Components/Login default 1`] = `
                     </span>
                   </span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -1286,7 +1553,7 @@ exports[`Storyshots Components/Login default 1`] = `
                         }
                       </span>
                     </span>
-                     
+                    <br />
                   </span>
                 </span>
                 <span

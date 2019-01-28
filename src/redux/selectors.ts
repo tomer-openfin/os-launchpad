@@ -1,12 +1,11 @@
 import { createSelector } from 'reselect';
 
-import { AppListItem } from '../types/commons';
-import { AppListTypes } from '../types/enums';
+import { AppListToggleId } from '../components/AppListToggle/index';
 import { objectsFromIds } from '../utils/byIds';
 import { getSystemIcons } from '../utils/getSystemIcons';
 import { calcAppListDimensions, calcMaxAppCount } from '../utils/windowPositionHelpers';
 import { getAppsById } from './apps/selectors';
-import { getAppsLauncherIds, getIsAdmin, getLauncherPosition } from './me/selectors';
+import { getAppsLauncherIds, getIsAdmin, getLauncherPosition, getLauncherSizeConfig } from './me/selectors';
 import { getMonitorInfo } from './system';
 
 export const getAppsLauncherAppList = createSelector(
@@ -21,14 +20,16 @@ export const getSystemIconsSelector = createSelector(
 );
 
 export const getMaxAppCount = createSelector(
-  [getLauncherPosition, getSystemIconsSelector, getMonitorInfo],
-  (launcherPosition, systemIcons, monitorInfo) => (monitorInfo ? calcMaxAppCount(launcherPosition, systemIcons, monitorInfo) : 0),
+  [getLauncherPosition, getLauncherSizeConfig, getSystemIconsSelector, getMonitorInfo],
+  (launcherPosition, launcherSizeConfig, systemIcons, monitorInfo) =>
+    monitorInfo ? calcMaxAppCount(launcherPosition, launcherSizeConfig, systemIcons, monitorInfo) : 0,
 );
 
 export const getAppListApps = createSelector(
   [getAppsById, getAppsLauncherIds, getMaxAppCount],
-  (byId, ids, maxAppCount) =>
-    ids.reduce((acc: AppListItem[], id: string) => {
+  (byId, ids, maxAppCount) => {
+    let toggleIndex: number | null = null;
+    const appIds = ids.reduce((acc: string[], id: string) => {
       let nextAcc = [...acc];
       const app = byId[id];
       if (app) {
@@ -36,24 +37,24 @@ export const getAppListApps = createSelector(
 
         if (currentLength === maxAppCount) {
           // Add toggle icon
-          nextAcc = [
-            ...nextAcc.slice(0, currentLength - 1),
-            { id: 'osLaunchPadMain::app-list-toggle', type: AppListTypes.Toggle },
-            ...nextAcc.slice(currentLength - 1),
-          ];
+          toggleIndex = maxAppCount;
+          nextAcc = [...nextAcc.slice(0, currentLength - 1), AppListToggleId, ...nextAcc.slice(currentLength - 1)];
         }
 
-        nextAcc.push({
-          id,
-          type: AppListTypes.App,
-        });
+        nextAcc.push(id);
       }
       return nextAcc;
-    }, []),
+    }, []);
+
+    return {
+      appIds,
+      toggleIndex,
+    };
+  },
 );
 
 export const getAppListDimensions = createSelector(
-  [getAppListApps, getLauncherPosition, getSystemIcons, getMonitorInfo],
-  (list, launcherPosition, systemIcons, monitorInfo) =>
-    monitorInfo ? calcAppListDimensions(list.length, launcherPosition, systemIcons, monitorInfo) : { height: 0, width: 0 },
+  [getAppListApps, getLauncherPosition, getLauncherSizeConfig, getSystemIcons, getMonitorInfo],
+  (list, launcherPosition, launcherSizeConfig, systemIcons, monitorInfo) =>
+    monitorInfo ? calcAppListDimensions(list.appIds.length, launcherPosition, launcherSizeConfig, systemIcons, monitorInfo) : { height: 0, width: 0 },
 );

@@ -1,7 +1,8 @@
 import * as React from 'react';
+import { Redirect } from 'react-router-dom';
 
 import Button, { ButtonLink } from '../Button/Button.css';
-import { ButtonWrapper, Copy, CopyWrapper, Error, Heading, HeadingText, Message, Wrapper } from '../ConfirmUserDelete/ConfirmDelete.css';
+import { ButtonWrapper, Copy, CopyWrapper, Error, Heading, HeadingText, Wrapper } from '../ConfirmUserDelete/ConfirmDelete.css';
 
 import { Color } from '../../styles/index';
 import { App, ResponseStatus } from '../../types/commons';
@@ -78,26 +79,18 @@ class ConfirmAppDelete extends React.Component<Props, State> {
       if (result.status === ResponseStatus.FAILURE) {
         return <Error>There was an error trying to delete {title}. Please try again.</Error>;
       }
-      return <Message>Success! '{title}' was succesfully deleted.</Message>;
+      return <Redirect to={ROUTES.ADMIN_APPS} />;
     }
 
     return null;
   };
 
   render() {
-    const { deleteDisabled, responseReceived, result } = this.state;
+    const { deleteDisabled } = this.state;
     const { location } = this.props;
     const { title } = location.state;
 
-    return responseReceived && result.status === ResponseStatus.SUCCESS ? (
-      <Wrapper>
-        {this.renderMessage()}
-
-        <ButtonLink to={ROUTES.ADMIN_APPS} backgroundColor={Color.MERCURY} type="button" width={153}>
-          Continue
-        </ButtonLink>
-      </Wrapper>
-    ) : (
+    return (
       <Wrapper>
         <Heading>
           <HeadingText>Delete App?</HeadingText>

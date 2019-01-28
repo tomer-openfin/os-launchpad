@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/Admin default 1`] = `
+exports[`Storyshots Admin Components/Admin default 1`] = `
 <div>
   <div
     style={
@@ -11,20 +11,8 @@ exports[`Storyshots Components/Admin default 1`] = `
     }
   >
     <div
-      className="sc-jbKcbu jdREuX"
+      className="sc-emmjRN kuDikI"
     >
-      <div
-        className="sc-cJSrbW ivGxWp"
-      >
-        <button
-          className="sc-ksYbfQ fgAPAg"
-          onClick={[Function]}
-        >
-          <span
-            className="sc-hmzhuo fypdGF"
-          />
-        </button>
-      </div>
       <h1>
         You do not have clearance to see the admin tools.
       </h1>
@@ -127,7 +115,7 @@ exports[`Storyshots Components/Admin default 1`] = `
               }
             }
           >
-            Components/Admin
+            Admin Components/Admin
           </h1>
           <h2
             style={
@@ -171,18 +159,98 @@ exports[`Storyshots Components/Admin default 1`] = `
                 <span
                   style={
                     Object {
-                      "color": "#777",
+                      "color": "#444",
                     }
                   }
                 >
                   &lt;
-                  Connect(Admin)
+                  Admin
                 </span>
-                <span />
+                <span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      hideWindow
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          anonymous
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      isAdmin
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#a11",
+                            }
+                          }
+                        >
+                          false
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      onEscDown
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          esc down
+                        </span>
+                        }
+                      </span>
+                    </span>
+                     
+                  </span>
+                </span>
                 <span
                   style={
                     Object {
-                      "color": "#777",
+                      "color": "#444",
                     }
                   }
                 >
@@ -235,94 +303,12 @@ exports[`Storyshots Components/Admin default 1`] = `
               }
             >
               "
-              Connect(Admin)
+              Admin
               " Component
             </h2>
-            <table
-              className="css-1uhv8nx e1vdo5380"
-            >
-              <thead>
-                <tr>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    property
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    propType
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    required
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    default
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    description
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    store
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span />
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    storeSubscription
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span />
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-              </tbody>
-            </table>
+            <small>
+              No propTypes defined!
+            </small>
           </div>
         </div>
       </div>

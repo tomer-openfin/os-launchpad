@@ -1,9 +1,8 @@
-import * as React from 'react';
-import styled, { FlattenInterpolation, ThemedStyledProps } from 'styled-components';
-
 import { storiesOf } from '@storybook/react';
+import * as React from 'react';
+import styled from 'styled-components';
 
-import { Theme } from '../types/commons';
+import { CATEGORIES } from '../utils/storyCategories';
 import { Color } from './index';
 import {
   TypeStyleAlgol,
@@ -21,7 +20,8 @@ import {
 } from './typography.css';
 
 const TypeStyleDiv = css => styled.div`
-  ${css};
+  ${css}
+
   margin: 5px 25px;
   width: 100px;
   padding-left: 5px;
@@ -66,10 +66,10 @@ const TypeStory = ({ style, name }) => {
 
 const Wrapper = styled.div`
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 
-storiesOf('Styleguide/Typography', module).add('default', () => (
+storiesOf(`${CATEGORIES.STYLEGUIDE}Typography`, module).add('default', () => (
   <Wrapper>
     <TypeStory style={TypeStyleSirius} name={'Sirius'} />
     <TypeStory style={TypeStyleCanopus} name={'Canopus'} />
@@ -121,7 +121,7 @@ const ColorPane = styled.div<{ name: string; backgroundColor: string }>`
   }
 `;
 
-storiesOf('Styleguide/Color', module).add('default', () => (
+storiesOf(`${CATEGORIES.STYLEGUIDE}Color`, module).add('default', () => (
   <Wrapper>
     <ColorPane backgroundColor={Color.SUN} name={'Sun'} />
     <ColorPane backgroundColor={Color.MERCURY} name={'Mercury'} />

@@ -14,7 +14,6 @@ exports[`Storyshots Components/AppListToggle default 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "backgroundColor": "#343434",
           "display": "inline-flex",
           "height": "70px",
           "justifyContent": "center",
@@ -23,16 +22,17 @@ exports[`Storyshots Components/AppListToggle default 1`] = `
       }
     >
       <div
-        className="sc-gZMcBi jWOWQK"
+        className="sc-fjdhpX jNcwfi"
         onClick={[Function]}
         size={50}
       >
         <div
-          className="sc-iwsKbI gBRmpp"
+          className="sc-jTzLTM blWMYJ"
           size={50}
         >
           <div
-            className="sc-dnqmqq hiDkKb"
+            className="sc-ifAKCX gPeNwQ"
+            color="#E7E7E7"
             size={25}
           />
         </div>
@@ -194,33 +194,6 @@ exports[`Storyshots Components/AppListToggle default 1`] = `
                       <span
                         style={Object {}}
                       >
-                        backgroundColor
-                      </span>
-                      <span>
-                        =
-                        <span
-                          style={Object {}}
-                        >
-                          "
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            #343434
-                          </span>
-                          "
-                        </span>
-                      </span>
-                    </span>
-                    <span>
-                       
-                      <span
-                        style={Object {}}
-                      >
                         margin
                       </span>
                       <span>
@@ -299,6 +272,35 @@ exports[`Storyshots Components/AppListToggle default 1`] = `
                     AppListToggle
                   </span>
                   <span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
+                        borderWidth
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            2.7
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
                     <span>
                       <span>
                         <br />
@@ -568,7 +570,6 @@ exports[`Storyshots Components/AppListToggle with transition 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "backgroundColor": "#343434",
           "display": "inline-flex",
           "height": "70px",
           "justifyContent": "center",
@@ -577,16 +578,17 @@ exports[`Storyshots Components/AppListToggle with transition 1`] = `
       }
     >
       <div
-        className="sc-gZMcBi gIUgnq"
+        className="sc-fjdhpX cCTirk"
         onClick={[Function]}
         size={50}
       >
         <div
-          className="sc-iwsKbI gBRmpp"
+          className="sc-jTzLTM blWMYJ"
           size={50}
         >
           <div
-            className="sc-dnqmqq hiDkKb"
+            className="sc-ifAKCX gPeNwQ"
+            color="#E7E7E7"
             size={25}
           />
         </div>
@@ -743,33 +745,6 @@ exports[`Storyshots Components/AppListToggle with transition 1`] = `
                     Wrapper
                   </span>
                   <span>
-                    <span>
-                       
-                      <span
-                        style={Object {}}
-                      >
-                        backgroundColor
-                      </span>
-                      <span>
-                        =
-                        <span
-                          style={Object {}}
-                        >
-                          "
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            #343434
-                          </span>
-                          "
-                        </span>
-                      </span>
-                    </span>
                     <span>
                        
                       <span
@@ -1004,6 +979,35 @@ exports[`Storyshots Components/AppListToggle with transition 1`] = `
                         AppListToggle
                       </span>
                       <span>
+                        <span>
+                          <span>
+                            <br />
+                              
+                          </span>
+                          <span
+                            style={Object {}}
+                          >
+                            borderWidth
+                          </span>
+                          <span>
+                            =
+                            <span
+                              style={Object {}}
+                            >
+                              {
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#a11",
+                                  }
+                                }
+                              >
+                                2.7
+                              </span>
+                              }
+                            </span>
+                          </span>
+                        </span>
                         <span>
                           <span>
                             <br />

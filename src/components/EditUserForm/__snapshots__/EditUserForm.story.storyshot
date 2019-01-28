@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/EditUserForm default 1`] = `
+exports[`Storyshots Admin Components/EditUserForm default 1`] = `
 <div>
   <div
     style={
@@ -10,148 +10,162 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
       }
     }
   >
-    <form
-      className="sc-hqyNC fWzciI"
-      onSubmit={[Function]}
+    <div
+      className="sc-GMQeP eCbkgM"
     >
       <div
-        className="sc-jlyJG bEbQcz"
+        className="sc-jWBwVP izFfYu"
       >
         <div
-          className="sc-hzDkRC cFuUJx"
-        >
-          Dusya Sigachyova
-        </div>
-        <div
-          className="sc-kafWEX kTqXVW sc-dnqmqq eNAsFi"
-          onClick={[Function]}
-          size={30}
-        />
-      </div>
-      <div
-        className="sc-dNLxif hNWNSN"
-      >
-        <div
-          className="sc-jqCOkK cwHYrV"
+          className="sc-brqgnP hERWLS"
         >
           <div
-            className="sc-uJMKN ewYqwZ"
+            className="sc-kvZOFW dNAtOq"
           >
+            John Doe
+          </div>
+          <div
+            className="sc-ifAKCX kbLJAY"
+            color="#848484"
+            onClick={[Function]}
+            size={30}
+          />
+        </div>
+      </div>
+      <form
+        className="sc-iujRgT fpCTXM"
+        onReset={[Function]}
+        onSubmit={[Function]}
+      >
+        <div
+          className="sc-exAgwC dLvgoG"
+        >
+          <div
+            className="sc-cQFLBn lmyPXw"
+          >
+            <div
+              className="sc-gojNiO hzFszm"
+            >
+              <label
+                className="sc-kpOJdX cODgu"
+              >
+                <div
+                  className="sc-kGXeez hlXPx"
+                >
+                  First Name
+                </div>
+                <input
+                  name="firstName"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  placeholder="Enter first name"
+                  type="text"
+                  value="John"
+                />
+              </label>
+              <label
+                className="sc-kpOJdX cODgu"
+              >
+                <div
+                  className="sc-kGXeez hlXPx"
+                >
+                  MI
+                </div>
+                <input
+                  name="middleInitial"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  type="text"
+                  value="M1"
+                />
+              </label>
+            </div>
             <label
-              className="sc-tilXH cauXVX"
+              className="sc-kpOJdX cODgu"
             >
               <div
-                className="sc-fYxtnH bxOBNZ"
+                className="sc-kGXeez hlXPx"
               >
-                First Name
+                Last Name
               </div>
               <input
-                name="firstName"
+                name="lastName"
                 onBlur={[Function]}
                 onChange={[Function]}
-                placeholder="Enter first name"
+                placeholder="Enter last name"
                 type="text"
-                value="Dusya"
+                value="Doe"
               />
             </label>
             <label
-              className="sc-tilXH cauXVX"
+              className="sc-kpOJdX cODgu"
             >
               <div
-                className="sc-fYxtnH bxOBNZ"
+                className="sc-kGXeez hlXPx"
               >
-                MI
+                Phone Number
               </div>
               <input
-                name="middleInitial"
+                maxLength="10"
+                name="phone"
                 onBlur={[Function]}
                 onChange={[Function]}
+                placeholder="Enter phone number"
                 type="text"
-                value="L"
+                value="234 567 5555"
+              />
+            </label>
+            <label
+              className="sc-kpOJdX cODgu"
+            >
+              <div
+                className="sc-kGXeez hlXPx"
+              >
+                Email
+              </div>
+              <input
+                disabled={true}
+                name="email"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter email"
+                type="email"
+                value="John.Doe@gmail.com"
               />
             </label>
           </div>
-          <label
-            className="sc-tilXH cauXVX"
-          >
-            <div
-              className="sc-fYxtnH bxOBNZ"
-            >
-              Last Name
-            </div>
-            <input
-              name="lastName"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter last name"
-              type="text"
-              value="Sigachyova"
-            />
-          </label>
-          <label
-            className="sc-tilXH cauXVX"
-          >
-            <div
-              className="sc-fYxtnH bxOBNZ"
-            >
-              Phone Number
-            </div>
-            <input
-              maxLength="10"
-              name="phone"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter phone number"
-              type="text"
-              value=""
-            />
-          </label>
-          <label
-            className="sc-tilXH cauXVX"
-          >
-            <div
-              className="sc-fYxtnH bxOBNZ"
-            >
-              Email
-            </div>
-            <input
-              disabled={true}
-              name="email"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="name@giantfin.co"
-              type="text"
-            />
-          </label>
         </div>
-      </div>
-      <div
-        className="sc-ksYbfQ bYIWvt"
-      >
         <div
-          className="sc-jhAzac gcWpzl"
+          className="sc-fYiAbW haPmxn"
         >
-          <a
-            backgroundColor="#848484"
-            className="sc-Rmtcm fLXfRX"
-            href="/admin/users"
-            onClick={[Function]}
-            type="button"
-            width={128}
+          <div
+            className="sc-daURTG ernUfV"
           >
-            Cancel
-          </a>
-          <button
-            className="sc-csuQGl hpiuPo"
-            disabled={true}
-            type="submit"
-            width={128}
-          >
-            Save
-          </button>
+            <a
+              backgroundColor="#848484"
+              className="sc-chPdSV bBLqzg"
+              href="/admin/users"
+              onClick={[Function]}
+              type="button"
+              width={128}
+            >
+              Cancel
+            </a>
+            <button
+              className="sc-kAzzGY kElEHA"
+              disabled={true}
+              type="submit"
+              width={128}
+            >
+              Save
+            </button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+      <div
+        className="sc-bXGyLb kIzGGk"
+      />
+    </div>
   </div>
   <button
     onClick={[Function]}
@@ -250,7 +264,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
               }
             }
           >
-            Components/EditUserForm
+            Admin Components/EditUserForm
           </h1>
           <h2
             style={
@@ -303,165 +317,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                 </span>
                 <span>
                   <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      match
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#666",
-                            }
-                          }
-                        >
-                          {
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              params
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            ''
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              isExact
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
-                              }
-                            }
-                          >
-                            true
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              path
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            ''
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            …
-                          </span>
-                          <span>
-                            <br />
-                              
-                          </span>
-                          }
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      history
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#666",
-                            }
-                          }
-                        >
-                          {
-                          }
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
+                     
                     <span
                       style={Object {}}
                     >
@@ -480,17 +336,14 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                             }
                           }
                         >
-                          noop
+                          updateUser
                         </span>
                         }
                       </span>
                     </span>
                   </span>
                   <span>
-                    <span>
-                      <br />
-                        
-                    </span>
+                     
                     <span
                       style={Object {}}
                     >
@@ -611,7 +464,7 @@ exports[`Storyshots Components/EditUserForm default 1`] = `
                         }
                       </span>
                     </span>
-                    <br />
+                     
                   </span>
                 </span>
                 <span

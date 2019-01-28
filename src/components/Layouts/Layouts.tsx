@@ -1,34 +1,36 @@
 import * as React from 'react';
 
-import * as restoreLayoutIcon from '../../assets/RestoreLayout.svg';
-import * as saveLayoutIcon from '../../assets/SaveLayout.svg';
+import { MetaWithCallbacks, UserLayout } from '../../types/commons';
 
-import IconSpace from '../IconSpace';
-
-import { DirectionalPosition } from '../../types/commons';
-
-import { Wrapper } from './Layouts.css';
+import LayoutsList from '../LayoutsList';
+import LayoutsUserActions from '../LayoutsUserActions';
+import { ActionsWrapper, Header, Title, Wrapper } from './Layouts.css';
 
 interface Props {
-  isApplicationDrawerExpanded: boolean;
-  launcherPosition: DirectionalPosition;
-  layoutIds: string[];
+  deleteLayout: (id: string) => void;
+  layouts: UserLayout[];
   onBlur: () => void;
   restoreLayout: (id: string) => void;
-  saveLayout: (id: string) => void;
+  saveLayout: (name: string, meta: MetaWithCallbacks) => void;
 }
 
-const Layouts = ({ isApplicationDrawerExpanded, launcherPosition, layoutIds, saveLayout, onBlur, restoreLayout }: Props) => {
+const Layouts = ({ deleteLayout, restoreLayout, saveLayout, onBlur, layouts }: Props) => {
   const handleClickCreator = (fn, ...args) => () => {
     onBlur();
     fn(...args);
   };
 
   return (
-    <Wrapper launcherPosition={launcherPosition} isExpanded={isApplicationDrawerExpanded}>
-      <IconSpace iconImg={saveLayoutIcon} onClick={handleClickCreator(saveLayout, layoutIds[0])} hover />
+    <Wrapper>
+      <ActionsWrapper>
+        <Header>
+          <Title>Layouts</Title>
+        </Header>
 
-      <IconSpace iconImg={restoreLayoutIcon} onClick={handleClickCreator(restoreLayout, layoutIds[0])} hover />
+        <LayoutsUserActions deleteLayout={deleteLayout} saveLayout={saveLayout} />
+      </ActionsWrapper>
+
+      <LayoutsList layouts={layouts} restoreLayout={restoreLayout} deleteLayout={deleteLayout} />
     </Wrapper>
   );
 };

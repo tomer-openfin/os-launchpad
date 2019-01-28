@@ -21,19 +21,17 @@ export const GlobalStyle = createGlobalStyle`
 
   ::-webkit-scrollbar {
     width: 8px;
-    display: auto;
+    overflow-y: auto;
   }
 
   ::-webkit-scrollbar-track {
     background: ${Color.KUIPER_BELT};
-    display: auto;
     border-radius: 4px;
     border: solid 3px transparent;
   }
 
   ::-webkit-scrollbar-thumb {
     background: ${Color.MERCURY};
-    display: auto;
     border-radius: 4px;
     border: solid 3px transparent;
   }

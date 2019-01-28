@@ -14,6 +14,11 @@ export interface WindowsState {
 }
 
 // Action payloads
+export interface BlurWindowWithDelayPayload {
+  delayDuration: number;
+  name: string;
+}
+
 export interface WindowNamePayload {
   name: string;
 }
@@ -26,10 +31,10 @@ export interface WindowConfig {
   defaultHeight: number;
   defaultWidth: number;
   frame: boolean;
-  maxHeight: number;
+  maxHeight?: number;
   maximizable: boolean;
-  minHeight: number;
-  minWidth: number;
+  minHeight?: number;
+  minWidth?: number;
   minimizable: boolean;
   name: string;
   opactity?: number;

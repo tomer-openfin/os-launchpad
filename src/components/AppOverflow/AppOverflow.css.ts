@@ -8,7 +8,7 @@ export const Window = styled.div`
   background: ${Color.ASTEROID_BELT};
   height: 100vh;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
 
   ${AppList} {
     height: 100%;

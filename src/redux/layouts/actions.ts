@@ -1,10 +1,12 @@
 import { createAction } from 'redux-actions';
 
-import { ErrorResponse, UserLayout } from '../../types/commons';
+import { Layout } from 'openfin-layouts/dist/client/types';
+import { ErrorResponse, MetaWithCallbacks, UserLayout } from '../../types/commons';
 import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
+import { metaWithCallbacksCreator, payloadIdentityCreator } from '../../utils/metaAndPayloadCreators';
 import { GetLayoutsSuccessPayload } from './types';
 
-interface UpdateLayout {
+export interface UpdateLayout {
   id: UserLayout['id'];
   name: UserLayout['name'];
   updateLayout: boolean;
@@ -13,7 +15,6 @@ interface UpdateLayout {
 // Action types
 export const GET_LAYOUTS = generateAsyncActionTypes('GET_LAYOUTS');
 export const RESTORE_LAYOUT = generateAsyncActionTypes('RESTORE_LAYOUT');
-export const SAVE_LAYOUT = 'SAVE_LAYOUT';
 export const CREATE_LAYOUT = generateAsyncActionTypes('CREATE_LAYOUT');
 export const UPDATE_LAYOUT = generateAsyncActionTypes('UPDATE_LAYOUT');
 export const DELETE_LAYOUT = generateAsyncActionTypes('DELETE_LAYOUT');
@@ -24,14 +25,12 @@ export const getLayoutsSuccess = createAction<GetLayoutsSuccessPayload>(GET_LAYO
 export const getLayoutsError = createAction<ErrorResponse>(GET_LAYOUTS.ERROR);
 
 export const restoreLayoutRequest = createAction<UserLayout['id']>(RESTORE_LAYOUT.REQUEST);
-export const restoreLayoutSuccess = createAction(RESTORE_LAYOUT.SUCCESS);
+export const restoreLayoutSuccess = createAction<Layout>(RESTORE_LAYOUT.SUCCESS);
 export const restoreLayoutError = createAction<ErrorResponse>(RESTORE_LAYOUT.ERROR);
 
-export const saveLayout = createAction<UserLayout['id']>(SAVE_LAYOUT);
-
-export const createLayoutRequest = createAction<UserLayout['id']>(CREATE_LAYOUT.REQUEST);
-export const createLayoutSuccess = createAction(CREATE_LAYOUT.SUCCESS);
-export const createLayoutError = createAction<ErrorResponse>(CREATE_LAYOUT.ERROR);
+export const createLayoutRequest = createAction<UserLayout['name'], MetaWithCallbacks>(CREATE_LAYOUT.REQUEST, payloadIdentityCreator, metaWithCallbacksCreator);
+export const createLayoutSuccess = createAction<UserLayout, MetaWithCallbacks>(CREATE_LAYOUT.SUCCESS, payloadIdentityCreator, metaWithCallbacksCreator);
+export const createLayoutError = createAction<ErrorResponse, MetaWithCallbacks>(CREATE_LAYOUT.ERROR, payloadIdentityCreator, metaWithCallbacksCreator);
 
 export const updateLayoutRequest = createAction<UpdateLayout>(UPDATE_LAYOUT.REQUEST);
 export const updateLayoutSuccess = createAction<UserLayout>(UPDATE_LAYOUT.SUCCESS);

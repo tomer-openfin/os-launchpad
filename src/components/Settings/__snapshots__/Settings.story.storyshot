@@ -11,69 +11,175 @@ exports[`Storyshots Components/Settings default 1`] = `
     }
   >
     <div
-      className="sc-gxMtzJ hJVeoq"
+      style={
+        Object {
+          "margin": "15px",
+        }
+      }
     >
       <div
-        className="sc-cJSrbW ivGxWp"
-      >
-        <button
-          className="sc-ksYbfQ fgAPAg"
-          onClick={[Function]}
-        >
-          <span
-            className="sc-hmzhuo fypdGF"
-          />
-        </button>
-      </div>
-      <div
-        className="sc-iyvyFf bRACFp"
+        className="sc-bAeIUo bHOBij"
       >
         <div
-          className="sc-gzOgki mMBWN"
+          className="sc-iuJeZd YWnqe"
         >
-          Auto Hide
-        </div>
-        <button
-          className="sc-dfVpRl eEhKXc"
-          onClick={[Function]}
-        >
-          OFF
-        </button>
-      </div>
-      <div
-        className="sc-iyvyFf bRACFp"
-      >
-        <div
-          className="sc-gzOgki mMBWN"
-        >
-          Launcher Position
-        </div>
-        <button
-          className="sc-dfVpRl eEhKXc"
-          onClick={[Function]}
-        >
-          Top
-        </button>
-        <div>
-          <button
-            className="sc-dfVpRl eEhKXc"
-            onClick={[Function]}
+          <div
+            className="sc-cSHVUG ksrKew"
+            height="100%"
+            width="100%"
           >
-            Left
-          </button>
-          <button
-            className="sc-dfVpRl eEhKXc"
-            onClick={[Function]}
-          >
-            Right
-          </button>
+            <div
+              className="sc-jWBwVP jncaxH"
+            >
+              <div
+                className="sc-brqgnP hERWLS"
+              >
+                <div
+                  className="sc-cMljjf eWlOWR"
+                >
+                  My Settings
+                </div>
+              </div>
+              <div
+                className="sc-cvbbAY kNcqoF"
+              >
+                <div
+                  className="sc-ifAKCX cWlwzh"
+                  color="#E7E7E7"
+                  onClick={[Function]}
+                  size={25}
+                />
+              </div>
+            </div>
+            <div
+              className="sc-hORach ewLqov"
+            >
+              <div
+                className="sc-hMFtBS dOaqvw"
+              >
+                <div
+                  className="sc-cLQEGU ehHuwh"
+                >
+                  Auto-Hide
+                </div>
+                <div
+                  className="sc-gqPbQI ecEDKw"
+                >
+                  <label
+                    checked={false}
+                    className="sc-cmthru hjHKVg sc-kEYyzF bLItnJ"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-cmthru hjHKVg sc-hMqMXs bSKuHb"
+                      name="autohide-onoff"
+                      onChange={[Function]}
+                      type="radio"
+                      value="on"
+                    />
+                    On
+                  </label>
+                  <label
+                    checked={true}
+                    className="sc-cmthru hjHKVg sc-kEYyzF eGRGwQ"
+                  >
+                    <input
+                      checked={true}
+                      className="sc-cmthru hjHKVg sc-hMqMXs bSKuHb"
+                      name="autohide-onoff"
+                      onChange={[Function]}
+                      type="radio"
+                      value="off"
+                    />
+                    Off
+                  </label>
+                </div>
+              </div>
+              <div
+                className="sc-hMFtBS dOaqvw"
+              >
+                <div
+                  className="sc-cLQEGU ehHuwh"
+                >
+                  Launcher Size
+                </div>
+                <div
+                  className="sc-gqPbQI ecEDKw"
+                >
+                  <label
+                    checked={false}
+                    className="sc-cmthru hjHKVg sc-kEYyzF bLItnJ"
+                  >
+                    <input
+                      checked={false}
+                      className="sc-cmthru hjHKVg sc-hMqMXs bSKuHb"
+                      name="launcherSize-options"
+                      onChange={[Function]}
+                      type="radio"
+                      value="small"
+                    />
+                    Sm
+                  </label>
+                  <label
+                    checked={true}
+                    className="sc-cmthru hjHKVg sc-kEYyzF eGRGwQ"
+                  >
+                    <input
+                      checked={true}
+                      className="sc-cmthru hjHKVg sc-hMqMXs bSKuHb"
+                      name="launcherSize-options"
+                      onChange={[Function]}
+                      type="radio"
+                      value="large"
+                    />
+                    Lg
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div
+              className="sc-hORach ewLqov"
+            >
+              <div
+                className="sc-hMFtBS dOaqvw"
+              >
+                <div
+                  className="sc-cLQEGU ehHuwh"
+                >
+                  Launcher Position
+                </div>
+                <button
+                  className="sc-kAzzGY sc-esOvli lkmmCx"
+                  onClick={[Function]}
+                >
+                  Top
+                </button>
+                <div
+                  className="sc-gqPbQI ecEDKw"
+                >
+                  <button
+                    className="sc-kAzzGY sc-esOvli lkmmCx"
+                    onClick={[Function]}
+                  >
+                    Left
+                  </button>
+                  <button
+                    className="sc-kAzzGY sc-esOvli lkmmCx"
+                    onClick={[Function]}
+                  >
+                    Right
+                  </button>
+                </div>
+                <button
+                  className="sc-kAzzGY sc-esOvli lkmmCx"
+                  onClick={[Function]}
+                >
+                  Bottom
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <button
-          className="sc-dfVpRl eEhKXc"
-          onClick={[Function]}
-        >
-          Bottom
-        </button>
       </div>
     </div>
   </div>
@@ -207,34 +313,393 @@ exports[`Storyshots Components/Settings default 1`] = `
             className="css-r8d96o eyvlbql0"
           >
             <div>
-              <div
-                style={
-                  Object {
-                    "paddingLeft": 18,
-                    "paddingRight": 3,
-                  }
-                }
-              >
-                <span
+              <div>
+                <div
                   style={
                     Object {
-                      "color": "#777",
+                      "paddingLeft": 18,
+                      "paddingRight": 3,
                     }
                   }
                 >
-                  &lt;
-                  AppOverflow
-                </span>
-                <span />
-                <span
+                  <span
+                    style={
+                      Object {
+                        "color": "#444",
+                      }
+                    }
+                  >
+                    &lt;
+                    div
+                  </span>
+                  <span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        style
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#666",
+                              }
+                            }
+                          >
+                            {
+                            <span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                margin
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              '15px'
+                            </span>
+                            }
+                          </span>
+                          }
+                        </span>
+                      </span>
+                      
+                    </span>
+                  </span>
+                  <span
+                    style={
+                      Object {
+                        "color": "#444",
+                      }
+                    }
+                  >
+                    &gt;
+                  </span>
+                </div>
+                <div>
+                  <div
+                    style={
+                      Object {
+                        "paddingLeft": 33,
+                        "paddingRight": 3,
+                      }
+                    }
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#444",
+                        }
+                      }
+                    >
+                      &lt;
+                      styled.div
+                    </span>
+                    <span />
+                    <span
+                      style={
+                        Object {
+                          "color": "#444",
+                        }
+                      }
+                    >
+                      &gt;
+                    </span>
+                  </div>
+                  <div
+                    style={
+                      Object {
+                        "paddingLeft": 48,
+                        "paddingRight": 3,
+                      }
+                    }
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#444",
+                        }
+                      }
+                    >
+                      &lt;
+                      Settings
+                    </span>
+                    <span>
+                      <span>
+                        <span>
+                          <br />
+                            
+                        </span>
+                        <span
+                          style={Object {}}
+                        >
+                          autoHide
+                        </span>
+                        <span>
+                          =
+                          <span
+                            style={Object {}}
+                          >
+                            {
+                            <span
+                              style={
+                                Object {
+                                  "color": "#a11",
+                                }
+                              }
+                            >
+                              false
+                            </span>
+                            }
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        <span>
+                          <br />
+                            
+                        </span>
+                        <span
+                          style={Object {}}
+                        >
+                          hideWindow
+                        </span>
+                        <span>
+                          =
+                          <span
+                            style={Object {}}
+                          >
+                            {
+                            <span
+                              style={
+                                Object {
+                                  "color": "#170",
+                                }
+                              }
+                            >
+                              noop
+                            </span>
+                            }
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        <span>
+                          <br />
+                            
+                        </span>
+                        <span
+                          style={Object {}}
+                        >
+                          launcherSize
+                        </span>
+                        <span>
+                          =
+                          <span
+                            style={Object {}}
+                          >
+                            "
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              large
+                            </span>
+                            "
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        <span>
+                          <br />
+                            
+                        </span>
+                        <span
+                          style={Object {}}
+                        >
+                          setAutoHide
+                        </span>
+                        <span>
+                          =
+                          <span
+                            style={Object {}}
+                          >
+                            {
+                            <span
+                              style={
+                                Object {
+                                  "color": "#170",
+                                }
+                              }
+                            >
+                              setAutoHide
+                            </span>
+                            }
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        <span>
+                          <br />
+                            
+                        </span>
+                        <span
+                          style={Object {}}
+                        >
+                          setLauncherPosition
+                        </span>
+                        <span>
+                          =
+                          <span
+                            style={Object {}}
+                          >
+                            {
+                            <span
+                              style={
+                                Object {
+                                  "color": "#170",
+                                }
+                              }
+                            >
+                              setLauncherPosition
+                            </span>
+                            }
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        <span>
+                          <br />
+                            
+                        </span>
+                        <span
+                          style={Object {}}
+                        >
+                          setLauncherSize
+                        </span>
+                        <span>
+                          =
+                          <span
+                            style={Object {}}
+                          >
+                            {
+                            <span
+                              style={
+                                Object {
+                                  "color": "#170",
+                                }
+                              }
+                            >
+                              setLauncherSize
+                            </span>
+                            }
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                        <span>
+                          <br />
+                            
+                        </span>
+                        <span
+                          style={Object {}}
+                        >
+                          onEscDown
+                        </span>
+                        <span>
+                          =
+                          <span
+                            style={Object {}}
+                          >
+                            {
+                            <span
+                              style={
+                                Object {
+                                  "color": "#170",
+                                }
+                              }
+                            >
+                              onEscDown
+                            </span>
+                            }
+                          </span>
+                        </span>
+                        <br />
+                      </span>
+                    </span>
+                    <span
+                      style={
+                        Object {
+                          "color": "#444",
+                        }
+                      }
+                    >
+                      /&gt;
+                    </span>
+                  </div>
+                  <div
+                    style={
+                      Object {
+                        "paddingLeft": 33,
+                        "paddingRight": 3,
+                      }
+                    }
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#444",
+                        }
+                      }
+                    >
+                      &lt;/
+                      styled.div
+                      &gt;
+                    </span>
+                  </div>
+                </div>
+                <div
                   style={
                     Object {
-                      "color": "#777",
+                      "paddingLeft": 18,
+                      "paddingRight": 3,
                     }
                   }
                 >
-                  /&gt;
-                </span>
+                  <span
+                    style={
+                      Object {
+                        "color": "#444",
+                      }
+                    }
+                  >
+                    &lt;/
+                    div
+                    &gt;
+                  </span>
+                </div>
               </div>
             </div>
             <button
@@ -282,149 +747,28 @@ exports[`Storyshots Components/Settings default 1`] = `
               }
             >
               "
-              AppOverflow
+              Settings
               " Component
             </h2>
-            <table
-              className="css-1uhv8nx e1vdo5380"
+            <small>
+              No propTypes defined!
+            </small>
+          </div>
+          <div>
+            <h2
+              style={
+                Object {
+                  "margin": "20px 0 0 0",
+                }
+              }
             >
-              <thead>
-                <tr>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    property
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    propType
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    required
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    default
-                  </th>
-                  <th
-                    className="css-11b5gui e6fp4ir1"
-                  >
-                    description
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    autoHide
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#a11",
-                        }
-                      }
-                    >
-                      false
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    setAutoHide
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#170",
-                        }
-                      }
-                    >
-                      noop
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-                <tr>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    setLaunchbarPosition
-                  </td>
-                  <td
-                    className="css-1qcb1f7 e6fp4ir0"
-                  >
-                    <span>
-                      unknown
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    -
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#170",
-                        }
-                      }
-                    >
-                      noop
-                    </span>
-                  </td>
-                  <td
-                    className="css-11b5gui e6fp4ir0"
-                  />
-                </tr>
-              </tbody>
-            </table>
+              "
+              styled.div
+              " Component
+            </h2>
+            <small>
+              No propTypes defined!
+            </small>
           </div>
         </div>
       </div>

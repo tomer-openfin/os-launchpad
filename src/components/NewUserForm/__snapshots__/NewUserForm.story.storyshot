@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/NewUserForm default 1`] = `
+exports[`Storyshots Admin Components/NewUserForm default 1`] = `
 <div>
   <div
     style={
@@ -10,168 +10,183 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
       }
     }
   >
-    <form
-      className="sc-hqyNC fWzciI"
-      onSubmit={[Function]}
+    <div
+      className="sc-GMQeP eCbkgM"
     >
       <div
-        className="sc-jlyJG eKNTTZ"
+        className="sc-jWBwVP izFfYu"
       >
         <div
-          className="sc-gipzik ftqVKf"
-        >
-          Create New User
-        </div>
-      </div>
-      <div
-        className="sc-dNLxif hNWNSN"
-      >
-        <div
-          className="sc-jqCOkK wRfwx"
+          className="sc-brqgnP hERWLS"
         >
           <div
-            className="sc-uJMKN ewYqwZ"
+            className="sc-cMljjf eWlOWR"
           >
-            <label
-              className="sc-tilXH cauXVX"
-            >
-              <div
-                className="sc-fYxtnH bxOBNZ"
-              >
-                First Name
-              </div>
-              <input
-                name="firstName"
-                onBlur={[Function]}
-                onChange={[Function]}
-                placeholder="Enter first name"
-                type="text"
-                value=""
-              />
-            </label>
-            <label
-              className="sc-tilXH cauXVX"
-            >
-              <div
-                className="sc-fYxtnH bxOBNZ"
-              >
-                MI
-              </div>
-              <input
-                name="middleInitial"
-                onBlur={[Function]}
-                onChange={[Function]}
-                type="text"
-                value=""
-              />
-            </label>
+            Create New User
           </div>
-          <label
-            className="sc-tilXH cauXVX"
-          >
-            <div
-              className="sc-fYxtnH bxOBNZ"
-            >
-              Last Name
-            </div>
-            <input
-              name="lastName"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter last name"
-              type="text"
-              value=""
-            />
-          </label>
-          <label
-            className="sc-tilXH cauXVX"
-          >
-            <div
-              className="sc-fYxtnH bxOBNZ"
-            >
-              Phone Number
-            </div>
-            <input
-              maxLength="10"
-              name="phone"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter phone number"
-              type="text"
-              value=""
-            />
-          </label>
-          <label
-            className="sc-tilXH cauXVX"
-          >
-            <div
-              className="sc-fYxtnH bxOBNZ"
-            >
-              Email
-            </div>
-            <input
-              name="email"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter email"
-              type="email"
-              value=""
-            />
-          </label>
-          <label
-            className="sc-tilXH cauXVX"
-          >
-            <div
-              className="sc-fYxtnH bxOBNZ"
-            >
-              Password
-            </div>
-            <input
-              name="tmpPassword"
-              onBlur={[Function]}
-              onChange={[Function]}
-              placeholder="Enter password"
-              type="password"
-              value=""
-            />
-            <div
-              className="sc-ktHwxA fnfdhu"
-            >
-              <div
-                className="sc-cIShpX fCKPTs sc-dnqmqq hiDkKb"
-                size={25}
-              />
-            </div>
-          </label>
         </div>
       </div>
-      <div
-        className="sc-ksYbfQ bYIWvt"
+      <form
+        className="sc-iujRgT fpCTXM"
+        onReset={[Function]}
+        onSubmit={[Function]}
       >
         <div
-          className="sc-bbmXgH iKWFpQ"
+          className="sc-exAgwC dLvgoG"
         >
-          <a
-            backgroundColor="#848484"
-            className="sc-Rmtcm fLXfRX"
-            href="/admin/users"
-            onClick={[Function]}
-            type="button"
-            width={128}
+          <div
+            className="sc-cQFLBn lmyPXw"
           >
-            Cancel
-          </a>
-          <button
-            className="sc-csuQGl hpiuPo"
-            disabled={true}
-            type="submit"
-            width={128}
-          >
-            Save
-          </button>
+            <div
+              className="sc-gojNiO hzFszm"
+            >
+              <label
+                className="sc-kpOJdX cODgu"
+              >
+                <div
+                  className="sc-kGXeez hlXPx"
+                >
+                  First Name
+                </div>
+                <input
+                  name="firstName"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  placeholder="Enter first name"
+                  type="text"
+                  value=""
+                />
+              </label>
+              <label
+                className="sc-kpOJdX cODgu"
+              >
+                <div
+                  className="sc-kGXeez hlXPx"
+                >
+                  MI
+                </div>
+                <input
+                  name="middleInitial"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  type="text"
+                  value=""
+                />
+              </label>
+            </div>
+            <label
+              className="sc-kpOJdX cODgu"
+            >
+              <div
+                className="sc-kGXeez hlXPx"
+              >
+                Last Name
+              </div>
+              <input
+                name="lastName"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter last name"
+                type="text"
+                value=""
+              />
+            </label>
+            <label
+              className="sc-kpOJdX cODgu"
+            >
+              <div
+                className="sc-kGXeez hlXPx"
+              >
+                Phone Number
+              </div>
+              <input
+                maxLength="10"
+                name="phone"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter phone number"
+                type="text"
+                value=""
+              />
+            </label>
+            <label
+              className="sc-kpOJdX cODgu"
+            >
+              <div
+                className="sc-kGXeez hlXPx"
+              >
+                Email
+              </div>
+              <input
+                disabled={false}
+                name="email"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter email"
+                type="email"
+                value=""
+              />
+            </label>
+            <label
+              className="sc-kpOJdX cODgu"
+            >
+              <div
+                className="sc-kGXeez hlXPx"
+              >
+                Password
+              </div>
+              <input
+                name="tmpPassword"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter password"
+                type="password"
+                value=""
+              />
+              <div
+                className="sc-cbkKFq hGGPIx"
+              >
+                <div
+                  className="sc-ifAKCX xmkOg"
+                  color="#E7E7E7"
+                  onClick={[Function]}
+                  size={25}
+                />
+              </div>
+            </label>
+          </div>
         </div>
-      </div>
-    </form>
+        <div
+          className="sc-fYiAbW haPmxn"
+        >
+          <div
+            className="sc-daURTG ernUfV"
+          >
+            <a
+              backgroundColor="#848484"
+              className="sc-chPdSV bBLqzg"
+              href="/admin/users"
+              onClick={[Function]}
+              type="button"
+              width={128}
+            >
+              Cancel
+            </a>
+            <button
+              className="sc-kAzzGY kElEHA"
+              disabled={true}
+              type="submit"
+              width={128}
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </form>
+      <div
+        className="sc-bXGyLb kIzGGk"
+      />
+    </div>
   </div>
   <button
     onClick={[Function]}
@@ -270,7 +285,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
               }
             }
           >
-            Components/NewUserForm
+            Admin Components/NewUserForm
           </h1>
           <h2
             style={
@@ -388,7 +403,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
                                 }
                               }
                             >
-                              'name@giantfin.co'
+                              'John.Doe@gmail.com'
                             </span>
                             ,
                             <span>
@@ -416,7 +431,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
                                 }
                               }
                             >
-                              'Dusya'
+                              'John'
                             </span>
                             ,
                             <span>
@@ -444,7 +459,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
                                 }
                               }
                             >
-                              'string'
+                              'username1'
                             </span>
                             ,
                             <span>
@@ -487,7 +502,7 @@ exports[`Storyshots Components/NewUserForm default 1`] = `
                             }
                           }
                         >
-                          noop
+                          createUser
                         </span>
                         }
                       </span>

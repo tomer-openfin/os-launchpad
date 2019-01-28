@@ -29,11 +29,19 @@ export default (state: LayoutsState = defaultState, action: LayoutsActions) => {
       };
     }
     case DELETE_LAYOUT.SUCCESS: {
-      const { id } = action.payload;
+      const id = action.payload;
 
-      const { [id]: deletedItem, ...byId } = state.byId;
+      const idIndex = state.ids.findIndex(el => el === id);
+      if (idIndex === -1) {
+        return state;
+      }
 
-      const ids: string[] = Object.keys(byId);
+      const byId = { ...state.byId };
+      delete byId[id];
+
+      const idsStart = state.ids.slice(0, idIndex);
+      const idsEnd = state.ids.slice(idIndex + 1);
+      const ids = [...idsStart, ...idsEnd];
 
       return {
         byId,

@@ -1,12 +1,11 @@
 import { Dispatch } from 'redux';
 
+import { isDevelopmentEnv } from '../../utils/processHelpers';
 import { globalHotkeyPressed } from './actions';
 import { DevGlobalHotkeys, GlobalHotkeys } from './enums';
 
-const { NODE_ENV = 'development' } = process.env;
-
 type GlobalHotkeyEnumType = typeof DevGlobalHotkeys | typeof GlobalHotkeys;
-const registerEmumToFinGlobalHotkey = (Enum: GlobalHotkeyEnumType, dispatch: Dispatch) => {
+const registerEnumToFinGlobalHotkey = (Enum: GlobalHotkeyEnumType, dispatch: Dispatch) => {
   const { fin } = window;
   if (!fin) {
     return;
@@ -25,10 +24,12 @@ const registerEmumToFinGlobalHotkey = (Enum: GlobalHotkeyEnumType, dispatch: Dis
   }
 };
 
-export const registerGlobalHotkeys = (dispatch: Dispatch) => {
-  registerEmumToFinGlobalHotkey(GlobalHotkeys, dispatch);
-
-  if (NODE_ENV === 'development') {
-    registerEmumToFinGlobalHotkey(DevGlobalHotkeys, dispatch);
+export const registerGlobalDevHotKeys = (dispatch: Dispatch) => {
+  if (isDevelopmentEnv()) {
+    registerEnumToFinGlobalHotkey(DevGlobalHotkeys, dispatch);
   }
+};
+
+export const registerGlobalHotkeys = (dispatch: Dispatch) => {
+  registerEnumToFinGlobalHotkey(GlobalHotkeys, dispatch);
 };

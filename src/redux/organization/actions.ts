@@ -8,10 +8,12 @@ import { OrganizationState } from './types';
 export const SAVE_ADMIN_ORG_SETTINGS = generateAsyncActionTypes('SAVE_ADMIN_ORG_SETTINGS');
 export const GET_ORG_SETTINGS = generateAsyncActionTypes('GET_ORG_SETTINGS');
 export const GET_ADMIN_ORG_SETTINGS = generateAsyncActionTypes('GET_ADMIN_ORG_SETTINGS');
-export const SAVE_LOGO = 'SAVE_LOGO';
-export const SAVE_ACTIVE_THEME_ID = 'SAVE_ACTIVE_THEME_ID';
-export const SET_LOGO = 'SET_LOGO';
-export const SET_ACTIVE_THEME_ID = 'SET_ACTIVE_THEME_ID';
+
+export const SAVE_ORG_AUTO_LOGIN = 'SAVE_ORG_AUTO_LOGIN';
+export const SAVE_ORG_LOGO = 'SAVE_ORG_LOGO';
+export const SAVE_ORG_ACTIVE_THEME_ID = 'SAVE_ORG_ACTIVE_THEME_ID';
+export const SET_ORG_LOGO = 'SET_ORG_LOGO';
+export const SET_ORG_ACTIVE_THEME_ID = 'SET_ORG_ACTIVE_THEME_ID';
 
 export const getOrgSettingsRequest = createAction(GET_ORG_SETTINGS.REQUEST);
 export const getOrgSettingsSuccess = createAction(GET_ORG_SETTINGS.SUCCESS);
@@ -36,9 +38,12 @@ export const saveAdminOrgSettingsError = createAction<ErrorResponse, MetaWithCal
   payloadIdentityCreator,
   metaWithCallbacksCreator,
 );
+export const saveOrgAutoLogin =
+  createAction<OrganizationState['autoLogin'], MetaWithCallbacks>(SAVE_ORG_AUTO_LOGIN, payloadIdentityCreator, metaWithCallbacksCreator);
+export const saveOrgLogo =
+  createAction<OrganizationState['logo'], MetaWithCallbacks>(SAVE_ORG_LOGO, payloadIdentityCreator, metaWithCallbacksCreator);
+export const saveOrgActiveThemeId =
+  createAction<Theme['id'], MetaWithCallbacks>(SAVE_ORG_ACTIVE_THEME_ID, payloadIdentityCreator, metaWithCallbacksCreator);
 
-export const saveLogo = createAction<OrganizationState['logo'], MetaWithCallbacks>(SAVE_LOGO, payloadIdentityCreator, metaWithCallbacksCreator);
-export const saveActiveThemeId = createAction<Theme['id'], MetaWithCallbacks>(SAVE_ACTIVE_THEME_ID, payloadIdentityCreator, metaWithCallbacksCreator);
-
-export const setLogo = createAction(SET_LOGO);
-export const setActiveThemeId = createAction(SET_ACTIVE_THEME_ID);
+export const setOrgLogo = createAction(SET_ORG_LOGO);
+export const setOrgActiveThemeId = createAction(SET_ORG_ACTIVE_THEME_ID);

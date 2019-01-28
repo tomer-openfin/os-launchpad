@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 
-import { getDrawerIsExpanded } from '../../redux/application';
-import { getLauncherPosition } from '../../redux/me';
+import { getDrawerIsExpanded, setIsDragAndDrop } from '../../redux/application';
+import { getLauncherPosition, getLauncherSizeConfig, saveSettingsRequest, setAppIds } from '../../redux/me';
 import { getAppListApps, getAppListDimensions } from '../../redux/selectors';
-import * as SIZE from '../../utils/sizingConstants';
 import { isTopOrBottom } from '../../utils/windowPositionHelpers';
 
 import AppList from './AppList';
 
-const stateProps = (state, { isOverflowExpanded = false }) => {
+const mapState = (state, { isOverflowExpanded = false }) => {
   let { height, width } = getAppListDimensions(state);
+  const launcherSizeConfig = getLauncherSizeConfig(state);
   const launcherPosition = getLauncherPosition(state);
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);
   if (!isOnTopOrBottom) {
@@ -20,12 +20,23 @@ const stateProps = (state, { isOverflowExpanded = false }) => {
   }
 
   return {
-    appList: getAppListApps(state),
+    appList: getAppListApps(state).appIds,
     areAppsDisabled: getDrawerIsExpanded(state),
-    height: isOnTopOrBottom && !isOverflowExpanded ? SIZE.LOGO : height,
+    height: isOnTopOrBottom && !isOverflowExpanded ? launcherSizeConfig.launcher : height,
     launcherPosition,
-    width: !isOnTopOrBottom && !isOverflowExpanded ? SIZE.LOGO : width,
+    launcherSizeConfig,
+    toggleIndex: getAppListApps(state).toggleIndex,
+    width: !isOnTopOrBottom && !isOverflowExpanded ? launcherSizeConfig.launcher : width,
   };
 };
 
-export default connect(stateProps)(AppList);
+const mapDispatch = {
+  saveSettings: saveSettingsRequest,
+  setAppIds,
+  setIsDragAndDrop,
+};
+
+export default connect(
+  mapState,
+  mapDispatch,
+)(AppList);

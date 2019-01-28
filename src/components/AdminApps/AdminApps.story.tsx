@@ -1,9 +1,9 @@
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { storiesOf } from '@storybook/react';
+import appData from '../../samples/AppData';
+import { CATEGORIES } from '../../utils/storyCategories';
 
 import AdminApps from './AdminApps';
 
-import appData from '../../const/AppData';
-
-// storiesOf('Components/AdminApps', module).add('default', () => <AdminApps apps={appData} />);
+storiesOf(`${CATEGORIES.ADMIN}AdminApps`, module).add('default', () => <AdminApps apps={appData} />);

@@ -1,3 +1,3 @@
-import AppIndicatorContainer from './AppIndicatorContainer';
+import AppIndicator from './AppIndicator';
 
-export default AppIndicatorContainer;
+export default AppIndicator;

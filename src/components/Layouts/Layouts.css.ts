@@ -1,21 +1,42 @@
 import styled from 'styled-components';
 
-import { DirectionalPosition } from '../../types/commons';
+import { Color, Typography } from '../../styles';
 
-import { isLeftOrRight } from '../../utils/windowPositionHelpers';
+export const ActionsWrapper = styled.div`
+  position: relative;
+  width: 100%;
 
-interface WrapperProps {
-  isExpanded: boolean;
-  launcherPosition: DirectionalPosition;
-}
+  &:before {
+    background-color: ${Color.SUN};
+    bottom: 0;
+    content: '';
+    height: 1px;
+    left: 0;
+    opacity: 0.2;
+    position: absolute;
+    right: 0;
+  }
+`;
 
-export const Wrapper = styled.div<WrapperProps>`
+export const Header = styled.div`
+  background-color: ${Color.VACUUM};
+  color: ${Color.JUPITER};
+  width: 100%;
+`;
+
+export const Title = styled.div`
+  ${Typography.TypeStyleProcyon}
+
+  padding: 10px 12px 8px 12px;
+`;
+
+export const Wrapper = styled.div`
   align-items: center;
-  background-color: ${({ isExpanded }) => (isExpanded ? 'rgba(14,13,21,0.96)' : 'rgba(0, 0, 0, 0.33)')};
+  background-color: ${Color.KUIPER_BELT};
   display: flex;
-  flex-direction: ${({ launcherPosition }) => (isLeftOrRight(launcherPosition) ? 'row' : 'column')};
+  flex-direction: column;
   height: 100vh;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: relative;
   width: 100vw;
 `;

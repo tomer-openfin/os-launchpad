@@ -10,12 +10,15 @@
     "uuid": "osLaunchpadMain",
     "saveWindowState": false,
     "resizable": false,
+    "cornerRounding": {
+      "height": 6,
+      "width": 6
+    },
     "shadow": true,
     "frame": false,
     "backgroundColor": "#3A3A3A",
     "alwaysOnTop": true,
-    "icon": "%ROOT_URL%/public/logo-new.ico",
-    "applicationIcon": "%ROOT_URL%/public/logo-new.png",
+    "icon": "%ROOT_URL%/public/openfin.ico",
     "minHeight:": 0,
     "minWidth:": 0,
     "smallWindow": true,
@@ -24,12 +27,7 @@
   },
   "services": [
     {
-      "name": "notifications",
-      "manifestUrl": "https://cdn.openfin.co/services/openfin/notifications/app.staging.json"
-    },
-    {
-      "name": "layouts",
-      "manifestUrl": "https://cdn.openfin.co/services/openfin/layouts/app.staging.json"
+      "name": "layouts"
     }
   ],
   "runtime": {
@@ -38,8 +36,8 @@
   "shortcut": {
     "company": "OpenFin",
     "description": "",
-    "icon": "%ROOT_URL%/public/logo-new.ico",
-    "name": "OS Launcher"
+    "icon": "%ROOT_URL%/public/openfin.ico",
+    "name": "App Launcher"
   },
   "splashScreenImage": "%ROOT_URL%/public/splashscreen.png"
 }

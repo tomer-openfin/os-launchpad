@@ -1,3 +1,5 @@
+import getAppUuid from './getAppUuid';
+
 export const getLauncherFinWindow = () => {
   const { fin } = window;
   if (!fin || !fin.desktop || !fin.desktop.Application) {
@@ -8,19 +10,12 @@ export const getLauncherFinWindow = () => {
 
 export const getFinWindowByName = (name: string) => {
   const { fin } = window;
-  if (!fin || !fin.desktop || !fin.desktop.Application) {
+  if (!fin) {
     return Promise.resolve(undefined);
   }
 
-  return new Promise(resolve => {
-    fin.desktop.Application.getCurrent().getChildWindows(children => {
-      if (Array.isArray(children)) {
-        const win = children.find(child => child.name === name);
+  const uuid = getAppUuid();
+  const finWindow = fin.desktop.Window.wrap(uuid, name);
 
-        resolve(win);
-      } else {
-        resolve(undefined);
-      }
-    });
-  });
+  return finWindow.getNativeWindow() ? Promise.resolve(fin.desktop.Window.wrap(uuid, name)) : Promise.resolve(undefined);
 };

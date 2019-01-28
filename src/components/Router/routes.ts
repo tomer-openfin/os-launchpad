@@ -2,21 +2,24 @@ import * as React from 'react';
 
 import Admin from '../Admin';
 import AdminApps from '../AdminApps';
+import AdminUsers from '../AdminUsers';
 import App from '../App';
 import AppDirectory from '../AppDirectory';
 import AppOverflow from '../AppOverflow';
 import ConfirmAppDelete from '../ConfirmAppDelete';
+import ConfirmPasswordUpdate from '../ConfirmPasswordUpdate';
 import ConfirmUserDelete from '../ConfirmUserDelete';
 import ContextMenu from '../ContextMenu';
 import EditAppForm from '../EditAppForm';
 import EditUserForm from '../EditUserForm';
 import Layouts from '../Layouts';
 import Login from '../Login';
+import Logout from '../Logout';
 import NewAppForm from '../NewAppForm';
 import NewUserForm from '../NewUserForm';
 import OrganizationSettings from '../OrganizationSettings';
 import Settings from '../Settings';
-import UserDirectory from '../UserDirectory';
+import UpdatePasswordForm from '../UpdatePasswordForm';
 
 import { ROUTES } from './consts';
 
@@ -64,12 +67,20 @@ export const appRoutes: AppRoute[] = [
   },
 ];
 
+const settingRoutes: AppRoute[] = [
+  {
+    Component: UpdatePasswordForm,
+    exact: true,
+    path: ROUTES.SETTINGS_UPDATE,
+  },
+];
+
 export const routes: AppRoute[] = [
   {
     Component: Admin,
     children: [
       {
-        Component: UserDirectory,
+        Component: AdminUsers,
         children: userRoutes,
         exact: false,
         path: ROUTES.ADMIN_USERS,
@@ -110,13 +121,19 @@ export const routes: AppRoute[] = [
     path: ROUTES.LAYOUTS,
   },
   {
+    Component: Logout,
+    exact: true,
+    path: ROUTES.LOGOUT,
+  },
+  {
     Component: AppDirectory,
     exact: true,
     path: ROUTES.APP_DIRECTORY,
   },
   {
     Component: Settings,
-    exact: true,
+    children: settingRoutes,
+    exact: false,
     path: ROUTES.SETTINGS,
   },
   {

@@ -2,6 +2,7 @@ import { Formik, FormikHandlers, FormikProps } from 'formik';
 import * as React from 'react';
 
 import { Color } from '../../styles/index';
+import { MetaWithCallbacks } from '../../types/commons';
 import Button from '../Button';
 import LogoInput from '../LogoInput';
 import { ButtonsWrapper, Label, StyledForm } from './LogoForm.css';
@@ -21,7 +22,7 @@ interface FormikInitialValues {
 interface Props {
   logo: string;
   setLogo: (logo: string) => void;
-  saveLogo: (logo: File) => void;
+  saveLogo: (logo: string, meta: MetaWithCallbacks) => void;
 }
 
 interface State {
@@ -53,7 +54,19 @@ class LogoForm extends React.PureComponent<Props, State> {
       return;
     }
 
-    saveLogo(file);
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      const result = fileReader.result;
+      if (typeof result === 'string') {
+        saveLogo(result, {
+          successCb: () => {
+            this.currentLogo = result;
+            this.setState({ file: null });
+          },
+        });
+      }
+    };
+    fileReader.readAsDataURL(file);
   };
 
   handleFileChange = (fn: FormikHandlers['handleChange']) => (e: React.ChangeEvent<HTMLInputElement>) => {

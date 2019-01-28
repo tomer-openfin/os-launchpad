@@ -11,95 +11,337 @@ exports[`Storyshots Components/App default 1`] = `
     }
   >
     <div
-      className="sc-fjdhpX hMQfTf"
+      className="sc-hzDkRC juPruO"
     >
       <div
-        className="sc-kGXeez jXesul"
+        className="sc-fMiknA cbKkQR"
+        size={80}
       >
         <div
-          className="sc-kpOJdX exxBDq sc-VigVT fKFlJE"
-        />
-        <div
-          className="sc-gqjmRU iMXvse"
-          height={80}
-          isExpanded={false}
-          launcherPosition="top"
-          width={0}
-        />
-        <div
-          className="sc-cSHVUG iiByPw"
-          size={343}
+          className="sc-cSHVUG wIRZh"
+          height="100%"
+          width="100%"
         >
           <div
-            className="sc-jzJRlG kGmTLp"
+            className="sc-Rmtcm bBJZrb sc-eNQAEJ WRgnz"
+            size={80}
+          />
+          <div
+            className="sc-bRBYWo hlBjN"
+          >
+            <div
+              className="sc-jAaTju hjKYoR"
+              height={80}
+              isExpanded={false}
+              launcherPosition="top"
+              sizingConfig={
+                Object {
+                  "appIcon": 50,
+                  "appIconBorder": 2.7,
+                  "appIconGutter": 10,
+                  "appIndicator": 12,
+                  "launcher": 80,
+                  "systemDrawerPaddingEnd": 5,
+                  "systemDrawerPaddingStart": 11,
+                  "systemDrawerToggleClose": 25,
+                  "systemDrawerToggleOpen": 20,
+                  "systemIcon": 42,
+                  "systemIconCaret": 25,
+                  "systemIconGutter": 5,
+                }
+              }
+              width={0}
+            >
+              <div
+                className="sc-fjdhpX kjeTOz"
+                onClick={[Function]}
+                size={50}
+              >
+                <div
+                  style={
+                    Object {
+                      "display": "inline-block",
+                      "lineHeight": 0,
+                      "opacity": 1,
+                    }
+                  }
+                >
+                  <div
+                    className="sc-jTzLTM blWMYJ"
+                    size={50}
+                  >
+                    <div
+                      className="sc-ifAKCX gPeNwQ"
+                      color="#E7E7E7"
+                      size={25}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                className="sc-VigVT psSBI"
+                size={50}
+                title="Trumid"
+              >
+                <div
+                  style={
+                    Object {
+                      "display": "inline-block",
+                      "lineHeight": 0,
+                      "opacity": 1,
+                    }
+                  }
+                >
+                  <div
+                    className="sc-htoDjs bbBQsJ"
+                    direction="top"
+                    onAnimationEnd={[Function]}
+                    onAnimationIteration={[Function]}
+                  >
+                    <div
+                      className="sc-gzVnrw lmqkGH"
+                      onContextMenu={[Function]}
+                    >
+                      <div
+                        className="sc-bZQynM eioviT"
+                        onClick={[Function]}
+                        size={50}
+                      >
+                        <div
+                          className="sc-EHOje bLVJMg"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
+                  size={12}
+                >
+                  <div
+                    className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+                    color="rgba(0,0,0,0)"
+                    size="53%"
+                  />
+                </div>
+              </div>
+              <div
+                className="sc-VigVT psSBI"
+                size={50}
+                title="Neptune"
+              >
+                <div
+                  style={
+                    Object {
+                      "display": "inline-block",
+                      "lineHeight": 0,
+                      "opacity": 1,
+                    }
+                  }
+                >
+                  <div
+                    className="sc-htoDjs bbBQsJ"
+                    direction="top"
+                    onAnimationEnd={[Function]}
+                    onAnimationIteration={[Function]}
+                  >
+                    <div
+                      className="sc-gzVnrw lmqkGH"
+                      onContextMenu={[Function]}
+                    >
+                      <div
+                        className="sc-bZQynM eioviT"
+                        onClick={[Function]}
+                        size={50}
+                      >
+                        <div
+                          className="sc-EHOje bITuvo"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
+                  size={12}
+                >
+                  <div
+                    className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+                    color="rgba(0,0,0,0)"
+                    size="53%"
+                  />
+                </div>
+              </div>
+              <div
+                className="sc-VigVT psSBI"
+                size={50}
+                title="GreenKey"
+              >
+                <div
+                  style={
+                    Object {
+                      "display": "inline-block",
+                      "lineHeight": 0,
+                      "opacity": 1,
+                    }
+                  }
+                >
+                  <div
+                    className="sc-htoDjs bbBQsJ"
+                    direction="top"
+                    onAnimationEnd={[Function]}
+                    onAnimationIteration={[Function]}
+                  >
+                    <div
+                      className="sc-gzVnrw lmqkGH"
+                      onContextMenu={[Function]}
+                    >
+                      <div
+                        className="sc-bZQynM eioviT"
+                        onClick={[Function]}
+                        size={50}
+                      >
+                        <div
+                          className="sc-EHOje dcTQGg"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
+                  size={12}
+                >
+                  <div
+                    className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+                    color="rgba(0,0,0,0)"
+                    size="53%"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="sc-jhAzac fABssH"
             onClick={[Function]}
           />
           <div
-            className="sc-kAzzGY fRlTNv"
-            size={343}
+            className="sc-fBuWsC fFeMUO"
           >
             <div
-              className="sc-kgoBCf loSVds sc-dnqmqq cuENRO"
-              onClick={[Function]}
-              size={25}
-            />
-            <div
-              className="sc-chPdSV iYFTZL"
+              className="sc-csuQGl jjUqEP"
+              orientation="horizontal"
+              size={162}
             >
               <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
-                onClick={[Function]}
-                size={42}
-              />
-            </div>
-            <div
-              className="sc-chPdSV iYFTZL"
-            >
+                className="sc-jlyJG cbrNKe"
+                orientation="horizontal"
+              >
+                <div
+                  className="sc-iRbamj fkKcwQ sc-ifAKCX hwskBS"
+                  color="#E7E7E7"
+                  onClick={[Function]}
+                  size={20}
+                />
+              </div>
               <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
-                onClick={[Function]}
-                size={42}
-              />
-            </div>
-            <div
-              className="sc-chPdSV iYFTZL"
-            >
+                className="sc-gipzik kuAMyh"
+                orientation="horizontal"
+              >
+                <div
+                  className="sc-gPEVay iEvXNZ"
+                  color="#E7E7E7"
+                >
+                  <div
+                    className="sc-ifAKCX kGkovX"
+                    color="#E7E7E7"
+                    disabled={true}
+                    size={42}
+                    title="Logout"
+                  />
+                  <div
+                    className="sc-jDwBTQ bhlsFh sc-ifAKCX gPeNwQ"
+                    color="#E7E7E7"
+                    disabled={true}
+                    size={25}
+                  />
+                </div>
+              </div>
               <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
-                onClick={[Function]}
-                size={42}
-              />
-            </div>
-            <div
-              className="sc-chPdSV iYFTZL"
-            >
+                className="sc-gipzik kuAMyh"
+                orientation="horizontal"
+              >
+                <div
+                  className="sc-ifAKCX kGkovX"
+                  color="#E7E7E7"
+                  disabled={true}
+                  size={42}
+                  title="Admin"
+                />
+              </div>
               <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
-                onClick={[Function]}
-                size={42}
-              />
-            </div>
-            <div
-              className="sc-chPdSV iYFTZL"
-            >
+                className="sc-gipzik kuAMyh"
+                orientation="horizontal"
+              >
+                <div
+                  className="sc-ifAKCX kGkovX"
+                  color="#E7E7E7"
+                  disabled={true}
+                  size={42}
+                  title="Settings"
+                />
+              </div>
               <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
-                onClick={[Function]}
-                size={42}
-              />
+                className="sc-gipzik geUIIV"
+                orientation="horizontal"
+              >
+                <div
+                  className="sc-ifAKCX dlQxXV"
+                  color="#E7E7E7"
+                  disabled={false}
+                  onClick={[Function]}
+                  size={42}
+                  title="App Directory"
+                />
+              </div>
               <div
-                className="sc-jTzLTM cIaXTF sc-dnqmqq hiDkKb"
-                size={25}
-              />
-            </div>
-            <div
-              className="sc-chPdSV iYFTZL"
-            >
+                className="sc-gipzik geUIIV"
+                orientation="horizontal"
+              >
+                <div
+                  className="sc-gPEVay jSExIm"
+                  color="#E7E7E7"
+                >
+                  <div
+                    className="sc-ifAKCX dlQxXV"
+                    color="#E7E7E7"
+                    disabled={false}
+                    onClick={[Function]}
+                    size={42}
+                    title="Layouts"
+                  />
+                  <div
+                    className="sc-jDwBTQ bhlsFh sc-ifAKCX xmkOg"
+                    color="#E7E7E7"
+                    disabled={false}
+                    onClick={[Function]}
+                    size={25}
+                  />
+                </div>
+              </div>
               <div
-                className="sc-dxgOiQ eUilLL sc-dnqmqq iYenlx"
-                onClick={[Function]}
-                size={42}
-              />
+                className="sc-gipzik geUIIV"
+                orientation="horizontal"
+              >
+                <div
+                  className="sc-ifAKCX dlQxXV"
+                  color="#E7E7E7"
+                  disabled={false}
+                  onClick={[Function]}
+                  size={42}
+                  title="Notifications"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -265,17 +507,6 @@ exports[`Storyshots Components/App default 1`] = `
                     >
                       isDrawerExpanded
                     </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      toggleDrawer
-                    </span>
                     <span>
                       =
                       <span
@@ -285,11 +516,11 @@ exports[`Storyshots Components/App default 1`] = `
                         <span
                           style={
                             Object {
-                              "color": "#170",
+                              "color": "#a11",
                             }
                           }
                         >
-                          noop
+                          false
                         </span>
                         }
                       </span>
@@ -333,7 +564,7 @@ exports[`Storyshots Components/App default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      icons
+                      launcherSizeConfig
                     </span>
                     <span>
                       =
@@ -348,7 +579,7 @@ exports[`Storyshots Components/App default 1`] = `
                             }
                           }
                         >
-                          [
+                          {
                           <span>
                             <span>
                               <br />
@@ -362,125 +593,18 @@ exports[`Storyshots Components/App default 1`] = `
                                 }
                               }
                             >
-                              {
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  cta
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#170",
-                                  }
-                                }
-                              >
-                                Action to be dispatched:
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  hasExtendedWindow
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#a11",
-                                  }
-                                }
-                              >
-                                false
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  icon
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                {
-                                <span>
-                                  <span
-                                    style={
-                                      Object {
-                                        "color": "#666",
-                                      }
-                                    }
-                                  >
-                                    default
-                                  </span>
-                                </span>
-                                : 
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#22a",
-                                      "wordBreak": "break-word",
-                                    }
-                                  }
-                                >
-                                  ''
-                                </span>
-                                }
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                …
-                              </span>
-                              <span>
-                                <br />
-                                    
-                              </span>
-                              }
+                              appIcon
                             </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            50
                           </span>
                           ,
                           <span>
@@ -496,125 +620,18 @@ exports[`Storyshots Components/App default 1`] = `
                                 }
                               }
                             >
-                              {
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  cta
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#170",
-                                  }
-                                }
-                              >
-                                Action to be dispatched:
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  hasExtendedWindow
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#a11",
-                                  }
-                                }
-                              >
-                                false
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  icon
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                {
-                                <span>
-                                  <span
-                                    style={
-                                      Object {
-                                        "color": "#666",
-                                      }
-                                    }
-                                  >
-                                    default
-                                  </span>
-                                </span>
-                                : 
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#22a",
-                                      "wordBreak": "break-word",
-                                    }
-                                  }
-                                >
-                                  ''
-                                </span>
-                                }
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                …
-                              </span>
-                              <span>
-                                <br />
-                                    
-                              </span>
-                              }
+                              appIconBorder
                             </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            2.7
                           </span>
                           ,
                           <span>
@@ -630,125 +647,18 @@ exports[`Storyshots Components/App default 1`] = `
                                 }
                               }
                             >
-                              {
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  cta
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#170",
-                                  }
-                                }
-                              >
-                                Action to be dispatched:
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  hasExtendedWindow
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#a11",
-                                  }
-                                }
-                              >
-                                false
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  icon
-                                </span>
-                              </span>
-                              : 
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                {
-                                <span>
-                                  <span
-                                    style={
-                                      Object {
-                                        "color": "#666",
-                                      }
-                                    }
-                                  >
-                                    default
-                                  </span>
-                                </span>
-                                : 
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#22a",
-                                      "wordBreak": "break-word",
-                                    }
-                                  }
-                                >
-                                  ''
-                                </span>
-                                }
-                              </span>
-                              ,
-                              <span>
-                                <span>
-                                  <br />
-                                      
-                                    
-                                </span>
-                                …
-                              </span>
-                              <span>
-                                <br />
-                                    
-                              </span>
-                              }
+                              appIconGutter
                             </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            10
                           </span>
                           ,
                           <span>
@@ -763,7 +673,36 @@ exports[`Storyshots Components/App default 1`] = `
                             <br />
                               
                           </span>
-                          ]
+                          }
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      toggleDrawer
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
                         </span>
                         }
                       </span>
@@ -852,7 +791,123 @@ exports[`Storyshots Components/App default 1`] = `
                                     }
                                   }
                                 >
-                                  'LOGOUT_REQUEST'
+                                  'LAUNCH_WINDOW'
+                                </span>
+                                ,
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    payload
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  {
+                                  <span>
+                                    <span>
+                                      <br />
+                                              
+                                        
+                                    </span>
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#666",
+                                        }
+                                      }
+                                    >
+                                      alwaysOnTop
+                                    </span>
+                                  </span>
+                                  : 
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#a11",
+                                      }
+                                    }
+                                  >
+                                    true
+                                  </span>
+                                  ,
+                                  <span>
+                                    <span>
+                                      <br />
+                                              
+                                        
+                                    </span>
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#666",
+                                        }
+                                      }
+                                    >
+                                      autoShow
+                                    </span>
+                                  </span>
+                                  : 
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#a11",
+                                      }
+                                    }
+                                  >
+                                    false
+                                  </span>
+                                  ,
+                                  <span>
+                                    <span>
+                                      <br />
+                                              
+                                        
+                                    </span>
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#666",
+                                        }
+                                      }
+                                    >
+                                      contextMenu
+                                    </span>
+                                  </span>
+                                  : 
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#a11",
+                                      }
+                                    }
+                                  >
+                                    true
+                                  </span>
+                                  ,
+                                  <span>
+                                    <span>
+                                      <br />
+                                              
+                                        
+                                    </span>
+                                    …
+                                  </span>
+                                  <span>
+                                    <br />
+                                            
+                                  </span>
+                                  }
                                 </span>
                                 }
                               </span>
@@ -881,7 +936,7 @@ exports[`Storyshots Components/App default 1`] = `
                                   }
                                 }
                               >
-                                false
+                                true
                               </span>
                               ,
                               <span>

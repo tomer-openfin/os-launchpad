@@ -3,7 +3,9 @@ import { put, select, takeEvery } from 'redux-saga/effects';
 
 import windowsConfig from '../../config/windows';
 import { UserLayout } from '../../types/commons';
-import { restoreLayoutRequest, SAVE_LAYOUT } from '../layouts/actions';
+import getAppUuid from '../../utils/getAppUuid';
+import { isDevelopmentEnv } from '../../utils/processHelpers';
+import { restoreLayoutRequest } from '../layouts/actions';
 import { getLayoutsIds } from '../layouts/selectors';
 import { launchWindow } from '../windows/actions';
 import { GLOBAL_HOTKEY_PRESSED } from './actions';
@@ -13,14 +15,6 @@ function* watchGlobalHotkeyPressed(action) {
   const hotkey = action.payload;
 
   switch (hotkey) {
-    case GlobalHotkeys.SaveLayout: {
-      // tslint:disable-next-line:no-console
-      console.log(`${GlobalHotkeys.SaveLayout} pressed`);
-
-      yield put({ type: SAVE_LAYOUT });
-      break;
-    }
-
     case GlobalHotkeys.RestoreLayout: {
       // tslint:disable-next-line:no-console
       console.log(`${GlobalHotkeys.RestoreLayout} pressed`);
@@ -46,6 +40,16 @@ function* watchGlobalHotkeyPressed(action) {
       yield put(Application.restart());
       break;
     }
+
+    case DevGlobalHotkeys.ShowDevTools: {
+      const { fin } = window;
+      if (fin && isDevelopmentEnv()) {
+        const appUuid = getAppUuid();
+        fin.desktop.System.showDeveloperTools(appUuid, appUuid);
+      }
+      break;
+    }
+
     default:
       // tslint:disable-next-line:no-console
       console.log('Not a valid registered hotkey.');

@@ -1,15 +1,58 @@
 import styled from 'styled-components';
 
-import { AppStatusStates } from '../../redux/apps/types';
+import { Color, hexToRgb } from '../../styles';
+import { AppStatusStates, DirectionalPosition } from '../../types/commons';
 
-import { Color } from '../../styles/index';
-import { Props } from './AppIndicator';
+import SvgIcon from '../SvgIcon';
 
-export const Indicator = styled.div<Props>`
+const StatusColors = {
+  [AppStatusStates.Closed]: Color.VOID,
+  [AppStatusStates.Error]: Color.MARS,
+  [AppStatusStates.Loading]: Color.COMET,
+  [AppStatusStates.Running]: Color.NEBULA,
+  [AppStatusStates.Warning]: Color.JUPITER,
+};
+
+const StatusAlert = {
+  [AppStatusStates.Error]: true,
+  [AppStatusStates.Warning]: true,
+};
+
+const TRANSITION_DURATION = '300ms';
+const TRANSITION_EASING = 'ease-in-out';
+
+interface IndicatorProps {
+  appStatusState: AppStatusStates;
+  position: DirectionalPosition;
+  size: number;
+}
+
+export const Indicator = styled.div<IndicatorProps>`
+  height: ${({ size }) => size}px;
+  width: ${({ size }) => size}px;
+  align-items: center;
+  background-color: ${({ appStatusState }) => StatusColors[appStatusState]};
   border-radius: 100%;
-  display: ${props => (props.statusState === AppStatusStates.Closed ? 'none' : 'inline-block')};
-  background-color: ${({ statusState }) => (statusState === AppStatusStates.Loading ? Color.COMET : '#ad9ee2')};
-  height: 12px;
-  transition: background-color 350ms;
-  width: 12px;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  transition: background-color ${TRANSITION_DURATION} ${TRANSITION_EASING}, box-shadow ${TRANSITION_DURATION} ${TRANSITION_EASING},
+    margin ${TRANSITION_DURATION} ${TRANSITION_EASING};
+
+  ${({ position, appStatusState, size }) => {
+    if (!StatusAlert[appStatusState]) {
+      return '';
+    }
+
+    const { r, g, b } = hexToRgb(StatusColors[appStatusState]);
+
+    return `
+      box-shadow: 0 0 ${size} rgba(${r}, ${g}, ${b}, 0.7);
+      margin-${position}: -${size / 2}px;
+    `;
+  }}
+`;
+
+export const StyledSvgIcon = styled(SvgIcon)`
+  transition: background-color ${TRANSITION_DURATION} ${TRANSITION_EASING};
 `;

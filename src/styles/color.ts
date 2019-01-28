@@ -1,16 +1,8 @@
-export const FOG = '#d3d3d3';
-export const CHALK = '#ccc';
-export const OVERCAST = '#b3b3b3';
-export const CEMENT = '#aaa';
-export const LIGHTER_GREY = '#777';
-export const GREY = '#686868';
 export const DOVE_GREY = '#666';
-export const EMPEROR = '#545454';
 export const DUSTY_GREY = '#444444';
-export const CHARCOAL = '#262626';
-export const SEAGULL = '#83b8da';
 // New per designs, deprecate all above
 export const SUN = '#FFFFFF';
+export const MOON = '#A7A7A7';
 export const MERCURY = '#848484';
 export const VENUS = '#6461FF';
 export const EARTH = '#504CFF';

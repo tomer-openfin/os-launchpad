@@ -1,35 +1,7 @@
-export enum AppIconSizes {
-  Small = 30,
-  Medium = 50,
-  Large = 80,
+export enum LauncherSize {
+  Small = 'small',
+  Large = 'large',
 }
-
-export enum AppListTypes {
-  App = 'app',
-  Toggle = 'toggle',
-}
-
-// todo: use more general obj for sizes across all app
-const obj = {
-  [AppIconSizes.Small]: {
-    caret: 'tbd',
-    icon: 'tbd',
-    logo: 'tbd',
-    spacing: 'tbd',
-  },
-  [AppIconSizes.Medium]: {
-    caret: 'tbd',
-    icon: 45,
-    logo: 76,
-    spacing: 'tbd',
-  },
-  [AppIconSizes.Large]: {
-    caret: 'tbd',
-    icon: 'tbd',
-    logo: 'tbd',
-    spacing: 'tbd',
-  },
-};
 
 export enum DirectionalPosition {
   Top = 'top',
@@ -38,7 +10,44 @@ export enum DirectionalPosition {
   Left = 'left',
 }
 
+export enum OnOff {
+  Off = 'off',
+  On = 'on',
+}
+
+export enum Orientation {
+  Horizontal = 'horizontal',
+  Vertical = 'vertical',
+}
+
 export enum ResponseStatus {
   SUCCESS = 'ok',
   FAILURE = 'error',
+}
+
+export enum UserStatus {
+  Confirmed = 'CONFIRMED',
+  Unconfirmed = 'UNCONFIRMED',
+  ChangePassword = 'FORCE_CHANGE_PASSWORD',
+}
+
+export enum AppStatusStates {
+  Closed = 'closed',
+  Error = 'error',
+  Loading = 'loading',
+  Running = 'running',
+  Warning = 'warning',
+}
+
+export enum AppStatusOrigins {
+  Default = 'default',
+  Event = 'event',
+  LayoutRestore = 'layoutRestore',
+}
+
+export enum HTTPMethods {
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
 }

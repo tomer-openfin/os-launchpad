@@ -13,7 +13,6 @@ const mockData = {
       isAdmin: false,
       lastName: 'Sigachyova',
       middleInitial: 'L',
-      organizationId: 'string',
       phone: '',
       tmpPassword: 'string',
       username: 'string',
