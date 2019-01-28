@@ -24,6 +24,7 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
           >
             <div
               className="sc-TFwJa hCfjJW"
+              title="John Doe"
             >
               John
                
@@ -44,6 +45,7 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
           </div>
           <div
             className="sc-krDsej hpsyRu"
+            title="John.Doe@gmail.com"
           >
             John.Doe@gmail.com
           </div>

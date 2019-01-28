@@ -60,6 +60,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               >
                 <div
                   className="sc-TFwJa hCfjJW"
+                  title="Jose Conseco"
                 >
                   Jose
                    
@@ -68,6 +69,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               </div>
               <div
                 className="sc-krDsej hpsyRu"
+                title="Conseco.Jose@gmail.com"
               >
                 Conseco.Jose@gmail.com
               </div>
@@ -106,6 +108,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               >
                 <div
                   className="sc-TFwJa hCfjJW"
+                  title="Guillermo Del Toro"
                 >
                   Guillermo
                    
@@ -114,6 +117,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               </div>
               <div
                 className="sc-krDsej hpsyRu"
+                title="gdt@gmail.com"
               >
                 gdt@gmail.com
               </div>
@@ -152,6 +156,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               >
                 <div
                   className="sc-TFwJa hCfjJW"
+                  title="John Doe"
                 >
                   John
                    
@@ -166,6 +171,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               </div>
               <div
                 className="sc-krDsej hpsyRu"
+                title="John.Doe@gmail.com"
               >
                 John.Doe@gmail.com
               </div>
@@ -204,6 +210,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               >
                 <div
                   className="sc-TFwJa hCfjJW"
+                  title="Jon Fire"
                 >
                   Jon
                    
@@ -218,6 +225,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               </div>
               <div
                 className="sc-krDsej hpsyRu"
+                title="jire@gmail.com"
               >
                 jire@gmail.com
               </div>
@@ -256,6 +264,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               >
                 <div
                   className="sc-TFwJa hCfjJW"
+                  title="Dan Johnson"
                 >
                   Dan
                    
@@ -270,6 +279,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               </div>
               <div
                 className="sc-krDsej hpsyRu"
+                title="DJohnson@gmail.com"
               >
                 DJohnson@gmail.com
               </div>
@@ -308,6 +318,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               >
                 <div
                   className="sc-TFwJa hCfjJW"
+                  title="James Knot"
                 >
                   James
                    
@@ -322,6 +333,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               </div>
               <div
                 className="sc-krDsej hpsyRu"
+                title="jnot@gmail.com"
               >
                 jnot@gmail.com
               </div>
@@ -360,6 +372,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               >
                 <div
                   className="sc-TFwJa hCfjJW"
+                  title="Robert Martin"
                 >
                   Robert
                    
@@ -368,6 +381,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               </div>
               <div
                 className="sc-krDsej hpsyRu"
+                title="mobert@gmail.com"
               >
                 mobert@gmail.com
               </div>
@@ -406,6 +420,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               >
                 <div
                   className="sc-TFwJa hCfjJW"
+                  title="Andy Moore"
                 >
                   Andy
                    
@@ -420,6 +435,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               </div>
               <div
                 className="sc-krDsej hpsyRu"
+                title="Moore.Andy@gmail.com"
               >
                 Moore.Andy@gmail.com
               </div>
@@ -458,6 +474,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               >
                 <div
                   className="sc-TFwJa hCfjJW"
+                  title="Matt Taylor"
                 >
                   Matt
                    
@@ -466,6 +483,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               </div>
               <div
                 className="sc-krDsej hpsyRu"
+                title="MTaylor@gmail.com"
               >
                 MTaylor@gmail.com
               </div>
@@ -504,6 +522,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               >
                 <div
                   className="sc-TFwJa hCfjJW"
+                  title="Ashley Williams"
                 >
                   Ashley
                    
@@ -512,6 +531,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
               </div>
               <div
                 className="sc-krDsej hpsyRu"
+                title="Ashley.Williams@gmail.com"
               >
                 Ashley.Williams@gmail.com
               </div>

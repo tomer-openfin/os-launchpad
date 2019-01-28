@@ -17,7 +17,7 @@ const UserCard = ({ user, ctas }: Props) => (
   <Wrapper>
     <InfoWrapper>
       <NameAndBadgeWrapper>
-        <UserName>
+        <UserName title={`${user.firstName} ${user.lastName}`}>
           {user.firstName}&nbsp;{user.lastName}
         </UserName>
 
@@ -26,7 +26,7 @@ const UserCard = ({ user, ctas }: Props) => (
         {user.status === UserStatus.ChangePassword && <Badge size={16} color={Color.MARS} imgSrc={ClockIcon} title="User has not logged in yet" />}
       </NameAndBadgeWrapper>
 
-      <UserEmail>{user.email}</UserEmail>
+      <UserEmail title={user.email}>{user.email}</UserEmail>
     </InfoWrapper>
 
     <CTAWrapper>{ctas}</CTAWrapper>
