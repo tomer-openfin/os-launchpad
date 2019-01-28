@@ -7,12 +7,11 @@ interface Props {
   validResult: boolean;
 }
 
-export const ArrowIcon = styled(SvgIcon)`
+export const CheckIcon = styled(SvgIcon)`
   position: absolute;
   top: 3px;
   right: 0;
   flex-shrink: 0;
-  transform: rotate(180deg);
 `;
 
 export const TextWrapper = styled.div`
@@ -50,7 +49,7 @@ export const SubmitButton = styled.button`
   visibility: hidden;
   width: 0;
 
-  & > ${ArrowIcon} {
+  & > ${CheckIcon} {
     visibility: visible;
   }
 `;

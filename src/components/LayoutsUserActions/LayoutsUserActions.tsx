@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import * as arrowIcon from '../../assets/ArrowCircle.svg';
+import * as checkIcon from '../../assets/CheckCircle.svg';
 import * as saveLayoutIcon from '../../assets/SaveLayout.svg';
 
 import { Color } from '../../styles';
@@ -8,7 +8,7 @@ import { MetaWithCallbacks } from '../../types/commons';
 import { ResponseStatus } from '../../types/enums';
 import noop from '../../utils/noop';
 import { isDevelopmentEnv } from '../../utils/processHelpers';
-import { ArrowIcon, Input, InputWrapper, SaveIcon, SubmitButton, Text, TextWrapper, UndoText, UserActions } from './LayoutsUserActions.css';
+import { CheckIcon, Input, InputWrapper, SaveIcon, SubmitButton, Text, TextWrapper, UndoText, UserActions } from './LayoutsUserActions.css';
 
 interface Props {
   deleteLayout: (id: string) => void;
@@ -121,7 +121,7 @@ class LayoutsUserActions extends React.Component<Props, State> {
       <Input onChange={this.handleNameChange} placeholder="Layout Name" required type="text" />
 
       <SubmitButton type="submit">
-        <ArrowIcon hoverColor={Color.JUPITER} size={14} imgSrc={arrowIcon} onClick={noop} />
+        <CheckIcon hoverColor={Color.JUPITER} size={14} imgSrc={checkIcon} onClick={noop} />
       </SubmitButton>
     </InputWrapper>
   );

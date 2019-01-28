@@ -37,7 +37,7 @@ exports[`Storyshots Components/LayoutsUserActions default 1`] = `
             type="submit"
           >
             <div
-              className="sc-iELTvK hGeoSb sc-ifAKCX bvrXxy"
+              className="sc-iELTvK bDIeJm sc-ifAKCX bvrXxy"
               color="#E7E7E7"
               onClick={[Function]}
               size={14}
