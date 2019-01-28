@@ -1,10 +1,10 @@
-import { Window } from '@giantmachines/redux-openfin';
 import { connect } from 'react-redux';
 
 import { SETTINGS_WINDOW } from '../../config/windows';
 import { getIsEnterprise } from '../../redux/application';
 import { getAutoHide, getLauncherSize, setAutoHide, setLauncherPosition, setLauncherSize } from '../../redux/me';
 import { State } from '../../redux/types';
+import { hideWindow } from '../../redux/windows';
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
 
 import withEscapeKey from '../../hocs/withEscapeKey';
@@ -18,10 +18,10 @@ const stateProps = (state: State) => ({
 
 const dispatchProps = dispatch => ({
   hideWindow: () => {
-    dispatch(Window.hideWindow({ id: SETTINGS_WINDOW }));
+    dispatch(hideWindow(SETTINGS_WINDOW));
   },
   onEscDown: () => {
-    dispatch(Window.hideWindow({ id: SETTINGS_WINDOW }));
+    dispatch(hideWindow(SETTINGS_WINDOW));
   },
   setAutoHide: (autoHide: boolean) => {
     dispatch(setAutoHide(autoHide));

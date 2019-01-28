@@ -1,24 +1,23 @@
 import * as React from 'react';
 
 import { App, DirectionalPosition } from '../../types/commons';
-import { SystemIcon } from '../../utils/getSystemIcons';
 import { LauncherSizeConfig } from '../../utils/launcherSizeConfigs';
 
 import AppList from '../AppList';
 import Borders from '../Borders';
-import SystemDrawer, { calcSystemDrawerSize } from '../SystemDrawer';
+import SystemDrawer from '../SystemDrawer';
 import { AppListWrapper, Main, Overlay, StyledLogo, SystemDrawerWrapper, Wrapper } from './App.css';
 
 export interface Props {
-  launcherPosition: DirectionalPosition;
+  collapsedSystemDrawerSize: number;
   isDrawerExpanded: boolean;
+  launcherPosition: DirectionalPosition;
   launcherSizeConfig: LauncherSizeConfig;
-  systemIcons: SystemIcon[];
   toggleDrawer: () => void;
 }
 
 const App = (props: Props) => {
-  const { launcherPosition, launcherSizeConfig, systemIcons, toggleDrawer, isDrawerExpanded } = props;
+  const { collapsedSystemDrawerSize, launcherPosition, launcherSizeConfig, toggleDrawer, isDrawerExpanded } = props;
 
   return (
     <Main launcherPosition={launcherPosition}>
@@ -26,7 +25,7 @@ const App = (props: Props) => {
         <Borders height="100%" width="100%" borderRadius="6px">
           <StyledLogo size={launcherSizeConfig.launcher} />
 
-          <AppListWrapper endPadding={calcSystemDrawerSize(systemIcons, false, launcherSizeConfig)} launcherPosition={launcherPosition}>
+          <AppListWrapper endPadding={collapsedSystemDrawerSize} launcherPosition={launcherPosition}>
             <AppList />
           </AppListWrapper>
 

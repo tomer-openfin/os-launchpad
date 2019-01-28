@@ -12,7 +12,6 @@ interface Props {
   appList: App[];
   getIsLauncherApp: (appId: App['id']) => boolean;
   hideWindow: () => void;
-  onBlur: () => void;
   onEscDown: () => void;
   removeFromLauncher: (appId: App['id']) => void;
 }

@@ -1,8 +1,8 @@
-import { Window } from '@giantmachines/redux-openfin';
 import { connect } from 'react-redux';
 
 import { ADMIN_WINDOW } from '../../config/windows';
 import { getIsAdmin } from '../../redux/me/selectors';
+import { hideWindow } from '../../redux/windows';
 
 import withEscapeKey from '../../hocs/withEscapeKey';
 import Admin from './Admin';
@@ -13,10 +13,10 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   hideWindow: () => {
-    dispatch(Window.hideWindow({ id: ADMIN_WINDOW }));
+    dispatch(hideWindow(ADMIN_WINDOW));
   },
   onEscDown: () => {
-    dispatch(Window.hideWindow({ id: ADMIN_WINDOW }));
+    dispatch(hideWindow(ADMIN_WINDOW));
   },
 });
 

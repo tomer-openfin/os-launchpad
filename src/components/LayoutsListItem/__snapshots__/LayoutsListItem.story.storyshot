@@ -218,6 +218,35 @@ exports[`Storyshots Components/LayoutsListItem default 1`] = `
                       <span
                         style={Object {}}
                       >
+                        close
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#170",
+                              }
+                            }
+                          >
+                            close
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
                         deleteLayout
                       </span>
                       <span>
@@ -296,35 +325,6 @@ exports[`Storyshots Components/LayoutsListItem default 1`] = `
                             layout
                           </span>
                           "
-                        </span>
-                      </span>
-                    </span>
-                    <span>
-                      <span>
-                        <br />
-                          
-                      </span>
-                      <span
-                        style={Object {}}
-                      >
-                        onBlur
-                      </span>
-                      <span>
-                        =
-                        <span
-                          style={Object {}}
-                        >
-                          {
-                          <span
-                            style={
-                              Object {
-                                "color": "#170",
-                              }
-                            }
-                          >
-                            noop
-                          </span>
-                          }
                         </span>
                       </span>
                     </span>

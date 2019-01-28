@@ -3,14 +3,13 @@ import { Action, Dispatch } from 'redux';
 
 import { getDrawerIsExpanded, setIsDrawerExpanded } from '../../redux/application';
 import { getLauncherPosition, getLauncherSizeConfig } from '../../redux/me';
-import { getSystemIconsSelector } from '../../redux/selectors';
+import { getSystemDrawerSize, getSystemIconsSelector } from '../../redux/selectors';
 import { State } from '../../redux/types';
 import { getLauncherOrientation, getOppositeDirection } from '../../utils/directionalPositionHelpers';
 import { LAYOUTS_KEY, LOGOUT_KEY } from '../../utils/getSystemIcons';
-import { calcSystemDrawerSize } from './utils';
 
 import { LAYOUTS_WINDOW, LOGOUT_WINDOW } from '../../config/windows';
-import { getWindowIsShowing } from '../../redux/windows/index';
+import { getWindowIsShowing } from '../../redux/windows';
 import SystemDrawer, { Props } from './SystemDrawer';
 
 const mapState = (state: State) => {
@@ -18,7 +17,7 @@ const mapState = (state: State) => {
   const isExpanded = getDrawerIsExpanded(state);
   const launcherPosition = getLauncherPosition(state);
   const icons = getSystemIconsSelector(state);
-  const size = calcSystemDrawerSize(icons, isExpanded, launcherSizeConfig);
+  const size = getSystemDrawerSize(state);
   const activeIcons = { [LOGOUT_KEY]: getWindowIsShowing(state, LOGOUT_WINDOW), [LAYOUTS_KEY]: getWindowIsShowing(state, LAYOUTS_WINDOW) };
 
   return {

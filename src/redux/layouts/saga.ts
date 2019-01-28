@@ -10,6 +10,7 @@ import { animateWindow } from '../../utils/openfinPromises';
 import { calcBoundsRelativeToLauncher } from '../../utils/windowPositionHelpers';
 import { getApps, getAppsStatusById, openFinAppSuccess, setFinAppStatusState } from '../apps';
 import { getLauncherPosition, getLauncherSizeConfig } from '../me';
+import { getExpandedSystemDrawerSize } from '../selectors';
 import { getWindowBounds } from '../windows';
 import {
   CREATE_LAYOUT,
@@ -183,11 +184,13 @@ function* watchDeleteLayoutRequest(action: DeleteLayoutRequest) {
 }
 
 function* watchLayoutsChangesToAnimateWindow() {
+  const layoutsWindow = yield call(getFinWindowByName, LAYOUTS_WINDOW);
+
+  const bounds = yield select(getWindowBounds, LAYOUTS_WINDOW);
+  const launcherBounds = yield select(getWindowBounds, getAppUuid());
   const launcherPosition = yield select(getLauncherPosition);
   const launcherSizeConfig = yield select(getLauncherSizeConfig);
-  const layoutsWindow = yield call(getFinWindowByName, LAYOUTS_WINDOW);
-  const launcherBounds = yield select(getWindowBounds, getAppUuid());
-  const bounds = yield select(getWindowBounds, LAYOUTS_WINDOW);
+  const expandedSystemDrawerSize = yield select(getExpandedSystemDrawerSize);
   const layouts = yield select(getLayouts);
 
   if (!bounds || !layouts || !layoutsWindow) {
@@ -200,6 +203,7 @@ function* watchLayoutsChangesToAnimateWindow() {
     launcherBounds,
     launcherPosition,
     launcherSizeConfig,
+    expandedSystemDrawerSize,
   );
 
   const transitions: Transition = {

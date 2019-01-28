@@ -10,7 +10,7 @@ import * as settingsIcon from '../assets/Settings.svg';
 import windowsConfig from '../config/windows';
 
 import { toggleNotificationCenterRequest } from '../redux/notifications';
-import { launchWindow } from '../redux/windows';
+import { launchWindow, toggleWindow } from '../redux/windows';
 
 export const ADMIN_KEY = 'Admin';
 export const LAYOUTS_KEY = 'Layouts';
@@ -30,7 +30,7 @@ export interface SystemIcon {
 export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
   const icons = [
     {
-      action: launchWindow(windowsConfig.logout),
+      action: toggleWindow(windowsConfig.logout.name),
       hasExtendedWindow: true,
       icon: logoutIcon,
       isShownByDefault: false,
@@ -51,7 +51,7 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       title: APP_DIRECTORY_KEY,
     },
     {
-      action: launchWindow(windowsConfig.layouts),
+      action: toggleWindow(windowsConfig.layouts.name),
       hasExtendedWindow: true,
       icon: layoutsIcon,
       isShownByDefault: true,

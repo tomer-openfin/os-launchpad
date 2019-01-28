@@ -15,7 +15,6 @@ storiesOf(`${CATEGORIES.COMPONENTS}AppDirectory`, module).add('default', () => (
     appList={AppData}
     getIsLauncherApp={getIsLauncherApp}
     hideWindow={noop}
-    onBlur={noop}
     onEscDown={noop}
     removeFromLauncher={noopCreator}
   />

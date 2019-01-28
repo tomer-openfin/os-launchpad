@@ -1,17 +1,41 @@
 import { Window } from '@giantmachines/redux-openfin';
 import { delay } from 'redux-saga';
-import { all, call, put, select, takeEvery } from 'redux-saga/effects';
+import { all, call, put, race, select, take, takeEvery } from 'redux-saga/effects';
 
-import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGIN_WINDOW, LOGOUT_WINDOW } from '../../config/windows';
+import windowsConfig, {
+  APP_DIRECTORY_WINDOW,
+  APP_LAUNCHER_OVERFLOW_WINDOW,
+  CONTEXT_MENU,
+  LAYOUTS_WINDOW,
+  LOGIN_WINDOW,
+  LOGOUT_WINDOW,
+} from '../../config/windows';
 import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
-import { hideWindowPromise, updateWindowOptions } from '../../utils/openfinPromises';
-import { expandApp, getApplicationIsExpanded, getBlurringWindowByName, setBlurringWindow, setWindowRelativeToLauncherBounds } from '../application';
-import { BLUR_WINDOW_WITH_DELAY, LAUNCH_WINDOW, WINDOW_SHOWN } from './actions';
-import { getLauncherIsForceExpanded, getWindowBounds, getWindowById } from './selectors';
-import { BlurWindowWithDelayAction, LaunchWindowAction } from './types';
+import { updateWindowOptions } from '../../utils/openfinPromises';
+import { expandApp, getApplicationIsExpanded, getIsDragAndDrop, setWindowRelativeToLauncherBounds } from '../application';
+import { HIDE_WINDOW, hideWindow, LAUNCH_WINDOW, launchWindow, TOGGLE_WINDOW, WINDOW_BLURRED, WINDOW_HIDDEN, WINDOW_SHOWN } from './actions';
+import { getLauncherIsForceExpanded, getWindowBounds, getWindowById, getWindowIsShowing } from './selectors';
+import { HideWindowAction, LaunchWindowAction, ToggleWindowAction, WindowBlurredAction } from './types';
 
 const APP_UUID = getAppUuid();
+
+function* watchHideWindow(action: HideWindowAction) {
+  const { payload } = action;
+  if (!payload) {
+    return;
+  }
+
+  const { name } = payload;
+  if (name === APP_LAUNCHER_OVERFLOW_WINDOW) {
+    const finWindow = yield call(getFinWindowByName, name);
+    if (finWindow) {
+      yield call(updateWindowOptions, finWindow, { opacity: 0 });
+    }
+  } else {
+    yield put(Window.hideWindow({ id: name }));
+  }
+}
 
 function* watchLaunchWindow(action: LaunchWindowAction) {
   // tslint:disable-next-line:no-console
@@ -30,10 +54,6 @@ function* watchLaunchWindow(action: LaunchWindowAction) {
 
   if (window) {
     const finWindow = yield call(getFinWindowByName, id);
-    const isBlurring = yield select(getBlurringWindowByName, id);
-    if (!!isBlurring || !finWindow) {
-      return;
-    }
 
     // App launcher overflow window will change opacity instead to avoid fade in/out effect
     if (id === APP_LAUNCHER_OVERFLOW_WINDOW) {
@@ -107,27 +127,77 @@ function* watchWindowBoundsChanged(action) {
   }
 }
 
-function* watchBlurWindowWithDelay(action: BlurWindowWithDelayAction) {
+function* watchToggleWindow(action: ToggleWindowAction) {
   const { payload } = action;
   if (!payload) {
     return;
   }
 
-  const { name, delayDuration } = payload;
-  const finWindow = yield call(getFinWindowByName, name);
-  if (!finWindow) {
+  const { name } = payload;
+  const isWindowShowing = yield select(getWindowIsShowing, name);
+  if (isWindowShowing) {
+    yield put(hideWindow(name));
     return;
   }
 
-  yield put(setBlurringWindow(name, true));
-  // App launcher overflow window will change opacity instead to avoid fade in/out effect
-  if (name === APP_LAUNCHER_OVERFLOW_WINDOW) {
-    yield call(updateWindowOptions, finWindow, { opacity: 0 });
-  } else {
-    yield all([call(hideWindowPromise, finWindow), delay(delayDuration)]);
+  const config = Object.values(windowsConfig).find(windowConfig => windowConfig.name === name);
+  if (config) {
+    yield put(launchWindow(config));
+  }
+}
+
+function* watchWindowBlurred(action: WindowBlurredAction) {
+  const { payload } = action;
+  if (!payload) {
+    return;
   }
 
-  yield put(setBlurringWindow(name, false));
+  const { name } = payload;
+  switch (name) {
+    case APP_DIRECTORY_WINDOW:
+    case CONTEXT_MENU: {
+      yield put(hideWindow(name));
+      break;
+    }
+    case APP_LAUNCHER_OVERFLOW_WINDOW: {
+      const isDragAndDropping = yield select(getIsDragAndDrop);
+      if (!isDragAndDropping) {
+        yield put(hideWindow(name));
+      }
+      break;
+    }
+    case LAYOUTS_WINDOW: {
+      const { cancel, proceed } = yield race({
+        cancel: take(fluxStandardAction => {
+          const { type, payload: standardPayload } = fluxStandardAction;
+          return (type === TOGGLE_WINDOW || type === WINDOW_SHOWN || type === WINDOW_HIDDEN) && standardPayload && standardPayload.name === LAYOUTS_WINDOW;
+        }),
+        proceed: delay(100),
+      });
+
+      if (proceed) {
+        yield put(hideWindow(name));
+      }
+      break;
+    }
+    case LOGOUT_WINDOW: {
+      const { cancel, proceed } = yield race({
+        cancel: take(fluxStandardAction => {
+          const { type, payload: standardPayload } = fluxStandardAction;
+          return (type === TOGGLE_WINDOW || type === WINDOW_SHOWN || type === WINDOW_HIDDEN) && standardPayload && standardPayload.name === LOGOUT_WINDOW;
+        }),
+        proceed: delay(100),
+      });
+
+      if (proceed) {
+        yield put(hideWindow(name));
+      }
+      break;
+    }
+    default: {
+      return;
+    }
+  }
 }
 
 function* watchWindowShown() {
@@ -140,9 +210,11 @@ function* watchWindowShown() {
 }
 
 export function* windowsSaga() {
-  yield takeEvery(BLUR_WINDOW_WITH_DELAY, watchBlurWindowWithDelay);
+  yield takeEvery(HIDE_WINDOW, watchHideWindow);
   yield takeEvery(LAUNCH_WINDOW, watchLaunchWindow);
+  yield takeEvery(TOGGLE_WINDOW, watchToggleWindow);
   yield takeEvery(Window.WINDOW_OPENED, watchOpenedWindow);
   yield takeEvery(Window.BOUNDS_CHANGED, watchWindowBoundsChanged);
+  yield takeEvery(WINDOW_BLURRED, watchWindowBlurred);
   yield takeEvery(WINDOW_SHOWN, watchWindowShown);
 }

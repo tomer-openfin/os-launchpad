@@ -20,7 +20,7 @@ import { getAppDirectoryList } from '../apps';
 import { GET_LAYOUTS, getLayoutsRequest } from '../layouts';
 import { GET_SETTINGS, getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig, getSettingsRequest } from '../me';
 import { GET_ORG_SETTINGS, getOrgSettingsRequest } from '../organization';
-import { getAppsLauncherAppList, getSystemIconsSelector } from '../selectors';
+import { getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize } from '../selectors';
 import { getMonitorInfo, setMonitorInfo, setupSystemHandlers } from '../system';
 import { launchWindow } from '../windows';
 import {
@@ -210,26 +210,28 @@ function* watchReboundLauncherRequest(action: ReboundLauncherRequestAction) {
     return;
   }
 
-  const [appList, systemIcons, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, isExpanded] = yield all([
+  const [appList, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, isExpanded, collapsedSystemDrawerSize, expandedSystemDrawerSize] = yield all([
     select(getAppsLauncherAppList),
-    select(getSystemIconsSelector),
     select(getMonitorInfo),
     select(getLauncherPosition),
     select(getLauncherSizeConfig),
     select(getAutoHide),
     select(getApplicationIsExpanded),
+    select(getCollapsedSystemDrawerSize),
+    select(getExpandedSystemDrawerSize),
   ]);
   if (!monitorInfo) {
     return;
   }
   const { width, height, left, top } = calcLauncherPosition(
     appList.length,
-    systemIcons,
     monitorInfo,
     launcherPosition,
     launcherSizeConfig,
     autoHide,
     isExpanded,
+    collapsedSystemDrawerSize,
+    expandedSystemDrawerSize,
   );
 
   const { shouldAnimate, delay: animationDelay } = payload;

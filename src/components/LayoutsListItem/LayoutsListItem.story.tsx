@@ -5,7 +5,6 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { exampleUserLayout } from '../../samples/LayoutData';
-import noop from '../../utils/noop';
 import { CATEGORIES } from '../../utils/storyCategories';
 
 import LayoutsListItem from './LayoutsListItem';
@@ -15,6 +14,8 @@ const Wrapper = styled.div`
   max-width: 149px;
 `;
 
+const close = action('close');
+
 storiesOf(`${CATEGORIES.COMPONENTS}LayoutsListItem`, module)
   .addDecorator(withKnobs)
   .add('default', () => {
@@ -23,10 +24,10 @@ storiesOf(`${CATEGORIES.COMPONENTS}LayoutsListItem`, module)
     return (
       <Wrapper>
         <LayoutsListItem
+          close={close}
           deleteLayout={action('deleteLayout clicked')}
           id={exampleUserLayout.id}
           name={name}
-          onBlur={noop}
           restoreLayout={action('restoreLayout clicked')}
         />
       </Wrapper>

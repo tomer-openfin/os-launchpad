@@ -7,14 +7,14 @@ import LayoutsUserActions from '../LayoutsUserActions';
 import { ActionsWrapper, Header, Title, Wrapper } from './Layouts.css';
 
 interface Props {
+  close: () => void;
   deleteLayout: (id: string) => void;
   layouts: UserLayout[];
-  onBlur: () => void;
   restoreLayout: (id: string) => void;
   saveLayout: (name: string, meta: MetaWithCallbacks) => void;
 }
 
-const Layouts = ({ deleteLayout, restoreLayout, saveLayout, onBlur, layouts }: Props) => {
+const Layouts = ({ close, deleteLayout, layouts, restoreLayout, saveLayout }: Props) => {
   return (
     <Wrapper>
       <ActionsWrapper>
@@ -25,7 +25,7 @@ const Layouts = ({ deleteLayout, restoreLayout, saveLayout, onBlur, layouts }: P
         <LayoutsUserActions deleteLayout={deleteLayout} saveLayout={saveLayout} />
       </ActionsWrapper>
 
-      <LayoutsList onBlur={onBlur} layouts={layouts} restoreLayout={restoreLayout} deleteLayout={deleteLayout} />
+      <LayoutsList close={close} layouts={layouts} restoreLayout={restoreLayout} deleteLayout={deleteLayout} />
     </Wrapper>
   );
 };

@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
 
 import windowsConfig from '../../config/windows';
-import { blurWindowWithDelay, DEFAULT_BLUR_WINDOW_DELAY, launchWindow } from '../../redux/windows';
+import { hideWindow, launchWindow } from '../../redux/windows';
 import AppListToggle from './AppListToggle';
 
 const mapDispatch = {
-  blurWindowWithDelay,
+  hideWindow,
   launchWindow,
 };
 
 const mergeProps = (_, dispatchProps, ownProps) => ({
   ...ownProps,
   onClick: ownProps.isExpanded
-    ? () => dispatchProps.blurWindowWithDelay(windowsConfig.appLauncherOverflow.name, DEFAULT_BLUR_WINDOW_DELAY)
+    ? () => dispatchProps.hideWindow(windowsConfig.appLauncherOverflow.name)
     : () => dispatchProps.launchWindow(windowsConfig.appLauncherOverflow),
 });
 
