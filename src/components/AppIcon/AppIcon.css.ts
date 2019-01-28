@@ -29,11 +29,25 @@ export const Wrapper = styled.div<WrapperProps>`
   overflow: hidden;
   transition: opacity 300ms ease-in-out;
 
-  ${({ borderWidth, isDisabled, onClick, size }) => `
-    border-width: ${borderWidth}px;
-    cursor: ${!isDisabled && onClick ? 'pointer' : 'default'};
-    opacity: ${isDisabled ? 0.1 : 1};
-    height: ${size}px;
-    width: ${size}px;
-  `}
+  ${({ borderWidth, isDisabled, onClick, size }) => {
+    const isClickable = !isDisabled && onClick;
+
+    return `
+      border-width: ${borderWidth}px;
+      cursor: ${isClickable ? 'pointer' : 'default'};
+      opacity: ${isDisabled ? 0.1 : 1};
+      height: ${size}px;
+      width: ${size}px;
+
+      ${
+        isClickable
+          ? `
+            &:hover {
+              border-color: rgba(255, 255, 255, 0.24);
+            }
+          `
+          : ''
+      }
+    `;
+  }}
 `;
