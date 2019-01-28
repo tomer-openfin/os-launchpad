@@ -1,5 +1,4 @@
 import { Bounds, MonitorInfo, OpenFinApplication, OpenFinApplicationInfo, PointTopLeft } from '../types/commons';
-import { bindFinAppEventHandlers } from './finAppEventHandlerHelpers';
 import promisifyOpenfin from './promisifyOpenfin';
 
 // TODO - move these functions to redux-openfin
@@ -24,11 +23,24 @@ const getCurrentApplicationPromise = <T = undefined>(method: string) => (...args
   return promisifyOpenfin<T>(fin.desktop.Application.getCurrent(), method, ...args);
 };
 
+const getOpenFinApplicationPromise = <T = undefined>(uuid: string, method: string) => (...args) => {
+  const { fin } = window;
+
+  if (!fin) {
+    return Promise.reject('window.fin is undefined');
+  }
+
+  return promisifyOpenfin<T>(fin.desktop.Application.wrap(uuid), method, ...args);
+};
+
 export const addSystemEventListener = getSystemPromise('addEventListener');
 export const getSystemMonitorInfo = getSystemPromise<MonitorInfo>('getMonitorInfo');
 export const getSystemMousePosition = getSystemPromise<PointTopLeft>('getMousePosition');
 
-export const getOpenfinApplicationInfo = getCurrentApplicationPromise<OpenFinApplicationInfo>('getInfo');
+export const getOpenFinApplicationInfo = (uuid: string) => getOpenFinApplicationPromise<any>(uuid, 'getInfo');
+export const getOpenFinApplicationManifest = (uuid: string) => getOpenFinApplicationPromise<any>(uuid, 'getManifest');
+
+export const getCurrentOpenfinApplicationInfo = getCurrentApplicationPromise<OpenFinApplicationInfo>('getInfo');
 
 export const animateWindow = (finWindow, animation, options) => {
   return promisifyOpenfin(finWindow, 'animate', animation, options);
@@ -60,9 +72,6 @@ export const createAndRunFromManifest = (manifestUrl: string, id: string) => {
         app.run(
           // Run app SUCCESS callback
           () => {
-            // TODO: Come back to this - may want to bind before the app runs
-            //       and remove events on run error cb
-            bindFinAppEventHandlers(window.store.dispatch, app, id);
             resolve(app.uuid);
           },
           // Run app ERROR callback
@@ -70,7 +79,6 @@ export const createAndRunFromManifest = (manifestUrl: string, id: string) => {
             reject(e);
           },
         );
-
         // TODO: Maybe add delay case if app takes too long to run
       },
       reject,

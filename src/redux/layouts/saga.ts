@@ -3,8 +3,7 @@ import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { LAYOUTS_WINDOW } from '../../config/windows';
 import ApiService from '../../services/ApiService';
 import { AppStatusOrigins, AppStatusStates, ErrorResponse, ResponseStatus, Transition, UserLayout } from '../../types/commons';
-import { bindFinAppEventHandlers } from '../../utils/finAppEventHandlerHelpers';
-import { MAIN_WINDOW } from '../../utils/getAppUuid';
+import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
 import { generateLayout, restoreLayout } from '../../utils/openfinLayouts';
 import { animateWindow } from '../../utils/openfinPromises';
@@ -114,11 +113,15 @@ function* watchRestoreLayoutSuccess(action: RestoreLayoutSuccess) {
       const appStatus = appsStatusById[id];
 
       if (appStatus && appStatus.state === AppStatusStates.Loading && appStatus.origin === AppStatusOrigins.LayoutRestore) {
-        const wrappedApp = fin.desktop.Application.wrap(uuid);
-
-        bindFinAppEventHandlers(window.store.dispatch, wrappedApp, id);
-
-        return put(openFinAppSuccess({ id, uuid, origin: AppStatusOrigins.LayoutRestore }));
+        return put(
+          openFinAppSuccess({
+            id,
+            origin: AppStatusOrigins.LayoutRestore,
+            // TODO: clean up any, maybe upgrade types
+            runtimeVersion: (layoutApp as any).runtime ? (layoutApp as any).runtime.version : '',
+            uuid,
+          }),
+        );
       }
 
       return;
@@ -182,7 +185,7 @@ function* watchLayoutsChangesToAnimateWindow() {
   const launcherPosition = yield select(getLauncherPosition);
   const launcherSizeConfig = yield select(getLauncherSizeConfig);
   const layoutsWindow = yield call(getFinWindowByName, LAYOUTS_WINDOW);
-  const launcherBounds = yield select(getWindowBounds, MAIN_WINDOW);
+  const launcherBounds = yield select(getWindowBounds, getAppUuid());
   const bounds = yield select(getWindowBounds, LAYOUTS_WINDOW);
   const layouts = yield select(getLayouts);
 

@@ -15,6 +15,7 @@ import { StyledAppIndicator, Wrapper } from './LauncherAppIcon.css';
 export interface Props {
   appId: string;
   appStatusState?: AppStatusStates;
+  appStatusMessage?: string;
   appTitle: string;
   className?: string;
   contextMenuOptions?: ContextMenuOption[];
@@ -47,6 +48,7 @@ const renderAppIconContent = ({ appStatusState, contextMenuOptions, imgSrc, isDi
 
 const LauncherAppIcon = (props: Props) => {
   const {
+    appStatusMessage,
     appStatusState = defaultProps.appStatusState,
     appTitle,
     className,
@@ -69,6 +71,7 @@ const LauncherAppIcon = (props: Props) => {
 
       <StyledAppIndicator
         appStatusState={appStatusState}
+        message={appStatusMessage}
         sizingConfig={launcherSizeConfig}
         position={getOppositeDirection(launcherPosition)}
         size={launcherSizeConfig.appIndicator}

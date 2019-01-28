@@ -4,15 +4,14 @@ import ApiService from '../../services/ApiService';
 import API from '../../services/ApiService/api';
 
 import { AppStatusOrigins, AppStatusStates, ResponseStatus } from '../../types/enums';
-import { CloseFinAppRequest, OpenFinAppRequest } from './types';
+import { CloseFinAppRequest, OpenFinAppError, OpenFinAppRequest, OpenFinAppSuccess } from './types';
 
-import { closeApplication, createAndRunFromManifest, wrapApplication } from '../../utils/openfinPromises';
+import { closeApplication, createAndRunFromManifest, getOpenFinApplicationInfo, wrapApplication } from '../../utils/openfinPromises';
 
+import { bindFinAppEventHandlers } from '../../utils/finAppEventHandlerHelpers';
 import { getRuntimeVersion, reboundLauncherRequest } from '../application';
 import {
   CLOSE_FIN_APP,
-  closeFinAppError,
-  closeFinAppSuccess,
   GET_APP_DIRECTORY_LIST,
   OPEN_FIN_APP,
   openFinAppError,
@@ -30,6 +29,20 @@ function* watchGetAppDirectoryList() {
     const appList = response;
 
     yield put(setAppDirectoryList(appList));
+  }
+}
+
+function* watchOpenFinAppError(action: OpenFinAppError) {
+  const { payload } = action;
+  if (!payload) {
+    return;
+  }
+
+  const { id } = payload;
+  const status = yield select(getAppStatusById, id);
+
+  if (status && status.state === AppStatusStates.Loading) {
+    yield put(setFinAppStatusState({ id, statusState: AppStatusStates.Closed }));
   }
 }
 
@@ -54,22 +67,39 @@ function* watchOpenFinAppRequest(action: OpenFinAppRequest) {
 
   const status = yield select(getAppStatusById, id);
 
-  if (status && (status.state === AppStatusStates.Loading || status.state === AppStatusStates.Running)) {
-    return;
+  if (!status || status.state === AppStatusStates.Closed) {
+    yield put(setFinAppStatusState({ id, statusState: AppStatusStates.Loading, origin: AppStatusOrigins.Default }));
   }
-
-  yield put(setFinAppStatusState({ id, statusState: AppStatusStates.Loading, origin: AppStatusOrigins.Default }));
 
   try {
     const uuid = yield call(createAndRunFromManifest, manifestUrl, id);
+    const info = yield call(getOpenFinApplicationInfo(uuid));
 
-    yield put(openFinAppSuccess({ id, uuid, origin: AppStatusOrigins.Default }));
+    yield put(openFinAppSuccess({ id, uuid, origin: AppStatusOrigins.Default, runtimeVersion: info && info.runtime ? info.runtime.version : '' }));
   } catch (e) {
     // tslint:disable-next-line:no-console
     console.log('Error running app:', payload, '\n', e);
 
     yield put(openFinAppError({ id }));
   }
+}
+
+function* watchOpenFinAppSuccess(action: OpenFinAppSuccess) {
+  const { fin, store } = window;
+  const { payload } = action;
+  if (!payload || !fin || !store) {
+    return;
+  }
+
+  const runtimeVersion = yield select(getRuntimeVersion);
+
+  if (runtimeVersion.split('.')[0] !== payload.runtimeVersion.split('.')[0]) {
+    yield put(setFinAppStatusState({ id: payload.id, statusState: AppStatusStates.Warning, message: 'Incompatible runtime' }));
+    return;
+  }
+
+  bindFinAppEventHandlers(store.dispatch, payload.uuid, payload.id);
+  yield put(setFinAppStatusState({ id: payload.id, statusState: AppStatusStates.Running }));
 }
 
 function* watchCloseFinAppRequest(action: CloseFinAppRequest) {
@@ -83,13 +113,9 @@ function* watchCloseFinAppRequest(action: CloseFinAppRequest) {
     const app = yield call(wrapApplication, uuid);
 
     yield call(closeApplication, app);
-
-    yield put(closeFinAppSuccess({ uuid }));
   } catch (e) {
     // tslint:disable-next-line:no-console
     console.log('Failed to close app with uuid:', uuid, '\n', e);
-
-    yield put(closeFinAppError({ uuid }));
   }
 }
 
@@ -98,8 +124,10 @@ function* watchSetAppDirectoryList() {
 }
 
 export function* appsSaga() {
-  yield takeLatest(GET_APP_DIRECTORY_LIST, watchGetAppDirectoryList);
-  yield takeEvery(OPEN_FIN_APP.REQUEST, watchOpenFinAppRequest);
   yield takeEvery(CLOSE_FIN_APP.REQUEST, watchCloseFinAppRequest);
+  yield takeEvery(OPEN_FIN_APP.REQUEST, watchOpenFinAppRequest);
+  yield takeEvery(OPEN_FIN_APP.SUCCESS, watchOpenFinAppSuccess);
+  yield takeEvery(OPEN_FIN_APP.ERROR, watchOpenFinAppError);
   yield takeEvery(SET_APP_DIRECTORY_LIST, watchSetAppDirectoryList);
+  yield takeLatest(GET_APP_DIRECTORY_LIST, watchGetAppDirectoryList);
 }

@@ -2,15 +2,13 @@ import { Application, Window } from '@giantmachines/redux-openfin';
 import { delay } from 'redux-saga';
 import { all, call, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
-import windowsConfig, { initOnStartWindows, LAYOUTS_WINDOW } from '../../config/windows';
-
-import { getLocalStorage } from '../../services/localStorageAdapter';
+import windowsConfig, { initOnStartWindows } from '../../config/windows';
 
 import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
 
 import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
-import { animateWindow, getOpenfinApplicationInfo, getSystemMonitorInfo } from '../../utils/openfinPromises';
+import { animateWindow, getCurrentOpenfinApplicationInfo, getSystemMonitorInfo } from '../../utils/openfinPromises';
 import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv } from '../../utils/processHelpers';
 import { setupWindow } from '../../utils/setupWindow';
 import takeFirst from '../../utils/takeFirst';
@@ -20,8 +18,8 @@ import { animateLauncherCollapseExpand } from './utils';
 
 import { getAppDirectoryList } from '../apps';
 import { GET_LAYOUTS, getLayoutsRequest } from '../layouts';
-import { GET_ME, GET_SETTINGS, getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig, getMeRequest, getSettingsRequest } from '../me';
-import { GET_ORG_SETTINGS, getOrganizationAutoLogin, getOrgSettingsRequest } from '../organization';
+import { GET_SETTINGS, getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig, getSettingsRequest } from '../me';
+import { GET_ORG_SETTINGS, getOrgSettingsRequest } from '../organization';
 import { getAppsLauncherAppList, getSystemIconsSelector } from '../selectors';
 import { getMonitorInfo, setMonitorInfo, setupSystemHandlers } from '../system';
 import { launchWindow } from '../windows';
@@ -123,7 +121,7 @@ function* openfinSetup(action: OpenfinReadyAction) {
 
     if (fin) {
       // Set Runtime Version
-      const { runtime } = yield call(getOpenfinApplicationInfo);
+      const { runtime } = yield call(getCurrentOpenfinApplicationInfo);
 
       if (runtime) {
         yield put(setRuntimeVersion((runtime as { version: string }).version));
