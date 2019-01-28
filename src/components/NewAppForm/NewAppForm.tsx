@@ -51,7 +51,7 @@ class NewAppForm extends React.Component<Props, State> {
         signature: '',
         support_email: '',
         title: '',
-        withAppUrl: false,
+        withAppUrl: true,
       },
       responseReceived: false,
       result: {
@@ -127,23 +127,21 @@ class NewAppForm extends React.Component<Props, State> {
 
   render() {
     const { formContents } = this.state;
-    const { id, appUrl, manifest_url, name, title, description, icon, images, withAppUrl } = formContents;
+    const { id, appUrl, contexts, intents, manifest_url, name, title, description, icon, images, withAppUrl } = formContents;
 
     return (
       <Wrapper>
-        <WindowHeader backgroundColor={Color.VACUUM}>
-          Create New App
-        </WindowHeader>
+        <WindowHeader backgroundColor={Color.VACUUM}>Create New App</WindowHeader>
 
         <Formik
           initialValues={{
             appUrl,
-            contexts: [],
+            contexts,
             description,
             icon,
             id,
             images,
-            intents: [],
+            intents,
             manifest_url,
             name,
             title,

@@ -49,7 +49,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                   Config Type
                 </div>
                 <input
-                  checked={false}
+                  checked={true}
                   name="withAppUrl"
                   onBlur={[Function]}
                   onChange={[Function]}
@@ -59,8 +59,8 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                   className="sc-fONwsr fYkxm"
                 >
                   <div
-                    checked={false}
-                    className="sc-giadOv gGKAJY"
+                    checked={true}
+                    className="sc-giadOv bthZKi"
                   />
                   <div
                     className="sc-kUaPvJ hImGKu"
@@ -72,8 +72,8 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                   className="sc-fONwsr fYkxm"
                 >
                   <div
-                    checked={true}
-                    className="sc-giadOv bthZKi"
+                    checked={false}
+                    className="sc-giadOv gGKAJY"
                   />
                   <div
                     className="sc-kUaPvJ hImGKu"
@@ -88,13 +88,13 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                 <div
                   className="sc-kGXeez hlXPx"
                 >
-                  Manifest URL
+                  App URL
                 </div>
                 <input
-                  name="manifest_url"
+                  name="appUrl"
                   onBlur={[Function]}
                   onChange={[Function]}
-                  placeholder="Enter manifest url"
+                  placeholder="Enter app url"
                   type="text"
                   value=""
                 />
@@ -154,237 +154,6 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                   type="text"
                   value=""
                 />
-              </label>
-            </div>
-            <div
-              className="sc-gojNiO doxwIP"
-              height="161px"
-            >
-              <label
-                className="sc-kpOJdX khpbwI"
-              >
-                <div
-                  className="sc-kGXeez hlXPx"
-                >
-                  Accepted Intent(s)
-                </div>
-                <div
-                  className="sc-krvtoX icWCJR"
-                >
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="intents"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="Start Call"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      Start Call
-                    </div>
-                  </label>
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="intents"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="Start Chat"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      Start Chat
-                    </div>
-                  </label>
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="intents"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="View Chart"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      View Chart
-                    </div>
-                  </label>
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="intents"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="View Contact"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      View Contact
-                    </div>
-                  </label>
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="intents"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="View Quote"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      View Quote
-                    </div>
-                  </label>
-                </div>
-              </label>
-              <label
-                className="sc-kpOJdX khpbwI"
-              >
-                <div
-                  className="sc-kGXeez hlXPx"
-                >
-                  Accepted Context(s)
-                </div>
-                <div
-                  className="sc-krvtoX icWCJR"
-                >
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="contexts"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="Instrument"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      Instrument
-                    </div>
-                  </label>
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="contexts"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="Contact"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      Contact
-                    </div>
-                  </label>
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="contexts"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="Organization"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      Organization
-                    </div>
-                  </label>
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="contexts"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="Contact List"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      Contact List
-                    </div>
-                  </label>
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="contexts"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="Position"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      Position
-                    </div>
-                  </label>
-                </div>
               </label>
             </div>
           </div>

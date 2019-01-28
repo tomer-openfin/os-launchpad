@@ -42,7 +42,7 @@ const AppForm = ({ isValid, isSubmitting, values }) => (
           <FormField label="App Icon URL" type="text" name="icon" validate={validateURL} placeholder="Enter app icon url" />
         </RowWrapper>
 
-        <RowWrapper height="161px">
+        {/* <RowWrapper height="161px">
           <Label>
             <LabelText>Accepted Intent(s)</LabelText>
 
@@ -54,7 +54,7 @@ const AppForm = ({ isValid, isSubmitting, values }) => (
 
             <CheckboxWrapper>{renderMockContexts()}</CheckboxWrapper>
           </Label>
-        </RowWrapper>
+        </RowWrapper> */}
       </GridWrapper>
     </ScrollWrapper>
     <Footer>
