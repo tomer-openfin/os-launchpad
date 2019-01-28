@@ -7,14 +7,16 @@ import SvgIcon from '../SvgIcon/SvgIcon';
 import { Item, Row } from './LayoutsListItem.css';
 
 interface Props {
+  deleteLayout: (id: string) => void;
   id: string;
   name: string;
+  onBlur: () => void;
   restoreLayout: (id: string) => void;
-  deleteLayout: (id: string) => void;
 }
 
-const LayoutsListItem = ({ deleteLayout, id, name, restoreLayout }: Props) => {
+const LayoutsListItem = ({ deleteLayout, id, name, restoreLayout, onBlur }: Props) => {
   const handleRestoreClick = () => {
+    onBlur();
     restoreLayout(id);
   };
 

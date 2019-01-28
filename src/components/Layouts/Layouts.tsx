@@ -15,11 +15,6 @@ interface Props {
 }
 
 const Layouts = ({ deleteLayout, restoreLayout, saveLayout, onBlur, layouts }: Props) => {
-  const handleClickCreator = (fn, ...args) => () => {
-    onBlur();
-    fn(...args);
-  };
-
   return (
     <Wrapper>
       <ActionsWrapper>
@@ -30,7 +25,7 @@ const Layouts = ({ deleteLayout, restoreLayout, saveLayout, onBlur, layouts }: P
         <LayoutsUserActions deleteLayout={deleteLayout} saveLayout={saveLayout} />
       </ActionsWrapper>
 
-      <LayoutsList layouts={layouts} restoreLayout={restoreLayout} deleteLayout={deleteLayout} />
+      <LayoutsList onBlur={onBlur} layouts={layouts} restoreLayout={restoreLayout} deleteLayout={deleteLayout} />
     </Wrapper>
   );
 };

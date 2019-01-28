@@ -190,7 +190,10 @@ exports[`Storyshots Components/LayoutsList default 1`] = `
                 </span>
                 <span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -216,33 +219,10 @@ exports[`Storyshots Components/LayoutsList default 1`] = `
                     </span>
                   </span>
                   <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      restoreLayout
-                    </span>
                     <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          restoreLayout clicked
-                        </span>
-                        }
-                      </span>
+                      <br />
+                        
                     </span>
-                  </span>
-                  <span>
-                     
                     <span
                       style={Object {}}
                     >
@@ -581,7 +561,65 @@ exports[`Storyshots Components/LayoutsList default 1`] = `
                         }
                       </span>
                     </span>
-                     
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      onBlur
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      restoreLayout
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          restoreLayout clicked
+                        </span>
+                        }
+                      </span>
+                    </span>
+                    <br />
                   </span>
                 </span>
                 <span
@@ -878,7 +916,10 @@ exports[`Storyshots Components/LayoutsList with Wrapper 1`] = `
                   </span>
                   <span>
                     <span>
-                       
+                      <span>
+                        <br />
+                          
+                      </span>
                       <span
                         style={Object {}}
                       >
@@ -904,33 +945,10 @@ exports[`Storyshots Components/LayoutsList with Wrapper 1`] = `
                       </span>
                     </span>
                     <span>
-                       
-                      <span
-                        style={Object {}}
-                      >
-                        restoreLayout
-                      </span>
                       <span>
-                        =
-                        <span
-                          style={Object {}}
-                        >
-                          {
-                          <span
-                            style={
-                              Object {
-                                "color": "#170",
-                              }
-                            }
-                          >
-                            restoreLayout clicked
-                          </span>
-                          }
-                        </span>
+                        <br />
+                          
                       </span>
-                    </span>
-                    <span>
-                       
                       <span
                         style={Object {}}
                       >
@@ -1269,7 +1287,65 @@ exports[`Storyshots Components/LayoutsList with Wrapper 1`] = `
                           }
                         </span>
                       </span>
-                       
+                    </span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
+                        onBlur
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#170",
+                              }
+                            }
+                          >
+                            noop
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
+                        restoreLayout
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#170",
+                              }
+                            }
+                          >
+                            restoreLayout clicked
+                          </span>
+                          }
+                        </span>
+                      </span>
+                      <br />
                     </span>
                   </span>
                   <span

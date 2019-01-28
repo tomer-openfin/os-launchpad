@@ -5,7 +5,9 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { exampleUserLayout } from '../../samples/LayoutData';
+import noop from '../../utils/noop';
 import { CATEGORIES } from '../../utils/storyCategories';
+
 import LayoutsListItem from './LayoutsListItem';
 
 const Wrapper = styled.div`
@@ -20,7 +22,13 @@ storiesOf(`${CATEGORIES.COMPONENTS}LayoutsListItem`, module)
 
     return (
       <Wrapper>
-        <LayoutsListItem deleteLayout={action('deleteLayout clicked')} id={exampleUserLayout.id} name={name} restoreLayout={action('restoreLayout clicked')} />
+        <LayoutsListItem
+          deleteLayout={action('deleteLayout clicked')}
+          id={exampleUserLayout.id}
+          name={name}
+          onBlur={noop}
+          restoreLayout={action('restoreLayout clicked')}
+        />
       </Wrapper>
     );
   });

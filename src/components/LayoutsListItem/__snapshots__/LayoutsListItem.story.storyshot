@@ -307,6 +307,35 @@ exports[`Storyshots Components/LayoutsListItem default 1`] = `
                       <span
                         style={Object {}}
                       >
+                        onBlur
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#170",
+                              }
+                            }
+                          >
+                            noop
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
                         restoreLayout
                       </span>
                       <span>
