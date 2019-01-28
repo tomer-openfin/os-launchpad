@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { createLayoutRequest, deleteLayoutRequest, getLayouts, restoreLayoutRequest } from '../../redux/layouts';
+import { deleteLayoutRequest, getLayouts, restoreLayoutRequest, saveLayoutRequest } from '../../redux/layouts';
 import { State } from '../../redux/types';
 import { hideWindow } from '../../redux/windows';
 import { MetaWithCallbacks } from '../../types/commons';
@@ -16,7 +16,7 @@ const mapDispatch = dispatch => ({
   close: () => dispatch(hideWindow(LAYOUTS_WINDOW)),
   deleteLayout: (id: string) => dispatch(deleteLayoutRequest(id)),
   restoreLayout: (id: string) => dispatch(restoreLayoutRequest(id)),
-  saveLayout: (name: string, meta: MetaWithCallbacks) => dispatch(createLayoutRequest(name, meta)),
+  saveLayout: (name: string, meta: MetaWithCallbacks) => dispatch(saveLayoutRequest(name, meta)),
 });
 
 export default connect(

@@ -56,7 +56,7 @@ class LayoutsUserActions extends React.Component<Props, State> {
     });
   };
 
-  successCb = ({ id }) => {
+  saveCb = ({ id }) => {
     this.setState({
       layoutsUndoId: id,
       responseReceived: true,
@@ -86,13 +86,13 @@ class LayoutsUserActions extends React.Component<Props, State> {
 
   handleFormSubmit = e => {
     e.preventDefault();
-
     const { saveLayout } = this.props;
     const { name } = this.state;
 
-    const meta = { successCb: this.successCb, errorCb: this.errorCb };
+    const meta = { successCb: this.saveCb, errorCb: this.errorCb };
 
     this.setState(prevState => ({ isSubmitting: !prevState.isSubmitting, showErrorState: true, showSavedState: true }));
+
     saveLayout(name, meta);
   };
 

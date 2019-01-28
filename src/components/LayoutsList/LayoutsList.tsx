@@ -39,7 +39,7 @@ class LayoutsList extends React.Component<Props, State> {
             <LayoutsListItem close={close} deleteLayout={deleteLayout} id={layout.id} key={layout.id} name={layout.name} restoreLayout={restoreLayout} />
           ))
         ) : (
-          <EmptyCopy>You don’t have any saved layouts. Save using the input above and this list will populate with your most recent layouts.</EmptyCopy>
+          <EmptyCopy>You don&#39;t have any saved layouts. Save using the input above and this list will populate with your most recent layouts.</EmptyCopy>
         )}
       </UL>
     );

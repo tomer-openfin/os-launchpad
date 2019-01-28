@@ -15,6 +15,7 @@ import { getWindowBounds } from '../windows';
 import {
   CREATE_LAYOUT,
   createLayoutError,
+  createLayoutRequest,
   createLayoutSuccess,
   DELETE_LAYOUT,
   deleteLayoutError,
@@ -25,12 +26,14 @@ import {
   RESTORE_LAYOUT,
   restoreLayoutError,
   restoreLayoutSuccess,
+  SAVE_LAYOUT,
   UPDATE_LAYOUT,
   updateLayoutError,
+  updateLayoutRequest,
   updateLayoutSuccess,
 } from './actions';
 import { getLayoutById, getLayouts } from './selectors';
-import { CreateLayoutRequest, DeleteLayoutRequest, RestoreLayoutRequest, RestoreLayoutSuccess, UpdateLayoutRequest } from './types';
+import { CreateLayoutRequest, DeleteLayoutRequest, RestoreLayoutRequest, RestoreLayoutSuccess, SaveLayoutRequest, UpdateLayoutRequest } from './types';
 import { calcDesiredLayoutsWindowHeight } from './utils';
 
 const buildErrorResponse = (message: string): ErrorResponse => ({ status: ResponseStatus.FAILURE, message });
@@ -150,22 +153,20 @@ export function* watchCreateLayoutRequest(action: CreateLayoutRequest) {
 function* watchUpdateLayoutRequest(action: UpdateLayoutRequest) {
   if (!action.payload) return;
 
-  const { id, name, updateLayout } = action.payload;
+  const { id, name } = action.payload;
 
   const userLayout = { id, name };
 
-  if (updateLayout) {
-    const layout = yield call(generateLayout);
+  const layout = yield call(generateLayout);
 
-    userLayout['layout'] = layout;
-  }
+  userLayout['layout'] = layout;
 
   const response = yield call(ApiService.updateUserLayout, userLayout);
 
   if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error' || !response.layout) {
-    yield put(updateLayoutError(response));
+    yield put(updateLayoutError(response, action.meta));
   } else {
-    yield put(updateLayoutSuccess(response.layout));
+    yield put(updateLayoutSuccess(response.layout, action.meta));
   }
 }
 
@@ -224,6 +225,24 @@ function* watchLayoutsChangesToAnimateWindow() {
   yield call(animateWindow, layoutsWindow, transitions, { interrupt: false });
 }
 
+function* watchSaveLayoutRequest(action: SaveLayoutRequest) {
+  if (!action.payload) return;
+
+  const name = action.payload;
+  const layouts: UserLayout[] = yield select(getLayouts);
+  const index = layouts.findIndex(layout => layout.name === name);
+
+  if (index !== -1) {
+    const id = layouts[index].id;
+    const updatePayload = { id, name };
+
+    yield put(updateLayoutRequest(updatePayload, action.meta));
+    return;
+  }
+
+  yield put(createLayoutRequest(name, action.meta));
+}
+
 function* watchRequestError(action) {
   const error = action.payload;
 
@@ -273,4 +292,6 @@ export function* layoutsSaga() {
   yield takeEvery(DELETE_LAYOUT.REQUEST, watchDeleteLayoutRequest);
   yield takeEvery(DELETE_LAYOUT.SUCCESS, watchRequestSuccess);
   yield takeEvery(DELETE_LAYOUT.ERROR, watchRequestError);
+
+  yield takeEvery(SAVE_LAYOUT.REQUEST, watchSaveLayoutRequest);
 }
