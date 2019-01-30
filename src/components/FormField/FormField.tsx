@@ -4,11 +4,12 @@ import * as React from 'react';
 import { Error, Label, LabelText } from './FormField.css';
 
 interface Props {
-  children?;
   checked?: boolean;
+  children?;
   className?: string;
   component?: string;
   disabled?: boolean;
+  htmlInputRef?: React.RefObject<HTMLInputElement>;
   isInvalid?: boolean;
   label?: string;
   maxLength?: string;
@@ -18,13 +19,28 @@ interface Props {
   validate?;
 }
 
-export const FormField = ({ checked, children, className, component, isInvalid, type, name, maxLength, validate, placeholder, disabled, label }: Props) => (
+export const FormField = ({
+  checked,
+  children,
+  className,
+  component,
+  disabled,
+  htmlInputRef,
+  isInvalid,
+  label,
+  maxLength,
+  name,
+  placeholder,
+  type,
+  validate,
+}: Props) => (
   <Label className={className} isValid={!isInvalid}>
     {label && <LabelText>{label}</LabelText>}
 
     <Field
       type={type}
       component={component}
+      innerRef={htmlInputRef}
       name={name}
       maxLength={maxLength}
       validate={validate}

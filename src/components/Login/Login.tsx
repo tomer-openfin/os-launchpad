@@ -1,4 +1,4 @@
-import { Formik } from 'formik';
+import { Formik, FormikValues } from 'formik';
 import * as React from 'react';
 
 import { LoginRequestPayload, LoginWithNewPasswordPayload, MeLoginState } from '../../redux/me';
@@ -16,6 +16,7 @@ interface Props {
   login: (options: LoginRequestPayload) => void;
   loginWithNewPassword: (options: LoginWithNewPasswordPayload) => void;
   loginState: MeLoginState;
+  values?: FormikValues;
 }
 
 const { USERNAME, PASSWORD } = process.env;
@@ -53,24 +54,36 @@ const renderMessage = ({ error, message }: MeLoginState) =>
 
 /**
  * LoginForm component
- *
- * @returns {React.StatelessComponent}
+ * componentDidMount lifecycle to focus inputRef on mount
+ * @returns {React.Component}
  */
-const LoginForm = ({ autoLoginOrg, values }) => {
-  return (
-    <FormWrapper key="login">
-      <FormField label="Email" name="username" placeholder="Enter Email" type="text" />
+class LoginForm extends React.Component<Partial<Props>> {
+  private inputRef: React.RefObject<HTMLInputElement> = React.createRef<HTMLInputElement>();
 
-      <FormField label="Password" name="password" placeholder="Enter Password" type="password" />
+  componentDidMount() {
+    if (this.inputRef.current) {
+      this.inputRef.current.focus();
+    }
+  }
 
-      {/* {autoLoginOrg && <Checkbox label="Keep me logged in" name="autoLogin" checked={values && values.autoLogin} />} */}
+  render() {
+    const { autoLoginOrg } = this.props;
 
-      <CTA extraSpace={!autoLoginOrg || true} type="submit">
-        Login
-      </CTA>
-    </FormWrapper>
-  );
-};
+    return (
+      <FormWrapper key="login">
+        <FormField htmlInputRef={this.inputRef} label="Email" name="username" placeholder="Enter Email" type="text" />
+
+        <FormField label="Password" name="password" placeholder="Enter Password" type="password" />
+
+        {/* {autoLoginOrg && <Checkbox label="Keep me logged in" name="autoLogin" checked={values && values.autoLogin} />} */}
+
+        <CTA extraSpace={!autoLoginOrg || true} type="submit">
+          Login
+        </CTA>
+      </FormWrapper>
+    );
+  }
+}
 
 /**
  * ChangePasswordForm component
