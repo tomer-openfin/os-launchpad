@@ -218,32 +218,6 @@ exports[`Storyshots Admin Components/Admin default 1`] = `
                         }
                       </span>
                     </span>
-                  </span>
-                  <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      onEscDown
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          esc down
-                        </span>
-                        }
-                      </span>
-                    </span>
                      
                   </span>
                 </span>

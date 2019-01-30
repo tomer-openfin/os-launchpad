@@ -19,7 +19,6 @@ interface Props extends RouteComponentProps {
   isEnterprise: boolean;
   hideWindow: () => void;
   launcherSize: LauncherSize;
-  onEscDown: () => void;
   setAutoHide: (autoHide: boolean) => void;
   setLauncherPosition: (launcherPosition: DirectionalPosition) => void;
   setLauncherSize: (launcherSize: LauncherSize) => void;

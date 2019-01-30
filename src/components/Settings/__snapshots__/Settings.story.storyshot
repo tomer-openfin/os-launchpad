@@ -617,35 +617,6 @@ exports[`Storyshots Components/Settings default 1`] = `
                             }
                           </span>
                         </span>
-                      </span>
-                      <span>
-                        <span>
-                          <br />
-                            
-                        </span>
-                        <span
-                          style={Object {}}
-                        >
-                          onEscDown
-                        </span>
-                        <span>
-                          =
-                          <span
-                            style={Object {}}
-                          >
-                            {
-                            <span
-                              style={
-                                Object {
-                                  "color": "#170",
-                                }
-                              }
-                            >
-                              onEscDown
-                            </span>
-                            }
-                          </span>
-                        </span>
                         <br />
                       </span>
                     </span>

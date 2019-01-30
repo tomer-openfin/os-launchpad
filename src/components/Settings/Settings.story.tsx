@@ -14,7 +14,6 @@ import Settings from './Settings';
 const setAutoHide = action('setAutoHide');
 const setLauncherSize = action('setLauncherSize');
 const setLauncherPosition = action('setLauncherPosition');
-const onEscDown = action('onEscDown');
 
 const Wrapper = styled.div`
   height: 478px;
@@ -37,7 +36,6 @@ storiesOf(`${CATEGORIES.COMPONENTS}Settings`, module)
           setAutoHide={setAutoHide}
           setLauncherPosition={setLauncherPosition}
           setLauncherSize={setLauncherSize}
-          onEscDown={onEscDown}
         />
       </Wrapper>
     );

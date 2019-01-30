@@ -7,7 +7,6 @@ import { State } from '../../redux/types';
 import { hideWindow } from '../../redux/windows';
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
 
-import withEscapeKey from '../../hocs/withEscapeKey';
 import Settings from './Settings';
 
 const stateProps = (state: State) => ({
@@ -18,9 +17,6 @@ const stateProps = (state: State) => ({
 
 const dispatchProps = dispatch => ({
   hideWindow: () => {
-    dispatch(hideWindow(SETTINGS_WINDOW));
-  },
-  onEscDown: () => {
     dispatch(hideWindow(SETTINGS_WINDOW));
   },
   setAutoHide: (autoHide: boolean) => {
@@ -37,4 +33,4 @@ const dispatchProps = dispatch => ({
 export default connect(
   stateProps,
   dispatchProps,
-)(withEscapeKey(Settings));
+)(Settings);
