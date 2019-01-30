@@ -152,7 +152,7 @@ export const initOnStartWindows = {
     waitForPageLoad: true,
   },
   settings: {
-    alwaysOnTop: true,
+    alwaysOnTop: false,
     autoShow: false,
     contextMenu: !isProduction,
     defaultCentered: true,
