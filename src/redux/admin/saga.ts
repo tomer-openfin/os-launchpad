@@ -31,11 +31,6 @@ import {
   updateAdminUserSuccess,
 } from './actions';
 
-export const addIdFromKey = (key: string) => item => {
-  item.id = item[key];
-  return item;
-};
-
 function* watchGetAdminAppsRequest() {
   const response = yield call(ApiService.getAdminApps);
 
@@ -98,9 +93,7 @@ function* watchGetAdminUsersRequest() {
 
   // TODO: hone the criteria for error response once it is more than empty object
   if (response.length && response.status !== ResponseStatus.FAILURE) {
-    const userList = response.map(addIdFromKey('username'));
-
-    yield put(getAdminUsersSuccess(userList));
+    yield put(getAdminUsersSuccess(response));
   } else {
     yield put(getAdminUsersError(response));
   }
@@ -112,20 +105,7 @@ function* watchCreateAdminUserRequest(action) {
   if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
     yield put(createAdminUserError(response, action.meta));
   } else {
-    // modify after api updated
-    const getUserResponse = yield call(ApiService.getAdminUsers);
-
-    const desiredUser = getUserResponse.find(user => user.email === action.payload.email);
-
-    if (!desiredUser) {
-      yield put(createAdminUserError(response, action.meta));
-
-      return;
-    }
-
-    const newUser = addIdFromKey('username')(desiredUser);
-
-    yield put(createAdminUserSuccess(newUser, action.meta));
+    yield put(createAdminUserSuccess(response.user, action.meta));
   }
 }
 
@@ -135,12 +115,7 @@ function* watchUpdateAdminUserRequest(action) {
   if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
     yield put(updateAdminUserError(response, action.meta));
   } else {
-    // modify after api updated
-    const getUserResponse = yield call(ApiService.getAdminUser, action.payload);
-
-    const updatedUser = addIdFromKey('username')(getUserResponse);
-
-    yield put(updateAdminUserSuccess(updatedUser, action.meta));
+    yield put(updateAdminUserSuccess(response.user, action.meta));
   }
 }
 
