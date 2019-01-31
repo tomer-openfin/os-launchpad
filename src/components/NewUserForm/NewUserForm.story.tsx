@@ -14,5 +14,8 @@ const mockData = {
 };
 
 const createUser = action('createUser');
+const onEscDown = action('onEscDown');
 
-storiesOf(`${CATEGORIES.ADMIN}NewUserForm`, module).add('default', () => <NewUserForm location={mockData.location} createUser={createUser} />);
+storiesOf(`${CATEGORIES.ADMIN}NewUserForm`, module).add('default', () => (
+  <NewUserForm createUser={createUser} location={mockData.location} onEscDown={onEscDown} />
+));

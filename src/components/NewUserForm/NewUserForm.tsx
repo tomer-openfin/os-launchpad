@@ -14,6 +14,7 @@ import WindowHeader from '../WindowHeader';
 interface Props {
   createUser: Function;
   location;
+  onEscDown: () => void;
 }
 
 interface State {

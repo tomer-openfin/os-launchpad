@@ -12,11 +12,11 @@ import { Color } from '../../styles';
 import { HeadingText } from '../ConfirmUserDelete/ConfirmDelete.css';
 import UserForm, { ErrorResponseMessage, ErrorWrapper, Wrapper } from '../UserForm';
 
-import noop from '../../utils/noop';
 import SvgIcon from '../SvgIcon/SvgIcon';
 import WindowHeader from '../WindowHeader';
 
 interface Props extends RouteComponentProps {
+  onEscDown: () => void;
   updateUser: Function;
 }
 

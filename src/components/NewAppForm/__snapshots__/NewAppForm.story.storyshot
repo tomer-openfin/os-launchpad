@@ -364,6 +364,32 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                         }
                       </span>
                     </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      onEscDown
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          onEscDown
+                        </span>
+                        }
+                      </span>
+                    </span>
                      
                   </span>
                 </span>

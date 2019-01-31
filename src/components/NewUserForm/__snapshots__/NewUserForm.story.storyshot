@@ -342,6 +342,32 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
                     <span
                       style={Object {}}
                     >
+                      createUser
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          createUser
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
                       location
                     </span>
                     <span>
@@ -487,7 +513,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      createUser
+                      onEscDown
                     </span>
                     <span>
                       =
@@ -502,7 +528,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
                             }
                           }
                         >
-                          createUser
+                          onEscDown
                         </span>
                         }
                       </span>

@@ -13,6 +13,8 @@ const mockLocation = {
   search: 'for react-router',
   state: AppData[0],
 };
-const updateApp = action('updateApp');
 
-storiesOf(`${CATEGORIES.ADMIN}EditAppForm`, module).add('default', () => <EditAppForm updateApp={updateApp} location={mockLocation} />);
+const updateApp = action('updateApp');
+const onEscDown = action('onEscDown');
+
+storiesOf(`${CATEGORIES.ADMIN}EditAppForm`, module).add('default', () => <EditAppForm location={mockLocation} onEscDown={onEscDown} updateApp={updateApp} />);

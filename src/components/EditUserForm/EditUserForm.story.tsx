@@ -13,6 +13,10 @@ const mockLocation = {
   search: '',
   state: UserData[0],
 };
-const updateUser = action('updateUser');
 
-storiesOf(`${CATEGORIES.ADMIN}EditUserForm`, module).add('default', () => <EditUserForm updateUser={updateUser} location={mockLocation} />);
+const updateUser = action('updateUser');
+const onEscDown = action('onEscDown');
+
+storiesOf(`${CATEGORIES.ADMIN}EditUserForm`, module).add('default', () => (
+  <EditUserForm location={mockLocation} onEscDown={onEscDown} updateUser={updateUser} />
+));

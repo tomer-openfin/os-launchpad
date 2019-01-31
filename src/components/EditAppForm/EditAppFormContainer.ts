@@ -1,13 +1,25 @@
 import { connect } from 'react-redux';
 
-import { updateAdminAppRequest } from '../../redux/admin/index';
+import { updateAdminAppRequest } from '../../redux/admin';
+import { ROUTES } from '../Router/consts';
+
+import withEscapeKey from '../../hocs/withEscapeKey';
 import EditAppForm from './EditAppForm';
 
-const dispatchProps = {
+const mapDispatch = {
   updateApp: updateAdminAppRequest,
 };
 
+const mergeProps = (_, dispatchProps, ownProps) => ({
+  ...dispatchProps,
+  ...ownProps,
+  onEscDown: () => {
+    ownProps.history.push(ROUTES.ADMIN_APPS);
+  },
+});
+
 export default connect(
   null,
-  dispatchProps,
-)(EditAppForm);
+  mapDispatch,
+  mergeProps,
+)(withEscapeKey(EditAppForm));

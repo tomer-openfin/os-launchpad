@@ -17,6 +17,7 @@ import SvgIcon from '../SvgIcon/SvgIcon';
 import WindowHeader from '../WindowHeader';
 
 interface Props extends RouteComponentProps {
+  onEscDown: () => void;
   updateApp: Function;
 }
 

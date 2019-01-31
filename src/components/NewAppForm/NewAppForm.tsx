@@ -10,10 +10,11 @@ import { Color } from '../../styles';
 import { App, ResponseStatus } from '../../types/commons';
 import AppForm from '../AppForm';
 import { ROUTES } from '../Router/consts';
-import WindowHeader from '../WindowHeader/index';
+import WindowHeader from '../WindowHeader';
 
 interface Props {
   createApp: Function;
+  onEscDown: () => void;
 }
 
 interface State {

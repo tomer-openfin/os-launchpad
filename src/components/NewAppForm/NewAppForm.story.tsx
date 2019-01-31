@@ -7,5 +7,6 @@ import { CATEGORIES } from '../../utils/storyCategories';
 import NewAppForm from './NewAppForm';
 
 const createApp = action('createApp');
+const onEscDown = action('onEscDown');
 
-storiesOf(`${CATEGORIES.ADMIN}NewAppForm`, module).add('default', () => <NewAppForm createApp={createApp} />);
+storiesOf(`${CATEGORIES.ADMIN}NewAppForm`, module).add('default', () => <NewAppForm createApp={createApp} onEscDown={onEscDown} />);
