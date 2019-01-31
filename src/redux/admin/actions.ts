@@ -34,7 +34,7 @@ export const deleteAdminAppSuccess = createAction<App, MetaWithCallbacks>(DELETE
 export const deleteAdminAppError = createAction<ErrorResponse, MetaWithCallbacks>(DELETE_ADMIN_APP.ERROR, payloadIdentityCreator, metaWithCallbacksCreator);
 
 export const getAdminUsersRequest = createAction(GET_ADMIN_USERS.REQUEST, noop);
-export const getAdminUsersSuccess = createAction<{ pageToken: string; users: User[] }>(GET_ADMIN_USERS.SUCCESS);
+export const getAdminUsersSuccess = createAction<User[]>(GET_ADMIN_USERS.SUCCESS);
 export const getAdminUsersError = createAction<ErrorResponse>(GET_ADMIN_USERS.ERROR);
 
 export const createAdminUserRequest = createAction<User, MetaWithCallbacks>(CREATE_ADMIN_USER.REQUEST, payloadIdentityCreator, metaWithCallbacksCreator);

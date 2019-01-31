@@ -86,7 +86,7 @@ export default (state: AdminState = defaultState, action): AdminState => {
       };
     }
     case GET_ADMIN_USERS.SUCCESS: {
-      const userList: User[] = action.payload.users;
+      const userList: User[] = action.payload;
 
       const byId: ById<User> = formatByIds(userList);
 
