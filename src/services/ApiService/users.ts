@@ -3,12 +3,17 @@ import { APIResponse, HTTPMethods, User } from '../../types/commons';
 import API from './api';
 import fetchJSON from './fetchJSON';
 
+interface GetAdminUsers {
+  pageToken: string;
+  users: User[];
+}
+
 /**
  * Get admin users
  *
  * @returns {Promise<User[]>}
  */
-export const getAdminUsers = (): Promise<User[]> => fetchJSON(`${API.ADMIN_USERS}`, HTTPMethods.GET);
+export const getAdminUsers = (): Promise<GetAdminUsers> => fetchJSON(`${API.ADMIN_USERS}`, HTTPMethods.GET);
 
 /**
  * Get admin user

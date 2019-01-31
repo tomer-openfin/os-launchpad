@@ -92,7 +92,7 @@ function* watchGetAdminUsersRequest() {
   const response = yield call(ApiService.getAdminUsers);
 
   // TODO: hone the criteria for error response once it is more than empty object
-  if (response.length && response.status !== ResponseStatus.FAILURE) {
+  if (response.users && response.users.length && response.status !== ResponseStatus.FAILURE) {
     yield put(getAdminUsersSuccess(response));
   } else {
     yield put(getAdminUsersError(response));
@@ -132,7 +132,7 @@ function* watchDeleteAdminUserRequest(action) {
 function* watchRequestError(action) {
   const error = action.payload;
 
-  const errorMessage = error ? error.message || error : 'Unknown Error';
+  const errorMessage = error && typeof error === 'object' && error.message ? error.message : error || 'Unknown Error';
 
   // tslint:disable-next-line:no-console
   console.log('Error on', action.type, ':', errorMessage, '\n');
