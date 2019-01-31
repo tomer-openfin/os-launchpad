@@ -22,6 +22,26 @@ class SearchInputWithState extends React.Component<Props, State> {
     this.state = { value: '' };
   }
 
+  componentDidMount() {
+    const { fin } = window;
+
+    if (fin) {
+      fin.desktop.Window.getCurrent().addEventListener('hidden', this.clearInputField);
+    }
+  }
+
+  componentWillUnmount() {
+    const { fin } = window;
+
+    if (fin) {
+      fin.desktop.Window.getCurrent().removeEventListener('hidden', this.clearInputField);
+    }
+  }
+
+  clearInputField = () => {
+    this.setState({ value: '' });
+  };
+
   componentDidUpdate(_: Props, prevState: State) {
     const { onChange } = this.props;
     const { value } = this.state;
