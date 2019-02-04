@@ -11,44 +11,44 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
     }
   >
     <div
-      className="sc-iGrrsa bWWzjI"
+      className="sc-dEoRIm hHAxgM"
     >
       <h3
-        className="sc-ipZHIp kvmaeC"
+        className="sc-bmyXtO hvnxo"
       >
         Enterprise Branding
       </h3>
       <form
-        className="sc-iqzUVk ewkcOT"
+        className="sc-iGrrsa gyMqzo"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <label
-          className="sc-kLIISr jfSxOd"
+          className="sc-iqzUVk jlswDi"
           htmlFor="LogoFormFileInput"
         >
           <div
-            className="sc-dliRfk eVmTvs"
+            className="sc-qrIAp joIrTp"
           >
             <div
-              className="sc-cqCuEk bJkmLv"
+              className="sc-kLIISr fotEiB"
             >
               <div
-                className="sc-eNQAEJ WRgnz"
+                className="sc-kEYyzF cvdniS"
                 size={80}
               />
             </div>
             <div
-              className="sc-ipXKqB dZEFem"
+              className="sc-cqCuEk dcJcTJ"
             >
               <div
-                className="sc-hmXxxW gKiUhp"
+                className="sc-dliRfk jKRHt"
               >
                 Click & drag a new image over the existing one to replace your brand logo.
               </div>
               <input
                 accept="image/*"
-                className="sc-VJcYb esNJRq"
+                className="sc-hmXxxW exbBvP"
                 id="LogoFormFileInput"
                 name="logo"
                 onBlur={[Function]}
@@ -63,7 +63,7 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
           </div>
         </label>
         <div
-          className="sc-qrIAp ecfvUq"
+          className="sc-ipZHIp cWFDMh"
         >
           <button
             className="sc-kAzzGY gnyQHQ"
@@ -85,17 +85,17 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
         </div>
       </form>
       <h3
-        className="sc-ipZHIp kvmaeC"
+        className="sc-bmyXtO hvnxo"
       >
         Enterprise Theme
       </h3>
       <form
-        className="sc-iqzUVk ewkcOT"
+        className="sc-iGrrsa gyMqzo"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <select
-          className="sc-dEoRIm CWipf"
+          className="sc-ebFjAB jdBZLa"
           disabled={false}
           id="ThemesFormSelectInput"
           name="theme"
@@ -105,20 +105,20 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
           value="dark"
         >
           <option
-            className="sc-jtggT fwVnSB"
+            className="sc-jKVCRD fxQKDl"
             value="dark"
           >
             Dark
           </option>
           <option
-            className="sc-jtggT fwVnSB"
+            className="sc-jKVCRD fxQKDl"
             value="light"
           >
             Light
           </option>
         </select>
         <div
-          className="sc-qrIAp ecfvUq"
+          className="sc-ipZHIp cWFDMh"
         >
           <button
             className="sc-kAzzGY gnyQHQ"

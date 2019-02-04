@@ -11,45 +11,45 @@ exports[`Storyshots Components/Layouts default 1`] = `
     }
   >
     <div
-      className="sc-iyvyFf dNaVWK"
+      className="sc-kPVwWT hxuteo"
     >
       <div
-        className="sc-gxMtzJ iauVHz"
+        className="sc-gzOgki iCfZnA"
       >
         <div
-          className="sc-dfVpRl hlXazR"
+          className="sc-iyvyFf kUeWKb"
         >
           <div
-            className="sc-gzOgki jHCSGb"
+            className="sc-hwwEjo gbAcnq"
           >
             Layouts
           </div>
         </div>
         <div
-          className="sc-kTUwUJ jWvdVp"
+          className="sc-gxMtzJ vMiOr"
         >
           <div
-            className="sc-jtRfpW kFgGzf sc-ifAKCX fdgCee"
+            className="sc-dqBHgY ePiFam sc-ifAKCX fdgCee"
             color="#E7E7E7"
             size={24}
           />
           <form
-            className="sc-elJkPf gFbayc"
+            className="sc-kTUwUJ dtaUPZ"
             onSubmit={[Function]}
           >
             <input
-              className="sc-bYSBpT jqOdtl"
+              className="sc-jtRfpW ixFtvh"
               onChange={[Function]}
               placeholder="Layout Name"
               required={true}
               type="text"
             />
             <button
-              className="sc-lhVmIH hTfBvQ"
+              className="sc-elJkPf hhVxXV"
               type="submit"
             >
               <div
-                className="sc-iELTvK bDIeJm sc-ifAKCX bvrXxy"
+                className="sc-jwKygS STwnm sc-ifAKCX bvrXxy"
                 color="#E7E7E7"
                 onClick={[Function]}
                 size={14}
@@ -59,21 +59,21 @@ exports[`Storyshots Components/Layouts default 1`] = `
         </div>
       </div>
       <div
-        className="sc-cIShpX cDWHKo"
+        className="sc-feJyhm kDvjCP"
       >
         <h6
-          className="sc-ktHwxA bjYKSB"
+          className="sc-kafWEX kwvrJl"
         >
           Recent Layouts
         </h6>
         <ul
-          className="sc-feJyhm llWyVZ"
+          className="sc-cmTdod bJxmMw"
         >
           <div
-            className="sc-tilXH QYbaL"
+            className="sc-ktHwxA kbzIkz"
           >
             <li
-              className="sc-fYxtnH jmkJOa"
+              className="sc-hEsumM jPgWvw"
               onClick={[Function]}
             >
               layout

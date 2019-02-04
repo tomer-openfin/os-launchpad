@@ -11,16 +11,16 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
     }
   >
     <div
-      className="sc-GMQeP eCbkgM"
+      className="sc-cQFLBn dywewf"
     >
       <div
-        className="sc-jWBwVP izFfYu"
+        className="sc-cMljjf cavFtY"
       >
         <div
-          className="sc-brqgnP hERWLS"
+          className="sc-jAaTju jKiQTw"
         >
           <div
-            className="sc-kvZOFW dNAtOq"
+            className="sc-jbKcbu hLSNrE"
           >
             Edit FinTech Studios
           </div>
@@ -33,21 +33,21 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
         </div>
       </div>
       <form
-        className="sc-iujRgT fpCTXM"
+        className="sc-exAgwC gtnSbN"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <div
-          className="sc-exAgwC dLvgoG"
+          className="sc-gojNiO leCdYw"
         >
           <div
-            className="sc-cQFLBn lmyPXw"
+            className="sc-daURTG RCjsE"
           >
             <div
-              className="sc-gojNiO dnTgak"
+              className="sc-bXGyLb ePiUsf"
             >
               <label
-                className="sc-jVODtj ethFQh sc-kpOJdX cODgu"
+                className="sc-giadOv eVzxEE sc-kpOJdX cODgu"
               >
                 <div
                   className="sc-kGXeez hlXPx"
@@ -62,27 +62,27 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                   type="checkbox"
                 />
                 <div
-                  className="sc-fONwsr fYkxm"
+                  className="sc-ipXKqB dypVHf"
                 >
                   <div
                     checked={false}
-                    className="sc-giadOv gGKAJY"
+                    className="sc-VJcYb lbmvKM"
                   />
                   <div
-                    className="sc-kUaPvJ hImGKu"
+                    className="sc-fONwsr fzuGTm"
                   >
                     App URL
                   </div>
                 </div>
                 <div
-                  className="sc-fONwsr fYkxm"
+                  className="sc-ipXKqB dypVHf"
                 >
                   <div
                     checked={true}
-                    className="sc-giadOv bthZKi"
+                    className="sc-VJcYb cENodP"
                   />
                   <div
-                    className="sc-kUaPvJ hImGKu"
+                    className="sc-fONwsr fzuGTm"
                   >
                     Manifest
                   </div>
@@ -124,7 +124,7 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
               />
             </label>
             <div
-              className="sc-gojNiO lnKJIM"
+              className="sc-bXGyLb gnyTjh"
               height="99px"
             >
               <label
@@ -165,10 +165,10 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
           </div>
         </div>
         <div
-          className="sc-fYiAbW haPmxn"
+          className="sc-dUjcNx hEnMst"
         >
           <div
-            className="sc-daURTG ernUfV"
+            className="sc-lkqHmb ckIVWC"
           >
             <a
               backgroundColor="#848484"
@@ -192,7 +192,7 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
         </div>
       </form>
       <div
-        className="sc-bXGyLb kIzGGk"
+        className="sc-eLExRp jcAAVu"
       />
     </div>
   </div>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/ConfirmPasswordUpdate default 1`] = `
+exports[`Storyshots UI Components/Loading default 1`] = `
 <div>
   <div
     style={
@@ -18,48 +18,18 @@ exports[`Storyshots Components/ConfirmPasswordUpdate default 1`] = `
       }
     >
       <div
-        className="sc-tilXH jHfHaR"
+        className="sc-hMqMXs cBtzNK"
+        size={30}
       >
         <div
-          className="sc-fYxtnH ceyQyI"
-        >
-          <div
-            className="sc-cSHVUG ksrKew"
-            height="100%"
-            width="100%"
-          >
-            <div
-              className="sc-hqyNC diuuup"
-            >
-              <div
-                className="sc-jbKcbu hLSNrE"
-              >
-                Password Updated
-              </div>
-            </div>
-            <div
-              className="sc-jqCOkK jpUCJi"
-            >
-              <div
-                className="sc-uJMKN geNrPw"
-              >
-                Your password has been successfully updated. You are still logged in, but will need to use your new password the next time you log in.
-              </div>
-            </div>
-            <div
-              className="sc-jnlKLf vWkgf"
-            >
-              <a
-                className="sc-chPdSV deIRnK"
-                href="/settings"
-                onClick={[Function]}
-                width={153}
-              >
-                Ok
-              </a>
-            </div>
-          </div>
-        </div>
+          className="sc-eNQAEJ cNCGwB"
+        />
+        <div
+          className="sc-eNQAEJ fLnlag"
+        />
+        <div
+          className="sc-eNQAEJ kpuwki"
+        />
       </div>
     </div>
   </div>
@@ -160,7 +130,7 @@ exports[`Storyshots Components/ConfirmPasswordUpdate default 1`] = `
               }
             }
           >
-            Components/ConfirmPasswordUpdate
+            UI Components/Loading
           </h1>
           <h2
             style={
@@ -274,85 +244,88 @@ exports[`Storyshots Components/ConfirmPasswordUpdate default 1`] = `
                     &gt;
                   </span>
                 </div>
-                <div>
-                  <div
+                <div
+                  style={
+                    Object {
+                      "paddingLeft": 33,
+                      "paddingRight": 3,
+                    }
+                  }
+                >
+                  <span
                     style={
                       Object {
-                        "paddingLeft": 33,
-                        "paddingRight": 3,
+                        "color": "#444",
                       }
                     }
                   >
-                    <span
-                      style={
-                        Object {
-                          "color": "#444",
-                        }
-                      }
-                    >
-                      &lt;
-                      styled.div
+                    &lt;
+                    Loading
+                  </span>
+                  <span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        size
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            30
+                          </span>
+                          }
+                        </span>
+                      </span>
                     </span>
-                    <span />
-                    <span
-                      style={
-                        Object {
-                          "color": "#444",
-                        }
-                      }
-                    >
-                      &gt;
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        count
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            3
+                          </span>
+                          }
+                        </span>
+                      </span>
+                       
                     </span>
-                  </div>
-                  <div
+                  </span>
+                  <span
                     style={
                       Object {
-                        "paddingLeft": 48,
-                        "paddingRight": 3,
+                        "color": "#444",
                       }
                     }
                   >
-                    <span
-                      style={
-                        Object {
-                          "color": "#444",
-                        }
-                      }
-                    >
-                      &lt;
-                      ConfirmPasswordUpdate
-                    </span>
-                    <span />
-                    <span
-                      style={
-                        Object {
-                          "color": "#444",
-                        }
-                      }
-                    >
-                      /&gt;
-                    </span>
-                  </div>
-                  <div
-                    style={
-                      Object {
-                        "paddingLeft": 33,
-                        "paddingRight": 3,
-                      }
-                    }
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#444",
-                        }
-                      }
-                    >
-                      &lt;/
-                      styled.div
-                      &gt;
-                    </span>
-                  </div>
+                    /&gt;
+                  </span>
                 </div>
                 <div
                   style={
@@ -421,23 +394,7 @@ exports[`Storyshots Components/ConfirmPasswordUpdate default 1`] = `
               }
             >
               "
-              ConfirmPasswordUpdate
-              " Component
-            </h2>
-            <small>
-              No propTypes defined!
-            </small>
-          </div>
-          <div>
-            <h2
-              style={
-                Object {
-                  "margin": "20px 0 0 0",
-                }
-              }
-            >
-              "
-              styled.div
+              Loading
               " Component
             </h2>
             <small>
