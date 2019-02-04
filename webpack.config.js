@@ -35,6 +35,7 @@ module.exports = {
   entry: {
     main: './src/index.tsx',
     tabStrip: './src/tabStrip/main.ts',
+    topBar: './src/topBar/main.ts',
   },
   output: {
     filename: `[name]${isProduction ? '.[contentHash]' : ''}.js`,
