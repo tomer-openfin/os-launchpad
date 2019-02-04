@@ -6,6 +6,7 @@ import windowsConfig, { initOnStartWindows } from '../../config/windows';
 
 import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
 
+import eraseCookie from '../../utils/eraseCookie';
 import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
 import { animateWindow, getCurrentOpenfinApplicationInfo, getSystemMonitorInfo } from '../../utils/openfinPromises';
@@ -88,6 +89,7 @@ function* openfinSetup(action: OpenfinReadyAction) {
 
   // Only main window should be doing setup.
   if (finName === APP_UUID) {
+    eraseCookie();
     if (isDevelopmentEnv()) {
       yield put(initDevTools());
     }
