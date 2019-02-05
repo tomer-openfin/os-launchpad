@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
 import { Color } from '../../styles';
+
 import { Props } from './AppIcon';
 
 interface WrapperProps {
   isDisabled?: boolean;
+  isLoading?: boolean;
   onClick?: () => void;
   size: number;
   borderWidth: number;
@@ -29,12 +31,13 @@ export const Wrapper = styled.div<WrapperProps>`
   overflow: hidden;
   transition: opacity 300ms ease-in-out;
 
-  ${({ borderWidth, isDisabled, onClick, size }) => {
-    const isClickable = !isDisabled && onClick;
+  ${({ borderWidth, isDisabled, isLoading, onClick, size }) => {
+    const isClickable = !isDisabled && onClick && !isLoading;
+    const cursorType = isClickable ? 'pointer' : 'default';
 
     return `
       border-width: ${borderWidth}px;
-      cursor: ${isClickable ? 'pointer' : 'default'};
+      cursor: ${isLoading ? 'progress' : cursorType};
       opacity: ${isDisabled ? 0.1 : 1};
       height: ${size}px;
       width: ${size}px;

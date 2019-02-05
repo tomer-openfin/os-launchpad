@@ -18,7 +18,8 @@ exports[`Storyshots UI Components/AppIcon default 1`] = `
       }
     >
       <div
-        className="sc-bZQynM ipLNzI"
+        className="sc-bZQynM NYJaE"
+        onClick={[Function]}
         size={50}
       >
         <div
@@ -353,6 +354,35 @@ exports[`Storyshots UI Components/AppIcon default 1`] = `
                       <span
                         style={Object {}}
                       >
+                        isLoading
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#a11",
+                              }
+                            }
+                          >
+                            false
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
                         onClick
                       </span>
                       <span>
@@ -364,11 +394,11 @@ exports[`Storyshots UI Components/AppIcon default 1`] = `
                           <span
                             style={
                               Object {
-                                "color": "#444",
+                                "color": "#170",
                               }
                             }
                           >
-                            null
+                            AppIcon clicked
                           </span>
                           }
                         </span>

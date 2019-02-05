@@ -50,10 +50,10 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           className="sc-bbmXgH jldPnE"
         >
           <div
-            className="sc-cJSrbW kjAWdm"
+            className="sc-cJSrbW bghNAr"
           >
             <div
-              className="sc-hqyNC cmNbyn"
+              className="sc-hqyNC fJDQbb"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -69,7 +69,7 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-ksYbfQ dxhdJR"
             >
               <div
-                className="sc-hmzhuo bsSYzS"
+                className="sc-hmzhuo fVtQkH"
                 onClick={[Function]}
               >
                 FinTech Studios
@@ -104,10 +104,10 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           className="sc-bbmXgH jldPnE"
         >
           <div
-            className="sc-cJSrbW kjAWdm"
+            className="sc-cJSrbW bghNAr"
           >
             <div
-              className="sc-hqyNC cmNbyn"
+              className="sc-hqyNC fJDQbb"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -123,7 +123,7 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-ksYbfQ dxhdJR"
             >
               <div
-                className="sc-hmzhuo bsSYzS"
+                className="sc-hmzhuo fVtQkH"
                 onClick={[Function]}
               >
                 GreenKey
@@ -158,10 +158,10 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           className="sc-bbmXgH jldPnE"
         >
           <div
-            className="sc-cJSrbW kjAWdm"
+            className="sc-cJSrbW bghNAr"
           >
             <div
-              className="sc-hqyNC cmNbyn"
+              className="sc-hqyNC fJDQbb"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -177,7 +177,7 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-ksYbfQ dxhdJR"
             >
               <div
-                className="sc-hmzhuo bsSYzS"
+                className="sc-hmzhuo fVtQkH"
                 onClick={[Function]}
               >
                 Hammerstone Markets App
@@ -212,10 +212,10 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           className="sc-bbmXgH jldPnE"
         >
           <div
-            className="sc-cJSrbW kjAWdm"
+            className="sc-cJSrbW bghNAr"
           >
             <div
-              className="sc-hqyNC cmNbyn"
+              className="sc-hqyNC fJDQbb"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -231,7 +231,7 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-ksYbfQ dxhdJR"
             >
               <div
-                className="sc-hmzhuo bsSYzS"
+                className="sc-hmzhuo fVtQkH"
                 onClick={[Function]}
               >
                 Neptune
@@ -266,10 +266,10 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           className="sc-bbmXgH jldPnE"
         >
           <div
-            className="sc-cJSrbW kjAWdm"
+            className="sc-cJSrbW bghNAr"
           >
             <div
-              className="sc-hqyNC cmNbyn"
+              className="sc-hqyNC fJDQbb"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -285,7 +285,7 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-ksYbfQ dxhdJR"
             >
               <div
-                className="sc-hmzhuo bsSYzS"
+                className="sc-hmzhuo fVtQkH"
                 onClick={[Function]}
               >
                 OpenDoor
@@ -320,10 +320,10 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           className="sc-bbmXgH jldPnE"
         >
           <div
-            className="sc-cJSrbW kjAWdm"
+            className="sc-cJSrbW bghNAr"
           >
             <div
-              className="sc-hqyNC cmNbyn"
+              className="sc-hqyNC fJDQbb"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -339,7 +339,7 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-ksYbfQ dxhdJR"
             >
               <div
-                className="sc-hmzhuo bsSYzS"
+                className="sc-hmzhuo fVtQkH"
                 onClick={[Function]}
               >
                 Parity One
@@ -375,10 +375,10 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           className="sc-bbmXgH jldPnE"
         >
           <div
-            className="sc-cJSrbW kjAWdm"
+            className="sc-cJSrbW bghNAr"
           >
             <div
-              className="sc-hqyNC cmNbyn"
+              className="sc-hqyNC fJDQbb"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -394,7 +394,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-ksYbfQ dxhdJR"
             >
               <div
-                className="sc-hmzhuo bsSYzS"
+                className="sc-hmzhuo fVtQkH"
                 onClick={[Function]}
               >
                 RSRCHXChange
@@ -429,10 +429,10 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           className="sc-bbmXgH jldPnE"
         >
           <div
-            className="sc-cJSrbW kjAWdm"
+            className="sc-cJSrbW bghNAr"
           >
             <div
-              className="sc-hqyNC cmNbyn"
+              className="sc-hqyNC fJDQbb"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -448,7 +448,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-ksYbfQ dxhdJR"
             >
               <div
-                className="sc-hmzhuo bsSYzS"
+                className="sc-hmzhuo fVtQkH"
                 onClick={[Function]}
               >
                 Trumid
@@ -483,10 +483,10 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           className="sc-bbmXgH jldPnE"
         >
           <div
-            className="sc-cJSrbW kjAWdm"
+            className="sc-cJSrbW bghNAr"
           >
             <div
-              className="sc-hqyNC cmNbyn"
+              className="sc-hqyNC fJDQbb"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -502,7 +502,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-ksYbfQ dxhdJR"
             >
               <div
-                className="sc-hmzhuo bsSYzS"
+                className="sc-hmzhuo fVtQkH"
                 onClick={[Function]}
               >
                 TT Desktop

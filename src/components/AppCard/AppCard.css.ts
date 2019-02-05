@@ -2,7 +2,13 @@ import styled from 'styled-components';
 
 import { Color } from '../../styles';
 
-export const Wrapper = styled.div`
+interface Props {
+  onClick?: () => void;
+  isLoading: boolean;
+}
+
+export const Wrapper = styled.div<Props>`
+  cursor: ${({ isLoading }) => (isLoading ? 'progress' : 'inherit')};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,16 +32,21 @@ export const InfoWrapper = styled.div`
   flex-grow: 1;
 `;
 
-export const AppName = styled.div`
-  font-weight: 500;
-  font-size: 16px;
-  text-transform: capitalize;
-  min-height: 22px;
+export const AppName = styled.div<Props>`
+  ${({ isLoading, onClick }) => {
+    const cursorType = onClick ? 'pointer' : 'default';
+
+    return `cursor: ${isLoading ? 'progress' : cursorType};`;
+  }}
+
   flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 500;
+  min-height: 22px;
+  text-transform: capitalize;
 
   &:hover {
     text-decoration: underline;
-    cursor: pointer;
   }
 `;
 
@@ -53,12 +64,12 @@ export const CTAWrapper = styled.div`
 `;
 
 export const IconWrapper = styled.div`
-  height: 100%;
-  width: 80px;
-  padding: 20px 0;
-  flex-shrink: 0;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  flex-shrink: 0;
+  height: 100%;
   justify-content: flex-start;
+  padding: 20px 0;
+  width: 80px;
 `;

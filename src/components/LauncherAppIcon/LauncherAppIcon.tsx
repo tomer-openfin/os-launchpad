@@ -41,7 +41,14 @@ const defaultProps = {
 const renderAppIconContent = ({ appStatusState, contextMenuOptions, imgSrc, isDisabled, launchApp, launcherPosition, launcherSizeConfig }: Props) => (
   <LoadingAnimator direction={launcherPosition} loading={appStatusState === AppStatusStates.Loading}>
     <ContextMenuZone options={contextMenuOptions}>
-      <AppIcon borderWidth={launcherSizeConfig.appIconBorder} imgSrc={imgSrc} isDisabled={isDisabled} onClick={launchApp} size={launcherSizeConfig.appIcon} />
+      <AppIcon
+        borderWidth={launcherSizeConfig.appIconBorder}
+        imgSrc={imgSrc}
+        isDisabled={isDisabled}
+        isLoading={appStatusState === AppStatusStates.Loading}
+        onClick={launchApp}
+        size={launcherSizeConfig.appIcon}
+      />
     </ContextMenuZone>
   </LoadingAnimator>
 );

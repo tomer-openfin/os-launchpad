@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { App } from '../../types/commons';
+import { App, AppStatusStates } from '../../types/commons';
 import { objectsFromIds } from '../../utils/byIds';
 import { State } from '../types';
 
@@ -16,6 +16,11 @@ export const getAppsIds = (state: State) => getAppsState(state).ids;
 // statusById
 export const getAppsStatusById = (state: State) => getAppsState(state).statusById;
 export const getAppStatusById = (state: State, id: string) => getAppsStatusById(state)[id];
+export const getAppStatusStateById = (state: State, id: string) => {
+  const appStatus = getAppStatusById(state, id);
+
+  return appStatus ? appStatus.state : AppStatusStates.Closed;
+};
 
 // Selectors
 export const getApps = createSelector(
