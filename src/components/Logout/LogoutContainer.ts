@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 
-import { exitApplication } from '../../redux/application/index';
-import { logoutRequest } from '../../redux/me/index';
+import { exitApplication } from '../../redux/application';
+import { logoutRequest } from '../../redux/me';
+
 import Logout from './Logout';
 
 const mapDispatch = {

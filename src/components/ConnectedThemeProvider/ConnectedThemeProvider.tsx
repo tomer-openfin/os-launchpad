@@ -2,9 +2,10 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
-import { getOrganizationActiveTheme } from '../../redux/organization/index';
 import { State } from '../../redux/types';
 import { Theme } from '../../types/commons';
+
+import { getOrganizationActiveTheme } from '../../redux/organization';
 
 interface Props {
   children: React.ReactChild;

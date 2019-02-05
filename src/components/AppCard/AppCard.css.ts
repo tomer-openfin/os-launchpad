@@ -17,7 +17,7 @@ export const Wrapper = styled.div<Props>`
   width: 100%;
 
   &:hover {
-    background: ${Color.DUSTY_GREY};
+    background: ${Color.SPACE_DUST};
   }
 `;
 

@@ -7,7 +7,7 @@ import { DirectionalPosition } from '../../types/commons';
 import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import { defaultProps } from '../SvgIcon/index';
+import { defaultProps } from '../SvgIcon';
 import SvgIconWithExtension from './SvgIconWithExtension';
 
 const { STORYBOOK_SVGS } = process.env;

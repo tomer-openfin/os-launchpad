@@ -10,6 +10,9 @@ import noop from '../../utils/noop';
 import { isDevelopmentEnv } from '../../utils/processHelpers';
 import { CheckIcon, Input, InputWrapper, SaveIcon, SubmitButton, Text, TextWrapper, UndoText, UserActions } from './LayoutsUserActions.css';
 
+const ERROR_SHOW_DURATION_MS = 5000;
+const SUCCESS_SHOW_DURATION_MS = isDevelopmentEnv ? 2000 : 15000;
+
 interface Props {
   deleteLayout: (id: string) => void;
   saveLayout: (name: string, meta: MetaWithCallbacks) => void;
@@ -134,8 +137,6 @@ class LayoutsUserActions extends React.Component<Props, State> {
 
   renderMessage = () => {
     const { responseReceived, result, showErrorState, showSavedState } = this.state;
-    const ERROR_SHOW_DURATION_MS = 5000;
-    const SUCCESS_SHOW_DURATION_MS = isDevelopmentEnv ? 2000 : 15000;
 
     if (responseReceived) {
       if (result.status === ResponseStatus.FAILURE) {

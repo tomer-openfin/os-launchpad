@@ -1,18 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
-import {
-  DeleteIconLink,
-  EditIconLink,
-  Footer,
-  HeadingWrapper,
-  LinkWrapper,
-  ListWrapper,
-  SortButton,
-  SortHeader,
-  SortWrapper,
-  Wrapper,
-} from './AdminUsers.css';
+import { DeleteIconLink, EditIconLink, Footer, HeadingWrapper, LinkWrapper, ListWrapper, SortButton, SortHeader, SortWrapper, Wrapper } from './AdminUsers.css';
 
 import { User } from '../../types/commons';
 
@@ -20,7 +9,7 @@ import { doesCurrentPathMatch } from '../../utils/routeHelpers';
 import { ADMIN_USERS_ROUTES, ROUTES } from '../Router/consts';
 
 import { Row } from '../AppDirectory';
-import { ButtonLink } from '../Button/Button.css';
+import { ButtonLink } from '../Button';
 import Modal from '../Modal';
 import { SearchInputWithState } from '../SearchInput';
 import UserCard from '../UserCard';

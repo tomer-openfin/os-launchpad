@@ -3,7 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 
 import { DirectionalPosition, LauncherSize, OnOff } from '../../types/commons';
 import { doesCurrentPathMatch } from '../../utils/routeHelpers';
-import { ButtonLink } from '../Button/Button.css';
+import { ButtonLink } from '../Button';
 import { ROUTES, SETTINGS_ROUTES } from '../Router/consts';
 import { ButtonWrapper, CTA, Group, Heading, Row, Section, StyledRadioButton, Window } from './Settings.css';
 

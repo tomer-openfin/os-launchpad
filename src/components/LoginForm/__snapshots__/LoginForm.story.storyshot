@@ -18,7 +18,7 @@ exports[`Storyshots Components/LoginForm default 1`] = `
       }
     >
       <form
-        className="sc-hORach jBrJiT"
+        className="sc-lkqHmb fgSdED"
         onSubmit={[Function]}
       >
         <label
@@ -30,7 +30,7 @@ exports[`Storyshots Components/LoginForm default 1`] = `
             Email
           </div>
           <input
-            className="sc-hMqMXs fUorsq"
+            className="sc-hMqMXs cNmeBE"
             name="username"
             onBlur={[Function]}
             onChange={[Function]}
@@ -47,7 +47,7 @@ exports[`Storyshots Components/LoginForm default 1`] = `
             Password
           </div>
           <input
-            className="sc-hMqMXs fUorsq"
+            className="sc-hMqMXs cNmeBE"
             name="password"
             onBlur={[Function]}
             onChange={[Function]}
@@ -57,10 +57,10 @@ exports[`Storyshots Components/LoginForm default 1`] = `
           />
         </label>
         <div
-          className="sc-bMVAic eKkbir"
+          className="sc-eLExRp tgWKl"
         >
           <button
-            className="sc-kAzzGY jwJGLG"
+            className="sc-kAzzGY hcTOPm"
           >
             Log In
           </button>
@@ -755,7 +755,7 @@ exports[`Storyshots Components/LoginForm withFormik 1`] = `
       }
     >
       <form
-        className="sc-hORach jBrJiT"
+        className="sc-lkqHmb fgSdED"
         onSubmit={[Function]}
       >
         <label
@@ -767,7 +767,7 @@ exports[`Storyshots Components/LoginForm withFormik 1`] = `
             Email
           </div>
           <input
-            className="sc-hMqMXs fUorsq"
+            className="sc-hMqMXs cNmeBE"
             name="username"
             onBlur={[Function]}
             onChange={[Function]}
@@ -784,7 +784,7 @@ exports[`Storyshots Components/LoginForm withFormik 1`] = `
             Password
           </div>
           <input
-            className="sc-hMqMXs fUorsq"
+            className="sc-hMqMXs cNmeBE"
             name="password"
             onBlur={[Function]}
             onChange={[Function]}
@@ -794,10 +794,10 @@ exports[`Storyshots Components/LoginForm withFormik 1`] = `
           />
         </label>
         <div
-          className="sc-bMVAic eKkbir"
+          className="sc-eLExRp tgWKl"
         >
           <button
-            className="sc-kAzzGY jwJGLG"
+            className="sc-kAzzGY hcTOPm"
           >
             Log In
           </button>

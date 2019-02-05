@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-import { Color } from '../../styles/index';
-import { TypeStyleCanopus, TypeStyleProcyon } from '../../styles/typography.css';
+import { Color, Typography } from '../../styles';
 
 import SvgIcon from '../SvgIcon/SvgIcon';
 
@@ -16,7 +15,7 @@ export const Wrapper = styled.div`
   width: 100%;
 
   &:hover {
-    background: ${Color.DUSTY_GREY};
+    background: ${Color.SPACE_DUST};
   }
 `;
 
@@ -50,7 +49,7 @@ export const NameAndBadgeWrapper = styled.div`
 `;
 
 export const UserName = styled.div`
-  ${TypeStyleProcyon}
+  ${Typography.TypeStyleProcyon}
 
   text-transform: capitalize;
   min-height: 22px;
@@ -66,7 +65,7 @@ export const Badge = styled(SvgIcon)`
 `;
 
 export const UserEmail = styled.div`
-  ${TypeStyleCanopus}
+  ${Typography.TypeStyleCanopus}
 
   max-width: 100%;
   padding: 0 20px;

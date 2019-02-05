@@ -1,139 +1,51 @@
-import { Formik } from 'formik';
 import * as React from 'react';
-import { Redirect, RouteComponentProps } from 'react-router-dom';
 
-import * as trashIcon from '../../assets/Trash.svg';
-
-import { ResponseStatus, User } from '../../types/commons';
+import { MetaWithCallbacks, PushRoute, RequestFormSubmit, User } from '../../types/commons';
 
 import { ROUTES } from '../Router/consts';
 
-import { Color } from '../../styles';
-import { HeadingText } from '../ConfirmUserDelete/ConfirmDelete.css';
-import UserForm, { ErrorResponseMessage, ErrorWrapper, Wrapper } from '../UserForm';
+import { createPushRouteHandler } from '../../utils/routeHelpers';
+import RequestForm from '../RequestForm';
+import UserForm from '../UserForm';
 
-import SvgIcon from '../SvgIcon/SvgIcon';
-import WindowHeader from '../WindowHeader';
-
-interface Props extends RouteComponentProps {
+interface Props {
   onEscDown: () => void;
-  updateUser: Function;
+  updateUser: RequestFormSubmit<User>;
+  user: User;
+  pushRoute: PushRoute;
 }
 
-interface State {
-  formContents: User;
-  responseReceived: boolean;
-  result: {
-    message?: string;
-    status: string;
-  };
-}
+const parsePhoneWithCountryCode = (phoneNumber: string) => phoneNumber.substr(phoneNumber.length - 10);
 
-const defaultProps: Partial<Props> = {};
+const createUserSubmitHandler = (submitUser: RequestFormSubmit<User>): RequestFormSubmit<User> => (formData: User, meta: MetaWithCallbacks) => {
+  // default to +1 for country code for now
+  const payload: User = { ...formData, phone: `+1${formData.phone}` };
 
-class EditUserForm extends React.Component<Props, State> {
-  static defaultProps = defaultProps;
+  submitUser(payload, meta);
+};
 
-  state = {
-    formContents: {
-      email: '',
-      firstName: '',
-      id: '',
-      isAdmin: false,
-      lastName: '',
-      middleInitial: '',
-      phone: '',
-      tmpPassword: '',
-      username: '',
-    },
-    responseReceived: false,
-    result: {
-      message: '',
-      status: '',
-    },
-  };
+const EditUserForm = ({ user, pushRoute, updateUser }: Props) => {
+  const { firstName, lastName, middleInitial, phone, id, username, email } = user;
 
-  errorCb = message =>
-    this.setState({
-      responseReceived: true,
-      result: {
-        message,
-        status: ResponseStatus.FAILURE,
-      },
-    });
-
-  successCb = () =>
-    this.setState({
-      responseReceived: true,
-      result: {
-        status: ResponseStatus.SUCCESS,
-      },
-    });
-
-  handleFormSubmit = (payload, actions) => {
-    const { updateUser } = this.props;
-
-    const meta = { successCb: this.successCb, errorCb: this.errorCb };
-
-    // default to +1 for country code for now
-    payload.phone = `+1${payload.phone}`;
-
-    updateUser(payload, meta);
-
-    actions.setSubmitting(false);
-  };
-
-  handleDeleteIconClick = () => {
-    const { history, location } = this.props;
-
-    history.push(ROUTES.ADMIN_USERS_DELETE, location.state);
-  };
-
-  renderMessage = () => {
-    const { responseReceived, result } = this.state;
-
-    if (responseReceived) {
-      if (result.status === ResponseStatus.FAILURE) {
-        return <ErrorResponseMessage>Sorry, there was an error tyring to update this user, please try again. Error: {result.message}</ErrorResponseMessage>;
-      }
-
-      return <Redirect to={ROUTES.ADMIN_USERS} />;
-    }
-
-    return null;
-  };
-
-  render() {
-    const { location } = this.props;
-    const { firstName, lastName, middleInitial, phone, id, username, email } = location.state;
-
-    return (
-      <Wrapper>
-        <WindowHeader backgroundColor={Color.VACUUM}>
-          <HeadingText>{`${firstName} ${lastName}`}</HeadingText>
-
-          <SvgIcon color={Color.MERCURY} hoverColor={Color.MARS} size={30} imgSrc={trashIcon} onClick={this.handleDeleteIconClick} />
-        </WindowHeader>
-
-        <Formik
-          initialValues={{
-            email,
-            firstName,
-            id,
-            lastName,
-            middleInitial,
-            phone: phone ? phone.slice(2) : undefined,
-            username,
-          }}
-          onSubmit={this.handleFormSubmit}
-          validateOnChange={false}
-          render={UserForm}
-        />
-
-        <ErrorWrapper>{this.renderMessage()}</ErrorWrapper>
-      </Wrapper>
-    );
-  }
-}
+  return (
+    <RequestForm
+      initialValues={{
+        email,
+        firstName,
+        id,
+        lastName,
+        middleInitial,
+        phone: phone ? parsePhoneWithCountryCode(phone) : undefined,
+        username,
+      }}
+      errorMessage={`There was an error trying to update ${firstName} ${lastName}`}
+      form={UserForm}
+      handleDeleteIconClick={createPushRouteHandler(pushRoute, ROUTES.ADMIN_USERS_DELETE, user)}
+      headingText={`${firstName} ${lastName}`}
+      onSubmitSuccess={createPushRouteHandler(pushRoute, ROUTES.ADMIN_USERS)}
+      submit={createUserSubmitHandler(updateUser)}
+    />
+  );
+};
 
 export default EditUserForm;

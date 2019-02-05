@@ -1,10 +1,10 @@
 import { put, takeEvery } from 'redux-saga/effects';
 
 import { unbindFinAppEventHanlders } from '../../utils/finAppEventHandlerHelpers';
-import { reboundLauncherRequest } from '../application/index';
-import { closeFinAppSuccess } from '../apps/index';
-import { SET_MONITOR_INFO, SYSTEM_EVENT_APPLICATION_CLOSED, SYSTEM_EVENT_APPLICATION_CRASHED, SYSTEM_EVENT_APPLICATION_STARTED } from './actions';
-import { SystemEventApplicationClosedAction, SystemEventApplicationCrashedAction, SystemEventApplicationStartedAction } from './types';
+import { reboundLauncherRequest } from '../application';
+import { closeFinAppSuccess } from '../apps';
+import { SET_MONITOR_INFO, SYSTEM_EVENT_APPLICATION_CLOSED, SYSTEM_EVENT_APPLICATION_CRASHED } from './actions';
+import { SystemEventApplicationClosedAction, SystemEventApplicationCrashedAction } from './types';
 
 function* watchSetMonitorInfo() {
   yield put(reboundLauncherRequest(false, 0));

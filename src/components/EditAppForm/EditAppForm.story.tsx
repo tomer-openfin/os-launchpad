@@ -7,14 +7,12 @@ import { CATEGORIES } from '../../utils/storyCategories';
 
 import EditAppForm from './EditAppForm';
 
-const mockLocation = {
-  hash: 'for react-router',
-  pathname: 'for react-router',
-  search: 'for react-router',
-  state: AppData[0],
-};
+const app = AppData[0];
 
 const updateApp = action('updateApp');
 const onEscDown = action('onEscDown');
+const pushRoute = action('pushRoute');
 
-storiesOf(`${CATEGORIES.ADMIN}EditAppForm`, module).add('default', () => <EditAppForm location={mockLocation} onEscDown={onEscDown} updateApp={updateApp} />);
+storiesOf(`${CATEGORIES.ADMIN}EditAppForm`, module).add('default', () => (
+  <EditAppForm app={app} pushRoute={pushRoute} onEscDown={onEscDown} updateApp={updateApp} />
+));

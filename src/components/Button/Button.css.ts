@@ -46,10 +46,16 @@ export const ButtonCSS = css<ButtonProps>`
     cursor: default;
   }
 
-  &:hover:not([disabled]) {
+  :hover:not([disabled]) {
+    border: none;
+
     &:before {
       opacity: 0.4;
     }
+  }
+
+  :focus {
+    border: 1px solid ${Color.JUPITER};
   }
 `;
 

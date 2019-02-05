@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { deleteAdminAppRequest } from '../../redux/admin/index';
+import { deleteAdminAppRequest } from '../../redux/admin';
 import ConfirmAppDelete from './ConfirmAppDelete';
 
 const dispatchProps = {

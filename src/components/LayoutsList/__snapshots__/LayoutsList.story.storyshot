@@ -11,21 +11,21 @@ exports[`Storyshots Components/LayoutsList default 1`] = `
     }
   >
     <div
-      className="sc-ibxdXY hCWSsH"
+      className="sc-bsbRJL gsQRTU"
     >
       <h6
-        className="sc-eXEjpC fuJteP"
+        className="sc-iQNlJl dymSAK"
       >
         Recent Layouts
       </h6>
       <ul
-        className="sc-iQKALj cKLBfx"
+        className="sc-cMhqgX gfKEzX"
       >
         <div
-          className="sc-esjQYD igUNml"
+          className="sc-hXRMBi glQpeD"
         >
           <li
-            className="sc-kfGgVZ boSRiD"
+            className="sc-gwVKww cMxZwv"
             onClick={[Function]}
           >
             layout
@@ -703,24 +703,24 @@ exports[`Storyshots Components/LayoutsList with Wrapper 1`] = `
     }
   >
     <div
-      className="sc-cLQEGU fPKzov"
+      className="sc-daURTG gEPlC"
     >
       <div
-        className="sc-ibxdXY hCWSsH"
+        className="sc-bsbRJL gsQRTU"
       >
         <h6
-          className="sc-eXEjpC fuJteP"
+          className="sc-iQNlJl dymSAK"
         >
           Recent Layouts
         </h6>
         <ul
-          className="sc-iQKALj cKLBfx"
+          className="sc-cMhqgX gfKEzX"
         >
           <div
-            className="sc-esjQYD igUNml"
+            className="sc-hXRMBi glQpeD"
           >
             <li
-              className="sc-kfGgVZ boSRiD"
+              className="sc-gwVKww cMxZwv"
               onClick={[Function]}
             >
               layout

@@ -3,7 +3,8 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import ApiService from '../../services/ApiService';
 
 import { ResponseStatus } from '../../types/commons';
-import { getAppDirectoryList } from '../apps/index';
+
+import { getAppDirectoryList } from '../apps';
 import {
   CREATE_ADMIN_APP,
   CREATE_ADMIN_USER,

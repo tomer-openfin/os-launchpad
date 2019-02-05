@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Color, hexToRgb } from '../../styles';
+import { Color, hexToRgba } from '../../styles';
 import { AppStatusStates, DirectionalPosition } from '../../types/commons';
 
 import SvgIcon from '../SvgIcon';
@@ -44,10 +44,8 @@ export const Indicator = styled.div<IndicatorProps>`
       return '';
     }
 
-    const { r, g, b } = hexToRgb(StatusColors[appStatusState]);
-
     return `
-      box-shadow: 0 0 ${size}px rgba(${r}, ${g}, ${b}, 0.7);
+      box-shadow: 0 0 ${size}px ${hexToRgba(StatusColors[appStatusState], 0.7)};
       margin-${position}: ${size / 2}px;
     `;
   }}

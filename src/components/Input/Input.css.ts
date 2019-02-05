@@ -1,7 +1,7 @@
 import { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-import { Color, hexToRgb, Typography } from '../../styles';
+import { Color, hexToRgba, Typography } from '../../styles';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   hasError?: boolean;
@@ -24,16 +24,15 @@ export default styled.input<InputProps>`
   }
 
   ${({ hasError }) => {
-    const { r, g, b } = hexToRgb(Color.JUPITER);
-    const errorRgb = hexToRgb(Color.MARS);
-    const errorBorderColor = `rgba(${errorRgb.r}, ${errorRgb.g}, ${errorRgb.b}, 0.5)`;
+    const focusBorderColor = hexToRgba(Color.JUPITER, 0.5);
+    const errorBorderColor = hexToRgba(Color.MARS, 0.5);
 
     return `
-      border-color: ${hasError ? `${errorBorderColor}` : 'transparent'};
+      border-color: ${hasError ? errorBorderColor : 'transparent'};
       color: ${hasError ? Color.MARS : Color.VACUUM};
 
       &:focus{
-        border-color: ${hasError ? `${errorBorderColor}` : `rgba(${r}, ${g}, ${b}, 0.54)`} ;
+        border-color: ${hasError ? errorBorderColor : focusBorderColor};
       }
     `;
   }}

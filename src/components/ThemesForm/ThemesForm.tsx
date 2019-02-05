@@ -3,9 +3,9 @@ import * as React from 'react';
 
 import { MetaWithCallbacks, Theme } from '../../types/commons';
 
-import { Color } from '../../styles/index';
+import { Color } from '../../styles';
 import Button from '../Button';
-import { ButtonsWrapper, StyledForm } from '../LogoForm/index';
+import { ButtonsWrapper, StyledForm } from '../LogoForm';
 import { Option, Select } from './ThemesForm.css';
 
 const BASE_ID = 'ThemesForm';

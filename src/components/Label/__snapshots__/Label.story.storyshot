@@ -287,7 +287,7 @@ exports[`Storyshots UI Components/Label with ErrorMessage 1`] = `
         Label
       </div>
       <input
-        className="sc-hMqMXs isfAp"
+        className="sc-hMqMXs fgTWmD"
       />
       <div
         className="sc-kEYyzF dngPqt"
@@ -670,7 +670,7 @@ exports[`Storyshots UI Components/Label with Input 1`] = `
         Label
       </div>
       <input
-        className="sc-hMqMXs fUorsq"
+        className="sc-hMqMXs cNmeBE"
       />
     </label>
   </div>

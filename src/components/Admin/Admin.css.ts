@@ -18,7 +18,6 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
   overflow: hidden;
   width: 100%;
-  max-width: 600px;
   margin: auto;
   flex: 1;
 `;
