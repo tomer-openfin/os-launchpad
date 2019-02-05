@@ -51,9 +51,6 @@ const ANIMATION_DURATION = 300;
  * Application Start
  */
 function* applicationStart() {
-  // tslint:disable-next-line:no-console
-  console.log('application started');
-
   yield put(getAppDirectoryList());
 }
 

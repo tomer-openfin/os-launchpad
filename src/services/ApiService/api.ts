@@ -5,6 +5,8 @@ const API = {
 
   CREATE_MANIFEST: (runtimeVersion: string, appUrl: string, baseUrl: string) => `${baseUrl}api/app.json?runtime=${runtimeVersion}&appurl=${appUrl}`,
 
+  CONFIRM_PASSWORD: `${API_URL}api/auth/password/confirm`,
+  FORGOT_PASSWORD: `${API_URL}api/auth/password/forgot`,
   LOGIN: `${API_URL}api/auth/login`,
   LOGOUT: `${API_URL}api/auth/logout`,
   NEW_PASSWORD: `${API_URL}api/auth/password/new`,

@@ -11,26 +11,16 @@ exports[`Storyshots UI Components/WindowHeader default 1`] = `
     }
   >
     <div
-      className="sc-cMljjf ibEAVd"
+      className="sc-csuQGl icRNWG"
     >
       <div
-        className="sc-jAaTju jKiQTw"
+        className="sc-Rmtcm cWWTMA"
       >
         <div
-          className="sc-jDwBTQ jXaOQa"
+          className="sc-bRBYWo gUoilI"
         >
           OS Launchpad
         </div>
-      </div>
-      <div
-        className="sc-brqgnP boVyRH"
-      >
-        <div
-          className="sc-ifAKCX cWlwzh"
-          color="#E7E7E7"
-          onClick={[Function]}
-          size={25}
-        />
       </div>
     </div>
   </div>
@@ -189,6 +179,32 @@ exports[`Storyshots UI Components/WindowHeader default 1`] = `
                       <span
                         style={Object {}}
                       >
+                        handleBack
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#444",
+                              }
+                            }
+                          >
+                            null
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
                         handleClose
                       </span>
                       <span>
@@ -200,11 +216,11 @@ exports[`Storyshots UI Components/WindowHeader default 1`] = `
                           <span
                             style={
                               Object {
-                                "color": "#170",
+                                "color": "#444",
                               }
                             }
                           >
-                            noop
+                            null
                           </span>
                           }
                         </span>

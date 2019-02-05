@@ -1,135 +1,91 @@
-import { Formik, FormikValues } from 'formik';
 import * as React from 'react';
 
-import { LoginRequestPayload, LoginWithNewPasswordPayload, MeLoginState } from '../../redux/me';
-
-import { setLocalStorage } from '../../services/localStorageAdapter';
+import { LoginErrorPayload } from '../../redux/me/types';
 import Borders from '../Borders';
-import Checkbox from '../Checkbox';
-import FormField from '../FormField';
+import ChangePasswordForm from '../ChangePasswordForm';
+import LoginForm from '../LoginForm';
 import WindowHeader from '../WindowHeader';
-import { ContentWrapper, CTA, FormWrapper, ResponseMessage, StyledLogo, Wrapper } from './Login.css';
+import { ContentWrapper, FormWrapper, ResponseMessage, StyledLogo, Wrapper } from './Login.css';
+
+export enum Stage {
+  ChangePassword = 'changePassword',
+  Login = 'login',
+}
 
 interface Props {
-  autoLoginOrg: boolean;
+  className?: string;
   closeApplication: () => void;
-  login: (options: LoginRequestPayload) => void;
-  loginWithNewPassword: (options: LoginWithNewPasswordPayload) => void;
-  loginState: MeLoginState;
-  values?: FormikValues;
 }
 
-const { USERNAME, PASSWORD } = process.env;
+interface State {
+  error: boolean;
+  message: string;
+  session: string;
+  stage: Stage;
+  username: string;
+}
 
-const autoLoginLocal = JSON.parse(localStorage.getItem('autoLogin') || 'false');
+interface ViewProps extends Props, State {
+  handleError: (payload: LoginErrorPayload) => void;
+}
 
-const initialValues =
-  USERNAME && PASSWORD && document.location && document.location.host.indexOf('8080') !== -1
-    ? { username: USERNAME, password: PASSWORD, autoLogin: autoLoginLocal }
-    : { username: '', password: '', autoLogin: autoLoginLocal };
+export const LoginView = (props: ViewProps) => {
+  const { className, closeApplication, handleError, error, message, session, stage, username } = props;
 
-/**
- * Higher order function to pass a function to Formik's onSubmit
- *
- * @param {SubmitFn}
- *
- * @returns {LoginRequestPayload => void}
- */
-const handleSubmit = (loginState: MeLoginState, login: Props['login'], loginWithNewPassword: Props['loginWithNewPassword']) => values => {
-  const { changePassword, session } = loginState;
+  return (
+    <Wrapper className={className}>
+      <Borders borderRadius="6px">
+        <WindowHeader handleClose={closeApplication}>Log In</WindowHeader>
 
-  const { username, password, newPassword, autoLogin } = values;
+        <ContentWrapper>
+          <StyledLogo size={90} />
 
-  setLocalStorage('autoLogin', autoLogin);
+          <FormWrapper>
+            {stage === Stage.ChangePassword ? (
+              <ChangePasswordForm errorCb={handleError} session={session} username={username} />
+            ) : (
+              <LoginForm errorCb={handleError} />
+            )}
+          </FormWrapper>
 
-  if (changePassword) {
-    loginWithNewPassword({ username, newPassword, session });
-  } else {
-    login({ username, password });
-  }
+          {message && <ResponseMessage error={error}>{message || 'Login failed. Please try again.'}</ResponseMessage>}
+        </ContentWrapper>
+      </Borders>
+    </Wrapper>
+  );
 };
 
-const renderMessage = ({ error, message }: MeLoginState) =>
-  (error || message) && <ResponseMessage error={error}>{message || 'Login failed. Please try again.'}</ResponseMessage>;
+class Login extends React.Component<Props, State> {
+  state = {
+    error: false,
+    message: '',
+    session: '',
+    stage: Stage.Login,
+    username: '',
+  };
 
-/**
- * LoginForm component
- * componentDidMount lifecycle to focus inputRef on mount
- * @returns {React.Component}
- */
-class LoginForm extends React.Component<Partial<Props>> {
-  private inputRef: React.RefObject<HTMLInputElement> = React.createRef<HTMLInputElement>();
-
-  componentDidMount() {
-    if (this.inputRef.current) {
-      this.inputRef.current.focus();
+  handleError = (payload: LoginErrorPayload) => {
+    const code = payload.code || '';
+    if (code === 'NewPasswordRequired') {
+      this.setState({
+        error: false,
+        message: payload.message,
+        session: payload.session || '',
+        stage: Stage.ChangePassword,
+        username: payload.username,
+      });
+    } else {
+      this.setState({
+        error: true,
+        message: payload.message,
+        session: payload.session || '',
+      });
     }
-  }
+  };
 
   render() {
-    const { autoLoginOrg } = this.props;
-
-    return (
-      <FormWrapper key="login">
-        <FormField htmlInputRef={this.inputRef} label="Email" name="username" placeholder="Enter Email" type="text" />
-
-        <FormField label="Password" name="password" placeholder="Enter Password" type="password" />
-
-        {/* {autoLoginOrg && <Checkbox label="Keep me logged in" name="autoLogin" checked={values && values.autoLogin} />} */}
-
-        <CTA extraSpace={!autoLoginOrg || true} type="submit">
-          Login
-        </CTA>
-      </FormWrapper>
-    );
+    return <LoginView {...this.props} {...this.state} handleError={this.handleError} />;
   }
 }
-
-/**
- * ChangePasswordForm component
- *
- * @returns {React.StatelessComponent}
- */
-const ChangePasswordForm = () => (
-  <FormWrapper key="changePassword">
-    <FormField label="New Password" name="newPassword" placeholder="Enter Password" type="password" />
-
-    <FormField label="Password Confirmation" name="newPasswordConfirmation" placeholder="Confirm Password" type="password" />
-
-    <CTA type="submit" fullWidth>
-      Create New Password
-    </CTA>
-  </FormWrapper>
-);
-
-const renderFormCreator = (autoLoginOrg, loginState) => ({ values }) =>
-  loginState.changePassword ? <ChangePasswordForm /> : <LoginForm autoLoginOrg={autoLoginOrg} values={values} />;
-
-/**
- * Login component
- *
- * @param {Props} - Login props
- *
- * @returns {React.StatelessComponent}
- */
-const Login = ({ autoLoginOrg, closeApplication, loginState, login, loginWithNewPassword }: Props) => (
-  <Wrapper>
-    <Borders borderRadius="6px">
-      <WindowHeader handleClose={closeApplication}>Log In</WindowHeader>
-
-      <ContentWrapper>
-        <StyledLogo size={90} />
-
-        {renderMessage(loginState)}
-
-        <Formik
-          initialValues={initialValues}
-          onSubmit={handleSubmit(loginState, login, loginWithNewPassword)}
-          render={renderFormCreator(autoLoginOrg, loginState)}
-        />
-      </ContentWrapper>
-    </Borders>
-  </Wrapper>
-);
 
 export default Login;

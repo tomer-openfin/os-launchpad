@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import * as blobDarkLarge from '../../assets/BlobDarkLarge.svg';
 
-import { Color } from '../../styles';
+import { Color, Typography } from '../../styles';
 
 import Button from '../Button';
 import Logo from '../Logo';
@@ -27,9 +27,6 @@ export const StyledLogo = styled(Logo)`
 `;
 
 export const FormWrapper = styled(Form)`
-  display: grid;
-  grid-row-gap: 18px;
-  grid-template-columns: 1fr;
   width: 307px;
 `;
 
@@ -44,16 +41,18 @@ export const ContentWrapper = styled.div`
 `;
 
 export const ResponseMessage = styled.div<{ error: boolean }>`
-  color: ${({ error }) => (error ? Color.MARS : Color.SATURN)};
-  position: absolute;
-  bottom: 10px;
-  height: 30px;
-  font-size: 12px;
-  text-align: center;
-  justify-content: center;
+  ${Typography.TypeStyleDeneb}
+
   align-items: center;
-  width: 100%;
+  bottom: 0;
+  color: ${({ error }) => (error ? Color.MARS : Color.SATURN)};
   display: flex;
+  height: 34px;
+  justify-content: center;
+  padding: 0 10px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
 `;
 
 export const CTA = styled(Button)<{ extraSpace?: boolean; fullWidth?: boolean }>`

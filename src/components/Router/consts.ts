@@ -29,6 +29,7 @@ export const ROUTES = {
   APP_DIRECTORY: '/app-directory',
   APP_LAUNCHER_OVERFLOW: '/app-overflow',
   CONTEXT_MENU: '/context-menu',
+  FORGOT_PASSWORD: '/forgot-password',
   HOME: '/',
   LAYOUTS: '/layouts',
   LOGIN: '/login',

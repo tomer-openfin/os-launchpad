@@ -112,7 +112,7 @@ export interface NewUserLayout {
 }
 
 export interface MetaWithCallbacks {
-  successCb: Function;
+  successCb?: Function;
   errorCb?: Function;
 }
 

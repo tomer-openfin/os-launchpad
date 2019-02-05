@@ -11,44 +11,44 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
     }
   >
     <div
-      className="sc-dEoRIm hHAxgM"
+      className="sc-hgHYgh juXxxs"
     >
       <h3
-        className="sc-bmyXtO hvnxo"
+        className="sc-kasBVs fpmHyk"
       >
         Enterprise Branding
       </h3>
       <form
-        className="sc-iGrrsa gyMqzo"
+        className="sc-iGPElx jasfzu"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <label
-          className="sc-iqzUVk jlswDi"
+          className="sc-etwtAo gUjHAm"
           htmlFor="LogoFormFileInput"
         >
           <div
-            className="sc-qrIAp joIrTp"
+            className="sc-clNaTc icXrhw"
           >
             <div
-              className="sc-kLIISr fotEiB"
+              className="sc-fQejPQ hZEmzh"
             >
               <div
-                className="sc-kEYyzF cvdniS"
+                className="sc-brqgnP hersAG"
                 size={80}
               />
             </div>
             <div
-              className="sc-cqCuEk dcJcTJ"
+              className="sc-iSDuPN ilgrkX"
             >
               <div
-                className="sc-dliRfk jKRHt"
+                className="sc-fZwumE gYFSGI"
               >
                 Click & drag a new image over the existing one to replace your brand logo.
               </div>
               <input
                 accept="image/*"
-                className="sc-hmXxxW exbBvP"
+                className="sc-RcBXQ ZIBgs"
                 id="LogoFormFileInput"
                 name="logo"
                 onBlur={[Function]}
@@ -63,10 +63,10 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
           </div>
         </label>
         <div
-          className="sc-ipZHIp cWFDMh"
+          className="sc-jXQZqI FvfZI"
         >
           <button
-            className="sc-kAzzGY gnyQHQ"
+            className="sc-kAzzGY jwJGLG"
             disabled={true}
             type="submit"
             width={110}
@@ -74,7 +74,7 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
             Overwrite
           </button>
           <button
-            className="sc-kAzzGY hoTeeW"
+            className="sc-kAzzGY gvLiNe"
             disabled={true}
             onClick={[Function]}
             type="button"
@@ -85,17 +85,17 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
         </div>
       </form>
       <h3
-        className="sc-bmyXtO hvnxo"
+        className="sc-kasBVs fpmHyk"
       >
         Enterprise Theme
       </h3>
       <form
-        className="sc-iGrrsa gyMqzo"
+        className="sc-iGPElx jasfzu"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <select
-          className="sc-ebFjAB jdBZLa"
+          className="sc-gtfDJT drukAC"
           disabled={false}
           id="ThemesFormSelectInput"
           name="theme"
@@ -105,23 +105,23 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
           value="dark"
         >
           <option
-            className="sc-jKVCRD fxQKDl"
+            className="sc-fOICqy cyOUqS"
             value="dark"
           >
             Dark
           </option>
           <option
-            className="sc-jKVCRD fxQKDl"
+            className="sc-fOICqy cyOUqS"
             value="light"
           >
             Light
           </option>
         </select>
         <div
-          className="sc-ipZHIp cWFDMh"
+          className="sc-jXQZqI FvfZI"
         >
           <button
-            className="sc-kAzzGY gnyQHQ"
+            className="sc-kAzzGY jwJGLG"
             disabled={true}
             type="submit"
             width={110}
@@ -129,7 +129,7 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
             Set Theme
           </button>
           <button
-            className="sc-kAzzGY hoTeeW"
+            className="sc-kAzzGY gvLiNe"
             disabled={true}
             onClick={[Function]}
             type="button"

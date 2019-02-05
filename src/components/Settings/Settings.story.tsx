@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 
 storiesOf(`${CATEGORIES.COMPONENTS}Settings`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecorator(15))
+  .addDecorator(withMarginDecorator(30))
   .add('default', () => {
     const autoHide = boolean('autoHide', false);
     const launcherSize = select('launcherSize', Object(LauncherSize), LauncherSize.Large);

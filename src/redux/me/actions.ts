@@ -1,9 +1,12 @@
 import { createAction } from 'redux-actions';
 
-import { DirectionalPosition, ErrorResponse, LauncherSize, MetaWithCallbacks } from '../../types/commons';
+import { APIResponse, DirectionalPosition, ErrorResponse, LauncherSize, MetaWithCallbacks } from '../../types/commons';
 import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
 import { metaWithCallbacksCreator, payloadIdentityCreator } from '../../utils/metaAndPayloadCreators';
 import {
+  ConfirmPasswordPayload,
+  ForgotPasswordPayload,
+  LoginErrorPayload,
   LoginRequestPayload,
   LoginSuccessPayload,
   LoginWithNewPasswordPayload,
@@ -24,6 +27,9 @@ export const LOGIN = generateAsyncActionTypes('LOGIN');
 export const LOGOUT = generateAsyncActionTypes('LOGOUT');
 export const LOGIN_WITH_NEW_PASSWORD = 'LOGIN_WITH_NEW_PASSWORD';
 
+export const CONFIRM_PASSWORD = generateAsyncActionTypes('CONFIRM_PASSWORD');
+export const FORGOT_PASSWORD = generateAsyncActionTypes('FORGOT_PASSWORD');
+
 export const GET_ME = generateAsyncActionTypes('GET_ME');
 
 export const SET_ME = 'SET_ME';
@@ -41,24 +47,42 @@ export const SET_LAUNCHER_SIZE = 'SET_LAUNCHER_SIZE';
 export const ADD_TO_APP_LAUNCHER = 'ADD_TO_APP_LAUNCHER';
 export const REMOVE_FROM_APP_LAUNCHER = 'REMOVE_FROM_APP_LAUNCHER';
 
-export const SHOW_SET_PASSWORD_FORM = 'SHOW_SET_PASSWORD_FORM';
-
 export const UPDATE_PASSWORD = generateAsyncActionTypes('UPDATE_PASSWORD');
 
 // Action Creators
+export const forgotPasswordRequest = createAction<ForgotPasswordPayload, MetaWithCallbacks>(
+  FORGOT_PASSWORD.REQUEST,
+  payloadIdentityCreator,
+  metaWithCallbacksCreator,
+);
+export const forgotPasswordSuccess = createAction<APIResponse, MetaWithCallbacks>(FORGOT_PASSWORD.SUCCESS, payloadIdentityCreator, metaWithCallbacksCreator);
+export const forgotPasswordError = createAction<ErrorResponse, MetaWithCallbacks>(FORGOT_PASSWORD.ERROR, payloadIdentityCreator, metaWithCallbacksCreator);
+
+export const confirmPasswordRequest = createAction<ConfirmPasswordPayload, MetaWithCallbacks>(
+  CONFIRM_PASSWORD.REQUEST,
+  payloadIdentityCreator,
+  metaWithCallbacksCreator,
+);
+export const confirmPasswordSuccess = createAction<APIResponse, MetaWithCallbacks>(CONFIRM_PASSWORD.SUCCESS, payloadIdentityCreator, metaWithCallbacksCreator);
+export const confirmPasswordError = createAction<ErrorResponse, MetaWithCallbacks>(CONFIRM_PASSWORD.ERROR, payloadIdentityCreator, metaWithCallbacksCreator);
+
 export const getSettingsRequest = createAction(GET_SETTINGS.REQUEST);
 export const getSettingsSuccess = createAction<MeSettingsState>(GET_SETTINGS.SUCCESS);
 export const getSettingsError = createAction<ErrorResponse>(GET_SETTINGS.ERROR);
 
-export const loginRequest = createAction<LoginRequestPayload>(LOGIN.REQUEST);
-export const loginSuccess = createAction<LoginSuccessPayload>(LOGIN.SUCCESS);
-export const loginError = createAction<ErrorResponse>(LOGIN.ERROR);
+export const loginRequest = createAction<LoginRequestPayload, MetaWithCallbacks>(LOGIN.REQUEST, payloadIdentityCreator, metaWithCallbacksCreator);
+export const loginSuccess = createAction<LoginSuccessPayload, MetaWithCallbacks>(LOGIN.SUCCESS, payloadIdentityCreator, metaWithCallbacksCreator);
+export const loginError = createAction<LoginErrorPayload, MetaWithCallbacks>(LOGIN.ERROR, payloadIdentityCreator, metaWithCallbacksCreator);
 
 export const logoutRequest = createAction(LOGOUT.REQUEST);
 export const logoutSuccess = createAction(LOGOUT.SUCCESS);
 export const logoutError = createAction<ErrorResponse>(LOGOUT.ERROR);
 
-export const loginWithNewPassword = createAction<LoginWithNewPasswordPayload>(LOGIN_WITH_NEW_PASSWORD);
+export const loginWithNewPassword = createAction<LoginWithNewPasswordPayload, MetaWithCallbacks>(
+  LOGIN_WITH_NEW_PASSWORD,
+  payloadIdentityCreator,
+  metaWithCallbacksCreator,
+);
 
 export const saveSettingsRequest = createAction(SAVE_SETTINGS.REQUEST);
 export const saveSettingsSuccess = createAction(SAVE_SETTINGS.SUCCESS);
@@ -79,8 +103,6 @@ export const setLauncherSize = createAction<SetLauncherSizePayload, LauncherSize
 
 export const addToAppLauncher = createAction<string>(ADD_TO_APP_LAUNCHER);
 export const removeFromAppLauncher = createAction<string>(REMOVE_FROM_APP_LAUNCHER);
-
-export const showSetPasswordForm = createAction<NewPasswordPayload>(SHOW_SET_PASSWORD_FORM);
 
 export const updatePasswordRequest = createAction<UpdatePasswordRequestPayload, MetaWithCallbacks>(
   UPDATE_PASSWORD.REQUEST,

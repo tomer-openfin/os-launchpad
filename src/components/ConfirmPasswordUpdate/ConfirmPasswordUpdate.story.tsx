@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 `;
 
 storiesOf(`${CATEGORIES.COMPONENTS}ConfirmPasswordUpdate`, module)
-  .addDecorator(withMarginDecorator(15))
+  .addDecorator(withMarginDecorator(30))
   .add('default', () => {
     return (
       <Wrapper>

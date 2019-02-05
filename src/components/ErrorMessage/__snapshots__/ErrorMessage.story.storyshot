@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/Notifications default 1`] = `
+exports[`Storyshots UI Components/ErrorMessage default 1`] = `
 <div>
   <div
     style={
@@ -11,30 +11,9 @@ exports[`Storyshots Components/Notifications default 1`] = `
     }
   >
     <div
-<<<<<<< HEAD:src/components/NotificationsIcon/__snapshots__/Notifications.story.storyshot
-      className="sc-gGBfsJ fsWlQ"
+      className="sc-eNQAEJ chXetq"
     >
-      <div
-        className="sc-bbmXgH hPWSwX sc-ifAKCX kGkovX"
-=======
-      className="sc-jqCOkK jBJuPY"
-    >
-      <div
-        className="sc-dNLxif dKzbuQ sc-ifAKCX kGkovX"
->>>>>>> Update storyshots:src/components/Notifications/__snapshots__/Notifications.story.storyshot
-        color="#E7E7E7"
-        size={42}
-      />
-      <div
-<<<<<<< HEAD:src/components/NotificationsIcon/__snapshots__/Notifications.story.storyshot
-        className="sc-uJMKN gesKxB"
-=======
-        className="sc-jbKcbu dToqBK"
->>>>>>> Update storyshots:src/components/Notifications/__snapshots__/Notifications.story.storyshot
-      >
-        23
-      </div>
-      ;
+      Error
     </div>
   </div>
   <button
@@ -134,7 +113,7 @@ exports[`Storyshots Components/Notifications default 1`] = `
               }
             }
           >
-            Components/Notifications
+            UI Components/ErrorMessage
           </h1>
           <h2
             style={
@@ -149,7 +128,7 @@ exports[`Storyshots Components/Notifications default 1`] = `
             default
           </h2>
         </div>
-
+        
         <div>
           <h1
             style={
@@ -184,37 +163,9 @@ exports[`Storyshots Components/Notifications default 1`] = `
                     }
                   >
                     &lt;
-                    Notifications
+                    styled.div
                   </span>
-                  <span>
-                    <span>
-
-                      <span
-                        style={Object {}}
-                      >
-                        count
-                      </span>
-                      <span>
-                        =
-                        <span
-                          style={Object {}}
-                        >
-                          {
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
-                              }
-                            }
-                          >
-                            23
-                          </span>
-                          }
-                        </span>
-                      </span>
-
-                    </span>
-                  </span>
+                  <span />
                   <span
                     style={
                       Object {
@@ -240,7 +191,7 @@ exports[`Storyshots Components/Notifications default 1`] = `
                       }
                     }
                   >
-                    function String() { [native code] }
+                    Error
                   </span>
                 </div>
                 <div
@@ -259,7 +210,7 @@ exports[`Storyshots Components/Notifications default 1`] = `
                     }
                   >
                     &lt;/
-                    Notifications
+                    styled.div
                     &gt;
                   </span>
                 </div>
@@ -310,7 +261,7 @@ exports[`Storyshots Components/Notifications default 1`] = `
               }
             >
               "
-              Notifications
+              styled.div
               " Component
             </h2>
             <small>

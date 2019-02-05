@@ -2,7 +2,6 @@ import {
   ADD_TO_APP_LAUNCHER,
   GET_ME,
   GET_SETTINGS,
-  LOGIN,
   LOGOUT,
   REMOVE_FROM_APP_LAUNCHER,
   SET_APP_IDS,
@@ -10,25 +9,16 @@ import {
   SET_LAUNCHER_POSITION,
   SET_LAUNCHER_SIZE,
   SET_ME,
-  SHOW_SET_PASSWORD_FORM,
 } from './actions';
 
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
 import { GetSettingsSuccess, MeActions, MeState, SetAppIds, SetAutoHide, SetLauncherPositionPayload, SetLauncherSizePayload, SetMePayload } from './types';
-
-const defaultLoginState = {
-  changePassword: false,
-  error: false,
-  message: '',
-  session: '',
-};
 
 export const defaultState: MeState = {
   email: '',
   firstName: '',
   isAdmin: false,
   lastName: '',
-  login: defaultLoginState,
   settings: {
     appIds: [],
     autoHide: false,
@@ -58,54 +48,8 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
         lastName: (action.payload! as SetMePayload).firstName,
       };
     }
-    case LOGIN.REQUEST: {
-      return {
-        ...state,
-        login: {
-          ...state.login,
-          // reset error and error message
-          error: false,
-          message: '',
-        },
-      };
-    }
-    case LOGIN.SUCCESS: {
-      return {
-        ...state,
-        login: {
-          ...defaultLoginState,
-          // if we reset this on success the login screen flickers before closing
-          // plus the likely use of this screen while logged in is for an eventual change password feature
-          changePassword: state.login.changePassword,
-        },
-      };
-    }
-    case LOGIN.ERROR: {
-      const { message } = action.payload;
-
-      return {
-        ...state,
-        login: {
-          ...state.login,
-          error: true,
-          message,
-        },
-      };
-    }
     case LOGOUT.SUCCESS: {
       return defaultState;
-    }
-    case SHOW_SET_PASSWORD_FORM: {
-      const { session, message } = action.payload;
-      return {
-        ...state,
-        login: {
-          changePassword: true,
-          error: false,
-          message,
-          session,
-        },
-      };
     }
     case SET_APP_IDS:
     case SET_AUTO_HIDE: {

@@ -14,6 +14,12 @@ import { getLayoutsRequest } from '../layouts';
 import { getAdminOrgSettingsRequest } from '../organization';
 import {
   ADD_TO_APP_LAUNCHER,
+  CONFIRM_PASSWORD,
+  confirmPasswordError,
+  confirmPasswordSuccess,
+  FORGOT_PASSWORD,
+  forgotPasswordError,
+  forgotPasswordSuccess,
   GET_ME,
   GET_SETTINGS,
   getMeError,
@@ -36,24 +42,59 @@ import {
   SET_LAUNCHER_POSITION,
   SET_LAUNCHER_SIZE,
   setMe,
-  showSetPasswordForm,
   UPDATE_PASSWORD,
   updatePasswordError,
   updatePasswordSuccess,
 } from './actions';
 import { getMeSettings } from './selectors';
 import {
+  ConfirmPasswordRequest,
+  ForgotPasswordRequest,
   LoginError,
   LoginRequest,
   LoginSuccess,
   LoginWithNewPassword,
   LogoutError,
-  UpdatePasswordError,
   UpdatePasswordRequest,
-  UpdatePasswordSuccess,
 } from './types';
 
 const GENERIC_API_ERROR: ErrorResponse = { status: ResponseStatus.FAILURE, message: 'Failed to get response from server' };
+
+function* callSuccessMetaCb(action) {
+  if (action.meta && action.meta.successCb) {
+    action.meta.successCb(action.payload);
+  }
+}
+
+function* callErrorMetaCb(action) {
+  const error = action.payload;
+
+  const errorMessage = error && typeof error === 'object' && error.message ? error.message : error || 'Unknown Error';
+
+  // tslint:disable-next-line:no-console
+  console.log('Error on', action.type, ':', errorMessage, '\n');
+
+  if (action.meta && action.meta.errorCb) {
+    action.meta.errorCb(errorMessage);
+  }
+}
+
+function* callApiWithPayloadAndMeta(apiPromise, actions, action) {
+  const { payload } = action;
+  if (!payload) {
+    return;
+  }
+
+  const result = yield call(apiPromise, payload);
+
+  const { status } = result;
+
+  if (status === ResponseStatus.FAILURE) {
+    yield put(actions.error(result, action.meta));
+  } else {
+    yield put(actions.success(result, action.meta));
+  }
+}
 
 function* watchGetMeRequest() {
   const result = yield call(ApiService.getUserInfo);
@@ -78,14 +119,12 @@ function* watchLoginRequest(action: LoginRequest) {
 
   const result = yield call(ApiService.login, payload);
 
-  const { status, code, message, session } = result;
-
-  if (status === ResponseStatus.FAILURE) {
-    yield put(loginError({ status, code, message, session }));
+  if (result.status === ResponseStatus.FAILURE) {
+    yield put(loginError({ username: payload.username, ...result }, action.meta));
   } else {
-    const { email, firstName, lastName, isAdmin } = result;
+    const { isAdmin, email, firstName, lastName } = result;
 
-    yield put(loginSuccess({ isAdmin, email, firstName, lastName }));
+    yield put(loginSuccess({ isAdmin, email, firstName, lastName }, action.meta));
   }
 }
 
@@ -98,12 +137,10 @@ function* watchLoginWithNewPassword(action: LoginWithNewPassword) {
 
   const result = yield call(ApiService.newPasswordLogin, payload);
 
-  const { status, code, message, session } = result;
-
-  if (status === ResponseStatus.FAILURE) {
-    yield put(loginError({ status, code, message, session }));
+  if (result.status === ResponseStatus.FAILURE) {
+    yield put(loginError({ ...result, session: payload.session, username: payload.username }, action.meta));
   } else {
-    const { email, firstName, lastName, isAdmin } = result;
+    const { isAdmin, email, firstName, lastName } = result;
 
     yield put(loginSuccess({ isAdmin, email, firstName, lastName }));
   }
@@ -129,22 +166,20 @@ function* watchLoginSuccess(action: LoginSuccess) {
   yield put(Window.closeWindow({ id: 'osLaunchpadLogin' }));
 
   yield put(launchAppLauncher());
+
+  if (action.meta && action.meta.successCb) {
+    action.meta.successCb();
+  }
 }
 
 function* watchLoginError(action: LoginError) {
   const { payload } = action;
-
   if (!payload) {
     return;
   }
 
-  const { code, session, message } = payload;
-
-  if (code === 'NewPasswordRequired' && session) {
-    yield put(showSetPasswordForm({ session, message }));
-  } else {
-    // tslint:disable-next-line:no-console
-    console.error('Error Message:', message);
+  if (action.meta && action.meta.errorCb) {
+    action.meta.errorCb(payload);
   }
 }
 
@@ -248,25 +283,6 @@ function* watchUpdatePasswordRequest(action: UpdatePasswordRequest) {
   }
 }
 
-function watchUpdatePasswordSuccess(action: UpdatePasswordSuccess) {
-  if (action.meta && action.meta.successCb) {
-    action.meta.successCb();
-  }
-}
-
-function watchUpdatePasswordError(action: UpdatePasswordError) {
-  const error = action.payload;
-
-  const errorMessage = error ? error.message || error : 'Unknown Error';
-
-  // tslint:disable-next-line:no-console
-  console.log('Error on', action.type, ':', errorMessage, '\n');
-
-  if (action.meta && action.meta.errorCb) {
-    action.meta.errorCb(errorMessage);
-  }
-}
-
 function* reboundLauncherAndSaveSettings() {
   yield put(reboundLauncherRequest(false, 0));
 
@@ -274,6 +290,20 @@ function* reboundLauncherAndSaveSettings() {
 }
 
 export function* meSaga() {
+  yield takeLatest(CONFIRM_PASSWORD.REQUEST, callApiWithPayloadAndMeta, ApiService.confirmPassword, {
+    error: confirmPasswordError,
+    success: confirmPasswordSuccess,
+  });
+  yield takeLatest(CONFIRM_PASSWORD.SUCCESS, callSuccessMetaCb);
+  yield takeLatest(CONFIRM_PASSWORD.ERROR, callErrorMetaCb);
+
+  yield takeLatest(FORGOT_PASSWORD.REQUEST, callApiWithPayloadAndMeta, ApiService.forgotPassword, {
+    error: forgotPasswordError,
+    success: forgotPasswordSuccess,
+  });
+  yield takeLatest(FORGOT_PASSWORD.SUCCESS, callSuccessMetaCb);
+  yield takeLatest(FORGOT_PASSWORD.ERROR, callErrorMetaCb);
+
   yield takeLatest(LOGIN.REQUEST, watchLoginRequest);
   yield takeLatest(LOGIN.SUCCESS, watchLoginSuccess);
   yield takeLatest(LOGIN.ERROR, watchLoginError);
@@ -297,7 +327,7 @@ export function* meSaga() {
   yield takeLatest(REMOVE_FROM_APP_LAUNCHER, watchUpdateLauncherApps, 200);
 
   yield takeEvery(UPDATE_PASSWORD.REQUEST, watchUpdatePasswordRequest);
-  yield takeEvery(UPDATE_PASSWORD.SUCCESS, watchUpdatePasswordSuccess);
-  yield takeEvery(UPDATE_PASSWORD.ERROR, watchUpdatePasswordError);
+  yield takeEvery(UPDATE_PASSWORD.SUCCESS, callSuccessMetaCb);
+  yield takeEvery(UPDATE_PASSWORD.ERROR, callErrorMetaCb);
   yield takeLatest([SET_AUTO_HIDE, SET_LAUNCHER_POSITION, SET_LAUNCHER_SIZE], reboundLauncherAndSaveSettings);
 }

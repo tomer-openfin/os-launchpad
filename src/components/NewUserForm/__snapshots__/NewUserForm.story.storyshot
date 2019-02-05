@@ -11,34 +11,34 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
     }
   >
     <div
-      className="sc-cQFLBn dywewf"
+      className="sc-bMvGRv dvWUsF"
     >
       <div
-        className="sc-cMljjf cavFtY"
+        className="sc-csuQGl eLMHWY"
       >
         <div
-          className="sc-jAaTju jKiQTw"
+          className="sc-Rmtcm cWWTMA"
         >
           <div
-            className="sc-jDwBTQ jXaOQa"
+            className="sc-bRBYWo gUoilI"
           >
             Create New User
           </div>
         </div>
       </div>
       <form
-        className="sc-exAgwC gtnSbN"
+        className="sc-rBLzX gItFiC"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <div
-          className="sc-gojNiO leCdYw"
+          className="sc-CtfFt hqIdjJ"
         >
           <div
-            className="sc-daURTG RCjsE"
+            className="sc-laTMn iPGRpB"
           >
             <div
-              className="sc-bXGyLb ccsFje"
+              className="sc-hGoxap jihrWD"
             >
               <label
                 className="sc-kpOJdX cODgu"
@@ -144,7 +144,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
                 value=""
               />
               <div
-                className="sc-fYiAbW dIYqyS"
+                className="sc-dTdPqK kNBEtW"
               >
                 <div
                   className="sc-ifAKCX xmkOg"
@@ -157,14 +157,14 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
           </div>
         </div>
         <div
-          className="sc-dUjcNx hEnMst"
+          className="sc-eMigcr kpmiRH"
         >
           <div
-            className="sc-lkqHmb ckIVWC"
+            className="sc-fjmCvl cuBsOy"
           >
             <a
               backgroundColor="#848484"
-              className="sc-chPdSV bBLqzg"
+              className="sc-chPdSV clygsq"
               href="/admin/users"
               onClick={[Function]}
               type="button"
@@ -173,7 +173,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
               Cancel
             </a>
             <button
-              className="sc-kAzzGY kElEHA"
+              className="sc-kAzzGY lmHJGH"
               disabled={true}
               type="submit"
               width={128}
@@ -184,7 +184,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
         </div>
       </form>
       <div
-        className="sc-eLExRp jcAAVu"
+        className="sc-TFwJa bZBpRp"
       />
     </div>
   </div>

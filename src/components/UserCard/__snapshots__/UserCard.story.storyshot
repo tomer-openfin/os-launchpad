@@ -11,19 +11,19 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
     }
   >
     <div
-      className="sc-kaNhvL jKHbrR"
+      className="sc-hzDEsm eYWydY"
     >
       <div
-        className="sc-fjmCvl ecpnQD"
+        className="sc-bmyXtO jHifwR"
       >
         <div
-          className="sc-TFwJa gbnWTA"
+          className="sc-dEoRIm gTvHGE"
         >
           <div
-            className="sc-bHwgHz hTGzgd"
+            className="sc-jtggT gCSvUD"
           >
             <div
-              className="sc-krDsej eAUjLl"
+              className="sc-ebFjAB cQXvbC"
               title="John Doe"
             >
               John
@@ -31,38 +31,38 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
               Doe
             </div>
             <div
-              className="sc-dTdPqK cxnIki sc-ifAKCX yXyBY"
+              className="sc-jKVCRD dBjpxL sc-ifAKCX yXyBY"
               color="#FBC23C"
               size={16}
               title="Admin"
             />
             <div
-              className="sc-dTdPqK cxnIki sc-ifAKCX dXYvlK"
+              className="sc-jKVCRD dBjpxL sc-ifAKCX dXYvlK"
               color="#DF5353"
               size={16}
               title="User has not logged in yet"
             />
           </div>
           <div
-            className="sc-itybZL hYBxbT"
+            className="sc-kaNhvL bTWVWb"
             title="John.Doe@gmail.com"
           >
             John.Doe@gmail.com
           </div>
         </div>
         <div
-          className="sc-eMigcr dvdtNt"
+          className="sc-LKuAh cXLqna"
         >
           <div
-            className="sc-jzgbtB iHXRgv"
+            className="sc-cqCuEk jgHWqw"
           >
             <a
-              className="sc-laTMn fhEgTX"
+              className="sc-ipZHIp cyyPeZ"
               href="/admin/users/edit"
               onClick={[Function]}
             />
             <a
-              className="sc-CtfFt fxIour"
+              className="sc-iqzUVk dPICi"
               href="/admin/users/delete"
               onClick={[Function]}
             />

@@ -23,9 +23,9 @@ export const ButtonCSS = css<ButtonProps>`
   border: none;
   outline: none;
   border-radius: 3px;
-  height: ${props => props.height || 36}px;
-  width: ${props => props.width || 110}px;
-  min-width: 110px;
+  min-height: ${props => props.height || 36}px;
+  min-width: ${props => props.width || 110}px;
+  padding: 8px;
   position: relative;
 
   :before {
