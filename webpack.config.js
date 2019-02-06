@@ -38,7 +38,11 @@ module.exports = {
     topBar: './src/topBar/main.ts',
   },
   output: {
-    filename: `[name]${isProduction ? '.[contentHash]' : ''}.js`,
+    filename: chunkData => {
+      const { name, hash } = chunkData.chunk;
+      const filename = `${name}${isProduction && name !== 'topBar' ? `.${hash}` : ''}.js`;
+      return filename;
+    },
     path: path.join(__dirname, '/build'),
     publicPath: '/',
   },
