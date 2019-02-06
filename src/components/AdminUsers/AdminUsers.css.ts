@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
 import * as EditIcon from '../../assets/Edit.svg';
-import * as SearchIcon from '../../assets/Search.svg';
 import * as TrashIcon from '../../assets/Trash.svg';
 
 import { Link } from 'react-router-dom';
-import { Color } from '../../styles/index';
-import { TypeStyleAlgol, TypeStyleCanopus, TypeStyleEnif } from '../../styles/typography.css';
+import { Color } from '../../styles';
+import { TypeStyleCanopus, TypeStyleEnif } from '../../styles/typography.css';
 
 export const Wrapper = styled.div`
   height: 100%;

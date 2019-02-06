@@ -5,7 +5,8 @@ import { CONTEXT_MENU } from '../../config/windows';
 import { isBoundsInCoordinates, isPosInCoordinates } from '../../utils/coordinateHelpers';
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
 import { setWindowBoundsPromise } from '../../utils/openfinPromises';
-import { getMonitorInfo } from '../system/index';
+import { getMonitorInfo } from '../system';
+import { hideWindow } from '../windows';
 import { CLOSE_CONTEXT_MENU, closeContextMenuSuccess, OPEN_CONTEXT_MENU, openContextMenuSuccess } from './actions';
 import { OpenContextMenuRequest } from './types';
 
@@ -17,13 +18,13 @@ const OPTION_HEIGHT = 14;
 const W_CHAR_WIDTH = 6;
 
 function* watchCloseContextMenuRequest() {
-  yield put(Window.hideWindow({ id: CONTEXT_MENU }));
+  yield put(hideWindow(CONTEXT_MENU));
 
   yield put(closeContextMenuSuccess());
 }
 
 function* watchOpenContextMenuRequest(action: OpenContextMenuRequest) {
-  yield put(Window.hideWindow({ id: CONTEXT_MENU }));
+  yield put(hideWindow(CONTEXT_MENU));
 
   const { payload } = action;
   if (!payload) {

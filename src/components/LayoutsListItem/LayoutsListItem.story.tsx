@@ -6,12 +6,15 @@ import styled from 'styled-components';
 
 import { exampleUserLayout } from '../../samples/LayoutData';
 import { CATEGORIES } from '../../utils/storyCategories';
+
 import LayoutsListItem from './LayoutsListItem';
 
 const Wrapper = styled.div`
   max-height: 154px;
   max-width: 149px;
 `;
+
+const close = action('close');
 
 storiesOf(`${CATEGORIES.COMPONENTS}LayoutsListItem`, module)
   .addDecorator(withKnobs)
@@ -20,7 +23,13 @@ storiesOf(`${CATEGORIES.COMPONENTS}LayoutsListItem`, module)
 
     return (
       <Wrapper>
-        <LayoutsListItem deleteLayout={action('deleteLayout clicked')} id={exampleUserLayout.id} name={name} restoreLayout={action('restoreLayout clicked')} />
+        <LayoutsListItem
+          close={close}
+          deleteLayout={action('deleteLayout clicked')}
+          id={exampleUserLayout.id}
+          name={name}
+          restoreLayout={action('restoreLayout clicked')}
+        />
       </Wrapper>
     );
   });

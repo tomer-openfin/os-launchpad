@@ -30,16 +30,17 @@ const mergeProps = (stateProps, dispatchProps, ownProps: Props) => {
   let contextMenuOptions;
   if (withContextMenu) {
     contextMenuOptions = [{ label: 'Remove Shortcut', action: removeFromAppLauncher(`${appId}`) }];
-    if ((!status || status.state === AppStatusStates.Closed) && app) {
-      contextMenuOptions.unshift({ label: 'Open', action: openFinAppRequest(app) });
-    }
-    if (status && status.state === AppStatusStates.Running && status.uuid) {
+    if (status && (status.state === AppStatusStates.Running || status.state === AppStatusStates.Warning) && status.uuid) {
       contextMenuOptions.unshift({ label: 'Close', action: closeFinAppRequest({ uuid: status.uuid }) });
+    }
+    if ((!status || status.state === AppStatusStates.Closed || status.state === AppStatusStates.Warning) && app) {
+      contextMenuOptions.unshift({ label: 'Open', action: openFinAppRequest(app) });
     }
   }
 
   return {
     ...ownProps,
+    appStatusMessage: status ? status.message : undefined,
     appStatusState: status ? status.state : AppStatusStates.Closed,
     appTitle: app ? app.title : '',
     contextMenuOptions,

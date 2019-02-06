@@ -1,4 +1,4 @@
-import { getIsEnterprise } from '../redux/application/index';
+import { getIsEnterprise } from '../redux/application';
 
 export const checkIsEnterprise = () => {
   const store = window.opener ? window.opener.store : window.store;

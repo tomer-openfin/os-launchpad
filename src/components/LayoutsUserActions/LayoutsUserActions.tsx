@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import * as arrowIcon from '../../assets/ArrowCircle.svg';
+import * as checkIcon from '../../assets/CheckCircle.svg';
 import * as saveLayoutIcon from '../../assets/SaveLayout.svg';
 
 import { Color } from '../../styles';
@@ -8,7 +8,10 @@ import { MetaWithCallbacks } from '../../types/commons';
 import { ResponseStatus } from '../../types/enums';
 import noop from '../../utils/noop';
 import { isDevelopmentEnv } from '../../utils/processHelpers';
-import { ArrowIcon, Input, InputWrapper, SaveIcon, SubmitButton, Text, TextWrapper, UndoText, UserActions } from './LayoutsUserActions.css';
+import { CheckIcon, Input, InputWrapper, SaveIcon, SubmitButton, Text, TextWrapper, UndoText, UserActions } from './LayoutsUserActions.css';
+
+const ERROR_SHOW_DURATION_MS = 5000;
+const SUCCESS_SHOW_DURATION_MS = isDevelopmentEnv ? 2000 : 15000;
 
 interface Props {
   deleteLayout: (id: string) => void;
@@ -56,7 +59,7 @@ class LayoutsUserActions extends React.Component<Props, State> {
     });
   };
 
-  successCb = ({ id }) => {
+  saveCb = ({ id }) => {
     this.setState({
       layoutsUndoId: id,
       responseReceived: true,
@@ -86,13 +89,13 @@ class LayoutsUserActions extends React.Component<Props, State> {
 
   handleFormSubmit = e => {
     e.preventDefault();
-
     const { saveLayout } = this.props;
     const { name } = this.state;
 
-    const meta = { successCb: this.successCb, errorCb: this.errorCb };
+    const meta = { successCb: this.saveCb, errorCb: this.errorCb };
 
     this.setState(prevState => ({ isSubmitting: !prevState.isSubmitting, showErrorState: true, showSavedState: true }));
+
     saveLayout(name, meta);
   };
 
@@ -121,7 +124,7 @@ class LayoutsUserActions extends React.Component<Props, State> {
       <Input onChange={this.handleNameChange} placeholder="Layout Name" required type="text" />
 
       <SubmitButton type="submit">
-        <ArrowIcon hoverColor={Color.JUPITER} size={14} imgSrc={arrowIcon} onClick={noop} />
+        <CheckIcon hoverColor={Color.JUPITER} size={14} imgSrc={checkIcon} onClick={noop} />
       </SubmitButton>
     </InputWrapper>
   );
@@ -134,8 +137,6 @@ class LayoutsUserActions extends React.Component<Props, State> {
 
   renderMessage = () => {
     const { responseReceived, result, showErrorState, showSavedState } = this.state;
-    const ERROR_SHOW_DURATION_MS = 5000;
-    const SUCCESS_SHOW_DURATION_MS = isDevelopmentEnv ? 2000 : 15000;
 
     if (responseReceived) {
       if (result.status === ResponseStatus.FAILURE) {

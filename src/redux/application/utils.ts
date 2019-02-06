@@ -6,8 +6,8 @@ import { getFinWindowByName, getLauncherFinWindow } from '../../utils/getLaunche
 import { animateWindow, setWindowBoundsPromise } from '../../utils/openfinPromises';
 import { calcBoundsRelativeToLauncher, calcLauncherPosition, isBottom, isRight } from '../../utils/windowPositionHelpers';
 import { getAutoHide, getLauncherPosition, getLauncherSizeConfig } from '../me';
-import { getAppListDimensions, getAppsLauncherAppList, getSystemIconsSelector } from '../selectors';
-import { getMonitorInfo } from '../system/index';
+import { getAppListDimensions, getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize } from '../selectors';
+import { getMonitorInfo } from '../system';
 import { State } from '../types';
 import { getWindowBounds } from '../windows';
 
@@ -17,22 +17,24 @@ export function* animateLauncherCollapseExpand(isExpanded: State['application'][
     return;
   }
 
-  const [appList, systemIcons, monitorInfo, launcherPosition, launcherSizeConfig, autoHide] = yield all([
+  const [appList, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, collapsedSystemDrawerSize, expandedSystemDrawerSize] = yield all([
     select(getAppsLauncherAppList),
-    select(getSystemIconsSelector),
     select(getMonitorInfo),
     select(getLauncherPosition),
     select(getLauncherSizeConfig),
     select(getAutoHide),
+    select(getCollapsedSystemDrawerSize),
+    select(getExpandedSystemDrawerSize),
   ]);
   const { height, width, top, left } = calcLauncherPosition(
     appList.length,
-    systemIcons,
     monitorInfo,
     launcherPosition,
     launcherSizeConfig,
     autoHide,
     isExpanded,
+    collapsedSystemDrawerSize,
+    expandedSystemDrawerSize,
   );
   const transitions: Transition = {
     size: {
@@ -74,11 +76,13 @@ export function* setWindowRelativeToLauncherBounds(finName: string, launcherBoun
   }
 
   let windowBounds = yield select(getWindowBounds, finName);
-  const launcherPosition = yield select(getLauncherPosition);
-  const launcherSizeConfig = yield select(getLauncherSizeConfig);
   if (!windowBounds) {
     return;
   }
+
+  const launcherPosition = yield select(getLauncherPosition);
+  const launcherSizeConfig = yield select(getLauncherSizeConfig);
+  const expandedSystemDrawerSize = yield select(getExpandedSystemDrawerSize);
 
   if (finName === APP_LAUNCHER_OVERFLOW_WINDOW) {
     const appListDimensions = yield select(getAppListDimensions);
@@ -89,6 +93,6 @@ export function* setWindowRelativeToLauncherBounds(finName: string, launcherBoun
     };
   }
 
-  const bounds = calcBoundsRelativeToLauncher(finName, windowBounds, launcherBounds, launcherPosition, launcherSizeConfig);
+  const bounds = calcBoundsRelativeToLauncher(finName, windowBounds, launcherBounds, launcherPosition, launcherSizeConfig, expandedSystemDrawerSize);
   yield call(setWindowBoundsPromise, finWindow, bounds);
 }

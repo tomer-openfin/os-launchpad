@@ -1,23 +1,10 @@
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
 import { launcherSizeConfigs } from '../launcherSizeConfigs';
-import {
-  calcDimensionsByLauncherPosition,
-  calcLauncherCoordinates,
-  calcLauncherDimensions,
-  calcLauncherPosition,
-  isBottomOrRight,
-  isLeftOrRight,
-  isTopOrBottom,
-} from '../windowPositionHelpers';
+import { calcLauncherCoordinates, calcLauncherDimensions, calcLauncherPosition, isBottomOrRight, isLeftOrRight, isTopOrBottom } from '../windowPositionHelpers';
 
 const { Bottom: BOTTOM, Left: LEFT, Right: RIGHT, Top: TOP } = DirectionalPosition;
 
 const dimensions = { height: 100, width: 200 };
-const bounds = {
-  ...dimensions,
-  left: 0,
-  top: 0,
-};
 
 const monitorInfo = {
   deviceScaleFactor: 0,
@@ -118,22 +105,8 @@ const monitorInfo = {
   },
 };
 
-const SYSTEM_ICONS = [
-  {
-    action: { type: 'FAKE_TEST_TYPE' },
-    hasExtendedWindow: false,
-    icon: 'testIcon',
-    isShownByDefault: true,
-    title: 'testIcon',
-  },
-  {
-    action: { type: 'FAKE_MOCK_TYPE' },
-    hasExtendedWindow: true,
-    icon: 'mockIcon',
-    isShownByDefault: false,
-    title: 'mockIcon',
-  },
-];
+const collapsedSystemDrawerSize = 78;
+const expandedSystemDrawerSize = 140;
 
 describe('windowPositionHelpers', () => {
   describe('isTopOrBottom', () => {
@@ -175,30 +148,6 @@ describe('windowPositionHelpers', () => {
     });
   });
 
-  describe('calcDimensionsByLauncherPosition', () => {
-    it('should return dimensions based on current bounds and launcherPosition based on width as the dominate dimension', () => {
-      const { height, width } = bounds;
-      const topOrBottomDimensions = { height, width };
-      const leftOrRightDimensions = { height: width, width: height };
-
-      expect(calcDimensionsByLauncherPosition(bounds, TOP)).toEqual(topOrBottomDimensions);
-      expect(calcDimensionsByLauncherPosition(bounds, BOTTOM)).toEqual(topOrBottomDimensions);
-      expect(calcDimensionsByLauncherPosition(bounds, LEFT)).toEqual(leftOrRightDimensions);
-      expect(calcDimensionsByLauncherPosition(bounds, RIGHT)).toEqual(leftOrRightDimensions);
-    });
-
-    it('should return dimensions based on current bounds and launcherPosition based on height as the dominate dimension', () => {
-      const { height, width } = bounds;
-      const topOrBottomDimensions = { height: width, width: height };
-      const leftOrRightDimensions = { height, width };
-
-      expect(calcDimensionsByLauncherPosition(bounds, TOP, true)).toEqual(topOrBottomDimensions);
-      expect(calcDimensionsByLauncherPosition(bounds, BOTTOM, true)).toEqual(topOrBottomDimensions);
-      expect(calcDimensionsByLauncherPosition(bounds, LEFT, true)).toEqual(leftOrRightDimensions);
-      expect(calcDimensionsByLauncherPosition(bounds, RIGHT, true)).toEqual(leftOrRightDimensions);
-    });
-  });
-
   describe('calcLauncherDimensions', () => {
     it('should return actual launcher dimensions for app count that does not exceed monitor size', () => {
       const appCount = 8;
@@ -223,7 +172,18 @@ describe('windowPositionHelpers', () => {
       ];
 
       tests.forEach(({ autoHide, isExpanded, launcherPosition, result }) =>
-        expect(calcLauncherDimensions(appCount, SYSTEM_ICONS, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, isExpanded)).toEqual(result),
+        expect(
+          calcLauncherDimensions(
+            appCount,
+            monitorInfo,
+            launcherPosition,
+            launcherSizeConfig,
+            autoHide,
+            isExpanded,
+            collapsedSystemDrawerSize,
+            expandedSystemDrawerSize,
+          ),
+        ).toEqual(result),
       );
     });
 
@@ -250,7 +210,18 @@ describe('windowPositionHelpers', () => {
       ];
 
       tests.forEach(({ autoHide, isExpanded, launcherPosition, result }) =>
-        expect(calcLauncherDimensions(appCount, SYSTEM_ICONS, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, isExpanded)).toEqual(result),
+        expect(
+          calcLauncherDimensions(
+            appCount,
+            monitorInfo,
+            launcherPosition,
+            launcherSizeConfig,
+            autoHide,
+            isExpanded,
+            collapsedSystemDrawerSize,
+            expandedSystemDrawerSize,
+          ),
+        ).toEqual(result),
       );
     });
   });
@@ -290,7 +261,18 @@ describe('windowPositionHelpers', () => {
       ];
 
       tests.forEach(({ autoHide, isExpanded, launcherPosition, result }) =>
-        expect(calcLauncherPosition(appCount, SYSTEM_ICONS, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, isExpanded)).toEqual(result),
+        expect(
+          calcLauncherPosition(
+            appCount,
+            monitorInfo,
+            launcherPosition,
+            launcherSizeConfig,
+            autoHide,
+            isExpanded,
+            collapsedSystemDrawerSize,
+            expandedSystemDrawerSize,
+          ),
+        ).toEqual(result),
       );
     });
   });
@@ -318,7 +300,18 @@ describe('windowPositionHelpers', () => {
     ];
 
     tests.forEach(({ autoHide, isExpanded, launcherPosition, result }) =>
-      expect(calcLauncherPosition(appCount, SYSTEM_ICONS, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, isExpanded)).toEqual(result),
+      expect(
+        calcLauncherPosition(
+          appCount,
+          monitorInfo,
+          launcherPosition,
+          launcherSizeConfig,
+          autoHide,
+          isExpanded,
+          collapsedSystemDrawerSize,
+          expandedSystemDrawerSize,
+        ),
+      ).toEqual(result),
     );
   });
 });

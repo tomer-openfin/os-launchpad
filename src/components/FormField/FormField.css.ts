@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Color } from '../../styles/index';
+import { Color, hexToRgba } from '../../styles';
 import { TypeStyleArcturus, TypeStyleCanopus, TypeStyleDeneb } from '../../styles/typography.css';
 
 interface Props {
@@ -47,7 +47,7 @@ export const Label = styled.label<Props>`
 
   & > input:focus {
     outline: none;
-    color: ${props => (props.isValid ? `${Color.VACUUM}` : `${Color.MARS}`)};
-    border: 3px solid ${props => (props.isValid ? 'rgba(251, 194, 60, 0.54)' : 'rgba(223,83,83,0.5)')};
+    color: ${({ isValid }) => (isValid ? `${Color.VACUUM}` : `${Color.MARS}`)};
+    border: 3px solid ${({ isValid }) => hexToRgba(isValid ? Color.JUPITER : Color.MARS, 0.5)};
   }
 `;

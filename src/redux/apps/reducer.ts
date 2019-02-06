@@ -1,7 +1,7 @@
 import { CLOSE_FIN_APP, OPEN_FIN_APP, SET_APP_DIRECTORY_LIST, SET_FIN_APP_STATUS_STATE } from './actions';
 
-import { App, AppStatusOrigins, AppStatusStates } from '../../types/commons';
-import { AppsById, AppsState, OpenFinAppError, OpenFinAppSuccess, SetFinAppStatusState } from './types';
+import { App, AppStatusStates } from '../../types/commons';
+import { AppsById, AppsState, CloseFinAppSuccess, OpenFinAppSuccess, SetFinAppStatusState } from './types';
 
 const formatByIds = (appList: App[]) =>
   appList.reduce((appsById: AppsById, app: App) => {
@@ -26,12 +26,20 @@ export default (state: AppsState = defaultState, action): AppsState => {
       };
     }
     case CLOSE_FIN_APP.SUCCESS: {
-      const { payload } = action as OpenFinAppSuccess;
+      const { payload } = action as CloseFinAppSuccess;
       if (!payload) {
         return state;
       }
 
-      const { id, origin } = payload;
+      const { uuid } = payload;
+      const id = Object.keys(state.statusById).find(key => {
+        const statusState = state.statusById[key];
+        return !!statusState && statusState.uuid === uuid;
+      });
+
+      if (!id) {
+        return state;
+      }
 
       return {
         ...state,
@@ -39,7 +47,8 @@ export default (state: AppsState = defaultState, action): AppsState => {
           ...state.statusById,
           [id]: {
             message: undefined,
-            origin,
+            origin: undefined,
+            runtimeVersion: undefined,
             state: AppStatusStates.Closed,
             uuid: undefined,
           },
@@ -52,7 +61,7 @@ export default (state: AppsState = defaultState, action): AppsState => {
         return state;
       }
 
-      const { id, uuid, origin } = payload;
+      const { id, origin, runtimeVersion, uuid } = payload;
 
       return {
         ...state,
@@ -61,29 +70,9 @@ export default (state: AppsState = defaultState, action): AppsState => {
           [id]: {
             message: undefined,
             origin,
+            runtimeVersion,
             state: AppStatusStates.Running,
             uuid,
-          },
-        },
-      };
-    }
-    case OPEN_FIN_APP.ERROR: {
-      const { payload } = action as OpenFinAppError;
-      if (!payload) {
-        return state;
-      }
-
-      const { id } = payload;
-
-      return {
-        ...state,
-        statusById: {
-          ...state.statusById,
-          [id]: {
-            message: undefined,
-            origin: AppStatusOrigins.Default,
-            state: AppStatusStates.Closed,
-            uuid: undefined,
           },
         },
       };
@@ -97,6 +86,7 @@ export default (state: AppsState = defaultState, action): AppsState => {
       const { id, message, statusState, origin } = payload;
       const appStatusState = state.statusById[id];
       const uuid = !appStatusState || statusState === AppStatusStates.Closed ? undefined : appStatusState.uuid;
+      const runtimeVersion = !appStatusState || statusState === AppStatusStates.Closed ? undefined : appStatusState.runtimeVersion;
 
       return {
         ...state,
@@ -105,6 +95,7 @@ export default (state: AppsState = defaultState, action): AppsState => {
           [id]: {
             message,
             origin,
+            runtimeVersion,
             state: statusState,
             uuid,
           },

@@ -24,7 +24,6 @@ interface Props {
   children?: React.ReactNode;
   hideWindow: () => void;
   isAdmin: boolean;
-  onEscDown: () => void;
 }
 
 const renderAdminTab = ({ exact = false, path, label }) => (

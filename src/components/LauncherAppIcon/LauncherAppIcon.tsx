@@ -15,6 +15,7 @@ import { StyledAppIndicator, Wrapper } from './LauncherAppIcon.css';
 export interface Props {
   appId: string;
   appStatusState?: AppStatusStates;
+  appStatusMessage?: string;
   appTitle: string;
   className?: string;
   contextMenuOptions?: ContextMenuOption[];
@@ -40,13 +41,21 @@ const defaultProps = {
 const renderAppIconContent = ({ appStatusState, contextMenuOptions, imgSrc, isDisabled, launchApp, launcherPosition, launcherSizeConfig }: Props) => (
   <LoadingAnimator direction={launcherPosition} loading={appStatusState === AppStatusStates.Loading}>
     <ContextMenuZone options={contextMenuOptions}>
-      <AppIcon borderWidth={launcherSizeConfig.appIconBorder} imgSrc={imgSrc} isDisabled={isDisabled} onClick={launchApp} size={launcherSizeConfig.appIcon} />
+      <AppIcon
+        borderWidth={launcherSizeConfig.appIconBorder}
+        imgSrc={imgSrc}
+        isDisabled={isDisabled}
+        isLoading={appStatusState === AppStatusStates.Loading}
+        onClick={launchApp}
+        size={launcherSizeConfig.appIcon}
+      />
     </ContextMenuZone>
   </LoadingAnimator>
 );
 
 const LauncherAppIcon = (props: Props) => {
   const {
+    appStatusMessage,
     appStatusState = defaultProps.appStatusState,
     appTitle,
     className,
@@ -69,6 +78,7 @@ const LauncherAppIcon = (props: Props) => {
 
       <StyledAppIndicator
         appStatusState={appStatusState}
+        message={appStatusMessage}
         sizingConfig={launcherSizeConfig}
         position={getOppositeDirection(launcherPosition)}
         size={launcherSizeConfig.appIndicator}

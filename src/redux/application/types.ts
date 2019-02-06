@@ -4,7 +4,6 @@ import {
   expandApp,
   openfinReady,
   reboundLauncherRequest,
-  setBlurringWindow,
   setIsDragAndDrop,
   setIsDrawerExpanded,
   setIsEnterprise,
@@ -14,9 +13,6 @@ import {
 
 // State
 export interface ApplicationState {
-  blurringWindows: {
-    [name: string]: boolean;
-  };
   isDragAndDrop: boolean;
   isDrawerExpanded: boolean;
   isEnterprise: boolean;
@@ -34,23 +30,17 @@ export interface ReboundLauncherRequestPayload {
   shouldAnimate: boolean;
 }
 
-export interface SetBlurringWindowPayload {
-  isBlurring: boolean;
-  name: string;
-}
-
 // Actions
 export type ApplicationStartedAction = ReturnType<typeof applicationStarted>;
 export type CollapseAppAction = ReturnType<typeof collapseApp>;
 export type ExpandAppAction = ReturnType<typeof expandApp>;
 export type OpenfinReadyAction = ReturnType<typeof openfinReady>;
 export type ReboundLauncherRequestAction = ReturnType<typeof reboundLauncherRequest>;
-export type SetBlurringWindowAction = ReturnType<typeof setBlurringWindow>;
 export type SetIsDragAndDropAction = ReturnType<typeof setIsDragAndDrop>;
 export type SetIsDrawerExpandedAction = ReturnType<typeof setIsDrawerExpanded>;
 export type SetIsEnterpriseAction = ReturnType<typeof setIsEnterprise>;
 export type SetIsExpandedAction = ReturnType<typeof setIsExpanded>;
-export type SetRuntimeVersion= ReturnType<typeof setRuntimeVersion>;
+export type SetRuntimeVersion = ReturnType<typeof setRuntimeVersion>;
 
 export type ApplicationActions =
   | ApplicationStartedAction

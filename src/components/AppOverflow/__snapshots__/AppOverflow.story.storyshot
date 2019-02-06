@@ -11,10 +11,10 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
     }
   >
     <div
-      className="sc-hmzhuo iVrQrF"
+      className="sc-cmTdod hYHXhI"
     >
       <div
-        className="sc-jAaTju eaYlzw"
+        className="sc-cHGsZl bpgmtY"
         height={0}
         isExpanded={true}
         launcherPosition="top"
@@ -87,7 +87,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
                 onContextMenu={[Function]}
               >
                 <div
-                  className="sc-bZQynM eioviT"
+                  className="sc-bZQynM NYJaE"
                   onClick={[Function]}
                   size={50}
                 >
@@ -134,7 +134,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
                 onContextMenu={[Function]}
               >
                 <div
-                  className="sc-bZQynM eioviT"
+                  className="sc-bZQynM NYJaE"
                   onClick={[Function]}
                   size={50}
                 >
@@ -181,7 +181,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
                 onContextMenu={[Function]}
               >
                 <div
-                  className="sc-bZQynM eioviT"
+                  className="sc-bZQynM NYJaE"
                   onClick={[Function]}
                   size={50}
                 >

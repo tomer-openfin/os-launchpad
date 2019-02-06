@@ -3,7 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 
 import { DirectionalPosition, LauncherSize, OnOff } from '../../types/commons';
 import { doesCurrentPathMatch } from '../../utils/routeHelpers';
-import { ButtonLink } from '../Button/Button.css';
+import { ButtonLink } from '../Button';
 import { ROUTES, SETTINGS_ROUTES } from '../Router/consts';
 import { ButtonWrapper, CTA, Group, Heading, Row, Section, StyledRadioButton, Window } from './Settings.css';
 
@@ -19,7 +19,6 @@ interface Props extends RouteComponentProps {
   isEnterprise: boolean;
   hideWindow: () => void;
   launcherSize: LauncherSize;
-  onEscDown: () => void;
   setAutoHide: (autoHide: boolean) => void;
   setLauncherPosition: (launcherPosition: DirectionalPosition) => void;
   setLauncherSize: (launcherSize: LauncherSize) => void;

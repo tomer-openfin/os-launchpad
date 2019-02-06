@@ -11,13 +11,13 @@ exports[`Storyshots Components/AppCard default 1`] = `
     }
   >
     <div
-      className="sc-dVhcbM djPinM"
+      className="sc-bbmXgH fpDwJs"
     >
       <div
-        className="sc-kjoXOD iCEjoh"
+        className="sc-hEsumM ciKhcQ"
       >
         <div
-          className="sc-bZQynM eioviT"
+          className="sc-bZQynM NYJaE"
           onClick={[Function]}
           size={50}
         >
@@ -27,22 +27,22 @@ exports[`Storyshots Components/AppCard default 1`] = `
         </div>
       </div>
       <div
-        className="sc-eqIVtm xPFWU"
+        className="sc-gGBfsJ ePLkn"
       >
         <div
-          className="sc-fAjcbJ bujyXk"
+          className="sc-jnlKLf ijqZnC"
           onClick={[Function]}
         >
           FinTech Studios
         </div>
         <div
-          className="sc-caSCKo dMwbuC"
+          className="sc-fYxtnH fgQuVs"
         >
           Using cutting edge artificial intelligence and machine learning, FTS delivers actionable news, research, market analytics, and analytics from millions of sources.
         </div>
       </div>
       <div
-        className="sc-gisBJw gbWJYZ"
+        className="sc-tilXH cDAELv"
       />
     </div>
   </div>
@@ -646,6 +646,32 @@ exports[`Storyshots Components/AppCard default 1`] = `
                               
                           </span>
                           }
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      isLoading
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#a11",
+                            }
+                          }
+                        >
+                          false
                         </span>
                         }
                       </span>

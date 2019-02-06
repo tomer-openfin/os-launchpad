@@ -11,21 +11,21 @@ exports[`Storyshots Components/LayoutsList default 1`] = `
     }
   >
     <div
-      className="sc-cIShpX cDWHKo"
+      className="sc-bsbRJL gsQRTU"
     >
       <h6
-        className="sc-ktHwxA bjYKSB"
+        className="sc-iQNlJl dymSAK"
       >
         Recent Layouts
       </h6>
       <ul
-        className="sc-feJyhm llWyVZ"
+        className="sc-cMhqgX gfKEzX"
       >
         <div
-          className="sc-tilXH QYbaL"
+          className="sc-hXRMBi glQpeD"
         >
           <li
-            className="sc-fYxtnH jmkJOa"
+            className="sc-gwVKww cMxZwv"
             onClick={[Function]}
           >
             layout
@@ -190,7 +190,39 @@ exports[`Storyshots Components/LayoutsList default 1`] = `
                 </span>
                 <span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      close
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          close
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -216,33 +248,10 @@ exports[`Storyshots Components/LayoutsList default 1`] = `
                     </span>
                   </span>
                   <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      restoreLayout
-                    </span>
                     <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          restoreLayout clicked
-                        </span>
-                        }
-                      </span>
+                      <br />
+                        
                     </span>
-                  </span>
-                  <span>
-                     
                     <span
                       style={Object {}}
                     >
@@ -581,7 +590,36 @@ exports[`Storyshots Components/LayoutsList default 1`] = `
                         }
                       </span>
                     </span>
-                     
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      restoreLayout
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          restoreLayout clicked
+                        </span>
+                        }
+                      </span>
+                    </span>
+                    <br />
                   </span>
                 </span>
                 <span
@@ -665,24 +703,24 @@ exports[`Storyshots Components/LayoutsList with Wrapper 1`] = `
     }
   >
     <div
-      className="sc-hwwEjo fPyWYW"
+      className="sc-daURTG gEPlC"
     >
       <div
-        className="sc-cIShpX cDWHKo"
+        className="sc-bsbRJL gsQRTU"
       >
         <h6
-          className="sc-ktHwxA bjYKSB"
+          className="sc-iQNlJl dymSAK"
         >
           Recent Layouts
         </h6>
         <ul
-          className="sc-feJyhm llWyVZ"
+          className="sc-cMhqgX gfKEzX"
         >
           <div
-            className="sc-tilXH QYbaL"
+            className="sc-hXRMBi glQpeD"
           >
             <li
-              className="sc-fYxtnH jmkJOa"
+              className="sc-gwVKww cMxZwv"
               onClick={[Function]}
             >
               layout
@@ -878,7 +916,39 @@ exports[`Storyshots Components/LayoutsList with Wrapper 1`] = `
                   </span>
                   <span>
                     <span>
-                       
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
+                        close
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#170",
+                              }
+                            }
+                          >
+                            close
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
                       <span
                         style={Object {}}
                       >
@@ -904,33 +974,10 @@ exports[`Storyshots Components/LayoutsList with Wrapper 1`] = `
                       </span>
                     </span>
                     <span>
-                       
-                      <span
-                        style={Object {}}
-                      >
-                        restoreLayout
-                      </span>
                       <span>
-                        =
-                        <span
-                          style={Object {}}
-                        >
-                          {
-                          <span
-                            style={
-                              Object {
-                                "color": "#170",
-                              }
-                            }
-                          >
-                            restoreLayout clicked
-                          </span>
-                          }
-                        </span>
+                        <br />
+                          
                       </span>
-                    </span>
-                    <span>
-                       
                       <span
                         style={Object {}}
                       >
@@ -1269,7 +1316,36 @@ exports[`Storyshots Components/LayoutsList with Wrapper 1`] = `
                           }
                         </span>
                       </span>
-                       
+                    </span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
+                        restoreLayout
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#170",
+                              }
+                            }
+                          >
+                            restoreLayout clicked
+                          </span>
+                          }
+                        </span>
+                      </span>
+                      <br />
                     </span>
                   </span>
                   <span

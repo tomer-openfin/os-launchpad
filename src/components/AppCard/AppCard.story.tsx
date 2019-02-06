@@ -1,4 +1,5 @@
 import { action } from '@storybook/addon-actions';
+import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
@@ -7,6 +8,11 @@ import { CATEGORIES } from '../../utils/storyCategories';
 
 import AppCard from './AppCard';
 
-const launchApp = action('Launch app');
+storiesOf(`${CATEGORIES.COMPONENTS}AppCard`, module)
+  .addDecorator(withKnobs)
+  .add('default', () => {
+    const isLoading = boolean('isLoading', false);
+    const launchApp = action('Launch app');
 
-storiesOf(`${CATEGORIES.COMPONENTS}AppCard`, module).add('default', () => <AppCard app={AppData[0]} launchApp={launchApp} />);
+    return <AppCard app={AppData[0]} isLoading={isLoading} launchApp={launchApp} />;
+  });

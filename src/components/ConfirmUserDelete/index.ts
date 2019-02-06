@@ -1,3 +1,3 @@
-import Component from './ConfirmUserDeleteContainer';
+import ConfirmDelete from './ConfirmUserDeleteContainer';
 
-export default Component;
+export default ConfirmDelete;

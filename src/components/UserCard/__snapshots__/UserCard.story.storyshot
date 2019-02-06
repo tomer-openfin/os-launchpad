@@ -11,56 +11,58 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
     }
   >
     <div
-      className="sc-ebFjAB ctWgjO"
+      className="sc-fOICqy gKLGAR"
     >
       <div
-        className="sc-laTMn ftvNdj"
+        className="sc-iGrrsa hvkzG"
       >
         <div
-          className="sc-hGoxap bmOnqS"
+          className="sc-bmyXtO bjYmwK"
         >
           <div
-            className="sc-fjmCvl hgqJoY"
+            className="sc-dEoRIm cBGVUt"
           >
             <div
-              className="sc-TFwJa hCfjJW"
+              className="sc-jtggT iGgsbc"
+              title="John Doe"
             >
               John
                
               Doe
             </div>
             <div
-              className="sc-bHwgHz jGvOCy sc-ifAKCX yXyBY"
+              className="sc-ebFjAB FFBMb sc-ifAKCX yXyBY"
               color="#FBC23C"
               size={16}
               title="Admin"
             />
             <div
-              className="sc-bHwgHz jGvOCy sc-ifAKCX dXYvlK"
+              className="sc-ebFjAB FFBMb sc-ifAKCX dXYvlK"
               color="#DF5353"
               size={16}
               title="User has not logged in yet"
             />
           </div>
           <div
-            className="sc-krDsej hpsyRu"
+            className="sc-jKVCRD iAdObG"
+            title="John.Doe@gmail.com"
           >
             John.Doe@gmail.com
           </div>
         </div>
         <div
-          className="sc-dTdPqK bIKcXv"
+          className="sc-kaNhvL hRKQlH"
         >
           <div
-            className="sc-gFaPwZ dJYqxp"
+            className="sc-hmXxxW ielSIu"
           >
             <a
-              className="sc-bMvGRv hNIUyD"
+              className="sc-iqzUVk cfYQKQ"
               href="/admin/users/edit"
               onClick={[Function]}
             />
             <a
-              className="sc-rBLzX izmcKv"
+              className="sc-qrIAp gYRivS"
               href="/admin/users/delete"
               onClick={[Function]}
             />

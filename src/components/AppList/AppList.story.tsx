@@ -3,13 +3,15 @@ import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import AppData from '../../samples/AppData';
-import { CATEGORIES } from '../../utils/storyCategories';
-
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
+
+import AppData from '../../samples/AppData';
 import { LauncherSizeConfig, launcherSizeConfigs } from '../../utils/launcherSizeConfigs';
+import { CATEGORIES } from '../../utils/storyCategories';
 import { isTopOrBottom } from '../../utils/windowPositionHelpers';
-import { AppListToggleId } from '../AppListToggle/index';
+
+import { AppListToggleId } from '../AppListToggle';
+
 import AppList from './AppList';
 
 let appListItems = AppData.reduce((acc: string[], data) => {

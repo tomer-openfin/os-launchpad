@@ -1,4 +1,4 @@
-import { LoginRequestPayload, LoginWithNewPasswordPayload } from '../../redux/me';
+import { ConfirmPasswordPayload, ForgotPasswordPayload, LoginRequestPayload, LoginWithNewPasswordPayload } from '../../redux/me';
 import { APIResponse } from '../../types/commons';
 import { HTTPMethods } from '../../types/enums';
 
@@ -26,3 +26,17 @@ export const newPasswordLogin = ({ username, newPassword, session }: LoginWithNe
  * @returns {Promise<APIResponse>}
  */
 export const logout = (): Promise<APIResponse> => fetchJSON(API.LOGOUT, HTTPMethods.POST);
+
+/**
+ * Confirm forgotten password
+ *
+ * @returns {Promise<APIResponse>}
+ */
+export const confirmPassword = (payload: ConfirmPasswordPayload): Promise<APIResponse> => fetchJSON(API.CONFIRM_PASSWORD, HTTPMethods.POST, payload);
+
+/**
+ * Forgot password
+ *
+ * @returns {Promise<APIResponse>}
+ */
+export const forgotPassword = (payload: ForgotPasswordPayload): Promise<APIResponse> => fetchJSON(API.FORGOT_PASSWORD, HTTPMethods.POST, payload);

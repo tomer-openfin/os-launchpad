@@ -11,37 +11,37 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
     }
   >
     <div
-      className="sc-GMQeP eCbkgM"
+      className="sc-krDsej eZZCXL"
     >
       <div
-        className="sc-jWBwVP izFfYu"
+        className="sc-caSCKo eSDsWe"
       >
         <div
-          className="sc-brqgnP hERWLS"
+          className="sc-gisBJw ctZMsr"
         >
           <div
-            className="sc-cMljjf eWlOWR"
+            className="sc-bYSBpT kWexBi"
           >
             Create New User
           </div>
         </div>
       </div>
       <form
-        className="sc-iujRgT fpCTXM"
+        className="sc-cMljjf YbFgd"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <div
-          className="sc-exAgwC dLvgoG"
+          className="sc-jAaTju jjQQeH"
         >
           <div
-            className="sc-cQFLBn lmyPXw"
+            className="sc-jDwBTQ kspkKE"
           >
             <div
-              className="sc-gojNiO hzFszm"
+              className="sc-dTdPqK gvngsy"
             >
               <label
-                className="sc-kpOJdX cODgu"
+                className="sc-kpOJdX fGktSh"
               >
                 <div
                   className="sc-kGXeez hlXPx"
@@ -58,7 +58,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
                 />
               </label>
               <label
-                className="sc-kpOJdX cODgu"
+                className="sc-kpOJdX fGktSh"
               >
                 <div
                   className="sc-kGXeez hlXPx"
@@ -75,7 +75,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
               </label>
             </div>
             <label
-              className="sc-kpOJdX cODgu"
+              className="sc-kpOJdX fGktSh"
             >
               <div
                 className="sc-kGXeez hlXPx"
@@ -92,7 +92,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
               />
             </label>
             <label
-              className="sc-kpOJdX cODgu"
+              className="sc-kpOJdX fGktSh"
             >
               <div
                 className="sc-kGXeez hlXPx"
@@ -110,7 +110,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
               />
             </label>
             <label
-              className="sc-kpOJdX cODgu"
+              className="sc-kpOJdX fGktSh"
             >
               <div
                 className="sc-kGXeez hlXPx"
@@ -128,7 +128,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
               />
             </label>
             <label
-              className="sc-kpOJdX cODgu"
+              className="sc-kpOJdX fGktSh"
             >
               <div
                 className="sc-kGXeez hlXPx"
@@ -144,7 +144,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
                 value=""
               />
               <div
-                className="sc-cbkKFq hGGPIx"
+                className="sc-eMigcr gIKLzN"
               >
                 <div
                   className="sc-ifAKCX xmkOg"
@@ -157,14 +157,22 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
           </div>
         </div>
         <div
-          className="sc-fYiAbW haPmxn"
+          className="sc-iRbamj jQKyym"
         >
           <div
-            className="sc-daURTG ernUfV"
+            className="sc-gPEVay cdIDZh"
           >
+            <button
+              className="sc-kAzzGY iAOmzv"
+              disabled={true}
+              type="submit"
+              width={128}
+            >
+              Save
+            </button>
             <a
               backgroundColor="#848484"
-              className="sc-chPdSV bBLqzg"
+              className="sc-chPdSV eUeCqN"
               href="/admin/users"
               onClick={[Function]}
               type="button"
@@ -172,20 +180,32 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
             >
               Cancel
             </a>
-            <button
-              className="sc-kAzzGY kElEHA"
-              disabled={true}
-              type="submit"
-              width={128}
-            >
-              Save
-            </button>
           </div>
         </div>
       </form>
       <div
-        className="sc-bXGyLb kIzGGk"
-      />
+        className="sc-itybZL fDnYCf"
+      >
+        <div
+          className="sc-jlyJG tArtB"
+        >
+          <div
+            className="sc-gipzik ifLLNH"
+          >
+            <div
+              className="sc-csuQGl PwXvg"
+            >
+              There was an error trying to create this user:  Please try again.
+            </div>
+            <div
+              className="sc-Rmtcm FsQfW sc-ifAKCX xmkOg"
+              color="#E7E7E7"
+              onClick={[Function]}
+              size={25}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <button
@@ -342,151 +362,6 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      location
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#666",
-                            }
-                          }
-                        >
-                          {
-                          <span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              state
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#666",
-                              }
-                            }
-                          >
-                            {
-                            <span>
-                              <span>
-                                <br />
-                                    
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                email
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              'John.Doe@gmail.com'
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                    
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                firstName
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              'John'
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                    
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                id
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              'username1'
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                    
-                                  
-                              </span>
-                              …
-                            </span>
-                            <span>
-                              <br />
-                                  
-                            </span>
-                            }
-                          </span>
-                          }
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
                       createUser
                     </span>
                     <span>
@@ -503,6 +378,58 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
                           }
                         >
                           createUser
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      onEscDown
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          onEscDown
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      pushRoute
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          noop
                         </span>
                         }
                       </span>

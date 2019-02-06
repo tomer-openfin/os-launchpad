@@ -17,12 +17,13 @@ export const CtaWrapper = styled.div`
 
 export const Header = styled.div<CommonProps>`
   -webkit-app-region: drag !important;
+  align-items: center;
   background-color: ${props => props.backgroundColor};
   color: ${Color.SUN};
   display: flex;
+  flex-shrink: 0;
   height: 60px;
   justify-content: space-between;
-  align-items: center;
   text-align: center;
   width: 100%;
 `;

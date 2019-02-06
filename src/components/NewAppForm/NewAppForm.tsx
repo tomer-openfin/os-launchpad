@@ -1,163 +1,61 @@
-import { Formik } from 'formik';
 import * as React from 'react';
-import { Redirect } from 'react-router-dom';
 
-import * as EmptyLogo from '../../assets/empty-logo.svg';
-
-import { ErrorResponseMessage, ErrorWrapper, Wrapper } from '../UserForm';
-
-import { Color } from '../../styles';
-import { App, ResponseStatus } from '../../types/commons';
-import AppForm from '../AppForm';
 import { ROUTES } from '../Router/consts';
-import WindowHeader from '../WindowHeader/index';
+
+import { App, MetaWithCallbacks, PushRoute, RequestFormSubmit } from '../../types/commons';
+
+import { createPushRouteHandler } from '../../utils/routeHelpers';
+import AppForm from '../AppForm';
+import RequestForm from '../RequestForm';
 
 interface Props {
-  createApp: Function;
+  createApp: RequestFormSubmit<App>;
+  onEscDown: () => void;
+  pushRoute: PushRoute;
 }
 
-interface State {
-  updatedLogo: string;
-  file: File | null;
-  formContents: App;
-  responseReceived: boolean;
-  result: {
-    message?: string;
-    status: string;
-  };
-}
+const emptyApp = {
+  appUrl: '',
+  contexts: [],
+  description: '',
+  icon: '',
+  id: '',
+  images: [],
+  intents: [],
+  manifest_url: '',
+  name: '',
+  title: '',
+  withAppUrl: true,
+};
 
-class NewAppForm extends React.Component<Props, State> {
-  currentLogo: string;
+const createAppSubmitHandler = (submit: RequestFormSubmit<App>): RequestFormSubmit<App> => (formData, meta: MetaWithCallbacks) => {
+  // modify App Title to create the App Name (removed input field for this) and needed for formData
+  // todo: ensure uniqueness -> sync up with OF Brian, how is this being handled on BE?
+  formData.name = formData.title.replace(/\s/g, '');
 
-  constructor(props) {
-    super(props);
+  let payload;
 
-    this.state = {
-      file: null,
-      formContents: {
-        appPage: '',
-        appUrl: '',
-        contact_email: '',
-        contexts: [],
-        description: '',
-        icon: '',
-        id: '',
-        images: [],
-        intents: [],
-        manifest_url: '',
-        name: '',
-        publisher: '',
-        signature: '',
-        support_email: '',
-        title: '',
-        withAppUrl: false,
-      },
-      responseReceived: false,
-      result: {
-        message: '',
-        status: 'failure',
-      },
-      updatedLogo: '',
-    };
-
-    this.currentLogo = EmptyLogo;
+  // Strip out manifest if appUrl and vice versa
+  if (!!formData.withAppUrl) {
+    const { manifest_url, withAppUrl, ...rest } = formData;
+    payload = rest;
+  } else {
+    const { appUrl, withAppUrl, ...rest } = formData;
+    payload = rest;
   }
 
-  errorCb = message => {
-    this.setState({
-      responseReceived: true,
-      result: {
-        message,
-        status: ResponseStatus.FAILURE,
-      },
-    });
-  };
+  submit(payload, meta);
+};
 
-  successCb = () =>
-    this.setState({
-      responseReceived: true,
-      result: {
-        status: ResponseStatus.SUCCESS,
-      },
-    });
-
-  handleFormSubmit = (formData, actions) => {
-    const { createApp } = this.props;
-
-    const meta = { successCb: this.successCb, errorCb: this.errorCb };
-
-    // modify App Title to create the App Name (removed input field for this) and needed for formData
-    // todo: ensure uniqueness -> sync up with OF Brian, how is this being handled on BE?
-    formData.name = formData.title.replace(/\s/g, '');
-
-    let payload;
-
-    // Strip out manifest if appUrl and vice versa
-    if (!!formData.withAppUrl) {
-      const { manifest_url, withAppUrl, ...rest } = formData;
-      payload = rest;
-    } else {
-      const { appUrl, withAppUrl, ...rest } = formData;
-      payload = rest;
-    }
-
-    createApp(payload, meta);
-
-    actions.setSubmitting(false);
-  };
-
-  renderMessage = () => {
-    const { responseReceived, formContents, result } = this.state;
-    const { title } = formContents;
-
-    if (responseReceived) {
-      if (result.status === ResponseStatus.FAILURE) {
-        return (
-          <ErrorResponseMessage>
-            There was an error trying to create {title} app: {result.message}. Please try again.
-          </ErrorResponseMessage>
-        );
-      }
-      return <Redirect to={ROUTES.ADMIN_APPS} />;
-    }
-
-    return null;
-  };
-
-  render() {
-    const { formContents } = this.state;
-    const { id, appUrl, manifest_url, name, title, description, icon, images, withAppUrl } = formContents;
-
-    return (
-      <Wrapper>
-        <WindowHeader backgroundColor={Color.VACUUM}>
-          Create New App
-        </WindowHeader>
-
-        <Formik
-          initialValues={{
-            appUrl,
-            contexts: [],
-            description,
-            icon,
-            id,
-            images,
-            intents: [],
-            manifest_url,
-            name,
-            title,
-            withAppUrl,
-          }}
-          onSubmit={this.handleFormSubmit}
-          validateOnChange={false}
-          render={AppForm}
-        />
-
-        <ErrorWrapper>{this.renderMessage()}</ErrorWrapper>
-      </Wrapper>
-    );
-  }
-}
+const NewAppForm = ({ createApp, pushRoute }: Props) => (
+  <RequestForm
+    initialValues={emptyApp}
+    errorMessage="There was an error trying to create this app"
+    form={AppForm}
+    headingText="Create New App"
+    onSubmitSuccess={createPushRouteHandler(pushRoute, ROUTES.ADMIN_APPS)}
+    submit={createAppSubmitHandler(createApp)}
+  />
+);
 
 export default NewAppForm;

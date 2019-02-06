@@ -11,16 +11,16 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
     }
   >
     <div
-      className="sc-GMQeP eCbkgM"
+      className="sc-krDsej eZZCXL"
     >
       <div
-        className="sc-jWBwVP izFfYu"
+        className="sc-caSCKo eSDsWe"
       >
         <div
-          className="sc-brqgnP hERWLS"
+          className="sc-gisBJw ctZMsr"
         >
           <div
-            className="sc-kvZOFW dNAtOq"
+            className="sc-bYSBpT kWexBi"
           >
             Edit FinTech Studios
           </div>
@@ -33,21 +33,21 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
         </div>
       </div>
       <form
-        className="sc-iujRgT fpCTXM"
+        className="sc-cMljjf YbFgd"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <div
-          className="sc-exAgwC dLvgoG"
+          className="sc-jAaTju jjQQeH"
         >
           <div
-            className="sc-cQFLBn lmyPXw"
+            className="sc-jDwBTQ kspkKE"
           >
             <div
-              className="sc-gojNiO dnTgak"
+              className="sc-dTdPqK dJVxZp"
             >
               <label
-                className="sc-jVODtj ethFQh sc-kpOJdX cODgu"
+                className="sc-kxynE gjvIED sc-kpOJdX fGktSh"
               >
                 <div
                   className="sc-kGXeez hlXPx"
@@ -62,34 +62,34 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                   type="checkbox"
                 />
                 <div
-                  className="sc-fONwsr fYkxm"
+                  className="sc-gmeYpB ipfegE"
                 >
                   <div
                     checked={false}
-                    className="sc-giadOv gGKAJY"
+                    className="sc-fcdeBU bTneHa"
                   />
                   <div
-                    className="sc-kUaPvJ hImGKu"
+                    className="sc-cooIXK OxlqL"
                   >
                     App URL
                   </div>
                 </div>
                 <div
-                  className="sc-fONwsr fYkxm"
+                  className="sc-gmeYpB ipfegE"
                 >
                   <div
                     checked={true}
-                    className="sc-giadOv bthZKi"
+                    className="sc-fcdeBU bQcMFr"
                   />
                   <div
-                    className="sc-kUaPvJ hImGKu"
+                    className="sc-cooIXK OxlqL"
                   >
                     Manifest
                   </div>
                 </div>
               </label>
               <label
-                className="sc-kpOJdX cODgu"
+                className="sc-kpOJdX fGktSh"
               >
                 <div
                   className="sc-kGXeez hlXPx"
@@ -107,7 +107,7 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
               </label>
             </div>
             <label
-              className="sc-kpOJdX cODgu"
+              className="sc-kpOJdX fGktSh"
             >
               <div
                 className="sc-kGXeez hlXPx"
@@ -124,11 +124,11 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
               />
             </label>
             <div
-              className="sc-gojNiO lnKJIM"
+              className="sc-dTdPqK jffWHV"
               height="99px"
             >
               <label
-                className="sc-kpOJdX cODgu"
+                className="sc-kpOJdX fGktSh"
               >
                 <div
                   className="sc-kGXeez hlXPx"
@@ -145,7 +145,7 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                 />
               </label>
               <label
-                className="sc-kpOJdX cODgu"
+                className="sc-kpOJdX fGktSh"
               >
                 <div
                   className="sc-kGXeez hlXPx"
@@ -162,248 +162,25 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                 />
               </label>
             </div>
-            <div
-              className="sc-gojNiO doxwIP"
-              height="161px"
-            >
-              <label
-                className="sc-kpOJdX khpbwI"
-              >
-                <div
-                  className="sc-kGXeez hlXPx"
-                >
-                  Accepted Intent(s)
-                </div>
-                <div
-                  className="sc-krvtoX icWCJR"
-                >
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="intents"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="Start Call"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      Start Call
-                    </div>
-                  </label>
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="intents"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="Start Chat"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      Start Chat
-                    </div>
-                  </label>
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="intents"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="View Chart"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      View Chart
-                    </div>
-                  </label>
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="intents"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="View Contact"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      View Contact
-                    </div>
-                  </label>
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="intents"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="View Quote"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      View Quote
-                    </div>
-                  </label>
-                </div>
-              </label>
-              <label
-                className="sc-kpOJdX khpbwI"
-              >
-                <div
-                  className="sc-kGXeez hlXPx"
-                >
-                  Accepted Context(s)
-                </div>
-                <div
-                  className="sc-krvtoX icWCJR"
-                >
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="contexts"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="Instrument"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      Instrument
-                    </div>
-                  </label>
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="contexts"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="Contact"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      Contact
-                    </div>
-                  </label>
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="contexts"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="Organization"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      Organization
-                    </div>
-                  </label>
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="contexts"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="Contact List"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      Contact List
-                    </div>
-                  </label>
-                  <label
-                    className="sc-itybZL hbPRF"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gPWkxV daZshS"
-                      name="contexts"
-                      onChange={[Function]}
-                      type="checkbox"
-                      value="Position"
-                    />
-                    <div
-                      className="sc-fzsDOv eMcpSu"
-                    />
-                    <div
-                      className="sc-eMigcr lkmzur"
-                    >
-                      Position
-                    </div>
-                  </label>
-                </div>
-              </label>
-            </div>
           </div>
         </div>
         <div
-          className="sc-fYiAbW haPmxn"
+          className="sc-iRbamj jQKyym"
         >
           <div
-            className="sc-daURTG ernUfV"
+            className="sc-gPEVay cdIDZh"
           >
+            <button
+              className="sc-kAzzGY iAOmzv"
+              disabled={true}
+              type="submit"
+              width={128}
+            >
+              Save
+            </button>
             <a
               backgroundColor="#848484"
-              className="sc-chPdSV bBLqzg"
+              className="sc-chPdSV eUeCqN"
               href="/admin/apps"
               onClick={[Function]}
               type="button"
@@ -411,20 +188,32 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
             >
               Cancel
             </a>
-            <button
-              className="sc-kAzzGY kElEHA"
-              disabled={true}
-              type="submit"
-              width={128}
-            >
-              Save
-            </button>
           </div>
         </div>
       </form>
       <div
-        className="sc-bXGyLb kIzGGk"
-      />
+        className="sc-itybZL fDnYCf"
+      >
+        <div
+          className="sc-jlyJG tArtB"
+        >
+          <div
+            className="sc-gipzik ifLLNH"
+          >
+            <div
+              className="sc-csuQGl PwXvg"
+            >
+              There was an error trying to update FinTech Studios:  Please try again.
+            </div>
+            <div
+              className="sc-Rmtcm FsQfW sc-ifAKCX xmkOg"
+              color="#E7E7E7"
+              onClick={[Function]}
+              size={25}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <button
@@ -577,37 +366,14 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                 </span>
                 <span>
                   <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      updateApp
-                    </span>
                     <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          updateApp
-                        </span>
-                        }
-                      </span>
+                      <br />
+                        
                     </span>
-                  </span>
-                  <span>
-                     
                     <span
                       style={Object {}}
                     >
-                      location
+                      app
                     </span>
                     <span>
                       =
@@ -636,19 +402,151 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                                 }
                               }
                             >
-                              hash
+                              contexts
                             </span>
                           </span>
                           : 
                           <span
                             style={
                               Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
+                                "color": "#666",
                               }
                             }
                           >
-                            'for react-router'
+                            [
+                            <span>
+                              <span>
+                                <br />
+                                    
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                {
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    $type
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  'fdc3.instrument'
+                                </span>
+                                }
+                              </span>
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                    
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                {
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    $type
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  'fdc3.contact'
+                                </span>
+                                }
+                              </span>
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                    
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                {
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    $type
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  'fdc3.organization'
+                                </span>
+                                }
+                              </span>
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                    
+                                  
+                              </span>
+                              …
+                            </span>
+                            <span>
+                              <br />
+                                  
+                            </span>
+                            ]
                           </span>
                           ,
                           <span>
@@ -664,19 +562,220 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                                 }
                               }
                             >
-                              pathname
+                              intents
                             </span>
                           </span>
                           : 
                           <span
                             style={
                               Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
+                                "color": "#666",
                               }
                             }
                           >
-                            'for react-router'
+                            [
+                            <span>
+                              <span>
+                                <br />
+                                    
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                {
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    name
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  'StartCall'
+                                </span>
+                                ,
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    displayName
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  'Call'
+                                </span>
+                                }
+                              </span>
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                    
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                {
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    name
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  'StartChat'
+                                </span>
+                                ,
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    displayName
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  'Chat'
+                                </span>
+                                }
+                              </span>
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                    
+                                  
+                              </span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                {
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    name
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  'ViewChart'
+                                </span>
+                                ,
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    displayName
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  'Chart'
+                                </span>
+                                }
+                              </span>
+                            </span>
+                            ,
+                            <span>
+                              <span>
+                                <br />
+                                    
+                                  
+                              </span>
+                              …
+                            </span>
+                            <span>
+                              <br />
+                                  
+                            </span>
+                            ]
                           </span>
                           ,
                           <span>
@@ -692,7 +791,7 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                                 }
                               }
                             >
-                              search
+                              name
                             </span>
                           </span>
                           : 
@@ -704,7 +803,7 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                               }
                             }
                           >
-                            'for react-router'
+                            'fintech-studios'
                           </span>
                           ,
                           <span>
@@ -724,7 +823,94 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                         }
                       </span>
                     </span>
-                     
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      pushRoute
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          pushRoute
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      onEscDown
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          onEscDown
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      updateApp
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          updateApp
+                        </span>
+                        }
+                      </span>
+                    </span>
+                    <br />
                   </span>
                 </span>
                 <span

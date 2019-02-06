@@ -7,7 +7,7 @@ import { DirectionalPosition } from '../../types/commons';
 import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import { defaultProps } from '../SvgIcon/index';
+import { defaultProps } from '../SvgIcon';
 import SvgIconWithExtension from './SvgIconWithExtension';
 
 const { STORYBOOK_SVGS } = process.env;
@@ -18,7 +18,7 @@ const onClick = action('clicked');
 
 storiesOf(`${CATEGORIES.COMPONENTS}SvgIconWithExtension`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecorator(15))
+  .addDecorator(withMarginDecorator(30))
   .add('default', () => {
     const extensionPosition = select('extensionPosition', Object(DirectionalPosition), DirectionalPosition.Top);
     const imgSrc = select('Svg', SVGS, SVGS[0]);

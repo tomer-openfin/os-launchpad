@@ -1,6 +1,9 @@
 import { call, put, select, takeLatest } from 'redux-saga/effects';
-import ApiService from '../../services/ApiService/index';
+
+import ApiService from '../../services/ApiService';
+
 import { ResponseStatus } from '../../types/enums';
+
 import {
   GET_ADMIN_ORG_SETTINGS,
   GET_ORG_SETTINGS,

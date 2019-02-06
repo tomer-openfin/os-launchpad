@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 `;
 
 storiesOf(`${CATEGORIES.COMPONENTS}PasswordForm`, module)
-  .addDecorator(withMarginDecorator(15))
+  .addDecorator(withMarginDecorator(30))
   .add('default', () => {
     return (
       <Wrapper>

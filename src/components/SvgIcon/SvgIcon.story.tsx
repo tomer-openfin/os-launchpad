@@ -16,7 +16,7 @@ const onClick = action('clicked');
 
 storiesOf(`${CATEGORIES.UI}SvgIcon`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecorator(15))
+  .addDecorator(withMarginDecorator(30))
   .add('default', () => {
     const imgSrc = select('Svg', SVGS, SVGS[0]);
     const size = text('Size', defaultSize);

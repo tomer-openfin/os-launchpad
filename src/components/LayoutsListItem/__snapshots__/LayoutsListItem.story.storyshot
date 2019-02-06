@@ -11,13 +11,13 @@ exports[`Storyshots Components/LayoutsListItem default 1`] = `
     }
   >
     <div
-      className="sc-kPVwWT gkQWNJ"
+      className="sc-bXGyLb fdMQEy"
     >
       <div
-        className="sc-tilXH QYbaL"
+        className="sc-hXRMBi glQpeD"
       >
         <li
-          className="sc-fYxtnH jmkJOa"
+          className="sc-gwVKww cMxZwv"
           onClick={[Function]}
         >
           layout
@@ -210,6 +210,35 @@ exports[`Storyshots Components/LayoutsListItem default 1`] = `
                     LayoutsListItem
                   </span>
                   <span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
+                        close
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#170",
+                              }
+                            }
+                          >
+                            close
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
                     <span>
                       <span>
                         <br />

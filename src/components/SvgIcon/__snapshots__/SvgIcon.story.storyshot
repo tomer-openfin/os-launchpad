@@ -13,7 +13,7 @@ exports[`Storyshots UI Components/SvgIcon default 1`] = `
     <div
       style={
         Object {
-          "margin": "15px",
+          "margin": "30px",
         }
       }
     >
@@ -218,7 +218,7 @@ exports[`Storyshots UI Components/SvgIcon default 1`] = `
                                 }
                               }
                             >
-                              '15px'
+                              '30px'
                             </span>
                             }
                           </span>

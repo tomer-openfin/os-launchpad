@@ -1,13 +1,14 @@
 import { action } from '@storybook/addon-actions';
+import { boolean, number, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
 import * as notificationsIcon from '../../assets/Notifications.svg';
+
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import { boolean, number, text, withKnobs } from '@storybook/addon-knobs';
 import NotificationsIcon from '../NotificationsIcon';
-import { defaultProps } from '../SvgIcon/index';
+import { defaultProps } from '../SvgIcon';
 
 const defaultSize = typeof defaultProps.size! === 'string' ? String(defaultProps.size!) : `${defaultProps.size!}px`;
 

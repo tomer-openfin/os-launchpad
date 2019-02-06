@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 
-import Button, { ButtonLink } from '../Button/Button.css';
+import Button, { ButtonLink } from '../Button';
 import { ButtonWrapper, Copy, CopyWrapper, Error, Heading, HeadingText, Wrapper } from '../ConfirmUserDelete/ConfirmDelete.css';
 
-import { Color } from '../../styles/index';
+import { Color } from '../../styles';
 import { App, ResponseStatus } from '../../types/commons';
 import { ROUTES } from '../Router/consts';
 

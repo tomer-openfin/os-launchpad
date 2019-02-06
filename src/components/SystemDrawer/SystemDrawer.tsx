@@ -5,7 +5,6 @@ import * as closeIcon from '../../assets/CloseCircle.svg';
 
 import { Color } from '../../styles';
 import { DirectionalPosition, Orientation } from '../../types/commons';
-import { calcSystemDrawerToggleSize } from './utils';
 
 import { LauncherSizeConfig } from '../../utils/launcherSizeConfigs';
 import SvgIcon from '../SvgIcon';
@@ -85,7 +84,7 @@ class SystemDrawer extends React.Component<Props> {
             imgSrc={isExpanded ? closeIcon : arrowIcon}
             onClick={onClickToggle}
             orientation={orientation}
-            size={calcSystemDrawerToggleSize(isExpanded, launcherSizeConfig)}
+            size={isExpanded ? launcherSizeConfig.systemDrawerToggleClose : launcherSizeConfig.systemDrawerToggleOpen}
           />
         </ToggleIconWrapper>
 

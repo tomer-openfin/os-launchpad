@@ -1,4 +1,4 @@
-import { MeSettingsState } from '../../../redux/me/index';
+import { MeSettingsState } from '../../../redux/me';
 import { exampleUserLayout } from '../../../samples/LayoutData';
 import { APIResponse, DirectionalPosition, LauncherSize, NewUserLayout, UserLayout } from '../../../types/commons';
 import { NotFoundResponse, OkResponse } from './utils/commons';

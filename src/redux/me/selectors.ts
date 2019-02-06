@@ -10,8 +10,6 @@ export const getIsLoggedIn = (state: State) => {
   return !!meState.email && !!meState.firstName && !!meState.lastName;
 };
 
-export const getMeLoginState = (state: State) => getMeState(state).login;
-
 export const getAppsLauncherIds = (state: State) => getMeSettings(state).appIds;
 export const getAutoHide = (state: State) => getMeSettings(state).autoHide;
 export const getLauncherPosition = (state: State) => getMeSettings(state).launcherPosition;

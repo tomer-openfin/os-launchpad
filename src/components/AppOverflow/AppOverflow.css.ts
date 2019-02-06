@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Color } from '../../styles/index';
+import { Color } from '../../styles';
 
 import { StyledTransitionGroup as AppList } from '../AppList';
 

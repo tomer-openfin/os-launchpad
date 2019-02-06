@@ -11,7 +11,7 @@ exports[`Storyshots UI Components/Button default 1`] = `
     }
   >
     <button
-      className="sc-kAzzGY gnyQHQ"
+      className="sc-kAzzGY hcTOPm"
       onClick={[Function]}
     >
       Button Text
@@ -315,7 +315,7 @@ exports[`Storyshots UI Components/Button with knobs 1`] = `
     }
   >
     <button
-      className="sc-kAzzGY tswKT"
+      className="sc-kAzzGY hZqDIG"
       onClick={[Function]}
       width={150}
     >
@@ -673,7 +673,7 @@ exports[`Storyshots UI Components/Button with theme 1`] = `
     }
   >
     <button
-      className="sc-kAzzGY gnyQHQ"
+      className="sc-kAzzGY hcTOPm"
       onClick={[Function]}
     >
       Theme Me

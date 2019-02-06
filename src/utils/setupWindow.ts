@@ -4,7 +4,7 @@ import { put } from 'redux-saga/effects';
 import { LAYOUTS_WINDOW, LOGOUT_WINDOW } from '../config/windows';
 import { setIsDrawerExpanded } from '../redux/application';
 import { State } from '../redux/types';
-import { windowHidden, windowShown } from '../redux/windows';
+import { windowBlurred, windowHidden, windowShown } from '../redux/windows';
 import { WindowBaseEvent } from '../types/fin';
 import getAppUuid from './getAppUuid';
 
@@ -14,12 +14,15 @@ const hiddenHandler = ({ name }: WindowBaseEvent) => {
 const shownHandler = ({ name }: WindowBaseEvent) => {
   window.store.dispatch(windowShown(name));
 };
+const blurredHandler = ({ name }: WindowBaseEvent) => {
+  window.store.dispatch(windowBlurred(name));
+};
 
 /**
  * Main window specific setup.
  */
 function* setupMainWindow(finName: string) {
-  const blurredHandler = () => {
+  const mainBlurredHandler = () => {
     window.setTimeout(() => {
       const { windows }: State = window.store.getState();
       const layoutWindow = windows.byId[LAYOUTS_WINDOW];
@@ -30,15 +33,7 @@ function* setupMainWindow(finName: string) {
     }, 100);
   };
 
-  yield put(Window.addWindowEventListener({ id: finName, listener: blurredHandler, type: 'blurred' }));
-}
-
-function* setupLogoutWindow(finName: string) {
-  const blurredHandler = () => {
-    window.store.dispatch(Window.hideWindow({ id: finName }));
-  };
-
-  yield put(Window.addWindowEventListener({ id: finName, listener: blurredHandler, type: 'blurred' }));
+  yield put(Window.addWindowEventListener({ id: finName, listener: mainBlurredHandler, type: 'blurred' }));
 }
 
 export function* setupWindow(finName: string) {
@@ -52,11 +47,8 @@ export function* setupWindow(finName: string) {
       yield setupMainWindow(finName);
       return;
     }
-    case LOGOUT_WINDOW: {
-      yield setupLogoutWindow(finName);
-      return;
-    }
     default: {
+      yield put(Window.addWindowEventListener({ id: finName, listener: blurredHandler, type: 'blurred' }));
       return;
     }
   }

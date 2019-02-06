@@ -12,18 +12,20 @@ import AppIcon from './AppIcon';
 
 storiesOf(`${CATEGORIES.UI}AppIcon`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecorator(15))
+  .addDecorator(withMarginDecorator(30))
   .add('default', () => {
     const imgSrc = text('imgSrc', 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
     const launcherSize = select('size', Object(LauncherSize), LauncherSize.Large);
-    const isClickable = boolean('isClickable', false);
+    const isClickable = boolean('isClickable', true);
     const isDisabled = boolean('isDisabled', false);
+    const isLoading = boolean('isLoading', false);
 
     return (
       <AppIcon
         borderWidth={launcherSizeConfigs[launcherSize].appIconBorder}
         imgSrc={imgSrc}
         isDisabled={isDisabled}
+        isLoading={isLoading}
         onClick={isClickable ? action('AppIcon clicked') : undefined}
         size={launcherSizeConfigs[launcherSize].appIcon}
       />

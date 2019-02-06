@@ -1,5 +1,6 @@
 import { Layout } from 'openfin-layouts/dist/client/types';
 
+import { RouteComponentProps } from 'react-router-dom';
 import { ResponseStatus, UserStatus } from './enums';
 
 export interface App {
@@ -28,7 +29,7 @@ export interface Dimensions {
   width: number;
 }
 
-interface Response {
+export interface ResponseObject {
   status: ResponseStatus;
   message?: string;
 }
@@ -47,7 +48,7 @@ interface Response {
 // }
 
 /* tslint:disable-next-line:no-any */
-export type APIResponse = Response | any;
+export type APIResponse = ResponseObject | any;
 
 export interface ErrorResponse extends APIResponse {
   status: ResponseStatus.FAILURE;
@@ -112,7 +113,7 @@ export interface NewUserLayout {
 }
 
 export interface MetaWithCallbacks {
-  successCb: Function;
+  successCb?: Function;
   errorCb?: Function;
 }
 
@@ -120,3 +121,8 @@ export interface XYCoord {
   x: number;
   y: number;
 }
+
+/* tslint:disable-next-line:no-any */
+export type RequestFormSubmit<T = any> = (payload: T, meta: MetaWithCallbacks, actions?) => void;
+
+export type PushRoute = RouteComponentProps['history']['push'];

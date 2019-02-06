@@ -1,120 +1,91 @@
-import { Formik } from 'formik';
 import * as React from 'react';
 
-import { LoginRequestPayload, LoginWithNewPasswordPayload, MeLoginState } from '../../redux/me';
-
-import { setLocalStorage } from '../../services/localStorageAdapter';
+import { LoginErrorPayload } from '../../redux/me/types';
 import Borders from '../Borders';
-import Checkbox from '../Checkbox';
-import FormField from '../FormField';
+import ChangePasswordForm from '../ChangePasswordForm';
+import LoginForm from '../LoginForm';
 import WindowHeader from '../WindowHeader';
-import { ContentWrapper, CTA, FormWrapper, ResponseMessage, StyledLogo, Wrapper } from './Login.css';
+import { ContentWrapper, FormWrapper, ResponseMessage, StyledLogo, Wrapper } from './Login.css';
 
-interface Props {
-  autoLoginOrg: boolean;
-  closeApplication: () => void;
-  login: (options: LoginRequestPayload) => void;
-  loginWithNewPassword: (options: LoginWithNewPasswordPayload) => void;
-  loginState: MeLoginState;
+export enum Stage {
+  ChangePassword = 'changePassword',
+  Login = 'login',
 }
 
-const { USERNAME, PASSWORD } = process.env;
+interface Props {
+  className?: string;
+  closeApplication: () => void;
+}
 
-const autoLoginLocal = JSON.parse(localStorage.getItem('autoLogin') || 'false');
+interface State {
+  error: boolean;
+  message: string;
+  session: string;
+  stage: Stage;
+  username: string;
+}
 
-const initialValues =
-  USERNAME && PASSWORD && document.location && document.location.host.indexOf('8080') !== -1
-    ? { username: USERNAME, password: PASSWORD, autoLogin: autoLoginLocal }
-    : { username: '', password: '', autoLogin: autoLoginLocal };
+interface ViewProps extends Props, State {
+  handleError: (payload: LoginErrorPayload) => void;
+}
 
-/**
- * Higher order function to pass a function to Formik's onSubmit
- *
- * @param {SubmitFn}
- *
- * @returns {LoginRequestPayload => void}
- */
-const handleSubmit = (loginState: MeLoginState, login: Props['login'], loginWithNewPassword: Props['loginWithNewPassword']) => values => {
-  const { changePassword, session } = loginState;
+export const LoginView = (props: ViewProps) => {
+  const { className, closeApplication, handleError, error, message, session, stage, username } = props;
 
-  const { username, password, newPassword, autoLogin } = values;
-
-  setLocalStorage('autoLogin', autoLogin);
-
-  if (changePassword) {
-    loginWithNewPassword({ username, newPassword, session });
-  } else {
-    login({ username, password });
-  }
-};
-
-const renderMessage = ({ error, message }: MeLoginState) =>
-  (error || message) && <ResponseMessage error={error}>{message || 'Login failed. Please try again.'}</ResponseMessage>;
-
-/**
- * LoginForm component
- *
- * @returns {React.StatelessComponent}
- */
-const LoginForm = ({ autoLoginOrg, values }) => {
   return (
-    <FormWrapper key="login">
-      <FormField label="Email" name="username" placeholder="Enter Email" type="text" />
+    <Wrapper className={className}>
+      <Borders borderRadius="6px">
+        <WindowHeader handleClose={closeApplication}>Log In</WindowHeader>
 
-      <FormField label="Password" name="password" placeholder="Enter Password" type="password" />
+        <ContentWrapper>
+          <StyledLogo size={90} />
 
-      {/* {autoLoginOrg && <Checkbox label="Keep me logged in" name="autoLogin" checked={values && values.autoLogin} />} */}
+          <FormWrapper>
+            {stage === Stage.ChangePassword ? (
+              <ChangePasswordForm errorCb={handleError} session={session} username={username} />
+            ) : (
+              <LoginForm errorCb={handleError} />
+            )}
+          </FormWrapper>
 
-      <CTA extraSpace={!autoLoginOrg || true} type="submit">
-        Login
-      </CTA>
-    </FormWrapper>
+          {message && <ResponseMessage error={error}>{message || 'Login failed. Please try again.'}</ResponseMessage>}
+        </ContentWrapper>
+      </Borders>
+    </Wrapper>
   );
 };
 
-/**
- * ChangePasswordForm component
- *
- * @returns {React.StatelessComponent}
- */
-const ChangePasswordForm = () => (
-  <FormWrapper key="changePassword">
-    <FormField label="New Password" name="newPassword" placeholder="Enter Password" type="password" />
+class Login extends React.Component<Props, State> {
+  state = {
+    error: false,
+    message: '',
+    session: '',
+    stage: Stage.Login,
+    username: '',
+  };
 
-    <FormField label="Password Confirmation" name="newPasswordConfirmation" placeholder="Confirm Password" type="password" />
+  handleError = (payload: LoginErrorPayload) => {
+    const code = payload.code || '';
+    if (code === 'NewPasswordRequired') {
+      this.setState({
+        error: false,
+        message: payload.message,
+        session: payload.session || '',
+        stage: Stage.ChangePassword,
+        username: payload.username,
+      });
+    } else {
+      this.setState({
+        error: true,
+        message: payload.message,
+        session: payload.session || '',
+      });
+    }
+  };
 
-    <CTA type="submit">Create New Password</CTA>
-  </FormWrapper>
-);
-
-const renderFormCreator = (autoLoginOrg, loginState) => ({ values }) =>
-  loginState.changePassword ? <ChangePasswordForm /> : <LoginForm autoLoginOrg={autoLoginOrg} values={values} />;
-
-/**
- * Login component
- *
- * @param {Props} - Login props
- *
- * @returns {React.StatelessComponent}
- */
-const Login = ({ autoLoginOrg, closeApplication, loginState, login, loginWithNewPassword }: Props) => (
-  <Wrapper>
-    <Borders borderRadius="6px">
-      <WindowHeader handleClose={closeApplication}>Log In</WindowHeader>
-
-      <ContentWrapper>
-        <StyledLogo size={90} />
-
-        {renderMessage(loginState)}
-
-        <Formik
-          initialValues={initialValues}
-          onSubmit={handleSubmit(loginState, login, loginWithNewPassword)}
-          render={renderFormCreator(autoLoginOrg, loginState)}
-        />
-      </ContentWrapper>
-    </Borders>
-  </Wrapper>
-);
+  render() {
+    return <LoginView {...this.props} {...this.state} handleError={this.handleError} />;
+  }
+}
 
 export default Login;

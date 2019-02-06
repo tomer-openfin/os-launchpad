@@ -1,33 +1,23 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
-import {
-  DeleteIconLink,
-  EditIconLink,
-  Footer,
-  HeadingWrapper,
-  LinkWrapper,
-  ListWrapper,
-  SortButton,
-  SortHeader,
-  SortWrapper,
-  Wrapper,
-} from './AdminUsers.css';
+import { DeleteIconLink, EditIconLink, Footer, HeadingWrapper, LinkWrapper, ListWrapper, SortButton, SortHeader, SortWrapper, Wrapper } from './AdminUsers.css';
 
 import { User } from '../../types/commons';
 
+import { memoizeOneInvalidateOnOtherArgs, memoizeSort } from '../../utils/memoize';
 import { doesCurrentPathMatch } from '../../utils/routeHelpers';
 import { ADMIN_USERS_ROUTES, ROUTES } from '../Router/consts';
 
 import { Row } from '../AppDirectory';
-import { ButtonLink } from '../Button/Button.css';
+import { ButtonLink } from '../Button';
 import Modal from '../Modal';
 import { SearchInputWithState } from '../SearchInput';
 import UserCard from '../UserCard';
 
 const ADMIN_USERS_PATHS = Object.values(ADMIN_USERS_ROUTES);
 
-const SORT_VALUES = {
+const SORT_VALUES: { [keys: string]: keyof User } = {
   ['Admin']: 'isAdmin',
   ['Email']: 'email',
   ['First Name']: 'firstName',
@@ -40,64 +30,77 @@ interface Props extends RouteComponentProps {
 
 interface State {
   search: string;
-  sort: string;
+  sort: keyof User;
 }
+
+const defaultState: State = {
+  search: '',
+  sort: SORT_VALUES['Last Name'],
+};
 
 const defaultProps: Partial<Props> = {
   users: [],
 };
 
+const filterUserList = memoizeOneInvalidateOnOtherArgs((search: State['search'], users: User[]) =>
+  search
+    ? users.filter(
+        user =>
+          user.firstName
+            .concat(user.lastName)
+            .toLowerCase()
+            .indexOf(search.toLowerCase()) !== -1,
+      )
+    : users,
+);
+
+const sortUserDatum = (sortKey: keyof User) => (userA: User, userB: User): 1 | -1 | 0 => {
+  let A = userA[sortKey];
+  let B = userB[sortKey];
+
+  if (typeof A === 'string' && typeof B === 'string') {
+    A = A.toUpperCase();
+    B = B.toUpperCase();
+
+    if (A < B) return -1;
+    if (A > B) return 1;
+  } else if (typeof A === 'boolean' && typeof B === 'boolean') {
+    if (A > B) return -1;
+    if (A < B) return 1;
+  }
+
+  if (sortKey !== defaultState.sort) {
+    return defaultSort(userA, userB);
+  }
+
+  return 0;
+};
+
+const defaultSort = sortUserDatum(defaultState.sort);
+
 class AdminUsers extends React.PureComponent<Props, State> {
   static defaultProps = defaultProps;
+
+  sortUserData = memoizeSort((userData: User[], sortKey: keyof User): User[] => userData.slice().sort(sortUserDatum(sortKey)));
 
   constructor(props) {
     super(props);
 
-    this.state = {
-      search: '',
-      sort: SORT_VALUES['Last Name'],
-    };
+    this.state = defaultState;
   }
 
-  handleInputChange = (search: string) => {
+  handleInputChange = (search: State['search']) => {
     this.setState({ search });
   };
 
-  handleChangeSortCreator = sort => () => {
+  handleChangeSortCreator = (sort: State['sort']) => () => {
     this.setState({ sort });
   };
 
   // TODO: only sort on sort change and props update instead of every render,
   // store derived (sorted) state to filter in render
-  sortUserData = (userData: User[], sortKey: string) =>
-    userData.sort((userA, userB) => {
-      let A = userA[sortKey];
-      let B = userB[sortKey];
 
-      if (typeof A === 'string' && typeof B === 'string') {
-        A = A.toUpperCase();
-        B = B.toUpperCase();
-
-        if (A < B) return -1;
-        if (A > B) return 1;
-      } else if (typeof A === 'boolean' && typeof B === 'boolean') {
-        if (A > B) return -1;
-        if (A < B) return 1;
-      }
-
-      return 0;
-    });
-
-  filterUserList = search =>
-    this.props.users.filter(
-      user =>
-        user.firstName
-          .concat(user.lastName)
-          .toLowerCase()
-          .indexOf(search.toLowerCase()) !== -1,
-    );
-
-  renderButtons = user => {
+  renderButtons = (user: User) => {
     return (
       <LinkWrapper>
         <EditIconLink to={{ pathname: ROUTES.ADMIN_USERS_EDIT, state: user }} />
@@ -108,8 +111,10 @@ class AdminUsers extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { children, history } = this.props;
+    const { children, history, users } = this.props;
     const { search, sort } = this.state;
+
+    const sortedUsers = this.sortUserData(users, sort);
 
     return (
       <Wrapper>
@@ -120,7 +125,7 @@ class AdminUsers extends React.PureComponent<Props, State> {
         </HeadingWrapper>
 
         <ListWrapper>
-          {this.sortUserData(this.filterUserList(search), sort).map(user => (
+          {filterUserList(search, sortedUsers).map(user => (
             <Row key={user.id}>
               <UserCard user={user} ctas={this.renderButtons(user)} />
             </Row>

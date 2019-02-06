@@ -1,6 +1,6 @@
-import Component from './SvgIcon';
+import SvgIcon from './SvgIcon';
 
 export * from './SvgIcon';
 export * from './SvgIcon.css';
 
-export default Component;
+export default SvgIcon;

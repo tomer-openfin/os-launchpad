@@ -11,45 +11,45 @@ exports[`Storyshots Components/Layouts default 1`] = `
     }
   >
     <div
-      className="sc-iyvyFf dNaVWK"
+      className="sc-gojNiO iETQuC"
     >
       <div
-        className="sc-gxMtzJ iauVHz"
+        className="sc-GMQeP iCxPwz"
       >
         <div
-          className="sc-dfVpRl hlXazR"
+          className="sc-exAgwC hiMuMN"
         >
           <div
-            className="sc-gzOgki jHCSGb"
+            className="sc-cQFLBn bfDinD"
           >
             Layouts
           </div>
         </div>
         <div
-          className="sc-kTUwUJ jWvdVp"
+          className="sc-bAeIUo hxCsSL"
         >
           <div
-            className="sc-jtRfpW kFgGzf sc-ifAKCX fdgCee"
+            className="sc-bMVAic gNAeAn sc-ifAKCX fdgCee"
             color="#E7E7E7"
             size={24}
           />
           <form
-            className="sc-elJkPf gFbayc"
+            className="sc-hORach XyvvX"
             onSubmit={[Function]}
           >
             <input
-              className="sc-bYSBpT jqOdtl"
+              className="sc-gqPbQI hXvmhG"
               onChange={[Function]}
               placeholder="Layout Name"
               required={true}
               type="text"
             />
             <button
-              className="sc-lhVmIH hTfBvQ"
+              className="sc-cLQEGU jTzHzX"
               type="submit"
             >
               <div
-                className="sc-iELTvK hGeoSb sc-ifAKCX bvrXxy"
+                className="sc-iuJeZd kcuHk sc-ifAKCX bvrXxy"
                 color="#E7E7E7"
                 onClick={[Function]}
                 size={14}
@@ -59,21 +59,21 @@ exports[`Storyshots Components/Layouts default 1`] = `
         </div>
       </div>
       <div
-        className="sc-cIShpX cDWHKo"
+        className="sc-bsbRJL gsQRTU"
       >
         <h6
-          className="sc-ktHwxA bjYKSB"
+          className="sc-iQNlJl dymSAK"
         >
           Recent Layouts
         </h6>
         <ul
-          className="sc-feJyhm llWyVZ"
+          className="sc-cMhqgX gfKEzX"
         >
           <div
-            className="sc-tilXH QYbaL"
+            className="sc-hXRMBi glQpeD"
           >
             <li
-              className="sc-fYxtnH jmkJOa"
+              className="sc-gwVKww cMxZwv"
               onClick={[Function]}
             >
               layout
@@ -238,6 +238,35 @@ exports[`Storyshots Components/Layouts default 1`] = `
                   Layouts
                 </span>
                 <span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      close
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          close
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
                   <span>
                     <span>
                       <br />
@@ -606,35 +635,6 @@ exports[`Storyshots Components/Layouts default 1`] = `
                             </span>
                           </span>
                           ]
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      onBlur
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          noop
                         </span>
                         }
                       </span>

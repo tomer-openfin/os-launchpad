@@ -1,1091 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Components/Login Change Password 1`] = `
-<div>
-  <div
-    style={
-      Object {
-        "position": "relative",
-        "zIndex": 0,
-      }
-    }
-  >
-    <div
-      className="sc-kfGgVZ cnMpOT"
-    >
-      <div
-        className="sc-cSHVUG icgEVV"
-      >
-        <div
-          className="sc-jWBwVP jncaxH"
-        >
-          <div
-            className="sc-brqgnP hERWLS"
-          >
-            <div
-              className="sc-cMljjf eWlOWR"
-            >
-              Log In
-            </div>
-          </div>
-          <div
-            className="sc-cvbbAY kNcqoF"
-          >
-            <div
-              className="sc-ifAKCX cWlwzh"
-              color="#E7E7E7"
-              onClick={[Function]}
-              size={25}
-            />
-          </div>
-        </div>
-        <div
-          className="sc-eXEjpC hdGytN"
-        >
-          <div
-            className="sc-esjQYD lfMSkl sc-eNQAEJ jxmcjf"
-            size={90}
-          />
-          <div
-            className="sc-ibxdXY cAWZSJ"
-          >
-            Please create a new password
-          </div>
-          <form
-            className="sc-kIPQKe hogZsr"
-            onReset={[Function]}
-            onSubmit={[Function]}
-          >
-            <label
-              className="sc-kpOJdX cODgu"
-            >
-              <div
-                className="sc-kGXeez hlXPx"
-              >
-                New Password
-              </div>
-              <input
-                name="newPassword"
-                onBlur={[Function]}
-                onChange={[Function]}
-                placeholder="Enter Password"
-                type="password"
-              />
-            </label>
-            <label
-              className="sc-kpOJdX cODgu"
-            >
-              <div
-                className="sc-kGXeez hlXPx"
-              >
-                Password Confirmation
-              </div>
-              <input
-                name="newPasswordConfirmation"
-                onBlur={[Function]}
-                onChange={[Function]}
-                placeholder="Confirm Password"
-                type="password"
-              />
-            </label>
-            <button
-              className="sc-kAzzGY sc-RefOD kbpIWn"
-              type="submit"
-            >
-              Create New Password
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <button
-    onClick={[Function]}
-    style={
-      Object {
-        "background": "#28c",
-        "border": "none",
-        "borderRadius": "0 0 0 5px",
-        "color": "#fff",
-        "cursor": "pointer",
-        "display": "block",
-        "fontFamily": "sans-serif",
-        "fontSize": "12px",
-        "padding": "5px 15px",
-        "position": "fixed",
-        "right": 0,
-        "top": 0,
-      }
-    }
-    type="button"
-  >
-    Show Info
-  </button>
-  <div
-    style={
-      Object {
-        "background": "white",
-        "bottom": 0,
-        "display": "none",
-        "left": 0,
-        "overflow": "auto",
-        "padding": "0 40px",
-        "position": "fixed",
-        "right": 0,
-        "top": 0,
-        "zIndex": 99999,
-      }
-    }
-  >
-    <button
-      onClick={[Function]}
-      style={
-        Object {
-          "background": "#28c",
-          "border": "none",
-          "borderRadius": "0 0 0 5px",
-          "color": "#fff",
-          "cursor": "pointer",
-          "display": "block",
-          "fontFamily": "sans-serif",
-          "fontSize": "12px",
-          "padding": "5px 15px",
-          "position": "fixed",
-          "right": 0,
-          "top": 0,
-        }
-      }
-      type="button"
-    >
-      ×
-    </button>
-    <div>
-      <div
-        style={
-          Object {
-            "WebkitFontSmoothing": "antialiased",
-            "backgroundColor": "#fff",
-            "border": "1px solid #eee",
-            "borderRadius": "2px",
-            "color": "#444",
-            "fontFamily": "-apple-system, \\".SFNSText-Regular\\", \\"San Francisco\\", BlinkMacSystemFont, \\"Segoe UI\\", \\"Roboto\\", \\"Oxygen\\", \\"Ubuntu\\", \\"Cantarell\\", \\"Fira Sans\\", \\"Droid Sans\\", \\"Helvetica Neue\\", \\"Lucida Grande\\", \\"Arial\\", sans-serif",
-            "fontSize": "15px",
-            "fontWeight": 300,
-            "lineHeight": 1.45,
-            "marginBottom": "20px",
-            "marginTop": "20px",
-            "padding": "20px 40px 40px",
-          }
-        }
-      >
-        <div
-          style={
-            Object {
-              "borderBottom": "1px solid #eee",
-              "marginBottom": 10,
-              "paddingTop": 10,
-            }
-          }
-        >
-          <h1
-            style={
-              Object {
-                "fontSize": "35px",
-                "margin": 0,
-                "padding": 0,
-              }
-            }
-          >
-            Components/Login
-          </h1>
-          <h2
-            style={
-              Object {
-                "fontSize": "22px",
-                "fontWeight": 400,
-                "margin": "0 0 10px 0",
-                "padding": 0,
-              }
-            }
-          >
-            Change Password
-          </h2>
-        </div>
-        
-        <div>
-          <h1
-            style={
-              Object {
-                "borderBottom": "1px solid #EEE",
-                "fontSize": "25px",
-                "margin": "20px 0 0 0",
-                "padding": "0 0 5px 0",
-              }
-            }
-          >
-            Story Source
-          </h1>
-          <pre
-            className="css-r8d96o eyvlbql0"
-          >
-            <div>
-              <div
-                style={
-                  Object {
-                    "paddingLeft": 18,
-                    "paddingRight": 3,
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "color": "#444",
-                    }
-                  }
-                >
-                  &lt;
-                  Login
-                </span>
-                <span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      autoLoginOrg
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      closeApplication
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          noop
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      loginState
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#666",
-                            }
-                          }
-                        >
-                          {
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              changePassword
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
-                              }
-                            }
-                          >
-                            true
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              error
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
-                              }
-                            }
-                          >
-                            false
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              message
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            'Please create a new password'
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            …
-                          </span>
-                          <span>
-                            <br />
-                              
-                          </span>
-                          }
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      login
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          Login options
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      loginWithNewPassword
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          Login with new password options
-                        </span>
-                        }
-                      </span>
-                    </span>
-                    <br />
-                  </span>
-                </span>
-                <span
-                  style={
-                    Object {
-                      "color": "#444",
-                    }
-                  }
-                >
-                  /&gt;
-                </span>
-              </div>
-            </div>
-            <button
-              className="css-1naocv3 eva467m0"
-              onClick={[Function]}
-            >
-              <div
-                className="css-lvl6aa eva467m1"
-              >
-                <div
-                  style={
-                    Object {
-                      "marginBottom": 6,
-                    }
-                  }
-                >
-                  Copied!
-                </div>
-                <div>
-                  Copy
-                </div>
-              </div>
-            </button>
-          </pre>
-        </div>
-        <div>
-          <h1
-            style={
-              Object {
-                "borderBottom": "1px solid #EEE",
-                "fontSize": "25px",
-                "margin": "20px 0 0 0",
-                "padding": "0 0 5px 0",
-              }
-            }
-          >
-            Prop Types
-          </h1>
-          <div>
-            <h2
-              style={
-                Object {
-                  "margin": "20px 0 0 0",
-                }
-              }
-            >
-              "
-              Login
-              " Component
-            </h2>
-            <small>
-              No propTypes defined!
-            </small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Storyshots Components/Login With Error 1`] = `
-<div>
-  <div
-    style={
-      Object {
-        "position": "relative",
-        "zIndex": 0,
-      }
-    }
-  >
-    <div
-      className="sc-kfGgVZ cnMpOT"
-    >
-      <div
-        className="sc-cSHVUG icgEVV"
-      >
-        <div
-          className="sc-jWBwVP jncaxH"
-        >
-          <div
-            className="sc-brqgnP hERWLS"
-          >
-            <div
-              className="sc-cMljjf eWlOWR"
-            >
-              Log In
-            </div>
-          </div>
-          <div
-            className="sc-cvbbAY kNcqoF"
-          >
-            <div
-              className="sc-ifAKCX cWlwzh"
-              color="#E7E7E7"
-              onClick={[Function]}
-              size={25}
-            />
-          </div>
-        </div>
-        <div
-          className="sc-eXEjpC hdGytN"
-        >
-          <div
-            className="sc-esjQYD lfMSkl sc-eNQAEJ jxmcjf"
-            size={90}
-          />
-          <div
-            className="sc-ibxdXY kfbcrL"
-          >
-            Invalid username or password
-          </div>
-          <form
-            className="sc-kIPQKe hogZsr"
-            onReset={[Function]}
-            onSubmit={[Function]}
-          >
-            <label
-              className="sc-kpOJdX cODgu"
-            >
-              <div
-                className="sc-kGXeez hlXPx"
-              >
-                Email
-              </div>
-              <input
-                name="username"
-                onBlur={[Function]}
-                onChange={[Function]}
-                placeholder="Enter Email"
-                type="text"
-                value=""
-              />
-            </label>
-            <label
-              className="sc-kpOJdX cODgu"
-            >
-              <div
-                className="sc-kGXeez hlXPx"
-              >
-                Password
-              </div>
-              <input
-                name="password"
-                onBlur={[Function]}
-                onChange={[Function]}
-                placeholder="Enter Password"
-                type="password"
-                value=""
-              />
-            </label>
-            <button
-              className="sc-kAzzGY sc-RefOD iqHBQc"
-              type="submit"
-            >
-              Login
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <button
-    onClick={[Function]}
-    style={
-      Object {
-        "background": "#28c",
-        "border": "none",
-        "borderRadius": "0 0 0 5px",
-        "color": "#fff",
-        "cursor": "pointer",
-        "display": "block",
-        "fontFamily": "sans-serif",
-        "fontSize": "12px",
-        "padding": "5px 15px",
-        "position": "fixed",
-        "right": 0,
-        "top": 0,
-      }
-    }
-    type="button"
-  >
-    Show Info
-  </button>
-  <div
-    style={
-      Object {
-        "background": "white",
-        "bottom": 0,
-        "display": "none",
-        "left": 0,
-        "overflow": "auto",
-        "padding": "0 40px",
-        "position": "fixed",
-        "right": 0,
-        "top": 0,
-        "zIndex": 99999,
-      }
-    }
-  >
-    <button
-      onClick={[Function]}
-      style={
-        Object {
-          "background": "#28c",
-          "border": "none",
-          "borderRadius": "0 0 0 5px",
-          "color": "#fff",
-          "cursor": "pointer",
-          "display": "block",
-          "fontFamily": "sans-serif",
-          "fontSize": "12px",
-          "padding": "5px 15px",
-          "position": "fixed",
-          "right": 0,
-          "top": 0,
-        }
-      }
-      type="button"
-    >
-      ×
-    </button>
-    <div>
-      <div
-        style={
-          Object {
-            "WebkitFontSmoothing": "antialiased",
-            "backgroundColor": "#fff",
-            "border": "1px solid #eee",
-            "borderRadius": "2px",
-            "color": "#444",
-            "fontFamily": "-apple-system, \\".SFNSText-Regular\\", \\"San Francisco\\", BlinkMacSystemFont, \\"Segoe UI\\", \\"Roboto\\", \\"Oxygen\\", \\"Ubuntu\\", \\"Cantarell\\", \\"Fira Sans\\", \\"Droid Sans\\", \\"Helvetica Neue\\", \\"Lucida Grande\\", \\"Arial\\", sans-serif",
-            "fontSize": "15px",
-            "fontWeight": 300,
-            "lineHeight": 1.45,
-            "marginBottom": "20px",
-            "marginTop": "20px",
-            "padding": "20px 40px 40px",
-          }
-        }
-      >
-        <div
-          style={
-            Object {
-              "borderBottom": "1px solid #eee",
-              "marginBottom": 10,
-              "paddingTop": 10,
-            }
-          }
-        >
-          <h1
-            style={
-              Object {
-                "fontSize": "35px",
-                "margin": 0,
-                "padding": 0,
-              }
-            }
-          >
-            Components/Login
-          </h1>
-          <h2
-            style={
-              Object {
-                "fontSize": "22px",
-                "fontWeight": 400,
-                "margin": "0 0 10px 0",
-                "padding": 0,
-              }
-            }
-          >
-            With Error
-          </h2>
-        </div>
-        
-        <div>
-          <h1
-            style={
-              Object {
-                "borderBottom": "1px solid #EEE",
-                "fontSize": "25px",
-                "margin": "20px 0 0 0",
-                "padding": "0 0 5px 0",
-              }
-            }
-          >
-            Story Source
-          </h1>
-          <pre
-            className="css-r8d96o eyvlbql0"
-          >
-            <div>
-              <div
-                style={
-                  Object {
-                    "paddingLeft": 18,
-                    "paddingRight": 3,
-                  }
-                }
-              >
-                <span
-                  style={
-                    Object {
-                      "color": "#444",
-                    }
-                  }
-                >
-                  &lt;
-                  Login
-                </span>
-                <span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      autoLoginOrg
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      closeApplication
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          noop
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      loginState
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#666",
-                            }
-                          }
-                        >
-                          {
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              changePassword
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
-                              }
-                            }
-                          >
-                            false
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              error
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
-                              }
-                            }
-                          >
-                            true
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              message
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            'Invalid username or password'
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            …
-                          </span>
-                          <span>
-                            <br />
-                              
-                          </span>
-                          }
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      login
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          Login options
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      loginWithNewPassword
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          Login with new password options
-                        </span>
-                        }
-                      </span>
-                    </span>
-                    <br />
-                  </span>
-                </span>
-                <span
-                  style={
-                    Object {
-                      "color": "#444",
-                    }
-                  }
-                >
-                  /&gt;
-                </span>
-              </div>
-            </div>
-            <button
-              className="css-1naocv3 eva467m0"
-              onClick={[Function]}
-            >
-              <div
-                className="css-lvl6aa eva467m1"
-              >
-                <div
-                  style={
-                    Object {
-                      "marginBottom": 6,
-                    }
-                  }
-                >
-                  Copied!
-                </div>
-                <div>
-                  Copy
-                </div>
-              </div>
-            </button>
-          </pre>
-        </div>
-        <div>
-          <h1
-            style={
-              Object {
-                "borderBottom": "1px solid #EEE",
-                "fontSize": "25px",
-                "margin": "20px 0 0 0",
-                "padding": "0 0 5px 0",
-              }
-            }
-          >
-            Prop Types
-          </h1>
-          <div>
-            <h2
-              style={
-                Object {
-                  "margin": "20px 0 0 0",
-                }
-              }
-            >
-              "
-              Login
-              " Component
-            </h2>
-            <small>
-              No propTypes defined!
-            </small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`Storyshots Components/Login default 1`] = `
 <div>
   <div
@@ -1097,25 +11,25 @@ exports[`Storyshots Components/Login default 1`] = `
     }
   >
     <div
-      className="sc-kfGgVZ cnMpOT"
+      className="sc-cbkKFq flEGHm"
     >
       <div
         className="sc-cSHVUG icgEVV"
       >
         <div
-          className="sc-jWBwVP jncaxH"
+          className="sc-caSCKo kDLzhu"
         >
           <div
-            className="sc-brqgnP hERWLS"
+            className="sc-gisBJw ctZMsr"
           >
             <div
-              className="sc-cMljjf eWlOWR"
+              className="sc-kjoXOD fhhfF"
             >
               Log In
             </div>
           </div>
           <div
-            className="sc-cvbbAY kNcqoF"
+            className="sc-fAjcbJ iRVxiq"
           >
             <div
               className="sc-ifAKCX cWlwzh"
@@ -1126,59 +40,73 @@ exports[`Storyshots Components/Login default 1`] = `
           </div>
         </div>
         <div
-          className="sc-eXEjpC hdGytN"
+          className="sc-fOKMvo dGATXt"
         >
           <div
-            className="sc-esjQYD lfMSkl sc-eNQAEJ jxmcjf"
+            className="sc-krvtoX fZUpQK sc-brqgnP bvqVsJ"
             size={90}
           />
-          
           <form
-            className="sc-kIPQKe hogZsr"
-            onReset={[Function]}
-            onSubmit={[Function]}
+            className="sc-fYiAbW ehgRbH"
           >
-            <label
-              className="sc-kpOJdX cODgu"
+            <form
+              className="sc-lkqHmb fgSdED"
+              onSubmit={[Function]}
             >
-              <div
-                className="sc-kGXeez hlXPx"
+              <label
+                className="sc-iAyFgw dOgHcN"
               >
-                Email
-              </div>
-              <input
-                name="username"
-                onBlur={[Function]}
-                onChange={[Function]}
-                placeholder="Enter Email"
-                type="text"
-                value=""
-              />
-            </label>
-            <label
-              className="sc-kpOJdX cODgu"
-            >
-              <div
-                className="sc-kGXeez hlXPx"
+                <div
+                  className="sc-kkGfuU cmHvnc"
+                >
+                  Email
+                </div>
+                <input
+                  className="sc-hMqMXs cNmeBE"
+                  name="username"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  placeholder="Enter Email"
+                  value=""
+                />
+              </label>
+              <label
+                className="sc-iAyFgw dOgHcN"
               >
-                Password
+                <div
+                  className="sc-kkGfuU cmHvnc"
+                >
+                  Password
+                </div>
+                <input
+                  className="sc-hMqMXs cNmeBE"
+                  name="password"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  placeholder="Enter Password"
+                  type="password"
+                  value=""
+                />
+              </label>
+              <div
+                className="sc-eLExRp tgWKl"
+              >
+                <button
+                  className="sc-kAzzGY hcTOPm"
+                >
+                  Log In
+                </button>
+                <a
+                  className="sc-eHgmQL hJdbKV"
+                  href="/forgot-password"
+                  onClick={[Function]}
+                >
+                  Forgot Password?
+                </a>
               </div>
-              <input
-                name="password"
-                onBlur={[Function]}
-                onChange={[Function]}
-                placeholder="Enter Password"
-                type="password"
-                value=""
-              />
-            </label>
-            <button
-              className="sc-kAzzGY sc-RefOD iqHBQc"
-              type="submit"
-            >
-              Login
-            </button>
+            </form>
           </form>
+          
         </div>
       </div>
     </div>
@@ -1329,20 +257,9 @@ exports[`Storyshots Components/Login default 1`] = `
                   }
                 >
                   &lt;
-                  Login
+                  Unknown
                 </span>
                 <span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      autoLoginOrg
-                    </span>
-                  </span>
                   <span>
                     <span>
                       <br />
@@ -1366,7 +283,7 @@ exports[`Storyshots Components/Login default 1`] = `
                             }
                           }
                         >
-                          noop
+                          closeApplication
                         </span>
                         }
                       </span>
@@ -1380,7 +297,7 @@ exports[`Storyshots Components/Login default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      loginState
+                      error
                     </span>
                     <span>
                       =
@@ -1391,106 +308,11 @@ exports[`Storyshots Components/Login default 1`] = `
                         <span
                           style={
                             Object {
-                              "color": "#666",
+                              "color": "#a11",
                             }
                           }
                         >
-                          {
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              changePassword
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
-                              }
-                            }
-                          >
-                            false
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              error
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#a11",
-                              }
-                            }
-                          >
-                            false
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            <span
-                              style={
-                                Object {
-                                  "color": "#666",
-                                }
-                              }
-                            >
-                              message
-                            </span>
-                          </span>
-                          : 
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            ''
-                          </span>
-                          ,
-                          <span>
-                            <span>
-                              <br />
-                                
-                                
-                            </span>
-                            …
-                          </span>
-                          <span>
-                            <br />
-                              
-                          </span>
-                          }
+                          false
                         </span>
                         }
                       </span>
@@ -1504,7 +326,7 @@ exports[`Storyshots Components/Login default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      login
+                      handleError
                     </span>
                     <span>
                       =
@@ -1519,7 +341,7 @@ exports[`Storyshots Components/Login default 1`] = `
                             }
                           }
                         >
-                          Login options
+                          handleError
                         </span>
                         }
                       </span>
@@ -1533,27 +355,476 @@ exports[`Storyshots Components/Login default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      loginWithNewPassword
+                      message
                     </span>
                     <span>
                       =
                       <span
                         style={Object {}}
                       >
-                        {
+                        "
                         <span
                           style={
                             Object {
-                              "color": "#170",
+                              "color": "#22a",
+                              "wordBreak": "break-word",
                             }
                           }
                         >
-                          Login with new password options
+                          
                         </span>
-                        }
+                        "
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      session
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        "
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          
+                        </span>
+                        "
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      stage
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        "
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          login
+                        </span>
+                        "
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      username
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        "
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          
+                        </span>
+                        "
                       </span>
                     </span>
                     <br />
+                  </span>
+                </span>
+                <span
+                  style={
+                    Object {
+                      "color": "#444",
+                    }
+                  }
+                >
+                  /&gt;
+                </span>
+              </div>
+            </div>
+            <button
+              className="css-1naocv3 eva467m0"
+              onClick={[Function]}
+            >
+              <div
+                className="css-lvl6aa eva467m1"
+              >
+                <div
+                  style={
+                    Object {
+                      "marginBottom": 6,
+                    }
+                  }
+                >
+                  Copied!
+                </div>
+                <div>
+                  Copy
+                </div>
+              </div>
+            </button>
+          </pre>
+        </div>
+        <div>
+          <h1
+            style={
+              Object {
+                "borderBottom": "1px solid #EEE",
+                "fontSize": "25px",
+                "margin": "20px 0 0 0",
+                "padding": "0 0 5px 0",
+              }
+            }
+          >
+            Prop Types
+          </h1>
+          <div>
+            <h2
+              style={
+                Object {
+                  "margin": "20px 0 0 0",
+                }
+              }
+            >
+              "
+              
+              " Component
+            </h2>
+            <small>
+              No propTypes defined!
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Login withStages 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "position": "relative",
+        "zIndex": 0,
+      }
+    }
+  >
+    <div
+      className="sc-cbkKFq flEGHm"
+    >
+      <div
+        className="sc-cSHVUG icgEVV"
+      >
+        <div
+          className="sc-caSCKo kDLzhu"
+        >
+          <div
+            className="sc-gisBJw ctZMsr"
+          >
+            <div
+              className="sc-kjoXOD fhhfF"
+            >
+              Log In
+            </div>
+          </div>
+          <div
+            className="sc-fAjcbJ iRVxiq"
+          >
+            <div
+              className="sc-ifAKCX cWlwzh"
+              color="#E7E7E7"
+              onClick={[Function]}
+              size={25}
+            />
+          </div>
+        </div>
+        <div
+          className="sc-fOKMvo dGATXt"
+        >
+          <div
+            className="sc-krvtoX fZUpQK sc-brqgnP bvqVsJ"
+            size={90}
+          />
+          <form
+            className="sc-fYiAbW ehgRbH"
+          >
+            <form
+              className="sc-lkqHmb fgSdED"
+              onSubmit={[Function]}
+            >
+              <label
+                className="sc-iAyFgw dOgHcN"
+              >
+                <div
+                  className="sc-kkGfuU cmHvnc"
+                >
+                  Email
+                </div>
+                <input
+                  className="sc-hMqMXs cNmeBE"
+                  name="username"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  placeholder="Enter Email"
+                  value=""
+                />
+              </label>
+              <label
+                className="sc-iAyFgw dOgHcN"
+              >
+                <div
+                  className="sc-kkGfuU cmHvnc"
+                >
+                  Password
+                </div>
+                <input
+                  className="sc-hMqMXs cNmeBE"
+                  name="password"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  placeholder="Enter Password"
+                  type="password"
+                  value=""
+                />
+              </label>
+              <div
+                className="sc-eLExRp tgWKl"
+              >
+                <button
+                  className="sc-kAzzGY hcTOPm"
+                >
+                  Log In
+                </button>
+                <a
+                  className="sc-eHgmQL hJdbKV"
+                  href="/forgot-password"
+                  onClick={[Function]}
+                >
+                  Forgot Password?
+                </a>
+              </div>
+            </form>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    onClick={[Function]}
+    style={
+      Object {
+        "background": "#28c",
+        "border": "none",
+        "borderRadius": "0 0 0 5px",
+        "color": "#fff",
+        "cursor": "pointer",
+        "display": "block",
+        "fontFamily": "sans-serif",
+        "fontSize": "12px",
+        "padding": "5px 15px",
+        "position": "fixed",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    type="button"
+  >
+    Show Info
+  </button>
+  <div
+    style={
+      Object {
+        "background": "white",
+        "bottom": 0,
+        "display": "none",
+        "left": 0,
+        "overflow": "auto",
+        "padding": "0 40px",
+        "position": "fixed",
+        "right": 0,
+        "top": 0,
+        "zIndex": 99999,
+      }
+    }
+  >
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "#28c",
+          "border": "none",
+          "borderRadius": "0 0 0 5px",
+          "color": "#fff",
+          "cursor": "pointer",
+          "display": "block",
+          "fontFamily": "sans-serif",
+          "fontSize": "12px",
+          "padding": "5px 15px",
+          "position": "fixed",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      type="button"
+    >
+      ×
+    </button>
+    <div>
+      <div
+        style={
+          Object {
+            "WebkitFontSmoothing": "antialiased",
+            "backgroundColor": "#fff",
+            "border": "1px solid #eee",
+            "borderRadius": "2px",
+            "color": "#444",
+            "fontFamily": "-apple-system, \\".SFNSText-Regular\\", \\"San Francisco\\", BlinkMacSystemFont, \\"Segoe UI\\", \\"Roboto\\", \\"Oxygen\\", \\"Ubuntu\\", \\"Cantarell\\", \\"Fira Sans\\", \\"Droid Sans\\", \\"Helvetica Neue\\", \\"Lucida Grande\\", \\"Arial\\", sans-serif",
+            "fontSize": "15px",
+            "fontWeight": 300,
+            "lineHeight": 1.45,
+            "marginBottom": "20px",
+            "marginTop": "20px",
+            "padding": "20px 40px 40px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "borderBottom": "1px solid #eee",
+              "marginBottom": 10,
+              "paddingTop": 10,
+            }
+          }
+        >
+          <h1
+            style={
+              Object {
+                "fontSize": "35px",
+                "margin": 0,
+                "padding": 0,
+              }
+            }
+          >
+            Components/Login
+          </h1>
+          <h2
+            style={
+              Object {
+                "fontSize": "22px",
+                "fontWeight": 400,
+                "margin": "0 0 10px 0",
+                "padding": 0,
+              }
+            }
+          >
+            withStages
+          </h2>
+        </div>
+        
+        <div>
+          <h1
+            style={
+              Object {
+                "borderBottom": "1px solid #EEE",
+                "fontSize": "25px",
+                "margin": "20px 0 0 0",
+                "padding": "0 0 5px 0",
+              }
+            }
+          >
+            Story Source
+          </h1>
+          <pre
+            className="css-r8d96o eyvlbql0"
+          >
+            <div>
+              <div
+                style={
+                  Object {
+                    "paddingLeft": 18,
+                    "paddingRight": 3,
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "color": "#444",
+                    }
+                  }
+                >
+                  &lt;
+                  Login
+                </span>
+                <span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      closeApplication
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          closeApplication
+                        </span>
+                        }
+                      </span>
+                    </span>
+                     
                   </span>
                 </span>
                 <span

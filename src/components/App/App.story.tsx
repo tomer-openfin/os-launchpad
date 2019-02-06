@@ -5,11 +5,11 @@ import * as React from 'react';
 import { setIsDrawerExpanded } from '../../redux/application';
 import { setLauncherPosition, setLauncherSize } from '../../redux/me';
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
-import { getSystemIcons } from '../../utils/getSystemIcons';
 import { launcherSizeConfigs } from '../../utils/launcherSizeConfigs';
 import noop from '../../utils/noop';
 import { CATEGORIES } from '../../utils/storyCategories';
 
+import { getCollapsedSystemDrawerSize } from '../../redux/selectors';
 import App from './App';
 
 storiesOf(`${CATEGORIES.COMPONENTS}App`, module)
@@ -26,11 +26,11 @@ storiesOf(`${CATEGORIES.COMPONENTS}App`, module)
 
     return (
       <App
+        collapsedSystemDrawerSize={getCollapsedSystemDrawerSize(window.store.getState())}
         isDrawerExpanded={isDrawerExpanded}
         launcherPosition={launcherPosition}
         launcherSizeConfig={launcherSizeConfig}
         toggleDrawer={noop}
-        systemIcons={getSystemIcons(true)}
       />
     );
   });

@@ -1,5 +1,3 @@
-import Component from './PasswordForm';
+import PasswordForm from './PasswordForm';
 
-export * from './PasswordForm.css';
-
-export default Component;
+export default PasswordForm;

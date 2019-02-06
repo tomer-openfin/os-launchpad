@@ -3,18 +3,19 @@ import { all, call, put, select, takeEvery } from 'redux-saga/effects';
 import { LAYOUTS_WINDOW } from '../../config/windows';
 import ApiService from '../../services/ApiService';
 import { AppStatusOrigins, AppStatusStates, ErrorResponse, ResponseStatus, Transition, UserLayout } from '../../types/commons';
-import { bindFinAppEventHandlers } from '../../utils/finAppEventHandlerHelpers';
-import { MAIN_WINDOW } from '../../utils/getAppUuid';
+import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
 import { generateLayout, restoreLayout } from '../../utils/openfinLayouts';
 import { animateWindow } from '../../utils/openfinPromises';
 import { calcBoundsRelativeToLauncher } from '../../utils/windowPositionHelpers';
 import { getApps, getAppsStatusById, openFinAppSuccess, setFinAppStatusState } from '../apps';
 import { getLauncherPosition, getLauncherSizeConfig } from '../me';
+import { getExpandedSystemDrawerSize } from '../selectors';
 import { getWindowBounds } from '../windows';
 import {
   CREATE_LAYOUT,
   createLayoutError,
+  createLayoutRequest,
   createLayoutSuccess,
   DELETE_LAYOUT,
   deleteLayoutError,
@@ -25,12 +26,14 @@ import {
   RESTORE_LAYOUT,
   restoreLayoutError,
   restoreLayoutSuccess,
+  SAVE_LAYOUT,
   UPDATE_LAYOUT,
   updateLayoutError,
+  updateLayoutRequest,
   updateLayoutSuccess,
 } from './actions';
 import { getLayoutById, getLayouts } from './selectors';
-import { CreateLayoutRequest, DeleteLayoutRequest, RestoreLayoutRequest, RestoreLayoutSuccess, UpdateLayoutRequest } from './types';
+import { CreateLayoutRequest, DeleteLayoutRequest, RestoreLayoutRequest, RestoreLayoutSuccess, SaveLayoutRequest, UpdateLayoutRequest } from './types';
 import { calcDesiredLayoutsWindowHeight } from './utils';
 
 const buildErrorResponse = (message: string): ErrorResponse => ({ status: ResponseStatus.FAILURE, message });
@@ -114,11 +117,16 @@ function* watchRestoreLayoutSuccess(action: RestoreLayoutSuccess) {
       const appStatus = appsStatusById[id];
 
       if (appStatus && appStatus.state === AppStatusStates.Loading && appStatus.origin === AppStatusOrigins.LayoutRestore) {
-        const wrappedApp = fin.desktop.Application.wrap(uuid);
-
-        bindFinAppEventHandlers(window.store.dispatch, wrappedApp, id);
-
-        return put(openFinAppSuccess({ id, uuid, origin: AppStatusOrigins.LayoutRestore }));
+        return put(
+          openFinAppSuccess({
+            id,
+            origin: AppStatusOrigins.LayoutRestore,
+            // TODO: clean up any, maybe upgrade types
+            // tslint:disable-next-line:no-any
+            runtimeVersion: (layoutApp as any).runtime ? (layoutApp as any).runtime.version : '',
+            uuid,
+          }),
+        );
       }
 
       return;
@@ -145,22 +153,20 @@ export function* watchCreateLayoutRequest(action: CreateLayoutRequest) {
 function* watchUpdateLayoutRequest(action: UpdateLayoutRequest) {
   if (!action.payload) return;
 
-  const { id, name, updateLayout } = action.payload;
+  const { id, name } = action.payload;
 
   const userLayout = { id, name };
 
-  if (updateLayout) {
-    const layout = yield call(generateLayout);
+  const layout = yield call(generateLayout);
 
-    userLayout['layout'] = layout;
-  }
+  userLayout['layout'] = layout;
 
   const response = yield call(ApiService.updateUserLayout, userLayout);
 
   if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error' || !response.layout) {
-    yield put(updateLayoutError(response));
+    yield put(updateLayoutError(response, action.meta));
   } else {
-    yield put(updateLayoutSuccess(response.layout));
+    yield put(updateLayoutSuccess(response.layout, action.meta));
   }
 }
 
@@ -179,11 +185,13 @@ function* watchDeleteLayoutRequest(action: DeleteLayoutRequest) {
 }
 
 function* watchLayoutsChangesToAnimateWindow() {
+  const layoutsWindow = yield call(getFinWindowByName, LAYOUTS_WINDOW);
+
+  const bounds = yield select(getWindowBounds, LAYOUTS_WINDOW);
+  const launcherBounds = yield select(getWindowBounds, getAppUuid());
   const launcherPosition = yield select(getLauncherPosition);
   const launcherSizeConfig = yield select(getLauncherSizeConfig);
-  const layoutsWindow = yield call(getFinWindowByName, LAYOUTS_WINDOW);
-  const launcherBounds = yield select(getWindowBounds, MAIN_WINDOW);
-  const bounds = yield select(getWindowBounds, LAYOUTS_WINDOW);
+  const expandedSystemDrawerSize = yield select(getExpandedSystemDrawerSize);
   const layouts = yield select(getLayouts);
 
   if (!bounds || !layouts || !layoutsWindow) {
@@ -196,6 +204,7 @@ function* watchLayoutsChangesToAnimateWindow() {
     launcherBounds,
     launcherPosition,
     launcherSizeConfig,
+    expandedSystemDrawerSize,
   );
 
   const transitions: Transition = {
@@ -214,6 +223,24 @@ function* watchLayoutsChangesToAnimateWindow() {
   };
 
   yield call(animateWindow, layoutsWindow, transitions, { interrupt: false });
+}
+
+function* watchSaveLayoutRequest(action: SaveLayoutRequest) {
+  if (!action.payload) return;
+
+  const name = action.payload;
+  const layouts: UserLayout[] = yield select(getLayouts);
+  const index = layouts.findIndex(layout => layout.name === name);
+
+  if (index !== -1) {
+    const id = layouts[index].id;
+    const updatePayload = { id, name };
+
+    yield put(updateLayoutRequest(updatePayload, action.meta));
+    return;
+  }
+
+  yield put(createLayoutRequest(name, action.meta));
 }
 
 function* watchRequestError(action) {
@@ -265,4 +292,6 @@ export function* layoutsSaga() {
   yield takeEvery(DELETE_LAYOUT.REQUEST, watchDeleteLayoutRequest);
   yield takeEvery(DELETE_LAYOUT.SUCCESS, watchRequestSuccess);
   yield takeEvery(DELETE_LAYOUT.ERROR, watchRequestError);
+
+  yield takeEvery(SAVE_LAYOUT.REQUEST, watchSaveLayoutRequest);
 }

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getOrganizationAutoLogin, saveOrgAutoLogin } from '../../redux/organization/index';
+import { getOrganizationAutoLogin, saveOrgAutoLogin } from '../../redux/organization';
 
 import OrganizationSettings from './OrganizationSettings';
 

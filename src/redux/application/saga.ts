@@ -2,15 +2,14 @@ import { Application, Window } from '@giantmachines/redux-openfin';
 import { delay } from 'redux-saga';
 import { all, call, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
-import windowsConfig, { initOnStartWindows, LAYOUTS_WINDOW } from '../../config/windows';
-
-import { getLocalStorage } from '../../services/localStorageAdapter';
+import windowsConfig, { initOnStartWindows } from '../../config/windows';
 
 import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
 
+import eraseCookie from '../../utils/eraseCookie';
 import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
-import { animateWindow, getOpenfinApplicationInfo, getSystemMonitorInfo } from '../../utils/openfinPromises';
+import { animateWindow, getCurrentOpenfinApplicationInfo, getSystemMonitorInfo } from '../../utils/openfinPromises';
 import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv } from '../../utils/processHelpers';
 import { setupWindow } from '../../utils/setupWindow';
 import takeFirst from '../../utils/takeFirst';
@@ -20,9 +19,9 @@ import { animateLauncherCollapseExpand } from './utils';
 
 import { getAppDirectoryList } from '../apps';
 import { GET_LAYOUTS, getLayoutsRequest } from '../layouts';
-import { GET_ME, GET_SETTINGS, getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig, getMeRequest, getSettingsRequest } from '../me';
-import { GET_ORG_SETTINGS, getOrganizationAutoLogin, getOrgSettingsRequest } from '../organization';
-import { getAppsLauncherAppList, getSystemIconsSelector } from '../selectors';
+import { GET_SETTINGS, getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig, getSettingsRequest } from '../me';
+import { GET_ORG_SETTINGS, getOrgSettingsRequest } from '../organization';
+import { getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize } from '../selectors';
 import { getMonitorInfo, setMonitorInfo, setupSystemHandlers } from '../system';
 import { launchWindow } from '../windows';
 import {
@@ -52,9 +51,6 @@ const ANIMATION_DURATION = 300;
  * Application Start
  */
 function* applicationStart() {
-  // tslint:disable-next-line:no-console
-  console.log('application started');
-
   yield put(getAppDirectoryList());
 }
 
@@ -90,6 +86,7 @@ function* openfinSetup(action: OpenfinReadyAction) {
 
   // Only main window should be doing setup.
   if (finName === APP_UUID) {
+    eraseCookie();
     if (isDevelopmentEnv()) {
       yield put(initDevTools());
     }
@@ -123,7 +120,7 @@ function* openfinSetup(action: OpenfinReadyAction) {
 
     if (fin) {
       // Set Runtime Version
-      const { runtime } = yield call(getOpenfinApplicationInfo);
+      const { runtime } = yield call(getCurrentOpenfinApplicationInfo);
 
       if (runtime) {
         yield put(setRuntimeVersion((runtime as { version: string }).version));
@@ -212,26 +209,28 @@ function* watchReboundLauncherRequest(action: ReboundLauncherRequestAction) {
     return;
   }
 
-  const [appList, systemIcons, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, isExpanded] = yield all([
+  const [appList, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, isExpanded, collapsedSystemDrawerSize, expandedSystemDrawerSize] = yield all([
     select(getAppsLauncherAppList),
-    select(getSystemIconsSelector),
     select(getMonitorInfo),
     select(getLauncherPosition),
     select(getLauncherSizeConfig),
     select(getAutoHide),
     select(getApplicationIsExpanded),
+    select(getCollapsedSystemDrawerSize),
+    select(getExpandedSystemDrawerSize),
   ]);
   if (!monitorInfo) {
     return;
   }
   const { width, height, left, top } = calcLauncherPosition(
     appList.length,
-    systemIcons,
     monitorInfo,
     launcherPosition,
     launcherSizeConfig,
     autoHide,
     isExpanded,
+    collapsedSystemDrawerSize,
+    expandedSystemDrawerSize,
   );
 
   const { shouldAnimate, delay: animationDelay } = payload;

@@ -8,6 +8,9 @@ import {
   deleteLayoutRequest,
   restoreLayoutError,
   restoreLayoutSuccess,
+  saveLayoutError,
+  saveLayoutRequest,
+  saveLayoutSuccess,
   updateLayoutError,
   updateLayoutRequest,
   updateLayoutSuccess,
@@ -42,6 +45,10 @@ export type UpdateLayoutError = ReturnType<typeof updateLayoutError>;
 export type UpdateLayoutSuccess = ReturnType<typeof updateLayoutSuccess>;
 export type DeleteLayoutRequest = ReturnType<typeof deleteLayoutRequest>;
 
+export type SaveLayoutRequest = ReturnType<typeof saveLayoutRequest>;
+export type SaveLayoutSuccess = ReturnType<typeof saveLayoutSuccess>;
+export type SaveLayoutError = ReturnType<typeof saveLayoutError>;
+
 export type LayoutsActions =
   | DeleteLayoutRequest
   | GetLayoutsRequest
@@ -55,4 +62,7 @@ export type LayoutsActions =
   | CreateLayoutSuccess
   | UpdateLayoutRequest
   | UpdateLayoutError
-  | UpdateLayoutSuccess;
+  | UpdateLayoutSuccess
+  | SaveLayoutRequest
+  | SaveLayoutSuccess
+  | SaveLayoutError;

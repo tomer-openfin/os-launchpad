@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Borders from '../Borders';
-import { ButtonLink } from '../Button/Button.css';
+import { ButtonLink } from '../Button';
 import { Copy, CopyWrapper, Heading, HeadingText } from '../ConfirmUserDelete/ConfirmDelete.css';
 import { ROUTES } from '../Router/consts';
 import { ButtonWrapper, Wrapper } from './ConfirmPasswordUpdate.css';

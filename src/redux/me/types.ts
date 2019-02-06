@@ -1,4 +1,10 @@
 import {
+  confirmPasswordError,
+  confirmPasswordRequest,
+  confirmPasswordSuccess,
+  forgotPasswordError,
+  forgotPasswordRequest,
+  forgotPasswordSuccess,
   getMeError,
   getMeRequest,
   getMeSuccess,
@@ -20,7 +26,6 @@ import {
   setLauncherPosition,
   setLauncherSize,
   setMe,
-  showSetPasswordForm,
   updatePasswordError,
   updatePasswordRequest,
   updatePasswordSuccess,
@@ -36,33 +41,37 @@ export interface MeSettingsState {
   launcherSize: LauncherSize;
 }
 
-export interface MeLoginState {
-  changePassword: boolean;
-  error: boolean;
-  session: string;
-  message: string;
-}
-
 // Reducer
 export interface MeState {
   email: string;
   firstName: string;
   isAdmin: boolean;
   lastName: string;
-  login: MeLoginState;
   settings: MeSettingsState;
 }
 
 // Action payloads
+export interface ConfirmPasswordPayload {
+  code: string;
+  newPassword: string;
+  username: string;
+}
+
+export interface ForgotPasswordPayload {
+  username: string;
+}
+
 export interface LoginRequestPayload {
   username: string;
   password: string;
 }
 
-export interface LoginWithNewPasswordPayload {
+export interface LoginErrorPayload {
+  code: string;
+  message: string;
+  session?: string;
+  status: string;
   username: string;
-  newPassword: string;
-  session: string;
 }
 
 export interface LoginSuccessPayload {
@@ -70,6 +79,12 @@ export interface LoginSuccessPayload {
   email: string;
   isAdmin: boolean;
   lastName: string;
+}
+
+export interface LoginWithNewPasswordPayload {
+  username: string;
+  newPassword: string;
+  session: string;
 }
 
 export interface SetMePayload {
@@ -118,6 +133,15 @@ export interface UpdatePasswordErrorPayload {
 }
 
 // Actions
+
+export type ConfirmPasswordRequest = ReturnType<typeof confirmPasswordRequest>;
+export type ConfirmPasswordSuccess = ReturnType<typeof confirmPasswordSuccess>;
+export type ConfirmPasswordError = ReturnType<typeof confirmPasswordError>;
+
+export type ForgotPasswordRequest = ReturnType<typeof forgotPasswordRequest>;
+export type ForgotPasswordSuccess = ReturnType<typeof forgotPasswordSuccess>;
+export type ForgotPasswordError = ReturnType<typeof forgotPasswordError>;
+
 export type GetSettingsRequest = ReturnType<typeof getSettingsRequest>;
 export type GetSettingsSuccess = ReturnType<typeof getSettingsSuccess>;
 export type GetSettingsError = ReturnType<typeof getSettingsError>;
@@ -147,28 +171,27 @@ export type SetAutoHide = ReturnType<typeof setAutoHide>;
 export type SetLauncherPosition = ReturnType<typeof setLauncherPosition>;
 export type SetLauncherSize = ReturnType<typeof setLauncherSize>;
 
-export type ShowSetPasswordForm = ReturnType<typeof showSetPasswordForm>;
-
 export type UpdatePasswordRequest = ReturnType<typeof updatePasswordRequest>;
 export type UpdatePasswordSuccess = ReturnType<typeof updatePasswordSuccess>;
 export type UpdatePasswordError = ReturnType<typeof updatePasswordError>;
 
 export type MeActions =
-  | GetSettingsRequest
-  | GetSettingsSuccess
-  | GetSettingsError
+  | ConfirmPasswordRequest
+  | ForgotPasswordRequest
+  | GetMeError
   | GetMeRequest
   | GetMeSuccess
-  | GetMeError
+  | GetSettingsError
+  | GetSettingsRequest
+  | GetSettingsSuccess
+  | LoginError
   | LoginRequest
   | LoginSuccess
-  | LoginError
+  | SaveSettingsError
   | SaveSettingsRequest
   | SaveSettingsSuccess
-  | SaveSettingsError
-  | SetMe
-  | UpdatePasswordRequest
-  | UpdatePasswordSuccess
-  | UpdatePasswordError
   | SetLauncherPosition
-  | ShowSetPasswordForm;
+  | SetMe
+  | UpdatePasswordError
+  | UpdatePasswordRequest
+  | UpdatePasswordSuccess;

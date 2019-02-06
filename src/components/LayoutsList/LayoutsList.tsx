@@ -5,6 +5,7 @@ import LayoutsListItem from '../LayoutsListItem';
 import { EmptyCopy, LayoutNamesWrapper, ListHeader, LoadMoreCTA, UL } from './LayoutsList.css';
 
 interface Props {
+  close: () => void;
   deleteLayout: (id: string) => void;
   layouts: UserLayout[];
   restoreLayout: (id: string) => void;
@@ -29,14 +30,16 @@ class LayoutsList extends React.Component<Props, State> {
 
   renderLayoutsList = () => {
     const { showFullList } = this.state;
-    const { deleteLayout, layouts, restoreLayout } = this.props;
+    const { close, deleteLayout, layouts, restoreLayout } = this.props;
 
     return (
       <UL showFullList={showFullList}>
         {layouts.length > 0 ? (
-          layouts.map(layout => <LayoutsListItem deleteLayout={deleteLayout} id={layout.id} key={layout.id} name={layout.name} restoreLayout={restoreLayout} />)
+          layouts.map(layout => (
+            <LayoutsListItem close={close} deleteLayout={deleteLayout} id={layout.id} key={layout.id} name={layout.name} restoreLayout={restoreLayout} />
+          ))
         ) : (
-          <EmptyCopy>You don’t have any saved layouts. Save using the input above and this list will populate with your most recent layouts.</EmptyCopy>
+          <EmptyCopy>You don&#39;t have any saved layouts. Save using the input above and this list will populate with your most recent layouts.</EmptyCopy>
         )}
       </UL>
     );

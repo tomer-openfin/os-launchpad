@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getAdminUsersList } from '../../redux/admin/index';
+import { getAdminUsersList } from '../../redux/admin';
 import AdminUsers from './AdminUsers';
 
 // TODO: pull up into redux and mock consumption as it would be in API, then pull in here with selector

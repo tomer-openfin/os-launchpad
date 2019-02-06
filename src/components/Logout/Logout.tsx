@@ -3,10 +3,10 @@ import * as React from 'react';
 import * as logoutIcon from '../../assets/Logout.svg';
 import * as ShutdownIcon from '../../assets/Shutdown.svg';
 
-import { Color } from '../../styles/index';
+import { Color } from '../../styles';
+import { Action, Text, Wrapper } from './Logout.css';
 
 import SvgIcon from '../SvgIcon/SvgIcon';
-import { Action, Text, Wrapper } from './Logout.css';
 
 const ICON_SIZE = 42;
 

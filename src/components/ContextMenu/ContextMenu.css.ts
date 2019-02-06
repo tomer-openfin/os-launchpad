@@ -14,6 +14,6 @@ export const Option = styled.div`
 
   &:hover {
     /* TODO: Apply hover background color based on theme */
-    background-color: ${Color.DUSTY_GREY};
+    background-color: ${Color.SPACE_DUST};
   }
 `;

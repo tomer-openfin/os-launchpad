@@ -5,24 +5,34 @@ import { AppDescription, AppName, CTAWrapper, IconWrapper, InfoWrapper, Wrapper 
 import { App } from '../../types/commons';
 
 import AppIcon from '../AppIcon';
+import Loading from '../Loading';
 
-interface Props {
+export interface Props {
   app: App;
   ctas?: React.ReactNode;
-  launchApp: (app: App) => void;
+  isLoading?: boolean;
+  launchApp?: (app: App) => void;
 }
 
-const AppCard = ({ app, ctas, launchApp }: Props) => {
-  const handleClick = () => launchApp(app);
+const defaultProps = {
+  isLoading: false,
+};
+
+const AppCard = ({ app, isLoading = defaultProps.isLoading, ctas, launchApp }: Props) => {
+  const handleClick = launchApp ? () => launchApp(app) : undefined;
 
   return (
-    <Wrapper>
+    <Wrapper isLoading={isLoading}>
       <IconWrapper>
-        <AppIcon imgSrc={app.icon} onClick={handleClick} />
+        <AppIcon imgSrc={app.icon} isLoading={isLoading} onClick={handleClick} />
+
+        {isLoading && <Loading size={15} />}
       </IconWrapper>
 
       <InfoWrapper>
-        <AppName onClick={handleClick}>{app.title}</AppName>
+        <AppName isLoading={isLoading} onClick={handleClick}>
+          {app.title}
+        </AppName>
 
         <AppDescription>{app.description}</AppDescription>
       </InfoWrapper>

@@ -14,15 +14,24 @@ const Wrapper = styled.div`
   width: 171px;
 `;
 
+const close = action('close');
+
 storiesOf(`${CATEGORIES.COMPONENTS}LayoutsList`, module)
   .addDecorator(withKnobs)
   .add('default', () => {
-    return <LayoutsList deleteLayout={action('deleteLayout clicked')} restoreLayout={action('restoreLayout clicked')} layouts={[exampleUserLayout]} />;
+    return (
+      <LayoutsList close={close} deleteLayout={action('deleteLayout clicked')} layouts={[exampleUserLayout]} restoreLayout={action('restoreLayout clicked')} />
+    );
   })
   .add('with Wrapper', () => {
     return (
       <Wrapper>
-        <LayoutsList deleteLayout={action('deleteLayout clicked')} restoreLayout={action('restoreLayout clicked')} layouts={[exampleUserLayout]} />
+        <LayoutsList
+          close={close}
+          deleteLayout={action('deleteLayout clicked')}
+          layouts={[exampleUserLayout]}
+          restoreLayout={action('restoreLayout clicked')}
+        />
       </Wrapper>
     );
   });

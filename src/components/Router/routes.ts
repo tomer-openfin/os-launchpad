@@ -7,11 +7,11 @@ import App from '../App';
 import AppDirectory from '../AppDirectory';
 import AppOverflow from '../AppOverflow';
 import ConfirmAppDelete from '../ConfirmAppDelete';
-import ConfirmPasswordUpdate from '../ConfirmPasswordUpdate';
 import ConfirmUserDelete from '../ConfirmUserDelete';
 import ContextMenu from '../ContextMenu';
 import EditAppForm from '../EditAppForm';
 import EditUserForm from '../EditUserForm';
+import ForgotPassword, { asRoute as asForgotPasswordRoute } from '../ForgotPassword';
 import Layouts from '../Layouts';
 import Login from '../Login';
 import Logout from '../Logout';
@@ -109,6 +109,11 @@ export const routes: AppRoute[] = [
     Component: Login,
     exact: true,
     path: ROUTES.LOGIN,
+  },
+  {
+    Component: asForgotPasswordRoute(ForgotPassword),
+    exact: true,
+    path: ROUTES.FORGOT_PASSWORD,
   },
   {
     Component: AppOverflow,

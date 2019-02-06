@@ -1,11 +1,13 @@
 import { Formik, FormikHandlers, FormikProps } from 'formik';
 import * as React from 'react';
 
-import { Color } from '../../styles/index';
 import { MetaWithCallbacks } from '../../types/commons';
+
+import { Color } from '../../styles';
+import { ButtonsWrapper, Label, StyledForm } from './LogoForm.css';
+
 import Button from '../Button';
 import LogoInput from '../LogoInput';
-import { ButtonsWrapper, Label, StyledForm } from './LogoForm.css';
 
 const BASE_ID = 'LogoForm';
 const FILE_INPUT_ID = `${BASE_ID}FileInput`;
