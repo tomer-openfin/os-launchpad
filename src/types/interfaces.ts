@@ -1,6 +1,6 @@
 import { Layout } from 'openfin-layouts/dist/client/types';
 
-import { RouteComponentProps } from 'react-router';
+import { RouteComponentProps } from 'react-router-dom';
 import { ResponseStatus, UserStatus } from './enums';
 
 export interface App {
