@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
             -webkit-app-region: drag;
             font-family: 'Nunito', arial, sans-serif;
             z-index: 999999999;
-            position: absolute;
+            position: fixed;
             display: flex;
             height: 35px;
             top: 0;
@@ -126,7 +126,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     // configure layouts service
     fin.desktop.Window.getCurrent().getParentApplication().getManifest(mani => {
-        const tabStripUrl = mani.startup_app.preloadScripts[0].url.replace('/topBar.js', '/tabStrip.js');
+        const tabStripUrl = mani.startup_app.preloadScripts[0].url.replace('/topBar.js', '/tabStrip.html');
         layouts.setTabClient(tabStripUrl, {height: 35});
     });
     layouts.addEventListener('join-tab-group', () => {
