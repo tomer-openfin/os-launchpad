@@ -1,4 +1,4 @@
-import { Layout } from 'openfin-layouts/dist/client/types';
+import { Workspace } from 'openfin-layouts/dist/client/types';
 import { isStorybookEnv, isTestEnv } from './processHelpers';
 
 const isNotFin = isTestEnv() || isStorybookEnv();
@@ -7,7 +7,7 @@ enum OpenfinLayout {
   type = 'layout',
 }
 
-const mockLayout = {
+const mockWorkspace = {
   apps: [],
   monitorInfo: {
     deviceScaleFactor: 0,
@@ -107,8 +107,12 @@ const mockLayout = {
 };
 
 const mockDeregister = () => Promise.resolve(undefined);
-const mockGenerateLayout = (): Promise<Layout> => Promise.resolve(mockLayout);
-const mockRestoreLayout = (layout: Layout): Promise<Layout> => Promise.resolve(layout);
+const mockGenerateWorkspace = (): Promise<Workspace> => Promise.resolve(mockWorkspace);
+const mockRestoreWorkspace = (workspaceArg: Workspace): Promise<Workspace> => Promise.resolve(workspaceArg);
+const mockWorkspaces = {
+  generate: mockGenerateWorkspace,
+  restore: mockRestoreWorkspace,
+};
 
 /**
  * The reason for this file is because when openfin-layouts is imported
@@ -117,8 +121,10 @@ const mockRestoreLayout = (layout: Layout): Promise<Layout> => Promise.resolve(l
  * only import the openfin-layouts lib when in an openfin environment
  */
 // tslint:disable-next-line:no-var-requires
-export const generateLayout = isNotFin ? mockGenerateLayout : require('openfin-layouts').generateLayout;
+const workspaces = isNotFin ? mockWorkspaces : require('openfin-layouts').workspaces;
 // tslint:disable-next-line:no-var-requires
-export const restoreLayout = isNotFin ? mockRestoreLayout : require('openfin-layouts').restoreLayout;
+export const generateLayout = workspaces.generate;
+// tslint:disable-next-line:no-var-requires
+export const restoreLayout = workspaces.restore;
 // tslint:disable-next-line:no-var-requires
 export const deregister = isNotFin ? mockDeregister : require('openfin-layouts').deregister;

@@ -1,24 +1,24 @@
 import * as layouts from 'openfin-layouts';
 
 window.addEventListener('DOMContentLoaded', () => {
-    const title = document.title;
+  const title = document.title;
 
-    const backgroundColor = '#3A3A3A';
-    const textColor = '#FFFFFF';
+  const backgroundColor = '#3A3A3A';
+  const textColor = '#FFFFFF';
 
-    const basePath = 'https://cdn.openfin.co/demos/os-launchpad/';
+  const basePath = 'https://cdn.openfin.co/demos/os-launchpad/';
 
-    const minImg = `${basePath}minimize.svg`;
-    const maxImg = `${basePath}maximize.svg`;
-    const restoreImg = `${basePath}restore.svg`;
-    const closeImg = `${basePath}close.svg`;
-    const undockImg = `${basePath}undock.svg`;
-    const dockImg = `${basePath}dock.svg`;
+  const minImg = `${basePath}minimize.svg`;
+  const maxImg = `${basePath}maximize.svg`;
+  const restoreImg = `${basePath}restore.svg`;
+  const closeImg = `${basePath}close.svg`;
+  const undockImg = `${basePath}undock.svg`;
+  const dockImg = `${basePath}dock.svg`;
 
-    const dockedTitle = 'window docked, click to undock.';
-    const undockedTitle = 'window undocked.';
+  const dockedTitle = 'window docked, click to undock.';
+  const undockedTitle = 'window undocked.';
 
-    const topBarHTML = `
+  const topBarHTML = `
     <style type="text/css">
         @font-face {
             font-family: 'Nunito';
@@ -102,50 +102,52 @@ window.addEventListener('DOMContentLoaded', () => {
         <img class="of-os-tb-btn of-os-tb-close" src="${closeImg}" alt="">
     </div>`;
 
-    // add html to top of page
-    document.body.insertAdjacentHTML('afterbegin', topBarHTML);
-    // add event listeners to the top bar icons
-    document.getElementsByClassName('of-os-tb-minimize')[0].addEventListener('click', () => {
-        fin.desktop.Window.getCurrent().minimize();
+  // add html to top of page
+  document.body.insertAdjacentHTML('afterbegin', topBarHTML);
+  // add event listeners to the top bar icons
+  document.getElementsByClassName('of-os-tb-minimize')[0].addEventListener('click', () => {
+    fin.desktop.Window.getCurrent().minimize();
+  });
+  document.getElementsByClassName('of-os-tb-close')[0].addEventListener('click', () => {
+    fin.desktop.Application.getCurrent().close();
+  });
+  // maximize/restore
+  let maximized = false;
+  document.getElementsByClassName('of-os-tb-maximize')[0].addEventListener('click', e => {
+    if (maximized === false) {
+      fin.desktop.Window.getCurrent().maximize();
+    } else {
+      fin.desktop.Window.getCurrent().restore();
+    }
+    if (e.srcElement) {
+      (e.srcElement as HTMLImageElement).src = maximized ? maxImg : restoreImg;
+    }
+    maximized = !maximized;
+  });
+  // configure layouts service
+  fin.desktop.Window.getCurrent()
+    .getParentApplication()
+    .getManifest(mani => {
+      const tabStripUrl = mani.startup_app.preloadScripts[0].url.replace('/topBar.js', '/tabStrip.html');
+      layouts.tabbing.setTabstrip({ url: tabStripUrl, height: 38 });
     });
-    document.getElementsByClassName('of-os-tb-close')[0].addEventListener('click', () => {
-        fin.desktop.Application.getCurrent().close();
-    });
-    // maximize/restore
-    let maximized = false;
-    document.getElementsByClassName('of-os-tb-maximize')[0].addEventListener('click', e => {
-        if (maximized === false) {
-            fin.desktop.Window.getCurrent().maximize();
-        } else {
-            fin.desktop.Window.getCurrent().restore();
-        }
-        if (e.srcElement) {
-            (e.srcElement as HTMLImageElement).src = (maximized) ? maxImg : restoreImg;
-        }
-        maximized = !maximized;
-    });
-    // configure layouts service
-    fin.desktop.Window.getCurrent().getParentApplication().getManifest(mani => {
-        const tabStripUrl = mani.startup_app.preloadScripts[0].url.replace('/topBar.js', '/tabStrip.html');
-        layouts.setTabClient(tabStripUrl, {height: 35});
-    });
-    layouts.addEventListener('join-tab-group', () => {
-        (document.getElementsByClassName('of-os-tb')[0] as HTMLElement).style.display = 'none';
-    });
-    layouts.addEventListener('leave-tab-group', () => {
-        (document.getElementsByClassName('of-os-tb')[0] as HTMLElement).style.display = '';
-    });
-    layouts.addEventListener('join-snap-group', () => {
-        const elem = document.getElementsByClassName('of-os-tb-undock')[0] as HTMLImageElement;
-        elem.src = undockImg;
-        elem.title = dockedTitle;
-    });
-    layouts.addEventListener('leave-snap-group', () => {
-        const elem = document.getElementsByClassName('of-os-tb-undock')[0] as HTMLImageElement;
-        elem.src = dockImg;
-        elem.title = undockedTitle;
-    });
-    document.getElementsByClassName('of-os-tb-undock')[0].addEventListener('click', () => {
-        layouts.undockWindow(fin.desktop.Window.getCurrent());
-    });
+  layouts.tabbing.addEventListener('tab-added', () => {
+    (document.getElementsByClassName('of-os-tb')[0] as HTMLElement).style.display = 'none';
+  });
+  layouts.tabbing.addEventListener('tab-removed', () => {
+    (document.getElementsByClassName('of-os-tb')[0] as HTMLElement).style.display = '';
+  });
+  layouts.snapAndDock.addEventListener('window-docked', () => {
+    const elem = document.getElementsByClassName('of-os-tb-undock')[0] as HTMLImageElement;
+    elem.src = undockImg;
+    elem.title = dockedTitle;
+  });
+  layouts.snapAndDock.addEventListener('window-undocked', () => {
+    const elem = document.getElementsByClassName('of-os-tb-undock')[0] as HTMLImageElement;
+    elem.src = dockImg;
+    elem.title = undockedTitle;
+  });
+  document.getElementsByClassName('of-os-tb-undock')[0].addEventListener('click', () => {
+    layouts.snapAndDock.undockWindow(fin.desktop.Window.getCurrent());
+  });
 });

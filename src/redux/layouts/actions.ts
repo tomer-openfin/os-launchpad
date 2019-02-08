@@ -1,6 +1,6 @@
+import { Workspace } from 'openfin-layouts/dist/client/types';
 import { createAction } from 'redux-actions';
 
-import { Layout } from 'openfin-layouts/dist/client/types';
 import { ErrorResponse, MetaWithCallbacks, UserLayout } from '../../types/commons';
 import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
 import { metaWithCallbacksCreator, payloadIdentityCreator } from '../../utils/metaAndPayloadCreators';
@@ -25,7 +25,7 @@ export const getLayoutsSuccess = createAction<GetLayoutsSuccessPayload>(GET_LAYO
 export const getLayoutsError = createAction<ErrorResponse>(GET_LAYOUTS.ERROR);
 
 export const restoreLayoutRequest = createAction<UserLayout['id']>(RESTORE_LAYOUT.REQUEST);
-export const restoreLayoutSuccess = createAction<Layout>(RESTORE_LAYOUT.SUCCESS);
+export const restoreLayoutSuccess = createAction<Workspace>(RESTORE_LAYOUT.SUCCESS);
 export const restoreLayoutError = createAction<ErrorResponse>(RESTORE_LAYOUT.ERROR);
 
 export const createLayoutRequest = createAction<UserLayout['name'], MetaWithCallbacks>(CREATE_LAYOUT.REQUEST, payloadIdentityCreator, metaWithCallbacksCreator);
