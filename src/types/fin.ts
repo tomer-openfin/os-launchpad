@@ -3,6 +3,7 @@ export type MonitorInfo = fin.MonitorInfo;
 export type OpenFinApplication = fin.OpenFinApplication;
 export type OpenFinApplicationEventType = fin.OpenFinApplicationEventType;
 export type OpenFinApplicationInfo = fin.LaunchInfo;
+export type OpenFinWindow = fin.OpenFinWindow;
 export type PointTopLeft = fin.PointTopLeft;
 export type SystemBaseEvent = fin.SystemBaseEvent;
 export type Transition = fin.Transition;
