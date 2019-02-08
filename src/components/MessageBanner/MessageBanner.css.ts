@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import { Color, hexToRgba } from '../../styles/index';
+import { Color, hexToRgba } from '../../styles';
 import { TypeStyleProcyon } from '../../styles/typography.css';
 
-import CloseButton from '../CloseButton/index';
+import CloseButton from '../CloseButton';
 
 export const Wrapper = styled.div`
   height: 100%;

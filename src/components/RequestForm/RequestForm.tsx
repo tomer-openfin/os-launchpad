@@ -5,7 +5,7 @@ import * as trashIcon from '../../assets/Trash.svg';
 
 import { MetaWithCallbacks, PushRoute, RequestFormSubmit, ResponseObject, ResponseStatus } from '../../types/commons';
 
-import { Color } from '../../styles/index';
+import { Color } from '../../styles';
 import { HeadingText } from '../ConfirmUserDelete/ConfirmDelete.css';
 import { MessageBannerWrapper, Wrapper } from './RequestForm.css';
 
