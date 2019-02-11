@@ -43,6 +43,7 @@ export interface CloseFinAppPayload {
 
 export interface OpenFinAppErrorPayload {
   id: string;
+  message?: string;
 }
 
 export interface FinAppStatusStatePayload {

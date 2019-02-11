@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Color } from '../../styles/index';
+import { Color } from '../../styles';
 import { FOOTER_HEIGHT, ResponsiveWidth } from '../ResponsiveForm/ResponsiveForm.css';
 
 export const Wrapper = styled.div`

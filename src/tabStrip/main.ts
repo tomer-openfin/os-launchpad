@@ -1,6 +1,6 @@
 import * as layouts from 'openfin-layouts';
-import { JoinTabGroupPayload, TabGroupEventPayload, TabPropertiesUpdatedPayload } from 'openfin-layouts/dist/client/tabbing';
-import { WindowIdentity } from 'openfin-layouts/dist/client/types';
+import { TabActivatedEvent, TabAddedEvent, TabPropertiesUpdatedEvent, TabRemovedEvent } from 'openfin-layouts/dist/client/tabbing';
+import { TabAddedPayload, TabGroupEventPayload, TabPropertiesUpdatedPayload, WindowIdentity } from 'openfin-layouts/dist/client/types';
 
 import { TabManager } from './TabManager';
 
@@ -12,30 +12,28 @@ tabManager = new TabManager();
  * Creates event listeners for events fired from the openfin layouts service.
  */
 const createLayoutsEventListeners = () => {
-  layouts.addEventListener('join-tab-group', (event: CustomEvent<JoinTabGroupPayload>) => {
-    const tabInfo: JoinTabGroupPayload = event.detail;
-    tabManager.addTab(tabInfo.tabID, tabInfo.tabProps!, tabInfo.index!);
+  layouts.tabbing.addEventListener('tab-added', (event: TabAddedEvent) => {
+    const tabInfo: TabAddedPayload = event.detail;
+    tabManager.addTab(tabInfo.identity, tabInfo.properties, tabInfo.index);
 
     document.title = tabManager.getTabs.map(tab => tab.PROPERTIES.title).join(', ');
   });
 
-  layouts.addEventListener('leave-tab-group', (event: CustomEvent<TabGroupEventPayload>) => {
+  layouts.tabbing.addEventListener('tab-removed', (event: TabRemovedEvent) => {
     const tabInfo: TabGroupEventPayload = event.detail;
-    tabManager.removeTab(tabInfo.tabID);
+    tabManager.removeTab(tabInfo.identity);
 
     document.title = tabManager.getTabs.map(tab => tab.PROPERTIES.title).join(', ');
   });
 
-  layouts.addEventListener('tab-activated', (event: CustomEvent<TabGroupEventPayload>) => {
-    const tabInfo: WindowIdentity = event.detail.tabID;
+  layouts.tabbing.addEventListener('tab-activated', (event: TabActivatedEvent) => {
+    const tabInfo: WindowIdentity = event.detail.identity;
     tabManager.setActiveTab(tabInfo);
   });
 
-  layouts.addEventListener('tab-properties-updated', (event: CustomEvent<TabPropertiesUpdatedPayload> | Event) => {
-    const customEvent: CustomEvent<TabPropertiesUpdatedPayload> = event as CustomEvent<TabPropertiesUpdatedPayload>;
-
-    const tab = tabManager.getTab(customEvent.detail.tabID);
-    const props = customEvent.detail.properties;
+  layouts.tabbing.addEventListener('tab-properties-updated', (event: TabPropertiesUpdatedEvent) => {
+    const tab = tabManager.getTab(event.detail.identity);
+    const props = event.detail.properties;
 
     if (tab) {
       if (props.icon) tab.updateIcon(props.icon);
@@ -56,18 +54,18 @@ const createWindowUIListeners = () => {
 
   // Minimize Button
   minimizeElem!.onclick = () => {
-    layouts.minimizeTabGroup(tabManager.getTabs[0].ID);
+    layouts.tabbing.minimizeTabGroup(tabManager.getTabs[0].ID);
   };
 
   // Maximize / Restore button
   maximizeElem!.onclick = () => {
     if (!tabManager.isMaximized) {
-      layouts.maximizeTabGroup(tabManager.getTabs[0].ID);
+      layouts.tabbing.maximizeTabGroup(tabManager.getTabs[0].ID);
 
       maximizeElem!.classList.add('restore');
       tabManager.isMaximized = true;
     } else {
-      layouts.restoreTabGroup(tabManager.getTabs[0].ID);
+      layouts.tabbing.restoreTabGroup(tabManager.getTabs[0].ID);
 
       tabManager.isMaximized = false;
 
@@ -79,7 +77,7 @@ const createWindowUIListeners = () => {
 
   // Close Button
   closeElem!.onclick = () => {
-    layouts.closeTabGroup(tabManager.getTabs[0].ID);
+    layouts.tabbing.closeTabGroup(tabManager.getTabs[0].ID);
   };
 };
 

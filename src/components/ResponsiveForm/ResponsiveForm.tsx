@@ -4,14 +4,17 @@ import { Color } from '../../styles';
 import Button, { ButtonLink } from '../Button';
 import { ButtonWrapper, Footer, FormWrapper, GridWrapper, ScrollWrapper } from './ResponsiveForm.css';
 
+import Loading from '../Loading';
+
 interface Props {
   buttonWidths?: number;
   children: React.ReactNode;
+  isSubmitting: boolean;
   parentRoute: string;
   submitDisabled: boolean;
 }
 
-export const ResponsiveForm = ({ children, parentRoute, submitDisabled, buttonWidths = 128 }: Props) => (
+export const ResponsiveForm = ({ children, isSubmitting, parentRoute, submitDisabled, buttonWidths = 128 }: Props) => (
   <FormWrapper>
     <ScrollWrapper>
       <GridWrapper>{children}</GridWrapper>
@@ -20,7 +23,7 @@ export const ResponsiveForm = ({ children, parentRoute, submitDisabled, buttonWi
     <Footer>
       <ButtonWrapper>
         <Button type="submit" width={buttonWidths} disabled={submitDisabled}>
-          Save
+          {isSubmitting ? <Loading size={15} /> : 'Save'}
         </Button>
 
         <ButtonLink to={parentRoute} backgroundColor={Color.MERCURY} type="button" width={buttonWidths}>

@@ -33,7 +33,7 @@ const renderIntentsAndContextsRow = () => (
 );
 
 const AppForm = ({ isValid, isSubmitting, values }) => (
-  <ResponsiveForm parentRoute={ROUTES.ADMIN_APPS} submitDisabled={isSubmitting || !isValid}>
+  <ResponsiveForm isSubmitting={isSubmitting} parentRoute={ROUTES.ADMIN_APPS} submitDisabled={isSubmitting || !isValid}>
     <RowWrapper firstElementWidth="100px">
       <RadioToggle label="Config Type" name="withAppUrl" value={values.withAppUrl} firstRadioLabel="App URL" secondRadioLabel="Manifest" />
 

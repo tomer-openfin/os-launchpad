@@ -1,7 +1,7 @@
-import { Layout } from 'openfin-layouts/dist/client/types';
+import { Workspace } from 'openfin-layouts/dist/client/types';
 import { UserLayout } from '../types/commons';
 
-export const exampleLayout: Layout = {
+export const exampleLayout: Workspace = {
   apps: [],
   monitorInfo: {
     deviceScaleFactor: 1,

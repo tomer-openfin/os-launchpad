@@ -44,7 +44,7 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       title: SETTINGS_KEY,
     },
     {
-      action: launchWindow(windowsConfig.appDirectory),
+      action: toggleWindow(windowsConfig.appDirectory.name),
       hasExtendedWindow: false,
       icon: directoryIcon,
       isShownByDefault: true,

@@ -40,28 +40,28 @@ export class Tab {
   /**
    * Initializes the Tab class
    */
-  init(index: number) {
+  public init(index: number) {
     this._render(index);
   }
 
   /**
    * Removes the Tab from DOM.
    */
-  remove(): void {
+  public remove(): void {
     this._domNode.remove();
   }
 
   /**
    * Sets the Active class on the Tab DOM.
    */
-  setActive(): void {
+  public setActive(): void {
     this._domNode.classList.add('active');
   }
 
   /**
    * Removes the Active class from the Tab DOM.
    */
-  unsetActive(): void {
+  public unsetActive(): void {
     this._domNode.classList.remove('active');
   }
 
@@ -69,7 +69,7 @@ export class Tab {
    * Updates the icon of this tab.
    * @param {string} icon The URL to the icon image.
    */
-  updateIcon(icon = ''): void {
+  public updateIcon(icon = ''): void {
     const iconNode = this._domNode.querySelectorAll('.tab-favicon')[0];
     (iconNode as HTMLElement).style.backgroundImage = `url("${icon}")`;
 
@@ -80,7 +80,7 @@ export class Tab {
    * Updates the text of the tab.
    * @param {string} text Text to update with.
    */
-  updateText(text: string): void {
+  public updateText(text: string): void {
     const textNode = this._domNode.querySelectorAll('.tab-content')[0];
     (textNode as HTMLElement).textContent = text;
     this._domNode.title = text;
@@ -93,7 +93,7 @@ export class Tab {
    */
   private _onDragStart(e: DragEvent): boolean {
     e.dataTransfer!.effectAllowed = 'move';
-    layouts.tabStrip.startDrag();
+    layouts.tabstrip.startDrag(this._ID);
     return true;
   }
 
@@ -102,7 +102,7 @@ export class Tab {
    * @param {DragEvent} e DragEvent
    */
   private _onDragEnd(e: DragEvent): void {
-    layouts.tabStrip.endDrag(e, this._ID);
+    layouts.tabstrip.endDrag(e, this._ID);
   }
 
   /**
@@ -131,7 +131,7 @@ export class Tab {
     this.setActive();
 
     if ((e.target as Element).className !== 'tab-exit') {
-      layouts.setActiveTab(this._ID);
+      layouts.tabbing.setActiveTab(this._ID);
     }
   }
 
@@ -141,7 +141,7 @@ export class Tab {
    */
   private _onClickHandler(e: MouseEvent): void {
     if ((e.target as Element).className === 'tab-exit') {
-      layouts.closeTab(this._ID);
+      layouts.tabbing.closeTab(this._ID);
     }
   }
 
@@ -157,7 +157,7 @@ export class Tab {
         break;
       }
       default: {
-        layouts.setActiveTab(this._ID);
+        layouts.tabbing.setActiveTab(this._ID);
       }
     }
   }
@@ -202,7 +202,7 @@ export class Tab {
       try {
         inputNode.remove();
         that.updateText(inputNode.value);
-        layouts.tabStrip.updateTabProperties(that._ID, { title: inputNode.value });
+        layouts.tabbing.updateTabProperties({ title: inputNode.value }, that._ID);
       } catch (e) {}
     }
 
@@ -223,7 +223,7 @@ export class Tab {
    * Returns tab identifier object consisting of UUID, Name
    * @returns {WindowIdentity} {uuid, name}
    */
-  get ID(): WindowIdentity {
+  public get ID(): WindowIdentity {
     return this._ID;
   }
 
@@ -231,11 +231,11 @@ export class Tab {
    * Returns the DOM Node for the tab
    * @returns {HTMLElement} DOM Node
    */
-  get DOM(): HTMLElement {
+  public get DOM(): HTMLElement {
     return this._domNode;
   }
 
-  get PROPERTIES(): TabProperties {
+  public get PROPERTIES(): TabProperties {
     return this._properties;
   }
 }

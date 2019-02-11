@@ -21,7 +21,7 @@ interface Props {
 }
 
 export const UserForm = ({ isPasswordShown, isSubmitting, isValid, togglePasswordFieldType, withPasswordField }: Props) => (
-  <ResponsiveForm parentRoute={ROUTES.ADMIN_USERS} submitDisabled={isSubmitting || !isValid}>
+  <ResponsiveForm isSubmitting={isSubmitting} parentRoute={ROUTES.ADMIN_USERS} submitDisabled={isSubmitting || !isValid}>
     <RowWrapper secondElementWidth="55px">
       <FormField label="First Name" type="text" name="firstName" validate={validateTextField} placeholder="Enter first name" />
 

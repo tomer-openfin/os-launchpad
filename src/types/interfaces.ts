@@ -1,4 +1,4 @@
-import { Layout } from 'openfin-layouts/dist/client/types';
+import { Workspace } from 'openfin-layouts/dist/client/types';
 
 import { RouteComponentProps } from 'react-router-dom';
 import { ResponseStatus, UserStatus } from './enums';
@@ -104,12 +104,12 @@ export interface ById<T extends ObjectWithId> {
 export interface UserLayout {
   id: string;
   name: string;
-  layout: Layout;
+  layout: Workspace;
 }
 
 export interface NewUserLayout {
   name: string;
-  layout: Layout;
+  layout: Workspace;
 }
 
 export interface MetaWithCallbacks {

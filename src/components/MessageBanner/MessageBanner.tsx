@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Color } from '../../styles/index';
+import { Color } from '../../styles';
 import { Banner, MessageWrapper, StyledCloseButton, Wrapper } from './MessageBanner.css';
 
 interface Props {

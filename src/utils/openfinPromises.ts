@@ -1,4 +1,4 @@
-import { Bounds, MonitorInfo, OpenFinApplication, OpenFinApplicationInfo, PointTopLeft } from '../types/commons';
+import { Bounds, MonitorInfo, OpenFinApplication, OpenFinApplicationInfo, OpenFinWindow, PointTopLeft } from '../types/commons';
 import promisifyOpenfin from './promisifyOpenfin';
 
 // TODO - move these functions to redux-openfin
@@ -41,11 +41,16 @@ export const getSystemMousePosition = getSystemPromise<PointTopLeft>('getMousePo
 export const getOpenFinApplicationInfo = (uuid: string) => getOpenFinApplicationPromise<any>(uuid, 'getInfo');
 // tslint:disable-next-line:no-any
 export const getOpenFinApplicationManifest = (uuid: string) => getOpenFinApplicationPromise<any>(uuid, 'getManifest');
+export const getOpenFinApplicationChildWindows = (uuid: string) => getOpenFinApplicationPromise<OpenFinWindow[]>(uuid, 'getChildWindows');
 
 export const getCurrentOpenfinApplicationInfo = getCurrentApplicationPromise<OpenFinApplicationInfo>('getInfo');
 
 export const animateWindow = (finWindow, animation, options) => {
   return promisifyOpenfin(finWindow, 'animate', animation, options);
+};
+
+export const bringWindowToFrontPromise = (finWindow, ...args) => {
+  return promisifyOpenfin(finWindow, 'bringToFront', ...args);
 };
 
 export const hideWindowPromise = (finWindow, ...args) => {
@@ -58,6 +63,15 @@ export const setWindowBoundsPromise = (finWindow, { left, top, width, height }: 
 
 export const updateWindowOptions = (finWindow, options) => {
   return promisifyOpenfin(finWindow, 'updateOptions', options);
+};
+
+export const isWindowVisible = async finWindow => {
+  const isShowing = await promisifyOpenfin(finWindow, 'isShowing');
+  const state = await promisifyOpenfin(finWindow, 'getState');
+
+  const isVisible = isShowing && (state === 'normal' || state === 'maximized');
+
+  return isVisible ? finWindow : undefined;
 };
 
 export const createAndRunFromManifest = (manifestUrl: string, id: string) => {

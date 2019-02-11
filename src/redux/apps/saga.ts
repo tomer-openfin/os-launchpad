@@ -1,4 +1,4 @@
-import { call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
+import { all, call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 import API from '../../services/ApiService/api';
@@ -6,7 +6,15 @@ import API from '../../services/ApiService/api';
 import { AppStatusOrigins, AppStatusStates, ResponseStatus } from '../../types/enums';
 import { CloseFinAppRequest, OpenFinAppError, OpenFinAppRequest, OpenFinAppSuccess } from './types';
 
-import { closeApplication, createAndRunFromManifest, getOpenFinApplicationInfo, wrapApplication } from '../../utils/openfinPromises';
+import {
+  bringWindowToFrontPromise,
+  closeApplication,
+  createAndRunFromManifest,
+  getOpenFinApplicationChildWindows,
+  getOpenFinApplicationInfo,
+  isWindowVisible,
+  wrapApplication,
+} from '../../utils/openfinPromises';
 
 import { bindFinAppEventHandlers } from '../../utils/finAppEventHandlerHelpers';
 import { getRuntimeVersion, reboundLauncherRequest } from '../application';
@@ -38,11 +46,38 @@ function* watchOpenFinAppError(action: OpenFinAppError) {
     return;
   }
 
-  const { id } = payload;
+  const { id, message } = payload;
   const status = yield select(getAppStatusById, id);
 
   if (status && status.state === AppStatusStates.Loading) {
     yield put(setFinAppStatusState({ id, statusState: AppStatusStates.Closed }));
+  }
+
+  try {
+    const { fin } = window;
+
+    if (fin) {
+      const alreadyRunningError = 'Application with specified UUID is already running: ';
+      if (typeof message === 'string' && message.indexOf(alreadyRunningError) === 0) {
+        const uuid = message.slice(alreadyRunningError.length);
+        const app = fin.desktop.Application.wrap(uuid);
+        const appWindow = app.getWindow();
+        const childWindows = yield call(getOpenFinApplicationChildWindows(uuid));
+
+        const windows = yield all([call(isWindowVisible, appWindow), ...childWindows.map(childWindow => call(isWindowVisible, childWindow))]);
+        yield all(
+          windows.reduce((acc, win) => {
+            if (!win) {
+              return acc;
+            }
+            return [...acc, call(bringWindowToFrontPromise, win)];
+          }, []),
+        );
+      }
+    }
+  } catch (e) {
+    // tslint:disable-next-line:no-console
+    console.log('Error on bringing windows to front', e);
   }
 }
 
@@ -80,7 +115,7 @@ function* watchOpenFinAppRequest(action: OpenFinAppRequest) {
     // tslint:disable-next-line:no-console
     console.log('Error running app:', payload, '\n', e);
 
-    yield put(openFinAppError({ id }));
+    yield put(openFinAppError({ id, message: e }));
   }
 }
 

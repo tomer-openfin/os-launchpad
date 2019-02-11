@@ -13,7 +13,7 @@ interface Props {
 }
 
 const PasswordForm = ({ isSubmitting, isValid }: Props) => (
-  <ResponsiveForm buttonWidths={153} parentRoute={ROUTES.SETTINGS} submitDisabled={isSubmitting || !isValid}>
+  <ResponsiveForm buttonWidths={153} isSubmitting={isSubmitting} parentRoute={ROUTES.SETTINGS} submitDisabled={isSubmitting || !isValid}>
     <FormField isInvalid={!isValid} label="Old Password" name="password" placeholder="Enter Old Password" type="password" validate={validateTextField} />
 
     <FormField isInvalid={!isValid} label="New Password" name="newPassword" placeholder="Enter New Password" type="password" validate={validateTextField} />
