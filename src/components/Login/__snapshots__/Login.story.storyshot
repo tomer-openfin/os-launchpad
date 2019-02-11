@@ -11,25 +11,25 @@ exports[`Storyshots Components/Login default 1`] = `
     }
   >
     <div
-      className="sc-cbkKFq flEGHm"
+      className="sc-fOKMvo lhvrfc"
     >
       <div
         className="sc-cSHVUG icgEVV"
       >
         <div
-          className="sc-caSCKo kDLzhu"
+          className="sc-gisBJw cLQaNE"
         >
           <div
-            className="sc-gisBJw ctZMsr"
+            className="sc-kjoXOD bknrGl"
           >
             <div
-              className="sc-kjoXOD fhhfF"
+              className="sc-cHGsZl kpcowo"
             >
               Log In
             </div>
           </div>
           <div
-            className="sc-fAjcbJ iRVxiq"
+            className="sc-caSCKo cQcChm"
           >
             <div
               className="sc-ifAKCX cWlwzh"
@@ -40,29 +40,29 @@ exports[`Storyshots Components/Login default 1`] = `
           </div>
         </div>
         <div
-          className="sc-fOKMvo dGATXt"
+          className="sc-eilVRo bnPxYB"
         >
           <div
-            className="sc-krvtoX fZUpQK sc-brqgnP bvqVsJ"
+            className="sc-dUjcNx gAdPQX sc-cMljjf foyfVr"
             size={90}
           />
           <form
-            className="sc-fYiAbW ehgRbH"
+            className="sc-gHboQg eeQCJe"
           >
             <form
-              className="sc-lkqHmb fgSdED"
+              className="sc-krvtoX fMwaVV"
               onSubmit={[Function]}
             >
               <label
-                className="sc-iAyFgw dOgHcN"
+                className="sc-hSdWYo kuqdON"
               >
                 <div
-                  className="sc-kkGfuU cmHvnc"
+                  className="sc-iAyFgw jiQmTY"
                 >
                   Email
                 </div>
                 <input
-                  className="sc-hMqMXs cNmeBE"
+                  className="sc-kEYyzF jiGTdM"
                   name="username"
                   onBlur={[Function]}
                   onChange={[Function]}
@@ -71,15 +71,15 @@ exports[`Storyshots Components/Login default 1`] = `
                 />
               </label>
               <label
-                className="sc-iAyFgw dOgHcN"
+                className="sc-hSdWYo kuqdON"
               >
                 <div
-                  className="sc-kkGfuU cmHvnc"
+                  className="sc-iAyFgw jiQmTY"
                 >
                   Password
                 </div>
                 <input
-                  className="sc-hMqMXs cNmeBE"
+                  className="sc-kEYyzF jiGTdM"
                   name="password"
                   onBlur={[Function]}
                   onChange={[Function]}
@@ -89,15 +89,15 @@ exports[`Storyshots Components/Login default 1`] = `
                 />
               </label>
               <div
-                className="sc-eLExRp tgWKl"
+                className="sc-fYiAbW kCQGQX"
               >
                 <button
-                  className="sc-kAzzGY hcTOPm"
+                  className="sc-kAzzGY ecXCJ"
                 >
                   Log In
                 </button>
                 <a
-                  className="sc-eHgmQL hJdbKV"
+                  className="sc-cvbbAY cjpFsm"
                   href="/forgot-password"
                   onClick={[Function]}
                 >
@@ -550,25 +550,25 @@ exports[`Storyshots Components/Login withStages 1`] = `
     }
   >
     <div
-      className="sc-cbkKFq flEGHm"
+      className="sc-fOKMvo lhvrfc"
     >
       <div
         className="sc-cSHVUG icgEVV"
       >
         <div
-          className="sc-caSCKo kDLzhu"
+          className="sc-gisBJw cLQaNE"
         >
           <div
-            className="sc-gisBJw ctZMsr"
+            className="sc-kjoXOD bknrGl"
           >
             <div
-              className="sc-kjoXOD fhhfF"
+              className="sc-cHGsZl kpcowo"
             >
               Log In
             </div>
           </div>
           <div
-            className="sc-fAjcbJ iRVxiq"
+            className="sc-caSCKo cQcChm"
           >
             <div
               className="sc-ifAKCX cWlwzh"
@@ -579,29 +579,29 @@ exports[`Storyshots Components/Login withStages 1`] = `
           </div>
         </div>
         <div
-          className="sc-fOKMvo dGATXt"
+          className="sc-eilVRo bnPxYB"
         >
           <div
-            className="sc-krvtoX fZUpQK sc-brqgnP bvqVsJ"
+            className="sc-dUjcNx gAdPQX sc-cMljjf foyfVr"
             size={90}
           />
           <form
-            className="sc-fYiAbW ehgRbH"
+            className="sc-gHboQg eeQCJe"
           >
             <form
-              className="sc-lkqHmb fgSdED"
+              className="sc-krvtoX fMwaVV"
               onSubmit={[Function]}
             >
               <label
-                className="sc-iAyFgw dOgHcN"
+                className="sc-hSdWYo kuqdON"
               >
                 <div
-                  className="sc-kkGfuU cmHvnc"
+                  className="sc-iAyFgw jiQmTY"
                 >
                   Email
                 </div>
                 <input
-                  className="sc-hMqMXs cNmeBE"
+                  className="sc-kEYyzF jiGTdM"
                   name="username"
                   onBlur={[Function]}
                   onChange={[Function]}
@@ -610,15 +610,15 @@ exports[`Storyshots Components/Login withStages 1`] = `
                 />
               </label>
               <label
-                className="sc-iAyFgw dOgHcN"
+                className="sc-hSdWYo kuqdON"
               >
                 <div
-                  className="sc-kkGfuU cmHvnc"
+                  className="sc-iAyFgw jiQmTY"
                 >
                   Password
                 </div>
                 <input
-                  className="sc-hMqMXs cNmeBE"
+                  className="sc-kEYyzF jiGTdM"
                   name="password"
                   onBlur={[Function]}
                   onChange={[Function]}
@@ -628,15 +628,15 @@ exports[`Storyshots Components/Login withStages 1`] = `
                 />
               </label>
               <div
-                className="sc-eLExRp tgWKl"
+                className="sc-fYiAbW kCQGQX"
               >
                 <button
-                  className="sc-kAzzGY hcTOPm"
+                  className="sc-kAzzGY ecXCJ"
                 >
                   Log In
                 </button>
                 <a
-                  className="sc-eHgmQL hJdbKV"
+                  className="sc-cvbbAY cjpFsm"
                   href="/forgot-password"
                   onClick={[Function]}
                 >

@@ -76,6 +76,11 @@ export interface DirectionalCoordinates extends PrimaryDirectionalCoordinates {
   right: number;
 }
 
+export interface Point {
+  x: number;
+  y: number;
+}
+
 export interface User {
   email: string;
   firstName: string;

@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 
-import { APIResponse, DirectionalPosition, ErrorResponse, LauncherSize, MetaWithCallbacks } from '../../types/commons';
+import { APIResponse, DirectionalPosition, ErrorResponse, LauncherSize, MetaWithCallbacks, MonitorDetails } from '../../types/commons';
 import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
 import { metaWithCallbacksCreator, payloadIdentityCreator } from '../../utils/metaAndPayloadCreators';
 import {
@@ -43,6 +43,7 @@ export const SET_APP_IDS = 'SET_APP_IDS';
 export const SET_AUTO_HIDE = 'SET_AUTO_HIDE';
 export const SET_LAUNCHER_POSITION = 'SET_LAUNCHER_POSITION';
 export const SET_LAUNCHER_SIZE = 'SET_LAUNCHER_SIZE';
+export const SET_LAUNCHER_MONITOR_SETTINGS = 'SET_LAUNCHER_MONITOR_SETTINGS';
 
 export const ADD_TO_APP_LAUNCHER = 'ADD_TO_APP_LAUNCHER';
 export const REMOVE_FROM_APP_LAUNCHER = 'REMOVE_FROM_APP_LAUNCHER';
@@ -100,6 +101,7 @@ export const setLauncherPosition = createAction<SetLauncherPositionPayload, Dire
   launcherPosition,
 }));
 export const setLauncherSize = createAction<SetLauncherSizePayload, LauncherSize>(SET_LAUNCHER_SIZE, launcherSize => ({ launcherSize }));
+export const setLauncherMonitorSettings = createAction<MonitorDetails>(SET_LAUNCHER_MONITOR_SETTINGS);
 
 export const addToAppLauncher = createAction<string>(ADD_TO_APP_LAUNCHER);
 export const removeFromAppLauncher = createAction<string>(REMOVE_FROM_APP_LAUNCHER);

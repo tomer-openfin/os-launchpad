@@ -11,36 +11,36 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
     }
   >
     <form
-      className="sc-iSDuPN gRNsCm"
+      className="sc-kasBVs eoHDUI"
       onReset={[Function]}
       onSubmit={[Function]}
     >
       <label
-        className="sc-kZmsYB egfTvn"
+        className="sc-jXQZqI kiNYfo"
         htmlFor="LogoFormFileInput"
       >
         <div
-          className="sc-jXQZqI ctiGMA"
+          className="sc-hzDEsm jKbXAY"
         >
           <div
-            className="sc-etwtAo hKtLZE"
+            className="sc-fOICqy cechZQ"
           >
             <div
-              className="sc-brqgnP imFTDi"
+              className="sc-cMljjf kwWUoq"
               size={80}
             />
           </div>
           <div
-            className="sc-fQejPQ lgQLFn"
+            className="sc-eInJlc kXvGq"
           >
             <div
-              className="sc-clNaTc hvrXJj"
+              className="sc-gtfDJT lmMgwe"
             >
               Click & drag a new image over the existing one to replace your brand logo.
             </div>
             <input
               accept="image/*"
-              className="sc-fZwumE gWqycV"
+              className="sc-hgHYgh jfCIJw"
               id="LogoFormFileInput"
               name="logo"
               onBlur={[Function]}
@@ -55,10 +55,10 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
         </div>
       </label>
       <div
-        className="sc-RcBXQ hiiOlf"
+        className="sc-iGPElx jWvLlE"
       >
         <button
-          className="sc-kAzzGY hcTOPm"
+          className="sc-kAzzGY ecXCJ"
           disabled={true}
           type="submit"
           width={110}
@@ -66,7 +66,7 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
           Overwrite
         </button>
         <button
-          className="sc-kAzzGY kpOrTB"
+          className="sc-kAzzGY fgYJxE"
           disabled={true}
           onClick={[Function]}
           type="button"

@@ -1,5 +1,5 @@
 import { DirectionalPosition } from '../../types/commons';
-import { getNewPosDelta, isPosInBounds, isPosInCoordinates } from '../coordinateHelpers';
+import { getCoordinatesMidPoint, getNewPosDelta, isPosInBounds, isPosInCoordinates } from '../coordinateHelpers';
 
 const bounds = {
   height: 100,
@@ -18,6 +18,23 @@ const coordinates = {
 const VISIBILITY_DELTA = 5;
 
 describe('coordinateHelpers', () => {
+  describe('getCoordinatesMidPoint', () => {
+    it('should return the mid point of a given coordinates', () => {
+      const tests = [
+        {
+          result: { x: 50, y: 50 },
+          testBounds: { top: 0, left: 0, bottom: 100, right: 100 },
+        },
+        {
+          result: { x: 50.5, y: 50.5 },
+          testBounds: { top: 0, left: 0, bottom: 101, right: 101 },
+        },
+      ];
+
+      tests.forEach(({ testBounds, result }) => expect(getCoordinatesMidPoint(testBounds)).toEqual(result));
+    });
+  });
+
   describe('getNewPosDelta', () => {
     it('should return a position delta', () => {
       const tests = [

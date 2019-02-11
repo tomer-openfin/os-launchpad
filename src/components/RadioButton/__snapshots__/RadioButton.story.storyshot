@@ -13,11 +13,11 @@ exports[`Storyshots UI Components/RadioButton as group 1`] = `
     <div>
       <label
         checked={true}
-        className="sc-jhAzac kNFqZD"
+        className="sc-fBuWsC glVfkR"
       >
         <input
           checked={true}
-          className="sc-hzDkRC evRIzX"
+          className="sc-jhAzac hbGpOo"
           name="onoff"
           onChange={[Function]}
           type="radio"
@@ -27,11 +27,11 @@ exports[`Storyshots UI Components/RadioButton as group 1`] = `
       </label>
       <label
         checked={false}
-        className="sc-jhAzac iuFcdk"
+        className="sc-fBuWsC cCalxw"
       >
         <input
           checked={false}
-          className="sc-hzDkRC evRIzX"
+          className="sc-jhAzac hbGpOo"
           name="onoff"
           onChange={[Function]}
           type="radio"
@@ -323,11 +323,11 @@ exports[`Storyshots UI Components/RadioButton default 1`] = `
   >
     <label
       checked={false}
-      className="sc-jhAzac iuFcdk"
+      className="sc-fBuWsC cCalxw"
     >
       <input
         checked={false}
-        className="sc-hzDkRC evRIzX"
+        className="sc-jhAzac hbGpOo"
         name="onoff"
         type="radio"
         value="on"

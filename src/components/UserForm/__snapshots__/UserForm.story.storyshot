@@ -11,24 +11,24 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
     }
   >
     <form
-      className="sc-cMljjf YbFgd"
+      className="sc-jAaTju dWHaul"
       onReset={[Function]}
       onSubmit={[Function]}
     >
       <div
-        className="sc-jAaTju jjQQeH"
+        className="sc-jDwBTQ enLvbe"
       >
         <div
-          className="sc-jDwBTQ kspkKE"
+          className="sc-gPEVay brQUiw"
         >
           <div
-            className="sc-dTdPqK gvngsy"
+            className="sc-giadOv fFGGEY"
           >
             <label
-              className="sc-kpOJdX fGktSh"
+              className="sc-dxgOiQ gXepeX"
             >
               <div
-                className="sc-kGXeez hlXPx"
+                className="sc-kpOJdX gglwGS"
               >
                 First Name
               </div>
@@ -41,10 +41,10 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
               />
             </label>
             <label
-              className="sc-kpOJdX fGktSh"
+              className="sc-dxgOiQ gXepeX"
             >
               <div
-                className="sc-kGXeez hlXPx"
+                className="sc-kpOJdX gglwGS"
               >
                 MI
               </div>
@@ -57,10 +57,10 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
             </label>
           </div>
           <label
-            className="sc-kpOJdX fGktSh"
+            className="sc-dxgOiQ gXepeX"
           >
             <div
-              className="sc-kGXeez hlXPx"
+              className="sc-kpOJdX gglwGS"
             >
               Last Name
             </div>
@@ -73,10 +73,10 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
             />
           </label>
           <label
-            className="sc-kpOJdX fGktSh"
+            className="sc-dxgOiQ gXepeX"
           >
             <div
-              className="sc-kGXeez hlXPx"
+              className="sc-kpOJdX gglwGS"
             >
               Phone Number
             </div>
@@ -90,10 +90,10 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
             />
           </label>
           <label
-            className="sc-kpOJdX fGktSh"
+            className="sc-dxgOiQ gXepeX"
           >
             <div
-              className="sc-kGXeez hlXPx"
+              className="sc-kpOJdX gglwGS"
             >
               Email
             </div>
@@ -109,13 +109,13 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
         </div>
       </div>
       <div
-        className="sc-iRbamj jQKyym"
+        className="sc-jlyJG jVJtUg"
       >
         <div
-          className="sc-gPEVay cdIDZh"
+          className="sc-iRbamj bgBAAd"
         >
           <button
-            className="sc-kAzzGY iAOmzv"
+            className="sc-kAzzGY jjQyJb"
             disabled={true}
             type="submit"
             width={128}
@@ -124,7 +124,7 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
           </button>
           <a
             backgroundColor="#848484"
-            className="sc-chPdSV eUeCqN"
+            className="sc-chPdSV hEgkTj"
             href="/admin/users"
             onClick={[Function]}
             type="button"

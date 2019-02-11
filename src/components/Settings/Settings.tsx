@@ -5,20 +5,26 @@ import { DirectionalPosition, LauncherSize, OnOff } from '../../types/commons';
 import { doesCurrentPathMatch } from '../../utils/routeHelpers';
 import { ButtonLink } from '../Button';
 import { ROUTES, SETTINGS_ROUTES } from '../Router/consts';
-import { ButtonWrapper, CTA, Group, Heading, Row, Section, StyledRadioButton, Window } from './Settings.css';
+import { ButtonWrapper, Content, Cta, Group, Heading, Row, Section, StyledRadioButton, Window } from './Settings.css';
 
 import Borders from '../Borders';
+import DirectionControls from '../DirectionControls';
 import Modal from '../Modal';
 import WindowHeader from '../WindowHeader';
 
 const AUTO_HIDE_NAME = 'autohide-onoff';
 const LAUNCHER_SIZE_NAME = 'launcherSize-options';
 
-interface Props extends RouteComponentProps {
+interface Props {
   autoHide: boolean;
-  isEnterprise: boolean;
+  children?: React.ReactNode;
   hideWindow: () => void;
+  history?: RouteComponentProps['history'];
+  isChangeLauncherMonitorDisabled?: boolean;
+  isEnterprise: boolean;
+  launcherPosition: DirectionalPosition;
   launcherSize: LauncherSize;
+  location?: RouteComponentProps['location'];
   setAutoHide: (autoHide: boolean) => void;
   setLauncherPosition: (launcherPosition: DirectionalPosition) => void;
   setLauncherSize: (launcherSize: LauncherSize) => void;
@@ -26,35 +32,35 @@ interface Props extends RouteComponentProps {
 
 const SETTINGS_PATHS = Object.values(SETTINGS_ROUTES);
 
-// defaultProps needed for Settings.story to not complain about missing history prop
-const defaultProps: Partial<Props> = {};
+const Settings = (props: Props) => {
+  const {
+    autoHide,
+    children,
+    hideWindow,
+    history,
+    isChangeLauncherMonitorDisabled,
+    isEnterprise,
+    launcherPosition,
+    launcherSize,
+    location,
+    setAutoHide,
+    setLauncherPosition,
+    setLauncherSize,
+  } = props;
 
-class Settings extends React.Component<Props, {}> {
-  static defaultProps = defaultProps;
+  const handleAutoHide = (e: React.SyntheticEvent<HTMLInputElement>) => {
+    setAutoHide(e.currentTarget.value === OnOff.On);
+  };
+  const handleLauncherSize = (e: React.SyntheticEvent<HTMLInputElement>) => {
+    setLauncherSize(e.currentTarget.value as LauncherSize);
+  };
 
-  constructor(props) {
-    super(props);
-  }
+  return (
+    <Window>
+      <Borders height="100%" width="100%">
+        <WindowHeader handleClose={hideWindow}>My Settings</WindowHeader>
 
-  render() {
-    const { autoHide, children, isEnterprise, history, hideWindow, setAutoHide, setLauncherPosition, setLauncherSize, launcherSize } = this.props;
-
-    const setLauncherPositionTop = () => setLauncherPosition(DirectionalPosition.Top);
-    const setLauncherPositionLeft = () => setLauncherPosition(DirectionalPosition.Left);
-    const setLauncherPositionRight = () => setLauncherPosition(DirectionalPosition.Right);
-    const setLauncherPositionBottom = () => setLauncherPosition(DirectionalPosition.Bottom);
-    const handleAutoHide = (e: React.SyntheticEvent<HTMLInputElement>) => {
-      setAutoHide(e.currentTarget.value === OnOff.On);
-    };
-    const handleLauncherSize = (e: React.SyntheticEvent<HTMLInputElement>) => {
-      setLauncherSize(e.currentTarget.value as LauncherSize);
-    };
-
-    return (
-      <Window>
-        <Borders height="100%" width="100%">
-          <WindowHeader handleClose={hideWindow}>My Settings</WindowHeader>
-
+        <Content>
           <Section>
             <Group>
               <Heading>Auto-Hide</Heading>
@@ -99,31 +105,39 @@ class Settings extends React.Component<Props, {}> {
             <Group>
               <Heading>Launcher Position</Heading>
 
-              <CTA onClick={setLauncherPositionTop}>Top</CTA>
-
               <Row>
-                <CTA onClick={setLauncherPositionLeft}>Left</CTA>
+                <DirectionControls direction={launcherPosition} handleChange={setLauncherPosition} />
 
-                <CTA onClick={setLauncherPositionRight}>Right</CTA>
+                <Cta
+                  isDisabled={isChangeLauncherMonitorDisabled}
+                  onClick={
+                    isChangeLauncherMonitorDisabled
+                      ? e => {
+                          e.preventDefault();
+                        }
+                      : undefined
+                  }
+                  to={ROUTES.SETTINGS_LAUNCHER_MONITOR}
+                >
+                  Change Screen
+                </Cta>
               </Row>
-
-              <CTA onClick={setLauncherPositionBottom}>Bottom</CTA>
             </Group>
           </Section>
 
           {isEnterprise && (
             <ButtonWrapper>
-              <ButtonLink to={ROUTES.SETTINGS_UPDATE} width={147}>
+              <ButtonLink to={ROUTES.SETTINGS_UPDATE_PASSWORD} width={147}>
                 Change Password
               </ButtonLink>
             </ButtonWrapper>
           )}
+        </Content>
 
-          {doesCurrentPathMatch(SETTINGS_PATHS, location.pathname) && <Modal handleClose={history.goBack}>{children}</Modal>}
-        </Borders>
-      </Window>
-    );
-  }
-}
+        {location && history && doesCurrentPathMatch(SETTINGS_PATHS, location.pathname) && <Modal handleClose={history.goBack}>{children}</Modal>}
+      </Borders>
+    </Window>
+  );
+};
 
 export default Settings;

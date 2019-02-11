@@ -21,7 +21,8 @@ export const ADMIN_ROUTES = {
 };
 
 export const SETTINGS_ROUTES = {
-  SETTINGS_UPDATE: '/settings/user/update',
+  SETTINGS_LAUNCHER_MONITOR: '/settings/launcher-monitor',
+  SETTINGS_UPDATE_PASSWORD: '/settings/update-password',
 };
 
 export const ROUTES = {

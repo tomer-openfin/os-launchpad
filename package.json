@@ -10,6 +10,7 @@
     "fix": "gts fix",
     "lint": "tslint -s node_modules/custom-tslint-formatters/formatters -t grouped 'src/**/*.{ts,tsx}'",
     "openfin": "node scripts/openfin.js",
+    "openfin:storybook": "FILE_NAME=finStory.json PORT=6006 node scripts/openfin.js",
     "react-devtools": "react-devtools",
     "serve": "node server.js",
     "start": "node scripts/start.js",

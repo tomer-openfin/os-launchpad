@@ -11,24 +11,24 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
     }
   >
     <form
-      className="sc-cMljjf YbFgd"
+      className="sc-jAaTju dWHaul"
       onReset={[Function]}
       onSubmit={[Function]}
     >
       <div
-        className="sc-jAaTju jjQQeH"
+        className="sc-jDwBTQ enLvbe"
       >
         <div
-          className="sc-jDwBTQ kspkKE"
+          className="sc-gPEVay brQUiw"
         >
           <div
-            className="sc-dTdPqK dJVxZp"
+            className="sc-giadOv eDAehw"
           >
             <label
-              className="sc-kxynE gjvIED sc-kpOJdX fGktSh"
+              className="sc-fZwumE jzSZTb sc-dxgOiQ gXepeX"
             >
               <div
-                className="sc-kGXeez hlXPx"
+                className="sc-kpOJdX gglwGS"
               >
                 Config Type
               </div>
@@ -39,36 +39,36 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
                 type="checkbox"
               />
               <div
-                className="sc-gmeYpB ipfegE"
+                className="sc-etwtAo jXhUbr"
               >
                 <div
-                  className="sc-fcdeBU bTneHa"
+                  className="sc-clNaTc fUyfUf"
                 />
                 <div
-                  className="sc-cooIXK OxlqL"
+                  className="sc-fQejPQ bMshTI"
                 >
                   App URL
                 </div>
               </div>
               <div
-                className="sc-gmeYpB ipfegE"
+                className="sc-etwtAo jXhUbr"
               >
                 <div
                   checked={true}
-                  className="sc-fcdeBU bQcMFr"
+                  className="sc-clNaTc fJbvrJ"
                 />
                 <div
-                  className="sc-cooIXK OxlqL"
+                  className="sc-fQejPQ bMshTI"
                 >
                   Manifest
                 </div>
               </div>
             </label>
             <label
-              className="sc-kpOJdX fGktSh"
+              className="sc-dxgOiQ gXepeX"
             >
               <div
-                className="sc-kGXeez hlXPx"
+                className="sc-kpOJdX gglwGS"
               >
                 Manifest URL
               </div>
@@ -82,10 +82,10 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
             </label>
           </div>
           <label
-            className="sc-kpOJdX fGktSh"
+            className="sc-dxgOiQ gXepeX"
           >
             <div
-              className="sc-kGXeez hlXPx"
+              className="sc-kpOJdX gglwGS"
             >
               App Title
             </div>
@@ -98,14 +98,14 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
             />
           </label>
           <div
-            className="sc-dTdPqK jffWHV"
+            className="sc-giadOv eEqRGR"
             height="99px"
           >
             <label
-              className="sc-kpOJdX fGktSh"
+              className="sc-dxgOiQ gXepeX"
             >
               <div
-                className="sc-kGXeez hlXPx"
+                className="sc-kpOJdX gglwGS"
               >
                 Description
               </div>
@@ -118,10 +118,10 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
               />
             </label>
             <label
-              className="sc-kpOJdX fGktSh"
+              className="sc-dxgOiQ gXepeX"
             >
               <div
-                className="sc-kGXeez hlXPx"
+                className="sc-kpOJdX gglwGS"
               >
                 App Icon URL
               </div>
@@ -137,13 +137,13 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
         </div>
       </div>
       <div
-        className="sc-iRbamj jQKyym"
+        className="sc-jlyJG jVJtUg"
       >
         <div
-          className="sc-gPEVay cdIDZh"
+          className="sc-iRbamj bgBAAd"
         >
           <button
-            className="sc-kAzzGY iAOmzv"
+            className="sc-kAzzGY jjQyJb"
             disabled={true}
             type="submit"
             width={128}
@@ -152,7 +152,7 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
           </button>
           <a
             backgroundColor="#848484"
-            className="sc-chPdSV eUeCqN"
+            className="sc-chPdSV hEgkTj"
             href="/admin/apps"
             onClick={[Function]}
             type="button"

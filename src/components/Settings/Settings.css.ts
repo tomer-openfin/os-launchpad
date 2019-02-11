@@ -1,9 +1,13 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { Color, Typography } from '../../styles';
 
-import Button from '../Button';
 import RadioButton from '../RadioButton';
+
+interface CtaProps {
+  isDisabled?: boolean;
+}
 
 export const ButtonWrapper = styled.div`
   display: flex;
@@ -12,17 +16,53 @@ export const ButtonWrapper = styled.div`
   width: 100vw;
 `;
 
+export const Cta = styled(Link)<CtaProps>`
+  ${Typography.TypeStyleEnif}
+
+  background-color: transparent;
+  border-radius: 3px;
+  border: none;
+  color: ${Color.JUPITER};
+  cursor: pointer;
+  margin-left: 16px;
+  padding: 8px;
+  text-transform: uppercase;
+
+  &:hover {
+    color: ${Color.SUN};
+  }
+
+  ${({ isDisabled }) => {
+    if (!isDisabled) {
+      return `
+        &:hover {
+          color: ${Color.SUN};
+        }
+      `;
+    }
+
+    return `
+      cursor: default;
+      opacity: 0.5;
+
+      &:hover {
+        color: ${Color.JUPITER};
+      }
+    `;
+  }}
+`;
+
+export const Content = styled.div`
+  flex: 1;
+`;
+
 export const Window = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
   align-items: center;
-  justify-content: center;
   position: relative;
-`;
-
-export const CTA = styled(Button)`
-  margin: 5px;
 `;
 
 export const StyledRadioButton = styled(RadioButton)``;
@@ -54,7 +94,6 @@ export const Section = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px 25px;
-  width: 100vw;
 
   ${StyledRadioButton} + ${StyledRadioButton} {
     margin-left: 15px;

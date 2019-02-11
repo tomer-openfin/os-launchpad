@@ -18,6 +18,7 @@ declare global {
 }
 
 const store = configureStore();
+window.store = store;
 
 initStorybookStore(store);
 

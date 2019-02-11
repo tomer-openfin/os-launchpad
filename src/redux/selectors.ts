@@ -1,13 +1,68 @@
 import { createSelector } from 'reselect';
 
 import { AppListToggleId } from '../components/AppListToggle';
+import { MonitorDetails, MonitorInfo } from '../types/commons';
 import { objectsFromIds } from '../utils/byIds';
+import { isPointInCoordinates } from '../utils/coordinateHelpers';
 import { getSystemIcons } from '../utils/getSystemIcons';
 import { calcAppListDimensions, calcMaxAppCount } from '../utils/windowPositionHelpers';
 import { getDrawerIsExpanded } from './application/selectors';
 import { getAppsById } from './apps/selectors';
-import { getAppsLauncherIds, getIsAdmin, getLauncherPosition, getLauncherSizeConfig } from './me/selectors';
-import { getMonitorInfo } from './system';
+import {
+  getAppsLauncherIds,
+  getIsAdmin,
+  getLauncherMonitorId,
+  getLauncherMonitorReferencePoint,
+  getLauncherPosition,
+  getLauncherSizeConfig,
+} from './me/selectors';
+import { MeSettingsState } from './me/types';
+import { getMonitorInfo } from './system/selectors';
+
+const matchByNameOrDeviceId = (
+  monitorDetails: MonitorInfo['primaryMonitor'] | MonitorDetails,
+  launcherMonitorId: MeSettingsState['launcherMonitorId'],
+): boolean => monitorDetails.name === launcherMonitorId || monitorDetails.deviceId === launcherMonitorId;
+
+/**
+ * Return monitor details derived by user's settings
+ */
+export const getMonitorDetailsDerivedByUserSettings = createSelector(
+  [getMonitorInfo, getLauncherMonitorId, getLauncherMonitorReferencePoint],
+  (monitorInfo, launcherMonitorId, launcherMonitorReferencePoint) => {
+    if (!monitorInfo) {
+      return null;
+    }
+
+    // Check if any monitors match launcherMonitorId
+    const { primaryMonitor } = monitorInfo;
+    const primaryMonitorMatchesId = matchByNameOrDeviceId(primaryMonitor, launcherMonitorId);
+    if (primaryMonitorMatchesId) {
+      return primaryMonitor;
+    }
+    const nonPrimaryMonitorById = monitorInfo.nonPrimaryMonitors.find(monitorDetails => matchByNameOrDeviceId(monitorDetails, launcherMonitorId));
+    if (nonPrimaryMonitorById) {
+      return nonPrimaryMonitorById;
+    }
+
+    // If no monitors match by id then use reference point
+    // Check if any monitors contains reference point within its bounds
+    // Reference point can land on two monitors, in that case use the first monitor found
+    const primaryMonitorMatchesPoint = isPointInCoordinates(launcherMonitorReferencePoint, primaryMonitor.monitorRect);
+    if (primaryMonitorMatchesPoint) {
+      return primaryMonitor;
+    }
+    const nonPrimaryMonitorByPoint = monitorInfo.nonPrimaryMonitors.find(monitorDetails =>
+      isPointInCoordinates(launcherMonitorReferencePoint, monitorDetails.monitorRect),
+    );
+    if (nonPrimaryMonitorByPoint) {
+      return nonPrimaryMonitorByPoint;
+    }
+
+    // If no monitor is found, use the primary monitor as a fallback
+    return primaryMonitor;
+  },
+);
 
 export const getAppsLauncherAppList = createSelector(
   [getAppsById, getAppsLauncherIds],
@@ -52,9 +107,9 @@ export const getSystemDrawerSize = createSelector(
 );
 
 export const getMaxAppCount = createSelector(
-  [getLauncherPosition, getLauncherSizeConfig, getCollapsedSystemDrawerSize, getMonitorInfo],
-  (launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, monitorInfo) =>
-    monitorInfo ? calcMaxAppCount(launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, monitorInfo) : 0,
+  [getLauncherPosition, getLauncherSizeConfig, getCollapsedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings],
+  (launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, monitorDetails) =>
+    monitorDetails ? calcMaxAppCount(launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, monitorDetails) : 0,
 );
 
 export const getAppListApps = createSelector(
@@ -86,9 +141,9 @@ export const getAppListApps = createSelector(
 );
 
 export const getAppListDimensions = createSelector(
-  [getAppListApps, getLauncherPosition, getLauncherSizeConfig, getCollapsedSystemDrawerSize, getMonitorInfo],
-  (list, launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, monitorInfo) =>
-    monitorInfo
-      ? calcAppListDimensions(list.appIds.length, launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, monitorInfo)
+  [getAppListApps, getLauncherPosition, getLauncherSizeConfig, getCollapsedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings],
+  (list, launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, monitorDetails) =>
+    monitorDetails
+      ? calcAppListDimensions(list.appIds.length, launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, monitorDetails)
       : { height: 0, width: 0 },
 );

@@ -1,0 +1,18 @@
+{
+  "startup_app": {
+    "uuid": "osLaunchpadMain::Storybook",
+    "name": "osLaunchpadMain::Storybook",
+    "description": "Openfin Application Launcher - Storybook",
+    "url": "%ROOT_URL%/",
+    "autoShow": true,
+    "defaultCentered": true,
+    "preloadScripts": [
+      {
+        "url": "%ROOT_URL%/finStoryPreload.js"
+      }
+    ]
+  },
+  "runtime": {
+    "version": "9.61.37.46"
+  }
+}

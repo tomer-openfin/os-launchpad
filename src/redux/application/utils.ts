@@ -6,8 +6,13 @@ import { getFinWindowByName, getLauncherFinWindow } from '../../utils/getLaunche
 import { animateWindow, setWindowBoundsPromise } from '../../utils/openfinPromises';
 import { calcBoundsRelativeToLauncher, calcLauncherPosition, isBottom, isRight } from '../../utils/windowPositionHelpers';
 import { getAutoHide, getLauncherPosition, getLauncherSizeConfig } from '../me';
-import { getAppListDimensions, getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize } from '../selectors';
-import { getMonitorInfo } from '../system';
+import {
+  getAppListDimensions,
+  getAppsLauncherAppList,
+  getCollapsedSystemDrawerSize,
+  getExpandedSystemDrawerSize,
+  getMonitorDetailsDerivedByUserSettings,
+} from '../selectors';
 import { State } from '../types';
 import { getWindowBounds } from '../windows';
 
@@ -17,9 +22,9 @@ export function* animateLauncherCollapseExpand(isExpanded: State['application'][
     return;
   }
 
-  const [appList, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, collapsedSystemDrawerSize, expandedSystemDrawerSize] = yield all([
+  const [appList, monitorDetails, launcherPosition, launcherSizeConfig, autoHide, collapsedSystemDrawerSize, expandedSystemDrawerSize] = yield all([
     select(getAppsLauncherAppList),
-    select(getMonitorInfo),
+    select(getMonitorDetailsDerivedByUserSettings),
     select(getLauncherPosition),
     select(getLauncherSizeConfig),
     select(getAutoHide),
@@ -28,7 +33,7 @@ export function* animateLauncherCollapseExpand(isExpanded: State['application'][
   ]);
   const { height, width, top, left } = calcLauncherPosition(
     appList.length,
-    monitorInfo,
+    monitorDetails,
     launcherPosition,
     launcherSizeConfig,
     autoHide,

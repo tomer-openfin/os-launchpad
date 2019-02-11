@@ -39,6 +39,7 @@ import {
   saveSettingsRequest,
   saveSettingsSuccess,
   SET_AUTO_HIDE,
+  SET_LAUNCHER_MONITOR_SETTINGS,
   SET_LAUNCHER_POSITION,
   SET_LAUNCHER_SIZE,
   setMe,
@@ -47,16 +48,7 @@ import {
   updatePasswordSuccess,
 } from './actions';
 import { getMeSettings } from './selectors';
-import {
-  ConfirmPasswordRequest,
-  ForgotPasswordRequest,
-  LoginError,
-  LoginRequest,
-  LoginSuccess,
-  LoginWithNewPassword,
-  LogoutError,
-  UpdatePasswordRequest,
-} from './types';
+import { LoginError, LoginRequest, LoginSuccess, LoginWithNewPassword, LogoutError, UpdatePasswordRequest } from './types';
 
 const GENERIC_API_ERROR: ErrorResponse = { status: ResponseStatus.FAILURE, message: 'Failed to get response from server' };
 
@@ -329,5 +321,5 @@ export function* meSaga() {
   yield takeEvery(UPDATE_PASSWORD.REQUEST, watchUpdatePasswordRequest);
   yield takeEvery(UPDATE_PASSWORD.SUCCESS, callSuccessMetaCb);
   yield takeEvery(UPDATE_PASSWORD.ERROR, callErrorMetaCb);
-  yield takeLatest([SET_AUTO_HIDE, SET_LAUNCHER_POSITION, SET_LAUNCHER_SIZE], reboundLauncherAndSaveSettings);
+  yield takeLatest([SET_AUTO_HIDE, SET_LAUNCHER_POSITION, SET_LAUNCHER_SIZE, SET_LAUNCHER_MONITOR_SETTINGS], reboundLauncherAndSaveSettings);
 }

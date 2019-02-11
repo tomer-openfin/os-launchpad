@@ -15,6 +15,7 @@ import ForgotPassword, { asRoute as asForgotPasswordRoute } from '../ForgotPassw
 import Layouts from '../Layouts';
 import Login from '../Login';
 import Logout from '../Logout';
+import MonitorControlsDialog, { asRoute as asMonitorControlsDialogRoute, withLauncherConfig } from '../MonitorControlsDialog';
 import NewAppForm from '../NewAppForm';
 import NewUserForm from '../NewUserForm';
 import OrganizationSettings from '../OrganizationSettings';
@@ -71,7 +72,12 @@ const settingRoutes: AppRoute[] = [
   {
     Component: UpdatePasswordForm,
     exact: true,
-    path: ROUTES.SETTINGS_UPDATE,
+    path: ROUTES.SETTINGS_UPDATE_PASSWORD,
+  },
+  {
+    Component: asMonitorControlsDialogRoute(withLauncherConfig(MonitorControlsDialog)),
+    exact: true,
+    path: ROUTES.SETTINGS_LAUNCHER_MONITOR,
   },
 ];
 

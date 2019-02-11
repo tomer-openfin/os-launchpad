@@ -10,11 +10,16 @@ interface ButtonProps {
   width?: number;
 }
 
+export const defaultProps = {
+  backgroundColor: Color.VENUS,
+  height: 36,
+  width: 110,
+};
+
 export const ButtonCSS = css<ButtonProps>`
   ${TypeStyleSirius}
 
   align-items: center;
-  background-color: ${props => props.backgroundColor || Color.VENUS};
   color: ${Color.SUN};
   cursor: pointer;
   display: flex;
@@ -23,10 +28,14 @@ export const ButtonCSS = css<ButtonProps>`
   border: none;
   outline: none;
   border-radius: 3px;
-  min-height: ${props => props.height || 36}px;
-  min-width: ${props => props.width || 110}px;
   padding: 8px;
   position: relative;
+
+  ${({ backgroundColor = defaultProps.backgroundColor, height = defaultProps.height, width = defaultProps.width }) => `
+    background-color: ${backgroundColor};
+    min-height: ${height}px;
+    min-width: ${width}px;
+  `}
 
   :before {
     content: '';

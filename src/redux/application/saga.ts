@@ -9,7 +9,7 @@ import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
 import eraseCookie from '../../utils/eraseCookie';
 import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
-import { animateWindow, getCurrentOpenfinApplicationInfo, getSystemMonitorInfo } from '../../utils/openfinPromises';
+import { animateWindow, getCurrentOpenfinApplicationInfo } from '../../utils/openfinPromises';
 import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv } from '../../utils/processHelpers';
 import { setupWindow } from '../../utils/setupWindow';
 import takeFirst from '../../utils/takeFirst';
@@ -21,8 +21,8 @@ import { getAppDirectoryList } from '../apps';
 import { GET_LAYOUTS, getLayoutsRequest } from '../layouts';
 import { GET_SETTINGS, getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig, getSettingsRequest } from '../me';
 import { GET_ORG_SETTINGS, getOrgSettingsRequest } from '../organization';
-import { getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize } from '../selectors';
-import { getMonitorInfo, setMonitorInfo, setupSystemHandlers } from '../system';
+import { getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings } from '../selectors';
+import { GET_AND_SET_MONITOR_INFO, getAndSetMonitorInfoRequest, setupSystemHandlers } from '../system';
 import { launchWindow } from '../windows';
 import {
   APPLICATION_STARTED,
@@ -107,14 +107,7 @@ function* openfinSetup(action: OpenfinReadyAction) {
     yield put(setIsEnterprise(isEnterprise));
 
     // Initial system monitor info
-    // and setup system event handlers
-    try {
-      const systemMonitorInfo = yield call(getSystemMonitorInfo);
-      yield put(setMonitorInfo(systemMonitorInfo));
-    } catch (e) {
-      // tslint:disable-next-line:no-console
-      console.log('Failed to get/set monitor information:', e);
-    }
+    yield all([take([GET_AND_SET_MONITOR_INFO.SUCCESS, GET_AND_SET_MONITOR_INFO.ERROR]), put(getAndSetMonitorInfoRequest())]);
 
     const { fin } = window;
 
@@ -209,9 +202,9 @@ function* watchReboundLauncherRequest(action: ReboundLauncherRequestAction) {
     return;
   }
 
-  const [appList, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, isExpanded, collapsedSystemDrawerSize, expandedSystemDrawerSize] = yield all([
+  const [appList, monitorDetails, launcherPosition, launcherSizeConfig, autoHide, isExpanded, collapsedSystemDrawerSize, expandedSystemDrawerSize] = yield all([
     select(getAppsLauncherAppList),
-    select(getMonitorInfo),
+    select(getMonitorDetailsDerivedByUserSettings),
     select(getLauncherPosition),
     select(getLauncherSizeConfig),
     select(getAutoHide),
@@ -219,12 +212,12 @@ function* watchReboundLauncherRequest(action: ReboundLauncherRequestAction) {
     select(getCollapsedSystemDrawerSize),
     select(getExpandedSystemDrawerSize),
   ]);
-  if (!monitorInfo) {
+  if (!monitorDetails) {
     return;
   }
   const { width, height, left, top } = calcLauncherPosition(
     appList.length,
-    monitorInfo,
+    monitorDetails,
     launcherPosition,
     launcherSizeConfig,
     autoHide,

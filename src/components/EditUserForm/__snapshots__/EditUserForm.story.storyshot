@@ -11,16 +11,16 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
     }
   >
     <div
-      className="sc-krDsej eZZCXL"
+      className="sc-kUaPvJ dUyqip"
     >
       <div
-        className="sc-caSCKo eSDsWe"
+        className="sc-gisBJw fKFkVo"
       >
         <div
-          className="sc-gisBJw ctZMsr"
+          className="sc-kjoXOD bknrGl"
         >
           <div
-            className="sc-bYSBpT kWexBi"
+            className="sc-elJkPf lehtp"
           >
             John Doe
           </div>
@@ -33,24 +33,24 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
         </div>
       </div>
       <form
-        className="sc-cMljjf YbFgd"
+        className="sc-jAaTju dWHaul"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <div
-          className="sc-jAaTju jjQQeH"
+          className="sc-jDwBTQ enLvbe"
         >
           <div
-            className="sc-jDwBTQ kspkKE"
+            className="sc-gPEVay brQUiw"
           >
             <div
-              className="sc-dTdPqK gvngsy"
+              className="sc-giadOv fFGGEY"
             >
               <label
-                className="sc-kpOJdX fGktSh"
+                className="sc-dxgOiQ gXepeX"
               >
                 <div
-                  className="sc-kGXeez hlXPx"
+                  className="sc-kpOJdX gglwGS"
                 >
                   First Name
                 </div>
@@ -64,10 +64,10 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
                 />
               </label>
               <label
-                className="sc-kpOJdX fGktSh"
+                className="sc-dxgOiQ gXepeX"
               >
                 <div
-                  className="sc-kGXeez hlXPx"
+                  className="sc-kpOJdX gglwGS"
                 >
                   MI
                 </div>
@@ -81,10 +81,10 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
               </label>
             </div>
             <label
-              className="sc-kpOJdX fGktSh"
+              className="sc-dxgOiQ gXepeX"
             >
               <div
-                className="sc-kGXeez hlXPx"
+                className="sc-kpOJdX gglwGS"
               >
                 Last Name
               </div>
@@ -98,10 +98,10 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
               />
             </label>
             <label
-              className="sc-kpOJdX fGktSh"
+              className="sc-dxgOiQ gXepeX"
             >
               <div
-                className="sc-kGXeez hlXPx"
+                className="sc-kpOJdX gglwGS"
               >
                 Phone Number
               </div>
@@ -116,10 +116,10 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
               />
             </label>
             <label
-              className="sc-kpOJdX fGktSh"
+              className="sc-dxgOiQ gXepeX"
             >
               <div
-                className="sc-kGXeez hlXPx"
+                className="sc-kpOJdX gglwGS"
               >
                 Email
               </div>
@@ -136,13 +136,13 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
           </div>
         </div>
         <div
-          className="sc-iRbamj jQKyym"
+          className="sc-jlyJG jVJtUg"
         >
           <div
-            className="sc-gPEVay cdIDZh"
+            className="sc-iRbamj bgBAAd"
           >
             <button
-              className="sc-kAzzGY iAOmzv"
+              className="sc-kAzzGY jjQyJb"
               disabled={true}
               type="submit"
               width={128}
@@ -151,7 +151,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
             </button>
             <a
               backgroundColor="#848484"
-              className="sc-chPdSV eUeCqN"
+              className="sc-chPdSV hEgkTj"
               href="/admin/users"
               onClick={[Function]}
               type="button"
@@ -163,21 +163,21 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
         </div>
       </form>
       <div
-        className="sc-itybZL fDnYCf"
+        className="sc-fONwsr jXVzPU"
       >
         <div
-          className="sc-jlyJG tArtB"
+          className="sc-gipzik ViaaU"
         >
           <div
-            className="sc-gipzik ifLLNH"
+            className="sc-csuQGl fLVrAF"
           >
             <div
-              className="sc-csuQGl PwXvg"
+              className="sc-Rmtcm kzqGEm"
             >
               There was an error trying to update John Doe:  Please try again.
             </div>
             <div
-              className="sc-Rmtcm FsQfW sc-ifAKCX xmkOg"
+              className="sc-bRBYWo btlHSU sc-ifAKCX xmkOg"
               color="#E7E7E7"
               onClick={[Function]}
               size={25}

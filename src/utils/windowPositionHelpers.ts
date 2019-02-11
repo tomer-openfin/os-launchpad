@@ -1,6 +1,7 @@
 import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGOUT_WINDOW } from '../config/windows';
-import { Bounds, Dimensions, DirectionalPosition, MonitorInfo, PrimaryDirectionalCoordinates } from '../types/commons';
+import { Bounds, Dimensions, DirectionalPosition, MonitorDetails, PrimaryDirectionalCoordinates } from '../types/commons';
 
+import { getCoordinatesHeight, getCoordinatesWidth } from './coordinateHelpers';
 import { LauncherSizeConfig } from './launcherSizeConfigs';
 import * as SIZE from './sizingConstants';
 
@@ -75,17 +76,13 @@ export const calcMaxAppCount = (
   launcherPosition: DirectionalPosition,
   launcherSizeConfig: LauncherSizeConfig,
   collapsedDrawerSize: number,
-  monitorInfo: MonitorInfo,
+  monitorDetails: MonitorDetails,
 ) => {
   const { appIcon, appIconGutter, launcher } = launcherSizeConfig;
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);
-  const {
-    primaryMonitor: {
-      availableRect: { bottom, left, right, top },
-    },
-  } = monitorInfo;
+  const { availableRect } = monitorDetails;
   const monitorGuttersSize = SIZE.LAUNCHER_MONITOR_GUTTER * 2;
-  const maximumEdgeLength = (isOnTopOrBottom ? right - left : bottom - top) - monitorGuttersSize;
+  const maximumEdgeLength = (isOnTopOrBottom ? getCoordinatesWidth(availableRect) : getCoordinatesHeight(availableRect)) - monitorGuttersSize;
   const maximumAppSpace = maximumEdgeLength - launcher - collapsedDrawerSize;
 
   return Math.floor((maximumAppSpace - appIconGutter * 2) / (appIcon + appIconGutter * 2));
@@ -96,11 +93,11 @@ export const calcAppListDimensions = (
   launcherPosition: DirectionalPosition,
   launcherSizeConfig: LauncherSizeConfig,
   collapsedDrawerSize: number,
-  monitorInfo: MonitorInfo,
+  monitorDetails: MonitorDetails,
 ) => {
   const { appIcon, appIconGutter, launcher } = launcherSizeConfig;
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);
-  const maxAppCount = calcMaxAppCount(launcherPosition, launcherSizeConfig, collapsedDrawerSize, monitorInfo);
+  const maxAppCount = calcMaxAppCount(launcherPosition, launcherSizeConfig, collapsedDrawerSize, monitorDetails);
 
   const appWithGutter = appIcon + appIconGutter * 2;
   const totalAppSpace = Math.min(maxAppCount, appCount) * appWithGutter + appIconGutter * 2;
@@ -120,7 +117,7 @@ export const calcAppListDimensions = (
  * Returns the dimensions of the launcher based on the number of ctas and its position.
  *
  * @param appCount - number of apps in launcher
- * @param monitorInfo - monitor information
+ * @param monitorDetails - monitor information
  * @param launcherPosition - current launcher position
  * @param launcherSizeConfig - current launcher sizing config
  * @param autoHide - flag for weather or not launcher is in autohide mode
@@ -132,7 +129,7 @@ export const calcAppListDimensions = (
  */
 export const calcLauncherDimensions = (
   appCount: number,
-  monitorInfo: MonitorInfo,
+  monitorDetails: MonitorDetails,
   launcherPosition: DirectionalPosition,
   launcherSizeConfig: LauncherSizeConfig,
   autoHide: boolean,
@@ -146,7 +143,7 @@ export const calcLauncherDimensions = (
   const STATIC_DIMENSION = collapsed ? SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA : launcher;
 
   const minimumDynamicDimension = launcher + expandedDrawerSize;
-  const appListDimensions = calcAppListDimensions(appCount, launcherPosition, launcherSizeConfig, collapsedDrawerSize, monitorInfo);
+  const appListDimensions = calcAppListDimensions(appCount, launcherPosition, launcherSizeConfig, collapsedDrawerSize, monitorDetails);
   const rawDynamicDimension = launcher + collapsedDrawerSize + (isOnTopOrBottom ? appListDimensions.width : appListDimensions.height);
   const dynamicDimension = Math.max(minimumDynamicDimension, rawDynamicDimension);
 
@@ -163,14 +160,14 @@ export const calcLauncherDimensions = (
  * Returns coordinates of where the launcher should be.
  *
  * @param dimensions - dimensions of window
- * @param monitorInfo - monitor information
+ * @param monitorDetails - monitor information
  * @param launcherPosition - current launcher position
  *
  * @returns {PrimaryDirectionalCoordinates}
  */
 export const calcLauncherCoordinates = (
   dimensions: Dimensions,
-  monitorInfo: MonitorInfo,
+  monitorDetails: MonitorDetails,
   launcherPosition: DirectionalPosition,
 ): PrimaryDirectionalCoordinates => {
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);
@@ -178,12 +175,9 @@ export const calcLauncherCoordinates = (
   const edgeLength = isOnTopOrBottom ? width : height;
   const edgeDelta = edgeLength / 2;
 
-  const {
-    primaryMonitor: {
-      availableRect: { bottom, left, right, top },
-    },
-  } = monitorInfo;
-  const midpoint = (isOnTopOrBottom ? right - left : bottom - top) / 2;
+  const { availableRect } = monitorDetails;
+  const { bottom, left, right, top } = availableRect;
+  const midpoint = (isOnTopOrBottom ? getCoordinatesWidth(availableRect) : getCoordinatesHeight(availableRect)) / 2 + (isOnTopOrBottom ? left : top);
 
   let leftCoord;
   let topCoord;
@@ -216,7 +210,7 @@ export const calcLauncherCoordinates = (
  * Calculates launcher bounds.
  *
  * @param appCount - number of apps in launcher
- * @param monitorInfo - monitor information
+ * @param monitorDetails - monitor information
  * @param launcherPosition - current launcher position
  * @param launcherSizeConfig - current launcher sizing config
  * @param autoHide - flag for weather or not launcher is in autohide mode
@@ -229,7 +223,7 @@ export const calcLauncherCoordinates = (
  */
 export const calcLauncherPosition = (
   appCount: number,
-  monitorInfo: MonitorInfo,
+  monitorDetails: MonitorDetails,
   launcherPosition: DirectionalPosition,
   launcherSizeConfig: LauncherSizeConfig,
   autoHide: boolean,
@@ -239,7 +233,7 @@ export const calcLauncherPosition = (
 ): Bounds => {
   const dimensions = calcLauncherDimensions(
     appCount,
-    monitorInfo,
+    monitorDetails,
     launcherPosition,
     launcherSizeConfig,
     autoHide,
@@ -247,7 +241,7 @@ export const calcLauncherPosition = (
     collapsedDrawerSize,
     expandedDrawerSize,
   );
-  const coordinates = calcLauncherCoordinates(dimensions, monitorInfo, launcherPosition);
+  const coordinates = calcLauncherCoordinates(dimensions, monitorDetails, launcherPosition);
 
   return {
     ...coordinates,

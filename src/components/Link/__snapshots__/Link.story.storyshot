@@ -11,7 +11,7 @@ exports[`Storyshots UI Components/Link default 1`] = `
     }
   >
     <a
-      className="sc-hSdWYo kuhSwv"
+      className="sc-eHgmQL hJdbKV"
       onClick={[Function]}
     >
       Link Text
@@ -315,7 +315,7 @@ exports[`Storyshots UI Components/Link react-router-dom Link 1`] = `
     }
   >
     <a
-      className="sc-eHgmQL hJdbKV"
+      className="sc-cvbbAY cjpFsm"
       href="/"
       onClick={[Function]}
     >
