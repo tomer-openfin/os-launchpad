@@ -67,3 +67,6 @@ import '../src/components/RequestForm/RequestForm.story';
 import '../src/components/ThemesForm/ThemesForm.story';
 import '../src/components/UserCard/UserCard.story';
 import '../src/components/UserForm/UserForm.story';
+
+// Layouts Service
+import '../src/layoutsService/LayoutsService.story';

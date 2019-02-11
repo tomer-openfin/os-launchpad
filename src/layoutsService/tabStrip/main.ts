@@ -51,6 +51,7 @@ const createWindowUIListeners = () => {
   const minimizeElem: HTMLElement | null = document.getElementById('window-button-minimize');
   const maximizeElem: HTMLElement | null = document.getElementById('window-button-maximize');
   const closeElem: HTMLElement | null = document.getElementById('window-button-exit');
+  const undockElem: HTMLElement | null = document.getElementById('window-button-undock');
 
   // Minimize Button
   minimizeElem!.onclick = () => {
@@ -78,6 +79,11 @@ const createWindowUIListeners = () => {
   // Close Button
   closeElem!.onclick = () => {
     layouts.tabbing.closeTabGroup(tabManager.getTabs[0].ID);
+  };
+
+  // Undock button
+  undockElem!.onclick = () => {
+    layouts.snapAndDock.undockWindow();
   };
 };
 

@@ -34,13 +34,13 @@ module.exports = {
   devtool: 'source-map',
   entry: {
     main: './src/index.tsx',
-    tabStrip: './src/tabStrip/main.ts',
-    topBar: './src/topBar/main.ts',
+    tabStrip: './src/layoutsService/tabStrip/main.ts',
+    titleBar: './src/layoutsService/titleBar/main.ts',
   },
   output: {
     filename: chunkData => {
       const { name, hash } = chunkData.chunk;
-      const filename = `${name}${isProduction && name !== 'topBar' ? `.${hash}` : ''}.js`;
+      const filename = `${name}${isProduction && name !== 'titleBar' ? `.${hash}` : ''}.js`;
       return filename;
     },
     path: path.join(__dirname, '/build'),
@@ -105,7 +105,7 @@ module.exports = {
       chunks: ['tabStrip', 'styles.css'],
       env: NODE_ENV,
       filename: 'tabStrip.html',
-      template: path.join(__dirname, 'src', 'tabStrip', 'tabStrip.html'),
+      template: path.join(__dirname, 'src', 'layoutsService', 'tabStrip', 'tabStrip.html'),
     }),
     new webpack.NamedModulesPlugin(),
     new CopyWebpackPlugin([
