@@ -38,15 +38,15 @@ export const FormField = ({
     {label && <LabelText>{label}</LabelText>}
 
     <Field
-      type={type}
-      component={component}
-      innerRef={htmlInputRef}
-      name={name}
-      maxLength={maxLength}
-      validate={validate}
-      placeholder={placeholder}
-      disabled={disabled}
       checked={checked}
+      component={component}
+      disabled={disabled}
+      innerRef={htmlInputRef}
+      maxLength={maxLength}
+      name={name}
+      placeholder={placeholder}
+      type={type}
+      validate={validate}
     />
 
     <ErrorMessage component={Error} name={name} />

@@ -79,18 +79,18 @@ export interface DirectionalCoordinates extends PrimaryDirectionalCoordinates {
 export interface User {
   email: string;
   firstName: string;
-  id: string;
-  isAdmin: boolean;
   lastName: string;
-  middleInitial: string;
+  middleInitial?: string;
   tmpPassword?: string;
-  username: string;
-  phone?: string;
+  phone: string;
   // created on backend
-  created?: string;
-  enabled?: boolean;
-  lastModified?: string;
-  status?: UserStatus;
+  readonly created?: string;
+  readonly enabled?: boolean;
+  readonly id: string;
+  readonly lastModified?: string;
+  readonly isAdmin?: boolean; // modified on BE only
+  readonly status?: UserStatus;
+  readonly username?: string;
 }
 
 export interface ObjectWithId {

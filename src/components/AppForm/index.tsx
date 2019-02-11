@@ -1,3 +1,5 @@
-import Component from './AppForm';
+import AppForm from './AppForm';
 
-export default Component;
+export * from './AppForm';
+
+export default AppForm;

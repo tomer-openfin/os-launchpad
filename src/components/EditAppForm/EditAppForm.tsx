@@ -5,7 +5,7 @@ import { App, MetaWithCallbacks, PushRoute, RequestFormSubmit } from '../../type
 import { ROUTES } from '../Router/consts';
 
 import { createPushRouteHandler } from '../../utils/routeHelpers';
-import AppForm from '../AppForm';
+import AppForm, { validationSchema } from '../AppForm';
 import RequestForm from '../RequestForm';
 
 interface Props {
@@ -54,6 +54,7 @@ const EditAppForm = ({ app, pushRoute, updateApp }: Props) => {
       headingText={`Edit ${title}`}
       onSubmitSuccess={createPushRouteHandler(pushRoute, ROUTES.ADMIN_APPS)}
       submit={createAppSubmitHandler(updateApp)}
+      validationSchema={validationSchema}
     />
   );
 };

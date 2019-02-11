@@ -1,5 +1,6 @@
 import { Formik, FormikActions, FormikProps } from 'formik';
 import * as React from 'react';
+import { ObjectSchema } from 'yup';
 
 import * as trashIcon from '../../assets/Trash.svg';
 
@@ -21,6 +22,7 @@ interface Props {
   initialValues: {};
   onSubmitSuccess: () => ReturnType<PushRoute>;
   submit: RequestFormSubmit;
+  validationSchema?: ObjectSchema<{}>;
 }
 
 interface State {
@@ -112,7 +114,7 @@ class RequestForm extends React.Component<Props, State> {
   };
 
   render() {
-    const { handleDeleteIconClick, headingText, initialValues, form } = this.props;
+    const { handleDeleteIconClick, headingText, initialValues, form, validationSchema } = this.props;
 
     return (
       <Wrapper>
@@ -122,7 +124,7 @@ class RequestForm extends React.Component<Props, State> {
           {handleDeleteIconClick && <SvgIcon color={Color.MERCURY} hoverColor={Color.MARS} size={30} imgSrc={trashIcon} onClick={handleDeleteIconClick} />}
         </WindowHeader>
 
-        <Formik initialValues={initialValues} onSubmit={this.handleFormSubmit} validateOnChange render={form} />
+        <Formik initialValues={initialValues} onSubmit={this.handleFormSubmit} render={form} validationSchema={validationSchema} />
 
         {this.renderMessage()}
       </Wrapper>
