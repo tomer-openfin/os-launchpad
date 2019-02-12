@@ -6,7 +6,7 @@ import { MockUser } from '../src/services/ApiService/__mocks__/auth';
 import { MockUserSettings } from '../src/services/ApiService/__mocks__/user';
 
 import { getAdminAppsSuccess, getAdminUsersSuccess } from '../src/redux/admin';
-import { setAppDirectoryList } from '../src/redux/apps';
+import { getAppDirectoryListSuccess } from '../src/redux/apps';
 import { getSettingsSuccess, setMe } from '../src/redux/me';
 import { getAndSetMonitorInfoRequest } from '../src/redux/system';
 
@@ -16,7 +16,7 @@ import { getAndSetMonitorInfoRequest } from '../src/redux/system';
  * @param store - Redux Store
  */
 export const initStorybookStore = (store: Store) => {
-  store.dispatch(setAppDirectoryList(AppData));
+  store.dispatch(getAppDirectoryListSuccess(AppData));
   store.dispatch(getSettingsSuccess(MockUserSettings));
   store.dispatch(getAdminUsersSuccess(UsersData));
   store.dispatch(getAdminAppsSuccess(AppData));
