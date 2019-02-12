@@ -4,7 +4,7 @@ import ApiService from '../../services/ApiService';
 
 import { ResponseStatus } from '../../types/commons';
 
-import { getAppDirectoryList } from '../apps';
+import { getAppDirectoryListRequest } from '../apps';
 import {
   CREATE_ADMIN_APP,
   CREATE_ADMIN_USER,
@@ -57,7 +57,7 @@ function* watchCreateAdminAppRequest(action) {
 
     yield put(createAdminAppSuccess(app, action.meta));
 
-    yield put(getAppDirectoryList());
+    yield put(getAppDirectoryListRequest());
   }
 }
 
@@ -73,7 +73,7 @@ function* watchUpdateAdminAppRequest(action) {
 
     yield put(updateAdminAppSuccess(app, action.meta));
 
-    yield put(getAppDirectoryList());
+    yield put(getAppDirectoryListRequest());
   }
 }
 
@@ -85,7 +85,7 @@ function* watchDeleteAdminAppRequest(action) {
   } else {
     yield put(deleteAdminAppSuccess(action.payload, action.meta));
 
-    yield put(getAppDirectoryList());
+    yield put(getAppDirectoryListRequest());
   }
 }
 

@@ -10,7 +10,11 @@ const createSystemEventDispatcher = (store: Store, actionCreator: (e) => Action)
   store.dispatch(actionCreator(e));
 };
 
-export function* setupSystemHandlers(fin: Fin, store: Store) {
+export function* setupSystemHandlers(fin?: Fin, store?: Store) {
+  if (!fin || !store) {
+    return;
+  }
+
   const applicationClosedHandler = createSystemEventDispatcher(store, systemEventApplicationClosed);
   const applicationCrashedHandler = createSystemEventDispatcher(store, systemEventApplicationCrashed);
   const applicationStartedHandler = createSystemEventDispatcher(store, systemEventApplicationStarted);

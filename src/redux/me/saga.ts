@@ -1,5 +1,5 @@
 import { Application, Window } from '@giantmachines/redux-openfin';
-import { all, call, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
+import { all, call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import { ErrorResponse } from '../../types/commons';
 import { ResponseStatus } from '../../types/enums';
@@ -7,10 +7,9 @@ import { ResponseStatus } from '../../types/enums';
 import ApiService from '../../services/ApiService';
 import eraseCookie from '../../utils/eraseCookie';
 
+import { LOGIN_WINDOW } from '../../config/windows';
 import { getAdminAppsRequest, getAdminUsersRequest } from '../admin';
-import { launchAppLauncher, reboundLauncherRequest } from '../application';
-import { getAppDirectoryList } from '../apps';
-import { getLayoutsRequest } from '../layouts';
+import { initResources, launchAppLauncher, reboundLauncherRequest } from '../application';
 import { getAdminOrgSettingsRequest } from '../organization';
 import {
   ADD_TO_APP_LAUNCHER,
@@ -25,7 +24,6 @@ import {
   getMeError,
   getMeSuccess,
   getSettingsError,
-  getSettingsRequest,
   getSettingsSuccess,
   LOGIN,
   LOGIN_WITH_NEW_PASSWORD,
@@ -151,11 +149,9 @@ function* watchLoginSuccess(action: LoginSuccess) {
     yield all([put(getAdminAppsRequest()), put(getAdminUsersRequest()), put(getAdminOrgSettingsRequest())]);
   }
 
-  // take(GET_SETTINGS.SUCCESS) to wait for launcher position before showing launcher
-  yield all([take([GET_SETTINGS.SUCCESS, GET_SETTINGS.ERROR]), put(getAppDirectoryList()), put(getLayoutsRequest()), put(getSettingsRequest())]);
+  yield call(initResources);
 
-  // TODO: Use window config
-  yield put(Window.closeWindow({ id: 'osLaunchpadLogin' }));
+  yield put(Window.closeWindow({ id: LOGIN_WINDOW }));
 
   yield put(launchAppLauncher());
 

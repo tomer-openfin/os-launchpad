@@ -3,26 +3,22 @@ import { delay } from 'redux-saga';
 import { all, call, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import windowsConfig, { initOnStartWindows } from '../../config/windows';
-
-import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
-
 import eraseCookie from '../../utils/eraseCookie';
 import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
-import { animateWindow, getCurrentOpenfinApplicationInfo } from '../../utils/openfinPromises';
+import { animateWindow } from '../../utils/openfinPromises';
 import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv } from '../../utils/processHelpers';
 import { setupWindow } from '../../utils/setupWindow';
 import takeFirst from '../../utils/takeFirst';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { registerGlobalDevHotKeys, registerGlobalHotkeys } from '../globalHotkeys/utils';
-import { animateLauncherCollapseExpand } from './utils';
+import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
+import { animateLauncherCollapseExpand, initMonitorInfo, initOrgSettings, initResources, initRuntimeVersion } from './utils';
 
-import { getAppDirectoryList } from '../apps';
-import { GET_LAYOUTS, getLayoutsRequest } from '../layouts';
-import { GET_SETTINGS, getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig, getSettingsRequest } from '../me';
-import { GET_ORG_SETTINGS, getOrgSettingsRequest } from '../organization';
+import { getAppDirectoryListRequest } from '../apps';
+import { getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig } from '../me';
 import { getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings } from '../selectors';
-import { GET_AND_SET_MONITOR_INFO, getAndSetMonitorInfoRequest, setupSystemHandlers } from '../system';
+import { setupSystemHandlers } from '../system';
 import { launchWindow } from '../windows';
 import {
   APPLICATION_STARTED,
@@ -40,7 +36,6 @@ import {
   reboundLauncherSuccess,
   setIsEnterprise,
   setIsExpanded,
-  setRuntimeVersion,
 } from './actions';
 import { getApplicationIsExpanded } from './selectors';
 
@@ -51,7 +46,7 @@ const ANIMATION_DURATION = 300;
  * Application Start
  */
 function* applicationStart() {
-  yield put(getAppDirectoryList());
+  yield put(getAppDirectoryListRequest());
 }
 
 function* watchExitApplication() {
@@ -91,42 +86,18 @@ function* openfinSetup(action: OpenfinReadyAction) {
       yield put(initDevTools());
     }
 
-    yield all([take([GET_ORG_SETTINGS.SUCCESS, GET_ORG_SETTINGS.ERROR]), put(getOrgSettingsRequest())]);
+    yield put(Window.hideWindow({ id: finName }));
+    yield all([
+      call(initOrgSettings),
+      call(initMonitorInfo),
+      call(initRuntimeVersion),
+      call(setupSystemHandlers, window.fin, window.store || window.opener.store),
+    ]);
 
-    // const autoLoginLocal = yield !!getLocalStorage('autoLogin');
-
-    // const autoLoginOrg = yield select(getOrganizationAutoLogin);
-
-    // if (document.cookie && autoLoginLocal && autoLoginOrg) {
-    //   yield all([take([GET_ME.SUCCESS, GET_ME.ERROR]), put(getMeRequest())]);
-    // }
-
-    const isLoggedIn = yield select(getIsLoggedIn);
+    const isLoggedIn: ReturnType<typeof getIsLoggedIn> = yield select(getIsLoggedIn);
 
     const isEnterprise = isEnterpriseEnv();
     yield put(setIsEnterprise(isEnterprise));
-
-    // Initial system monitor info
-    yield all([take([GET_AND_SET_MONITOR_INFO.SUCCESS, GET_AND_SET_MONITOR_INFO.ERROR]), put(getAndSetMonitorInfoRequest())]);
-
-    const { fin } = window;
-
-    if (fin) {
-      // Set Runtime Version
-      const { runtime } = yield call(getCurrentOpenfinApplicationInfo);
-
-      if (runtime) {
-        yield put(setRuntimeVersion((runtime as { version: string }).version));
-      }
-
-      yield call(setupSystemHandlers, fin, window.store || window.opener.store);
-    }
-
-    const launcherFinWindow = yield call(getLauncherFinWindow);
-    // Hide launcher
-    if (launcherFinWindow) {
-      launcherFinWindow.hide();
-    }
 
     // Launch all windows on init, windows are hidden by default unless they have autoShow: true
     // TODO - block until all windows are created and move to post login
@@ -136,12 +107,7 @@ function* openfinSetup(action: OpenfinReadyAction) {
       // Show Login
       yield put(launchWindow(windowsConfig.login));
     } else {
-      yield all([
-        take([GET_LAYOUTS.ERROR, GET_LAYOUTS.SUCCESS]),
-        take([GET_SETTINGS.ERROR, GET_SETTINGS.SUCCESS]),
-        put(getLayoutsRequest()),
-        put(getSettingsRequest()),
-      ]);
+      yield call(initResources);
 
       // Show Launcher
       yield put(launchAppLauncher());

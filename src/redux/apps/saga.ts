@@ -21,22 +21,24 @@ import { getRuntimeVersion, reboundLauncherRequest } from '../application';
 import {
   CLOSE_FIN_APP,
   GET_APP_DIRECTORY_LIST,
+  getAppDirectoryListError,
+  getAppDirectoryListSuccess,
   OPEN_FIN_APP,
   openFinAppError,
   openFinAppSuccess,
-  SET_APP_DIRECTORY_LIST,
-  setAppDirectoryList,
   setFinAppStatusState,
 } from './actions';
 import { getAppStatusById } from './selectors';
 
-function* watchGetAppDirectoryList() {
+function* watchGetAppDirectoryListRequest() {
   const response = yield call(ApiService.getDirectoryAppList);
 
   if (response.length && response.status !== ResponseStatus.FAILURE) {
     const appList = response;
 
-    yield put(setAppDirectoryList(appList));
+    yield put(getAppDirectoryListSuccess(appList));
+  } else {
+    yield put(getAppDirectoryListError());
   }
 }
 
@@ -154,7 +156,7 @@ function* watchCloseFinAppRequest(action: CloseFinAppRequest) {
   }
 }
 
-function* watchSetAppDirectoryList() {
+function* watchGetAppDirectoryListSuccess() {
   yield put(reboundLauncherRequest(false, 0));
 }
 
@@ -163,6 +165,6 @@ export function* appsSaga() {
   yield takeEvery(OPEN_FIN_APP.REQUEST, watchOpenFinAppRequest);
   yield takeEvery(OPEN_FIN_APP.SUCCESS, watchOpenFinAppSuccess);
   yield takeEvery(OPEN_FIN_APP.ERROR, watchOpenFinAppError);
-  yield takeEvery(SET_APP_DIRECTORY_LIST, watchSetAppDirectoryList);
-  yield takeLatest(GET_APP_DIRECTORY_LIST, watchGetAppDirectoryList);
+  yield takeEvery(GET_APP_DIRECTORY_LIST.SUCCESS, watchGetAppDirectoryListSuccess);
+  yield takeLatest(GET_APP_DIRECTORY_LIST.REQUEST, watchGetAppDirectoryListRequest);
 }
