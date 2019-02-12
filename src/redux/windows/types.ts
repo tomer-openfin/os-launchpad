@@ -1,15 +1,16 @@
 import { Bounds } from '../../types/commons';
+import { NormalizedById } from '../../utils/reduxHelpers';
 import { hideWindow, launchWindow, toggleWindow, windowBlurred, windowHidden, windowShown } from './actions';
+
+export interface WindowState {
+  bounds: Bounds;
+  id: string;
+  isShowing?: boolean;
+}
 
 // State
 export interface WindowsState {
-  byId: {
-    [id: string]: {
-      bounds: Bounds;
-      id: string;
-      isShowing?: boolean;
-    };
-  };
+  byId: NormalizedById<WindowState>;
   ids: string[];
 }
 

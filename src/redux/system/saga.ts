@@ -4,6 +4,7 @@ import { unbindFinAppEventHanlders } from '../../utils/finAppEventHandlerHelpers
 import { getSystemMonitorInfo } from '../../utils/openfinPromises';
 import { reboundLauncherRequest } from '../application';
 import { closeFinAppSuccess } from '../apps';
+import { recoverLostWindows } from '../windows';
 import {
   GET_AND_SET_MONITOR_INFO,
   getAndSetMonitorInfoError,
@@ -29,6 +30,7 @@ function* watchGetAndSetMonitorInfo() {
 
 function* watchSetMonitorInfo() {
   yield put(reboundLauncherRequest(false, 0));
+  yield put(recoverLostWindows());
 }
 
 function* watchSystemEventApplicationClosed(action: SystemEventApplicationClosedAction) {

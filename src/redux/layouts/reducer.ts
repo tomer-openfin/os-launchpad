@@ -1,4 +1,4 @@
-import normalizeRedux from '../../utils/normalizeRedux';
+import { normalizeData } from '../../utils/reduxHelpers';
 
 import { UserLayout } from '../../types/commons';
 import { CREATE_LAYOUT, DELETE_LAYOUT, GET_LAYOUTS, UPDATE_LAYOUT } from './actions';
@@ -12,7 +12,7 @@ const defaultState: LayoutsState = {
 export default (state: LayoutsState = defaultState, action: LayoutsActions) => {
   switch (action.type) {
     case GET_LAYOUTS.SUCCESS: {
-      return normalizeRedux<UserLayout>((action as GetLayoutsSuccess).payload!);
+      return normalizeData<UserLayout>((action as GetLayoutsSuccess).payload!);
     }
     case UPDATE_LAYOUT.SUCCESS:
     case CREATE_LAYOUT.SUCCESS: {

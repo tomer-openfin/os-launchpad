@@ -1,6 +1,6 @@
 import { Window } from '@giantmachines/redux-openfin';
 import { delay } from 'redux-saga';
-import { all, call, put, race, select, take, takeEvery } from 'redux-saga/effects';
+import { all, call, put, race, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import windowsConfig, {
   APP_DIRECTORY_WINDOW,
@@ -10,12 +10,25 @@ import windowsConfig, {
   LOGIN_WINDOW,
   LOGOUT_WINDOW,
 } from '../../config/windows';
+import { getBoundsCenterInCoordinates, isBoundsInCoordinates } from '../../utils/coordinateHelpers';
 import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
 import { updateWindowOptions } from '../../utils/openfinPromises';
 import { expandApp, getApplicationIsExpanded, getIsDragAndDrop, setIsDrawerExpanded, setWindowRelativeToLauncherBounds } from '../application';
-import { HIDE_WINDOW, hideWindow, LAUNCH_WINDOW, launchWindow, TOGGLE_WINDOW, WINDOW_BLURRED, WINDOW_HIDDEN, WINDOW_SHOWN } from './actions';
-import { getLauncherIsForceExpanded, getWindowBounds, getWindowById, getWindowIsShowing } from './selectors';
+import { getMonitorDetailsDerivedByUserSettings } from '../selectors';
+import { getMonitorDetails } from '../system';
+import {
+  HIDE_WINDOW,
+  hideWindow,
+  LAUNCH_WINDOW,
+  launchWindow,
+  RECOVER_LOST_WINDOWS,
+  TOGGLE_WINDOW,
+  WINDOW_BLURRED,
+  WINDOW_HIDDEN,
+  WINDOW_SHOWN,
+} from './actions';
+import { getLauncherIsForceExpanded, getWindowBounds, getWindowById, getWindowIsShowing, getWindows } from './selectors';
 import { HideWindowAction, LaunchWindowAction, ToggleWindowAction, WindowBlurredAction } from './types';
 
 function* watchHideWindow(action: HideWindowAction) {
@@ -213,6 +226,37 @@ function* watchWindowShown() {
   }
 }
 
+function* watchRecoverLostWindows() {
+  const monitorDetails: ReturnType<typeof getMonitorDetails> = yield select(getMonitorDetails);
+  const launcherMonitorDetails: ReturnType<typeof getMonitorDetailsDerivedByUserSettings> = yield select(getMonitorDetailsDerivedByUserSettings);
+  if (!monitorDetails.length || !launcherMonitorDetails) {
+    return;
+  }
+
+  const { availableRect } = launcherMonitorDetails;
+  const windows: ReturnType<typeof getWindows> = yield select(getWindows);
+  yield all(
+    windows.map(windowState => {
+      // Don't move the main window
+      if (windowState.id === getAppUuid()) {
+        return;
+      }
+
+      const foundMonitorDetails = monitorDetails.find(monitorDetail => isBoundsInCoordinates(windowState.bounds, monitorDetail.monitorRect));
+      // If window is still within one of the monitors bounds
+      // No need to do anything, bail
+      if (foundMonitorDetails) {
+        return;
+      }
+
+      // If monitor does not fall within one of the monitor bounds
+      // Recover to where the launcher is
+      const { left, top } = getBoundsCenterInCoordinates(windowState.bounds, availableRect);
+      return put(Window.moveWindow({ id: windowState.id, left, top }));
+    }),
+  );
+}
+
 export function* windowsSaga() {
   yield takeEvery(HIDE_WINDOW, watchHideWindow);
   yield takeEvery(LAUNCH_WINDOW, watchLaunchWindow);
@@ -221,4 +265,5 @@ export function* windowsSaga() {
   yield takeEvery(Window.BOUNDS_CHANGED, watchWindowBoundsChanged);
   yield takeEvery(WINDOW_BLURRED, watchWindowBlurred);
   yield takeEvery(WINDOW_SHOWN, watchWindowShown);
+  yield takeLatest(RECOVER_LOST_WINDOWS, watchRecoverLostWindows);
 }

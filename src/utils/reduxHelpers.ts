@@ -1,8 +1,13 @@
+export interface NormalizedById<T> {
+  [id: string]: T;
+  [id: number]: T;
+}
+
+export type NormalizedIds = Array<string | number>;
+
 interface NormalizedData<Data> {
-  byId: {
-    [id: string]: Data;
-  };
-  ids: string[];
+  byId: NormalizedById<Data>;
+  ids: NormalizedIds;
 }
 
 function generateUuid() {
@@ -19,7 +24,7 @@ function generateUuid() {
  *
  * @returns {NormalizedData<T>}
  */
-export default function normalizeRedux<T = object>(data: T[], key: string = 'id') {
+export function normalizeData<T>(data: T[], key: string = 'id') {
   return data.reduce(
     (acc: NormalizedData<T>, entry) => {
       // If data has no key generateUuid as fallback key
@@ -34,4 +39,8 @@ export default function normalizeRedux<T = object>(data: T[], key: string = 'id'
     },
     { byId: {}, ids: [] },
   );
+}
+
+export function denormalizeData<T>(ids: NormalizedIds, byId: NormalizedById<T>): T[] {
+  return ids.map(id => byId[id]);
 }

@@ -3,6 +3,7 @@ import { State } from '../types';
 
 import { DirectionalCoordinates, MonitorDetails } from '../../types/commons';
 import { getCoordinatesHeight, getCoordinatesWidth } from '../../utils/coordinateHelpers';
+import { denormalizeData } from '../../utils/reduxHelpers';
 
 const getMonitorDetailsId = (monitorDetails: MonitorDetails) => monitorDetails.name || monitorDetails.deviceId;
 
@@ -12,18 +13,20 @@ export const getNormalizedMonitorDetails = createSelector(
   [getMonitorInfo],
   monitorInfo => {
     const ids: Array<number | string> = [];
-    const byId = {};
+    const byId: { [id: number]: MonitorDetails; [id: string]: MonitorDetails } = {};
 
     if (monitorInfo) {
       const { primaryMonitor, nonPrimaryMonitors } = monitorInfo;
       const primaryMonitorId = getMonitorDetailsId(primaryMonitor);
+
       ids.push(primaryMonitorId);
       byId[primaryMonitorId] = primaryMonitor;
 
-      nonPrimaryMonitors.forEach(monitorDetails => {
-        const id = getMonitorDetailsId(monitorDetails);
+      nonPrimaryMonitors.forEach(nonPrimaryMonitor => {
+        const id = getMonitorDetailsId(nonPrimaryMonitor);
+
         ids.push(id);
-        byId[id] = monitorDetails;
+        byId[id] = nonPrimaryMonitor;
       });
     }
 
@@ -39,6 +42,11 @@ export const getMonitorDetailsIds = createSelector(
 export const getMonitorDetailsById = createSelector(
   [getNormalizedMonitorDetails],
   normalizedMonitorDetails => normalizedMonitorDetails.byId,
+);
+
+export const getMonitorDetails = createSelector(
+  [getMonitorDetailsIds, getMonitorDetailsById],
+  (monitorDetailsIds, monitorDetailsById) => denormalizeData(monitorDetailsIds, monitorDetailsById),
 );
 
 /**

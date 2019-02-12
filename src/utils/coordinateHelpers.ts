@@ -74,3 +74,11 @@ export const isBoundsInCoordinates = (bounds: Bounds, coordinates: DirectionalCo
     isPosInCoordinates(bottomLeftPos, coordinates)
   );
 };
+
+export const getBoundsCenterInCoordinates = (bounds: Bounds, coordinates: DirectionalCoordinates): PrimaryDirectionalCoordinates => {
+  const { x, y } = getCoordinatesMidPoint(coordinates);
+  const xDelta = bounds.width / 2;
+  const yDelta = bounds.height / 2;
+
+  return { left: x - xDelta, top: y - yDelta };
+};
