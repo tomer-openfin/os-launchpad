@@ -16,7 +16,7 @@ storiesOf(CATEGORIES.LAYOUTS, module)
 
     return (
       <div style={{ border: `2px solid ${Color.JUPITER}` }}>
-        <div dangerouslySetInnerHTML={{ __html: template(title, 'relative')}} />
+        <div dangerouslySetInnerHTML={{ __html: template('', title, 'relative')}} />
 
         <div style={{ background: 'white', minHeight: '100px', padding: '20px', textAlign: 'center' }}>Some Web App</div>
       </div>

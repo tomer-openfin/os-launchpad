@@ -2,10 +2,18 @@ import * as layouts from 'openfin-layouts';
 
 import template from './template';
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
+  const baseUrl = await new Promise<string>(resolve => {
+    fin.desktop.Window.getCurrent()
+      .getParentApplication()
+      .getManifest(mani => {
+        resolve(mani.startup_app.preloadScripts[0].url.replace('/titleBar.js', ''));
+      });
+  });
+
   const title = document.title;
 
-  const titleBarHTML = template(title);
+  const titleBarHTML = template(baseUrl, title);
 
   // add html to top of page
   document.body.insertAdjacentHTML('afterbegin', titleBarHTML);
@@ -36,12 +44,8 @@ window.addEventListener('DOMContentLoaded', () => {
     maximized = !maximized;
   };
   // configure layouts service
-  fin.desktop.Window.getCurrent()
-    .getParentApplication()
-    .getManifest(mani => {
-      const tabStripUrl = mani.startup_app.preloadScripts[0].url.replace('/titleBar.js', '/tabStrip.html');
-      layouts.tabbing.setTabstrip({ url: tabStripUrl, height: 38 });
-    });
+  layouts.tabbing.setTabstrip({ url: `${baseUrl}/tabStrip.html`, height: 38 });
+
   layouts.tabbing.addEventListener('tab-added', () => {
     (document.getElementsByClassName('of-os-tb')[0] as HTMLElement).style.display = 'none';
   });

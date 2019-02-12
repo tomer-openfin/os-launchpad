@@ -40,22 +40,27 @@ exports[`Storyshots Layouts Service/ titleBar 1`] = `
 
         .of-os-tb {
             -webkit-app-region: drag !important;
-            font-family: 'Nunito', arial, sans-serif;
-            z-index: 999999999;
-            position: relative;
-            display: flex;
-            height: 37px;
-            top: 0;
-            left: 0;
-            width: 100%;
             background: #121212;
+            box-sizing: border-box;
             color: #FFFFFF;
-            overflow: hidden;
+            display: flex;
+            font-family: 'Nunito', arial, sans-serif;
+            font-size: 12px;
+            height: 37px;
+            left: 0;
+            letter-spacing: -0.08px;
             line-height: 37px;
             margin: 0 auto;
-            letter-spacing: -0.08px;
-            font-size: 12px;
+            overflow: hidden;
             padding: 0 10px;
+            position: relative;
+            top: 0;
+            width: 100%;
+            z-index: 999999999;
+        }
+
+        .of-os-tb > * {
+          box-sizing: border-box;
         }
 
         .of-os-tb-drag {
@@ -79,7 +84,6 @@ exports[`Storyshots Layouts Service/ titleBar 1`] = `
             -webkit-mask-size: contain;
             background-color: #A7A7A7;
             border: none;
-            box-sizing: border-box;
             cursor: pointer;
             display: inline-block;
             height: 17px;
@@ -96,7 +100,7 @@ exports[`Storyshots Layouts Service/ titleBar 1`] = `
         }
         .of-os-tb-close:hover {
           background-color: #DF5353;
-      }
+        }
         .of-os-tb-btn:active {
             background: #014f86;
         }

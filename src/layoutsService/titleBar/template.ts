@@ -8,7 +8,7 @@ const backgroundColor = '#121212';
 const height = 37;
 const buttonSize = 17;
 
-const template = (title: string, position: string = 'fixed') => `
+const template = (baseUrl: string, title: string, position: string = 'fixed') => `
     <style type="text/css">
         @font-face {
             font-family: 'Nunito';
@@ -21,22 +21,27 @@ const template = (title: string, position: string = 'fixed') => `
 
         .of-os-tb {
             -webkit-app-region: drag !important;
-            font-family: 'Nunito', arial, sans-serif;
-            z-index: 999999999;
-            position: ${position};
-            display: flex;
-            height: ${height}px;
-            top: 0;
-            left: 0;
-            width: 100%;
             background: ${backgroundColor};
+            box-sizing: border-box;
             color: #FFFFFF;
-            overflow: hidden;
+            display: flex;
+            font-family: 'Nunito', arial, sans-serif;
+            font-size: 12px;
+            height: ${height}px;
+            left: 0;
+            letter-spacing: -0.08px;
             line-height: ${height}px;
             margin: 0 auto;
-            letter-spacing: -0.08px;
-            font-size: 12px;
+            overflow: hidden;
             padding: 0 10px;
+            position: ${position};
+            top: 0;
+            width: 100%;
+            z-index: 999999999;
+        }
+
+        .of-os-tb > * {
+          box-sizing: border-box;
         }
 
         .of-os-tb-drag {
@@ -60,7 +65,6 @@ const template = (title: string, position: string = 'fixed') => `
             -webkit-mask-size: contain;
             background-color: #A7A7A7;
             border: none;
-            box-sizing: border-box;
             cursor: pointer;
             display: inline-block;
             height: ${buttonSize}px;
@@ -77,7 +81,7 @@ const template = (title: string, position: string = 'fixed') => `
         }
         .of-os-tb-close:hover {
           background-color: #DF5353;
-      }
+        }
         .of-os-tb-btn:active {
             background: #014f86;
         }
@@ -87,19 +91,19 @@ const template = (title: string, position: string = 'fixed') => `
         }
 
         .of-os-tb-close {
-            -webkit-mask-image: url(${CloseImg});
+            -webkit-mask-image: url(${baseUrl}${CloseImg});
         }
         .of-os-tb-maximize {
-            -webkit-mask-image: url(${MaximizeImg});
+            -webkit-mask-image: url(${baseUrl}${MaximizeImg});
         }
         .of-os-tb-maximize.invert {
-          -webkit-mask-image: url(${DemaximizeImg});
+          -webkit-mask-image: url(${baseUrl}${DemaximizeImg});
         }
         .of-os-tb-minimize {
-            -webkit-mask-image: url(${MinimizeImg});
+            -webkit-mask-image: url(${baseUrl}${MinimizeImg});
         }
         .of-os-tb-undock {
-            -webkit-mask-image: url(${UndockImg});
+            -webkit-mask-image: url(${baseUrl}${UndockImg});
         }
 
         body {
