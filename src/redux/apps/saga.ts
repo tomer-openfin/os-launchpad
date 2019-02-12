@@ -90,17 +90,19 @@ function* watchOpenFinAppRequest(action: OpenFinAppRequest) {
 
   const { appUrl, id, manifest_url } = payload;
 
-  let manifestUrl;
+  let manifestUrl = manifest_url;
 
-  if (manifest_url) {
-    manifestUrl = manifest_url;
-  } else if (appUrl) {
+  if (appUrl) {
+    // TODO: All apps should be moved off of appUrl and rely on manifest
+    // Remove manifest creation through appUrl when all apps have been migrated off
     const runtimeVersion = yield select(getRuntimeVersion);
 
-    if (!runtimeVersion) return;
+    manifestUrl = API.CREATE_MANIFEST(appUrl, undefined, runtimeVersion);
+  }
 
-    manifestUrl = API.CREATE_MANIFEST(runtimeVersion, appUrl, process.env.API_URL || `${window.location.origin}/`);
-  } else return;
+  if (!manifestUrl) {
+    return;
+  }
 
   const status = yield select(getAppStatusById, id);
 

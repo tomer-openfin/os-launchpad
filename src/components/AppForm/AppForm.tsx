@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as Yup from 'yup';
 
 import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../samples/FDC3';
 import { ROUTES } from '../Router/consts';
@@ -10,34 +9,6 @@ import CheckboxInArray from '../CheckboxInArray';
 import FormField, { Label, LabelText } from '../FormField';
 import RadioToggle from '../RadioToggle';
 import ResponsiveForm from '../ResponsiveForm';
-
-export const validationSchema = Yup.object().shape({
-  // only require either appUrl OR manifest_url but not both at the same time
-  // withAppUrl = true when appUrl radio toggled, false when manifest_url toggled
-  appUrl: Yup.string().when('withAppUrl', {
-    is: withAppUrlVal => withAppUrlVal,
-    then: Yup.string()
-      .url('Must be a valid URL')
-      .required('Required'),
-  }),
-  contexts: Yup.array().notRequired(), // enable when bring back contexts
-  description: Yup.string().required('Required'),
-  icon: Yup.string()
-    .url('Must be a valid URL')
-    .required('Required'),
-  id: Yup.string().notRequired(),
-  images: Yup.array().notRequired(),
-  intents: Yup.array().notRequired(), // enable when bring back contexts
-  manifest_url: Yup.string().when('withAppUrl', {
-    is: withAppUrlVal => !withAppUrlVal,
-    then: Yup.string()
-      .url('Must be a valid URL')
-      .required('Required'),
-  }),
-  name: Yup.string(), // injected by us before payload is sent
-  title: Yup.string().required('Required'),
-  withAppUrl: Yup.boolean(),
-});
 
 const renderMockIntents = () => MOCK_INTENTS.map((intent, index) => <CheckboxInArray name="intents" key={index} value={intent.displayName} />);
 

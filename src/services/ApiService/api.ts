@@ -1,9 +1,17 @@
-const API_URL = process.env.API_URL || '/';
+import { getApiUrl } from '../../utils/processHelpers';
+
+const API_URL = getApiUrl();
+
+export const CREATE_MANIFEST_BASE = 'api/app.json?appurl=';
 
 const API = {
   PUBLIC_APPS: 'https://app-directory.openfin.co/api/v1/apps',
 
-  CREATE_MANIFEST: (runtimeVersion: string, appUrl: string, baseUrl: string) => `${baseUrl}api/app.json?runtime=${runtimeVersion}&appurl=${appUrl}`,
+  CREATE_MANIFEST: (appUrl: string, baseUrl?: string, runtimeVersion?: string) => {
+    const url = `${baseUrl || API_URL}${CREATE_MANIFEST_BASE}${appUrl}`;
+
+    return runtimeVersion ? `${url}&runtime=${runtimeVersion}` : url;
+  },
 
   CONFIRM_PASSWORD: `${API_URL}api/auth/password/confirm`,
   FORGOT_PASSWORD: `${API_URL}api/auth/password/forgot`,

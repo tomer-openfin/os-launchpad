@@ -4,8 +4,15 @@ const PRODUCTION = 'production';
 const TEST = 'test';
 const TRUE = 'true';
 
-const { DEV_TOOLS_ON_STARTUP = FALSE, ENTERPRISE = FALSE, NODE_ENV = DEVELOPMENT, STORYBOOK_ENV = FALSE } = process.env;
+const { API_URL, DEV_TOOLS_ON_STARTUP = FALSE, ENTERPRISE = FALSE, NODE_ENV = DEVELOPMENT, STORYBOOK_ENV = FALSE } = process.env;
 
+export const getApiUrl = () => {
+  if (API_URL) {
+    return API_URL;
+  }
+
+  return window && window.location && window.location.origin ? `${window.location.origin}/` : '/';
+};
 export const hasDevToolsOnStartup = () => DEV_TOOLS_ON_STARTUP === TRUE;
 export const isDevelopmentEnv = () => NODE_ENV === DEVELOPMENT;
 export const isEnterpriseEnv = () => ENTERPRISE === TRUE;

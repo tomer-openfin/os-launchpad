@@ -4,8 +4,9 @@ import { App, MetaWithCallbacks, PushRoute, RequestFormSubmit } from '../../type
 
 import { ROUTES } from '../Router/consts';
 
+import { CREATE_MANIFEST_BASE } from '../../services/ApiService/api';
 import { createPushRouteHandler } from '../../utils/routeHelpers';
-import AppForm, { validationSchema } from '../AppForm';
+import AppForm, { createAppManifestUrl, validationSchema } from '../AppForm';
 import RequestForm from '../RequestForm';
 
 interface Props {
@@ -16,37 +17,32 @@ interface Props {
 }
 
 const createAppSubmitHandler = (submit: RequestFormSubmit<App>): RequestFormSubmit<App> => (formData: App, meta: MetaWithCallbacks) => {
-  let payload;
+  const { appUrl, manifest_url, withAppUrl, ...rest } = formData;
 
-  // Strip out manifest if appUrl and vice versa
-  if (!!formData.withAppUrl) {
-    const { manifest_url, withAppUrl, ...rest } = formData;
-    payload = rest;
-  } else {
-    const { appUrl, withAppUrl, ...rest } = formData;
-    payload = rest;
-  }
+  const computedManifestUrl = createAppManifestUrl({ appUrl, manifest_url, withAppUrl });
 
-  submit(payload, meta);
+  submit({ ...rest, manifest_url: computedManifestUrl }, meta);
 };
 
 const EditAppForm = ({ app, pushRoute, updateApp }: Props) => {
-  const { appUrl, contexts, intents, id, manifest_url, name, title, description, icon, images } = app;
+  const { appUrl, contexts, intents, id, manifest_url = '', name, title, description, icon, images } = app;
+  const createManifestIndex = manifest_url.indexOf(CREATE_MANIFEST_BASE);
+  const initialAppUrl = createManifestIndex !== -1 ? manifest_url.slice(createManifestIndex + CREATE_MANIFEST_BASE.length) : appUrl;
 
   return (
     <RequestForm
       initialValues={{
-        appUrl,
+        appUrl: initialAppUrl,
         contexts: contexts || [],
         description,
         icon,
         id,
         images,
         intents: intents || [],
-        manifest_url,
+        manifest_url: createManifestIndex === -1 ? manifest_url : '',
         name,
         title,
-        withAppUrl: !!appUrl,
+        withAppUrl: !!initialAppUrl,
       }}
       errorMessage={`There was an error trying to update ${title}`}
       form={AppForm}
