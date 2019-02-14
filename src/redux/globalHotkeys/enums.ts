@@ -1,4 +1,5 @@
 export enum GlobalHotkeys {
+  ToggleAutoHide = 'Control+Shift+O',
   RestoreLayout = 'Control+Shift+L',
   ShowAppDirectory = 'Alt+Space',
 }

@@ -16,7 +16,7 @@ const registerEnumToFinGlobalHotkey = (Enum: GlobalHotkeyEnumType, dispatch: Dis
       const hotkeyToRegister = Enum[hotkey];
 
       const cb = () => {
-        dispatch(globalHotkeyPressed(hotkeyToRegister));
+        dispatch(globalHotkeyPressed({ hotkey: hotkeyToRegister }));
       };
 
       fin.GlobalHotkey.register(hotkeyToRegister, cb);
