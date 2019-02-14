@@ -11,16 +11,16 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
     }
   >
     <div
-      className="sc-kUaPvJ dUyqip"
+      className="sc-hmXxxW iOPZmP"
     >
       <div
-        className="sc-gisBJw fKFkVo"
+        className="sc-cJSrbW dfwDCx"
       >
         <div
-          className="sc-kjoXOD bknrGl"
+          className="sc-ksYbfQ dHCrgt"
         >
           <div
-            className="sc-elJkPf lehtp"
+            className="sc-dfVpRl kpYkVS"
           >
             Create New User
           </div>
@@ -38,7 +38,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
             className="sc-gPEVay brQUiw"
           >
             <div
-              className="sc-giadOv fFGGEY"
+              className="sc-cqCuEk iZGHZA"
             >
               <label
                 className="sc-dxgOiQ gXepeX"
@@ -144,7 +144,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
                 value=""
               />
               <div
-                className="sc-VJcYb hWeSOx"
+                className="sc-kLIISr kmhXrq"
               >
                 <div
                   className="sc-ifAKCX xmkOg"
@@ -184,7 +184,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
         </div>
       </form>
       <div
-        className="sc-fONwsr jXVzPU"
+        className="sc-dliRfk fQeQMD"
       >
         <div
           className="sc-gipzik ViaaU"

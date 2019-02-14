@@ -11,16 +11,16 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
     }
   >
     <div
-      className="sc-kUaPvJ dUyqip"
+      className="sc-hmXxxW iOPZmP"
     >
       <div
-        className="sc-gisBJw fKFkVo"
+        className="sc-cJSrbW dfwDCx"
       >
         <div
-          className="sc-kjoXOD bknrGl"
+          className="sc-ksYbfQ dHCrgt"
         >
           <div
-            className="sc-elJkPf lehtp"
+            className="sc-dfVpRl kpYkVS"
           >
             Create New App
           </div>
@@ -38,10 +38,10 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
             className="sc-gPEVay brQUiw"
           >
             <div
-              className="sc-giadOv eDAehw"
+              className="sc-cqCuEk bNNsvE"
             >
               <label
-                className="sc-fZwumE jzSZTb sc-dxgOiQ gXepeX"
+                className="sc-etwtAo dzsUiX sc-dxgOiQ gXepeX"
               >
                 <div
                   className="sc-kpOJdX gglwGS"
@@ -56,27 +56,27 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                   type="checkbox"
                 />
                 <div
-                  className="sc-etwtAo jXhUbr"
+                  className="sc-kasBVs ekAZxq"
                 >
                   <div
                     checked={true}
-                    className="sc-clNaTc fJbvrJ"
+                    className="sc-iGPElx fvGELn"
                   />
                   <div
-                    className="sc-fQejPQ bMshTI"
+                    className="sc-jXQZqI fmwDQZ"
                   >
                     App URL
                   </div>
                 </div>
                 <div
-                  className="sc-etwtAo jXhUbr"
+                  className="sc-kasBVs ekAZxq"
                 >
                   <div
                     checked={false}
-                    className="sc-clNaTc fUyfUf"
+                    className="sc-iGPElx kHcpRX"
                   />
                   <div
-                    className="sc-fQejPQ bMshTI"
+                    className="sc-jXQZqI fmwDQZ"
                   >
                     Manifest
                   </div>
@@ -118,7 +118,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
               />
             </label>
             <div
-              className="sc-giadOv eEqRGR"
+              className="sc-cqCuEk cHSPlN"
               height="99px"
             >
               <label
@@ -186,7 +186,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
         </div>
       </form>
       <div
-        className="sc-fONwsr jXVzPU"
+        className="sc-dliRfk fQeQMD"
       >
         <div
           className="sc-gipzik ViaaU"

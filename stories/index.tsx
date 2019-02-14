@@ -21,6 +21,7 @@ import '../src/components/RadioButton/RadioButton.story';
 import '../src/components/ResponsiveForm/ResponsiveForm.story';
 import '../src/components/SearchInput/SearchInput.story';
 import '../src/components/SvgIcon/SvgIcon.story';
+import '../src/components/Tabs/Tabs.story';
 import '../src/components/WindowHeader/WindowHeader.story';
 
 // Components

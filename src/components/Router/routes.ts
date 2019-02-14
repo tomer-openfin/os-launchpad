@@ -68,6 +68,26 @@ export const appRoutes: AppRoute[] = [
   },
 ];
 
+export const adminRoutes: AppRoute[] = [
+  {
+    Component: OrganizationSettings,
+    exact: true,
+    path: ROUTES.ADMIN,
+  },
+  {
+    Component: AdminApps,
+    children: appRoutes,
+    exact: false,
+    path: ROUTES.ADMIN_APPS,
+  },
+  {
+    Component: AdminUsers,
+    children: userRoutes,
+    exact: false,
+    path: ROUTES.ADMIN_USERS,
+  },
+];
+
 const settingRoutes: AppRoute[] = [
   {
     Component: UpdatePasswordForm,
@@ -84,25 +104,7 @@ const settingRoutes: AppRoute[] = [
 export const routes: AppRoute[] = [
   {
     Component: Admin,
-    children: [
-      {
-        Component: AdminUsers,
-        children: userRoutes,
-        exact: false,
-        path: ROUTES.ADMIN_USERS,
-      },
-      {
-        Component: AdminApps,
-        children: appRoutes,
-        exact: false,
-        path: ROUTES.ADMIN_APPS,
-      },
-      {
-        Component: OrganizationSettings,
-        exact: true,
-        path: ROUTES.ADMIN,
-      },
-    ],
+    children: adminRoutes,
     exact: false,
     path: ROUTES.ADMIN,
   },

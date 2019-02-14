@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-import { Color, hexToRgba } from '../../styles';
+import { Color, getCssValueFromNumberOrString, hexToRgba } from '../../styles';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   borderRadius?: number | string;
@@ -9,8 +9,6 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   isActive?: boolean;
   width?: number | string;
 }
-
-const getCssFromNumberOrString = (value: number | string) => (typeof value === 'string' ? value : `${value}px`);
 
 export default styled.button<Props>`
   border: none;
@@ -30,9 +28,9 @@ export default styled.button<Props>`
   }
 
   ${({ borderRadius, height, isActive, width }) => `
-    ${borderRadius !== undefined ? `border-radius: ${getCssFromNumberOrString(borderRadius)};` : ''}
+    ${borderRadius !== undefined ? `border-radius: ${getCssValueFromNumberOrString(borderRadius)};` : ''}
     background-color: ${isActive ? Color.JUPITER : Color.MERCURY};
-    ${height !== undefined ? `height: ${getCssFromNumberOrString(height)};` : ''}
-    ${width !== undefined ? `width: ${getCssFromNumberOrString(width)};` : ''}
+    ${height !== undefined ? `height: ${getCssValueFromNumberOrString(height)};` : ''}
+    ${width !== undefined ? `width: ${getCssValueFromNumberOrString(width)};` : ''}
   `}
 `;

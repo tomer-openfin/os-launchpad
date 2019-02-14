@@ -3,14 +3,12 @@ import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { withMarginDecorator } from '../../utils/storybookHelpers';
+import { getNumberOrStringFromText, withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
 
 import ButtonTile from './ButtonTile.css';
 
 const handleClick = action('handleClick');
-
-const getPropValueFromText = (textValue: string) => (Number.isNaN(Number(textValue)) ? textValue : Number(textValue));
 
 storiesOf(`${CATEGORIES.UI}ButtonTile`, module)
   .addDecorator(withMarginDecorator(30))
@@ -24,11 +22,11 @@ storiesOf(`${CATEGORIES.UI}ButtonTile`, module)
 
     return (
       <ButtonTile
-        borderRadius={getPropValueFromText(borderRadius)}
-        height={getPropValueFromText(height)}
+        borderRadius={getNumberOrStringFromText(borderRadius)}
+        height={getNumberOrStringFromText(height)}
         isActive={isActive}
         onClick={handleClick}
-        width={getPropValueFromText(width)}
+        width={getNumberOrStringFromText(width)}
       >
         {buttonText}
       </ButtonTile>

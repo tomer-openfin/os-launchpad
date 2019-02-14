@@ -1,53 +1,62 @@
 import * as React from 'react';
-import { ROUTES } from '../Router/consts';
 
+import { ADMIN_TABS } from './utils';
+
+import Tabs, { Props as TabProps } from '../Tabs';
 import WindowHeader from '../WindowHeader';
-import { ContentWrapper, TabLink, TabsWrapper, Wrapper } from './Admin.css';
+import { StyledTab, Wrapper } from './Admin.css';
 
-const ADMIN_TABBED_ROUTES = [
-  {
-    exact: true,
-    label: 'Enterprise',
-    path: ROUTES.ADMIN,
-  },
-  {
-    label: 'Apps',
-    path: ROUTES.ADMIN_APPS,
-  },
-  {
-    label: 'Users',
-    path: ROUTES.ADMIN_USERS,
-  },
-];
-
-interface Props {
+export interface Props {
+  activeTab: string;
   children?: React.ReactNode;
   hideWindow: () => void;
   isAdmin: boolean;
+  onClickTab: (path: string) => void;
 }
 
-const renderAdminTab = ({ exact = false, path, label }) => (
-  <TabLink exact={exact} key={path} to={path}>
-    {label}
-  </TabLink>
-);
+const renderTab = (child: React.ReactNode): React.ReactElement<TabProps> | null => {
+  if (!child || typeof child !== 'object' || !('props' in child)) {
+    return null;
+  }
 
-const renderAdmin = (children, hideWindow) => {
+  const { path } = child.props;
+  if (!path || Array.isArray(path)) {
+    return null;
+  }
+
   return (
-    <>
-      <WindowHeader handleClose={hideWindow}>Admin</WindowHeader>
-
-      <TabsWrapper>{ADMIN_TABBED_ROUTES.map(renderAdminTab)}</TabsWrapper>
-
-      <ContentWrapper>{children}</ContentWrapper>
-    </>
+    <StyledTab key={path} id={path} title={ADMIN_TABS[path].title}>
+      {child}
+    </StyledTab>
   );
 };
 
 const Admin = (props: Props) => {
-  const { isAdmin, children, hideWindow } = props;
+  const { activeTab, isAdmin, children, hideWindow, onClickTab } = props;
 
-  return <Wrapper>{isAdmin ? renderAdmin(children, hideWindow) : <h1>You do not have clearance to see the admin tools.</h1>}</Wrapper>;
+  if (!isAdmin) {
+    return null;
+  }
+
+  return (
+    <Wrapper>
+      <WindowHeader handleClose={hideWindow}>Admin</WindowHeader>
+
+      {children && (
+        <Tabs activeId={activeTab} onClick={onClickTab}>
+          {Array.isArray(children)
+            ? children.reduce((acc: Array<React.ReactElement<TabProps>>, child) => {
+                const tab = renderTab(child);
+                if (tab === null) {
+                  return acc;
+                }
+                return [...acc, tab];
+              }, [])
+            : renderTab(children)}
+        </Tabs>
+      )}
+    </Wrapper>
+  );
 };
 
 export default Admin;
