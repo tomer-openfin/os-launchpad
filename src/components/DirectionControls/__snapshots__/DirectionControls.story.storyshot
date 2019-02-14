@@ -18,32 +18,32 @@ exports[`Storyshots Components/DirectionControls default 1`] = `
       }
     >
       <div
-        className="sc-RefOD vIbvu"
+        className="sc-hXRMBi ezmbMi"
         size={17}
       >
         <button
-          className="sc-kgoBCf sc-ibxdXY faijFY"
+          className="sc-kgoBCf sc-gwVKww ejTDSH"
           direction="top"
           onClick={[Function]}
         >
           Top
         </button>
         <button
-          className="sc-kgoBCf sc-ibxdXY iqMhsK"
+          className="sc-kgoBCf sc-gwVKww hslAhM"
           direction="left"
           onClick={[Function]}
         >
           Left
         </button>
         <button
-          className="sc-kgoBCf sc-ibxdXY fXysTU"
+          className="sc-kgoBCf sc-gwVKww bARVEf"
           direction="right"
           onClick={[Function]}
         >
           Right
         </button>
         <button
-          className="sc-kgoBCf sc-ibxdXY gFDGGt"
+          className="sc-kgoBCf sc-gwVKww fPyGFl"
           direction="bottom"
           onClick={[Function]}
         >

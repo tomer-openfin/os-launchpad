@@ -11,10 +11,10 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
     }
   >
     <div
-      className="sc-jtRfpW hCsaKO"
+      className="sc-iyvyFf ixbkrp"
     >
       <div
-        className="sc-frDJqD dJgNFW"
+        className="sc-uJMKN ewRjrB"
         height={0}
         isExpanded={true}
         launcherPosition="top"

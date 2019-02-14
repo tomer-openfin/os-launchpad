@@ -3,7 +3,13 @@ import { State } from '../types';
 
 export const getMeState = (state: State) => state.me;
 
+export const getMeName = (state: State) => {
+  const { firstName, lastName } = getMeState(state);
+  return `${firstName} ${lastName}`;
+};
+
 export const getIsAdmin = (state: State) => getMeState(state).isAdmin;
+export const getMeEmail = (state: State) => getMeState(state).email;
 export const getMeSettings = (state: State) => getMeState(state).settings;
 export const getIsLoggedIn = (state: State) => {
   const meState = getMeState(state);

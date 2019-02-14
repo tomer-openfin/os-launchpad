@@ -22,10 +22,10 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
           className="sc-gPEVay brQUiw"
         >
           <div
-            className="sc-cqCuEk bNNsvE"
+            className="sc-ipZHIp lcGlDb"
           >
             <label
-              className="sc-etwtAo dzsUiX sc-dxgOiQ gXepeX"
+              className="sc-eInJlc bSgOGy sc-dxgOiQ gXepeX"
             >
               <div
                 className="sc-kpOJdX gglwGS"
@@ -39,26 +39,26 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
                 type="checkbox"
               />
               <div
-                className="sc-kasBVs ekAZxq"
+                className="sc-hzDEsm iNmoDR"
               >
                 <div
-                  className="sc-iGPElx kHcpRX"
+                  className="sc-fOICqy crsOVY"
                 />
                 <div
-                  className="sc-jXQZqI fmwDQZ"
+                  className="sc-gtfDJT eqGOCf"
                 >
                   App URL
                 </div>
               </div>
               <div
-                className="sc-kasBVs ekAZxq"
+                className="sc-hzDEsm iNmoDR"
               >
                 <div
                   checked={true}
-                  className="sc-iGPElx fvGELn"
+                  className="sc-fOICqy aJVLE"
                 />
                 <div
-                  className="sc-jXQZqI fmwDQZ"
+                  className="sc-gtfDJT eqGOCf"
                 >
                   Manifest
                 </div>
@@ -98,7 +98,7 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
             />
           </label>
           <div
-            className="sc-cqCuEk cHSPlN"
+            className="sc-ipZHIp dawCzW"
             height="99px"
           >
             <label

@@ -11,7 +11,7 @@ exports[`Storyshots Components/Login default 1`] = `
     }
   >
     <div
-      className="sc-emmjRN cWuRGy"
+      className="sc-hGoxap deeMAO"
     >
       <div
         className="sc-cSHVUG icgEVV"
@@ -40,17 +40,17 @@ exports[`Storyshots Components/Login default 1`] = `
           </div>
         </div>
         <div
-          className="sc-bnXvFD bUhXeh"
+          className="sc-bHwgHz exlsRl"
         >
           <div
-            className="sc-cpmLhU dMNtaM sc-cMljjf foyfVr"
+            className="sc-fjmCvl fpgiiI sc-cMljjf foyfVr"
             size={90}
           />
           <form
-            className="sc-dymIpo eYBxLD"
+            className="sc-TFwJa hZDeFy"
           >
             <form
-              className="sc-eilVRo frMzxF"
+              className="sc-CtfFt efFpcB"
               onSubmit={[Function]}
             >
               <label
@@ -89,7 +89,7 @@ exports[`Storyshots Components/Login default 1`] = `
                 />
               </label>
               <div
-                className="sc-eerKOB dpmxiy"
+                className="sc-laTMn cqekcO"
               >
                 <button
                   className="sc-kAzzGY ecXCJ"
@@ -550,7 +550,7 @@ exports[`Storyshots Components/Login withStages 1`] = `
     }
   >
     <div
-      className="sc-emmjRN cWuRGy"
+      className="sc-hGoxap deeMAO"
     >
       <div
         className="sc-cSHVUG icgEVV"
@@ -579,17 +579,17 @@ exports[`Storyshots Components/Login withStages 1`] = `
           </div>
         </div>
         <div
-          className="sc-bnXvFD bUhXeh"
+          className="sc-bHwgHz exlsRl"
         >
           <div
-            className="sc-cpmLhU dMNtaM sc-cMljjf foyfVr"
+            className="sc-fjmCvl fpgiiI sc-cMljjf foyfVr"
             size={90}
           />
           <form
-            className="sc-dymIpo eYBxLD"
+            className="sc-TFwJa hZDeFy"
           >
             <form
-              className="sc-eilVRo frMzxF"
+              className="sc-CtfFt efFpcB"
               onSubmit={[Function]}
             >
               <label
@@ -628,7 +628,7 @@ exports[`Storyshots Components/Login withStages 1`] = `
                 />
               </label>
               <div
-                className="sc-eerKOB dpmxiy"
+                className="sc-laTMn cqekcO"
               >
                 <button
                   className="sc-kAzzGY ecXCJ"

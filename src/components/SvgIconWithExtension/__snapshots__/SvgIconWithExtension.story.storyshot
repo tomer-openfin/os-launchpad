@@ -18,7 +18,7 @@ exports[`Storyshots Components/SvgIconWithExtension default 1`] = `
       }
     >
       <div
-        className="sc-hqyNC bvhoyi"
+        className="sc-gGBfsJ iokQSN"
         color="#E7E7E7"
       >
         <div
@@ -30,7 +30,7 @@ exports[`Storyshots Components/SvgIconWithExtension default 1`] = `
           title="Icon"
         />
         <div
-          className="sc-kvZOFW eLUxXj sc-ifAKCX gPeNwQ"
+          className="sc-bbmXgH iyQroB sc-ifAKCX gPeNwQ"
           color="#E7E7E7"
           disabled={false}
           onClick={null}

@@ -62,7 +62,7 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
         email: (action.payload! as SetMePayload).email,
         firstName: (action.payload! as SetMePayload).firstName,
         isAdmin: (action.payload! as SetMePayload).isAdmin,
-        lastName: (action.payload! as SetMePayload).firstName,
+        lastName: (action.payload! as SetMePayload).lastName,
       };
     }
     case LOGOUT.SUCCESS: {

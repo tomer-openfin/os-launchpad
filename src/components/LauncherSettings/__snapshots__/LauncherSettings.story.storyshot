@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Admin Components/UserCard default 1`] = `
+exports[`Storyshots Components/LauncherSettings default 1`] = `
 <div>
   <div
     style={
@@ -11,61 +11,148 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
     }
   >
     <div
-      className="sc-cpmKsF fvKqfJ"
+      style={
+        Object {
+          "margin": "30px",
+        }
+      }
     >
       <div
-        className="sc-kZmsYB omzrl"
+        className="sc-cQFLBn kWFfGh"
       >
         <div
-          className="sc-RcBXQ eMZWtj"
+          className="sc-bAeIUo koDEpe"
         >
           <div
-            className="sc-iSDuPN hBCmft"
+            className="sc-iujRgT beFjir"
           >
-            <div
-              className="sc-fZwumE dUYlMA"
-              title="John Doe"
-            >
-              John
-               
-              Doe
-            </div>
-            <div
-              className="sc-fQejPQ bddAfp sc-ifAKCX yXyBY"
-              color="#FBC23C"
-              size={16}
-              title="Admin"
-            />
-            <div
-              className="sc-fQejPQ bddAfp sc-ifAKCX dXYvlK"
-              color="#DF5353"
-              size={16}
-              title="User has not logged in yet"
-            />
+            Auto-Hide
           </div>
           <div
-            className="sc-clNaTc gKjGRp"
-            title="John.Doe@gmail.com"
+            className="sc-GMQeP bubVbT"
           >
-            John.Doe@gmail.com
+            <label
+              checked={true}
+              className="sc-exAgwC dvnyfZ sc-fBuWsC glVfkR"
+            >
+              <input
+                checked={true}
+                className="sc-exAgwC dvnyfZ sc-jhAzac hbGpOo"
+                name="autohide-onoff"
+                onChange={[Function]}
+                type="radio"
+                value="off"
+              />
+              Off
+            </label>
+            <label
+              checked={false}
+              className="sc-exAgwC dvnyfZ sc-fBuWsC cCalxw"
+            >
+              <input
+                checked={false}
+                className="sc-exAgwC dvnyfZ sc-jhAzac hbGpOo"
+                name="autohide-onoff"
+                onChange={[Function]}
+                type="radio"
+                value="on"
+              />
+              On
+            </label>
           </div>
         </div>
         <div
-          className="sc-etwtAo iYxBzD"
+          className="sc-bAeIUo koDEpe"
         >
           <div
-            className="sc-iBEsjs jujUTs"
+            className="sc-iujRgT beFjir"
           >
+            Launcher Size
+          </div>
+          <div
+            className="sc-GMQeP bubVbT"
+          >
+            <label
+              checked={false}
+              className="sc-exAgwC dvnyfZ sc-fBuWsC cCalxw"
+            >
+              <input
+                checked={false}
+                className="sc-exAgwC dvnyfZ sc-jhAzac hbGpOo"
+                name="launcherSize-options"
+                onChange={[Function]}
+                type="radio"
+                value="small"
+              />
+              Sm
+            </label>
+            <label
+              checked={true}
+              className="sc-exAgwC dvnyfZ sc-fBuWsC glVfkR"
+            >
+              <input
+                checked={true}
+                className="sc-exAgwC dvnyfZ sc-jhAzac hbGpOo"
+                name="launcherSize-options"
+                onChange={[Function]}
+                type="radio"
+                value="large"
+              />
+              Lg
+            </label>
+          </div>
+        </div>
+        <div
+          className="sc-bAeIUo koDEpe"
+        >
+          <div
+            className="sc-iujRgT beFjir"
+          >
+            Launcher Location
+          </div>
+          <div
+            className="sc-GMQeP bubVbT"
+          >
+            <div
+              className="sc-hXRMBi ezmbMi"
+              size={17}
+            >
+              <button
+                className="sc-kgoBCf sc-gwVKww hsqXqL"
+                direction="top"
+                onClick={[Function]}
+              >
+                Top
+              </button>
+              <button
+                className="sc-kgoBCf sc-gwVKww hslAhM"
+                direction="left"
+                onClick={[Function]}
+              >
+                Left
+              </button>
+              <button
+                className="sc-kgoBCf sc-gwVKww bARVEf"
+                direction="right"
+                onClick={[Function]}
+              >
+                Right
+              </button>
+              <button
+                className="sc-kgoBCf sc-gwVKww gfQPkQ"
+                direction="bottom"
+                onClick={[Function]}
+              >
+                Bottom
+              </button>
+            </div>
             <a
-              className="sc-fcdeBU ukgwy"
-              href="/admin/users/edit"
+              className="sc-bMVAic bLbTlE"
+              href="/settings/launcher-monitor"
               onClick={[Function]}
-            />
-            <a
-              className="sc-cooIXK dmcTsu"
-              href="/admin/users/delete"
-              onClick={[Function]}
-            />
+            >
+              Change Screen
+            </a>
           </div>
         </div>
       </div>
@@ -168,7 +255,7 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
               }
             }
           >
-            Admin Components/UserCard
+            Components/LauncherSettings
           </h1>
           <h2
             style={
@@ -218,7 +305,7 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
                     }
                   >
                     &lt;
-                    styled.div
+                    div
                   </span>
                   <span>
                     <span>
@@ -226,7 +313,7 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
                       <span
                         style={Object {}}
                       >
-                        withBorder
+                        style
                       </span>
                       <span>
                         =
@@ -237,11 +324,34 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
                           <span
                             style={
                               Object {
-                                "color": "#a11",
+                                "color": "#666",
                               }
                             }
                           >
-                            false
+                            {
+                            <span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                margin
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              '30px'
+                            </span>
+                            }
                           </span>
                           }
                         </span>
@@ -275,15 +385,18 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
                     }
                   >
                     &lt;
-                    UserCard
+                    LauncherSettings
                   </span>
                   <span>
                     <span>
-                       
+                      <span>
+                        <br />
+                          
+                      </span>
                       <span
                         style={Object {}}
                       >
-                        user
+                        autoHide
                       </span>
                       <span>
                         =
@@ -294,118 +407,85 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
                           <span
                             style={
                               Object {
-                                "color": "#666",
+                                "color": "#a11",
                               }
                             }
                           >
-                            {
-                            <span>
-                              <span>
-                                <br />
-                                  
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                created
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              '2018-10-26T14:02:10.964Z'
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                  
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                email
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              'John.Doe@gmail.com'
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                  
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                enabled
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#a11",
-                                }
-                              }
-                            >
-                              true
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                  
-                                  
-                              </span>
-                              …
-                            </span>
-                            <span>
-                              <br />
-                                
-                            </span>
-                            }
+                            false
                           </span>
                           }
                         </span>
                       </span>
                     </span>
                     <span>
-                       
+                      <span>
+                        <br />
+                          
+                      </span>
                       <span
                         style={Object {}}
                       >
-                        ctas
+                        launcherSize
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          "
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
+                            }
+                          >
+                            large
+                          </span>
+                          "
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
+                        launcherPosition
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          "
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
+                            }
+                          >
+                            top
+                          </span>
+                          "
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
+                        setAutoHide
                       </span>
                       <span>
                         =
@@ -416,16 +496,74 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
                           <span
                             style={
                               Object {
-                                "color": "#666",
+                                "color": "#170",
                               }
                             }
                           >
-                            &lt;styled.div /&gt;
+                            setAutoHide
                           </span>
                           }
                         </span>
                       </span>
-                       
+                    </span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
+                        setLauncherPosition
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#170",
+                              }
+                            }
+                          >
+                            setLauncherPosition
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                      <span>
+                        <br />
+                          
+                      </span>
+                      <span
+                        style={Object {}}
+                      >
+                        setLauncherSize
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#170",
+                              }
+                            }
+                          >
+                            setLauncherSize
+                          </span>
+                          }
+                        </span>
+                      </span>
+                      <br />
                     </span>
                   </span>
                   <span
@@ -454,7 +592,7 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
                     }
                   >
                     &lt;/
-                    styled.div
+                    div
                     &gt;
                   </span>
                 </div>
@@ -505,23 +643,7 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
               }
             >
               "
-              UserCard
-              " Component
-            </h2>
-            <small>
-              No propTypes defined!
-            </small>
-          </div>
-          <div>
-            <h2
-              style={
-                Object {
-                  "margin": "20px 0 0 0",
-                }
-              }
-            >
-              "
-              styled.div
+              LauncherSettings
               " Component
             </h2>
             <small>

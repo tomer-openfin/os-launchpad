@@ -18,12 +18,12 @@ exports[`Storyshots Components/MonitorControls default 1`] = `
       }
     >
       <div
-        className="sc-CtfFt eixaUP"
+        className="sc-jVODtj gcuyjN"
         height={240}
         width={380}
       >
         <button
-          className="sc-kgoBCf sc-bMvGRv cnVSmn"
+          className="sc-kgoBCf sc-gPWkxV jVxoZR"
           height={10}
           onClick={[Function]}
           width={10}
@@ -31,7 +31,7 @@ exports[`Storyshots Components/MonitorControls default 1`] = `
           1
         </button>
         <button
-          className="sc-kgoBCf sc-bMvGRv evyucb"
+          className="sc-kgoBCf sc-gPWkxV jsLpbo"
           height={20}
           onClick={[Function]}
           width={20}
@@ -830,7 +830,7 @@ exports[`Storyshots Components/MonitorControls with container 1`] = `
       }
     >
       <div
-        className="sc-CtfFt eixaUP"
+        className="sc-jVODtj gcuyjN"
         height={240}
         width={380}
       />

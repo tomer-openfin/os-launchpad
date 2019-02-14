@@ -11,12 +11,12 @@ exports[`Storyshots Admin Components/ThemesForm default 1`] = `
     }
   >
     <form
-      className="sc-gtfDJT lkyzOu"
+      className="sc-bGbJRg fJgsMp"
       onReset={[Function]}
       onSubmit={[Function]}
     >
       <select
-        className="sc-eKZiaR iTFjzU"
+        className="sc-gVyKpa emAYCM"
         disabled={false}
         id="ThemesFormSelectInput"
         name="theme"
@@ -26,20 +26,20 @@ exports[`Storyshots Admin Components/ThemesForm default 1`] = `
         value="dark"
       >
         <option
-          className="sc-drMfKT jrWGb"
+          className="sc-eXNvrr jmidfL"
           value="dark"
         >
           Dark
         </option>
         <option
-          className="sc-drMfKT jrWGb"
+          className="sc-eXNvrr jmidfL"
           value="light"
         >
           Light
         </option>
       </select>
       <div
-        className="sc-eInJlc fbgMKL"
+        className="sc-jtRlXQ dMQiFu"
       >
         <button
           className="sc-kAzzGY ecXCJ"

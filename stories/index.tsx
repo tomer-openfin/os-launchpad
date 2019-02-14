@@ -25,6 +25,7 @@ import '../src/components/Tabs/Tabs.story';
 import '../src/components/WindowHeader/WindowHeader.story';
 
 // Components
+import '../src/components/AccountSettings/AccountSettings.story';
 import '../src/components/App/App.story';
 import '../src/components/AppCard/AppCard.story';
 import '../src/components/AppDirectory/AppDirectory.story';
@@ -39,6 +40,7 @@ import '../src/components/ForgotPasswordChangeForm/ForgotPasswordChangeForm.stor
 import '../src/components/ForgotPasswordRequestForm/ForgotPasswordRequestForm.story';
 import '../src/components/ForgotPasswordSuccess/ForgotPasswordSuccess.story';
 import '../src/components/LauncherAppIcon/LauncherAppIcon.story';
+import '../src/components/LauncherSettings/LauncherSettings.story';
 import '../src/components/Layouts/Layouts.story';
 import '../src/components/LayoutsList/LayoutsList.story';
 import '../src/components/LayoutsListItem/LayoutsListItem.story';

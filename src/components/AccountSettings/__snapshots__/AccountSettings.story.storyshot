@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Admin Components/UserCard default 1`] = `
+exports[`Storyshots Components/AccountSettings default 1`] = `
 <div>
   <div
     style={
@@ -11,62 +11,59 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
     }
   >
     <div
-      className="sc-cpmKsF fvKqfJ"
+      style={
+        Object {
+          "margin": "30px",
+        }
+      }
     >
       <div
-        className="sc-kZmsYB omzrl"
+        className="sc-frDJqD isiuog"
       >
         <div
-          className="sc-RcBXQ eMZWtj"
+          className="sc-dNLxif eealMx"
+        >
+          Account Info
+        </div>
+        <div
+          className="sc-jqCOkK UAWwl"
         >
           <div
-            className="sc-iSDuPN hBCmft"
+            className="sc-hqyNC krrnQV"
           >
-            <div
-              className="sc-fZwumE dUYlMA"
-              title="John Doe"
-            >
-              John
-               
-              Doe
-            </div>
-            <div
-              className="sc-fQejPQ bddAfp sc-ifAKCX yXyBY"
-              color="#FBC23C"
-              size={16}
-              title="Admin"
-            />
-            <div
-              className="sc-fQejPQ bddAfp sc-ifAKCX dXYvlK"
-              color="#DF5353"
-              size={16}
-              title="User has not logged in yet"
-            />
+            Email
           </div>
           <div
-            className="sc-clNaTc gKjGRp"
-            title="John.Doe@gmail.com"
+            className="sc-jbKcbu raMEC"
           >
-            John.Doe@gmail.com
+            jason.grafinger@giantmachines.com
           </div>
         </div>
         <div
-          className="sc-etwtAo iYxBzD"
+          className="sc-jqCOkK UAWwl"
         >
           <div
-            className="sc-iBEsjs jujUTs"
+            className="sc-hqyNC krrnQV"
           >
-            <a
-              className="sc-fcdeBU ukgwy"
-              href="/admin/users/edit"
-              onClick={[Function]}
-            />
-            <a
-              className="sc-cooIXK dmcTsu"
-              href="/admin/users/delete"
-              onClick={[Function]}
-            />
+            Name
           </div>
+          <div
+            className="sc-jbKcbu raMEC"
+          >
+            Jason Grafinger
+          </div>
+        </div>
+        <div
+          className="sc-kvZOFW klhARx"
+        >
+          <a
+            className="sc-chPdSV bodfgA"
+            href="/settings/update-password"
+            onClick={[Function]}
+            width={147}
+          >
+            Change Password
+          </a>
         </div>
       </div>
     </div>
@@ -168,7 +165,7 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
               }
             }
           >
-            Admin Components/UserCard
+            Components/AccountSettings
           </h1>
           <h2
             style={
@@ -218,7 +215,7 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
                     }
                   >
                     &lt;
-                    styled.div
+                    div
                   </span>
                   <span>
                     <span>
@@ -226,7 +223,7 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
                       <span
                         style={Object {}}
                       >
-                        withBorder
+                        style
                       </span>
                       <span>
                         =
@@ -237,11 +234,34 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
                           <span
                             style={
                               Object {
-                                "color": "#a11",
+                                "color": "#666",
                               }
                             }
                           >
-                            false
+                            {
+                            <span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                margin
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              '30px'
+                            </span>
+                            }
                           </span>
                           }
                         </span>
@@ -275,7 +295,7 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
                     }
                   >
                     &lt;
-                    UserCard
+                    AccountSettings
                   </span>
                   <span>
                     <span>
@@ -283,120 +303,25 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
                       <span
                         style={Object {}}
                       >
-                        user
+                        email
                       </span>
                       <span>
                         =
                         <span
                           style={Object {}}
                         >
-                          {
+                          "
                           <span
                             style={
                               Object {
-                                "color": "#666",
+                                "color": "#22a",
+                                "wordBreak": "break-word",
                               }
                             }
                           >
-                            {
-                            <span>
-                              <span>
-                                <br />
-                                  
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                created
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              '2018-10-26T14:02:10.964Z'
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                  
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                email
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              'John.Doe@gmail.com'
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                  
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                enabled
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#a11",
-                                }
-                              }
-                            >
-                              true
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                  
-                                  
-                              </span>
-                              …
-                            </span>
-                            <span>
-                              <br />
-                                
-                            </span>
-                            }
+                            jason.grafinger@giantmachines.com
                           </span>
-                          }
+                          "
                         </span>
                       </span>
                     </span>
@@ -405,24 +330,25 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
                       <span
                         style={Object {}}
                       >
-                        ctas
+                        name
                       </span>
                       <span>
                         =
                         <span
                           style={Object {}}
                         >
-                          {
+                          "
                           <span
                             style={
                               Object {
-                                "color": "#666",
+                                "color": "#22a",
+                                "wordBreak": "break-word",
                               }
                             }
                           >
-                            &lt;styled.div /&gt;
+                            Jason Grafinger
                           </span>
-                          }
+                          "
                         </span>
                       </span>
                        
@@ -454,7 +380,7 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
                     }
                   >
                     &lt;/
-                    styled.div
+                    div
                     &gt;
                   </span>
                 </div>
@@ -505,23 +431,7 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
               }
             >
               "
-              UserCard
-              " Component
-            </h2>
-            <small>
-              No propTypes defined!
-            </small>
-          </div>
-          <div>
-            <h2
-              style={
-                Object {
-                  "margin": "20px 0 0 0",
-                }
-              }
-            >
-              "
-              styled.div
+              AccountSettings
               " Component
             </h2>
             <small>

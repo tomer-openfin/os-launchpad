@@ -11,33 +11,33 @@ exports[`Storyshots Components/LayoutsUserActions default 1`] = `
     }
   >
     <div
-      className="sc-eLExRp dPQhBZ"
+      className="sc-bnXvFD gMiSEE"
     >
       <div
-        className="sc-lkqHmb jCuUdu"
+        className="sc-dymIpo eLZnOx"
       >
         <div
-          className="sc-bXGyLb cFasdA sc-ifAKCX fdgCee"
+          className="sc-cpmLhU iONBMS sc-ifAKCX fdgCee"
           color="#E7E7E7"
           size={24}
         />
         <form
-          className="sc-daURTG bZefaW"
+          className="sc-emmjRN kcfdwP"
           onSubmit={[Function]}
         >
           <input
-            className="sc-gojNiO yFktJ"
+            className="sc-eerKOB bxRjBx"
             onChange={[Function]}
             placeholder="Layout Name"
             required={true}
             type="text"
           />
           <button
-            className="sc-cQFLBn dDMKgN"
+            className="sc-eilVRo fCuZAh"
             type="submit"
           >
             <div
-              className="sc-bAeIUo chQANV sc-ifAKCX bvrXxy"
+              className="sc-fYiAbW flVlvF sc-ifAKCX bvrXxy"
               color="#E7E7E7"
               onClick={[Function]}
               size={14}
