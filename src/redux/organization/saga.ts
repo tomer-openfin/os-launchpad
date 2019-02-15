@@ -14,37 +14,20 @@ import {
   getOrgSettingsSuccess,
   SAVE_ADMIN_ORG_SETTINGS,
   SAVE_ORG_ACTIVE_THEME_ID,
-  SAVE_ORG_AUTO_LOGIN,
-  SAVE_ORG_LOGO,
+  SAVE_ORG_IMAGE,
   saveAdminOrgSettingsError,
   saveAdminOrgSettingsRequest,
   saveAdminOrgSettingsSuccess,
 } from './actions';
 import { getOrganizationSettings } from './selectors';
-import { SaveAdminOrgSettingsRequest, SaveOrgActiveThemeId, SaveOrgAutoLogin, SaveOrgLogo } from './types';
+import { SaveAdminOrgSettingsRequest, SaveOrgActiveThemeId, SaveOrgImage } from './types';
 
-function* watchSaveOrgAutoLogin(action: SaveOrgAutoLogin) {
+function* watchSaveOrgImage(action: SaveOrgImage) {
   const orgSettings = yield select(getOrganizationSettings);
 
-  const autoLogin = action.payload;
+  const newOrgSettings = { ...orgSettings, ...action.payload };
 
-  if (typeof autoLogin !== 'boolean') return;
-
-  orgSettings.autoLogin = autoLogin;
-
-  yield put(saveAdminOrgSettingsRequest(orgSettings, action.meta));
-}
-
-function* watchSaveOrgLogo(action: SaveOrgLogo) {
-  const orgSettings = yield select(getOrganizationSettings);
-
-  const logo = action.payload;
-
-  if (!logo) return;
-
-  orgSettings.logo = logo;
-
-  yield put(saveAdminOrgSettingsRequest(orgSettings, action.meta));
+  yield put(saveAdminOrgSettingsRequest(newOrgSettings, action.meta));
 }
 
 function* watchSaveOrgActiveThemeId(action: SaveOrgActiveThemeId) {
@@ -87,7 +70,7 @@ function* watchSaveAdminOrgSettingsRequest(action: SaveAdminOrgSettingsRequest) 
   const response = yield call(ApiService.saveAdminOrgSettings, orgSettings);
 
   if (response.status === ResponseStatus.SUCCESS) {
-    yield put(saveAdminOrgSettingsSuccess(orgSettings, action.meta));
+    yield put(saveAdminOrgSettingsSuccess(response, action.meta));
   } else {
     yield put(saveAdminOrgSettingsError(response, action.meta));
   }
@@ -115,8 +98,7 @@ function* watchRequestSuccess(action) {
 }
 
 export function* organizationSaga() {
-  yield takeLatest(SAVE_ORG_AUTO_LOGIN, watchSaveOrgAutoLogin);
-  yield takeLatest(SAVE_ORG_LOGO, watchSaveOrgLogo);
+  yield takeLatest(SAVE_ORG_IMAGE, watchSaveOrgImage);
   yield takeLatest(SAVE_ORG_ACTIVE_THEME_ID, watchSaveOrgActiveThemeId);
 
   yield takeLatest(GET_ORG_SETTINGS.REQUEST, watchGetOrgSettingsRequest);

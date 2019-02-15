@@ -1,9 +1,9 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import * as EditIcon from '../../assets/Edit.svg';
 import * as TrashIcon from '../../assets/Trash.svg';
 
-import { Link } from 'react-router-dom';
 import { Color } from '../../styles';
 import { TypeStyleCanopus, TypeStyleEnif } from '../../styles/typography.css';
 

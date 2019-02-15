@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Yup from 'yup';
 
-import { MetaWithCallbacks, PushRoute, RequestFormSubmit, User } from '../../types/commons';
+import { DispatchRequest, MetaWithCallbacks, PushRoute, User } from '../../types/commons';
 
 import { createPushRouteHandler } from '../../utils/routeHelpers';
 import { ROUTES } from '../Router/consts';
@@ -11,14 +11,14 @@ import UserForm, { baseSchema } from '../UserForm';
 
 interface Props {
   onEscDown: () => void;
-  updateUser: RequestFormSubmit<User>;
+  updateUser: DispatchRequest<User>;
   user: User;
   pushRoute: PushRoute;
 }
 
 const parsePhoneWithCountryCode = (phoneNumber: string) => phoneNumber.substr(phoneNumber.length - 10);
 
-const createUserSubmitHandler = (submitUser: RequestFormSubmit<User>): RequestFormSubmit<User> => (formData: User, meta: MetaWithCallbacks) => {
+const createUserSubmitHandler = (submitUser: DispatchRequest<User>): DispatchRequest<User> => (formData: User, meta: MetaWithCallbacks) => {
   // default to +1 for country code for now
   const payload: User = { ...formData, phone: `+1${formData.phone}` };
 
@@ -44,7 +44,7 @@ const EditUserForm = ({ user, pushRoute, updateUser }: Props) => {
         username,
       }}
       errorMessage={`There was an error trying to update ${firstName} ${lastName}`}
-      form={UserForm}
+      render={UserForm}
       handleDeleteIconClick={createPushRouteHandler(pushRoute, ROUTES.ADMIN_USERS_DELETE, user)}
       headingText={`${firstName} ${lastName}`}
       onSubmitSuccess={createPushRouteHandler(pushRoute, ROUTES.ADMIN_USERS)}

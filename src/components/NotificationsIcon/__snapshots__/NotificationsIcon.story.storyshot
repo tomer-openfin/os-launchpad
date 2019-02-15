@@ -11,7 +11,7 @@ exports[`Storyshots Components/NotificationsIcon default 1`] = `
     }
   >
     <div
-      className="sc-VJcYb dUuCRB"
+      className="sc-kxynE jVQPdg"
     >
       <div
         className="sc-ifAKCX bYrsMz"
@@ -21,7 +21,7 @@ exports[`Storyshots Components/NotificationsIcon default 1`] = `
         size="42px"
       />
       <div
-        className="sc-fONwsr jmwonR"
+        className="sc-chbbiW brZVhY"
       >
         23
       </div>

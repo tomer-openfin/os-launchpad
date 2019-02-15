@@ -18,17 +18,17 @@ exports[`Storyshots UI Components/Loading default 1`] = `
       }
     >
       <div
-        className="sc-brqgnP dYhORn"
+        className="sc-kgAjT hhCAOm"
         size={30}
       >
         <div
-          className="sc-jWBwVP ijeZKH"
+          className="sc-TOsTZ czmRTl"
         />
         <div
-          className="sc-jWBwVP iDgXQR"
+          className="sc-TOsTZ bGjekv"
         />
         <div
-          className="sc-jWBwVP hMoVUu"
+          className="sc-TOsTZ bOuOF"
         />
       </div>
     </div>

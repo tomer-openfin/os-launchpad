@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Color } from '../../styles';
+import { Color } from '../../styles/index';
 import { TypeStyleCanopus } from '../../styles/typography.css';
 
 interface WrapperProps {
@@ -23,14 +23,12 @@ export const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 10px;
-  max-width: 180px;
 `;
 
 export const Placeholder = styled.div`
   ${TypeStyleCanopus}
 
   color: ${Color.SUN};
-  opacity: 0.5;
   margin: auto;
 `;
 

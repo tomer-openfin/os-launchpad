@@ -11,37 +11,37 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
     }
   >
     <div
-      className="sc-iqzUVk kdUUEW"
+      className="sc-iSDuPN OccOe"
     >
       <div
-        className="sc-cJSrbW dfwDCx"
+        className="sc-cmTdod hSnYdr"
       >
         <div
-          className="sc-ksYbfQ dHCrgt"
+          className="sc-jwKygS ktOnU"
         >
           <div
-            className="sc-esjQYD kuAbWu"
+            className="sc-hORach PhuPi"
           >
             Create App
           </div>
         </div>
       </div>
       <form
-        className="sc-jAaTju dWHaul"
+        className="sc-ksYbfQ eCIUEJ"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <div
-          className="sc-jDwBTQ enLvbe"
+          className="sc-hmzhuo dudMzh"
         >
           <div
-            className="sc-gPEVay brQUiw"
+            className="sc-frDJqD cnrcjF"
           >
             <div
-              className="sc-ipZHIp lcGlDb"
+              className="sc-fZwumE dThwLl"
             >
               <label
-                className="sc-eInJlc bSgOGy sc-dxgOiQ gXepeX"
+                className="sc-eIHaNI bRgSfC sc-dxgOiQ nGBmb"
               >
                 <div
                   className="sc-kpOJdX gglwGS"
@@ -49,39 +49,41 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
                   Config Type
                 </div>
                 <input
+                  checked={false}
                   name="withAppUrl"
                   onBlur={[Function]}
                   onChange={[Function]}
                   type="checkbox"
                 />
                 <div
-                  className="sc-hzDEsm iNmoDR"
+                  className="sc-iomxrj bVVoaE"
                 >
                   <div
-                    className="sc-fOICqy crsOVY"
+                    checked={false}
+                    className="sc-dxZgTM dtSGHp"
                   />
                   <div
-                    className="sc-gtfDJT eqGOCf"
+                    className="sc-eTpRJs hnMDRZ"
                   >
                     App URL
                   </div>
                 </div>
                 <div
-                  className="sc-hzDEsm iNmoDR"
+                  className="sc-iomxrj bVVoaE"
                 >
                   <div
                     checked={true}
-                    className="sc-fOICqy aJVLE"
+                    className="sc-dxZgTM hMrRhG"
                   />
                   <div
-                    className="sc-gtfDJT eqGOCf"
+                    className="sc-eTpRJs hnMDRZ"
                   >
                     Manifest
                   </div>
                 </div>
               </label>
               <label
-                className="sc-dxgOiQ gXepeX"
+                className="sc-dxgOiQ nGBmb"
               >
                 <div
                   className="sc-kpOJdX gglwGS"
@@ -98,7 +100,7 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
               </label>
             </div>
             <label
-              className="sc-dxgOiQ gXepeX"
+              className="sc-dxgOiQ nGBmb"
             >
               <div
                 className="sc-kpOJdX gglwGS"
@@ -114,11 +116,48 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
               />
             </label>
             <div
-              className="sc-ipZHIp dawCzW"
-              height="99px"
+              className="sc-fZwumE hTxNDk"
+              height="144px"
             >
               <label
-                className="sc-dxgOiQ gXepeX"
+                className="sc-dxgOiQ cLuaXs"
+              >
+                <div
+                  className="sc-kpOJdX gglwGS"
+                >
+                  App Shortcut
+                </div>
+                <div
+                  className="sc-gVyKpa fuPqpH"
+                >
+                  <div
+                    className="sc-gipzik jmhvsi"
+                    size={68}
+                  >
+                    <div
+                      className="sc-csuQGl iZpyJe"
+                      size={68}
+                    />
+                  </div>
+                  <div
+                    className="sc-eXNvrr dNnfVw"
+                  >
+                    <div
+                      className="sc-cpmKsF dEwszT"
+                    >
+                      64x64
+                    </div>
+                    <div
+                      className="sc-ifAKCX hwskBS"
+                      color="#E7E7E7"
+                      onClick={[Function]}
+                      size={20}
+                    />
+                  </div>
+                </div>
+              </label>
+              <label
+                className="sc-dxgOiQ nGBmb"
               >
                 <div
                   className="sc-kpOJdX gglwGS"
@@ -133,30 +172,14 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
                   type="text"
                 />
               </label>
-              <label
-                className="sc-dxgOiQ gXepeX"
-              >
-                <div
-                  className="sc-kpOJdX gglwGS"
-                >
-                  App Icon URL
-                </div>
-                <input
-                  name="icon"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  placeholder="Enter app icon url"
-                  type="text"
-                />
-              </label>
             </div>
           </div>
         </div>
         <div
-          className="sc-jlyJG jVJtUg"
+          className="sc-hqyNC hXSrbm"
         >
           <div
-            className="sc-iRbamj bgBAAd"
+            className="sc-kvZOFW jextin"
           >
             <button
               className="sc-kAzzGY jjQyJb"
@@ -180,21 +203,21 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
         </div>
       </form>
       <div
-        className="sc-iGrrsa fcrYKK"
+        className="sc-fQejPQ jIQuHb"
       >
         <div
-          className="sc-gipzik ViaaU"
+          className="sc-jbKcbu fUfPqM"
         >
           <div
-            className="sc-csuQGl fLVrAF"
+            className="sc-dNLxif jctmEa"
           >
             <div
-              className="sc-Rmtcm kzqGEm"
+              className="sc-jqCOkK kpsuvn"
             >
               Failed to create:  Please try again.
             </div>
             <div
-              className="sc-bRBYWo btlHSU sc-ifAKCX xmkOg"
+              className="sc-uJMKN grZbwL sc-ifAKCX xmkOg"
               color="#E7E7E7"
               onClick={[Function]}
               size={25}
@@ -391,7 +414,7 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      form
+                      component
                     </span>
                     <span>
                       =
@@ -407,6 +430,35 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
                           }
                         >
                           AppForm
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      render
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#444",
+                            }
+                          }
+                        >
+                          null
                         </span>
                         }
                       </span>

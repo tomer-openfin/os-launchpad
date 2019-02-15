@@ -22,6 +22,22 @@ export const memoizeSort = <T>(sortFn: SortFn<T>): SortFn<T> => {
   };
 };
 
+export const memoizeSingleArg = fn => {
+  const cache = {};
+
+  return arg => {
+    const cachedValue = cache[arg];
+
+    if (cachedValue) return cachedValue;
+
+    const result = fn(arg);
+
+    cache[arg] = result;
+
+    return result;
+  };
+};
+
 export const memoizeOneFirstArg = fn => {
   let prevArg;
   let value;

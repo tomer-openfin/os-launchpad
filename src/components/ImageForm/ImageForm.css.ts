@@ -6,12 +6,11 @@ export const Label = styled.label`
   display: flex;
 `;
 
-export const ButtonsWrapper = styled.div`
+export const CTAWrapper = styled.div`
   display: flex;
-  flex-direction: column;
   height: 100%;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
 `;
 
 export const StyledForm = styled(Form)`

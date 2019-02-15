@@ -1,28 +1,25 @@
 import * as React from 'react';
 
-import Borders from '../Borders';
-import { ButtonLink } from '../Button';
-import { Copy, CopyWrapper, Heading, HeadingText } from '../ConfirmUserDelete/ConfirmDelete.css';
 import { ROUTES } from '../Router/consts';
-import { ButtonWrapper, Wrapper } from './ConfirmPasswordUpdate.css';
+import { Wrapper } from './ConfirmPasswordUpdate.css';
+
+import AdminConfirmationView from '../AdminConfirmation/AdminConfirmationView';
+import Borders from '../Borders';
+
+const confirmationText =
+  'Your password has been successfully updated. You are still logged in, but will need to use your new password the next time you log in.';
 
 const ConfirmPasswordUpdate = () => {
   return (
     <Wrapper>
       <Borders height="100%" width="100%">
-        <Heading>
-          <HeadingText>Password Updated</HeadingText>
-        </Heading>
-
-        <CopyWrapper>
-          <Copy>Your password has been successfully updated. You are still logged in, but will need to use your new password the next time you log in.</Copy>
-        </CopyWrapper>
-
-        <ButtonWrapper>
-          <ButtonLink to={ROUTES.SETTINGS} width={153}>
-            Ok
-          </ButtonLink>
-        </ButtonWrapper>
+        <AdminConfirmationView
+          confirmationText={confirmationText}
+          confirmCtaText="Ok"
+          headingText="Password Updated"
+          withoutCancel
+          parentRoute={ROUTES.SETTINGS}
+        />
       </Borders>
     </Wrapper>
   );

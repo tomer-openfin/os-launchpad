@@ -8,8 +8,7 @@ import { CATEGORIES } from '../../utils/storyCategories';
 import ConfirmAppDelete from './ConfirmAppDelete';
 
 const deleteApp = action('deleteApp');
-const mockAppData = {
-  state: AppData[0],
-};
+const pushRoute = action('pushRoute');
+const app = AppData[0];
 
-storiesOf(`${CATEGORIES.ADMIN}ConfirmAppDelete`, module).add('default', () => <ConfirmAppDelete deleteApp={deleteApp} location={mockAppData} />);
+storiesOf(`${CATEGORIES.ADMIN}ConfirmAppDelete`, module).add('default', () => <ConfirmAppDelete app={app} deleteApp={deleteApp} pushRoute={pushRoute} />);

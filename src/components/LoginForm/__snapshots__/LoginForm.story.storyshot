@@ -18,19 +18,19 @@ exports[`Storyshots Components/LoginForm default 1`] = `
       }
     >
       <form
-        className="sc-CtfFt efFpcB"
+        className="sc-cqCuEk cqoivF"
         onSubmit={[Function]}
       >
         <label
-          className="sc-hSdWYo kuqdON"
+          className="sc-gisBJw foFoAm"
         >
           <div
-            className="sc-iAyFgw jiQmTY"
+            className="sc-caSCKo hbMfqb"
           >
             Email
           </div>
           <input
-            className="sc-kEYyzF jiGTdM"
+            className="sc-eqIVtm hIImKy"
             name="username"
             onBlur={[Function]}
             onChange={[Function]}
@@ -39,15 +39,15 @@ exports[`Storyshots Components/LoginForm default 1`] = `
           />
         </label>
         <label
-          className="sc-hSdWYo kuqdON"
+          className="sc-gisBJw foFoAm"
         >
           <div
-            className="sc-iAyFgw jiQmTY"
+            className="sc-caSCKo hbMfqb"
           >
             Password
           </div>
           <input
-            className="sc-kEYyzF jiGTdM"
+            className="sc-eqIVtm hIImKy"
             name="password"
             onBlur={[Function]}
             onChange={[Function]}
@@ -57,7 +57,7 @@ exports[`Storyshots Components/LoginForm default 1`] = `
           />
         </label>
         <div
-          className="sc-laTMn cqekcO"
+          className="sc-dliRfk kEjxie"
         >
           <button
             className="sc-kAzzGY ecXCJ"
@@ -65,7 +65,7 @@ exports[`Storyshots Components/LoginForm default 1`] = `
             Log In
           </button>
           <a
-            className="sc-cvbbAY cjpFsm"
+            className="sc-cHGsZl bsBcKO"
             href="/forgot-password"
             onClick={[Function]}
           >
@@ -755,19 +755,19 @@ exports[`Storyshots Components/LoginForm withFormik 1`] = `
       }
     >
       <form
-        className="sc-CtfFt efFpcB"
+        className="sc-cqCuEk cqoivF"
         onSubmit={[Function]}
       >
         <label
-          className="sc-hSdWYo kuqdON"
+          className="sc-gisBJw foFoAm"
         >
           <div
-            className="sc-iAyFgw jiQmTY"
+            className="sc-caSCKo hbMfqb"
           >
             Email
           </div>
           <input
-            className="sc-kEYyzF jiGTdM"
+            className="sc-eqIVtm hIImKy"
             name="username"
             onBlur={[Function]}
             onChange={[Function]}
@@ -776,15 +776,15 @@ exports[`Storyshots Components/LoginForm withFormik 1`] = `
           />
         </label>
         <label
-          className="sc-hSdWYo kuqdON"
+          className="sc-gisBJw foFoAm"
         >
           <div
-            className="sc-iAyFgw jiQmTY"
+            className="sc-caSCKo hbMfqb"
           >
             Password
           </div>
           <input
-            className="sc-kEYyzF jiGTdM"
+            className="sc-eqIVtm hIImKy"
             name="password"
             onBlur={[Function]}
             onChange={[Function]}
@@ -794,7 +794,7 @@ exports[`Storyshots Components/LoginForm withFormik 1`] = `
           />
         </label>
         <div
-          className="sc-laTMn cqekcO"
+          className="sc-dliRfk kEjxie"
         >
           <button
             className="sc-kAzzGY ecXCJ"
@@ -802,7 +802,7 @@ exports[`Storyshots Components/LoginForm withFormik 1`] = `
             Log In
           </button>
           <a
-            className="sc-cvbbAY cjpFsm"
+            className="sc-cHGsZl bsBcKO"
             href="/forgot-password"
             onClick={[Function]}
           >

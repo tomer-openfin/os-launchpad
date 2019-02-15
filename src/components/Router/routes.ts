@@ -1,12 +1,16 @@
 import * as React from 'react';
 
+import { ROUTES } from './consts';
+
 import Admin from '../Admin';
 import AdminApps from '../AdminApps';
+import AdminOrgImageUpload from '../AdminOrgImageUpload';
 import AdminUsers from '../AdminUsers';
 import App from '../App';
 import AppDirectory from '../AppDirectory';
 import AppOverflow from '../AppOverflow';
 import ConfirmAppDelete from '../ConfirmAppDelete';
+import ConfirmRevertImage from '../ConfirmRevertImage';
 import ConfirmUserDelete from '../ConfirmUserDelete';
 import ContextMenu from '../ContextMenu';
 import EditAppForm from '../EditAppForm';
@@ -22,8 +26,6 @@ import OrganizationSettings from '../OrganizationSettings';
 import Settings from '../Settings';
 import UpdatePasswordForm from '../UpdatePasswordForm';
 
-import { ROUTES } from './consts';
-
 export interface AppRoute {
   // tslint:disable:no-any
   Component: React.ComponentType<any>;
@@ -32,7 +34,7 @@ export interface AppRoute {
   children?: AppRoute[];
 }
 
-export const userRoutes: AppRoute[] = [
+export const adminUsersRoutes: AppRoute[] = [
   {
     Component: NewUserForm,
     exact: true,
@@ -50,7 +52,7 @@ export const userRoutes: AppRoute[] = [
   },
 ];
 
-export const appRoutes: AppRoute[] = [
+export const adminAppsRoutes: AppRoute[] = [
   {
     Component: NewAppForm,
     exact: true,
@@ -68,27 +70,41 @@ export const appRoutes: AppRoute[] = [
   },
 ];
 
+export const adminSettingsRoutes: AppRoute[] = [
+  {
+    Component: AdminOrgImageUpload,
+    exact: true,
+    path: ROUTES.ADMIN_SETTINGS_EDIT,
+  },
+  {
+    Component: ConfirmRevertImage,
+    exact: true,
+    path: ROUTES.ADMIN_SETTINGS_DELETE,
+  },
+];
+
 export const adminRoutes: AppRoute[] = [
   {
     Component: OrganizationSettings,
-    exact: true,
-    path: ROUTES.ADMIN,
+    children: adminSettingsRoutes,
+    exact: false,
+    path: ROUTES.ADMIN_SETTINGS,
   },
   {
     Component: AdminApps,
-    children: appRoutes,
+    children: adminAppsRoutes,
     exact: false,
     path: ROUTES.ADMIN_APPS,
   },
   {
     Component: AdminUsers,
-    children: userRoutes,
+    children: adminUsersRoutes,
     exact: false,
     path: ROUTES.ADMIN_USERS,
   },
 ];
 
-const settingRoutes: AppRoute[] = [
+const settingsRoutes: AppRoute[] = [
   {
     Component: UpdatePasswordForm,
     exact: true,
@@ -145,7 +161,7 @@ export const routes: AppRoute[] = [
   },
   {
     Component: Settings,
-    children: settingRoutes,
+    children: settingsRoutes,
     exact: false,
     path: ROUTES.SETTINGS,
   },

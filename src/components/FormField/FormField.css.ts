@@ -40,9 +40,9 @@ export const Label = styled.label<Props>`
     ${TypeStyleCanopus}
 
     padding: 7px 0 9px 9px;
-    margin-top: 5px;
     resize: none;
-    height: 75px;
+    margin-top: 10px;
+    height: -webkit-fill-available;
   }
 
   & > input:focus {

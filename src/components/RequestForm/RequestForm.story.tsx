@@ -23,7 +23,8 @@ storiesOf(`${CATEGORIES.ADMIN}RequestForm`, module)
     return (
       <RequestForm
         errorMessage={errorMessage}
-        form={form ? UserForm : AppForm}
+        component={form ? undefined : AppForm}
+        render={form ? UserForm : undefined}
         headingText={headingText}
         initialValues={{}}
         onSubmitSuccess={noop}

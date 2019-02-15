@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-import { Color } from '../../styles';
-import { TypeStyleArcturus, TypeStyleProcyon } from '../../styles/typography.css';
+import { Color, Typography } from '../../styles';
 
 export const Heading = styled.div`
   background-color: ${Color.KUIPER_BELT};
@@ -9,7 +8,7 @@ export const Heading = styled.div`
 `;
 
 export const HeadingText = styled.div`
-  ${TypeStyleProcyon}
+  ${Typography.TypeStyleProcyon}
 
   padding: 20px 0 18px 20px;
   color: ${Color.SUN};
@@ -30,28 +29,32 @@ export const ButtonWrapper = styled.div`
 
 export const CopyWrapper = styled.div`
   padding: 36px 19px 24px 20px;
+  width: 100%;
 `;
 
 export const Copy = styled.div`
-  ${TypeStyleArcturus}
+  ${Typography.TypeStyleArcturus}
 
   color: ${Color.SUN};
+  white-space: pre-wrap;
+  width: 100%;
 `;
 
-export const Error = styled.div`
+export const Error = styled.div<{ shown?: boolean }>`
   background-color: ${Color.MARS};
   color: ${Color.VACUUM};
   position: relative;
   font-size: 10px;
   height: auto;
+  display: ${({ shown }) => (shown ? 'block' : 'none')};
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ height?: string; width?: string }>`
   align-items: flex-start;
   background-color: ${Color.ASTEROID_BELT};
   display: flex;
   flex-direction: column;
-  min-height: 219px;
+  height: ${({ height }) => height || '219px'};
+  width: ${({ width }) => width || '420px'};
   justify-content: flex-start;
-  min-width: 420px;
 `;

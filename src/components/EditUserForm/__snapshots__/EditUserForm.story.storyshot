@@ -11,16 +11,16 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
     }
   >
     <div
-      className="sc-iqzUVk kdUUEW"
+      className="sc-iSDuPN OccOe"
     >
       <div
-        className="sc-cJSrbW dfwDCx"
+        className="sc-cmTdod hSnYdr"
       >
         <div
-          className="sc-ksYbfQ dHCrgt"
+          className="sc-jwKygS ktOnU"
         >
           <div
-            className="sc-esjQYD kuAbWu"
+            className="sc-hORach PhuPi"
           >
             John Doe
           </div>
@@ -33,21 +33,21 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
         </div>
       </div>
       <form
-        className="sc-jAaTju dWHaul"
+        className="sc-ksYbfQ eCIUEJ"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <div
-          className="sc-jDwBTQ enLvbe"
+          className="sc-hmzhuo dudMzh"
         >
           <div
-            className="sc-gPEVay brQUiw"
+            className="sc-frDJqD cnrcjF"
           >
             <div
-              className="sc-ipZHIp byTgkp"
+              className="sc-fZwumE bohSgq"
             >
               <label
-                className="sc-dxgOiQ gXepeX"
+                className="sc-dxgOiQ nGBmb"
               >
                 <div
                   className="sc-kpOJdX gglwGS"
@@ -64,7 +64,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
                 />
               </label>
               <label
-                className="sc-dxgOiQ gXepeX"
+                className="sc-dxgOiQ nGBmb"
               >
                 <div
                   className="sc-kpOJdX gglwGS"
@@ -81,7 +81,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
               </label>
             </div>
             <label
-              className="sc-dxgOiQ gXepeX"
+              className="sc-dxgOiQ nGBmb"
             >
               <div
                 className="sc-kpOJdX gglwGS"
@@ -98,7 +98,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
               />
             </label>
             <label
-              className="sc-dxgOiQ gXepeX"
+              className="sc-dxgOiQ nGBmb"
             >
               <div
                 className="sc-kpOJdX gglwGS"
@@ -116,7 +116,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
               />
             </label>
             <label
-              className="sc-dxgOiQ gXepeX"
+              className="sc-dxgOiQ nGBmb"
             >
               <div
                 className="sc-kpOJdX gglwGS"
@@ -136,10 +136,10 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
           </div>
         </div>
         <div
-          className="sc-jlyJG jVJtUg"
+          className="sc-hqyNC hXSrbm"
         >
           <div
-            className="sc-iRbamj bgBAAd"
+            className="sc-kvZOFW jextin"
           >
             <button
               className="sc-kAzzGY jjQyJb"
@@ -163,21 +163,21 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
         </div>
       </form>
       <div
-        className="sc-iGrrsa fcrYKK"
+        className="sc-fQejPQ jIQuHb"
       >
         <div
-          className="sc-gipzik ViaaU"
+          className="sc-jbKcbu fUfPqM"
         >
           <div
-            className="sc-csuQGl fLVrAF"
+            className="sc-dNLxif jctmEa"
           >
             <div
-              className="sc-Rmtcm kzqGEm"
+              className="sc-jqCOkK kpsuvn"
             >
               There was an error trying to update John Doe:  Please try again.
             </div>
             <div
-              className="sc-bRBYWo btlHSU sc-ifAKCX xmkOg"
+              className="sc-uJMKN grZbwL sc-ifAKCX xmkOg"
               color="#E7E7E7"
               onClick={[Function]}
               size={25}

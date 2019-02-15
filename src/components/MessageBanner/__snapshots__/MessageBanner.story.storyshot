@@ -11,21 +11,21 @@ exports[`Storyshots UI Components/MessageBanner default 1`] = `
     }
   >
     <div
-      className="sc-hzDkRC datVjy"
+      className="sc-bbmXgH gIDzkq"
     >
       <div
-        className="sc-gipzik ViaaU"
+        className="sc-jbKcbu fUfPqM"
       >
         <div
-          className="sc-csuQGl idcXDG"
+          className="sc-dNLxif gmDBSE"
         >
           <div
-            className="sc-Rmtcm kzqGEm"
+            className="sc-jqCOkK kpsuvn"
           >
             Failed to create
           </div>
           <div
-            className="sc-bRBYWo btlHSU sc-ifAKCX xmkOg"
+            className="sc-uJMKN grZbwL sc-ifAKCX xmkOg"
             color="#E7E7E7"
             onClick={[Function]}
             size={25}

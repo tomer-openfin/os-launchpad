@@ -19,10 +19,14 @@ import {
 import { GET_AND_SET_MONITOR_INFO, getAndSetMonitorInfoRequest } from '../system';
 import { State } from '../types';
 import { getWindowBounds } from '../windows';
-import { setRuntimeVersion } from './actions';
+import { GET_MANIFEST, getManifestRequest, setRuntimeVersion } from './actions';
 
 export function* initMonitorInfo() {
   yield all([take([GET_AND_SET_MONITOR_INFO.SUCCESS, GET_AND_SET_MONITOR_INFO.ERROR]), put(getAndSetMonitorInfoRequest())]);
+}
+
+export function* initManifest() {
+  yield all([take([GET_MANIFEST.SUCCESS, GET_MANIFEST.ERROR]), put(getManifestRequest())]);
 }
 
 export function* initOrgSettings() {

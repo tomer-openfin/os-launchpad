@@ -128,6 +128,6 @@ export interface XYCoord {
 }
 
 /* tslint:disable-next-line:no-any */
-export type RequestFormSubmit<T = any> = (payload: T, meta: MetaWithCallbacks, actions?) => void;
+export type DispatchRequest<T = any> = (payload: T, meta: MetaWithCallbacks, actions?) => void;
 
 export type PushRoute = RouteComponentProps['history']['push'];

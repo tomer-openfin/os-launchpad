@@ -7,4 +7,6 @@ import { CATEGORIES } from '../../utils/storyCategories';
 
 import AppForm from './AppForm';
 
-storiesOf(`${CATEGORIES.ADMIN}AppForm`, module).add('default', () => <Formik initialValues={{}} onSubmit={noop} validateOnChange={false} render={AppForm} />);
+storiesOf(`${CATEGORIES.ADMIN}AppForm`, module).add('default', () => (
+  <Formik initialValues={{}} onSubmit={noop} validateOnChange={false} component={AppForm} />
+));

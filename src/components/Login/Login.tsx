@@ -1,11 +1,13 @@
 import * as React from 'react';
 
 import { LoginErrorPayload } from '../../redux/me/types';
+
 import Borders from '../Borders';
 import ChangePasswordForm from '../ChangePasswordForm';
 import LoginForm from '../LoginForm';
+import Logo from '../Logo';
 import WindowHeader from '../WindowHeader';
-import { ContentWrapper, FormWrapper, ResponseMessage, StyledLogo, Wrapper } from './Login.css';
+import { ContentWrapper, FormWrapper, LogoWrapper, ResponseMessage, Wrapper } from './Login.css';
 
 export enum Stage {
   ChangePassword = 'changePassword',
@@ -38,7 +40,9 @@ export const LoginView = (props: ViewProps) => {
         <WindowHeader handleClose={closeApplication}>Log In</WindowHeader>
 
         <ContentWrapper>
-          <StyledLogo size={90} />
+          <LogoWrapper>
+            <Logo orgImageKey="loginLogo" size={90} />
+          </LogoWrapper>
 
           <FormWrapper>
             {stage === Stage.ChangePassword ? (

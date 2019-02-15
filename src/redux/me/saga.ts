@@ -9,7 +9,7 @@ import eraseCookie from '../../utils/eraseCookie';
 
 import { LOGIN_WINDOW } from '../../config/windows';
 import { getAdminAppsRequest, getAdminUsersRequest } from '../admin';
-import { initResources, launchAppLauncher, reboundLauncherRequest } from '../application';
+import { getManifestOverrideRequest, initResources, launchAppLauncher, reboundLauncherRequest } from '../application';
 import { getAdminOrgSettingsRequest } from '../organization';
 import {
   ADD_TO_APP_LAUNCHER,
@@ -146,7 +146,7 @@ function* watchLoginSuccess(action: LoginSuccess) {
   yield put(setMe(payload));
 
   if (payload.isAdmin) {
-    yield all([put(getAdminAppsRequest()), put(getAdminUsersRequest()), put(getAdminOrgSettingsRequest())]);
+    yield all([put(getAdminAppsRequest()), put(getAdminUsersRequest()), put(getAdminOrgSettingsRequest()), put(getManifestOverrideRequest())]);
   }
 
   yield call(initResources);

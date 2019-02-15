@@ -11,7 +11,7 @@ exports[`Storyshots UI Components/Input default 1`] = `
     }
   >
     <input
-      className="sc-kEYyzF jiGTdM"
+      className="sc-eqIVtm hIImKy"
       placeholder="Placeholder"
       type="text"
     />

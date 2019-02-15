@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Admin Components/LogoForm default 1`] = `
+exports[`Storyshots UI Components/ImagePreview default 1`] = `
 <div>
   <div
     style={
@@ -10,72 +10,15 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
       }
     }
   >
-    <form
-      className="sc-bGbJRg fJgsMp"
-      onReset={[Function]}
-      onSubmit={[Function]}
+    <div
+      className="sc-gipzik jWcnYj"
+      size={100}
     >
-      <label
-        className="sc-jeCdPy bfaOji"
-        htmlFor="LogoFormFileInput"
-      >
-        <div
-          className="sc-drMfKT jUDCvR"
-        >
-          <div
-            className="sc-eKZiaR MkjUC"
-          >
-            <div
-              className="sc-cMljjf kwWUoq"
-              size={80}
-            />
-          </div>
-          <div
-            className="sc-ePZHVD dMians"
-          >
-            <div
-              className="sc-likbZx gFshbR"
-            >
-              Click & drag a new image over the existing one to replace your brand logo.
-            </div>
-            <input
-              accept="image/*"
-              className="sc-bEjcJn hdpSAM"
-              id="LogoFormFileInput"
-              name="logo"
-              onBlur={[Function]}
-              onChange={[Function]}
-              onDragEnter={[Function]}
-              onDragLeave={[Function]}
-              onDrop={[Function]}
-              type="file"
-              value=""
-            />
-          </div>
-        </div>
-      </label>
       <div
-        className="sc-jtRlXQ dMQiFu"
-      >
-        <button
-          className="sc-kAzzGY ecXCJ"
-          disabled={true}
-          type="submit"
-          width={110}
-        >
-          Overwrite
-        </button>
-        <button
-          className="sc-kAzzGY fgYJxE"
-          disabled={true}
-          onClick={[Function]}
-          type="button"
-          width={110}
-        >
-          Reset
-        </button>
-      </div>
-    </form>
+        className="sc-csuQGl dCLGmP"
+        size={100}
+      />
+    </div>
   </div>
   <button
     onClick={[Function]}
@@ -174,7 +117,7 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
               }
             }
           >
-            Admin Components/LogoForm
+            UI Components/ImagePreview
           </h1>
           <h2
             style={
@@ -223,7 +166,7 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
                   }
                 >
                   &lt;
-                  LogoForm
+                  ImagePreview
                 </span>
                 <span>
                   <span>
@@ -231,7 +174,33 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      logo
+                      size
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#a11",
+                            }
+                          }
+                        >
+                          100
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      imgSrc
                     </span>
                     <span>
                       =
@@ -247,61 +216,9 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
                             }
                           }
                         >
-                          https://github.githubassets.com/images/modules/log…
+                          https://github.githubassets.com/images/spinners/oc…
                         </span>
                         "
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      saveLogo
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          saveOrgLogo
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      setLogo
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          setOrgLogo
-                        </span>
-                        }
                       </span>
                     </span>
                      
@@ -363,7 +280,7 @@ exports[`Storyshots Admin Components/LogoForm default 1`] = `
               }
             >
               "
-              LogoForm
+              ImagePreview
               " Component
             </h2>
             <small>

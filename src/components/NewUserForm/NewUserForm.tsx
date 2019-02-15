@@ -69,7 +69,7 @@ class NewUserForm extends React.Component<Props, State> {
       <RequestForm
         initialValues={emptyUser}
         errorMessage="There was an error trying to create this user"
-        form={this.renderForm}
+        render={this.renderForm}
         headingText="Create New User"
         onSubmitSuccess={createPushRouteHandler(pushRoute, ROUTES.ADMIN_USERS)}
         submit={this.handleFormSubmit}

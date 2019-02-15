@@ -12,9 +12,12 @@ import { setupWindow } from '../../utils/setupWindow';
 import takeFirst from '../../utils/takeFirst';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { registerGlobalDevHotKeys, registerGlobalHotkeys } from '../globalHotkeys/utils';
-import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
-import { animateLauncherCollapseExpand, initMonitorInfo, initOrgSettings, initResources, initRuntimeVersion } from './utils';
+import { GetManifestOverrideRequestAction, OpenfinReadyAction, ReboundLauncherRequestAction, UpdateManifestOverrideRequestAction } from './types';
+import { animateLauncherCollapseExpand, initManifest, initMonitorInfo, initOrgSettings, initResources, initRuntimeVersion } from './utils';
 
+import ApiService from '../../services/ApiService/index';
+import { ResponseStatus } from '../../types/enums';
+import { updateManifestOverride } from '../../utils/manifestOverride';
 import { getAppDirectoryListRequest } from '../apps';
 import { getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig } from '../me';
 import { getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings } from '../selectors';
@@ -25,6 +28,12 @@ import {
   COLLAPSE_APP,
   EXIT_APPLICATION,
   EXPAND_APP,
+  GET_MANIFEST,
+  GET_MANIFEST_OVERRIDE,
+  getManifestError,
+  getManifestOverrideError,
+  getManifestOverrideSuccess,
+  getManifestSuccess,
   INIT_DEV_TOOLS,
   initDevTools,
   LAUNCH_APP_LAUNCHER,
@@ -36,8 +45,11 @@ import {
   reboundLauncherSuccess,
   setIsEnterprise,
   setIsExpanded,
+  UPDATE_MANIFEST_OVERRIDE,
+  updateManifestOverrideError,
+  updateManifestOverrideSuccess,
 } from './actions';
-import { getApplicationIsExpanded } from './selectors';
+import { getApplicationIsExpanded, getManifestOverride } from './selectors';
 
 const APP_UUID = getAppUuid();
 const ANIMATION_DURATION = 300;
@@ -82,15 +94,19 @@ function* openfinSetup(action: OpenfinReadyAction) {
   // Only main window should be doing setup.
   if (finName === APP_UUID) {
     eraseCookie();
+
     if (isDevelopmentEnv()) {
       yield put(initDevTools());
     }
 
     yield put(Window.hideWindow({ id: finName }));
+
     yield all([
       call(initOrgSettings),
       call(initMonitorInfo),
       call(initRuntimeVersion),
+      call(initManifest),
+
       call(setupSystemHandlers, window.fin, window.store || window.opener.store),
     ]);
 
@@ -222,6 +238,65 @@ function* watchReboundLauncherRequest(action: ReboundLauncherRequestAction) {
   yield put(reboundLauncherSuccess());
 }
 
+function* watchGetManifestRequest() {
+  const { fin } = window;
+
+  if (!fin) return;
+
+  const successCb = manifest => window.store.dispatch(getManifestSuccess(manifest));
+
+  const errorCb = err => window.store.dispatch(getManifestError(err));
+
+  fin.desktop.Application.getCurrent().getManifest(successCb, errorCb);
+}
+
+function* watchGetManifestOverrideRequest() {
+  const response = yield call(ApiService.getAdminManifestOverrides);
+
+  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
+    yield put(getManifestOverrideError(response));
+  } else {
+    yield put(getManifestOverrideSuccess(response));
+  }
+}
+
+function* watchUpdateManifestOverrideRequest(action: UpdateManifestOverrideRequestAction) {
+  const overrideUpdates = action.payload;
+
+  if (!overrideUpdates) return;
+
+  const manifestOverride = yield select(getManifestOverride);
+
+  const updatedManifestOverride = Object.keys(overrideUpdates).reduce((acc, key) => updateManifestOverride(acc, key, overrideUpdates[key]), manifestOverride);
+
+  const response = yield call(ApiService.saveAdminManifestOverrides, updatedManifestOverride);
+
+  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
+    yield put(updateManifestOverrideError(response));
+  } else {
+    yield put(updateManifestOverrideSuccess(updatedManifestOverride, action.meta));
+  }
+}
+
+function* watchRequestError(action) {
+  const error = action.payload;
+
+  const errorMessage = error ? error.message || error : 'Unknown Error';
+
+  // tslint:disable-next-line:no-console
+  console.error('Error on', action.type, ':', errorMessage, '\n');
+
+  if (action.meta && action.meta.errorCb) {
+    action.meta.errorCb(errorMessage);
+  }
+}
+
+function* watchRequestSuccess(action) {
+  if (action.meta && action.meta.successCb) {
+    action.meta.successCb();
+  }
+}
+
 export function* applicationSaga() {
   yield takeEvery(APPLICATION_STARTED, applicationStart);
   yield takeEvery(EXIT_APPLICATION, watchExitApplication);
@@ -230,5 +305,17 @@ export function* applicationSaga() {
   yield takeEvery(OPENFIN_READY, openfinSetup);
   yield takeFirst(COLLAPSE_APP, watchCollapseApp);
   yield takeFirst(EXPAND_APP, watchExpandApp);
+
+  yield takeLatest(GET_MANIFEST_OVERRIDE.REQUEST, watchGetManifestOverrideRequest);
+  yield takeLatest(GET_MANIFEST.REQUEST, watchGetManifestRequest);
   yield takeLatest(REBOUND_LAUNCHER.REQUEST, watchReboundLauncherRequest);
+  yield takeLatest(UPDATE_MANIFEST_OVERRIDE.REQUEST, watchUpdateManifestOverrideRequest);
+
+  yield takeLatest(GET_MANIFEST_OVERRIDE.SUCCESS, watchRequestSuccess);
+  yield takeLatest(GET_MANIFEST.SUCCESS, watchRequestSuccess);
+  yield takeLatest(UPDATE_MANIFEST_OVERRIDE.SUCCESS, watchRequestSuccess);
+
+  yield takeLatest(GET_MANIFEST_OVERRIDE.ERROR, watchRequestError);
+  yield takeLatest(GET_MANIFEST.ERROR, watchRequestError);
+  yield takeLatest(UPDATE_MANIFEST_OVERRIDE.ERROR, watchRequestError);
 }

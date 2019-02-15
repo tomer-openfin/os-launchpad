@@ -1,8 +1,8 @@
 import { ROUTES } from '../Router/consts';
 
 export const ADMIN_TABS = {
-  [ROUTES.ADMIN]: {
-    exact: true,
+  [ROUTES.ADMIN_SETTINGS]: {
+    exact: false,
     title: 'Enterprise',
   },
   [ROUTES.ADMIN_APPS]: {

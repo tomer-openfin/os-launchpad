@@ -70,7 +70,7 @@ class UpdatePasswordForm extends React.Component<Props, State> {
           errorMessage={`Sorry, there was an error trying to update your password`}
           submit={this.handleFormSubmit}
           onSubmitSuccess={this.onSubmitSuccess}
-          form={PasswordForm}
+          render={PasswordForm}
           validationSchema={validationSchema}
         />
       </Borders>

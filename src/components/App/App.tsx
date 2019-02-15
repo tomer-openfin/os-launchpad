@@ -1,12 +1,15 @@
 import * as React from 'react';
 
 import { App, DirectionalPosition } from '../../types/commons';
+
 import { LauncherSizeConfig } from '../../utils/launcherSizeConfigs';
+
+import { AppListWrapper, LogoWrapper, Main, Overlay, SystemDrawerWrapper, Wrapper } from './App.css';
 
 import AppList from '../AppList';
 import Borders from '../Borders';
+import Logo from '../Logo';
 import SystemDrawer from '../SystemDrawer';
-import { AppListWrapper, Main, Overlay, StyledLogo, SystemDrawerWrapper, Wrapper } from './App.css';
 
 export interface Props {
   collapsedSystemDrawerSize: number;
@@ -23,7 +26,9 @@ const App = (props: Props) => {
     <Main launcherPosition={launcherPosition}>
       <Wrapper launcherPosition={launcherPosition} size={launcherSizeConfig.launcher}>
         <Borders height="100%" width="100%" borderRadius="6px">
-          <StyledLogo size={launcherSizeConfig.launcher} />
+          <LogoWrapper size={launcherSizeConfig.launcher}>
+            <Logo size={launcherSizeConfig.launcher * 0.9} />
+          </LogoWrapper>
 
           <AppListWrapper endPadding={collapsedSystemDrawerSize} launcherPosition={launcherPosition}>
             <AppList />

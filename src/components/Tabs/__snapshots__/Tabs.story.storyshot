@@ -18,36 +18,36 @@ exports[`Storyshots UI Components/Tabs default 1`] = `
       }
     >
       <div
-        className="sc-TOsTZ gqHlHG"
+        className="sc-feJyhm hWoeIX"
       >
         <div
-          className="sc-cHGsZl gfpdUf"
+          className="sc-kafWEX eSoAZS"
           height={50}
         >
           <button
-            className="sc-gisBJw jTYrcE"
+            className="sc-ktHwxA gNEbhB"
             onClick={[Function]}
           >
             Tab 1
           </button>
           <button
-            className="sc-gisBJw hvJCuT"
+            className="sc-ktHwxA czrjZM"
             onClick={[Function]}
           >
             Tab 2
           </button>
           <button
-            className="sc-gisBJw hvJCuT"
+            className="sc-ktHwxA czrjZM"
             onClick={[Function]}
           >
             Tab 3
           </button>
         </div>
         <div
-          className="sc-kjoXOD dWcmn"
+          className="sc-cIShpX jDVYge"
         >
           <div
-            className="sc-caSCKo jjNSwx"
+            className="sc-hEsumM epeevU"
           >
             Tab Content 1
           </div>
@@ -888,36 +888,36 @@ exports[`Storyshots UI Components/Tabs withControlledState 1`] = `
       }
     >
       <div
-        className="sc-TOsTZ gqHlHG"
+        className="sc-feJyhm hWoeIX"
       >
         <div
-          className="sc-cHGsZl gfpdUf"
+          className="sc-kafWEX eSoAZS"
           height={50}
         >
           <button
-            className="sc-gisBJw jTYrcE"
+            className="sc-ktHwxA gNEbhB"
             onClick={[Function]}
           >
             Tab 1
           </button>
           <button
-            className="sc-gisBJw hvJCuT"
+            className="sc-ktHwxA czrjZM"
             onClick={[Function]}
           >
             Tab 2
           </button>
           <button
-            className="sc-gisBJw hvJCuT"
+            className="sc-ktHwxA czrjZM"
             onClick={[Function]}
           >
             Tab 3
           </button>
         </div>
         <div
-          className="sc-kjoXOD dWcmn"
+          className="sc-cIShpX jDVYge"
         >
           <div
-            className="sc-caSCKo jjNSwx"
+            className="sc-hEsumM epeevU"
           >
             Tab Content 1
           </div>

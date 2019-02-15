@@ -11,7 +11,7 @@ exports[`Storyshots UI Components/Checkbox default 1`] = `
     }
   >
     <label
-      className="sc-ckVGcZ iiqFud sc-dxgOiQ gXepeX"
+      className="sc-ckVGcZ iiqFud sc-dxgOiQ nGBmb"
     >
       <input
         checked={false}
@@ -317,7 +317,7 @@ exports[`Storyshots UI Components/Checkbox with knobs 1`] = `
     }
   >
     <label
-      className="sc-ckVGcZ iiqFud sc-dxgOiQ gXepeX"
+      className="sc-ckVGcZ iiqFud sc-dxgOiQ nGBmb"
     >
       <input
         checked={false}

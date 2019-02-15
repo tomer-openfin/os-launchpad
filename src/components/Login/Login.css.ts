@@ -22,6 +22,9 @@ export const Wrapper = styled.div`
   background-size: cover;
 `;
 
+export const LogoWrapper = styled.div`
+  margin-bottom: 24px;
+`;
 export const StyledLogo = styled(Logo)`
   margin-bottom: 24px;
 `;

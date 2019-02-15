@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { App, MetaWithCallbacks, PushRoute, RequestFormSubmit } from '../../types/commons';
+import { App, DispatchRequest, MetaWithCallbacks, PushRoute } from '../../types/commons';
 
 import { ROUTES } from '../Router/consts';
 
@@ -12,11 +12,11 @@ import RequestForm from '../RequestForm';
 interface Props {
   app: App;
   onEscDown: () => void;
-  updateApp: RequestFormSubmit<App>;
+  updateApp: DispatchRequest<App>;
   pushRoute: PushRoute;
 }
 
-const createAppSubmitHandler = (submit: RequestFormSubmit<App>): RequestFormSubmit<App> => (formData: App, meta: MetaWithCallbacks) => {
+const createAppSubmitHandler = (submit: DispatchRequest<App>): DispatchRequest<App> => (formData: App, meta: MetaWithCallbacks) => {
   const { appUrl, manifest_url, withAppUrl, ...rest } = formData;
 
   const computedManifestUrl = createAppManifestUrl({ appUrl, manifest_url, withAppUrl });
@@ -45,7 +45,7 @@ const EditAppForm = ({ app, pushRoute, updateApp }: Props) => {
         withAppUrl: !!initialAppUrl,
       }}
       errorMessage={`There was an error trying to update ${title}`}
-      form={AppForm}
+      component={AppForm}
       handleDeleteIconClick={createPushRouteHandler(pushRoute, ROUTES.ADMIN_APPS_DELETE, app)}
       headingText={`Edit ${title}`}
       onSubmitSuccess={createPushRouteHandler(pushRoute, ROUTES.ADMIN_APPS)}

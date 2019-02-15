@@ -11,21 +11,21 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
     }
   >
     <form
-      className="sc-jAaTju dWHaul"
+      className="sc-ksYbfQ eCIUEJ"
       onReset={[Function]}
       onSubmit={[Function]}
     >
       <div
-        className="sc-jDwBTQ enLvbe"
+        className="sc-hmzhuo dudMzh"
       >
         <div
-          className="sc-gPEVay brQUiw"
+          className="sc-frDJqD cnrcjF"
         >
           <div
-            className="sc-ipZHIp byTgkp"
+            className="sc-fZwumE bohSgq"
           >
             <label
-              className="sc-dxgOiQ gXepeX"
+              className="sc-dxgOiQ nGBmb"
             >
               <div
                 className="sc-kpOJdX gglwGS"
@@ -41,7 +41,7 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
               />
             </label>
             <label
-              className="sc-dxgOiQ gXepeX"
+              className="sc-dxgOiQ nGBmb"
             >
               <div
                 className="sc-kpOJdX gglwGS"
@@ -57,7 +57,7 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
             </label>
           </div>
           <label
-            className="sc-dxgOiQ gXepeX"
+            className="sc-dxgOiQ nGBmb"
           >
             <div
               className="sc-kpOJdX gglwGS"
@@ -73,7 +73,7 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
             />
           </label>
           <label
-            className="sc-dxgOiQ gXepeX"
+            className="sc-dxgOiQ nGBmb"
           >
             <div
               className="sc-kpOJdX gglwGS"
@@ -90,7 +90,7 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
             />
           </label>
           <label
-            className="sc-dxgOiQ gXepeX"
+            className="sc-dxgOiQ nGBmb"
           >
             <div
               className="sc-kpOJdX gglwGS"
@@ -109,10 +109,10 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
         </div>
       </div>
       <div
-        className="sc-jlyJG jVJtUg"
+        className="sc-hqyNC hXSrbm"
       >
         <div
-          className="sc-iRbamj bgBAAd"
+          className="sc-kvZOFW jextin"
         >
           <button
             className="sc-kAzzGY jjQyJb"

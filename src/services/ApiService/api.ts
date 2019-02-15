@@ -28,6 +28,7 @@ const API = {
   USER_SETTINGS: `${API_URL}api/user/settings`,
 
   ADMIN_APPS: `${API_URL}api/admin/apps`,
+  ADMIN_MANIFEST: `${API_URL}api/admin/manifest`,
   ADMIN_SETTINGS: `${API_URL}api/admin/settings`,
   ADMIN_USERS: `${API_URL}api/admin/users`,
 };

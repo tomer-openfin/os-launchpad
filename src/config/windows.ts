@@ -35,7 +35,7 @@ export const initOnStartWindows = {
     saveWindowState: false,
     shadow: true,
     showTaskbarIcon: true,
-    url: ROUTES.ADMIN,
+    url: ROUTES.ADMIN_SETTINGS,
     waitForPageLoad: true,
   },
   appDirectory: {

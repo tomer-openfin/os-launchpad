@@ -11,7 +11,7 @@ exports[`Storyshots UI Components/FormField Default 1`] = `
     }
   >
     <label
-      className="sc-dxgOiQ gXepeX"
+      className="sc-dxgOiQ nGBmb"
     >
       <div
         className="sc-kpOJdX gglwGS"
@@ -549,7 +549,7 @@ exports[`Storyshots UI Components/FormField Password 1`] = `
     }
   >
     <label
-      className="sc-dxgOiQ gXepeX"
+      className="sc-dxgOiQ nGBmb"
     >
       <div
         className="sc-kpOJdX gglwGS"
@@ -1087,7 +1087,7 @@ exports[`Storyshots UI Components/FormField Text Area 1`] = `
     }
   >
     <label
-      className="sc-dxgOiQ gXepeX"
+      className="sc-dxgOiQ nGBmb"
     >
       <div
         className="sc-kpOJdX gglwGS"
