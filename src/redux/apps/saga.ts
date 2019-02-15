@@ -13,6 +13,7 @@ import {
   getOpenFinApplicationInfo,
   getVisibleWindowStateAndBounds,
   wrapApplication,
+  wrapWindow,
 } from '../../utils/openfinPromises';
 
 import { getArea } from '../../utils/coordinateHelpers';
@@ -66,12 +67,14 @@ function* watchOpenFinAppError(action: OpenFinAppError) {
         const app = fin.desktop.Application.wrap(uuid);
         const appWindow = app.getWindow();
         const childWindows = yield call(getOpenFinApplicationChildWindows(uuid));
+        const finChildWindows = yield all(childWindows.map(childWindow => call(wrapWindow, childWindow)));
 
         const windows = yield all([
           call(getVisibleWindowStateAndBounds, appWindow),
-          ...childWindows.map(childWindow => call(getVisibleWindowStateAndBounds, childWindow)),
+          ...finChildWindows.map(childWindow => call(getVisibleWindowStateAndBounds, childWindow)),
         ]);
         const largestWindowsFirst = windows.filter(win => win.bounds).sort((a, b) => getArea(a.bounds) < getArea(b.bounds));
+
         yield all(
           largestWindowsFirst.reduce((acc, { finWindow, state }) => {
             if (!state) {

@@ -52,9 +52,14 @@ export default (state: ApplicationState = defaultState, action: ApplicationActio
     }
     case GET_MANIFEST_OVERRIDE.SUCCESS:
     case UPDATE_MANIFEST_OVERRIDE.SUCCESS: {
+      const { payload } = action as GetManifestOverrideSuccessAction | UpdateManifestOverrideSuccessAction;
+      if (!payload) {
+        return state;
+      }
+
       return {
         ...state,
-        manifestOverride: (action as GetManifestOverrideSuccessAction | UpdateManifestOverrideSuccessAction).payload,
+        manifestOverride: payload,
       };
     }
     case SET_IS_ENTERPRISE: {

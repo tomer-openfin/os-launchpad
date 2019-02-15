@@ -30,7 +30,7 @@ export const getImagesFromManifestOverrideOrManifest = (manifest: Manifest, mani
 
   const { shortcut: originalShortcut, splashScreenImage: originalSplashScreenImage } = manifest;
 
-  const shortcutIcon = shortcut ? shortcut.icon : originalShortcut.icon;
+  const shortcutIcon = shortcut && shortcut.icon ? shortcut.icon : originalShortcut.icon;
 
   return {
     [ManifestImageViewKeys.splashscreen]: splashScreenImage || originalSplashScreenImage,

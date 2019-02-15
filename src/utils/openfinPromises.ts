@@ -126,3 +126,13 @@ export const wrapApplication = (uuid: string) => {
 
   return Promise.resolve(fin.desktop.Application.wrap(uuid));
 };
+
+export const wrapWindow = ({ uuid, name }: { uuid: string; name: string }) => {
+  const { fin } = window;
+
+  if (!fin) {
+    return Promise.reject('window.fin is undefined');
+  }
+
+  return Promise.resolve(fin.desktop.Window.wrap(uuid, name));
+};
