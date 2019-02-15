@@ -65,13 +65,24 @@ export const updateWindowOptions = (finWindow, options) => {
   return promisifyOpenfin(finWindow, 'updateOptions', options);
 };
 
-export const isWindowVisible = async finWindow => {
+/**
+ * Get window state for windows that are showing
+ */
+export const getVisibleWindowStateAndBounds = async (finWindow: OpenFinWindow): Promise<{ finWindow: OpenFinWindow; bounds?: Bounds; state?: string }> => {
   const isShowing = await promisifyOpenfin(finWindow, 'isShowing');
+
+  if (!isShowing) {
+    return { finWindow };
+  }
+
   const state = await promisifyOpenfin(finWindow, 'getState');
+  const bounds = await promisifyOpenfin(finWindow, 'getBounds');
 
-  const isVisible = isShowing && (state === 'normal' || state === 'maximized');
-
-  return isVisible ? finWindow : undefined;
+  return {
+    bounds,
+    finWindow,
+    state,
+  };
 };
 
 export const createAndRunFromManifest = (manifestUrl: string, id: string) => {

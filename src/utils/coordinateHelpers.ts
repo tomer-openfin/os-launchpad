@@ -18,6 +18,8 @@ export const getCoordinatesMidPoint = (coordinates: DirectionalCoordinates): Poi
   return { x, y };
 };
 
+export const getArea = ({ height, width }: { height: number; width: number }) => height * width;
+
 export const getNewPosDelta = (
   bounds: Bounds,
   launcherPosition: DirectionalPosition,

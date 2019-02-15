@@ -7,16 +7,17 @@ import { AppStatusOrigins, AppStatusStates, ResponseStatus } from '../../types/e
 import { CloseFinAppRequest, OpenFinAppError, OpenFinAppRequest, OpenFinAppSuccess } from './types';
 
 import {
-  bringWindowToFrontPromise,
   closeApplication,
   createAndRunFromManifest,
   getOpenFinApplicationChildWindows,
   getOpenFinApplicationInfo,
-  isWindowVisible,
+  getVisibleWindowStateAndBounds,
   wrapApplication,
 } from '../../utils/openfinPromises';
 
+import { getArea } from '../../utils/coordinateHelpers';
 import { bindFinAppEventHandlers } from '../../utils/finAppEventHandlerHelpers';
+import promisifyOpenfin from '../../utils/promisifyOpenfin';
 import { getRuntimeVersion, reboundLauncherRequest } from '../application';
 import {
   CLOSE_FIN_APP,
@@ -66,13 +67,19 @@ function* watchOpenFinAppError(action: OpenFinAppError) {
         const appWindow = app.getWindow();
         const childWindows = yield call(getOpenFinApplicationChildWindows(uuid));
 
-        const windows = yield all([call(isWindowVisible, appWindow), ...childWindows.map(childWindow => call(isWindowVisible, childWindow))]);
+        const windows = yield all([
+          call(getVisibleWindowStateAndBounds, appWindow),
+          ...childWindows.map(childWindow => call(getVisibleWindowStateAndBounds, childWindow)),
+        ]);
+        const largestWindowsFirst = windows.filter(win => win.bounds).sort((a, b) => getArea(a.bounds) < getArea(b.bounds));
         yield all(
-          windows.reduce((acc, win) => {
-            if (!win) {
+          largestWindowsFirst.reduce((acc, { finWindow, state }) => {
+            if (!state) {
               return acc;
             }
-            return [...acc, call(bringWindowToFrontPromise, win)];
+
+            const method = state === 'minimized' ? 'restore' : 'bringToFront';
+            return [...acc, call(promisifyOpenfin, finWindow, method)];
           }, []),
         );
       }
