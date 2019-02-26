@@ -10,5 +10,5 @@ import UpdatePasswordForm from './UpdatePasswordForm';
 const updatePassword = action('updatePassword');
 
 storiesOf(`${CATEGORIES.COMPONENTS}UpdatePasswordForm`, module)
-  .addDecorator(withMarginDecorator(30))
+  .addDecorator(withMarginDecorator())
   .add('default', () => <UpdatePasswordForm updatePassword={updatePassword} />);

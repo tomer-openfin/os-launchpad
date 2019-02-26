@@ -11,7 +11,7 @@ import ButtonTile from './ButtonTile.css';
 const handleClick = action('handleClick');
 
 storiesOf(`${CATEGORIES.UI}ButtonTile`, module)
-  .addDecorator(withMarginDecorator(30))
+  .addDecorator(withMarginDecorator())
   .addDecorator(withKnobs)
   .add('default', () => {
     const borderRadius = text('borderRadius', '0');

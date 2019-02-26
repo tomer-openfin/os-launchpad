@@ -16,14 +16,15 @@ export default (state: LayoutsState = defaultState, action: LayoutsActions) => {
     }
     case UPDATE_LAYOUT.SUCCESS:
     case CREATE_LAYOUT.SUCCESS: {
-      const { id } = action.payload;
+      const { layout } = action.payload;
+      const { id } = layout;
 
       const ids = state.ids.includes(id) ? state.ids : [...state.ids, id];
 
       return {
         byId: {
           ...state.byId,
-          [id]: action.payload,
+          [id]: layout,
         },
         ids,
       };

@@ -16,7 +16,7 @@ const handleSubmitValues = action('handleSubmitValues');
 
 storiesOf(`${CATEGORIES.COMPONENTS}ForgotPasswordChangeForm`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecorator(30))
+  .addDecorator(withMarginDecorator())
   .add('default', () => {
     const code = text('code', '');
     const codeError = text('codeError', '');

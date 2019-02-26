@@ -18,7 +18,7 @@ exports[`Storyshots Components/LoginForm default 1`] = `
       }
     >
       <form
-        className="sc-cqCuEk cqoivF"
+        className="sc-ipXKqB FyGUD"
         onSubmit={[Function]}
       >
         <label
@@ -57,7 +57,7 @@ exports[`Storyshots Components/LoginForm default 1`] = `
           />
         </label>
         <div
-          className="sc-dliRfk kEjxie"
+          className="sc-hmXxxW gMKYCO"
         >
           <button
             className="sc-kAzzGY ecXCJ"
@@ -755,7 +755,7 @@ exports[`Storyshots Components/LoginForm withFormik 1`] = `
       }
     >
       <form
-        className="sc-cqCuEk cqoivF"
+        className="sc-ipXKqB FyGUD"
         onSubmit={[Function]}
       >
         <label
@@ -794,7 +794,7 @@ exports[`Storyshots Components/LoginForm withFormik 1`] = `
           />
         </label>
         <div
-          className="sc-dliRfk kEjxie"
+          className="sc-hmXxxW gMKYCO"
         >
           <button
             className="sc-kAzzGY ecXCJ"

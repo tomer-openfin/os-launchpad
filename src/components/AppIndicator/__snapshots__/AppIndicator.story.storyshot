@@ -18,7 +18,7 @@ exports[`Storyshots UI Components/AppIndicator default 1`] = `
         size={12}
       >
         <div
-          className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+          className="sc-iwsKbI kSJIGu sc-ifAKCX fWRpHP"
           color="rgba(0,0,0,0)"
           size="53%"
         />

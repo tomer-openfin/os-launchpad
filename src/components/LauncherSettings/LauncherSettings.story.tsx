@@ -11,7 +11,7 @@ import LauncherSettings from './LauncherSettings';
 
 storiesOf(`${CATEGORIES.COMPONENTS}LauncherSettings`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecorator(30))
+  .addDecorator(withMarginDecorator())
   .add('default', () => {
     const autoHide = boolean('autoHide', false);
     const launcherPosition = select('launcherPosition', Object(DirectionalPosition), DirectionalPosition.Top);

@@ -13,7 +13,7 @@ const handleClick = action('handleClick');
 
 storiesOf(`${CATEGORIES.COMPONENTS}MonitorControls`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecorator(30))
+  .addDecorator(withMarginDecorator())
   .add('default', () => {
     const activeId = text('activeId', '');
     const height = number('height', 240);

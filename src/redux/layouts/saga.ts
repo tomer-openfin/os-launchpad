@@ -1,4 +1,4 @@
-import { all, call, put, select, takeEvery } from 'redux-saga/effects';
+import { all, call, put, race, select, take, takeEvery } from 'redux-saga/effects';
 
 import { LAYOUTS_WINDOW } from '../../config/windows';
 import ApiService from '../../services/ApiService';
@@ -20,6 +20,7 @@ import {
   DELETE_LAYOUT,
   deleteLayoutError,
   deleteLayoutSuccess,
+  DISMISS_UNDO_UPDATE_LAYOUT,
   GET_LAYOUTS,
   getLayoutsError,
   getLayoutsSuccess,
@@ -27,13 +28,22 @@ import {
   restoreLayoutError,
   restoreLayoutSuccess,
   SAVE_LAYOUT,
+  UNDO_UPDATE_LAYOUT,
   UPDATE_LAYOUT,
   updateLayoutError,
   updateLayoutRequest,
   updateLayoutSuccess,
 } from './actions';
-import { getLayoutById, getLayouts } from './selectors';
-import { CreateLayoutRequest, DeleteLayoutRequest, RestoreLayoutRequest, RestoreLayoutSuccess, SaveLayoutRequest, UpdateLayoutRequest } from './types';
+import { getLayoutById, getLayoutByName, getLayouts } from './selectors';
+import {
+  CreateLayoutRequest,
+  DeleteLayoutRequest,
+  RestoreLayoutRequest,
+  RestoreLayoutSuccess,
+  SaveLayoutRequest,
+  UpdateLayoutRequest,
+  UpdateLayoutSuccess,
+} from './types';
 import { calcDesiredLayoutsWindowHeight } from './utils';
 
 const buildErrorResponse = (message: string): ErrorResponse => ({ status: ResponseStatus.FAILURE, message });
@@ -146,27 +156,59 @@ export function* watchCreateLayoutRequest(action: CreateLayoutRequest) {
   if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error' || !response.layout) {
     yield put(createLayoutError(response, action.meta));
   } else {
-    yield put(createLayoutSuccess(response.layout, action.meta));
+    yield put(createLayoutSuccess({ layout: response.layout }, action.meta));
   }
 }
 
 function* watchUpdateLayoutRequest(action: UpdateLayoutRequest) {
-  if (!action.payload) return;
+  const { payload } = action;
+  if (!payload) {
+    return;
+  }
 
-  const { id, name } = action.payload;
+  const { id, name } = payload;
+  let { layout } = payload;
 
-  const userLayout = { id, name };
+  if (!layout) {
+    layout = yield call(generateLayout);
+  }
 
-  const layout = yield call(generateLayout);
-
-  userLayout['layout'] = layout;
+  const userLayout = {
+    id,
+    layout,
+    name,
+  };
 
   const response = yield call(ApiService.updateUserLayout, userLayout);
 
   if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error' || !response.layout) {
     yield put(updateLayoutError(response, action.meta));
   } else {
-    yield put(updateLayoutSuccess(response.layout, action.meta));
+    const previousUserLayout = yield select(getLayoutByName, name);
+    yield put(updateLayoutSuccess({ previousUserLayout, layout: response.layout, updated: true }, action.meta));
+  }
+}
+
+function* watchUpdateLayoutSuccess(action: UpdateLayoutSuccess) {
+  if (action.meta && action.meta.successCb) {
+    action.meta.successCb(action.payload);
+  }
+
+  yield call(watchLayoutsChangesToAnimateWindow);
+
+  const { payload } = action;
+  if (!payload) {
+    return;
+  }
+
+  const { dismiss, undo } = yield race({
+    dismiss: take(DISMISS_UNDO_UPDATE_LAYOUT.REQUEST),
+    undo: take(UNDO_UPDATE_LAYOUT.REQUEST),
+  });
+
+  if (undo) {
+    const { previousUserLayout } = payload;
+    yield put(updateLayoutRequest(previousUserLayout, undo.meta));
   }
 }
 
@@ -229,11 +271,10 @@ function* watchSaveLayoutRequest(action: SaveLayoutRequest) {
   if (!action.payload) return;
 
   const name = action.payload;
-  const layouts: UserLayout[] = yield select(getLayouts);
-  const index = layouts.findIndex(layout => layout.name === name);
+  const layoutByName = yield select(getLayoutByName, name);
 
-  if (index !== -1) {
-    const id = layouts[index].id;
+  if (layoutByName) {
+    const id = layoutByName.id;
     const updatePayload = { id, name };
 
     yield put(updateLayoutRequest(updatePayload, action.meta));
@@ -286,7 +327,7 @@ export function* layoutsSaga() {
   yield takeEvery(CREATE_LAYOUT.SUCCESS, watchRequestSuccess);
 
   yield takeEvery(UPDATE_LAYOUT.REQUEST, watchUpdateLayoutRequest);
-  yield takeEvery(UPDATE_LAYOUT.SUCCESS, watchRequestSuccess);
+  yield takeEvery(UPDATE_LAYOUT.SUCCESS, watchUpdateLayoutSuccess);
   yield takeEvery(UPDATE_LAYOUT.ERROR, watchRequestError);
 
   yield takeEvery(DELETE_LAYOUT.REQUEST, watchDeleteLayoutRequest);

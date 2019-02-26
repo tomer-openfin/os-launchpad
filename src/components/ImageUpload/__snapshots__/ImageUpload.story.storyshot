@@ -11,7 +11,7 @@ exports[`Storyshots Admin Components/ImageUpload default 1`] = `
     }
   >
     <div
-      className="sc-iybRtq iOuyWR"
+      className="sc-jrIrqw iDMyGq"
     >
       <div
         className="sc-cSHVUG ksrKew"
@@ -32,23 +32,23 @@ exports[`Storyshots Admin Components/ImageUpload default 1`] = `
           </div>
         </div>
         <div
-          className="sc-iQtOjA fxiXcE"
+          className="sc-hjRWVT fQHZCT"
         >
           <div
-            className="sc-cEvuZC kxxOwI"
+            className="sc-iQtOjA cFvMLi"
             onClick={[Function]}
           >
             File Upload
           </div>
           <div
-            className="sc-cEvuZC iOsSlk"
+            className="sc-iQtOjA hoOGna"
             onClick={[Function]}
           >
             By URL
           </div>
         </div>
         <div
-          className="sc-fHxwqH jXLgsc"
+          className="sc-iybRtq hWLzqp"
         >
           <form
             className="sc-ksYbfQ eCIUEJ"

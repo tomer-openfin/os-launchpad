@@ -46,14 +46,14 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
             color="#E7E7E7"
           >
             <div
-              className="sc-ifAKCX kGkovX"
+              className="sc-ifAKCX bxgCNR"
               color="#E7E7E7"
               disabled={true}
               size={42}
               title="Logout"
             />
             <div
-              className="sc-esjQYD fQwcnI sc-ifAKCX gPeNwQ"
+              className="sc-esjQYD fQwcnI sc-ifAKCX ixvxEv"
               color="#E7E7E7"
               disabled={true}
               size={25}
@@ -65,7 +65,7 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
           orientation="horizontal"
         >
           <div
-            className="sc-ifAKCX kGkovX"
+            className="sc-ifAKCX bxgCNR"
             color="#E7E7E7"
             disabled={true}
             size={42}

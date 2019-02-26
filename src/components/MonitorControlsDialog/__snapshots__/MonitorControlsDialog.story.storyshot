@@ -18,7 +18,7 @@ exports[`Storyshots Components/MonitorControlsDialog default 1`] = `
       }
     >
       <div
-        className="sc-hzNEM kbgMUS"
+        className="sc-LKuAh jktshs"
       >
         <div
           className="sc-cmTdod fOaOac"
@@ -34,10 +34,10 @@ exports[`Storyshots Components/MonitorControlsDialog default 1`] = `
           </div>
         </div>
         <div
-          className="sc-iBEsjs cocEXH"
+          className="sc-kaNhvL jRjtIO"
         >
           <div
-            className="sc-LKuAh eBUDKo"
+            className="sc-jKVCRD ecjDee"
             height={240}
             width={380}
           />

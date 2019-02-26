@@ -24,7 +24,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
             width={291}
           >
             <div
-              className="sc-gGBfsJ dMPHqo sc-ifAKCX SRWgK"
+              className="sc-gGBfsJ dMPHqo sc-ifAKCX cycuRH"
               color="#E7E7E7"
               size={35}
             />

@@ -11,7 +11,7 @@ exports[`Storyshots Components/Settings default 1`] = `
     }
   >
     <div
-      className="sc-gmeYpB hAjtBL"
+      className="sc-cooIXK btLfBI"
     >
       <div
         className="sc-cSHVUG ksrKew"
@@ -42,7 +42,7 @@ exports[`Storyshots Components/Settings default 1`] = `
           </div>
         </div>
         <div
-          className="sc-fcdeBU kYtgtq"
+          className="sc-kxynE jzlBPr"
         >
           <div
             className="sc-fhYwyz hLjrDa"

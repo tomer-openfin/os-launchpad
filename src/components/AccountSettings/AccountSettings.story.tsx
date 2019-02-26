@@ -9,7 +9,7 @@ import AccountSettings from './AccountSettings';
 
 storiesOf(`${CATEGORIES.COMPONENTS}AccountSettings`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecorator(30))
+  .addDecorator(withMarginDecorator())
   .add('default', () => {
     const email = text('email', 'jason.grafinger@giantmachines.com');
     const name = text('name', 'Jason Grafinger');

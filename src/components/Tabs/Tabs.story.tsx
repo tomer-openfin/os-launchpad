@@ -11,7 +11,7 @@ import { TabsWithControlledState } from './utils';
 
 storiesOf(`${CATEGORIES.UI}Tabs`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecorator(30))
+  .addDecorator(withMarginDecorator())
   .add('default', () => {
     const numberOfTabs = number('numberOfTabs', 3, { range: false, min: 1, max: 50, step: 1 });
     const tabs: Array<{ children: string; id: string; title: string }> = [];

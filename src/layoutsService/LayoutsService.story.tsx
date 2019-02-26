@@ -10,13 +10,13 @@ import template from './titleBar/template';
 
 storiesOf(CATEGORIES.LAYOUTS, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecorator(30))
+  .addDecorator(withMarginDecorator())
   .add('titleBar', () => {
     const title = text('title', 'Title here');
 
     return (
       <div style={{ border: `2px solid ${Color.JUPITER}` }}>
-        <div dangerouslySetInnerHTML={{ __html: template('', title, 'relative')}} />
+        <div dangerouslySetInnerHTML={{ __html: template('', title, 'relative') }} />
 
         <div style={{ background: 'white', minHeight: '100px', padding: '20px', textAlign: 'center' }}>Some Web App</div>
       </div>

@@ -26,6 +26,18 @@ export interface LayoutsState {
 
 // Action payloads
 export type GetLayoutsSuccessPayload = UserLayout[];
+export interface UpdateLayoutRequestPayload {
+  id: string;
+  name: string;
+  layout?: UserLayout;
+}
+export interface CreateOrUpdateSuccessPayload {
+  layout: UserLayout;
+  updated?: boolean;
+}
+export interface UpdateSuccessPayload extends CreateOrUpdateSuccessPayload {
+  previousUserLayout: UserLayout;
+}
 
 // Actions
 export type GetLayoutsRequest = ReturnType<typeof getLayoutsRequest>;

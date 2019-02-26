@@ -10,7 +10,7 @@ import Button, { defaultProps } from './Button.css';
 
 storiesOf(`${CATEGORIES.UI}Button`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecorator(30))
+  .addDecorator(withMarginDecorator())
   .add('default', () => <Button onClick={action('Button Click')}>Button Text</Button>)
   .add('with knobs', () => {
     const buttonText = text('Button Text', 'Place Text Here');

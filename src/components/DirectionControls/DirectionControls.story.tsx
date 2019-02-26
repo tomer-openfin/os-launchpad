@@ -13,7 +13,7 @@ const handleChange = action('handleChange');
 
 storiesOf(`${CATEGORIES.COMPONENTS}DirectionControls`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecorator(30))
+  .addDecorator(withMarginDecorator())
   .add('default', () => {
     const direction = select('direction', Object(DirectionalPosition), DirectionalPosition.Bottom);
     const size = number('size', defaultProps.size);

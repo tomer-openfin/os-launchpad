@@ -12,3 +12,8 @@ export const getLayouts = createSelector(
   getLayoutsById,
   (ids, layouts) => ids.map(id => layouts[id]),
 );
+
+export const getLayoutByName = (state: State, name: string) => {
+  const layouts = getLayouts(state);
+  return layouts.find(layout => layout.name === name);
+};

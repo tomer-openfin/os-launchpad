@@ -12,7 +12,7 @@ const handleClick = action('handleClick');
 
 storiesOf(`${CATEGORIES.COMPONENTS}MonitorControlsDialog`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecorator(30))
+  .addDecorator(withMarginDecorator())
   .add('default', () => {
     const title = text('title', 'MonitorControlsDialog');
     const height = number('height', 240);

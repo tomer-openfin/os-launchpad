@@ -18,7 +18,7 @@ exports[`Storyshots UI Components/SvgIcon default 1`] = `
       }
     >
       <div
-        className="sc-ifAKCX lhVWBu"
+        className="sc-ifAKCX ciRCNe"
         color="#E7E7E7"
         disabled={false}
         onClick={null}

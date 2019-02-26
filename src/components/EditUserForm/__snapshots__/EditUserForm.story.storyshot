@@ -11,7 +11,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
     }
   >
     <div
-      className="sc-iSDuPN OccOe"
+      className="sc-kZmsYB kzqRJV"
     >
       <div
         className="sc-cmTdod hSnYdr"
@@ -44,7 +44,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
             className="sc-frDJqD cnrcjF"
           >
             <div
-              className="sc-fZwumE bohSgq"
+              className="sc-RcBXQ hPIUBq"
             >
               <label
                 className="sc-dxgOiQ nGBmb"
@@ -163,7 +163,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
         </div>
       </form>
       <div
-        className="sc-fQejPQ jIQuHb"
+        className="sc-iSDuPN jwRlQu"
       >
         <div
           className="sc-jbKcbu fUfPqM"

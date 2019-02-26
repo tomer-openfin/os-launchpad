@@ -22,7 +22,7 @@ exports[`Storyshots Components/SvgIconWithExtension default 1`] = `
         color="#E7E7E7"
       >
         <div
-          className="sc-ifAKCX lhVWBu"
+          className="sc-ifAKCX ciRCNe"
           color="#E7E7E7"
           disabled={false}
           onClick={null}
@@ -30,7 +30,7 @@ exports[`Storyshots Components/SvgIconWithExtension default 1`] = `
           title="Icon"
         />
         <div
-          className="sc-esjQYD fQwcnI sc-ifAKCX gPeNwQ"
+          className="sc-esjQYD fQwcnI sc-ifAKCX ixvxEv"
           color="#E7E7E7"
           disabled={false}
           onClick={null}

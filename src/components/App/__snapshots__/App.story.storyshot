@@ -76,7 +76,7 @@ exports[`Storyshots Components/App default 1`] = `
                     size={50}
                   >
                     <div
-                      className="sc-ifAKCX gPeNwQ"
+                      className="sc-ifAKCX ixvxEv"
                       color="#E7E7E7"
                       size={25}
                     />
@@ -124,7 +124,7 @@ exports[`Storyshots Components/App default 1`] = `
                   size={12}
                 >
                   <div
-                    className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+                    className="sc-iwsKbI kSJIGu sc-ifAKCX fWRpHP"
                     color="rgba(0,0,0,0)"
                     size="53%"
                   />
@@ -171,7 +171,7 @@ exports[`Storyshots Components/App default 1`] = `
                   size={12}
                 >
                   <div
-                    className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+                    className="sc-iwsKbI kSJIGu sc-ifAKCX fWRpHP"
                     color="rgba(0,0,0,0)"
                     size="53%"
                   />
@@ -218,7 +218,7 @@ exports[`Storyshots Components/App default 1`] = `
                   size={12}
                 >
                   <div
-                    className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+                    className="sc-iwsKbI kSJIGu sc-ifAKCX fWRpHP"
                     color="rgba(0,0,0,0)"
                     size="53%"
                   />
@@ -258,14 +258,14 @@ exports[`Storyshots Components/App default 1`] = `
                   color="#E7E7E7"
                 >
                   <div
-                    className="sc-ifAKCX kGkovX"
+                    className="sc-ifAKCX bxgCNR"
                     color="#E7E7E7"
                     disabled={true}
                     size={42}
                     title="Logout"
                   />
                   <div
-                    className="sc-esjQYD fQwcnI sc-ifAKCX gPeNwQ"
+                    className="sc-esjQYD fQwcnI sc-ifAKCX ixvxEv"
                     color="#E7E7E7"
                     disabled={true}
                     size={25}
@@ -277,7 +277,7 @@ exports[`Storyshots Components/App default 1`] = `
                 orientation="horizontal"
               >
                 <div
-                  className="sc-ifAKCX kGkovX"
+                  className="sc-ifAKCX bxgCNR"
                   color="#E7E7E7"
                   disabled={true}
                   size={42}
@@ -289,7 +289,7 @@ exports[`Storyshots Components/App default 1`] = `
                 orientation="horizontal"
               >
                 <div
-                  className="sc-ifAKCX kGkovX"
+                  className="sc-ifAKCX bxgCNR"
                   color="#E7E7E7"
                   disabled={true}
                   size={42}

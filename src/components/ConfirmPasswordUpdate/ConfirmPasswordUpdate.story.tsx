@@ -3,8 +3,11 @@ import * as React from 'react';
 
 import ConfirmPasswordUpdate from './ConfirmPasswordUpdate';
 
+import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
 
-storiesOf(`${CATEGORIES.COMPONENTS}ConfirmPasswordUpdate`, module).add('default', () => {
-  return <ConfirmPasswordUpdate />;
-});
+storiesOf(`${CATEGORIES.COMPONENTS}ConfirmPasswordUpdate`, module)
+  .addDecorator(withMarginDecorator())
+  .add('default', () => {
+    return <ConfirmPasswordUpdate />;
+  });

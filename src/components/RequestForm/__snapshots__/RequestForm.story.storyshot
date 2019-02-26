@@ -11,7 +11,7 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
     }
   >
     <div
-      className="sc-iSDuPN OccOe"
+      className="sc-kZmsYB kzqRJV"
     >
       <div
         className="sc-cmTdod hSnYdr"
@@ -38,10 +38,10 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
             className="sc-frDJqD cnrcjF"
           >
             <div
-              className="sc-fZwumE dThwLl"
+              className="sc-RcBXQ ZHuLd"
             >
               <label
-                className="sc-eIHaNI bRgSfC sc-dxgOiQ nGBmb"
+                className="sc-fyjhYU boyghX sc-dxgOiQ nGBmb"
               >
                 <div
                   className="sc-kpOJdX gglwGS"
@@ -56,27 +56,27 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
                   type="checkbox"
                 />
                 <div
-                  className="sc-iomxrj bVVoaE"
+                  className="sc-eTpRJs isQICh"
                 >
                   <div
                     checked={false}
-                    className="sc-dxZgTM dtSGHp"
+                    className="sc-eIHaNI cTCDIW"
                   />
                   <div
-                    className="sc-eTpRJs hnMDRZ"
+                    className="sc-ugnQR kCCKUK"
                   >
                     App URL
                   </div>
                 </div>
                 <div
-                  className="sc-iomxrj bVVoaE"
+                  className="sc-eTpRJs isQICh"
                 >
                   <div
                     checked={true}
-                    className="sc-dxZgTM hMrRhG"
+                    className="sc-eIHaNI hLdKPa"
                   />
                   <div
-                    className="sc-eTpRJs hnMDRZ"
+                    className="sc-ugnQR kCCKUK"
                   >
                     Manifest
                   </div>
@@ -116,7 +116,7 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
               />
             </label>
             <div
-              className="sc-fZwumE hTxNDk"
+              className="sc-RcBXQ fhYqCm"
               height="144px"
             >
               <label
@@ -128,7 +128,7 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
                   App Shortcut
                 </div>
                 <div
-                  className="sc-gVyKpa fuPqpH"
+                  className="sc-hIVACf bXkhsv"
                 >
                   <div
                     className="sc-gipzik jmhvsi"
@@ -140,10 +140,10 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
                     />
                   </div>
                   <div
-                    className="sc-eXNvrr dNnfVw"
+                    className="sc-gpHHfC POeTO"
                   >
                     <div
-                      className="sc-cpmKsF dEwszT"
+                      className="sc-gVyKpa ForoK"
                     >
                       64x64
                     </div>
@@ -203,7 +203,7 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
         </div>
       </form>
       <div
-        className="sc-fQejPQ jIQuHb"
+        className="sc-iSDuPN jwRlQu"
       >
         <div
           className="sc-jbKcbu fUfPqM"

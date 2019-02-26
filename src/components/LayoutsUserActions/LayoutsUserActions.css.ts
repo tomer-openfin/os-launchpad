@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Color, Typography } from '../../styles';
+import { Color, textEllipsis, Typography } from '../../styles';
 import SvgIcon from '../SvgIcon';
 
 interface Props {
@@ -8,72 +8,16 @@ interface Props {
 }
 
 export const CheckIcon = styled(SvgIcon)`
-  position: absolute;
-  top: 3px;
-  right: 0;
-  flex-shrink: 0;
-`;
-
-export const TextWrapper = styled.div`
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  padding: 0;
-  margin: 0;
-  min-width: 118px;
-`;
-
-export const UndoText = styled.p`
-  ${Typography.TypeStyleEnif}
-
-  color: ${Color.MERCURY};
-  text-transform: uppercase;
-
-  &:hover {
-    color: ${Color.JUPITER};
-    cursor: pointer;
-  }
-`;
-
-export const Text = styled.p`
-  ${Typography.TypeStyleNaos}
-
-  color: ${Color.MERCURY};
-  text-transform: uppercase;
-`;
-
-export const SubmitButton = styled.button`
-  height: 0;
-  margin: 0;
-  padding: 0;
-  visibility: hidden;
-  width: 0;
-
-  & > ${CheckIcon} {
-    visibility: visible;
-  }
-`;
-
-export const Input = styled.input`
-  ${Typography.TypeStyleCanopus}
-
-  background-color: transparent;
-  border: 0px;
-  color: ${Color.SUN};
-  max-height: 21px;
-  max-width: 123px;
-  outline: none;
-  padding: 0 15px 0 0;
-  box-shadow: inset 0 -1px ${Color.JUPITER};
-`;
-
-export const InputWrapper = styled.form`
-  position: relative;
+  ${({ hoverColor }) => `
+    &:hover {
+      background-color: ${hoverColor};
+    }
+  `}
 `;
 
 export const SaveIcon = styled(SvgIcon)<Props>`
   flex-shrink: 0;
-  margin-left: 8px;
+  margin-right: 5px;
 
   ${({ validResult }) =>
     validResult &&
@@ -86,12 +30,70 @@ export const SaveIcon = styled(SvgIcon)<Props>`
     `};
 `;
 
-export const UserActions = styled.div`
+export const TextWrapper = styled.div`
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
+  flex: 1;
   justify-content: space-between;
-  max-height: 48px;
+  overflow: hidden;
+`;
+
+export const UndoText = styled.p`
+  ${Typography.TypeStyleEnif}
+  ${textEllipsis}
+
+  color: ${Color.MERCURY};
+  margin-left: 5px;
+  margin: 0;
+  text-transform: uppercase;
+
+  &:hover {
+    color: ${Color.JUPITER};
+    cursor: pointer;
+  }
+`;
+
+export const Text = styled.p`
+  ${Typography.TypeStyleNaos}
+  ${textEllipsis}
+
+  color: ${Color.MERCURY};
+  margin: 0;
+  text-transform: uppercase;
+`;
+
+export const SubmitButton = styled.button`
+  background-color: ${Color.VOID};
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+
+  &:disabled {
+    display: none;
+  }
+`;
+
+export const Input = styled.input`
+  ${Typography.TypeStyleCanopus}
+
+  background-color: transparent;
+  border: none;
+  color: ${Color.SUN};
+  flex: 1;
+  outline: none;
+  padding: 1px 3px 1px 0;
   width: 100%;
-  padding: 11px 11px 14px 0px;
+`;
+
+export const LayoutForm = styled.form`
+  border-bottom: 1px solid ${Color.JUPITER};
+  display: flex;
+  flex: 1;
+`;
+
+export const UserActions = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 11px 11px 14px 8px;
 `;
