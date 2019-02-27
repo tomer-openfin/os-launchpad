@@ -2,7 +2,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { getLauncherMonitorId, setLauncherMonitorSettings } from '../../redux/me';
+import { setLauncherMonitorSettings } from '../../redux/me';
+import { getActiveLauncherMonitorId } from '../../redux/selectors';
 import { State } from '../../redux/types';
 import { MonitorDetails } from '../../types/fin';
 
@@ -30,7 +31,7 @@ interface MergeProps {
 }
 
 const mapState = (state: State): MapState => ({
-  activeId: getLauncherMonitorId(state),
+  activeId: getActiveLauncherMonitorId(state),
   monitorDetailsById: getMonitorDetailsById(state),
 });
 

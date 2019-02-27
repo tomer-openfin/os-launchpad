@@ -64,6 +64,11 @@ export const getMonitorDetailsDerivedByUserSettings = createSelector(
   },
 );
 
+export const getActiveLauncherMonitorId = createSelector(
+  [getMonitorDetailsDerivedByUserSettings],
+  monitorDetails => (monitorDetails ? monitorDetails.name || monitorDetails.deviceId : null),
+);
+
 export const getAppsLauncherAppList = createSelector(
   [getAppsById, getAppsLauncherIds],
   objectsFromIds,
