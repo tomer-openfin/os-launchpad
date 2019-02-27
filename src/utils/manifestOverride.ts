@@ -38,10 +38,10 @@ export const getImagesFromManifestOverrideOrManifest = (manifest: Manifest, mani
   };
 };
 
-export const isManifestDefault = (manifest: Manifest, key: ManifestImageViewKeys, value): boolean => {
+export const isManifestDefault = (manifestOverride: Manifest, key: ManifestImageViewKeys): boolean => {
   if (key === ManifestImageViewKeys.shortcut) {
-    return manifest.shortcut.icon === value;
+    return !manifestOverride.shortcut || !manifestOverride.shortcut.icon;
   }
 
-  return manifest[key] === value;
+  return !manifestOverride[key];
 };

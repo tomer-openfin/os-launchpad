@@ -1,4 +1,5 @@
 import {
+  FETCH_MANIFEST,
   GET_MANIFEST,
   GET_MANIFEST_OVERRIDE,
   SET_IS_DRAG_AND_DROP,
@@ -11,6 +12,7 @@ import {
 import {
   ApplicationActions,
   ApplicationState,
+  FetchManifestSuccessAction,
   GetManifestOverrideSuccessAction,
   GetManifestSuccessAction,
   Manifest,
@@ -44,10 +46,11 @@ const defaultState: ApplicationState = {
 
 export default (state: ApplicationState = defaultState, action: ApplicationActions) => {
   switch (action.type) {
+    case FETCH_MANIFEST.SUCCESS:
     case GET_MANIFEST.SUCCESS: {
       return {
         ...state,
-        manifest: (action as GetManifestSuccessAction).payload,
+        manifest: (action as GetManifestSuccessAction | FetchManifestSuccessAction).payload,
       };
     }
     case GET_MANIFEST_OVERRIDE.SUCCESS:

@@ -27,6 +27,7 @@ export const UPDATE_MANIFEST_OVERRIDE = generateAsyncActionTypes('UPDATE_MANIFES
 export const GET_MANIFEST_OVERRIDE = generateAsyncActionTypes('GET_MANIFEST_OVERRIDE');
 
 export const GET_MANIFEST = generateAsyncActionTypes('GET_MANIFEST');
+export const FETCH_MANIFEST = generateAsyncActionTypes('FETCH_MANIFEST');
 
 // Action Creators
 export const applicationStarted = createAction(APPLICATION_STARTED);
@@ -73,6 +74,9 @@ export const updateManifestOverrideError = createAction<ErrorResponse, MetaWithC
   metaWithCallbacksCreator,
 );
 
+export const fetchManifestRequest = createAction(FETCH_MANIFEST.REQUEST);
+export const fetchManifestSuccess = createAction(FETCH_MANIFEST.SUCCESS);
+export const fetchManifestError = createAction(FETCH_MANIFEST.ERROR);
 export const getManifestRequest = createAction(GET_MANIFEST.REQUEST);
 export const getManifestSuccess = createAction(GET_MANIFEST.SUCCESS);
 export const getManifestError = createAction(GET_MANIFEST.ERROR);

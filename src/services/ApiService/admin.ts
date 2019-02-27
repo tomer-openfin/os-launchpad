@@ -25,7 +25,14 @@ export const getAdminOrgSettings = (): Promise<APIResponse> => fetchJSON(API.ADM
  *
  * @returns {Promise<APIResponse>}
  */
-export const getAdminManifestOverrides = (): Promise<APIResponse> => fetchJSON(API.ADMIN_MANIFEST, HTTPMethods.GET);
+export const getAdminManifestOverrides = (): Promise<APIResponse> => fetchJSON(API.ADMIN_MANIFEST_OVERRIDE, HTTPMethods.GET);
+
+/**
+ * Get admin manifest
+ *
+ * @returns {Promise<APIResponse>}
+ */
+export const getAdminManifest = (): Promise<APIResponse> => fetchJSON(API.ADMIN_MANIFEST, HTTPMethods.GET);
 
 /**
  * Save organization settings
@@ -40,4 +47,4 @@ export const saveAdminOrgSettings = (settings: OrganizationState): Promise<APIRe
  * @returns {Promise<APIResponse>}
  */
 export const saveAdminManifestOverrides = (manifestOverrides: ManifestOverride): Promise<APIResponse> =>
-  fetchJSON(API.ADMIN_MANIFEST, HTTPMethods.POST, { manifest: manifestOverrides });
+  fetchJSON(API.ADMIN_MANIFEST_OVERRIDE, HTTPMethods.POST, { manifest: manifestOverrides });

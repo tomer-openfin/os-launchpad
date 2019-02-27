@@ -2,6 +2,9 @@ import {
   applicationStarted,
   collapseApp,
   expandApp,
+  fetchManifestError,
+  fetchManifestRequest,
+  fetchManifestSuccess,
   getManifestError,
   getManifestOverrideError,
   getManifestOverrideRequest,
@@ -62,8 +65,11 @@ export interface ReboundLauncherRequestPayload {
 export type ApplicationStartedAction = ReturnType<typeof applicationStarted>;
 export type CollapseAppAction = ReturnType<typeof collapseApp>;
 export type ExpandAppAction = ReturnType<typeof expandApp>;
-export type GetManifestErrorAction = ReturnType<typeof getManifestError>;
+export type FetchManifestRequestAction = ReturnType<typeof fetchManifestRequest>;
+export type FetchManifestErrorAction = ReturnType<typeof fetchManifestError>;
+export type FetchManifestSuccessAction = ReturnType<typeof fetchManifestSuccess>;
 export type GetManifestRequestAction = ReturnType<typeof getManifestRequest>;
+export type GetManifestErrorAction = ReturnType<typeof getManifestError>;
 export type GetManifestSuccessAction = ReturnType<typeof getManifestSuccess>;
 export type OpenfinReadyAction = ReturnType<typeof openfinReady>;
 export type ReboundLauncherRequestAction = ReturnType<typeof reboundLauncherRequest>;
@@ -86,6 +92,9 @@ export type ApplicationActions =
   | GetManifestErrorAction
   | GetManifestRequestAction
   | GetManifestSuccessAction
+  | FetchManifestErrorAction
+  | FetchManifestRequestAction
+  | FetchManifestSuccessAction
   | OpenfinReadyAction
   | ReboundLauncherRequestAction
   | SetIsDragAndDropAction

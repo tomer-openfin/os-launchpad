@@ -28,6 +28,10 @@ import {
   COLLAPSE_APP,
   EXIT_APPLICATION,
   EXPAND_APP,
+  FETCH_MANIFEST,
+  fetchManifestError,
+  fetchManifestRequest,
+  fetchManifestSuccess,
   GET_MANIFEST,
   GET_MANIFEST_OVERRIDE,
   getManifestError,
@@ -250,6 +254,16 @@ function* watchGetManifestRequest() {
   fin.desktop.Application.getCurrent().getManifest(successCb, errorCb);
 }
 
+function* watchFetchManifest() {
+  const response = yield call(ApiService.getAdminManifest);
+
+  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
+    yield put(fetchManifestError(response));
+  } else {
+    yield put(fetchManifestSuccess(response));
+  }
+}
+
 function* watchGetManifestOverrideRequest() {
   const response = yield call(ApiService.getAdminManifestOverrides);
 
@@ -274,6 +288,8 @@ function* watchUpdateManifestOverrideRequest(action: UpdateManifestOverrideReque
   if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
     yield put(updateManifestOverrideError(response));
   } else {
+    yield put(fetchManifestRequest());
+
     yield put(updateManifestOverrideSuccess(updatedManifestOverride, action.meta));
   }
 }
@@ -307,15 +323,18 @@ export function* applicationSaga() {
   yield takeFirst(EXPAND_APP, watchExpandApp);
 
   yield takeLatest(GET_MANIFEST_OVERRIDE.REQUEST, watchGetManifestOverrideRequest);
+  yield takeLatest(FETCH_MANIFEST.REQUEST, watchFetchManifest);
   yield takeLatest(GET_MANIFEST.REQUEST, watchGetManifestRequest);
   yield takeLatest(REBOUND_LAUNCHER.REQUEST, watchReboundLauncherRequest);
   yield takeLatest(UPDATE_MANIFEST_OVERRIDE.REQUEST, watchUpdateManifestOverrideRequest);
 
   yield takeLatest(GET_MANIFEST_OVERRIDE.SUCCESS, watchRequestSuccess);
   yield takeLatest(GET_MANIFEST.SUCCESS, watchRequestSuccess);
+  yield takeLatest(FETCH_MANIFEST.SUCCESS, watchRequestSuccess);
   yield takeLatest(UPDATE_MANIFEST_OVERRIDE.SUCCESS, watchRequestSuccess);
 
   yield takeLatest(GET_MANIFEST_OVERRIDE.ERROR, watchRequestError);
   yield takeLatest(GET_MANIFEST.ERROR, watchRequestError);
+  yield takeLatest(FETCH_MANIFEST.ERROR, watchRequestError);
   yield takeLatest(UPDATE_MANIFEST_OVERRIDE.ERROR, watchRequestError);
 }
