@@ -14,6 +14,7 @@ const {
   DEV_TOOLS_ON_STARTUP = false,
   ENTERPRISE,
   HOST = '0.0.0.0',
+  LOCAL_MANIFEST,
   MOCK_POSTMAN_URI,
   NODE_ENV = 'development',
   PASSWORD,
@@ -66,6 +67,18 @@ module.exports = {
     port: PORT,
     contentBase: path.join(__dirname, 'build'),
     proxy: {
+      '/api/launcher.json': {
+        changeOrigin: true,
+        logLevel: 'debug',
+        target: LOCAL_MANIFEST ? `http://${HOST}:${PORT}` : BACKEND,
+        pathRewrite: LOCAL_MANIFEST ? { '^/api/launcher.json': 'app.json' } : undefined,
+        headers: {
+          Referer: `http://${HOST}:${PORT}`,
+        },
+        onProxyReq: req => {
+          req.setHeader('openfin-os-organization', BACKEND_ORG);
+        },
+      },
       '/api/**': {
         changeOrigin: true,
         logLevel: 'debug',
