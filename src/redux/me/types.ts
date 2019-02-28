@@ -23,6 +23,7 @@ import {
   saveSettingsSuccess,
   setAppIds,
   setAutoHide,
+  setLauncherMonitorSettings,
   setLauncherPosition,
   setLauncherSize,
   setMe,
@@ -31,12 +32,14 @@ import {
   updatePasswordSuccess,
 } from './actions';
 
-import { DirectionalPosition, LauncherSize } from '../../types/commons';
+import { DirectionalPosition, LauncherSize, Point } from '../../types/commons';
 
 // State
 export interface MeSettingsState {
   appIds: string[];
   autoHide: boolean;
+  launcherMonitorId: string | number | null;
+  launcherMonitorReferencePoint: Point;
   launcherPosition: DirectionalPosition;
   launcherSize: LauncherSize;
 }
@@ -170,6 +173,7 @@ export type SetAppIds = ReturnType<typeof setAppIds>;
 export type SetAutoHide = ReturnType<typeof setAutoHide>;
 export type SetLauncherPosition = ReturnType<typeof setLauncherPosition>;
 export type SetLauncherSize = ReturnType<typeof setLauncherSize>;
+export type SetLauncherMonitorSettings = ReturnType<typeof setLauncherMonitorSettings>;
 
 export type UpdatePasswordRequest = ReturnType<typeof updatePasswordRequest>;
 export type UpdatePasswordSuccess = ReturnType<typeof updatePasswordSuccess>;
@@ -192,6 +196,7 @@ export type MeActions =
   | SaveSettingsSuccess
   | SetLauncherPosition
   | SetMe
+  | SetLauncherMonitorSettings
   | UpdatePasswordError
   | UpdatePasswordRequest
   | UpdatePasswordSuccess;

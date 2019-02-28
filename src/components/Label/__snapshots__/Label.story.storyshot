@@ -11,10 +11,10 @@ exports[`Storyshots UI Components/Label default 1`] = `
     }
   >
     <label
-      className="sc-iAyFgw dOgHcN"
+      className="sc-gisBJw foFoAm"
     >
       <div
-        className="sc-kkGfuU cmHvnc"
+        className="sc-caSCKo hbMfqb"
       >
         Label
       </div>
@@ -279,21 +279,21 @@ exports[`Storyshots UI Components/Label with ErrorMessage 1`] = `
     }
   >
     <label
-      className="sc-iAyFgw dOgHcN"
+      className="sc-gisBJw foFoAm"
     >
       <div
-        className="sc-kkGfuU cmHvnc"
+        className="sc-caSCKo hbMfqb"
       >
         Label
       </div>
       <input
-        className="sc-hMqMXs fgTWmD"
+        className="sc-eqIVtm bARbaV"
       />
       <div
-        className="sc-kEYyzF dngPqt"
+        className="sc-fAjcbJ jBNtba"
       >
         <div
-          className="sc-eNQAEJ chXetq"
+          className="sc-hMqMXs epunGh"
         >
           Error
         </div>
@@ -662,15 +662,15 @@ exports[`Storyshots UI Components/Label with Input 1`] = `
     }
   >
     <label
-      className="sc-iAyFgw dOgHcN"
+      className="sc-gisBJw foFoAm"
     >
       <div
-        className="sc-kkGfuU cmHvnc"
+        className="sc-caSCKo hbMfqb"
       >
         Label
       </div>
       <input
-        className="sc-hMqMXs cNmeBE"
+        className="sc-eqIVtm hIImKy"
       />
     </label>
   </div>

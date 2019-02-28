@@ -11,10 +11,9 @@ interface Props {
   deleteLayout: (id: string) => void;
   layouts: UserLayout[];
   restoreLayout: (id: string) => void;
-  saveLayout: (name: string, meta: MetaWithCallbacks) => void;
 }
 
-const Layouts = ({ close, deleteLayout, layouts, restoreLayout, saveLayout }: Props) => {
+const Layouts = ({ close, deleteLayout, layouts, restoreLayout }: Props) => {
   return (
     <Wrapper>
       <ActionsWrapper>
@@ -22,7 +21,7 @@ const Layouts = ({ close, deleteLayout, layouts, restoreLayout, saveLayout }: Pr
           <Title>Layouts</Title>
         </Header>
 
-        <LayoutsUserActions deleteLayout={deleteLayout} saveLayout={saveLayout} />
+        <LayoutsUserActions />
       </ActionsWrapper>
 
       <LayoutsList close={close} layouts={layouts} restoreLayout={restoreLayout} deleteLayout={deleteLayout} />

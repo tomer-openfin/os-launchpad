@@ -2,17 +2,23 @@ import { Application } from '@giantmachines/redux-openfin';
 import { put, select, takeEvery } from 'redux-saga/effects';
 
 import windowsConfig from '../../config/windows';
-import { UserLayout } from '../../types/commons';
 import getAppUuid from '../../utils/getAppUuid';
 import { isDevelopmentEnv } from '../../utils/processHelpers';
 import { restoreLayoutRequest } from '../layouts/actions';
 import { getLayoutsIds } from '../layouts/selectors';
+import { getAutoHide, setAutoHide } from '../me';
 import { launchWindow } from '../windows/actions';
 import { GLOBAL_HOTKEY_PRESSED } from './actions';
 import { DevGlobalHotkeys, GlobalHotkeys } from './enums';
+import { GlobalHotkeyPressedAction } from './types';
 
-function* watchGlobalHotkeyPressed(action) {
-  const hotkey = action.payload;
+function* watchGlobalHotkeyPressed(action: GlobalHotkeyPressedAction) {
+  const { payload } = action;
+  if (!payload) {
+    return;
+  }
+
+  const { hotkey } = payload;
 
   switch (hotkey) {
     case GlobalHotkeys.RestoreLayout: {
@@ -21,8 +27,8 @@ function* watchGlobalHotkeyPressed(action) {
 
       // todo: align with watchRestoreLayout saga once it's updated to handle
       // multiple user layouts
-      const layoutIds = yield select(getLayoutsIds);
-      const firstLayoutId: UserLayout['id'] = layoutIds[0];
+      const layoutIds: ReturnType<typeof getLayoutsIds> = yield select(getLayoutsIds);
+      const firstLayoutId = layoutIds[0];
 
       yield put(restoreLayoutRequest(firstLayoutId));
       break;
@@ -33,6 +39,15 @@ function* watchGlobalHotkeyPressed(action) {
       console.log(`${GlobalHotkeys.ShowAppDirectory} pressed`);
 
       yield put(launchWindow(windowsConfig.appDirectory));
+      break;
+    }
+
+    case GlobalHotkeys.ToggleAutoHide: {
+      // tslint:disable-next-line:no-console
+      console.log(`${GlobalHotkeys.ToggleAutoHide} pressed`);
+
+      const autoHide: ReturnType<typeof getAutoHide> = yield select(getAutoHide);
+      yield put(setAutoHide(!autoHide));
       break;
     }
 

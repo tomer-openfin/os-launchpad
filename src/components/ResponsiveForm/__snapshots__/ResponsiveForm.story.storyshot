@@ -11,41 +11,38 @@ exports[`Storyshots UI Components/ResponsiveForm default 1`] = `
     }
   >
     <form
-      className="sc-cMljjf YbFgd"
+      className="sc-ksYbfQ eCIUEJ"
     >
       <div
-        className="sc-jAaTju jjQQeH"
+        className="sc-hmzhuo dudMzh"
       >
         <div
-          className="sc-jDwBTQ kspkKE"
+          className="sc-frDJqD cnrcjF"
         >
           <div />
         </div>
       </div>
       <div
-        className="sc-iRbamj jQKyym"
+        className="sc-hqyNC hXSrbm"
       >
         <div
-          className="sc-gPEVay cdIDZh"
+          className="sc-kvZOFW jextin"
         >
           <button
-            className="sc-kAzzGY iAOmzv"
+            className="sc-kAzzGY jjQyJb"
             disabled={false}
             type="submit"
             width={128}
           >
             Save
           </button>
-          <a
-            backgroundColor="#848484"
-            className="sc-chPdSV eUeCqN"
-            href="/"
-            onClick={[Function]}
+          <button
+            className="sc-kAzzGY jWQqYu"
             type="button"
             width={128}
           >
             Cancel
-          </a>
+          </button>
         </div>
       </div>
     </form>

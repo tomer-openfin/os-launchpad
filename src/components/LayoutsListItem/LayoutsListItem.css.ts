@@ -1,16 +1,14 @@
 import styled from 'styled-components';
 
-import { Color, Typography } from '../../styles';
+import { Color, textEllipsis, Typography } from '../../styles';
 import { Icon } from '../SvgIcon';
 
 export const Item = styled.li`
   ${Typography.TypeStyleArcturus}
+  ${textEllipsis}
 
   color: ${Color.SUN};
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 134px;
+  flex: 1;
   list-style-type: none;
 
   &:hover {

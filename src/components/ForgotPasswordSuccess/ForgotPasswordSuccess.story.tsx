@@ -10,7 +10,7 @@ import ForgotPasswordSuccess from './ForgotPasswordSuccess';
 const handleClick = action('handleClick');
 
 storiesOf(`${CATEGORIES.COMPONENTS}ForgotPasswordSuccess`, module)
-  .addDecorator(withMarginDecorator(30))
+  .addDecorator(withMarginDecorator())
   .add('default', () => {
     return <ForgotPasswordSuccess handleClick={handleClick} />;
   });

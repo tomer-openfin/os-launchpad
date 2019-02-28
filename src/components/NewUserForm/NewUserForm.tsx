@@ -1,13 +1,13 @@
 import * as React from 'react';
+import * as Yup from 'yup';
 
 import { MetaWithCallbacks, PushRoute, User } from '../../types/commons';
 
+import { createPushRouteHandler } from '../../utils/routeHelpers';
 import { ROUTES } from '../Router/consts';
 
-import { createPushRouteHandler } from '../../utils/routeHelpers';
-
 import RequestForm from '../RequestForm';
-import UserForm from '../UserForm';
+import UserForm, { baseSchema } from '../UserForm';
 
 interface Props {
   createUser: Function;
@@ -23,7 +23,6 @@ const emptyUser: User = {
   email: '',
   firstName: '',
   id: '',
-  isAdmin: false,
   lastName: '',
   middleInitial: '',
   phone: '',
@@ -35,6 +34,8 @@ const defaultState: State = {
   isPasswordShown: false,
 };
 
+const validationSchema = Yup.object().shape(baseSchema);
+
 class NewUserForm extends React.Component<Props, State> {
   state = defaultState;
 
@@ -42,7 +43,7 @@ class NewUserForm extends React.Component<Props, State> {
     this.setState(prevState => ({ isPasswordShown: !prevState.isPasswordShown }));
   };
 
-  handleFormSubmit = (formData, meta: MetaWithCallbacks) => {
+  handleFormSubmit = (formData: User, meta: MetaWithCallbacks) => {
     const { createUser } = this.props;
 
     // default to +1 for country code for now
@@ -68,10 +69,11 @@ class NewUserForm extends React.Component<Props, State> {
       <RequestForm
         initialValues={emptyUser}
         errorMessage="There was an error trying to create this user"
-        form={this.renderForm}
-        headingText={`Create New User`}
+        render={this.renderForm}
+        headingText="Create New User"
         onSubmitSuccess={createPushRouteHandler(pushRoute, ROUTES.ADMIN_USERS)}
         submit={this.handleFormSubmit}
+        validationSchema={validationSchema}
       />
     );
   }

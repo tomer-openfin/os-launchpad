@@ -1,4 +1,4 @@
-import { CLOSE_FIN_APP, OPEN_FIN_APP, SET_APP_DIRECTORY_LIST, SET_FIN_APP_STATUS_STATE } from './actions';
+import { CLOSE_FIN_APP, GET_APP_DIRECTORY_LIST, OPEN_FIN_APP, SET_FIN_APP_STATUS_STATE } from './actions';
 
 import { App, AppStatusStates } from '../../types/commons';
 import { AppsById, AppsState, CloseFinAppSuccess, OpenFinAppSuccess, SetFinAppStatusState } from './types';
@@ -13,7 +13,7 @@ const defaultState: AppsState = { byId: {}, ids: [], statusById: {} };
 
 export default (state: AppsState = defaultState, action): AppsState => {
   switch (action.type) {
-    case SET_APP_DIRECTORY_LIST: {
+    case GET_APP_DIRECTORY_LIST.SUCCESS: {
       const appList = action.payload;
 
       const byId = formatByIds(appList);

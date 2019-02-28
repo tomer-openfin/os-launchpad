@@ -15,7 +15,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const defaultProps: Partial<Props> = {
+export const defaultProps = {
   backgroundColor: Color.KUIPER_BELT,
 };
 

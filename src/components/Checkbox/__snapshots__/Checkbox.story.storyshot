@@ -11,7 +11,7 @@ exports[`Storyshots UI Components/Checkbox default 1`] = `
     }
   >
     <label
-      className="sc-dxgOiQ fABziC sc-kpOJdX fGktSh"
+      className="sc-ckVGcZ iiqFud sc-dxgOiQ nGBmb"
     >
       <input
         checked={false}
@@ -22,10 +22,10 @@ exports[`Storyshots UI Components/Checkbox default 1`] = `
       />
       <div
         checked={false}
-        className="sc-jKJlTe cSgSty"
+        className="sc-eNQAEJ bKrJGb"
       />
       <div
-        className="sc-ckVGcZ hiWDOo"
+        className="sc-jKJlTe kvbYrP"
       >
         Checkbox
       </div>
@@ -317,7 +317,7 @@ exports[`Storyshots UI Components/Checkbox with knobs 1`] = `
     }
   >
     <label
-      className="sc-dxgOiQ fABziC sc-kpOJdX fGktSh"
+      className="sc-ckVGcZ iiqFud sc-dxgOiQ nGBmb"
     >
       <input
         checked={false}
@@ -328,10 +328,10 @@ exports[`Storyshots UI Components/Checkbox with knobs 1`] = `
       />
       <div
         checked={false}
-        className="sc-jKJlTe cSgSty"
+        className="sc-eNQAEJ bKrJGb"
       />
       <div
-        className="sc-ckVGcZ hiWDOo"
+        className="sc-jKJlTe kvbYrP"
       >
         Place Text Here
       </div>

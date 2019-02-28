@@ -11,80 +11,82 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
     }
   >
     <div
-      className="sc-krDsej eZZCXL"
+      className="sc-kZmsYB kzqRJV"
     >
       <div
-        className="sc-caSCKo eSDsWe"
+        className="sc-cmTdod hSnYdr"
       >
         <div
-          className="sc-gisBJw ctZMsr"
+          className="sc-jwKygS ktOnU"
         >
           <div
-            className="sc-bYSBpT kWexBi"
+            className="sc-hORach PhuPi"
           >
             Create App
           </div>
         </div>
       </div>
       <form
-        className="sc-cMljjf YbFgd"
+        className="sc-ksYbfQ eCIUEJ"
         onReset={[Function]}
         onSubmit={[Function]}
       >
         <div
-          className="sc-jAaTju jjQQeH"
+          className="sc-hmzhuo dudMzh"
         >
           <div
-            className="sc-jDwBTQ kspkKE"
+            className="sc-frDJqD cnrcjF"
           >
             <div
-              className="sc-dTdPqK dJVxZp"
+              className="sc-RcBXQ ZHuLd"
             >
               <label
-                className="sc-kxynE gjvIED sc-kpOJdX fGktSh"
+                className="sc-fyjhYU boyghX sc-dxgOiQ nGBmb"
               >
                 <div
-                  className="sc-kGXeez hlXPx"
+                  className="sc-kpOJdX gglwGS"
                 >
                   Config Type
                 </div>
                 <input
+                  checked={false}
                   name="withAppUrl"
                   onBlur={[Function]}
                   onChange={[Function]}
                   type="checkbox"
                 />
                 <div
-                  className="sc-gmeYpB ipfegE"
+                  className="sc-eTpRJs isQICh"
                 >
                   <div
-                    className="sc-fcdeBU bTneHa"
+                    checked={false}
+                    className="sc-eIHaNI cTCDIW"
                   />
                   <div
-                    className="sc-cooIXK OxlqL"
+                    className="sc-ugnQR kCCKUK"
                   >
                     App URL
                   </div>
                 </div>
                 <div
-                  className="sc-gmeYpB ipfegE"
+                  className="sc-eTpRJs isQICh"
                 >
                   <div
                     checked={true}
-                    className="sc-fcdeBU bQcMFr"
+                    className="sc-eIHaNI hLdKPa"
                   />
                   <div
-                    className="sc-cooIXK OxlqL"
+                    className="sc-ugnQR kCCKUK"
                   >
                     Manifest
                   </div>
                 </div>
               </label>
               <label
-                className="sc-kpOJdX fGktSh"
+                className="sc-dxgOiQ nGBmb"
               >
                 <div
-                  className="sc-kGXeez hlXPx"
+                  className="sc-kpOJdX gglwGS"
                 >
                   Manifest URL
                 </div>
@@ -98,10 +100,10 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
               </label>
             </div>
             <label
-              className="sc-kpOJdX fGktSh"
+              className="sc-dxgOiQ nGBmb"
             >
               <div
-                className="sc-kGXeez hlXPx"
+                className="sc-kpOJdX gglwGS"
               >
                 App Title
               </div>
@@ -114,14 +116,51 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
               />
             </label>
             <div
-              className="sc-dTdPqK jffWHV"
-              height="99px"
+              className="sc-RcBXQ fhYqCm"
+              height="144px"
             >
               <label
-                className="sc-kpOJdX fGktSh"
+                className="sc-dxgOiQ cLuaXs"
               >
                 <div
-                  className="sc-kGXeez hlXPx"
+                  className="sc-kpOJdX gglwGS"
+                >
+                  App Shortcut
+                </div>
+                <div
+                  className="sc-hIVACf bXkhsv"
+                >
+                  <div
+                    className="sc-gipzik jmhvsi"
+                    size={68}
+                  >
+                    <div
+                      className="sc-csuQGl iZpyJe"
+                      size={68}
+                    />
+                  </div>
+                  <div
+                    className="sc-gpHHfC POeTO"
+                  >
+                    <div
+                      className="sc-gVyKpa ForoK"
+                    >
+                      64x64
+                    </div>
+                    <div
+                      className="sc-ifAKCX hwskBS"
+                      color="#E7E7E7"
+                      onClick={[Function]}
+                      size={20}
+                    />
+                  </div>
+                </div>
+              </label>
+              <label
+                className="sc-dxgOiQ nGBmb"
+              >
+                <div
+                  className="sc-kpOJdX gglwGS"
                 >
                   Description
                 </div>
@@ -133,33 +172,17 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
                   type="text"
                 />
               </label>
-              <label
-                className="sc-kpOJdX fGktSh"
-              >
-                <div
-                  className="sc-kGXeez hlXPx"
-                >
-                  App Icon URL
-                </div>
-                <input
-                  name="icon"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  placeholder="Enter app icon url"
-                  type="text"
-                />
-              </label>
             </div>
           </div>
         </div>
         <div
-          className="sc-iRbamj jQKyym"
+          className="sc-hqyNC hXSrbm"
         >
           <div
-            className="sc-gPEVay cdIDZh"
+            className="sc-kvZOFW jextin"
           >
             <button
-              className="sc-kAzzGY iAOmzv"
+              className="sc-kAzzGY jjQyJb"
               disabled={true}
               type="submit"
               width={128}
@@ -168,7 +191,7 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
             </button>
             <a
               backgroundColor="#848484"
-              className="sc-chPdSV eUeCqN"
+              className="sc-chPdSV hEgkTj"
               href="/admin/apps"
               onClick={[Function]}
               type="button"
@@ -180,21 +203,21 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
         </div>
       </form>
       <div
-        className="sc-itybZL fDnYCf"
+        className="sc-iSDuPN jwRlQu"
       >
         <div
-          className="sc-jlyJG tArtB"
+          className="sc-jbKcbu fUfPqM"
         >
           <div
-            className="sc-gipzik ifLLNH"
+            className="sc-dNLxif jctmEa"
           >
             <div
-              className="sc-csuQGl PwXvg"
+              className="sc-jqCOkK kpsuvn"
             >
               Failed to create:  Please try again.
             </div>
             <div
-              className="sc-Rmtcm FsQfW sc-ifAKCX xmkOg"
+              className="sc-uJMKN grZbwL sc-ifAKCX xmkOg"
               color="#E7E7E7"
               onClick={[Function]}
               size={25}
@@ -391,7 +414,7 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      form
+                      component
                     </span>
                     <span>
                       =
@@ -407,6 +430,35 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
                           }
                         >
                           AppForm
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      render
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#444",
+                            }
+                          }
+                        >
+                          null
                         </span>
                         }
                       </span>

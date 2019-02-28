@@ -1,100 +1,92 @@
 import * as React from 'react';
 
 import * as checkIcon from '../../assets/CheckCircle.svg';
-import * as saveLayoutIcon from '../../assets/SaveLayout.svg';
+import * as saveIcon from '../../assets/Save.svg';
 
 import { Color } from '../../styles';
-import { MetaWithCallbacks } from '../../types/commons';
-import { ResponseStatus } from '../../types/enums';
-import noop from '../../utils/noop';
-import { isDevelopmentEnv } from '../../utils/processHelpers';
-import { CheckIcon, Input, InputWrapper, SaveIcon, SubmitButton, Text, TextWrapper, UndoText, UserActions } from './LayoutsUserActions.css';
+import { CheckIcon, Input, LayoutForm, SaveIcon, SubmitButton, Text, TextWrapper, UndoText, UserActions } from './LayoutsUserActions.css';
 
 const ERROR_SHOW_DURATION_MS = 5000;
-const SUCCESS_SHOW_DURATION_MS = isDevelopmentEnv ? 2000 : 15000;
+const SUCCESS_SHOW_DURATION_MS = 10000;
+
+enum Stage {
+  Default = 'default',
+  Submitting = 'submitting',
+  Saved = 'saved',
+  Updated = 'updated',
+  Error = 'error',
+}
 
 interface Props {
-  deleteLayout: (id: string) => void;
-  saveLayout: (name: string, meta: MetaWithCallbacks) => void;
+  dismissUndoLayout: () => void;
+  saveLayout: (name: string, meta: { successCb: (updated: boolean) => void; errorCb: () => void }) => void;
+  undoLayout: (meta: { successCb: () => void; errorCb: () => void }) => void;
 }
 
 interface State {
-  isSubmitting: boolean;
-  layoutsUndoId: string;
   name: string;
-  responseReceived: boolean;
-  result: {
-    message?: string;
-    status: string;
-  };
-  showErrorState: boolean;
-  showSavedState: boolean;
+  stage: Stage;
 }
 
 class LayoutsUserActions extends React.Component<Props, State> {
-  constructor(props) {
+  errorTimeout?: number;
+  successTimeout?: number;
+
+  constructor(props: Props) {
     super(props);
 
     this.state = {
-      isSubmitting: false,
-      layoutsUndoId: '',
       name: '',
-      responseReceived: false,
-      result: {
-        message: '',
-        status: '',
-      },
-      showErrorState: true,
-      showSavedState: true,
+      stage: Stage.Default,
     };
   }
 
-  errorCb = message => {
-    this.setState({
-      responseReceived: true,
-      result: {
-        message,
-        status: ResponseStatus.FAILURE,
-      },
-    });
+  componentWillUnmount() {
+    this.clearTimeouts();
+  }
+
+  clearTimeouts = () => {
+    window.clearTimeout(this.errorTimeout);
+    window.clearTimeout(this.successTimeout);
   };
 
-  saveCb = ({ id }) => {
-    this.setState({
-      layoutsUndoId: id,
-      responseReceived: true,
-      result: {
-        status: ResponseStatus.SUCCESS,
-      },
-    });
+  createSuccessTimeout = () => {
+    this.clearTimeouts();
+
+    this.successTimeout = window.setTimeout(this.resetForm, SUCCESS_SHOW_DURATION_MS);
   };
 
-  handleDeleteClick = () => {
-    const { layoutsUndoId } = this.state;
-    const { deleteLayout } = this.props;
+  errorCb = () => {
+    this.setState({ stage: Stage.Error });
+    this.errorTimeout = window.setTimeout(this.resetForm, ERROR_SHOW_DURATION_MS);
+  };
 
-    if (layoutsUndoId) {
-      deleteLayout(layoutsUndoId);
-
-      this.setState({
-        isSubmitting: false,
-        responseReceived: false,
-        result: {
-          message: '',
-          status: '',
-        },
-      });
+  saveCb = (updated: boolean) => {
+    if (updated) {
+      this.setState({ stage: Stage.Updated });
+    } else {
+      this.setState({ stage: Stage.Saved });
     }
+
+    this.createSuccessTimeout();
+  };
+
+  handleUndo = () => {
+    const { undoLayout } = this.props;
+
+    this.setState({ stage: Stage.Submitting });
+    undoLayout({ errorCb: this.errorCb, successCb: this.resetForm });
   };
 
   handleFormSubmit = e => {
     e.preventDefault();
+
     const { saveLayout } = this.props;
     const { name } = this.state;
 
     const meta = { successCb: this.saveCb, errorCb: this.errorCb };
 
-    this.setState(prevState => ({ isSubmitting: !prevState.isSubmitting, showErrorState: true, showSavedState: true }));
+    this.setState({ stage: Stage.Submitting });
 
     saveLayout(name, meta);
   };
@@ -105,105 +97,74 @@ class LayoutsUserActions extends React.Component<Props, State> {
     this.setState({ name });
   };
 
-  renderActionsContent = () => {
-    const { isSubmitting, responseReceived } = this.state;
+  resetForm = () => {
+    this.clearTimeouts();
 
-    if (isSubmitting && !responseReceived) {
-      return this.renderIsSubmitting();
-    }
+    const { dismissUndoLayout } = this.props;
 
-    if (!responseReceived) {
-      return this.renderInputForm();
-    }
+    dismissUndoLayout();
 
-    return this.renderMessage();
+    this.setState({ stage: Stage.Default });
   };
 
-  renderInputForm = () => (
-    <InputWrapper onSubmit={this.handleFormSubmit}>
-      <Input onChange={this.handleNameChange} placeholder="Layout Name" required type="text" />
+  renderContent() {
+    const { stage } = this.state;
 
-      <SubmitButton type="submit">
-        <CheckIcon hoverColor={Color.JUPITER} size={14} imgSrc={checkIcon} onClick={noop} />
-      </SubmitButton>
-    </InputWrapper>
-  );
-
-  renderIsSubmitting = () => (
-    <TextWrapper>
-      <Text>Submitting...</Text>
-    </TextWrapper>
-  );
-
-  renderMessage = () => {
-    const { responseReceived, result, showErrorState, showSavedState } = this.state;
-
-    if (responseReceived) {
-      if (result.status === ResponseStatus.FAILURE) {
-        setTimeout(
-          () =>
-            this.setState({
-              isSubmitting: false,
-              responseReceived: false,
-              result: {
-                message: '',
-                status: '',
-              },
-              showErrorState: false,
-            }),
-          ERROR_SHOW_DURATION_MS,
-        );
-
-        return showErrorState && this.renderErrorMessage();
+    switch (stage) {
+      case Stage.Error: {
+        return this.renderMessage('Error');
       }
-
-      setTimeout(
-        () =>
-          this.setState({
-            isSubmitting: false,
-            responseReceived: false,
-            result: {
-              message: '',
-              status: '',
-            },
-            showSavedState: false,
-          }),
-        SUCCESS_SHOW_DURATION_MS,
-      );
-
-      return showSavedState && this.renderSuccessMessage();
+      case Stage.Submitting: {
+        return this.renderMessage('Submitting...');
+      }
+      case Stage.Saved: {
+        return this.renderMessage('Saved');
+      }
+      case Stage.Updated: {
+        return this.renderMessage('Updated', true);
+      }
+      default: {
+        return this.renderLayoutForm();
+      }
     }
+  }
 
-    return null;
-  };
+  renderLayoutForm() {
+    return (
+      <LayoutForm onSubmit={this.handleFormSubmit}>
+        <Input onChange={this.handleNameChange} placeholder="Layout Name" required type="text" />
 
-  renderErrorMessage = () => (
-    <TextWrapper>
-      <Text>Error</Text>
-    </TextWrapper>
-  );
+        <SubmitButton type="submit" disabled={!this.state.name}>
+          <CheckIcon hoverColor={Color.JUPITER} imgSrc={checkIcon} size={14} />
+        </SubmitButton>
+      </LayoutForm>
+    );
+  }
 
-  renderSuccessMessage = () => (
-    <TextWrapper>
-      <Text>Saved</Text>
+  renderMessage(text: string, hasUndo?: boolean) {
+    const { stage } = this.state;
 
-      <UndoText onClick={this.handleDeleteClick}>Undo</UndoText>
-    </TextWrapper>
-  );
+    return (
+      <TextWrapper>
+        <Text onClick={stage !== Stage.Submitting ? this.resetForm : undefined}>{text}</Text>
+
+        {hasUndo && (
+          <UndoText onClick={this.handleUndo} onMouseEnter={this.clearTimeouts} onMouseMove={this.clearTimeouts} onMouseLeave={this.createSuccessTimeout}>
+            Undo
+          </UndoText>
+        )}
+      </TextWrapper>
+    );
+  }
 
   render() {
-    const { result } = this.state;
+    const { stage } = this.state;
 
     return (
       <UserActions>
-        <SaveIcon
-          validResult={result.status === ResponseStatus.SUCCESS || result.status === ResponseStatus.FAILURE}
-          hoverColor={Color.JUPITER}
-          size={24}
-          imgSrc={saveLayoutIcon}
-        />
+        <SaveIcon validResult={stage !== Stage.Default} hoverColor={Color.JUPITER} size={24} imgSrc={saveIcon} />
 
-        {this.renderActionsContent()}
+        {this.renderContent()}
       </UserActions>
     );
   }

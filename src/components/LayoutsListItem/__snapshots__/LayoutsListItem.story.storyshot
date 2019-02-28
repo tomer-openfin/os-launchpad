@@ -11,13 +11,17 @@ exports[`Storyshots Components/LayoutsListItem default 1`] = `
     }
   >
     <div
-      className="sc-bXGyLb fdMQEy"
+      style={
+        Object {
+          "margin": "30px",
+        }
+      }
     >
       <div
-        className="sc-hXRMBi glQpeD"
+        className="sc-gJWqzi dywdEK"
       >
         <li
-          className="sc-gwVKww cMxZwv"
+          className="sc-jzgbtB jXdnwt"
           onClick={[Function]}
         >
           layout
@@ -178,9 +182,60 @@ exports[`Storyshots Components/LayoutsListItem default 1`] = `
                     }
                   >
                     &lt;
-                    styled.div
+                    div
                   </span>
-                  <span />
+                  <span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        style
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#666",
+                              }
+                            }
+                          >
+                            {
+                            <span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                margin
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              '30px'
+                            </span>
+                            }
+                          </span>
+                          }
+                        </span>
+                      </span>
+                      
+                    </span>
+                  </span>
                   <span
                     style={
                       Object {
@@ -385,7 +440,7 @@ exports[`Storyshots Components/LayoutsListItem default 1`] = `
                     }
                   >
                     &lt;/
-                    styled.div
+                    div
                     &gt;
                   </span>
                 </div>
@@ -437,22 +492,6 @@ exports[`Storyshots Components/LayoutsListItem default 1`] = `
             >
               "
               LayoutsListItem
-              " Component
-            </h2>
-            <small>
-              No propTypes defined!
-            </small>
-          </div>
-          <div>
-            <h2
-              style={
-                Object {
-                  "margin": "20px 0 0 0",
-                }
-              }
-            >
-              "
-              styled.div
               " Component
             </h2>
             <small>

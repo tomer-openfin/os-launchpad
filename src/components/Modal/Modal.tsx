@@ -13,6 +13,9 @@ interface Props {
 const OVERLAY_CLASS = 'overlay';
 
 const createHandleClose = (cb: Function) => (event: React.SyntheticEvent<HTMLDivElement>) => {
+  // Prevent event from bubbling to other overlays
+  event.stopPropagation();
+
   if ((event.target as Element).classList.contains(OVERLAY_CLASS)) {
     cb();
   }

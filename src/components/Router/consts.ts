@@ -1,3 +1,8 @@
+export const ADMIN_SETTINGS_ROUTES = {
+  ADMIN_SETTINGS_DELETE: '/admin/settings/delete',
+  ADMIN_SETTINGS_EDIT: '/admin/settings/edit',
+};
+
 export const ADMIN_APPS_ROUTES = {
   ADMIN_APPS_DELETE: '/admin/apps/delete',
   ADMIN_APPS_EDIT: '/admin/apps/edit',
@@ -16,12 +21,14 @@ export const ADMIN_ROUTES = {
   ADMIN_APPS: '/admin/apps',
   ...ADMIN_APPS_ROUTES,
   ADMIN_SETTINGS: `/admin/settings`,
+  ...ADMIN_SETTINGS_ROUTES,
   ADMIN_USERS: '/admin/users',
   ...ADMIN_USERS_ROUTES,
 };
 
 export const SETTINGS_ROUTES = {
-  SETTINGS_UPDATE: '/settings/user/update',
+  SETTINGS_LAUNCHER_MONITOR: '/settings/launcher-monitor',
+  SETTINGS_UPDATE_PASSWORD: '/settings/update-password',
 };
 
 export const ROUTES = {

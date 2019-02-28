@@ -16,7 +16,7 @@ const handleSubmitValues = action('handleSubmitValues');
 
 storiesOf(`${CATEGORIES.COMPONENTS}LoginForm`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecorator(30))
+  .addDecorator(withMarginDecorator())
   .add('default', () => {
     const username = text('username', '');
     const usernameError = text('usernameError', '');

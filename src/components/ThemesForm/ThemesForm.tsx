@@ -5,8 +5,7 @@ import { MetaWithCallbacks, Theme } from '../../types/commons';
 
 import { Color } from '../../styles';
 import Button from '../Button';
-import { ButtonsWrapper, StyledForm } from '../LogoForm';
-import { Option, Select } from './ThemesForm.css';
+import { ButtonWrapper, Option, Select, StyledForm } from './ThemesForm.css';
 
 const BASE_ID = 'ThemesForm';
 const SELECT_ID = `${BASE_ID}SelectInput`;
@@ -116,7 +115,7 @@ class ThemesForm extends React.PureComponent<Props, State> {
       <StyledForm>
         <Field name={FormNames.Theme} render={this.renderSelectInput} />
 
-        <ButtonsWrapper>
+        <ButtonWrapper>
           <Button disabled={!formikProps.dirty || loading} isDark type="submit" width={110}>
             Set Theme
           </Button>
@@ -130,7 +129,7 @@ class ThemesForm extends React.PureComponent<Props, State> {
           >
             Reset
           </Button>
-        </ButtonsWrapper>
+        </ButtonWrapper>
       </StyledForm>
     );
   };

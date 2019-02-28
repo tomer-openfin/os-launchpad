@@ -28,12 +28,16 @@ interface WrapperProps {
   size: number;
 }
 
-/* Styled Imports */
-export const StyledLogo = styled(Logo)`
+export const LogoWrapper = styled.div<{ size: number }>`
   background-color: ${Color.KUIPER_BELT};
-  background-size: 90%;
+  height: ${props => props.size}px;
+  min-height: ${props => props.size}px;
+  min-width: ${props => props.size}px;
+  width: ${props => props.size}px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
-/* End Styled Imports */
 
 export const AppListWrapper = styled.div<AppListWrapperProps>`
   overflow: hidden;

@@ -76,21 +76,26 @@ export interface DirectionalCoordinates extends PrimaryDirectionalCoordinates {
   right: number;
 }
 
+export interface Point {
+  x: number;
+  y: number;
+}
+
 export interface User {
   email: string;
   firstName: string;
-  id: string;
-  isAdmin: boolean;
   lastName: string;
-  middleInitial: string;
+  middleInitial?: string;
   tmpPassword?: string;
-  username: string;
-  phone?: string;
+  phone: string;
   // created on backend
-  created?: string;
-  enabled?: boolean;
-  lastModified?: string;
-  status?: UserStatus;
+  readonly created?: string;
+  readonly enabled?: boolean;
+  readonly id: string;
+  readonly lastModified?: string;
+  readonly isAdmin?: boolean; // modified on BE only
+  readonly status?: UserStatus;
+  readonly username?: string;
 }
 
 export interface ObjectWithId {
@@ -123,6 +128,6 @@ export interface XYCoord {
 }
 
 /* tslint:disable-next-line:no-any */
-export type RequestFormSubmit<T = any> = (payload: T, meta: MetaWithCallbacks, actions?) => void;
+export type DispatchRequest<T = any> = (payload: T, meta: MetaWithCallbacks, actions?) => void;
 
 export type PushRoute = RouteComponentProps['history']['push'];

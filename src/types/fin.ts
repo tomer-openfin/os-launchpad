@@ -1,5 +1,6 @@
 export type ApplicationBaseEvent = fin.ApplicationBaseEvent;
 export type MonitorInfo = fin.MonitorInfo;
+export type MonitorDetails = MonitorInfo['primaryMonitor'];
 export type OpenFinApplication = fin.OpenFinApplication;
 export type OpenFinApplicationEventType = fin.OpenFinApplicationEventType;
 export type OpenFinApplicationInfo = fin.LaunchInfo;

@@ -1,18 +1,28 @@
 import { connect } from 'react-redux';
 
-import { getOrganizationAutoLogin, saveOrgAutoLogin } from '../../redux/organization';
+import { State } from '../../redux/types';
 
+import { getManifestImages, getManifestOverride } from '../../redux/application';
+import { getOrganizationImages } from '../../redux/organization';
+
+import { isManifestDefault } from '../../utils/manifestOverride';
+import { ManifestImageViewKeys } from '../../utils/orgImages';
 import OrganizationSettings from './OrganizationSettings';
 
-const mapState = state => ({
-  autoLoginOrg: getOrganizationAutoLogin(state),
+const mapState = (state: State) => ({
+  manifestImages: getManifestImages(state),
+  manifestOverride: getManifestOverride(state),
+  orgImages: getOrganizationImages(state),
 });
 
-const mapDispatch = dispatch => ({
-  setOrgAutoLogin: (autoLoginOrg: boolean) => dispatch(saveOrgAutoLogin(autoLoginOrg)),
+const mergeProps = (stateProps, _, ownProps) => ({
+  ...ownProps,
+  ...stateProps,
+  isManifestDefault: (imageKey: ManifestImageViewKeys) => isManifestDefault(stateProps.manifestOverride, imageKey),
 });
 
 export default connect(
   mapState,
-  mapDispatch,
+  null,
+  mergeProps,
 )(OrganizationSettings);

@@ -1,5 +1,6 @@
 import { FormikActions } from 'formik';
 import * as React from 'react';
+import * as Yup from 'yup';
 
 import { UpdatePasswordRequestPayload } from '../../redux/me/types';
 import { MetaWithCallbacks } from '../../types/commons';
@@ -10,6 +11,14 @@ import { Wrapper } from './UpdatePasswordForm.css';
 import ConfirmPasswordUpdate from '../ConfirmPasswordUpdate';
 import PasswordForm from '../PasswordForm';
 import RequestForm from '../RequestForm';
+
+const validationSchema = Yup.object().shape({
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('newPassword')], 'Passwords must match')
+    .required('Required'),
+  newPassword: Yup.string().required('Required'),
+  password: Yup.string().required('Required'),
+});
 
 interface UpdatePasswordPayload extends UpdatePasswordRequestPayload {
   confirmPassword: string;
@@ -61,7 +70,8 @@ class UpdatePasswordForm extends React.Component<Props, State> {
           errorMessage={`Sorry, there was an error trying to update your password`}
           submit={this.handleFormSubmit}
           onSubmitSuccess={this.onSubmitSuccess}
-          form={PasswordForm}
+          render={PasswordForm}
+          validationSchema={validationSchema}
         />
       </Borders>
     </Wrapper>

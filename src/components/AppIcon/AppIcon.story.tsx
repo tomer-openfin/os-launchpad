@@ -12,7 +12,7 @@ import AppIcon from './AppIcon';
 
 storiesOf(`${CATEGORIES.UI}AppIcon`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecorator(30))
+  .addDecorator(withMarginDecorator())
   .add('default', () => {
     const imgSrc = text('imgSrc', 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
     const launcherSize = select('size', Object(LauncherSize), LauncherSize.Large);

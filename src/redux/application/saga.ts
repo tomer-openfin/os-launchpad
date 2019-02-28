@@ -3,32 +3,41 @@ import { delay } from 'redux-saga';
 import { all, call, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import windowsConfig, { initOnStartWindows } from '../../config/windows';
-
-import { OpenfinReadyAction, ReboundLauncherRequestAction } from './types';
-
 import eraseCookie from '../../utils/eraseCookie';
 import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
-import { animateWindow, getCurrentOpenfinApplicationInfo, getSystemMonitorInfo } from '../../utils/openfinPromises';
+import { animateWindow } from '../../utils/openfinPromises';
 import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv } from '../../utils/processHelpers';
 import { setupWindow } from '../../utils/setupWindow';
 import takeFirst from '../../utils/takeFirst';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { registerGlobalDevHotKeys, registerGlobalHotkeys } from '../globalHotkeys/utils';
-import { animateLauncherCollapseExpand } from './utils';
+import { GetManifestOverrideRequestAction, OpenfinReadyAction, ReboundLauncherRequestAction, UpdateManifestOverrideRequestAction } from './types';
+import { animateLauncherCollapseExpand, initManifest, initMonitorInfo, initOrgSettings, initResources, initRuntimeVersion } from './utils';
 
-import { getAppDirectoryList } from '../apps';
-import { GET_LAYOUTS, getLayoutsRequest } from '../layouts';
-import { GET_SETTINGS, getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig, getSettingsRequest } from '../me';
-import { GET_ORG_SETTINGS, getOrgSettingsRequest } from '../organization';
-import { getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize } from '../selectors';
-import { getMonitorInfo, setMonitorInfo, setupSystemHandlers } from '../system';
+import ApiService from '../../services/ApiService/index';
+import { ResponseStatus } from '../../types/enums';
+import { updateManifestOverride } from '../../utils/manifestOverride';
+import { getAppDirectoryListRequest } from '../apps';
+import { getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig } from '../me';
+import { getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings } from '../selectors';
+import { setupSystemHandlers } from '../system';
 import { launchWindow } from '../windows';
 import {
   APPLICATION_STARTED,
   COLLAPSE_APP,
   EXIT_APPLICATION,
   EXPAND_APP,
+  FETCH_MANIFEST,
+  fetchManifestError,
+  fetchManifestRequest,
+  fetchManifestSuccess,
+  GET_MANIFEST,
+  GET_MANIFEST_OVERRIDE,
+  getManifestError,
+  getManifestOverrideError,
+  getManifestOverrideSuccess,
+  getManifestSuccess,
   INIT_DEV_TOOLS,
   initDevTools,
   LAUNCH_APP_LAUNCHER,
@@ -40,9 +49,11 @@ import {
   reboundLauncherSuccess,
   setIsEnterprise,
   setIsExpanded,
-  setRuntimeVersion,
+  UPDATE_MANIFEST_OVERRIDE,
+  updateManifestOverrideError,
+  updateManifestOverrideSuccess,
 } from './actions';
-import { getApplicationIsExpanded } from './selectors';
+import { getApplicationIsExpanded, getManifestOverride } from './selectors';
 
 const APP_UUID = getAppUuid();
 const ANIMATION_DURATION = 300;
@@ -51,7 +62,7 @@ const ANIMATION_DURATION = 300;
  * Application Start
  */
 function* applicationStart() {
-  yield put(getAppDirectoryList());
+  yield put(getAppDirectoryListRequest());
 }
 
 function* watchExitApplication() {
@@ -87,53 +98,26 @@ function* openfinSetup(action: OpenfinReadyAction) {
   // Only main window should be doing setup.
   if (finName === APP_UUID) {
     eraseCookie();
+
     if (isDevelopmentEnv()) {
       yield put(initDevTools());
     }
 
-    yield all([take([GET_ORG_SETTINGS.SUCCESS, GET_ORG_SETTINGS.ERROR]), put(getOrgSettingsRequest())]);
+    yield put(Window.hideWindow({ id: finName }));
 
-    // const autoLoginLocal = yield !!getLocalStorage('autoLogin');
+    yield all([
+      call(initOrgSettings),
+      call(initMonitorInfo),
+      call(initRuntimeVersion),
+      call(initManifest),
 
-    // const autoLoginOrg = yield select(getOrganizationAutoLogin);
+      call(setupSystemHandlers, window.fin, window.store || window.opener.store),
+    ]);
 
-    // if (document.cookie && autoLoginLocal && autoLoginOrg) {
-    //   yield all([take([GET_ME.SUCCESS, GET_ME.ERROR]), put(getMeRequest())]);
-    // }
-
-    const isLoggedIn = yield select(getIsLoggedIn);
+    const isLoggedIn: ReturnType<typeof getIsLoggedIn> = yield select(getIsLoggedIn);
 
     const isEnterprise = isEnterpriseEnv();
     yield put(setIsEnterprise(isEnterprise));
-
-    // Initial system monitor info
-    // and setup system event handlers
-    try {
-      const systemMonitorInfo = yield call(getSystemMonitorInfo);
-      yield put(setMonitorInfo(systemMonitorInfo));
-    } catch (e) {
-      // tslint:disable-next-line:no-console
-      console.log('Failed to get/set monitor information:', e);
-    }
-
-    const { fin } = window;
-
-    if (fin) {
-      // Set Runtime Version
-      const { runtime } = yield call(getCurrentOpenfinApplicationInfo);
-
-      if (runtime) {
-        yield put(setRuntimeVersion((runtime as { version: string }).version));
-      }
-
-      yield call(setupSystemHandlers, fin, window.store || window.opener.store);
-    }
-
-    const launcherFinWindow = yield call(getLauncherFinWindow);
-    // Hide launcher
-    if (launcherFinWindow) {
-      launcherFinWindow.hide();
-    }
 
     // Launch all windows on init, windows are hidden by default unless they have autoShow: true
     // TODO - block until all windows are created and move to post login
@@ -143,12 +127,7 @@ function* openfinSetup(action: OpenfinReadyAction) {
       // Show Login
       yield put(launchWindow(windowsConfig.login));
     } else {
-      yield all([
-        take([GET_LAYOUTS.ERROR, GET_LAYOUTS.SUCCESS]),
-        take([GET_SETTINGS.ERROR, GET_SETTINGS.SUCCESS]),
-        put(getLayoutsRequest()),
-        put(getSettingsRequest()),
-      ]);
+      yield call(initResources);
 
       // Show Launcher
       yield put(launchAppLauncher());
@@ -209,9 +188,9 @@ function* watchReboundLauncherRequest(action: ReboundLauncherRequestAction) {
     return;
   }
 
-  const [appList, monitorInfo, launcherPosition, launcherSizeConfig, autoHide, isExpanded, collapsedSystemDrawerSize, expandedSystemDrawerSize] = yield all([
+  const [appList, monitorDetails, launcherPosition, launcherSizeConfig, autoHide, isExpanded, collapsedSystemDrawerSize, expandedSystemDrawerSize] = yield all([
     select(getAppsLauncherAppList),
-    select(getMonitorInfo),
+    select(getMonitorDetailsDerivedByUserSettings),
     select(getLauncherPosition),
     select(getLauncherSizeConfig),
     select(getAutoHide),
@@ -219,12 +198,12 @@ function* watchReboundLauncherRequest(action: ReboundLauncherRequestAction) {
     select(getCollapsedSystemDrawerSize),
     select(getExpandedSystemDrawerSize),
   ]);
-  if (!monitorInfo) {
+  if (!monitorDetails) {
     return;
   }
   const { width, height, left, top } = calcLauncherPosition(
     appList.length,
-    monitorInfo,
+    monitorDetails,
     launcherPosition,
     launcherSizeConfig,
     autoHide,
@@ -263,6 +242,77 @@ function* watchReboundLauncherRequest(action: ReboundLauncherRequestAction) {
   yield put(reboundLauncherSuccess());
 }
 
+function* watchGetManifestRequest() {
+  const { fin } = window;
+
+  if (!fin) return;
+
+  const successCb = manifest => window.store.dispatch(getManifestSuccess(manifest));
+
+  const errorCb = err => window.store.dispatch(getManifestError(err));
+
+  fin.desktop.Application.getCurrent().getManifest(successCb, errorCb);
+}
+
+function* watchFetchManifest() {
+  const response = yield call(ApiService.getAdminManifest);
+
+  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
+    yield put(fetchManifestError(response));
+  } else {
+    yield put(fetchManifestSuccess(response));
+  }
+}
+
+function* watchGetManifestOverrideRequest() {
+  const response = yield call(ApiService.getAdminManifestOverrides);
+
+  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
+    yield put(getManifestOverrideError(response));
+  } else {
+    yield put(getManifestOverrideSuccess(response));
+  }
+}
+
+function* watchUpdateManifestOverrideRequest(action: UpdateManifestOverrideRequestAction) {
+  const overrideUpdates = action.payload;
+
+  if (!overrideUpdates) return;
+
+  const manifestOverride = yield select(getManifestOverride);
+
+  const updatedManifestOverride = Object.keys(overrideUpdates).reduce((acc, key) => updateManifestOverride(acc, key, overrideUpdates[key]), manifestOverride);
+
+  const response = yield call(ApiService.saveAdminManifestOverrides, updatedManifestOverride);
+
+  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
+    yield put(updateManifestOverrideError(response));
+  } else {
+    yield put(fetchManifestRequest());
+
+    yield put(updateManifestOverrideSuccess(updatedManifestOverride, action.meta));
+  }
+}
+
+function* watchRequestError(action) {
+  const error = action.payload;
+
+  const errorMessage = error ? error.message || error : 'Unknown Error';
+
+  // tslint:disable-next-line:no-console
+  console.error('Error on', action.type, ':', errorMessage, '\n');
+
+  if (action.meta && action.meta.errorCb) {
+    action.meta.errorCb(errorMessage);
+  }
+}
+
+function* watchRequestSuccess(action) {
+  if (action.meta && action.meta.successCb) {
+    action.meta.successCb();
+  }
+}
+
 export function* applicationSaga() {
   yield takeEvery(APPLICATION_STARTED, applicationStart);
   yield takeEvery(EXIT_APPLICATION, watchExitApplication);
@@ -271,5 +321,20 @@ export function* applicationSaga() {
   yield takeEvery(OPENFIN_READY, openfinSetup);
   yield takeFirst(COLLAPSE_APP, watchCollapseApp);
   yield takeFirst(EXPAND_APP, watchExpandApp);
+
+  yield takeLatest(GET_MANIFEST_OVERRIDE.REQUEST, watchGetManifestOverrideRequest);
+  yield takeLatest(FETCH_MANIFEST.REQUEST, watchFetchManifest);
+  yield takeLatest(GET_MANIFEST.REQUEST, watchGetManifestRequest);
   yield takeLatest(REBOUND_LAUNCHER.REQUEST, watchReboundLauncherRequest);
+  yield takeLatest(UPDATE_MANIFEST_OVERRIDE.REQUEST, watchUpdateManifestOverrideRequest);
+
+  yield takeLatest(GET_MANIFEST_OVERRIDE.SUCCESS, watchRequestSuccess);
+  yield takeLatest(GET_MANIFEST.SUCCESS, watchRequestSuccess);
+  yield takeLatest(FETCH_MANIFEST.SUCCESS, watchRequestSuccess);
+  yield takeLatest(UPDATE_MANIFEST_OVERRIDE.SUCCESS, watchRequestSuccess);
+
+  yield takeLatest(GET_MANIFEST_OVERRIDE.ERROR, watchRequestError);
+  yield takeLatest(GET_MANIFEST.ERROR, watchRequestError);
+  yield takeLatest(FETCH_MANIFEST.ERROR, watchRequestError);
+  yield takeLatest(UPDATE_MANIFEST_OVERRIDE.ERROR, watchRequestError);
 }

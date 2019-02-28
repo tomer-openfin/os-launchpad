@@ -7,36 +7,40 @@ import { AppStatusOrigins, AppStatusStates, ResponseStatus } from '../../types/e
 import { CloseFinAppRequest, OpenFinAppError, OpenFinAppRequest, OpenFinAppSuccess } from './types';
 
 import {
-  bringWindowToFrontPromise,
   closeApplication,
   createAndRunFromManifest,
   getOpenFinApplicationChildWindows,
   getOpenFinApplicationInfo,
-  isWindowVisible,
+  getVisibleWindowStateAndBounds,
   wrapApplication,
+  wrapWindow,
 } from '../../utils/openfinPromises';
 
+import { getArea } from '../../utils/coordinateHelpers';
 import { bindFinAppEventHandlers } from '../../utils/finAppEventHandlerHelpers';
+import promisifyOpenfin from '../../utils/promisifyOpenfin';
 import { getRuntimeVersion, reboundLauncherRequest } from '../application';
 import {
   CLOSE_FIN_APP,
   GET_APP_DIRECTORY_LIST,
+  getAppDirectoryListError,
+  getAppDirectoryListSuccess,
   OPEN_FIN_APP,
   openFinAppError,
   openFinAppSuccess,
-  SET_APP_DIRECTORY_LIST,
-  setAppDirectoryList,
   setFinAppStatusState,
 } from './actions';
 import { getAppStatusById } from './selectors';
 
-function* watchGetAppDirectoryList() {
+function* watchGetAppDirectoryListRequest() {
   const response = yield call(ApiService.getDirectoryAppList);
 
   if (response.length && response.status !== ResponseStatus.FAILURE) {
     const appList = response;
 
-    yield put(setAppDirectoryList(appList));
+    yield put(getAppDirectoryListSuccess(appList));
+  } else {
+    yield put(getAppDirectoryListError());
   }
 }
 
@@ -63,14 +67,22 @@ function* watchOpenFinAppError(action: OpenFinAppError) {
         const app = fin.desktop.Application.wrap(uuid);
         const appWindow = app.getWindow();
         const childWindows = yield call(getOpenFinApplicationChildWindows(uuid));
+        const finChildWindows = yield all(childWindows.map(childWindow => call(wrapWindow, childWindow)));
 
-        const windows = yield all([call(isWindowVisible, appWindow), ...childWindows.map(childWindow => call(isWindowVisible, childWindow))]);
+        const windows = yield all([
+          call(getVisibleWindowStateAndBounds, appWindow),
+          ...finChildWindows.map(childWindow => call(getVisibleWindowStateAndBounds, childWindow)),
+        ]);
+        const largestWindowsFirst = windows.filter(win => win.bounds).sort((a, b) => getArea(a.bounds) < getArea(b.bounds));
+
         yield all(
-          windows.reduce((acc, win) => {
-            if (!win) {
+          largestWindowsFirst.reduce((acc, { finWindow, state }) => {
+            if (!state) {
               return acc;
             }
-            return [...acc, call(bringWindowToFrontPromise, win)];
+
+            const method = state === 'minimized' ? 'restore' : 'bringToFront';
+            return [...acc, call(promisifyOpenfin, finWindow, method)];
           }, []),
         );
       }
@@ -88,17 +100,19 @@ function* watchOpenFinAppRequest(action: OpenFinAppRequest) {
 
   const { appUrl, id, manifest_url } = payload;
 
-  let manifestUrl;
+  let manifestUrl = manifest_url;
 
-  if (manifest_url) {
-    manifestUrl = manifest_url;
-  } else if (appUrl) {
+  if (appUrl) {
+    // TODO: All apps should be moved off of appUrl and rely on manifest
+    // Remove manifest creation through appUrl when all apps have been migrated off
     const runtimeVersion = yield select(getRuntimeVersion);
 
-    if (!runtimeVersion) return;
+    manifestUrl = API.CREATE_MANIFEST(appUrl, undefined, runtimeVersion);
+  }
 
-    manifestUrl = API.CREATE_MANIFEST(runtimeVersion, appUrl, process.env.API_URL || `${window.location.origin}/`);
-  } else return;
+  if (!manifestUrl) {
+    return;
+  }
 
   const status = yield select(getAppStatusById, id);
 
@@ -154,7 +168,7 @@ function* watchCloseFinAppRequest(action: CloseFinAppRequest) {
   }
 }
 
-function* watchSetAppDirectoryList() {
+function* watchGetAppDirectoryListSuccess() {
   yield put(reboundLauncherRequest(false, 0));
 }
 
@@ -163,6 +177,6 @@ export function* appsSaga() {
   yield takeEvery(OPEN_FIN_APP.REQUEST, watchOpenFinAppRequest);
   yield takeEvery(OPEN_FIN_APP.SUCCESS, watchOpenFinAppSuccess);
   yield takeEvery(OPEN_FIN_APP.ERROR, watchOpenFinAppError);
-  yield takeEvery(SET_APP_DIRECTORY_LIST, watchSetAppDirectoryList);
-  yield takeLatest(GET_APP_DIRECTORY_LIST, watchGetAppDirectoryList);
+  yield takeEvery(GET_APP_DIRECTORY_LIST.SUCCESS, watchGetAppDirectoryListSuccess);
+  yield takeLatest(GET_APP_DIRECTORY_LIST.REQUEST, watchGetAppDirectoryListRequest);
 }

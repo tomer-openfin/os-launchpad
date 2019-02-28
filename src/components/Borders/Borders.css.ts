@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { Color, hexToRgba } from '../../styles';
+
 interface Props {
   height?: string;
   width?: string;
@@ -11,7 +13,6 @@ const defaultProp = {
   width: '100vw',
 };
 
-// border: 2px solid rgba(255, 255, 255, 0.03);
 export const Borders = styled.div<Props>`
   align-items: inherit;
   display: inherit;
@@ -25,7 +26,7 @@ export const Borders = styled.div<Props>`
   `}
 
   &:before {
-    border: 2px solid rgba(255, 255, 255, 0.03);
+    border: 2px solid ${hexToRgba(Color.SUN, 0.03)};
     border-radius: ${props => props.borderRadius};
     bottom: 0px;
     content: '';
@@ -39,7 +40,7 @@ export const Borders = styled.div<Props>`
   }
 
   &:after {
-    border: 1px solid rgba(0, 0, 0, 0.35);
+    border: 1px solid ${hexToRgba(Color.VACUUM, 0.35)};
     border-radius: ${props => props.borderRadius};
     bottom: 0px;
     content: '';

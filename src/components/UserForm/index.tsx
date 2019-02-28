@@ -1,3 +1,5 @@
-import Component from './UserForm';
+import UserForm from './UserForm';
 
-export default Component;
+export * from './UserForm';
+
+export default UserForm;

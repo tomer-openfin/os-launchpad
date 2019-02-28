@@ -11,35 +11,39 @@ exports[`Storyshots Components/LayoutsUserActions default 1`] = `
     }
   >
     <div
-      className="sc-iujRgT fZbOsM"
+      style={
+        Object {
+          "margin": "30px",
+        }
+      }
     >
       <div
-        className="sc-bAeIUo hxCsSL"
+        className="sc-gPWkxV cohBeu"
       >
         <div
-          className="sc-bMVAic gNAeAn sc-ifAKCX fdgCee"
+          className="sc-TFwJa iAHKlv sc-ifAKCX jFrnbN"
           color="#E7E7E7"
           size={24}
         />
         <form
-          className="sc-hORach XyvvX"
+          className="sc-fzsDOv bEFiEO"
           onSubmit={[Function]}
         >
           <input
-            className="sc-gqPbQI hXvmhG"
+            className="sc-eMigcr bHMaVq"
             onChange={[Function]}
             placeholder="Layout Name"
             required={true}
             type="text"
           />
           <button
-            className="sc-cLQEGU jTzHzX"
+            className="sc-itybZL fGNNdu"
+            disabled={true}
             type="submit"
           >
             <div
-              className="sc-iuJeZd kcuHk sc-ifAKCX bvrXxy"
+              className="sc-fjmCvl lmmLhq sc-ifAKCX iMtAAB"
               color="#E7E7E7"
-              onClick={[Function]}
               size={14}
             />
           </button>
@@ -194,9 +198,60 @@ exports[`Storyshots Components/LayoutsUserActions default 1`] = `
                     }
                   >
                     &lt;
-                    styled.div
+                    div
                   </span>
-                  <span />
+                  <span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        style
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#666",
+                              }
+                            }
+                          >
+                            {
+                            <span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                margin
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              '30px'
+                            </span>
+                            }
+                          </span>
+                          }
+                        </span>
+                      </span>
+                      
+                    </span>
+                  </span>
                   <span
                     style={
                       Object {
@@ -231,7 +286,7 @@ exports[`Storyshots Components/LayoutsUserActions default 1`] = `
                       <span
                         style={Object {}}
                       >
-                        deleteLayout
+                        dismissUndoLayout
                       </span>
                       <span>
                         =
@@ -246,7 +301,7 @@ exports[`Storyshots Components/LayoutsUserActions default 1`] = `
                               }
                             }
                           >
-                            deleteLayout clicked
+                            dismissUndoLayout
                           </span>
                           }
                         </span>
@@ -272,7 +327,33 @@ exports[`Storyshots Components/LayoutsUserActions default 1`] = `
                               }
                             }
                           >
-                            saveLayout clicked
+                            saveLayout
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
+                        undoLayout
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#170",
+                              }
+                            }
+                          >
+                            undoLayout
                           </span>
                           }
                         </span>
@@ -306,7 +387,7 @@ exports[`Storyshots Components/LayoutsUserActions default 1`] = `
                     }
                   >
                     &lt;/
-                    styled.div
+                    div
                     &gt;
                   </span>
                 </div>
@@ -358,22 +439,6 @@ exports[`Storyshots Components/LayoutsUserActions default 1`] = `
             >
               "
               LayoutsUserActions
-              " Component
-            </h2>
-            <small>
-              No propTypes defined!
-            </small>
-          </div>
-          <div>
-            <h2
-              style={
-                Object {
-                  "margin": "20px 0 0 0",
-                }
-              }
-            >
-              "
-              styled.div
               " Component
             </h2>
             <small>

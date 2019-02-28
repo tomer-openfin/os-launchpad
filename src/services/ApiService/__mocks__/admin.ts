@@ -1,12 +1,14 @@
 import * as logoIcon from '../../../assets/Logo.svg';
+
 import { OrganizationState } from '../../../redux/organization/types';
 import { APIResponse } from '../../../types/commons';
+
 import DEFAULT_THEMES from '../../../utils/defaultThemes';
 import { OkResponse } from './utils/commons';
 
 export const MOCK_ORG_SETTINGS = {
   activeThemeId: DEFAULT_THEMES[0].id,
-  autoLogin: true,
+  loginLogo: logoIcon,
   logo: logoIcon,
   themes: DEFAULT_THEMES,
 };

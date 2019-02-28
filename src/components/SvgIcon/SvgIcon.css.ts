@@ -10,7 +10,7 @@ export const Icon = styled.div<Props>`
 
   ${({ color, disabled, hoverColor, imgSrc, isActive, onClick, size }) => `
     background-color: ${isActive ? hoverColor : color};
-    cursor: ${onClick && !disabled ? 'pointer' : 'default'};
+    cursor: ${onClick && !disabled ? 'pointer' : 'inherit'};
     height: ${typeof size === 'string' ? size : `${size}px`};
     mask-image: url(${imgSrc});
     width: ${typeof size === 'string' ? size : `${size}px`};

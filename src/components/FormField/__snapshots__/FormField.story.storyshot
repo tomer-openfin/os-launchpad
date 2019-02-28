@@ -11,10 +11,10 @@ exports[`Storyshots UI Components/FormField Default 1`] = `
     }
   >
     <label
-      className="sc-kpOJdX fGktSh"
+      className="sc-dxgOiQ nGBmb"
     >
       <div
-        className="sc-kGXeez hlXPx"
+        className="sc-kpOJdX gglwGS"
       >
         Email
       </div>
@@ -549,10 +549,10 @@ exports[`Storyshots UI Components/FormField Password 1`] = `
     }
   >
     <label
-      className="sc-kpOJdX fGktSh"
+      className="sc-dxgOiQ nGBmb"
     >
       <div
-        className="sc-kGXeez hlXPx"
+        className="sc-kpOJdX gglwGS"
       >
         Password
       </div>
@@ -1087,10 +1087,10 @@ exports[`Storyshots UI Components/FormField Text Area 1`] = `
     }
   >
     <label
-      className="sc-kpOJdX fGktSh"
+      className="sc-dxgOiQ nGBmb"
     >
       <div
-        className="sc-kGXeez hlXPx"
+        className="sc-kpOJdX gglwGS"
       >
         Description
       </div>

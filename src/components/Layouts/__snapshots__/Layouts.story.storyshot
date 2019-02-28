@@ -11,47 +11,47 @@ exports[`Storyshots Components/Layouts default 1`] = `
     }
   >
     <div
-      className="sc-gojNiO iETQuC"
+      className="sc-fONwsr kvkJkZ"
     >
       <div
-        className="sc-GMQeP iCxPwz"
+        className="sc-jVODtj kxXdIM"
       >
         <div
-          className="sc-exAgwC hiMuMN"
+          className="sc-kUaPvJ kigdxv"
         >
           <div
-            className="sc-cQFLBn bfDinD"
+            className="sc-giadOv feytcA"
           >
             Layouts
           </div>
         </div>
         <div
-          className="sc-bAeIUo hxCsSL"
+          className="sc-gPWkxV cohBeu"
         >
           <div
-            className="sc-bMVAic gNAeAn sc-ifAKCX fdgCee"
+            className="sc-TFwJa iAHKlv sc-ifAKCX jFrnbN"
             color="#E7E7E7"
             size={24}
           />
           <form
-            className="sc-hORach XyvvX"
+            className="sc-fzsDOv bEFiEO"
             onSubmit={[Function]}
           >
             <input
-              className="sc-gqPbQI hXvmhG"
+              className="sc-eMigcr bHMaVq"
               onChange={[Function]}
               placeholder="Layout Name"
               required={true}
               type="text"
             />
             <button
-              className="sc-cLQEGU jTzHzX"
+              className="sc-itybZL fGNNdu"
+              disabled={true}
               type="submit"
             >
               <div
-                className="sc-iuJeZd kcuHk sc-ifAKCX bvrXxy"
+                className="sc-fjmCvl lmmLhq sc-ifAKCX iMtAAB"
                 color="#E7E7E7"
-                onClick={[Function]}
                 size={14}
               />
             </button>
@@ -59,21 +59,21 @@ exports[`Storyshots Components/Layouts default 1`] = `
         </div>
       </div>
       <div
-        className="sc-bsbRJL gsQRTU"
+        className="sc-CtfFt kAmZTm"
       >
         <h6
-          className="sc-iQNlJl dymSAK"
+          className="sc-bMvGRv jxfhgT"
         >
           Recent Layouts
         </h6>
         <ul
-          className="sc-cMhqgX gfKEzX"
+          className="sc-hGoxap qpBko"
         >
           <div
-            className="sc-hXRMBi glQpeD"
+            className="sc-gJWqzi dywdEK"
           >
             <li
-              className="sc-gwVKww cMxZwv"
+              className="sc-jzgbtB jXdnwt"
               onClick={[Function]}
             >
               layout
@@ -664,35 +664,6 @@ exports[`Storyshots Components/Layouts default 1`] = `
                           }
                         >
                           restoreLayout clicked
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      saveLayout
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          saveLayout clicked
                         </span>
                         }
                       </span>

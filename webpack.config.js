@@ -14,6 +14,7 @@ const {
   DEV_TOOLS_ON_STARTUP = false,
   ENTERPRISE,
   HOST = '0.0.0.0',
+  LOCAL_MANIFEST,
   MOCK_POSTMAN_URI,
   NODE_ENV = 'development',
   PASSWORD,
@@ -34,13 +35,13 @@ module.exports = {
   devtool: 'source-map',
   entry: {
     main: './src/index.tsx',
-    tabStrip: './src/tabStrip/main.ts',
-    topBar: './src/topBar/main.ts',
+    tabStrip: './src/layoutsService/tabStrip/main.ts',
+    titleBar: './src/layoutsService/titleBar/main.ts',
   },
   output: {
     filename: chunkData => {
       const { name, hash } = chunkData.chunk;
-      const filename = `${name}${isProduction && name !== 'topBar' ? `.${hash}` : ''}.js`;
+      const filename = `${name}${isProduction && name !== 'titleBar' ? `.${hash}` : ''}.js`;
       return filename;
     },
     path: path.join(__dirname, '/build'),
@@ -66,6 +67,18 @@ module.exports = {
     port: PORT,
     contentBase: path.join(__dirname, 'build'),
     proxy: {
+      '/api/launcher.json': {
+        changeOrigin: true,
+        logLevel: 'debug',
+        target: LOCAL_MANIFEST ? `http://${HOST}:${PORT}` : BACKEND,
+        pathRewrite: LOCAL_MANIFEST ? { '^/api/launcher.json': 'app.json' } : undefined,
+        headers: {
+          Referer: `http://${HOST}:${PORT}`,
+        },
+        onProxyReq: req => {
+          req.setHeader('openfin-os-organization', BACKEND_ORG);
+        },
+      },
       '/api/**': {
         changeOrigin: true,
         logLevel: 'debug',
@@ -105,7 +118,7 @@ module.exports = {
       chunks: ['tabStrip', 'styles.css'],
       env: NODE_ENV,
       filename: 'tabStrip.html',
-      template: path.join(__dirname, 'src', 'tabStrip', 'tabStrip.html'),
+      template: path.join(__dirname, 'src', 'layoutsService', 'tabStrip', 'tabStrip.html'),
     }),
     new webpack.NamedModulesPlugin(),
     new CopyWebpackPlugin([

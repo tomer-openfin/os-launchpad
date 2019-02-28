@@ -1,5 +1,5 @@
 import { Application, Window } from '@giantmachines/redux-openfin';
-import { all, call, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
+import { all, call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import { ErrorResponse } from '../../types/commons';
 import { ResponseStatus } from '../../types/enums';
@@ -7,10 +7,9 @@ import { ResponseStatus } from '../../types/enums';
 import ApiService from '../../services/ApiService';
 import eraseCookie from '../../utils/eraseCookie';
 
+import { LOGIN_WINDOW } from '../../config/windows';
 import { getAdminAppsRequest, getAdminUsersRequest } from '../admin';
-import { launchAppLauncher, reboundLauncherRequest } from '../application';
-import { getAppDirectoryList } from '../apps';
-import { getLayoutsRequest } from '../layouts';
+import { getManifestOverrideRequest, initResources, launchAppLauncher, reboundLauncherRequest } from '../application';
 import { getAdminOrgSettingsRequest } from '../organization';
 import {
   ADD_TO_APP_LAUNCHER,
@@ -25,7 +24,6 @@ import {
   getMeError,
   getMeSuccess,
   getSettingsError,
-  getSettingsRequest,
   getSettingsSuccess,
   LOGIN,
   LOGIN_WITH_NEW_PASSWORD,
@@ -39,6 +37,7 @@ import {
   saveSettingsRequest,
   saveSettingsSuccess,
   SET_AUTO_HIDE,
+  SET_LAUNCHER_MONITOR_SETTINGS,
   SET_LAUNCHER_POSITION,
   SET_LAUNCHER_SIZE,
   setMe,
@@ -47,16 +46,7 @@ import {
   updatePasswordSuccess,
 } from './actions';
 import { getMeSettings } from './selectors';
-import {
-  ConfirmPasswordRequest,
-  ForgotPasswordRequest,
-  LoginError,
-  LoginRequest,
-  LoginSuccess,
-  LoginWithNewPassword,
-  LogoutError,
-  UpdatePasswordRequest,
-} from './types';
+import { LoginError, LoginRequest, LoginSuccess, LoginWithNewPassword, LogoutError, UpdatePasswordRequest } from './types';
 
 const GENERIC_API_ERROR: ErrorResponse = { status: ResponseStatus.FAILURE, message: 'Failed to get response from server' };
 
@@ -156,14 +146,12 @@ function* watchLoginSuccess(action: LoginSuccess) {
   yield put(setMe(payload));
 
   if (payload.isAdmin) {
-    yield all([put(getAdminAppsRequest()), put(getAdminUsersRequest()), put(getAdminOrgSettingsRequest())]);
+    yield all([put(getAdminAppsRequest()), put(getAdminUsersRequest()), put(getAdminOrgSettingsRequest()), put(getManifestOverrideRequest())]);
   }
 
-  // take(GET_SETTINGS.SUCCESS) to wait for launcher position before showing launcher
-  yield all([take([GET_SETTINGS.SUCCESS, GET_SETTINGS.ERROR]), put(getAppDirectoryList()), put(getLayoutsRequest()), put(getSettingsRequest())]);
+  yield call(initResources);
 
-  // TODO: Use window config
-  yield put(Window.closeWindow({ id: 'osLaunchpadLogin' }));
+  yield put(Window.closeWindow({ id: LOGIN_WINDOW }));
 
   yield put(launchAppLauncher());
 
@@ -329,5 +317,5 @@ export function* meSaga() {
   yield takeEvery(UPDATE_PASSWORD.REQUEST, watchUpdatePasswordRequest);
   yield takeEvery(UPDATE_PASSWORD.SUCCESS, callSuccessMetaCb);
   yield takeEvery(UPDATE_PASSWORD.ERROR, callErrorMetaCb);
-  yield takeLatest([SET_AUTO_HIDE, SET_LAUNCHER_POSITION, SET_LAUNCHER_SIZE], reboundLauncherAndSaveSettings);
+  yield takeLatest([SET_AUTO_HIDE, SET_LAUNCHER_POSITION, SET_LAUNCHER_SIZE, SET_LAUNCHER_MONITOR_SETTINGS], reboundLauncherAndSaveSettings);
 }

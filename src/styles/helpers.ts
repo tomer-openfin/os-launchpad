@@ -36,3 +36,11 @@ export const hexToRgba = (hexColor: Color, a: number = 1) => {
 
   return `rgba(${r}, ${g}, ${b}, ${a})`;
 };
+
+export const getCssValueFromNumberOrString = (value: number | string) => (typeof value === 'string' ? value : `${value}px`);
+
+export const textEllipsis = `
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;

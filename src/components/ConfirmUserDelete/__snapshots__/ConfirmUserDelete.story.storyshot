@@ -11,53 +11,58 @@ exports[`Storyshots Admin Components/ConfirmUserDelete default 1`] = `
     }
   >
     <div
-      className="sc-gxMtzJ iVuxPL"
+      className="sc-exAgwC iKIfIE"
     >
       <div
-        className="sc-lhVmIH ePrmwy"
+        className="sc-cSHVUG ksrKew"
+        height="100%"
+        width="100%"
       >
         <div
-          className="sc-bYSBpT kWexBi"
+          className="sc-gqPbQI jADaOf"
         >
-          Are you sure?
-        </div>
-      </div>
-      <div
-        className="sc-jtRfpW ejmBRC"
-      >
-        <div
-          className="sc-kTUwUJ bwbYOF"
-        >
-          You are about to delete the following user:
+          <div
+            className="sc-hORach PhuPi"
+          >
+            Delete User
+          </div>
         </div>
         <div
-          className="sc-kTUwUJ bwbYOF"
+          className="sc-bAeIUo hmpSUP"
+        >
+          <div
+            className="sc-iujRgT jrXRlW"
+          >
+            Are you sure you want to delete the user:
+John Doe?
+          </div>
+        </div>
+        <div
+          className="sc-bMVAic cYUOFK"
+        >
+          <a
+            backgroundColor="#848484"
+            className="sc-chPdSV hYsYSY"
+            href="/admin/users"
+            onClick={[Function]}
+            width={153}
+          >
+            Cancel
+          </a>
+          <button
+            className="sc-kAzzGY gTiRcw"
+            disabled={false}
+            onClick={[Function]}
+            width={153}
+          >
+            Delete
+          </button>
+        </div>
+        <div
+          className="sc-GMQeP llVYhG"
         >
           
- John Doe
         </div>
-      </div>
-      <div
-        className="sc-elJkPf HiMYN"
-      >
-        <a
-          backgroundColor="#848484"
-          className="sc-chPdSV espcQM"
-          href="/admin/users"
-          onClick={[Function]}
-          type="button"
-          width={153}
-        >
-          Cancel
-        </a>
-        <button
-          className="sc-kAzzGY ffxlVf"
-          disabled={false}
-          onClick={[Function]}
-          width={153}
-        >
-          Delete
-        </button>
       </div>
     </div>
   </div>
@@ -241,7 +246,7 @@ exports[`Storyshots Admin Components/ConfirmUserDelete default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      location
+                      user
                     </span>
                     <span>
                       =
@@ -258,6 +263,11 @@ exports[`Storyshots Admin Components/ConfirmUserDelete default 1`] = `
                         >
                           {
                           <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
                             <span
                               style={
                                 Object {
@@ -265,117 +275,116 @@ exports[`Storyshots Admin Components/ConfirmUserDelete default 1`] = `
                                 }
                               }
                             >
-                              state
+                              email
                             </span>
                           </span>
                           : 
                           <span
                             style={
                               Object {
-                                "color": "#666",
+                                "color": "#22a",
+                                "wordBreak": "break-word",
                               }
                             }
                           >
-                            {
-                            <span>
-                              <span>
-                                <br />
-                                    
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                email
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              'John.Doe@gmail.com'
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                    
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                firstName
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              'John'
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                    
-                                  
-                              </span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                id
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              'username1'
-                            </span>
-                            ,
-                            <span>
-                              <span>
-                                <br />
-                                    
-                                  
-                              </span>
-                              …
-                            </span>
+                            'John.Doe@gmail.com'
+                          </span>
+                          ,
+                          <span>
                             <span>
                               <br />
-                                  
+                                
+                                
                             </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              firstName
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
                             }
+                          >
+                            'John'
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              id
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
+                            }
+                          >
+                            'username1'
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            …
+                          </span>
+                          <span>
+                            <br />
+                              
                           </span>
                           }
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      pushRoute
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          pushRoute
                         </span>
                         }
                       </span>

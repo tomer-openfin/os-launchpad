@@ -1,7 +1,7 @@
 import * as serializeError from 'serialize-error';
 
 import { APIResponse, ResponseStatus } from '../../types/commons';
-import { getAdminOrgSettings, getOrgSettings, saveAdminOrgSettings } from './admin';
+import { getAdminManifest, getAdminManifestOverrides, getAdminOrgSettings, getOrgSettings, saveAdminManifestOverrides, saveAdminOrgSettings } from './admin';
 import { createAdminApp, deleteAdminApp, getAdminApp, getAdminApps, getDirectoryAppList, updateAdminApp } from './apps';
 import { confirmPassword, forgotPassword, login, logout, newPasswordLogin } from './auth';
 import {
@@ -31,7 +31,7 @@ const withTry = <R>(fn: (T1?, T2?) => Promise<R>): ((T1?, T2?) => Promise<R | AP
   }
 };
 
-export default {
+const ApiService = {
   createAdminApp: withTry(createAdminApp),
   deleteAdminApp: withTry(deleteAdminApp),
   getAdminApp: withTry(getAdminApp),
@@ -47,6 +47,11 @@ export default {
   getDirectoryAppList: withTry(getDirectoryAppList),
 
   getOrgSettings: withTry(getOrgSettings),
+
+  getAdminManifest: withTry(getAdminManifest),
+
+  getAdminManifestOverrides: withTry(getAdminManifestOverrides),
+  saveAdminManifestOverrides: withTry(saveAdminManifestOverrides),
 
   confirmPassword: withTry(confirmPassword),
   forgotPassword: withTry(forgotPassword),
@@ -69,3 +74,5 @@ export default {
 
   updateUserPassword: withTry(updateUserPassword),
 };
+
+export default ApiService;

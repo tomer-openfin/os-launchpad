@@ -6,13 +6,25 @@ import {
   REMOVE_FROM_APP_LAUNCHER,
   SET_APP_IDS,
   SET_AUTO_HIDE,
+  SET_LAUNCHER_MONITOR_SETTINGS,
   SET_LAUNCHER_POSITION,
   SET_LAUNCHER_SIZE,
   SET_ME,
 } from './actions';
 
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
-import { GetSettingsSuccess, MeActions, MeState, SetAppIds, SetAutoHide, SetLauncherPositionPayload, SetLauncherSizePayload, SetMePayload } from './types';
+import { getCoordinatesMidPoint } from '../../utils/coordinateHelpers';
+import {
+  GetSettingsSuccess,
+  MeActions,
+  MeState,
+  SetAppIds,
+  SetAutoHide,
+  SetLauncherMonitorSettings,
+  SetLauncherPositionPayload,
+  SetLauncherSizePayload,
+  SetMePayload,
+} from './types';
 
 export const defaultState: MeState = {
   email: '',
@@ -22,6 +34,11 @@ export const defaultState: MeState = {
   settings: {
     appIds: [],
     autoHide: false,
+    launcherMonitorId: null,
+    launcherMonitorReferencePoint: {
+      x: 0,
+      y: 0,
+    },
     launcherPosition: DirectionalPosition.Top,
     launcherSize: LauncherSize.Large,
   },
@@ -45,7 +62,7 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
         email: (action.payload! as SetMePayload).email,
         firstName: (action.payload! as SetMePayload).firstName,
         isAdmin: (action.payload! as SetMePayload).isAdmin,
-        lastName: (action.payload! as SetMePayload).firstName,
+        lastName: (action.payload! as SetMePayload).lastName,
       };
     }
     case LOGOUT.SUCCESS: {
@@ -76,6 +93,27 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
         settings: {
           ...state.settings,
           launcherSize: (action.payload! as SetLauncherSizePayload).launcherSize,
+        },
+      };
+    }
+    case SET_LAUNCHER_MONITOR_SETTINGS: {
+      const monitorDetails = (action as SetLauncherMonitorSettings).payload;
+
+      if (!monitorDetails) {
+        return state;
+      }
+
+      // Windows - use name
+      // Mac - there is no name for monitors, only deviceId
+      const launcherMonitorId = monitorDetails.name || monitorDetails.deviceId;
+      const launcherMonitorReferencePoint = getCoordinatesMidPoint(monitorDetails.monitorRect);
+
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          launcherMonitorId,
+          launcherMonitorReferencePoint,
         },
       };
     }

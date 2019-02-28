@@ -16,7 +16,7 @@ const handleSubmitValues = action('handleSubmitValues');
 
 storiesOf(`${CATEGORIES.COMPONENTS}ChangePasswordForm`, module)
   .addDecorator(withKnobs)
-  .addDecorator(withMarginDecorator(30))
+  .addDecorator(withMarginDecorator())
   .add('default', () => {
     const newPassword = text('newPassword', '');
     const newPasswordError = text('newPasswordError', '');

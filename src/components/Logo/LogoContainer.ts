@@ -1,12 +1,24 @@
 import { connect } from 'react-redux';
 
-import { getOrganizationLogo } from '../../redux/organization';
+import { getOrganizationImages, OrgImages } from '../../redux/organization';
 import { State } from '../../redux/types';
 
-import Logo from './Logo';
+import Logo, { Props } from './Logo';
 
-const mapState = (state: State) => ({
-  imgSrc: getOrganizationLogo(state),
-});
+interface ContainerProps {
+  orgImageKey?: keyof OrgImages;
+}
 
-export default connect(mapState)(Logo);
+interface MapState {
+  imgSrc: string;
+}
+
+const mapState = (state: State, props: ContainerProps): MapState => {
+  const orgImages: { [key in keyof OrgImages]: string } = getOrganizationImages(state);
+
+  return {
+    imgSrc: orgImages[props.orgImageKey || 'logo'],
+  };
+};
+
+export default connect<MapState, null, ContainerProps, State>(mapState)(Logo);

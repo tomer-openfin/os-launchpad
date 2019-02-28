@@ -9,15 +9,7 @@ exports[`Storyshots Admin Components/Admin default 1`] = `
         "zIndex": 0,
       }
     }
-  >
-    <div
-      className="sc-giadOv dZqQa"
-    >
-      <h1>
-        You do not have clearance to see the admin tools.
-      </h1>
-    </div>
-  </div>
+  />
   <button
     onClick={[Function]}
     style={
@@ -168,7 +160,40 @@ exports[`Storyshots Admin Components/Admin default 1`] = `
                 </span>
                 <span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      activeTab
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        "
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          
+                        </span>
+                        "
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -187,14 +212,17 @@ exports[`Storyshots Admin Components/Admin default 1`] = `
                             }
                           }
                         >
-                          anonymous
+                          hideWindow
                         </span>
                         }
                       </span>
                     </span>
                   </span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -218,7 +246,36 @@ exports[`Storyshots Admin Components/Admin default 1`] = `
                         }
                       </span>
                     </span>
-                     
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      onClickTab
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          onClickTab
+                        </span>
+                        }
+                      </span>
+                    </span>
+                    <br />
                   </span>
                 </span>
                 <span

@@ -54,8 +54,8 @@ export const ButtonWrapper = styled.div`
   }
 `;
 
-export const Footer = styled.div`
-  background-color: ${Color.OORT_CLOUD};
+export const Footer = styled.div<{ color?: Color }>`
+  background-color: ${({ color }) => color || Color.OORT_CLOUD};
   position: absolute;
   bottom: 0;
   right: 0;

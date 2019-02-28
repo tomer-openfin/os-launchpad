@@ -1,12 +1,13 @@
 import { Formik, FormikActions, FormikProps } from 'formik';
 import * as React from 'react';
+import { ObjectSchema } from 'yup';
 
 import * as trashIcon from '../../assets/Trash.svg';
 
-import { MetaWithCallbacks, PushRoute, RequestFormSubmit, ResponseObject, ResponseStatus } from '../../types/commons';
+import { DispatchRequest, MetaWithCallbacks, PushRoute, ResponseObject, ResponseStatus } from '../../types/commons';
 
 import { Color } from '../../styles';
-import { HeadingText } from '../ConfirmUserDelete/ConfirmDelete.css';
+import { HeadingText } from '../AdminConfirmation/AdminConfirmation.css';
 import { MessageBannerWrapper, Wrapper } from './RequestForm.css';
 
 import MessageBanner from '../MessageBanner';
@@ -15,12 +16,14 @@ import WindowHeader from '../WindowHeader';
 
 interface Props {
   errorMessage: string;
-  form: (props: FormikProps<{}>) => React.ReactNode;
+  render?: (props: FormikProps<{}>) => React.ReactNode;
+  component?: React.ComponentType<FormikProps<{}>>;
   handleDeleteIconClick?: () => void;
   headingText: string;
   initialValues: {};
   onSubmitSuccess: () => ReturnType<PushRoute>;
-  submit: RequestFormSubmit;
+  submit: DispatchRequest;
+  validationSchema?: ObjectSchema<{}>;
 }
 
 interface State {
@@ -112,7 +115,7 @@ class RequestForm extends React.Component<Props, State> {
   };
 
   render() {
-    const { handleDeleteIconClick, headingText, initialValues, form } = this.props;
+    const { component, handleDeleteIconClick, headingText, initialValues, render, validationSchema } = this.props;
 
     return (
       <Wrapper>
@@ -122,7 +125,7 @@ class RequestForm extends React.Component<Props, State> {
           {handleDeleteIconClick && <SvgIcon color={Color.MERCURY} hoverColor={Color.MARS} size={30} imgSrc={trashIcon} onClick={handleDeleteIconClick} />}
         </WindowHeader>
 
-        <Formik initialValues={initialValues} onSubmit={this.handleFormSubmit} validateOnChange render={form} />
+        <Formik initialValues={initialValues} onSubmit={this.handleFormSubmit} component={component} render={render} validationSchema={validationSchema} />
 
         {this.renderMessage()}
       </Wrapper>

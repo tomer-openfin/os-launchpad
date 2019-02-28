@@ -29,7 +29,7 @@ exports[`Storyshots Components/AppList default 1`] = `
         }
       >
         <div
-          className="sc-cHGsZl AWKam"
+          className="sc-kfGgVZ itPDRW"
           height={80}
           isExpanded={false}
           launcherPosition="top"
@@ -92,7 +92,7 @@ exports[`Storyshots Components/AppList default 1`] = `
               size={12}
             >
               <div
-                className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+                className="sc-iwsKbI kSJIGu sc-ifAKCX fWRpHP"
                 color="rgba(0,0,0,0)"
                 size="53%"
               />
@@ -139,7 +139,7 @@ exports[`Storyshots Components/AppList default 1`] = `
               size={12}
             >
               <div
-                className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+                className="sc-iwsKbI kSJIGu sc-ifAKCX fWRpHP"
                 color="rgba(0,0,0,0)"
                 size="53%"
               />
@@ -186,7 +186,7 @@ exports[`Storyshots Components/AppList default 1`] = `
               size={12}
             >
               <div
-                className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+                className="sc-iwsKbI kSJIGu sc-ifAKCX fWRpHP"
                 color="rgba(0,0,0,0)"
                 size="53%"
               />
@@ -233,7 +233,7 @@ exports[`Storyshots Components/AppList default 1`] = `
               size={12}
             >
               <div
-                className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+                className="sc-iwsKbI kSJIGu sc-ifAKCX fWRpHP"
                 color="rgba(0,0,0,0)"
                 size="53%"
               />
@@ -280,7 +280,7 @@ exports[`Storyshots Components/AppList default 1`] = `
               size={12}
             >
               <div
-                className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+                className="sc-iwsKbI kSJIGu sc-ifAKCX fWRpHP"
                 color="rgba(0,0,0,0)"
                 size="53%"
               />
@@ -327,7 +327,7 @@ exports[`Storyshots Components/AppList default 1`] = `
               size={12}
             >
               <div
-                className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+                className="sc-iwsKbI kSJIGu sc-ifAKCX fWRpHP"
                 color="rgba(0,0,0,0)"
                 size="53%"
               />
@@ -374,7 +374,7 @@ exports[`Storyshots Components/AppList default 1`] = `
               size={12}
             >
               <div
-                className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+                className="sc-iwsKbI kSJIGu sc-ifAKCX fWRpHP"
                 color="rgba(0,0,0,0)"
                 size="53%"
               />
@@ -421,7 +421,7 @@ exports[`Storyshots Components/AppList default 1`] = `
               size={12}
             >
               <div
-                className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+                className="sc-iwsKbI kSJIGu sc-ifAKCX fWRpHP"
                 color="rgba(0,0,0,0)"
                 size="53%"
               />
@@ -446,7 +446,7 @@ exports[`Storyshots Components/AppList default 1`] = `
                 size={50}
               >
                 <div
-                  className="sc-ifAKCX gPeNwQ"
+                  className="sc-ifAKCX ixvxEv"
                   color="#E7E7E7"
                   size={25}
                 />
@@ -494,7 +494,7 @@ exports[`Storyshots Components/AppList default 1`] = `
               size={12}
             >
               <div
-                className="sc-iwsKbI kSJIGu sc-ifAKCX eeoVnb"
+                className="sc-iwsKbI kSJIGu sc-ifAKCX fWRpHP"
                 color="rgba(0,0,0,0)"
                 size="53%"
               />

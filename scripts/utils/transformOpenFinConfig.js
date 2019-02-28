@@ -6,14 +6,7 @@
  *
  * @returns {string}
  */
-module.exports = (
-  configString,
-  {
-    rootUrl,
-    runtimeVersion,
-    isProduction = false,
-  },
-) => {
+module.exports = (configString, { rootUrl, runtimeVersion, isProduction = false }) => {
   const updatedConfigString = configString.replace(/%ROOT_URL%/g, rootUrl);
   const config = JSON.parse(updatedConfigString);
 
@@ -22,7 +15,7 @@ module.exports = (
   }
 
   // Disable the context menu in production.
-  config.startup_app.contextMenu = !isProduction;
+  // config.startup_app.contextMenu = !isProduction;
 
   return JSON.stringify(config, null, 4);
-}
+};

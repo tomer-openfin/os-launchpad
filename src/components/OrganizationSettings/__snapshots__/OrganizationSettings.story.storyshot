@@ -11,134 +11,221 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
     }
   >
     <div
-      className="sc-kasBVs cBHcd"
+      className="sc-hSdWYo ckOjVo"
     >
       <h3
-        className="sc-iGPElx kHmwdA"
+        className="sc-iAyFgw eFNbaP"
       >
         Enterprise Branding
       </h3>
-      <form
-        className="sc-iSDuPN gRNsCm"
-        onReset={[Function]}
-        onSubmit={[Function]}
+      <div
+        className="sc-brqgnP jWLUnR"
       >
-        <label
-          className="sc-kZmsYB egfTvn"
-          htmlFor="LogoFormFileInput"
+        <div
+          className="sc-cMljjf ceJyJg"
         >
           <div
-            className="sc-jXQZqI ctiGMA"
+            className="sc-gipzik iDBbyI"
+            size={45}
           >
             <div
-              className="sc-etwtAo hKtLZE"
+              className="sc-csuQGl jGndA"
+              size={45}
+            />
+          </div>
+          <div
+            className="sc-jDwBTQ hRNcYz"
+          >
+            <div
+              className="sc-gPEVay eLXQHk"
+              title="Default Image"
             >
+              Launcher Logo
               <div
-                className="sc-brqgnP hersAG"
-                size={80}
-              />
+                className="sc-jlyJG gGvIUO"
+              >
+                *
+              </div>
             </div>
             <div
-              className="sc-fQejPQ lgQLFn"
+              className="sc-iRbamj igycNm"
             >
-              <div
-                className="sc-clNaTc hvrXJj"
-              >
-                Click & drag a new image over the existing one to replace your brand logo.
-              </div>
-              <input
-                accept="image/*"
-                className="sc-fZwumE gWqycV"
-                id="LogoFormFileInput"
-                name="logo"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onDragEnter={[Function]}
-                onDragLeave={[Function]}
-                onDrop={[Function]}
-                type="file"
-                value=""
-              />
+              80x80
             </div>
           </div>
-        </label>
-        <div
-          className="sc-RcBXQ hiiOlf"
-        >
-          <button
-            className="sc-kAzzGY hcTOPm"
-            disabled={true}
-            type="submit"
-            width={110}
+          <div
+            className="sc-jAaTju gAQKua"
           >
-            Overwrite
-          </button>
-          <button
-            className="sc-kAzzGY kpOrTB"
-            disabled={true}
-            onClick={[Function]}
-            type="button"
-            width={110}
-          >
-            Reset
-          </button>
+            <a
+              className="sc-jWBwVP hXShAs"
+              href="/admin/settings/edit"
+              onClick={[Function]}
+            />
+            <a
+              className="sc-cvbbAY fIfRlP"
+              disabled={true}
+              href="/admin/settings/delete"
+              onClick={[Function]}
+            />
+          </div>
         </div>
-      </form>
-      <h3
-        className="sc-iGPElx kHmwdA"
+      </div>
+      <div
+        className="sc-brqgnP jWLUnR"
       >
-        Enterprise Theme
-      </h3>
-      <form
-        className="sc-iSDuPN gRNsCm"
-        onReset={[Function]}
-        onSubmit={[Function]}
-      >
-        <select
-          className="sc-eInJlc bnAyxM"
-          disabled={false}
-          id="ThemesFormSelectInput"
-          name="theme"
-          onBlur={[Function]}
-          onChange={[Function]}
-          placeholder="Select Theme..."
-          value="dark"
-        >
-          <option
-            className="sc-gtfDJT byWBBl"
-            value="dark"
-          >
-            Dark
-          </option>
-          <option
-            className="sc-gtfDJT byWBBl"
-            value="light"
-          >
-            Light
-          </option>
-        </select>
         <div
-          className="sc-RcBXQ hiiOlf"
+          className="sc-cMljjf ceJyJg"
         >
-          <button
-            className="sc-kAzzGY hcTOPm"
-            disabled={true}
-            type="submit"
-            width={110}
+          <div
+            className="sc-gipzik iDBbyI"
+            size={45}
           >
-            Set Theme
-          </button>
-          <button
-            className="sc-kAzzGY kpOrTB"
-            disabled={true}
-            onClick={[Function]}
-            type="button"
-            width={110}
+            <div
+              className="sc-csuQGl jGndA"
+              size={45}
+            />
+          </div>
+          <div
+            className="sc-jDwBTQ hRNcYz"
           >
-            Reset
-          </button>
+            <div
+              className="sc-gPEVay eLXQHk"
+              title="Default Image"
+            >
+              Login Logo
+              <div
+                className="sc-jlyJG gGvIUO"
+              >
+                *
+              </div>
+            </div>
+            <div
+              className="sc-iRbamj igycNm"
+            >
+               90x90
+            </div>
+          </div>
+          <div
+            className="sc-jAaTju gAQKua"
+          >
+            <a
+              className="sc-jWBwVP hXShAs"
+              href="/admin/settings/edit"
+              onClick={[Function]}
+            />
+            <a
+              className="sc-cvbbAY fIfRlP"
+              disabled={true}
+              href="/admin/settings/delete"
+              onClick={[Function]}
+            />
+          </div>
         </div>
-      </form>
+      </div>
+      <div
+        className="sc-brqgnP jWLUnR"
+      >
+        <div
+          className="sc-cMljjf ceJyJg"
+        >
+          <div
+            className="sc-gipzik iDBbyI"
+            size={45}
+          >
+            <div
+              className="sc-csuQGl jGndA"
+              size={45}
+            />
+          </div>
+          <div
+            className="sc-jDwBTQ hRNcYz"
+          >
+            <div
+              className="sc-gPEVay eLXQHk"
+              title="Default Image"
+            >
+              Splash Image
+              <div
+                className="sc-jlyJG gGvIUO"
+              >
+                *
+              </div>
+            </div>
+            <div
+              className="sc-iRbamj igycNm"
+            >
+               510x478
+            </div>
+          </div>
+          <div
+            className="sc-jAaTju gAQKua"
+          >
+            <a
+              className="sc-jWBwVP hXShAs"
+              href="/admin/settings/edit"
+              onClick={[Function]}
+            />
+            <a
+              className="sc-cvbbAY fIfRlP"
+              disabled={true}
+              href="/admin/settings/delete"
+              onClick={[Function]}
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="sc-brqgnP jWLUnR"
+      >
+        <div
+          className="sc-cMljjf ceJyJg"
+        >
+          <div
+            className="sc-gipzik iDBbyI"
+            size={45}
+          >
+            <div
+              className="sc-csuQGl jGndA"
+              size={45}
+            />
+          </div>
+          <div
+            className="sc-jDwBTQ hRNcYz"
+          >
+            <div
+              className="sc-gPEVay eLXQHk"
+              title="Default Image"
+            >
+              App Shortcut
+              <div
+                className="sc-jlyJG gGvIUO"
+              >
+                *
+              </div>
+            </div>
+            <div
+              className="sc-iRbamj igycNm"
+            >
+               64x64
+            </div>
+          </div>
+          <div
+            className="sc-jAaTju gAQKua"
+          >
+            <a
+              className="sc-jWBwVP hXShAs"
+              href="/admin/settings/edit"
+              onClick={[Function]}
+            />
+            <a
+              className="sc-cvbbAY fIfRlP"
+              disabled={true}
+              href="/admin/settings/delete"
+              onClick={[Function]}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <button
@@ -289,43 +376,7 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
                   &lt;
                   OrganizationSettings
                 </span>
-                <span>
-                  <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      autoLoginOrg
-                    </span>
-                  </span>
-                  <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      setOrgAutoLogin
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          anonymous
-                        </span>
-                        }
-                      </span>
-                    </span>
-                     
-                  </span>
-                </span>
+                <span />
                 <span
                   style={
                     Object {
@@ -385,9 +436,326 @@ exports[`Storyshots Admin Components/OrganizationSettings default 1`] = `
               OrganizationSettings
               " Component
             </h2>
-            <small>
-              No propTypes defined!
-            </small>
+            <table
+              className="css-1uhv8nx e1vdo5380"
+            >
+              <thead>
+                <tr>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    property
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    propType
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    required
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    default
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    isManifestDefault
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#170",
+                        }
+                      }
+                    >
+                      isManifestDefault
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    manifestImages
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#666",
+                        }
+                      }
+                    >
+                      {
+                      <span>
+                        <span
+                          style={
+                            Object {
+                              "color": "#666",
+                            }
+                          }
+                        >
+                          shortcutIcon
+                        </span>
+                      </span>
+                      : 
+                      <span
+                        style={
+                          Object {
+                            "color": "#666",
+                          }
+                        }
+                      >
+                        {
+                        <span>
+                          <span
+                            style={
+                              Object {
+                                "color": "#666",
+                              }
+                            }
+                          >
+                            default
+                          </span>
+                        </span>
+                        : 
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          ''
+                        </span>
+                        }
+                      </span>
+                      ,
+                      <span>
+                        <span
+                          style={
+                            Object {
+                              "color": "#666",
+                            }
+                          }
+                        >
+                          splashScreenImage
+                        </span>
+                      </span>
+                      : 
+                      <span
+                        style={
+                          Object {
+                            "color": "#666",
+                          }
+                        }
+                      >
+                        {
+                        <span>
+                          <span
+                            style={
+                              Object {
+                                "color": "#666",
+                              }
+                            }
+                          >
+                            default
+                          </span>
+                        </span>
+                        : 
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          ''
+                        </span>
+                        }
+                      </span>
+                      }
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    orgImages
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#666",
+                        }
+                      }
+                    >
+                      {
+                      <span>
+                        <span
+                          style={
+                            Object {
+                              "color": "#666",
+                            }
+                          }
+                        >
+                          loginLogo
+                        </span>
+                      </span>
+                      : 
+                      <span
+                        style={
+                          Object {
+                            "color": "#666",
+                          }
+                        }
+                      >
+                        {
+                        <span>
+                          <span
+                            style={
+                              Object {
+                                "color": "#666",
+                              }
+                            }
+                          >
+                            default
+                          </span>
+                        </span>
+                        : 
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          ''
+                        </span>
+                        }
+                      </span>
+                      ,
+                      <span>
+                        <span
+                          style={
+                            Object {
+                              "color": "#666",
+                            }
+                          }
+                        >
+                          logo
+                        </span>
+                      </span>
+                      : 
+                      <span
+                        style={
+                          Object {
+                            "color": "#666",
+                          }
+                        }
+                      >
+                        {
+                        <span>
+                          <span
+                            style={
+                              Object {
+                                "color": "#666",
+                              }
+                            }
+                          >
+                            default
+                          </span>
+                        </span>
+                        : 
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          ''
+                        </span>
+                        }
+                      </span>
+                      }
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

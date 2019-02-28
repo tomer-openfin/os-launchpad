@@ -11,171 +11,176 @@ exports[`Storyshots Components/Settings default 1`] = `
     }
   >
     <div
-      style={
-        Object {
-          "margin": "30px",
-        }
-      }
+      className="sc-cooIXK btLfBI"
     >
       <div
-        className="sc-fjmCvl kyUpFW"
+        className="sc-cSHVUG ksrKew"
+        height="100%"
+        width="100%"
       >
         <div
-          className="sc-fhYwyz bFEqQL"
+          className="sc-cmTdod fOaOac"
         >
           <div
-            className="sc-cSHVUG ksrKew"
-            height="100%"
-            width="100%"
+            className="sc-jwKygS ktOnU"
           >
             <div
-              className="sc-caSCKo kDLzhu"
+              className="sc-btzYZH dBwXjd"
+            >
+              My Settings
+            </div>
+          </div>
+          <div
+            className="sc-iELTvK jRkgAq"
+          >
+            <div
+              className="sc-ifAKCX cWlwzh"
+              color="#E7E7E7"
+              onClick={[Function]}
+              size={25}
+            />
+          </div>
+        </div>
+        <div
+          className="sc-kxynE jzlBPr"
+        >
+          <div
+            className="sc-fhYwyz hLjrDa"
+          >
+            <div
+              className="sc-cpmLhU dggWvv"
             >
               <div
-                className="sc-gisBJw ctZMsr"
+                className="sc-dymIpo dbsRxq"
               >
-                <div
-                  className="sc-kjoXOD fhhfF"
-                >
-                  My Settings
-                </div>
+                Auto-Hide
               </div>
               <div
-                className="sc-fAjcbJ iRVxiq"
+                className="sc-bnXvFD fCKWEQ"
               >
-                <div
-                  className="sc-ifAKCX cWlwzh"
-                  color="#E7E7E7"
-                  onClick={[Function]}
-                  size={25}
-                />
+                <label
+                  checked={true}
+                  className="sc-gFaPwZ bqcIdR sc-kkGfuU ktBgro"
+                >
+                  <input
+                    checked={true}
+                    className="sc-gFaPwZ bqcIdR sc-kEYyzF MbXgx"
+                    name="autohide-onoff"
+                    onChange={[Function]}
+                    type="radio"
+                    value="off"
+                  />
+                  Off
+                </label>
+                <label
+                  checked={false}
+                  className="sc-gFaPwZ bqcIdR sc-kkGfuU lmsevc"
+                >
+                  <input
+                    checked={false}
+                    className="sc-gFaPwZ bqcIdR sc-kEYyzF MbXgx"
+                    name="autohide-onoff"
+                    onChange={[Function]}
+                    type="radio"
+                    value="on"
+                  />
+                  On
+                </label>
               </div>
             </div>
             <div
-              className="sc-laTMn fuSr"
+              className="sc-cpmLhU dggWvv"
             >
               <div
-                className="sc-rBLzX eSMzmb"
+                className="sc-dymIpo dbsRxq"
               >
-                <div
-                  className="sc-bMvGRv bPUCrU"
-                >
-                  Auto-Hide
-                </div>
-                <div
-                  className="sc-CtfFt dTdWZC"
-                >
-                  <label
-                    checked={false}
-                    className="sc-gJWqzi jOJgYp sc-jhAzac iuFcdk"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gJWqzi jOJgYp sc-hzDkRC evRIzX"
-                      name="autohide-onoff"
-                      onChange={[Function]}
-                      type="radio"
-                      value="on"
-                    />
-                    On
-                  </label>
-                  <label
-                    checked={true}
-                    className="sc-gJWqzi jOJgYp sc-jhAzac kNFqZD"
-                  >
-                    <input
-                      checked={true}
-                      className="sc-gJWqzi jOJgYp sc-hzDkRC evRIzX"
-                      name="autohide-onoff"
-                      onChange={[Function]}
-                      type="radio"
-                      value="off"
-                    />
-                    Off
-                  </label>
-                </div>
+                Launcher Size
               </div>
               <div
-                className="sc-rBLzX eSMzmb"
+                className="sc-bnXvFD fCKWEQ"
               >
-                <div
-                  className="sc-bMvGRv bPUCrU"
+                <label
+                  checked={false}
+                  className="sc-gFaPwZ bqcIdR sc-kkGfuU lmsevc"
                 >
-                  Launcher Size
-                </div>
-                <div
-                  className="sc-CtfFt dTdWZC"
-                >
-                  <label
+                  <input
                     checked={false}
-                    className="sc-gJWqzi jOJgYp sc-jhAzac iuFcdk"
-                  >
-                    <input
-                      checked={false}
-                      className="sc-gJWqzi jOJgYp sc-hzDkRC evRIzX"
-                      name="launcherSize-options"
-                      onChange={[Function]}
-                      type="radio"
-                      value="small"
-                    />
-                    Sm
-                  </label>
-                  <label
+                    className="sc-gFaPwZ bqcIdR sc-kEYyzF MbXgx"
+                    name="launcherSize-options"
+                    onChange={[Function]}
+                    type="radio"
+                    value="small"
+                  />
+                  Sm
+                </label>
+                <label
+                  checked={true}
+                  className="sc-gFaPwZ bqcIdR sc-kkGfuU ktBgro"
+                >
+                  <input
                     checked={true}
-                    className="sc-gJWqzi jOJgYp sc-jhAzac kNFqZD"
-                  >
-                    <input
-                      checked={true}
-                      className="sc-gJWqzi jOJgYp sc-hzDkRC evRIzX"
-                      name="launcherSize-options"
-                      onChange={[Function]}
-                      type="radio"
-                      value="large"
-                    />
-                    Lg
-                  </label>
-                </div>
+                    className="sc-gFaPwZ bqcIdR sc-kEYyzF MbXgx"
+                    name="launcherSize-options"
+                    onChange={[Function]}
+                    type="radio"
+                    value="large"
+                  />
+                  Lg
+                </label>
               </div>
             </div>
             <div
-              className="sc-laTMn fuSr"
+              className="sc-cpmLhU dggWvv"
             >
               <div
-                className="sc-rBLzX eSMzmb"
+                className="sc-dymIpo dbsRxq"
+              >
+                Launcher Location
+              </div>
+              <div
+                className="sc-bnXvFD fCKWEQ"
               >
                 <div
-                  className="sc-bMvGRv bPUCrU"
-                >
-                  Launcher Position
-                </div>
-                <button
-                  className="sc-kAzzGY sc-jzgbtB dWfapK"
-                  onClick={[Function]}
-                >
-                  Top
-                </button>
-                <div
-                  className="sc-CtfFt dTdWZC"
+                  className="sc-gojNiO jjfcnx"
+                  size={17}
                 >
                   <button
-                    className="sc-kAzzGY sc-jzgbtB dWfapK"
+                    className="sc-kgoBCf sc-cQFLBn kjoFPc"
+                    direction="top"
+                    onClick={[Function]}
+                  >
+                    Top
+                  </button>
+                  <button
+                    className="sc-kgoBCf sc-cQFLBn duHwQu"
+                    direction="left"
                     onClick={[Function]}
                   >
                     Left
                   </button>
                   <button
-                    className="sc-kAzzGY sc-jzgbtB dWfapK"
+                    className="sc-kgoBCf sc-cQFLBn hoaZDW"
+                    direction="right"
                     onClick={[Function]}
                   >
                     Right
                   </button>
+                  <button
+                    className="sc-kgoBCf sc-cQFLBn hltzQp"
+                    direction="bottom"
+                    onClick={[Function]}
+                  >
+                    Bottom
+                  </button>
                 </div>
-                <button
-                  className="sc-kAzzGY sc-jzgbtB dWfapK"
+                <a
+                  className="sc-emmjRN kygcFi"
+                  href="/settings/launcher-monitor"
+                  isDisabled={true}
                   onClick={[Function]}
                 >
-                  Bottom
-                </button>
+                  Change Screen
+                </a>
               </div>
             </div>
           </div>
@@ -313,364 +318,88 @@ exports[`Storyshots Components/Settings default 1`] = `
             className="css-r8d96o eyvlbql0"
           >
             <div>
-              <div>
-                <div
+              <div
+                style={
+                  Object {
+                    "paddingLeft": 18,
+                    "paddingRight": 3,
+                  }
+                }
+              >
+                <span
                   style={
                     Object {
-                      "paddingLeft": 18,
-                      "paddingRight": 3,
+                      "color": "#444",
                     }
                   }
                 >
-                  <span
-                    style={
-                      Object {
-                        "color": "#444",
-                      }
-                    }
-                  >
-                    &lt;
-                    div
-                  </span>
+                  &lt;
+                  Settings
+                </span>
+                <span>
                   <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      hideWindow
+                    </span>
                     <span>
-                       
+                      =
                       <span
                         style={Object {}}
                       >
-                        style
-                      </span>
-                      <span>
-                        =
+                        {
                         <span
-                          style={Object {}}
-                        >
-                          {
-                          <span
-                            style={
-                              Object {
-                                "color": "#666",
-                              }
+                          style={
+                            Object {
+                              "color": "#170",
                             }
-                          >
-                            {
-                            <span>
-                              <span
-                                style={
-                                  Object {
-                                    "color": "#666",
-                                  }
-                                }
-                              >
-                                margin
-                              </span>
-                            </span>
-                            : 
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              '30px'
-                            </span>
-                            }
-                          </span>
                           }
-                        </span>
-                      </span>
-                      
-                    </span>
-                  </span>
-                  <span
-                    style={
-                      Object {
-                        "color": "#444",
-                      }
-                    }
-                  >
-                    &gt;
-                  </span>
-                </div>
-                <div>
-                  <div
-                    style={
-                      Object {
-                        "paddingLeft": 33,
-                        "paddingRight": 3,
-                      }
-                    }
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#444",
-                        }
-                      }
-                    >
-                      &lt;
-                      styled.div
-                    </span>
-                    <span />
-                    <span
-                      style={
-                        Object {
-                          "color": "#444",
-                        }
-                      }
-                    >
-                      &gt;
-                    </span>
-                  </div>
-                  <div
-                    style={
-                      Object {
-                        "paddingLeft": 48,
-                        "paddingRight": 3,
-                      }
-                    }
-                  >
-                    <span
-                      style={
-                        Object {
-                          "color": "#444",
-                        }
-                      }
-                    >
-                      &lt;
-                      Settings
-                    </span>
-                    <span>
-                      <span>
-                        <span>
-                          <br />
-                            
-                        </span>
-                        <span
-                          style={Object {}}
-                        >
-                          autoHide
-                        </span>
-                        <span>
-                          =
-                          <span
-                            style={Object {}}
-                          >
-                            {
-                            <span
-                              style={
-                                Object {
-                                  "color": "#a11",
-                                }
-                              }
-                            >
-                              false
-                            </span>
-                            }
-                          </span>
-                        </span>
-                      </span>
-                      <span>
-                        <span>
-                          <br />
-                            
-                        </span>
-                        <span
-                          style={Object {}}
                         >
                           hideWindow
                         </span>
-                        <span>
-                          =
-                          <span
-                            style={Object {}}
-                          >
-                            {
-                            <span
-                              style={
-                                Object {
-                                  "color": "#170",
-                                }
-                              }
-                            >
-                              noop
-                            </span>
-                            }
-                          </span>
-                        </span>
-                      </span>
-                      <span>
-                        <span>
-                          <br />
-                            
-                        </span>
-                        <span
-                          style={Object {}}
-                        >
-                          launcherSize
-                        </span>
-                        <span>
-                          =
-                          <span
-                            style={Object {}}
-                          >
-                            "
-                            <span
-                              style={
-                                Object {
-                                  "color": "#22a",
-                                  "wordBreak": "break-word",
-                                }
-                              }
-                            >
-                              large
-                            </span>
-                            "
-                          </span>
-                        </span>
-                      </span>
-                      <span>
-                        <span>
-                          <br />
-                            
-                        </span>
-                        <span
-                          style={Object {}}
-                        >
-                          setAutoHide
-                        </span>
-                        <span>
-                          =
-                          <span
-                            style={Object {}}
-                          >
-                            {
-                            <span
-                              style={
-                                Object {
-                                  "color": "#170",
-                                }
-                              }
-                            >
-                              setAutoHide
-                            </span>
-                            }
-                          </span>
-                        </span>
-                      </span>
-                      <span>
-                        <span>
-                          <br />
-                            
-                        </span>
-                        <span
-                          style={Object {}}
-                        >
-                          setLauncherPosition
-                        </span>
-                        <span>
-                          =
-                          <span
-                            style={Object {}}
-                          >
-                            {
-                            <span
-                              style={
-                                Object {
-                                  "color": "#170",
-                                }
-                              }
-                            >
-                              setLauncherPosition
-                            </span>
-                            }
-                          </span>
-                        </span>
-                      </span>
-                      <span>
-                        <span>
-                          <br />
-                            
-                        </span>
-                        <span
-                          style={Object {}}
-                        >
-                          setLauncherSize
-                        </span>
-                        <span>
-                          =
-                          <span
-                            style={Object {}}
-                          >
-                            {
-                            <span
-                              style={
-                                Object {
-                                  "color": "#170",
-                                }
-                              }
-                            >
-                              setLauncherSize
-                            </span>
-                            }
-                          </span>
-                        </span>
-                        <br />
-                      </span>
-                    </span>
-                    <span
-                      style={
-                        Object {
-                          "color": "#444",
                         }
-                      }
-                    >
-                      /&gt;
+                      </span>
                     </span>
-                  </div>
-                  <div
-                    style={
-                      Object {
-                        "paddingLeft": 33,
-                        "paddingRight": 3,
-                      }
-                    }
-                  >
+                  </span>
+                  <span>
+                     
                     <span
-                      style={
-                        Object {
-                          "color": "#444",
-                        }
-                      }
+                      style={Object {}}
                     >
-                      &lt;/
-                      styled.div
-                      &gt;
+                      isEnterprise
                     </span>
-                  </div>
-                </div>
-                <div
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#a11",
+                            }
+                          }
+                        >
+                          false
+                        </span>
+                        }
+                      </span>
+                    </span>
+                     
+                  </span>
+                </span>
+                <span
                   style={
                     Object {
-                      "paddingLeft": 18,
-                      "paddingRight": 3,
+                      "color": "#444",
                     }
                   }
                 >
-                  <span
-                    style={
-                      Object {
-                        "color": "#444",
-                      }
-                    }
-                  >
-                    &lt;/
-                    div
-                    &gt;
-                  </span>
-                </div>
+                  /&gt;
+                </span>
               </div>
             </div>
             <button
@@ -719,22 +448,6 @@ exports[`Storyshots Components/Settings default 1`] = `
             >
               "
               Settings
-              " Component
-            </h2>
-            <small>
-              No propTypes defined!
-            </small>
-          </div>
-          <div>
-            <h2
-              style={
-                Object {
-                  "margin": "20px 0 0 0",
-                }
-              }
-            >
-              "
-              styled.div
               " Component
             </h2>
             <small>

@@ -1,9 +1,5 @@
-import * as Story from './LayoutsUserActions.story';
-
-import Component from './LayoutsUserActions';
+import Component from './LayoutsUserActionsContainer';
 
 export * from './LayoutsUserActions.css';
-
-export { Story };
 
 export default Component;

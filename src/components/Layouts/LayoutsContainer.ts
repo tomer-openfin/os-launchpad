@@ -16,7 +16,6 @@ const mapDispatch = dispatch => ({
   close: () => dispatch(hideWindow(LAYOUTS_WINDOW)),
   deleteLayout: (id: string) => dispatch(deleteLayoutRequest(id)),
   restoreLayout: (id: string) => dispatch(restoreLayoutRequest(id)),
-  saveLayout: (name: string, meta: MetaWithCallbacks) => dispatch(saveLayoutRequest(name, meta)),
 });
 
 export default connect(
