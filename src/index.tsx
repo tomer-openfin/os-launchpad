@@ -1,4 +1,5 @@
 import { deregister } from 'openfin-layouts';
+import { END } from 'redux-saga';
 
 import Router from './components/Router';
 
@@ -34,6 +35,15 @@ if (!isProduction && module.hot) {
     if (isMainWindow) {
       // tslint:disable-next-line:no-console
       console.warn('HMR deteched for store. Reattaching store to window.');
+      window.store = require('./configureStore').default(window.store.getState());
+    }
+  });
+
+  module.hot.accept('./redux/rootSaga', () => {
+    if (isMainWindow) {
+      window.store.dispatch(END);
+      // tslint:disable-next-line:no-console
+      console.warn('HMR deteched for sagas. Reattaching store to window.');
       window.store = require('./configureStore').default(window.store.getState());
     }
   });

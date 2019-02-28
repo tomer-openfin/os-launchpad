@@ -1,7 +1,9 @@
-import { all, call, put, select, take } from 'redux-saga/effects';
+import { Window } from '@giantmachines/redux-openfin';
+import { all, call, delay, put, race, select, take } from 'redux-saga/effects';
 
 import { APP_LAUNCHER_OVERFLOW_WINDOW } from '../../config/windows';
 import { Bounds, Transition } from '../../types/commons';
+import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName, getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
 import { animateWindow, getCurrentOpenfinApplicationInfo, setWindowBoundsPromise } from '../../utils/openfinPromises';
 import { calcBoundsRelativeToLauncher, calcLauncherPosition, isBottom, isRight } from '../../utils/windowPositionHelpers';
@@ -112,6 +114,20 @@ export function* animateLauncherCollapseExpand(isExpanded: State['application'][
   yield call(animateWindow, launcherFinWindow, transitions, {
     interrupt: false,
   });
+}
+
+export function* executeAutoHideBehavior(nextIsExpanded: boolean, animationDuration: number) {
+  // Wait for bounds changed event or bail if changed event takes too long
+  yield all([
+    race([
+      take(action => action.type === Window.BOUNDS_CHANGED && action.payload && action.payload.options && action.payload.options.id === getAppUuid()),
+      delay(animationDuration + 100),
+    ]),
+    call(animateLauncherCollapseExpand, nextIsExpanded, animationDuration),
+  ]);
+
+  // Added delay so user cannot trigger a collapse right after expand
+  yield delay(50);
 }
 
 /**

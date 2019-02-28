@@ -101,7 +101,7 @@
     "react-transition-group": "2.5.1",
     "redux": "4.0.1",
     "redux-actions": "2.6.3",
-    "redux-saga": "0.16.2",
+    "redux-saga": "1.0.1",
     "remote-redux-devtools": "0.5.13",
     "reselect": "4.0.0",
     "serialize-error": "3.0.0",
