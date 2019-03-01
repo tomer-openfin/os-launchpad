@@ -1,5 +1,6 @@
 import * as layouts from 'openfin-layouts';
-import { TabProperties, WindowIdentity } from 'openfin-layouts/dist/client/types';
+import { WindowIdentity } from 'openfin-layouts/dist/client/main';
+import { TabProperties } from 'openfin-layouts/dist/client/tabbing';
 import * as Sortable from 'sortablejs';
 
 import { Tab } from './TabItem';
@@ -46,8 +47,8 @@ export class TabManager {
       .then(state => {
         if (state === 'maximized') {
           this.maximized = true;
-          const maximizeElem: HTMLElement | null = document.getElementById('window-button-maximize');
-          maximizeElem!.classList.add('restored');
+          const maximizeElem: HTMLElement = document.getElementById('window-button-maximize')!;
+          maximizeElem.classList.add('restored');
         }
       });
 

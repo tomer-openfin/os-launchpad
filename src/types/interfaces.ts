@@ -1,7 +1,5 @@
-import { Workspace } from 'openfin-layouts/dist/client/types';
-
 import { RouteComponentProps } from 'react-router-dom';
-import { ResponseStatus, UserStatus } from './enums';
+import { ResponseStatus, UserStatus, Workspace } from './commons';
 
 export interface App {
   appPage: string;

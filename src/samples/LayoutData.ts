@@ -1,5 +1,4 @@
-import { Workspace } from 'openfin-layouts/dist/client/types';
-import { UserLayout } from '../types/commons';
+import { UserLayout, Workspace } from '../types/commons';
 
 export const exampleLayout: Workspace = {
   apps: [],
@@ -103,7 +102,7 @@ export const exampleLayout: Workspace = {
   },
   schemaVersion: '',
   tabGroups: [],
-  type: 'layout',
+  type: 'workspace',
 };
 
 export const exampleUserLayout: UserLayout = {

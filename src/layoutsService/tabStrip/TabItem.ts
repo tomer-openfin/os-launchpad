@@ -1,7 +1,8 @@
 /* tslint:disable */
 // THIS CODE PULLED DIRECTLY FROM OPENFIN, DO NOT MODIFY
 import * as layouts from 'openfin-layouts';
-import { TabProperties, WindowIdentity } from 'openfin-layouts/dist/client/types';
+import { WindowIdentity } from 'openfin-layouts/dist/client/main';
+import { TabProperties } from 'openfin-layouts/dist/client/tabbing';
 
 import { TabManager } from './TabManager';
 
@@ -102,7 +103,7 @@ export class Tab {
    * @param {DragEvent} e DragEvent
    */
   private _onDragEnd(e: DragEvent): void {
-    layouts.tabstrip.endDrag(e, this._ID);
+    layouts.tabstrip.endDrag();
   }
 
   /**

@@ -1,6 +1,6 @@
 import * as layouts from 'openfin-layouts';
 import { TabActivatedEvent, TabAddedEvent, TabPropertiesUpdatedEvent, TabRemovedEvent } from 'openfin-layouts/dist/client/tabbing';
-import { TabAddedPayload, TabGroupEventPayload, TabPropertiesUpdatedPayload, WindowIdentity } from 'openfin-layouts/dist/client/types';
+import { TabGroupMaximizedEvent, TabGroupRestoredEvent } from 'openfin-layouts/dist/client/tabstrip';
 
 import { TabManager } from './TabManager';
 
@@ -13,27 +13,24 @@ tabManager = new TabManager();
  */
 const createLayoutsEventListeners = () => {
   layouts.tabbing.addEventListener('tab-added', (event: TabAddedEvent) => {
-    const tabInfo: TabAddedPayload = event.detail;
-    tabManager.addTab(tabInfo.identity, tabInfo.properties, tabInfo.index);
+    tabManager.addTab(event.identity, event.properties, event.index);
 
     document.title = tabManager.getTabs.map(tab => tab.PROPERTIES.title).join(', ');
   });
 
   layouts.tabbing.addEventListener('tab-removed', (event: TabRemovedEvent) => {
-    const tabInfo: TabGroupEventPayload = event.detail;
-    tabManager.removeTab(tabInfo.identity);
+    tabManager.removeTab(event.identity);
 
     document.title = tabManager.getTabs.map(tab => tab.PROPERTIES.title).join(', ');
   });
 
   layouts.tabbing.addEventListener('tab-activated', (event: TabActivatedEvent) => {
-    const tabInfo: WindowIdentity = event.detail.identity;
-    tabManager.setActiveTab(tabInfo);
+    tabManager.setActiveTab(event.identity);
   });
 
   layouts.tabbing.addEventListener('tab-properties-updated', (event: TabPropertiesUpdatedEvent) => {
-    const tab = tabManager.getTab(event.detail.identity);
-    const props = event.detail.properties;
+    const tab = tabManager.getTab(event.identity);
+    const props = event.properties;
 
     if (tab) {
       if (props.icon) tab.updateIcon(props.icon);
@@ -42,33 +39,44 @@ const createLayoutsEventListeners = () => {
 
     document.title = tabManager.getTabs.map(t => t.PROPERTIES.title).join(', ');
   });
+
+  const maximizeElem: HTMLElement = document.getElementById('window-button-maximize')!;
+
+  layouts.tabstrip.addEventListener('tab-group-maximized', (event: TabGroupMaximizedEvent) => {
+    tabManager.isMaximized = true;
+    maximizeElem.classList.add('restore');
+  });
+
+  layouts.tabstrip.addEventListener('tab-group-restored', (event: TabGroupRestoredEvent) => {
+    tabManager.isMaximized = false;
+    if (maximizeElem.classList.contains('restore')) {
+      maximizeElem.classList.remove('restore');
+    }
+  });
 };
 
 /**
  * Creates Event Listeners for window controls (close, maximize, minimize, etc);
  */
 const createWindowUIListeners = () => {
-  const minimizeElem: HTMLElement | null = document.getElementById('window-button-minimize');
-  const maximizeElem: HTMLElement | null = document.getElementById('window-button-maximize');
-  const closeElem: HTMLElement | null = document.getElementById('window-button-exit');
-  const undockElem: HTMLElement | null = document.getElementById('window-button-undock');
+  const minimizeElem: HTMLElement = document.getElementById('window-button-minimize')!;
+  const maximizeElem: HTMLElement = document.getElementById('window-button-maximize')!;
+  const closeElem: HTMLElement = document.getElementById('window-button-exit')!;
+  const undockElem: HTMLElement = document.getElementById('window-button-undock')!;
 
   // Minimize Button
-  minimizeElem!.onclick = () => {
+  minimizeElem.onclick = () => {
     layouts.tabbing.minimizeTabGroup(tabManager.getTabs[0].ID);
   };
 
   // Maximize / Restore button
-  maximizeElem!.onclick = () => {
+  maximizeElem.onclick = () => {
     if (!tabManager.isMaximized) {
       layouts.tabbing.maximizeTabGroup(tabManager.getTabs[0].ID);
 
       maximizeElem!.classList.add('restore');
-      tabManager.isMaximized = true;
     } else {
       layouts.tabbing.restoreTabGroup(tabManager.getTabs[0].ID);
-
-      tabManager.isMaximized = false;
 
       if (maximizeElem!.classList.contains('restore')) {
         maximizeElem!.classList.remove('restore');
@@ -77,12 +85,12 @@ const createWindowUIListeners = () => {
   };
 
   // Close Button
-  closeElem!.onclick = () => {
+  closeElem.onclick = () => {
     layouts.tabbing.closeTabGroup(tabManager.getTabs[0].ID);
   };
 
   // Undock button
-  undockElem!.onclick = () => {
+  undockElem.onclick = () => {
     layouts.snapAndDock.undockWindow();
   };
 };

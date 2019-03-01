@@ -1,10 +1,10 @@
-import { Workspace } from 'openfin-layouts/dist/client/types';
+import { Workspace } from '../types/commons';
 import { isStorybookEnv, isTestEnv } from './processHelpers';
 
 const isNotFin = isTestEnv() || isStorybookEnv();
 
 enum OpenfinLayout {
-  type = 'layout',
+  type = 'workspace',
 }
 
 const mockWorkspace = {

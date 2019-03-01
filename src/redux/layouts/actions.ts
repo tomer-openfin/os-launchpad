@@ -1,7 +1,6 @@
-import { Workspace } from 'openfin-layouts/dist/client/types';
 import { createAction } from 'redux-actions';
 
-import { ErrorResponse, MetaWithCallbacks, UserLayout } from '../../types/commons';
+import { ErrorResponse, MetaWithCallbacks, UserLayout, Workspace } from '../../types/commons';
 import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
 import { metaWithCallbacksCreator, payloadIdentityCreator } from '../../utils/metaAndPayloadCreators';
 import { CreateOrUpdateSuccessPayload, GetLayoutsSuccessPayload, UpdateLayoutRequestPayload, UpdateSuccessPayload } from './types';

@@ -28,6 +28,9 @@
   "services": [
     {
       "name": "layouts"
+    },
+    {
+      "name": "notifications"
     }
   ],
   "runtime": {
