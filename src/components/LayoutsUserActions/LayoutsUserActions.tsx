@@ -78,7 +78,7 @@ class LayoutsUserActions extends React.Component<Props, State> {
     undoLayout({ errorCb: this.errorCb, successCb: this.resetForm });
   };
 
-  handleFormSubmit = e => {
+  handleFormSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const { saveLayout } = this.props;
@@ -88,7 +88,7 @@ class LayoutsUserActions extends React.Component<Props, State> {
 
     this.setState({ stage: Stage.Submitting });
 
-    saveLayout(name, meta);
+    saveLayout(name.trim(), meta);
   };
 
   handleNameChange = (e: React.SyntheticEvent<HTMLInputElement>) => {
@@ -134,7 +134,7 @@ class LayoutsUserActions extends React.Component<Props, State> {
       <LayoutForm onSubmit={this.handleFormSubmit}>
         <Input onChange={this.handleNameChange} placeholder="Workspace Name" required type="text" />
 
-        <SubmitButton type="submit" disabled={!this.state.name}>
+        <SubmitButton type="submit" disabled={!this.state.name.trim()}>
           <CheckIcon hoverColor={Color.JUPITER} imgSrc={checkIcon} size={14} />
         </SubmitButton>
       </LayoutForm>
