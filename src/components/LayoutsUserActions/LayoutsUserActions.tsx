@@ -132,7 +132,7 @@ class LayoutsUserActions extends React.Component<Props, State> {
   renderLayoutForm() {
     return (
       <LayoutForm onSubmit={this.handleFormSubmit}>
-        <Input onChange={this.handleNameChange} placeholder="Layout Name" required type="text" />
+        <Input onChange={this.handleNameChange} placeholder="Workspace Name" required type="text" />
 
         <SubmitButton type="submit" disabled={!this.state.name}>
           <CheckIcon hoverColor={Color.JUPITER} imgSrc={checkIcon} size={14} />

@@ -13,7 +13,7 @@ import { toggleNotificationCenterRequest } from '../redux/notifications';
 import { launchWindow, toggleWindow } from '../redux/windows';
 
 export const ADMIN_KEY = 'Admin';
-export const LAYOUTS_KEY = 'Layouts';
+export const WORKSPACES_KEY = 'Workspaces';
 export const LOGOUT_KEY = 'Logout';
 export const NOTIFICATIONS_KEY = 'Notifications';
 export const APP_DIRECTORY_KEY = 'App Directory';
@@ -55,7 +55,7 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       hasExtendedWindow: true,
       icon: layoutsIcon,
       isShownByDefault: true,
-      title: LAYOUTS_KEY,
+      title: WORKSPACES_KEY,
     },
     {
       action: toggleNotificationCenterRequest(),

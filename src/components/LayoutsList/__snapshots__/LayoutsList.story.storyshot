@@ -23,7 +23,7 @@ exports[`Storyshots Components/LayoutsList default 1`] = `
         <h6
           className="sc-bMvGRv jxfhgT"
         >
-          Recent Layouts
+          Recent Workspaces
         </h6>
         <ul
           className="sc-hGoxap qpBko"
@@ -828,7 +828,7 @@ exports[`Storyshots Components/LayoutsList with Wrapper 1`] = `
           <h6
             className="sc-bMvGRv jxfhgT"
           >
-            Recent Layouts
+            Recent Workspaces
           </h6>
           <ul
             className="sc-hGoxap qpBko"

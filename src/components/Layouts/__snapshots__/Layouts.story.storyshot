@@ -22,7 +22,7 @@ exports[`Storyshots Components/Layouts default 1`] = `
           <div
             className="sc-giadOv feytcA"
           >
-            Layouts
+            Workspaces
           </div>
         </div>
         <div
@@ -40,7 +40,7 @@ exports[`Storyshots Components/Layouts default 1`] = `
             <input
               className="sc-eMigcr bHMaVq"
               onChange={[Function]}
-              placeholder="Layout Name"
+              placeholder="Workspace Name"
               required={true}
               type="text"
             />
@@ -64,7 +64,7 @@ exports[`Storyshots Components/Layouts default 1`] = `
         <h6
           className="sc-bMvGRv jxfhgT"
         >
-          Recent Layouts
+          Recent Workspaces
         </h6>
         <ul
           className="sc-hGoxap qpBko"

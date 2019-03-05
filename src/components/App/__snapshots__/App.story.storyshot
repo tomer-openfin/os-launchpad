@@ -323,7 +323,7 @@ exports[`Storyshots Components/App default 1`] = `
                     disabled={false}
                     onClick={[Function]}
                     size={42}
-                    title="Layouts"
+                    title="Workspaces"
                   />
                   <div
                     className="sc-esjQYD fQwcnI sc-ifAKCX xmkOg"

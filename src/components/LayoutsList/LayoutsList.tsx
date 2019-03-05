@@ -16,7 +16,7 @@ interface State {
 }
 
 class LayoutsList extends React.Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -39,7 +39,9 @@ class LayoutsList extends React.Component<Props, State> {
             <LayoutsListItem close={close} deleteLayout={deleteLayout} id={layout.id} key={layout.id} name={layout.name} restoreLayout={restoreLayout} />
           ))
         ) : (
-          <EmptyCopy>You don&#39;t have any saved layouts. Save using the input above and this list will populate with your most recent layouts.</EmptyCopy>
+          <EmptyCopy>
+            You don&#39;t have any saved workspaces. Save using the input above and this list will populate with your most recent workspaces.
+          </EmptyCopy>
         )}
       </UL>
     );
@@ -51,7 +53,7 @@ class LayoutsList extends React.Component<Props, State> {
 
     return (
       <LayoutNamesWrapper>
-        <ListHeader>Recent Layouts</ListHeader>
+        <ListHeader>Recent Workspaces</ListHeader>
 
         {this.renderLayoutsList()}
 

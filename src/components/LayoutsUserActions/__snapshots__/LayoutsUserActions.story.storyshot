@@ -32,7 +32,7 @@ exports[`Storyshots Components/LayoutsUserActions default 1`] = `
           <input
             className="sc-eMigcr bHMaVq"
             onChange={[Function]}
-            placeholder="Layout Name"
+            placeholder="Workspace Name"
             required={true}
             type="text"
           />
