@@ -4,8 +4,80 @@ import styled from 'styled-components';
 import * as EditIcon from '../../assets/Edit.svg';
 import * as TrashIcon from '../../assets/Trash.svg';
 
-import { Color } from '../../styles';
 import { TypeStyleCanopus, TypeStyleEnif } from '../../styles/typography.css';
+import { Wrapper as RequestFormWrapper } from '../RequestForm/RequestForm.css';
+
+import { Color } from '../../styles';
+import { ADMIN_FORMS_EASING_FUNCTION, ADMIN_FORMS_ENTER_DURATION, ADMIN_FORMS_EXIT_DURATION, ADMIN_FORMS_TRANSITION_CLASSNAMES } from '../../utils/adminForms';
+
+import { Label, LABEL_EASING_FUNCTION, LABEL_TRANSITION_DURATION } from '../FormField';
+
+export const AddEditWrapper = styled.div`
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
+
+  ${Label} {
+    transition-property: opacity, transform;
+  }
+
+  &.${ADMIN_FORMS_TRANSITION_CLASSNAMES}-enter {
+    ${RequestFormWrapper} {
+      transform: translate3d(100%, 0, 0);
+    }
+
+    ${Label} {
+      opacity: 0;
+      transform: translate3d(0, 20px, 0);
+    }
+  }
+
+  &.${ADMIN_FORMS_TRANSITION_CLASSNAMES}-enter-active {
+    ${RequestFormWrapper} {
+      transform: translate3d(0%, 0, 0);
+      transition: transform ${ADMIN_FORMS_ENTER_DURATION}ms ${ADMIN_FORMS_EASING_FUNCTION};
+    }
+
+    ${Label} {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      transition: all ${LABEL_TRANSITION_DURATION}ms ${LABEL_EASING_FUNCTION} ${ADMIN_FORMS_ENTER_DURATION}ms;
+    }
+  }
+
+  &.${ADMIN_FORMS_TRANSITION_CLASSNAMES}-enter-done {
+    ${RequestFormWrapper} {
+      transform: translate3d(0%, 0, 0);
+    }
+
+    ${Label} {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &.${ADMIN_FORMS_TRANSITION_CLASSNAMES}-exit {
+    ${RequestFormWrapper} {
+      transform: translate3d(0%, 0, 0);
+    }
+  }
+
+  &.${ADMIN_FORMS_TRANSITION_CLASSNAMES}-exit-active {
+    ${RequestFormWrapper} {
+      transform: translate3d(100%, 0, 0);
+      transition: transform ${ADMIN_FORMS_EXIT_DURATION}ms ${ADMIN_FORMS_EASING_FUNCTION};
+    }
+  }
+
+  &.${ADMIN_FORMS_TRANSITION_CLASSNAMES}-exit-done {
+    ${RequestFormWrapper} {
+      transform: translate3d(100%, 0, 0);
+    }
+  }
+`;
 
 export const Wrapper = styled.div`
   height: 100%;

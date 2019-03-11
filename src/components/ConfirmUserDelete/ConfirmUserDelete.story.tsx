@@ -7,8 +7,10 @@ import { CATEGORIES } from '../../utils/storyCategories';
 
 import ConfirmUserDelete from './ConfirmUserDelete';
 
-const user = UserData[0];
 const deleteUser = action('deleteUser');
-const pushRoute = action('pushRoute');
+const handleCancel = action('handleCancel');
+const handleSuccess = action('handleSuccess');
 
-storiesOf(`${CATEGORIES.ADMIN}ConfirmUserDelete`, module).add('default', () => <ConfirmUserDelete deleteUser={deleteUser} user={user} pushRoute={pushRoute} />);
+storiesOf(`${CATEGORIES.ADMIN}ConfirmUserDelete`, module).add('default', () => (
+  <ConfirmUserDelete deleteUser={deleteUser} handleCancel={handleCancel} handleSuccess={handleSuccess} id="1" user={UserData[0]} />
+));

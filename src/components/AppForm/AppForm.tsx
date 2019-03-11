@@ -4,7 +4,6 @@ import * as React from 'react';
 import { App } from '../../types/commons';
 
 import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../samples/FDC3';
-import { ROUTES } from '../Router/consts';
 
 import * as EditIcon from '../../assets/Edit.svg';
 
@@ -15,7 +14,7 @@ import CheckboxInArray from '../CheckboxInArray';
 import FormField, { Label, LabelText } from '../FormField';
 import ImagePreview from '../ImagePreview';
 import ImageUpload from '../ImageUpload';
-import Modal from '../Modal/Modal';
+import Modal from '../Modal';
 import RadioToggle from '../RadioToggle';
 import ResponsiveForm from '../ResponsiveForm';
 import SvgIcon from '../SvgIcon';
@@ -40,6 +39,11 @@ const renderIntentsAndContextsRow = () => (
   </RowWrapper>
 );
 
+interface Props extends FormikProps<Values> {
+  focusFieldOnInitialMount?: boolean;
+  handleCancel: () => void;
+}
+
 interface State {
   iconFormOpen: boolean;
 }
@@ -52,8 +56,39 @@ type SetFieldValue = (field: keyof Values, value, shouldValidate?: boolean) => v
 
 const defaultState: State = { iconFormOpen: false };
 
-class AppForm extends React.Component<FormikProps<Values>> {
+class AppForm extends React.Component<Props, State> {
   state: State = defaultState;
+  private inputField: React.RefObject<HTMLInputElement>;
+
+  constructor(props: Props) {
+    super(props);
+    this.inputField = React.createRef<HTMLInputElement>();
+  }
+
+  componentDidMount() {
+    if (this.props.focusFieldOnInitialMount) {
+      this.focusInputField();
+    }
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    const { values: newValues } = this.props;
+    const { withAppUrl: newWithAppUrl } = newValues;
+
+    const { values: oldValues } = prevProps;
+    const { withAppUrl: oldWithAppUrl } = oldValues;
+
+    // focus inputField when Radio input is toggled
+    if (newWithAppUrl !== oldWithAppUrl) {
+      this.focusInputField();
+    }
+  }
+
+  focusInputField = () => {
+    if (this.inputField.current) {
+      this.inputField.current.focus();
+    }
+  };
 
   handleOpenIconForm = () => this.setState({ iconFormOpen: true });
   handleCloseIconForm = () => this.setState({ iconFormOpen: false });
@@ -65,15 +100,16 @@ class AppForm extends React.Component<FormikProps<Values>> {
   };
 
   render() {
-    const { isValid, isSubmitting, setFieldValue, values } = this.props;
+    const { handleCancel, isValid, isSubmitting, setFieldValue, values } = this.props;
     const { iconFormOpen } = this.state;
 
     return (
-      <ResponsiveForm isSubmitting={isSubmitting} parentRoute={ROUTES.ADMIN_APPS} submitDisabled={isSubmitting || !isValid}>
+      <ResponsiveForm handleCancel={handleCancel} isSubmitting={isSubmitting} submitDisabled={isSubmitting || !isValid}>
         <RowWrapper firstElementWidth="100px">
           <RadioToggle label="Config Type" name="withAppUrl" value={!!values.withAppUrl} firstRadioLabel="App URL" secondRadioLabel="Manifest" />
 
           <FormField
+            htmlInputRef={this.inputField}
             key={values.withAppUrl ? 'appUrl' : 'manifest_url'}
             label={values.withAppUrl ? 'App URL' : 'Manifest URL'}
             type="text"

@@ -1,5 +1,6 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
-import { Formik } from 'formik';
+import { Formik, FormikProps, FormikValues } from 'formik';
 import * as React from 'react';
 import styled from 'styled-components';
 
@@ -17,9 +18,12 @@ const Wrapper = styled.div`
 storiesOf(`${CATEGORIES.COMPONENTS}PasswordForm`, module)
   .addDecorator(withMarginDecorator())
   .add('default', () => {
+    const handleCancel = action('handleCancel');
+    const renderPasswordForm = (formikProps: FormikProps<FormikValues>) => <PasswordForm {...formikProps} handleCancel={handleCancel} />;
+
     return (
       <Wrapper>
-        <Formik initialValues={{}} onSubmit={noop} validateOnChange={false} render={PasswordForm} />
+        <Formik initialValues={{}} onSubmit={noop} validateOnChange={false} render={renderPasswordForm} />
       </Wrapper>
     );
   });

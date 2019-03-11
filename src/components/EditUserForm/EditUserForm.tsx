@@ -1,19 +1,20 @@
+import { FormikProps, FormikValues } from 'formik';
 import * as React from 'react';
 import * as Yup from 'yup';
 
-import { DispatchRequest, MetaWithCallbacks, PushRoute, User } from '../../types/commons';
-
-import { createPushRouteHandler } from '../../utils/routeHelpers';
-import { ROUTES } from '../Router/consts';
+import { DispatchRequest, MetaWithCallbacks, User } from '../../types/commons';
 
 import RequestForm from '../RequestForm';
 import UserForm, { baseSchema } from '../UserForm';
 
 interface Props {
+  handleCancel: () => void;
+  handleDelete: () => void;
+  handleSuccess: () => void;
+  id: User['id'];
   onEscDown: () => void;
   updateUser: DispatchRequest<User>;
   user: User;
-  pushRoute: PushRoute;
 }
 
 const parsePhoneWithCountryCode = (phoneNumber: string) => phoneNumber.substr(phoneNumber.length - 10);
@@ -29,29 +30,41 @@ const createUserSubmitHandler = (submitUser: DispatchRequest<User>): DispatchReq
 const { tmpPassword, ...schema } = baseSchema;
 const validationSchema = Yup.object().shape(schema);
 
-const EditUserForm = ({ user, pushRoute, updateUser }: Props) => {
-  const { email, firstName, id, lastName, middleInitial, phone, username } = user;
+class EditUserForm extends React.Component<Props> {
+  shouldComponentUpdate(nextProps: Props) {
+    // sCU lifecycle needed for 2 reasons:
+    // 1. Prevents invalid ':id' from being passed in, which causes invalid re-render
+    // 2. Properly animate exit CSSTransitions, as a result of route switch
+    return nextProps.id === ':id' ? false : true;
+  }
 
-  return (
-    <RequestForm
-      initialValues={{
-        email,
-        firstName,
-        id,
-        lastName,
-        middleInitial,
-        phone: phone ? parsePhoneWithCountryCode(phone) : undefined,
-        username,
-      }}
-      errorMessage={`There was an error trying to update ${firstName} ${lastName}`}
-      render={UserForm}
-      handleDeleteIconClick={createPushRouteHandler(pushRoute, ROUTES.ADMIN_USERS_DELETE, user)}
-      headingText={`${firstName} ${lastName}`}
-      onSubmitSuccess={createPushRouteHandler(pushRoute, ROUTES.ADMIN_USERS)}
-      submit={createUserSubmitHandler(updateUser)}
-      validationSchema={validationSchema}
-    />
-  );
-};
+  renderUserForm = (formikProps: FormikProps<FormikValues>) => <UserForm {...formikProps} handleCancel={this.props.handleCancel} />;
+
+  render() {
+    const { handleDelete, handleSuccess, updateUser, user } = this.props;
+    const { email, firstName, id, lastName, middleInitial, phone, username } = user;
+
+    return (
+      <RequestForm
+        initialValues={{
+          email,
+          firstName,
+          id,
+          lastName,
+          middleInitial,
+          phone: phone ? parsePhoneWithCountryCode(phone) : undefined,
+          username,
+        }}
+        errorMessage={`There was an error trying to update ${firstName} ${lastName}`}
+        render={this.renderUserForm}
+        handleDeleteIconClick={handleDelete}
+        headingText={`${firstName} ${lastName}`}
+        onSubmitSuccess={handleSuccess}
+        submit={createUserSubmitHandler(updateUser)}
+        validationSchema={validationSchema}
+      />
+    );
+  }
+}
 
 export default EditUserForm;

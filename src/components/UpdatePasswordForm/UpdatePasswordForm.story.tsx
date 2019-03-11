@@ -10,5 +10,11 @@ import UpdatePasswordForm from './UpdatePasswordForm';
 const updatePassword = action('updatePassword');
 
 storiesOf(`${CATEGORIES.COMPONENTS}UpdatePasswordForm`, module)
-  .addDecorator(withMarginDecorator())
-  .add('default', () => <UpdatePasswordForm updatePassword={updatePassword} />);
+  .addDecorator(withMarginDecorator(30))
+  .add('default', () => {
+    const handleCancel = action('handleCancel');
+    const handleConfirm = action('handleConfirm');
+    const handleSuccess = action('handleSuccess');
+
+    return <UpdatePasswordForm handleCancel={handleCancel} handleConfirm={handleConfirm} handleSuccess={handleSuccess} updatePassword={updatePassword} />;
+  });

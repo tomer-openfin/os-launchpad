@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import { Color } from '../../styles';
-import Button, { ButtonLink } from '../Button';
 import { ButtonWrapper, Footer, FormWrapper, GridWrapper, ScrollWrapper } from './ResponsiveForm.css';
 
+import Button from '../Button';
 import Loading from '../Loading';
 
 interface Props {
@@ -12,11 +12,10 @@ interface Props {
   footerColor?: Color;
   handleCancel?: () => void;
   isSubmitting: boolean;
-  parentRoute?: string;
   submitDisabled: boolean;
 }
 
-export const ResponsiveForm = ({ children, isSubmitting, parentRoute, submitDisabled, buttonWidths = 128, footerColor, handleCancel }: Props) => (
+export const ResponsiveForm = ({ children, footerColor, handleCancel, isSubmitting, submitDisabled, buttonWidths = 128 }: Props) => (
   <FormWrapper>
     <ScrollWrapper>
       <GridWrapper>{children}</GridWrapper>
@@ -28,15 +27,9 @@ export const ResponsiveForm = ({ children, isSubmitting, parentRoute, submitDisa
           {isSubmitting ? <Loading size={15} /> : 'Save'}
         </Button>
 
-        {handleCancel || !parentRoute ? (
-          <Button onClick={handleCancel} backgroundColor={Color.MERCURY} type="button" width={buttonWidths}>
-            Cancel
-          </Button>
-        ) : (
-          <ButtonLink to={parentRoute} backgroundColor={Color.MERCURY} type="button" width={buttonWidths}>
-            Cancel
-          </ButtonLink>
-        )}
+        <Button onClick={handleCancel} type="button" width={buttonWidths}>
+          Cancel
+        </Button>
       </ButtonWrapper>
     </Footer>
   </FormWrapper>

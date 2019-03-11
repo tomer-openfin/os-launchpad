@@ -1,17 +1,16 @@
+import { FormikProps, FormikValues } from 'formik';
 import * as React from 'react';
 
-import { ROUTES } from '../Router/consts';
+import { App, DispatchRequest, MetaWithCallbacks } from '../../types/commons';
 
-import { App, DispatchRequest, MetaWithCallbacks, PushRoute } from '../../types/commons';
-
-import { createPushRouteHandler } from '../../utils/routeHelpers';
 import AppForm, { createAppManifestUrl, validationSchema } from '../AppForm';
 import RequestForm from '../RequestForm';
 
 interface Props {
-  createApp: DispatchRequest<App>;
+  createApp: DispatchRequest;
+  handleCancel: () => void;
+  handleSuccess: () => void;
   onEscDown: () => void;
-  pushRoute: PushRoute;
 }
 
 const emptyApp = {
@@ -40,16 +39,20 @@ const createAppSubmitHandler = (submit: DispatchRequest<App>): DispatchRequest<A
   submit({ ...rest, manifest_url: computedManifestUrl }, meta);
 };
 
-const NewAppForm = ({ createApp, pushRoute }: Props) => (
-  <RequestForm
-    initialValues={emptyApp}
-    errorMessage="There was an error trying to create this app"
-    component={AppForm}
-    headingText="Create New App"
-    onSubmitSuccess={createPushRouteHandler(pushRoute, ROUTES.ADMIN_APPS)}
-    submit={createAppSubmitHandler(createApp)}
-    validationSchema={validationSchema}
-  />
-);
+const NewAppForm = ({ createApp, handleCancel, handleSuccess }: Props) => {
+  const renderAppForm = (formikProps: FormikProps<FormikValues>) => <AppForm {...formikProps} handleCancel={handleCancel} focusFieldOnInitialMount />;
+
+  return (
+    <RequestForm
+      initialValues={emptyApp}
+      errorMessage="There was an error trying to create this app"
+      render={renderAppForm}
+      headingText="Create New App"
+      onSubmitSuccess={handleSuccess}
+      submit={createAppSubmitHandler(createApp)}
+      validationSchema={validationSchema}
+    />
+  );
+};
 
 export default NewAppForm;

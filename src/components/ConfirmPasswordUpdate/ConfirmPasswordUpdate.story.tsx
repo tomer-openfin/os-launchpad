@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
@@ -9,5 +10,7 @@ import { CATEGORIES } from '../../utils/storyCategories';
 storiesOf(`${CATEGORIES.COMPONENTS}ConfirmPasswordUpdate`, module)
   .addDecorator(withMarginDecorator())
   .add('default', () => {
-    return <ConfirmPasswordUpdate />;
+    const handleSuccess = action('handleSuccess');
+
+    return <ConfirmPasswordUpdate handleSuccess={handleSuccess} />;
   });

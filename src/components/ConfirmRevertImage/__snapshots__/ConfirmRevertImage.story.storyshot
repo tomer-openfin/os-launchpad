@@ -31,7 +31,7 @@ exports[`Storyshots Admin Components/ConfirmRevertImage default 1`] = `
           className="sc-iujRgT bRYfux"
         >
           <div
-            className="sc-GMQeP RhNhU"
+            className="sc-GMQeP fmmqNB"
           >
             Are you sure you want to revert the Launcher Logo asset back to the system default?
           </div>
@@ -39,15 +39,12 @@ exports[`Storyshots Admin Components/ConfirmRevertImage default 1`] = `
         <div
           className="sc-bAeIUo etKsBD"
         >
-          <a
-            backgroundColor="#848484"
-            className="sc-chPdSV hYsYSY"
-            href="/admin/settings"
-            onClick={[Function]}
+          <button
+            className="sc-kAzzGY gTiRcw"
             width={153}
           >
             Cancel
-          </a>
+          </button>
           <button
             className="sc-kAzzGY gTiRcw"
             disabled={false}

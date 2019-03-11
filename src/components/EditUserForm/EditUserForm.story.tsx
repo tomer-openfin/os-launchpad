@@ -3,16 +3,26 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
 import UserData from '../../samples/UserData';
-import noop from '../../utils/noop';
 import { CATEGORIES } from '../../utils/storyCategories';
 
 import EditUserForm from './EditUserForm';
 
 const user = UserData[0];
 
-const updateUser = action('updateUser');
+const handleCancel = action('handleCancel');
+const handleDelete = action('handleDelete');
+const handleSuccess = action('handleSuccess');
 const onEscDown = action('onEscDown');
+const updateUser = action('updateUser');
 
 storiesOf(`${CATEGORIES.ADMIN}EditUserForm`, module).add('default', () => (
-  <EditUserForm user={user} pushRoute={noop} onEscDown={onEscDown} updateUser={updateUser} />
+  <EditUserForm
+    handleCancel={handleCancel}
+    handleDelete={handleDelete}
+    handleSuccess={handleSuccess}
+    id={user.id}
+    onEscDown={onEscDown}
+    updateUser={updateUser}
+    user={user}
+  />
 ));

@@ -2,10 +2,10 @@ import { RouteComponentProps } from 'react-router-dom';
 import { ResponseStatus, UserStatus, Workspace } from './commons';
 
 export interface App {
-  appPage: string;
+  appPage?: string;
   appUrl?: string;
   contexts: Array<{ $type: string }>;
-  contact_email: string;
+  contact_email?: string;
   description: string;
   icon: string;
   id: string;
@@ -13,9 +13,9 @@ export interface App {
   intents: Array<{ displayName: string; name: string }>;
   manifest_url?: string;
   name: string;
-  publisher: string;
-  signature: string;
-  support_email: string | null;
+  publisher?: string;
+  signature?: string;
+  support_email?: string | null;
   title: string;
   withAppUrl?: boolean;
 }

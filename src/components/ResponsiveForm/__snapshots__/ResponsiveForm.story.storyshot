@@ -37,7 +37,8 @@ exports[`Storyshots UI Components/ResponsiveForm default 1`] = `
             Save
           </button>
           <button
-            className="sc-kAzzGY jWQqYu"
+            className="sc-kAzzGY jjQyJb"
+            onClick={[Function]}
             type="button"
             width={128}
           >
@@ -202,6 +203,32 @@ exports[`Storyshots UI Components/ResponsiveForm default 1`] = `
                       <span
                         style={Object {}}
                       >
+                        handleCancel
+                      </span>
+                      <span>
+                        =
+                        <span
+                          style={Object {}}
+                        >
+                          {
+                          <span
+                            style={
+                              Object {
+                                "color": "#170",
+                              }
+                            }
+                          >
+                            handleCancel
+                          </span>
+                          }
+                        </span>
+                      </span>
+                    </span>
+                    <span>
+                       
+                      <span
+                        style={Object {}}
+                      >
                         isSubmitting
                       </span>
                       <span>
@@ -220,33 +247,6 @@ exports[`Storyshots UI Components/ResponsiveForm default 1`] = `
                             false
                           </span>
                           }
-                        </span>
-                      </span>
-                    </span>
-                    <span>
-                       
-                      <span
-                        style={Object {}}
-                      >
-                        parentRoute
-                      </span>
-                      <span>
-                        =
-                        <span
-                          style={Object {}}
-                        >
-                          "
-                          <span
-                            style={
-                              Object {
-                                "color": "#22a",
-                                "wordBreak": "break-word",
-                              }
-                            }
-                          >
-                            
-                          </span>
-                          "
                         </span>
                       </span>
                     </span>

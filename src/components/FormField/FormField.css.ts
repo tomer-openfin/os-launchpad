@@ -7,6 +7,11 @@ interface Props {
   isValid?: boolean;
 }
 
+export const LABEL_TRANSITION_CLASSNAMES = 'label-transition';
+export const LABEL_TRANSITION_DURATION = 300;
+export const LABEL_TRANSITION_DELAY = 100;
+export const LABEL_EASING_FUNCTION = 'ease-in-out';
+
 export const Error = styled.div`
   ${TypeStyleDeneb}
 

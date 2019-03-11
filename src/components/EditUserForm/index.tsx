@@ -1,3 +1,3 @@
-import Component from './EditUserFormContainer';
+import EditUserFormContainer from './EditUserFormContainer';
 
-export default Component;
+export default EditUserFormContainer;

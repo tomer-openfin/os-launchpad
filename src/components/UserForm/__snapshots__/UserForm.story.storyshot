@@ -122,16 +122,14 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
           >
             Save
           </button>
-          <a
-            backgroundColor="#848484"
-            className="sc-chPdSV hEgkTj"
-            href="/admin/users"
+          <button
+            className="sc-kAzzGY jjQyJb"
             onClick={[Function]}
             type="button"
             width={128}
           >
             Cancel
-          </a>
+          </button>
         </div>
       </div>
     </form>
@@ -338,7 +336,7 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
                             }
                           }
                         >
-                          noop
+                          onSubmit
                         </span>
                         }
                       </span>
@@ -396,7 +394,7 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
                             }
                           }
                         >
-                          anonymous
+                          renderUserForm
                         </span>
                         }
                       </span>

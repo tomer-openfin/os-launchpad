@@ -31,7 +31,7 @@ exports[`Storyshots Admin Components/ConfirmUserDelete default 1`] = `
           className="sc-iujRgT bRYfux"
         >
           <div
-            className="sc-GMQeP RhNhU"
+            className="sc-GMQeP fmmqNB"
           >
             Are you sure you want to delete the user:
 John Doe?
@@ -40,15 +40,13 @@ John Doe?
         <div
           className="sc-bAeIUo etKsBD"
         >
-          <a
-            backgroundColor="#848484"
-            className="sc-chPdSV hYsYSY"
-            href="/admin/users"
+          <button
+            className="sc-kAzzGY gTiRcw"
             onClick={[Function]}
             width={153}
           >
             Cancel
-          </a>
+          </button>
           <button
             className="sc-kAzzGY gTiRcw"
             disabled={false}
@@ -216,7 +214,10 @@ John Doe?
                 </span>
                 <span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -242,7 +243,98 @@ John Doe?
                     </span>
                   </span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      handleCancel
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          handleCancel
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      handleSuccess
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          handleSuccess
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      id
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        "
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          1
+                        </span>
+                        "
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -363,33 +455,7 @@ John Doe?
                         }
                       </span>
                     </span>
-                  </span>
-                  <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      pushRoute
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          pushRoute
-                        </span>
-                        }
-                      </span>
-                    </span>
-                     
+                    <br />
                   </span>
                 </span>
                 <span

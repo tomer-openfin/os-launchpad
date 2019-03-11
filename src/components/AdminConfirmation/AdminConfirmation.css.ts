@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Color, Typography } from '../../styles';
+import { Color, textEllipsis, Typography } from '../../styles';
 
 export const Heading = styled.div`
   background-color: ${Color.KUIPER_BELT};
@@ -34,8 +34,10 @@ export const CopyWrapper = styled.div`
 
 export const Copy = styled.div`
   ${Typography.TypeStyleArcturus}
+  ${textEllipsis}
 
   color: ${Color.SUN};
+  flex: 1;
   white-space: pre-wrap;
   width: 100%;
 `;

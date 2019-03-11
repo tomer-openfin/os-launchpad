@@ -31,7 +31,7 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
           className="sc-iujRgT bRYfux"
         >
           <div
-            className="sc-GMQeP RhNhU"
+            className="sc-GMQeP fmmqNB"
           >
             Are you sure you would like to confirm?
           </div>
@@ -39,15 +39,12 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
         <div
           className="sc-bAeIUo etKsBD"
         >
-          <a
-            backgroundColor="#848484"
-            className="sc-chPdSV hYsYSY"
-            href="/"
-            onClick={[Function]}
+          <button
+            className="sc-kAzzGY gTiRcw"
             width={153}
           >
             Cancel
-          </a>
+          </button>
           <button
             className="sc-kAzzGY gTiRcw"
             disabled={false}
@@ -421,36 +418,6 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
                         }
                       </span>
                     </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      parentRoute
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        "
-                        <span
-                          style={
-                            Object {
-                              "color": "#22a",
-                              "wordBreak": "break-word",
-                            }
-                          }
-                        >
-                          
-                        </span>
-                        "
-                      </span>
-                    </span>
                     <br />
                   </span>
                 </span>
@@ -555,7 +522,7 @@ exports[`Storyshots Admin Components/AdminConfirmation view 1`] = `
           className="sc-iujRgT bRYfux"
         >
           <div
-            className="sc-GMQeP RhNhU"
+            className="sc-GMQeP fmmqNB"
           >
             Are you sure you would like to confirm?
           </div>
@@ -563,15 +530,12 @@ exports[`Storyshots Admin Components/AdminConfirmation view 1`] = `
         <div
           className="sc-bAeIUo etKsBD"
         >
-          <a
-            backgroundColor="#848484"
-            className="sc-chPdSV hYsYSY"
-            href="/"
-            onClick={[Function]}
+          <button
+            className="sc-kAzzGY gTiRcw"
             width={153}
           >
             Cancel
-          </a>
+          </button>
           <button
             className="sc-kAzzGY gTiRcw"
             disabled={false}
@@ -943,36 +907,6 @@ exports[`Storyshots Admin Components/AdminConfirmation view 1`] = `
                           deleteApp
                         </span>
                         }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      parentRoute
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        "
-                        <span
-                          style={
-                            Object {
-                              "color": "#22a",
-                              "wordBreak": "break-word",
-                            }
-                          }
-                        >
-                          
-                        </span>
-                        "
                       </span>
                     </span>
                     <br />

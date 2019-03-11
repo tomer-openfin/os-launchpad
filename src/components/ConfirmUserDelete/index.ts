@@ -1,3 +1,3 @@
-import ConfirmDelete from './ConfirmUserDeleteContainer';
+import ConfirmUserDeleteContainer from './ConfirmUserDeleteContainer';
 
-export default ConfirmDelete;
+export default ConfirmUserDeleteContainer;

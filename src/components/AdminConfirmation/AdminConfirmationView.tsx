@@ -1,9 +1,7 @@
 import * as React from 'react';
 
-import { Color } from '../../styles/index';
-
 import Borders from '../Borders/index';
-import Button, { ButtonLink } from '../Button';
+import Button from '../Button';
 import { ButtonWrapper, Copy, CopyWrapper, Error, Heading, HeadingText, Wrapper } from './AdminConfirmation.css';
 
 interface Props {
@@ -12,10 +10,10 @@ interface Props {
   confirmButtonDisabled?: boolean;
   confirmCtaText?: string;
   errorText?: string;
+  handleCancel?: () => void;
   handleConfirm?: () => void;
   headingText: string;
   height?: string;
-  parentRoute: string;
   width?: string;
   withoutCancel?: boolean;
 }
@@ -26,10 +24,10 @@ const AdminConfirmationView = ({
   confirmButtonDisabled,
   confirmCtaText,
   errorText,
+  handleCancel,
   handleConfirm,
   headingText,
   height,
-  parentRoute,
   width,
   withoutCancel,
 }: Props) => (
@@ -45,14 +43,14 @@ const AdminConfirmationView = ({
 
       <ButtonWrapper>
         {withoutCancel ? (
-          <ButtonLink to={parentRoute} onClick={handleConfirm} width={153}>
+          <Button onClick={handleConfirm} width={153}>
             {confirmCtaText || 'Confirm'}
-          </ButtonLink>
+          </Button>
         ) : (
           <>
-            <ButtonLink to={parentRoute} backgroundColor={Color.MERCURY} width={153}>
+            <Button onClick={handleCancel} width={153}>
               {cancelCtaText || 'Cancel'}
-            </ButtonLink>
+            </Button>
 
             <Button disabled={confirmButtonDisabled} onClick={handleConfirm} width={153}>
               {confirmCtaText || 'Confirm'}

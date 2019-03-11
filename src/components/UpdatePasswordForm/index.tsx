@@ -1,3 +1,3 @@
-import Component from './UpdatePasswordFormContainer';
+import UpdatePasswordFormContainer from './UpdatePasswordFormContainer';
 
-export default Component;
+export default UpdatePasswordFormContainer;

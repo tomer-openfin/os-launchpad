@@ -7,7 +7,6 @@ import { Color } from '../../styles';
 import { PasswordIconWrapper, RowWrapper } from '../RequestForm';
 
 import { validatePhone } from '../../utils/validators';
-import { ROUTES } from '../Router/consts';
 
 import FormField from '../FormField';
 import ResponsiveForm from '../ResponsiveForm';
@@ -27,6 +26,7 @@ export const baseSchema = {
 };
 
 interface Props {
+  handleCancel: () => void;
   isPasswordShown?: boolean;
   isSubmitting: boolean;
   isValid: boolean;
@@ -34,8 +34,8 @@ interface Props {
   withPasswordField?: boolean;
 }
 
-export const UserForm = ({ isPasswordShown, isSubmitting, isValid, togglePasswordFieldType, withPasswordField }: Props) => (
-  <ResponsiveForm isSubmitting={isSubmitting} parentRoute={ROUTES.ADMIN_USERS} submitDisabled={isSubmitting || !isValid}>
+export const UserForm = ({ handleCancel, isPasswordShown, isSubmitting, isValid, togglePasswordFieldType, withPasswordField }: Props) => (
+  <ResponsiveForm handleCancel={handleCancel} isSubmitting={isSubmitting} submitDisabled={isSubmitting || !isValid}>
     <RowWrapper secondElementWidth="55px">
       <FormField label="First Name" type="text" name="firstName" placeholder="Enter first name" />
 

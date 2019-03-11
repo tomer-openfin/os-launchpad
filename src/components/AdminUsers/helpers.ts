@@ -1,6 +1,6 @@
 import { User } from '../../types/commons';
 import { memoizeOneInvalidateOnOtherArgs, memoizeSingleArg } from '../../utils/memoize';
-import { defaultSortKey, defaultState, State } from './AdminUsers';
+import { defaultSortKey, State } from './AdminUsers';
 
 export const filterUserList = memoizeOneInvalidateOnOtherArgs((search: State['search'], users: User[]) =>
   search

@@ -1,19 +1,20 @@
+import { FormikProps, FormikValues } from 'formik';
 import * as React from 'react';
 
-import { App, DispatchRequest, MetaWithCallbacks, PushRoute } from '../../types/commons';
-
-import { ROUTES } from '../Router/consts';
-
 import { CREATE_MANIFEST_BASE } from '../../services/ApiService/api';
-import { createPushRouteHandler } from '../../utils/routeHelpers';
+import { App, DispatchRequest, MetaWithCallbacks } from '../../types/commons';
+
 import AppForm, { createAppManifestUrl, validationSchema } from '../AppForm';
 import RequestForm from '../RequestForm';
 
 interface Props {
   app: App;
+  appId: App['id'];
+  handleCancel: () => void;
+  handleDelete: () => void;
+  handleSuccess: () => void;
   onEscDown: () => void;
   updateApp: DispatchRequest<App>;
-  pushRoute: PushRoute;
 }
 
 const createAppSubmitHandler = (submit: DispatchRequest<App>): DispatchRequest<App> => (formData: App, meta: MetaWithCallbacks) => {
@@ -24,35 +25,47 @@ const createAppSubmitHandler = (submit: DispatchRequest<App>): DispatchRequest<A
   submit({ ...rest, manifest_url: computedManifestUrl }, meta);
 };
 
-const EditAppForm = ({ app, pushRoute, updateApp }: Props) => {
-  const { appUrl, contexts, intents, id, manifest_url = '', name, title, description, icon, images } = app;
-  const createManifestIndex = manifest_url.indexOf(CREATE_MANIFEST_BASE);
-  const initialAppUrl = createManifestIndex !== -1 ? manifest_url.slice(createManifestIndex + CREATE_MANIFEST_BASE.length) : appUrl;
+class EditAppForm extends React.Component<Props> {
+  shouldComponentUpdate(nextProps: Props) {
+    // sCU lifecycle needed for 2 reasons:
+    // 1. Prevents invalid ':id' from being passed in, which causes invalid re-render
+    // 2. Properly animate exit CSSTransitions, as a result of route switch
+    return nextProps.appId === ':id' ? false : true;
+  }
 
-  return (
-    <RequestForm
-      initialValues={{
-        appUrl: initialAppUrl,
-        contexts: contexts || [],
-        description,
-        icon,
-        id,
-        images,
-        intents: intents || [],
-        manifest_url: createManifestIndex === -1 ? manifest_url : '',
-        name,
-        title,
-        withAppUrl: !!initialAppUrl,
-      }}
-      errorMessage={`There was an error trying to update ${title}`}
-      component={AppForm}
-      handleDeleteIconClick={createPushRouteHandler(pushRoute, ROUTES.ADMIN_APPS_DELETE, app)}
-      headingText={`Edit ${title}`}
-      onSubmitSuccess={createPushRouteHandler(pushRoute, ROUTES.ADMIN_APPS)}
-      submit={createAppSubmitHandler(updateApp)}
-      validationSchema={validationSchema}
-    />
-  );
-};
+  renderAppForm = (formikProps: FormikProps<FormikValues>) => <AppForm {...formikProps} handleCancel={this.props.handleCancel} />;
+
+  render() {
+    const { app, handleDelete, handleSuccess, updateApp } = this.props;
+    const { appUrl, contexts, intents, id, manifest_url = '', name, title, description, icon, images } = app;
+    const createManifestIndex = manifest_url.indexOf(CREATE_MANIFEST_BASE);
+    const initialAppUrl = createManifestIndex !== -1 ? manifest_url.slice(createManifestIndex + CREATE_MANIFEST_BASE.length) : appUrl;
+
+    return (
+      <RequestForm
+        initialValues={{
+          appUrl: initialAppUrl,
+          contexts: contexts || [],
+          description,
+          icon,
+          id,
+          images,
+          intents: intents || [],
+          manifest_url: createManifestIndex === -1 ? manifest_url : '',
+          name,
+          title,
+          withAppUrl: !!initialAppUrl,
+        }}
+        errorMessage={`There was an error trying to update ${title}`}
+        render={this.renderAppForm}
+        handleDeleteIconClick={handleDelete}
+        headingText={`Edit ${title}`}
+        onSubmitSuccess={handleSuccess}
+        submit={createAppSubmitHandler(updateApp)}
+        validationSchema={validationSchema}
+      />
+    );
+  }
+}
 
 export default EditAppForm;

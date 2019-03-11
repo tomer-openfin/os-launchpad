@@ -82,7 +82,7 @@ exports[`Storyshots Admin Components/ImageForm default 1`] = `
             Save
           </button>
           <button
-            className="sc-kAzzGY jWQqYu"
+            className="sc-kAzzGY jjQyJb"
             onClick={[Function]}
             type="button"
             width={128}

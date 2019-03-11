@@ -1,18 +1,17 @@
+import { FormikProps, FormikValues } from 'formik';
 import * as React from 'react';
 import * as Yup from 'yup';
 
-import { MetaWithCallbacks, PushRoute, User } from '../../types/commons';
-
-import { createPushRouteHandler } from '../../utils/routeHelpers';
-import { ROUTES } from '../Router/consts';
+import { DispatchRequest, MetaWithCallbacks, User } from '../../types/commons';
 
 import RequestForm from '../RequestForm';
 import UserForm, { baseSchema } from '../UserForm';
 
 interface Props {
-  createUser: Function;
+  createUser: DispatchRequest;
+  handleCancel: () => void;
+  handleSuccess: () => void;
   onEscDown: () => void;
-  pushRoute: PushRoute;
 }
 
 interface State {
@@ -52,26 +51,26 @@ class NewUserForm extends React.Component<Props, State> {
     createUser(payload, meta);
   };
 
-  renderForm = ({ isSubmitting, isValid }) => (
+  renderUserForm = (formikProps: FormikProps<FormikValues>) => (
     <UserForm
-      isSubmitting={isSubmitting}
-      isValid={isValid}
-      withPasswordField
+      {...formikProps}
+      handleCancel={this.props.handleCancel}
       isPasswordShown={this.state.isPasswordShown}
       togglePasswordFieldType={this.togglePasswordFieldType}
+      withPasswordField
     />
   );
 
   render() {
-    const { pushRoute } = this.props;
+    const { handleSuccess } = this.props;
 
     return (
       <RequestForm
         initialValues={emptyUser}
         errorMessage="There was an error trying to create this user"
-        render={this.renderForm}
+        render={this.renderUserForm}
         headingText="Create New User"
-        onSubmitSuccess={createPushRouteHandler(pushRoute, ROUTES.ADMIN_USERS)}
+        onSubmitSuccess={handleSuccess}
         submit={this.handleFormSubmit}
         validationSchema={validationSchema}
       />

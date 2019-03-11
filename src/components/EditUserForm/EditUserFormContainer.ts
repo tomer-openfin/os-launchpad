@@ -1,30 +1,28 @@
 import { connect } from 'react-redux';
 
-import { User } from '../../types/commons';
-
-import { updateAdminUserRequest } from '../../redux/admin';
-import { ROUTES } from '../Router/consts';
+import { getAdminUserFromId, updateAdminUserRequest } from '../../redux/admin';
+import { State } from '../../redux/types';
 
 import withEscapeKey from '../../hocs/withEscapeKey';
-
 import EditUserForm from './EditUserForm';
+
+const mapState = (state: State, ownProps) => ({
+  user: getAdminUserFromId(state, ownProps.id),
+});
 
 const mapDispatch = {
   updateUser: updateAdminUserRequest,
 };
 
-const mergeProps = (_, dispatchProps, ownProps) => ({
+const mergeProps = (stateProps, dispatchProps, ownProps) => ({
+  ...stateProps,
   ...dispatchProps,
   ...ownProps,
-  onEscDown: () => {
-    ownProps.history.push(ROUTES.ADMIN_USERS);
-  },
-  pushRoute: (route: string, item?: User) => ownProps.history.push(route, item),
-  user: ownProps.location.state,
+  onEscDown: ownProps.handleCancel,
 });
 
 export default connect(
-  null,
+  mapState,
   mapDispatch,
   mergeProps,
 )(withEscapeKey(EditUserForm));

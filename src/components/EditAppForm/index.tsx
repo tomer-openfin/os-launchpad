@@ -1,3 +1,3 @@
-import Component from './EditAppFormContainer';
+import EditAppFormContainer from './EditAppFormContainer';
 
-export default Component;
+export default EditAppFormContainer;

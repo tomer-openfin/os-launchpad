@@ -8,7 +8,7 @@ export const getAppsState = (state: State) => state.apps;
 
 // byId
 export const getAppsById = (state: State) => getAppsState(state).byId;
-export const getAppById = (state: State, id: string): App | undefined => getAppsById(state)[id];
+export const getAppById = (state: State, id: string): App => getAppsById(state)[id];
 
 // ids
 export const getAppsIds = (state: State) => getAppsState(state).ids;

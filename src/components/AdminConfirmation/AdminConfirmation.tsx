@@ -8,11 +8,12 @@ interface Props {
   confirmationText: string;
   confirmCtaText?: string;
   errorMessage: string;
+  handleCancel?: () => void;
   headingText: string;
   height?: string;
   onConfirm: (meta: MetaWithCallbacks) => void;
   onConfirmSuccess: () => void;
-  parentRoute: string;
+  parentRoute?: string;
   width?: string;
 }
 
@@ -70,7 +71,7 @@ class AdminConfirmation extends React.Component<Props, State> {
   };
 
   render() {
-    const { cancelCtaText, confirmCtaText, confirmationText, errorMessage, headingText, height, parentRoute, width } = this.props;
+    const { handleCancel, cancelCtaText, confirmCtaText, confirmationText, errorMessage, headingText, height, width } = this.props;
     const { confirmButtonDisabled, responseReceived, result } = this.state;
 
     const errorText = responseReceived ? `${errorMessage}: ${result.message} Please try again.` : '';
@@ -82,10 +83,10 @@ class AdminConfirmation extends React.Component<Props, State> {
         confirmButtonDisabled={confirmButtonDisabled}
         confirmCtaText={confirmCtaText}
         errorText={errorText}
+        handleCancel={handleCancel}
         handleConfirm={this.handleConfirm}
         headingText={headingText}
         height={height}
-        parentRoute={parentRoute}
         width={width}
       />
     );

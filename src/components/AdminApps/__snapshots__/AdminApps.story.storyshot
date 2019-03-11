@@ -11,10 +11,10 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
     }
   >
     <div
-      className="sc-iGPElx zirWa"
+      className="sc-kasBVs iXHzks"
     >
       <div
-        className="sc-kasBVs kidPfn"
+        className="sc-hgHYgh ftRWJe"
       >
         <div
           className="sc-fYxtnH siyJx"
@@ -37,14 +37,14 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
         </div>
         <a
           className="sc-chPdSV jKYrTm"
-          href="/admin/apps/new"
+          href="/admin/apps/new/"
           onClick={[Function]}
         >
           Add App
         </a>
       </div>
       <div
-        className="sc-bGbJRg eENITH"
+        className="sc-bEjcJn VnkZc"
       >
         <div
           className="sc-esOvli kMzELW"
@@ -84,16 +84,16 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-eInJlc ekTjkd"
+                className="sc-gtfDJT fiShNl"
               >
                 <a
-                  className="sc-jtRlXQ iADQDR"
-                  href="/admin/apps/edit"
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/fintech-studios"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jeCdPy blKiNV"
-                  href="/admin/apps/delete"
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/fintech-studios"
                   onClick={[Function]}
                 />
               </div>
@@ -138,16 +138,16 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-eInJlc ekTjkd"
+                className="sc-gtfDJT fiShNl"
               >
                 <a
-                  className="sc-jtRlXQ iADQDR"
-                  href="/admin/apps/edit"
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/greenkey"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jeCdPy blKiNV"
-                  href="/admin/apps/delete"
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/greenkey"
                   onClick={[Function]}
                 />
               </div>
@@ -192,16 +192,16 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-eInJlc ekTjkd"
+                className="sc-gtfDJT fiShNl"
               >
                 <a
-                  className="sc-jtRlXQ iADQDR"
-                  href="/admin/apps/edit"
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/hammerstone-markets"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jeCdPy blKiNV"
-                  href="/admin/apps/delete"
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/hammerstone-markets"
                   onClick={[Function]}
                 />
               </div>
@@ -246,16 +246,16 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-eInJlc ekTjkd"
+                className="sc-gtfDJT fiShNl"
               >
                 <a
-                  className="sc-jtRlXQ iADQDR"
-                  href="/admin/apps/edit"
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/neptune"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jeCdPy blKiNV"
-                  href="/admin/apps/delete"
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/neptune"
                   onClick={[Function]}
                 />
               </div>
@@ -300,16 +300,16 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-eInJlc ekTjkd"
+                className="sc-gtfDJT fiShNl"
               >
                 <a
-                  className="sc-jtRlXQ iADQDR"
-                  href="/admin/apps/edit"
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/opendoor"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jeCdPy blKiNV"
-                  href="/admin/apps/delete"
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/opendoor"
                   onClick={[Function]}
                 />
               </div>
@@ -355,16 +355,16 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-eInJlc ekTjkd"
+                className="sc-gtfDJT fiShNl"
               >
                 <a
-                  className="sc-jtRlXQ iADQDR"
-                  href="/admin/apps/edit"
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/parityone"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jeCdPy blKiNV"
-                  href="/admin/apps/delete"
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/parityone"
                   onClick={[Function]}
                 />
               </div>
@@ -409,16 +409,16 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-eInJlc ekTjkd"
+                className="sc-gtfDJT fiShNl"
               >
                 <a
-                  className="sc-jtRlXQ iADQDR"
-                  href="/admin/apps/edit"
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/rsrchx"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jeCdPy blKiNV"
-                  href="/admin/apps/delete"
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/rsrchx"
                   onClick={[Function]}
                 />
               </div>
@@ -463,16 +463,16 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-eInJlc ekTjkd"
+                className="sc-gtfDJT fiShNl"
               >
                 <a
-                  className="sc-jtRlXQ iADQDR"
-                  href="/admin/apps/edit"
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/trumid"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jeCdPy blKiNV"
-                  href="/admin/apps/delete"
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/trumid"
                   onClick={[Function]}
                 />
               </div>
@@ -517,16 +517,16 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-eInJlc ekTjkd"
+                className="sc-gtfDJT fiShNl"
               >
                 <a
-                  className="sc-jtRlXQ iADQDR"
-                  href="/admin/apps/edit"
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/tt-desktop"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jeCdPy blKiNV"
-                  href="/admin/apps/delete"
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/tt-desktop"
                   onClick={[Function]}
                 />
               </div>
@@ -2189,6 +2189,2310 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
                     >
                       [
                       ]
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    currentAction
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#22a",
+                          "wordBreak": "break-word",
+                        }
+                      }
+                    >
+                      default
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Admin Components/AdminApps withStages 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "position": "relative",
+        "zIndex": 0,
+      }
+    }
+  >
+    <div
+      className="sc-kasBVs iXHzks"
+    >
+      <div
+        className="sc-hgHYgh ftRWJe"
+      >
+        <div
+          className="sc-fYxtnH siyJx"
+          width={291}
+        >
+          <div
+            className="sc-gGBfsJ dMPHqo sc-ifAKCX cycuRH"
+            color="#E7E7E7"
+            size={35}
+          />
+          <input
+            className="sc-tilXH fnObrC"
+            name="nodejs"
+            onChange={[Function]}
+            placeholder="Search apps..."
+            type="text"
+            value=""
+          />
+          
+        </div>
+        <a
+          className="sc-chPdSV jKYrTm"
+          href="/admin/apps/new/"
+          onClick={[Function]}
+        >
+          Add App
+        </a>
+      </div>
+      <div
+        className="sc-bEjcJn VnkZc"
+      >
+        <div
+          className="sc-esOvli kMzELW"
+        >
+          <div
+            className="sc-bwCtUz goDjMa"
+          >
+            <div
+              className="sc-epnACN guwPGO"
+            >
+              <div
+                className="sc-bZQynM NYJaE"
+                onClick={[Function]}
+                size={50}
+              >
+                <div
+                  className="sc-EHOje eFQTJR"
+                />
+              </div>
+            </div>
+            <div
+              className="sc-hrWEMg bETFYQ"
+            >
+              <div
+                className="sc-eTuwsz eyJCMj"
+                onClick={[Function]}
+              >
+                FinTech Studios
+              </div>
+              <div
+                className="sc-gwVKww cNiZmi"
+              >
+                Using cutting edge artificial intelligence and machine learning, FTS delivers actionable news, research, market analytics, and analytics from millions of sources.
+              </div>
+            </div>
+            <div
+              className="sc-hXRMBi jQWFky"
+            >
+              <div
+                className="sc-gtfDJT fiShNl"
+              >
+                <a
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/fintech-studios"
+                  onClick={[Function]}
+                />
+                <a
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/fintech-studios"
+                  onClick={[Function]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-esOvli kMzELW"
+        >
+          <div
+            className="sc-bwCtUz goDjMa"
+          >
+            <div
+              className="sc-epnACN guwPGO"
+            >
+              <div
+                className="sc-bZQynM NYJaE"
+                onClick={[Function]}
+                size={50}
+              >
+                <div
+                  className="sc-EHOje dcTQGg"
+                />
+              </div>
+            </div>
+            <div
+              className="sc-hrWEMg bETFYQ"
+            >
+              <div
+                className="sc-eTuwsz eyJCMj"
+                onClick={[Function]}
+              >
+                GreenKey
+              </div>
+              <div
+                className="sc-gwVKww cNiZmi"
+              >
+                We are where voice becomes data for the financial markets. Green Key’s voice platform and API includes integrated speech recognition for domain specific workflows. The programmable platform enables firms to integrate sophisticated voice and/or transcription capabilities into their own solutions without telecom or data science knowledge.
+              </div>
+            </div>
+            <div
+              className="sc-hXRMBi jQWFky"
+            >
+              <div
+                className="sc-gtfDJT fiShNl"
+              >
+                <a
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/greenkey"
+                  onClick={[Function]}
+                />
+                <a
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/greenkey"
+                  onClick={[Function]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-esOvli kMzELW"
+        >
+          <div
+            className="sc-bwCtUz goDjMa"
+          >
+            <div
+              className="sc-epnACN guwPGO"
+            >
+              <div
+                className="sc-bZQynM NYJaE"
+                onClick={[Function]}
+                size={50}
+              >
+                <div
+                  className="sc-EHOje fXFycF"
+                />
+              </div>
+            </div>
+            <div
+              className="sc-hrWEMg bETFYQ"
+            >
+              <div
+                className="sc-eTuwsz eyJCMj"
+                onClick={[Function]}
+              >
+                Hammerstone Markets App
+              </div>
+              <div
+                className="sc-gwVKww cNiZmi"
+              >
+                The Hammerstone Markets App is both real-time news and real-time analysis sent via compliant messaging platforms including Openfin, Bloomberg, Pivot, and Symphony. Our primary demographic is Institutional Buy and Sell-side traders, who are active in U.S. equities. Founded in 2001, we currently have 165 companies and over 1,000 users of the product.
+              </div>
+            </div>
+            <div
+              className="sc-hXRMBi jQWFky"
+            >
+              <div
+                className="sc-gtfDJT fiShNl"
+              >
+                <a
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/hammerstone-markets"
+                  onClick={[Function]}
+                />
+                <a
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/hammerstone-markets"
+                  onClick={[Function]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-esOvli kMzELW"
+        >
+          <div
+            className="sc-bwCtUz goDjMa"
+          >
+            <div
+              className="sc-epnACN guwPGO"
+            >
+              <div
+                className="sc-bZQynM NYJaE"
+                onClick={[Function]}
+                size={50}
+              >
+                <div
+                  className="sc-EHOje bITuvo"
+                />
+              </div>
+            </div>
+            <div
+              className="sc-hrWEMg bETFYQ"
+            >
+              <div
+                className="sc-eTuwsz eyJCMj"
+                onClick={[Function]}
+              >
+                Neptune
+              </div>
+              <div
+                className="sc-gwVKww cNiZmi"
+              >
+                At Neptune Networks, we deliver high-quality bond market data (mostly axes) from sell-side banks to buy-side clients. Our technology enables real-time connectivity between banks and investors which leads to meaningful conversations, satisfying the immediate requirements of each party and ultimately, increasing trade volumes.
+              </div>
+            </div>
+            <div
+              className="sc-hXRMBi jQWFky"
+            >
+              <div
+                className="sc-gtfDJT fiShNl"
+              >
+                <a
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/neptune"
+                  onClick={[Function]}
+                />
+                <a
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/neptune"
+                  onClick={[Function]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-esOvli kMzELW"
+        >
+          <div
+            className="sc-bwCtUz goDjMa"
+          >
+            <div
+              className="sc-epnACN guwPGO"
+            >
+              <div
+                className="sc-bZQynM NYJaE"
+                onClick={[Function]}
+                size={50}
+              >
+                <div
+                  className="sc-EHOje djzOJe"
+                />
+              </div>
+            </div>
+            <div
+              className="sc-hrWEMg bETFYQ"
+            >
+              <div
+                className="sc-eTuwsz eyJCMj"
+                onClick={[Function]}
+              >
+                OpenDoor
+              </div>
+              <div
+                className="sc-gwVKww cNiZmi"
+              >
+                Launching the first all-to-all, session-based trading platform for off-the-run US Treasuries and TIPS, OpenDoor fills the liquidity vacuum. Our customers include many of the world’s largest asset managers, central banks, primary dealers, hedge funds and trading firms.
+              </div>
+            </div>
+            <div
+              className="sc-hXRMBi jQWFky"
+            >
+              <div
+                className="sc-gtfDJT fiShNl"
+              >
+                <a
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/opendoor"
+                  onClick={[Function]}
+                />
+                <a
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/opendoor"
+                  onClick={[Function]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-esOvli kMzELW"
+        >
+          <div
+            className="sc-bwCtUz goDjMa"
+          >
+            <div
+              className="sc-epnACN guwPGO"
+            >
+              <div
+                className="sc-bZQynM NYJaE"
+                onClick={[Function]}
+                size={50}
+              >
+                <div
+                  className="sc-EHOje hbFLDH"
+                />
+              </div>
+            </div>
+            <div
+              className="sc-hrWEMg bETFYQ"
+            >
+              <div
+                className="sc-eTuwsz eyJCMj"
+                onClick={[Function]}
+              >
+                Parity One
+              </div>
+              <div
+                className="sc-gwVKww cNiZmi"
+              >
+                Parity One transforms investment ideas into smart investment portfolios.
+Parity One’s sophisticated back-testing framework enables simulating the most advanced factor-based investment strategies and converts them into fully managed bespoke benchmarks and model portfolios.
+              </div>
+            </div>
+            <div
+              className="sc-hXRMBi jQWFky"
+            >
+              <div
+                className="sc-gtfDJT fiShNl"
+              >
+                <a
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/parityone"
+                  onClick={[Function]}
+                />
+                <a
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/parityone"
+                  onClick={[Function]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-esOvli kMzELW"
+        >
+          <div
+            className="sc-bwCtUz goDjMa"
+          >
+            <div
+              className="sc-epnACN guwPGO"
+            >
+              <div
+                className="sc-bZQynM NYJaE"
+                onClick={[Function]}
+                size={50}
+              >
+                <div
+                  className="sc-EHOje bXcYyx"
+                />
+              </div>
+            </div>
+            <div
+              className="sc-hrWEMg bETFYQ"
+            >
+              <div
+                className="sc-eTuwsz eyJCMj"
+                onClick={[Function]}
+              >
+                RSRCHXChange
+              </div>
+              <div
+                className="sc-gwVKww cNiZmi"
+              >
+                RSRCHX is a one-stop-shop for accessing the newly evolving paid-for research market and consuming research in compliance with global best practice.  Founded in 2014, the award-winning RSRCHX platform is used by more than 1,200 buy side firms and over 300 banks, brokers and independent research providers as both a regulatory solution and technology-led research management tool and venue for buying and selling research.
+              </div>
+            </div>
+            <div
+              className="sc-hXRMBi jQWFky"
+            >
+              <div
+                className="sc-gtfDJT fiShNl"
+              >
+                <a
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/rsrchx"
+                  onClick={[Function]}
+                />
+                <a
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/rsrchx"
+                  onClick={[Function]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-esOvli kMzELW"
+        >
+          <div
+            className="sc-bwCtUz goDjMa"
+          >
+            <div
+              className="sc-epnACN guwPGO"
+            >
+              <div
+                className="sc-bZQynM NYJaE"
+                onClick={[Function]}
+                size={50}
+              >
+                <div
+                  className="sc-EHOje bLVJMg"
+                />
+              </div>
+            </div>
+            <div
+              className="sc-hrWEMg bETFYQ"
+            >
+              <div
+                className="sc-eTuwsz eyJCMj"
+                onClick={[Function]}
+              >
+                Trumid
+              </div>
+              <div
+                className="sc-gwVKww cNiZmi"
+              >
+                Trumid is a financial technology startup bringing efficiency to credit trading through data, technology and beautifully simple products. Trumid was founded in 2014 by credit professionals with over 100 years of trading experience and is headquartered in New York.
+              </div>
+            </div>
+            <div
+              className="sc-hXRMBi jQWFky"
+            >
+              <div
+                className="sc-gtfDJT fiShNl"
+              >
+                <a
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/trumid"
+                  onClick={[Function]}
+                />
+                <a
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/trumid"
+                  onClick={[Function]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="sc-esOvli kMzELW"
+        >
+          <div
+            className="sc-bwCtUz goDjMa"
+          >
+            <div
+              className="sc-epnACN guwPGO"
+            >
+              <div
+                className="sc-bZQynM NYJaE"
+                onClick={[Function]}
+                size={50}
+              >
+                <div
+                  className="sc-EHOje fdgkqj"
+                />
+              </div>
+            </div>
+            <div
+              className="sc-hrWEMg bETFYQ"
+            >
+              <div
+                className="sc-eTuwsz eyJCMj"
+                onClick={[Function]}
+              >
+                TT Desktop
+              </div>
+              <div
+                className="sc-gwVKww cNiZmi"
+              >
+                Trading Technologies’ ultra-low-latency platform, TT, leverages a hybrid-cloud infrastructure to provide a streamlined, go-anywhere, high-performance experience for professional traders worldwide. TT’s most performant front-end app, TT Desktop, utilizes the OpenFin platform to deliver an HTML5-based trading experience.
+              </div>
+            </div>
+            <div
+              className="sc-hXRMBi jQWFky"
+            >
+              <div
+                className="sc-gtfDJT fiShNl"
+              >
+                <a
+                  className="sc-bGbJRg hYTxnN"
+                  href="/admin/apps/edit/tt-desktop"
+                  onClick={[Function]}
+                />
+                <a
+                  className="sc-jtRlXQ lnpdYY"
+                  href="/admin/apps/delete/tt-desktop"
+                  onClick={[Function]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    onClick={[Function]}
+    style={
+      Object {
+        "background": "#28c",
+        "border": "none",
+        "borderRadius": "0 0 0 5px",
+        "color": "#fff",
+        "cursor": "pointer",
+        "display": "block",
+        "fontFamily": "sans-serif",
+        "fontSize": "12px",
+        "padding": "5px 15px",
+        "position": "fixed",
+        "right": 0,
+        "top": 0,
+      }
+    }
+    type="button"
+  >
+    Show Info
+  </button>
+  <div
+    style={
+      Object {
+        "background": "white",
+        "bottom": 0,
+        "display": "none",
+        "left": 0,
+        "overflow": "auto",
+        "padding": "0 40px",
+        "position": "fixed",
+        "right": 0,
+        "top": 0,
+        "zIndex": 99999,
+      }
+    }
+  >
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "#28c",
+          "border": "none",
+          "borderRadius": "0 0 0 5px",
+          "color": "#fff",
+          "cursor": "pointer",
+          "display": "block",
+          "fontFamily": "sans-serif",
+          "fontSize": "12px",
+          "padding": "5px 15px",
+          "position": "fixed",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      type="button"
+    >
+      ×
+    </button>
+    <div>
+      <div
+        style={
+          Object {
+            "WebkitFontSmoothing": "antialiased",
+            "backgroundColor": "#fff",
+            "border": "1px solid #eee",
+            "borderRadius": "2px",
+            "color": "#444",
+            "fontFamily": "-apple-system, \\".SFNSText-Regular\\", \\"San Francisco\\", BlinkMacSystemFont, \\"Segoe UI\\", \\"Roboto\\", \\"Oxygen\\", \\"Ubuntu\\", \\"Cantarell\\", \\"Fira Sans\\", \\"Droid Sans\\", \\"Helvetica Neue\\", \\"Lucida Grande\\", \\"Arial\\", sans-serif",
+            "fontSize": "15px",
+            "fontWeight": 300,
+            "lineHeight": 1.45,
+            "marginBottom": "20px",
+            "marginTop": "20px",
+            "padding": "20px 40px 40px",
+          }
+        }
+      >
+        <div
+          style={
+            Object {
+              "borderBottom": "1px solid #eee",
+              "marginBottom": 10,
+              "paddingTop": 10,
+            }
+          }
+        >
+          <h1
+            style={
+              Object {
+                "fontSize": "35px",
+                "margin": 0,
+                "padding": 0,
+              }
+            }
+          >
+            Admin Components/AdminApps
+          </h1>
+          <h2
+            style={
+              Object {
+                "fontSize": "22px",
+                "fontWeight": 400,
+                "margin": "0 0 10px 0",
+                "padding": 0,
+              }
+            }
+          >
+            withStages
+          </h2>
+        </div>
+        
+        <div>
+          <h1
+            style={
+              Object {
+                "borderBottom": "1px solid #EEE",
+                "fontSize": "25px",
+                "margin": "20px 0 0 0",
+                "padding": "0 0 5px 0",
+              }
+            }
+          >
+            Story Source
+          </h1>
+          <pre
+            className="css-r8d96o eyvlbql0"
+          >
+            <div>
+              <div
+                style={
+                  Object {
+                    "paddingLeft": 18,
+                    "paddingRight": 3,
+                  }
+                }
+              >
+                <span
+                  style={
+                    Object {
+                      "color": "#444",
+                    }
+                  }
+                >
+                  &lt;
+                  AdminApps
+                </span>
+                <span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      apps
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#666",
+                            }
+                          }
+                        >
+                          [
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              {
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  contexts
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                [
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        $type
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'fdc3.instrument'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        $type
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'fdc3.contact'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        $type
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'fdc3.organization'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  …
+                                </span>
+                                <span>
+                                  <br />
+                                        
+                                </span>
+                                ]
+                              </span>
+                              ,
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  intents
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                [
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        name
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'StartCall'
+                                    </span>
+                                    ,
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        displayName
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'Call'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        name
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'StartChat'
+                                    </span>
+                                    ,
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        displayName
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'Chat'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        name
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'ViewChart'
+                                    </span>
+                                    ,
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        displayName
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'Chart'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  …
+                                </span>
+                                <span>
+                                  <br />
+                                        
+                                </span>
+                                ]
+                              </span>
+                              ,
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  name
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#22a",
+                                    "wordBreak": "break-word",
+                                  }
+                                }
+                              >
+                                'fintech-studios'
+                              </span>
+                              ,
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                …
+                              </span>
+                              <span>
+                                <br />
+                                    
+                              </span>
+                              }
+                            </span>
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              {
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  contexts
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                [
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        $type
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'fdc3.instrument'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        $type
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'fdc3.contact'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        $type
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'fdc3.organization'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  …
+                                </span>
+                                <span>
+                                  <br />
+                                        
+                                </span>
+                                ]
+                              </span>
+                              ,
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  intents
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                [
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        name
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'StartCall'
+                                    </span>
+                                    ,
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        displayName
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'Call'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        name
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'StartChat'
+                                    </span>
+                                    ,
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        displayName
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'Chat'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        name
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'ViewChart'
+                                    </span>
+                                    ,
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        displayName
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'Chart'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  …
+                                </span>
+                                <span>
+                                  <br />
+                                        
+                                </span>
+                                ]
+                              </span>
+                              ,
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  name
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#22a",
+                                    "wordBreak": "break-word",
+                                  }
+                                }
+                              >
+                                'greenkey'
+                              </span>
+                              ,
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                …
+                              </span>
+                              <span>
+                                <br />
+                                    
+                              </span>
+                              }
+                            </span>
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              {
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  contexts
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                [
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        $type
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'fdc3.instrument'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        $type
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'fdc3.contact'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        $type
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'fdc3.organization'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  …
+                                </span>
+                                <span>
+                                  <br />
+                                        
+                                </span>
+                                ]
+                              </span>
+                              ,
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  intents
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                [
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        name
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'StartCall'
+                                    </span>
+                                    ,
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        displayName
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'Call'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        name
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'StartChat'
+                                    </span>
+                                    ,
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        displayName
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'Chat'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    {
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        name
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'ViewChart'
+                                    </span>
+                                    ,
+                                    <span>
+                                      <span
+                                        style={
+                                          Object {
+                                            "color": "#666",
+                                          }
+                                        }
+                                      >
+                                        displayName
+                                      </span>
+                                    </span>
+                                    : 
+                                    <span
+                                      style={
+                                        Object {
+                                          "color": "#22a",
+                                          "wordBreak": "break-word",
+                                        }
+                                      }
+                                    >
+                                      'Chart'
+                                    </span>
+                                    }
+                                  </span>
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                          
+                                      
+                                  </span>
+                                  …
+                                </span>
+                                <span>
+                                  <br />
+                                        
+                                </span>
+                                ]
+                              </span>
+                              ,
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  name
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#22a",
+                                    "wordBreak": "break-word",
+                                  }
+                                }
+                              >
+                                'hammerstone-markets'
+                              </span>
+                              ,
+                              <span>
+                                <span>
+                                  <br />
+                                      
+                                    
+                                </span>
+                                …
+                              </span>
+                              <span>
+                                <br />
+                                    
+                              </span>
+                              }
+                            </span>
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            …
+                          </span>
+                          <span>
+                            <br />
+                              
+                          </span>
+                          ]
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                     
+                    <span
+                      style={Object {}}
+                    >
+                      id
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        "
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          fintech-studios
+                        </span>
+                        "
+                      </span>
+                    </span>
+                     
+                  </span>
+                </span>
+                <span
+                  style={
+                    Object {
+                      "color": "#444",
+                    }
+                  }
+                >
+                  /&gt;
+                </span>
+              </div>
+            </div>
+            <button
+              className="css-1naocv3 eva467m0"
+              onClick={[Function]}
+            >
+              <div
+                className="css-lvl6aa eva467m1"
+              >
+                <div
+                  style={
+                    Object {
+                      "marginBottom": 6,
+                    }
+                  }
+                >
+                  Copied!
+                </div>
+                <div>
+                  Copy
+                </div>
+              </div>
+            </button>
+          </pre>
+        </div>
+        <div>
+          <h1
+            style={
+              Object {
+                "borderBottom": "1px solid #EEE",
+                "fontSize": "25px",
+                "margin": "20px 0 0 0",
+                "padding": "0 0 5px 0",
+              }
+            }
+          >
+            Prop Types
+          </h1>
+          <div>
+            <h2
+              style={
+                Object {
+                  "margin": "20px 0 0 0",
+                }
+              }
+            >
+              "
+              AdminApps
+              " Component
+            </h2>
+            <table
+              className="css-1uhv8nx e1vdo5380"
+            >
+              <thead>
+                <tr>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    property
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    propType
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    required
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    default
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    apps
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#666",
+                        }
+                      }
+                    >
+                      [
+                      ]
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    currentAction
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#22a",
+                          "wordBreak": "break-word",
+                        }
+                      }
+                    >
+                      default
                     </span>
                   </td>
                   <td

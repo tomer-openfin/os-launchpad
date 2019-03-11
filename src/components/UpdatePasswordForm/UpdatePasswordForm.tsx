@@ -1,13 +1,13 @@
-import { FormikActions } from 'formik';
+import { FormikActions, FormikProps, FormikValues } from 'formik';
 import * as React from 'react';
 import * as Yup from 'yup';
 
 import { UpdatePasswordRequestPayload } from '../../redux/me/types';
-import { MetaWithCallbacks } from '../../types/commons';
+import { DispatchRequest, MetaWithCallbacks } from '../../types/commons';
 
-import Borders from '../Borders';
 import { Wrapper } from './UpdatePasswordForm.css';
 
+import Borders from '../Borders';
 import ConfirmPasswordUpdate from '../ConfirmPasswordUpdate';
 import PasswordForm from '../PasswordForm';
 import RequestForm from '../RequestForm';
@@ -25,7 +25,10 @@ interface UpdatePasswordPayload extends UpdatePasswordRequestPayload {
 }
 
 interface Props {
-  updatePassword: Function;
+  handleCancel?: () => void;
+  handleConfirm?: () => void;
+  handleSuccess?: () => void;
+  updatePassword: DispatchRequest<UpdatePasswordRequestPayload>;
 }
 
 interface State {
@@ -37,10 +40,16 @@ class UpdatePasswordForm extends React.Component<Props, State> {
     showPasswordForm: true,
   };
 
-  onSubmitSuccess = () =>
-    this.setState({
-      showPasswordForm: false,
-    });
+  onSubmitSuccess = () => {
+    const { handleConfirm } = this.props;
+
+    this.setState(
+      {
+        showPasswordForm: false,
+      },
+      handleConfirm,
+    );
+  };
 
   handleFormSubmit = (payload: UpdatePasswordPayload, meta: MetaWithCallbacks, actions: FormikActions<{}>) => {
     const { updatePassword } = this.props;
@@ -57,30 +66,37 @@ class UpdatePasswordForm extends React.Component<Props, State> {
     updatePassword(payloadCopy, meta);
   };
 
-  renderPasswordFormWindow = () => (
-    <Wrapper>
-      <Borders height="100%" width="100%">
-        <RequestForm
-          initialValues={{
-            confirmPassword: '',
-            newPassword: '',
-            password: '',
-          }}
-          headingText="Update Password"
-          errorMessage={`Sorry, there was an error trying to update your password`}
-          submit={this.handleFormSubmit}
-          onSubmitSuccess={this.onSubmitSuccess}
-          render={PasswordForm}
-          validationSchema={validationSchema}
-        />
-      </Borders>
-    </Wrapper>
-  );
+  renderPasswordFormWindow = () => {
+    const { handleCancel } = this.props;
+
+    const renderPasswordForm = (formikProps: FormikProps<FormikValues>) => <PasswordForm {...formikProps} handleCancel={handleCancel} />;
+
+    return (
+      <Wrapper>
+        <Borders height="100%" width="100%">
+          <RequestForm
+            initialValues={{
+              confirmPassword: '',
+              newPassword: '',
+              password: '',
+            }}
+            headingText="Update Password"
+            errorMessage={`Sorry, there was an error trying to update your password`}
+            submit={this.handleFormSubmit}
+            onSubmitSuccess={this.onSubmitSuccess}
+            render={renderPasswordForm}
+            validationSchema={validationSchema}
+          />
+        </Borders>
+      </Wrapper>
+    );
+  };
 
   render() {
+    const { handleSuccess } = this.props;
     const { showPasswordForm } = this.state;
 
-    return showPasswordForm ? this.renderPasswordFormWindow() : <ConfirmPasswordUpdate />;
+    return showPasswordForm ? this.renderPasswordFormWindow() : <ConfirmPasswordUpdate handleSuccess={handleSuccess} />;
   }
 }
 

@@ -1,3 +1,3 @@
-import Component from './NewUserFormContainer';
+import NewUserFormContainer from './NewUserFormContainer';
 
-export default Component;
+export default NewUserFormContainer;

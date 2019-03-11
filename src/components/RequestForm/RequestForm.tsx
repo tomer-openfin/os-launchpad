@@ -1,10 +1,10 @@
-import { Formik, FormikActions, FormikProps } from 'formik';
+import { Formik, FormikActions, FormikProps, FormikValues } from 'formik';
 import * as React from 'react';
 import { ObjectSchema } from 'yup';
 
 import * as trashIcon from '../../assets/Trash.svg';
 
-import { DispatchRequest, MetaWithCallbacks, PushRoute, ResponseObject, ResponseStatus } from '../../types/commons';
+import { DispatchRequest, MetaWithCallbacks, ResponseObject, ResponseStatus } from '../../types/commons';
 
 import { Color } from '../../styles';
 import { HeadingText } from '../AdminConfirmation/AdminConfirmation.css';
@@ -15,14 +15,15 @@ import SvgIcon from '../SvgIcon/SvgIcon';
 import WindowHeader from '../WindowHeader';
 
 interface Props {
-  errorMessage: string;
-  render?: (props: FormikProps<{}>) => React.ReactNode;
+  className?: string;
   component?: React.ComponentType<FormikProps<{}>>;
+  errorMessage: string;
+  render: (props: FormikProps<FormikValues>) => React.ReactNode;
   handleDeleteIconClick?: () => void;
   headingText: string;
   initialValues: {};
-  onSubmitSuccess: () => ReturnType<PushRoute>;
-  submit: DispatchRequest;
+  onSubmitSuccess?: () => void;
+  submit: DispatchRequest | undefined;
   validationSchema?: ObjectSchema<{}>;
 }
 
@@ -75,7 +76,10 @@ class RequestForm extends React.Component<Props, State> {
 
     const onSuccessCallback = () => {
       this.finishSubmitting(actions);
-      onSubmitSuccess();
+
+      if (onSubmitSuccess) {
+        onSubmitSuccess();
+      }
     };
 
     const onErrorCallback = () => {
@@ -85,7 +89,9 @@ class RequestForm extends React.Component<Props, State> {
 
     const meta: MetaWithCallbacks = { successCb: this.onSuccess(onSuccessCallback), errorCb: this.onError(onErrorCallback) };
 
-    submit(payload, meta, actions);
+    if (submit) {
+      submit(payload, meta, actions);
+    }
   };
 
   resetErrorState = () =>
@@ -115,10 +121,10 @@ class RequestForm extends React.Component<Props, State> {
   };
 
   render() {
-    const { component, handleDeleteIconClick, headingText, initialValues, render, validationSchema } = this.props;
+    const { className, component, handleDeleteIconClick, headingText, initialValues, render, validationSchema } = this.props;
 
     return (
-      <Wrapper>
+      <Wrapper className={className}>
         <WindowHeader backgroundColor={Color.VACUUM}>
           <HeadingText>{headingText}</HeadingText>
 

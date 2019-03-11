@@ -2,8 +2,6 @@ import * as React from 'react';
 
 import { ContentWrapper, Tab, TabsWrapper, Wrapper } from './ImageUpload.css';
 
-import { MetaWithCallbacks } from '../../types/commons';
-import { imageDisplayName, OrgImageKey } from '../../utils/orgImages';
 import Borders from '../Borders';
 import ImageForm from '../ImageForm';
 import WindowHeader from '../WindowHeader';

@@ -47,7 +47,7 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
               className="sc-iSDuPN jEyzUP"
             >
               <label
-                className="sc-ugnQR eouUnJ sc-dxgOiQ nGBmb"
+                className="sc-iybRtq fNsgwM sc-dxgOiQ nGBmb"
               >
                 <div
                   className="sc-kpOJdX gglwGS"
@@ -62,27 +62,27 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                   type="checkbox"
                 />
                 <div
-                  className="sc-dxZgTM hAkGsu"
+                  className="sc-cEvuZC XnAIt"
                 >
                   <div
                     checked={false}
-                    className="sc-eTpRJs hnaaLL"
+                    className="sc-fHxwqH hVkpgX"
                   />
                   <div
-                    className="sc-eIHaNI eUkExf"
+                    className="sc-iQtOjA kkliOI"
                   >
                     App URL
                   </div>
                 </div>
                 <div
-                  className="sc-dxZgTM hAkGsu"
+                  className="sc-cEvuZC XnAIt"
                 >
                   <div
                     checked={true}
-                    className="sc-eTpRJs gdPGDl"
+                    className="sc-fHxwqH cndiV"
                   />
                   <div
-                    className="sc-eIHaNI eUkExf"
+                    className="sc-iQtOjA kkliOI"
                   >
                     Manifest
                   </div>
@@ -136,7 +136,7 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                   App Shortcut
                 </div>
                 <div
-                  className="sc-gpHHfC eqeTaz"
+                  className="sc-ePZHVD dkmxFV"
                 >
                   <div
                     className="sc-gipzik jmhvsi"
@@ -148,10 +148,10 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                     />
                   </div>
                   <div
-                    className="sc-gVyKpa vpVip"
+                    className="sc-likbZx isGPDE"
                   >
                     <div
-                      className="sc-eXNvrr djDpCS"
+                      className="sc-eKZiaR SZken"
                     >
                       64x64
                     </div>
@@ -198,16 +198,14 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
             >
               Save
             </button>
-            <a
-              backgroundColor="#848484"
-              className="sc-chPdSV hEgkTj"
-              href="/admin/apps"
+            <button
+              className="sc-kAzzGY jjQyJb"
               onClick={[Function]}
               type="button"
               width={128}
             >
               Cancel
-            </a>
+            </button>
           </div>
         </div>
       </form>
@@ -852,7 +850,37 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      pushRoute
+                      appId
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        "
+                        <span
+                          style={
+                            Object {
+                              "color": "#22a",
+                              "wordBreak": "break-word",
+                            }
+                          }
+                        >
+                          2
+                        </span>
+                        "
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      handleCancel
                     </span>
                     <span>
                       =
@@ -867,7 +895,65 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                             }
                           }
                         >
-                          pushRoute
+                          handleCancel
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      handleDelete
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          handleDelete
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      handleSuccess
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          handleSuccess
                         </span>
                         }
                       </span>

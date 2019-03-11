@@ -170,16 +170,14 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
             >
               Save
             </button>
-            <a
-              backgroundColor="#848484"
-              className="sc-chPdSV hEgkTj"
-              href="/admin/users"
+            <button
+              className="sc-kAzzGY jjQyJb"
               onClick={[Function]}
               type="button"
               width={128}
             >
               Cancel
-            </a>
+            </button>
           </div>
         </div>
       </form>
@@ -358,7 +356,10 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
                 </span>
                 <span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -384,7 +385,68 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
                     </span>
                   </span>
                   <span>
-                     
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      handleCancel
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          handleCancel
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
+                    <span
+                      style={Object {}}
+                    >
+                      handleSuccess
+                    </span>
+                    <span>
+                      =
+                      <span
+                        style={Object {}}
+                      >
+                        {
+                        <span
+                          style={
+                            Object {
+                              "color": "#170",
+                            }
+                          }
+                        >
+                          handleSuccess
+                        </span>
+                        }
+                      </span>
+                    </span>
+                  </span>
+                  <span>
+                    <span>
+                      <br />
+                        
+                    </span>
                     <span
                       style={Object {}}
                     >
@@ -408,33 +470,7 @@ exports[`Storyshots Admin Components/NewUserForm default 1`] = `
                         }
                       </span>
                     </span>
-                  </span>
-                  <span>
-                     
-                    <span
-                      style={Object {}}
-                    >
-                      pushRoute
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          noop
-                        </span>
-                        }
-                      </span>
-                    </span>
-                     
+                    <br />
                   </span>
                 </span>
                 <span
