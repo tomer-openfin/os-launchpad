@@ -11,7 +11,7 @@ exports[`Storyshots Admin Components/ConfirmUserDelete default 1`] = `
     }
   >
     <div
-      className="sc-exAgwC iKIfIE"
+      className="sc-cQFLBn kSxooq"
     >
       <div
         className="sc-cSHVUG ksrKew"
@@ -19,26 +19,26 @@ exports[`Storyshots Admin Components/ConfirmUserDelete default 1`] = `
         width="100%"
       >
         <div
-          className="sc-gqPbQI jADaOf"
+          className="sc-hORach dAbNoU"
         >
           <div
-            className="sc-hORach PhuPi"
+            className="sc-bMVAic gmXzKT"
           >
             Delete User
           </div>
         </div>
         <div
-          className="sc-bAeIUo hmpSUP"
+          className="sc-iujRgT bRYfux"
         >
           <div
-            className="sc-iujRgT jrXRlW"
+            className="sc-GMQeP RhNhU"
           >
             Are you sure you want to delete the user:
 John Doe?
           </div>
         </div>
         <div
-          className="sc-bMVAic cYUOFK"
+          className="sc-bAeIUo etKsBD"
         >
           <a
             backgroundColor="#848484"
@@ -59,7 +59,7 @@ John Doe?
           </button>
         </div>
         <div
-          className="sc-GMQeP llVYhG"
+          className="sc-exAgwC jilCuM"
         >
           
         </div>

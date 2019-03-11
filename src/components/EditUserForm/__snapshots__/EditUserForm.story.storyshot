@@ -11,7 +11,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
     }
   >
     <div
-      className="sc-kZmsYB kzqRJV"
+      className="sc-RcBXQ hnfRaY"
     >
       <div
         className="sc-cmTdod hSnYdr"
@@ -20,7 +20,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
           className="sc-jwKygS ktOnU"
         >
           <div
-            className="sc-hORach PhuPi"
+            className="sc-bMVAic gmXzKT"
           >
             John Doe
           </div>
@@ -44,7 +44,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
             className="sc-frDJqD cnrcjF"
           >
             <div
-              className="sc-RcBXQ hPIUBq"
+              className="sc-iSDuPN itkTZV"
             >
               <label
                 className="sc-dxgOiQ nGBmb"
@@ -163,7 +163,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
         </div>
       </form>
       <div
-        className="sc-iSDuPN jwRlQu"
+        className="sc-fZwumE kAhFqP"
       >
         <div
           className="sc-jbKcbu fUfPqM"

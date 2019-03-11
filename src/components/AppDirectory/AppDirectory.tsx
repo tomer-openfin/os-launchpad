@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { CTA, Directory, Row, StyledSearchInput, Wrapper } from './AppDirectory.css';
+import { CTA, Directory, Empty, Row, StyledSearchInput, Wrapper } from './AppDirectory.css';
 
 import { App } from '../../types/commons';
 
@@ -72,7 +72,7 @@ class AppDirectory extends React.PureComponent<Props, State> {
     });
   };
 
-  filterAppList = search => this.props.appList.filter(app => app.title && app.title.toLowerCase().indexOf(search.toLowerCase()) !== -1);
+  filterAppList = (search: string) => this.props.appList.filter(app => app.title && app.title.toLowerCase().indexOf(search.toLowerCase()) !== -1);
 
   renderAppCTA(app: App) {
     const { getIsLauncherApp, addToLauncher, removeFromLauncher } = this.props;
@@ -85,6 +85,7 @@ class AppDirectory extends React.PureComponent<Props, State> {
   render() {
     const { search } = this.state;
     const { hideWindow } = this.props;
+    const appList = this.filterAppList(search);
 
     return (
       <Wrapper>
@@ -99,11 +100,15 @@ class AppDirectory extends React.PureComponent<Props, State> {
         </WindowHeader>
 
         <Directory>
-          {this.filterAppList(search).map((app: App) => (
-            <Row key={app.id}>
-              <AppCard app={app} ctas={this.renderAppCTA(app)} />
-            </Row>
-          ))}
+          {appList.length < 1 ? (
+            <Empty>No apps found</Empty>
+          ) : (
+            appList.map((app: App) => (
+              <Row key={app.id}>
+                <AppCard app={app} ctas={this.renderAppCTA(app)} />
+              </Row>
+            ))
+          )}
         </Directory>
       </Wrapper>
     );

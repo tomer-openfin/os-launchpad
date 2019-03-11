@@ -18,31 +18,31 @@ exports[`Storyshots Components/LayoutsUserActions default 1`] = `
       }
     >
       <div
-        className="sc-gPWkxV cohBeu"
+        className="sc-jVODtj dawyjZ"
       >
         <div
-          className="sc-TFwJa iAHKlv sc-ifAKCX jFrnbN"
+          className="sc-bHwgHz fKwExw sc-ifAKCX jFrnbN"
           color="#E7E7E7"
           size={24}
         />
         <form
-          className="sc-fzsDOv bEFiEO"
+          className="sc-gPWkxV gyLIuN"
           onSubmit={[Function]}
         >
           <input
-            className="sc-eMigcr bHMaVq"
+            className="sc-fzsDOv chxWtX"
             onChange={[Function]}
             placeholder="Workspace Name"
             required={true}
             type="text"
           />
           <button
-            className="sc-itybZL fGNNdu"
+            className="sc-eMigcr fjFMTa"
             disabled={true}
             type="submit"
           >
             <div
-              className="sc-fjmCvl lmmLhq sc-ifAKCX iMtAAB"
+              className="sc-TFwJa ckUlmw sc-ifAKCX iMtAAB"
               color="#E7E7E7"
               size={14}
             />

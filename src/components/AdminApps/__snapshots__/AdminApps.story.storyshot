@@ -11,10 +11,10 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
     }
   >
     <div
-      className="sc-jXQZqI cTCajE"
+      className="sc-iGPElx zirWa"
     >
       <div
-        className="sc-iGPElx rYVYJ"
+        className="sc-kasBVs kidPfn"
       >
         <div
           className="sc-fYxtnH siyJx"
@@ -44,13 +44,13 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
         </a>
       </div>
       <div
-        className="sc-jtRlXQ hBwhuZ"
+        className="sc-bGbJRg eENITH"
       >
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -84,15 +84,15 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-hgHYgh kKOecq"
+                className="sc-eInJlc ekTjkd"
               >
                 <a
-                  className="sc-jeCdPy eSaLWQ"
+                  className="sc-jtRlXQ iADQDR"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-hzDEsm BAPoL"
+                  className="sc-jeCdPy blKiNV"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />
@@ -101,10 +101,10 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           </div>
         </div>
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -138,15 +138,15 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-hgHYgh kKOecq"
+                className="sc-eInJlc ekTjkd"
               >
                 <a
-                  className="sc-jeCdPy eSaLWQ"
+                  className="sc-jtRlXQ iADQDR"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-hzDEsm BAPoL"
+                  className="sc-jeCdPy blKiNV"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />
@@ -155,10 +155,10 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           </div>
         </div>
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -192,15 +192,15 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-hgHYgh kKOecq"
+                className="sc-eInJlc ekTjkd"
               >
                 <a
-                  className="sc-jeCdPy eSaLWQ"
+                  className="sc-jtRlXQ iADQDR"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-hzDEsm BAPoL"
+                  className="sc-jeCdPy blKiNV"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />
@@ -209,10 +209,10 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           </div>
         </div>
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -246,15 +246,15 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-hgHYgh kKOecq"
+                className="sc-eInJlc ekTjkd"
               >
                 <a
-                  className="sc-jeCdPy eSaLWQ"
+                  className="sc-jtRlXQ iADQDR"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-hzDEsm BAPoL"
+                  className="sc-jeCdPy blKiNV"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />
@@ -263,10 +263,10 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           </div>
         </div>
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -300,15 +300,15 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-hgHYgh kKOecq"
+                className="sc-eInJlc ekTjkd"
               >
                 <a
-                  className="sc-jeCdPy eSaLWQ"
+                  className="sc-jtRlXQ iADQDR"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-hzDEsm BAPoL"
+                  className="sc-jeCdPy blKiNV"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />
@@ -317,10 +317,10 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           </div>
         </div>
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -355,15 +355,15 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-hgHYgh kKOecq"
+                className="sc-eInJlc ekTjkd"
               >
                 <a
-                  className="sc-jeCdPy eSaLWQ"
+                  className="sc-jtRlXQ iADQDR"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-hzDEsm BAPoL"
+                  className="sc-jeCdPy blKiNV"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />
@@ -372,10 +372,10 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           </div>
         </div>
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -409,15 +409,15 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-hgHYgh kKOecq"
+                className="sc-eInJlc ekTjkd"
               >
                 <a
-                  className="sc-jeCdPy eSaLWQ"
+                  className="sc-jtRlXQ iADQDR"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-hzDEsm BAPoL"
+                  className="sc-jeCdPy blKiNV"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />
@@ -426,10 +426,10 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           </div>
         </div>
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -463,15 +463,15 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-hgHYgh kKOecq"
+                className="sc-eInJlc ekTjkd"
               >
                 <a
-                  className="sc-jeCdPy eSaLWQ"
+                  className="sc-jtRlXQ iADQDR"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-hzDEsm BAPoL"
+                  className="sc-jeCdPy blKiNV"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />
@@ -480,10 +480,10 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           </div>
         </div>
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -517,15 +517,15 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-hgHYgh kKOecq"
+                className="sc-eInJlc ekTjkd"
               >
                 <a
-                  className="sc-jeCdPy eSaLWQ"
+                  className="sc-jtRlXQ iADQDR"
                   href="/admin/apps/edit"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-hzDEsm BAPoL"
+                  className="sc-jeCdPy blKiNV"
                   href="/admin/apps/delete"
                   onClick={[Function]}
                 />

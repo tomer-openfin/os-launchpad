@@ -11,7 +11,7 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
     }
   >
     <div
-      className="sc-exAgwC iKIfIE"
+      className="sc-cQFLBn kSxooq"
     >
       <div
         className="sc-cSHVUG ksrKew"
@@ -19,25 +19,25 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
         width="100%"
       >
         <div
-          className="sc-gqPbQI jADaOf"
+          className="sc-hORach dAbNoU"
         >
           <div
-            className="sc-hORach PhuPi"
+            className="sc-bMVAic gmXzKT"
           >
             Confirm?
           </div>
         </div>
         <div
-          className="sc-bAeIUo hmpSUP"
+          className="sc-iujRgT bRYfux"
         >
           <div
-            className="sc-iujRgT jrXRlW"
+            className="sc-GMQeP RhNhU"
           >
             Are you sure you would like to confirm?
           </div>
         </div>
         <div
-          className="sc-bMVAic cYUOFK"
+          className="sc-bAeIUo etKsBD"
         >
           <a
             backgroundColor="#848484"
@@ -58,7 +58,7 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
           </button>
         </div>
         <div
-          className="sc-GMQeP llVYhG"
+          className="sc-exAgwC jilCuM"
         >
           
         </div>
@@ -535,7 +535,7 @@ exports[`Storyshots Admin Components/AdminConfirmation view 1`] = `
     }
   >
     <div
-      className="sc-exAgwC iKIfIE"
+      className="sc-cQFLBn kSxooq"
     >
       <div
         className="sc-cSHVUG ksrKew"
@@ -543,25 +543,25 @@ exports[`Storyshots Admin Components/AdminConfirmation view 1`] = `
         width="100%"
       >
         <div
-          className="sc-gqPbQI jADaOf"
+          className="sc-hORach dAbNoU"
         >
           <div
-            className="sc-hORach PhuPi"
+            className="sc-bMVAic gmXzKT"
           >
             Confirm?
           </div>
         </div>
         <div
-          className="sc-bAeIUo hmpSUP"
+          className="sc-iujRgT bRYfux"
         >
           <div
-            className="sc-iujRgT jrXRlW"
+            className="sc-GMQeP RhNhU"
           >
             Are you sure you would like to confirm?
           </div>
         </div>
         <div
-          className="sc-bMVAic cYUOFK"
+          className="sc-bAeIUo etKsBD"
         >
           <a
             backgroundColor="#848484"
@@ -582,7 +582,7 @@ exports[`Storyshots Admin Components/AdminConfirmation view 1`] = `
           </button>
         </div>
         <div
-          className="sc-GMQeP llVYhG"
+          className="sc-exAgwC jilCuM"
         >
           
         </div>

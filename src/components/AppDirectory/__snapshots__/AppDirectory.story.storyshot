@@ -20,7 +20,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
           className="sc-jwKygS ktOnU"
         >
           <div
-            className="sc-hZSUBg jugVGr sc-fYxtnH siyJx"
+            className="sc-cMhqgX dBCLJJ sc-fYxtnH siyJx"
             width={291}
           >
             <div
@@ -50,13 +50,13 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
         </div>
       </div>
       <div
-        className="sc-bsbRJL jEYoiz"
+        className="sc-bsbRJL dwKLhR"
       >
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -90,7 +90,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-cMhqgX gnVwWA"
+                className="sc-iuJeZd Elkwg"
                 onClick={[Function]}
               >
                 +
@@ -99,10 +99,10 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
           </div>
         </div>
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -136,7 +136,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-cMhqgX gnVwWA"
+                className="sc-iuJeZd Elkwg"
                 onClick={[Function]}
               >
                 +
@@ -145,10 +145,10 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
           </div>
         </div>
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -182,7 +182,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-cMhqgX gnVwWA"
+                className="sc-iuJeZd Elkwg"
                 onClick={[Function]}
               >
                 +
@@ -191,10 +191,10 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
           </div>
         </div>
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -228,7 +228,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-cMhqgX gnVwWA"
+                className="sc-iuJeZd Elkwg"
                 onClick={[Function]}
               >
                 +
@@ -237,10 +237,10 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
           </div>
         </div>
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -274,7 +274,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-cMhqgX gnVwWA"
+                className="sc-iuJeZd Elkwg"
                 onClick={[Function]}
               >
                 +
@@ -283,10 +283,10 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
           </div>
         </div>
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -321,7 +321,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-cMhqgX gnVwWA"
+                className="sc-iuJeZd Elkwg"
                 onClick={[Function]}
               >
                 +
@@ -330,10 +330,10 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           </div>
         </div>
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -367,7 +367,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-cMhqgX gnVwWA"
+                className="sc-iuJeZd Elkwg"
                 onClick={[Function]}
               >
                 +
@@ -376,10 +376,10 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           </div>
         </div>
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -413,7 +413,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-cMhqgX gnVwWA"
+                className="sc-iuJeZd Elkwg"
                 onClick={[Function]}
               >
                 +
@@ -422,10 +422,10 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           </div>
         </div>
         <div
-          className="sc-iuJeZd cWoYqR"
+          className="sc-esOvli kMzELW"
         >
           <div
-            className="sc-bwCtUz jPLhby"
+            className="sc-bwCtUz goDjMa"
           >
             <div
               className="sc-epnACN guwPGO"
@@ -459,7 +459,7 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               className="sc-hXRMBi jQWFky"
             >
               <div
-                className="sc-cMhqgX gnVwWA"
+                className="sc-iuJeZd Elkwg"
                 onClick={[Function]}
               >
                 +

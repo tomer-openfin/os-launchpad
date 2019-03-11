@@ -13,7 +13,7 @@ export const Wrapper = styled.div<Props>`
   justify-content: space-between;
   align-items: center;
   color: ${Color.SUN};
-  height: 132px;
+  min-height: 140px;
   width: 100%;
 
   &:hover {
