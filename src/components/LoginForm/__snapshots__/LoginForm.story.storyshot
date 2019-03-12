@@ -60,7 +60,7 @@ exports[`Storyshots Components/LoginForm default 1`] = `
           className="sc-cqCuEk fYyHam"
         >
           <button
-            className="sc-kAzzGY ecXCJ"
+            className="sc-kAzzGY dfdGfZ"
           >
             Log In
           </button>
@@ -797,7 +797,7 @@ exports[`Storyshots Components/LoginForm withFormik 1`] = `
           className="sc-cqCuEk fYyHam"
         >
           <button
-            className="sc-kAzzGY ecXCJ"
+            className="sc-kAzzGY dfdGfZ"
           >
             Log In
           </button>

@@ -11,7 +11,7 @@ exports[`Storyshots UI Components/CloseButton default 1`] = `
     }
   >
     <div
-      className="sc-ifAKCX cWlwzh"
+      className="sc-ifAKCX dMoJHJ"
       color="#E7E7E7"
       disabled={false}
       onClick={[Function]}

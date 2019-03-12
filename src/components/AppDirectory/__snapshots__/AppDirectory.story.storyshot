@@ -24,7 +24,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
             width={291}
           >
             <div
-              className="sc-gGBfsJ dMPHqo sc-ifAKCX cycuRH"
+              className="sc-gGBfsJ dMPHqo sc-ifAKCX eakbtZ"
               color="#E7E7E7"
               size={35}
             />
@@ -42,7 +42,7 @@ exports[`Storyshots Components/AppDirectory default 1`] = `
           className="sc-iELTvK jRkgAq"
         >
           <div
-            className="sc-ifAKCX cWlwzh"
+            className="sc-ifAKCX dMoJHJ"
             color="#E7E7E7"
             onClick={[Function]}
             size={25}

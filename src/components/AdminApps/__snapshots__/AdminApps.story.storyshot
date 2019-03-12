@@ -21,7 +21,7 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           width={291}
         >
           <div
-            className="sc-gGBfsJ dMPHqo sc-ifAKCX cycuRH"
+            className="sc-gGBfsJ dMPHqo sc-ifAKCX eakbtZ"
             color="#E7E7E7"
             size={35}
           />
@@ -36,7 +36,7 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           
         </div>
         <a
-          className="sc-chPdSV jKYrTm"
+          className="sc-chPdSV gddFBp"
           href="/admin/apps/new/"
           onClick={[Function]}
         >
@@ -2262,7 +2262,7 @@ exports[`Storyshots Admin Components/AdminApps withStages 1`] = `
           width={291}
         >
           <div
-            className="sc-gGBfsJ dMPHqo sc-ifAKCX cycuRH"
+            className="sc-gGBfsJ dMPHqo sc-ifAKCX eakbtZ"
             color="#E7E7E7"
             size={35}
           />
@@ -2277,7 +2277,7 @@ exports[`Storyshots Admin Components/AdminApps withStages 1`] = `
           
         </div>
         <a
-          className="sc-chPdSV jKYrTm"
+          className="sc-chPdSV gddFBp"
           href="/admin/apps/new/"
           onClick={[Function]}
         >

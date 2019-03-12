@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
+import Color from '../../styles/color';
 import { Orientation } from '../../types/commons';
 import { LauncherSizeConfig } from '../../utils/launcherSizeConfigs';
+
 import SvgIcon from '../SvgIcon';
 
 interface SvgIconWrapper {
@@ -24,7 +26,6 @@ interface ToggleIconWrapperProps {
 
 interface WrapperProps {
   sizingConfig: LauncherSizeConfig;
-  isExpanded: boolean;
   orientation: Orientation;
   size: number;
   stopTransition: boolean;
@@ -84,13 +85,13 @@ export const Wrapper = styled.div<WrapperProps>`
   transition-duration: 250ms;
   transition-timing-function: ease-in-out;
 
-  ${({ sizingConfig, isExpanded, orientation, size, stopTransition }) => {
+  ${({ sizingConfig, orientation, size, stopTransition }) => {
     const isHorizontal = getIsHorizontal(orientation);
     const startPadding = `${sizingConfig.systemDrawerPaddingStart}px`;
     const endPadding = `${sizingConfig.systemDrawerPaddingEnd}px`;
 
     return `
-      background-color: ${isExpanded ? 'rgba(14,13,21,0.96)' : 'rgba(0, 0, 0, 0.33)'};
+      background-color: ${Color.KUIPER_BELT};
       flex-direction: ${isHorizontal ? 'row' : 'column'};
       height: ${isHorizontal ? '100%' : `${size}px`};
       padding-bottom: ${isHorizontal ? 'initial' : endPadding};

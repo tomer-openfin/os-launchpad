@@ -11,7 +11,7 @@ interface ButtonProps {
 }
 
 export const defaultProps = {
-  backgroundColor: Color.VENUS,
+  backgroundColor: Color.EARTH,
   height: 36,
   width: 110,
 };

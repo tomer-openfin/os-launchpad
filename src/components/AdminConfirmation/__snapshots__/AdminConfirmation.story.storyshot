@@ -40,13 +40,13 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
           className="sc-bAeIUo etKsBD"
         >
           <button
-            className="sc-kAzzGY gTiRcw"
+            className="sc-kAzzGY dhNKxb"
             width={153}
           >
             Cancel
           </button>
           <button
-            className="sc-kAzzGY gTiRcw"
+            className="sc-kAzzGY dhNKxb"
             disabled={false}
             onClick={[Function]}
             width={153}
@@ -531,13 +531,13 @@ exports[`Storyshots Admin Components/AdminConfirmation view 1`] = `
           className="sc-bAeIUo etKsBD"
         >
           <button
-            className="sc-kAzzGY gTiRcw"
+            className="sc-kAzzGY dhNKxb"
             width={153}
           >
             Cancel
           </button>
           <button
-            className="sc-kAzzGY gTiRcw"
+            className="sc-kAzzGY dhNKxb"
             disabled={false}
             onClick={[Function]}
             width={153}

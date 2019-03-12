@@ -42,7 +42,7 @@ exports[`Storyshots Admin Components/ThemesForm default 1`] = `
         className="sc-gVLVqr hIcaM"
       >
         <button
-          className="sc-kAzzGY ecXCJ"
+          className="sc-kAzzGY dfdGfZ"
           disabled={true}
           type="submit"
           width={110}

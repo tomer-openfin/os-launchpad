@@ -32,7 +32,7 @@ exports[`Storyshots Components/Login default 1`] = `
             className="sc-iELTvK jRkgAq"
           >
             <div
-              className="sc-ifAKCX cWlwzh"
+              className="sc-ifAKCX dMoJHJ"
               color="#E7E7E7"
               onClick={[Function]}
               size={25}
@@ -96,7 +96,7 @@ exports[`Storyshots Components/Login default 1`] = `
                 className="sc-cqCuEk fYyHam"
               >
                 <button
-                  className="sc-kAzzGY ecXCJ"
+                  className="sc-kAzzGY dfdGfZ"
                 >
                   Log In
                 </button>
@@ -575,7 +575,7 @@ exports[`Storyshots Components/Login withStages 1`] = `
             className="sc-iELTvK jRkgAq"
           >
             <div
-              className="sc-ifAKCX cWlwzh"
+              className="sc-ifAKCX dMoJHJ"
               color="#E7E7E7"
               onClick={[Function]}
               size={25}
@@ -639,7 +639,7 @@ exports[`Storyshots Components/Login withStages 1`] = `
                 className="sc-cqCuEk fYyHam"
               >
                 <button
-                  className="sc-kAzzGY ecXCJ"
+                  className="sc-kAzzGY dfdGfZ"
                 >
                   Log In
                 </button>

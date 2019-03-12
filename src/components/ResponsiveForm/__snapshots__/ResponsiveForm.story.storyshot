@@ -29,7 +29,7 @@ exports[`Storyshots UI Components/ResponsiveForm default 1`] = `
           className="sc-kvZOFW jextin"
         >
           <button
-            className="sc-kAzzGY jjQyJb"
+            className="sc-kAzzGY gKySrU"
             disabled={false}
             type="submit"
             width={128}
@@ -37,7 +37,7 @@ exports[`Storyshots UI Components/ResponsiveForm default 1`] = `
             Save
           </button>
           <button
-            className="sc-kAzzGY jjQyJb"
+            className="sc-kAzzGY gKySrU"
             onClick={[Function]}
             type="button"
             width={128}

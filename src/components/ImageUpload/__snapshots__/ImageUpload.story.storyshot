@@ -35,7 +35,7 @@ exports[`Storyshots Admin Components/ImageUpload default 1`] = `
           className="sc-eXNvrr kGmMFO"
         >
           <div
-            className="sc-kQsIoO PXVnQ"
+            className="sc-kQsIoO flqjAx"
             onClick={[Function]}
           >
             File Upload
@@ -114,7 +114,7 @@ exports[`Storyshots Admin Components/ImageUpload default 1`] = `
                 className="sc-kvZOFW jextin"
               >
                 <button
-                  className="sc-kAzzGY jjQyJb"
+                  className="sc-kAzzGY gKySrU"
                   disabled={true}
                   type="submit"
                   width={128}
@@ -122,7 +122,7 @@ exports[`Storyshots Admin Components/ImageUpload default 1`] = `
                   Save
                 </button>
                 <button
-                  className="sc-kAzzGY jjQyJb"
+                  className="sc-kAzzGY gKySrU"
                   onClick={[Function]}
                   type="button"
                   width={128}

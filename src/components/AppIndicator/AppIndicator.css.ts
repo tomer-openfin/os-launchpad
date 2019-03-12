@@ -9,7 +9,7 @@ const StatusColors = {
   [AppStatusStates.Closed]: Color.VOID,
   [AppStatusStates.Error]: Color.MARS,
   [AppStatusStates.Loading]: Color.COMET,
-  [AppStatusStates.Running]: Color.NEBULA,
+  [AppStatusStates.Running]: Color.EARTH,
   [AppStatusStates.Warning]: Color.JUPITER,
 };
 

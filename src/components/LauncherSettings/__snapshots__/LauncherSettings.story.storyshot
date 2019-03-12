@@ -33,7 +33,7 @@ exports[`Storyshots Components/LauncherSettings default 1`] = `
           >
             <label
               checked={true}
-              className="sc-fhYwyz kfYTwQ sc-kkGfuU ktBgro"
+              className="sc-fhYwyz kfYTwQ sc-kkGfuU gZRLsT"
             >
               <input
                 checked={true}
@@ -88,7 +88,7 @@ exports[`Storyshots Components/LauncherSettings default 1`] = `
             </label>
             <label
               checked={true}
-              className="sc-fhYwyz kfYTwQ sc-kkGfuU ktBgro"
+              className="sc-fhYwyz kfYTwQ sc-kkGfuU gZRLsT"
             >
               <input
                 checked={true}

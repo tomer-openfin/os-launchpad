@@ -18,7 +18,7 @@ exports[`Storyshots Components/Logout default 1`] = `
         onClick={[Function]}
       >
         <div
-          className="sc-ifAKCX eswBgV"
+          className="sc-ifAKCX idnthD"
           color="#FFFFFF"
           size={42}
         />
@@ -33,7 +33,7 @@ exports[`Storyshots Components/Logout default 1`] = `
         onClick={[Function]}
       >
         <div
-          className="sc-ifAKCX eswBgV"
+          className="sc-ifAKCX idnthD"
           color="#FFFFFF"
           size={42}
         />

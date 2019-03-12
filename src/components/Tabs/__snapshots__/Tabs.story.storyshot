@@ -21,7 +21,7 @@ exports[`Storyshots UI Components/Tabs default 1`] = `
         className="sc-feJyhm hWoeIX"
       >
         <div
-          className="sc-kafWEX eSoAZS"
+          className="sc-kafWEX hcrkLB"
           height={50}
         >
           <button
@@ -891,7 +891,7 @@ exports[`Storyshots UI Components/Tabs withControlledState 1`] = `
         className="sc-feJyhm hWoeIX"
       >
         <div
-          className="sc-kafWEX eSoAZS"
+          className="sc-kafWEX hcrkLB"
           height={50}
         >
           <button

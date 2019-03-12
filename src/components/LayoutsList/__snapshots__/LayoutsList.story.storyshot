@@ -38,7 +38,7 @@ exports[`Storyshots Components/LayoutsList default 1`] = `
               layout
             </li>
             <div
-              className="sc-ifAKCX bwWvNt"
+              className="sc-ifAKCX iEwFmE"
               color="#E7E7E7"
               onClick={[Function]}
               size={14}
@@ -843,7 +843,7 @@ exports[`Storyshots Components/LayoutsList with Wrapper 1`] = `
                 layout
               </li>
               <div
-                className="sc-ifAKCX bwWvNt"
+                className="sc-ifAKCX iEwFmE"
                 color="#E7E7E7"
                 onClick={[Function]}
                 size={14}

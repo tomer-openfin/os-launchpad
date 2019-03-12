@@ -148,7 +148,7 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
                       64x64
                     </div>
                     <div
-                      className="sc-ifAKCX hwskBS"
+                      className="sc-ifAKCX fshHDp"
                       color="#E7E7E7"
                       onClick={[Function]}
                       size={20}
@@ -182,7 +182,7 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
             className="sc-kvZOFW jextin"
           >
             <button
-              className="sc-kAzzGY jjQyJb"
+              className="sc-kAzzGY gKySrU"
               disabled={true}
               type="submit"
               width={128}
@@ -190,7 +190,7 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
               Save
             </button>
             <button
-              className="sc-kAzzGY jjQyJb"
+              className="sc-kAzzGY gKySrU"
               onClick={[Function]}
               type="button"
               width={128}
@@ -215,7 +215,7 @@ exports[`Storyshots Admin Components/RequestForm default 1`] = `
               Failed to create:  Please try again.
             </div>
             <div
-              className="sc-uJMKN grZbwL sc-ifAKCX xmkOg"
+              className="sc-uJMKN grZbwL sc-ifAKCX kCLMLC"
               color="#E7E7E7"
               onClick={[Function]}
               size={25}

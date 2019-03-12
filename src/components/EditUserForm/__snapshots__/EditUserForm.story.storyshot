@@ -25,7 +25,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
             John Doe
           </div>
           <div
-            className="sc-ifAKCX kbLJAY"
+            className="sc-ifAKCX dUIYkd"
             color="#848484"
             onClick={[Function]}
             size={30}
@@ -142,7 +142,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
             className="sc-kvZOFW jextin"
           >
             <button
-              className="sc-kAzzGY jjQyJb"
+              className="sc-kAzzGY gKySrU"
               disabled={true}
               type="submit"
               width={128}
@@ -150,7 +150,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
               Save
             </button>
             <button
-              className="sc-kAzzGY jjQyJb"
+              className="sc-kAzzGY gKySrU"
               onClick={[Function]}
               type="button"
               width={128}
@@ -175,7 +175,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
               There was an error trying to update John Doe:  Please try again.
             </div>
             <div
-              className="sc-uJMKN grZbwL sc-ifAKCX xmkOg"
+              className="sc-uJMKN grZbwL sc-ifAKCX kCLMLC"
               color="#E7E7E7"
               onClick={[Function]}
               size={25}

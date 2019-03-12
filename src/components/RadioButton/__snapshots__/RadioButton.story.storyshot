@@ -13,7 +13,7 @@ exports[`Storyshots UI Components/RadioButton as group 1`] = `
     <div>
       <label
         checked={true}
-        className="sc-kkGfuU ktBgro"
+        className="sc-kkGfuU gZRLsT"
       >
         <input
           checked={true}

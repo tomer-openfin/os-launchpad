@@ -51,6 +51,6 @@ export const Tab = styled.div<{ active: boolean }>`
 
   ${({ active }) =>
     active &&
-    `border-bottom: 2px solid ${Color.NEBULA};
+    `border-bottom: 2px solid ${Color.EARTH};
     color: ${Color.SUN};`}
 `;

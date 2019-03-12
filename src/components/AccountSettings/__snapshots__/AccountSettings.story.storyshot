@@ -57,7 +57,7 @@ exports[`Storyshots Components/AccountSettings default 1`] = `
           className="sc-bYSBpT cQqijT"
         >
           <a
-            className="sc-chPdSV bodfgA"
+            className="sc-chPdSV kfjwBr"
             href="/settings/update-password"
             onClick={[Function]}
             width={147}

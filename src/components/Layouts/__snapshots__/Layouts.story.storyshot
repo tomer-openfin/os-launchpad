@@ -29,7 +29,7 @@ exports[`Storyshots Components/Layouts default 1`] = `
           className="sc-jVODtj dawyjZ"
         >
           <div
-            className="sc-bHwgHz fKwExw sc-ifAKCX jFrnbN"
+            className="sc-bHwgHz fKwExw sc-ifAKCX ccboJf"
             color="#E7E7E7"
             size={24}
           />
@@ -50,7 +50,7 @@ exports[`Storyshots Components/Layouts default 1`] = `
               type="submit"
             >
               <div
-                className="sc-TFwJa ckUlmw sc-ifAKCX iMtAAB"
+                className="sc-TFwJa ckUlmw sc-ifAKCX jytaNb"
                 color="#E7E7E7"
                 size={14}
               />
@@ -79,7 +79,7 @@ exports[`Storyshots Components/Layouts default 1`] = `
               layout
             </li>
             <div
-              className="sc-ifAKCX bwWvNt"
+              className="sc-ifAKCX iEwFmE"
               color="#E7E7E7"
               onClick={[Function]}
               size={14}

@@ -29,9 +29,12 @@ const calcSystemDrawerSize = (systemIcons: IsShownByDefault[], isExpanded: boole
 
 const getStoryIcons = (isAdmin: boolean) =>
   getSystemIcons(isAdmin).map(icon => ({
+    color: icon.color,
     cta: action('Action to be dispatched:', icon.action),
     hasExtendedWindow: icon.hasExtendedWindow,
+    hoverColor: icon.hoverColor,
     icon: icon.icon,
+    isBackground: icon.isBackground,
     isShownByDefault: icon.isShownByDefault,
     title: icon.title,
   }));

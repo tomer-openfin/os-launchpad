@@ -31,13 +31,13 @@ exports[`Storyshots Admin Components/UserCard default 1`] = `
               Doe
             </div>
             <div
-              className="sc-eTpRJs cWZEkD sc-ifAKCX kwRAyW"
+              className="sc-eTpRJs cWZEkD sc-ifAKCX irYJYn"
               color="#FBC23C"
               size={16}
               title="Admin"
             />
             <div
-              className="sc-eTpRJs cWZEkD sc-ifAKCX kJHXRv"
+              className="sc-eTpRJs cWZEkD sc-ifAKCX lemUuN"
               color="#DF5353"
               size={16}
               title="User has not logged in yet"

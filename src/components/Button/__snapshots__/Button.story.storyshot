@@ -18,7 +18,7 @@ exports[`Storyshots UI Components/Button default 1`] = `
       }
     >
       <button
-        className="sc-kAzzGY ecXCJ"
+        className="sc-kAzzGY dfdGfZ"
         onClick={[Function]}
       >
         Button Text
@@ -432,7 +432,7 @@ exports[`Storyshots UI Components/Button with knobs 1`] = `
       }
     >
       <button
-        className="sc-kAzzGY ecXCJ"
+        className="sc-kAzzGY dfdGfZ"
         height={36}
         onClick={[Function]}
         width={110}
@@ -696,7 +696,7 @@ exports[`Storyshots UI Components/Button with knobs 1`] = `
                                 }
                               }
                             >
-                              #6461FF
+                              #504CFF
                             </span>
                             "
                           </span>

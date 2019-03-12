@@ -41,7 +41,7 @@ exports[`Storyshots Components/LauncherAppIcon default 1`] = `
         size={12}
       >
         <div
-          className="sc-iwsKbI kSJIGu sc-ifAKCX fWRpHP"
+          className="sc-iwsKbI kSJIGu sc-ifAKCX clZILq"
           color="rgba(0,0,0,0)"
           size="53%"
         />

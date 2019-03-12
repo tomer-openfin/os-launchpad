@@ -12,7 +12,7 @@ interface Props extends SvgIconProps {
   extensionPosition: DirectionalPosition;
 }
 
-const { color: defaultColor, hoverColor: defaultHoverColor, size: defaultSize } = defaultProps;
+const { color: defaultColor, hoverColor: defaultHoverColor, isBackground: defaultIsBackground, size: defaultSize } = defaultProps;
 
 const SvgIconWithExtension = ({
   caretSize,
@@ -22,18 +22,27 @@ const SvgIconWithExtension = ({
   hoverColor = defaultHoverColor,
   imgSrc,
   isActive,
+  isBackground = defaultIsBackground,
   onClick,
   extensionPosition,
   size = defaultSize,
   title,
 }: Props) => (
-  <Wrapper className={className} clickable={!disabled && !!onClick} color={color} hoverColor={hoverColor} extensionPosition={extensionPosition}>
+  <Wrapper
+    className={className}
+    clickable={!disabled && !!onClick}
+    color={color}
+    extensionPosition={extensionPosition}
+    hoverColor={hoverColor}
+    isBackground={isBackground}
+  >
     <SvgIcon
       color={color}
       disabled={disabled}
       hoverColor={hoverColor}
       imgSrc={imgSrc}
       isActive={isActive}
+      isBackground={isBackground}
       onClick={disabled ? undefined : onClick}
       size={size}
       title={title}
@@ -42,7 +51,7 @@ const SvgIconWithExtension = ({
     <CaretSvgIcon
       color={color}
       disabled={disabled}
-      hoverColor={hoverColor}
+      hoverColor={isBackground ? color : hoverColor}
       imgSrc={arrowDownIcon}
       isActive={isActive}
       onClick={disabled ? undefined : onClick}

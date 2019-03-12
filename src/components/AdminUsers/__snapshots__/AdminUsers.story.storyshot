@@ -21,7 +21,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
           width={291}
         >
           <div
-            className="sc-gGBfsJ dMPHqo sc-ifAKCX cycuRH"
+            className="sc-gGBfsJ dMPHqo sc-ifAKCX eakbtZ"
             color="#E7E7E7"
             size={35}
           />
@@ -36,7 +36,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
           
         </div>
         <a
-          className="sc-chPdSV jKYrTm"
+          className="sc-chPdSV gddFBp"
           href="/admin/users/new/"
           onClick={[Function]}
         >
@@ -163,7 +163,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
                   Doe
                 </div>
                 <div
-                  className="sc-eTpRJs cWZEkD sc-ifAKCX kwRAyW"
+                  className="sc-eTpRJs cWZEkD sc-ifAKCX irYJYn"
                   color="#FBC23C"
                   size={16}
                   title="Admin"
@@ -217,7 +217,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
                   Fire
                 </div>
                 <div
-                  className="sc-eTpRJs cWZEkD sc-ifAKCX kwRAyW"
+                  className="sc-eTpRJs cWZEkD sc-ifAKCX irYJYn"
                   color="#FBC23C"
                   size={16}
                   title="Admin"
@@ -271,7 +271,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
                   Johnson
                 </div>
                 <div
-                  className="sc-eTpRJs cWZEkD sc-ifAKCX kwRAyW"
+                  className="sc-eTpRJs cWZEkD sc-ifAKCX irYJYn"
                   color="#FBC23C"
                   size={16}
                   title="Admin"
@@ -325,7 +325,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
                   Knot
                 </div>
                 <div
-                  className="sc-eTpRJs cWZEkD sc-ifAKCX kwRAyW"
+                  className="sc-eTpRJs cWZEkD sc-ifAKCX irYJYn"
                   color="#FBC23C"
                   size={16}
                   title="Admin"
@@ -427,7 +427,7 @@ exports[`Storyshots Admin Components/AdminUsers default 1`] = `
                   Moore
                 </div>
                 <div
-                  className="sc-eTpRJs cWZEkD sc-ifAKCX kwRAyW"
+                  className="sc-eTpRJs cWZEkD sc-ifAKCX irYJYn"
                   color="#FBC23C"
                   size={16}
                   title="Admin"
@@ -1287,7 +1287,7 @@ exports[`Storyshots Admin Components/AdminUsers withStages 1`] = `
           width={291}
         >
           <div
-            className="sc-gGBfsJ dMPHqo sc-ifAKCX cycuRH"
+            className="sc-gGBfsJ dMPHqo sc-ifAKCX eakbtZ"
             color="#E7E7E7"
             size={35}
           />
@@ -1302,7 +1302,7 @@ exports[`Storyshots Admin Components/AdminUsers withStages 1`] = `
           
         </div>
         <a
-          className="sc-chPdSV jKYrTm"
+          className="sc-chPdSV gddFBp"
           href="/admin/users/new/"
           onClick={[Function]}
         >
@@ -1429,7 +1429,7 @@ exports[`Storyshots Admin Components/AdminUsers withStages 1`] = `
                   Doe
                 </div>
                 <div
-                  className="sc-eTpRJs cWZEkD sc-ifAKCX kwRAyW"
+                  className="sc-eTpRJs cWZEkD sc-ifAKCX irYJYn"
                   color="#FBC23C"
                   size={16}
                   title="Admin"
@@ -1483,7 +1483,7 @@ exports[`Storyshots Admin Components/AdminUsers withStages 1`] = `
                   Fire
                 </div>
                 <div
-                  className="sc-eTpRJs cWZEkD sc-ifAKCX kwRAyW"
+                  className="sc-eTpRJs cWZEkD sc-ifAKCX irYJYn"
                   color="#FBC23C"
                   size={16}
                   title="Admin"
@@ -1537,7 +1537,7 @@ exports[`Storyshots Admin Components/AdminUsers withStages 1`] = `
                   Johnson
                 </div>
                 <div
-                  className="sc-eTpRJs cWZEkD sc-ifAKCX kwRAyW"
+                  className="sc-eTpRJs cWZEkD sc-ifAKCX irYJYn"
                   color="#FBC23C"
                   size={16}
                   title="Admin"
@@ -1591,7 +1591,7 @@ exports[`Storyshots Admin Components/AdminUsers withStages 1`] = `
                   Knot
                 </div>
                 <div
-                  className="sc-eTpRJs cWZEkD sc-ifAKCX kwRAyW"
+                  className="sc-eTpRJs cWZEkD sc-ifAKCX irYJYn"
                   color="#FBC23C"
                   size={16}
                   title="Admin"
@@ -1693,7 +1693,7 @@ exports[`Storyshots Admin Components/AdminUsers withStages 1`] = `
                   Moore
                 </div>
                 <div
-                  className="sc-eTpRJs cWZEkD sc-ifAKCX kwRAyW"
+                  className="sc-eTpRJs cWZEkD sc-ifAKCX irYJYn"
                   color="#FBC23C"
                   size={16}
                   title="Admin"

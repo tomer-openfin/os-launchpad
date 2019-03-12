@@ -14,7 +14,7 @@ exports[`Storyshots Components/NotificationsIcon default 1`] = `
       className="sc-chbbiW gitgw"
     >
       <div
-        className="sc-ifAKCX bYrsMz"
+        className="sc-ifAKCX cWSJJB"
         color="#FBC23C"
         disabled={false}
         onClick={[Function]}

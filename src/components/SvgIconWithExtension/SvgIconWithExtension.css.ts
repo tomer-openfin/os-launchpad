@@ -7,6 +7,7 @@ import SvgIcon, { Icon } from '../SvgIcon';
 interface WrapperProps {
   clickable: boolean;
   color?: string;
+  isBackground?: boolean;
   hoverColor?: string;
   extensionPosition: DirectionalPosition;
 }
@@ -49,15 +50,19 @@ export const Wrapper = styled.div<WrapperProps>`
   line-height: 0;
   position: relative;
 
-  ${({ clickable, color, hoverColor, extensionPosition }) => `
+  ${({ clickable, color, isBackground, hoverColor, extensionPosition }) => `
     ${CaretSvgIcon} {
       ${getCaretRotation(extensionPosition)}
     }
 
-    &:hover {
-      ${Icon} {
-        background-color: ${clickable ? hoverColor : color};
-      }
+    ${
+      isBackground
+        ? ''
+        : `&:hover {
+          ${Icon} {
+            background-color: ${clickable ? hoverColor : color};
+          }
+        }`
     }
 `}
 `;
