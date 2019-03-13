@@ -7,20 +7,11 @@ import { CATEGORIES } from '../../utils/storyCategories';
 
 import EditAppForm from './EditAppForm';
 
+const app = AppData[0];
+
 const handleCancel = action('handleCancel');
-const handleDelete = action('handleDelete');
-const handleSuccess = action('handleSuccess');
-const onEscDown = action('onEscDown');
-const updateApp = action('updateApp');
+const handleSubmitValues = action('handleSubmitValues');
 
 storiesOf(`${CATEGORIES.ADMIN}EditAppForm`, module).add('default', () => (
-  <EditAppForm
-    app={AppData[0]}
-    appId="2"
-    handleCancel={handleCancel}
-    handleDelete={handleDelete}
-    handleSuccess={handleSuccess}
-    onEscDown={onEscDown}
-    updateApp={updateApp}
-  />
+  <EditAppForm initialValues={app} handleCancel={handleCancel} handleSubmitValues={handleSubmitValues} />
 ));

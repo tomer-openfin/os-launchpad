@@ -10,19 +10,8 @@ import EditUserForm from './EditUserForm';
 const user = UserData[0];
 
 const handleCancel = action('handleCancel');
-const handleDelete = action('handleDelete');
-const handleSuccess = action('handleSuccess');
-const onEscDown = action('onEscDown');
-const updateUser = action('updateUser');
+const handleSubmitValues = action('handleSubmitValues');
 
 storiesOf(`${CATEGORIES.ADMIN}EditUserForm`, module).add('default', () => (
-  <EditUserForm
-    handleCancel={handleCancel}
-    handleDelete={handleDelete}
-    handleSuccess={handleSuccess}
-    id={user.id}
-    onEscDown={onEscDown}
-    updateUser={updateUser}
-    user={user}
-  />
+  <EditUserForm initialValues={user} handleCancel={handleCancel} handleSubmitValues={handleSubmitValues} />
 ));

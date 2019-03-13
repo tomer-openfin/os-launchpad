@@ -11,22 +11,22 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
     }
   >
     <div
-      className="sc-kasBVs iXHzks"
+      className="sc-gpHHfC gDBxpG"
     >
       <div
-        className="sc-hgHYgh ftRWJe"
+        className="sc-gVyKpa bkneHb"
       >
         <div
-          className="sc-fYxtnH siyJx"
+          className="sc-tilXH dsNRsR"
           width={291}
         >
           <div
-            className="sc-gGBfsJ dMPHqo sc-ifAKCX eakbtZ"
+            className="sc-jnlKLf boMbTX sc-ifAKCX eakbtZ"
             color="#E7E7E7"
             size={35}
           />
           <input
-            className="sc-tilXH fnObrC"
+            className="sc-hEsumM etPRpk"
             name="nodejs"
             onChange={[Function]}
             placeholder="Search apps..."
@@ -44,16 +44,16 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
         </a>
       </div>
       <div
-        className="sc-bEjcJn VnkZc"
+        className="sc-iQtOjA ldPMvf"
       >
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -66,33 +66,33 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 FinTech Studios
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 Using cutting edge artificial intelligence and machine learning, FTS delivers actionable news, research, market analytics, and analytics from millions of sources.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/fintech-studios"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/fintech-studios"
                   onClick={[Function]}
                 />
@@ -101,13 +101,13 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           </div>
         </div>
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -120,33 +120,33 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 GreenKey
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 We are where voice becomes data for the financial markets. Green Key’s voice platform and API includes integrated speech recognition for domain specific workflows. The programmable platform enables firms to integrate sophisticated voice and/or transcription capabilities into their own solutions without telecom or data science knowledge.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/greenkey"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/greenkey"
                   onClick={[Function]}
                 />
@@ -155,13 +155,13 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           </div>
         </div>
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -174,33 +174,33 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 Hammerstone Markets App
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 The Hammerstone Markets App is both real-time news and real-time analysis sent via compliant messaging platforms including Openfin, Bloomberg, Pivot, and Symphony. Our primary demographic is Institutional Buy and Sell-side traders, who are active in U.S. equities. Founded in 2001, we currently have 165 companies and over 1,000 users of the product.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/hammerstone-markets"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/hammerstone-markets"
                   onClick={[Function]}
                 />
@@ -209,13 +209,13 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           </div>
         </div>
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -228,33 +228,33 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 Neptune
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 At Neptune Networks, we deliver high-quality bond market data (mostly axes) from sell-side banks to buy-side clients. Our technology enables real-time connectivity between banks and investors which leads to meaningful conversations, satisfying the immediate requirements of each party and ultimately, increasing trade volumes.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/neptune"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/neptune"
                   onClick={[Function]}
                 />
@@ -263,13 +263,13 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           </div>
         </div>
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -282,33 +282,33 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 OpenDoor
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 Launching the first all-to-all, session-based trading platform for off-the-run US Treasuries and TIPS, OpenDoor fills the liquidity vacuum. Our customers include many of the world’s largest asset managers, central banks, primary dealers, hedge funds and trading firms.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/opendoor"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/opendoor"
                   onClick={[Function]}
                 />
@@ -317,13 +317,13 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
           </div>
         </div>
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -336,34 +336,34 @@ exports[`Storyshots Admin Components/AdminApps default 1`] = `
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 Parity One
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 Parity One transforms investment ideas into smart investment portfolios.
 Parity One’s sophisticated back-testing framework enables simulating the most advanced factor-based investment strategies and converts them into fully managed bespoke benchmarks and model portfolios.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/parityone"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/parityone"
                   onClick={[Function]}
                 />
@@ -372,13 +372,13 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           </div>
         </div>
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -391,33 +391,33 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 RSRCHXChange
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 RSRCHX is a one-stop-shop for accessing the newly evolving paid-for research market and consuming research in compliance with global best practice.  Founded in 2014, the award-winning RSRCHX platform is used by more than 1,200 buy side firms and over 300 banks, brokers and independent research providers as both a regulatory solution and technology-led research management tool and venue for buying and selling research.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/rsrchx"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/rsrchx"
                   onClick={[Function]}
                 />
@@ -426,13 +426,13 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           </div>
         </div>
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -445,33 +445,33 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 Trumid
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 Trumid is a financial technology startup bringing efficiency to credit trading through data, technology and beautifully simple products. Trumid was founded in 2014 by credit professionals with over 100 years of trading experience and is headquartered in New York.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/trumid"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/trumid"
                   onClick={[Function]}
                 />
@@ -480,13 +480,13 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           </div>
         </div>
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -499,33 +499,33 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 TT Desktop
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 Trading Technologies’ ultra-low-latency platform, TT, leverages a hybrid-cloud infrastructure to provide a streamlined, go-anywhere, high-performance experience for professional traders worldwide. TT’s most performant front-end app, TT Desktop, utilizes the OpenFin platform to deliver an HTML5-based trading experience.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/tt-desktop"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/tt-desktop"
                   onClick={[Function]}
                 />
@@ -2252,22 +2252,22 @@ exports[`Storyshots Admin Components/AdminApps withStages 1`] = `
     }
   >
     <div
-      className="sc-kasBVs iXHzks"
+      className="sc-gpHHfC gDBxpG"
     >
       <div
-        className="sc-hgHYgh ftRWJe"
+        className="sc-gVyKpa bkneHb"
       >
         <div
-          className="sc-fYxtnH siyJx"
+          className="sc-tilXH dsNRsR"
           width={291}
         >
           <div
-            className="sc-gGBfsJ dMPHqo sc-ifAKCX eakbtZ"
+            className="sc-jnlKLf boMbTX sc-ifAKCX eakbtZ"
             color="#E7E7E7"
             size={35}
           />
           <input
-            className="sc-tilXH fnObrC"
+            className="sc-hEsumM etPRpk"
             name="nodejs"
             onChange={[Function]}
             placeholder="Search apps..."
@@ -2285,16 +2285,16 @@ exports[`Storyshots Admin Components/AdminApps withStages 1`] = `
         </a>
       </div>
       <div
-        className="sc-bEjcJn VnkZc"
+        className="sc-iQtOjA ldPMvf"
       >
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -2307,33 +2307,33 @@ exports[`Storyshots Admin Components/AdminApps withStages 1`] = `
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 FinTech Studios
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 Using cutting edge artificial intelligence and machine learning, FTS delivers actionable news, research, market analytics, and analytics from millions of sources.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/fintech-studios"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/fintech-studios"
                   onClick={[Function]}
                 />
@@ -2342,13 +2342,13 @@ exports[`Storyshots Admin Components/AdminApps withStages 1`] = `
           </div>
         </div>
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -2361,33 +2361,33 @@ exports[`Storyshots Admin Components/AdminApps withStages 1`] = `
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 GreenKey
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 We are where voice becomes data for the financial markets. Green Key’s voice platform and API includes integrated speech recognition for domain specific workflows. The programmable platform enables firms to integrate sophisticated voice and/or transcription capabilities into their own solutions without telecom or data science knowledge.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/greenkey"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/greenkey"
                   onClick={[Function]}
                 />
@@ -2396,13 +2396,13 @@ exports[`Storyshots Admin Components/AdminApps withStages 1`] = `
           </div>
         </div>
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -2415,33 +2415,33 @@ exports[`Storyshots Admin Components/AdminApps withStages 1`] = `
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 Hammerstone Markets App
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 The Hammerstone Markets App is both real-time news and real-time analysis sent via compliant messaging platforms including Openfin, Bloomberg, Pivot, and Symphony. Our primary demographic is Institutional Buy and Sell-side traders, who are active in U.S. equities. Founded in 2001, we currently have 165 companies and over 1,000 users of the product.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/hammerstone-markets"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/hammerstone-markets"
                   onClick={[Function]}
                 />
@@ -2450,13 +2450,13 @@ exports[`Storyshots Admin Components/AdminApps withStages 1`] = `
           </div>
         </div>
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -2469,33 +2469,33 @@ exports[`Storyshots Admin Components/AdminApps withStages 1`] = `
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 Neptune
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 At Neptune Networks, we deliver high-quality bond market data (mostly axes) from sell-side banks to buy-side clients. Our technology enables real-time connectivity between banks and investors which leads to meaningful conversations, satisfying the immediate requirements of each party and ultimately, increasing trade volumes.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/neptune"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/neptune"
                   onClick={[Function]}
                 />
@@ -2504,13 +2504,13 @@ exports[`Storyshots Admin Components/AdminApps withStages 1`] = `
           </div>
         </div>
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -2523,33 +2523,33 @@ exports[`Storyshots Admin Components/AdminApps withStages 1`] = `
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 OpenDoor
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 Launching the first all-to-all, session-based trading platform for off-the-run US Treasuries and TIPS, OpenDoor fills the liquidity vacuum. Our customers include many of the world’s largest asset managers, central banks, primary dealers, hedge funds and trading firms.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/opendoor"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/opendoor"
                   onClick={[Function]}
                 />
@@ -2558,13 +2558,13 @@ exports[`Storyshots Admin Components/AdminApps withStages 1`] = `
           </div>
         </div>
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -2577,34 +2577,34 @@ exports[`Storyshots Admin Components/AdminApps withStages 1`] = `
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 Parity One
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 Parity One transforms investment ideas into smart investment portfolios.
 Parity One’s sophisticated back-testing framework enables simulating the most advanced factor-based investment strategies and converts them into fully managed bespoke benchmarks and model portfolios.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/parityone"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/parityone"
                   onClick={[Function]}
                 />
@@ -2613,13 +2613,13 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           </div>
         </div>
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -2632,33 +2632,33 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 RSRCHXChange
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 RSRCHX is a one-stop-shop for accessing the newly evolving paid-for research market and consuming research in compliance with global best practice.  Founded in 2014, the award-winning RSRCHX platform is used by more than 1,200 buy side firms and over 300 banks, brokers and independent research providers as both a regulatory solution and technology-led research management tool and venue for buying and selling research.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/rsrchx"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/rsrchx"
                   onClick={[Function]}
                 />
@@ -2667,13 +2667,13 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           </div>
         </div>
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -2686,33 +2686,33 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 Trumid
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 Trumid is a financial technology startup bringing efficiency to credit trading through data, technology and beautifully simple products. Trumid was founded in 2014 by credit professionals with over 100 years of trading experience and is headquartered in New York.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/trumid"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/trumid"
                   onClick={[Function]}
                 />
@@ -2721,13 +2721,13 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
           </div>
         </div>
         <div
-          className="sc-esOvli kMzELW"
+          className="sc-cmthru hajLfy"
         >
           <div
-            className="sc-bwCtUz goDjMa"
+            className="sc-hrWEMg bWfhrA"
           >
             <div
-              className="sc-epnACN guwPGO"
+              className="sc-iQNlJl jAAKpN"
             >
               <div
                 className="sc-bZQynM NYJaE"
@@ -2740,33 +2740,33 @@ Parity One’s sophisticated back-testing framework enables simulating the most 
               </div>
             </div>
             <div
-              className="sc-hrWEMg bETFYQ"
+              className="sc-eTuwsz jdTlte"
             >
               <div
-                className="sc-eTuwsz eyJCMj"
+                className="sc-gwVKww iOiIbT"
                 onClick={[Function]}
               >
                 TT Desktop
               </div>
               <div
-                className="sc-gwVKww cNiZmi"
+                className="sc-hXRMBi kVUWha"
               >
                 Trading Technologies’ ultra-low-latency platform, TT, leverages a hybrid-cloud infrastructure to provide a streamlined, go-anywhere, high-performance experience for professional traders worldwide. TT’s most performant front-end app, TT Desktop, utilizes the OpenFin platform to deliver an HTML5-based trading experience.
               </div>
             </div>
             <div
-              className="sc-hXRMBi jQWFky"
+              className="sc-epnACN iVdPjv"
             >
               <div
-                className="sc-gtfDJT fiShNl"
+                className="sc-cpmKsF bMoTFZ"
               >
                 <a
-                  className="sc-bGbJRg hYTxnN"
+                  className="sc-iybRtq kMcvMu"
                   href="/admin/apps/edit/tt-desktop"
                   onClick={[Function]}
                 />
                 <a
-                  className="sc-jtRlXQ lnpdYY"
+                  className="sc-hjRWVT cXAKdR"
                   href="/admin/apps/delete/tt-desktop"
                   onClick={[Function]}
                 />

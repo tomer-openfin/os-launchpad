@@ -6,11 +6,23 @@ import { CATEGORIES } from '../../utils/storyCategories';
 
 import NewAppForm from './NewAppForm';
 
-const createApp = action('createApp');
 const handleCancel = action('handleCancel');
-const handleSuccess = action('handleSuccess');
-const onEscDown = action('onEscDown');
+const handleSubmitValues = action('handleSubmitValues');
+
+const emptyApp = {
+  appUrl: '',
+  contexts: [],
+  description: '',
+  icon: '',
+  id: '',
+  images: [],
+  intents: [],
+  manifest_url: '',
+  name: '',
+  title: '',
+  withAppUrl: true,
+};
 
 storiesOf(`${CATEGORIES.ADMIN}NewAppForm`, module).add('default', () => (
-  <NewAppForm createApp={createApp} handleCancel={handleCancel} handleSuccess={handleSuccess} onEscDown={onEscDown} />
+  <NewAppForm initialValues={emptyApp} handleCancel={handleCancel} handleSubmitValues={handleSubmitValues} />
 ));

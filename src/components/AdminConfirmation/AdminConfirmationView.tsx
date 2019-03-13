@@ -1,8 +1,11 @@
 import * as React from 'react';
 
-import Borders from '../Borders/index';
-import Button from '../Button';
+import Color from '../../styles/color';
 import { ButtonWrapper, Copy, CopyWrapper, Error, Heading, HeadingText, Wrapper } from './AdminConfirmation.css';
+
+import Borders from '../Borders';
+import Button from '../Button';
+import Loading from '../Loading';
 
 interface Props {
   cancelCtaText?: string;
@@ -48,12 +51,12 @@ const AdminConfirmationView = ({
           </Button>
         ) : (
           <>
-            <Button onClick={handleCancel} width={153}>
+            <Button onClick={handleCancel} backgroundColor={Color.MERCURY} width={153}>
               {cancelCtaText || 'Cancel'}
             </Button>
 
             <Button disabled={confirmButtonDisabled} onClick={handleConfirm} width={153}>
-              {confirmCtaText || 'Confirm'}
+              {confirmButtonDisabled ? <Loading size={15} /> : confirmCtaText || 'Confirm'}
             </Button>
           </>
         )}

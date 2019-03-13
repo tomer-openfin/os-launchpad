@@ -4,13 +4,23 @@ import * as React from 'react';
 
 import { CATEGORIES } from '../../utils/storyCategories';
 
+import { User } from '../../types/commons';
 import NewUserForm from './NewUserForm';
 
-const createUser = action('createUser');
 const handleCancel = action('handleCancel');
-const handleSuccess = action('handleSuccess');
-const onEscDown = action('onEscDown');
+const handleSubmitValues = action('handleSubmitValues');
+
+const emptyUser: User = {
+  email: '',
+  firstName: '',
+  id: '',
+  lastName: '',
+  middleInitial: '',
+  phone: '',
+  tmpPassword: '',
+  username: '',
+};
 
 storiesOf(`${CATEGORIES.ADMIN}NewUserForm`, module).add('default', () => (
-  <NewUserForm createUser={createUser} handleCancel={handleCancel} handleSuccess={handleSuccess} onEscDown={onEscDown} />
+  <NewUserForm initialValues={emptyUser} handleCancel={handleCancel} handleSubmitValues={handleSubmitValues} />
 ));

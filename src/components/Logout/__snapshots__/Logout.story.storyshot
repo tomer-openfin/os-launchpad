@@ -11,10 +11,10 @@ exports[`Storyshots Components/Logout default 1`] = `
     }
   >
     <div
-      className="sc-ebFjAB bbvlaA"
+      className="sc-eInJlc hPhdXR"
     >
       <button
-        className="sc-jtggT fQBaTv"
+        className="sc-hgHYgh bYaPUr"
         onClick={[Function]}
       >
         <div
@@ -23,13 +23,13 @@ exports[`Storyshots Components/Logout default 1`] = `
           size={42}
         />
         <span
-          className="sc-dEoRIm bwJWzf"
+          className="sc-kasBVs bVxSTH"
         >
           Log Out
         </span>
       </button>
       <button
-        className="sc-jtggT fQBaTv"
+        className="sc-hgHYgh bYaPUr"
         onClick={[Function]}
       >
         <div
@@ -38,7 +38,7 @@ exports[`Storyshots Components/Logout default 1`] = `
           size={42}
         />
         <span
-          className="sc-dEoRIm bwJWzf"
+          className="sc-kasBVs bVxSTH"
         >
           Close OpenFin
         </span>

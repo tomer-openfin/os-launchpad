@@ -11,21 +11,21 @@ exports[`Storyshots UI Components/MessageBanner default 1`] = `
     }
   >
     <div
-      className="sc-bbmXgH gIDzkq"
+      className="sc-gGBfsJ bDAwWw"
     >
       <div
-        className="sc-jbKcbu fUfPqM"
+        className="sc-dNLxif hOnpal"
       >
         <div
-          className="sc-dNLxif gmDBSE"
+          className="sc-jqCOkK kNvzfv"
         >
           <div
-            className="sc-jqCOkK kpsuvn"
+            className="sc-uJMKN fJOUOk"
           >
             Failed to create
           </div>
           <div
-            className="sc-uJMKN grZbwL sc-ifAKCX kCLMLC"
+            className="sc-bbmXgH bDWBYO sc-ifAKCX kCLMLC"
             color="#E7E7E7"
             onClick={[Function]}
             size={25}
@@ -336,7 +336,7 @@ exports[`Storyshots UI Components/MessageBanner default 1`] = `
                       <span
                         style={Object {}}
                       >
-                        handleClose
+                        reset
                       </span>
                       <span>
                         =
@@ -351,7 +351,7 @@ exports[`Storyshots UI Components/MessageBanner default 1`] = `
                               }
                             }
                           >
-                            handleClose
+                            reset
                           </span>
                           }
                         </span>
@@ -365,7 +365,7 @@ exports[`Storyshots UI Components/MessageBanner default 1`] = `
                       <span
                         style={Object {}}
                       >
-                        shown
+                        isActive
                       </span>
                       <br />
                     </span>

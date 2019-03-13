@@ -1,12 +1,15 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { Color } from '../../styles';
+export const FOOTER_HEIGHT = '60px';
 
-import { FOOTER_HEIGHT, ResponsiveWidth } from '../ResponsiveForm/ResponsiveForm.css';
+export const ResponsiveWidth = css`
+  margin: 0 auto;
+  max-width: 469px;
+  width: 100%;
+`;
 
-export const Wrapper = styled.div`
+export const Form = styled.form`
   align-items: center;
-  background-color: ${Color.KUIPER_BELT};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -14,18 +17,28 @@ export const Wrapper = styled.div`
   width: 100%;
 `;
 
+export const ScrollWrapper = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  width: 100%;
+  margin-bottom: ${FOOTER_HEIGHT};
+  min-height: calc(100% - ${FOOTER_HEIGHT});
+`;
+
+export const GridWrapper = styled.div`
+  ${ResponsiveWidth}
+
+  display: grid;
+  grid-row-gap: 28px;
+  grid-template-columns: 1fr;
+  padding: 20px;
+`;
+
 export const RowWrapper = styled.div<{ height?: string; firstElementWidth?: string; secondElementWidth?: string }>`
   display: grid;
   grid-template-columns: ${props => props.firstElementWidth || '1fr'} ${props => props.secondElementWidth || '1fr'};
   grid-template-rows: ${props => props.height || '62px'};
   grid-column-gap: 20px;
-`;
-
-export const MessageBannerWrapper = styled.div<{ shown?: boolean }>`
-  ${ResponsiveWidth}
-
-  bottom: ${FOOTER_HEIGHT};
-  position: absolute;
 `;
 
 export const PasswordIconWrapper = styled.div`

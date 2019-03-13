@@ -1,13 +1,17 @@
 import { connect } from 'react-redux';
 
-import { updatePasswordRequest } from '../../redux/me';
+import { updatePasswordRequest, UpdatePasswordRequestPayload } from '../../redux/me';
+import { MetaWithCallbacks } from '../../types/commons';
+
+import withResponseState from '../../hocs/withResponseState';
+
 import UpdatePasswordForm from './UpdatePasswordForm';
 
-const mapDispatch = {
-  updatePassword: updatePasswordRequest,
-};
+const dispatchProps = (dispatch, ownProps) => ({
+  updatePassword: (payload: UpdatePasswordRequestPayload, meta: MetaWithCallbacks) => dispatch(updatePasswordRequest(payload, meta)),
+});
 
 export default connect(
   null,
-  mapDispatch,
-)(UpdatePasswordForm);
+  dispatchProps,
+)(withResponseState(UpdatePasswordForm));

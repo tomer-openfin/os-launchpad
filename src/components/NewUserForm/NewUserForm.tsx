@@ -1,81 +1,21 @@
-import { FormikProps, FormikValues } from 'formik';
 import * as React from 'react';
-import * as Yup from 'yup';
 
-import { DispatchRequest, MetaWithCallbacks, User } from '../../types/commons';
+import { User } from '../../types/commons';
 
-import RequestForm from '../RequestForm';
-import UserForm, { baseSchema } from '../UserForm';
+import withFormik from '../../hocs/withFormik';
 
-interface Props {
-  createUser: DispatchRequest;
-  handleCancel: () => void;
-  handleSuccess: () => void;
-  onEscDown: () => void;
+import UserForm, { newUserSchema } from '../UserForm';
+
+interface FormProps {
+  handleSubmit: () => void;
+  isSubmitting: boolean;
+  isValid: boolean;
 }
 
-interface State {
-  isPasswordShown: boolean;
-}
+export const NewUserForm = (handleCancel: () => void) => ({ handleSubmit, isSubmitting, isValid }: FormProps) => (
+  <UserForm handleCancel={handleCancel} handleSubmit={handleSubmit} isSubmitting={isSubmitting} isValid={isValid} withPasswordField />
+);
 
-const emptyUser: User = {
-  email: '',
-  firstName: '',
-  id: '',
-  lastName: '',
-  middleInitial: '',
-  phone: '',
-  tmpPassword: '',
-  username: '',
-};
+const NewUserFormik = withFormik<User>(NewUserForm, newUserSchema);
 
-const defaultState: State = {
-  isPasswordShown: false,
-};
-
-const validationSchema = Yup.object().shape(baseSchema);
-
-class NewUserForm extends React.Component<Props, State> {
-  state = defaultState;
-
-  togglePasswordFieldType = () => {
-    this.setState(prevState => ({ isPasswordShown: !prevState.isPasswordShown }));
-  };
-
-  handleFormSubmit = (formData: User, meta: MetaWithCallbacks) => {
-    const { createUser } = this.props;
-
-    // default to +1 for country code for now
-    const payload = { ...formData, phone: `+1${formData.phone}` };
-
-    createUser(payload, meta);
-  };
-
-  renderUserForm = (formikProps: FormikProps<FormikValues>) => (
-    <UserForm
-      {...formikProps}
-      handleCancel={this.props.handleCancel}
-      isPasswordShown={this.state.isPasswordShown}
-      togglePasswordFieldType={this.togglePasswordFieldType}
-      withPasswordField
-    />
-  );
-
-  render() {
-    const { handleSuccess } = this.props;
-
-    return (
-      <RequestForm
-        initialValues={emptyUser}
-        errorMessage="There was an error trying to create this user"
-        render={this.renderUserForm}
-        headingText="Create New User"
-        onSubmitSuccess={handleSuccess}
-        submit={this.handleFormSubmit}
-        validationSchema={validationSchema}
-      />
-    );
-  }
-}
-
-export default NewUserForm;
+export default NewUserFormik;

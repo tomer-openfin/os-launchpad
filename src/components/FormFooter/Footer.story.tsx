@@ -5,17 +5,14 @@ import * as React from 'react';
 
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import ResponsiveForm from './ResponsiveForm';
+import FormFooter from './FormFooter';
 
-storiesOf(`${CATEGORIES.UI}ResponsiveForm`, module)
+const handleCancel = action('handleCancel');
+
+storiesOf(`${CATEGORIES.UI}FormFooter`, module)
   .addDecorator(withKnobs)
   .add('default', () => {
-    const handleCancel = action('handleCancel');
     const isSubmitting = boolean('isSubmitting', false);
 
-    return (
-      <ResponsiveForm handleCancel={handleCancel} isSubmitting={isSubmitting} submitDisabled={false}>
-        <div />
-      </ResponsiveForm>
-    );
+    return <FormFooter isSubmitting={isSubmitting} handleCancel={handleCancel} submitDisabled={false} />;
   });

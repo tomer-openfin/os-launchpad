@@ -12,9 +12,9 @@ import AppCard from '../AppCard';
 import { Row } from '../AppDirectory';
 import { ButtonLink } from '../Button';
 import ConfirmAppDelete from '../ConfirmAppDelete';
-import EditAppForm from '../EditAppForm';
+import EditAppWindow from '../EditAppWindow';
 import Modal from '../Modal';
-import NewAppForm from '../NewAppForm';
+import NewAppWindow from '../NewAppWindow';
 import { SearchInputWithState } from '../SearchInput';
 
 export enum Stage {
@@ -96,19 +96,19 @@ class AdminApps extends React.PureComponent<Props, State> {
 
         <CSSTransition in={currentAction === Stage.New} {...sharedAdminFormsCSSTransitionProps}>
           <AddEditWrapper>
-            <NewAppForm handleCancel={handleClose} handleSuccess={handleClose} />
+            <NewAppWindow handleCancel={handleClose} handleSuccess={handleClose} />
           </AddEditWrapper>
         </CSSTransition>
 
         <CSSTransition in={currentAction === Stage.Edit} {...sharedAdminFormsCSSTransitionProps}>
           <AddEditWrapper>
-            <EditAppForm appId={id} handleCancel={handleClose} handleDelete={handleDelete} handleSuccess={handleClose} />
+            <EditAppWindow appId={id} handleCancel={handleClose} handleDelete={handleDelete} handleSuccess={handleClose} />
           </AddEditWrapper>
         </CSSTransition>
 
         {currentAction === Stage.Delete && (
           <Modal handleClose={!handleClose ? noop : handleClose}>
-            <ConfirmAppDelete handleCancel={handleClose} handleSuccess={handleClose} id={id} />
+            <ConfirmAppDelete handleCancel={handleClose} handleSuccess={handleClose} appId={id} />
           </Modal>
         )}
       </Wrapper>

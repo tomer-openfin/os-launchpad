@@ -1,3 +1,5 @@
-import EditUserFormContainer from './EditUserFormContainer';
+import EditUserForm from './EditUserForm';
 
-export default EditUserFormContainer;
+export * from './EditUserForm';
+
+export default EditUserForm;

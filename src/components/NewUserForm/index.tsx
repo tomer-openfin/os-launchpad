@@ -1,3 +1,5 @@
-import NewUserFormContainer from './NewUserFormContainer';
+import NewUserForm from './NewUserForm';
 
-export default NewUserFormContainer;
+export * from './NewUserForm';
+
+export default NewUserForm;

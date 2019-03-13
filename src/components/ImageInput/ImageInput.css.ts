@@ -4,7 +4,7 @@ import { Color } from '../../styles/index';
 import { TypeStyleCanopus } from '../../styles/typography.css';
 
 interface WrapperProps {
-  active: boolean;
+  isActive: boolean;
 }
 
 export const Input = styled.input`
@@ -48,7 +48,7 @@ export const Wrapper = styled.div<WrapperProps>`
     }
   }
 
-  ${({ active }) => `
-    ${active ? `${LogoWrapper} { outline-color: ${Color.JUPITER}; }` : ''}
+  ${({ isActive }) => `
+    ${isActive ? `${LogoWrapper} { outline-color: ${Color.JUPITER}; }` : ''}
   `}
 `;

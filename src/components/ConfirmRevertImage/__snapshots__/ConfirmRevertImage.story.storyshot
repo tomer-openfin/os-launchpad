@@ -28,7 +28,7 @@ exports[`Storyshots Admin Components/ConfirmRevertImage default 1`] = `
           </div>
         </div>
         <div
-          className="sc-iujRgT bRYfux"
+          className="sc-iujRgT dbKUy"
         >
           <div
             className="sc-GMQeP fmmqNB"
@@ -40,7 +40,7 @@ exports[`Storyshots Admin Components/ConfirmRevertImage default 1`] = `
           className="sc-bAeIUo etKsBD"
         >
           <button
-            className="sc-kAzzGY dhNKxb"
+            className="sc-kAzzGY idQxoH"
             width={153}
           >
             Cancel

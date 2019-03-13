@@ -11,21 +11,20 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
     }
   >
     <form
-      className="sc-ksYbfQ eCIUEJ"
-      onReset={[Function]}
+      className="sc-ksYbfQ jtXRRF"
       onSubmit={[Function]}
     >
       <div
         className="sc-hmzhuo dudMzh"
       >
         <div
-          className="sc-frDJqD cnrcjF"
+          className="sc-frDJqD hwLFCw"
         >
           <div
-            className="sc-iSDuPN jEyzUP"
+            className="sc-kvZOFW galVDV"
           >
             <label
-              className="sc-iybRtq fNsgwM sc-dxgOiQ nGBmb"
+              className="sc-eMigcr diIYqY sc-dxgOiQ nGBmb"
             >
               <div
                 className="sc-kpOJdX gglwGS"
@@ -40,27 +39,27 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
                 type="checkbox"
               />
               <div
-                className="sc-cEvuZC XnAIt"
+                className="sc-jVODtj bFHVqc"
               >
                 <div
                   checked={false}
-                  className="sc-fHxwqH hVkpgX"
+                  className="sc-gPWkxV bgwsCr"
                 />
                 <div
-                  className="sc-iQtOjA kkliOI"
+                  className="sc-fzsDOv hSyPxr"
                 >
                   App URL
                 </div>
               </div>
               <div
-                className="sc-cEvuZC XnAIt"
+                className="sc-jVODtj bFHVqc"
               >
                 <div
                   checked={true}
-                  className="sc-fHxwqH cndiV"
+                  className="sc-gPWkxV hwySNu"
                 />
                 <div
-                  className="sc-iQtOjA kkliOI"
+                  className="sc-fzsDOv hSyPxr"
                 >
                   Manifest
                 </div>
@@ -100,7 +99,7 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
             />
           </label>
           <div
-            className="sc-iSDuPN eQFjgF"
+            className="sc-kvZOFW fWAjoW"
             height="144px"
           >
             <label
@@ -112,7 +111,7 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
                 App Shortcut
               </div>
               <div
-                className="sc-ePZHVD dkmxFV"
+                className="sc-cpmLhU gDXbAD"
               >
                 <div
                   className="sc-gipzik jmhvsi"
@@ -124,10 +123,10 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
                   />
                 </div>
                 <div
-                  className="sc-likbZx isGPDE"
+                  className="sc-dymIpo dEKsWm"
                 >
                   <div
-                    className="sc-eKZiaR SZken"
+                    className="sc-bnXvFD ldcbis"
                   >
                     64x64
                   </div>
@@ -160,10 +159,10 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
         </div>
       </div>
       <div
-        className="sc-hqyNC hXSrbm"
+        className="sc-bMvGRv lbuJOf"
       >
         <div
-          className="sc-kvZOFW jextin"
+          className="sc-rBLzX iHxlYT"
         >
           <button
             className="sc-kAzzGY gKySrU"
@@ -174,8 +173,7 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
             Save
           </button>
           <button
-            className="sc-kAzzGY gKySrU"
-            onClick={[Function]}
+            className="sc-kAzzGY jWQqYu"
             type="button"
             width={128}
           >
@@ -430,7 +428,7 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      render
+                      component
                     </span>
                     <span>
                       =
@@ -445,7 +443,7 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
                             }
                           }
                         >
-                          renderAppForm
+                          AppForm
                         </span>
                         }
                       </span>

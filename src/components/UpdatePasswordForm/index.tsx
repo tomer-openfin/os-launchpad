@@ -1,3 +1,3 @@
-import UpdatePasswordFormContainer from './UpdatePasswordFormContainer';
+import UpdatePasswordForm from './UpdatePasswordFormContainer';
 
-export default UpdatePasswordFormContainer;
+export default UpdatePasswordForm;

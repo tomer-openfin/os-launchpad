@@ -5,7 +5,7 @@ import * as EditIcon from '../../assets/Edit.svg';
 import * as TrashIcon from '../../assets/Trash.svg';
 
 import { TypeStyleCanopus, TypeStyleEnif } from '../../styles/typography.css';
-import { Wrapper as RequestFormWrapper } from '../RequestForm/RequestForm.css';
+import { Wrapper as RequestFormWrapper } from '../FormWindow/FormWindow.css';
 
 import { Color } from '../../styles';
 import { ADMIN_FORMS_EASING_FUNCTION, ADMIN_FORMS_ENTER_DURATION, ADMIN_FORMS_EXIT_DURATION, ADMIN_FORMS_TRANSITION_CLASSNAMES } from '../../utils/adminForms';
@@ -25,7 +25,7 @@ export const AddEditWrapper = styled.div`
   }
 
   &.${ADMIN_FORMS_TRANSITION_CLASSNAMES}-enter {
-    ${RequestFormWrapper} {
+    & > :first-child {
       transform: translate3d(100%, 0, 0);
     }
 
@@ -36,7 +36,7 @@ export const AddEditWrapper = styled.div`
   }
 
   &.${ADMIN_FORMS_TRANSITION_CLASSNAMES}-enter-active {
-    ${RequestFormWrapper} {
+    & > :first-child {
       transform: translate3d(0%, 0, 0);
       transition: transform ${ADMIN_FORMS_ENTER_DURATION}ms ${ADMIN_FORMS_EASING_FUNCTION};
     }
@@ -49,7 +49,7 @@ export const AddEditWrapper = styled.div`
   }
 
   &.${ADMIN_FORMS_TRANSITION_CLASSNAMES}-enter-done {
-    ${RequestFormWrapper} {
+    & > :first-child {
       transform: translate3d(0%, 0, 0);
     }
 
@@ -60,20 +60,20 @@ export const AddEditWrapper = styled.div`
   }
 
   &.${ADMIN_FORMS_TRANSITION_CLASSNAMES}-exit {
-    ${RequestFormWrapper} {
+    & > :first-child {
       transform: translate3d(0%, 0, 0);
     }
   }
 
   &.${ADMIN_FORMS_TRANSITION_CLASSNAMES}-exit-active {
-    ${RequestFormWrapper} {
+    & > :first-child {
       transform: translate3d(100%, 0, 0);
       transition: transform ${ADMIN_FORMS_EXIT_DURATION}ms ${ADMIN_FORMS_EASING_FUNCTION};
     }
   }
 
   &.${ADMIN_FORMS_TRANSITION_CLASSNAMES}-exit-done {
-    ${RequestFormWrapper} {
+    & > :first-child {
       transform: translate3d(100%, 0, 0);
     }
   }

@@ -18,43 +18,43 @@ exports[`Storyshots Components/AccountSettings default 1`] = `
       }
     >
       <div
-        className="sc-lhVmIH eoWVgm"
+        className="sc-bYSBpT kknPZU"
       >
         <div
-          className="sc-kTUwUJ ezWrA"
+          className="sc-dqBHgY plbfR"
         >
           Account Info
         </div>
         <div
-          className="sc-dqBHgY cOvlLx"
+          className="sc-gxMtzJ dBflbb"
         >
           <div
-            className="sc-elJkPf dsKqyx"
+            className="sc-jtRfpW iPWnjg"
           >
             Email
           </div>
           <div
-            className="sc-jtRfpW jOXWoX"
+            className="sc-kTUwUJ bVFSGD"
           >
             jason.grafinger@giantmachines.com
           </div>
         </div>
         <div
-          className="sc-dqBHgY cOvlLx"
+          className="sc-gxMtzJ dBflbb"
         >
           <div
-            className="sc-elJkPf dsKqyx"
+            className="sc-jtRfpW iPWnjg"
           >
             Name
           </div>
           <div
-            className="sc-jtRfpW jOXWoX"
+            className="sc-kTUwUJ bVFSGD"
           >
             Jason Grafinger
           </div>
         </div>
         <div
-          className="sc-bYSBpT cQqijT"
+          className="sc-elJkPf iJVMLC"
         >
           <a
             className="sc-chPdSV kfjwBr"

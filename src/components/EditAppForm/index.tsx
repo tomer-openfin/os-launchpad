@@ -1,3 +1,5 @@
-import EditAppFormContainer from './EditAppFormContainer';
+import EditAppFormik from './EditAppForm';
 
-export default EditAppFormContainer;
+export * from './EditAppForm';
+
+export default EditAppFormik;

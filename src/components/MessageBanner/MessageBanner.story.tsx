@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { CATEGORIES } from '../../utils/storyCategories';
 
 import Color from '../../styles/color';
-import { ResponsiveWidth } from '../ResponsiveForm/ResponsiveForm.css';
+import { ResponsiveWidth } from '../Responsive';
 import MessageBanner from './MessageBanner';
 
 const Wrapper = styled.div<{ border: boolean; responsive: boolean }>`
@@ -24,7 +24,7 @@ storiesOf(`${CATEGORIES.UI}MessageBanner`, module)
   .add('default', () => {
     const errorMessage = text('Error Message', 'Failed to create');
 
-    const handleClose = () => {
+    const reset = () => {
       isClosed = true;
       forceReRender();
     };
@@ -33,17 +33,17 @@ storiesOf(`${CATEGORIES.UI}MessageBanner`, module)
       forceReRender();
     };
 
-    const shown = boolean('Shown', !isClosed);
+    const isActive = boolean('Shown', !isClosed);
     const backgroundColor = select('Background Color', Object(Color), Color.MARS);
 
-    if (shown && isClosed) handleOpen();
+    if (isActive && isClosed) handleOpen();
 
     const responsiveWrapper = boolean('Responsive Wrapper', false);
     const wrapperBorder = boolean('Wrapper Border', false);
 
     return (
       <Wrapper responsive={responsiveWrapper} border={wrapperBorder}>
-        <MessageBanner backgroundColor={backgroundColor} message={errorMessage} handleClose={handleClose} shown={shown} />;
+        <MessageBanner backgroundColor={backgroundColor} message={errorMessage} reset={reset} isActive={isActive} />;
       </Wrapper>
     );
   });

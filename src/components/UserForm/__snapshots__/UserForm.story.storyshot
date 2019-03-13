@@ -11,18 +11,17 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
     }
   >
     <form
-      className="sc-ksYbfQ eCIUEJ"
-      onReset={[Function]}
+      className="sc-ksYbfQ jtXRRF"
       onSubmit={[Function]}
     >
       <div
         className="sc-hmzhuo dudMzh"
       >
         <div
-          className="sc-frDJqD cnrcjF"
+          className="sc-frDJqD hwLFCw"
         >
           <div
-            className="sc-iSDuPN itkTZV"
+            className="sc-kvZOFW fPqXbW"
           >
             <label
               className="sc-dxgOiQ nGBmb"
@@ -109,10 +108,10 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
         </div>
       </div>
       <div
-        className="sc-hqyNC hXSrbm"
+        className="sc-bMvGRv lbuJOf"
       >
         <div
-          className="sc-kvZOFW jextin"
+          className="sc-rBLzX iHxlYT"
         >
           <button
             className="sc-kAzzGY gKySrU"
@@ -123,7 +122,7 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
             Save
           </button>
           <button
-            className="sc-kAzzGY gKySrU"
+            className="sc-kAzzGY jWQqYu"
             onClick={[Function]}
             type="button"
             width={128}

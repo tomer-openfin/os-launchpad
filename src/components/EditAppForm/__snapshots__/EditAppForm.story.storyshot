@@ -10,229 +10,182 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
       }
     }
   >
-    <div
-      className="sc-RcBXQ hnfRaY"
+    <form
+      className="sc-ksYbfQ jtXRRF"
+      onSubmit={[Function]}
     >
       <div
-        className="sc-cmTdod hSnYdr"
+        className="sc-hmzhuo dudMzh"
       >
         <div
-          className="sc-jwKygS ktOnU"
+          className="sc-frDJqD hwLFCw"
         >
           <div
-            className="sc-bMVAic gmXzKT"
+            className="sc-kvZOFW galVDV"
           >
-            Edit FinTech Studios
-          </div>
-          <div
-            className="sc-ifAKCX dUIYkd"
-            color="#848484"
-            onClick={[Function]}
-            size={30}
-          />
-        </div>
-      </div>
-      <form
-        className="sc-ksYbfQ eCIUEJ"
-        onReset={[Function]}
-        onSubmit={[Function]}
-      >
-        <div
-          className="sc-hmzhuo dudMzh"
-        >
-          <div
-            className="sc-frDJqD cnrcjF"
-          >
-            <div
-              className="sc-iSDuPN jEyzUP"
+            <label
+              className="sc-eMigcr diIYqY sc-dxgOiQ nGBmb"
             >
-              <label
-                className="sc-iybRtq fNsgwM sc-dxgOiQ nGBmb"
+              <div
+                className="sc-kpOJdX gglwGS"
+              >
+                Config Type
+              </div>
+              <input
+                checked={false}
+                name="withAppUrl"
+                onBlur={[Function]}
+                onChange={[Function]}
+                type="checkbox"
+              />
+              <div
+                className="sc-jVODtj bFHVqc"
               >
                 <div
-                  className="sc-kpOJdX gglwGS"
-                >
-                  Config Type
-                </div>
-                <input
                   checked={false}
-                  name="withAppUrl"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  type="checkbox"
+                  className="sc-gPWkxV bgwsCr"
                 />
                 <div
-                  className="sc-cEvuZC XnAIt"
+                  className="sc-fzsDOv hSyPxr"
                 >
-                  <div
-                    checked={false}
-                    className="sc-fHxwqH hVkpgX"
-                  />
-                  <div
-                    className="sc-iQtOjA kkliOI"
-                  >
-                    App URL
-                  </div>
+                  App URL
                 </div>
-                <div
-                  className="sc-cEvuZC XnAIt"
-                >
-                  <div
-                    checked={true}
-                    className="sc-fHxwqH cndiV"
-                  />
-                  <div
-                    className="sc-iQtOjA kkliOI"
-                  >
-                    Manifest
-                  </div>
-                </div>
-              </label>
-              <label
-                className="sc-dxgOiQ nGBmb"
+              </div>
+              <div
+                className="sc-jVODtj bFHVqc"
               >
                 <div
-                  className="sc-kpOJdX gglwGS"
-                >
-                  Manifest URL
-                </div>
-                <input
-                  name="manifest_url"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  placeholder="Enter manifest url"
-                  type="text"
-                  value="https://openfin.fintechstudios.com/openfin_config.json"
+                  checked={true}
+                  className="sc-gPWkxV hwySNu"
                 />
-              </label>
-            </div>
+                <div
+                  className="sc-fzsDOv hSyPxr"
+                >
+                  Manifest
+                </div>
+              </div>
+            </label>
             <label
               className="sc-dxgOiQ nGBmb"
             >
               <div
                 className="sc-kpOJdX gglwGS"
               >
-                App Title
+                Manifest URL
               </div>
               <input
-                name="title"
+                name="manifest_url"
                 onBlur={[Function]}
                 onChange={[Function]}
-                placeholder="Enter app title"
+                placeholder="Enter manifest url"
                 type="text"
-                value="FinTech Studios"
+                value="https://openfin.fintechstudios.com/openfin_config.json"
               />
             </label>
-            <div
-              className="sc-iSDuPN eQFjgF"
-              height="144px"
-            >
-              <label
-                className="sc-dxgOiQ cLuaXs"
-              >
-                <div
-                  className="sc-kpOJdX gglwGS"
-                >
-                  App Shortcut
-                </div>
-                <div
-                  className="sc-ePZHVD dkmxFV"
-                >
-                  <div
-                    className="sc-gipzik jmhvsi"
-                    size={68}
-                  >
-                    <div
-                      className="sc-csuQGl SVzaJ"
-                      size={68}
-                    />
-                  </div>
-                  <div
-                    className="sc-likbZx isGPDE"
-                  >
-                    <div
-                      className="sc-eKZiaR SZken"
-                    >
-                      64x64
-                    </div>
-                    <div
-                      className="sc-ifAKCX fshHDp"
-                      color="#E7E7E7"
-                      onClick={[Function]}
-                      size={20}
-                    />
-                  </div>
-                </div>
-              </label>
-              <label
-                className="sc-dxgOiQ nGBmb"
-              >
-                <div
-                  className="sc-kpOJdX gglwGS"
-                >
-                  Description
-                </div>
-                <textarea
-                  name="description"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  placeholder="Enter description"
-                  type="text"
-                  value="Using cutting edge artificial intelligence and machine learning, FTS delivers actionable news, research, market analytics, and analytics from millions of sources."
-                />
-              </label>
-            </div>
           </div>
-        </div>
-        <div
-          className="sc-hqyNC hXSrbm"
-        >
-          <div
-            className="sc-kvZOFW jextin"
-          >
-            <button
-              className="sc-kAzzGY gKySrU"
-              disabled={true}
-              type="submit"
-              width={128}
-            >
-              Save
-            </button>
-            <button
-              className="sc-kAzzGY gKySrU"
-              onClick={[Function]}
-              type="button"
-              width={128}
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-      </form>
-      <div
-        className="sc-fZwumE kAhFqP"
-      >
-        <div
-          className="sc-jbKcbu fUfPqM"
-        >
-          <div
-            className="sc-dNLxif jctmEa"
+          <label
+            className="sc-dxgOiQ nGBmb"
           >
             <div
-              className="sc-jqCOkK kpsuvn"
+              className="sc-kpOJdX gglwGS"
             >
-              There was an error trying to update FinTech Studios:  Please try again.
+              App Title
             </div>
-            <div
-              className="sc-uJMKN grZbwL sc-ifAKCX kCLMLC"
-              color="#E7E7E7"
-              onClick={[Function]}
-              size={25}
+            <input
+              name="title"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Enter app title"
+              type="text"
+              value="FinTech Studios"
             />
+          </label>
+          <div
+            className="sc-kvZOFW fWAjoW"
+            height="144px"
+          >
+            <label
+              className="sc-dxgOiQ cLuaXs"
+            >
+              <div
+                className="sc-kpOJdX gglwGS"
+              >
+                App Shortcut
+              </div>
+              <div
+                className="sc-cpmLhU gDXbAD"
+              >
+                <div
+                  className="sc-gipzik jmhvsi"
+                  size={68}
+                >
+                  <div
+                    className="sc-csuQGl SVzaJ"
+                    size={68}
+                  />
+                </div>
+                <div
+                  className="sc-dymIpo dEKsWm"
+                >
+                  <div
+                    className="sc-bnXvFD ldcbis"
+                  >
+                    64x64
+                  </div>
+                  <div
+                    className="sc-ifAKCX fshHDp"
+                    color="#E7E7E7"
+                    onClick={[Function]}
+                    size={20}
+                  />
+                </div>
+              </div>
+            </label>
+            <label
+              className="sc-dxgOiQ nGBmb"
+            >
+              <div
+                className="sc-kpOJdX gglwGS"
+              >
+                Description
+              </div>
+              <textarea
+                name="description"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter description"
+                type="text"
+                value="Using cutting edge artificial intelligence and machine learning, FTS delivers actionable news, research, market analytics, and analytics from millions of sources."
+              />
+            </label>
           </div>
         </div>
       </div>
-    </div>
+      <div
+        className="sc-bMvGRv lbuJOf"
+      >
+        <div
+          className="sc-rBLzX iHxlYT"
+        >
+          <button
+            className="sc-kAzzGY gKySrU"
+            disabled={true}
+            type="submit"
+            width={128}
+          >
+            Save
+          </button>
+          <button
+            className="sc-kAzzGY jWQqYu"
+            onClick={[Function]}
+            type="button"
+            width={128}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
   <button
     onClick={[Function]}
@@ -380,18 +333,15 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                   }
                 >
                   &lt;
-                  EditAppForm
+                  Unknown
                 </span>
                 <span>
                   <span>
-                    <span>
-                      <br />
-                        
-                    </span>
+                     
                     <span
                       style={Object {}}
                     >
-                      app
+                      initialValues
                     </span>
                     <span>
                       =
@@ -843,40 +793,7 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                     </span>
                   </span>
                   <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      appId
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        "
-                        <span
-                          style={
-                            Object {
-                              "color": "#22a",
-                              "wordBreak": "break-word",
-                            }
-                          }
-                        >
-                          2
-                        </span>
-                        "
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
+                     
                     <span
                       style={Object {}}
                     >
@@ -902,14 +819,11 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                     </span>
                   </span>
                   <span>
-                    <span>
-                      <br />
-                        
-                    </span>
+                     
                     <span
                       style={Object {}}
                     >
-                      handleDelete
+                      handleSubmitValues
                     </span>
                     <span>
                       =
@@ -924,99 +838,12 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
                             }
                           }
                         >
-                          handleDelete
+                          handleSubmitValues
                         </span>
                         }
                       </span>
                     </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      handleSuccess
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          handleSuccess
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      onEscDown
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          onEscDown
-                        </span>
-                        }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      updateApp
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          updateApp
-                        </span>
-                        }
-                      </span>
-                    </span>
-                    <br />
+                     
                   </span>
                 </span>
                 <span
@@ -1075,7 +902,7 @@ exports[`Storyshots Admin Components/EditAppForm default 1`] = `
               }
             >
               "
-              EditAppForm
+              
               " Component
             </h2>
             <small>

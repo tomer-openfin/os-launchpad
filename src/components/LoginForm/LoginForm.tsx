@@ -76,7 +76,7 @@ class LoginForm extends React.Component<Props> {
         </Label>
 
         <Row>
-          <Button>{isSubmitting ? <Loading size={15} /> : 'Log In'}</Button>
+          <Button disabled={isSubmitting}>{isSubmitting ? <Loading size={15} /> : 'Log In'}</Button>
 
           <RouterLink to={ROUTES.FORGOT_PASSWORD}>Forgot Password?</RouterLink>
         </Row>

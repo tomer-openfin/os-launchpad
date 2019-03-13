@@ -22,27 +22,27 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
       }
     >
       <div
-        className="sc-iQKALj hCvnaB"
+        className="sc-bwCtUz dmisKE"
         orientation="horizontal"
         size={162}
       >
         <div
-          className="sc-ibxdXY PaQab"
+          className="sc-RefOD rSVUm"
           orientation="horizontal"
         >
           <div
-            className="sc-eXEjpC bqShHC sc-ifAKCX fshHDp"
+            className="sc-ibxdXY jxpGTM sc-ifAKCX fshHDp"
             color="#E7E7E7"
             onClick={[Function]}
             size={20}
           />
         </div>
         <div
-          className="sc-RefOD ewfwfz"
+          className="sc-iQKALj gJEbaw"
           orientation="horizontal"
         >
           <div
-            className="sc-kIPQKe YvTXc"
+            className="sc-eXEjpC eUCYuI"
             color="#504CFF"
           >
             <div
@@ -53,7 +53,7 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
               title="Logout"
             />
             <div
-              className="sc-esjQYD fQwcnI sc-ifAKCX jDsLLK"
+              className="sc-kIPQKe iKcgnq sc-ifAKCX jDsLLK"
               color="#504CFF"
               disabled={true}
               size={25}
@@ -61,7 +61,7 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
           </div>
         </div>
         <div
-          className="sc-RefOD ewfwfz"
+          className="sc-iQKALj gJEbaw"
           orientation="horizontal"
         >
           <div
@@ -73,7 +73,7 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
           />
         </div>
         <div
-          className="sc-RefOD hnhRCx"
+          className="sc-iQKALj lplwsu"
           orientation="horizontal"
         >
           <div
@@ -86,11 +86,11 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
           />
         </div>
         <div
-          className="sc-RefOD hnhRCx"
+          className="sc-iQKALj lplwsu"
           orientation="horizontal"
         >
           <div
-            className="sc-kIPQKe ijRTWh"
+            className="sc-eXEjpC iZKeZv"
             color="#E7E7E7"
           >
             <div
@@ -102,7 +102,7 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
               title="Workspaces"
             />
             <div
-              className="sc-esjQYD fQwcnI sc-ifAKCX fUbaLX"
+              className="sc-kIPQKe iKcgnq sc-ifAKCX fUbaLX"
               color="#E7E7E7"
               disabled={false}
               onClick={[Function]}
@@ -111,7 +111,7 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
           </div>
         </div>
         <div
-          className="sc-RefOD hnhRCx"
+          className="sc-iQKALj lplwsu"
           orientation="horizontal"
         >
           <div

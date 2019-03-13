@@ -1,13 +1,12 @@
 import { connect } from 'react-redux';
 
-import { deleteAdminAppRequest } from '../../redux/admin';
-import { getAppById } from '../../redux/apps';
+import { deleteAdminAppRequest, getAdminAppFromId } from '../../redux/admin';
 import { State } from '../../redux/types';
 
 import ConfirmAppDelete from './ConfirmAppDelete';
 
 const mapState = (state: State, ownProps) => ({
-  app: getAppById(state, ownProps.id),
+  app: getAdminAppFromId(state, ownProps.appId),
 });
 
 const mapDispatch = {

@@ -30,6 +30,7 @@ export const ButtonWrapper = styled.div`
 export const CopyWrapper = styled.div`
   padding: 36px 19px 24px 20px;
   width: 100%;
+  flex: 1;
 `;
 
 export const Copy = styled.div`

@@ -12,5 +12,5 @@ const handleCancel = action('handleCancel');
 const handleSuccess = action('handleSuccess');
 
 storiesOf(`${CATEGORIES.ADMIN}ConfirmAppDelete`, module).add('default', () => (
-  <ConfirmAppDelete app={AppData[0]} deleteApp={deleteApp} id="1" handleCancel={handleCancel} handleSuccess={handleSuccess} />
+  <ConfirmAppDelete app={AppData[0]} deleteApp={deleteApp} handleCancel={handleCancel} handleSuccess={handleSuccess} />
 ));

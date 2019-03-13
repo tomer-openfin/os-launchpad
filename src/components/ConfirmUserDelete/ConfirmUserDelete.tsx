@@ -8,24 +8,29 @@ interface Props {
   deleteUser: DispatchRequest<User>;
   handleCancel: () => void;
   handleSuccess: () => void;
-  id: User['id'];
   user: User;
 }
 
-const ConfirmUserDelete = ({ deleteUser, handleCancel, handleSuccess, user }: Props) => {
-  if (!user) return null;
+class ConfirmUserDelete extends React.Component<Props> {
+  shouldComponentUpdate(nextProps: Props) {
+    return this.props.user && !nextProps.user ? false : true;
+  }
 
-  return (
-    <AdminConfirmation
-      handleCancel={handleCancel}
-      headingText="Delete User"
-      confirmationText={`Are you sure you want to delete the user:\n${user.firstName} ${user.lastName}?`}
-      confirmCtaText="Delete"
-      errorMessage={`Sorry, there was an error trying to delete ${user.firstName} ${user.lastName}`}
-      onConfirm={confirmHandlerCreator(deleteUser, user)}
-      onConfirmSuccess={handleSuccess}
-    />
-  );
-};
+  render() {
+    const { deleteUser, handleCancel, handleSuccess, user } = this.props;
+
+    return (
+      <AdminConfirmation
+        handleCancel={handleCancel}
+        headingText="Delete User"
+        confirmationText={`Are you sure you want to delete the user:\n${user.firstName} ${user.lastName}?`}
+        confirmCtaText="Delete"
+        errorMessage={`Sorry, there was an error trying to delete ${user.firstName} ${user.lastName}`}
+        onConfirm={confirmHandlerCreator(deleteUser, user)}
+        onConfirmSuccess={handleSuccess}
+      />
+    );
+  }
+}
 
 export default ConfirmUserDelete;

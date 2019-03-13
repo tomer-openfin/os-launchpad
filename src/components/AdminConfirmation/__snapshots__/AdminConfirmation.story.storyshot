@@ -28,7 +28,7 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
           </div>
         </div>
         <div
-          className="sc-iujRgT bRYfux"
+          className="sc-iujRgT dbKUy"
         >
           <div
             className="sc-GMQeP fmmqNB"
@@ -40,7 +40,7 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
           className="sc-bAeIUo etKsBD"
         >
           <button
-            className="sc-kAzzGY dhNKxb"
+            className="sc-kAzzGY idQxoH"
             width={153}
           >
             Cancel
@@ -208,7 +208,7 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
                   }
                 >
                   &lt;
-                  AdminConfirmation
+                  ComponentWithResponseState
                 </span>
                 <span>
                   <span>
@@ -477,7 +477,7 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
               }
             >
               "
-              AdminConfirmation
+              ComponentWithResponseState
               " Component
             </h2>
             <small>
@@ -519,7 +519,7 @@ exports[`Storyshots Admin Components/AdminConfirmation view 1`] = `
           </div>
         </div>
         <div
-          className="sc-iujRgT bRYfux"
+          className="sc-iujRgT dbKUy"
         >
           <div
             className="sc-GMQeP fmmqNB"
@@ -531,7 +531,7 @@ exports[`Storyshots Admin Components/AdminConfirmation view 1`] = `
           className="sc-bAeIUo etKsBD"
         >
           <button
-            className="sc-kAzzGY dhNKxb"
+            className="sc-kAzzGY idQxoH"
             width={153}
           >
             Cancel

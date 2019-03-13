@@ -16,20 +16,21 @@ import {
 } from './AdminUsers.css';
 
 import { User } from '../../types/commons';
+
 import { sharedAdminFormsCSSTransitionProps } from '../../utils/adminForms';
 import { memoizeSort } from '../../utils/memoize';
 import noop from '../../utils/noop';
 import { ROUTES } from '../Router/consts';
+import { filterUserList, sortUserDatum } from './helpers';
 
 import { Row } from '../AppDirectory';
 import { ButtonLink } from '../Button';
 import ConfirmUserDelete from '../ConfirmUserDelete';
-import EditUserForm from '../EditUserForm';
+import EditUserWindow from '../EditUserWindow';
 import Modal from '../Modal';
-import NewUserForm from '../NewUserForm';
+import NewUserWindow from '../NewUserWindow';
 import { SearchInputWithState } from '../SearchInput';
 import UserCard from '../UserCard';
-import { filterUserList, sortUserDatum } from './helpers';
 
 export enum Stage {
   Default = 'default',
@@ -123,19 +124,19 @@ class AdminUsers extends React.PureComponent<Props, State> {
 
         <CSSTransition in={currentAction === Stage.New} {...sharedAdminFormsCSSTransitionProps}>
           <AddEditWrapper>
-            <NewUserForm handleCancel={handleClose} handleSuccess={handleClose} />
+            <NewUserWindow handleCancel={handleClose} handleSuccess={handleClose} />
           </AddEditWrapper>
         </CSSTransition>
 
         <CSSTransition in={currentAction === Stage.Edit} {...sharedAdminFormsCSSTransitionProps}>
           <AddEditWrapper>
-            <EditUserForm id={id} handleCancel={handleClose} handleDelete={handleDelete} handleSuccess={handleClose} />
+            <EditUserWindow userId={id} handleCancel={handleClose} handleDelete={handleDelete} handleSuccess={handleClose} />
           </AddEditWrapper>
         </CSSTransition>
 
         {currentAction === Stage.Delete && (
           <Modal handleClose={!handleClose ? noop : handleClose}>
-            <ConfirmUserDelete handleCancel={handleClose} handleSuccess={handleClose} id={id} />
+            <ConfirmUserDelete handleCancel={handleClose} handleSuccess={handleClose} userId={id} />
           </Modal>
         )}
 

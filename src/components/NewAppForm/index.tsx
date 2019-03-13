@@ -1,3 +1,5 @@
-import NewAppFormContainer from './NewAppFormContainer';
+import NewAppForm from './NewAppForm';
 
-export default NewAppFormContainer;
+export * from './NewAppForm';
+
+export default NewAppForm;

@@ -11,7 +11,7 @@ exports[`Storyshots Admin Components/ImageUpload default 1`] = `
     }
   >
     <div
-      className="sc-gVyKpa bIkYBD"
+      className="sc-CtfFt iTBOis"
     >
       <div
         className="sc-cSHVUG ksrKew"
@@ -19,47 +19,46 @@ exports[`Storyshots Admin Components/ImageUpload default 1`] = `
         width="100%"
       >
         <div
-          className="sc-cmTdod fOaOac"
+          className="sc-jwKygS kcpEBO"
         >
           <div
-            className="sc-jwKygS ktOnU"
+            className="sc-btzYZH fXSxlS"
           >
             <div
-              className="sc-btzYZH dBwXjd"
+              className="sc-lhVmIH dDmlwM"
             >
               Upload new image asset
             </div>
           </div>
         </div>
         <div
-          className="sc-eXNvrr kGmMFO"
+          className="sc-laTMn jsYbRA"
         >
           <div
-            className="sc-kQsIoO flqjAx"
+            className="sc-fjmCvl kUmGlX"
             onClick={[Function]}
           >
             File Upload
           </div>
           <div
-            className="sc-kQsIoO gtiHGD"
+            className="sc-fjmCvl cEEtCx"
             onClick={[Function]}
           >
             By URL
           </div>
         </div>
         <div
-          className="sc-cpmKsF irOYGe"
+          className="sc-hGoxap cjHBTt"
         >
           <form
-            className="sc-ksYbfQ eCIUEJ"
-            onReset={[Function]}
+            className="sc-ksYbfQ jtXRRF"
             onSubmit={[Function]}
           >
             <div
               className="sc-hmzhuo dudMzh"
             >
               <div
-                className="sc-frDJqD cnrcjF"
+                className="sc-frDJqD hwLFCw"
               >
                 <label
                   className="sc-gisBJw foFoAm"
@@ -107,11 +106,34 @@ exports[`Storyshots Admin Components/ImageUpload default 1`] = `
               </div>
             </div>
             <div
-              className="sc-hqyNC deRLMs"
-              color="rgba(0,0,0,0)"
+              className="sc-bHwgHz bonREi"
             >
               <div
-                className="sc-kvZOFW jextin"
+                className="sc-dNLxif hOnpal"
+              >
+                <div
+                  className="sc-jqCOkK iszfDu"
+                >
+                  <div
+                    className="sc-uJMKN fJOUOk"
+                  >
+                    Image failed to save: undefined Please try again.
+                  </div>
+                  <div
+                    className="sc-bbmXgH bDWBYO sc-ifAKCX kCLMLC"
+                    color="#E7E7E7"
+                    onClick={[Function]}
+                    size={25}
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="sc-bMvGRv PPXyF"
+              color="#3A3A3A"
+            >
+              <div
+                className="sc-rBLzX iHxlYT"
               >
                 <button
                   className="sc-kAzzGY gKySrU"
@@ -122,7 +144,7 @@ exports[`Storyshots Admin Components/ImageUpload default 1`] = `
                   Save
                 </button>
                 <button
-                  className="sc-kAzzGY gKySrU"
+                  className="sc-kAzzGY jWQqYu"
                   onClick={[Function]}
                   type="button"
                   width={128}

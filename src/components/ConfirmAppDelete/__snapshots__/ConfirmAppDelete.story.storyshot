@@ -28,7 +28,7 @@ exports[`Storyshots Admin Components/ConfirmAppDelete default 1`] = `
           </div>
         </div>
         <div
-          className="sc-iujRgT bRYfux"
+          className="sc-iujRgT dbKUy"
         >
           <div
             className="sc-GMQeP fmmqNB"
@@ -41,7 +41,7 @@ FinTech Studios?
           className="sc-bAeIUo etKsBD"
         >
           <button
-            className="sc-kAzzGY dhNKxb"
+            className="sc-kAzzGY idQxoH"
             onClick={[Function]}
             width={153}
           >
@@ -698,36 +698,6 @@ FinTech Studios?
                           deleteApp
                         </span>
                         }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      id
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        "
-                        <span
-                          style={
-                            Object {
-                              "color": "#22a",
-                              "wordBreak": "break-word",
-                            }
-                          }
-                        >
-                          1
-                        </span>
-                        "
                       </span>
                     </span>
                   </span>

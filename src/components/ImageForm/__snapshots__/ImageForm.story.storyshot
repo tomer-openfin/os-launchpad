@@ -11,15 +11,14 @@ exports[`Storyshots Admin Components/ImageForm default 1`] = `
     }
   >
     <form
-      className="sc-ksYbfQ eCIUEJ"
-      onReset={[Function]}
+      className="sc-ksYbfQ jtXRRF"
       onSubmit={[Function]}
     >
       <div
         className="sc-hmzhuo dudMzh"
       >
         <div
-          className="sc-frDJqD cnrcjF"
+          className="sc-frDJqD hwLFCw"
         >
           <label
             className="sc-gisBJw foFoAm"
@@ -67,11 +66,34 @@ exports[`Storyshots Admin Components/ImageForm default 1`] = `
         </div>
       </div>
       <div
-        className="sc-hqyNC deRLMs"
-        color="rgba(0,0,0,0)"
+        className="sc-bHwgHz bonREi"
       >
         <div
-          className="sc-kvZOFW jextin"
+          className="sc-dNLxif hOnpal"
+        >
+          <div
+            className="sc-jqCOkK iszfDu"
+          >
+            <div
+              className="sc-uJMKN fJOUOk"
+            >
+              
+            </div>
+            <div
+              className="sc-bbmXgH bDWBYO sc-ifAKCX kCLMLC"
+              color="#E7E7E7"
+              onClick={[Function]}
+              size={25}
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="sc-bMvGRv PPXyF"
+        color="#3A3A3A"
+      >
+        <div
+          className="sc-rBLzX iHxlYT"
         >
           <button
             className="sc-kAzzGY gKySrU"
@@ -82,7 +104,7 @@ exports[`Storyshots Admin Components/ImageForm default 1`] = `
             Save
           </button>
           <button
-            className="sc-kAzzGY gKySrU"
+            className="sc-kAzzGY jWQqYu"
             onClick={[Function]}
             type="button"
             width={128}
@@ -381,9 +403,147 @@ exports[`Storyshots Admin Components/ImageForm default 1`] = `
               ImageForm
               " Component
             </h2>
-            <small>
-              No propTypes defined!
-            </small>
+            <table
+              className="css-1uhv8nx e1vdo5380"
+            >
+              <thead>
+                <tr>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    property
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    propType
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    required
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    default
+                  </th>
+                  <th
+                    className="css-11b5gui e6fp4ir1"
+                  >
+                    description
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    message
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#22a",
+                          "wordBreak": "break-word",
+                        }
+                      }
+                    >
+                      
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    resetResponseError
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#170",
+                        }
+                      }
+                    >
+                      noop
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+                <tr>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    responseError
+                  </td>
+                  <td
+                    className="css-1qcb1f7 e6fp4ir0"
+                  >
+                    <span>
+                      unknown
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    -
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#a11",
+                        }
+                      }
+                    >
+                      false
+                    </span>
+                  </td>
+                  <td
+                    className="css-11b5gui e6fp4ir0"
+                  />
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
