@@ -35,23 +35,5 @@ pipeline {
                 sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*' --include 'app.json' --content-type 'application/json'"
             }
         }
-
-        stage ('build-prod') {
-            when { branch "master" }
-            steps {
-                script {
-                    GIT_SHORT_SHA = sh ( script: "git rev-parse --short HEAD", returnStdout: true ).trim()
-                    VERSION = sh ( script: "node -pe \"require('./package.json').version\"", returnStdout: true ).trim()
-                    S3_LOC = env.OS_LAUNCHPAD_S3_ROOT + '-staging'
-                }
-                sh "npm i"
-                sh "ENTERPRISE=true NODE_ENV=production DEPLOY_LOCATION=\"https://os-staging.openfin.co\" npm run build"
-                sh "echo ${GIT_SHORT_SHA} > ./build/SHA.txt"
-                sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*.svg' --exclude 'app.json' --exclude 'index.html'"
-                sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*' --include 'index.html' --content-type 'text/html; charset=utf-8'"
-                sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*' --include '*.svg' --content-type 'image/svg+xml'"
-                sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*' --include 'app.json' --content-type 'application/json'"
-            }
-        }
     }
 }
