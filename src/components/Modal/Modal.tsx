@@ -3,16 +3,14 @@ import * as ReactDOM from 'react-dom';
 
 import { Overlay } from './Modal.css';
 
-const modals = document.getElementById('modals');
-
 interface Props {
   children?: React.ReactNode;
-  handleClose: Function;
+  handleClose: () => void;
 }
 
 const OVERLAY_CLASS = 'overlay';
 
-const createHandleClose = (cb: Function) => (event: React.SyntheticEvent<HTMLDivElement>) => {
+const createHandleClose = (cb: () => void) => (event: React.SyntheticEvent<HTMLDivElement>) => {
   // Prevent event from bubbling to other overlays
   event.stopPropagation();
 
@@ -22,6 +20,7 @@ const createHandleClose = (cb: Function) => (event: React.SyntheticEvent<HTMLDiv
 };
 
 const Modal = ({ children, handleClose }: Props) => {
+  const modals = document.getElementById('modals');
   if (!modals) {
     // tslint:disable-next-line:no-console
     console.log('Modal root div not found.');

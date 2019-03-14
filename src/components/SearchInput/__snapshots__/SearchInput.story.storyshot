@@ -11,16 +11,16 @@ exports[`Storyshots UI Components/SearchInput default 1`] = `
     }
   >
     <div
-      className="sc-fYxtnH siyJx"
+      className="sc-tilXH dsNRsR"
       width={291}
     >
       <div
-        className="sc-gGBfsJ dMPHqo sc-ifAKCX cycuRH"
+        className="sc-jnlKLf boMbTX sc-ifAKCX eakbtZ"
         color="#E7E7E7"
         size={35}
       />
       <input
-        className="sc-tilXH fnObrC"
+        className="sc-hEsumM etPRpk"
         onChange={[Function]}
         placeholder="Search..."
         type="text"
@@ -408,16 +408,16 @@ exports[`Storyshots UI Components/SearchInput with State 1`] = `
     }
   >
     <div
-      className="sc-fYxtnH siyJx"
+      className="sc-tilXH dsNRsR"
       width={291}
     >
       <div
-        className="sc-gGBfsJ dMPHqo sc-ifAKCX cycuRH"
+        className="sc-jnlKLf boMbTX sc-ifAKCX eakbtZ"
         color="#E7E7E7"
         size={35}
       />
       <input
-        className="sc-tilXH fnObrC"
+        className="sc-hEsumM etPRpk"
         name="nodejs"
         onChange={[Function]}
         placeholder="Search..."

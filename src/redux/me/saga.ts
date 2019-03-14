@@ -1,4 +1,5 @@
 import { Application, Window } from '@giantmachines/redux-openfin';
+import { AnyAction } from 'redux';
 import { all, call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import { ErrorResponse } from '../../types/commons';
@@ -253,7 +254,7 @@ function* watchSaveSettingsRequest() {
   yield put(saveSettingsSuccess());
 }
 
-function* watchUpdateLauncherApps(delay: number) {
+function* watchUpdateLauncherApps(delay: number, _: AnyAction) {
   yield put(reboundLauncherRequest(true, delay));
 
   yield put(saveSettingsRequest());

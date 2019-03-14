@@ -18,16 +18,16 @@ exports[`Storyshots Components/LayoutsListItem default 1`] = `
       }
     >
       <div
-        className="sc-gJWqzi dywdEK"
+        className="sc-dliRfk hVRsWp"
       >
         <li
-          className="sc-jzgbtB jXdnwt"
+          className="sc-cqCuEk ftMyaX"
           onClick={[Function]}
         >
           layout
         </li>
         <div
-          className="sc-ifAKCX bwWvNt"
+          className="sc-ifAKCX iEwFmE"
           color="#E7E7E7"
           onClick={[Function]}
           size={14}

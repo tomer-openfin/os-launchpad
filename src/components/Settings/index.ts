@@ -1,9 +1,11 @@
 import * as Story from './Settings.story';
 
-import Component from './SettingsContainer';
+import SettingsContainer from './SettingsContainer';
 
 export * from './Settings.css';
+export * from './Settings';
+export * from './utils';
 
 export { Story };
 
-export default Component;
+export default SettingsContainer;

@@ -1,22 +1,56 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 
-import { DeleteIconLink, EditIconLink, Footer, HeadingWrapper, LinkWrapper, ListWrapper, SortButton, SortHeader, SortWrapper, Wrapper } from './AdminUsers.css';
+import {
+  AddEditWrapper,
+  DeleteIconLink,
+  EditIconLink,
+  Footer,
+  HeadingWrapper,
+  LinkWrapper,
+  ListWrapper,
+  SortButton,
+  SortHeader,
+  SortWrapper,
+  Wrapper,
+} from './AdminUsers.css';
 
 import { User } from '../../types/commons';
 
+import { sharedAdminFormsCSSTransitionProps } from '../../utils/adminForms';
 import { memoizeSort } from '../../utils/memoize';
-import { doesCurrentPathMatch } from '../../utils/routeHelpers';
-import { ADMIN_USERS_ROUTES, ROUTES } from '../Router/consts';
+import noop from '../../utils/noop';
+import { ROUTES } from '../Router/consts';
+import { filterUserList, sortUserDatum } from './helpers';
 
 import { Row } from '../AppDirectory';
 import { ButtonLink } from '../Button';
+import ConfirmUserDelete from '../ConfirmUserDelete';
+import EditUserWindow from '../EditUserWindow';
 import Modal from '../Modal';
+import NewUserWindow from '../NewUserWindow';
 import { SearchInputWithState } from '../SearchInput';
 import UserCard from '../UserCard';
-import { filterUserList, sortUserDatum } from './helpers';
 
-const ADMIN_USERS_PATHS = Object.values(ADMIN_USERS_ROUTES);
+export enum Stage {
+  Default = 'default',
+  Delete = 'delete',
+  Edit = 'edit',
+  New = 'new',
+}
+
+export interface Props {
+  currentAction?: string;
+  handleClose?: () => void;
+  handleDelete?: () => void;
+  id?: string;
+  users?: User[];
+}
+
+export interface State {
+  search: string;
+  sort: keyof User;
+}
 
 const SORT_VALUES: { [keys: string]: keyof User } = {
   ['Admin']: 'isAdmin',
@@ -27,18 +61,9 @@ const SORT_VALUES: { [keys: string]: keyof User } = {
 
 export const defaultSortKey = SORT_VALUES['Last Name'];
 
-interface Props extends RouteComponentProps {
-  users: User[];
-}
-
-export interface State {
-  search: string;
-  sort: keyof User;
-}
-
 export const defaultState: State = {
   search: '',
-  sort: defaultSortKey,
+  sort: SORT_VALUES['Last Name'],
 };
 
 const defaultProps: Partial<Props> = {
@@ -50,7 +75,7 @@ class AdminUsers extends React.PureComponent<Props, State> {
 
   sortUserData = memoizeSort((userData: User[], sortKey: keyof User): User[] => userData.slice().sort(sortUserDatum(sortKey)));
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = defaultState;
@@ -67,21 +92,19 @@ class AdminUsers extends React.PureComponent<Props, State> {
   // TODO: only sort on sort change and props update instead of every render,
   // store derived (sorted) state to filter in render
 
-  renderButtons = (user: User) => {
-    return (
-      <LinkWrapper>
-        <EditIconLink to={{ pathname: ROUTES.ADMIN_USERS_EDIT, state: user }} />
+  renderButtons = (user: User) => (
+    <LinkWrapper>
+      <EditIconLink to={`${ROUTES.ADMIN_USERS_EDIT}${user.id}`} />
 
-        <DeleteIconLink to={{ pathname: ROUTES.ADMIN_USERS_DELETE, state: user }} />
-      </LinkWrapper>
-    );
-  };
+      <DeleteIconLink to={`${ROUTES.ADMIN_USERS_DELETE}${user.id}`} />
+    </LinkWrapper>
+  );
 
   render() {
-    const { children, history, users } = this.props;
+    const { currentAction, handleClose, handleDelete, id, users } = this.props;
     const { search, sort } = this.state;
 
-    const sortedUsers = this.sortUserData(users, sort);
+    const sortedUsers = users ? this.sortUserData(users, sort) : users;
 
     return (
       <Wrapper>
@@ -92,14 +115,30 @@ class AdminUsers extends React.PureComponent<Props, State> {
         </HeadingWrapper>
 
         <ListWrapper>
-          {filterUserList(search, sortedUsers).map(user => (
+          {filterUserList(search, sortedUsers).map((user: User) => (
             <Row key={user.id}>
               <UserCard user={user} ctas={this.renderButtons(user)} />
             </Row>
           ))}
         </ListWrapper>
 
-        {doesCurrentPathMatch(ADMIN_USERS_PATHS, location.pathname) && <Modal handleClose={history.goBack}>{children}</Modal>}
+        <CSSTransition in={currentAction === Stage.New} {...sharedAdminFormsCSSTransitionProps}>
+          <AddEditWrapper>
+            <NewUserWindow handleCancel={handleClose} handleSuccess={handleClose} />
+          </AddEditWrapper>
+        </CSSTransition>
+
+        <CSSTransition in={currentAction === Stage.Edit} {...sharedAdminFormsCSSTransitionProps}>
+          <AddEditWrapper>
+            <EditUserWindow userId={id} handleCancel={handleClose} handleDelete={handleDelete} handleSuccess={handleClose} />
+          </AddEditWrapper>
+        </CSSTransition>
+
+        {currentAction === Stage.Delete && (
+          <Modal handleClose={!handleClose ? noop : handleClose}>
+            <ConfirmUserDelete handleCancel={handleClose} handleSuccess={handleClose} userId={id} />
+          </Modal>
+        )}
 
         <Footer>
           <SortWrapper>

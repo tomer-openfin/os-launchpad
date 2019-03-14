@@ -29,7 +29,7 @@ export const Label = styled.label<LabelProps>`
   width: 44px;
 
   ${({ checked }) => `
-    background-color: ${checked ? Color.VENUS : Color.MERCURY};
+    background-color: ${checked ? Color.EARTH : Color.MERCURY};
     opacity: ${checked ? 1 : 0.75};
 
     &:hover {

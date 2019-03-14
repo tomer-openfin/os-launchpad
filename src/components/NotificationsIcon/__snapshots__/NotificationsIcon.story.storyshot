@@ -11,17 +11,17 @@ exports[`Storyshots Components/NotificationsIcon default 1`] = `
     }
   >
     <div
-      className="sc-hzNEM kTTUup"
+      className="sc-bGbJRg iROQIB"
     >
       <div
-        className="sc-ifAKCX bYrsMz"
+        className="sc-ifAKCX cWSJJB"
         color="#FBC23C"
         disabled={false}
         onClick={[Function]}
         size="42px"
       />
       <div
-        className="sc-iBEsjs kZgRuA"
+        className="sc-jtRlXQ kUPYKX"
       >
         23
       </div>

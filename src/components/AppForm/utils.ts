@@ -14,9 +14,7 @@ export const validationSchema = Yup.object().shape({
   }),
   contexts: Yup.array().notRequired(), // enable when bring back contexts
   description: Yup.string().required('Required'),
-  icon: Yup.string()
-    .url('Must be a valid URL')
-    .required('Required'),
+  icon: Yup.string().required('Required'),
   id: Yup.string().notRequired(),
   images: Yup.array().notRequired(),
   intents: Yup.array().notRequired(), // enable when bring back contexts

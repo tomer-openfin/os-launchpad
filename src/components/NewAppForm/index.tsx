@@ -1,3 +1,5 @@
-import Component from './NewAppFormContainer';
+import NewAppForm from './NewAppForm';
 
-export default Component;
+export * from './NewAppForm';
+
+export default NewAppForm;

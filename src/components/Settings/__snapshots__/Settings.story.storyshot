@@ -11,7 +11,7 @@ exports[`Storyshots Components/Settings default 1`] = `
     }
   >
     <div
-      className="sc-cooIXK btLfBI"
+      className="sc-ePZHVD eZDRfX"
     >
       <div
         className="sc-cSHVUG ksrKew"
@@ -19,22 +19,22 @@ exports[`Storyshots Components/Settings default 1`] = `
         width="100%"
       >
         <div
-          className="sc-cmTdod fOaOac"
+          className="sc-jwKygS kcpEBO"
         >
           <div
-            className="sc-jwKygS ktOnU"
+            className="sc-btzYZH fXSxlS"
           >
             <div
-              className="sc-btzYZH dBwXjd"
+              className="sc-lhVmIH dDmlwM"
             >
               My Settings
             </div>
           </div>
           <div
-            className="sc-iELTvK jRkgAq"
+            className="sc-cmTdod juKxbP"
           >
             <div
-              className="sc-ifAKCX cWlwzh"
+              className="sc-ifAKCX dMoJHJ"
               color="#E7E7E7"
               onClick={[Function]}
               size={25}
@@ -42,29 +42,29 @@ exports[`Storyshots Components/Settings default 1`] = `
           </div>
         </div>
         <div
-          className="sc-kxynE jzlBPr"
+          className="sc-bEjcJn dFAXkA"
         >
           <div
-            className="sc-fhYwyz hLjrDa"
+            className="sc-hmXxxW gQtAwY"
           >
             <div
-              className="sc-cpmLhU dggWvv"
+              className="sc-giadOv hFblPt"
             >
               <div
-                className="sc-dymIpo dbsRxq"
+                className="sc-fONwsr lbsHaA"
               >
                 Auto-Hide
               </div>
               <div
-                className="sc-bnXvFD fCKWEQ"
+                className="sc-VJcYb jtXXv"
               >
                 <label
                   checked={true}
-                  className="sc-gFaPwZ bqcIdR sc-kkGfuU ktBgro"
+                  className="sc-ipXKqB guMRKD sc-kkGfuU gZRLsT"
                 >
                   <input
                     checked={true}
-                    className="sc-gFaPwZ bqcIdR sc-kEYyzF MbXgx"
+                    className="sc-ipXKqB guMRKD sc-kEYyzF MbXgx"
                     name="autohide-onoff"
                     onChange={[Function]}
                     type="radio"
@@ -74,11 +74,11 @@ exports[`Storyshots Components/Settings default 1`] = `
                 </label>
                 <label
                   checked={false}
-                  className="sc-gFaPwZ bqcIdR sc-kkGfuU lmsevc"
+                  className="sc-ipXKqB guMRKD sc-kkGfuU lmsevc"
                 >
                   <input
                     checked={false}
-                    className="sc-gFaPwZ bqcIdR sc-kEYyzF MbXgx"
+                    className="sc-ipXKqB guMRKD sc-kEYyzF MbXgx"
                     name="autohide-onoff"
                     onChange={[Function]}
                     type="radio"
@@ -89,23 +89,23 @@ exports[`Storyshots Components/Settings default 1`] = `
               </div>
             </div>
             <div
-              className="sc-cpmLhU dggWvv"
+              className="sc-giadOv hFblPt"
             >
               <div
-                className="sc-dymIpo dbsRxq"
+                className="sc-fONwsr lbsHaA"
               >
                 Launcher Size
               </div>
               <div
-                className="sc-bnXvFD fCKWEQ"
+                className="sc-VJcYb jtXXv"
               >
                 <label
                   checked={false}
-                  className="sc-gFaPwZ bqcIdR sc-kkGfuU lmsevc"
+                  className="sc-ipXKqB guMRKD sc-kkGfuU lmsevc"
                 >
                   <input
                     checked={false}
-                    className="sc-gFaPwZ bqcIdR sc-kEYyzF MbXgx"
+                    className="sc-ipXKqB guMRKD sc-kEYyzF MbXgx"
                     name="launcherSize-options"
                     onChange={[Function]}
                     type="radio"
@@ -115,11 +115,11 @@ exports[`Storyshots Components/Settings default 1`] = `
                 </label>
                 <label
                   checked={true}
-                  className="sc-gFaPwZ bqcIdR sc-kkGfuU ktBgro"
+                  className="sc-ipXKqB guMRKD sc-kkGfuU gZRLsT"
                 >
                   <input
                     checked={true}
-                    className="sc-gFaPwZ bqcIdR sc-kEYyzF MbXgx"
+                    className="sc-ipXKqB guMRKD sc-kEYyzF MbXgx"
                     name="launcherSize-options"
                     onChange={[Function]}
                     type="radio"
@@ -130,43 +130,43 @@ exports[`Storyshots Components/Settings default 1`] = `
               </div>
             </div>
             <div
-              className="sc-cpmLhU dggWvv"
+              className="sc-giadOv hFblPt"
             >
               <div
-                className="sc-dymIpo dbsRxq"
+                className="sc-fONwsr lbsHaA"
               >
                 Launcher Location
               </div>
               <div
-                className="sc-bnXvFD fCKWEQ"
+                className="sc-VJcYb jtXXv"
               >
                 <div
-                  className="sc-gojNiO jjfcnx"
+                  className="sc-daURTG fvFprD"
                   size={17}
                 >
                   <button
-                    className="sc-kgoBCf sc-cQFLBn kjoFPc"
+                    className="sc-kgoBCf sc-gojNiO krobUm"
                     direction="top"
                     onClick={[Function]}
                   >
                     Top
                   </button>
                   <button
-                    className="sc-kgoBCf sc-cQFLBn duHwQu"
+                    className="sc-kgoBCf sc-gojNiO HsaDK"
                     direction="left"
                     onClick={[Function]}
                   >
                     Left
                   </button>
                   <button
-                    className="sc-kgoBCf sc-cQFLBn hoaZDW"
+                    className="sc-kgoBCf sc-gojNiO blsLcA"
                     direction="right"
                     onClick={[Function]}
                   >
                     Right
                   </button>
                   <button
-                    className="sc-kgoBCf sc-cQFLBn hltzQp"
+                    className="sc-kgoBCf sc-gojNiO kihWUA"
                     direction="bottom"
                     onClick={[Function]}
                   >
@@ -174,7 +174,7 @@ exports[`Storyshots Components/Settings default 1`] = `
                   </button>
                 </div>
                 <a
-                  className="sc-emmjRN kygcFi"
+                  className="sc-kUaPvJ fQPeUr"
                   href="/settings/launcher-monitor"
                   isDisabled={true}
                   onClick={[Function]}

@@ -18,26 +18,26 @@ exports[`Storyshots Components/MonitorControlsDialog default 1`] = `
       }
     >
       <div
-        className="sc-LKuAh jktshs"
+        className="sc-jeCdPy gZOspx"
       >
         <div
-          className="sc-cmTdod fOaOac"
+          className="sc-jwKygS kcpEBO"
         >
           <div
-            className="sc-jwKygS ktOnU"
+            className="sc-btzYZH fXSxlS"
           >
             <div
-              className="sc-btzYZH dBwXjd"
+              className="sc-lhVmIH dDmlwM"
             >
               MonitorControlsDialog
             </div>
           </div>
         </div>
         <div
-          className="sc-kaNhvL jRjtIO"
+          className="sc-hzDEsm kzxFLW"
         >
           <div
-            className="sc-jKVCRD ecjDee"
+            className="sc-fOICqy IDsIY"
             height={240}
             width={380}
           />

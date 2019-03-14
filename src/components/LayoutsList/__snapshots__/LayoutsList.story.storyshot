@@ -18,27 +18,27 @@ exports[`Storyshots Components/LayoutsList default 1`] = `
       }
     >
       <div
-        className="sc-CtfFt kAmZTm"
+        className="sc-iqzUVk eEApsd"
       >
         <h6
-          className="sc-bMvGRv jxfhgT"
+          className="sc-qrIAp eAuxIe"
         >
-          Recent Layouts
+          Recent Workspaces
         </h6>
         <ul
-          className="sc-hGoxap qpBko"
+          className="sc-iGrrsa fJtHRY"
         >
           <div
-            className="sc-gJWqzi dywdEK"
+            className="sc-dliRfk hVRsWp"
           >
             <li
-              className="sc-jzgbtB jXdnwt"
+              className="sc-cqCuEk ftMyaX"
               onClick={[Function]}
             >
               layout
             </li>
             <div
-              className="sc-ifAKCX bwWvNt"
+              className="sc-ifAKCX iEwFmE"
               color="#E7E7E7"
               onClick={[Function]}
               size={14}
@@ -820,30 +820,30 @@ exports[`Storyshots Components/LayoutsList with Wrapper 1`] = `
       }
     >
       <div
-        className="sc-VJcYb krugsa"
+        className="sc-gmeYpB ecOywv"
       >
         <div
-          className="sc-CtfFt kAmZTm"
+          className="sc-iqzUVk eEApsd"
         >
           <h6
-            className="sc-bMvGRv jxfhgT"
+            className="sc-qrIAp eAuxIe"
           >
-            Recent Layouts
+            Recent Workspaces
           </h6>
           <ul
-            className="sc-hGoxap qpBko"
+            className="sc-iGrrsa fJtHRY"
           >
             <div
-              className="sc-gJWqzi dywdEK"
+              className="sc-dliRfk hVRsWp"
             >
               <li
-                className="sc-jzgbtB jXdnwt"
+                className="sc-cqCuEk ftMyaX"
                 onClick={[Function]}
               >
                 layout
               </li>
               <div
-                className="sc-ifAKCX bwWvNt"
+                className="sc-ifAKCX iEwFmE"
                 color="#E7E7E7"
                 onClick={[Function]}
                 size={14}

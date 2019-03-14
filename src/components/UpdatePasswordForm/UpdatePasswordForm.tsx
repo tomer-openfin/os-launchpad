@@ -1,86 +1,84 @@
-import { FormikActions } from 'formik';
 import * as React from 'react';
-import * as Yup from 'yup';
 
+import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
 import { UpdatePasswordRequestPayload } from '../../redux/me/types';
-import { MetaWithCallbacks } from '../../types/commons';
+import { DispatchRequest } from '../../types/commons';
 
-import Borders from '../Borders';
 import { Wrapper } from './UpdatePasswordForm.css';
 
 import ConfirmPasswordUpdate from '../ConfirmPasswordUpdate';
-import PasswordForm from '../PasswordForm';
-import RequestForm from '../RequestForm';
+import FormWindow from '../FormWindow';
+import PasswordForm, { Values } from '../PasswordForm';
 
-const validationSchema = Yup.object().shape({
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref('newPassword')], 'Passwords must match')
-    .required('Required'),
-  newPassword: Yup.string().required('Required'),
-  password: Yup.string().required('Required'),
-});
-
-interface UpdatePasswordPayload extends UpdatePasswordRequestPayload {
-  confirmPassword: string;
-}
-
-interface Props {
-  updatePassword: Function;
+interface Props extends ResponseProps {
+  handleCancel: () => void;
+  handleConfirm: () => void;
+  handleSuccess: () => void;
+  updatePassword: DispatchRequest<UpdatePasswordRequestPayload>;
 }
 
 interface State {
   showPasswordForm: boolean;
 }
 
+const initialValues: Values = {
+  confirmPassword: '',
+  newPassword: '',
+  password: '',
+};
+
+const defaultState: State = { showPasswordForm: true };
+
 class UpdatePasswordForm extends React.Component<Props, State> {
-  state = {
-    showPasswordForm: true,
+  state = defaultState;
+
+  onSubmitSuccess = () => {
+    const { handleConfirm } = this.props;
+
+    this.setState(
+      {
+        showPasswordForm: false,
+      },
+      handleConfirm,
+    );
   };
 
-  onSubmitSuccess = () =>
-    this.setState({
-      showPasswordForm: false,
+  handleSubmitValues = (formData: Values): Promise<void> => {
+    const { updatePassword, onResponseError, onResponseSuccess } = this.props;
+
+    const { confirmPassword, ...newAndOldPassword } = formData;
+
+    return new Promise(resolve => {
+      updatePassword(newAndOldPassword, {
+        errorCb: onResponseError(resolve),
+        successCb: onResponseSuccess(() => {
+          this.onSubmitSuccess();
+          resolve();
+        }),
+      });
     });
-
-  handleFormSubmit = (payload: UpdatePasswordPayload, meta: MetaWithCallbacks, actions: FormikActions<{}>) => {
-    const { updatePassword } = this.props;
-
-    if (payload.newPassword !== payload.confirmPassword) {
-      actions.setFieldError('confirmPassword', 'Your new password and confirmation password do not match.');
-      actions.setSubmitting(false);
-      return;
-    }
-
-    const { confirmPassword, ...payloadCopy } = payload;
-
-    // submit POST request
-    updatePassword(payloadCopy, meta);
   };
-
-  renderPasswordFormWindow = () => (
-    <Wrapper>
-      <Borders height="100%" width="100%">
-        <RequestForm
-          initialValues={{
-            confirmPassword: '',
-            newPassword: '',
-            password: '',
-          }}
-          headingText="Update Password"
-          errorMessage={`Sorry, there was an error trying to update your password`}
-          submit={this.handleFormSubmit}
-          onSubmitSuccess={this.onSubmitSuccess}
-          render={PasswordForm}
-          validationSchema={validationSchema}
-        />
-      </Borders>
-    </Wrapper>
-  );
 
   render() {
+    const { handleCancel, handleSuccess, resetResponseError, responseError, responseMessage } = this.props;
     const { showPasswordForm } = this.state;
 
-    return showPasswordForm ? this.renderPasswordFormWindow() : <ConfirmPasswordUpdate />;
+    return (
+      <Wrapper height={showPasswordForm ? '421px' : '277px'}>
+        {showPasswordForm ? (
+          <FormWindow
+            headingText="UpdatePassword"
+            message={`Sorry, there was an error trying to update your password: ${responseMessage} Please try again.`}
+            resetResponseError={resetResponseError}
+            responseError={responseError}
+          >
+            <PasswordForm handleCancel={handleCancel} handleSubmitValues={this.handleSubmitValues} initialValues={initialValues} />
+          </FormWindow>
+        ) : (
+          <ConfirmPasswordUpdate handleSuccess={handleSuccess} />
+        )}
+      </Wrapper>
+    );
   }
 }
 

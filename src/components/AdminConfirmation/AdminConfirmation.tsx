@@ -1,79 +1,76 @@
 import * as React from 'react';
 
-import { MetaWithCallbacks, ResponseStatus } from '../../types/commons';
+import withResponseState, { PassedProps as ResponseProps } from '../../hocs/withResponseState';
+import { MetaWithCallbacks } from '../../types/commons';
 import AdminConfirmationView from './AdminConfirmationView';
 
-interface Props {
+interface Props extends ResponseProps {
   cancelCtaText?: string;
   confirmationText: string;
   confirmCtaText?: string;
   errorMessage: string;
+  handleCancel?: () => void;
   headingText: string;
   height?: string;
   onConfirm: (meta: MetaWithCallbacks) => void;
   onConfirmSuccess: () => void;
-  parentRoute: string;
+  parentRoute?: string;
   width?: string;
 }
 
 interface State {
   confirmButtonDisabled: boolean;
-  responseReceived: boolean;
-  result: {
-    message?: string;
-    status: string;
-  };
 }
 
 const defaultState: State = {
   confirmButtonDisabled: false,
-  responseReceived: false,
-  result: {
-    message: '',
-    status: '',
-  },
 };
 
 class AdminConfirmation extends React.Component<Props, State> {
   state: State = defaultState;
 
-  onError = (callback?: () => void) => (message: string) =>
-    this.setState(
-      {
-        responseReceived: true,
-        result: {
-          message,
-          status: ResponseStatus.FAILURE,
-        },
-      },
-      callback,
-    );
+  onError = () =>
+    this.setState({
+      confirmButtonDisabled: false,
+    });
 
-  onSuccess = (callback: () => void) => () =>
+  onSuccess = () =>
     this.setState(
       {
-        confirmButtonDisabled: true,
-        responseReceived: true,
-        result: {
-          status: ResponseStatus.SUCCESS,
-        },
+        confirmButtonDisabled: false,
       },
-      callback,
+      this.props.onConfirmSuccess,
     );
 
   handleConfirm = () => {
-    const { onConfirm, onConfirmSuccess } = this.props;
+    const { onConfirm, onResponseError, onResponseSuccess } = this.props;
 
-    const meta = { successCb: this.onSuccess(onConfirmSuccess), errorCb: this.onError() };
+    const meta = { successCb: onResponseSuccess(this.onSuccess), errorCb: onResponseError(this.onError) };
 
-    onConfirm(meta);
+    this.setState(
+      {
+        confirmButtonDisabled: true,
+      },
+      () => onConfirm(meta),
+    );
   };
 
   render() {
-    const { cancelCtaText, confirmCtaText, confirmationText, errorMessage, headingText, height, parentRoute, width } = this.props;
-    const { confirmButtonDisabled, responseReceived, result } = this.state;
+    const {
+      handleCancel,
+      cancelCtaText,
+      confirmCtaText,
+      confirmationText,
+      errorMessage,
+      headingText,
+      height,
+      responseError,
+      responseMessage,
+      width,
+    } = this.props;
+    const { confirmButtonDisabled } = this.state;
 
-    const errorText = responseReceived ? `${errorMessage}: ${result.message} Please try again.` : '';
+    const errorText = responseError ? `${errorMessage}: ${responseMessage} Please try again.` : '';
 
     return (
       <AdminConfirmationView
@@ -82,14 +79,14 @@ class AdminConfirmation extends React.Component<Props, State> {
         confirmButtonDisabled={confirmButtonDisabled}
         confirmCtaText={confirmCtaText}
         errorText={errorText}
+        handleCancel={handleCancel}
         handleConfirm={this.handleConfirm}
         headingText={headingText}
         height={height}
-        parentRoute={parentRoute}
         width={width}
       />
     );
   }
 }
 
-export default AdminConfirmation;
+export default withResponseState(AdminConfirmation);

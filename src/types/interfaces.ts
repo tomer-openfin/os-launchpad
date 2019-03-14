@@ -1,23 +1,21 @@
-import { Workspace } from 'openfin-layouts/dist/client/types';
-
 import { RouteComponentProps } from 'react-router-dom';
-import { ResponseStatus, UserStatus } from './enums';
+import { ResponseStatus, UserStatus, Workspace } from './commons';
 
 export interface App {
-  appPage: string;
+  appPage?: string;
   appUrl?: string;
-  contexts: Array<{ $type: string }>;
-  contact_email: string;
+  contexts?: Array<{ $type: string }>;
+  contact_email?: string;
   description: string;
   icon: string;
   id: string;
-  images: Array<{ url: string }>;
-  intents: Array<{ displayName: string; name: string }>;
+  images?: Array<{ url: string }>;
+  intents?: Array<{ displayName: string; name: string }>;
   manifest_url?: string;
   name: string;
-  publisher: string;
-  signature: string;
-  support_email: string | null;
+  publisher?: string;
+  signature?: string;
+  support_email?: string | null;
   title: string;
   withAppUrl?: boolean;
 }
@@ -130,4 +128,4 @@ export interface XYCoord {
 /* tslint:disable-next-line:no-any */
 export type DispatchRequest<T = any> = (payload: T, meta: MetaWithCallbacks, actions?) => void;
 
-export type PushRoute = RouteComponentProps['history']['push'];
+export type PushRoute = (route: string, item?) => ReturnType<RouteComponentProps['history']['push']>;

@@ -1,3 +1,5 @@
-import Component from './EditAppFormContainer';
+import EditAppFormik from './EditAppForm';
 
-export default Component;
+export * from './EditAppForm';
+
+export default EditAppFormik;

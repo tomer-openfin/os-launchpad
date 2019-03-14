@@ -1,58 +1,27 @@
 import * as React from 'react';
 
-import { App, DispatchRequest, MetaWithCallbacks, PushRoute } from '../../types/commons';
+import withFormik from '../../hocs/withFormik';
+import AppForm, { SetFieldValue, validationSchema, Values } from '../AppForm';
 
-import { ROUTES } from '../Router/consts';
-
-import { CREATE_MANIFEST_BASE } from '../../services/ApiService/api';
-import { createPushRouteHandler } from '../../utils/routeHelpers';
-import AppForm, { createAppManifestUrl, validationSchema } from '../AppForm';
-import RequestForm from '../RequestForm';
-
-interface Props {
-  app: App;
-  onEscDown: () => void;
-  updateApp: DispatchRequest<App>;
-  pushRoute: PushRoute;
+interface FormProps {
+  handleSubmit: () => void;
+  isSubmitting: boolean;
+  isValid: boolean;
+  setFieldValue: SetFieldValue;
+  values: Values;
 }
 
-const createAppSubmitHandler = (submit: DispatchRequest<App>): DispatchRequest<App> => (formData: App, meta: MetaWithCallbacks) => {
-  const { appUrl, manifest_url, withAppUrl, ...rest } = formData;
+export const EditAppForm = (handleCancel: () => void) => ({ setFieldValue, handleSubmit, isSubmitting, isValid, values }: FormProps) => (
+  <AppForm
+    setFieldValue={setFieldValue}
+    handleSubmit={handleSubmit}
+    isSubmitting={isSubmitting}
+    isValid={isValid}
+    values={values}
+    handleCancel={handleCancel}
+  />
+);
 
-  const computedManifestUrl = createAppManifestUrl({ appUrl, manifest_url, withAppUrl });
+const EditAppFormik = withFormik<Values>(EditAppForm, validationSchema);
 
-  submit({ ...rest, manifest_url: computedManifestUrl }, meta);
-};
-
-const EditAppForm = ({ app, pushRoute, updateApp }: Props) => {
-  const { appUrl, contexts, intents, id, manifest_url = '', name, title, description, icon, images } = app;
-  const createManifestIndex = manifest_url.indexOf(CREATE_MANIFEST_BASE);
-  const initialAppUrl = createManifestIndex !== -1 ? manifest_url.slice(createManifestIndex + CREATE_MANIFEST_BASE.length) : appUrl;
-
-  return (
-    <RequestForm
-      initialValues={{
-        appUrl: initialAppUrl,
-        contexts: contexts || [],
-        description,
-        icon,
-        id,
-        images,
-        intents: intents || [],
-        manifest_url: createManifestIndex === -1 ? manifest_url : '',
-        name,
-        title,
-        withAppUrl: !!initialAppUrl,
-      }}
-      errorMessage={`There was an error trying to update ${title}`}
-      component={AppForm}
-      handleDeleteIconClick={createPushRouteHandler(pushRoute, ROUTES.ADMIN_APPS_DELETE, app)}
-      headingText={`Edit ${title}`}
-      onSubmitSuccess={createPushRouteHandler(pushRoute, ROUTES.ADMIN_APPS)}
-      submit={createAppSubmitHandler(updateApp)}
-      validationSchema={validationSchema}
-    />
-  );
-};
-
-export default EditAppForm;
+export default EditAppFormik;

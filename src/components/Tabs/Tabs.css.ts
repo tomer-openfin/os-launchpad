@@ -53,7 +53,7 @@ export const Header = styled.div<HeaderProps>`
   position: relative;
 
   &:after {
-    background-color: ${Color.NEBULA};
+    background-color: ${Color.EARTH};
     bottom: -2px;
     content: '';
     display: inline-block;

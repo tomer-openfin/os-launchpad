@@ -11,7 +11,7 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
     }
   >
     <div
-      className="sc-exAgwC iKIfIE"
+      className="sc-cQFLBn kSxooq"
     >
       <div
         className="sc-cSHVUG ksrKew"
@@ -19,37 +19,34 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
         width="100%"
       >
         <div
-          className="sc-gqPbQI jADaOf"
+          className="sc-hORach dAbNoU"
         >
           <div
-            className="sc-hORach PhuPi"
+            className="sc-bMVAic gmXzKT"
           >
             Confirm?
           </div>
         </div>
         <div
-          className="sc-bAeIUo hmpSUP"
+          className="sc-iujRgT dbKUy"
         >
           <div
-            className="sc-iujRgT jrXRlW"
+            className="sc-GMQeP fmmqNB"
           >
             Are you sure you would like to confirm?
           </div>
         </div>
         <div
-          className="sc-bMVAic cYUOFK"
+          className="sc-bAeIUo etKsBD"
         >
-          <a
-            backgroundColor="#848484"
-            className="sc-chPdSV hYsYSY"
-            href="/"
-            onClick={[Function]}
+          <button
+            className="sc-kAzzGY idQxoH"
             width={153}
           >
             Cancel
-          </a>
+          </button>
           <button
-            className="sc-kAzzGY gTiRcw"
+            className="sc-kAzzGY dhNKxb"
             disabled={false}
             onClick={[Function]}
             width={153}
@@ -58,7 +55,7 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
           </button>
         </div>
         <div
-          className="sc-GMQeP llVYhG"
+          className="sc-exAgwC jilCuM"
         >
           
         </div>
@@ -211,7 +208,7 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
                   }
                 >
                   &lt;
-                  AdminConfirmation
+                  ComponentWithResponseState
                 </span>
                 <span>
                   <span>
@@ -421,36 +418,6 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
                         }
                       </span>
                     </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      parentRoute
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        "
-                        <span
-                          style={
-                            Object {
-                              "color": "#22a",
-                              "wordBreak": "break-word",
-                            }
-                          }
-                        >
-                          
-                        </span>
-                        "
-                      </span>
-                    </span>
                     <br />
                   </span>
                 </span>
@@ -510,7 +477,7 @@ exports[`Storyshots Admin Components/AdminConfirmation stateful 1`] = `
               }
             >
               "
-              AdminConfirmation
+              ComponentWithResponseState
               " Component
             </h2>
             <small>
@@ -535,7 +502,7 @@ exports[`Storyshots Admin Components/AdminConfirmation view 1`] = `
     }
   >
     <div
-      className="sc-exAgwC iKIfIE"
+      className="sc-cQFLBn kSxooq"
     >
       <div
         className="sc-cSHVUG ksrKew"
@@ -543,37 +510,34 @@ exports[`Storyshots Admin Components/AdminConfirmation view 1`] = `
         width="100%"
       >
         <div
-          className="sc-gqPbQI jADaOf"
+          className="sc-hORach dAbNoU"
         >
           <div
-            className="sc-hORach PhuPi"
+            className="sc-bMVAic gmXzKT"
           >
             Confirm?
           </div>
         </div>
         <div
-          className="sc-bAeIUo hmpSUP"
+          className="sc-iujRgT dbKUy"
         >
           <div
-            className="sc-iujRgT jrXRlW"
+            className="sc-GMQeP fmmqNB"
           >
             Are you sure you would like to confirm?
           </div>
         </div>
         <div
-          className="sc-bMVAic cYUOFK"
+          className="sc-bAeIUo etKsBD"
         >
-          <a
-            backgroundColor="#848484"
-            className="sc-chPdSV hYsYSY"
-            href="/"
-            onClick={[Function]}
+          <button
+            className="sc-kAzzGY idQxoH"
             width={153}
           >
             Cancel
-          </a>
+          </button>
           <button
-            className="sc-kAzzGY gTiRcw"
+            className="sc-kAzzGY dhNKxb"
             disabled={false}
             onClick={[Function]}
             width={153}
@@ -582,7 +546,7 @@ exports[`Storyshots Admin Components/AdminConfirmation view 1`] = `
           </button>
         </div>
         <div
-          className="sc-GMQeP llVYhG"
+          className="sc-exAgwC jilCuM"
         >
           
         </div>
@@ -943,36 +907,6 @@ exports[`Storyshots Admin Components/AdminConfirmation view 1`] = `
                           deleteApp
                         </span>
                         }
-                      </span>
-                    </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      parentRoute
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        "
-                        <span
-                          style={
-                            Object {
-                              "color": "#22a",
-                              "wordBreak": "break-word",
-                            }
-                          }
-                        >
-                          
-                        </span>
-                        "
                       </span>
                     </span>
                     <br />

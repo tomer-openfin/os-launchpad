@@ -4,12 +4,19 @@ import * as React from 'react';
 import Color from '../../styles/color';
 
 import { loadFile } from '../../utils/loadFile';
+import noop from '../../utils/noop';
+
+import { MessageResponseProps } from '../../hocs/withResponseState';
+
+import { MessageBannerWrapper } from '../FormWindow';
+import ScrollGrid, { Form } from '../Responsive';
 
 import ErrorMessage from '../ErrorMessage';
+import FormFooter from '../FormFooter';
 import ImageInput from '../ImageInput';
 import Input from '../Input';
 import Label from '../Label';
-import ResponsiveForm from '../ResponsiveForm';
+import { MessageBannerWithTimeout } from '../MessageBanner';
 
 const BASE_ID = 'ImageForm';
 const FILE_INPUT_ID = `${BASE_ID}FileInput`;
@@ -23,11 +30,17 @@ interface FormikInitialValues {
   [FormNames.imgSrc]: string;
 }
 
-interface Props {
+interface Props extends MessageResponseProps {
   byUrl: boolean;
   saveImage: (image: string) => void;
   handleCancel: () => void;
 }
+
+const defaultProps: Partial<Props> = {
+  message: '',
+  resetResponseError: noop,
+  responseError: false,
+};
 
 interface State {
   file: File | null;
@@ -35,6 +48,8 @@ interface State {
 }
 
 class ImageForm extends React.PureComponent<Props, State> {
+  static defaultProps = defaultProps;
+
   constructor(props: Props) {
     super(props);
 
@@ -110,35 +125,43 @@ class ImageForm extends React.PureComponent<Props, State> {
 
   renderError = (error: string | undefined, touched?: boolean) => (error && touched ? () => <ErrorMessage>{error}</ErrorMessage> : undefined);
 
-  renderForm = ({ errors, handleBlur, handleChange, isSubmitting, touched, values }) => {
-    const { byUrl, handleCancel } = this.props;
+  renderForm = ({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => {
+    const { byUrl, handleCancel, resetResponseError, message, responseError } = this.props;
     const { fileUrl } = this.state;
 
     return (
-      <ResponsiveForm
-        isSubmitting={isSubmitting}
-        submitDisabled={isSubmitting || (!values[FormNames.imgSrc] && !fileUrl)}
-        handleCancel={handleCancel}
-        footerColor={Color.VOID}
-      >
-        {byUrl ? (
-          <Label label="Image URL" renderError={this.renderError(errors.newPassword, touched.newPassword)}>
-            <Input
-              hasError={!!errors.newPassword && touched.newPassword}
-              name={FormNames.imgSrc}
-              onBlur={handleBlur}
-              onChange={handleChange}
-              placeholder="Enter URL of Image"
-              type="text"
-              value={values.imgSrc}
-            />
-          </Label>
-        ) : (
-          <Label label="" htmlFor={FILE_INPUT_ID}>
-            <ImageInput fileInputId={FILE_INPUT_ID} imgSrc={fileUrl} name={FormNames.imgSrc} handleFileChange={this.handleFileChange(handleChange)} />
-          </Label>
-        )}
-      </ResponsiveForm>
+      <Form onSubmit={handleSubmit}>
+        <ScrollGrid>
+          {byUrl ? (
+            <Label label="Image URL" renderError={this.renderError(errors.newPassword, touched.newPassword)}>
+              <Input
+                hasError={!!errors.newPassword && touched.newPassword}
+                name={FormNames.imgSrc}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                placeholder="Enter URL of Image"
+                type="text"
+                value={values.imgSrc}
+              />
+            </Label>
+          ) : (
+            <Label label="" htmlFor={FILE_INPUT_ID}>
+              <ImageInput fileInputId={FILE_INPUT_ID} imgSrc={fileUrl} name={FormNames.imgSrc} handleFileChange={this.handleFileChange(handleChange)} />
+            </Label>
+          )}
+        </ScrollGrid>
+
+        <MessageBannerWrapper>
+          <MessageBannerWithTimeout reset={resetResponseError} timeout={5000} message={message} isActive={responseError} />
+        </MessageBannerWrapper>
+
+        <FormFooter
+          footerColor={Color.ASTEROID_BELT}
+          isSubmitting={isSubmitting}
+          submitDisabled={isSubmitting || (!values[FormNames.imgSrc] && !fileUrl)}
+          handleCancel={handleCancel}
+        />
+      </Form>
     );
   };
 

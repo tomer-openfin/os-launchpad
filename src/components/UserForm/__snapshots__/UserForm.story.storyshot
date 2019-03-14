@@ -11,18 +11,17 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
     }
   >
     <form
-      className="sc-ksYbfQ eCIUEJ"
-      onReset={[Function]}
+      className="sc-ksYbfQ jtXRRF"
       onSubmit={[Function]}
     >
       <div
         className="sc-hmzhuo dudMzh"
       >
         <div
-          className="sc-frDJqD cnrcjF"
+          className="sc-frDJqD hwLFCw"
         >
           <div
-            className="sc-RcBXQ hPIUBq"
+            className="sc-kvZOFW fPqXbW"
           >
             <label
               className="sc-dxgOiQ nGBmb"
@@ -109,29 +108,27 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
         </div>
       </div>
       <div
-        className="sc-hqyNC hXSrbm"
+        className="sc-bMvGRv lbuJOf"
       >
         <div
-          className="sc-kvZOFW jextin"
+          className="sc-rBLzX iHxlYT"
         >
           <button
-            className="sc-kAzzGY jjQyJb"
+            className="sc-kAzzGY gKySrU"
             disabled={true}
             type="submit"
             width={128}
           >
             Save
           </button>
-          <a
-            backgroundColor="#848484"
-            className="sc-chPdSV hEgkTj"
-            href="/admin/users"
+          <button
+            className="sc-kAzzGY jWQqYu"
             onClick={[Function]}
             type="button"
             width={128}
           >
             Cancel
-          </a>
+          </button>
         </div>
       </div>
     </form>
@@ -338,7 +335,7 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
                             }
                           }
                         >
-                          noop
+                          onSubmit
                         </span>
                         }
                       </span>
@@ -396,7 +393,7 @@ exports[`Storyshots Admin Components/UserForm default 1`] = `
                             }
                           }
                         >
-                          anonymous
+                          renderUserForm
                         </span>
                         }
                       </span>

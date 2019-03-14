@@ -1,6 +1,6 @@
 import { middleware as reduxOpenFin } from '@giantmachines/redux-openfin';
 import { applyMiddleware, compose, createStore, StoreEnhancer } from 'redux';
-import createSagaMiddleware, { END } from 'redux-saga';
+import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'remote-redux-devtools';
 
 import { isDevelopmentEnv, isProductionEnv, isStorybookEnv } from './utils/processHelpers';
@@ -60,26 +60,7 @@ export default (state?: State) => {
     });
   }
 
-  let task = sagaMiddleware.run(rootSaga);
-
-  if (!isProduction && module.hot) {
-    module.hot.accept('./redux/rootSaga', () => {
-      // tslint:disable:no-console
-      console.warn('HMR detected for rootSaga.');
-
-      console.warn('Terminating blocked sagas by dispatching END.');
-      store.dispatch(END);
-
-      console.warn('Canceling rootSaga task.');
-      task.cancel();
-
-      task.done.then(() => {
-        console.warn('Running updated rootSaga.');
-        task = sagaMiddleware.run(require('./redux/rootSaga').default);
-      });
-      // tslint:enable:no-console
-    });
-  }
+  sagaMiddleware.run(rootSaga);
 
   return store;
 };

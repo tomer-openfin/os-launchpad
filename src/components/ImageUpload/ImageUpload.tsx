@@ -2,8 +2,6 @@ import * as React from 'react';
 
 import { ContentWrapper, Tab, TabsWrapper, Wrapper } from './ImageUpload.css';
 
-import { MetaWithCallbacks } from '../../types/commons';
-import { imageDisplayName, OrgImageKey } from '../../utils/orgImages';
 import Borders from '../Borders';
 import ImageForm from '../ImageForm';
 import WindowHeader from '../WindowHeader';
@@ -20,6 +18,9 @@ interface Props {
   saveImage: (imgSrc: string) => void;
   width?: string;
   withoutFileUpload?: boolean;
+  resetResponseError?: () => void;
+  responseMessage?: string;
+  responseError?: boolean;
 }
 
 type TabType = typeof TABS[number];
@@ -46,7 +47,7 @@ class ImageUpload extends React.Component<Props, State> {
   );
 
   render() {
-    const { saveImage, handleCancel, headerText, height, width, withoutFileUpload } = this.props;
+    const { saveImage, handleCancel, headerText, height, width, withoutFileUpload, responseError, responseMessage, resetResponseError } = this.props;
     const { activeTab } = this.state;
 
     const tabs = withoutFileUpload ? TABS.filter(tab => tab !== FILE_UPLOAD) : TABS;
@@ -59,7 +60,14 @@ class ImageUpload extends React.Component<Props, State> {
           <TabsWrapper>{tabs.map(this.renderTab)}</TabsWrapper>
 
           <ContentWrapper>
-            <ImageForm byUrl={activeTab === BY_URL} saveImage={saveImage} handleCancel={handleCancel} />
+            <ImageForm
+              byUrl={activeTab === BY_URL}
+              saveImage={saveImage}
+              handleCancel={handleCancel}
+              responseError={responseError}
+              message={`Image failed to save: ${responseMessage} Please try again.`}
+              resetResponseError={resetResponseError}
+            />
           </ContentWrapper>
         </Borders>
       </Wrapper>

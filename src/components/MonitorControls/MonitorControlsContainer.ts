@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
+import { getMonitorScreens } from '../../redux/system';
 import { State } from '../../redux/types';
 
-import { getMonitorScreens } from '../../redux/system';
 import MonitorControls, { MonitorScreen } from './MonitorControls';
 
 interface OwnProps {

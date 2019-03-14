@@ -1,3 +1,6 @@
-import Component from './AdminAppsContainer';
+import AdminAppsContainer from './AdminAppsContainer';
 
-export default Component;
+export * from './AdminApps';
+export * from './utils';
+
+export default AdminAppsContainer;

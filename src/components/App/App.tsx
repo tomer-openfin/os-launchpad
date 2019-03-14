@@ -26,7 +26,7 @@ const App = (props: Props) => {
     <Main launcherPosition={launcherPosition}>
       <Wrapper launcherPosition={launcherPosition} size={launcherSizeConfig.launcher}>
         <Borders height="100%" width="100%" borderRadius="6px">
-          <LogoWrapper size={launcherSizeConfig.launcher}>
+          <LogoWrapper launcherPosition={launcherPosition} size={launcherSizeConfig.launcher}>
             <Logo size={launcherSizeConfig.launcher * 0.9} />
           </LogoWrapper>
 

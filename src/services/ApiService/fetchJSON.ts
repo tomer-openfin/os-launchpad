@@ -29,6 +29,14 @@ const fetchJSON = (endpoint: string, requestMethod: HTTPMethods, body?, optionOv
       }
       return response;
     })
+    .then(response => {
+      if (response.status === 413) {
+        const err = 'Payload too large.';
+
+        throw new Error(err);
+      }
+      return response;
+    })
     .then(response => response.json())
     .then(json => {
       if (requestMethod === 'GET' && !json) {

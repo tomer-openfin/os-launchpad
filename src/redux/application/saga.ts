@@ -1,6 +1,5 @@
 import { Application, Window } from '@giantmachines/redux-openfin';
-import { delay } from 'redux-saga';
-import { all, call, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
+import { all, call, delay, put, select, take, takeEvery, takeLatest, takeLeading } from 'redux-saga/effects';
 
 import windowsConfig, { initOnStartWindows } from '../../config/windows';
 import eraseCookie from '../../utils/eraseCookie';
@@ -9,11 +8,10 @@ import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
 import { animateWindow } from '../../utils/openfinPromises';
 import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv } from '../../utils/processHelpers';
 import { setupWindow } from '../../utils/setupWindow';
-import takeFirst from '../../utils/takeFirst';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { registerGlobalDevHotKeys, registerGlobalHotkeys } from '../globalHotkeys/utils';
 import { GetManifestOverrideRequestAction, OpenfinReadyAction, ReboundLauncherRequestAction, UpdateManifestOverrideRequestAction } from './types';
-import { animateLauncherCollapseExpand, initManifest, initMonitorInfo, initOrgSettings, initResources, initRuntimeVersion } from './utils';
+import { executeAutoHideBehavior, initManifest, initMonitorInfo, initOrgSettings, initResources, initRuntimeVersion } from './utils';
 
 import ApiService from '../../services/ApiService/index';
 import { ResponseStatus } from '../../types/enums';
@@ -162,7 +160,8 @@ function* watchCollapseApp() {
   }
 
   const nextIsExpanded = false;
-  yield call(animateLauncherCollapseExpand, nextIsExpanded, 333);
+  const animationDuration = 333;
+  yield call(executeAutoHideBehavior, nextIsExpanded, animationDuration);
 
   yield put(setIsExpanded(nextIsExpanded));
 }
@@ -175,7 +174,8 @@ function* watchExpandApp() {
   }
 
   const nextIsExpanded = true;
-  yield call(animateLauncherCollapseExpand, nextIsExpanded, 500);
+  const animationDuration = 500;
+  yield call(executeAutoHideBehavior, nextIsExpanded, animationDuration);
 
   yield put(setIsExpanded(nextIsExpanded));
 }
@@ -319,8 +319,8 @@ export function* applicationSaga() {
   yield takeEvery(INIT_DEV_TOOLS, watchInitDevTools);
   yield takeEvery(LAUNCH_APP_LAUNCHER, watchLaunchAppLauncher);
   yield takeEvery(OPENFIN_READY, openfinSetup);
-  yield takeFirst(COLLAPSE_APP, watchCollapseApp);
-  yield takeFirst(EXPAND_APP, watchExpandApp);
+  yield takeLeading(COLLAPSE_APP, watchCollapseApp);
+  yield takeLeading(EXPAND_APP, watchExpandApp);
 
   yield takeLatest(GET_MANIFEST_OVERRIDE.REQUEST, watchGetManifestOverrideRequest);
   yield takeLatest(FETCH_MANIFEST.REQUEST, watchFetchManifest);

@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 import { Color } from '../../styles';
-import { ResponsiveWidth } from '../ResponsiveForm/ResponsiveForm.css';
+import { ResponsiveWidth } from '../Responsive';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ height?: string }>`
   align-items: center;
   background-color: ${Color.KUIPER_BELT};
   display: flex;
   flex-direction: column;
-  height: 405px;
+  height: ${({ height }) => height || '405px'};
   justify-content: flex-start;
   width: 420px;
   overflow: hidden;

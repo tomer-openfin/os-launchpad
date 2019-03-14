@@ -1,25 +1,19 @@
 import { connect } from 'react-redux';
-import { RouteComponentProps } from 'react-router-dom';
 
-import { App } from '../../types/commons';
-
-import { deleteAdminAppRequest } from '../../redux/admin';
+import { deleteAdminAppRequest, getAdminAppFromId } from '../../redux/admin';
+import { State } from '../../redux/types';
 
 import ConfirmAppDelete from './ConfirmAppDelete';
+
+const mapState = (state: State, ownProps) => ({
+  app: getAdminAppFromId(state, ownProps.appId),
+});
 
 const mapDispatch = {
   deleteApp: deleteAdminAppRequest,
 };
 
-const mergeProps = (_, dispatchProps, ownProps: RouteComponentProps) => ({
-  ...dispatchProps,
-  ...ownProps,
-  app: ownProps.location.state,
-  pushRoute: (route: string, item?: App): void => ownProps.history.push(route, item),
-});
-
 export default connect(
-  null,
+  mapState,
   mapDispatch,
-  mergeProps,
 )(ConfirmAppDelete);

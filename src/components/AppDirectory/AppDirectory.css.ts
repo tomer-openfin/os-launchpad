@@ -10,6 +10,8 @@ export const Wrapper = styled.div`
 `;
 
 export const Directory = styled.div`
+  display: flex;
+  flex-direction: column;
   height: calc(100vh - 60px);
   overflow-x: hidden;
   overflow-y: overlay;
@@ -26,6 +28,15 @@ export const Directory = styled.div`
     width: 60px;
     z-index: -1;
   }
+`;
+
+export const Empty = styled.div`
+  ${Typography.TypeStyleProcyon}
+
+  color: ${Color.SUN};
+  margin: auto 0;
+  text-align: center;
+  width: calc(100% - 60px);
 `;
 
 export const StyledSearchInput = styled(SearchInput)`
@@ -65,6 +76,7 @@ export const CTA = styled.div`
 
 export const Row = styled.div`
   display: flex;
+  flex: 1 0 auto;
   width: 100%;
   position: relative;
 

@@ -11,46 +11,46 @@ exports[`Storyshots Components/Layouts default 1`] = `
     }
   >
     <div
-      className="sc-fONwsr kvkJkZ"
+      className="sc-fcdeBU dGtvyS"
     >
       <div
-        className="sc-jVODtj kxXdIM"
+        className="sc-chbbiW jeDKiA"
       >
         <div
-          className="sc-kUaPvJ kigdxv"
+          className="sc-kxynE ejYXEk"
         >
           <div
-            className="sc-giadOv feytcA"
+            className="sc-cooIXK iAhjTz"
           >
-            Layouts
+            Workspaces
           </div>
         </div>
         <div
-          className="sc-gPWkxV cohBeu"
+          className="sc-hzNEM byBjoe"
         >
           <div
-            className="sc-TFwJa iAHKlv sc-ifAKCX jFrnbN"
+            className="sc-dEoRIm QYWPB sc-ifAKCX ccboJf"
             color="#E7E7E7"
             size={24}
           />
           <form
-            className="sc-fzsDOv bEFiEO"
+            className="sc-iBEsjs gMnLiW"
             onSubmit={[Function]}
           >
             <input
-              className="sc-eMigcr bHMaVq"
+              className="sc-LKuAh gLfrtv"
               onChange={[Function]}
-              placeholder="Layout Name"
+              placeholder="Workspace Name"
               required={true}
               type="text"
             />
             <button
-              className="sc-itybZL fGNNdu"
+              className="sc-kaNhvL kuEWrb"
               disabled={true}
               type="submit"
             >
               <div
-                className="sc-fjmCvl lmmLhq sc-ifAKCX iMtAAB"
+                className="sc-bmyXtO llGdru sc-ifAKCX jytaNb"
                 color="#E7E7E7"
                 size={14}
               />
@@ -59,27 +59,27 @@ exports[`Storyshots Components/Layouts default 1`] = `
         </div>
       </div>
       <div
-        className="sc-CtfFt kAmZTm"
+        className="sc-iqzUVk eEApsd"
       >
         <h6
-          className="sc-bMvGRv jxfhgT"
+          className="sc-qrIAp eAuxIe"
         >
-          Recent Layouts
+          Recent Workspaces
         </h6>
         <ul
-          className="sc-hGoxap qpBko"
+          className="sc-iGrrsa fJtHRY"
         >
           <div
-            className="sc-gJWqzi dywdEK"
+            className="sc-dliRfk hVRsWp"
           >
             <li
-              className="sc-jzgbtB jXdnwt"
+              className="sc-cqCuEk ftMyaX"
               onClick={[Function]}
             >
               layout
             </li>
             <div
-              className="sc-ifAKCX bwWvNt"
+              className="sc-ifAKCX iEwFmE"
               color="#E7E7E7"
               onClick={[Function]}
               size={14}

@@ -1,23 +1,47 @@
 import * as React from 'react';
+import * as Yup from 'yup';
 
-import { ROUTES } from '../Router/consts';
+import withFormik from '../../hocs/withFormik';
 
 import FormField from '../FormField';
-import ResponsiveForm from '../ResponsiveForm';
+import FormFooter from '../FormFooter';
+import ScrollGrid, { Form } from '../Responsive';
+
+export interface Values {
+  password: string;
+  newPassword: string;
+  confirmPassword: string;
+}
+
+export const validationSchema = Yup.object().shape({
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('newPassword')], 'Passwords must match')
+    .required('Required'),
+  newPassword: Yup.string().required('Required'),
+  password: Yup.string().required('Required'),
+});
 
 interface Props {
+  handleSubmit: () => void;
+  handleCancel?: () => void;
   isSubmitting: boolean;
   isValid: boolean;
 }
 
-const PasswordForm = ({ isSubmitting, isValid }: Props) => (
-  <ResponsiveForm buttonWidths={153} isSubmitting={isSubmitting} parentRoute={ROUTES.SETTINGS} submitDisabled={isSubmitting || !isValid}>
-    <FormField isInvalid={!isValid} label="Old Password" name="password" placeholder="Enter Old Password" type="password" />
+export const PasswordForm = (handleCancel: () => void) => ({ handleSubmit, isSubmitting, isValid }: Props) => (
+  <Form onSubmit={handleSubmit}>
+    <ScrollGrid>
+      <FormField isInvalid={!isValid} label="Old Password" name="password" placeholder="Enter Old Password" type="password" />
 
-    <FormField isInvalid={!isValid} label="New Password" name="newPassword" placeholder="Enter New Password" type="password" />
+      <FormField isInvalid={!isValid} label="New Password" name="newPassword" placeholder="Enter New Password" type="password" />
 
-    <FormField isInvalid={!isValid} label="Confirm New Password" name="confirmPassword" placeholder="Enter New Password Again" type="password" />
-  </ResponsiveForm>
+      <FormField isInvalid={!isValid} label="Confirm New Password" name="confirmPassword" placeholder="Enter New Password Again" type="password" />
+    </ScrollGrid>
+
+    <FormFooter isSubmitting={isSubmitting} submitDisabled={isSubmitting || !isValid} handleCancel={handleCancel} buttonWidths={153} />
+  </Form>
 );
 
-export default PasswordForm;
+const PasswordFormik = withFormik<Values>(PasswordForm, validationSchema);
+
+export default PasswordFormik;

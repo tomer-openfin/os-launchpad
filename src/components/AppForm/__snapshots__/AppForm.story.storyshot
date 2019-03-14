@@ -11,21 +11,20 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
     }
   >
     <form
-      className="sc-ksYbfQ eCIUEJ"
-      onReset={[Function]}
+      className="sc-ksYbfQ jtXRRF"
       onSubmit={[Function]}
     >
       <div
         className="sc-hmzhuo dudMzh"
       >
         <div
-          className="sc-frDJqD cnrcjF"
+          className="sc-frDJqD hwLFCw"
         >
           <div
-            className="sc-RcBXQ ZHuLd"
+            className="sc-kvZOFW galVDV"
           >
             <label
-              className="sc-fyjhYU boyghX sc-dxgOiQ nGBmb"
+              className="sc-eMigcr diIYqY sc-dxgOiQ nGBmb"
             >
               <div
                 className="sc-kpOJdX gglwGS"
@@ -40,27 +39,27 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
                 type="checkbox"
               />
               <div
-                className="sc-eTpRJs isQICh"
+                className="sc-jVODtj bFHVqc"
               >
                 <div
                   checked={false}
-                  className="sc-eIHaNI cTCDIW"
+                  className="sc-gPWkxV bgwsCr"
                 />
                 <div
-                  className="sc-ugnQR kCCKUK"
+                  className="sc-fzsDOv hSyPxr"
                 >
                   App URL
                 </div>
               </div>
               <div
-                className="sc-eTpRJs isQICh"
+                className="sc-jVODtj bFHVqc"
               >
                 <div
                   checked={true}
-                  className="sc-eIHaNI hLdKPa"
+                  className="sc-gPWkxV hwySNu"
                 />
                 <div
-                  className="sc-ugnQR kCCKUK"
+                  className="sc-fzsDOv hSyPxr"
                 >
                   Manifest
                 </div>
@@ -100,7 +99,7 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
             />
           </label>
           <div
-            className="sc-RcBXQ fhYqCm"
+            className="sc-kvZOFW fWAjoW"
             height="144px"
           >
             <label
@@ -112,7 +111,7 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
                 App Shortcut
               </div>
               <div
-                className="sc-hIVACf bXkhsv"
+                className="sc-cpmLhU gDXbAD"
               >
                 <div
                   className="sc-gipzik jmhvsi"
@@ -124,15 +123,15 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
                   />
                 </div>
                 <div
-                  className="sc-gpHHfC POeTO"
+                  className="sc-dymIpo dEKsWm"
                 >
                   <div
-                    className="sc-gVyKpa ForoK"
+                    className="sc-bnXvFD ldcbis"
                   >
                     64x64
                   </div>
                   <div
-                    className="sc-ifAKCX hwskBS"
+                    className="sc-ifAKCX fshHDp"
                     color="#E7E7E7"
                     onClick={[Function]}
                     size={20}
@@ -160,29 +159,26 @@ exports[`Storyshots Admin Components/AppForm default 1`] = `
         </div>
       </div>
       <div
-        className="sc-hqyNC hXSrbm"
+        className="sc-bMvGRv lbuJOf"
       >
         <div
-          className="sc-kvZOFW jextin"
+          className="sc-rBLzX iHxlYT"
         >
           <button
-            className="sc-kAzzGY jjQyJb"
+            className="sc-kAzzGY gKySrU"
             disabled={true}
             type="submit"
             width={128}
           >
             Save
           </button>
-          <a
-            backgroundColor="#848484"
-            className="sc-chPdSV hEgkTj"
-            href="/admin/apps"
-            onClick={[Function]}
+          <button
+            className="sc-kAzzGY jWQqYu"
             type="button"
             width={128}
           >
             Cancel
-          </a>
+          </button>
         </div>
       </div>
     </form>

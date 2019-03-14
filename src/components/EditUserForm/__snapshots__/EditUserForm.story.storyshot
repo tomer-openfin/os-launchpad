@@ -10,91 +10,34 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
       }
     }
   >
-    <div
-      className="sc-kZmsYB kzqRJV"
+    <form
+      className="sc-ksYbfQ jtXRRF"
+      onSubmit={[Function]}
     >
       <div
-        className="sc-cmTdod hSnYdr"
+        className="sc-hmzhuo dudMzh"
       >
         <div
-          className="sc-jwKygS ktOnU"
+          className="sc-frDJqD hwLFCw"
         >
           <div
-            className="sc-hORach PhuPi"
+            className="sc-kvZOFW fPqXbW"
           >
-            John Doe
-          </div>
-          <div
-            className="sc-ifAKCX kbLJAY"
-            color="#848484"
-            onClick={[Function]}
-            size={30}
-          />
-        </div>
-      </div>
-      <form
-        className="sc-ksYbfQ eCIUEJ"
-        onReset={[Function]}
-        onSubmit={[Function]}
-      >
-        <div
-          className="sc-hmzhuo dudMzh"
-        >
-          <div
-            className="sc-frDJqD cnrcjF"
-          >
-            <div
-              className="sc-RcBXQ hPIUBq"
-            >
-              <label
-                className="sc-dxgOiQ nGBmb"
-              >
-                <div
-                  className="sc-kpOJdX gglwGS"
-                >
-                  First Name
-                </div>
-                <input
-                  name="firstName"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  placeholder="Enter first name"
-                  type="text"
-                  value="John"
-                />
-              </label>
-              <label
-                className="sc-dxgOiQ nGBmb"
-              >
-                <div
-                  className="sc-kpOJdX gglwGS"
-                >
-                  MI
-                </div>
-                <input
-                  name="middleInitial"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  type="text"
-                  value="M1"
-                />
-              </label>
-            </div>
             <label
               className="sc-dxgOiQ nGBmb"
             >
               <div
                 className="sc-kpOJdX gglwGS"
               >
-                Last Name
+                First Name
               </div>
               <input
-                name="lastName"
+                name="firstName"
                 onBlur={[Function]}
                 onChange={[Function]}
-                placeholder="Enter last name"
+                placeholder="Enter first name"
                 type="text"
-                value="Doe"
+                value="John"
               />
             </label>
             <label
@@ -103,89 +46,97 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
               <div
                 className="sc-kpOJdX gglwGS"
               >
-                Phone Number
+                MI
               </div>
               <input
-                maxLength="10"
-                name="phone"
+                name="middleInitial"
                 onBlur={[Function]}
                 onChange={[Function]}
-                placeholder="Enter phone number"
                 type="text"
-                value="4 567 5555"
-              />
-            </label>
-            <label
-              className="sc-dxgOiQ nGBmb"
-            >
-              <div
-                className="sc-kpOJdX gglwGS"
-              >
-                Email
-              </div>
-              <input
-                disabled={true}
-                name="email"
-                onBlur={[Function]}
-                onChange={[Function]}
-                placeholder="Enter email"
-                type="email"
-                value="John.Doe@gmail.com"
+                value="M1"
               />
             </label>
           </div>
-        </div>
-        <div
-          className="sc-hqyNC hXSrbm"
-        >
-          <div
-            className="sc-kvZOFW jextin"
-          >
-            <button
-              className="sc-kAzzGY jjQyJb"
-              disabled={true}
-              type="submit"
-              width={128}
-            >
-              Save
-            </button>
-            <a
-              backgroundColor="#848484"
-              className="sc-chPdSV hEgkTj"
-              href="/admin/users"
-              onClick={[Function]}
-              type="button"
-              width={128}
-            >
-              Cancel
-            </a>
-          </div>
-        </div>
-      </form>
-      <div
-        className="sc-iSDuPN jwRlQu"
-      >
-        <div
-          className="sc-jbKcbu fUfPqM"
-        >
-          <div
-            className="sc-dNLxif jctmEa"
+          <label
+            className="sc-dxgOiQ nGBmb"
           >
             <div
-              className="sc-jqCOkK kpsuvn"
+              className="sc-kpOJdX gglwGS"
             >
-              There was an error trying to update John Doe:  Please try again.
+              Last Name
             </div>
-            <div
-              className="sc-uJMKN grZbwL sc-ifAKCX xmkOg"
-              color="#E7E7E7"
-              onClick={[Function]}
-              size={25}
+            <input
+              name="lastName"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Enter last name"
+              type="text"
+              value="Doe"
             />
-          </div>
+          </label>
+          <label
+            className="sc-dxgOiQ nGBmb"
+          >
+            <div
+              className="sc-kpOJdX gglwGS"
+            >
+              Phone Number
+            </div>
+            <input
+              maxLength="10"
+              name="phone"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Enter phone number"
+              type="text"
+              value="+1234 567 5555"
+            />
+          </label>
+          <label
+            className="sc-dxgOiQ nGBmb"
+          >
+            <div
+              className="sc-kpOJdX gglwGS"
+            >
+              Email
+            </div>
+            <input
+              disabled={true}
+              name="email"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Enter email"
+              type="email"
+              value="John.Doe@gmail.com"
+            />
+          </label>
         </div>
       </div>
-    </div>
+      <div
+        className="sc-bMvGRv lbuJOf"
+      >
+        <div
+          className="sc-rBLzX iHxlYT"
+        >
+          <button
+            className="sc-kAzzGY gKySrU"
+            disabled={true}
+            type="submit"
+            width={128}
+          >
+            Save
+          </button>
+          <button
+            className="sc-kAzzGY jWQqYu"
+            onClick={[Function]}
+            type="button"
+            width={128}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
   <button
     onClick={[Function]}
@@ -333,18 +284,15 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
                   }
                 >
                   &lt;
-                  EditUserForm
+                  Unknown
                 </span>
                 <span>
                   <span>
-                    <span>
-                      <br />
-                        
-                    </span>
+                     
                     <span
                       style={Object {}}
                     >
-                      user
+                      initialValues
                     </span>
                     <span>
                       =
@@ -463,14 +411,11 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
                     </span>
                   </span>
                   <span>
-                    <span>
-                      <br />
-                        
-                    </span>
+                     
                     <span
                       style={Object {}}
                     >
-                      pushRoute
+                      handleCancel
                     </span>
                     <span>
                       =
@@ -485,21 +430,18 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
                             }
                           }
                         >
-                          noop
+                          handleCancel
                         </span>
                         }
                       </span>
                     </span>
                   </span>
                   <span>
-                    <span>
-                      <br />
-                        
-                    </span>
+                     
                     <span
                       style={Object {}}
                     >
-                      onEscDown
+                      handleSubmitValues
                     </span>
                     <span>
                       =
@@ -514,41 +456,12 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
                             }
                           }
                         >
-                          onEscDown
+                          handleSubmitValues
                         </span>
                         }
                       </span>
                     </span>
-                  </span>
-                  <span>
-                    <span>
-                      <br />
-                        
-                    </span>
-                    <span
-                      style={Object {}}
-                    >
-                      updateUser
-                    </span>
-                    <span>
-                      =
-                      <span
-                        style={Object {}}
-                      >
-                        {
-                        <span
-                          style={
-                            Object {
-                              "color": "#170",
-                            }
-                          }
-                        >
-                          updateUser
-                        </span>
-                        }
-                      </span>
-                    </span>
-                    <br />
+                     
                   </span>
                 </span>
                 <span
@@ -607,7 +520,7 @@ exports[`Storyshots Admin Components/EditUserForm default 1`] = `
               }
             >
               "
-              EditUserForm
+              
               " Component
             </h2>
             <small>

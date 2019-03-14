@@ -2,19 +2,24 @@ import * as React from 'react';
 
 import * as arrowIcon from '../../assets/ArrowCircle.svg';
 import * as closeIcon from '../../assets/CloseCircle.svg';
+import * as layouts3Icon from '../../assets/Layouts3.svg';
 
 import { Color } from '../../styles';
 import { DirectionalPosition, Orientation } from '../../types/commons';
-
+import { SystemIcon, WORKSPACES_KEY } from '../../utils/getSystemIcons';
 import { LauncherSizeConfig } from '../../utils/launcherSizeConfigs';
+
 import SvgIcon from '../SvgIcon';
 import SvgIconWithExtension from '../SvgIconWithExtension';
 import { SvgIconWrapper, ToggleIcon, ToggleIconWrapper, Wrapper } from './SystemDrawer.css';
 
 interface SystemDrawerIcon {
+  color?: SystemIcon['color'];
   cta: () => void;
   hasExtendedWindow: boolean;
-  icon: string;
+  hoverColor?: SystemIcon['hoverColor'];
+  icon: SystemIcon['icon'];
+  isBackground: boolean;
   isShownByDefault: boolean;
   title: string;
 }
@@ -70,14 +75,7 @@ class SystemDrawer extends React.Component<Props> {
     this.lastOrientation = this.props.orientation;
 
     return (
-      <Wrapper
-        className={className}
-        sizingConfig={launcherSizeConfig}
-        isExpanded={isExpanded}
-        orientation={orientation}
-        size={size}
-        stopTransition={stopTransition}
-      >
+      <Wrapper className={className} sizingConfig={launcherSizeConfig} orientation={orientation} size={size} stopTransition={stopTransition}>
         <ToggleIconWrapper sizingConfig={launcherSizeConfig} isExpanded={isExpanded} orientation={orientation}>
           <ToggleIcon
             color={isExpanded ? Color.MARS : undefined}
@@ -88,7 +86,7 @@ class SystemDrawer extends React.Component<Props> {
           />
         </ToggleIconWrapper>
 
-        {icons.map(({ isShownByDefault, cta, hasExtendedWindow, icon, title }) => {
+        {icons.map(({ isBackground, isShownByDefault, color, cta, hasExtendedWindow, hoverColor, icon, title }) => {
           const isVisible = isShownByDefault || isExpanded;
           const delayMultiplier = isShownByDefault ? 0 : hiddenIconCount;
           const handleClick = this.handleCta(cta, hasExtendedWindow);
@@ -109,19 +107,25 @@ class SystemDrawer extends React.Component<Props> {
               {hasExtendedWindow ? (
                 <SvgIconWithExtension
                   caretSize={launcherSizeConfig.systemIconCaret}
+                  color={color}
                   disabled={!isVisible}
                   extensionPosition={extendedWindowPosition}
-                  imgSrc={icon}
+                  hoverColor={hoverColor}
+                  imgSrc={isExpanded && title === WORKSPACES_KEY ? layouts3Icon : icon}
                   isActive={activeIcons[title]}
+                  isBackground={isBackground}
                   onClick={handleClick}
                   size={launcherSizeConfig.systemIcon}
                   title={title}
                 />
               ) : (
                 <SvgIcon
+                  color={color}
                   disabled={!isVisible}
+                  hoverColor={hoverColor}
                   imgSrc={icon}
                   isActive={activeIcons[title]}
+                  isBackground={isBackground}
                   onClick={handleClick}
                   size={launcherSizeConfig.systemIcon}
                   title={title}

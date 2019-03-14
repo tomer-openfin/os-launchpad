@@ -22,62 +22,62 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
       }
     >
       <div
-        className="sc-iQKALj gxZzze"
+        className="sc-bwCtUz dmisKE"
         orientation="horizontal"
         size={162}
       >
         <div
-          className="sc-ibxdXY PaQab"
+          className="sc-RefOD rSVUm"
           orientation="horizontal"
         >
           <div
-            className="sc-eXEjpC bqShHC sc-ifAKCX hwskBS"
+            className="sc-ibxdXY jxpGTM sc-ifAKCX fshHDp"
             color="#E7E7E7"
             onClick={[Function]}
             size={20}
           />
         </div>
         <div
-          className="sc-RefOD ewfwfz"
+          className="sc-iQKALj gJEbaw"
           orientation="horizontal"
         >
           <div
-            className="sc-kIPQKe fJWsvc"
-            color="#E7E7E7"
+            className="sc-eXEjpC eUCYuI"
+            color="#504CFF"
           >
             <div
-              className="sc-ifAKCX bxgCNR"
-              color="#E7E7E7"
+              className="sc-ifAKCX bJGSGx"
+              color="#504CFF"
               disabled={true}
               size={42}
               title="Logout"
             />
             <div
-              className="sc-esjQYD fQwcnI sc-ifAKCX ixvxEv"
-              color="#E7E7E7"
+              className="sc-kIPQKe iKcgnq sc-ifAKCX jDsLLK"
+              color="#504CFF"
               disabled={true}
               size={25}
             />
           </div>
         </div>
         <div
-          className="sc-RefOD ewfwfz"
+          className="sc-iQKALj gJEbaw"
           orientation="horizontal"
         >
           <div
-            className="sc-ifAKCX bxgCNR"
-            color="#E7E7E7"
+            className="sc-ifAKCX iCJqJg"
+            color="#95D154"
             disabled={true}
             size={42}
             title="Settings"
           />
         </div>
         <div
-          className="sc-RefOD hnhRCx"
+          className="sc-iQKALj lplwsu"
           orientation="horizontal"
         >
           <div
-            className="sc-ifAKCX dlQxXV"
+            className="sc-ifAKCX eBHnDB"
             color="#E7E7E7"
             disabled={false}
             onClick={[Function]}
@@ -86,23 +86,23 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
           />
         </div>
         <div
-          className="sc-RefOD hnhRCx"
+          className="sc-iQKALj lplwsu"
           orientation="horizontal"
         >
           <div
-            className="sc-kIPQKe gpHsLk"
+            className="sc-eXEjpC iZKeZv"
             color="#E7E7E7"
           >
             <div
-              className="sc-ifAKCX dlQxXV"
+              className="sc-ifAKCX eBHnDB"
               color="#E7E7E7"
               disabled={false}
               onClick={[Function]}
               size={42}
-              title="Layouts"
+              title="Workspaces"
             />
             <div
-              className="sc-esjQYD fQwcnI sc-ifAKCX xmkOg"
+              className="sc-kIPQKe iKcgnq sc-ifAKCX fUbaLX"
               color="#E7E7E7"
               disabled={false}
               onClick={[Function]}
@@ -111,12 +111,12 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
           </div>
         </div>
         <div
-          className="sc-RefOD hnhRCx"
+          className="sc-iQKALj lplwsu"
           orientation="horizontal"
         >
           <div
-            className="sc-ifAKCX dlQxXV"
-            color="#E7E7E7"
+            className="sc-ifAKCX fCxQld"
+            color="#FBC23C"
             disabled={false}
             onClick={[Function]}
             size={42}
@@ -508,6 +508,34 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
                                       }
                                     }
                                   >
+                                    color
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  '#504CFF'
+                                </span>
+                                ,
+                                <span>
+                                  <span>
+                                    <br />
+                                        
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
                                     cta
                                   </span>
                                 </span>
@@ -555,56 +583,6 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
                                         
                                       
                                   </span>
-                                  <span
-                                    style={
-                                      Object {
-                                        "color": "#666",
-                                      }
-                                    }
-                                  >
-                                    icon
-                                  </span>
-                                </span>
-                                : 
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  {
-                                  <span>
-                                    <span
-                                      style={
-                                        Object {
-                                          "color": "#666",
-                                        }
-                                      }
-                                    >
-                                      default
-                                    </span>
-                                  </span>
-                                  : 
-                                  <span
-                                    style={
-                                      Object {
-                                        "color": "#22a",
-                                        "wordBreak": "break-word",
-                                      }
-                                    }
-                                  >
-                                    ''
-                                  </span>
-                                  }
-                                </span>
-                                ,
-                                <span>
-                                  <span>
-                                    <br />
-                                        
-                                      
-                                  </span>
                                   …
                                 </span>
                                 <span>
@@ -629,6 +607,34 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
                                 }
                               >
                                 {
+                                <span>
+                                  <span>
+                                    <br />
+                                        
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    color
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  '#95D154'
+                                </span>
+                                ,
                                 <span>
                                   <span>
                                     <br />
@@ -689,56 +695,6 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
                                         
                                       
                                   </span>
-                                  <span
-                                    style={
-                                      Object {
-                                        "color": "#666",
-                                      }
-                                    }
-                                  >
-                                    icon
-                                  </span>
-                                </span>
-                                : 
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  {
-                                  <span>
-                                    <span
-                                      style={
-                                        Object {
-                                          "color": "#666",
-                                        }
-                                      }
-                                    >
-                                      default
-                                    </span>
-                                  </span>
-                                  : 
-                                  <span
-                                    style={
-                                      Object {
-                                        "color": "#22a",
-                                        "wordBreak": "break-word",
-                                      }
-                                    }
-                                  >
-                                    ''
-                                  </span>
-                                  }
-                                </span>
-                                ,
-                                <span>
-                                  <span>
-                                    <br />
-                                        
-                                      
-                                  </span>
                                   …
                                 </span>
                                 <span>
@@ -763,6 +719,33 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
                                 }
                               >
                                 {
+                                <span>
+                                  <span>
+                                    <br />
+                                        
+                                      
+                                  </span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    color
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#444",
+                                    }
+                                  }
+                                >
+                                  null
+                                </span>
+                                ,
                                 <span>
                                   <span>
                                     <br />
@@ -815,56 +798,6 @@ exports[`Storyshots Components/SystemDrawer default 1`] = `
                                   }
                                 >
                                   false
-                                </span>
-                                ,
-                                <span>
-                                  <span>
-                                    <br />
-                                        
-                                      
-                                  </span>
-                                  <span
-                                    style={
-                                      Object {
-                                        "color": "#666",
-                                      }
-                                    }
-                                  >
-                                    icon
-                                  </span>
-                                </span>
-                                : 
-                                <span
-                                  style={
-                                    Object {
-                                      "color": "#666",
-                                    }
-                                  }
-                                >
-                                  {
-                                  <span>
-                                    <span
-                                      style={
-                                        Object {
-                                          "color": "#666",
-                                        }
-                                      }
-                                    >
-                                      default
-                                    </span>
-                                  </span>
-                                  : 
-                                  <span
-                                    style={
-                                      Object {
-                                        "color": "#22a",
-                                        "wordBreak": "break-word",
-                                      }
-                                    }
-                                  >
-                                    ''
-                                  </span>
-                                  }
                                 </span>
                                 ,
                                 <span>

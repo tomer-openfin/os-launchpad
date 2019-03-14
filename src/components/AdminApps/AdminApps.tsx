@@ -1,22 +1,35 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 
-import { DeleteIconLink, EditIconLink, HeadingWrapper, LinkWrapper, ListWrapper, Wrapper } from '../AdminUsers/AdminUsers.css';
-import { ButtonLink } from '../Button';
+import { AddEditWrapper, DeleteIconLink, EditIconLink, HeadingWrapper, LinkWrapper, ListWrapper, Wrapper } from '../AdminUsers/AdminUsers.css';
 
 import { App } from '../../types/commons';
-import { doesCurrentPathMatch } from '../../utils/routeHelpers';
-import { ADMIN_APPS_ROUTES, ROUTES } from '../Router/consts';
+import { sharedAdminFormsCSSTransitionProps } from '../../utils/adminForms';
+import noop from '../../utils/noop';
+import { ROUTES } from '../Router/consts';
 
 import AppCard from '../AppCard';
 import { Row } from '../AppDirectory';
+import { ButtonLink } from '../Button';
+import ConfirmAppDelete from '../ConfirmAppDelete';
+import EditAppWindow from '../EditAppWindow';
 import Modal from '../Modal';
+import NewAppWindow from '../NewAppWindow';
 import { SearchInputWithState } from '../SearchInput';
 
-const ADMIN_APPS_PATHS = Object.values(ADMIN_APPS_ROUTES);
+export enum Stage {
+  Default = 'default',
+  Delete = 'delete',
+  Edit = 'edit',
+  New = 'new',
+}
 
-interface Props extends RouteComponentProps {
-  apps: App[];
+export interface Props {
+  apps?: App[];
+  currentAction?: string;
+  handleClose?: () => void;
+  handleDelete?: () => void;
+  id?: string;
 }
 
 interface State {
@@ -25,12 +38,13 @@ interface State {
 
 const defaultProps: Partial<Props> = {
   apps: [],
+  currentAction: Stage.Default,
 };
 
 class AdminApps extends React.PureComponent<Props, State> {
   static defaultProps = defaultProps;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -38,26 +52,30 @@ class AdminApps extends React.PureComponent<Props, State> {
     };
   }
 
-  handleInputChange = (search: string) => {
-    this.setState({ search });
+  handleInputChange = (search: string) => this.setState({ search });
+
+  filterAppsList = (search: string): App[] | undefined => {
+    const { apps } = this.props;
+
+    if (search && apps) {
+      return apps.filter(app => app.title && app.title.toLowerCase().indexOf(search.toLowerCase()) !== -1);
+    }
+
+    return apps;
   };
 
-  filterAppsList = search =>
-    search ? this.props.apps.filter(app => app.title && app.title.toLowerCase().indexOf(search.toLowerCase()) !== -1) : this.props.apps;
+  renderButtons = (app: App) => (
+    <LinkWrapper vertical>
+      <EditIconLink to={`${ROUTES.ADMIN_APPS_EDIT}${app.id}`} />
 
-  renderButtons = app => {
-    return (
-      <LinkWrapper vertical>
-        <EditIconLink to={{ pathname: ROUTES.ADMIN_APPS_EDIT, state: app }} />
-
-        <DeleteIconLink to={{ pathname: ROUTES.ADMIN_APPS_DELETE, state: app }} />
-      </LinkWrapper>
-    );
-  };
+      <DeleteIconLink to={`${ROUTES.ADMIN_APPS_DELETE}${app.id}`} />
+    </LinkWrapper>
+  );
 
   render() {
-    const { children, history } = this.props;
+    const { currentAction, handleClose, handleDelete, id } = this.props;
     const { search } = this.state;
+    const appsList = this.filterAppsList(search);
 
     return (
       <Wrapper>
@@ -68,14 +86,31 @@ class AdminApps extends React.PureComponent<Props, State> {
         </HeadingWrapper>
 
         <ListWrapper>
-          {this.filterAppsList(search).map(app => (
-            <Row key={app.id}>
-              <AppCard app={app} ctas={this.renderButtons(app)} />
-            </Row>
-          ))}
+          {appsList &&
+            appsList.map((app: App) => (
+              <Row key={app.id}>
+                <AppCard app={app} ctas={this.renderButtons(app)} />
+              </Row>
+            ))}
         </ListWrapper>
 
-        {doesCurrentPathMatch(ADMIN_APPS_PATHS, location.pathname) && <Modal handleClose={history.goBack}>{children}</Modal>}
+        <CSSTransition in={currentAction === Stage.New} {...sharedAdminFormsCSSTransitionProps}>
+          <AddEditWrapper>
+            <NewAppWindow handleCancel={handleClose} handleSuccess={handleClose} />
+          </AddEditWrapper>
+        </CSSTransition>
+
+        <CSSTransition in={currentAction === Stage.Edit} {...sharedAdminFormsCSSTransitionProps}>
+          <AddEditWrapper>
+            <EditAppWindow appId={id} handleCancel={handleClose} handleDelete={handleDelete} handleSuccess={handleClose} />
+          </AddEditWrapper>
+        </CSSTransition>
+
+        {currentAction === Stage.Delete && (
+          <Modal handleClose={!handleClose ? noop : handleClose}>
+            <ConfirmAppDelete handleCancel={handleClose} handleSuccess={handleClose} appId={id} />
+          </Modal>
+        )}
       </Wrapper>
     );
   }

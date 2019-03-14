@@ -1,3 +1,5 @@
+import { Workspace } from 'openfin-layouts/dist/client/workspaces';
+
 export type ApplicationBaseEvent = fin.ApplicationBaseEvent;
 export type MonitorInfo = fin.MonitorInfo;
 export type MonitorDetails = MonitorInfo['primaryMonitor'];
@@ -9,3 +11,4 @@ export type PointTopLeft = fin.PointTopLeft;
 export type SystemBaseEvent = fin.SystemBaseEvent;
 export type Transition = fin.Transition;
 export type WindowBaseEvent = fin.WindowBaseEvent;
+export type Workspace = Workspace;

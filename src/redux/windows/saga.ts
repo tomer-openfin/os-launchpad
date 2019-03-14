@@ -1,6 +1,5 @@
 import { Window } from '@giantmachines/redux-openfin';
-import { delay } from 'redux-saga';
-import { all, call, put, race, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
+import { all, call, delay, put, race, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import windowsConfig, {
   APP_DIRECTORY_WINDOW,

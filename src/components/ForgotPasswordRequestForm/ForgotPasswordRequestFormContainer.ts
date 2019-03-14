@@ -28,6 +28,7 @@ const mapDispatch = (dispatch: Dispatch, ownProps: OwnProps): MapDispatch => ({
           },
           successCb: () => {
             successCb(payload);
+            resolve();
           },
         }),
       );

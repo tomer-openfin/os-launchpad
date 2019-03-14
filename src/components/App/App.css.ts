@@ -1,14 +1,9 @@
 import styled from 'styled-components';
 
-import * as blobDark from '../../assets/BlobDark.svg';
-
+import { Color } from '../../styles';
 import { DirectionalPosition, Orientation } from '../../types/commons';
 import { getLauncherOrientation } from '../../utils/directionalPositionHelpers';
-import { isBottomOrRight, isTopOrBottom } from '../../utils/windowPositionHelpers';
-
-import { Color } from '../../styles';
-
-import Logo from '../Logo';
+import { isBottomOrRight, isRight, isTopOrBottom } from '../../utils/windowPositionHelpers';
 
 interface PositionProp {
   launcherPosition: DirectionalPosition;
@@ -28,15 +23,36 @@ interface WrapperProps {
   size: number;
 }
 
-export const LogoWrapper = styled.div<{ size: number }>`
-  background-color: ${Color.KUIPER_BELT};
-  height: ${props => props.size}px;
-  min-height: ${props => props.size}px;
-  min-width: ${props => props.size}px;
-  width: ${props => props.size}px;
+export const LogoWrapper = styled.div<WrapperProps>`
+  height: ${({ size }) => size}px;
+  min-height: ${({ size }) => size}px;
+  min-width: ${({ size }) => size}px;
+  width: ${({ size }) => size}px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+
+  &:before {
+    background-color: ${Color.ASTEROID_BELT};
+    bottom: 0;
+    content: '';
+    height: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? '60%' : '1px')};
+    margin: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? 'auto 0' : '0 auto')};
+    position: absolute;
+    right: 0;
+    width: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? '1px' : '60%')};
+
+    ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? 'top: 0' : 'left: 0')};
+  }
+
+  ${({ launcherPosition }) => {
+    const chosenDirection = isRight(launcherPosition) ? 'to right' : 'to left';
+
+    return `
+      background-image: linear-gradient(${isTopOrBottom(launcherPosition) ? 'to bottom' : chosenDirection}, ${Color.OORT_CLOUD}, ${Color.VACUUM});
+    `;
+  }}
 `;
 
 export const AppListWrapper = styled.div<AppListWrapperProps>`
@@ -59,20 +75,11 @@ export const Main = styled.div<PositionProp>`
   height: 100vh;
   width: 100vw;
 
-  &:before {
-    content: '';
-    position: absolute;
-    background-image: url(${blobDark});
-    background-repeat: repeat;
-    background-position: center;
-    background-size: auto;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    transform: rotate(${props => (isTopOrBottom(props.launcherPosition) ? '0' : '-180deg')});
-    z-index: -1;
-  }
+  ${({ launcherPosition }) => {
+    const chosenDirection = isRight(launcherPosition) ? 'to right' : 'to left';
+
+    return `background-image: linear-gradient(${isTopOrBottom(launcherPosition) ? 'to bottom' : chosenDirection}, ${Color.OORT_CLOUD}, ${Color.VACUUM})`;
+  }}
 `;
 
 export const Overlay = styled.div<ExpandedProp>`

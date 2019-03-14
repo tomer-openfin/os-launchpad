@@ -4,19 +4,29 @@ import { Props } from './SvgIcon';
 
 export const Icon = styled.div<Props>`
   display: inline-block;
-  mask-size: contain;
-  mask-position: center;
-  mask-repeat: no-repeat;
 
-  ${({ color, disabled, hoverColor, imgSrc, isActive, onClick, size }) => `
-    background-color: ${isActive ? hoverColor : color};
-    cursor: ${onClick && !disabled ? 'pointer' : 'inherit'};
-    height: ${typeof size === 'string' ? size : `${size}px`};
-    mask-image: url(${imgSrc});
-    width: ${typeof size === 'string' ? size : `${size}px`};
+  ${({ color, disabled, hoverColor, imgSrc, isActive, isBackground, onClick, size }) => {
+    const propName = isBackground ? 'background' : 'mask';
 
-    &:hover {
-      background-color: ${(onClick && !disabled) || isActive ? hoverColor : color};
-    }
-  `}
+    return `
+      cursor: ${onClick && !disabled ? 'pointer' : 'inherit'};
+      height: ${typeof size === 'string' ? size : `${size}px`};
+      width: ${typeof size === 'string' ? size : `${size}px`};
+
+      ${propName}-image: url(${imgSrc});
+      ${propName}-size: contain;
+      ${propName}-position: center;
+      ${propName}-repeat: no-repeat;
+
+      ${
+        isBackground
+          ? ''
+          : `
+          background-color: ${isActive ? hoverColor : color};
+          &:hover {
+            background-color: ${(onClick && !disabled) || isActive ? hoverColor : color};
+          }`
+      }
+    `;
+  }}
 `;

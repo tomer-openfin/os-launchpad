@@ -2,12 +2,25 @@ import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import noop from '../../utils/noop';
 import { CATEGORIES } from '../../utils/storyCategories';
 
+import { User } from '../../types/commons';
 import NewUserForm from './NewUserForm';
 
-const createUser = action('createUser');
-const onEscDown = action('onEscDown');
+const handleCancel = action('handleCancel');
+const handleSubmitValues = action('handleSubmitValues');
 
-storiesOf(`${CATEGORIES.ADMIN}NewUserForm`, module).add('default', () => <NewUserForm createUser={createUser} onEscDown={onEscDown} pushRoute={noop} />);
+const emptyUser: User = {
+  email: '',
+  firstName: '',
+  id: '',
+  lastName: '',
+  middleInitial: '',
+  phone: '',
+  tmpPassword: '',
+  username: '',
+};
+
+storiesOf(`${CATEGORIES.ADMIN}NewUserForm`, module).add('default', () => (
+  <NewUserForm initialValues={emptyUser} handleCancel={handleCancel} handleSubmitValues={handleSubmitValues} />
+));

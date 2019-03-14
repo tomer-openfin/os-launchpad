@@ -4,29 +4,35 @@ export const ADMIN_SETTINGS_ROUTES = {
 };
 
 export const ADMIN_APPS_ROUTES = {
-  ADMIN_APPS_DELETE: '/admin/apps/delete',
-  ADMIN_APPS_EDIT: '/admin/apps/edit',
-  ADMIN_APPS_NEW: '/admin/apps/new',
+  ADMIN_APPS_DELETE: '/admin/apps/delete/',
+  ADMIN_APPS_EDIT: '/admin/apps/edit/',
+  ADMIN_APPS_NEW: '/admin/apps/new/',
 };
 
 export const ADMIN_USERS_ROUTES = {
-  ADMIN_USERS_DELETE: `/admin/users/delete`,
-  ADMIN_USERS_EDIT: `/admin/users/edit`,
-  ADMIN_USERS_IMPORT: `/admin/users/import`,
-  ADMIN_USERS_NEW: `/admin/users/new`,
+  ADMIN_USERS_DELETE: '/admin/users/delete/',
+  ADMIN_USERS_EDIT: '/admin/users/edit/',
+  ADMIN_USERS_IMPORT: '/admin/users/import/',
+  ADMIN_USERS_NEW: '/admin/users/new/',
 };
+
+export interface MatchParams {
+  action: string;
+  id: string;
+}
 
 export const ADMIN_ROUTES = {
   ADMIN: '/admin',
-  ADMIN_APPS: '/admin/apps',
+  ADMIN_APPS: '/admin/apps/:action/:id?', // note: ? for optional params
   ...ADMIN_APPS_ROUTES,
-  ADMIN_SETTINGS: `/admin/settings`,
+  ADMIN_SETTINGS: '/admin/settings',
   ...ADMIN_SETTINGS_ROUTES,
-  ADMIN_USERS: '/admin/users',
+  ADMIN_USERS: '/admin/users/:action/:id?',
   ...ADMIN_USERS_ROUTES,
 };
 
 export const SETTINGS_ROUTES = {
+  SETTINGS_CONFIRM_PASSWORD: '/settings/confirm-password',
   SETTINGS_LAUNCHER_MONITOR: '/settings/launcher-monitor',
   SETTINGS_UPDATE_PASSWORD: '/settings/update-password',
 };
@@ -41,6 +47,6 @@ export const ROUTES = {
   LAYOUTS: '/layouts',
   LOGIN: '/login',
   LOGOUT: '/logout',
-  SETTINGS: '/settings',
+  SETTINGS: '/settings/:action',
   ...SETTINGS_ROUTES,
 };

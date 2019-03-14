@@ -1,28 +1,37 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
 
-import { doesCurrentPathMatch } from '../../utils/routeHelpers';
-import { SETTINGS_ROUTES } from '../Router/consts';
 import { SettingsWrapper, Window } from './Settings.css';
+
+import noop from '../../utils/noop';
 
 import AccountSettings from '../AccountSettings';
 import Borders from '../Borders';
+import ConfirmPasswordUpdate from '../ConfirmPasswordUpdate';
 import LauncherSettings from '../LauncherSettings';
 import Modal from '../Modal';
+import MonitorControlsDialog, { asRoute as asMonitorControlsDialogRoute, withLauncherConfig } from '../MonitorControlsDialog';
+import UpdatePasswordForm from '../UpdatePasswordForm';
 import WindowHeader from '../WindowHeader';
 
-interface Props {
-  children?: React.ReactNode;
-  hideWindow: () => void;
-  history?: RouteComponentProps['history'];
-  isEnterprise: boolean;
-  location?: RouteComponentProps['location'];
+export enum Stage {
+  Confirm = 'confirm-password',
+  Default = 'default',
+  LauncherMonitor = 'launcher-monitor',
+  PasswordUpdate = 'update-password',
 }
 
-const SETTINGS_PATHS = Object.values(SETTINGS_ROUTES);
+export interface Props {
+  currentAction?: string;
+  handleClose?: () => void;
+  handleConfirm?: () => void;
+  hideWindow?: () => void;
+  isEnterprise?: boolean;
+}
 
-const Settings = (props: Props) => {
-  const { children, hideWindow, history, isEnterprise, location } = props;
+const wrappedMonitorControls = asMonitorControlsDialogRoute(withLauncherConfig(MonitorControlsDialog));
+
+const Settings = ({ currentAction, handleClose, handleConfirm, hideWindow, isEnterprise }: Props) => {
+  const createHandleClose = !handleClose ? noop : handleClose;
 
   return (
     <Window>
@@ -35,7 +44,19 @@ const Settings = (props: Props) => {
           {isEnterprise && <AccountSettings />}
         </SettingsWrapper>
 
-        {location && history && doesCurrentPathMatch(SETTINGS_PATHS, location.pathname) && <Modal handleClose={history.goBack}>{children}</Modal>}
+        {currentAction === Stage.LauncherMonitor && <Modal handleClose={createHandleClose}>{wrappedMonitorControls()}</Modal>}
+
+        {currentAction === Stage.PasswordUpdate && (
+          <Modal handleClose={createHandleClose}>
+            <UpdatePasswordForm handleCancel={handleClose} handleConfirm={handleConfirm} handleSuccess={handleClose} />
+          </Modal>
+        )}
+
+        {currentAction === Stage.Confirm && (
+          <Modal handleClose={createHandleClose}>
+            <ConfirmPasswordUpdate handleSuccess={handleClose} />
+          </Modal>
+        )}
       </Borders>
     </Window>
   );

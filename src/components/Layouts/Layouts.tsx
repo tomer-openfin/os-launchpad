@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { MetaWithCallbacks, UserLayout } from '../../types/commons';
+import { UserLayout } from '../../types/commons';
 
 import LayoutsList from '../LayoutsList';
 import LayoutsUserActions from '../LayoutsUserActions';
@@ -18,7 +18,7 @@ const Layouts = ({ close, deleteLayout, layouts, restoreLayout }: Props) => {
     <Wrapper>
       <ActionsWrapper>
         <Header>
-          <Title>Layouts</Title>
+          <Title>Workspaces</Title>
         </Header>
 
         <LayoutsUserActions />

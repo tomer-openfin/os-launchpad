@@ -10,5 +10,5 @@ export const Overlay = styled.div`
   position: absolute;
   top: 0;
   width: 100vw;
-  z-index: 0;
+  z-index: 1;
 `;

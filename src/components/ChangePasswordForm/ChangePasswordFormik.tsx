@@ -10,6 +10,7 @@ interface Props {
 }
 
 const initialValues: Values = { confirmPassword: '', newPassword: '' };
+
 const validationSchema = Yup.object().shape({
   confirmPassword: Yup.string()
     .oneOf([Yup.ref('newPassword')], 'Passwords must match')

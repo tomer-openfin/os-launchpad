@@ -31,7 +31,6 @@ storiesOf(`${CATEGORIES.ADMIN}AdminConfirmation`, module)
         errorText={errorShown ? errorText : ''}
         headingText={headingText}
         handleConfirm={deleteApp}
-        parentRoute=""
       />
     );
   })
@@ -51,7 +50,6 @@ storiesOf(`${CATEGORIES.ADMIN}AdminConfirmation`, module)
         headingText={headingText}
         onConfirm={deleteApp}
         onConfirmSuccess={noop}
-        parentRoute=""
       />
     );
   });

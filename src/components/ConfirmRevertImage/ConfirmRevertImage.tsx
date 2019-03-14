@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { ROUTES } from '../Router/consts';
 
-import { OrgImages } from '../../redux/organization/types';
 import { PushRoute } from '../../types/commons';
 
 import { imageDisplayName, OrgImageKey } from '../../utils/orgImages';

@@ -39,7 +39,7 @@ class ImageInput extends React.PureComponent<Props, State> {
     const { draggedOver } = this.state;
 
     return (
-      <Wrapper active={draggedOver}>
+      <Wrapper isActive={draggedOver}>
         <ImagePreview size={previewSize} imgSrc={imgSrc || UploadIcon} />
 
         <InputWrapper>

@@ -10,225 +10,182 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
       }
     }
   >
-    <div
-      className="sc-kZmsYB kzqRJV"
+    <form
+      className="sc-ksYbfQ jtXRRF"
+      onSubmit={[Function]}
     >
       <div
-        className="sc-cmTdod hSnYdr"
+        className="sc-hmzhuo dudMzh"
       >
         <div
-          className="sc-jwKygS ktOnU"
+          className="sc-frDJqD hwLFCw"
         >
           <div
-            className="sc-hORach PhuPi"
+            className="sc-kvZOFW galVDV"
           >
-            Create New App
-          </div>
-        </div>
-      </div>
-      <form
-        className="sc-ksYbfQ eCIUEJ"
-        onReset={[Function]}
-        onSubmit={[Function]}
-      >
-        <div
-          className="sc-hmzhuo dudMzh"
-        >
-          <div
-            className="sc-frDJqD cnrcjF"
-          >
-            <div
-              className="sc-RcBXQ ZHuLd"
+            <label
+              className="sc-eMigcr diIYqY sc-dxgOiQ nGBmb"
             >
-              <label
-                className="sc-fyjhYU boyghX sc-dxgOiQ nGBmb"
+              <div
+                className="sc-kpOJdX gglwGS"
+              >
+                Config Type
+              </div>
+              <input
+                checked={true}
+                name="withAppUrl"
+                onBlur={[Function]}
+                onChange={[Function]}
+                type="checkbox"
+              />
+              <div
+                className="sc-jVODtj bFHVqc"
               >
                 <div
-                  className="sc-kpOJdX gglwGS"
-                >
-                  Config Type
-                </div>
-                <input
                   checked={true}
-                  name="withAppUrl"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  type="checkbox"
+                  className="sc-gPWkxV hwySNu"
                 />
                 <div
-                  className="sc-eTpRJs isQICh"
-                >
-                  <div
-                    checked={true}
-                    className="sc-eIHaNI hLdKPa"
-                  />
-                  <div
-                    className="sc-ugnQR kCCKUK"
-                  >
-                    App URL
-                  </div>
-                </div>
-                <div
-                  className="sc-eTpRJs isQICh"
-                >
-                  <div
-                    checked={false}
-                    className="sc-eIHaNI cTCDIW"
-                  />
-                  <div
-                    className="sc-ugnQR kCCKUK"
-                  >
-                    Manifest
-                  </div>
-                </div>
-              </label>
-              <label
-                className="sc-dxgOiQ nGBmb"
-              >
-                <div
-                  className="sc-kpOJdX gglwGS"
+                  className="sc-fzsDOv hSyPxr"
                 >
                   App URL
                 </div>
-                <input
-                  name="appUrl"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  placeholder="Enter app url"
-                  type="text"
-                  value=""
+              </div>
+              <div
+                className="sc-jVODtj bFHVqc"
+              >
+                <div
+                  checked={false}
+                  className="sc-gPWkxV bgwsCr"
                 />
-              </label>
-            </div>
+                <div
+                  className="sc-fzsDOv hSyPxr"
+                >
+                  Manifest
+                </div>
+              </div>
+            </label>
             <label
               className="sc-dxgOiQ nGBmb"
             >
               <div
                 className="sc-kpOJdX gglwGS"
               >
-                App Title
+                App URL
               </div>
               <input
-                name="title"
+                name="appUrl"
                 onBlur={[Function]}
                 onChange={[Function]}
-                placeholder="Enter app title"
+                placeholder="Enter app url"
                 type="text"
                 value=""
               />
             </label>
-            <div
-              className="sc-RcBXQ fhYqCm"
-              height="144px"
-            >
-              <label
-                className="sc-dxgOiQ cLuaXs"
-              >
-                <div
-                  className="sc-kpOJdX gglwGS"
-                >
-                  App Shortcut
-                </div>
-                <div
-                  className="sc-hIVACf bXkhsv"
-                >
-                  <div
-                    className="sc-gipzik jmhvsi"
-                    size={68}
-                  >
-                    <div
-                      className="sc-csuQGl iZpyJe"
-                      size={68}
-                    />
-                  </div>
-                  <div
-                    className="sc-gpHHfC POeTO"
-                  >
-                    <div
-                      className="sc-gVyKpa ForoK"
-                    >
-                      64x64
-                    </div>
-                    <div
-                      className="sc-ifAKCX hwskBS"
-                      color="#E7E7E7"
-                      onClick={[Function]}
-                      size={20}
-                    />
-                  </div>
-                </div>
-              </label>
-              <label
-                className="sc-dxgOiQ nGBmb"
-              >
-                <div
-                  className="sc-kpOJdX gglwGS"
-                >
-                  Description
-                </div>
-                <textarea
-                  name="description"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  placeholder="Enter description"
-                  type="text"
-                  value=""
-                />
-              </label>
-            </div>
           </div>
-        </div>
-        <div
-          className="sc-hqyNC hXSrbm"
-        >
-          <div
-            className="sc-kvZOFW jextin"
-          >
-            <button
-              className="sc-kAzzGY jjQyJb"
-              disabled={true}
-              type="submit"
-              width={128}
-            >
-              Save
-            </button>
-            <a
-              backgroundColor="#848484"
-              className="sc-chPdSV hEgkTj"
-              href="/admin/apps"
-              onClick={[Function]}
-              type="button"
-              width={128}
-            >
-              Cancel
-            </a>
-          </div>
-        </div>
-      </form>
-      <div
-        className="sc-iSDuPN jwRlQu"
-      >
-        <div
-          className="sc-jbKcbu fUfPqM"
-        >
-          <div
-            className="sc-dNLxif jctmEa"
+          <label
+            className="sc-dxgOiQ nGBmb"
           >
             <div
-              className="sc-jqCOkK kpsuvn"
+              className="sc-kpOJdX gglwGS"
             >
-              There was an error trying to create this app:  Please try again.
+              App Title
             </div>
-            <div
-              className="sc-uJMKN grZbwL sc-ifAKCX xmkOg"
-              color="#E7E7E7"
-              onClick={[Function]}
-              size={25}
+            <input
+              name="title"
+              onBlur={[Function]}
+              onChange={[Function]}
+              placeholder="Enter app title"
+              type="text"
+              value=""
             />
+          </label>
+          <div
+            className="sc-kvZOFW fWAjoW"
+            height="144px"
+          >
+            <label
+              className="sc-dxgOiQ cLuaXs"
+            >
+              <div
+                className="sc-kpOJdX gglwGS"
+              >
+                App Shortcut
+              </div>
+              <div
+                className="sc-cpmLhU gDXbAD"
+              >
+                <div
+                  className="sc-gipzik jmhvsi"
+                  size={68}
+                >
+                  <div
+                    className="sc-csuQGl iZpyJe"
+                    size={68}
+                  />
+                </div>
+                <div
+                  className="sc-dymIpo dEKsWm"
+                >
+                  <div
+                    className="sc-bnXvFD ldcbis"
+                  >
+                    64x64
+                  </div>
+                  <div
+                    className="sc-ifAKCX fshHDp"
+                    color="#E7E7E7"
+                    onClick={[Function]}
+                    size={20}
+                  />
+                </div>
+              </div>
+            </label>
+            <label
+              className="sc-dxgOiQ nGBmb"
+            >
+              <div
+                className="sc-kpOJdX gglwGS"
+              >
+                Description
+              </div>
+              <textarea
+                name="description"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="Enter description"
+                type="text"
+                value=""
+              />
+            </label>
           </div>
         </div>
       </div>
-    </div>
+      <div
+        className="sc-bMvGRv lbuJOf"
+      >
+        <div
+          className="sc-rBLzX iHxlYT"
+        >
+          <button
+            className="sc-kAzzGY gKySrU"
+            disabled={true}
+            type="submit"
+            width={128}
+          >
+            Save
+          </button>
+          <button
+            className="sc-kAzzGY jWQqYu"
+            onClick={[Function]}
+            type="button"
+            width={128}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
   <button
     onClick={[Function]}
@@ -376,7 +333,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                   }
                 >
                   &lt;
-                  NewAppForm
+                  Unknown
                 </span>
                 <span>
                   <span>
@@ -384,7 +341,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      createApp
+                      initialValues
                     </span>
                     <span>
                       =
@@ -395,11 +352,108 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                         <span
                           style={
                             Object {
-                              "color": "#170",
+                              "color": "#666",
                             }
                           }
                         >
-                          createApp
+                          {
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              appUrl
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
+                            }
+                          >
+                            ''
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              contexts
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#666",
+                              }
+                            }
+                          >
+                            [
+                            ]
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              description
+                            </span>
+                          </span>
+                          : 
+                          <span
+                            style={
+                              Object {
+                                "color": "#22a",
+                                "wordBreak": "break-word",
+                              }
+                            }
+                          >
+                            ''
+                          </span>
+                          ,
+                          <span>
+                            <span>
+                              <br />
+                                
+                                
+                            </span>
+                            …
+                          </span>
+                          <span>
+                            <br />
+                              
+                          </span>
+                          }
                         </span>
                         }
                       </span>
@@ -410,7 +464,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      onEscDown
+                      handleCancel
                     </span>
                     <span>
                       =
@@ -425,7 +479,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                             }
                           }
                         >
-                          onEscDown
+                          handleCancel
                         </span>
                         }
                       </span>
@@ -436,7 +490,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                     <span
                       style={Object {}}
                     >
-                      pushRoute
+                      handleSubmitValues
                     </span>
                     <span>
                       =
@@ -451,7 +505,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
                             }
                           }
                         >
-                          noop
+                          handleSubmitValues
                         </span>
                         }
                       </span>
@@ -515,7 +569,7 @@ exports[`Storyshots Admin Components/NewAppForm default 1`] = `
               }
             >
               "
-              NewAppForm
+              
               " Component
             </h2>
             <small>

@@ -11,13 +11,13 @@ exports[`Storyshots UI Components/WindowHeader default 1`] = `
     }
   >
     <div
-      className="sc-cmTdod fOaOac"
+      className="sc-jwKygS kcpEBO"
     >
       <div
-        className="sc-jwKygS ktOnU"
+        className="sc-btzYZH fXSxlS"
       >
         <div
-          className="sc-btzYZH dBwXjd"
+          className="sc-lhVmIH dDmlwM"
         >
           OS Launchpad
         </div>
