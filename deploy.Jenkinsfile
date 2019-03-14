@@ -15,6 +15,9 @@ pipeline {
                     GIT_SHORT_SHA = sh ( script: "git rev-parse --short HEAD", returnStdout: true ).trim()
                     VERSION = sh ( script: "node -pe \"require('./package.json').version\"", returnStdout: true ).trim()
                     S3_LOC = env.OS_LAUNCHPAD_S3_ROOT
+                    if ( DEPLOY_ENV == 'staging' || DEPLOY_ENV == 'dev') {
+                        S3_LOC = env.OS_LAUNCHPAD_S3_ROOT + '-' + DEPLOY_ENV
+                    }
                 }
                 sh "npm i"
                 sh "ENTERPRISE=true NODE_ENV=production npm run build"
