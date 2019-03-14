@@ -37,22 +37,21 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
         width={0}
       >
         <div
-          className="sc-fjdhpX kjeTOz"
-          onClick={[Function]}
-          size={50}
+          className="transition-group"
         >
           <div
-            style={
-              Object {
-                "display": "inline-block",
-                "lineHeight": 0,
-                "opacity": 1,
-              }
-            }
+            className="sc-fjdhpX kjeTOz"
+            onClick={[Function]}
+            size={50}
           >
             <div
-              className="sc-jTzLTM blWMYJ"
-              size={50}
+              style={
+                Object {
+                  "display": "inline-block",
+                  "lineHeight": 0,
+                  "opacity": 1,
+                }
+              }
             >
               <div
                 className="sc-ifAKCX bKFKVe"
@@ -61,141 +60,126 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
               />
             </div>
           </div>
-        </div>
-        <div
-          className="sc-VigVT psSBI"
-          size={50}
-          title="Trumid"
-        >
           <div
-            style={
-              Object {
-                "display": "inline-block",
-                "lineHeight": 0,
-                "opacity": 1,
-              }
-            }
+            className="sc-VigVT psSBI"
+            size={50}
+            title="Trumid"
           >
             <div
-              className="sc-htoDjs bbBQsJ"
-              direction="top"
-              onAnimationEnd={[Function]}
-              onAnimationIteration={[Function]}
+              style={
+                Object {
+                  "display": "inline-block",
+                  "lineHeight": 0,
+                  "opacity": 1,
+                }
+              }
             >
               <div
-                className="sc-gzVnrw lmqkGH"
-                onContextMenu={[Function]}
+                className="sc-htoDjs bbBQsJ"
+                direction="top"
+                onAnimationEnd={[Function]}
+                onAnimationIteration={[Function]}
               >
                 <div
-                  className="sc-bZQynM NYJaE"
-                  onClick={[Function]}
-                  size={50}
+                  className="sc-gzVnrw lmqkGH"
+                  onContextMenu={[Function]}
                 >
                   <div
-                    className="sc-EHOje bLVJMg"
-                  />
+                    className="sc-bZQynM NYJaE"
+                    onClick={[Function]}
+                    size={50}
+                  >
+                    <div
+                      className="sc-EHOje bLVJMg"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
-            size={12}
-          >
             <div
               className="sc-iwsKbI kSJIGu sc-ifAKCX clZILq"
               color="rgba(0,0,0,0)"
               size="53%"
             />
           </div>
-        </div>
-        <div
-          className="sc-VigVT psSBI"
-          size={50}
-          title="Neptune"
-        >
           <div
-            style={
-              Object {
-                "display": "inline-block",
-                "lineHeight": 0,
-                "opacity": 1,
-              }
-            }
+            className="sc-VigVT psSBI"
+            size={50}
+            title="Neptune"
           >
             <div
-              className="sc-htoDjs bbBQsJ"
-              direction="top"
-              onAnimationEnd={[Function]}
-              onAnimationIteration={[Function]}
+              style={
+                Object {
+                  "display": "inline-block",
+                  "lineHeight": 0,
+                  "opacity": 1,
+                }
+              }
             >
               <div
-                className="sc-gzVnrw lmqkGH"
-                onContextMenu={[Function]}
+                className="sc-htoDjs bbBQsJ"
+                direction="top"
+                onAnimationEnd={[Function]}
+                onAnimationIteration={[Function]}
               >
                 <div
-                  className="sc-bZQynM NYJaE"
-                  onClick={[Function]}
-                  size={50}
+                  className="sc-gzVnrw lmqkGH"
+                  onContextMenu={[Function]}
                 >
                   <div
-                    className="sc-EHOje bITuvo"
-                  />
+                    className="sc-bZQynM NYJaE"
+                    onClick={[Function]}
+                    size={50}
+                  >
+                    <div
+                      className="sc-EHOje bITuvo"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
-            size={12}
-          >
             <div
               className="sc-iwsKbI kSJIGu sc-ifAKCX clZILq"
               color="rgba(0,0,0,0)"
               size="53%"
             />
           </div>
-        </div>
-        <div
-          className="sc-VigVT psSBI"
-          size={50}
-          title="GreenKey"
-        >
           <div
-            style={
-              Object {
-                "display": "inline-block",
-                "lineHeight": 0,
-                "opacity": 1,
-              }
-            }
+            className="sc-VigVT psSBI"
+            size={50}
+            title="GreenKey"
           >
             <div
-              className="sc-htoDjs bbBQsJ"
-              direction="top"
-              onAnimationEnd={[Function]}
-              onAnimationIteration={[Function]}
+              style={
+                Object {
+                  "display": "inline-block",
+                  "lineHeight": 0,
+                  "opacity": 1,
+                }
+              }
             >
               <div
-                className="sc-gzVnrw lmqkGH"
-                onContextMenu={[Function]}
+                className="sc-htoDjs bbBQsJ"
+                direction="top"
+                onAnimationEnd={[Function]}
+                onAnimationIteration={[Function]}
               >
                 <div
-                  className="sc-bZQynM NYJaE"
-                  onClick={[Function]}
-                  size={50}
+                  className="sc-gzVnrw lmqkGH"
+                  onContextMenu={[Function]}
                 >
                   <div
-                    className="sc-EHOje dcTQGg"
-                  />
+                    className="sc-bZQynM NYJaE"
+                    onClick={[Function]}
+                    size={50}
+                  >
+                    <div
+                      className="sc-EHOje dcTQGg"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            className="sc-gqjmRU ljEqHP sc-dnqmqq gQAZng"
-            size={12}
-          >
             <div
               className="sc-iwsKbI kSJIGu sc-ifAKCX clZILq"
               color="rgba(0,0,0,0)"
@@ -318,7 +302,7 @@ exports[`Storyshots Components/AppOverflow default 1`] = `
             default
           </h2>
         </div>
-        
+
         <div>
           <h1
             style={

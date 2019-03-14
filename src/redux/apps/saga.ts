@@ -3,8 +3,7 @@ import { all, call, put, select, takeEvery, takeLatest } from 'redux-saga/effect
 import ApiService from '../../services/ApiService';
 import API from '../../services/ApiService/api';
 
-import { AppStatusOrigins, AppStatusStates, ResponseStatus } from '../../types/enums';
-import { CloseFinAppRequest, OpenFinAppError, OpenFinAppRequest, OpenFinAppSuccess } from './types';
+import { AppStatusOrigins, AppStatusStates } from '../../types/enums';
 
 import {
   closeApplication,
@@ -19,47 +18,117 @@ import {
 import { getArea } from '../../utils/coordinateHelpers';
 import { bindFinAppEventHandlers } from '../../utils/finAppEventHandlerHelpers';
 import promisifyOpenfin from '../../utils/promisifyOpenfin';
-import { getRuntimeVersion, reboundLauncherRequest } from '../application';
-import {
-  CLOSE_FIN_APP,
-  GET_APP_DIRECTORY_LIST,
-  getAppDirectoryListError,
-  getAppDirectoryListSuccess,
-  OPEN_FIN_APP,
-  openFinAppError,
-  openFinAppSuccess,
-  setFinAppStatusState,
-} from './actions';
+import { getRuntimeVersion, reboundLauncher } from '../application';
+import { getErrorFromCatch, getErrorMessageFromResponse, isErrorResponse } from '../utils';
+import { closeFinApp, getAppDirectoryList, openFinApp, setFinAppStatusState } from './actions';
 import { getAppStatusById } from './selectors';
 
-function* watchGetAppDirectoryListRequest() {
-  const response = yield call(ApiService.getDirectoryAppList);
-
-  if (response.length && response.status !== ResponseStatus.FAILURE) {
-    const appList = response;
-
-    yield put(getAppDirectoryListSuccess(appList));
-  } else {
-    yield put(getAppDirectoryListError());
+export function* watchCloseFinAppRequest(action: ReturnType<typeof closeFinApp.request>) {
+  try {
+    const { uuid } = action.payload;
+    const app = yield call(wrapApplication, uuid);
+    yield call(closeApplication, app);
+    // success message to be dispatched from the system
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(closeFinApp.failure(error, action.meta));
   }
 }
 
-function* watchOpenFinAppError(action: OpenFinAppError) {
-  const { payload } = action;
-  if (!payload) {
-    return;
-  }
-
-  const { id, message } = payload;
-  const status = yield select(getAppStatusById, id);
-
-  if (status && status.state === AppStatusStates.Loading) {
-    yield put(setFinAppStatusState({ id, statusState: AppStatusStates.Closed }));
-  }
-
+export function* watchGetAppDirectoryListRequest(action: ReturnType<typeof getAppDirectoryList.request>) {
   try {
-    const { fin } = window;
+    const response = yield call(ApiService.getDirectoryAppList);
 
+    if (isErrorResponse(response) || !response.length) {
+      throw new Error(getErrorMessageFromResponse(response));
+    }
+
+    yield put(getAppDirectoryList.success(response, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(getAppDirectoryList.failure(error, action.meta));
+  }
+}
+
+export function* watchGetAppDirectoryListSuccess(action: ReturnType<typeof getAppDirectoryList.success>) {
+  try {
+    yield put(reboundLauncher.request({ shouldAnimate: false, delay: 0 }));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.log('Unknown error saga from:', action, 'Error:', error);
+  }
+}
+
+export function* watchOpenFinAppRequest(action: ReturnType<typeof openFinApp.request>) {
+  try {
+    const { appUrl, id, manifest_url } = action.payload;
+
+    let manifestUrl = manifest_url;
+    if (appUrl) {
+      // TODO: All apps should be moved off of appUrl and rely on manifest
+      // Remove manifest creation through appUrl when all apps have been migrated off
+      const runtimeVersion: ReturnType<typeof getRuntimeVersion> = yield select(getRuntimeVersion);
+
+      manifestUrl = API.CREATE_MANIFEST(appUrl, undefined, runtimeVersion);
+    }
+
+    if (!manifestUrl) {
+      throw new Error('No manifest url');
+    }
+
+    const status: ReturnType<typeof getAppStatusById> = yield select(getAppStatusById, id);
+
+    if (!status || status.state === AppStatusStates.Closed) {
+      yield put(setFinAppStatusState({ id, statusState: AppStatusStates.Loading, origin: AppStatusOrigins.Default }));
+    }
+    const uuid = yield call(createAndRunFromManifest, manifestUrl, id);
+    const info = yield call(getOpenFinApplicationInfo(uuid));
+
+    yield put(
+      openFinApp.success({ id, uuid, origin: AppStatusOrigins.Default, runtimeVersion: info && info.runtime ? info.runtime.version : '' }, action.meta),
+    );
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    const meta = action.meta || {};
+    yield put(openFinApp.failure(error, { ...meta, payload: action.payload }));
+  }
+}
+
+export function* watchOpenFinAppSuccess(action: ReturnType<typeof openFinApp.success>) {
+  try {
+    const { payload } = action;
+    const runtimeVersion: ReturnType<typeof getRuntimeVersion> = yield select(getRuntimeVersion);
+
+    if (runtimeVersion.split('.')[0] !== payload.runtimeVersion.split('.')[0]) {
+      yield put(setFinAppStatusState({ id: payload.id, statusState: AppStatusStates.Warning, message: 'Incompatible runtime' }));
+      return;
+    }
+
+    bindFinAppEventHandlers(payload.uuid, payload.id);
+    yield put(setFinAppStatusState({ id: payload.id, statusState: AppStatusStates.Running }));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.log('Unknown error saga from:', action, 'Error:', error);
+  }
+}
+
+export function* watchOpenFinAppFailure(action: ReturnType<typeof openFinApp.failure>) {
+  try {
+    const { message } = action.payload;
+    const id = action.meta && action.meta.payload ? action.meta.payload.id : undefined;
+    if (!id) {
+      throw new Error('Failed to open fin app with unknown id');
+    }
+
+    const status: ReturnType<typeof getAppStatusById> = yield select(getAppStatusById, id);
+
+    if (status && status.state === AppStatusStates.Loading) {
+      yield put(setFinAppStatusState({ id, statusState: AppStatusStates.Closed }));
+    }
+
+    const { fin } = window;
     if (fin) {
       const alreadyRunningError = 'Application with specified UUID is already running: ';
       if (typeof message === 'string' && message.indexOf(alreadyRunningError) === 0) {
@@ -88,95 +157,17 @@ function* watchOpenFinAppError(action: OpenFinAppError) {
       }
     }
   } catch (e) {
+    const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error on bringing windows to front', e);
+    console.log('Error in watchOpenFinAppFailure', error);
   }
-}
-
-function* watchOpenFinAppRequest(action: OpenFinAppRequest) {
-  const { payload } = action;
-
-  if (!payload) return;
-
-  const { appUrl, id, manifest_url } = payload;
-
-  let manifestUrl = manifest_url;
-
-  if (appUrl) {
-    // TODO: All apps should be moved off of appUrl and rely on manifest
-    // Remove manifest creation through appUrl when all apps have been migrated off
-    const runtimeVersion = yield select(getRuntimeVersion);
-
-    manifestUrl = API.CREATE_MANIFEST(appUrl, undefined, runtimeVersion);
-  }
-
-  if (!manifestUrl) {
-    return;
-  }
-
-  const status = yield select(getAppStatusById, id);
-
-  if (!status || status.state === AppStatusStates.Closed) {
-    yield put(setFinAppStatusState({ id, statusState: AppStatusStates.Loading, origin: AppStatusOrigins.Default }));
-  }
-
-  try {
-    const uuid = yield call(createAndRunFromManifest, manifestUrl, id);
-    const info = yield call(getOpenFinApplicationInfo(uuid));
-
-    yield put(openFinAppSuccess({ id, uuid, origin: AppStatusOrigins.Default, runtimeVersion: info && info.runtime ? info.runtime.version : '' }));
-  } catch (e) {
-    // tslint:disable-next-line:no-console
-    console.log('Error running app:', payload, '\n', e);
-
-    yield put(openFinAppError({ id, message: e }));
-  }
-}
-
-function* watchOpenFinAppSuccess(action: OpenFinAppSuccess) {
-  const { fin, store } = window;
-  const { payload } = action;
-  if (!payload || !fin || !store) {
-    return;
-  }
-
-  const runtimeVersion = yield select(getRuntimeVersion);
-
-  if (runtimeVersion.split('.')[0] !== payload.runtimeVersion.split('.')[0]) {
-    yield put(setFinAppStatusState({ id: payload.id, statusState: AppStatusStates.Warning, message: 'Incompatible runtime' }));
-    return;
-  }
-
-  bindFinAppEventHandlers(store.dispatch, payload.uuid, payload.id);
-  yield put(setFinAppStatusState({ id: payload.id, statusState: AppStatusStates.Running }));
-}
-
-function* watchCloseFinAppRequest(action: CloseFinAppRequest) {
-  const { payload } = action;
-  if (!payload) {
-    return;
-  }
-
-  const { uuid } = payload;
-  try {
-    const app = yield call(wrapApplication, uuid);
-
-    yield call(closeApplication, app);
-  } catch (e) {
-    // tslint:disable-next-line:no-console
-    console.log('Failed to close app with uuid:', uuid, '\n', e);
-  }
-}
-
-function* watchGetAppDirectoryListSuccess() {
-  yield put(reboundLauncherRequest(false, 0));
 }
 
 export function* appsSaga() {
-  yield takeEvery(CLOSE_FIN_APP.REQUEST, watchCloseFinAppRequest);
-  yield takeEvery(OPEN_FIN_APP.REQUEST, watchOpenFinAppRequest);
-  yield takeEvery(OPEN_FIN_APP.SUCCESS, watchOpenFinAppSuccess);
-  yield takeEvery(OPEN_FIN_APP.ERROR, watchOpenFinAppError);
-  yield takeEvery(GET_APP_DIRECTORY_LIST.SUCCESS, watchGetAppDirectoryListSuccess);
-  yield takeLatest(GET_APP_DIRECTORY_LIST.REQUEST, watchGetAppDirectoryListRequest);
+  yield takeEvery(closeFinApp.request, watchCloseFinAppRequest);
+  yield takeLatest(getAppDirectoryList.request, watchGetAppDirectoryListRequest);
+  yield takeEvery(getAppDirectoryList.success, watchGetAppDirectoryListSuccess);
+  yield takeEvery(openFinApp.request, watchOpenFinAppRequest);
+  yield takeEvery(openFinApp.success, watchOpenFinAppSuccess);
+  yield takeEvery(openFinApp.failure, watchOpenFinAppFailure);
 }

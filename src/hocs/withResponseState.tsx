@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import { ResponseObject } from '../types/commons';
-
 type Callback = () => void;
 
 export interface MessageResponseProps {
@@ -11,21 +9,19 @@ export interface MessageResponseProps {
 }
 
 export interface PassedProps extends State {
-  onResponseError: (callback?: Callback) => (response: string) => void;
-  onResponseSuccess: (callback?: Callback) => (response: ResponseObject) => void;
+  onResponseError: (callback?: Callback) => (error?: Error) => void;
+  onResponseSuccess: (callback?: Callback) => () => void;
   resetResponseError: () => void;
 }
 
 interface State {
   responseError: boolean;
   responseMessage: string;
-  responsePayload;
 }
 
 const defaultState: State = {
   responseError: false,
   responseMessage: '',
-  responsePayload: null,
 };
 
 type Subtract<T, K> = Pick<T, Exclude<keyof T, keyof K>>;
@@ -36,31 +32,33 @@ const withResponseState = <P extends PassedProps>(Component: React.ComponentType
   class ComponentWithResponseState extends React.PureComponent<WithoutPassedProps<P>, State> {
     state: State = defaultState;
 
-    onResponseSuccess = (callback?: Callback) => (responsePayload: ResponseObject) =>
+    onResponseSuccess = (callback?: Callback) => () => {
       this.setState(
         {
           ...defaultState,
-          responsePayload,
         },
         callback,
       );
+    };
 
-    onResponseError = (callback?: Callback) => (responsePayload: string) =>
+    onResponseError = (callback?: Callback) => (error?: Error) => {
       this.setState(
         {
           responseError: true,
-          responseMessage: responsePayload,
-          responsePayload,
+          responseMessage: error ? error.message : 'Unknown error',
         },
         callback,
       );
+    };
 
-    resetResponseError = () => this.setState({ responseError: false });
+    resetResponseError = () => {
+      this.setState({ responseError: false });
+    };
 
     render() {
       return (
         <Component
-          {...this.props}
+          {...this.props as P}
           {...this.state}
           onResponseSuccess={this.onResponseSuccess}
           onResponseError={this.onResponseError}

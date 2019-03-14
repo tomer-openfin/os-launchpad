@@ -6,8 +6,6 @@ import * as React from 'react';
 import AppData from '../../samples/AppData';
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import { ResponseObject } from '../../types/commons';
-
 import EditAppWindow from './EditAppWindow';
 
 const app = AppData[0];
@@ -18,10 +16,10 @@ const handleSuccess = action('handleSuccess');
 const onEscDown = action('onEscDown');
 const updateApp = action('updateApp');
 
-const onResponseErrorNoop = (callback?: () => void) => (message: string) => {
+const onResponseErrorNoop = (callback?: () => void) => (error?: Error) => {
   return;
 };
-const onResponseSuccessNoop = (callback?: () => void) => (resp: ResponseObject) => {
+const onResponseSuccessNoop = (callback?: () => void) => () => {
   return;
 };
 
@@ -58,7 +56,6 @@ storiesOf(`${CATEGORIES.ADMIN}EditAppWindow`, module)
         resetResponseError={reset}
         responseError={error}
         responseMessage={errorMessage}
-        responsePayload={{}}
         updateApp={updateApp}
       />
     );

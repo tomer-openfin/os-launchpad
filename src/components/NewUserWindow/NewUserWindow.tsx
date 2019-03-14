@@ -33,8 +33,8 @@ class NewUserWindow extends React.Component<Props> {
 
     return new Promise(resolve => {
       createUser(newUser, {
-        errorCb: onResponseError(resolve),
-        successCb: onResponseSuccess(() => {
+        onFailure: onResponseError(resolve),
+        onSuccess: onResponseSuccess(() => {
           handleSuccess();
           resolve();
         }),

@@ -1,4 +1,4 @@
-export const calcDesiredLayoutsWindowHeight = (length: number) => {
+export const calcDesiredLayoutsWindowHeight = (length: number): number => {
   const BOTTOM_PADDING = 13;
   const BOTTOM_PADDING_SHOW_MORE = 36;
   const LINE_HEIGHT = 22;

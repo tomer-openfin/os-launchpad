@@ -1,6 +1,6 @@
-import { logoutError } from '../../redux/me';
+import { logout } from '../../redux/me';
 
-import { APIResponse, HTTPMethods, ResponseStatus } from '../../types/commons';
+import { APIResponse, HTTPMethods } from '../../types/commons';
 
 const createOptions = (requestMethod: HTTPMethods, body?, optionOverrides?): RequestInit => ({
   body: JSON.stringify(body || undefined),
@@ -23,7 +23,7 @@ const fetchJSON = (endpoint: string, requestMethod: HTTPMethods, body?, optionOv
 
         alert('Your session has expired, logging out.');
 
-        window.store.dispatch(logoutError({ status: ResponseStatus.FAILURE, message: err }));
+        window.store.dispatch(logout.request());
 
         throw new Error(err);
       }

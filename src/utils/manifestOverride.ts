@@ -1,7 +1,7 @@
 import { Manifest, ManifestOverride } from '../redux/application/types';
 import { ImagesFromManifest, ManifestImageViewKeys } from './orgImages';
 
-export const updateManifestOverride = (manifestOverride: ManifestOverride, key: keyof ManifestOverride, value): ManifestOverride => {
+export const updateKeyInManifestOverride = (manifestOverride: ManifestOverride, key: keyof ManifestOverride, value): ManifestOverride => {
   if (!key) return manifestOverride;
 
   return value ? setInManifestOverride(manifestOverride, key, value) : removeFromManifestOverride(manifestOverride, key);

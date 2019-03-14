@@ -4,15 +4,20 @@ import windowsConfig from '../../config/windows';
 import { hideWindow, launchWindow } from '../../redux/windows';
 import AppListToggle from './AppListToggle';
 
+interface MapDispatch {
+  hideWindow: typeof hideWindow;
+  launchWindow: typeof launchWindow;
+}
+
 const mapDispatch = {
   hideWindow,
   launchWindow,
 };
 
-const mergeProps = (_, dispatchProps, ownProps) => ({
+const mergeProps = (_, dispatchProps: MapDispatch, ownProps) => ({
   ...ownProps,
   onClick: ownProps.isExpanded
-    ? () => dispatchProps.hideWindow(windowsConfig.appLauncherOverflow.name)
+    ? () => dispatchProps.hideWindow({ name: windowsConfig.appLauncherOverflow.name })
     : () => dispatchProps.launchWindow(windowsConfig.appLauncherOverflow),
 });
 

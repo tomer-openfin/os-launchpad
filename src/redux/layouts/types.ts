@@ -1,20 +1,6 @@
 import { UserLayout } from '../../types/commons';
-
-import { getLayoutsError, getLayoutsRequest, getLayoutsSuccess, restoreLayoutRequest } from './';
-import {
-  createLayoutError,
-  createLayoutRequest,
-  createLayoutSuccess,
-  deleteLayoutRequest,
-  restoreLayoutError,
-  restoreLayoutSuccess,
-  saveLayoutError,
-  saveLayoutRequest,
-  saveLayoutSuccess,
-  updateLayoutError,
-  updateLayoutRequest,
-  updateLayoutSuccess,
-} from './actions';
+import { ActionsUnion } from '../types';
+import { createLayout, deleteLayout, dismissUndoUpdateLayout, getLayouts, restoreLayout, saveLayout, undoUpdateLayout, updateLayout } from './actions';
 
 // State
 export interface LayoutsState {
@@ -28,53 +14,23 @@ export interface LayoutsState {
 export type GetLayoutsSuccessPayload = UserLayout[];
 export interface UpdateLayoutRequestPayload {
   id: string;
+  isOverwrite: boolean;
+  layout: UserLayout;
   name: string;
-  layout?: UserLayout;
 }
 export interface CreateOrUpdateSuccessPayload {
   layout: UserLayout;
   updated?: boolean;
-}
-export interface UpdateSuccessPayload extends CreateOrUpdateSuccessPayload {
-  previousUserLayout: UserLayout;
+  previousUserLayout?: UserLayout;
 }
 
 // Actions
-export type GetLayoutsRequest = ReturnType<typeof getLayoutsRequest>;
-export type GetLayoutsError = ReturnType<typeof getLayoutsError>;
-export type GetLayoutsSuccess = ReturnType<typeof getLayoutsSuccess>;
-
-export type RestoreLayoutRequest = ReturnType<typeof restoreLayoutRequest>;
-export type RestoreLayoutError = ReturnType<typeof restoreLayoutError>;
-export type RestoreLayoutSuccess = ReturnType<typeof restoreLayoutSuccess>;
-
-export type CreateLayoutRequest = ReturnType<typeof createLayoutRequest>;
-export type CreateLayoutError = ReturnType<typeof createLayoutError>;
-export type CreateLayoutSuccess = ReturnType<typeof createLayoutSuccess>;
-
-export type UpdateLayoutRequest = ReturnType<typeof updateLayoutRequest>;
-export type UpdateLayoutError = ReturnType<typeof updateLayoutError>;
-export type UpdateLayoutSuccess = ReturnType<typeof updateLayoutSuccess>;
-export type DeleteLayoutRequest = ReturnType<typeof deleteLayoutRequest>;
-
-export type SaveLayoutRequest = ReturnType<typeof saveLayoutRequest>;
-export type SaveLayoutSuccess = ReturnType<typeof saveLayoutSuccess>;
-export type SaveLayoutError = ReturnType<typeof saveLayoutError>;
-
 export type LayoutsActions =
-  | DeleteLayoutRequest
-  | GetLayoutsRequest
-  | GetLayoutsError
-  | GetLayoutsSuccess
-  | RestoreLayoutRequest
-  | RestoreLayoutError
-  | RestoreLayoutSuccess
-  | CreateLayoutRequest
-  | CreateLayoutError
-  | CreateLayoutSuccess
-  | UpdateLayoutRequest
-  | UpdateLayoutError
-  | UpdateLayoutSuccess
-  | SaveLayoutRequest
-  | SaveLayoutSuccess
-  | SaveLayoutError;
+  | ActionsUnion<typeof getLayouts>
+  | ActionsUnion<typeof restoreLayout>
+  | ActionsUnion<typeof createLayout>
+  | ActionsUnion<typeof dismissUndoUpdateLayout>
+  | ActionsUnion<typeof undoUpdateLayout>
+  | ActionsUnion<typeof updateLayout>
+  | ActionsUnion<typeof deleteLayout>
+  | ActionsUnion<typeof saveLayout>;

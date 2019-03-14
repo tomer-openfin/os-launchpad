@@ -10,6 +10,7 @@ import { meSaga } from './me';
 import { notificationsSaga } from './notifications';
 import { organizationSaga } from './organization';
 import { systemSaga } from './system';
+import { asyncActionsSaga } from './utils';
 import { windowsSaga } from './windows';
 
 export default function* rootSaga() {
@@ -25,5 +26,6 @@ export default function* rootSaga() {
     organizationSaga(),
     systemSaga(),
     windowsSaga(),
+    asyncActionsSaga(),
   ]);
 }

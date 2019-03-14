@@ -1,10 +1,6 @@
-import * as logoIcon from '../../assets/Logo.svg';
-
 import DEFAULT_THEMES from '../../utils/defaultThemes';
-
+import { getAdminOrgSettings, getOrgSettings, setOrgActiveThemeId } from './actions';
 import { OrganizationActions, OrganizationState } from './types';
-
-import { GET_ADMIN_ORG_SETTINGS, GET_ORG_SETTINGS, SET_ORG_ACTIVE_THEME_ID } from './actions';
 
 const defaultState: OrganizationState = {
   activeThemeId: DEFAULT_THEMES[0].id,
@@ -15,8 +11,8 @@ const defaultState: OrganizationState = {
 
 export default (state: OrganizationState = defaultState, action: OrganizationActions) => {
   switch (action.type) {
-    case GET_ORG_SETTINGS.SUCCESS:
-    case GET_ADMIN_ORG_SETTINGS.SUCCESS: {
+    case getAdminOrgSettings.success.toString():
+    case getOrgSettings.success.toString(): {
       const { activeThemeId, loginLogo, logo, themes } = action.payload;
 
       return {
@@ -27,7 +23,7 @@ export default (state: OrganizationState = defaultState, action: OrganizationAct
         themes,
       };
     }
-    case SET_ORG_ACTIVE_THEME_ID: {
+    case setOrgActiveThemeId.toString(): {
       return {
         ...state,
         activeThemeId: action.payload,

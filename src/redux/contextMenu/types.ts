@@ -1,7 +1,8 @@
 import { Action } from 'redux';
 
 import { Bounds, PrimaryDirectionalCoordinates } from '../../types/commons';
-import { openContextMenuRequest, openContextMenuSuccess } from './actions';
+import { ActionsUnion } from '../types';
+import { closeContextMenu, openContextMenu } from './actions';
 
 // Commons
 export interface ContextMenuOption {
@@ -29,7 +30,4 @@ export interface ContextMenuSuccessPayload {
 }
 
 // Actions
-export type OpenContextMenuRequest = ReturnType<typeof openContextMenuRequest>;
-export type OpenContextMenuSuccess = ReturnType<typeof openContextMenuSuccess>;
-
-export type ContextMenuActions = OpenContextMenuRequest | OpenContextMenuSuccess;
+export type ContextMenuActions = ActionsUnion<typeof closeContextMenu> | ActionsUnion<typeof openContextMenu>;

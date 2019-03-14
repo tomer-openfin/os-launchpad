@@ -45,8 +45,8 @@ class NewAppWindow extends React.Component<Props> {
 
     return new Promise(resolve => {
       createApp(newApp, {
-        errorCb: onResponseError(resolve),
-        successCb: onResponseSuccess(() => {
+        onFailure: onResponseError(resolve),
+        onSuccess: onResponseSuccess(() => {
           handleSuccess();
           resolve();
         }),

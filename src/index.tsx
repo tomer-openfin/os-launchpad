@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     fin.desktop.main(() => {
       const finWindow = fin.desktop.Window.getCurrent();
       const { name, uuid } = finWindow;
-      const action = openfinReady(name);
+      const action = openfinReady({ finName: name });
       const { dispatch } = window.store || window.opener.store;
       dispatch(action);
 

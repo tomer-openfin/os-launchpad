@@ -40,8 +40,8 @@ class EditAppWindow extends React.Component<Props> {
 
     return new Promise(resolve => {
       updateApp(editedApp, {
-        errorCb: onResponseError(resolve),
-        successCb: onResponseSuccess(() => {
+        onFailure: onResponseError(resolve),
+        onSuccess: onResponseSuccess(() => {
           handleSuccess();
           resolve();
         }),

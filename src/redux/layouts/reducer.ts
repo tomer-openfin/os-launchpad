@@ -1,21 +1,19 @@
 import { normalizeData } from '../../utils/reduxHelpers';
-
-import { UserLayout } from '../../types/commons';
-import { CREATE_LAYOUT, DELETE_LAYOUT, GET_LAYOUTS, UPDATE_LAYOUT } from './actions';
-import { GetLayoutsSuccess, LayoutsActions, LayoutsState } from './types';
+import { createLayout, deleteLayout, getLayouts, updateLayout } from './actions';
+import { LayoutsActions, LayoutsState } from './types';
 
 const defaultState: LayoutsState = {
   byId: {},
   ids: [],
 };
 
-export default (state: LayoutsState = defaultState, action: LayoutsActions) => {
+export default (state: LayoutsState = defaultState, action: LayoutsActions): LayoutsState => {
   switch (action.type) {
-    case GET_LAYOUTS.SUCCESS: {
-      return normalizeData<UserLayout>((action as GetLayoutsSuccess).payload!);
+    case getLayouts.success.toString(): {
+      return normalizeData(action.payload);
     }
-    case UPDATE_LAYOUT.SUCCESS:
-    case CREATE_LAYOUT.SUCCESS: {
+    case updateLayout.success.toString():
+    case createLayout.success.toString(): {
       const { layout } = action.payload;
       const { id } = layout;
 
@@ -29,7 +27,7 @@ export default (state: LayoutsState = defaultState, action: LayoutsActions) => {
         ids,
       };
     }
-    case DELETE_LAYOUT.SUCCESS: {
+    case deleteLayout.success.toString(): {
       const id = action.payload;
 
       const idIndex = state.ids.findIndex(el => el === id);

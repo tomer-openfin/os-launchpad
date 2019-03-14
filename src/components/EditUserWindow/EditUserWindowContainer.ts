@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import { getAdminUserFromId, updateAdminUserRequest } from '../../redux/admin';
+import { getAdminUserFromId, updateAdminUser } from '../../redux/admin';
 import { State } from '../../redux/types';
-import { MetaWithCallbacks, User } from '../../types/commons';
+import { MetaWithAsyncHandlers, User } from '../../types/commons';
 
 import withEscapeKey from '../../hocs/withEscapeKey';
 import withResponseState from '../../hocs/withResponseState';
@@ -14,7 +14,7 @@ const mapState = (state: State, ownProps) => ({
 
 const mapDispatch = (dispatch, ownProps) => ({
   ...ownProps,
-  updateUser: (user: User, meta: MetaWithCallbacks) => dispatch(updateAdminUserRequest(user, meta)),
+  updateUser: (user: User, meta: MetaWithAsyncHandlers<User>) => dispatch(updateAdminUser.request(user, meta)),
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => ({

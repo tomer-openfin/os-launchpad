@@ -107,7 +107,7 @@ export interface ById<T extends ObjectWithId> {
 export interface UserLayout {
   id: string;
   name: string;
-  layout: Workspace;
+  layout?: Workspace;
 }
 
 export interface NewUserLayout {
@@ -115,9 +115,9 @@ export interface NewUserLayout {
   layout: Workspace;
 }
 
-export interface MetaWithCallbacks {
-  successCb?: Function;
-  errorCb?: Function;
+export interface MetaWithAsyncHandlers<P = void> {
+  onSuccess?: (payload: P) => void;
+  onFailure?: (error?: Error) => void;
 }
 
 export interface XYCoord {
@@ -126,6 +126,6 @@ export interface XYCoord {
 }
 
 /* tslint:disable-next-line:no-any */
-export type DispatchRequest<T = any> = (payload: T, meta: MetaWithCallbacks, actions?) => void;
+export type DispatchRequest<T = any, M = void> = (payload: T, meta: MetaWithAsyncHandlers<M>, actions?) => void;
 
 export type PushRoute = (route: string, item?) => ReturnType<RouteComponentProps['history']['push']>;

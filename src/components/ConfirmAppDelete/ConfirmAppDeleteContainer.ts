@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { deleteAdminAppRequest, getAdminAppFromId } from '../../redux/admin';
+import { deleteAdminApp, getAdminAppFromId } from '../../redux/admin';
 import { State } from '../../redux/types';
 
 import ConfirmAppDelete from './ConfirmAppDelete';
@@ -10,7 +10,7 @@ const mapState = (state: State, ownProps) => ({
 });
 
 const mapDispatch = {
-  deleteApp: deleteAdminAppRequest,
+  deleteApp: deleteAdminApp.request,
 };
 
 export default connect(

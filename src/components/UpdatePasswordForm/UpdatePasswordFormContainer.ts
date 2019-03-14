@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 
-import { updatePasswordRequest, UpdatePasswordRequestPayload } from '../../redux/me';
-import { MetaWithCallbacks } from '../../types/commons';
+import { updatePassword, UpdatePasswordRequestPayload, UpdatePasswordSuccessPayload } from '../../redux/me';
+import { MetaWithAsyncHandlers } from '../../types/commons';
 
 import withResponseState from '../../hocs/withResponseState';
 
 import UpdatePasswordForm from './UpdatePasswordForm';
 
-const dispatchProps = (dispatch, ownProps) => ({
-  updatePassword: (payload: UpdatePasswordRequestPayload, meta: MetaWithCallbacks) => dispatch(updatePasswordRequest(payload, meta)),
+const dispatchProps = dispatch => ({
+  updatePassword: (payload: UpdatePasswordRequestPayload, meta: MetaWithAsyncHandlers<UpdatePasswordSuccessPayload>) =>
+    dispatch(updatePassword.request(payload, meta)),
 });
 
 export default connect(

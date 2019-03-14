@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
-import { UpdatePasswordRequestPayload } from '../../redux/me/types';
+import { UpdatePasswordRequestPayload, UpdatePasswordSuccessPayload } from '../../redux/me/types';
 import { DispatchRequest } from '../../types/commons';
 
 import { Wrapper } from './UpdatePasswordForm.css';
@@ -14,7 +14,7 @@ interface Props extends ResponseProps {
   handleCancel: () => void;
   handleConfirm: () => void;
   handleSuccess: () => void;
-  updatePassword: DispatchRequest<UpdatePasswordRequestPayload>;
+  updatePassword: DispatchRequest<UpdatePasswordRequestPayload, UpdatePasswordSuccessPayload>;
 }
 
 interface State {
@@ -50,8 +50,8 @@ class UpdatePasswordForm extends React.Component<Props, State> {
 
     return new Promise(resolve => {
       updatePassword(newAndOldPassword, {
-        errorCb: onResponseError(resolve),
-        successCb: onResponseSuccess(() => {
+        onFailure: onResponseError(resolve),
+        onSuccess: onResponseSuccess(() => {
           this.onSubmitSuccess();
           resolve();
         }),

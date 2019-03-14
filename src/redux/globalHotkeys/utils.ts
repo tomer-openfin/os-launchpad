@@ -13,7 +13,7 @@ const registerEnumToFinGlobalHotkey = (Enum: GlobalHotkeyEnumType, dispatch: Dis
 
   for (const hotkey in Enum) {
     if (Enum.hasOwnProperty(hotkey)) {
-      const hotkeyToRegister = Enum[hotkey];
+      const hotkeyToRegister = Enum[hotkey] as DevGlobalHotkeys | GlobalHotkeys;
 
       const cb = () => {
         dispatch(globalHotkeyPressed({ hotkey: hotkeyToRegister }));

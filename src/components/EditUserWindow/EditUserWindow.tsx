@@ -35,8 +35,8 @@ class EditUserWindow extends React.Component<Props> {
 
     return new Promise(resolve => {
       updateUser(editedUser, {
-        errorCb: onResponseError(resolve),
-        successCb: onResponseSuccess(() => {
+        onFailure: onResponseError(resolve),
+        onSuccess: onResponseSuccess(() => {
           handleSuccess();
           resolve();
         }),

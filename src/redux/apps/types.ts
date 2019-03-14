@@ -1,13 +1,6 @@
 import { App, AppStatusOrigins, AppStatusStates } from '../../types/commons';
-import {
-  closeFinAppError,
-  closeFinAppRequest,
-  closeFinAppSuccess,
-  openFinAppError,
-  openFinAppRequest,
-  openFinAppSuccess,
-  setFinAppStatusState,
-} from './actions';
+import { ActionsUnion } from '../types';
+import { closeFinApp, getAppDirectoryList, openFinApp, setFinAppStatusState } from './actions';
 
 // Reducer
 export interface AppsById {
@@ -41,11 +34,6 @@ export interface CloseFinAppPayload {
   uuid: string;
 }
 
-export interface OpenFinAppErrorPayload {
-  id: string;
-  message?: string;
-}
-
 export interface FinAppStatusStatePayload {
   id: string;
   statusState: AppStatusStates;
@@ -61,10 +49,8 @@ export interface OpenFinAppSuccessPayload {
 }
 
 // Actions
-export type CloseFinAppRequest = ReturnType<typeof closeFinAppRequest>;
-export type CloseFinAppSuccess = ReturnType<typeof closeFinAppSuccess>;
-export type CloseFinAppError = ReturnType<typeof closeFinAppError>;
-export type OpenFinAppRequest = ReturnType<typeof openFinAppRequest>;
-export type OpenFinAppSuccess = ReturnType<typeof openFinAppSuccess>;
-export type OpenFinAppError = ReturnType<typeof openFinAppError>;
-export type SetFinAppStatusState = ReturnType<typeof setFinAppStatusState>;
+export type AppsActions =
+  | ActionsUnion<typeof closeFinApp>
+  | ActionsUnion<typeof openFinApp>
+  | ActionsUnion<typeof getAppDirectoryList>
+  | ReturnType<typeof setFinAppStatusState>;

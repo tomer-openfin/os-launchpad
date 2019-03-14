@@ -5,7 +5,7 @@ import AdminConfirmation, { confirmHandlerCreator } from '../AdminConfirmation';
 import { DispatchRequest, User } from '../../types/commons';
 
 interface Props {
-  deleteUser: DispatchRequest<User>;
+  deleteUser: DispatchRequest<User, User>;
   handleCancel: () => void;
   handleSuccess: () => void;
   user: User;

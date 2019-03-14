@@ -2,15 +2,15 @@ import { denormalizeData, normalizeData } from '../reduxHelpers';
 
 const data = [
   {
-    id: 1,
+    id: '1',
     name: 'test1',
   },
   {
-    id: 2,
+    id: '2',
     name: 'test2',
   },
   {
-    id: 3,
+    id: '3',
     name: 'test3',
   },
 ];
@@ -24,7 +24,7 @@ describe('reduxHelpers', () => {
           [data[1].id]: data[1],
           [data[2].id]: data[2],
         },
-        ids: [1, 2, 3],
+        ids: ['1', '2', '3'],
       };
 
       expect(normalizeData(data, 'id')).toEqual(result);

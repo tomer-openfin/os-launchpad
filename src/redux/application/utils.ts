@@ -7,10 +7,10 @@ import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName, getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
 import { animateWindow, getCurrentOpenfinApplicationInfo, setWindowBoundsPromise } from '../../utils/openfinPromises';
 import { calcBoundsRelativeToLauncher, calcLauncherPosition, isBottom, isRight } from '../../utils/windowPositionHelpers';
-import { GET_APP_DIRECTORY_LIST, getAppDirectoryListRequest } from '../apps';
-import { GET_LAYOUTS, getLayoutsRequest } from '../layouts';
-import { GET_SETTINGS, getAutoHide, getLauncherPosition, getLauncherSizeConfig, getSettingsRequest } from '../me';
-import { GET_ORG_SETTINGS, getOrgSettingsRequest } from '../organization';
+import { getAppDirectoryList } from '../apps';
+import { getLayouts } from '../layouts';
+import { getAutoHide, getLauncherPosition, getLauncherSizeConfig, getSettings } from '../me';
+import { getOrgSettings } from '../organization';
 import {
   getAppListDimensions,
   getAppsLauncherAppList,
@@ -18,21 +18,21 @@ import {
   getExpandedSystemDrawerSize,
   getMonitorDetailsDerivedByUserSettings,
 } from '../selectors';
-import { GET_AND_SET_MONITOR_INFO, getAndSetMonitorInfoRequest } from '../system';
+import { getAndSetMonitorInfo } from '../system';
 import { State } from '../types';
 import { getWindowBounds } from '../windows';
-import { GET_MANIFEST, getManifestRequest, setRuntimeVersion } from './actions';
+import { getManifest, setRuntimeVersion } from './actions';
 
 export function* initMonitorInfo() {
-  yield all([take([GET_AND_SET_MONITOR_INFO.SUCCESS, GET_AND_SET_MONITOR_INFO.ERROR]), put(getAndSetMonitorInfoRequest())]);
+  yield all([take([getAndSetMonitorInfo.success.toString(), getAndSetMonitorInfo.failure.toString()]), put(getAndSetMonitorInfo.request())]);
 }
 
 export function* initManifest() {
-  yield all([take([GET_MANIFEST.SUCCESS, GET_MANIFEST.ERROR]), put(getManifestRequest())]);
+  yield all([take([getManifest.success.toString(), getManifest.failure.toString()]), put(getManifest.request())]);
 }
 
 export function* initOrgSettings() {
-  yield all([take([GET_ORG_SETTINGS.SUCCESS, GET_ORG_SETTINGS.ERROR]), put(getOrgSettingsRequest())]);
+  yield all([take([getOrgSettings.success.toString(), getOrgSettings.failure.toString()]), put(getOrgSettings.request())]);
 }
 
 export function* initRuntimeVersion() {
@@ -53,12 +53,12 @@ export function* initRuntimeVersion() {
  */
 export function* initResources() {
   yield all([
-    take([GET_APP_DIRECTORY_LIST.SUCCESS, GET_APP_DIRECTORY_LIST.ERROR]),
-    take([GET_LAYOUTS.SUCCESS, GET_LAYOUTS.ERROR]),
-    take([GET_SETTINGS.SUCCESS, GET_SETTINGS.ERROR]),
-    put(getAppDirectoryListRequest()),
-    put(getLayoutsRequest()),
-    put(getSettingsRequest()),
+    take([getAppDirectoryList.success.toString(), getAppDirectoryList.failure.toString()]),
+    take([getLayouts.success.toString(), getLayouts.failure.toString()]),
+    take([getSettings.success.toString(), getSettings.failure.toString()]),
+    put(getAppDirectoryList.request()),
+    put(getLayouts.request()),
+    put(getSettings.request()),
   ]);
 }
 

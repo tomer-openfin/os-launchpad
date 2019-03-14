@@ -1,38 +1,23 @@
 import {
-  confirmPasswordError,
-  confirmPasswordRequest,
-  confirmPasswordSuccess,
-  forgotPasswordError,
-  forgotPasswordRequest,
-  forgotPasswordSuccess,
-  getMeError,
-  getMeRequest,
-  getMeSuccess,
-  getSettingsError,
-  getSettingsRequest,
-  getSettingsSuccess,
-  loginError,
-  loginRequest,
-  loginSuccess,
-  loginWithNewPassword,
-  logoutError,
-  logoutRequest,
-  logoutSuccess,
-  saveSettingsError,
-  saveSettingsRequest,
-  saveSettingsSuccess,
+  addToAppLauncher,
+  confirmPassword,
+  forgotPassword,
+  getSettings,
+  login,
+  logout,
+  removeFromAppLauncher,
+  saveSettings,
   setAppIds,
   setAutoHide,
   setLauncherMonitorSettings,
   setLauncherPosition,
   setLauncherSize,
   setMe,
-  updatePasswordError,
-  updatePasswordRequest,
-  updatePasswordSuccess,
+  updatePassword,
 } from './actions';
 
 import { DirectionalPosition, LauncherSize, Point } from '../../types/commons';
+import { ActionsUnion } from '../types';
 
 // State
 export interface MeSettingsState {
@@ -65,8 +50,9 @@ export interface ForgotPasswordPayload {
 }
 
 export interface LoginRequestPayload {
-  username: string;
   password: string;
+  session?: string;
+  username: string;
 }
 
 export interface LoginErrorPayload {
@@ -136,67 +122,19 @@ export interface UpdatePasswordErrorPayload {
 }
 
 // Actions
-
-export type ConfirmPasswordRequest = ReturnType<typeof confirmPasswordRequest>;
-export type ConfirmPasswordSuccess = ReturnType<typeof confirmPasswordSuccess>;
-export type ConfirmPasswordError = ReturnType<typeof confirmPasswordError>;
-
-export type ForgotPasswordRequest = ReturnType<typeof forgotPasswordRequest>;
-export type ForgotPasswordSuccess = ReturnType<typeof forgotPasswordSuccess>;
-export type ForgotPasswordError = ReturnType<typeof forgotPasswordError>;
-
-export type GetSettingsRequest = ReturnType<typeof getSettingsRequest>;
-export type GetSettingsSuccess = ReturnType<typeof getSettingsSuccess>;
-export type GetSettingsError = ReturnType<typeof getSettingsError>;
-
-export type LoginRequest = ReturnType<typeof loginRequest>;
-export type LoginSuccess = ReturnType<typeof loginSuccess>;
-export type LoginError = ReturnType<typeof loginError>;
-
-export type GetMeRequest = ReturnType<typeof getMeRequest>;
-export type GetMeSuccess = ReturnType<typeof getMeSuccess>;
-export type GetMeError = ReturnType<typeof getMeError>;
-
-export type LogoutRequest = ReturnType<typeof logoutRequest>;
-export type LogoutSuccess = ReturnType<typeof logoutSuccess>;
-export type LogoutError = ReturnType<typeof logoutError>;
-
-export type LoginWithNewPassword = ReturnType<typeof loginWithNewPassword>;
-
-export type SaveSettingsRequest = ReturnType<typeof saveSettingsRequest>;
-export type SaveSettingsSuccess = ReturnType<typeof saveSettingsSuccess>;
-export type SaveSettingsError = ReturnType<typeof saveSettingsError>;
-
-export type SetMe = ReturnType<typeof setMe>;
-
-export type SetAppIds = ReturnType<typeof setAppIds>;
-export type SetAutoHide = ReturnType<typeof setAutoHide>;
-export type SetLauncherPosition = ReturnType<typeof setLauncherPosition>;
-export type SetLauncherSize = ReturnType<typeof setLauncherSize>;
-export type SetLauncherMonitorSettings = ReturnType<typeof setLauncherMonitorSettings>;
-
-export type UpdatePasswordRequest = ReturnType<typeof updatePasswordRequest>;
-export type UpdatePasswordSuccess = ReturnType<typeof updatePasswordSuccess>;
-export type UpdatePasswordError = ReturnType<typeof updatePasswordError>;
-
 export type MeActions =
-  | ConfirmPasswordRequest
-  | ForgotPasswordRequest
-  | GetMeError
-  | GetMeRequest
-  | GetMeSuccess
-  | GetSettingsError
-  | GetSettingsRequest
-  | GetSettingsSuccess
-  | LoginError
-  | LoginRequest
-  | LoginSuccess
-  | SaveSettingsError
-  | SaveSettingsRequest
-  | SaveSettingsSuccess
-  | SetLauncherPosition
-  | SetMe
-  | SetLauncherMonitorSettings
-  | UpdatePasswordError
-  | UpdatePasswordRequest
-  | UpdatePasswordSuccess;
+  | ReturnType<typeof addToAppLauncher>
+  | ActionsUnion<typeof confirmPassword>
+  | ActionsUnion<typeof forgotPassword>
+  | ActionsUnion<typeof getSettings>
+  | ActionsUnion<typeof login>
+  | ActionsUnion<typeof logout>
+  | ReturnType<typeof removeFromAppLauncher>
+  | ActionsUnion<typeof saveSettings>
+  | ReturnType<typeof setAppIds>
+  | ReturnType<typeof setAutoHide>
+  | ReturnType<typeof setLauncherMonitorSettings>
+  | ReturnType<typeof setLauncherPosition>
+  | ReturnType<typeof setLauncherSize>
+  | ReturnType<typeof setMe>
+  | ActionsUnion<typeof updatePassword>;

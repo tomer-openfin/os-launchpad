@@ -1,26 +1,22 @@
+import { ActionsUnion } from '../types';
 import {
   applicationStarted,
   collapseApp,
+  exitApplication,
   expandApp,
-  fetchManifestError,
-  fetchManifestRequest,
-  fetchManifestSuccess,
-  getManifestError,
-  getManifestOverrideError,
-  getManifestOverrideRequest,
-  getManifestOverrideSuccess,
-  getManifestRequest,
-  getManifestSuccess,
+  fetchManifest,
+  getManifest,
+  getManifestOverride,
+  initDevTools,
+  launchAppLauncher,
   openfinReady,
-  reboundLauncherRequest,
+  reboundLauncher,
   setIsDragAndDrop,
   setIsDrawerExpanded,
   setIsEnterprise,
   setIsExpanded,
   setRuntimeVersion,
-  updateManifestOverrideError,
-  updateManifestOverrideRequest,
-  updateManifestOverrideSuccess,
+  updateManifestOverride,
 } from './actions';
 
 // State
@@ -62,46 +58,21 @@ export interface ReboundLauncherRequestPayload {
 }
 
 // Actions
-export type ApplicationStartedAction = ReturnType<typeof applicationStarted>;
-export type CollapseAppAction = ReturnType<typeof collapseApp>;
-export type ExpandAppAction = ReturnType<typeof expandApp>;
-export type FetchManifestRequestAction = ReturnType<typeof fetchManifestRequest>;
-export type FetchManifestErrorAction = ReturnType<typeof fetchManifestError>;
-export type FetchManifestSuccessAction = ReturnType<typeof fetchManifestSuccess>;
-export type GetManifestRequestAction = ReturnType<typeof getManifestRequest>;
-export type GetManifestErrorAction = ReturnType<typeof getManifestError>;
-export type GetManifestSuccessAction = ReturnType<typeof getManifestSuccess>;
-export type OpenfinReadyAction = ReturnType<typeof openfinReady>;
-export type ReboundLauncherRequestAction = ReturnType<typeof reboundLauncherRequest>;
-export type SetIsDragAndDropAction = ReturnType<typeof setIsDragAndDrop>;
-export type SetIsDrawerExpandedAction = ReturnType<typeof setIsDrawerExpanded>;
-export type SetIsEnterpriseAction = ReturnType<typeof setIsEnterprise>;
-export type SetIsExpandedAction = ReturnType<typeof setIsExpanded>;
-export type UpdateManifestOverrideRequestAction = ReturnType<typeof updateManifestOverrideRequest>;
-export type UpdateManifestOverrideSuccessAction = ReturnType<typeof updateManifestOverrideSuccess>;
-export type UpdateManifestOverrideErrorAction = ReturnType<typeof updateManifestOverrideError>;
-export type GetManifestOverrideRequestAction = ReturnType<typeof getManifestOverrideRequest>;
-export type GetManifestOverrideSuccessAction = ReturnType<typeof getManifestOverrideSuccess>;
-export type GetManifestOverrideErrorAction = ReturnType<typeof getManifestOverrideError>;
-export type SetRuntimeVersionAction = ReturnType<typeof setRuntimeVersion>;
-
 export type ApplicationActions =
-  | ApplicationStartedAction
-  | CollapseAppAction
-  | ExpandAppAction
-  | GetManifestErrorAction
-  | GetManifestRequestAction
-  | GetManifestSuccessAction
-  | FetchManifestErrorAction
-  | FetchManifestRequestAction
-  | FetchManifestSuccessAction
-  | OpenfinReadyAction
-  | ReboundLauncherRequestAction
-  | SetIsDragAndDropAction
-  | SetIsDrawerExpandedAction
-  | SetIsEnterpriseAction
-  | SetIsExpandedAction
-  | UpdateManifestOverrideRequestAction
-  | UpdateManifestOverrideSuccessAction
-  | UpdateManifestOverrideErrorAction
-  | SetRuntimeVersionAction;
+  | ReturnType<typeof applicationStarted>
+  | ReturnType<typeof collapseApp>
+  | ReturnType<typeof exitApplication>
+  | ReturnType<typeof expandApp>
+  | ReturnType<typeof initDevTools>
+  | ReturnType<typeof launchAppLauncher>
+  | ReturnType<typeof openfinReady>
+  | ReturnType<typeof setIsDragAndDrop>
+  | ReturnType<typeof setIsDrawerExpanded>
+  | ReturnType<typeof setIsEnterprise>
+  | ReturnType<typeof setIsExpanded>
+  | ReturnType<typeof setRuntimeVersion>
+  | ActionsUnion<typeof reboundLauncher>
+  | ActionsUnion<typeof getManifestOverride>
+  | ActionsUnion<typeof updateManifestOverride>
+  | ActionsUnion<typeof fetchManifest>
+  | ActionsUnion<typeof getManifest>;

@@ -5,7 +5,6 @@ import * as React from 'react';
 
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import { ResponseObject } from '../../types/commons';
 import NewUserWindow from './NewUserWindow';
 
 const handleCancel = action('handleCancel');
@@ -13,10 +12,10 @@ const handleSuccess = action('handleSuccess');
 const createUser = action('createUser');
 const onEscDown = action('onEscDown');
 
-const onResponseErrorNoop = (callback?: () => void) => (message: string) => {
+const onResponseErrorNoop = (callback?: () => void) => (error?: Error) => {
   return;
 };
-const onResponseSuccessNoop = (callback?: () => void) => (resp: ResponseObject) => {
+const onResponseSuccessNoop = (callback?: () => void) => () => {
   return;
 };
 
@@ -51,7 +50,6 @@ storiesOf(`${CATEGORIES.ADMIN}NewUserWindow`, module)
         resetResponseError={reset}
         responseError={error}
         responseMessage={errorMessage}
-        responsePayload={{}}
       />
     );
   });

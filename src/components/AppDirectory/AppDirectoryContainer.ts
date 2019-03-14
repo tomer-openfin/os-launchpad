@@ -17,10 +17,10 @@ const stateProps = state => ({
 const dispatchProps = dispatch => ({
   addToLauncher: (appId: App['id']) => dispatch(addToAppLauncher(appId)),
   hideWindow: () => {
-    dispatch(hideWindow(APP_DIRECTORY_WINDOW));
+    dispatch(hideWindow({ name: APP_DIRECTORY_WINDOW }));
   },
   onEscDown: () => {
-    dispatch(hideWindow(APP_DIRECTORY_WINDOW));
+    dispatch(hideWindow({ name: APP_DIRECTORY_WINDOW }));
   },
   removeFromLauncher: (appId: App['id']) => dispatch(removeFromAppLauncher(appId)),
 });

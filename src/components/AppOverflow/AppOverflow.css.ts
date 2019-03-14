@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { Color } from '../../styles';
 
-import { StyledTransitionGroup as AppList } from '../AppList';
+import { StyledTransitionGroupWrapper as AppList } from '../AppList';
 
 export const Window = styled.div`
   background: ${Color.ASTEROID_BELT};

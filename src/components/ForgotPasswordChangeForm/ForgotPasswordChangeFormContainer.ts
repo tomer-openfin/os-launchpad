@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { confirmPasswordRequest } from '../../redux/me';
+import { confirmPassword } from '../../redux/me';
 
 import { Values } from './ForgotPasswordChangeForm';
 import ForgotPasswordChangeFormik from './ForgotPasswordChangeFormik';
@@ -28,12 +28,12 @@ const mapDispatch = (dispatch: Dispatch, ownProps: OwnProps): MapDispatch => ({
 
     return new Promise(resolve => {
       dispatch(
-        confirmPasswordRequest(payload, {
-          errorCb: error => {
-            errorCb(error);
+        confirmPassword.request(payload, {
+          onFailure: error => {
+            errorCb(error ? error.message : 'Unknown error');
             resolve();
           },
-          successCb,
+          onSuccess: successCb,
         }),
       );
     });

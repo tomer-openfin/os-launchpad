@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { LoginErrorPayload, loginRequest } from '../../redux/me';
+import { login, LoginErrorPayload } from '../../redux/me';
 
 import { Values } from './LoginForm';
 import LoginFormik from './LoginFormik';
@@ -20,9 +20,11 @@ const mapDispatch = (dispatch: Dispatch, ownProps: OwnProps): MapDispatch => ({
 
     return new Promise(resolve => {
       dispatch(
-        loginRequest(payload, {
-          errorCb: error => {
-            errorCb(error);
+        login.request(payload, {
+          onFailure: (_, errorPayload?: LoginErrorPayload) => {
+            if (errorPayload) {
+              errorCb(errorPayload);
+            }
             resolve();
           },
         }),

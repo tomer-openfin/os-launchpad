@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { exitApplication } from '../../redux/application';
-import { logoutRequest } from '../../redux/me';
+import { logout } from '../../redux/me';
 
 import Logout from './Logout';
 
-const mapDispatch = {
-  exit: exitApplication,
-  logout: logoutRequest,
-};
+const mapDispatch = (dispatch: Dispatch) => ({
+  exit: () => dispatch(exitApplication()),
+  logout: () => dispatch(logout.request()),
+});
 
 export default connect(
   null,

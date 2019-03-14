@@ -16,9 +16,9 @@ storiesOf(`${CATEGORIES.COMPONENTS}App`, module)
   .addDecorator(withKnobs)
   .add('default', () => {
     const launcherSize = select('launcherSize', Object(LauncherSize), LauncherSize.Large);
-    window.store.dispatch(setLauncherSize(launcherSize));
+    window.store.dispatch(setLauncherSize({ launcherSize }));
     const launcherPosition = select('launcherPosition', Object(DirectionalPosition), DirectionalPosition.Top);
-    window.store.dispatch(setLauncherPosition(launcherPosition));
+    window.store.dispatch(setLauncherPosition({ launcherPosition }));
     const isDrawerExpanded = boolean('isDrawerExpanded', false);
     window.store.dispatch(setIsDrawerExpanded(isDrawerExpanded));
 

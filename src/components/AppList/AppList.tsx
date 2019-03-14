@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CSSTransition } from 'react-transition-group';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import { DirectionalPosition, Orientation } from '../../types/commons';
 import { isTopOrBottom } from '../../utils/windowPositionHelpers';
@@ -7,7 +7,7 @@ import { isTopOrBottom } from '../../utils/windowPositionHelpers';
 import { LauncherSizeConfig } from '../../utils/launcherSizeConfigs';
 import AppListToggle, { AppListToggleId } from '../AppListToggle';
 import LauncherAppIcon, { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from '../LauncherAppIcon';
-import { StyledTransitionGroup } from './AppList.css';
+import { StyledTransitionGroupWrapper, TRANSITION_GROUP_CLASSNAME } from './AppList.css';
 
 interface Props {
   appList: string[];
@@ -76,51 +76,59 @@ const AppList = ({
   };
 
   return (
-    <StyledTransitionGroup sizingConfig={launcherSizeConfig} height={height} isExpanded={isOverflowExpanded} launcherPosition={launcherPosition} width={width}>
-      {appList.map((id, index) => {
-        return (
-          <CSSTransition key={id} classNames={APP_ICON_TRANSITION_CLASSNAMES} timeout={APP_ICON_TRANSITION_DURATION} unmountOnExit>
-            {status => {
-              return id === AppListToggleId ? (
-                <AppListToggle
-                  borderWidth={launcherSizeConfig.appIconBorder}
-                  dragAndDropOptions={{
-                    dragDisabled: true,
-                    id,
-                    index,
-                    moveSource: moveSource(appList, setAppIds, toggleIndex),
-                    orientation,
-                  }}
-                  hasTransition
-                  isExpanded={isOverflowExpanded}
-                  isDisabled={areAppsDisabled}
-                  isDragAndDroppable={status !== 'entering'}
-                  margin={margin}
-                  size={launcherSizeConfig.appIcon}
-                />
-              ) : (
-                <LauncherAppIcon
-                  appId={id}
-                  dragAndDropOptions={{
-                    endSource,
-                    id,
-                    index,
-                    moveSource: moveSource(appList, setAppIds, toggleIndex),
-                    orientation,
-                    startSource,
-                  }}
-                  hasTransition
-                  isDisabled={areAppsDisabled}
-                  isDragAndDroppable={status !== 'entering'}
-                  margin={margin}
-                  withContextMenu
-                />
-              );
-            }}
-          </CSSTransition>
-        );
-      })}
-    </StyledTransitionGroup>
+    <StyledTransitionGroupWrapper
+      sizingConfig={launcherSizeConfig}
+      height={height}
+      isExpanded={isOverflowExpanded}
+      launcherPosition={launcherPosition}
+      width={width}
+    >
+      <TransitionGroup className={TRANSITION_GROUP_CLASSNAME}>
+        {appList.map((id, index) => {
+          return (
+            <CSSTransition key={id} classNames={APP_ICON_TRANSITION_CLASSNAMES} timeout={APP_ICON_TRANSITION_DURATION} unmountOnExit>
+              {status => {
+                return id === AppListToggleId ? (
+                  <AppListToggle
+                    borderWidth={launcherSizeConfig.appIconBorder}
+                    dragAndDropOptions={{
+                      dragDisabled: true,
+                      id,
+                      index,
+                      moveSource: moveSource(appList, setAppIds, toggleIndex),
+                      orientation,
+                    }}
+                    hasTransition
+                    isExpanded={isOverflowExpanded}
+                    isDisabled={areAppsDisabled}
+                    isDragAndDroppable={status !== 'entering'}
+                    margin={margin}
+                    size={launcherSizeConfig.appIcon}
+                  />
+                ) : (
+                  <LauncherAppIcon
+                    appId={id}
+                    dragAndDropOptions={{
+                      endSource,
+                      id,
+                      index,
+                      moveSource: moveSource(appList, setAppIds, toggleIndex),
+                      orientation,
+                      startSource,
+                    }}
+                    hasTransition
+                    isDisabled={areAppsDisabled}
+                    isDragAndDroppable={status !== 'entering'}
+                    margin={margin}
+                    withContextMenu
+                  />
+                );
+              }}
+            </CSSTransition>
+          );
+        })}
+      </TransitionGroup>
+    </StyledTransitionGroupWrapper>
   );
 };
 

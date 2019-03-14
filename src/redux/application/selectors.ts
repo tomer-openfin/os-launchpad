@@ -8,10 +8,10 @@ export const getIsDragAndDrop = (state: State) => getApplicationState(state).isD
 export const getDrawerIsExpanded = (state: State) => getApplicationState(state).isDrawerExpanded;
 export const getIsEnterprise = (state: State) => getApplicationState(state).isEnterprise;
 export const getRuntimeVersion = (state: State) => getApplicationState(state).runtimeVersion;
-export const getManifest = (state: State) => getApplicationState(state).manifest;
-export const getManifestOverride = (state: State) => getApplicationState(state).manifestOverride;
+export const getApplicationManifest = (state: State) => getApplicationState(state).manifest;
+export const getApplicationManifestOverride = (state: State) => getApplicationState(state).manifestOverride;
 
 export const getManifestImages = createSelector(
-  [getManifest, getManifestOverride],
+  [getApplicationManifest, getApplicationManifestOverride],
   getImagesFromManifestOverrideOrManifest,
 );

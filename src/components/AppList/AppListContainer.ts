@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 
 import { getDrawerIsExpanded, setIsDragAndDrop } from '../../redux/application';
-import { getLauncherPosition, getLauncherSizeConfig, saveSettingsRequest, setAppIds } from '../../redux/me';
+import { getLauncherPosition, getLauncherSizeConfig, saveSettings, setAppIds } from '../../redux/me';
 import { getAppListApps, getAppListDimensions } from '../../redux/selectors';
 import { isTopOrBottom } from '../../utils/windowPositionHelpers';
 
+import { Dispatch } from 'redux';
 import AppList from './AppList';
 
 const mapState = (state, { isOverflowExpanded = false }) => {
@@ -30,11 +31,11 @@ const mapState = (state, { isOverflowExpanded = false }) => {
   };
 };
 
-const mapDispatch = {
-  saveSettings: saveSettingsRequest,
-  setAppIds,
-  setIsDragAndDrop,
-};
+const mapDispatch = (dispatch: Dispatch) => ({
+  saveSettings: () => dispatch(saveSettings.request()),
+  setAppIds: (appIds: string[]) => dispatch(setAppIds({ appIds })),
+  setIsDragAndDrop: (isDragAndDroppable: boolean) => dispatch(setIsDragAndDrop(isDragAndDroppable)),
+});
 
 export default connect(
   mapState,

@@ -1,322 +1,197 @@
 import { Application, Window } from '@giantmachines/redux-openfin';
-import { AnyAction } from 'redux';
 import { all, call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
-
-import { ErrorResponse } from '../../types/commons';
-import { ResponseStatus } from '../../types/enums';
 
 import ApiService from '../../services/ApiService';
 import eraseCookie from '../../utils/eraseCookie';
 
 import { LOGIN_WINDOW } from '../../config/windows';
-import { getAdminAppsRequest, getAdminUsersRequest } from '../admin';
-import { getManifestOverrideRequest, initResources, launchAppLauncher, reboundLauncherRequest } from '../application';
-import { getAdminOrgSettingsRequest } from '../organization';
+import { getAdminApps, getAdminUsers } from '../admin';
+import { getManifestOverride, initResources, launchAppLauncher, reboundLauncher } from '../application';
+import { getAdminOrgSettings } from '../organization';
+import { getErrorFromCatch, getErrorMessageFromResponse, isErrorResponse } from '../utils';
 import {
-  ADD_TO_APP_LAUNCHER,
-  CONFIRM_PASSWORD,
-  confirmPasswordError,
-  confirmPasswordSuccess,
-  FORGOT_PASSWORD,
-  forgotPasswordError,
-  forgotPasswordSuccess,
-  GET_ME,
-  GET_SETTINGS,
-  getMeError,
-  getMeSuccess,
-  getSettingsError,
-  getSettingsSuccess,
-  LOGIN,
-  LOGIN_WITH_NEW_PASSWORD,
-  loginError,
-  loginSuccess,
-  LOGOUT,
-  logoutError,
-  logoutSuccess,
-  REMOVE_FROM_APP_LAUNCHER,
-  SAVE_SETTINGS,
-  saveSettingsRequest,
-  saveSettingsSuccess,
-  SET_AUTO_HIDE,
-  SET_LAUNCHER_MONITOR_SETTINGS,
-  SET_LAUNCHER_POSITION,
-  SET_LAUNCHER_SIZE,
+  addToAppLauncher,
+  confirmPassword,
+  forgotPassword,
+  getSettings,
+  login,
+  logout,
+  removeFromAppLauncher,
+  saveSettings,
+  setAutoHide,
+  setLauncherMonitorSettings,
+  setLauncherPosition,
+  setLauncherSize,
   setMe,
-  UPDATE_PASSWORD,
-  updatePasswordError,
-  updatePasswordSuccess,
+  updatePassword,
 } from './actions';
 import { getMeSettings } from './selectors';
-import { LoginError, LoginRequest, LoginSuccess, LoginWithNewPassword, LogoutError, UpdatePasswordRequest } from './types';
 
-const GENERIC_API_ERROR: ErrorResponse = { status: ResponseStatus.FAILURE, message: 'Failed to get response from server' };
+function* watchConfirmPasswordRequest(action: ReturnType<typeof confirmPassword.request>) {
+  try {
+    const response = yield call(ApiService.confirmPassword, action.payload);
 
-function* callSuccessMetaCb(action) {
-  if (action.meta && action.meta.successCb) {
-    action.meta.successCb(action.payload);
+    if (isErrorResponse(response)) {
+      throw new Error(getErrorMessageFromResponse(response));
+    }
+
+    yield put(confirmPassword.success(response, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(confirmPassword.failure(error, action.meta));
   }
 }
 
-function* callErrorMetaCb(action) {
-  const error = action.payload;
+function* watchForgotPasswordRequest(action: ReturnType<typeof forgotPassword.request>) {
+  try {
+    const response = yield call(ApiService.forgotPassword, action.payload);
 
-  const errorMessage = error && typeof error === 'object' && error.message ? error.message : error || 'Unknown Error';
+    if (isErrorResponse(response)) {
+      throw new Error(getErrorMessageFromResponse(response));
+    }
 
-  // tslint:disable-next-line:no-console
-  console.log('Error on', action.type, ':', errorMessage, '\n');
-
-  if (action.meta && action.meta.errorCb) {
-    action.meta.errorCb(errorMessage);
+    yield put(forgotPassword.success(response, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(forgotPassword.failure(error, action.meta));
   }
 }
 
-function* callApiWithPayloadAndMeta(apiPromise, actions, action) {
-  const { payload } = action;
-  if (!payload) {
-    return;
-  }
+function* watchLoginRequest(action: ReturnType<typeof login.request>) {
+  try {
+    const response = action.payload.session
+      ? yield call(ApiService.newPasswordLogin, { username: action.payload.username, newPassword: action.payload.password, session: action.payload.session })
+      : yield call(ApiService.login, action.payload);
 
-  const result = yield call(apiPromise, payload);
+    if (isErrorResponse(response)) {
+      const error = new Error(getErrorMessageFromResponse(response));
+      if (action.meta && action.meta.onFailure) {
+        action.meta.onFailure(error, { username: action.payload.username, session: action.payload.session, ...response });
+        return;
+      } else {
+        throw error;
+      }
+    }
 
-  const { status } = result;
-
-  if (status === ResponseStatus.FAILURE) {
-    yield put(actions.error(result, action.meta));
-  } else {
-    yield put(actions.success(result, action.meta));
-  }
-}
-
-function* watchGetMeRequest() {
-  const result = yield call(ApiService.getUserInfo);
-
-  const { status, code, message, session } = result;
-
-  if (status === ResponseStatus.FAILURE) {
-    yield put(getMeError({ status, code, message, session }));
-  } else {
-    const { email, firstName, lastName, isAdmin } = result;
-
-    yield put(getMeSuccess({ isAdmin, email, firstName, lastName }));
+    const { isAdmin, email, firstName, lastName } = response;
+    yield put(login.success({ isAdmin, email, firstName, lastName }, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(login.failure(error, action.meta));
   }
 }
 
-function* watchLoginRequest(action: LoginRequest) {
-  const { payload } = action;
+function* watchLoginSuccess(action: ReturnType<typeof login.success>) {
+  try {
+    yield put(setMe(action.payload));
 
-  if (!payload) {
-    return;
-  }
+    if (action.payload.isAdmin) {
+      yield all([put(getAdminApps.request()), put(getAdminUsers.request()), put(getAdminOrgSettings.request()), put(getManifestOverride.request())]);
+    }
 
-  const result = yield call(ApiService.login, payload);
+    yield call(initResources);
 
-  if (result.status === ResponseStatus.FAILURE) {
-    yield put(loginError({ username: payload.username, ...result }, action.meta));
-  } else {
-    const { isAdmin, email, firstName, lastName } = result;
-
-    yield put(loginSuccess({ isAdmin, email, firstName, lastName }, action.meta));
-  }
-}
-
-function* watchLoginWithNewPassword(action: LoginWithNewPassword) {
-  const { payload } = action;
-
-  if (!payload) {
-    return;
-  }
-
-  const result = yield call(ApiService.newPasswordLogin, payload);
-
-  if (result.status === ResponseStatus.FAILURE) {
-    yield put(loginError({ ...result, session: payload.session, username: payload.username }, action.meta));
-  } else {
-    const { isAdmin, email, firstName, lastName } = result;
-
-    yield put(loginSuccess({ isAdmin, email, firstName, lastName }));
+    yield put(Window.closeWindow({ id: LOGIN_WINDOW }));
+    yield put(launchAppLauncher());
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.log('Error in watchLoginSuccess', error);
   }
 }
 
-function* watchLoginSuccess(action: LoginSuccess) {
-  const { payload } = action;
+function* watchLogoutRequest(action: ReturnType<typeof logout.request>) {
+  try {
+    const response = yield call(ApiService.logout);
+    if (isErrorResponse(response)) {
+      throw new Error(getErrorMessageFromResponse(response));
+    }
 
-  if (!payload) {
-    return;
+    yield put(logout.success(undefined, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(logout.failure(error, action.meta));
   }
-
-  yield put(setMe(payload));
-
-  if (payload.isAdmin) {
-    yield all([put(getAdminAppsRequest()), put(getAdminUsersRequest()), put(getAdminOrgSettingsRequest()), put(getManifestOverrideRequest())]);
-  }
-
-  yield call(initResources);
-
-  yield put(Window.closeWindow({ id: LOGIN_WINDOW }));
-
-  yield put(launchAppLauncher());
-
-  if (action.meta && action.meta.successCb) {
-    action.meta.successCb();
-  }
-}
-
-function* watchLoginError(action: LoginError) {
-  const { payload } = action;
-  if (!payload) {
-    return;
-  }
-
-  if (action.meta && action.meta.errorCb) {
-    action.meta.errorCb(payload);
-  }
-}
-
-function* watchLogoutRequest() {
-  const result = yield call(ApiService.logout);
-
-  if (!result) {
-    yield put(logoutError(GENERIC_API_ERROR));
-    return;
-  }
-
-  const { status, message } = result;
-
-  if (status === ResponseStatus.FAILURE) {
-    yield put(logoutError({ status, message }));
-  } else {
-    yield put(logoutSuccess());
-  }
-}
-
-function* watchLogoutSuccess() {
-  eraseCookie();
-
-  yield put(Application.restart());
-
-  // TODO: instead of restarting app, reset store, hide all windows, and show login window
-  // https://stackoverflow.com/questions/35622588/how-to-reset-the-state-of-a-redux-store
-
-  // // RESET SLICES OF STORE
-
-  // // Hide Windows
-  // const launcherFinWindow = yield call(getLauncherFinWindow);
-
-  // if (launcherFinWindow) {
-  //   launcherFinWindow.hide();
-  // }
-
-  // yield all(Object.keys(initOnStartWindows).map(window => put(Window.hideWindow({ id: initOnStartWindows[window].id }))));
-
-  // // Show Login Window
-  // yield put(launchWindow(windowsConfig.login));
-}
-
-function* watchLogoutError(action: LogoutError) {
-  const { payload } = action;
-
-  if (!payload) {
-    return;
-  }
-
-  const { message } = payload;
-
-  // tslint:disable-next-line:no-console
-  console.error('Error Message:', message);
 
   eraseCookie();
-
   yield put(Application.restart());
 }
 
-function* watchGetSettingsRequest() {
-  const result = yield call(ApiService.getUserSettings);
+function* watchGetSettingsRequest(action: ReturnType<typeof getSettings.request>) {
+  try {
+    const response = yield call(ApiService.getUserSettings);
 
-  if (!result || result.status === ResponseStatus.FAILURE) {
-    // TODO validate result against settings state (e.g. invalid position issue)
-    // if invalid fall back to defaults and save in api
-    yield put(getSettingsError(result));
-  } else {
-    yield put(getSettingsSuccess(result));
+    if (isErrorResponse(response)) {
+      throw new Error(getErrorMessageFromResponse(response));
+    }
+
+    yield put(getSettings.success(response, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(getSettings.failure(error, action.meta));
   }
 }
 
-function* watchGetSettingsSuccess() {
-  yield put(reboundLauncherRequest(false, 0));
-}
+function* watchSaveSettingsRequest(action: ReturnType<typeof saveSettings.request>) {
+  try {
+    const settings: ReturnType<typeof getMeSettings> = yield select(getMeSettings);
 
-function* watchSaveSettingsRequest() {
-  const settings = yield select(getMeSettings);
+    const response = yield call(ApiService.saveUserSettings, settings);
 
-  // TODO: error handling
-  yield call(ApiService.saveUserSettings, settings);
+    if (isErrorResponse(response)) {
+      throw new Error(getErrorMessageFromResponse(response));
+    }
 
-  yield put(saveSettingsSuccess());
-}
-
-function* watchUpdateLauncherApps(delay: number, _: AnyAction) {
-  yield put(reboundLauncherRequest(true, delay));
-
-  yield put(saveSettingsRequest());
-}
-
-function* watchUpdatePasswordRequest(action: UpdatePasswordRequest) {
-  const { payload } = action;
-
-  const response = yield call(ApiService.updateUserPassword, payload);
-
-  if (response.status === ResponseStatus.FAILURE) {
-    yield put(updatePasswordError(response, action.meta));
-  } else {
-    yield put(updatePasswordSuccess(response, action.meta));
+    yield put(saveSettings.success(undefined, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(saveSettings.failure(error, action.meta));
   }
 }
 
-function* reboundLauncherAndSaveSettings() {
-  yield put(reboundLauncherRequest(false, 0));
+function* watchUpdatePasswordRequest(action: ReturnType<typeof updatePassword.request>) {
+  try {
+    const response = yield call(ApiService.updateUserPassword, action.payload);
 
-  yield put(saveSettingsRequest());
+    if (isErrorResponse(response)) {
+      throw new Error(getErrorMessageFromResponse(response));
+    }
+
+    yield put(updatePassword.success(response, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(updatePassword.failure(error, action.meta));
+  }
+}
+
+function* reboundLauncherAndSaveSettings(shouldAnimate: boolean, delay: number, _) {
+  try {
+    yield put(reboundLauncher.request({ shouldAnimate, delay }));
+
+    yield put(saveSettings.request());
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.log('Error in watchUpdateLauncherApps', error);
+  }
 }
 
 export function* meSaga() {
-  yield takeLatest(CONFIRM_PASSWORD.REQUEST, callApiWithPayloadAndMeta, ApiService.confirmPassword, {
-    error: confirmPasswordError,
-    success: confirmPasswordSuccess,
-  });
-  yield takeLatest(CONFIRM_PASSWORD.SUCCESS, callSuccessMetaCb);
-  yield takeLatest(CONFIRM_PASSWORD.ERROR, callErrorMetaCb);
+  yield takeLatest(confirmPassword.request, watchConfirmPasswordRequest);
+  yield takeLatest(forgotPassword.request, watchForgotPasswordRequest);
+  yield takeLatest(login.request, watchLoginRequest);
+  yield takeLatest(login.success, watchLoginSuccess);
+  yield takeLatest(logout.request, watchLogoutRequest);
+  yield takeLatest(getSettings.request, watchGetSettingsRequest);
+  yield takeLatest(saveSettings.request, watchSaveSettingsRequest);
+  yield takeLatest(addToAppLauncher, reboundLauncherAndSaveSettings, true, 0);
+  yield takeLatest(removeFromAppLauncher, reboundLauncherAndSaveSettings, true, 200);
+  yield takeEvery(updatePassword.request, watchUpdatePasswordRequest);
 
-  yield takeLatest(FORGOT_PASSWORD.REQUEST, callApiWithPayloadAndMeta, ApiService.forgotPassword, {
-    error: forgotPasswordError,
-    success: forgotPasswordSuccess,
-  });
-  yield takeLatest(FORGOT_PASSWORD.SUCCESS, callSuccessMetaCb);
-  yield takeLatest(FORGOT_PASSWORD.ERROR, callErrorMetaCb);
-
-  yield takeLatest(LOGIN.REQUEST, watchLoginRequest);
-  yield takeLatest(LOGIN.SUCCESS, watchLoginSuccess);
-  yield takeLatest(LOGIN.ERROR, watchLoginError);
-
-  yield takeLatest(GET_ME.REQUEST, watchGetMeRequest);
-  yield takeLatest(GET_ME.SUCCESS, watchLoginSuccess);
-  yield takeLatest(GET_ME.ERROR, watchLoginError);
-
-  yield takeLatest(LOGOUT.REQUEST, watchLogoutRequest);
-  yield takeLatest(LOGOUT.SUCCESS, watchLogoutSuccess);
-  yield takeLatest(LOGOUT.ERROR, watchLogoutError);
-
-  yield takeLatest(LOGIN_WITH_NEW_PASSWORD, watchLoginWithNewPassword);
-
-  yield takeLatest(GET_SETTINGS.REQUEST, watchGetSettingsRequest);
-  yield takeLatest(GET_SETTINGS.SUCCESS, watchGetSettingsSuccess);
-
-  yield takeLatest(SAVE_SETTINGS.REQUEST, watchSaveSettingsRequest);
-
-  yield takeLatest(ADD_TO_APP_LAUNCHER, watchUpdateLauncherApps, 0);
-  yield takeLatest(REMOVE_FROM_APP_LAUNCHER, watchUpdateLauncherApps, 200);
-
-  yield takeEvery(UPDATE_PASSWORD.REQUEST, watchUpdatePasswordRequest);
-  yield takeEvery(UPDATE_PASSWORD.SUCCESS, callSuccessMetaCb);
-  yield takeEvery(UPDATE_PASSWORD.ERROR, callErrorMetaCb);
-  yield takeLatest([SET_AUTO_HIDE, SET_LAUNCHER_POSITION, SET_LAUNCHER_SIZE, SET_LAUNCHER_MONITOR_SETTINGS], reboundLauncherAndSaveSettings);
+  yield takeLatest(
+    [setAutoHide.toString(), setLauncherPosition.toString(), setLauncherSize.toString(), setLauncherMonitorSettings.toString(), getSettings.success.toString()],
+    reboundLauncherAndSaveSettings,
+    false,
+    0,
+  );
 }

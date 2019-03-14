@@ -1,6 +1,6 @@
 import { Bounds } from '../../types/commons';
 import { NormalizedById } from '../../utils/reduxHelpers';
-import { hideWindow, launchWindow, toggleWindow, windowBlurred, windowHidden, windowShown } from './actions';
+import { hideWindow, launchWindow, recoverLostWindows, toggleWindow, windowBlurred, windowHidden, windowShown } from './actions';
 
 export interface WindowState {
   bounds: Bounds;
@@ -43,11 +43,11 @@ export interface WindowConfig {
 }
 
 // Actions
-export type HideWindowAction = ReturnType<typeof hideWindow>;
-export type LaunchWindowAction = ReturnType<typeof launchWindow>;
-export type ToggleWindowAction = ReturnType<typeof toggleWindow>;
-export type WindowBlurredAction = ReturnType<typeof windowBlurred>;
-export type WindowHiddenAction = ReturnType<typeof windowHidden>;
-export type WindowShownAction = ReturnType<typeof windowShown>;
-
-export type WindowsActions = LaunchWindowAction | ToggleWindowAction | WindowBlurredAction | WindowHiddenAction | WindowShownAction;
+export type WindowsActions =
+  | ReturnType<typeof hideWindow>
+  | ReturnType<typeof launchWindow>
+  | ReturnType<typeof recoverLostWindows>
+  | ReturnType<typeof toggleWindow>
+  | ReturnType<typeof windowBlurred>
+  | ReturnType<typeof windowHidden>
+  | ReturnType<typeof windowShown>;

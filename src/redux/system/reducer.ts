@@ -1,5 +1,5 @@
-import { SET_MONITOR_INFO } from './actions';
-import { SetMonitorInfoAction, SystemActions, SystemState } from './types';
+import { setMonitorInfo } from './actions';
+import { SystemActions, SystemState } from './types';
 
 export const defaultState: SystemState = {
   monitorInfo: null,
@@ -7,11 +7,8 @@ export const defaultState: SystemState = {
 
 export default (state: SystemState = defaultState, action: SystemActions) => {
   switch (action.type) {
-    case SET_MONITOR_INFO: {
-      const monitorInfo = (action as SetMonitorInfoAction).payload;
-      if (!monitorInfo) {
-        return state;
-      }
+    case setMonitorInfo.toString(): {
+      const monitorInfo = action.payload;
 
       return {
         ...state,

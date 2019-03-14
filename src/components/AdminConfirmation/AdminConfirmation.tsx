@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 import withResponseState, { PassedProps as ResponseProps } from '../../hocs/withResponseState';
-import { MetaWithCallbacks } from '../../types/commons';
+import { MetaWithAsyncHandlers } from '../../types/commons';
+
 import AdminConfirmationView from './AdminConfirmationView';
 
 interface Props extends ResponseProps {
@@ -12,7 +13,7 @@ interface Props extends ResponseProps {
   handleCancel?: () => void;
   headingText: string;
   height?: string;
-  onConfirm: (meta: MetaWithCallbacks) => void;
+  onConfirm: (meta: MetaWithAsyncHandlers) => void;
   onConfirmSuccess: () => void;
   parentRoute?: string;
   width?: string;
@@ -45,7 +46,7 @@ class AdminConfirmation extends React.Component<Props, State> {
   handleConfirm = () => {
     const { onConfirm, onResponseError, onResponseSuccess } = this.props;
 
-    const meta = { successCb: onResponseSuccess(this.onSuccess), errorCb: onResponseError(this.onError) };
+    const meta = { onSuccess: onResponseSuccess(this.onSuccess), onFailure: onResponseError(this.onError) };
 
     this.setState(
       {

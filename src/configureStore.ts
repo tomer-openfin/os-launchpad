@@ -9,7 +9,7 @@ import rootReducer from './redux/rootReducer';
 import rootSaga from './redux/rootSaga';
 import { State } from './redux/types';
 
-const { HOST = '0.0.0.0' } = process.env;
+const { HOST = '0.0.0.0', PORT = 8000 } = process.env;
 const isProduction = isProductionEnv();
 const isStorybook = isStorybookEnv();
 
@@ -24,7 +24,7 @@ export default (state?: State) => {
   // Include the extra Redux dev tools when running in development, but not in Storybook.
   const middleware =
     isDevelopmentEnv() && !isStorybook
-      ? composeWithDevTools({ hostname: HOST, port: 8000 })(applyMiddleware(...middlewareArgs))
+      ? composeWithDevTools({ hostname: HOST, port: PORT })(applyMiddleware(...middlewareArgs))
       : applyMiddleware(...middlewareArgs);
 
   // Middleware enhancers

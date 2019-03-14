@@ -1,9 +1,8 @@
 export interface NormalizedById<T> {
   [id: string]: T;
-  [id: number]: T;
 }
 
-export type NormalizedIds = Array<string | number>;
+export type NormalizedIds = string[];
 
 interface NormalizedData<Data> {
   byId: NormalizedById<Data>;

@@ -24,7 +24,7 @@ const mapState = (state: State) => ({
 
 const mapDispatch = (dispatch: Dispatch) => ({
   hideWindow: () => {
-    dispatch(hideWindow(ADMIN_WINDOW));
+    dispatch(hideWindow({ name: ADMIN_WINDOW }));
   },
 });
 

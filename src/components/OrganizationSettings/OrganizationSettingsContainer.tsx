@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { State } from '../../redux/types';
 
-import { getManifestImages, getManifestOverride } from '../../redux/application';
+import { getApplicationManifestOverride, getManifestImages } from '../../redux/application';
 import { getOrganizationImages } from '../../redux/organization';
 
 import { isManifestDefault } from '../../utils/manifestOverride';
@@ -11,7 +11,7 @@ import OrganizationSettings from './OrganizationSettings';
 
 const mapState = (state: State) => ({
   manifestImages: getManifestImages(state),
-  manifestOverride: getManifestOverride(state),
+  manifestOverride: getApplicationManifestOverride(state),
   orgImages: getOrganizationImages(state),
 });
 

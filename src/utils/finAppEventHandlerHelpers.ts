@@ -39,9 +39,9 @@ export const unbindFinAppEventHanlders = (uuid: string) => {
 /**
  * Add event listeners to applications to tracks states.
  */
-export const bindFinAppEventHandlers = (dipsatch: Dispatch, uuid: string, id: App['id']) => {
-  const { fin } = window;
-  if (!fin) {
+export const bindFinAppEventHandlers = (uuid: string, id: App['id']) => {
+  const { fin, store } = window;
+  if (!fin || !store) {
     return;
   }
 
@@ -49,7 +49,7 @@ export const bindFinAppEventHandlers = (dipsatch: Dispatch, uuid: string, id: Ap
   let handlers: EventHandler[] = [];
 
   handlers = ERROR_EVENTS.reduce((acc, event) => {
-    const handler = () => dipsatch(setFinAppStatusState({ id, statusState: AppStatusStates.Error, origin: AppStatusOrigins.Event }));
+    const handler = () => store.dispatch(setFinAppStatusState({ id, statusState: AppStatusStates.Error, origin: AppStatusOrigins.Event }));
     acc.push({ event, handler });
 
     app.addEventListener(event, handler);
@@ -58,7 +58,7 @@ export const bindFinAppEventHandlers = (dipsatch: Dispatch, uuid: string, id: Ap
   }, handlers);
 
   handlers = RECOVERY_EVENTS.reduce((acc, event) => {
-    const handler = () => dipsatch(setFinAppStatusState({ id, statusState: AppStatusStates.Running, origin: AppStatusOrigins.Event }));
+    const handler = () => store.dispatch(setFinAppStatusState({ id, statusState: AppStatusStates.Running, origin: AppStatusOrigins.Event }));
     acc.push({ event, handler });
 
     app.addEventListener(event, handler);

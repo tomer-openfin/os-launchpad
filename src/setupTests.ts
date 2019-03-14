@@ -37,3 +37,5 @@ Object.defineProperty(window, 'localStorage', {
 });
 
 enzyme.configure({ adapter: new Adapter() });
+
+jest.mock('./services/ApiService');

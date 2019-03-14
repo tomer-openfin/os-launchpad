@@ -22,8 +22,8 @@ export enum Stage {
 
 export interface Props {
   currentAction?: string;
-  handleClose?: () => void;
-  handleConfirm?: () => void;
+  handleClose: () => void;
+  handleConfirm: () => void;
   hideWindow?: () => void;
   isEnterprise?: boolean;
 }

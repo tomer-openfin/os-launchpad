@@ -1,17 +1,13 @@
 import { Window } from '@giantmachines/redux-openfin';
 
-import { WINDOW_HIDDEN, WINDOW_SHOWN } from './actions';
-import { WindowHiddenAction, WindowsActions, WindowShownAction, WindowsState } from './types';
+import { windowHidden, windowShown } from './actions';
+import { WindowsActions, WindowsState } from './types';
 
 const defaultState = {
   ...Window.reducer(undefined, {}),
 };
 
-const isShowingMutation = (state: WindowsState, action: WindowHiddenAction | WindowShownAction, isShowing: boolean) => {
-  if (!action.payload) {
-    return state;
-  }
-
+const isShowingMutation = (state: WindowsState, action: ReturnType<typeof windowHidden> | ReturnType<typeof windowShown>, isShowing: boolean) => {
   const { name } = action.payload;
   const window = state.byId[name];
   const byId = {
@@ -30,14 +26,14 @@ const isShowingMutation = (state: WindowsState, action: WindowHiddenAction | Win
   };
 };
 
-export default (state: WindowsState = defaultState, action: WindowsActions) => {
+export default (state: WindowsState = defaultState, action: WindowsActions): WindowsState => {
   const windowState = Window.reducer(state, action);
 
   switch (action.type) {
-    case WINDOW_HIDDEN: {
+    case windowHidden.toString(): {
       return isShowingMutation(windowState, action, false);
     }
-    case WINDOW_SHOWN: {
+    case windowShown.toString(): {
       return isShowingMutation(windowState, action, true);
     }
     default: {

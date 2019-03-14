@@ -1,23 +1,33 @@
-import { createAction } from 'redux-actions';
-
 import { App } from '../../types/commons';
-import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
-import { CloseFinAppPayload, FinAppStatusStatePayload, OpenFinAppErrorPayload, OpenFinAppSuccessPayload } from './types';
+import { createAction, createAsyncActionCreators } from '../utils';
+import { CloseFinAppPayload, FinAppStatusStatePayload, OpenFinAppSuccessPayload } from './types';
 
 // Action Types
-export const CLOSE_FIN_APP = generateAsyncActionTypes('CLOSE_FIN_APP');
-export const OPEN_FIN_APP = generateAsyncActionTypes('OPEN_FIN_APP');
-export const SET_FIN_APP_STATUS_STATE = 'SET_FIN_APP_STATUS_STATE';
-export const GET_APP_DIRECTORY_LIST = generateAsyncActionTypes('GET_APP_DIRECTORY_LIST');
+// CLOSE_FIN_APP
+const CLOSE_FIN_APP_FAILURE = 'CLOSE_FIN_APP_FAILURE';
+const CLOSE_FIN_APP_REQUEST = 'CLOSE_FIN_APP_REQUEST';
+const CLOSE_FIN_APP_SUCCESS = 'CLOSE_FIN_APP_SUCCESS';
+// GET_APP_DIRECTORY_LIST
+const GET_APP_DIRECTORY_LIST_FAILURE = 'GET_APP_DIRECTORY_LIST_FAILURE';
+const GET_APP_DIRECTORY_LIST_REQUEST = 'GET_APP_DIRECTORY_LIST_REQUEST';
+const GET_APP_DIRECTORY_LIST_SUCCESS = 'GET_APP_DIRECTORY_LIST_SUCCESS';
+// OPEN_FIN_APP
+const OPEN_FIN_APP_FAILURE = 'OPEN_FIN_APP_FAILURE';
+const OPEN_FIN_APP_REQUEST = 'OPEN_FIN_APP_REQUEST';
+const OPEN_FIN_APP_SUCCESS = 'OPEN_FIN_APP_SUCCESS';
+// SET_FIN_APP_STATUS_STATE
+const SET_FIN_APP_STATUS_STATE = 'SET_FIN_APP_STATUS_STATE';
 
 // Action Creators
-export const closeFinAppRequest = createAction<CloseFinAppPayload>(CLOSE_FIN_APP.REQUEST);
-export const closeFinAppSuccess = createAction<CloseFinAppPayload>(CLOSE_FIN_APP.SUCCESS);
-export const closeFinAppError = createAction<CloseFinAppPayload>(CLOSE_FIN_APP.ERROR);
-export const openFinAppRequest = createAction<App>(OPEN_FIN_APP.REQUEST);
-export const openFinAppSuccess = createAction<OpenFinAppSuccessPayload>(OPEN_FIN_APP.SUCCESS);
-export const openFinAppError = createAction<OpenFinAppErrorPayload>(OPEN_FIN_APP.ERROR);
-export const getAppDirectoryListRequest = createAction(GET_APP_DIRECTORY_LIST.REQUEST);
-export const getAppDirectoryListSuccess = createAction<App[]>(GET_APP_DIRECTORY_LIST.SUCCESS);
-export const getAppDirectoryListError = createAction(GET_APP_DIRECTORY_LIST.ERROR);
-export const setFinAppStatusState = createAction<FinAppStatusStatePayload>(SET_FIN_APP_STATUS_STATE);
+export const closeFinApp = createAsyncActionCreators(CLOSE_FIN_APP_REQUEST, CLOSE_FIN_APP_SUCCESS, CLOSE_FIN_APP_FAILURE)<
+  CloseFinAppPayload,
+  CloseFinAppPayload,
+  Error
+>();
+export const getAppDirectoryList = createAsyncActionCreators(GET_APP_DIRECTORY_LIST_REQUEST, GET_APP_DIRECTORY_LIST_SUCCESS, GET_APP_DIRECTORY_LIST_FAILURE)<
+  void,
+  App[],
+  Error
+>();
+export const openFinApp = createAsyncActionCreators(OPEN_FIN_APP_REQUEST, OPEN_FIN_APP_SUCCESS, OPEN_FIN_APP_FAILURE)<App, OpenFinAppSuccessPayload, Error>();
+export const setFinAppStatusState = createAction(SET_FIN_APP_STATUS_STATE)<FinAppStatusStatePayload>();

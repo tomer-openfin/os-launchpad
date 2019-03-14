@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import { App, MetaWithCallbacks } from '../../types/commons';
+import { App, MetaWithAsyncHandlers } from '../../types/commons';
 
-import { updateAdminAppRequest } from '../../redux/admin';
+import { updateAdminApp } from '../../redux/admin';
 import { getAppById } from '../../redux/apps';
 import { State } from '../../redux/types';
 
@@ -18,7 +18,7 @@ const mapState = (state: State, ownProps) => ({
 const mapDispatch = (dispatch, ownProps) => ({
   ...ownProps,
   onEscDown: ownProps.handleCancel,
-  updateApp: (app: App, meta: MetaWithCallbacks) => dispatch(updateAdminAppRequest(app, meta)),
+  updateApp: (app: App, meta: MetaWithAsyncHandlers<App>) => dispatch(updateAdminApp.request(app, meta)),
 });
 
 export default connect(
