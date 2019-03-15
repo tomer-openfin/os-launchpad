@@ -15,13 +15,12 @@ declare global {
   }
 }
 
-export const MOCK_ITEM_KEY = 'MOCK_ITEM_KEY';
+export const MOCK_ID = 'MOCK_ID';
 export const MOCK_ARRAY_KEY = 'MOCK_ARRAY_KEY';
-export const MOCK_ITEM = JSON.stringify({ key: 'value' });
-export const MOCK_ARRAY = JSON.stringify([{ key: 'value' }]);
+export const MOCK_ITEM = { id: MOCK_ID };
+export const MOCK_ARRAY = JSON.stringify([MOCK_ITEM]);
 
 const mockLocalStorageStore = {
-  [MOCK_ITEM_KEY]: MOCK_ITEM,
   [MOCK_ARRAY_KEY]: MOCK_ARRAY,
 };
 

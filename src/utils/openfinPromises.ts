@@ -87,7 +87,7 @@ export const getVisibleWindowStateAndBounds = async (finWindow: OpenFinWindow): 
   };
 };
 
-export const createAndRunFromManifest = (manifestUrl: string, id: string) => {
+export const createAndRunFromManifest = (manifestUrl: string, id: string): Promise<string> => {
   const { fin } = window;
 
   if (!fin) {

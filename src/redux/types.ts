@@ -1,4 +1,4 @@
-import { Action } from 'redux';
+import { AnyAction } from 'redux';
 
 import { AdminState } from './admin';
 import { ApplicationState } from './application';
@@ -11,7 +11,7 @@ import { SystemState } from './system';
 import { WindowsState } from './windows';
 
 // tslint:disable-next-line:no-any
-type ActionCreator = (...args: any[]) => Action;
+export type ActionCreator = (...args: any[]) => AnyAction;
 interface ActionCreatorsMapObject {
   [actionCreator: string]: ActionCreator;
 }

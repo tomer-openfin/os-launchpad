@@ -1,5 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
+import { UnPromisfy } from '../../types/utils';
 import { unbindFinAppEventHanlders } from '../../utils/finAppEventHandlerHelpers';
 import { getSystemMonitorInfo } from '../../utils/openfinPromises';
 import { reboundLauncher } from '../application';
@@ -10,7 +11,7 @@ import { getAndSetMonitorInfo, setMonitorInfo, systemEventApplicationClosed, sys
 
 function* watchGetAndSetMonitorInfo() {
   try {
-    const systemMonitorInfo = yield call(getSystemMonitorInfo);
+    const systemMonitorInfo: UnPromisfy<ReturnType<typeof getSystemMonitorInfo>> = yield call(getSystemMonitorInfo);
     yield put(setMonitorInfo(systemMonitorInfo));
     yield put(getAndSetMonitorInfo.success(systemMonitorInfo));
   } catch (e) {

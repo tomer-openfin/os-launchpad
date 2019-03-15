@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { Subtract } from '../types/utils';
+
 type Callback = () => void;
 
 export interface MessageResponseProps {
@@ -23,8 +25,6 @@ const defaultState: State = {
   responseError: false,
   responseMessage: '',
 };
-
-type Subtract<T, K> = Pick<T, Exclude<keyof T, keyof K>>;
 
 type WithoutPassedProps<T> = Subtract<T, PassedProps>;
 

@@ -1,12 +1,13 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
+import { UnPromisfy } from '../../types/utils';
 import { getErrorFromCatch } from '../utils';
 import { toggleNotificationCenter } from './actions';
 import { toggleFinNotificationCenter } from './utils';
 
 export function* watchToggleNotificationCenterRequest(action: ReturnType<typeof toggleNotificationCenter.request>) {
   try {
-    const result = yield call(toggleFinNotificationCenter);
+    const result: UnPromisfy<ReturnType<typeof toggleFinNotificationCenter>> = yield call(toggleFinNotificationCenter);
 
     yield put(toggleNotificationCenter.success(result, action.meta));
   } catch (e) {

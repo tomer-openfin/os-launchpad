@@ -2,23 +2,23 @@ import { Application, Window } from '@giantmachines/redux-openfin';
 import { all, call, delay, put, select, take, takeEvery, takeLatest, takeLeading } from 'redux-saga/effects';
 
 import windowsConfig, { initOnStartWindows } from '../../config/windows';
+import ApiService from '../../services/ApiService';
+import { ApiResponseStatus } from '../../types/enums';
+import { UnPromisfy } from '../../types/utils';
 import eraseCookie from '../../utils/eraseCookie';
 import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
+import { updateKeyInManifestOverride } from '../../utils/manifestOverride';
 import { animateWindow, getCurrentOpenfinApplicationManifest } from '../../utils/openfinPromises';
 import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv } from '../../utils/processHelpers';
 import { setupWindow } from '../../utils/setupWindow';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
-import { registerGlobalDevHotKeys, registerGlobalHotkeys } from '../globalHotkeys/utils';
-import { executeAutoHideBehavior, initManifest, initMonitorInfo, initOrgSettings, initResources, initRuntimeVersion } from './utils';
-
-import ApiService from '../../services/ApiService/index';
-import { updateKeyInManifestOverride } from '../../utils/manifestOverride';
 import { getAppDirectoryList } from '../apps';
+import { registerGlobalDevHotKeys, registerGlobalHotkeys } from '../globalHotkeys/utils';
 import { getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig } from '../me';
 import { getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings } from '../selectors';
 import { setupSystemHandlers } from '../system';
-import { getErrorFromCatch, getErrorMessageFromResponse, isErrorResponse } from '../utils';
+import { getErrorFromCatch } from '../utils';
 import { launchWindow } from '../windows';
 import {
   applicationStarted,
@@ -37,6 +37,7 @@ import {
   updateManifestOverride,
 } from './actions';
 import { getApplicationIsExpanded, getApplicationManifestOverride } from './selectors';
+import { executeAutoHideBehavior, initManifest, initMonitorInfo, initOrgSettings, initResources, initRuntimeVersion } from './utils';
 
 const APP_UUID = getAppUuid();
 const ANIMATION_DURATION = 285;
@@ -207,13 +208,13 @@ function* watchExpandApp() {
 
 function* watchGetManifestOverrideRequest(action: ReturnType<typeof getManifestOverride.request>) {
   try {
-    const response = yield call(ApiService.getAdminManifestOverrides);
+    const response: UnPromisfy<ReturnType<typeof ApiService.getAdminManifestOverrides>> = yield call(ApiService.getAdminManifestOverrides);
 
-    if (isErrorResponse(response)) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    yield put(getManifestOverride.success(response, action.meta));
+    yield put(getManifestOverride.success(response.data, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(getManifestOverride.failure(error, action.meta));
@@ -222,13 +223,13 @@ function* watchGetManifestOverrideRequest(action: ReturnType<typeof getManifestO
 
 function* watchFetchManifest(action: ReturnType<typeof fetchManifest.request>) {
   try {
-    const response = yield call(ApiService.getAdminManifest);
+    const response: UnPromisfy<ReturnType<typeof ApiService.getAdminManifest>> = yield call(ApiService.getAdminManifest);
 
-    if (isErrorResponse(response)) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    yield put(fetchManifest.success(response, action.meta));
+    yield put(fetchManifest.success(response.data, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(fetchManifest.failure(error, action.meta));
@@ -237,7 +238,7 @@ function* watchFetchManifest(action: ReturnType<typeof fetchManifest.request>) {
 
 function* watchGetManifestRequest(action: ReturnType<typeof getManifest.request>) {
   try {
-    const manifest = yield call(getCurrentOpenfinApplicationManifest);
+    const manifest: UnPromisfy<ReturnType<typeof getCurrentOpenfinApplicationManifest>> = yield call(getCurrentOpenfinApplicationManifest);
     yield put(getManifest.success(manifest, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
@@ -247,20 +248,20 @@ function* watchGetManifestRequest(action: ReturnType<typeof getManifest.request>
 
 function* watchReboundLauncherRequest(action: ReturnType<typeof reboundLauncher.request>) {
   try {
-    const launcherFinWindow = yield call(getLauncherFinWindow);
+    const launcherFinWindow: UnPromisfy<ReturnType<typeof getLauncherFinWindow>> = yield call(getLauncherFinWindow);
     if (!launcherFinWindow) {
       throw new Error('Could not find launcher fin window instance');
     }
 
-    const [
-      appList,
-      monitorDetails,
-      launcherPosition,
-      launcherSizeConfig,
-      autoHide,
-      isExpanded,
-      collapsedSystemDrawerSize,
-      expandedSystemDrawerSize,
+    const [appList, monitorDetails, launcherPosition, launcherSizeConfig, autoHide, isExpanded, collapsedSystemDrawerSize, expandedSystemDrawerSize]: [
+      ReturnType<typeof getAppsLauncherAppList>,
+      ReturnType<typeof getMonitorDetailsDerivedByUserSettings>,
+      ReturnType<typeof getLauncherPosition>,
+      ReturnType<typeof getLauncherSizeConfig>,
+      ReturnType<typeof getAutoHide>,
+      ReturnType<typeof getApplicationIsExpanded>,
+      ReturnType<typeof getCollapsedSystemDrawerSize>,
+      ReturnType<typeof getExpandedSystemDrawerSize>
     ] = yield all([
       select(getAppsLauncherAppList),
       select(getMonitorDetailsDerivedByUserSettings),
@@ -329,10 +330,13 @@ function* watchUpdateManifestOverrideRequest(action: ReturnType<typeof updateMan
       manifestOverride,
     );
 
-    const response = yield call(ApiService.saveAdminManifestOverrides, updatedManifestOverride);
+    const response: UnPromisfy<ReturnType<typeof ApiService.saveAdminManifestOverrides>> = yield call(
+      ApiService.saveAdminManifestOverrides,
+      updatedManifestOverride,
+    );
 
-    if (isErrorResponse(response)) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
     yield put(fetchManifest.request());

@@ -4,7 +4,8 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import AppData from '../../../samples/AppData';
 import UserData from '../../../samples/UserData';
 import ApiService from '../../../services/ApiService';
-import { getAppDirectoryList } from '../../apps/index';
+import { ApiResponseStatus } from '../../../types/enums';
+import { getAppDirectoryList } from '../../apps';
 import { testAsyncGeneratorsErrorCatch } from '../../testUtils';
 import { createAdminApp, createAdminUser, deleteAdminApp, deleteAdminUser, getAdminApps, getAdminUsers, updateAdminApp, updateAdminUser } from '../actions';
 import {
@@ -32,17 +33,16 @@ describe('admin/saga', () => {
 
     it('should put failure action when error is thrown', testAsyncGeneratorsErrorCatch(iterator, failure));
 
-    it('should put failure action when empty array is returned from Api', () => {
-      const failureClone = iterator.clone();
-      expect(failureClone.next([]).value).toEqual(put(failure(new Error('Unknown Error'))));
-      expect(failureClone.next().done).toBe(true);
-    });
-
     it('should put success action', async () => {
       const response = await apiMethod();
 
       const successClone = iterator.clone();
-      expect(successClone.next(response).value).toEqual(put(success(response)));
+      if (response.status === ApiResponseStatus.Failure) {
+        expect(successClone.next(response).value).toEqual(put(failure(new Error(response.message))));
+      } else {
+        expect(successClone.next(response).value).toEqual(put(success(response.data)));
+      }
+
       expect(successClone.next().done).toBe(true);
     });
   });
@@ -59,18 +59,17 @@ describe('admin/saga', () => {
 
     it('should put failure action when error is thrown', testAsyncGeneratorsErrorCatch(iterator, failure));
 
-    it('should put failure action when no app is returned from Api', () => {
-      const failureClone = iterator.clone();
-      expect(failureClone.next({}).value).toEqual(put(failure(new Error('Unknown Error'))));
-      expect(failureClone.next().done).toBe(true);
-    });
-
     it('should put success action and put getAppDirectoryListRequest', async () => {
       const response = await apiMethod(action.payload);
 
       const successClone = iterator.clone();
-      expect(successClone.next(response).value).toEqual(put(success(response.app)));
-      expect(successClone.next().value).toEqual(put(getAppDirectoryList.request()));
+      if (response.status === ApiResponseStatus.Failure) {
+        expect(successClone.next(response).value).toEqual(put(failure(new Error(response.message))));
+      } else {
+        expect(successClone.next(response).value).toEqual(put(success(response.data)));
+        expect(successClone.next().value).toEqual(put(getAppDirectoryList.request()));
+      }
+
       expect(successClone.next().done).toBe(true);
     });
   });
@@ -87,18 +86,17 @@ describe('admin/saga', () => {
 
     it('should put failure action when error is thrown', testAsyncGeneratorsErrorCatch(iterator, failure));
 
-    it('should put failure action when no app is returned from Api', () => {
-      const failureClone = iterator.clone();
-      expect(failureClone.next({}).value).toEqual(put(failure(new Error('Unknown Error'))));
-      expect(failureClone.next().done).toBe(true);
-    });
-
     it('should put success action and put getAppDirectoryListRequest', async () => {
       const response = await apiMethod(action.payload);
 
       const successClone = iterator.clone();
-      expect(successClone.next(response).value).toEqual(put(success(response.app)));
-      expect(successClone.next().value).toEqual(put(getAppDirectoryList.request()));
+      if (response.status === ApiResponseStatus.Failure) {
+        expect(successClone.next(response).value).toEqual(put(failure(new Error(response.message))));
+      } else {
+        expect(successClone.next(response).value).toEqual(put(success(response.data)));
+        expect(successClone.next().value).toEqual(put(getAppDirectoryList.request()));
+      }
+
       expect(successClone.next().done).toBe(true);
     });
   });
@@ -141,7 +139,11 @@ describe('admin/saga', () => {
       const response = await apiMethod();
 
       const successClone = iterator.clone();
-      expect(successClone.next(response).value).toEqual(put(success(response)));
+      if (response.status === ApiResponseStatus.Failure) {
+        expect(successClone.next(response).value).toEqual(put(failure(new Error(response.message))));
+      } else {
+        expect(successClone.next(response).value).toEqual(put(success(response.data)));
+      }
       expect(successClone.next().done).toBe(true);
     });
   });
@@ -158,17 +160,16 @@ describe('admin/saga', () => {
 
     it('should put failure action when error is thrown', testAsyncGeneratorsErrorCatch(iterator, failure));
 
-    it('should put failure action when no user is returned from Api', () => {
-      const failureClone = iterator.clone();
-      expect(failureClone.next({}).value).toEqual(put(failure(new Error('Unknown Error'))));
-      expect(failureClone.next().done).toBe(true);
-    });
-
     it('should put success action', async () => {
       const response = await apiMethod(action.payload);
 
       const successClone = iterator.clone();
-      expect(successClone.next(response).value).toEqual(put(success(response.user)));
+      if (response.status === ApiResponseStatus.Failure) {
+        expect(successClone.next(response).value).toEqual(put(failure(new Error(response.message))));
+      } else {
+        expect(successClone.next(response).value).toEqual(put(success(response.data)));
+      }
+
       expect(successClone.next().done).toBe(true);
     });
   });
@@ -185,17 +186,16 @@ describe('admin/saga', () => {
 
     it('should put failure action when error is thrown', testAsyncGeneratorsErrorCatch(iterator, failure));
 
-    it('should put failure action when no user is returned from Api', () => {
-      const failureClone = iterator.clone();
-      expect(failureClone.next({}).value).toEqual(put(failure(new Error('Unknown Error'))));
-      expect(failureClone.next().done).toBe(true);
-    });
-
     it('should put success action and put getAppDirectoryListRequest', async () => {
       const response = await apiMethod(action.payload);
 
       const successClone = iterator.clone();
-      expect(successClone.next(response).value).toEqual(put(success(response.user)));
+      if (response.status === ApiResponseStatus.Failure) {
+        expect(successClone.next(response).value).toEqual(put(failure(new Error(response.message))));
+      } else {
+        expect(successClone.next(response).value).toEqual(put(success(response.data)));
+      }
+
       expect(successClone.next().done).toBe(true);
     });
   });

@@ -2,20 +2,21 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 
+import { ApiResponseStatus } from '../../types/enums';
+import { UnPromisfy } from '../../types/utils';
 import { getAppDirectoryList } from '../apps';
-import { getErrorFromCatch, getErrorMessageFromResponse, isErrorResponse } from '../utils';
+import { getErrorFromCatch } from '../utils';
 import { createAdminApp, createAdminUser, deleteAdminApp, deleteAdminUser, getAdminApps, getAdminUsers, updateAdminApp, updateAdminUser } from './actions';
 
 export function* watchGetAdminAppsRequest(action: ReturnType<typeof getAdminApps.request>) {
   try {
-    const response = yield call(ApiService.getAdminApps);
+    const response: UnPromisfy<ReturnType<typeof ApiService.getAdminApps>> = yield call(ApiService.getAdminApps);
 
-    if (isErrorResponse(response) || !response.length) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    const appList = response;
-    yield put(getAdminApps.success(appList, action.meta));
+    yield put(getAdminApps.success(response.data, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(getAdminApps.failure(error, action.meta));
@@ -24,14 +25,13 @@ export function* watchGetAdminAppsRequest(action: ReturnType<typeof getAdminApps
 
 export function* watchCreateAdminAppRequest(action: ReturnType<typeof createAdminApp.request>) {
   try {
-    const response = yield call(ApiService.createAdminApp, action.payload);
+    const response: UnPromisfy<ReturnType<typeof ApiService.createAdminApp>> = yield call(ApiService.createAdminApp, action.payload);
 
-    if (isErrorResponse(response) || !response.app) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    const { app } = response;
-    yield put(createAdminApp.success(app, action.meta));
+    yield put(createAdminApp.success(response.data, action.meta));
     yield put(getAppDirectoryList.request());
   } catch (e) {
     const error = getErrorFromCatch(e);
@@ -41,14 +41,13 @@ export function* watchCreateAdminAppRequest(action: ReturnType<typeof createAdmi
 
 export function* watchUpdateAdminAppRequest(action: ReturnType<typeof updateAdminApp.request>) {
   try {
-    const response = yield call(ApiService.updateAdminApp, action.payload);
+    const response: UnPromisfy<ReturnType<typeof ApiService.updateAdminApp>> = yield call(ApiService.updateAdminApp, action.payload);
 
-    if (isErrorResponse(response) || !response.app) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    const { app } = response;
-    yield put(updateAdminApp.success(app, action.meta));
+    yield put(updateAdminApp.success(response.data, action.meta));
     yield put(getAppDirectoryList.request());
   } catch (e) {
     const error = getErrorFromCatch(e);
@@ -58,10 +57,10 @@ export function* watchUpdateAdminAppRequest(action: ReturnType<typeof updateAdmi
 
 export function* watchDeleteAdminAppRequest(action: ReturnType<typeof deleteAdminApp.request>) {
   try {
-    const response = yield call(ApiService.deleteAdminApp, action.payload);
+    const response: UnPromisfy<ReturnType<typeof ApiService.deleteAdminApp>> = yield call(ApiService.deleteAdminApp, action.payload);
 
-    if (isErrorResponse(response)) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
     yield put(deleteAdminApp.success(action.payload, action.meta));
@@ -74,13 +73,13 @@ export function* watchDeleteAdminAppRequest(action: ReturnType<typeof deleteAdmi
 
 export function* watchGetAdminUsersRequest(action: ReturnType<typeof getAdminUsers.request>) {
   try {
-    const response = yield call(ApiService.getAdminUsers);
+    const response: UnPromisfy<ReturnType<typeof ApiService.getAdminUsers>> = yield call(ApiService.getAdminUsers);
 
-    if (isErrorResponse(response) || !response.length) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    yield put(getAdminUsers.success(response, action.meta));
+    yield put(getAdminUsers.success(response.data, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(getAdminUsers.failure(error, action.meta));
@@ -89,13 +88,13 @@ export function* watchGetAdminUsersRequest(action: ReturnType<typeof getAdminUse
 
 export function* watchCreateAdminUserRequest(action: ReturnType<typeof createAdminUser.request>) {
   try {
-    const response = yield call(ApiService.createAdminUser, action.payload);
+    const response: UnPromisfy<ReturnType<typeof ApiService.createAdminUser>> = yield call(ApiService.createAdminUser, action.payload);
 
-    if (isErrorResponse(response) || !response.user) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    yield put(createAdminUser.success(response.user, action.meta));
+    yield put(createAdminUser.success(response.data, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(createAdminUser.failure(error, action.meta));
@@ -104,13 +103,13 @@ export function* watchCreateAdminUserRequest(action: ReturnType<typeof createAdm
 
 export function* watchUpdateAdminUserRequest(action: ReturnType<typeof updateAdminUser.request>) {
   try {
-    const response = yield call(ApiService.updateAdminUser, action.payload);
+    const response: UnPromisfy<ReturnType<typeof ApiService.updateAdminUser>> = yield call(ApiService.updateAdminUser, action.payload);
 
-    if (isErrorResponse(response) || !response.user) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    yield put(updateAdminUser.success(response.user, action.meta));
+    yield put(updateAdminUser.success(response.data, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(updateAdminUser.failure(error, action.meta));
@@ -119,10 +118,10 @@ export function* watchUpdateAdminUserRequest(action: ReturnType<typeof updateAdm
 
 export function* watchDeleteAdminUserRequest(action: ReturnType<typeof deleteAdminUser.request>) {
   try {
-    const response = yield call(ApiService.deleteAdminUser, action.payload);
+    const response: UnPromisfy<ReturnType<typeof ApiService.deleteAdminUser>> = yield call(ApiService.deleteAdminUser, action.payload);
 
-    if (isErrorResponse(response)) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
     yield put(deleteAdminUser.success(action.payload, action.meta));

@@ -1,5 +1,7 @@
 import { RouteComponentProps } from 'react-router-dom';
-import { ResponseStatus, UserStatus, Workspace } from './commons';
+
+import { ApiResponseStatus, UserStatus } from './enums';
+import { Workspace } from './fin';
 
 export interface App {
   appPage?: string;
@@ -27,30 +29,24 @@ export interface Dimensions {
   width: number;
 }
 
-export interface ResponseObject {
-  status: ResponseStatus;
-  message?: string;
+export interface BaseApiResponse<M> {
+  status: ApiResponseStatus;
+  statusCode?: number;
+  meta?: M;
 }
 
-// TODO: ensure type consistency across all Api Response objects
-// Ideal types are:
-//
-// export interface APIResponse<T> extends Response {
-//   status: ResponseStatus;
-//   message?: string;
-//   data?: T;
-// }
-//
-// export interface ErrorResponse<T> extends APIResponse<T> {
-//   status: ResponseStatus.FAILURE;
-// }
+export interface ApiSuccessResponse<T, M = void> extends BaseApiResponse<M> {
+  data: T;
+  status: ApiResponseStatus.Success;
+}
 
 /* tslint:disable-next-line:no-any */
-export type APIResponse = ResponseObject | any;
-
-export interface ErrorResponse extends APIResponse {
-  status: ResponseStatus.FAILURE;
+export interface ApiFailureResponse extends BaseApiResponse<{ [key: string]: any }> {
+  message: string;
+  status: ApiResponseStatus.Failure;
 }
+
+export type ApiResponse<T, M = void> = ApiSuccessResponse<T, M> | ApiFailureResponse;
 
 export interface Theme {
   backgroundColor: string;

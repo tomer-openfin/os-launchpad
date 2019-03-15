@@ -1,8 +1,8 @@
 import { AnyAction } from 'redux';
 import { takeEvery } from 'redux-saga/effects';
 import { createCustomAction } from 'typesafe-actions';
+
 import { MetaWithAsyncHandlers } from '../types/commons';
-import { ResponseStatus } from '../types/enums';
 
 interface ErrorMeta<P> {
   payload?: P;
@@ -71,14 +71,6 @@ export const createAsyncActionCreators = <RequestType extends string, SuccessTyp
   };
 };
 
-export const isErrorResponse = (response): boolean => !response || response.status === ResponseStatus.FAILURE || response === 'Internal Server Error';
-export const getErrorMessageFromResponse = (response): string => {
-  if (typeof response === 'string') {
-    return response;
-  }
-
-  return response && typeof response === 'object' && response.message ? response.message : 'Unknown Error';
-};
 export const getErrorFromCatch = (e): Error => (e instanceof Error ? e : new Error(e));
 
 export function* watchAsyncFailure(action: AnyAction) {

@@ -5,10 +5,12 @@ import ApiService from '../../services/ApiService';
 import eraseCookie from '../../utils/eraseCookie';
 
 import { LOGIN_WINDOW } from '../../config/windows';
+import { ApiResponseStatus } from '../../types/enums';
+import { UnPromisfy } from '../../types/utils';
 import { getAdminApps, getAdminUsers } from '../admin';
 import { getManifestOverride, initResources, launchAppLauncher, reboundLauncher } from '../application';
 import { getAdminOrgSettings } from '../organization';
-import { getErrorFromCatch, getErrorMessageFromResponse, isErrorResponse } from '../utils';
+import { getErrorFromCatch } from '../utils';
 import {
   addToAppLauncher,
   confirmPassword,
@@ -29,13 +31,13 @@ import { getMeSettings } from './selectors';
 
 function* watchConfirmPasswordRequest(action: ReturnType<typeof confirmPassword.request>) {
   try {
-    const response = yield call(ApiService.confirmPassword, action.payload);
+    const response: UnPromisfy<ReturnType<typeof ApiService.confirmPassword>> = yield call(ApiService.confirmPassword, action.payload);
 
-    if (isErrorResponse(response)) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    yield put(confirmPassword.success(response, action.meta));
+    yield put(confirmPassword.success(response.data, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(confirmPassword.failure(error, action.meta));
@@ -44,13 +46,13 @@ function* watchConfirmPasswordRequest(action: ReturnType<typeof confirmPassword.
 
 function* watchForgotPasswordRequest(action: ReturnType<typeof forgotPassword.request>) {
   try {
-    const response = yield call(ApiService.forgotPassword, action.payload);
+    const response: UnPromisfy<ReturnType<typeof ApiService.forgotPassword>> = yield call(ApiService.forgotPassword, action.payload);
 
-    if (isErrorResponse(response)) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    yield put(forgotPassword.success(response, action.meta));
+    yield put(forgotPassword.success(response.data, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(forgotPassword.failure(error, action.meta));
@@ -59,21 +61,27 @@ function* watchForgotPasswordRequest(action: ReturnType<typeof forgotPassword.re
 
 function* watchLoginRequest(action: ReturnType<typeof login.request>) {
   try {
-    const response = action.payload.session
+    const response: UnPromisfy<ReturnType<typeof ApiService.login>> = action.payload.session
       ? yield call(ApiService.newPasswordLogin, { username: action.payload.username, newPassword: action.payload.password, session: action.payload.session })
       : yield call(ApiService.login, action.payload);
 
-    if (isErrorResponse(response)) {
-      const error = new Error(getErrorMessageFromResponse(response));
-      if (action.meta && action.meta.onFailure) {
-        action.meta.onFailure(error, { username: action.payload.username, session: action.payload.session, ...response });
+    if (response.status === ApiResponseStatus.Failure) {
+      const error = new Error(response.message);
+      if (action.meta && action.meta.onFailure && response.meta) {
+        action.meta.onFailure(error, {
+          code: response.meta.code,
+          message: response.message,
+          session: response.meta.session || action.payload.session,
+          status: response.status,
+          username: action.payload.username,
+        });
         return;
       } else {
         throw error;
       }
     }
 
-    const { isAdmin, email, firstName, lastName } = response;
+    const { isAdmin, email, firstName, lastName } = response.data;
     yield put(login.success({ isAdmin, email, firstName, lastName }, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
@@ -102,9 +110,10 @@ function* watchLoginSuccess(action: ReturnType<typeof login.success>) {
 
 function* watchLogoutRequest(action: ReturnType<typeof logout.request>) {
   try {
-    const response = yield call(ApiService.logout);
-    if (isErrorResponse(response)) {
-      throw new Error(getErrorMessageFromResponse(response));
+    const response: UnPromisfy<ReturnType<typeof ApiService.logout>> = yield call(ApiService.logout);
+
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
     yield put(logout.success(undefined, action.meta));
@@ -119,13 +128,13 @@ function* watchLogoutRequest(action: ReturnType<typeof logout.request>) {
 
 function* watchGetSettingsRequest(action: ReturnType<typeof getSettings.request>) {
   try {
-    const response = yield call(ApiService.getUserSettings);
+    const response: UnPromisfy<ReturnType<typeof ApiService.getUserSettings>> = yield call(ApiService.getUserSettings);
 
-    if (isErrorResponse(response)) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    yield put(getSettings.success(response, action.meta));
+    yield put(getSettings.success(response.data, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(getSettings.failure(error, action.meta));
@@ -136,10 +145,10 @@ function* watchSaveSettingsRequest(action: ReturnType<typeof saveSettings.reques
   try {
     const settings: ReturnType<typeof getMeSettings> = yield select(getMeSettings);
 
-    const response = yield call(ApiService.saveUserSettings, settings);
+    const response: UnPromisfy<ReturnType<typeof ApiService.saveUserSettings>> = yield call(ApiService.saveUserSettings, settings);
 
-    if (isErrorResponse(response)) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
     yield put(saveSettings.success(undefined, action.meta));
@@ -151,13 +160,13 @@ function* watchSaveSettingsRequest(action: ReturnType<typeof saveSettings.reques
 
 function* watchUpdatePasswordRequest(action: ReturnType<typeof updatePassword.request>) {
   try {
-    const response = yield call(ApiService.updateUserPassword, action.payload);
+    const response: UnPromisfy<ReturnType<typeof ApiService.updateUserPassword>> = yield call(ApiService.updateUserPassword, action.payload);
 
-    if (isErrorResponse(response)) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    yield put(updatePassword.success(response, action.meta));
+    yield put(updatePassword.success(response.data, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(updatePassword.failure(error, action.meta));

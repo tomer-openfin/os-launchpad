@@ -2,7 +2,8 @@ import { all, call, put, race, select, take, takeEvery } from 'redux-saga/effect
 
 import { LAYOUTS_WINDOW } from '../../config/windows';
 import ApiService from '../../services/ApiService';
-import { AppStatusOrigins, AppStatusStates, Transition } from '../../types/commons';
+import { ApiResponseStatus, AppStatusOrigins, AppStatusStates, Transition } from '../../types/commons';
+import { UnPromisfy } from '../../types/utils';
 import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
 import { generateLayout, restoreLayout as restoreFinLayout } from '../../utils/openfinLayouts';
@@ -11,7 +12,7 @@ import { calcBoundsRelativeToLauncher } from '../../utils/windowPositionHelpers'
 import { getApps, getAppsStatusById, openFinApp, setFinAppStatusState } from '../apps';
 import { getLauncherPosition, getLauncherSizeConfig } from '../me';
 import { getExpandedSystemDrawerSize } from '../selectors';
-import { getErrorFromCatch, getErrorMessageFromResponse, isErrorResponse } from '../utils';
+import { getErrorFromCatch } from '../utils';
 import { getWindowBounds } from '../windows';
 import { createLayout, deleteLayout, dismissUndoUpdateLayout, getLayouts, restoreLayout, saveLayout, undoUpdateLayout, updateLayout } from './actions';
 import { getAllLayouts, getLayoutById, getLayoutByName } from './selectors';
@@ -19,7 +20,7 @@ import { calcDesiredLayoutsWindowHeight } from './utils';
 
 function* watchLayoutsChangesToAnimateWindow() {
   try {
-    const layoutsWindow = yield call(getFinWindowByName, LAYOUTS_WINDOW);
+    const layoutsWindow: UnPromisfy<ReturnType<typeof getFinWindowByName>> = yield call(getFinWindowByName, LAYOUTS_WINDOW);
 
     const bounds: ReturnType<typeof getWindowBounds> = yield select(getWindowBounds, LAYOUTS_WINDOW);
     const launcherBounds: ReturnType<typeof getWindowBounds> = yield select(getWindowBounds, getAppUuid());
@@ -66,13 +67,13 @@ function* watchLayoutsChangesToAnimateWindow() {
 
 function* watchGetLayoutsRequest(action: ReturnType<typeof getLayouts.request>) {
   try {
-    const response = yield call(ApiService.getUserLayouts);
+    const response: UnPromisfy<ReturnType<typeof ApiService.getUserLayouts>> = yield call(ApiService.getUserLayouts);
 
-    if (isErrorResponse(response)) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    yield put(getLayouts.success(response, action.meta));
+    yield put(getLayouts.success(response.data, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(getLayouts.failure(error, action.meta));
@@ -82,16 +83,16 @@ function* watchGetLayoutsRequest(action: ReturnType<typeof getLayouts.request>) 
 function* watchCreateLayoutRequest(action: ReturnType<typeof createLayout.request>) {
   try {
     const name = action.payload || 'layout';
-    const layout = yield call(generateLayout);
+    const layout: UnPromisfy<ReturnType<typeof generateLayout>> = yield call(generateLayout);
 
     const userLayout = { name, layout };
-    const response = yield call(ApiService.createUserLayout, userLayout);
+    const response: UnPromisfy<ReturnType<typeof ApiService.createUserLayout>> = yield call(ApiService.createUserLayout, userLayout);
 
-    if (isErrorResponse(response) || !response.layout) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    yield put(createLayout.success(response, action.meta));
+    yield put(createLayout.success({ layout: response.data, updated: false }, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(createLayout.failure(error, action.meta));
@@ -100,10 +101,10 @@ function* watchCreateLayoutRequest(action: ReturnType<typeof createLayout.reques
 
 function* watchDeleteLayoutRequest(action: ReturnType<typeof deleteLayout.request>) {
   try {
-    const response = yield call(ApiService.deleteUserLayout, action.payload);
+    const response: UnPromisfy<ReturnType<typeof ApiService.deleteUserLayout>> = yield call(ApiService.deleteUserLayout, action.payload);
 
-    if (isErrorResponse(response)) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
     yield put(deleteLayout.success(action.payload, action.meta));
@@ -145,7 +146,7 @@ function* watchRestoreLayoutRequest(action: ReturnType<typeof restoreLayout.requ
         return;
       }),
     );
-    const restoredLayout = yield call(restoreFinLayout, layout);
+    const restoredLayout: UnPromisfy<ReturnType<typeof restoreFinLayout>> = yield call(restoreFinLayout, layout);
     yield put(restoreLayout.success(restoredLayout, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
@@ -217,9 +218,9 @@ function* watchSaveLayoutRequest(action: ReturnType<typeof saveLayout.request>) 
 function* watchUpdateLayoutRequest(action: ReturnType<typeof updateLayout.request>) {
   try {
     const { id, isOverwrite, name, layout: previousUserLayout } = action.payload;
-    let { layout } = previousUserLayout;
+    const { layout } = previousUserLayout;
     if (isOverwrite) {
-      layout = yield call(generateLayout);
+      (layout as UnPromisfy<ReturnType<typeof generateLayout>>) = yield call(generateLayout);
     }
 
     const userLayout = {
@@ -228,13 +229,13 @@ function* watchUpdateLayoutRequest(action: ReturnType<typeof updateLayout.reques
       name,
     };
 
-    const response = yield call(ApiService.updateUserLayout, userLayout);
+    const response: UnPromisfy<ReturnType<typeof ApiService.updateUserLayout>> = yield call(ApiService.updateUserLayout, userLayout);
 
-    if (isErrorResponse(response) || !response.layout) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    yield put(updateLayout.success({ previousUserLayout, layout: response.layout, updated: true }, action.meta));
+    yield put(updateLayout.success({ previousUserLayout, layout: response.data, updated: true }, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(updateLayout.failure(error, action.meta));

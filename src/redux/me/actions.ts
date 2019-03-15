@@ -1,4 +1,4 @@
-import { APIResponse, MonitorDetails } from '../../types/commons';
+import { MonitorDetails } from '../../types/commons';
 import { createAction, createAsyncActionCreators } from '../utils';
 import {
   ConfirmPasswordPayload,
@@ -13,7 +13,6 @@ import {
   SetLauncherSizePayload,
   SetMePayload,
   UpdatePasswordRequestPayload,
-  UpdatePasswordSuccessPayload,
 } from './types';
 
 // Action Types
@@ -73,18 +72,18 @@ export const login = createAsyncActionCreators(LOGIN_REQUEST, LOGIN_SUCCESS, LOG
 export const logout = createAsyncActionCreators(LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE)<void, void, Error>();
 export const confirmPassword = createAsyncActionCreators(CONFIRM_PASSWORD_REQUEST, CONFIRM_PASSWORD_SUCCESS, CONFIRM_PASSWORD_FAILURE)<
   ConfirmPasswordPayload,
-  APIResponse,
+  void,
   Error
 >();
 export const forgotPassword = createAsyncActionCreators(FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_FAILURE)<
   ForgotPasswordPayload,
-  APIResponse,
+  void,
   Error
 >();
 export const getSettings = createAsyncActionCreators(GET_SETTINGS_REQUEST, GET_SETTINGS_SUCCESS, GET_SETTINGS_FAILURE)<void, MeSettingsState, Error>();
 export const saveSettings = createAsyncActionCreators(SAVE_SETTINGS_REQUEST, SAVE_SETTINGS_SUCCESS, SAVE_SETTINGS_FAILURE)<void, void, Error>();
 export const updatePassword = createAsyncActionCreators(UPDATE_PASSWORD_REQUEST, UPDATE_PASSWORD_SUCCESS, UPDATE_PASSWORD_FAILURE)<
   UpdatePasswordRequestPayload,
-  UpdatePasswordSuccessPayload,
+  void,
   Error
 >();

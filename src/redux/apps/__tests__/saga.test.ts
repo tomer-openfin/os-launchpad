@@ -3,6 +3,7 @@ import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import AppData from '../../../samples/AppData';
 import ApiService from '../../../services/ApiService';
+import { ApiResponseStatus } from '../../../types/enums';
 import noop from '../../../utils/noop';
 import { closeApplication, wrapApplication } from '../../../utils/openfinPromises';
 import { reboundLauncher } from '../../application';
@@ -46,17 +47,15 @@ describe('apps/saga', () => {
 
     it('should put failure action when error is thrown', testAsyncGeneratorsErrorCatch(iterator, failure));
 
-    it('should put failure action when empty array is returned from Api', () => {
-      const failureClone = iterator.clone();
-      expect(failureClone.next([]).value).toEqual(put(failure(new Error('Unknown Error'))));
-      expect(failureClone.next().done).toBe(true);
-    });
-
     it('should put success action', async () => {
       const response = await apiMethod();
 
       const successClone = iterator.clone();
-      expect(successClone.next(response).value).toEqual(put(success(response)));
+      if (response.status === ApiResponseStatus.Failure) {
+        expect(successClone.next(response).value).toEqual(put(failure(new Error(response.message))));
+      } else {
+        expect(successClone.next(response).value).toEqual(put(success(response.data)));
+      }
       expect(successClone.next().done).toBe(true);
     });
   });

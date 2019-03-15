@@ -13,24 +13,26 @@ import {
 
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
 import { getCoordinatesMidPoint } from '../../utils/coordinateHelpers';
-import { MeActions, MeState } from './types';
+import { MeActions, MeSettingsState, MeState } from './types';
+
+export const defaultSettings: MeSettingsState = {
+  appIds: [],
+  autoHide: false,
+  launcherMonitorId: null,
+  launcherMonitorReferencePoint: {
+    x: 0,
+    y: 0,
+  },
+  launcherPosition: DirectionalPosition.Top,
+  launcherSize: LauncherSize.Large,
+};
 
 export const defaultState: MeState = {
   email: '',
   firstName: '',
   isAdmin: false,
   lastName: '',
-  settings: {
-    appIds: [],
-    autoHide: false,
-    launcherMonitorId: null,
-    launcherMonitorReferencePoint: {
-      x: 0,
-      y: 0,
-    },
-    launcherPosition: DirectionalPosition.Top,
-    launcherSize: LauncherSize.Large,
-  },
+  settings: defaultSettings,
 };
 
 export default (state: MeState = defaultState, action: MeActions): MeState => {

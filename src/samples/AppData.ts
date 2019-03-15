@@ -1,5 +1,7 @@
+import { App } from '../types/commons';
+
 /* tslint:disable:object-literal-sort-keys max-line-length */
-export default [
+const AppData: App[] = [
   {
     contexts: [
       {
@@ -667,3 +669,5 @@ export default [
     ],
   },
 ];
+
+export default AppData;

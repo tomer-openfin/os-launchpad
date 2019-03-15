@@ -1,42 +1,34 @@
-import { ConfirmPasswordPayload, ForgotPasswordPayload, LoginRequestPayload, LoginWithNewPasswordPayload } from '../../redux/me';
-import { APIResponse } from '../../types/commons';
+import { ConfirmPasswordPayload, ForgotPasswordPayload, LoginRequestPayload, LoginWithNewPasswordPayload, MeInfo } from '../../redux/me';
 import { HTTPMethods } from '../../types/enums';
-
 import API from './api';
-import fetchJSON from './fetchJSON';
+import { api } from './utils';
 
 /**
  * Login
- *
- * @returns {Promise<APIResponse>}
  */
-export const login = (payload: LoginRequestPayload): Promise<APIResponse> => fetchJSON(API.LOGIN, HTTPMethods.POST, payload);
+export const login = api<MeInfo, LoginRequestPayload>(API.LOGIN, HTTPMethods.POST, json => ({ data: json }));
+export type Login = typeof login;
 
 /**
  * Login with new password
- *
- * @returns {Promise<APIResponse>}
  */
-export const newPasswordLogin = ({ username, newPassword, session }: LoginWithNewPasswordPayload): Promise<APIResponse> =>
-  fetchJSON(API.NEW_PASSWORD, HTTPMethods.POST, { username, newPassword, session });
+export const newPasswordLogin = api<MeInfo, LoginWithNewPasswordPayload>(API.NEW_PASSWORD, HTTPMethods.POST, json => ({ data: json }));
+export type NewPasswordLogin = typeof newPasswordLogin;
 
 /**
  * Logout
- *
- * @returns {Promise<APIResponse>}
  */
-export const logout = (): Promise<APIResponse> => fetchJSON(API.LOGOUT, HTTPMethods.POST);
+export const logout = api<undefined>(API.LOGOUT, HTTPMethods.POST, _ => ({ data: undefined }));
+export type Logout = typeof logout;
 
 /**
  * Confirm forgotten password
- *
- * @returns {Promise<APIResponse>}
  */
-export const confirmPassword = (payload: ConfirmPasswordPayload): Promise<APIResponse> => fetchJSON(API.CONFIRM_PASSWORD, HTTPMethods.POST, payload);
+export const confirmPassword = api<undefined, ConfirmPasswordPayload>(API.CONFIRM_PASSWORD, HTTPMethods.POST, _ => ({ data: undefined }));
+export type ConfirmPassword = typeof confirmPassword;
 
 /**
  * Forgot password
- *
- * @returns {Promise<APIResponse>}
  */
-export const forgotPassword = (payload: ForgotPasswordPayload): Promise<APIResponse> => fetchJSON(API.FORGOT_PASSWORD, HTTPMethods.POST, payload);
+export const forgotPassword = api<undefined, ForgotPasswordPayload>(API.FORGOT_PASSWORD, HTTPMethods.POST, _ => ({ data: undefined }));
+export type ForgotPassword = typeof forgotPassword;

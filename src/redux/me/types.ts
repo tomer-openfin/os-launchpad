@@ -20,6 +20,13 @@ import { DirectionalPosition, LauncherSize, Point } from '../../types/commons';
 import { ActionsUnion } from '../types';
 
 // State
+export interface MeInfo {
+  email: string;
+  firstName: string;
+  isAdmin: boolean;
+  lastName: string;
+}
+
 export interface MeSettingsState {
   appIds: string[];
   autoHide: boolean;
@@ -30,11 +37,7 @@ export interface MeSettingsState {
 }
 
 // Reducer
-export interface MeState {
-  email: string;
-  firstName: string;
-  isAdmin: boolean;
-  lastName: string;
+export interface MeState extends MeInfo {
   settings: MeSettingsState;
 }
 
@@ -107,12 +110,6 @@ export interface NewPasswordPayload {
 export interface UpdatePasswordRequestPayload {
   password: string;
   newPassword: string;
-}
-
-// use APIResponse interface from 'interfaces.ts'
-export interface UpdatePasswordSuccessPayload {
-  status: string;
-  message?: string;
 }
 
 export interface UpdatePasswordErrorPayload {

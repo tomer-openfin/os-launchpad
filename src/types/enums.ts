@@ -20,9 +20,9 @@ export enum Orientation {
   Vertical = 'vertical',
 }
 
-export enum ResponseStatus {
-  SUCCESS = 'ok',
-  FAILURE = 'error',
+export enum ApiResponseStatus {
+  Success = 'ok',
+  Failure = 'error',
 }
 
 export enum UserStatus {

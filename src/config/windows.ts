@@ -64,7 +64,7 @@ export const initOnStartWindows = {
     alwaysOnTop: true,
     autoShow: true,
     contextMenu: !isProduction,
-    defaultCentered: true,
+    defaultCentered: false,
     defaultHeight: 300,
     defaultLeft: -999999,
     defaultTop: -999999,

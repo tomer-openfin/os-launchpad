@@ -2,9 +2,10 @@ import { all, call, put, select, takeEvery, takeLatest } from 'redux-saga/effect
 
 import ApiService from '../../services/ApiService';
 import API from '../../services/ApiService/api';
-
-import { AppStatusOrigins, AppStatusStates } from '../../types/enums';
-
+import { ApiResponseStatus, AppStatusOrigins, AppStatusStates } from '../../types/enums';
+import { UnPromisfy } from '../../types/utils';
+import { getArea } from '../../utils/coordinateHelpers';
+import { bindFinAppEventHandlers } from '../../utils/finAppEventHandlerHelpers';
 import {
   closeApplication,
   createAndRunFromManifest,
@@ -14,19 +15,16 @@ import {
   wrapApplication,
   wrapWindow,
 } from '../../utils/openfinPromises';
-
-import { getArea } from '../../utils/coordinateHelpers';
-import { bindFinAppEventHandlers } from '../../utils/finAppEventHandlerHelpers';
 import promisifyOpenfin from '../../utils/promisifyOpenfin';
 import { getRuntimeVersion, reboundLauncher } from '../application';
-import { getErrorFromCatch, getErrorMessageFromResponse, isErrorResponse } from '../utils';
+import { getErrorFromCatch } from '../utils';
 import { closeFinApp, getAppDirectoryList, openFinApp, setFinAppStatusState } from './actions';
 import { getAppStatusById } from './selectors';
 
 export function* watchCloseFinAppRequest(action: ReturnType<typeof closeFinApp.request>) {
   try {
     const { uuid } = action.payload;
-    const app = yield call(wrapApplication, uuid);
+    const app: UnPromisfy<ReturnType<typeof wrapApplication>> = yield call(wrapApplication, uuid);
     yield call(closeApplication, app);
     // success message to be dispatched from the system
   } catch (e) {
@@ -37,13 +35,13 @@ export function* watchCloseFinAppRequest(action: ReturnType<typeof closeFinApp.r
 
 export function* watchGetAppDirectoryListRequest(action: ReturnType<typeof getAppDirectoryList.request>) {
   try {
-    const response = yield call(ApiService.getDirectoryAppList);
+    const response: UnPromisfy<ReturnType<typeof ApiService.getDirectoryAppList>> = yield call(ApiService.getDirectoryAppList);
 
-    if (isErrorResponse(response) || !response.length) {
-      throw new Error(getErrorMessageFromResponse(response));
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    yield put(getAppDirectoryList.success(response, action.meta));
+    yield put(getAppDirectoryList.success(response.data, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(getAppDirectoryList.failure(error, action.meta));
@@ -82,7 +80,7 @@ export function* watchOpenFinAppRequest(action: ReturnType<typeof openFinApp.req
     if (!status || status.state === AppStatusStates.Closed) {
       yield put(setFinAppStatusState({ id, statusState: AppStatusStates.Loading, origin: AppStatusOrigins.Default }));
     }
-    const uuid = yield call(createAndRunFromManifest, manifestUrl, id);
+    const uuid: UnPromisfy<ReturnType<typeof createAndRunFromManifest>> = yield call(createAndRunFromManifest, manifestUrl, id);
     const info = yield call(getOpenFinApplicationInfo(uuid));
 
     yield put(
@@ -135,8 +133,8 @@ export function* watchOpenFinAppFailure(action: ReturnType<typeof openFinApp.fai
         const uuid = message.slice(alreadyRunningError.length);
         const app = fin.desktop.Application.wrap(uuid);
         const appWindow = app.getWindow();
-        const childWindows = yield call(getOpenFinApplicationChildWindows(uuid));
-        const finChildWindows = yield all(childWindows.map(childWindow => call(wrapWindow, childWindow)));
+        const childWindows: UnPromisfy<ReturnType<ReturnType<typeof getOpenFinApplicationChildWindows>>> = yield call(getOpenFinApplicationChildWindows(uuid));
+        const finChildWindows: Array<UnPromisfy<ReturnType<typeof wrapWindow>>> = yield all(childWindows.map(childWindow => call(wrapWindow, childWindow)));
 
         const windows = yield all([
           call(getVisibleWindowStateAndBounds, appWindow),

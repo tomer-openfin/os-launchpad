@@ -2,7 +2,9 @@ import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 
-import { getErrorFromCatch, getErrorMessageFromResponse, isErrorResponse } from '../utils';
+import { ApiResponseStatus } from '../../types/enums';
+import { UnPromisfy } from '../../types/utils';
+import { getErrorFromCatch } from '../utils';
 import { getAdminOrgSettings, getOrgSettings, saveAdminOrgSettings, saveOrgActiveThemeId, saveOrgImage } from './actions';
 import { getOrganizationSettings } from './selectors';
 
@@ -23,10 +25,7 @@ function* watchSaveOrgActiveThemeId(action: ReturnType<typeof saveOrgActiveTheme
   try {
     const orgSettings: ReturnType<typeof getOrganizationSettings> = yield select(getOrganizationSettings);
 
-    const activeThemeId = action.payload;
-    if (!activeThemeId) return;
-
-    yield put(saveAdminOrgSettings.request({ ...orgSettings, activeThemeId }, action.meta));
+    yield put(saveAdminOrgSettings.request({ ...orgSettings, activeThemeId: action.payload }, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
@@ -36,12 +35,13 @@ function* watchSaveOrgActiveThemeId(action: ReturnType<typeof saveOrgActiveTheme
 
 function* watchGetOrgSettingsRequest(action: ReturnType<typeof getOrgSettings.request>) {
   try {
-    const response = yield call(ApiService.getOrgSettings);
-    if (isErrorResponse(response)) {
-      throw new Error(getErrorMessageFromResponse(response));
+    const response: UnPromisfy<ReturnType<typeof ApiService.getOrgSettings>> = yield call(ApiService.getOrgSettings);
+
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    yield put(getOrgSettings.success(response, action.meta));
+    yield put(getOrgSettings.success(response.data, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(getOrgSettings.failure(error, action.meta));
@@ -50,12 +50,13 @@ function* watchGetOrgSettingsRequest(action: ReturnType<typeof getOrgSettings.re
 
 function* watchGetAdminOrgSettingsRequest(action: ReturnType<typeof getAdminOrgSettings.request>) {
   try {
-    const response = yield call(ApiService.getAdminOrgSettings);
-    if (isErrorResponse(response)) {
-      throw new Error(getErrorMessageFromResponse(response));
+    const response: UnPromisfy<ReturnType<typeof ApiService.getAdminOrgSettings>> = yield call(ApiService.getAdminOrgSettings);
+
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    yield put(getAdminOrgSettings.success(response, action.meta));
+    yield put(getAdminOrgSettings.success(response.data, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(getAdminOrgSettings.failure(error, action.meta));
@@ -64,12 +65,13 @@ function* watchGetAdminOrgSettingsRequest(action: ReturnType<typeof getAdminOrgS
 
 function* watchSaveAdminOrgSettingsRequest(action: ReturnType<typeof saveAdminOrgSettings.request>) {
   try {
-    const response = yield call(ApiService.saveAdminOrgSettings, action.payload);
-    if (isErrorResponse(response)) {
-      throw new Error(getErrorMessageFromResponse(response));
+    const response: UnPromisfy<ReturnType<typeof ApiService.saveAdminOrgSettings>> = yield call(ApiService.saveAdminOrgSettings, action.payload);
+
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
     }
 
-    yield put(saveAdminOrgSettings.success(response, action.meta));
+    yield put(saveAdminOrgSettings.success(action.payload, action.meta));
     yield put(getAdminOrgSettings.request());
   } catch (e) {
     const error = getErrorFromCatch(e);
