@@ -100,7 +100,7 @@ Start the application on your host machine, and start OpenFin in your guest mach
 Should you ever need to kill all openfin processes on your VM, you can run the following command on powershell or the terminal: `taskkill /F /IM openfin.exe /T`
 
 #### Installing Openfin on the VM
-1. Download the Hyperblotter Openfin app from this [link](https://install.openfin.co/download?fileName=Hyperblotter&config=http://cdn.openfin.co/demos/hyperblotter/app.json).
+1. Download the Openfin from the following link, filling in App Name and Deploy Location: `https://install.openfin.co/download?fileName=<APP_NAME_HERE>&config=<DEPLOY_LOCATION>`.  E.g., `https://install.openfin.co/download?fileName=Whiteboard&config=http://172.16.28.1:8080`
 2. Run the app.
 3. After installation, edit the app's desktop shortcut.  In the Target field, edit the --config option to point to your DEPLOY_LOCATION, e.g., " --config="http://172.16.28.1:8080/app.json".
 4. Launch the app.
