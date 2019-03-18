@@ -72,7 +72,11 @@ Open `http://remotedev.io/local/` in a browser. The application publishes Redux 
 
 On a Windows virtual machine, open `http://<vmnet1 address here>:8000/` in a browser to view the remote Redux Devtools.
 
-### Develping on macOS
+### Developing in Storybook
+
+UI components can be developed in Storybook without launching Openfin (`npm run storybook`).
+
+### Developing on macOS
 
 This is the preferred development environment, however as of right now you won't be able to launch applications because there is no RVM in the macOS runtime of OpenFin. If you need to test this behavior, you can run the application in Windows inside a virtual machine. Details below.
 
@@ -84,7 +88,7 @@ First, get the IP address of your virtual machine. You can do this by running `i
 
 `ifconfig | grep vmnet1 -A 2 | grep inet | awk '{print $2}'`
 
-Then, create a `.env` file and add the following variables:
+Then, create a `.env` file (check the `.env.sample` file for details) and fill in the following variables:
 
 ```
 HOST=<vmnet1 address here>
@@ -93,6 +97,18 @@ PORT=8080
 
 Start the application on your host machine, and start OpenFin in your guest machine. The application manifest will be available at `http://<vmnet1 address here>:8080/api/launcher.json`
 
+Should you ever need to kill all openfin processes on your VM, you can run the following command on powershell or the terminal: `taskkill /F /IM openfin.exe /T`
+
+#### Installing Openfin on the VM
+1. Download the Hyperblotter Openfin app from this [link](https://install.openfin.co/download?fileName=Hyperblotter&config=http://cdn.openfin.co/demos/hyperblotter/app.json).
+2. Run the app.
+3. After installation, edit the app's desktop shortcut.  In the Target field, edit the --config option to point to your DEPLOY_LOCATION, e.g., " --config="http://172.16.28.1:8080/app.json".
+4. Laucn the app.
+
 ### Build
 
 When the build script is run, a build artifact is created in the `build` directory.
+
+### GitHub Practices
+
+New pull requests should request to be merged into the `develop` branch, and commits should be squashed when merging.
