@@ -16,7 +16,7 @@ Now set your `node` version. The version we're standardizing is in the `.nvmrc` 
 
 2. `npm i`
 3. `npm start`
-4. `npm run openfin`
+4. In a separate console tab, `npm run openfin`
 
 ## Development
 
@@ -45,7 +45,6 @@ Now set your `node` version. The version we're standardizing is in the `.nvmrc` 
 
 | Variable                  | Description                                                                                                    | Development only? |
 | :------------------------ | :------------------------------------------------------------------------------------------------------------- | :---------------: |
-| `API_URL`                 | Set the base url for the API host.                                                                             |                   |
 | `BACKEND`                 | API hostname to proxy requests to.                                                                             |        ✅         |
 | `DEPLOY_LOCATION`         | Set the `url` in the manifest.                                                                                 |                   |
 | `DEV_TOOLS_ON_STARTUP`    | Opens main application window's dev tools on startup.                                                          |        ✅         |
@@ -70,6 +69,8 @@ Run `npm run react-devtools`. This will pop up a new window, and that window wil
 #### Redux
 
 Open `http://remotedev.io/local/` in a browser. The application publishes Redux actions to the remote dev tools by default in development. There are other ways to remotely debug, you can find more information in the [Monitoring](https://github.com/zalmoxisus/remote-redux-devtools#monitoring) section of the `remote-redux-devtools` repo.
+
+On a Windows virtual machine, open `http://<vmnet1 address here>:8000/` in a browser to view the remote Redux Devtools.
 
 ### Develping on macOS
 
