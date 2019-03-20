@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
+import { Typography } from '../../styles';
 import Color from '../../styles/color';
-import { Typography } from '../../styles/index';
-import Button from '../Button/index';
-import { Wrapper as LabelWrapper } from '../Label/index';
+import Button from '../Button';
 
 export const Wrapper = styled.div`
   height: 100vh;
@@ -18,12 +17,6 @@ export const Wrapper = styled.div`
     color: ${Color.SUN};
     margin: 0;
     padding-bottom: 22px;
-  }
-`;
-
-export const InputWrapper = styled.div`
-  ${LabelWrapper} {
-    margin-bottom: 8px;
   }
 `;
 

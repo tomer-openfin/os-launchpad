@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import Button from '../Button/index';
-import { Wrapper as LabelWrapper } from '../Label/index';
+import Button from '../Button';
+import { Wrapper as LabelWrapper } from '../Label';
 
 export const Wrapper = styled.div`
   height: 100vh;

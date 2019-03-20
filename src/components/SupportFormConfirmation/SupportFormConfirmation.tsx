@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { ButtonWrapper, InputWrapper, Wrapper } from './SupportFormConfirmation.css';
+import { ButtonWrapper, Wrapper } from './SupportFormConfirmation.css';
 
-import Button from '../Button/index';
+import Button from '../Button';
 
 interface Props {
   handleClose: () => void;
@@ -13,9 +13,10 @@ const SupportFormConfirmation = ({ handleClose, children }: Props) => {
   return (
     <Wrapper>
       {children}
+
       <ButtonWrapper>
         <Button width={153} onClick={handleClose}>
-          OK
+          Ok
         </Button>
       </ButtonWrapper>
     </Wrapper>

@@ -3,9 +3,9 @@ import * as React from 'react';
 import { ButtonWrapper, InputWrapper, Wrapper } from './SupportForm.css';
 
 import Color from '../../styles/color';
-import Button from '../Button/index';
-import Label from '../Label/index';
-import TextArea from '../TextArea/index';
+import Button from '../Button';
+import Label from '../Label';
+import TextArea from '../TextArea';
 
 interface Props {
   handleClose: () => void;
@@ -16,11 +16,11 @@ interface Props {
 const SupportForm = ({ handleClose, handleSubmit, handleChange, inputValue }: Props) => {
   return (
     <Wrapper>
-      <InputWrapper>
+      {/* <InputWrapper>
         <Label label="Support Category" />
 
         <select />
-      </InputWrapper>
+      </InputWrapper> */}
 
       <InputWrapper>
         <Label label="Describe your issue" />
