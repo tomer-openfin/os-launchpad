@@ -4,20 +4,22 @@ import { StyledTextArea, Wrapper } from './TextArea.css';
 
 interface Props {
   value: string;
-  handleChange: () => void;
+  handleChange: (e: React.SyntheticEvent<HTMLTextAreaElement>) => void;
   height?: number;
-  width?: number;
+  width?: string;
+  placeholder?: string;
 }
 
 const defaultProps = {
-  height: 380,
-  width: 381,
+  height: 135,
+  placeholder: '',
+  width: '100%',
 };
 
-const TextArea = ({ value, handleChange, height = defaultProps.height, width = defaultProps.width }: Props) => {
+const TextArea = ({ value, handleChange, height = defaultProps.height, width = defaultProps.width, placeholder = defaultProps.placeholder }: Props) => {
   return (
     <Wrapper>
-      <StyledTextArea height={height} width={width} />
+      <StyledTextArea height={height} width={width} placeholder={placeholder} onChange={handleChange} value={value} />
     </Wrapper>
   );
 };
