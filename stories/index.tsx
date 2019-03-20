@@ -25,6 +25,7 @@ import '../src/components/Responsive/ScrollGrid.story';
 import '../src/components/SearchInput/SearchInput.story';
 import '../src/components/SvgIcon/SvgIcon.story';
 import '../src/components/Tabs/Tabs.story';
+import '../src/components/TextArea/TextArea.story';
 import '../src/components/WindowHeader/WindowHeader.story';
 
 // Components
