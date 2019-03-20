@@ -57,6 +57,7 @@ import '../src/components/MonitorControlsDialog/MonitorControlsDialog.story';
 import '../src/components/NotificationsIcon/NotificationsIcon.story';
 import '../src/components/PasswordForm/PasswordForm.story';
 import '../src/components/Settings/Settings.story';
+import '../src/components/SupportView/SupportView.story';
 import '../src/components/SvgIconWithExtension/SvgIconWithExtension.story';
 import '../src/components/SystemDrawer/SystemDrawer.story';
 import '../src/components/UpdatePasswordForm/UpdatePasswordForm.story';
