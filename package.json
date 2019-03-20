@@ -67,6 +67,7 @@
     "ts-jest": "23.10.4",
     "tslint-react": "3.6.0",
     "typescript": "3.3.3333",
+    "typescript-styled-plugin": "0.14.0",
     "webpack": "4.23.1",
     "webpack-cli": "3.1.2",
     "webpack-dev-server": "3.1.14"
