@@ -13,7 +13,6 @@ storiesOf(`${CATEGORIES.COMPONENTS}FeedbackForm`, module)
     const handleClose = action('handleClose');
     const handleSubmit = action('handleSubmit');
     const handleChange = action('handleChange');
-    const inputValue = text('input value', '');
 
-    return <FeedbackForm handleClose={handleClose} handleSubmit={handleSubmit} handleChange={handleChange} inputValue={inputValue} />;
+    // return <FeedbackForm handleClose={handleClose} handleSubmit={handleSubmit} handleChange={handleChange} />;
   });
