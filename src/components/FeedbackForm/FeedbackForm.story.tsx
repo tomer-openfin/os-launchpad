@@ -1,18 +1,58 @@
 import { action } from '@storybook/addon-actions';
-import { text, withKnobs } from '@storybook/addon-knobs';
+import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
 import { CATEGORIES } from '../../utils/storyCategories';
 
 import FeedbackForm from './FeedbackForm';
+import FeedbackFormik from './FeedbackFormik';
+
+const handleBlur = action('handleBlur');
+const handleChange = action('handleChange');
+const handleClose = action('handleClose');
+const handleSubmit = action('handleSubmit');
+const handleSubmitValues = action('handleSubmitValues');
 
 storiesOf(`${CATEGORIES.COMPONENTS}FeedbackForm`, module)
   .addDecorator(withKnobs)
   .add('default', () => {
-    const handleClose = action('handleClose');
-    const handleSubmit = action('handleSubmit');
-    const handleChange = action('handleChange');
+    const subject = text('subject', '');
+    const productFeedback = text('productFeedback', '');
+    const subjectError = text('subjectError', '');
+    const productFeedbackError = text('productFeedbackError', '');
+    const subjectTouched = boolean('subjectTouched', false);
+    const productFeedbackTouched = boolean('productFeedbackTouched', false);
+    const isSubmitting = boolean('isSubmitting', false);
 
-    // return <FeedbackForm handleClose={handleClose} handleSubmit={handleSubmit} handleChange={handleChange} />;
+    const values = {
+      productFeedback,
+      subject,
+    };
+
+    const errors = {
+      productFeedback: productFeedbackError,
+      subject: subjectError,
+    };
+
+    const touched = {
+      productFeedback: productFeedbackTouched,
+      subject: subjectTouched,
+    };
+
+    return (
+      <FeedbackForm
+        errors={errors}
+        handleBlur={handleBlur}
+        handleChange={handleChange}
+        handleClose={handleClose}
+        handleSubmit={handleSubmit}
+        isSubmitting={isSubmitting}
+        touched={touched}
+        values={values}
+      />
+    );
+  })
+  .add('withFormik', () => {
+    return <FeedbackFormik handleSubmitValues={handleSubmitValues} />;
   });

@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
 
 export const InputWrapper = styled.div`
   ${LabelWrapper} {
-    margin-bottom: 8px;
+    margin-bottom: 18px;
   }
 `;
 

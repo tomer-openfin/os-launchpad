@@ -11,11 +11,10 @@ import Label from '../Label';
 import Loading from '../Loading';
 import TextArea from '../TextArea';
 
-const FEEDBACK_COPY =
-  'We\'re really excited to hear what you have to say.\
-   Your feedback is the most important part of the Cloud \
-   Services beta program! Just write your comments in the \
-   text box below and we\'ll make sure your idea is recorded and tracked.';
+const FEEDBACK_COPY = `We\'re really excited to hear what you have to say.\
+ Your feedback is the most important part of the Cloud\
+ Services beta program! Just write your comments in the\
+ text box below and we\'ll make sure your idea is recorded and tracked.`;
 
 interface Errors {
   subject?: string;
@@ -67,7 +66,7 @@ const FeedbackForm = ({ className, errors, handleBlur, handleChange, handleClose
             <TextArea
               hasError={!!errors.productFeedback && touched.productFeedback}
               height={135}
-              name="feedback"
+              name="productFeedback"
               onBlur={handleBlur}
               onChange={handleChange}
               placeholder={FEEDBACK_COPY}
@@ -78,11 +77,19 @@ const FeedbackForm = ({ className, errors, handleBlur, handleChange, handleClose
         </InputWrapper>
 
         <ButtonWrapper>
-          <Button backgroundColor={Color.MERCURY} width={153} onClick={handleClose}>
+          <Button
+            backgroundColor={Color.MERCURY}
+            width={153}
+            // TODO: move to callback
+            onClick={(e: any) => {
+              e.preventDefault();
+              handleClose();
+            }}
+          >
             Cancel
           </Button>
 
-          <StyledButton type="submit">{isSubmitting ? <Loading size={15} /> : 'Change Password'}</StyledButton>
+          <StyledButton type="submit">{isSubmitting ? <Loading size={15} /> : 'Ok'}</StyledButton>
         </ButtonWrapper>
       </Form>
     </Wrapper>
