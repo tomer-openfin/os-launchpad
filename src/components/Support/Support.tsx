@@ -5,7 +5,7 @@ import noop from '../../utils/noop';
 import { P, Wrapper } from './Support.css';
 
 import Borders from '../Borders';
-import SupportForm from '../SupportForm';
+import FeedbackForm from '../FeedbackForm';
 import SupportFormConfirmation from '../SupportFormConfirmation';
 import WindowHeader from '../WindowHeader';
 
@@ -39,7 +39,7 @@ export const SupportView = (props: ViewProps) => {
     <Borders height="100%" width="100%">
       <WindowHeader>Contact Support</WindowHeader>
 
-      {stage === Stage.Default && <SupportForm inputValue={inputValue} handleChange={handleChange} handleClose={handleClose} handleSubmit={noop} />}
+      {/* {stage === Stage.Default && <SupportForm inputValue={inputValue} handleChange={handleChange} handleClose={handleClose} handleSubmit={noop} />} */}
 
       {stage === Stage.Success && (
         <SupportFormConfirmation handleClose={noop}>
