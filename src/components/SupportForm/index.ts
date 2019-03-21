@@ -1,3 +1,3 @@
-import SupportForm from './SupportForm';
+import FeedbackForm from './FeedbackForm';
 
-export default SupportForm;
+export default FeedbackForm;

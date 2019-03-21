@@ -5,9 +5,9 @@ import * as React from 'react';
 
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import SupportForm from './SupportForm';
+import FeedbackForm from './FeedbackForm';
 
-storiesOf(`${CATEGORIES.COMPONENTS}SupportForm`, module)
+storiesOf(`${CATEGORIES.COMPONENTS}FeedbackForm`, module)
   .addDecorator(withKnobs)
   .add('default', () => {
     const handleClose = action('handleClose');
@@ -15,5 +15,5 @@ storiesOf(`${CATEGORIES.COMPONENTS}SupportForm`, module)
     const handleChange = action('handleChange');
     const inputValue = text('input value', '');
 
-    return <SupportForm handleClose={handleClose} handleSubmit={handleSubmit} handleChange={handleChange} inputValue={inputValue} />;
+    return <FeedbackForm handleClose={handleClose} handleSubmit={handleSubmit} handleChange={handleChange} inputValue={inputValue} />;
   });
