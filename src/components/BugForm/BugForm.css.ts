@@ -15,9 +15,11 @@ export const Wrapper = styled.div`
   width: 100%;
 `;
 
+export const Form = styled.form``;
+
 export const InputWrapper = styled.div`
   ${LabelWrapper} {
-    margin-bottom: 8px;
+    margin-bottom: 18px;
   }
 `;
 
