@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import noop from '../../utils/noop';
 
-import { P } from './Support.css';
+import { P, Wrapper } from './Support.css';
 
 import Borders from '../Borders';
 import SupportForm from '../SupportForm';
@@ -33,12 +33,14 @@ interface ViewProps extends Props, State {
 }
 
 export const SupportView = (props: ViewProps) => {
-  const { inputValue, stage, handleChange, referenceNumber } = props;
+  const { inputValue, stage, handleChange, referenceNumber, handleClose } = props;
 
   return (
     <Borders height="100%" width="100%">
       <WindowHeader>Contact Support</WindowHeader>
-      {stage === Stage.Default && <SupportForm inputValue={inputValue} handleChange={handleChange} handleClose={noop} handleSubmit={noop} />}
+
+      {stage === Stage.Default && <SupportForm inputValue={inputValue} handleChange={handleChange} handleClose={handleClose} handleSubmit={noop} />}
+
       {stage === Stage.Success && (
         <SupportFormConfirmation handleClose={noop}>
           <P>Thank you, your support ticket has been submitted.</P>
@@ -50,6 +52,7 @@ export const SupportView = (props: ViewProps) => {
           </P>
         </SupportFormConfirmation>
       )}
+
       {stage === Stage.Failure && (
         <SupportFormConfirmation handleClose={noop}>
           <P>Unfortunately, your support ticket could not be submitted.</P>
@@ -76,7 +79,11 @@ class Support extends React.Component<Props, State> {
   };
 
   render() {
-    return <SupportView handleChange={this.handleChange} {...this.props} {...this.state} />;
+    return (
+      <Wrapper width="420px">
+        <SupportView handleChange={this.handleChange} {...this.props} {...this.state} />
+      </Wrapper>
+    );
   }
 }
 

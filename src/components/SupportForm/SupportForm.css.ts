@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 
+import Color from '../../styles/color';
+
 import Button from '../Button';
 import { Wrapper as LabelWrapper } from '../Label';
 
 export const Wrapper = styled.div`
-  height: 100vh;
-  width: 100vw;
-  padding: 20px;
-  padding-bottom: 18px;
+  background-color: ${Color.ASTEROID_BELT};
   display: flex;
   flex-direction: column;
+  height: 100%;
+  padding-bottom: 18px;
+  padding: 20px;
+  width: 100%;
 `;
 
 export const InputWrapper = styled.div`

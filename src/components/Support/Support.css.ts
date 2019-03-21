@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { Color, Typography } from '../../styles';
 
 export const P = styled.p`
@@ -11,4 +12,8 @@ export const P = styled.p`
   span {
     color: ${Color.NEBULA};
   }
+`;
+
+export const Wrapper = styled.div<{ width: string }>`
+  width: ${({ width }) => width};
 `;
