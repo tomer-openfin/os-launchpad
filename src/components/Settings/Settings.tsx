@@ -10,11 +10,13 @@ import ConfirmPasswordUpdate from '../ConfirmPasswordUpdate';
 import LauncherSettings from '../LauncherSettings';
 import Modal from '../Modal';
 import MonitorControlsDialog, { asRoute as asMonitorControlsDialogRoute, withLauncherConfig } from '../MonitorControlsDialog';
+import Support from '../Support';
 import UpdatePasswordForm from '../UpdatePasswordForm';
 import WindowHeader from '../WindowHeader';
 
 export enum Stage {
   Confirm = 'confirm-password',
+  ContactSupport = 'contact-support',
   Default = 'default',
   LauncherMonitor = 'launcher-monitor',
   PasswordUpdate = 'update-password',
@@ -49,6 +51,12 @@ const Settings = ({ currentAction, handleClose, handleConfirm, hideWindow, isEnt
         {currentAction === Stage.PasswordUpdate && (
           <Modal handleClose={createHandleClose}>
             <UpdatePasswordForm handleCancel={handleClose} handleConfirm={handleConfirm} handleSuccess={handleClose} />
+          </Modal>
+        )}
+
+        {currentAction === Stage.ContactSupport && (
+          <Modal handleClose={createHandleClose}>
+            <Support handleClose={handleClose} referenceNumber="2" handleSubmit={() => {}} />
           </Modal>
         )}
 

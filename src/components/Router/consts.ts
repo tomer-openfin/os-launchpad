@@ -33,6 +33,7 @@ export const ADMIN_ROUTES = {
 
 export const SETTINGS_ROUTES = {
   SETTINGS_CONFIRM_PASSWORD: '/settings/confirm-password',
+  SETTINGS_CONTACT_SUPPORT: '/settings/contact-support',
   SETTINGS_LAUNCHER_MONITOR: '/settings/launcher-monitor',
   SETTINGS_UPDATE_PASSWORD: '/settings/update-password',
 };

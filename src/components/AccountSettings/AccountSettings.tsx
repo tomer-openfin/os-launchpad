@@ -31,6 +31,10 @@ const AccountSettings = ({ email, name }: Props) => (
       <ButtonLink to={ROUTES.SETTINGS_UPDATE_PASSWORD} width={147}>
         Change Password
       </ButtonLink>
+
+      <ButtonLink to={ROUTES.SETTINGS_CONTACT_SUPPORT} width={147}>
+        Support
+      </ButtonLink>
     </ButtonWrapper>
   </Wrapper>
 );
