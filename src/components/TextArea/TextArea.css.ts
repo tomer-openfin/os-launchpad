@@ -1,10 +1,16 @@
+import { TextareaHTMLAttributes } from 'react';
 import styled from 'styled-components';
+
+import { hexToRgba, Typography } from '../../styles';
 import Color from '../../styles/color';
-import { hexToRgba, Typography } from '../../styles/index';
 
-export const Wrapper = styled.div``;
+export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+  height: number;
+  hasError?: boolean;
+  width: string;
+}
 
-export const StyledTextArea = styled.textarea<{ height: number; width: string }>`
+export default styled.textarea<TextAreaProps>`
   ${Typography.TypeStyleCanopus}
   height: ${({ height }) => height}px;
   width: ${({ width }) => width};

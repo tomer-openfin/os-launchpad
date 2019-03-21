@@ -30,3 +30,5 @@ export const ButtonWrapper = styled.div`
     margin-left: 14px;
   }
 `;
+
+export const Form = styled.form``;
