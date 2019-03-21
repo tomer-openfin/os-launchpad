@@ -1,6 +1,3 @@
-import { ActionsUnion } from '../types';
-import { sendSupport } from './actions';
-
 export interface SendSupportRequestPayload {
   description: string;
   email: string;
@@ -16,5 +13,3 @@ export interface SendSupportErrorPayload {
   code?: string;
   message?: string;
 }
-
-export type SendSupportActions = ActionsUnion<typeof sendSupport>;
