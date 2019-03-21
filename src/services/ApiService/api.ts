@@ -32,6 +32,9 @@ const API = {
   ADMIN_MANIFEST_OVERRIDE: `${API_URL}api/admin/manifest`,
   ADMIN_SETTINGS: `${API_URL}api/admin/settings`,
   ADMIN_USERS: `${API_URL}api/admin/users`,
+
+  // TODO: update with real endpoint
+  SEND_SUPPORT: `${API_URL}api/support`,
 };
 
 export default API;
