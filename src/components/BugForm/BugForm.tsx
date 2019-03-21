@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ButtonWrapper, InputWrapper, Wrapper } from './SupportForm.css';
+import { ButtonWrapper, InputWrapper, Wrapper } from './BugForm.css';
 
 import Color from '../../styles/color';
 import Button from '../Button';
@@ -13,7 +13,7 @@ interface Props {
   handleChange: (e: React.SyntheticEvent<HTMLTextAreaElement>) => void;
   inputValue: string;
 }
-const SupportForm = ({ handleClose, handleSubmit, handleChange, inputValue }: Props) => {
+const BugForm = ({ handleClose, handleSubmit, handleChange, inputValue }: Props) => {
   return (
     <Wrapper>
       <InputWrapper>
@@ -35,4 +35,4 @@ const SupportForm = ({ handleClose, handleSubmit, handleChange, inputValue }: Pr
   );
 };
 
-export default SupportForm;
+export default BugForm;

@@ -36,6 +36,7 @@ import '../src/components/AppDirectory/AppDirectory.story';
 import '../src/components/AppList/AppList.story';
 import '../src/components/AppListToggle/AppListToggle.story';
 import '../src/components/AppOverflow/AppOverflow.story';
+import '../src/components/BugForm/BugForm.story';
 import '../src/components/ChangePasswordForm/ChangePasswordForm.story';
 import '../src/components/ConfirmPasswordUpdate/ConfirmPasswordUpdate.story';
 import '../src/components/DirectionControls/DirectionControls.story';
