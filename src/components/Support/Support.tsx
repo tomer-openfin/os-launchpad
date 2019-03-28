@@ -36,14 +36,17 @@ interface State {
 
 interface ViewProps extends Props, State {
   setStage: (stage: Stage) => void;
+  handleError: () => void;
+  handleSuccess: (confirmationNumber?: string) => void;
 }
 
 export const SupportView = (props: ViewProps) => {
-  const { setStage, stage, referenceNumber, handleClose } = props;
+  const { setStage, stage, referenceNumber, handleClose, handleError, handleSuccess } = props;
 
   const createHandleStage = (nextStage: Stage) => () => setStage(nextStage);
 
-  const handleCancel = createHandleStage(Stage.Default);
+  const handleReset = createHandleStage(Stage.Default);
+  const handleCancel = handleReset;
 
   const constructHeader = (currentStage: Stage) => {
     switch (currentStage) {
@@ -78,12 +81,12 @@ export const SupportView = (props: ViewProps) => {
         </ButtonWrapper>
       )}
 
-      {stage === Stage.ProvideFeedback && <FeedbackForm handleCancel={handleCancel} />}
+      {stage === Stage.ProvideFeedback && <FeedbackForm handleSuccess={handleSuccess} handleError={handleError} handleCancel={handleCancel} />}
 
-      {stage === Stage.ReportBug && <BugForm handleCancel={handleCancel} />}
+      {stage === Stage.ReportBug && <BugForm handleSuccess={handleSuccess} handleError={handleError} handleCancel={handleCancel} />}
 
       {stage === Stage.BugSuccess && (
-        <SupportFormConfirmation handleClose={noop}>
+        <SupportFormConfirmation handleClose={handleReset}>
           <P>Thank you, your support ticket has been submitted.</P>
 
           <P>{`Your reference number is #${referenceNumber}.`}</P>
@@ -95,7 +98,7 @@ export const SupportView = (props: ViewProps) => {
       )}
 
       {stage === Stage.FeedbackSuccess && (
-        <SupportFormConfirmation handleClose={handleClose}>
+        <SupportFormConfirmation handleClose={handleReset}>
           <P>Thank you, your support ticket has been submitted.</P>
 
           <P>{`Your reference number is #${referenceNumber}.`}</P>
@@ -107,7 +110,7 @@ export const SupportView = (props: ViewProps) => {
       )}
 
       {stage === Stage.BugFailure && (
-        <SupportFormConfirmation handleClose={handleClose}>
+        <SupportFormConfirmation handleClose={handleReset}>
           <P>Unfortunately, your support ticket could not be submitted.</P>
 
           <P>
@@ -117,7 +120,7 @@ export const SupportView = (props: ViewProps) => {
       )}
 
       {stage === Stage.FeedbackFailure && (
-        <SupportFormConfirmation handleClose={handleClose}>
+        <SupportFormConfirmation handleClose={handleReset}>
           <P>Unfortunately, your support ticket could not be submitted.</P>
 
           <P>
@@ -138,10 +141,20 @@ class Support extends React.Component<Props, State> {
     this.setState({ stage });
   };
 
+  handleError = () => {
+    const nextStage = this.state.stage === Stage.ReportBug ? Stage.BugFailure : Stage.FeedbackFailure;
+    this.setState({ stage: nextStage });
+  };
+
+  handleSuccess = () => {
+    const nextStage = this.state.stage === Stage.ReportBug ? Stage.BugSuccess : Stage.FeedbackSuccess;
+    this.setState({ stage: nextStage });
+  };
+
   render() {
     return (
       <Wrapper>
-        <SupportView setStage={this.setStage} {...this.props} {...this.state} />
+        <SupportView setStage={this.setStage} handleError={this.handleError} handleSuccess={this.handleSuccess} {...this.props} {...this.state} />
       </Wrapper>
     );
   }

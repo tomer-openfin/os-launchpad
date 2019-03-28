@@ -1,14 +1,14 @@
 export interface SendFeedbackRequestPayload {
-  email?: string;
-  productFeedback: string;
-  subject: string;
+  // email?: string;
+  feedback: string;
 }
 
 export interface SendBugRequestPayload {
-  description: string;
-  email?: string;
-  steps: string;
-  subject: string;
+  // description: string;
+  // email?: string;
+  // steps: string;
+  // subject: string;
+  feedback: string;
 }
 
 export interface SupportSuccessPayload {

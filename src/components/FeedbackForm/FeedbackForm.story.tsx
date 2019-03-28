@@ -12,6 +12,8 @@ const handleBlur = action('handleBlur');
 const handleChange = action('handleChange');
 const handleCancel = action('handleClose');
 const handleSubmit = action('handleSubmit');
+const handleSuccess = action('handleSuccess');
+const handleError = action('handleError');
 const handleSubmitValues = action('handleSubmitValues');
 
 storiesOf(`${CATEGORIES.COMPONENTS}FeedbackForm`, module)
@@ -54,5 +56,5 @@ storiesOf(`${CATEGORIES.COMPONENTS}FeedbackForm`, module)
     );
   })
   .add('withFormik', () => {
-    return <FeedbackFormik handleCancel={handleCancel} handleSubmitValues={handleSubmitValues} />;
+    return <FeedbackFormik handleCancel={handleCancel} handleSubmitValues={handleSubmitValues} handleSuccess={handleSuccess} handleError={handleError} />;
   });

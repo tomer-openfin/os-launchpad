@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { Values } from './FeedbackForm';
+import { sendFeedback, SendFeedbackRequestPayload } from '../../redux/support/index';
+
 import FeedbackFormik from './FeedbackFormik';
 
 interface MapDispatch {
-  handleSubmitValues: (payload: Values) => Promise<void>;
+  handleSubmitValues: (payload: SendFeedbackRequestPayload['feedback']) => Promise<void>;
 }
 
 const mapDispatch = (dispatch: Dispatch, ownProps): MapDispatch => ({
-  handleSubmitValues: (payload: Values) => {
+  handleSubmitValues: (payload: SendFeedbackRequestPayload['feedback']) => {
+    const { handleError, handleSuccess } = ownProps;
+
     return new Promise(resolve => {
-      // TODO: sendProductFeedback.request({ <payload here>})
-      // dispatch(sendProductFeedback.request());
+      dispatch(sendFeedback.request(payload, { onSuccess: handleSuccess, onFailure: handleError }));
       resolve();
     });
   },

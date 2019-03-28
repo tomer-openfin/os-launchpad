@@ -7,7 +7,9 @@ import FeedbackForm, { Values } from './FeedbackForm';
 interface Props {
   className?: string;
   handleCancel: () => void;
-  handleSubmitValues: (payload: Values) => Promise<void>;
+  handleError: () => void;
+  handleSuccess: () => void;
+  handleSubmitValues: (payload: string) => Promise<void>;
 }
 
 const initialValues: Values = {
@@ -23,7 +25,7 @@ const validationSchema = Yup.object().shape({
 const handleFormikSubmit = (handleSubmitValues: Props['handleSubmitValues']) => async (values: Values, actions: FormikActions<Values>) => {
   actions.setSubmitting(true);
 
-  await handleSubmitValues(values);
+  await handleSubmitValues(JSON.stringify(values));
 
   actions.setSubmitting(false);
 };

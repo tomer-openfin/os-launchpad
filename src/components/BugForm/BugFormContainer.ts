@@ -1,18 +1,19 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { Values } from './BugForm';
+import { sendBug, SendBugRequestPayload } from '../../redux/support/index';
 import BugFormik from './BugFormik';
 
 interface MapDispatch {
-  handleSubmitValues: (payload: Values) => Promise<void>;
+  handleSubmitValues: (payload: SendBugRequestPayload['feedback']) => Promise<void>;
 }
 
 const mapDispatch = (dispatch: Dispatch, ownProps): MapDispatch => ({
-  handleSubmitValues: (payload: Values) => {
+  handleSubmitValues: (payload: SendBugRequestPayload['feedback']) => {
+    const { handleError, handleSuccess } = ownProps;
+
     return new Promise(resolve => {
-      // TODO: sendBugReport.request({ <payload here>})
-      // dispatch(sendBugReport.request());
+      dispatch(sendBug.request(payload, { onSuccess: handleSuccess, onFailure: handleError }));
       resolve();
     });
   },
