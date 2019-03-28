@@ -1,3 +1,3 @@
-import BugForm from './BugForm';
+import BugFormContainer from './BugFormContainer';
 
-export default BugForm;
+export default BugFormContainer;

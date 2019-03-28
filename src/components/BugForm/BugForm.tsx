@@ -11,8 +11,9 @@ import Label from '../Label';
 import Loading from '../Loading';
 import TextArea from '../TextArea';
 
-/* tslint:disable-next-line:max-line-length */
-const BUG_COPY = `Thanks for taking the time to report a bug during the beta program. Please provide as much detail as you can so we can address the issue as quickly as possible.`;
+const BUG_COPY = `Thanks for taking the time to report a bug\
+during the beta program. Please provide as much detail as you\
+can so we can address the issue as quickly as possible.`;
 
 interface Errors {
   subject?: string;
@@ -90,15 +91,7 @@ const BugForm = ({ className, errors, handleBlur, handleChange, handleClose, han
         </InputWrapper>
 
         <ButtonWrapper>
-          <Button
-            backgroundColor={Color.MERCURY}
-            width={153}
-            // TODO: move to callback
-            onClick={(e: any) => {
-              e.preventDefault();
-              handleClose();
-            }}
-          >
+          <Button backgroundColor={Color.MERCURY} width={153} onClick={handleClose}>
             Cancel
           </Button>
 

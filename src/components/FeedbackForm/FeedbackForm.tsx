@@ -77,15 +77,7 @@ const FeedbackForm = ({ className, errors, handleBlur, handleChange, handleClose
         </InputWrapper>
 
         <ButtonWrapper>
-          <Button
-            backgroundColor={Color.MERCURY}
-            width={153}
-            // TODO: move to callback
-            onClick={(e: any) => {
-              e.preventDefault();
-              handleClose();
-            }}
-          >
+          <Button backgroundColor={Color.MERCURY} width={153} onClick={handleClose}>
             Cancel
           </Button>
 

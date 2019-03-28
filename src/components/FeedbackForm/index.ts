@@ -1,3 +1,3 @@
-import FeedbackForm from './FeedbackForm';
+import FeedbackFormContainer from './FeedbackFormContainer';
 
-export default FeedbackForm;
+export default FeedbackFormContainer;

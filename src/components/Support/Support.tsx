@@ -5,6 +5,7 @@ import noop from '../../utils/noop';
 import { P, Wrapper } from './Support.css';
 
 import Borders from '../Borders';
+import BugForm from '../BugForm';
 import FeedbackForm from '../FeedbackForm';
 import SupportFormConfirmation from '../SupportFormConfirmation';
 import WindowHeader from '../WindowHeader';
@@ -13,8 +14,10 @@ const SUPPORT_EMAIL = 'support@openfin.co';
 
 export enum Stage {
   Default = 'default',
-  Success = 'success',
   Failure = 'failure',
+  ProvideFeedback = 'provide-feedback',
+  ReportBug = 'report-bug',
+  Success = 'success',
 }
 
 interface Props {
@@ -25,21 +28,19 @@ interface Props {
 
 interface State {
   stage: Stage;
-  inputValue: string;
 }
 
-interface ViewProps extends Props, State {
-  handleChange: (e: React.SyntheticEvent<HTMLTextAreaElement>) => void;
-}
+interface ViewProps extends Props, State {}
 
 export const SupportView = (props: ViewProps) => {
-  const { inputValue, stage, handleChange, referenceNumber, handleClose } = props;
+  const { stage, referenceNumber, handleClose } = props;
 
   return (
     <Borders height="100%" width="100%">
-      <WindowHeader>Contact Support</WindowHeader>
+      <WindowHeader handleClose={handleClose}>Contact Support</WindowHeader>
 
-      {/* {stage === Stage.Default && <SupportForm inputValue={inputValue} handleChange={handleChange} handleClose={handleClose} handleSubmit={noop} />} */}
+      {stage === Stage.ProvideFeedback && <FeedbackForm />}
+      {stage === Stage.ReportBug && <BugForm />}
 
       {stage === Stage.Success && (
         <SupportFormConfirmation handleClose={noop}>
@@ -68,20 +69,13 @@ export const SupportView = (props: ViewProps) => {
 
 class Support extends React.Component<Props, State> {
   state = {
-    inputValue: '',
     stage: Stage.Default,
-  };
-
-  handleChange = (e: React.SyntheticEvent<HTMLTextAreaElement>) => {
-    const value = e.currentTarget.value;
-
-    this.setState({ inputValue: value });
   };
 
   render() {
     return (
       <Wrapper width="420px">
-        <SupportView handleChange={this.handleChange} {...this.props} {...this.state} />
+        <SupportView {...this.props} {...this.state} />
       </Wrapper>
     );
   }
