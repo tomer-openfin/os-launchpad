@@ -33,8 +33,8 @@ const API = {
   ADMIN_SETTINGS: `${API_URL}api/admin/settings`,
   ADMIN_USERS: `${API_URL}api/admin/users`,
 
-  // TODO: update with real endpoint
-  SEND_SUPPORT: `${API_URL}api/support`,
+  SEND_BUG: `${API_URL}api/feedback/bug`,
+  SEND_FEEDBACK: `${API_URL}api/feedback/feature`,
 };
 
 export default API;
