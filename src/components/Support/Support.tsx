@@ -6,6 +6,7 @@ import { P, Wrapper } from './Support.css';
 
 import Borders from '../Borders';
 import BugForm from '../BugForm';
+import Button from '../Button';
 import FeedbackForm from '../FeedbackForm';
 import SupportFormConfirmation from '../SupportFormConfirmation';
 import WindowHeader from '../WindowHeader';
@@ -21,9 +22,8 @@ export enum Stage {
 }
 
 interface Props {
-  referenceNumber: string | number;
+  referenceNumber: string | number; // TODO: get from BE response on report bug response
   handleClose: () => void;
-  handleSubmit: () => void;
 }
 
 interface State {
@@ -38,6 +38,13 @@ export const SupportView = (props: ViewProps) => {
   return (
     <Borders height="100%" width="100%">
       <WindowHeader handleClose={handleClose}>Contact Support</WindowHeader>
+
+      {stage === Stage.Default && (
+        <>
+          <Button>Submit Feedback</Button>
+          <Button>Report a Bug</Button>
+        </>
+      )}
 
       {stage === Stage.ProvideFeedback && <FeedbackForm />}
       {stage === Stage.ReportBug && <BugForm />}

@@ -54,11 +54,7 @@ const Settings = ({ currentAction, handleClose, handleConfirm, hideWindow, isEnt
           </Modal>
         )}
 
-        {currentAction === Stage.ContactSupport && (
-          <Modal handleClose={createHandleClose}>
-            <Support handleClose={handleClose} referenceNumber="2" handleSubmit={() => {}} />
-          </Modal>
-        )}
+        {currentAction === Stage.ContactSupport && <Support handleClose={handleClose} referenceNumber="2" />}
 
         {currentAction === Stage.Confirm && (
           <Modal handleClose={createHandleClose}>
