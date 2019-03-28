@@ -9,7 +9,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const SupportFormConfirmation = ({ handleClose, children }: Props) => {
+const SupportFormConfirmation = ({ children, handleClose }: Props) => {
   return (
     <Wrapper>
       {children}

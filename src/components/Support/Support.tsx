@@ -2,23 +2,33 @@ import * as React from 'react';
 
 import noop from '../../utils/noop';
 
-import { P, Wrapper } from './Support.css';
+import { ButtonWrapper, P, StyledButton, Wrapper } from './Support.css';
 
 import Borders from '../Borders';
 import BugForm from '../BugForm';
-import Button from '../Button';
 import FeedbackForm from '../FeedbackForm';
 import SupportFormConfirmation from '../SupportFormConfirmation';
 import WindowHeader from '../WindowHeader';
 
 const SUPPORT_EMAIL = 'support@openfin.co';
+export const BUG_HEADER = 'Report a Bug';
+export const FEEDBACK_HEADER = 'Provide Feedback';
+export const CONTACT_HEADER = 'Contact Support';
+
+// contact support --> close window completely
+
+// bug form || feedback form --> go back to default stage (contact support)
+// bug success/failure || feedbac success/failure --> if click back, go back to default stage (contact support)
+// bug success/failure || feedback success/failure --> if click "OK", go back to the settings window
 
 export enum Stage {
+  BugFailure = 'bug-failure',
+  BugSuccess = 'bug-success',
   Default = 'default',
-  Failure = 'failure',
+  FeedbackFailure = 'feedback-failure',
+  FeedbackSuccess = 'feedback-success',
   ProvideFeedback = 'provide-feedback',
   ReportBug = 'report-bug',
-  Success = 'success',
 }
 
 interface Props {
@@ -30,26 +40,53 @@ interface State {
   stage: Stage;
 }
 
-interface ViewProps extends Props, State {}
+interface ViewProps extends Props, State {
+  setStage: (stage: Stage) => void;
+}
 
 export const SupportView = (props: ViewProps) => {
-  const { stage, referenceNumber, handleClose } = props;
+  const { setStage, stage, referenceNumber, handleClose } = props;
+
+  const createHandleStage = (nextStage: Stage) => () => setStage(nextStage);
+
+  const constructHeader = (currentStage: Stage) => {
+    switch (currentStage) {
+      case Stage.Default:
+        return <WindowHeader handleClose={handleClose}>{CONTACT_HEADER}</WindowHeader>;
+      case Stage.BugFailure:
+      case Stage.BugSuccess:
+      case Stage.ReportBug:
+        return <WindowHeader handleBack={createHandleStage(Stage.Default)}>{BUG_HEADER}</WindowHeader>;
+      case Stage.FeedbackFailure:
+      case Stage.FeedbackSuccess:
+      case Stage.ProvideFeedback:
+        return <WindowHeader handleBack={createHandleStage(Stage.Default)}>{FEEDBACK_HEADER}</WindowHeader>;
+      default:
+        return <WindowHeader handleClose={handleClose}>{CONTACT_HEADER}</WindowHeader>;
+    }
+  };
 
   return (
     <Borders height="100%" width="100%">
-      <WindowHeader handleClose={handleClose}>Contact Support</WindowHeader>
+      {constructHeader(stage)}
 
       {stage === Stage.Default && (
-        <>
-          <Button>Submit Feedback</Button>
-          <Button>Report a Bug</Button>
-        </>
+        <ButtonWrapper>
+          <StyledButton onClick={createHandleStage(Stage.ProvideFeedback)} width={161}>
+            Submit Feedback
+          </StyledButton>
+
+          <StyledButton onClick={createHandleStage(Stage.ReportBug)} width={161}>
+            Report a Bug
+          </StyledButton>
+        </ButtonWrapper>
       )}
 
       {stage === Stage.ProvideFeedback && <FeedbackForm />}
+
       {stage === Stage.ReportBug && <BugForm />}
 
-      {stage === Stage.Success && (
+      {stage === Stage.BugSuccess && (
         <SupportFormConfirmation handleClose={noop}>
           <P>Thank you, your support ticket has been submitted.</P>
 
@@ -61,7 +98,29 @@ export const SupportView = (props: ViewProps) => {
         </SupportFormConfirmation>
       )}
 
-      {stage === Stage.Failure && (
+      {stage === Stage.FeedbackSuccess && (
+        <SupportFormConfirmation handleClose={noop}>
+          <P>Thank you, your support ticket has been submitted.</P>
+
+          <P>{`Your reference number is #${referenceNumber}.`}</P>
+
+          <P>
+            You may follow up with this ticket by contacting <span>{SUPPORT_EMAIL}</span>.
+          </P>
+        </SupportFormConfirmation>
+      )}
+
+      {stage === Stage.BugFailure && (
+        <SupportFormConfirmation handleClose={noop}>
+          <P>Unfortunately, your support ticket could not be submitted.</P>
+
+          <P>
+            Please contact <span>{SUPPORT_EMAIL}</span> to resolve your issue.
+          </P>
+        </SupportFormConfirmation>
+      )}
+
+      {stage === Stage.FeedbackFailure && (
         <SupportFormConfirmation handleClose={noop}>
           <P>Unfortunately, your support ticket could not be submitted.</P>
 
@@ -79,10 +138,14 @@ class Support extends React.Component<Props, State> {
     stage: Stage.Default,
   };
 
+  setStage = (stage: Stage) => {
+    this.setState({ stage });
+  };
+
   render() {
     return (
-      <Wrapper width="420px">
-        <SupportView {...this.props} {...this.state} />
+      <Wrapper>
+        <SupportView setStage={this.setStage} {...this.props} {...this.state} />
       </Wrapper>
     );
   }
