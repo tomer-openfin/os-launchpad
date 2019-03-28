@@ -26,7 +26,7 @@ export enum Stage {
 }
 
 interface Props {
-  referenceNumber: string | number; // TODO: get from BE response on report bug response
+  referenceNumber?: string | number; // TODO: get from BE response on report bug response
   handleClose: () => void;
 }
 
@@ -41,7 +41,7 @@ interface ViewProps extends Props, State {
 }
 
 export const SupportView = (props: ViewProps) => {
-  const { setStage, stage, referenceNumber, handleClose, handleError, handleSuccess } = props;
+  const { setStage, stage, handleClose, handleError, handleSuccess } = props;
 
   const createHandleStage = (nextStage: Stage) => () => setStage(nextStage);
 
@@ -89,7 +89,7 @@ export const SupportView = (props: ViewProps) => {
         <SupportFormConfirmation handleClose={handleReset}>
           <P>Thank you, your support ticket has been submitted.</P>
 
-          <P>{`Your reference number is #${referenceNumber}.`}</P>
+          {/* <P>{`Your reference number is #${referenceNumber}.`}</P> */}
 
           <P>
             You may follow up with this ticket by contacting <span>{SUPPORT_EMAIL}</span>.
@@ -101,7 +101,7 @@ export const SupportView = (props: ViewProps) => {
         <SupportFormConfirmation handleClose={handleReset}>
           <P>Thank you, your support ticket has been submitted.</P>
 
-          <P>{`Your reference number is #${referenceNumber}.`}</P>
+          {/* <P>{`Your reference number is #${referenceNumber}.`}</P> */}
 
           <P>
             You may follow up with this ticket by contacting <span>{SUPPORT_EMAIL}</span>.
