@@ -12,13 +12,33 @@ export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
 
 export default styled.textarea<TextAreaProps>`
   ${Typography.TypeStyleCanopus}
-  height: ${({ height }) => height}px;
-  width: ${({ width }) => width};
-  padding: 7px 9px;
-  resize: none;
+
+  border-style: solid;
+  border-width: 3px;
   box-shadow: 2px 2px 7px 0 ${hexToRgba(Color.VACUUM, 0.5)};
+  height: ${({ height }) => height}px;
+  margin: 0;
+  outline: none;
+  padding: 4px 9px 6px;
+  resize: none;
+  width: ${({ width }) => width};
 
   &::placeholder {
     opacity: 0.3;
   }
+
+  ${({ hasError }) => {
+    const focusBorderColor = hexToRgba(Color.JUPITER, 0.5);
+    const errorBorderColor = hexToRgba(Color.MARS, 0.5);
+
+    return `
+      border-color: ${hasError ? errorBorderColor : 'transparent'};
+      color: ${hasError ? Color.MARS : Color.VACUUM};
+
+      &:focus {
+        border-color: ${hasError ? errorBorderColor : focusBorderColor};
+        box-shadow: 2px 2px 7px 0 ${hexToRgba(Color.VACUUM, 0.5)};
+      }
+    `;
+  }}
 `;

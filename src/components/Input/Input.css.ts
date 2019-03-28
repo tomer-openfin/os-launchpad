@@ -31,7 +31,7 @@ export default styled.input<InputProps>`
       border-color: ${hasError ? errorBorderColor : 'transparent'};
       color: ${hasError ? Color.MARS : Color.VACUUM};
 
-      &:focus{
+      &:focus {
         border-color: ${hasError ? errorBorderColor : focusBorderColor};
       }
     `;
