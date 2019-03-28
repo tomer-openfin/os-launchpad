@@ -25,7 +25,19 @@ const validationSchema = Yup.object().shape({
 const handleFormikSubmit = (handleSubmitValues: Props['handleSubmitValues']) => async (values: Values, actions: FormikActions<Values>) => {
   actions.setSubmitting(true);
 
-  await handleSubmitValues(JSON.stringify(values));
+  // Format user input to desired shape
+  const { subject, productFeedback } = values;
+
+  let subjectSuffix = '';
+  if (window && window.location && window.location.hostname) {
+    const name = window.location.hostname.split('.')[0];
+
+    subjectSuffix = `_${name}_CS-BETA-PROGRAM_[FEATURE]`;
+  }
+
+  const stringPayload = `Subject: ${subject}${subjectSuffix}\nProduct Feedback: ${productFeedback}\n`;
+
+  await handleSubmitValues(stringPayload);
 
   actions.setSubmitting(false);
 };
