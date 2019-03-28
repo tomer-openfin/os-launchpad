@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { sendBug, SendBugRequestPayload } from '../../redux/support/index';
+import { sendBug, SendBugRequestPayload } from '../../redux/support';
 import BugFormik from './BugFormik';
 
 interface MapDispatch {

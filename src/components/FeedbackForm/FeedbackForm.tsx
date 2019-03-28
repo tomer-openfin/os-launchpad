@@ -11,10 +11,7 @@ import Label from '../Label';
 import Loading from '../Loading';
 import TextArea from '../TextArea';
 
-const FEEDBACK_COPY = `We\'re really excited to hear what you have to say.\
- Your feedback is the most important part of the Cloud\
- Services beta program! Just write your comments in the\
- text box below and we\'ll make sure your idea is recorded and tracked.`;
+const FEEDBACK_COPY = 'Write your feedback here.';
 
 interface Errors {
   subject?: string;
@@ -81,7 +78,7 @@ const FeedbackForm = ({ className, errors, handleBlur, handleChange, handleCance
             Cancel
           </Button>
 
-          <StyledButton type="submit">{isSubmitting ? <Loading size={15} /> : 'Ok'}</StyledButton>
+          <StyledButton type="submit">{isSubmitting ? <Loading size={15} /> : 'Submit'}</StyledButton>
         </ButtonWrapper>
       </Form>
     </Wrapper>

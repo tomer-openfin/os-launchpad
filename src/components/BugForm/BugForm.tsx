@@ -11,9 +11,8 @@ import Label from '../Label';
 import Loading from '../Loading';
 import TextArea from '../TextArea';
 
-const BUG_COPY = `Thanks for taking the time to report a bug\
-during the beta program. Please provide as much detail as you\
-can so we can address the issue as quickly as possible.`;
+const BUG_DESCRIPTION_COPY = 'Write a short description of the issue you\'re experiencing.';
+const BUG_STEPS_COPY = 'Write reproduction steps for the issue you\'re experiencing.';
 
 interface Errors {
   subject?: string;
@@ -71,7 +70,7 @@ const BugForm = ({ className, errors, handleBlur, handleChange, handleCancel, ha
               name="description"
               onBlur={handleBlur}
               onChange={handleChange}
-              placeholder={BUG_COPY}
+              placeholder={BUG_DESCRIPTION_COPY}
               value={values.description}
               width="100%"
             />
@@ -84,6 +83,7 @@ const BugForm = ({ className, errors, handleBlur, handleChange, handleCancel, ha
               name="steps"
               onBlur={handleBlur}
               onChange={handleChange}
+              placeholder={BUG_STEPS_COPY}
               value={values.steps}
               width="100%"
             />
@@ -95,7 +95,7 @@ const BugForm = ({ className, errors, handleBlur, handleChange, handleCancel, ha
             Cancel
           </Button>
 
-          <StyledButton type="submit">{isSubmitting ? <Loading size={15} /> : 'Ok'}</StyledButton>
+          <StyledButton type="submit">{isSubmitting ? <Loading size={15} /> : 'Submit'}</StyledButton>
         </ButtonWrapper>
       </Form>
     </Wrapper>
