@@ -1,6 +1,6 @@
-import Support from './Support';
+import SupportContainer from './SupportContainer';
 
 export * from './Support';
 export * from './Support.css';
 
-export default Support;
+export default SupportContainer;

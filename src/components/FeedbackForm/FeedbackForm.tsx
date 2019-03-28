@@ -36,7 +36,7 @@ interface Props {
   errors: Errors;
   handleBlur: (e: React.FocusEvent) => void;
   handleChange: (e: React.ChangeEvent) => void;
-  handleClose: () => void;
+  handleCancel: () => void;
   handleSubmit: () => void;
   isSubmitting?: boolean;
   touched: Touched;
@@ -45,7 +45,7 @@ interface Props {
 
 const renderError = (error: string | undefined, touched?: boolean) => (error && touched ? () => <ErrorMessage>{error}</ErrorMessage> : undefined);
 
-const FeedbackForm = ({ className, errors, handleBlur, handleChange, handleClose, handleSubmit, isSubmitting, touched, values }: Props) => {
+const FeedbackForm = ({ className, errors, handleBlur, handleChange, handleCancel, handleSubmit, isSubmitting, touched, values }: Props) => {
   return (
     <Wrapper>
       <Form className={className} onSubmit={handleSubmit}>
@@ -77,7 +77,7 @@ const FeedbackForm = ({ className, errors, handleBlur, handleChange, handleClose
         </InputWrapper>
 
         <ButtonWrapper>
-          <Button backgroundColor={Color.MERCURY} width={153} onClick={handleClose}>
+          <Button backgroundColor={Color.MERCURY} width={153} onClick={handleCancel}>
             Cancel
           </Button>
 

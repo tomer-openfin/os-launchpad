@@ -49,5 +49,6 @@ export const ROUTES = {
   LOGIN: '/login',
   LOGOUT: '/logout',
   SETTINGS: '/settings/:action',
+  SUPPORT: '/support',
   ...SETTINGS_ROUTES,
 };

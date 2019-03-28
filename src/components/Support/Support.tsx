@@ -15,12 +15,6 @@ export const BUG_HEADER = 'Report a Bug';
 export const FEEDBACK_HEADER = 'Provide Feedback';
 export const CONTACT_HEADER = 'Contact Support';
 
-// contact support --> close window completely
-
-// bug form || feedback form --> go back to default stage (contact support)
-// bug success/failure || feedbac success/failure --> if click back, go back to default stage (contact support)
-// bug success/failure || feedback success/failure --> if click "OK", go back to the settings window
-
 export enum Stage {
   BugFailure = 'bug-failure',
   BugSuccess = 'bug-success',
@@ -48,6 +42,8 @@ export const SupportView = (props: ViewProps) => {
   const { setStage, stage, referenceNumber, handleClose } = props;
 
   const createHandleStage = (nextStage: Stage) => () => setStage(nextStage);
+
+  const handleCancel = createHandleStage(Stage.Default);
 
   const constructHeader = (currentStage: Stage) => {
     switch (currentStage) {
@@ -82,9 +78,9 @@ export const SupportView = (props: ViewProps) => {
         </ButtonWrapper>
       )}
 
-      {stage === Stage.ProvideFeedback && <FeedbackForm />}
+      {stage === Stage.ProvideFeedback && <FeedbackForm handleCancel={handleCancel} />}
 
-      {stage === Stage.ReportBug && <BugForm />}
+      {stage === Stage.ReportBug && <BugForm handleCancel={handleCancel} />}
 
       {stage === Stage.BugSuccess && (
         <SupportFormConfirmation handleClose={noop}>
@@ -99,7 +95,7 @@ export const SupportView = (props: ViewProps) => {
       )}
 
       {stage === Stage.FeedbackSuccess && (
-        <SupportFormConfirmation handleClose={noop}>
+        <SupportFormConfirmation handleClose={handleClose}>
           <P>Thank you, your support ticket has been submitted.</P>
 
           <P>{`Your reference number is #${referenceNumber}.`}</P>
@@ -111,7 +107,7 @@ export const SupportView = (props: ViewProps) => {
       )}
 
       {stage === Stage.BugFailure && (
-        <SupportFormConfirmation handleClose={noop}>
+        <SupportFormConfirmation handleClose={handleClose}>
           <P>Unfortunately, your support ticket could not be submitted.</P>
 
           <P>
@@ -121,7 +117,7 @@ export const SupportView = (props: ViewProps) => {
       )}
 
       {stage === Stage.FeedbackFailure && (
-        <SupportFormConfirmation handleClose={noop}>
+        <SupportFormConfirmation handleClose={handleClose}>
           <P>Unfortunately, your support ticket could not be submitted.</P>
 
           <P>

@@ -6,15 +6,16 @@ import { ButtonWrapper, Group, Heading, Info, InfoHeading, Wrapper } from './Acc
 
 import { ROUTES } from '../Router/consts';
 
-import { ButtonLink } from '../Button';
+import Button, { ButtonLink } from '../Button';
 import SvgIcon from '../SvgIcon';
 
 interface Props {
   email: string;
   name: string;
+  showSupport: () => void;
 }
 
-const AccountSettings = ({ email, name }: Props) => (
+const AccountSettings = ({ email, name, showSupport }: Props) => (
   <Wrapper>
     <Heading>Account Info</Heading>
 
@@ -35,10 +36,10 @@ const AccountSettings = ({ email, name }: Props) => (
         Change Password
       </ButtonLink>
 
-      <ButtonLink to={ROUTES.SETTINGS_CONTACT_SUPPORT} width={147}>
+      <Button onClick={showSupport} width={147}>
         <SvgIcon imgSrc={supportIcon} size={25} />
         Support
-      </ButtonLink>
+      </Button>
     </ButtonWrapper>
   </Wrapper>
 );

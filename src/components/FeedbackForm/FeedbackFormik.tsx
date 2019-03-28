@@ -2,11 +2,11 @@ import { Formik, FormikActions, FormikProps } from 'formik';
 import * as React from 'react';
 import * as Yup from 'yup';
 
-import noop from '../../utils/noop';
 import FeedbackForm, { Values } from './FeedbackForm';
 
 interface Props {
   className?: string;
+  handleCancel: () => void;
   handleSubmitValues: (payload: Values) => Promise<void>;
 }
 
@@ -28,7 +28,7 @@ const handleFormikSubmit = (handleSubmitValues: Props['handleSubmitValues']) => 
   actions.setSubmitting(false);
 };
 
-const renderForm = (className?: string) => (props: FormikProps<Values>) => {
+const renderForm = (handleCancel: Props['handleCancel'], className?: string) => (props: FormikProps<Values>) => {
   const { errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values } = props;
 
   return (
@@ -36,7 +36,7 @@ const renderForm = (className?: string) => (props: FormikProps<Values>) => {
       className={className}
       errors={errors}
       handleBlur={handleBlur}
-      handleClose={noop}
+      handleCancel={handleCancel}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
       isSubmitting={isSubmitting}
@@ -46,8 +46,13 @@ const renderForm = (className?: string) => (props: FormikProps<Values>) => {
   );
 };
 
-const FeedbackFormik = ({ className, handleSubmitValues }: Props) => (
-  <Formik initialValues={initialValues} onSubmit={handleFormikSubmit(handleSubmitValues)} render={renderForm(className)} validationSchema={validationSchema} />
+const FeedbackFormik = ({ className, handleCancel, handleSubmitValues }: Props) => (
+  <Formik
+    initialValues={initialValues}
+    onSubmit={handleFormikSubmit(handleSubmitValues)}
+    render={renderForm(handleCancel, className)}
+    validationSchema={validationSchema}
+  />
 );
 
 export default FeedbackFormik;
