@@ -11,10 +11,10 @@ export const StyledButton = styled(Button)`
 `;
 
 export const ButtonWrapper = styled.div`
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   height: 100vh;
+  justify-content: center;
   width: 100vw;
 
   ${StyledButton} + ${StyledButton} {
@@ -35,12 +35,12 @@ export const P = styled.p`
 `;
 
 export const Wrapper = styled.div`
+  background-image: url(${blobDarkLarge});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  background-image: url(${blobDarkLarge});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 `;

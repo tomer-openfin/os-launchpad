@@ -1,8 +1,8 @@
 import * as React from 'react';
 
+import Color from '../../styles/color';
 import { ButtonWrapper, Form, InputWrapper } from './FeedbackForm.css';
 
-import Color from '../../styles/color';
 import Button from '../Button';
 import ErrorMessage from '../ErrorMessage';
 import { StyledButton } from '../ForgotPasswordSuccess';
@@ -73,7 +73,7 @@ const FeedbackForm = ({ className, errors, handleBlur, handleChange, handleCance
       </InputWrapper>
 
       <ButtonWrapper>
-        <Button backgroundColor={Color.MERCURY} width={153} onClick={handleCancel}>
+        <Button backgroundColor={Color.MERCURY} onClick={handleCancel} width={153}>
           Cancel
         </Button>
 

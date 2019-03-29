@@ -1,8 +1,8 @@
 import * as React from 'react';
 
+import Color from '../../styles/color';
 import { ButtonWrapper, Form, InputWrapper } from './BugForm.css';
 
-import Color from '../../styles/color';
 import Button from '../Button';
 import ErrorMessage from '../ErrorMessage';
 import { StyledButton } from '../ForgotPasswordSuccess';
@@ -65,7 +65,7 @@ const BugForm = ({ className, errors, handleBlur, handleChange, handleCancel, ha
         <Label label="Description" renderError={renderError(errors.description, touched.description)}>
           <TextArea
             hasError={!!errors.description && touched.description}
-            height={85}
+            height={80}
             name="description"
             onBlur={handleBlur}
             onChange={handleChange}
@@ -78,7 +78,7 @@ const BugForm = ({ className, errors, handleBlur, handleChange, handleCancel, ha
         <Label label="Steps to reproduce" renderError={renderError(errors.steps, touched.steps)}>
           <TextArea
             hasError={!!errors.steps && touched.steps}
-            height={85}
+            height={80}
             name="steps"
             onBlur={handleBlur}
             onChange={handleChange}
@@ -90,7 +90,7 @@ const BugForm = ({ className, errors, handleBlur, handleChange, handleCancel, ha
       </InputWrapper>
 
       <ButtonWrapper>
-        <Button backgroundColor={Color.MERCURY} width={153} onClick={handleCancel}>
+        <Button backgroundColor={Color.MERCURY} onClick={handleCancel} width={153}>
           Cancel
         </Button>
 
