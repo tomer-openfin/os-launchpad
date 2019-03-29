@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { EmailText, P } from '../Support/Support.css';
+import { EmailText, P } from '../FeedbackForm/FeedbackForm.css';
 import { TextWrapper, Wrapper } from './SupportFormConfirmation.css';
 
 import Button from '../Button';

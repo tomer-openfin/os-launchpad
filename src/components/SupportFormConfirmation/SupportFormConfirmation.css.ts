@@ -4,7 +4,7 @@ import { Typography } from '../../styles';
 import Color from '../../styles/color';
 
 import Button from '../Button';
-import { P } from '../Support/Support.css';
+import { P } from '../FeedbackForm/FeedbackForm.css';
 
 export const TextWrapper = styled.div`
   margin: 0 auto;

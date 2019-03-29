@@ -1,4 +1,4 @@
-import { SendBugRequestPayload, SendFeedbackRequestPayload, SupportSuccessPayload } from '../../redux/support/types';
+import { SendBugRequestPayload, SendFeedbackRequestPayload } from '../../redux/support/types';
 import { ApiResponse } from '../../types/commons';
 import { HTTPMethods } from '../../types/enums';
 import API from './api';
