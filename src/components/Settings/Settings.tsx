@@ -16,7 +16,6 @@ import WindowHeader from '../WindowHeader';
 
 export enum Stage {
   Confirm = 'confirm-password',
-  ContactSupport = 'contact-support',
   Default = 'default',
   LauncherMonitor = 'launcher-monitor',
   PasswordUpdate = 'update-password',
@@ -53,8 +52,6 @@ const Settings = ({ currentAction, handleClose, handleConfirm, hideWindow, isEnt
             <UpdatePasswordForm handleCancel={handleClose} handleConfirm={handleConfirm} handleSuccess={handleClose} />
           </Modal>
         )}
-
-        {currentAction === Stage.ContactSupport && <Support />}
 
         {currentAction === Stage.Confirm && (
           <Modal handleClose={createHandleClose}>
