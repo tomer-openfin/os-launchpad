@@ -14,8 +14,18 @@ const mapDispatch = (dispatch: Dispatch, ownProps): MapDispatch => ({
     const { handleError, handleSuccess } = ownProps;
 
     return new Promise(resolve => {
-      dispatch(sendFeedback.request(payload, { onSuccess: handleSuccess, onFailure: handleError }));
-      resolve();
+      dispatch(
+        sendFeedback.request(payload, {
+          onFailure: () => {
+            handleError();
+            resolve();
+          },
+          onSuccess: () => {
+            handleSuccess();
+            resolve();
+          },
+        }),
+      );
     });
   },
 });
