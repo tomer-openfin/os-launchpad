@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, text, withKnobs } from '@storybook/addon-knobs';
+import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
@@ -12,8 +12,6 @@ storiesOf(`${CATEGORIES.COMPONENTS}SupportFormConfirmation`, module)
   .add('default bug success', () => {
     const handleClose = action('handleClose');
     const isSuccess = boolean('isSuccess', true);
-    // const referenceNumber = text('referenceNumber', '123456789');
-    const supportEmail = text('supportEmail', 'support@openfin.co');
 
     return <SupportFormConfirmation isSuccess={isSuccess} handleClose={handleClose} />;
   });

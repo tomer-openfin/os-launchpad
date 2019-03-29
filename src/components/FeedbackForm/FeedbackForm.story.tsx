@@ -10,7 +10,6 @@ import FeedbackFormik from './FeedbackFormik';
 
 const handleBlur = action('handleBlur');
 const handleChange = action('handleChange');
-const handleCancel = action('handleClose');
 const handleSubmit = action('handleSubmit');
 const handleSuccess = action('handleSuccess');
 const handleError = action('handleError');
@@ -47,7 +46,6 @@ storiesOf(`${CATEGORIES.COMPONENTS}FeedbackForm`, module)
         errors={errors}
         handleBlur={handleBlur}
         handleChange={handleChange}
-        handleCancel={handleCancel}
         handleSubmit={handleSubmit}
         isSubmitting={isSubmitting}
         touched={touched}
@@ -56,5 +54,5 @@ storiesOf(`${CATEGORIES.COMPONENTS}FeedbackForm`, module)
     );
   })
   .add('withFormik', () => {
-    return <FeedbackFormik handleCancel={handleCancel} handleSubmitValues={handleSubmitValues} handleSuccess={handleSuccess} handleError={handleError} />;
+    return <FeedbackFormik handleSubmitValues={handleSubmitValues} handleSuccess={handleSuccess} handleError={handleError} />;
   });

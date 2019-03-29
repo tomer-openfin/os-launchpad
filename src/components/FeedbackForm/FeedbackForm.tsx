@@ -5,7 +5,7 @@ import ErrorMessage from '../ErrorMessage';
 import Input from '../Input';
 import Label from '../Label';
 import Loading from '../Loading';
-import { ButtonWrapper, Form, InputWrapper } from '../Support/Support.css';
+import { Form, InputWrapper } from '../Support/Support.css';
 import TextArea from '../TextArea';
 
 const FEEDBACK_COPY = 'Write your feedback here.';
@@ -68,11 +68,9 @@ const FeedbackForm = ({ className, errors, handleBlur, handleChange, handleSubmi
         </Label>
       </InputWrapper>
 
-      <ButtonWrapper>
-        <Button width={305} type="submit">
-          {isSubmitting ? <Loading size={15} /> : 'Submit'}
-        </Button>
-      </ButtonWrapper>
+      <Button width={305} type="submit">
+        {isSubmitting ? <Loading size={15} /> : 'Submit'}
+      </Button>
     </Form>
   );
 };

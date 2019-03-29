@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ButtonWrapper, EmailText, P } from '../Support/Support.css';
+import { EmailText, P } from '../Support/Support.css';
 import { TextWrapper, Wrapper } from './SupportFormConfirmation.css';
 
 import Button from '../Button';
@@ -38,11 +38,9 @@ const SupportFormConfirmation = ({ handleClose, isSuccess }: Props) => {
     <Wrapper>
       {isSuccess ? renderSuccessMessage() : renderErrorMessage()}
 
-      <ButtonWrapper>
-        <Button width={305} onClick={handleClose}>
-          Ok
-        </Button>
-      </ButtonWrapper>
+      <Button width={305} onClick={handleClose}>
+        Ok
+      </Button>
     </Wrapper>
   );
 };

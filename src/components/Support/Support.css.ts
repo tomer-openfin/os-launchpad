@@ -48,12 +48,6 @@ export const P = styled.p`
   }
 `;
 
-export const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: auto;
-`;
-
 export const InputWrapper = styled.div`
   ${LabelWrapper} {
     margin-bottom: 18px;
@@ -67,4 +61,9 @@ export const Form = styled.form`
   height: 100%;
   padding: 20px 0px 33px 0px;
   margin: 0 auto;
+
+  ${Button} {
+    align-self: center;
+    margin-top: auto;
+  }
 `;

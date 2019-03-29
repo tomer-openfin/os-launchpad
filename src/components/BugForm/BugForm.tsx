@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Button from '../Button';
-import { ButtonWrapper, Form, InputWrapper } from '../Support/Support.css';
+import { Form, InputWrapper } from '../Support/Support.css';
 
 import ErrorMessage from '../ErrorMessage';
 import Input from '../Input';
@@ -86,11 +86,9 @@ const BugForm = ({ className, errors, handleBlur, handleChange, handleSubmit, is
         </Label>
       </InputWrapper>
 
-      <ButtonWrapper>
-        <Button width={305} type="submit">
-          {isSubmitting ? <Loading size={15} /> : 'Submit'}
-        </Button>
-      </ButtonWrapper>
+      <Button width={305} type="submit">
+        {isSubmitting ? <Loading size={15} /> : 'Submit'}
+      </Button>
     </Form>
   );
 };

@@ -10,7 +10,6 @@ import BugFormik from './BugFormik';
 
 const handleBlur = action('handleBlur');
 const handleChange = action('handleChange');
-const handleCancel = action('handleCancel');
 const handleSubmit = action('handleSubmit');
 const handleSuccess = action('handleSuccess');
 const handleError = action('handleError');
@@ -53,7 +52,6 @@ storiesOf(`${CATEGORIES.COMPONENTS}BugForm`, module)
         errors={errors}
         handleBlur={handleBlur}
         handleChange={handleChange}
-        handleCancel={handleCancel}
         handleSubmit={handleSubmit}
         isSubmitting={isSubmitting}
         touched={touched}
@@ -62,5 +60,5 @@ storiesOf(`${CATEGORIES.COMPONENTS}BugForm`, module)
     );
   })
   .add('withFormik', () => {
-    return <BugFormik handleCancel={handleCancel} handleSubmitValues={handleSubmitValues} handleSuccess={handleSuccess} handleError={handleError} />;
+    return <BugFormik handleSubmitValues={handleSubmitValues} handleSuccess={handleSuccess} handleError={handleError} />;
   });
