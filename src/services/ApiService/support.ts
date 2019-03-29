@@ -4,16 +4,14 @@ import { HTTPMethods } from '../../types/enums';
 import API from './api';
 import { api } from './utils';
 
-export const sendFeedback = (payload: SendFeedbackRequestPayload['feedback']): Promise<ApiResponse<SupportSuccessPayload>> => {
-  return api<SupportSuccessPayload, { feedback: SendFeedbackRequestPayload['feedback'] }>(API.SEND_FEEDBACK, HTTPMethods.POST, json => ({
-    data: json,
-  }))({
+export const sendFeedback = (payload: SendFeedbackRequestPayload['feedback']): Promise<ApiResponse<undefined>> => {
+  return api<undefined, { feedback: SendFeedbackRequestPayload['feedback'] }>(API.SEND_FEEDBACK, HTTPMethods.POST, _ => ({ data: undefined }))({
     feedback: payload,
   });
 };
 
-export const sendBug = (payload: SendBugRequestPayload['feedback']): Promise<ApiResponse<SupportSuccessPayload>> => {
-  return api<SupportSuccessPayload, { feedback: SendBugRequestPayload['feedback'] }>(API.SEND_BUG, HTTPMethods.POST, json => ({ data: json }))({
+export const sendBug = (payload: SendBugRequestPayload['feedback']): Promise<ApiResponse<undefined>> => {
+  return api<undefined, { feedback: SendBugRequestPayload['feedback'] }>(API.SEND_BUG, HTTPMethods.POST, _ => ({ data: undefined }))({
     feedback: payload,
   });
 };
