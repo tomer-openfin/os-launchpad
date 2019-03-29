@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ButtonWrapper, Form, InputWrapper, Wrapper } from './FeedbackForm.css';
+import { ButtonWrapper, Form, InputWrapper } from './FeedbackForm.css';
 
 import Color from '../../styles/color';
 import Button from '../Button';
@@ -44,44 +44,42 @@ const renderError = (error: string | undefined, touched?: boolean) => (error && 
 
 const FeedbackForm = ({ className, errors, handleBlur, handleChange, handleCancel, handleSubmit, isSubmitting, touched, values }: Props) => {
   return (
-    <Wrapper>
-      <Form className={className} onSubmit={handleSubmit}>
-        <InputWrapper>
-          <Label label="Subject" renderError={renderError(errors.subject, touched.subject)}>
-            <Input
-              hasError={!!errors.subject && touched.subject}
-              name="subject"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              placeholder="Enter Subject"
-              type="text"
-              value={values.subject}
-            />
-          </Label>
+    <Form className={className} onSubmit={handleSubmit}>
+      <InputWrapper>
+        <Label label="Subject" renderError={renderError(errors.subject, touched.subject)}>
+          <Input
+            hasError={!!errors.subject && touched.subject}
+            name="subject"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            placeholder="Enter Subject"
+            type="text"
+            value={values.subject}
+          />
+        </Label>
 
-          <Label label="Product Feedback" renderError={renderError(errors.productFeedback, touched.productFeedback)}>
-            <TextArea
-              hasError={!!errors.productFeedback && touched.productFeedback}
-              height={135}
-              name="productFeedback"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              placeholder={FEEDBACK_COPY}
-              value={values.productFeedback}
-              width="100%"
-            />
-          </Label>
-        </InputWrapper>
+        <Label label="Product Feedback" renderError={renderError(errors.productFeedback, touched.productFeedback)}>
+          <TextArea
+            hasError={!!errors.productFeedback && touched.productFeedback}
+            height={135}
+            name="productFeedback"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            placeholder={FEEDBACK_COPY}
+            value={values.productFeedback}
+            width="100%"
+          />
+        </Label>
+      </InputWrapper>
 
-        <ButtonWrapper>
-          <Button backgroundColor={Color.MERCURY} width={153} onClick={handleCancel}>
-            Cancel
-          </Button>
+      <ButtonWrapper>
+        <Button backgroundColor={Color.MERCURY} width={153} onClick={handleCancel}>
+          Cancel
+        </Button>
 
-          <StyledButton type="submit">{isSubmitting ? <Loading size={15} /> : 'Submit'}</StyledButton>
-        </ButtonWrapper>
-      </Form>
-    </Wrapper>
+        <StyledButton type="submit">{isSubmitting ? <Loading size={15} /> : 'Submit'}</StyledButton>
+      </ButtonWrapper>
+    </Form>
   );
 };
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ButtonWrapper, Form, InputWrapper, Wrapper } from './BugForm.css';
+import { ButtonWrapper, Form, InputWrapper } from './BugForm.css';
 
 import Color from '../../styles/color';
 import Button from '../Button';
@@ -48,57 +48,55 @@ const renderError = (error: string | undefined, touched?: boolean) => (error && 
 
 const BugForm = ({ className, errors, handleBlur, handleChange, handleCancel, handleSubmit, isSubmitting, touched, values }: Props) => {
   return (
-    <Wrapper>
-      <Form className={className} onSubmit={handleSubmit}>
-        <InputWrapper>
-          <Label label="Subject" renderError={renderError(errors.subject, touched.subject)}>
-            <Input
-              hasError={!!errors.subject && touched.subject}
-              name="subject"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              placeholder="Enter Subject"
-              type="text"
-              value={values.subject}
-            />
-          </Label>
+    <Form className={className} onSubmit={handleSubmit}>
+      <InputWrapper>
+        <Label label="Subject" renderError={renderError(errors.subject, touched.subject)}>
+          <Input
+            hasError={!!errors.subject && touched.subject}
+            name="subject"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            placeholder="Enter Subject"
+            type="text"
+            value={values.subject}
+          />
+        </Label>
 
-          <Label label="Description" renderError={renderError(errors.description, touched.description)}>
-            <TextArea
-              hasError={!!errors.description && touched.description}
-              height={135}
-              name="description"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              placeholder={BUG_DESCRIPTION_COPY}
-              value={values.description}
-              width="100%"
-            />
-          </Label>
+        <Label label="Description" renderError={renderError(errors.description, touched.description)}>
+          <TextArea
+            hasError={!!errors.description && touched.description}
+            height={85}
+            name="description"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            placeholder={BUG_DESCRIPTION_COPY}
+            value={values.description}
+            width="100%"
+          />
+        </Label>
 
-          <Label label="Steps to reproduce" renderError={renderError(errors.steps, touched.steps)}>
-            <TextArea
-              hasError={!!errors.steps && touched.steps}
-              height={135}
-              name="steps"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              placeholder={BUG_STEPS_COPY}
-              value={values.steps}
-              width="100%"
-            />
-          </Label>
-        </InputWrapper>
+        <Label label="Steps to reproduce" renderError={renderError(errors.steps, touched.steps)}>
+          <TextArea
+            hasError={!!errors.steps && touched.steps}
+            height={85}
+            name="steps"
+            onBlur={handleBlur}
+            onChange={handleChange}
+            placeholder={BUG_STEPS_COPY}
+            value={values.steps}
+            width="100%"
+          />
+        </Label>
+      </InputWrapper>
 
-        <ButtonWrapper>
-          <Button backgroundColor={Color.MERCURY} width={153} onClick={handleCancel}>
-            Cancel
-          </Button>
+      <ButtonWrapper>
+        <Button backgroundColor={Color.MERCURY} width={153} onClick={handleCancel}>
+          Cancel
+        </Button>
 
-          <StyledButton type="submit">{isSubmitting ? <Loading size={15} /> : 'Submit'}</StyledButton>
-        </ButtonWrapper>
-      </Form>
-    </Wrapper>
+        <StyledButton type="submit">{isSubmitting ? <Loading size={15} /> : 'Submit'}</StyledButton>
+      </ButtonWrapper>
+    </Form>
   );
 };
 

@@ -181,7 +181,7 @@ export const initOnStartWindows = {
     autoShow: false,
     contextMenu: !isProduction,
     defaultCentered: false,
-    defaultHeight: 600,
+    defaultHeight: 478,
     defaultWidth: 510,
     frame: false,
     id: SUPPORT_WINDOW,

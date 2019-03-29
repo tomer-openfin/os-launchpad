@@ -1,8 +1,6 @@
 import * as React from 'react';
 
-import noop from '../../utils/noop';
-
-import { ButtonWrapper, P, StyledButton, Wrapper } from './Support.css';
+import { ButtonWrapper, StyledButton, Wrapper } from './Support.css';
 
 import Borders from '../Borders';
 import BugForm from '../BugForm';
