@@ -1,12 +1,11 @@
 import * as React from 'react';
 
-import { ButtonWrapper, Form, InputWrapper } from './FeedbackForm.css';
-
 import Button from '../Button';
 import ErrorMessage from '../ErrorMessage';
 import Input from '../Input';
 import Label from '../Label';
 import Loading from '../Loading';
+import { ButtonWrapper, Form, InputWrapper } from '../Support/Support.css';
 import TextArea from '../TextArea';
 
 const FEEDBACK_COPY = 'Write your feedback here.';

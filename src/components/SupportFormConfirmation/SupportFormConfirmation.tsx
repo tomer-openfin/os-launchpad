@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { P } from '../Support/Support.css';
-import { ButtonWrapper, TextWrapper, Wrapper } from './SupportFormConfirmation.css';
+import { ButtonWrapper, P } from '../Support/Support.css';
+import { TextWrapper, Wrapper } from './SupportFormConfirmation.css';
 
 import Button from '../Button';
 

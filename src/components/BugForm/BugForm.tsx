@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Button from '../Button';
-import { ButtonWrapper, Form, InputWrapper } from './BugForm.css';
+import { ButtonWrapper, Form, InputWrapper } from '../Support/Support.css';
 
 import ErrorMessage from '../ErrorMessage';
 import Input from '../Input';

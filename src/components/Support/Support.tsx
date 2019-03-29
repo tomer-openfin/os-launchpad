@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ButtonWrapper, StyledButton, Wrapper } from './Support.css';
+import { BigButtonWrapper, StyledButton, Wrapper } from './Support.css';
 
 import Borders from '../Borders';
 import BugForm from '../BugForm';
@@ -67,7 +67,7 @@ export const SupportView = (props: ViewProps) => {
       {constructHeader(stage)}
 
       {stage === Stage.Default && (
-        <ButtonWrapper>
+        <BigButtonWrapper>
           <StyledButton onClick={createHandleStage(Stage.ProvideFeedback)} width={161}>
             Submit Feedback
           </StyledButton>
@@ -75,7 +75,7 @@ export const SupportView = (props: ViewProps) => {
           <StyledButton onClick={createHandleStage(Stage.ReportBug)} width={161}>
             Report a Bug
           </StyledButton>
-        </ButtonWrapper>
+        </BigButtonWrapper>
       )}
 
       {stage === Stage.ProvideFeedback && <FeedbackForm handleSuccess={handleSuccess} handleError={handleError} handleCancel={handleCancel} />}
