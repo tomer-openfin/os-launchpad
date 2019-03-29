@@ -111,8 +111,7 @@ class Support extends React.Component<Props, State> {
   render() {
     return (
       <Wrapper>
-        {/* TODO: Change handleError back to handleError */}
-        <SupportView setStage={this.setStage} handleError={this.handleSuccess} handleSuccess={this.handleSuccess} {...this.props} {...this.state} />
+        <SupportView setStage={this.setStage} handleError={this.handleError} handleSuccess={this.handleSuccess} {...this.props} {...this.state} />
       </Wrapper>
     );
   }
