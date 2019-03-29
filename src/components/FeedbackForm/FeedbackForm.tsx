@@ -5,8 +5,8 @@ import ErrorMessage from '../ErrorMessage';
 import Input from '../Input';
 import Label from '../Label';
 import Loading from '../Loading';
-import { Form, InputWrapper } from '../Support/Support.css';
 import TextArea from '../TextArea';
+import { Form, InputWrapper } from './FeedbackForm.css';
 
 const FEEDBACK_COPY = 'Write your feedback here.';
 
