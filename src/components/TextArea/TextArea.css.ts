@@ -24,7 +24,8 @@ export default styled.textarea<TextAreaProps>`
   width: ${({ width }) => width};
 
   &::placeholder {
-    opacity: 0.3;
+    color: ${Color.VACUUM};
+    opacity: 0.5;
   }
 
   ${({ hasError }) => {
