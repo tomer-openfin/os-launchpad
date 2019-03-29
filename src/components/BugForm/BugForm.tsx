@@ -1,11 +1,9 @@
 import * as React from 'react';
 
-import Color from '../../styles/color';
+import Button from '../Button';
 import { ButtonWrapper, Form, InputWrapper } from './BugForm.css';
 
-import Button from '../Button';
 import ErrorMessage from '../ErrorMessage';
-import { StyledButton } from '../ForgotPasswordSuccess';
 import Input from '../Input';
 import Label from '../Label';
 import Loading from '../Loading';
@@ -65,7 +63,7 @@ const BugForm = ({ className, errors, handleBlur, handleChange, handleCancel, ha
         <Label label="Description" renderError={renderError(errors.description, touched.description)}>
           <TextArea
             hasError={!!errors.description && touched.description}
-            height={80}
+            height={75}
             name="description"
             onBlur={handleBlur}
             onChange={handleChange}
@@ -78,7 +76,7 @@ const BugForm = ({ className, errors, handleBlur, handleChange, handleCancel, ha
         <Label label="Steps to reproduce" renderError={renderError(errors.steps, touched.steps)}>
           <TextArea
             hasError={!!errors.steps && touched.steps}
-            height={80}
+            height={75}
             name="steps"
             onBlur={handleBlur}
             onChange={handleChange}
@@ -90,11 +88,9 @@ const BugForm = ({ className, errors, handleBlur, handleChange, handleCancel, ha
       </InputWrapper>
 
       <ButtonWrapper>
-        <Button backgroundColor={Color.MERCURY} onClick={handleCancel} width={153}>
-          Cancel
+        <Button width={305} type="submit">
+          {isSubmitting ? <Loading size={15} /> : 'Submit'}
         </Button>
-
-        <StyledButton type="submit">{isSubmitting ? <Loading size={15} /> : 'Submit'}</StyledButton>
       </ButtonWrapper>
     </Form>
   );

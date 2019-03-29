@@ -2,15 +2,19 @@ import styled from 'styled-components';
 
 import { Typography } from '../../styles';
 import Color from '../../styles/color';
-import Button from '../Button';
+
+export const TextWrapper = styled.div`
+  max-width: 307px;
+  margin: 0 auto;
+`;
 
 export const Wrapper = styled.div`
   height: 100vh;
   width: 100vw;
-  padding: 20px;
-  padding-bottom: 18px;
+  padding: 39px 20px 33px 20px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   p {
     ${Typography.TypeStyleArcturus}
@@ -22,10 +26,5 @@ export const Wrapper = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
-  padding-top: 22px;
-
-  ${Button} {
-    margin-left: 14px;
-  }
+  justify-content: center;
 `;

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import Color from '../../styles/color';
 
-import Button from '../Button';
 import { Wrapper as LabelWrapper } from '../Label';
 
 export const InputWrapper = styled.div`
@@ -13,12 +12,8 @@ export const InputWrapper = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-top: auto;
-
-  ${Button} {
-    margin-left: 14px;
-  }
 `;
 
 export const Form = styled.form`

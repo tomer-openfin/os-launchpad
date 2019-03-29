@@ -1,11 +1,9 @@
 import * as React from 'react';
 
-import Color from '../../styles/color';
 import { ButtonWrapper, Form, InputWrapper } from './FeedbackForm.css';
 
 import Button from '../Button';
 import ErrorMessage from '../ErrorMessage';
-import { StyledButton } from '../ForgotPasswordSuccess';
 import Input from '../Input';
 import Label from '../Label';
 import Loading from '../Loading';
@@ -73,11 +71,9 @@ const FeedbackForm = ({ className, errors, handleBlur, handleChange, handleCance
       </InputWrapper>
 
       <ButtonWrapper>
-        <Button backgroundColor={Color.MERCURY} onClick={handleCancel} width={153}>
-          Cancel
+        <Button width={305} type="submit">
+          {isSubmitting ? <Loading size={15} /> : 'Submit'}
         </Button>
-
-        <StyledButton type="submit">{isSubmitting ? <Loading size={15} /> : 'Submit'}</StyledButton>
       </ButtonWrapper>
     </Form>
   );
