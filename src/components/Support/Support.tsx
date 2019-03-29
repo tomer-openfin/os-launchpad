@@ -10,7 +10,6 @@ import FeedbackForm from '../FeedbackForm';
 import SupportFormConfirmation from '../SupportFormConfirmation';
 import WindowHeader from '../WindowHeader';
 
-const SUPPORT_EMAIL = 'support@openfin.co';
 export const BUG_HEADER = 'Report a Bug';
 export const FEEDBACK_HEADER = 'Provide Feedback';
 export const CONTACT_HEADER = 'Contact Support';
@@ -85,49 +84,9 @@ export const SupportView = (props: ViewProps) => {
 
       {stage === Stage.ReportBug && <BugForm handleSuccess={handleSuccess} handleError={handleError} handleCancel={handleCancel} />}
 
-      {stage === Stage.BugSuccess && (
-        <SupportFormConfirmation handleClose={handleReset}>
-          <P>Thank you, your support ticket has been submitted.</P>
+      {(stage === Stage.BugSuccess || stage === Stage.FeedbackSuccess) && <SupportFormConfirmation isSuccess={true} handleClose={handleReset} />}
 
-          {/* <P>{`Your reference number is #${referenceNumber}.`}</P> */}
-
-          <P>
-            You may follow up with this ticket by contacting <span>{SUPPORT_EMAIL}</span>.
-          </P>
-        </SupportFormConfirmation>
-      )}
-
-      {stage === Stage.FeedbackSuccess && (
-        <SupportFormConfirmation handleClose={handleReset}>
-          <P>Thank you, your support ticket has been submitted.</P>
-
-          {/* <P>{`Your reference number is #${referenceNumber}.`}</P> */}
-
-          <P>
-            You may follow up with this ticket by contacting <span>{SUPPORT_EMAIL}</span>.
-          </P>
-        </SupportFormConfirmation>
-      )}
-
-      {stage === Stage.BugFailure && (
-        <SupportFormConfirmation handleClose={handleReset}>
-          <P>Unfortunately, your support ticket could not be submitted.</P>
-
-          <P>
-            Please contact <span>{SUPPORT_EMAIL}</span> to resolve your issue.
-          </P>
-        </SupportFormConfirmation>
-      )}
-
-      {stage === Stage.FeedbackFailure && (
-        <SupportFormConfirmation handleClose={handleReset}>
-          <P>Unfortunately, your support ticket could not be submitted.</P>
-
-          <P>
-            Please contact <span>{SUPPORT_EMAIL}</span> to resolve your issue.
-          </P>
-        </SupportFormConfirmation>
-      )}
+      {(stage === Stage.BugFailure || stage === Stage.FeedbackFailure) && <SupportFormConfirmation isSuccess={false} handleClose={handleReset} />}
     </Borders>
   );
 };
@@ -154,7 +113,7 @@ class Support extends React.Component<Props, State> {
   render() {
     return (
       <Wrapper>
-        <SupportView setStage={this.setStage} handleError={this.handleError} handleSuccess={this.handleSuccess} {...this.props} {...this.state} />
+        <SupportView setStage={this.setStage} handleError={this.handleSuccess} handleSuccess={this.handleSuccess} {...this.props} {...this.state} />
       </Wrapper>
     );
   }
