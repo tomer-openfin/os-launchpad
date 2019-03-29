@@ -100,9 +100,10 @@ Start the application on your host machine, and start OpenFin in your guest mach
 Should you ever need to kill all openfin processes on your VM, you can run the following command on powershell or the terminal: `taskkill /F /IM openfin.exe /T`
 
 #### Installing Openfin on the VM
-1. Download the Openfin from the following link, filling in App Name and Deploy Location: `https://install.openfin.co/download?fileName=<APP_NAME_HERE>&config=<DEPLOY_LOCATION>`.  E.g., `https://install.openfin.co/download?fileName=Whiteboard&config=http://172.16.28.1:8080`
+
+1. Download the Openfin from the following link, filling in App Name and Deploy Location: `https://install.openfin.co/download?fileName=<APP_NAME_HERE>&config=<DEPLOY_LOCATION>`. E.g., `https://install.openfin.co/download?fileName=Whiteboard&config=http://172.16.28.1:8080`
 2. Run the app.
-3. After installation, edit the app's desktop shortcut.  In the Target field, edit the --config option to point to your DEPLOY_LOCATION, e.g., " --config="http://172.16.28.1:8080/app.json".
+3. After installation, edit the app's desktop shortcut. In the Target field, edit the --config option to point to your DEPLOY_LOCATION, e.g., " --config="http://172.16.28.1:8080/app.json".
 4. Launch the app.
 
 ### Build
@@ -112,3 +113,11 @@ When the build script is run, a build artifact is created in the `build` directo
 ### GitHub Practices
 
 New pull requests should request to be merged into the `develop` branch, and commits should be squashed when merging.
+There are tsconfig changes to map all called to styled-components to our typed version inside src/styles/styled-components.ts.
+
+### Using VS Code
+
+Due to the baseUrl addition in tsconfig, imports in typescript files will be absolute from the baseUrl. To keep everything relative, update editor configs to always choose relative pathing for smart imports.
+
+vscode:
+"typescript.preferences.importModuleSpecifier": "relative",
