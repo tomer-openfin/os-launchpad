@@ -6,7 +6,6 @@ import BugForm, { Values } from './BugForm';
 
 interface Props {
   className?: string;
-  handleCancel: () => void;
   handleError: () => void;
   handleSuccess: () => void;
   handleSubmitValues: (payload: string) => Promise<void>;
@@ -43,7 +42,7 @@ const handleFormikSubmit = (handleSubmitValues: Props['handleSubmitValues']) => 
   actions.setSubmitting(false);
 };
 
-const renderForm = (handleCancel: Props['handleCancel'], className?: string) => (props: FormikProps<Values>) => {
+const renderForm = (className?: string) => (props: FormikProps<Values>) => {
   const { errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values } = props;
 
   return (
@@ -51,7 +50,6 @@ const renderForm = (handleCancel: Props['handleCancel'], className?: string) => 
       className={className}
       errors={errors}
       handleBlur={handleBlur}
-      handleCancel={handleCancel}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
       isSubmitting={isSubmitting}
@@ -61,13 +59,8 @@ const renderForm = (handleCancel: Props['handleCancel'], className?: string) => 
   );
 };
 
-const BugFormik = ({ className, handleCancel, handleSubmitValues }: Props) => (
-  <Formik
-    initialValues={initialValues}
-    onSubmit={handleFormikSubmit(handleSubmitValues)}
-    render={renderForm(handleCancel, className)}
-    validationSchema={validationSchema}
-  />
+const BugFormik = ({ className, handleSubmitValues }: Props) => (
+  <Formik initialValues={initialValues} onSubmit={handleFormikSubmit(handleSubmitValues)} render={renderForm(className)} validationSchema={validationSchema} />
 );
 
 export default BugFormik;

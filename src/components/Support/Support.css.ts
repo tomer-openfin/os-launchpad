@@ -14,9 +14,8 @@ export const StyledButton = styled(Button)`
 export const BigButtonWrapper = styled.div`
   align-items: center;
   display: flex;
-  height: 100vh;
   justify-content: center;
-  width: 100vw;
+  margin: auto;
 
   ${StyledButton} + ${StyledButton} {
     margin-left: 20px;
@@ -67,6 +66,5 @@ export const Form = styled.form`
   flex-direction: column;
   height: 100%;
   padding: 20px 0px 33px 0px;
-  width: 305px;
   margin: 0 auto;
 `;

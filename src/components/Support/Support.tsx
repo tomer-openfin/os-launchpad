@@ -23,7 +23,6 @@ export enum Stage {
 }
 
 interface Props {
-  referenceNumber?: string | number; // TODO: get from BE response on report bug response
   handleClose: () => void;
 }
 
@@ -43,7 +42,6 @@ export const SupportView = (props: ViewProps) => {
   const createHandleStage = (nextStage: Stage) => () => setStage(nextStage);
 
   const handleReset = createHandleStage(Stage.Default);
-  const handleCancel = handleReset;
 
   const constructHeader = (currentStage: Stage) => {
     switch (currentStage) {
@@ -78,9 +76,9 @@ export const SupportView = (props: ViewProps) => {
         </BigButtonWrapper>
       )}
 
-      {stage === Stage.ProvideFeedback && <FeedbackForm handleSuccess={handleSuccess} handleError={handleError} handleCancel={handleCancel} />}
+      {stage === Stage.ProvideFeedback && <FeedbackForm handleSuccess={handleSuccess} handleError={handleError} />}
 
-      {stage === Stage.ReportBug && <BugForm handleSuccess={handleSuccess} handleError={handleError} handleCancel={handleCancel} />}
+      {stage === Stage.ReportBug && <BugForm handleSuccess={handleSuccess} handleError={handleError} />}
 
       {(stage === Stage.BugSuccess || stage === Stage.FeedbackSuccess) && <SupportFormConfirmation isSuccess={true} handleClose={handleReset} />}
 
