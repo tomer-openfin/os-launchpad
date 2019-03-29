@@ -35,6 +35,7 @@ export const Wrapper = styled.div`
 `;
 
 // Shared support form components:
+export const EmailText = styled.span``;
 
 export const P = styled.p`
   ${Typography.TypeStyleArcturus}
@@ -43,7 +44,7 @@ export const P = styled.p`
   margin: 0;
   padding-bottom: 22px;
 
-  span {
+  ${EmailText} {
     color: ${Color.NEBULA};
   }
 `;
