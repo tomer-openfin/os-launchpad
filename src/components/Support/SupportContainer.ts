@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
-
 import { Dispatch } from 'redux';
+
 import windowsConfig from '../../config/windows';
 import { hideWindow } from '../../redux/windows';
+
 import Support from './Support';
 
 const mapDispatch = (dispatch: Dispatch) => ({
