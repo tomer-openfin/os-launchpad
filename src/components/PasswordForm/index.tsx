@@ -1,5 +1,5 @@
-import PasswordForm from './PasswordForm';
+import PasswordFormik from './PasswordFormik';
 
 export * from './PasswordForm';
 
-export default PasswordForm;
+export default PasswordFormik;

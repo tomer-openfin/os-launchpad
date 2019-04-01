@@ -1,11 +1,22 @@
 import * as React from 'react';
-import * as Yup from 'yup';
 
-import withFormik from '../../hocs/withFormik';
-
-import FormField from '../FormField';
+import ErrorMessage from '../ErrorMessage';
 import FormFooter from '../FormFooter';
+import Input from '../Input';
+import Label from '../Label';
 import ScrollGrid, { Form } from '../Responsive';
+
+interface Errors {
+  password?: string;
+  newPassword?: string;
+  confirmPassword?: string;
+}
+
+interface Touched {
+  password?: boolean;
+  newPassword?: boolean;
+  confirmPassword?: boolean;
+}
 
 export interface Values {
   password: string;
@@ -13,35 +24,63 @@ export interface Values {
   confirmPassword: string;
 }
 
-export const validationSchema = Yup.object().shape({
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref('newPassword')], 'Passwords must match')
-    .required('Required'),
-  newPassword: Yup.string().required('Required'),
-  password: Yup.string().required('Required'),
-});
-
 interface Props {
+  className?: string;
+  errors: Errors;
+  handleBlur: (e: React.FocusEvent) => void;
+  handleCancel: () => void;
+  handleChange: (e: React.ChangeEvent) => void;
   handleSubmit: () => void;
-  handleCancel?: () => void;
-  isSubmitting: boolean;
-  isValid: boolean;
+  isSubmitting?: boolean;
+  isValid?: boolean;
+  touched: Touched;
+  values: Values;
 }
 
-export const PasswordForm = (handleCancel: () => void) => ({ handleSubmit, isSubmitting, isValid }: Props) => (
-  <Form onSubmit={handleSubmit}>
+const renderError = (error: string | undefined, touched?: boolean) => (error && touched ? () => <ErrorMessage>{error}</ErrorMessage> : undefined);
+
+export const PasswordForm = ({ handleSubmit, isSubmitting, isValid, touched, values, handleChange, handleBlur, errors, handleCancel, className }: Props) => (
+  <Form className={className} onSubmit={handleSubmit}>
     <ScrollGrid>
-      <FormField isInvalid={!isValid} label="Old Password" name="password" placeholder="Enter Old Password" type="password" />
+      <Label label="Old Password" renderError={renderError(errors.password, touched.password)}>
+        <Input
+          hasError={!!errors.password && touched.password}
+          name="password"
+          onBlur={handleBlur}
+          onChange={handleChange}
+          placeholder="Enter Old Password"
+          type="password"
+          value={values.password}
+        />
+      </Label>
 
-      <FormField isInvalid={!isValid} label="New Password" name="newPassword" placeholder="Enter New Password" type="password" />
+      <Label label="New Password" renderError={renderError(errors.newPassword, touched.newPassword)}>
+        <Input
+          hasError={!!errors.newPassword && touched.newPassword}
+          name="newPassword"
+          onBlur={handleBlur}
+          onChange={handleChange}
+          placeholder="Enter New Password"
+          type="password"
+          value={values.newPassword}
+        />
+      </Label>
 
-      <FormField isInvalid={!isValid} label="Confirm New Password" name="confirmPassword" placeholder="Enter New Password Again" type="password" />
+      <Label label="Confirm New Password" renderError={renderError(errors.confirmPassword, touched.confirmPassword)}>
+        <Input
+          hasError={!!errors.confirmPassword && touched.confirmPassword}
+          name="confirmPassword"
+          onBlur={handleBlur}
+          onChange={handleChange}
+          placeholder="Enter New Password Again"
+          type="password"
+          value={values.confirmPassword}
+        />
+      </Label>
     </ScrollGrid>
 
     <FormFooter isSubmitting={isSubmitting} submitDisabled={isSubmitting || !isValid} handleCancel={handleCancel} buttonWidths={153} />
   </Form>
 );
 
-const PasswordFormik = withFormik<Values>(PasswordForm, validationSchema);
-
-export default PasswordFormik;
+export default PasswordForm;
