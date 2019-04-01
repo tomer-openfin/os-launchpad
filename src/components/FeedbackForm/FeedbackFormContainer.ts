@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { sendFeedback, SendFeedbackRequestPayload } from '../../redux/support/index';
+import { sendFeedback, SendFeedbackRequestPayload } from '../../redux/support';
 
 import FeedbackFormik from './FeedbackFormik';
 

@@ -26,7 +26,6 @@ export const InputWrapper = styled.div`
 `;
 
 export const Form = styled.form`
-  background-color: ${Color.ASTEROID_BELT};
   display: flex;
   flex-direction: column;
   flex: 1;
