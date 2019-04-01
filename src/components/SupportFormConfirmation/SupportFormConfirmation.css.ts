@@ -14,7 +14,7 @@ export const TextWrapper = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  flex: 1;
   justify-content: space-between;
   padding: 39px 20px 33px 20px;
   width: 100vw;

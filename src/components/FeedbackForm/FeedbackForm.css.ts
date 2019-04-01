@@ -29,9 +29,9 @@ export const Form = styled.form`
   background-color: ${Color.ASTEROID_BELT};
   display: flex;
   flex-direction: column;
-  height: 100%;
-  padding: 20px 0px 33px 0px;
+  flex: 1;
   margin: 0 auto;
+  padding: 20px 0px 33px 0px;
 
   ${Button} {
     align-self: center;

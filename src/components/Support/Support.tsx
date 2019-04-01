@@ -52,31 +52,33 @@ export const SupportView = (props: ViewProps) => {
   const createHandleType = (nextType: Type) => () => setType(nextType);
 
   return (
-    <Borders height="100%" width="100%">
-      <WindowHeader handleBack={type !== Type.Default ? handleReset : undefined} handleClose={type === Type.Default ? handleClose : undefined}>
-        {headerTitles[props.type]}
-      </WindowHeader>
+    <Wrapper>
+      <Borders height="100%" width="100%">
+        <WindowHeader handleBack={type !== Type.Default ? handleReset : undefined} handleClose={type === Type.Default ? handleClose : undefined}>
+          {headerTitles[props.type]}
+        </WindowHeader>
 
-      {stage === Stage.Default && type === Type.Default && (
-        <BigButtonWrapper>
-          <StyledButton onClick={createHandleType(Type.Feedback)} width={161}>
-            Submit Feedback
-          </StyledButton>
+        {stage === Stage.Default && type === Type.Default && (
+          <BigButtonWrapper>
+            <StyledButton onClick={createHandleType(Type.Feedback)} width={161}>
+              Submit Feedback
+            </StyledButton>
 
-          <StyledButton onClick={createHandleType(Type.Bug)} width={161}>
-            Report a Bug
-          </StyledButton>
-        </BigButtonWrapper>
-      )}
+            <StyledButton onClick={createHandleType(Type.Bug)} width={161}>
+              Report a Bug
+            </StyledButton>
+          </BigButtonWrapper>
+        )}
 
-      {stage === Stage.Default && type === Type.Feedback && <FeedbackForm handleSuccess={handleSuccess} handleError={handleError} />}
+        {stage === Stage.Default && type === Type.Feedback && <FeedbackForm handleSuccess={handleSuccess} handleError={handleError} />}
 
-      {stage === Stage.Default && type === Type.Bug && <BugForm handleSuccess={handleSuccess} handleError={handleError} />}
+        {stage === Stage.Default && type === Type.Bug && <BugForm handleSuccess={handleSuccess} handleError={handleError} />}
 
-      {stage === Stage.Success && <SupportFormConfirmation handleClose={handleReset} isSuccess={true} type={type} />}
+        {stage === Stage.Success && <SupportFormConfirmation handleClose={handleReset} isSuccess={true} type={type} />}
 
-      {stage === Stage.Failure && <SupportFormConfirmation handleClose={handleReset} isSuccess={false} type={type} />}
-    </Borders>
+        {stage === Stage.Failure && <SupportFormConfirmation handleClose={handleReset} isSuccess={false} type={type} />}
+      </Borders>
+    </Wrapper>
   );
 };
 
@@ -104,16 +106,14 @@ class Support extends React.Component<Props, State> {
 
   render() {
     return (
-      <Wrapper>
-        <SupportView
-          {...this.props}
-          {...this.state}
-          handleError={this.handleError}
-          handleReset={this.handleReset}
-          handleSuccess={this.handleSuccess}
-          setType={this.setType}
-        />
-      </Wrapper>
+      <SupportView
+        {...this.props}
+        {...this.state}
+        handleError={this.handleError}
+        handleReset={this.handleReset}
+        handleSuccess={this.handleSuccess}
+        setType={this.setType}
+      />
     );
   }
 }
