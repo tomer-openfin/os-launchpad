@@ -9,9 +9,11 @@ export const sendFeedback = (payload: SendFeedbackRequestPayload['feedback']): P
     feedback: payload,
   });
 };
+export type SendFeedback = typeof sendFeedback;
 
 export const sendBug = (payload: SendBugRequestPayload['feedback']): Promise<ApiResponse<undefined>> => {
   return api<undefined, { feedback: SendBugRequestPayload['feedback'] }>(API.SEND_BUG, HTTPMethods.POST, _ => ({ data: undefined }))({
     feedback: payload,
   });
 };
+export type SendBug = typeof sendBug;
