@@ -5,7 +5,7 @@ import { BigButtonWrapper, StyledButton, Wrapper } from './Support.css';
 import Borders from '../Borders';
 import BugForm from '../BugForm';
 import FeedbackForm from '../FeedbackForm';
-import SupportFormConfirmation from '../SupportFormConfirmation';
+import SupportFormConfirmation, { BugError, BugSuccess, FeedbackError, FeedbackSuccess } from '../SupportFormConfirmation';
 import WindowHeader from '../WindowHeader';
 
 export const BUG_HEADER = 'Report a Bug';
@@ -74,9 +74,29 @@ export const SupportView = (props: ViewProps) => {
 
         {stage === Stage.Default && type === Type.Bug && <BugForm handleSuccess={handleSuccess} handleError={handleError} />}
 
-        {stage === Stage.Success && <SupportFormConfirmation handleClose={handleReset} isSuccess={true} type={type} />}
+        {stage === Stage.Success && type === Type.Bug && (
+          <SupportFormConfirmation handleClose={handleReset}>
+            <BugSuccess />
+          </SupportFormConfirmation>
+        )}
 
-        {stage === Stage.Failure && <SupportFormConfirmation handleClose={handleReset} isSuccess={false} type={type} />}
+        {stage === Stage.Success && type === Type.Feedback && (
+          <SupportFormConfirmation handleClose={handleReset}>
+            <FeedbackSuccess />
+          </SupportFormConfirmation>
+        )}
+
+        {stage === Stage.Failure && type === Type.Bug && (
+          <SupportFormConfirmation handleClose={handleReset}>
+            <BugError />
+          </SupportFormConfirmation>
+        )}
+
+        {stage === Stage.Failure && type === Type.Feedback && (
+          <SupportFormConfirmation handleClose={handleReset}>
+            <FeedbackError />
+          </SupportFormConfirmation>
+        )}
       </Borders>
     </Wrapper>
   );
