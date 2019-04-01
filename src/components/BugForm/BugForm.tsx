@@ -37,13 +37,14 @@ interface Props {
   handleChange: (e: React.ChangeEvent) => void;
   handleSubmit: () => void;
   isSubmitting?: boolean;
+  isValid?: boolean;
   touched: Touched;
   values: Values;
 }
 
 const renderError = (error: string | undefined, touched?: boolean) => (error && touched ? () => <ErrorMessage>{error}</ErrorMessage> : undefined);
 
-const BugForm = ({ className, errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }: Props) => {
+const BugForm = ({ className, errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, isValid, values }: Props) => {
   return (
     <Form className={className} onSubmit={handleSubmit}>
       <InputWrapper>
@@ -86,7 +87,7 @@ const BugForm = ({ className, errors, handleBlur, handleChange, handleSubmit, is
         </Label>
       </InputWrapper>
 
-      <Button width={305} type="submit">
+      <Button disabled={isSubmitting || !isValid} width={305} type="submit">
         {isSubmitting ? <Loading size={15} /> : 'Submit'}
       </Button>
     </Form>
