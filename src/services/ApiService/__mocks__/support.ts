@@ -4,7 +4,7 @@ import { SendBug, SendFeedback } from '../support';
 /**
  * Send feedback
  */
-export const sendFeedback: SendFeedback = () => {
+export const sendFeedback: SendFeedback = feedback => {
   const response: ApiSuccessResponse<undefined> = { status: ApiResponseStatus.Success, data: undefined };
   return Promise.resolve(response);
 };
@@ -12,7 +12,7 @@ export const sendFeedback: SendFeedback = () => {
 /**
  * Send bug report
  */
-export const sendBug: SendBug = () => {
+export const sendBug: SendBug = feedback => {
   const response: ApiSuccessResponse<undefined> = { status: ApiResponseStatus.Success, data: undefined };
   return Promise.resolve(response);
 };
