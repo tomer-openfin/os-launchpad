@@ -73,9 +73,9 @@ export const SupportView = (props: ViewProps) => {
 
       {stage === Stage.Default && type === Type.Bug && <BugForm handleSuccess={handleSuccess} handleError={handleError} />}
 
-      {stage === Stage.Success && <SupportFormConfirmation isSuccess={true} handleClose={handleReset} />}
+      {stage === Stage.Success && <SupportFormConfirmation handleClose={handleReset} isSuccess={true} type={type} />}
 
-      {stage === Stage.Failure && <SupportFormConfirmation isSuccess={false} handleClose={handleReset} />}
+      {stage === Stage.Failure && <SupportFormConfirmation handleClose={handleReset} isSuccess={false} type={type} />}
     </Borders>
   );
 };

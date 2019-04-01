@@ -1,10 +1,11 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, withKnobs } from '@storybook/addon-knobs';
+import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
 import { CATEGORIES } from '../../utils/storyCategories';
 
+import { Type } from '../Support';
 import SupportFormConfirmation from './SupportFormConfirmation';
 
 storiesOf(`${CATEGORIES.COMPONENTS}SupportFormConfirmation`, module)
@@ -12,6 +13,7 @@ storiesOf(`${CATEGORIES.COMPONENTS}SupportFormConfirmation`, module)
   .add('default bug success', () => {
     const handleClose = action('handleClose');
     const isSuccess = boolean('isSuccess', true);
+    const type = select('type', Object(Type), Type.Bug);
 
-    return <SupportFormConfirmation isSuccess={isSuccess} handleClose={handleClose} />;
+    return <SupportFormConfirmation handleClose={handleClose} isSuccess={isSuccess} type={type} />;
   });
