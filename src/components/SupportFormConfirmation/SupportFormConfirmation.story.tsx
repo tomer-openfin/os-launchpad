@@ -5,7 +5,7 @@ import * as React from 'react';
 
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import { Type } from '../Support';
+import { Type } from '../Support/Support';
 import SupportFormConfirmation from './SupportFormConfirmation';
 
 storiesOf(`${CATEGORIES.COMPONENTS}SupportFormConfirmation`, module)

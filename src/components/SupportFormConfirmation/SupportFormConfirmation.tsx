@@ -4,7 +4,7 @@ import { EmailText, P } from '../FeedbackForm/FeedbackForm.css';
 import { TextWrapper, Wrapper } from './SupportFormConfirmation.css';
 
 import Button from '../Button';
-import { Type } from '../Support';
+import { Type } from '../Support/Support';
 
 interface Props {
   isSuccess: boolean;
