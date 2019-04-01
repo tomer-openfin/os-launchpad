@@ -12,77 +12,70 @@ export const BUG_HEADER = 'Report a Bug';
 export const FEEDBACK_HEADER = 'Provide Feedback';
 export const CONTACT_HEADER = 'Contact Support';
 
-export enum Stage {
-  BugFailure = 'bug-failure',
-  BugSuccess = 'bug-success',
+export enum Type {
   Default = 'default',
-  FeedbackFailure = 'feedback-failure',
-  FeedbackSuccess = 'feedback-success',
-  ProvideFeedback = 'provide-feedback',
-  ReportBug = 'report-bug',
+  Bug = 'bug',
+  Feedback = 'feedback',
+}
+
+export enum Stage {
+  Default = 'default',
+  Success = 'success',
+  Failure = 'failure',
 }
 
 interface Props {
   handleClose: () => void;
 }
 
+interface ViewProps extends Props, State {
+  handleError: () => void;
+  handleReset: () => void;
+  handleSuccess: () => void;
+  setType: (type: Type) => void;
+}
+
 interface State {
+  type: Type;
   stage: Stage;
 }
 
-interface ViewProps extends Props, State {
-  setStage: (stage: Stage) => void;
-  handleError: () => void;
-  handleSuccess: (confirmationNumber?: string) => void;
-}
+const headerTitles = {
+  [Type.Default]: CONTACT_HEADER,
+  [Type.Bug]: BUG_HEADER,
+  [Type.Feedback]: FEEDBACK_HEADER,
+};
 
 export const SupportView = (props: ViewProps) => {
-  const { setStage, stage, handleClose, handleError, handleSuccess } = props;
+  const { handleClose, handleError, handleReset, handleSuccess, setType, stage, type } = props;
 
-  const createHandleStage = (nextStage: Stage) => () => setStage(nextStage);
-
-  const handleReset = createHandleStage(Stage.Default);
-
-  const constructHeader = (currentStage: Stage) => {
-    switch (currentStage) {
-      case Stage.Default:
-        return <WindowHeader handleClose={handleClose}>{CONTACT_HEADER}</WindowHeader>;
-      case Stage.BugFailure:
-      case Stage.BugSuccess:
-      case Stage.ReportBug:
-        return <WindowHeader handleBack={createHandleStage(Stage.Default)}>{BUG_HEADER}</WindowHeader>;
-      case Stage.FeedbackFailure:
-      case Stage.FeedbackSuccess:
-      case Stage.ProvideFeedback:
-        return <WindowHeader handleBack={createHandleStage(Stage.Default)}>{FEEDBACK_HEADER}</WindowHeader>;
-      default:
-        return <WindowHeader handleClose={handleClose}>{CONTACT_HEADER}</WindowHeader>;
-    }
-  };
+  const createHandleType = (nextType: Type) => () => setType(nextType);
 
   return (
     <Borders height="100%" width="100%">
-      {constructHeader(stage)}
+      <WindowHeader handleBack={type !== Type.Default ? handleReset : undefined} handleClose={type === Type.Default ? handleClose : undefined}>
+        {headerTitles[props.type]}
+      </WindowHeader>
 
-      {stage === Stage.Default && (
+      {stage === Stage.Default && type === Type.Default && (
         <BigButtonWrapper>
-          <StyledButton onClick={createHandleStage(Stage.ProvideFeedback)} width={161}>
+          <StyledButton onClick={createHandleType(Type.Feedback)} width={161}>
             Submit Feedback
           </StyledButton>
 
-          <StyledButton onClick={createHandleStage(Stage.ReportBug)} width={161}>
+          <StyledButton onClick={createHandleType(Type.Bug)} width={161}>
             Report a Bug
           </StyledButton>
         </BigButtonWrapper>
       )}
 
-      {stage === Stage.ProvideFeedback && <FeedbackForm handleSuccess={handleSuccess} handleError={handleError} />}
+      {stage === Stage.Default && type === Type.Feedback && <FeedbackForm handleSuccess={handleSuccess} handleError={handleError} />}
 
-      {stage === Stage.ReportBug && <BugForm handleSuccess={handleSuccess} handleError={handleError} />}
+      {stage === Stage.Default && type === Type.Bug && <BugForm handleSuccess={handleSuccess} handleError={handleError} />}
 
-      {(stage === Stage.BugSuccess || stage === Stage.FeedbackSuccess) && <SupportFormConfirmation isSuccess={true} handleClose={handleReset} />}
+      {stage === Stage.Success && <SupportFormConfirmation isSuccess={true} handleClose={handleReset} />}
 
-      {(stage === Stage.BugFailure || stage === Stage.FeedbackFailure) && <SupportFormConfirmation isSuccess={false} handleClose={handleReset} />}
+      {stage === Stage.Failure && <SupportFormConfirmation isSuccess={false} handleClose={handleReset} />}
     </Borders>
   );
 };
@@ -90,26 +83,36 @@ export const SupportView = (props: ViewProps) => {
 class Support extends React.Component<Props, State> {
   state = {
     stage: Stage.Default,
+    type: Type.Default,
   };
 
-  setStage = (stage: Stage) => {
-    this.setState({ stage });
+  setType = (type: Type) => {
+    this.setState({ type });
   };
 
   handleError = () => {
-    const nextStage = this.state.stage === Stage.ReportBug ? Stage.BugFailure : Stage.FeedbackFailure;
-    this.setState({ stage: nextStage });
+    this.setState({ stage: Stage.Failure });
   };
 
   handleSuccess = () => {
-    const nextStage = this.state.stage === Stage.ReportBug ? Stage.BugSuccess : Stage.FeedbackSuccess;
-    this.setState({ stage: nextStage });
+    this.setState({ stage: Stage.Success });
+  };
+
+  handleReset = () => {
+    this.setState({ stage: Stage.Default, type: Type.Default });
   };
 
   render() {
     return (
       <Wrapper>
-        <SupportView setStage={this.setStage} handleError={this.handleError} handleSuccess={this.handleSuccess} {...this.props} {...this.state} />
+        <SupportView
+          {...this.props}
+          {...this.state}
+          handleError={this.handleError}
+          handleReset={this.handleReset}
+          handleSuccess={this.handleSuccess}
+          setType={this.setType}
+        />
       </Wrapper>
     );
   }
