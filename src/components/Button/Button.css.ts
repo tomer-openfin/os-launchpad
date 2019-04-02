@@ -28,13 +28,15 @@ export const ButtonCSS = css<ButtonProps>`
   border: none;
   outline: none;
   border-radius: 3px;
-  padding: 8px;
+  padding: 0 8px;
   position: relative;
 
   ${({ backgroundColor = defaultProps.backgroundColor, height = defaultProps.height, width = defaultProps.width }) => `
     background-color: ${backgroundColor};
     min-height: ${height}px;
     min-width: ${width}px;
+    max-height: ${height}px;
+    max-width: ${width}px;
   `}
 
   :before {
