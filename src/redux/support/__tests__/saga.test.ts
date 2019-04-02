@@ -14,7 +14,7 @@ describe('support/saga', () => {
     const iterator = cloneableGenerator(watchSendBugRequest)(action);
 
     it('should call sendBug', () => {
-      expect(iterator.next().value).toEqual(call(apiMethod, action.payload));
+      expect(iterator.next().value).toEqual(call(apiMethod, { feedback: action.payload }));
     });
 
     it('should put failure action when error is thrown', testAsyncGeneratorsErrorCatch(iterator, failure));
@@ -33,7 +33,7 @@ describe('support/saga', () => {
     const iterator = cloneableGenerator(watchSendFeedbackRequest)(action);
 
     it('should sendFeedback', () => {
-      expect(iterator.next().value).toEqual(call(apiMethod, action.payload));
+      expect(iterator.next().value).toEqual(call(apiMethod, { feedback: action.payload }));
     });
 
     it('should put failure action when error is thrown', testAsyncGeneratorsErrorCatch(iterator, failure));
