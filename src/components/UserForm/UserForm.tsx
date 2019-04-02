@@ -4,8 +4,6 @@ import * as passwordIcon from '../../assets/Eye.svg';
 
 import { Color } from '../../styles';
 
-import { validatePhone } from '../../utils/validators';
-
 import { renderError } from '../../utils/renderError';
 import FormFooter from '../FormFooter';
 import Input from '../Input/index';
@@ -119,7 +117,6 @@ class UserForm extends React.Component<Props, State> {
               name="phone"
               placeholder="Enter phone number"
               maxLength={10}
-              // validate={validatePhone}
             />
           </Label>
 
