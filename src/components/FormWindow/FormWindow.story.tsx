@@ -8,7 +8,7 @@ import { User } from '../../types/commons';
 import { CATEGORIES } from '../../utils/storyCategories';
 
 import NewAppFormik from '../NewAppForm';
-import NewUserFormik from '../NewUserForm';
+import UserFormik, { newUserSchema } from '../UserForm/index';
 import FormWindow from './FormWindow';
 
 const handleCancel = action('handleCancel');
@@ -64,7 +64,13 @@ storiesOf(`${CATEGORIES.COMPONENTS}FormWindow`, module)
     return (
       <FormWindow message={errorMessage} headingText={headingText} responseError={error} resetResponseError={reset}>
         {form ? (
-          <NewUserFormik handleSubmitValues={handleSubmit} handleCancel={handleCancel} initialValues={emptyUser} />
+          <UserFormik
+            handleSubmitValues={handleSubmit}
+            handleCancel={handleCancel}
+            initialValues={emptyUser}
+            withPasswordField={true}
+            validationSchema={newUserSchema}
+          />
         ) : (
           <NewAppFormik handleSubmitValues={handleSubmit} handleCancel={handleCancel} initialValues={emptyApp} />
         )}
