@@ -2,7 +2,7 @@ import { all, call, put, race, select, take, takeEvery } from 'redux-saga/effect
 
 import { LAYOUTS_WINDOW } from '../../config/windows';
 import ApiService from '../../services/ApiService';
-import { ApiResponseStatus, AppStatusOrigins, AppStatusStates, Transition } from '../../types/commons';
+import { ApiResponseStatus, AppStatusOrigins, AppStatusStates, Transition, UserLayout } from '../../types/commons';
 import { UnPromisfy } from '../../types/utils';
 import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
@@ -219,18 +219,25 @@ function* watchUpdateLayoutRequest(action: ReturnType<typeof updateLayout.reques
   try {
     const { id, isOverwrite, name, layout: previousUserLayout } = action.payload;
     const { layout } = previousUserLayout;
-    if (isOverwrite) {
-      (layout as UnPromisfy<ReturnType<typeof generateLayout>>) = yield call(generateLayout);
-    }
 
-    const userLayout = {
+    let userLayout: UserLayout;
+    userLayout = {
       id,
       layout,
       name,
     };
 
-    const response: UnPromisfy<ReturnType<typeof ApiService.updateUserLayout>> = yield call(ApiService.updateUserLayout, userLayout);
+    if (isOverwrite) {
+      const newUserLayout: UnPromisfy<ReturnType<typeof generateLayout>> = yield call(generateLayout);
 
+      userLayout = {
+        id,
+        layout: newUserLayout,
+        name,
+      };
+    }
+
+    const response: UnPromisfy<ReturnType<typeof ApiService.updateUserLayout>> = yield call(ApiService.updateUserLayout, userLayout);
     if (response.status === ApiResponseStatus.Failure) {
       throw new Error(response.message);
     }
@@ -238,6 +245,8 @@ function* watchUpdateLayoutRequest(action: ReturnType<typeof updateLayout.reques
     yield put(updateLayout.success({ previousUserLayout, layout: response.data, updated: true }, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.log('Error in watchUpdateLayoutRequest', error);
     yield put(updateLayout.failure(error, action.meta));
   }
 }

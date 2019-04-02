@@ -15,15 +15,19 @@ storiesOf(`${CATEGORIES.COMPONENTS}LayoutsListItem`, module)
   .addDecorator(withKnobs)
   .addDecorator(withMarginDecorator())
   .add('default', () => {
+    const handleClickDelete = action('handleClickDelete');
     const name = text('name', 'layout');
 
     return (
       <LayoutsListItem
+        activeId={exampleUserLayout.id}
         close={close}
         deleteLayout={action('deleteLayout clicked')}
+        handleClickDelete={handleClickDelete}
         id={exampleUserLayout.id}
         name={name}
         restoreLayout={action('restoreLayout clicked')}
+        resetActiveId={action('resetActiveId clicked')}
       />
     );
   });

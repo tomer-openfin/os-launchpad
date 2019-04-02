@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { exampleUserLayout } from '../../samples/LayoutData';
+import { exampleUserLayouts } from '../../samples/LayoutData';
 import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
 
@@ -21,18 +21,13 @@ storiesOf(`${CATEGORIES.COMPONENTS}LayoutsList`, module)
   .addDecorator(withMarginDecorator())
   .add('default', () => {
     return (
-      <LayoutsList close={close} deleteLayout={action('deleteLayout clicked')} layouts={[exampleUserLayout]} restoreLayout={action('restoreLayout clicked')} />
+      <LayoutsList close={close} deleteLayout={action('deleteLayout clicked')} layouts={exampleUserLayouts} restoreLayout={action('restoreLayout clicked')} />
     );
   })
   .add('with Wrapper', () => {
     return (
       <Wrapper>
-        <LayoutsList
-          close={close}
-          deleteLayout={action('deleteLayout clicked')}
-          layouts={[exampleUserLayout]}
-          restoreLayout={action('restoreLayout clicked')}
-        />
+        <LayoutsList close={close} deleteLayout={action('deleteLayout clicked')} layouts={exampleUserLayouts} restoreLayout={action('restoreLayout clicked')} />
       </Wrapper>
     );
   });

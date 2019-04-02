@@ -1,17 +1,20 @@
 import * as React from 'react';
 
-import { UserLayout } from '../../types/commons';
-import LayoutsListItem from '../LayoutsListItem';
+import { MetaWithAsyncHandlers, UserLayout } from '../../types/commons';
+
 import { EmptyCopy, LayoutNamesWrapper, ListHeader, LoadMoreCTA, UL } from './LayoutsList.css';
+
+import LayoutsListItem from '../LayoutsListItem';
 
 interface Props {
   close: () => void;
-  deleteLayout: (id: string) => void;
+  deleteLayout: (id: UserLayout['id'], meta: MetaWithAsyncHandlers<UserLayout['id']>) => void;
   layouts: UserLayout[];
-  restoreLayout: (id: string) => void;
+  restoreLayout: (id: UserLayout['id']) => void;
 }
 
 interface State {
+  activeId: UserLayout['id'] | null;
   showFullList: boolean;
 }
 
@@ -20,6 +23,7 @@ class LayoutsList extends React.Component<Props, State> {
     super(props);
 
     this.state = {
+      activeId: null,
       showFullList: false,
     };
   }
@@ -28,16 +32,38 @@ class LayoutsList extends React.Component<Props, State> {
     this.setState(prevState => ({ showFullList: !prevState.showFullList }));
   };
 
+  handleClickDelete = (id: UserLayout['id']) => {
+    this.setState({ activeId: id });
+  };
+
+  resetActiveId = () => {
+    this.setState({ activeId: null });
+  };
+
   renderLayoutsList = () => {
-    const { showFullList } = this.state;
+    const { activeId, showFullList } = this.state;
     const { close, deleteLayout, layouts, restoreLayout } = this.props;
 
     return (
       <UL showFullList={showFullList}>
         {layouts.length > 0 ? (
-          layouts.map(layout => (
-            <LayoutsListItem close={close} deleteLayout={deleteLayout} id={layout.id} key={layout.id} name={layout.name} restoreLayout={restoreLayout} />
-          ))
+          layouts.map(layout => {
+            const handleClickDeleteCreator = (id: UserLayout['id']) => () => this.handleClickDelete(id);
+
+            return (
+              <LayoutsListItem
+                activeId={activeId}
+                close={close}
+                deleteLayout={deleteLayout}
+                handleClickDelete={handleClickDeleteCreator(layout.id)}
+                id={layout.id}
+                key={layout.id}
+                name={layout.name}
+                resetActiveId={this.resetActiveId}
+                restoreLayout={restoreLayout}
+              />
+            );
+          })
         ) : (
           <EmptyCopy>
             You don&#39;t have any saved workspaces. Save using the input above and this list will populate with your most recent workspaces.

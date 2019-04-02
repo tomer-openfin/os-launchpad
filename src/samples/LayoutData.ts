@@ -110,3 +110,21 @@ export const exampleUserLayout: UserLayout = {
   layout: exampleLayout,
   name: 'layout',
 };
+
+export const exampleUserLayouts: UserLayout[] = [
+  {
+    id: 'layout1',
+    layout: exampleLayout,
+    name: 'layout1',
+  },
+  {
+    id: 'layout2',
+    layout: exampleLayout,
+    name: 'layout2',
+  },
+  {
+    id: 'layout3',
+    layout: exampleLayout,
+    name: 'layout3',
+  },
+];

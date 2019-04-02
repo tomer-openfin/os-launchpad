@@ -9,9 +9,11 @@ export const Heading = styled.div`
 
 export const HeadingText = styled.div`
   ${Typography.TypeStyleProcyon}
+  ${textEllipsis}
 
-  padding: 20px 0 18px 20px;
   color: ${Color.SUN};
+  max-width: 575px;
+  padding: 20px 0 18px 20px;
 `;
 
 export const ButtonWrapper = styled.div`
