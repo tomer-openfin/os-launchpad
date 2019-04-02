@@ -4,8 +4,7 @@ import ErrorMessage from '../ErrorMessage';
 import FormFooter from '../FormFooter';
 import Input from '../Input';
 import Label from '../Label';
-import ScrollGrid from '../Responsive';
-import { StyledForm } from './PasswordForm.css';
+import ScrollGrid, { Form } from '../Responsive';
 
 interface Errors {
   password?: string;
@@ -41,7 +40,7 @@ interface Props {
 const renderError = (error: string | undefined, touched?: boolean) => (error && touched ? () => <ErrorMessage>{error}</ErrorMessage> : undefined);
 
 export const PasswordForm = ({ handleSubmit, isSubmitting, isValid, touched, values, handleChange, handleBlur, errors, handleCancel, className }: Props) => (
-  <StyledForm className={className} onSubmit={handleSubmit}>
+  <Form className={className} onSubmit={handleSubmit}>
     <ScrollGrid>
       <Label label="Old Password" renderError={renderError(errors.password, touched.password)}>
         <Input
@@ -81,7 +80,7 @@ export const PasswordForm = ({ handleSubmit, isSubmitting, isValid, touched, val
     </ScrollGrid>
 
     <FormFooter isSubmitting={isSubmitting} submitDisabled={isSubmitting || !isValid} handleCancel={handleCancel} buttonWidths={153} />
-  </StyledForm>
+  </Form>
 );
 
 export default PasswordForm;

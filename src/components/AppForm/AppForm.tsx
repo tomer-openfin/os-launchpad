@@ -6,7 +6,7 @@ import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../samples/FDC3';
 
 import * as EditIcon from '../../assets/Edit.svg';
 
-import { IconPreviewMeta, IconPreviewMetaWrapper, IconPreviewWrapper } from './AppForm.css';
+import { IconPreviewMeta, IconPreviewMetaWrapper, IconPreviewWrapper, StyledForm } from './AppForm.css';
 
 import CheckboxInArray from '../CheckboxInArray';
 import FormField, { Label, LabelText } from '../FormField';
@@ -108,7 +108,7 @@ class AppForm extends React.Component<Props, State> {
     const { iconFormOpen } = this.state;
 
     return (
-      <Form onSubmit={handleSubmit}>
+      <StyledForm onSubmit={handleSubmit}>
         <ScrollGrid>
           <RowWrapper firstElementWidth="100px">
             <RadioToggle label="Config Type" name="withAppUrl" value={!!values.withAppUrl} firstRadioLabel="App URL" secondRadioLabel="Manifest" />
@@ -157,7 +157,7 @@ class AppForm extends React.Component<Props, State> {
         </ScrollGrid>
 
         <FormFooter isSubmitting={isSubmitting} submitDisabled={isSubmitting || !isValid} handleCancel={handleCancel} />
-      </Form>
+      </StyledForm>
     );
   }
 }

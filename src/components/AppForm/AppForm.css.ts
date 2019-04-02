@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { Color, Typography } from '../../styles';
+import { Form, GridWrapper } from '../Responsive';
 
 export const IconPreviewWrapper = styled.div`
   display: block;
@@ -19,4 +20,10 @@ export const IconPreviewMeta = styled.div`
   ${Typography.TypeStyleNaos}
 
   color: ${Color.MERCURY};
+`;
+
+export const StyledForm = styled(Form)`
+  ${GridWrapper} {
+    grid-row-gap: 28px;
+  }
 `;
