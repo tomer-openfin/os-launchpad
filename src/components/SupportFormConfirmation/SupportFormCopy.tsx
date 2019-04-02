@@ -30,7 +30,7 @@ export const FeedbackError = () => (
     <P>Unfortunately, an error occurred while submitting your feedback. We value your input, so please try again later.</P>
 
     <P>
-      If this error persists, please notify <EmailText href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</EmailText>
+      If this error persists, please notify <EmailText href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</EmailText>.
     </P>
   </TextWrapper>
 );
@@ -40,7 +40,7 @@ export const BugError = () => (
     <P>Unfortunately, your support ticket could not be submitted.</P>
 
     <P>
-      Please contact <EmailText href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL} to resolve your issue.</EmailText>
+      Please contact <EmailText href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</EmailText> to resolve your issue.
     </P>
   </TextWrapper>
 );
