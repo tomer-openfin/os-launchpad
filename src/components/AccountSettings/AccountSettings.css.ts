@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 import { Color, hexToRgba, Typography } from '../../styles';
 
+import { ButtonLink } from '../Button';
+import { Icon } from '../SvgIcon';
+
 export const Wrapper = styled.div`
   align-items: center;
   background-color: ${hexToRgba(Color.OORT_CLOUD, 0.25)};
@@ -17,6 +20,14 @@ export const ButtonWrapper = styled.div`
   display: inline-block;
   margin-top: auto;
   padding: 12px;
+
+  ${ButtonLink}:first-child {
+    margin-bottom: 10px;
+  }
+
+  ${Icon} {
+    margin-right: 5px;
+  }
 `;
 
 export const InfoHeading = styled.div`

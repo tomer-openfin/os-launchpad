@@ -32,6 +32,9 @@ const API = {
   ADMIN_MANIFEST_OVERRIDE: `${API_URL}api/admin/manifest`,
   ADMIN_SETTINGS: `${API_URL}api/admin/settings`,
   ADMIN_USERS: `${API_URL}api/admin/users`,
+
+  SEND_BUG: `${API_URL}api/user/feedback/bug`,
+  SEND_FEEDBACK: `${API_URL}api/user/feedback/feature`,
 };
 
 export default API;

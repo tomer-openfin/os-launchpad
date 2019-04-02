@@ -8,10 +8,6 @@ export interface Props {
   size?: number;
 }
 
-interface State {
-  draggedOver: boolean;
-}
-
 const ImagePreview = ({ className, imgSrc, size = 90 }: Props) => {
   return (
     <LogoWrapper size={size} className={className}>

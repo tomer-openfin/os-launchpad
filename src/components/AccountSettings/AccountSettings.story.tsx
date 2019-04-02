@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import { text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
@@ -13,6 +14,7 @@ storiesOf(`${CATEGORIES.COMPONENTS}AccountSettings`, module)
   .add('default', () => {
     const email = text('email', 'jason.grafinger@giantmachines.com');
     const name = text('name', 'Jason Grafinger');
+    const showSupport = action('show support');
 
-    return <AccountSettings email={email} name={name} />;
+    return <AccountSettings email={email} name={name} showSupport={showSupport} />;
   });

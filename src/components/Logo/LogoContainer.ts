@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getOrganizationImages, OrgImages } from '../../redux/organization';
 import { State } from '../../redux/types';
 
-import Logo, { Props } from './Logo';
+import Logo from './Logo';
 
 interface ContainerProps {
   orgImageKey?: keyof OrgImages;

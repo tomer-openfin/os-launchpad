@@ -25,6 +25,7 @@ import '../src/components/Responsive/ScrollGrid.story';
 import '../src/components/SearchInput/SearchInput.story';
 import '../src/components/SvgIcon/SvgIcon.story';
 import '../src/components/Tabs/Tabs.story';
+import '../src/components/TextArea/TextArea.story';
 import '../src/components/WindowHeader/WindowHeader.story';
 
 // Components
@@ -35,9 +36,11 @@ import '../src/components/AppDirectory/AppDirectory.story';
 import '../src/components/AppList/AppList.story';
 import '../src/components/AppListToggle/AppListToggle.story';
 import '../src/components/AppOverflow/AppOverflow.story';
+import '../src/components/BugForm/BugForm.story';
 import '../src/components/ChangePasswordForm/ChangePasswordForm.story';
 import '../src/components/ConfirmPasswordUpdate/ConfirmPasswordUpdate.story';
 import '../src/components/DirectionControls/DirectionControls.story';
+import '../src/components/FeedbackForm/FeedbackForm.story';
 import '../src/components/ForgotPassword/ForgotPassword.story';
 import '../src/components/ForgotPasswordChangeForm/ForgotPasswordChangeForm.story';
 import '../src/components/ForgotPasswordRequestForm/ForgotPasswordRequestForm.story';
@@ -57,6 +60,8 @@ import '../src/components/MonitorControlsDialog/MonitorControlsDialog.story';
 import '../src/components/NotificationsIcon/NotificationsIcon.story';
 import '../src/components/PasswordForm/PasswordForm.story';
 import '../src/components/Settings/Settings.story';
+import '../src/components/Support/Support.story';
+import '../src/components/SupportFormConfirmation/SupportFormConfirmation.story';
 import '../src/components/SvgIconWithExtension/SvgIconWithExtension.story';
 import '../src/components/SystemDrawer/SystemDrawer.story';
 import '../src/components/UpdatePasswordForm/UpdatePasswordForm.story';

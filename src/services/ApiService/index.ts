@@ -1,6 +1,7 @@
 import { getAdminManifest, getAdminManifestOverrides, getAdminOrgSettings, getOrgSettings, saveAdminManifestOverrides, saveAdminOrgSettings } from './admin';
 import { createAdminApp, deleteAdminApp, getAdminApp, getAdminApps, getDirectoryAppList, updateAdminApp } from './apps';
 import { confirmPassword, forgotPassword, login, logout, newPasswordLogin } from './auth';
+import { sendBug, sendFeedback } from './support';
 import {
   createUserLayout,
   deleteUserLayout,
@@ -52,6 +53,9 @@ const ApiService = {
   saveUserSettings,
 
   updateUserPassword,
+
+  sendBug,
+  sendFeedback,
 };
 
 export default ApiService;

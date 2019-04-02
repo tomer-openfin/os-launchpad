@@ -11,6 +11,7 @@ export const LAYOUTS_WINDOW = `${WINDOW_PREFIX}Layouts`;
 export const LOGIN_WINDOW = `${WINDOW_PREFIX}Login`;
 export const LOGOUT_WINDOW = `${WINDOW_PREFIX}Logout`;
 export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
+export const SUPPORT_WINDOW = `${WINDOW_PREFIX}Support`;
 
 const isProduction = isProductionEnv();
 
@@ -173,6 +174,28 @@ export const initOnStartWindows = {
     shadow: true,
     showTaskbarIcon: true,
     url: ROUTES.SETTINGS,
+    waitForPageLoad: true,
+  },
+  support: {
+    alwaysOnTop: false,
+    autoShow: false,
+    contextMenu: !isProduction,
+    defaultCentered: false,
+    defaultHeight: 478,
+    defaultWidth: 510,
+    frame: false,
+    id: SUPPORT_WINDOW,
+    maxHeight: -1,
+    maximizable: false,
+    minHeight: 0,
+    minWidth: 0,
+    minimizable: false,
+    name: SUPPORT_WINDOW,
+    resizable: false,
+    saveWindowState: false,
+    shadow: true,
+    showTaskbarIcon: true,
+    url: ROUTES.SUPPORT,
     waitForPageLoad: true,
   },
 };

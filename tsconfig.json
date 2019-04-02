@@ -10,6 +10,11 @@
     "paths": {
       "styled-components": ["src/styles/styled-components.ts"]
     },
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin"
+      }
+    ],
     "rootDir": ".",
     "rootDirs": ["src", "stories"]
   },
