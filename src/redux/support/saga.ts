@@ -8,7 +8,7 @@ import { sendBug, sendFeedback } from './actions';
 
 export function* watchSendFeedbackRequest(action: ReturnType<typeof sendFeedback.request>) {
   try {
-    const response: UnPromisfy<ReturnType<typeof ApiService.sendFeedback>> = yield call(ApiService.sendFeedback, action.payload);
+    const response: UnPromisfy<ReturnType<typeof ApiService.sendFeedback>> = yield call(ApiService.sendFeedback, { feedback: action.payload });
 
     if (response.status === ApiResponseStatus.Failure) {
       throw new Error(response.message);
@@ -23,7 +23,7 @@ export function* watchSendFeedbackRequest(action: ReturnType<typeof sendFeedback
 
 export function* watchSendBugRequest(action: ReturnType<typeof sendBug.request>) {
   try {
-    const response: UnPromisfy<ReturnType<typeof ApiService.sendBug>> = yield call(ApiService.sendBug, action.payload);
+    const response: UnPromisfy<ReturnType<typeof ApiService.sendBug>> = yield call(ApiService.sendBug, { feedback: action.payload });
 
     if (response.status === ApiResponseStatus.Failure) {
       throw new Error(response.message);
