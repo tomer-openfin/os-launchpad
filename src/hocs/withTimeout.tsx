@@ -1,5 +1,4 @@
 import * as React from 'react';
-import noop from '../utils/noop';
 
 interface Props {
   isActive: boolean;

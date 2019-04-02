@@ -10,7 +10,6 @@ import ConfirmPasswordUpdate from '../ConfirmPasswordUpdate';
 import LauncherSettings from '../LauncherSettings';
 import Modal from '../Modal';
 import MonitorControlsDialog, { asRoute as asMonitorControlsDialogRoute, withLauncherConfig } from '../MonitorControlsDialog';
-import Support from '../Support';
 import UpdatePasswordForm from '../UpdatePasswordForm';
 import WindowHeader from '../WindowHeader';
 

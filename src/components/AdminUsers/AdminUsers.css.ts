@@ -5,7 +5,6 @@ import * as EditIcon from '../../assets/Edit.svg';
 import * as TrashIcon from '../../assets/Trash.svg';
 
 import { TypeStyleCanopus, TypeStyleEnif } from '../../styles/typography.css';
-import { Wrapper as RequestFormWrapper } from '../FormWindow/FormWindow.css';
 
 import { Color } from '../../styles';
 import { ADMIN_FORMS_EASING_FUNCTION, ADMIN_FORMS_ENTER_DURATION, ADMIN_FORMS_EXIT_DURATION, ADMIN_FORMS_TRANSITION_CLASSNAMES } from '../../utils/adminForms';
