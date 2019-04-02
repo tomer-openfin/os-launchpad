@@ -56,5 +56,6 @@ describe('support/saga', () => {
 
     expect(iterator.next(sendFeedback.request('TEST_FEEDBACK')).value).toEqual(takeEvery(sendFeedback.request, watchSendFeedbackRequest));
     expect(iterator.next(sendBug.request('TEST_BUG')).value).toEqual(takeEvery(sendBug.request, watchSendBugRequest));
+    expect(iterator.next().done).toBe(true);
   });
 });
