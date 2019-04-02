@@ -16,12 +16,15 @@ const blurredHandler = ({ name }: WindowBaseEvent) => {
 };
 
 export function* setupWindow(finName: string) {
-  // Track every windows hide and show state
-  yield put(Window.addWindowEventListener({ id: finName, listener: hiddenHandler, type: 'hidden' }));
-  yield put(Window.addWindowEventListener({ id: finName, listener: shownHandler, type: 'shown' }));
+  // Track every windows blurring effect
   yield put(Window.addWindowEventListener({ id: finName, listener: blurredHandler, type: 'blurred' }));
 
+  // Track every windows hide and show state
+  // Except for APP_LAUNCHER_OVERFLOW_WINDOW since its hide/show is based on opacity
   if (finName === APP_LAUNCHER_OVERFLOW_WINDOW) {
     yield put(windowHidden({ name: finName }));
+  } else {
+    yield put(Window.addWindowEventListener({ id: finName, listener: hiddenHandler, type: 'hidden' }));
+    yield put(Window.addWindowEventListener({ id: finName, listener: shownHandler, type: 'shown' }));
   }
 }
