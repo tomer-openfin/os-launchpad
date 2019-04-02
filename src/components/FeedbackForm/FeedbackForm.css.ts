@@ -5,7 +5,7 @@ import { Color, Typography } from '../../styles';
 import Button from '../Button';
 import { Wrapper as LabelWrapper } from '../Label';
 
-export const EmailText = styled.span``;
+export const EmailText = styled.a``;
 
 export const P = styled.p`
   ${Typography.TypeStyleArcturus}
