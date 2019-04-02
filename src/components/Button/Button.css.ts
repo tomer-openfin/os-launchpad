@@ -36,7 +36,6 @@ export const ButtonCSS = css<ButtonProps>`
     min-height: ${height}px;
     min-width: ${width}px;
     max-height: ${height}px;
-    max-width: ${width}px;
   `}
 
   :before {
