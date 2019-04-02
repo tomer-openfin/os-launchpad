@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { UserLayout } from '../../types/commons';
+import { MetaWithAsyncHandlers, UserLayout } from '../../types/commons';
 
 import LayoutsList from '../LayoutsList';
 import LayoutsUserActions from '../LayoutsUserActions';
@@ -8,7 +8,7 @@ import { ActionsWrapper, Header, Title, Wrapper } from './Layouts.css';
 
 interface Props {
   close: () => void;
-  deleteLayout: (id: string) => void;
+  deleteLayout: (id: string, meta: MetaWithAsyncHandlers<UserLayout['id']>) => void;
   layouts: UserLayout[];
   restoreLayout: (id: string) => void;
 }

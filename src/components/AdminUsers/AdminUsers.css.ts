@@ -102,7 +102,9 @@ export const HeadingWrapper = styled.div`
 `;
 
 export const Footer = styled.div`
+  bottom: 0;
   height: 44px;
+  position: fixed;
 
   &:after {
     content: '';
