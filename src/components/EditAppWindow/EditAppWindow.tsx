@@ -52,7 +52,7 @@ class EditAppWindow extends React.Component<Props> {
   render() {
     const { app, handleCancel, handleDelete, responseError, responseMessage, resetResponseError } = this.props;
 
-    const { appUrl, contexts, intents, id, manifest_url = '', name, title, description, icon, images } = app;
+    const { appUrl, id, manifest_url = '', name, title, description, icon } = app;
 
     const createManifestIndex = manifest_url.indexOf(CREATE_MANIFEST_BASE);
     const initialAppUrl = createManifestIndex !== -1 ? manifest_url.slice(createManifestIndex + CREATE_MANIFEST_BASE.length) : appUrl;

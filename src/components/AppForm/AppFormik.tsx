@@ -1,4 +1,4 @@
-import { Formik, FormikActions, FormikProps, FormikValues } from 'formik';
+import { Formik, FormikActions, FormikProps } from 'formik';
 import * as React from 'react';
 
 import AppForm, { Values } from './AppForm';
@@ -14,7 +14,7 @@ interface Props {
 const defaultInitialValues: Values = {
   // contexts: [{ $type: '' }],
   // images: [],
-  // intents: [],z
+  // intents: [],
   description: '',
   icon: '',
   id: '',

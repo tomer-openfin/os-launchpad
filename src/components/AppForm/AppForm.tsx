@@ -151,19 +151,7 @@ class AppForm extends React.Component<Props, State> {
   // );
 
   render() {
-    const {
-      className,
-      errors,
-      // focusFieldOnInitialMount,
-      handleBlur,
-      handleCancel,
-      handleChange,
-      handleSubmit,
-      isSubmitting,
-      isValid,
-      touched,
-      values,
-    } = this.props;
+    const { className, errors, handleBlur, handleCancel, handleChange, handleSubmit, isSubmitting, isValid, touched, values } = this.props;
 
     const { iconFormOpen } = this.state;
 
