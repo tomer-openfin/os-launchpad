@@ -7,7 +7,7 @@ import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
 import { CREATE_MANIFEST_BASE } from '../../services/ApiService/api';
 import { createAppManifestUrl } from '../AppForm';
 
-import AppFormik from '../AppForm/AppFormik';
+// import AppFormik from '../AppForm/AppFormik';
 import FormWindow from '../FormWindow';
 
 interface Props extends ResponseProps {
@@ -79,7 +79,7 @@ class EditAppWindow extends React.Component<Props> {
         handleDeleteIconClick={handleDelete}
         message={`There was an error trying to update ${title}: ${responseMessage} Please try again.`}
       >
-        <AppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={initialValues} />
+        {/* <AppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={initialValues} /> */}
       </FormWindow>
     );
   }

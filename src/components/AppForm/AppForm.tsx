@@ -48,19 +48,19 @@ interface Errors {
   withAppUrl?: string;
 }
 
-// export interface Values {
-//   appUrl?: string;
-//   // contexts: Array<{ $type: string }>;
-//   description: string;
-//   icon?: string;
-//   id?: string;
-//   // images?: Array<{ url: string }>;
-//   // intents?: Array<{ displayName: string; name: string }>;
-//   manifest_url?: string;
-//   name?: string;
-//   title?: string;
-//   withAppUrl?: boolean;
-// }
+export interface Values {
+  appUrl?: string;
+  // contexts: Array<{ $type: string }>;
+  description: string;
+  icon: string;
+  id: string;
+  // images?: Array<{ url: string }>;
+  // intents?: Array<{ displayName: string; name: string }>;
+  manifest_url?: string;
+  name: string;
+  title: string;
+  withAppUrl?: boolean;
+}
 
 interface Props {
   className?: string;
@@ -74,7 +74,8 @@ interface Props {
   isValid?: boolean;
   // setFieldValue?: (field, value, shouldValidate) => void; // type out
   touched: Touched;
-  values: App;
+  // values: App;
+  values: Values;
 }
 
 interface State {
@@ -94,11 +95,11 @@ class AppForm extends React.Component<Props, State> {
     this.inputField = React.createRef<HTMLInputElement>();
   }
 
-  // componentDidMount() {
-  //   if (this.props.focusFieldOnInitialMount) {
-  //     this.focusInputField();
-  //   }
-  // }
+  componentDidMount() {
+    if (this.props.focusFieldOnInitialMount) {
+      this.focusInputField();
+    }
+  }
 
   componentDidUpdate(prevProps: Props) {
     const { values: newValues } = this.props;
@@ -183,20 +184,13 @@ class AppForm extends React.Component<Props, State> {
                 onChange={handleChange}
                 value={values.withAppUrl ? values.appUrl : values.manifest_url}
                 name={values.withAppUrl ? 'appUrl' : 'manifest_url'}
+                // TODO
+
                 placeholder={`Enter ${values.withAppUrl ? 'app' : 'manifest'} url`}
                 key={values.withAppUrl ? 'appUrl' : 'manifest_url'}
-                // htmlInputRef={this.inputField}
+                htmlInputRef={this.inputField}
               />
             </Label>
-
-            {/* <FormField
-              htmlInputRef={this.inputField}
-              key={values.withAppUrl ? 'appUrl' : 'manifest_url'}
-              label={values.withAppUrl ? 'App URL' : 'Manifest URL'}
-              type="text"
-              name={values.withAppUrl ? 'appUrl' : 'manifest_url'}
-              placeholder={`Enter ${values.withAppUrl ? 'app' : 'manifest'} url`}
-            /> */}
           </RowWrapper>
 
           <Label label="App Title" renderError={renderError(errors.title, touched.title)}>

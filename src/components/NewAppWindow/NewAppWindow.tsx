@@ -5,7 +5,7 @@ import { App, DispatchRequest } from '../../types/commons';
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
 
 import { createAppManifestUrl } from '../AppForm';
-import AppFormik from '../AppForm/AppFormik';
+// import AppFormik from '../AppForm/AppFormik';
 import FormWindow from '../FormWindow';
 
 interface Props extends ResponseProps {
@@ -64,7 +64,7 @@ class NewAppWindow extends React.Component<Props> {
         resetResponseError={resetResponseError}
         message={`There was an error trying to create this app: ${responseMessage} Please try again.`}
       >
-        <AppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={emptyApp} />
+        {/* <AppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={emptyApp} /> */}
       </FormWindow>
     );
   }

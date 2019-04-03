@@ -9,7 +9,7 @@ interface CheckedProps {
   checked: boolean;
 }
 
-export const FormFieldWrapper = styled(FormField)`
+export const FormFieldWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;

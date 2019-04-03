@@ -7,7 +7,7 @@ import { User } from '../../types/commons';
 
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import AppFormik from '../AppForm';
+// import AppFormik from '../AppForm';
 import UserFormik, { newUserSchema } from '../UserForm';
 import FormWindow from './FormWindow';
 
@@ -72,7 +72,8 @@ storiesOf(`${CATEGORIES.COMPONENTS}FormWindow`, module)
             validationSchema={newUserSchema}
           />
         ) : (
-          <AppFormik handleSubmitValues={handleSubmit} handleCancel={handleCancel} />
+          // <AppFormik handleSubmitValues={handleSubmit} handleCancel={handleCancel} />
+          <div>hello</div>
         )}
       </FormWindow>
     );

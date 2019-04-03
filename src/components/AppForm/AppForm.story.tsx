@@ -7,7 +7,7 @@ import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
 
 import AppForm from './AppForm';
-// import AppFormik from './AppFormik';
+import AppFormik from './AppFormik';
 
 const handleCancel = action('handleCancel');
 const handleSubmit = action('handleSubmit');
@@ -48,6 +48,7 @@ storiesOf(`${CATEGORIES.ADMIN}AppForm`, module)
       manifest_url,
       name,
       title,
+      withAppUrl: false,
     };
 
     const errors = {
@@ -79,7 +80,7 @@ storiesOf(`${CATEGORIES.ADMIN}AppForm`, module)
         values={values}
       />
     );
+  })
+  .add('withFormik', () => {
+    return <AppFormik handleSubmitValues={handleSubmitValues} handleCancel={handleCancel} />;
   });
-// .add('withFormik', () => {
-//   return <AppFormik handleSubmitValues={handleSubmitValues} handleCancel={handleCancel} />;
-// });
