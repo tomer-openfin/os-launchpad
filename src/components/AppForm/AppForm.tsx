@@ -61,6 +61,8 @@ export interface Values {
   url: string;
 }
 
+type SetFieldValue = <T extends keyof Values>(field: T, value: Values[T], shouldValidate?: boolean) => void;
+
 interface Props {
   className?: string;
   errors: Errors;
@@ -71,7 +73,7 @@ interface Props {
   handleSubmit: () => void;
   isSubmitting?: boolean;
   isValid?: boolean;
-  // setFieldValue?: (field, value, shouldValidate) => void; // type out
+  setFieldValue: SetFieldValue;
   touched: Touched;
   values: Values;
 }
@@ -79,8 +81,6 @@ interface Props {
 interface State {
   iconFormOpen: boolean;
 }
-
-// export type SetFieldValue = <T extends keyof Values>(field: T, value: Values[T], shouldValidate?: boolean) => void;
 
 const defaultState: State = { iconFormOpen: false };
 
@@ -124,8 +124,8 @@ class AppForm extends React.Component<Props, State> {
   handleCloseIconForm = () => this.setState({ iconFormOpen: false });
 
   // todo: come back and fix
-  saveImage = (/*setFieldValue: SetFieldValue*/) => (imgSrc: string) => {
-    // setFieldValue('icon', imgSrc);
+  saveImage = (setFieldValue: SetFieldValue) => (imgSrc: string) => {
+    setFieldValue('icon', imgSrc);
 
     this.handleCloseIconForm();
   };
@@ -151,7 +151,7 @@ class AppForm extends React.Component<Props, State> {
   // );
 
   render() {
-    const { className, errors, handleBlur, handleCancel, handleChange, handleSubmit, isSubmitting, isValid, touched, values } = this.props;
+    const { className, errors, handleBlur, handleCancel, handleChange, handleSubmit, isSubmitting, isValid, setFieldValue, touched, values } = this.props;
 
     const { iconFormOpen } = this.state;
 
@@ -237,10 +237,7 @@ class AppForm extends React.Component<Props, State> {
                 handleCancel={this.handleCloseIconForm}
                 headerText={`Upload a new image asset for ${values.title}`}
                 height="326px"
-                // todo: have ImageForm submit to this AppForm
-                // see if setFieldValue can be re-used
-                // saveImage={this.saveImage(setFieldValue)}
-                saveImage={() => {}}
+                saveImage={this.saveImage(setFieldValue)}
                 width="420px"
               />
             </Modal>

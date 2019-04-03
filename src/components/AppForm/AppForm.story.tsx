@@ -19,21 +19,22 @@ storiesOf(`${CATEGORIES.ADMIN}AppForm`, module)
   .addDecorator(withKnobs)
   .addDecorator(withMarginDecorator())
   .add('default', () => {
-    const url = text('url', '');
-    const urlError = text('urlError', '');
-    const urlTouched = boolean('urlTouched', false);
     const description = text('description', '');
     const descriptionError = text('descriptionError', '');
     const descriptionTouched = boolean('descriptionTouched', false);
-    const name = text('name', '');
-    const nameError = text('nameError', '');
-    const nameTouched = boolean('nameTouched', false);
-    const title = text('title', '');
-    const titleError = text('titleError', '');
-    const titleTouched = boolean('titleTouched', false);
     const isSubmitting = boolean('isSubmitting', false);
     const isValid = boolean('isValid', false);
     const manifestType = select('manifestType', { manifest: 'manifest', appURL: 'appUrl' }, 'appUrl');
+    const name = text('name', '');
+    const nameError = text('nameError', '');
+    const nameTouched = boolean('nameTouched', false);
+    const setFieldValue = action('setFieldValue');
+    const title = text('title', '');
+    const titleError = text('titleError', '');
+    const titleTouched = boolean('titleTouched', false);
+    const url = text('url', '');
+    const urlError = text('urlError', '');
+    const urlTouched = boolean('urlTouched', false);
 
     const values: Values = {
       description,
@@ -68,6 +69,7 @@ storiesOf(`${CATEGORIES.ADMIN}AppForm`, module)
         handleSubmit={handleSubmit}
         isSubmitting={isSubmitting}
         isValid={isValid}
+        setFieldValue={setFieldValue}
         touched={touched}
         values={values}
       />

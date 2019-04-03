@@ -1,14 +1,12 @@
 import * as Yup from 'yup';
 
 import API from '../../services/ApiService/api';
-import { App } from '../../types/commons';
 import { Values } from './AppForm';
 
 export const validationSchema = Yup.object().shape({
   contexts: Yup.array().notRequired(), // enable when bring back contexts
   description: Yup.string().required('Required'),
-  // TODO: hook up icon upload
-  // icon: Yup.string().required('Required'),
+  icon: Yup.string().required('Required'),
   id: Yup.string().notRequired(),
   images: Yup.array().notRequired(),
   intents: Yup.array().notRequired(), // enable when bring back contexts
