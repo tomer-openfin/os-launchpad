@@ -2,7 +2,7 @@ import { Formik, FormikActions, FormikProps } from 'formik';
 import * as React from 'react';
 
 import UserForm, { Values } from './UserForm';
-import { editUserSchema, newUserSchema } from './util';
+import { editUserSchema, newUserSchema } from './utils';
 
 interface Props {
   className?: string;

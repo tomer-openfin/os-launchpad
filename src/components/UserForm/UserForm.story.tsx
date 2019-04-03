@@ -8,7 +8,7 @@ import { CATEGORIES } from '../../utils/storyCategories';
 
 import UserForm from './UserForm';
 import UserFormik from './UserFormik';
-import { editUserSchema, newUserSchema } from './util';
+import { editUserSchema, newUserSchema } from './utils';
 
 const handleCancel = action('handleCancel');
 const handleSubmit = action('handleSubmit');

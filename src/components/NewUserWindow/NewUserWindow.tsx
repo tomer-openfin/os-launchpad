@@ -4,8 +4,8 @@ import { DispatchRequest, User } from '../../types/commons';
 
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
 import FormWindow from '../FormWindow';
-import UserFormik from '../UserForm/index';
-import { newUserSchema } from '../UserForm/util';
+import UserFormik from '../UserForm';
+import { newUserSchema } from '../UserForm/utils';
 
 interface Props extends ResponseProps {
   createUser: DispatchRequest<User>;
