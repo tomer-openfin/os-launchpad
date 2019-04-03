@@ -6,7 +6,7 @@ import * as React from 'react';
 import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import AppForm, { ManifestType, Values } from './AppForm';
+import AppForm, { Values } from './AppForm';
 import AppFormik from './AppFormik';
 
 const handleCancel = action('handleCancel');

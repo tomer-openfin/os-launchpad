@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import { App } from '../../types/commons';
-
 import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../samples/FDC3';
 
 import * as EditIcon from '../../assets/Edit.svg';
@@ -16,18 +14,17 @@ import ImageUpload from '../ImageUpload';
 import Input from '../Input';
 import Label from '../Label';
 import Modal from '../Modal';
-import RadioOption from '../RadioOption/index';
-import RadioToggle from '../RadioToggle';
+import RadioOption from '../RadioOption';
 import ScrollGrid, { CheckboxWrapper, RowWrapper } from '../Responsive';
 import SvgIcon from '../SvgIcon';
 
 interface Touched {
   // contexts?: boolean;
+  // images?: boolean;
+  // intents?: boolean;
   description?: boolean;
   icon?: boolean;
   id?: boolean;
-  // images?: boolean;
-  // intents?: boolean;
   name?: boolean;
   title?: boolean;
   url?: boolean;
@@ -35,11 +32,11 @@ interface Touched {
 
 interface Errors {
   // contexts?: Array<{ $type: string }>;
+  // images?: string;
+  // intents?: Array<{ $type: string }>;
   description?: string;
   icon?: string;
   id?: string;
-  // images?: string;
-  // intents?: Array<{ $type: string }>;
   name?: string;
   title?: string;
   url?: string;
@@ -53,15 +50,15 @@ interface Errors {
 
 export interface Values {
   // contexts: Array<{ $type: string }>;
+  // images?: Array<{ url: string }>;
+  // intents?: Array<{ displayName: string; name: string }>;
   description: string;
   icon: string;
   id: string;
-  // images?: Array<{ url: string }>;
-  // intents?: Array<{ displayName: string; name: string }>;
-  url: string;
+  manifestType: 'manifest' | 'appUrl' | 'path';
   name: string;
   title: string;
-  manifestType: 'manifest' | 'appUrl' | 'path';
+  url: string;
 }
 
 interface Props {
@@ -174,23 +171,25 @@ class AppForm extends React.Component<Props, State> {
       <StyledForm className={className} onSubmit={handleSubmit}>
         <ScrollGrid>
           <RowWrapper firstElementWidth="100px">
-            <RadioOption
-              label="App URL"
-              optionName="manifestType"
-              selectedOption={values.manifestType}
-              option="appUrl"
-              onBlur={handleBlur}
-              onChange={handleChange}
-            />
+            <Label label="Config Type">
+              <RadioOption
+                label="App URL"
+                optionName="manifestType"
+                selectedOption={values.manifestType}
+                option="appUrl"
+                onBlur={handleBlur}
+                onChange={handleChange}
+              />
 
-            <RadioOption
-              label="Manifest"
-              optionName="manifestType"
-              selectedOption={values.manifestType}
-              option="manifest"
-              onBlur={handleBlur}
-              onChange={handleChange}
-            />
+              <RadioOption
+                label="Manifest"
+                optionName="manifestType"
+                selectedOption={values.manifestType}
+                option="manifest"
+                onBlur={handleBlur}
+                onChange={handleChange}
+              />
+            </Label>
 
             <Label label={values.manifestType === 'appUrl' ? 'App URL' : 'Manifest URL'} renderError={renderError(errors.url, touched.url)}>
               {/* todo: verify htmlInputRef behavior works the same as before */}
