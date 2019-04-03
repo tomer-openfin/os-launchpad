@@ -179,13 +179,11 @@ class AppForm extends React.Component<Props, State> {
             >
               {/* todo: verify htmlInputRef behavior works the same as before */}
               <Input
-                hasError={!!errors.title && touched.title}
+                hasError={values.withAppUrl ? !!errors.appUrl && touched.appUrl : !!errors.manifest_url && touched.manifest_url}
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.withAppUrl ? values.appUrl : values.manifest_url}
                 name={values.withAppUrl ? 'appUrl' : 'manifest_url'}
-                // TODO
-
                 placeholder={`Enter ${values.withAppUrl ? 'app' : 'manifest'} url`}
                 key={values.withAppUrl ? 'appUrl' : 'manifest_url'}
                 htmlInputRef={this.inputField}
