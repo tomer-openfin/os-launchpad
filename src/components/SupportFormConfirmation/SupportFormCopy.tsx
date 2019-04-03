@@ -10,7 +10,7 @@ export const FeedbackSuccess = () => (
     <P>Thank you, your feedback has been submitted.</P>
 
     <P>
-      If you have any other questions, please contact <EmailText>{SUPPORT_EMAIL}</EmailText>.
+      If you have any other questions, please contact <EmailText href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</EmailText>.
     </P>
   </TextWrapper>
 );
@@ -20,7 +20,7 @@ export const BugSuccess = () => (
     <P>Thank you, your support ticket has been submitted.</P>
 
     <P>
-      You may follow up with this ticket by contacting <EmailText>{SUPPORT_EMAIL}</EmailText>.
+      You may follow up with this ticket by contacting <EmailText href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</EmailText>.
     </P>
   </TextWrapper>
 );
@@ -30,7 +30,7 @@ export const FeedbackError = () => (
     <P>Unfortunately, an error occurred while submitting your feedback. We value your input, so please try again later.</P>
 
     <P>
-      If this error persists, please notify <EmailText>{SUPPORT_EMAIL}</EmailText>
+      If this error persists, please notify <EmailText href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</EmailText>.
     </P>
   </TextWrapper>
 );
@@ -40,7 +40,7 @@ export const BugError = () => (
     <P>Unfortunately, your support ticket could not be submitted.</P>
 
     <P>
-      Please contact <EmailText>{SUPPORT_EMAIL} to resolve your issue.</EmailText>
+      Please contact <EmailText href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</EmailText> to resolve your issue.
     </P>
   </TextWrapper>
 );
