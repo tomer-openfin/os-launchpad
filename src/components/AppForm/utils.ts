@@ -34,6 +34,7 @@ interface CreateAppManifestUrl {
   manifest_url: App['manifest_url'];
   withAppUrl: App['withAppUrl'];
 }
+
 export const createAppManifestUrl = ({ appUrl, manifest_url, withAppUrl }: CreateAppManifestUrl) => {
   return withAppUrl && appUrl ? API.CREATE_MANIFEST(appUrl) : manifest_url;
 };

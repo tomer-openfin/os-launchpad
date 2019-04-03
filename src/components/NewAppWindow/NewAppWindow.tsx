@@ -4,9 +4,9 @@ import { App, DispatchRequest } from '../../types/commons';
 
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
 
-import { createAppManifestUrl, Values } from '../AppForm';
+import { createAppManifestUrl } from '../AppForm';
+import AppFormik from '../AppForm/AppFormik';
 import FormWindow from '../FormWindow';
-import NewAppFormik from '../NewAppForm/NewAppForm';
 
 interface Props extends ResponseProps {
   createApp: DispatchRequest<App>;
@@ -17,12 +17,12 @@ interface Props extends ResponseProps {
 
 const emptyApp = {
   appUrl: '',
-  contexts: [],
+  // contexts: [],
   description: '',
   icon: '',
   id: '',
-  images: [],
-  intents: [],
+  // images: [],
+  // intents: [],
   manifest_url: '',
   name: '',
   title: '',
@@ -30,7 +30,7 @@ const emptyApp = {
 };
 
 class NewAppWindow extends React.Component<Props> {
-  handleSubmitValues = (formData: Values): Promise<void> => {
+  handleSubmitValues = (formData: App): Promise<void> => {
     const { createApp, handleSuccess, onResponseError, onResponseSuccess } = this.props;
 
     // modify App Title to create the App Name (removed input field for this) and needed for formData
@@ -64,7 +64,7 @@ class NewAppWindow extends React.Component<Props> {
         resetResponseError={resetResponseError}
         message={`There was an error trying to create this app: ${responseMessage} Please try again.`}
       >
-        <NewAppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={emptyApp} />
+        <AppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={emptyApp} />
       </FormWindow>
     );
   }

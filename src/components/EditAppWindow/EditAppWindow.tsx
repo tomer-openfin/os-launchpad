@@ -5,9 +5,9 @@ import { App, DispatchRequest } from '../../types/commons';
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
 
 import { CREATE_MANIFEST_BASE } from '../../services/ApiService/api';
-import { createAppManifestUrl, Values } from '../AppForm';
+import { createAppManifestUrl } from '../AppForm';
 
-import EditAppFormik from '../EditAppForm';
+import AppFormik from '../AppForm/AppFormik';
 import FormWindow from '../FormWindow';
 
 interface Props extends ResponseProps {
@@ -29,7 +29,7 @@ class EditAppWindow extends React.Component<Props> {
     return nextProps.appId === ':id' ? false : true;
   }
 
-  handleSubmitValues = (formData: Values): Promise<void> => {
+  handleSubmitValues = (formData: App): Promise<void> => {
     const { handleSuccess, onResponseError, onResponseSuccess, updateApp } = this.props;
 
     const { appUrl, manifest_url, withAppUrl, ...rest } = formData;
@@ -57,14 +57,14 @@ class EditAppWindow extends React.Component<Props> {
     const createManifestIndex = manifest_url.indexOf(CREATE_MANIFEST_BASE);
     const initialAppUrl = createManifestIndex !== -1 ? manifest_url.slice(createManifestIndex + CREATE_MANIFEST_BASE.length) : appUrl;
 
-    const initialValues: Values = {
+    const initialValues = {
       appUrl: initialAppUrl,
-      contexts: contexts || [],
+      // contexts: contexts || [],
       description,
       icon,
       id,
-      images,
-      intents: intents || [],
+      // images,
+      // intents: intents || [],
       manifest_url: createManifestIndex === -1 ? manifest_url : '',
       name,
       title,
@@ -79,7 +79,7 @@ class EditAppWindow extends React.Component<Props> {
         handleDeleteIconClick={handleDelete}
         message={`There was an error trying to update ${title}: ${responseMessage} Please try again.`}
       >
-        <EditAppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={initialValues} />
+        <AppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={initialValues} />
       </FormWindow>
     );
   }
