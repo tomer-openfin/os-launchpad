@@ -5,9 +5,9 @@ import { App, DispatchRequest } from '../../types/commons';
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
 
 import { CREATE_MANIFEST_BASE } from '../../services/ApiService/api';
-import { createAppManifestUrl } from '../AppForm';
+import { createAppManifestUrl, Values } from '../AppForm';
 
-// import AppFormik from '../AppForm/AppFormik';
+import AppFormik from '../AppForm/AppFormik';
 import FormWindow from '../FormWindow';
 
 interface Props extends ResponseProps {
@@ -29,12 +29,12 @@ class EditAppWindow extends React.Component<Props> {
     return nextProps.appId === ':id' ? false : true;
   }
 
-  handleSubmitValues = (formData: App): Promise<void> => {
+  handleSubmitValues = (formData: Values): Promise<void> => {
     const { handleSuccess, onResponseError, onResponseSuccess, updateApp } = this.props;
 
-    const { appUrl, manifest_url, withAppUrl, ...rest } = formData;
+    const { url, manifestType, ...rest } = formData;
 
-    const computedManifestUrl = createAppManifestUrl({ appUrl, manifest_url, withAppUrl });
+    const computedManifestUrl = createAppManifestUrl(url, manifestType);
 
     const editedApp = { ...rest, manifest_url: computedManifestUrl };
 
@@ -57,18 +57,17 @@ class EditAppWindow extends React.Component<Props> {
     const createManifestIndex = manifest_url.indexOf(CREATE_MANIFEST_BASE);
     const initialAppUrl = createManifestIndex !== -1 ? manifest_url.slice(createManifestIndex + CREATE_MANIFEST_BASE.length) : appUrl;
 
-    const initialValues = {
-      appUrl: initialAppUrl,
+    const initialValues: Values = {
       // contexts: contexts || [],
+      // images,
+      // intents: intents || [],
       description,
       icon,
       id,
-      // images,
-      // intents: intents || [],
-      manifest_url: createManifestIndex === -1 ? manifest_url : '',
+      manifestType: 'appUrl',
       name,
       title,
-      withAppUrl: !!initialAppUrl,
+      url: initialAppUrl || '',
     };
 
     return (
@@ -79,7 +78,7 @@ class EditAppWindow extends React.Component<Props> {
         handleDeleteIconClick={handleDelete}
         message={`There was an error trying to update ${title}: ${responseMessage} Please try again.`}
       >
-        {/* <AppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={initialValues} /> */}
+        <AppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={initialValues} />
       </FormWindow>
     );
   }

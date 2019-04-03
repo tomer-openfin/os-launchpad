@@ -1,31 +1,27 @@
 import { Formik, FormikActions, FormikProps, FormikValues } from 'formik';
 import * as React from 'react';
 
-import { App } from '../../types/commons';
 import AppForm, { Values } from './AppForm';
 import { validationSchema } from './utils';
 
 interface Props {
   className?: string;
-  // handleSubmitValues: (values: App) => Promise<void>;
   handleSubmitValues: (values: Values) => Promise<void>;
   handleCancel: () => void;
-  // initialValues?: App;
   initialValues?: Values;
 }
 
-const defaultInitialValues: App = {
-  appUrl: '',
+const defaultInitialValues: Values = {
   // contexts: [{ $type: '' }],
+  // images: [],
+  // intents: [],z
   description: '',
   icon: '',
   id: '',
-  // images: [],
-  // intents: [],
-  manifest_url: '',
+  manifestType: 'appUrl',
   name: '',
   title: '',
-  withAppUrl: false,
+  url: '',
 };
 
 // todo (js): use generic for submit vals, move to utils

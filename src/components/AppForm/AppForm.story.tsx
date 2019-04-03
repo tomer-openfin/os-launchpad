@@ -1,12 +1,12 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, text, withKnobs } from '@storybook/addon-knobs';
+import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
 import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import AppForm from './AppForm';
+import AppForm, { ManifestType, Values } from './AppForm';
 import AppFormik from './AppFormik';
 
 const handleCancel = action('handleCancel');
@@ -19,18 +19,12 @@ storiesOf(`${CATEGORIES.ADMIN}AppForm`, module)
   .addDecorator(withKnobs)
   .addDecorator(withMarginDecorator())
   .add('default', () => {
-    const appUrl = text('appUrl', '');
-    const appUrlError = text('appUrlError', '');
-    const appUrlTouched = boolean('appUrlTouched', false);
+    const url = text('url', '');
+    const urlError = text('urlError', '');
+    const urlTouched = boolean('urlTouched', false);
     const description = text('description', '');
     const descriptionError = text('descriptionError', '');
     const descriptionTouched = boolean('descriptionTouched', false);
-    // tslint:disable-next-line:variable-name
-    const manifest_url = text('manifest_url', '');
-    // tslint:disable-next-line:variable-name
-    const manifest_urlError = text('manifest_urlError', '');
-    // tslint:disable-next-line:variable-name
-    const manifest_urlTouched = boolean('manifest_urlTouched', false);
     const name = text('name', '');
     const nameError = text('nameError', '');
     const nameTouched = boolean('nameTouched', false);
@@ -39,32 +33,30 @@ storiesOf(`${CATEGORIES.ADMIN}AppForm`, module)
     const titleTouched = boolean('titleTouched', false);
     const isSubmitting = boolean('isSubmitting', false);
     const isValid = boolean('isValid', false);
+    const manifestType = select('manifestType', { manifest: 'manifest', appURL: 'appUrl' }, 'appUrl');
 
-    const values = {
-      appUrl,
+    const values: Values = {
       description,
       icon: '',
       id: '',
-      manifest_url,
+      manifestType,
       name,
       title,
-      withAppUrl: false,
+      url,
     };
 
     const errors = {
-      appUrl: appUrlError,
       description: descriptionError,
-      manifest_url: manifest_urlError,
       name: nameError,
       title: titleError,
+      url: urlError,
     };
 
     const touched = {
-      appUrl: appUrlTouched,
       description: descriptionTouched,
-      manifest_url: manifest_urlTouched,
       name: nameTouched,
       title: titleTouched,
+      url: urlTouched,
     };
 
     return (

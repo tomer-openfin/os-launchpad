@@ -6,18 +6,20 @@ import { TypeStyleCanopus } from '../../styles/typography.css';
 import Input from '../Input';
 
 export const HiddenInput = styled(Input)`
-  height: 0;
-  width: 0;
+  height: 19px;
   opacity: 0;
+  position: absolute;
+  width: 19px;
 `;
 
 export const RadioUI = styled.div<{ checked: boolean }>`
-  margin-right: 10px;
-  height: 19px;
   background-color: ${({ checked }) => (checked ? Color.EARTH : Color.ASTEROID_BELT)};
-  border: 1px solid ${({ checked }) => (checked ? Color.SUN : Color.MERCURY)};
-  width: 19px;
   border-radius: 50%;
+  border: 1px solid ${({ checked }) => (checked ? Color.SUN : Color.MERCURY)};
+  height: 19px;
+  margin-right: 10px;
+  pointer-events: none;
+  width: 19px;
 `;
 
 export const LabelText = styled.div`
@@ -29,4 +31,5 @@ export const LabelText = styled.div`
 export const RadioWrapper = styled.div`
   display: flex;
   margin-top: 4px;
+  position: relative;
 `;

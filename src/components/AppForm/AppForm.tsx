@@ -16,50 +16,52 @@ import ImageUpload from '../ImageUpload';
 import Input from '../Input';
 import Label from '../Label';
 import Modal from '../Modal';
+import RadioOption from '../RadioOption/index';
 import RadioToggle from '../RadioToggle';
 import ScrollGrid, { CheckboxWrapper, RowWrapper } from '../Responsive';
 import SvgIcon from '../SvgIcon';
 
 interface Touched {
-  appUrl?: boolean;
   // contexts?: boolean;
   description?: boolean;
   icon?: boolean;
   id?: boolean;
   // images?: boolean;
   // intents?: boolean;
-  manifest_url?: boolean;
   name?: boolean;
   title?: boolean;
-  withAppUrl?: boolean;
+  url?: boolean;
 }
 
 interface Errors {
-  appUrl?: string;
   // contexts?: Array<{ $type: string }>;
   description?: string;
   icon?: string;
   id?: string;
   // images?: string;
   // intents?: Array<{ $type: string }>;
-  manifest_url?: string;
   name?: string;
   title?: string;
-  withAppUrl?: string;
+  url?: string;
 }
 
+// enum ManifestType {
+//   AppUrl = 'appUrl',
+//   Manifest = 'manifest',
+//   Path = 'path',
+// }
+
 export interface Values {
-  appUrl?: string;
   // contexts: Array<{ $type: string }>;
   description: string;
   icon: string;
   id: string;
   // images?: Array<{ url: string }>;
   // intents?: Array<{ displayName: string; name: string }>;
-  manifest_url?: string;
+  url: string;
   name: string;
   title: string;
-  withAppUrl?: boolean;
+  manifestType: 'manifest' | 'appUrl' | 'path';
 }
 
 interface Props {
@@ -74,7 +76,6 @@ interface Props {
   isValid?: boolean;
   // setFieldValue?: (field, value, shouldValidate) => void; // type out
   touched: Touched;
-  // values: App;
   values: Values;
 }
 
@@ -101,18 +102,20 @@ class AppForm extends React.Component<Props, State> {
     }
   }
 
-  componentDidUpdate(prevProps: Props) {
-    const { values: newValues } = this.props;
-    const { withAppUrl: newWithAppUrl } = newValues;
+  // TODO: add focusing back in?
 
-    const { values: oldValues } = prevProps;
-    const { withAppUrl: oldWithAppUrl } = oldValues;
+  // componentDidUpdate(prevProps: Props) {
+  //   const { values: newValues } = this.props;
+  //   const { withAppUrl: newWithAppUrl } = newValues;
 
-    // focus inputField when Radio input is toggled
-    if (newWithAppUrl !== oldWithAppUrl) {
-      this.focusInputField();
-    }
-  }
+  //   const { values: oldValues } = prevProps;
+  //   const { withAppUrl: oldWithAppUrl } = oldValues;
+
+  //   // focus inputField when Radio input is toggled
+  //   if (newWithAppUrl !== oldWithAppUrl) {
+  //     this.focusInputField();
+  //   }
+  // }
 
   focusInputField = () => {
     if (this.inputField.current) {
@@ -130,9 +133,9 @@ class AppForm extends React.Component<Props, State> {
     this.handleCloseIconForm();
   };
 
-  renderMockIntents = () => MOCK_INTENTS.map((intent, index) => <CheckboxInArray name="intents" key={index} value={intent.displayName} />);
+  // renderMockIntents = () => MOCK_INTENTS.map((intent, index) => <CheckboxInArray name="intents" key={index} value={intent.displayName} />);
 
-  renderMockContexts = () => MOCK_CONTEXTS.map((context, index) => <CheckboxInArray name="contexts" key={index} value={context.$type} />);
+  // renderMockContexts = () => MOCK_CONTEXTS.map((context, index) => <CheckboxInArray name="contexts" key={index} value={context.$type} />);
 
   // renderIntentsAndContextsRow = () => (
   //   <RowWrapper height="161px">
@@ -154,7 +157,7 @@ class AppForm extends React.Component<Props, State> {
     const {
       className,
       errors,
-      focusFieldOnInitialMount,
+      // focusFieldOnInitialMount,
       handleBlur,
       handleCancel,
       handleChange,
@@ -171,21 +174,33 @@ class AppForm extends React.Component<Props, State> {
       <StyledForm className={className} onSubmit={handleSubmit}>
         <ScrollGrid>
           <RowWrapper firstElementWidth="100px">
-            <RadioToggle label="Config Type" name="withAppUrl" value={!!values.withAppUrl} firstRadioLabel="App URL" secondRadioLabel="Manifest" />
+            <RadioOption
+              label="App URL"
+              optionName="manifestType"
+              selectedOption={values.manifestType}
+              option="appUrl"
+              onBlur={handleBlur}
+              onChange={handleChange}
+            />
 
-            <Label
-              label={values.withAppUrl ? 'App URL' : 'Manifest URL'}
-              renderError={renderError(values.withAppUrl ? errors.appUrl : errors.manifest_url, values.withAppUrl ? touched.appUrl : touched.manifest_url)}
-            >
+            <RadioOption
+              label="Manifest"
+              optionName="manifestType"
+              selectedOption={values.manifestType}
+              option="manifest"
+              onBlur={handleBlur}
+              onChange={handleChange}
+            />
+
+            <Label label={values.manifestType === 'appUrl' ? 'App URL' : 'Manifest URL'} renderError={renderError(errors.url, touched.url)}>
               {/* todo: verify htmlInputRef behavior works the same as before */}
               <Input
-                hasError={values.withAppUrl ? !!errors.appUrl && touched.appUrl : !!errors.manifest_url && touched.manifest_url}
+                hasError={!!errors.url && touched.url}
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.withAppUrl ? values.appUrl : values.manifest_url}
-                name={values.withAppUrl ? 'appUrl' : 'manifest_url'}
-                placeholder={`Enter ${values.withAppUrl ? 'app' : 'manifest'} url`}
-                key={values.withAppUrl ? 'appUrl' : 'manifest_url'}
+                value={values.url}
+                name="url"
+                placeholder={`Enter ${values.manifestType === 'appUrl' ? 'app' : 'manifest'} url`}
                 htmlInputRef={this.inputField}
               />
             </Label>
