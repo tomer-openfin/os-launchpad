@@ -133,9 +133,9 @@ class ImageForm extends React.PureComponent<Props, State> {
       <Form onSubmit={handleSubmit}>
         <ScrollGrid>
           {byUrl ? (
-            <Label label="Image URL" renderError={this.renderError(errors.newPassword, touched.newPassword)}>
+            <Label label="Image URL" renderError={this.renderError(errors.imgSrc, touched.imgSrc)}>
               <Input
-                hasError={!!errors.newPassword && touched.newPassword}
+                hasError={!!errors.imgSrc && touched.imgSrc}
                 name={FormNames.imgSrc}
                 onBlur={handleBlur}
                 onChange={handleChange}
