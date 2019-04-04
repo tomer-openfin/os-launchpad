@@ -223,12 +223,12 @@ class AppForm extends React.Component<Props, State> {
               {/* todo: merge in develop and use TextArea component */}
               <TextArea
                 hasError={!!errors.description && touched.description}
+                height={118}
+                name="description"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.description}
-                name="description"
                 placeholder="Enter description"
-                height={118}
+                value={values.description}
                 width="100%"
               />
             </Label>
