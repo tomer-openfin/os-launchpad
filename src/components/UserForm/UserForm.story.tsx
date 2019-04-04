@@ -31,9 +31,9 @@ storiesOf(`${CATEGORIES.ADMIN}UserForm`, module)
     const lastName = text('lastName', '');
     const lastNameError = text('lastNameError', '');
     const lastNameTouched = boolean('lastNameTouched', false);
-    const middleInitial = text('middleInitial', '');
-    const middleInitialError = text('middleInitialError', '');
-    const middleInitialTouched = boolean('middleInitialTouched', false);
+    const middleName = text('middleName', '');
+    const middleNameError = text('middleNameError', '');
+    const middleNameTouched = boolean('middleNameTouched', false);
     const phone = text('phone', '');
     const phoneError = text('phoneError', '');
     const phoneTouched = boolean('phoneTouched', false);
@@ -49,7 +49,7 @@ storiesOf(`${CATEGORIES.ADMIN}UserForm`, module)
       id: '',
       isAdmin: false,
       lastName,
-      middleInitial,
+      middleName,
       phone,
       tmpPassword,
       username: '',
@@ -59,7 +59,7 @@ storiesOf(`${CATEGORIES.ADMIN}UserForm`, module)
       email: emailError,
       firstName: firstNameError,
       lastName: lastNameError,
-      middleInitial: middleInitialError,
+      middleName: middleNameError,
       phone: phoneError,
       tmpPassword: tmpPasswordError,
     };
@@ -68,7 +68,7 @@ storiesOf(`${CATEGORIES.ADMIN}UserForm`, module)
       email: emailTouched,
       firstName: firstNameTouched,
       lastName: lastNameTouched,
-      middleInitial: middleInitialTouched,
+      middleName: middleNameTouched,
       phone: phoneTouched,
       tmpPassword: tmpPasswordTouched,
     };

@@ -18,7 +18,7 @@ interface Touched {
   firstName?: boolean;
   isAdmin?: boolean;
   lastName?: boolean;
-  middleInitial?: boolean;
+  middleName?: boolean;
   phone?: boolean;
   tmpPassword?: boolean;
 }
@@ -28,7 +28,7 @@ interface Errors {
   firstName?: string;
   isAdmin?: string;
   lastName?: string;
-  middleInitial?: string;
+  middleName?: string;
   phone?: string;
   tmpPassword?: string;
 }
@@ -39,7 +39,7 @@ export interface Values {
   id: string;
   isAdmin: boolean;
   lastName: string;
-  middleInitial?: string;
+  middleName?: string;
   phone: string;
   tmpPassword?: string;
   username: string;
@@ -91,13 +91,13 @@ class UserForm extends React.Component<Props, State> {
               />
             </Label>
 
-            <Label label="MI" renderError={renderError(errors.middleInitial, touched.middleInitial)}>
+            <Label label="MI" renderError={renderError(errors.middleName, touched.middleName)}>
               <Input
-                hasError={!!errors.middleInitial && touched.middleInitial}
+                hasError={!!errors.middleName && touched.middleName}
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.middleInitial}
-                name="middleInitial"
+                value={values.middleName}
+                name="middleName"
               />
             </Label>
           </StyledRowWrapper>

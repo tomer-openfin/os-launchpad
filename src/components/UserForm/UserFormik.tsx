@@ -19,7 +19,7 @@ const defaultInitialValues: Values = {
   id: '',
   isAdmin: false,
   lastName: '',
-  middleInitial: '',
+  middleName: '',
   phone: '',
   tmpPassword: '',
   username: '',

@@ -80,7 +80,7 @@ export interface User {
   firstName: string;
   isAdmin: boolean;
   lastName: string;
-  middleInitial?: string;
+  middleName?: string;
   tmpPassword?: string;
   phone: string;
   // created on backend

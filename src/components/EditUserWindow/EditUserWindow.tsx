@@ -46,7 +46,7 @@ class EditUserWindow extends React.Component<Props> {
 
   render() {
     const { handleCancel, handleDelete, user, responseError, responseMessage, resetResponseError } = this.props;
-    const { email, firstName, id, isAdmin, lastName, middleInitial, phone, username } = user;
+    const { email, firstName, id, isAdmin, lastName, middleName, phone, username } = user;
 
     const initialValues = {
       email,
@@ -54,7 +54,7 @@ class EditUserWindow extends React.Component<Props> {
       id,
       isAdmin,
       lastName,
-      middleInitial,
+      middleName,
       phone: phone ? parsePhoneWithCountryCode(phone) : '',
       username,
     };

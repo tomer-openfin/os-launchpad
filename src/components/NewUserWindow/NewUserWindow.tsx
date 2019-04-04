@@ -20,7 +20,7 @@ const emptyUser: User = {
   id: '',
   isAdmin: false,
   lastName: '',
-  middleInitial: '',
+  middleName: '',
   phone: '',
   tmpPassword: '',
   username: '',
