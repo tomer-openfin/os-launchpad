@@ -161,32 +161,32 @@ class AppForm extends React.Component<Props, State> {
             <StyledLabel label="Config Type">
               <RadioOption
                 label="App URL"
-                optionName="manifestType"
-                selectedOption={values.manifestType}
-                option={ManifestType.AppUrl}
                 onBlur={handleBlur}
                 onChange={handleChange}
+                option={ManifestType.AppUrl}
+                optionName="manifestType"
+                selectedOption={values.manifestType}
               />
 
               <RadioOption
                 label="Manifest"
-                optionName="manifestType"
-                selectedOption={values.manifestType}
-                option={ManifestType.Manifest}
                 onBlur={handleBlur}
                 onChange={handleChange}
+                option={ManifestType.Manifest}
+                optionName="manifestType"
+                selectedOption={values.manifestType}
               />
             </StyledLabel>
 
             <Label label={values.manifestType === ManifestType.AppUrl ? 'App URL' : 'Manifest URL'} renderError={renderError(errors.url, touched.url)}>
               <Input
                 hasError={!!errors.url && touched.url}
+                name="url"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.url}
-                name="url"
                 placeholder={`Enter ${values.manifestType === ManifestType.AppUrl ? 'app' : 'manifest'} url`}
                 ref={this.inputField}
+                value={values.url}
               />
             </Label>
           </StyledRow>
@@ -194,11 +194,11 @@ class AppForm extends React.Component<Props, State> {
           <Label label="App Title" renderError={renderError(errors.title, touched.title)}>
             <Input
               hasError={!!errors.title && touched.title}
+              name="title"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.title}
-              name="title"
               placeholder="Enter app title"
+              value={values.title}
             />
           </Label>
 
