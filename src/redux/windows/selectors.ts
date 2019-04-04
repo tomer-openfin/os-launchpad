@@ -28,13 +28,16 @@ export const getWindowIsShowing = (state: State, id: string) => {
 export const getPosition = (state: State) => state.me.settings.launcherPosition;
 
 /**
- * Launcher needs to know if any of the following window
+ * Launcher needs to know if any of the following windows are show to not collapse
  */
 export const getLauncherIsForceExpanded = createSelector(
   getWindowsById,
-  byId =>
-    !!EXPANDED_LAUNCHER_WINDOWS_SHOWING.find(name => {
+  byId => {
+    const foundWindow = EXPANDED_LAUNCHER_WINDOWS_SHOWING.find(name => {
       const win = byId[name];
       return win && !!win.isShowing;
-    }),
+    });
+
+    return !!foundWindow;
+  },
 );

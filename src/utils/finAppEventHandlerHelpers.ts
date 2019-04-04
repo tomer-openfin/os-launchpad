@@ -1,7 +1,5 @@
-import { Dispatch } from 'redux';
-
 import { setFinAppStatusState } from '../redux/apps';
-import { App, ApplicationBaseEvent, AppStatusOrigins, AppStatusStates, OpenFinApplication, OpenFinApplicationEventType } from '../types/commons';
+import { App, ApplicationBaseEvent, AppStatusOrigins, AppStatusStates, OpenFinApplicationEventType } from '../types/commons';
 
 export const ERROR_EVENTS: OpenFinApplicationEventType[] = ['not-responding'];
 export const RECOVERY_EVENTS: OpenFinApplicationEventType[] = ['responding'];

@@ -1,5 +1,5 @@
-import Component from './AppOverflow';
+import AppOverflowContainer from './AppOverflowContainer';
 
 export * from './AppOverflow.css';
 
-export default Component;
+export default AppOverflowContainer;
