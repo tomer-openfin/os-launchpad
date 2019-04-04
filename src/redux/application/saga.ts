@@ -1,7 +1,6 @@
 import { Application, Window } from '@giantmachines/redux-openfin';
 import { all, call, delay, put, select, take, takeEvery, takeLatest, takeLeading } from 'redux-saga/effects';
 
-import windowsConfig, { initOnStartWindows } from '../../config/windows';
 import ApiService from '../../services/ApiService';
 import { ApiResponseStatus } from '../../types/enums';
 import { UnPromisfy } from '../../types/utils';
@@ -14,12 +13,12 @@ import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv } from '../../u
 import { setupWindow } from '../../utils/setupWindow';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList } from '../apps';
-import { registerGlobalDevHotKeys, registerGlobalHotkeys } from '../globalHotkeys/utils';
+import { registerGlobalDevHotKeys } from '../globalHotkeys/utils';
 import { getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig } from '../me';
+import { loginFlow } from '../me/utils';
 import { getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings } from '../selectors';
 import { setupSystemHandlers } from '../system';
 import { getErrorFromCatch } from '../utils';
-import { launchWindow } from '../windows';
 import {
   applicationStarted,
   collapseApp,
@@ -37,7 +36,7 @@ import {
   updateManifestOverride,
 } from './actions';
 import { getApplicationIsExpanded, getApplicationManifestOverride } from './selectors';
-import { executeAutoHideBehavior, initManifest, initMonitorInfo, initOrgSettings, initResources, initRuntimeVersion } from './utils';
+import { executeAutoHideBehavior, initManifest, initMonitorInfo, initOrgSettings, initRuntimeVersion } from './utils';
 
 const APP_UUID = getAppUuid();
 const ANIMATION_DURATION = 285;
@@ -86,9 +85,6 @@ function* watchInitDevTools() {
 
 function* watchLaunchAppLauncher() {
   try {
-    // Register global hotkeys
-    registerGlobalHotkeys(window.store.dispatch);
-
     // Wait for a full rebound to come through as either error or success before continuing execution
     yield all([
       take([reboundLauncher.failure.toString(), reboundLauncher.success.toString()]),
@@ -96,12 +92,9 @@ function* watchLaunchAppLauncher() {
     ]);
 
     // When all done show main app bar
-    const { fin } = window;
-    if (fin) {
-      // Delay helps with the dom shuffling and initial animations
-      yield delay(150);
-      yield put(Window.showWindow({ id: APP_UUID }));
-    }
+    // Delay helps with the dom shuffling and initial animations
+    yield delay(150);
+    yield put(Window.showWindow({ id: APP_UUID }));
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
@@ -142,19 +135,7 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
       const isEnterprise = isEnterpriseEnv();
       yield put(setIsEnterprise(isEnterprise));
 
-      // Launch all windows on init, windows are hidden by default unless they have autoShow: true
-      // TODO - block until all windows are created and move to post login
-      yield all(Object.keys(initOnStartWindows).map(window => put(launchWindow(initOnStartWindows[window]))));
-
-      if (isEnterprise && !isLoggedIn) {
-        // Show Login
-        yield put(launchWindow(windowsConfig.login));
-      } else {
-        yield call(initResources);
-
-        // Show Launcher
-        yield put(launchAppLauncher());
-      }
+      yield call(loginFlow, isLoggedIn || !isEnterprise);
     }
 
     // Add window specific setup

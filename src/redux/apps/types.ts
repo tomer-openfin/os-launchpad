@@ -1,6 +1,6 @@
 import { App, AppStatusOrigins, AppStatusStates } from '../../types/commons';
 import { ActionsUnion } from '../types';
-import { closeFinApp, getAppDirectoryList, openFinApp, setFinAppStatusState } from './actions';
+import { closeFinApp, getAppDirectoryList, openFinApp, resetAppDirectoryList, setFinAppStatusState } from './actions';
 
 // Reducer
 export interface AppsById {
@@ -51,6 +51,7 @@ export interface OpenFinAppSuccessPayload {
 // Actions
 export type AppsActions =
   | ActionsUnion<typeof closeFinApp>
-  | ActionsUnion<typeof openFinApp>
   | ActionsUnion<typeof getAppDirectoryList>
+  | ActionsUnion<typeof openFinApp>
+  | ReturnType<typeof resetAppDirectoryList>
   | ReturnType<typeof setFinAppStatusState>;

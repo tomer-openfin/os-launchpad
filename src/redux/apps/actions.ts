@@ -15,6 +15,8 @@ const GET_APP_DIRECTORY_LIST_SUCCESS = 'GET_APP_DIRECTORY_LIST_SUCCESS';
 const OPEN_FIN_APP_FAILURE = 'OPEN_FIN_APP_FAILURE';
 const OPEN_FIN_APP_REQUEST = 'OPEN_FIN_APP_REQUEST';
 const OPEN_FIN_APP_SUCCESS = 'OPEN_FIN_APP_SUCCESS';
+// RESET_APP_DIRECTORY_LIST
+const RESET_APP_DIRECTORY_LIST = 'RESET_APP_DIRECTORY_LIST';
 // SET_FIN_APP_STATUS_STATE
 const SET_FIN_APP_STATUS_STATE = 'SET_FIN_APP_STATUS_STATE';
 
@@ -30,4 +32,5 @@ export const getAppDirectoryList = createAsyncActionCreators(GET_APP_DIRECTORY_L
   Error
 >();
 export const openFinApp = createAsyncActionCreators(OPEN_FIN_APP_REQUEST, OPEN_FIN_APP_SUCCESS, OPEN_FIN_APP_FAILURE)<App, OpenFinAppSuccessPayload, Error>();
+export const resetAppDirectoryList = createAction(RESET_APP_DIRECTORY_LIST)();
 export const setFinAppStatusState = createAction(SET_FIN_APP_STATUS_STATE)<FinAppStatusStatePayload>();

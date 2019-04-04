@@ -2,6 +2,7 @@ import {
   fetchManifest,
   getManifest,
   getManifestOverride,
+  resetApplicationUi,
   setIsDragAndDrop,
   setIsDrawerExpanded,
   setIsEnterprise,
@@ -10,6 +11,12 @@ import {
   updateManifestOverride,
 } from './actions';
 import { ApplicationActions, ApplicationState, Manifest } from './types';
+
+export const defaultUiState = {
+  isDragAndDrop: false,
+  isDrawerExpanded: false,
+  isExpanded: false,
+};
 
 const emptyManifest: Manifest = {
   shortcut: {
@@ -22,10 +29,8 @@ const emptyManifest: Manifest = {
 };
 
 const defaultState: ApplicationState = {
-  isDragAndDrop: false,
-  isDrawerExpanded: false,
+  ...defaultUiState,
   isEnterprise: false,
-  isExpanded: false,
   manifest: emptyManifest,
   manifestOverride: {},
   runtimeVersion: '',
@@ -45,6 +50,12 @@ export default (state: ApplicationState = defaultState, action: ApplicationActio
       return {
         ...state,
         manifestOverride: action.payload,
+      };
+    }
+    case resetApplicationUi.toString(): {
+      return {
+        ...state,
+        ...defaultUiState,
       };
     }
     case setIsEnterprise.toString(): {

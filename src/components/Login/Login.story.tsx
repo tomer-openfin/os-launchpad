@@ -19,4 +19,9 @@ storiesOf(`${CATEGORIES.COMPONENTS}Login`, module)
 
     return <LoginView closeApplication={closeApplication} error={error} handleError={handleError} message={message} session="" stage={stage} username="" />;
   })
-  .add('withStages', () => <Login closeApplication={closeApplication} />);
+  .add('withStages', () => {
+    const message = text('message', '');
+    const error = boolean('error', false);
+
+    return <Login closeApplication={closeApplication} error={error} message={message} />;
+  });

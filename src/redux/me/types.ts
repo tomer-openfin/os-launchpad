@@ -6,8 +6,10 @@ import {
   login,
   logout,
   removeFromAppLauncher,
+  resetSettings,
   saveSettings,
   setAppIds,
+  setAuthMessaging,
   setAutoHide,
   setLauncherMonitorSettings,
   setLauncherPosition,
@@ -27,6 +29,11 @@ export interface MeInfo {
   lastName: string;
 }
 
+export interface MeAuthMessagingState {
+  message: string;
+  isError: boolean;
+}
+
 export interface MeSettingsState {
   appIds: string[];
   autoHide: boolean;
@@ -38,6 +45,7 @@ export interface MeSettingsState {
 
 // Reducer
 export interface MeState extends MeInfo {
+  authMessaging: MeAuthMessagingState;
   settings: MeSettingsState;
 }
 
@@ -120,18 +128,20 @@ export interface UpdatePasswordErrorPayload {
 
 // Actions
 export type MeActions =
-  | ReturnType<typeof addToAppLauncher>
   | ActionsUnion<typeof confirmPassword>
   | ActionsUnion<typeof forgotPassword>
   | ActionsUnion<typeof getSettings>
   | ActionsUnion<typeof login>
   | ActionsUnion<typeof logout>
-  | ReturnType<typeof removeFromAppLauncher>
   | ActionsUnion<typeof saveSettings>
+  | ActionsUnion<typeof updatePassword>
+  | ReturnType<typeof addToAppLauncher>
+  | ReturnType<typeof removeFromAppLauncher>
+  | ReturnType<typeof resetSettings>
   | ReturnType<typeof setAppIds>
+  | ReturnType<typeof setAuthMessaging>
   | ReturnType<typeof setAutoHide>
   | ReturnType<typeof setLauncherMonitorSettings>
   | ReturnType<typeof setLauncherPosition>
   | ReturnType<typeof setLauncherSize>
-  | ReturnType<typeof setMe>
-  | ActionsUnion<typeof updatePassword>;
+  | ReturnType<typeof setMe>;

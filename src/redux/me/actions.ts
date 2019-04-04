@@ -6,6 +6,7 @@ import {
   LoginErrorPayload,
   LoginRequestPayload,
   LoginSuccessPayload,
+  MeAuthMessagingState,
   MeSettingsState,
   SetAppIdsPayload,
   SetAutoHidePayload,
@@ -18,12 +19,14 @@ import {
 // Action Types
 const ADD_TO_APP_LAUNCHER = 'ADD_TO_APP_LAUNCHER';
 const REMOVE_FROM_APP_LAUNCHER = 'REMOVE_FROM_APP_LAUNCHER';
+const RESET_SETTINGS = 'RESET_SETTINGS';
 const SET_APP_IDS = 'SET_APP_IDS';
 const SET_AUTO_HIDE = 'SET_AUTO_HIDE';
 const SET_LAUNCHER_MONITOR_SETTINGS = 'SET_LAUNCHER_MONITOR_SETTINGS';
 const SET_LAUNCHER_POSITION = 'SET_LAUNCHER_POSITION';
 const SET_LAUNCHER_SIZE = 'SET_LAUNCHER_SIZE';
 const SET_ME = 'SET_ME';
+const SET_AUTH_MESSAGING = 'SET_AUTH_MESSAGING';
 // LOGIN
 const LOGIN_REQUEST = 'LOGIN_REQUEST';
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -56,12 +59,14 @@ const UPDATE_PASSWORD_FAILURE = 'UPDATE_PASSWORD_FAILURE';
 // Action Creators
 export const addToAppLauncher = createAction(ADD_TO_APP_LAUNCHER)<string>();
 export const removeFromAppLauncher = createAction(REMOVE_FROM_APP_LAUNCHER)<string>();
+export const resetSettings = createAction(RESET_SETTINGS)();
 export const setAppIds = createAction(SET_APP_IDS)<SetAppIdsPayload>();
 export const setAutoHide = createAction(SET_AUTO_HIDE)<SetAutoHidePayload>();
 export const setLauncherMonitorSettings = createAction(SET_LAUNCHER_MONITOR_SETTINGS)<MonitorDetails>();
 export const setLauncherPosition = createAction(SET_LAUNCHER_POSITION)<SetLauncherPositionPayload>();
 export const setLauncherSize = createAction(SET_LAUNCHER_SIZE)<SetLauncherSizePayload>();
 export const setMe = createAction(SET_ME)<SetMePayload>();
+export const setAuthMessaging = createAction(SET_AUTH_MESSAGING)<MeAuthMessagingState>();
 
 export const login = createAsyncActionCreators(LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE)<
   LoginRequestPayload,
@@ -69,7 +74,12 @@ export const login = createAsyncActionCreators(LOGIN_REQUEST, LOGIN_SUCCESS, LOG
   Error,
   { onFailure: (error: Error, errorPayload: LoginErrorPayload) => void }
 >();
-export const logout = createAsyncActionCreators(LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE)<void, void, Error>();
+
+export const logout = createAsyncActionCreators(LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE)<
+  MeAuthMessagingState | void,
+  MeAuthMessagingState | void,
+  Error
+>();
 export const confirmPassword = createAsyncActionCreators(CONFIRM_PASSWORD_REQUEST, CONFIRM_PASSWORD_SUCCESS, CONFIRM_PASSWORD_FAILURE)<
   ConfirmPasswordPayload,
   void,

@@ -1,6 +1,16 @@
 import { UserLayout } from '../../types/commons';
 import { ActionsUnion } from '../types';
-import { createLayout, deleteLayout, dismissUndoUpdateLayout, getLayouts, restoreLayout, saveLayout, undoUpdateLayout, updateLayout } from './actions';
+import {
+  createLayout,
+  deleteLayout,
+  dismissUndoUpdateLayout,
+  getLayouts,
+  resetLayouts,
+  restoreLayout,
+  saveLayout,
+  undoUpdateLayout,
+  updateLayout,
+} from './actions';
 
 // State
 export interface LayoutsState {
@@ -33,4 +43,5 @@ export type LayoutsActions =
   | ActionsUnion<typeof undoUpdateLayout>
   | ActionsUnion<typeof updateLayout>
   | ActionsUnion<typeof deleteLayout>
-  | ActionsUnion<typeof saveLayout>;
+  | ActionsUnion<typeof saveLayout>
+  | ReturnType<typeof resetLayouts>;
