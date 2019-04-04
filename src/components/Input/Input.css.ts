@@ -5,7 +5,7 @@ import { Color, hexToRgba, Typography } from '../../styles';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   hasError?: boolean;
-  htmlInputRef?: React.RefObject<HTMLInputElement>;
+  ref?: React.RefObject<HTMLInputElement>;
 }
 
 export default styled.input<InputProps>`

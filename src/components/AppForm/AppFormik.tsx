@@ -1,13 +1,14 @@
 import { Formik, FormikActions, FormikProps } from 'formik';
 import * as React from 'react';
 
-import AppForm, { Values } from './AppForm';
+import AppForm, { ManifestType, Values } from './AppForm';
 import { validationSchema } from './utils';
 
 interface Props {
   className?: string;
-  handleSubmitValues: (values: Values) => Promise<void>;
+  focusFieldOnInitialMount?: boolean;
   handleCancel: () => void;
+  handleSubmitValues: (values: Values) => Promise<void>;
   initialValues?: Values;
 }
 
@@ -18,13 +19,12 @@ const defaultInitialValues: Values = {
   description: '',
   icon: '',
   id: '',
-  manifestType: 'appUrl',
+  manifestType: ManifestType.AppUrl,
   name: '',
   title: '',
   url: '',
 };
 
-// todo (js): use generic for submit vals, move to utils
 const handleFormikSubmit = (handleSubmitValues: Props['handleSubmitValues']) => async (values: Values, actions: FormikActions<Values>) => {
   actions.setSubmitting(true);
 
@@ -33,7 +33,7 @@ const handleFormikSubmit = (handleSubmitValues: Props['handleSubmitValues']) => 
   actions.setSubmitting(false);
 };
 
-const renderForm = (handleCancel: Props['handleCancel'], className?: string) => (props: FormikProps<Values>) => {
+const renderForm = (handleCancel: Props['handleCancel'], focusFieldOnInitialMount?: boolean, className?: string) => (props: FormikProps<Values>) => {
   const { errors, handleBlur, handleChange, handleSubmit, isSubmitting, isValid, setFieldValue, touched, values } = props;
 
   return (
@@ -44,6 +44,7 @@ const renderForm = (handleCancel: Props['handleCancel'], className?: string) => 
       handleCancel={handleCancel}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
+      focusFieldOnInitialMount={focusFieldOnInitialMount}
       isSubmitting={isSubmitting}
       isValid={isValid}
       setFieldValue={setFieldValue}
@@ -53,11 +54,11 @@ const renderForm = (handleCancel: Props['handleCancel'], className?: string) => 
   );
 };
 
-const AppFormik = ({ className, handleSubmitValues, handleCancel, initialValues }: Props) => (
+const AppFormik = ({ className, handleSubmitValues, handleCancel, initialValues, focusFieldOnInitialMount }: Props) => (
   <Formik
     initialValues={initialValues || defaultInitialValues}
     onSubmit={handleFormikSubmit(handleSubmitValues)}
-    render={renderForm(handleCancel, className)}
+    render={renderForm(handleCancel, focusFieldOnInitialMount, className)}
     validationSchema={validationSchema}
   />
 );

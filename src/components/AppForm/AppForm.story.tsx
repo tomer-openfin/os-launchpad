@@ -6,7 +6,7 @@ import * as React from 'react';
 import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import AppForm, { Values } from './AppForm';
+import AppForm, { ManifestType, Values } from './AppForm';
 import AppFormik from './AppFormik';
 
 const handleCancel = action('handleCancel');
@@ -24,7 +24,7 @@ storiesOf(`${CATEGORIES.ADMIN}AppForm`, module)
     const descriptionTouched = boolean('descriptionTouched', false);
     const isSubmitting = boolean('isSubmitting', false);
     const isValid = boolean('isValid', false);
-    const manifestType = select('manifestType', { manifest: 'manifest', appURL: 'appUrl' }, 'appUrl');
+    const manifestType = select('manifestType', Object(ManifestType), ManifestType.AppUrl);
     const name = text('name', '');
     const nameError = text('nameError', '');
     const nameTouched = boolean('nameTouched', false);

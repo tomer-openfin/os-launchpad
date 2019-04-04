@@ -5,7 +5,7 @@ import { App, DispatchRequest } from '../../types/commons';
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
 
 import { CREATE_MANIFEST_BASE } from '../../services/ApiService/api';
-import { createAppManifestUrl, Values } from '../AppForm';
+import { createAppManifestUrl, ManifestType, Values } from '../AppForm';
 
 import AppFormik from '../AppForm/AppFormik';
 import FormWindow from '../FormWindow';
@@ -64,7 +64,7 @@ class EditAppWindow extends React.Component<Props> {
       description,
       icon,
       id,
-      manifestType: 'appUrl',
+      manifestType: ManifestType.AppUrl,
       name,
       title,
       url: initialAppUrl || '',
@@ -78,7 +78,7 @@ class EditAppWindow extends React.Component<Props> {
         handleDeleteIconClick={handleDelete}
         message={`There was an error trying to update ${title}: ${responseMessage} Please try again.`}
       >
-        <AppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={initialValues} />
+        <AppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={initialValues} focusFieldOnInitialMount={false} />
       </FormWindow>
     );
   }

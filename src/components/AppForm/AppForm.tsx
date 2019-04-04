@@ -7,7 +7,7 @@ import * as EditIcon from '../../assets/Edit.svg';
 import { renderError } from '../../utils/renderError';
 import { IconPreviewMeta, IconPreviewMetaWrapper, IconPreviewWrapper, StyledForm, StyledLabel, StyledRow } from './AppForm.css';
 
-import CheckboxInArray from '../CheckboxInArray';
+// import CheckboxInArray from '../CheckboxInArray';
 import FormFooter from '../FormFooter';
 import ImagePreview from '../ImagePreview';
 import ImageUpload from '../ImageUpload';
@@ -15,7 +15,7 @@ import Input from '../Input';
 import Label from '../Label';
 import Modal from '../Modal';
 import RadioOption from '../RadioOption';
-import ScrollGrid, { CheckboxWrapper, RowWrapper } from '../Responsive';
+import ScrollGrid, { /* CheckboxWrapper, */ RowWrapper } from '../Responsive';
 import SvgIcon from '../SvgIcon';
 import TextArea from '../TextArea';
 
@@ -43,11 +43,11 @@ interface Errors {
   url?: string;
 }
 
-// enum ManifestType {
-//   AppUrl = 'appUrl',
-//   Manifest = 'manifest',
-//   Path = 'path',
-// }
+export enum ManifestType {
+  AppUrl = 'appUrl',
+  Manifest = 'manifest',
+  Path = 'path',
+}
 
 export interface Values {
   // contexts: Array<{ $type: string }>;
@@ -56,7 +56,7 @@ export interface Values {
   description: string;
   icon: string;
   id: string;
-  manifestType: 'manifest' | 'appUrl' | 'path';
+  manifestType: ManifestType;
   name: string;
   title: string;
   url: string;
@@ -100,20 +100,19 @@ class AppForm extends React.Component<Props, State> {
     }
   }
 
-  // TODO: add focusing back in?
+  componentDidUpdate(prevProps: Props) {
+    const {
+      values: { manifestType: oldManifestType },
+    } = prevProps;
 
-  // componentDidUpdate(prevProps: Props) {
-  //   const { values: newValues } = this.props;
-  //   const { withAppUrl: newWithAppUrl } = newValues;
+    const {
+      values: { manifestType: newManifestType },
+    } = this.props;
 
-  //   const { values: oldValues } = prevProps;
-  //   const { withAppUrl: oldWithAppUrl } = oldValues;
-
-  //   // focus inputField when Radio input is toggled
-  //   if (newWithAppUrl !== oldWithAppUrl) {
-  //     this.focusInputField();
-  //   }
-  // }
+    if (newManifestType !== oldManifestType) {
+      this.focusInputField();
+    }
+  }
 
   focusInputField = () => {
     if (this.inputField.current) {
@@ -124,7 +123,6 @@ class AppForm extends React.Component<Props, State> {
   handleOpenIconForm = () => this.setState({ iconFormOpen: true });
   handleCloseIconForm = () => this.setState({ iconFormOpen: false });
 
-  // todo: come back and fix
   saveImage = (setFieldValue: SetFieldValue) => (imgSrc: string) => {
     setFieldValue('icon', imgSrc);
 
@@ -165,7 +163,7 @@ class AppForm extends React.Component<Props, State> {
                 label="App URL"
                 optionName="manifestType"
                 selectedOption={values.manifestType}
-                option="appUrl"
+                option={ManifestType.AppUrl}
                 onBlur={handleBlur}
                 onChange={handleChange}
               />
@@ -174,22 +172,21 @@ class AppForm extends React.Component<Props, State> {
                 label="Manifest"
                 optionName="manifestType"
                 selectedOption={values.manifestType}
-                option="manifest"
+                option={ManifestType.Manifest}
                 onBlur={handleBlur}
                 onChange={handleChange}
               />
             </StyledLabel>
 
-            <Label label={values.manifestType === 'appUrl' ? 'App URL' : 'Manifest URL'} renderError={renderError(errors.url, touched.url)}>
-              {/* todo: verify htmlInputRef behavior works the same as before */}
+            <Label label={values.manifestType === ManifestType.AppUrl ? 'App URL' : 'Manifest URL'} renderError={renderError(errors.url, touched.url)}>
               <Input
                 hasError={!!errors.url && touched.url}
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.url}
                 name="url"
-                placeholder={`Enter ${values.manifestType === 'appUrl' ? 'app' : 'manifest'} url`}
-                htmlInputRef={this.inputField}
+                placeholder={`Enter ${values.manifestType === ManifestType.AppUrl ? 'app' : 'manifest'} url`}
+                ref={this.inputField}
               />
             </Label>
           </StyledRow>
@@ -206,7 +203,6 @@ class AppForm extends React.Component<Props, State> {
           </Label>
 
           <RowWrapper firstElementWidth="100px" height="144px">
-            {/* todo: have StyledLabel (differs from default styling) */}
             <Label label="App Shortcut">
               <IconPreviewWrapper>
                 <ImagePreview imgSrc={values.icon || ''} size={68} />
@@ -220,7 +216,6 @@ class AppForm extends React.Component<Props, State> {
             </Label>
 
             <Label label="Description" renderError={renderError(errors.description, touched.description)}>
-              {/* todo: merge in develop and use TextArea component */}
               <TextArea
                 hasError={!!errors.description && touched.description}
                 height={118}
