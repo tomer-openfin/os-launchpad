@@ -22,7 +22,6 @@ import '../src/components/Logo/Logo.story';
 import '../src/components/MessageBanner/MessageBanner.story';
 import '../src/components/RadioButton/RadioButton.story';
 import '../src/components/RadioOption/RadioOption.story';
-import '../src/components/RadioToggle/RadioToggle.story';
 import '../src/components/Responsive/ScrollGrid.story';
 import '../src/components/SearchInput/SearchInput.story';
 import '../src/components/SvgIcon/SvgIcon.story';
