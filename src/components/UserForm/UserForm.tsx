@@ -169,7 +169,7 @@ class UserForm extends React.Component<Props, State> {
 
               <PasswordIconWrapper>
                 <SvgIcon
-                  color={isPasswordShown ? Color.URANUS : Color.COMET}
+                  color={isPasswordShown ? Color.MOON : Color.MERCURY}
                   hoverColor={Color.JUPITER}
                   onClick={this.togglePasswordFieldType}
                   imgSrc={passwordIcon}
