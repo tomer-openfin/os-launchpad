@@ -10,6 +10,7 @@ import Input from '../Input/index';
 import Label from '../Label/Label';
 import ScrollGrid, { Form, PasswordIconWrapper, RowWrapper } from '../Responsive';
 import SvgIcon from '../SvgIcon';
+import { StyledRowWrapper } from './UserForm.css';
 
 interface Touched {
   email?: boolean;
@@ -74,7 +75,7 @@ class UserForm extends React.Component<Props, State> {
     return (
       <Form className={className} onSubmit={handleSubmit}>
         <ScrollGrid>
-          <RowWrapper secondElementWidth="55px">
+          <StyledRowWrapper secondElementWidth="55px">
             <Label label="First Name" renderError={renderError(errors.firstName, touched.firstName)}>
               <Input
                 hasError={!!errors.firstName && touched.firstName}
@@ -95,7 +96,7 @@ class UserForm extends React.Component<Props, State> {
                 name="middleInitial"
               />
             </Label>
-          </RowWrapper>
+          </StyledRowWrapper>
 
           <Label label="Last Name" renderError={renderError(errors.lastName, touched.lastName)}>
             <Input
@@ -105,18 +106,6 @@ class UserForm extends React.Component<Props, State> {
               value={values.lastName}
               name="lastName"
               placeholder="Enter last name"
-            />
-          </Label>
-
-          <Label label="Phone" renderError={renderError(errors.phone, touched.phone)}>
-            <Input
-              hasError={!!errors.phone && touched.phone}
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.phone}
-              name="phone"
-              placeholder="Enter phone number"
-              maxLength={10}
             />
           </Label>
 
@@ -130,6 +119,18 @@ class UserForm extends React.Component<Props, State> {
               placeholder="Enter email"
               type="email"
               disabled={!withPasswordField}
+            />
+          </Label>
+
+          <Label label="Phone Number" renderError={renderError(errors.phone, touched.phone)}>
+            <Input
+              hasError={!!errors.phone && touched.phone}
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={values.phone}
+              name="phone"
+              placeholder="Enter phone number"
+              maxLength={10}
             />
           </Label>
 
