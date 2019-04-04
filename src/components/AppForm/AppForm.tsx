@@ -17,6 +17,7 @@ import Modal from '../Modal';
 import RadioOption from '../RadioOption';
 import ScrollGrid, { CheckboxWrapper, RowWrapper } from '../Responsive';
 import SvgIcon from '../SvgIcon';
+import TextArea from '../TextArea';
 
 interface Touched {
   // contexts?: boolean;
@@ -220,13 +221,15 @@ class AppForm extends React.Component<Props, State> {
 
             <Label label="Description" renderError={renderError(errors.description, touched.description)}>
               {/* todo: merge in develop and use TextArea component */}
-              <Input
+              <TextArea
                 hasError={!!errors.description && touched.description}
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.description}
                 name="description"
                 placeholder="Enter description"
+                height={118}
+                width="100%"
               />
             </Label>
           </RowWrapper>
