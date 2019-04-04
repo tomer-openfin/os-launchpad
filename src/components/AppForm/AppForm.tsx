@@ -5,7 +5,7 @@ import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../samples/FDC3';
 import * as EditIcon from '../../assets/Edit.svg';
 
 import { renderError } from '../../utils/renderError';
-import { IconPreviewMeta, IconPreviewMetaWrapper, IconPreviewWrapper, StyledForm } from './AppForm.css';
+import { IconPreviewMeta, IconPreviewMetaWrapper, IconPreviewWrapper, StyledForm, StyledLabel, StyledRow } from './AppForm.css';
 
 import CheckboxInArray from '../CheckboxInArray';
 import FormFooter from '../FormFooter';
@@ -158,8 +158,8 @@ class AppForm extends React.Component<Props, State> {
     return (
       <StyledForm className={className} onSubmit={handleSubmit}>
         <ScrollGrid>
-          <RowWrapper firstElementWidth="100px">
-            <Label label="Config Type">
+          <StyledRow firstElementWidth="100px">
+            <StyledLabel label="Config Type">
               <RadioOption
                 label="App URL"
                 optionName="manifestType"
@@ -177,7 +177,7 @@ class AppForm extends React.Component<Props, State> {
                 onBlur={handleBlur}
                 onChange={handleChange}
               />
-            </Label>
+            </StyledLabel>
 
             <Label label={values.manifestType === 'appUrl' ? 'App URL' : 'Manifest URL'} renderError={renderError(errors.url, touched.url)}>
               {/* todo: verify htmlInputRef behavior works the same as before */}
@@ -191,7 +191,7 @@ class AppForm extends React.Component<Props, State> {
                 htmlInputRef={this.inputField}
               />
             </Label>
-          </RowWrapper>
+          </StyledRow>
 
           <Label label="App Title" renderError={renderError(errors.title, touched.title)}>
             <Input

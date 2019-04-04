@@ -1,7 +1,17 @@
 import styled from 'styled-components';
 
 import { Color, Typography } from '../../styles';
-import { Form, GridWrapper } from '../Responsive';
+
+import Label from '../Label';
+import { Form, GridWrapper, RowWrapper } from '../Responsive';
+
+export const StyledLabel = styled(Label)`
+  margin: auto 0;
+`;
+
+export const StyledRow = styled(RowWrapper)`
+  grid-template-rows: 1fr;
+`;
 
 export const IconPreviewWrapper = styled.div`
   display: block;
@@ -24,6 +34,6 @@ export const IconPreviewMeta = styled.div`
 
 export const StyledForm = styled(Form)`
   ${GridWrapper} {
-    grid-row-gap: 28px;
+    grid-row-gap: 23px;
   }
 `;
