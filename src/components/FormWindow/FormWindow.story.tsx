@@ -18,6 +18,7 @@ const emptyUser: User = {
   email: '',
   firstName: '',
   id: '',
+  isAdmin: false,
   lastName: '',
   middleInitial: '',
   phone: '',

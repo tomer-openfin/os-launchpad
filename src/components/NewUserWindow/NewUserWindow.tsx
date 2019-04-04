@@ -18,6 +18,7 @@ const emptyUser: User = {
   email: '',
   firstName: '',
   id: '',
+  isAdmin: false,
   lastName: '',
   middleInitial: '',
   phone: '',
@@ -30,8 +31,7 @@ class NewUserWindow extends React.Component<Props> {
     const { createUser, handleSuccess, onResponseError, onResponseSuccess } = this.props;
 
     // default to +1 for country code for now
-    const newUser = { ...formData, phone: `+1${formData.phone}` };
-
+    const newUser = { ...formData, isAdmin: !!formData.isAdmin, phone: `+1${formData.phone}` };
     return new Promise(resolve => {
       createUser(newUser, {
         onFailure: onResponseError(resolve),

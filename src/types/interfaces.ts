@@ -78,6 +78,7 @@ export interface Point {
 export interface User {
   email: string;
   firstName: string;
+  isAdmin: boolean;
   lastName: string;
   middleInitial?: string;
   tmpPassword?: string;
@@ -87,7 +88,6 @@ export interface User {
   readonly enabled?: boolean;
   readonly id: string;
   readonly lastModified?: string;
-  readonly isAdmin?: boolean; // modified on BE only
   readonly status?: UserStatus;
   readonly username: string;
 }

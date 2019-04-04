@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import * as AdminIcon from '../../assets/Admin.svg';
 import * as passwordIcon from '../../assets/Eye.svg';
 
 import { Color } from '../../styles';
@@ -8,13 +9,14 @@ import { renderError } from '../../utils/renderError';
 import FormFooter from '../FormFooter';
 import Input from '../Input/index';
 import Label from '../Label/Label';
-import ScrollGrid, { Form, PasswordIconWrapper, RowWrapper } from '../Responsive';
+import ScrollGrid, { Form, PasswordIconWrapper } from '../Responsive';
 import SvgIcon from '../SvgIcon';
-import { StyledRowWrapper } from './UserForm.css';
+import { Group, Heading, Row, StyledRadioButton, StyledRowWrapper } from './UserForm.css';
 
 interface Touched {
   email?: boolean;
   firstName?: boolean;
+  isAdmin?: boolean;
   lastName?: boolean;
   middleInitial?: boolean;
   phone?: boolean;
@@ -24,6 +26,7 @@ interface Touched {
 interface Errors {
   email?: string;
   firstName?: string;
+  isAdmin?: string;
   lastName?: string;
   middleInitial?: string;
   phone?: string;
@@ -33,11 +36,12 @@ interface Errors {
 export interface Values {
   email: string;
   firstName: string;
+  id: string;
+  isAdmin: boolean;
   lastName: string;
   middleInitial?: string;
   phone: string;
   tmpPassword?: string;
-  id: string;
   username: string;
 }
 
@@ -121,18 +125,35 @@ class UserForm extends React.Component<Props, State> {
               disabled={!withPasswordField}
             />
           </Label>
+          <StyledRowWrapper secondElementWidth="93px">
+            <Label label="Phone Number" renderError={renderError(errors.phone, touched.phone)}>
+              <Input
+                hasError={!!errors.phone && touched.phone}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.phone}
+                name="phone"
+                placeholder="Enter phone number"
+                maxLength={10}
+              />
+            </Label>
 
-          <Label label="Phone Number" renderError={renderError(errors.phone, touched.phone)}>
-            <Input
-              hasError={!!errors.phone && touched.phone}
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.phone}
-              name="phone"
-              placeholder="Enter phone number"
-              maxLength={10}
-            />
-          </Label>
+            <Group>
+              <Heading>
+                Is Admin <SvgIcon color={Color.JUPITER} imgSrc={AdminIcon} size={26} />
+              </Heading>
+
+              <Row>
+                <StyledRadioButton onChange={handleChange} checked={!!values.isAdmin} name="isAdmin" value="true">
+                  Yes
+                </StyledRadioButton>
+
+                <StyledRadioButton onChange={handleChange} checked={!values.isAdmin} name="isAdmin" value="">
+                  No
+                </StyledRadioButton>
+              </Row>
+            </Group>
+          </StyledRowWrapper>
 
           {withPasswordField && (
             <Label label="Password" renderError={renderError(errors.tmpPassword, touched.tmpPassword)}>

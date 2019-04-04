@@ -47,6 +47,7 @@ storiesOf(`${CATEGORIES.ADMIN}UserForm`, module)
       email,
       firstName,
       id: '',
+      isAdmin: false,
       lastName,
       middleInitial,
       phone,

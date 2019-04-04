@@ -17,6 +17,7 @@ const defaultInitialValues: Values = {
   email: '',
   firstName: '',
   id: '',
+  isAdmin: false,
   lastName: '',
   middleInitial: '',
   phone: '',
@@ -24,7 +25,6 @@ const defaultInitialValues: Values = {
   username: '',
 };
 
-// todo (js): use generic for submit vals, move to utils
 const handleFormikSubmit = (handleSubmitValues: Props['handleSubmitValues']) => async (values: Values, actions: FormikActions<Values>) => {
   actions.setSubmitting(true);
 
