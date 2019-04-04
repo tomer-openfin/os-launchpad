@@ -15,7 +15,7 @@ import UserCard from './UserCard';
 
 const userStatuses = {
   'Change Password': UserStatus.ChangePassword,
-  "Confirmed": UserStatus.Confirmed,
+  'Confirmed': UserStatus.Confirmed,
 };
 
 const renderButtons = user => {
