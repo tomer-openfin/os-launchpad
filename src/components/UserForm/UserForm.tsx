@@ -7,8 +7,8 @@ import { Color } from '../../styles';
 import { renderError } from '../../utils/renderError';
 
 import FormFooter from '../FormFooter';
-import Input from '../Input/index';
-import Label from '../Label/Label';
+import Input from '../Input';
+import Label from '../Label';
 import ScrollGrid, { Form, PasswordIconWrapper } from '../Responsive';
 import SvgIcon from '../SvgIcon';
 import { Group, Heading, Row, StyledRadioButton, StyledRowWrapper } from './UserForm.css';

@@ -3,7 +3,7 @@ import * as React from 'react';
 import ErrorMessage from '../ErrorMessage';
 import Input from '../Input';
 import Label from '../Label';
-import Loading from '../Loading/index';
+import Loading from '../Loading';
 import { Form, IntroMessage, StyledButton } from './ForgotPasswordChangeForm.css';
 
 interface Errors {

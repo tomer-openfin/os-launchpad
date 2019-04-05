@@ -2,7 +2,7 @@ import { Application } from '@giantmachines/redux-openfin';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { getMeAuthIsError, getMeAuthMessage } from '../../redux/me/index';
+import { getMeAuthIsError, getMeAuthMessage } from '../../redux/me';
 import { State } from '../../redux/types';
 
 import Login from './Login';

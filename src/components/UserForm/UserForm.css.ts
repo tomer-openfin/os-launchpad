@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { Color, Typography } from '../../styles/index';
-import RadioButton from '../RadioButton/index';
-import { RowWrapper } from '../Responsive/index';
+
+import { Color, Typography } from '../../styles';
+import RadioButton from '../RadioButton';
+import { RowWrapper } from '../Responsive';
 
 export const StyledRowWrapper = styled(RowWrapper)`
   margin-bottom: 20px;

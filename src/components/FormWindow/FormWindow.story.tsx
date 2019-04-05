@@ -4,11 +4,10 @@ import { forceReRender, storiesOf } from '@storybook/react';
 import * as React from 'react';
 
 import { User } from '../../types/commons';
-
 import { CATEGORIES } from '../../utils/storyCategories';
+import { ManifestType } from '../AppForm';
 
 import AppFormik from '../AppForm/AppFormik';
-import { ManifestType } from '../AppForm/index';
 import UserFormik, { newUserSchema } from '../UserForm';
 import FormWindow from './FormWindow';
 

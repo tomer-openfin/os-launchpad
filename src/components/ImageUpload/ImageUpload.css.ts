@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Color } from '../../styles/index';
+import { Color } from '../../styles';
 
 export const Wrapper = styled.div<{ height?: string; width?: string }>`
   background-color: ${Color.ASTEROID_BELT};

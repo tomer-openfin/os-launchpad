@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import * as GridPattern from '../../assets/GridPattern.svg';
 
-import { Color } from '../../styles/index';
+import { Color } from '../../styles';
 import { Props } from './ImagePreview';
 
 export const LogoWrapper = styled.div<{ size: number }>`
