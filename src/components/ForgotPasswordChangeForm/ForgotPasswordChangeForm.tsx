@@ -1,10 +1,12 @@
 import * as React from 'react';
 
-import ErrorMessage from '../ErrorMessage';
+import { renderError } from '../../utils/renderError';
+
+import { Form, IntroMessage, StyledButton } from './ForgotPasswordChangeForm.css';
+
 import Input from '../Input';
 import Label from '../Label';
 import Loading from '../Loading';
-import { Form, IntroMessage, StyledButton } from './ForgotPasswordChangeForm.css';
 
 interface Errors {
   code?: string;
@@ -34,8 +36,6 @@ interface Props {
   touched: Touched;
   values: Values;
 }
-
-const renderError = (error: string | undefined, touched?: boolean) => (error && touched ? () => <ErrorMessage>{error}</ErrorMessage> : undefined);
 
 const ForgotPasswordChangeForm = ({ className, errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }: Props) => {
   return (
