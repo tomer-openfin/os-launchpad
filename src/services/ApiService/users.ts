@@ -1,43 +1,37 @@
-import { APIResponse, HTTPMethods, User } from '../../types/commons';
+import { HTTPMethods, User } from '../../types/commons';
 
 import API from './api';
-import fetchJSON from './fetchJSON';
+import { api } from './utils';
 
 /**
  * Get admin users
- *
- * @returns {Promise<User[]>}
  */
-export const getAdminUsers = (): Promise<User[]> => fetchJSON(`${API.ADMIN_USERS}`, HTTPMethods.GET);
+export const getAdminUsers = api<User[]>(API.ADMIN_USERS, HTTPMethods.GET, json => ({ data: json || [] }));
+export type GetAdminUsers = typeof getAdminUsers;
 
 /**
  * Get admin user
- *
- * @returns {Promise<User>}
  */
-export const getAdminUser = (user: User): Promise<User> => fetchJSON(`${API.ADMIN_USERS}/${user.username}`, HTTPMethods.GET);
+export const getAdminUser = (user: User) => api<User>(`${API.ADMIN_USERS}/${user.username}`, HTTPMethods.GET, json => ({ data: json.user }))();
+export type GetAdminUser = typeof getAdminUser;
 
 /**
  * Create new admin user
- *
- * @returns {Promise<APIResponse>}
  */
-export const createAdminUser = (user: User): Promise<APIResponse> => fetchJSON(`${API.ADMIN_USERS}`, HTTPMethods.POST, user);
+export const createAdminUser = api<User, User>(API.ADMIN_USERS, HTTPMethods.POST, json => ({ data: json.user }));
+export type CreateAdminUser = typeof createAdminUser;
 
 /**
  * Update an admin user
- *
- * @returns {Promise<APIResponse>}
  */
-export const updateAdminUser = (user: User): Promise<APIResponse> => {
+export const updateAdminUser = (user: User) => {
   const { email, ...restOfUser } = user;
-
-  return fetchJSON(`${API.ADMIN_USERS}/${user.username}`, HTTPMethods.PUT, restOfUser);
+  return api<User, Pick<User, Exclude<keyof User, 'email'>>>(`${API.ADMIN_USERS}/${user.username}`, HTTPMethods.PUT, json => ({ data: json.user }))(restOfUser);
 };
+export type UpdateAdminUser = typeof updateAdminUser;
 
 /**
  * Delete an admin user
- *
- * @returns {Promise<APIResponse>}
  */
-export const deleteAdminUser = (user: User): Promise<APIResponse> => fetchJSON(`${API.ADMIN_USERS}/${user.username}`, HTTPMethods.DELETE);
+export const deleteAdminUser = (user: User) => api<undefined>(`${API.ADMIN_USERS}/${user.username}`, HTTPMethods.DELETE, _ => ({ data: undefined }))();
+export type DeleteAdminUser = typeof deleteAdminUser;

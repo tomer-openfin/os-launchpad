@@ -1,12 +1,21 @@
-import { call, takeEvery } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 
-import { TOGGLE_NOTIFICATION_CENTER } from './actions';
-import { toggleNotificatonCenter } from './utils';
+import { UnPromisfy } from '../../types/utils';
+import { getErrorFromCatch } from '../utils';
+import { toggleNotificationCenter } from './actions';
+import { toggleFinNotificationCenter } from './utils';
 
-function* watchToggleNotificationCenterRequest() {
-  yield call(toggleNotificatonCenter);
+export function* watchToggleNotificationCenterRequest(action: ReturnType<typeof toggleNotificationCenter.request>) {
+  try {
+    const result: UnPromisfy<ReturnType<typeof toggleFinNotificationCenter>> = yield call(toggleFinNotificationCenter);
+
+    yield put(toggleNotificationCenter.success(result, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(toggleNotificationCenter.failure(error, action.meta));
+  }
 }
 
 export function* notificationsSaga() {
-  yield takeEvery(TOGGLE_NOTIFICATION_CENTER.REQUEST, watchToggleNotificationCenterRequest);
+  yield takeEvery(toggleNotificationCenter.request, watchToggleNotificationCenterRequest);
 }

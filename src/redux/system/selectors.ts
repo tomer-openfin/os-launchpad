@@ -3,7 +3,6 @@ import { State } from '../types';
 
 import { DirectionalCoordinates, MonitorDetails } from '../../types/commons';
 import { getCoordinatesHeight, getCoordinatesWidth } from '../../utils/coordinateHelpers';
-import { denormalizeData } from '../../utils/reduxHelpers';
 
 const getMonitorDetailsId = (monitorDetails: MonitorDetails) => monitorDetails.name || monitorDetails.deviceId;
 
@@ -46,7 +45,7 @@ export const getMonitorDetailsById = createSelector(
 
 export const getMonitorDetails = createSelector(
   [getMonitorDetailsIds, getMonitorDetailsById],
-  (monitorDetailsIds, monitorDetailsById) => denormalizeData(monitorDetailsIds, monitorDetailsById),
+  (monitorDetailsIds, monitorDetailsById) => monitorDetailsIds.map(id => monitorDetailsById[id]),
 );
 
 /**

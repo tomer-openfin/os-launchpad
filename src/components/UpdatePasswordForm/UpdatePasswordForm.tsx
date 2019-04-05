@@ -8,7 +8,7 @@ import { Wrapper } from './UpdatePasswordForm.css';
 
 import ConfirmPasswordUpdate from '../ConfirmPasswordUpdate';
 import FormWindow from '../FormWindow';
-import PasswordForm, { Values } from '../PasswordForm';
+import PasswordFormik, { Values } from '../PasswordForm';
 
 interface Props extends ResponseProps {
   handleCancel: () => void;
@@ -20,12 +20,6 @@ interface Props extends ResponseProps {
 interface State {
   showPasswordForm: boolean;
 }
-
-const initialValues: Values = {
-  confirmPassword: '',
-  newPassword: '',
-  password: '',
-};
 
 const defaultState: State = { showPasswordForm: true };
 
@@ -50,8 +44,8 @@ class UpdatePasswordForm extends React.Component<Props, State> {
 
     return new Promise(resolve => {
       updatePassword(newAndOldPassword, {
-        errorCb: onResponseError(resolve),
-        successCb: onResponseSuccess(() => {
+        onFailure: onResponseError(resolve),
+        onSuccess: onResponseSuccess(() => {
           this.onSubmitSuccess();
           resolve();
         }),
@@ -72,7 +66,7 @@ class UpdatePasswordForm extends React.Component<Props, State> {
             resetResponseError={resetResponseError}
             responseError={responseError}
           >
-            <PasswordForm handleCancel={handleCancel} handleSubmitValues={this.handleSubmitValues} initialValues={initialValues} />
+            <PasswordFormik handleCancel={handleCancel} handleSubmitValues={this.handleSubmitValues} />
           </FormWindow>
         ) : (
           <ConfirmPasswordUpdate handleSuccess={handleSuccess} />

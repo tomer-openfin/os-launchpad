@@ -1,7 +1,7 @@
-import { CLOSE_FIN_APP, GET_APP_DIRECTORY_LIST, OPEN_FIN_APP, SET_FIN_APP_STATUS_STATE } from './actions';
+import { closeFinApp, getAppDirectoryList, openFinApp, resetAppDirectoryList, setFinAppStatusState } from './actions';
 
 import { App, AppStatusStates } from '../../types/commons';
-import { AppsById, AppsState, CloseFinAppSuccess, OpenFinAppSuccess, SetFinAppStatusState } from './types';
+import { AppsActions, AppsById, AppsState } from './types';
 
 const formatByIds = (appList: App[]) =>
   appList.reduce((appsById: AppsById, app: App) => {
@@ -11,9 +11,16 @@ const formatByIds = (appList: App[]) =>
 
 const defaultState: AppsState = { byId: {}, ids: [], statusById: {} };
 
-export default (state: AppsState = defaultState, action): AppsState => {
+export default (state: AppsState = defaultState, action: AppsActions): AppsState => {
   switch (action.type) {
-    case GET_APP_DIRECTORY_LIST.SUCCESS: {
+    case resetAppDirectoryList.toString(): {
+      return {
+        ...state,
+        byId: {},
+        ids: [],
+      };
+    }
+    case getAppDirectoryList.success.toString(): {
       const appList = action.payload;
 
       const byId = formatByIds(appList);
@@ -25,13 +32,8 @@ export default (state: AppsState = defaultState, action): AppsState => {
         ids,
       };
     }
-    case CLOSE_FIN_APP.SUCCESS: {
-      const { payload } = action as CloseFinAppSuccess;
-      if (!payload) {
-        return state;
-      }
-
-      const { uuid } = payload;
+    case closeFinApp.success.toString(): {
+      const { uuid } = action.payload;
       const id = Object.keys(state.statusById).find(key => {
         const statusState = state.statusById[key];
         return !!statusState && statusState.uuid === uuid;
@@ -55,13 +57,8 @@ export default (state: AppsState = defaultState, action): AppsState => {
         },
       };
     }
-    case OPEN_FIN_APP.SUCCESS: {
-      const { payload } = action as OpenFinAppSuccess;
-      if (!payload) {
-        return state;
-      }
-
-      const { id, origin, runtimeVersion, uuid } = payload;
+    case openFinApp.success.toString(): {
+      const { id, origin, runtimeVersion, uuid } = action.payload;
 
       return {
         ...state,
@@ -77,13 +74,8 @@ export default (state: AppsState = defaultState, action): AppsState => {
         },
       };
     }
-    case SET_FIN_APP_STATUS_STATE: {
-      const { payload } = action as SetFinAppStatusState;
-      if (!payload) {
-        return state;
-      }
-
-      const { id, message, statusState, origin } = payload;
+    case setFinAppStatusState.toString(): {
+      const { id, message, statusState, origin } = action.payload;
       const appStatusState = state.statusById[id];
       const uuid = !appStatusState || statusState === AppStatusStates.Closed ? undefined : appStatusState.uuid;
       const runtimeVersion = !appStatusState || statusState === AppStatusStates.Closed ? undefined : appStatusState.runtimeVersion;

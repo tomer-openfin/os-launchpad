@@ -3,8 +3,8 @@ import * as React from 'react';
 import { DispatchRequest, User } from '../../types/commons';
 
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
-import EditUserFormik from '../EditUserForm';
 import FormWindow from '../FormWindow';
+import UserFormik, { editUserSchema } from '../UserForm';
 
 interface Props extends ResponseProps {
   handleCancel: () => void;
@@ -35,8 +35,8 @@ class EditUserWindow extends React.Component<Props> {
 
     return new Promise(resolve => {
       updateUser(editedUser, {
-        errorCb: onResponseError(resolve),
-        successCb: onResponseSuccess(() => {
+        onFailure: onResponseError(resolve),
+        onSuccess: onResponseSuccess(() => {
           handleSuccess();
           resolve();
         }),
@@ -66,7 +66,13 @@ class EditUserWindow extends React.Component<Props> {
         handleDeleteIconClick={handleDelete}
         message={`There was an error trying to update ${firstName} ${lastName}: ${responseMessage} Please try again.`}
       >
-        <EditUserFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={initialValues} />
+        <UserFormik
+          handleSubmitValues={this.handleSubmitValues}
+          handleCancel={handleCancel}
+          initialValues={initialValues}
+          validationSchema={editUserSchema}
+          withPasswordField={false}
+        />
       </FormWindow>
     );
   }

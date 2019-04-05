@@ -1,5 +1,5 @@
-/* tslint:disable:no-console */
-import { APIResponse, ResponseStatus } from '../types/commons';
+import { getErrorFromCatch } from '../redux/utils';
+import { ApiFailureResponse, ApiResponse, ApiResponseStatus, ApiSuccessResponse } from '../types/commons';
 
 export const LOCAL_STORAGE_KEYS = {
   APPS: 'apps',
@@ -7,25 +7,72 @@ export const LOCAL_STORAGE_KEYS = {
   SETTINGS: 'settings',
 };
 
-export const ERROR_RESPONSE = { status: ResponseStatus.FAILURE };
-export const SUCCESS_RESPONSE = { status: ResponseStatus.SUCCESS };
+/**
+ * Get data from specified localStorage key.
+ *
+ * @param key - localStorage key
+ */
+export function getLocalStorage<T>(key: string, defaultPayload?: T): Promise<ApiResponse<T>> {
+  const item = localStorage.getItem(key);
+
+  try {
+    if (item === null && defaultPayload) {
+      const success: ApiSuccessResponse<T> = { status: ApiResponseStatus.Success, data: defaultPayload };
+      return Promise.resolve(success);
+    } else if (item === null) {
+      throw new Error('Resource not found.');
+    } else {
+      const data: T = JSON.parse(item);
+      const success: ApiSuccessResponse<T> = { status: ApiResponseStatus.Success, data };
+      return Promise.resolve(success);
+    }
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    const failure: ApiFailureResponse = { status: ApiResponseStatus.Failure, message: `Error at getLocalStorage for ${key}. ${error.message}` };
+    return Promise.resolve(failure);
+  }
+}
 
 /**
  * Get data from specified localStorage key.
  *
  * @param key - localStorage key
- *
- * @return {Promise<APIResponse>} - Returned Promise of specified type T in function call
  */
-export function getLocalStorage(key: string): APIResponse {
+export function getInLocalStorage<T>(key: string, id: string): Promise<ApiResponse<T>> {
   const item = localStorage.getItem(key);
 
   try {
-    return Promise.resolve(JSON.parse(item!));
-  } catch (e) {
-    console.error('Failed to get local storage key:', key, '\n', 'Unable to parse local storage item:', item, '\n', 'Error:', e, '\n');
+    if (item === null) {
+      throw new Error('Resource not found.');
+    }
 
-    return Promise.resolve(ERROR_RESPONSE);
+    const storage = JSON.parse(item);
+
+    if (Array.isArray(storage)) {
+      const index = storage.findIndex(entry => entry.id === id);
+      if (index === -1) {
+        throw new Error('Resource not found.');
+      }
+
+      const success: ApiSuccessResponse<T> = { status: ApiResponseStatus.Success, data: storage[index] };
+      return Promise.resolve(success);
+    }
+
+    if (storage && typeof storage === 'object') {
+      const data = storage[id];
+      if (!data) {
+        throw new Error('Resource not found.');
+      }
+
+      const success: ApiSuccessResponse<T> = { status: ApiResponseStatus.Success, data };
+      return Promise.resolve(success);
+    }
+
+    throw new Error('Unknown localStorage structure.');
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    const failure: ApiFailureResponse = { status: ApiResponseStatus.Failure, message: `Error at deleteInLocalStorage for ${id} in ${key}. ${error.message}` };
+    return Promise.resolve(failure);
   }
 }
 
@@ -34,19 +81,18 @@ export function getLocalStorage(key: string): APIResponse {
  *
  * @param key - localStorage key
  * @param payload - payload to be stringified and stored in localStorage
- *
- * @return {Promise<>}
  */
-export function setLocalStorage(key: string, payload): Promise<APIResponse> {
+export function setLocalStorage<T>(key: string, payload: T): Promise<ApiResponse<undefined>> {
   try {
     localStorage.setItem(key, JSON.stringify(payload));
   } catch (e) {
-    console.error('Failed to set local storage key:', key, '\n', 'With payload:', payload, '\n', 'Error:', e, '\n');
-
-    return Promise.resolve(ERROR_RESPONSE);
+    const error = getErrorFromCatch(e);
+    const failure: ApiFailureResponse = { status: ApiResponseStatus.Failure, message: `Error at setLocalStorage for ${key}. ${error.message}` };
+    return Promise.resolve(failure);
   }
 
-  return Promise.resolve(SUCCESS_RESPONSE);
+  const success: ApiSuccessResponse<undefined> = { status: ApiResponseStatus.Success, data: undefined };
+  return Promise.resolve(success);
 }
 
 /**
@@ -55,46 +101,43 @@ export function setLocalStorage(key: string, payload): Promise<APIResponse> {
  * @param key - localStorage key
  * @param payload - API response
  * @param id - localStorage item reference id
- *
- * @return {Promise<ApiResponse>}
  */
-export function setItemInLocalStorage(
-  key: string,
-  payload: APIResponse,
-  id?: string,
-): Promise<APIResponse> {
+export function setInLocalStorage<T extends { id: string | number }>(key: string, payload: T, id: T['id']): Promise<ApiResponse<T>> {
   const item = localStorage.getItem(key);
 
   try {
-    // set the first item
-    if (!item) {
-      localStorage.setItem(key, JSON.stringify([ payload ]));
+    // If storage has not been defined
+    // set initial item as an Array<item>
+    // Array will be default data structure
+    if (item === null) {
+      localStorage.setItem(key, JSON.stringify([payload]));
+    } else {
+      // add additional items
+      const storage = JSON.parse(item);
 
-      return Promise.resolve(SUCCESS_RESPONSE);
+      if (Array.isArray(storage)) {
+        const index = storage.findIndex(entry => entry.id === id);
+        if (index !== -1) {
+          storage[index] = payload;
+        } else {
+          storage.push(payload);
+        }
+      }
+
+      if (storage && typeof storage === 'object') {
+        storage[id] = payload;
+      }
+
+      localStorage.setItem(key, JSON.stringify(storage));
     }
 
-    // add additional items
-    const storage = JSON.parse(item);
-    let itemsArray;
-
-    if (Array.isArray(storage)) {
-      itemsArray = [];
-    }
-
-    const index = itemsArray.findIndex(x => x.id === id);
-
-    if (index === -1) {
-      itemsArray.push(payload);
-
-      localStorage.setItem(key, JSON.stringify(itemsArray));
-    }
+    const success: ApiSuccessResponse<T> = { status: ApiResponseStatus.Success, data: payload };
+    return Promise.resolve(success);
   } catch (e) {
-    console.error('Failed to set local storage key:', key, '\n', 'With payload:', payload, '\n', 'At id:', id, '\n', 'Error:', e, '\n');
-
-    Promise.resolve(ERROR_RESPONSE);
+    const error = getErrorFromCatch(e);
+    const failure: ApiFailureResponse = { status: ApiResponseStatus.Failure, message: `Error at setInLocalStorage for ${id} in ${key}. ${error.message}` };
+    return Promise.resolve(failure);
   }
-
-  return Promise.resolve(payload);
 }
 
 /**
@@ -102,39 +145,37 @@ export function setItemInLocalStorage(
  *
  * @param key - localStorage key
  * @param id - localStorage item reference id
- *
- * @return {Promise<APIResponse>}
  */
-export function deleteLocalStorageItem(key: string, id: string): Promise<APIResponse> {
+export function deleteInLocalStorage(key: string, id: string): Promise<ApiResponse<undefined>> {
   const item = localStorage.getItem(key);
 
   try {
-    let updatedItems;
+    if (item === null) {
+      throw new Error('Resource not found.');
+    }
 
-    const storage = JSON.parse(item!);
-    const itemsArray = storage;
+    const storage = JSON.parse(item);
 
-    // If what is in storage is not an array, set it to an empty array and return success
     if (Array.isArray(storage)) {
-      localStorage.setItem(key, JSON.stringify([]));
+      const index = storage.findIndex(entry => entry.id === id);
+      if (index === -1) {
+        throw new Error('Resource not found.');
+      }
 
-      return Promise.resolve(SUCCESS_RESPONSE);
+      storage.splice(index, 1);
     }
 
-    const index = itemsArray.findIndex(element => element.id === id);
-
-    if (index !== -1) {
-      const itemsStart = itemsArray.slice(0, index);
-      const itemsEnd = itemsArray.slice(index + 1);
-
-      updatedItems = [...itemsStart, ...itemsEnd];
-
-      localStorage.setItem(key, JSON.stringify(updatedItems));
+    if (storage && typeof storage === 'object') {
+      delete storage[id];
     }
+
+    localStorage.setItem(key, JSON.stringify(storage));
   } catch (e) {
-    console.error('Failed to set local storage key:', key, '\n', 'At id:', id, '\n', 'Error:', e, '\n');
-
-    return Promise.resolve({ ...ERROR_RESPONSE, code: 'NotFound' });
+    const error = getErrorFromCatch(e);
+    const failure: ApiFailureResponse = { status: ApiResponseStatus.Failure, message: `Error at deleteInLocalStorage for ${id} in ${key}. ${error.message}` };
+    return Promise.resolve(failure);
   }
-  return Promise.resolve(SUCCESS_RESPONSE);
+
+  const success: ApiSuccessResponse<undefined> = { status: ApiResponseStatus.Success, data: undefined };
+  return Promise.resolve(success);
 }

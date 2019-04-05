@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 
-import { App, MetaWithCallbacks } from '../../types/commons';
+import { App } from '../../types/commons';
 
 import { saveOrgImage } from '../../redux/organization';
 
-import { updateManifestOverrideRequest } from '../../redux/application/index';
+import { updateManifestOverride } from '../../redux/application';
 import { isManifestImageKey, OrgImageKey } from '../../utils/orgImages';
 import ConfirmRevertImage from './ConfirmRevertImage';
 
 const mapDispatch = dispatch => ({
-  saveManifestImg: (payload, meta: MetaWithCallbacks) => dispatch(updateManifestOverrideRequest(payload, meta)),
-  saveOrgImg: (payload, meta: MetaWithCallbacks) => dispatch(saveOrgImage(payload, meta)),
+  saveManifestImg: (payload, meta) => dispatch(updateManifestOverride.request(payload, meta)),
+  saveOrgImg: (payload, meta) => dispatch(saveOrgImage(payload, meta)),
 });
 
 const mergeProps = (_, dispatchProps, ownProps: RouteComponentProps) => {
@@ -26,7 +26,7 @@ const mergeProps = (_, dispatchProps, ownProps: RouteComponentProps) => {
     ...ownProps,
     imageKey,
     pushRoute: (route: string, item?: App): void => ownProps.history.push(route, item),
-    revertImage: (key: OrgImageKey, meta: MetaWithCallbacks) => {
+    revertImage: (key: OrgImageKey, meta) => {
       if (isManifestImage) {
         saveManifestImg({ [key]: null }, meta);
       } else {

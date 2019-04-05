@@ -11,33 +11,11 @@ export const LAYOUTS_WINDOW = `${WINDOW_PREFIX}Layouts`;
 export const LOGIN_WINDOW = `${WINDOW_PREFIX}Login`;
 export const LOGOUT_WINDOW = `${WINDOW_PREFIX}Logout`;
 export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
+export const SUPPORT_WINDOW = `${WINDOW_PREFIX}Support`;
 
 const isProduction = isProductionEnv();
 
-export const initOnStartWindows = {
-  // eventually move admin window out of initOnStartWindows and only initialize on login if isAdmin
-  admin: {
-    alwaysOnTop: false,
-    autoShow: false,
-    contextMenu: !isProduction,
-    defaultCentered: true,
-    defaultHeight: 621,
-    defaultWidth: 614,
-    frame: false,
-    id: ADMIN_WINDOW,
-    maxHeight: -1,
-    maximizable: false,
-    minHeight: 500,
-    minWidth: 450,
-    minimizable: true,
-    name: ADMIN_WINDOW,
-    resizable: true,
-    saveWindowState: false,
-    shadow: true,
-    showTaskbarIcon: true,
-    url: ROUTES.ADMIN_SETTINGS,
-    waitForPageLoad: true,
-  },
+export const defaultWindows = {
   appDirectory: {
     alwaysOnTop: true,
     autoShow: false,
@@ -64,7 +42,7 @@ export const initOnStartWindows = {
     alwaysOnTop: true,
     autoShow: true,
     contextMenu: !isProduction,
-    defaultCentered: true,
+    defaultCentered: false,
     defaultHeight: 300,
     defaultLeft: -999999,
     defaultTop: -999999,
@@ -175,10 +153,56 @@ export const initOnStartWindows = {
     url: ROUTES.SETTINGS,
     waitForPageLoad: true,
   },
+  support: {
+    alwaysOnTop: false,
+    autoShow: false,
+    contextMenu: !isProduction,
+    defaultCentered: false,
+    defaultHeight: 478,
+    defaultWidth: 510,
+    frame: false,
+    id: SUPPORT_WINDOW,
+    maxHeight: -1,
+    maximizable: false,
+    minHeight: 0,
+    minWidth: 0,
+    minimizable: false,
+    name: SUPPORT_WINDOW,
+    resizable: false,
+    saveWindowState: false,
+    shadow: true,
+    showTaskbarIcon: true,
+    url: ROUTES.SUPPORT,
+    waitForPageLoad: true,
+  },
 };
 
-const config = {
-  ...initOnStartWindows,
+export const adminWindows = {
+  admin: {
+    alwaysOnTop: false,
+    autoShow: false,
+    contextMenu: !isProduction,
+    defaultCentered: true,
+    defaultHeight: 621,
+    defaultWidth: 614,
+    frame: false,
+    id: ADMIN_WINDOW,
+    maxHeight: -1,
+    maximizable: false,
+    minHeight: 500,
+    minWidth: 450,
+    minimizable: true,
+    name: ADMIN_WINDOW,
+    resizable: true,
+    saveWindowState: false,
+    shadow: true,
+    showTaskbarIcon: true,
+    url: ROUTES.ADMIN_SETTINGS,
+    waitForPageLoad: true,
+  },
+};
+
+export const authWindows = {
   login: {
     alwaysOnTop: false,
     autoShow: true,
@@ -205,6 +229,12 @@ const config = {
     url: ROUTES.LOGIN,
     waitForPageLoad: true,
   },
+};
+
+const config = {
+  ...defaultWindows,
+  ...adminWindows,
+  ...authWindows,
 };
 
 export default config;

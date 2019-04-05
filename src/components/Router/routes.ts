@@ -17,6 +17,7 @@ import Login from '../Login';
 import Logout from '../Logout';
 import OrganizationSettings from '../OrganizationSettings';
 import Settings, { asRoute as asSettingsRoutes } from '../Settings';
+import Support from '../Support';
 
 export interface AppRoute {
   // tslint:disable:no-any
@@ -104,6 +105,11 @@ export const routes: AppRoute[] = [
     Component: asSettingsRoutes(Settings),
     exact: false,
     path: ROUTES.SETTINGS,
+  },
+  {
+    Component: Support,
+    exact: true,
+    path: ROUTES.SUPPORT,
   },
   {
     Component: ContextMenu,

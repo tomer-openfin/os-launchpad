@@ -1,124 +1,106 @@
 import { MeSettingsState, UpdatePasswordRequestPayload } from '../../redux/me';
-
-import { APIResponse, HTTPMethods, NewUserLayout, ResponseStatus, User, UserLayout } from '../../types/commons';
-
+import { defaultSettings } from '../../redux/me/reducer';
+import { ApiResponse, HTTPMethods, NewUserLayout, User, UserLayout } from '../../types/commons';
 import { checkIsEnterprise } from '../../utils/checkIsEnterprise';
 import { uuidv4 } from '../../utils/createUuid';
-
-import { deleteLocalStorageItem, getLocalStorage, LOCAL_STORAGE_KEYS, setItemInLocalStorage, setLocalStorage, SUCCESS_RESPONSE } from '../localStorageAdapter';
-
+import { deleteInLocalStorage, getInLocalStorage, getLocalStorage, LOCAL_STORAGE_KEYS, setInLocalStorage, setLocalStorage } from '../localStorageAdapter';
 import API from './api';
-import fetchJSON from './fetchJSON';
+import { api } from './utils';
 
 /**
  * Get user info
- *
- * @returns {Promise<User>}
  */
-export const getUserInfo = (): Promise<User> => fetchJSON(API.USER_INFO, HTTPMethods.GET);
+export const getUserInfo = api<User>(API.USER_INFO, HTTPMethods.GET, json => ({ data: json }));
+export type GetUserInfo = typeof getUserInfo;
 
 /**
  * Get user layouts
- *
- * @returns {Promise<Layout[]>}
  */
-export const getUserLayouts = (): Promise<UserLayout[]> => {
+export const getUserLayouts = (): Promise<ApiResponse<UserLayout[]>> => {
   if (checkIsEnterprise()) {
-    return fetchJSON(API.USER_LAYOUTS, HTTPMethods.GET);
+    return api<UserLayout[]>(API.USER_LAYOUTS, HTTPMethods.GET, json => ({ data: json || [] }))();
   }
 
-  return getLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS);
+  return getLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, [] as UserLayout[]);
 };
+export type GetUserLayouts = typeof getUserLayouts;
 
 /**
  * Get user layout
- *
- * @returns {Promise<APIResponse>}
  */
-export const getUserLayout = (id: UserLayout['id']): Promise<APIResponse> => {
+export const getUserLayout = (id: UserLayout['id']): Promise<ApiResponse<UserLayout>> => {
   if (checkIsEnterprise()) {
-    return fetchJSON(`${API.USER_LAYOUTS}/${id}`, HTTPMethods.GET);
+    return api<UserLayout>(`${API.USER_LAYOUTS}/${id}`, HTTPMethods.GET, json => ({ data: json }))();
   }
 
-  return getLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS);
+  return getInLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, id);
 };
+export type GetUserLayout = typeof getUserLayout;
 
 /**
  * Create user layout
- *
- * @returns {Promise<APIResponse>}
  */
-export const createUserLayout = (newUserLayout: NewUserLayout): Promise<APIResponse> => {
+export const createUserLayout = (newUserLayout: NewUserLayout): Promise<ApiResponse<UserLayout>> => {
   if (checkIsEnterprise()) {
-    return fetchJSON(API.USER_LAYOUTS, HTTPMethods.POST, newUserLayout);
+    return api<UserLayout, NewUserLayout>(API.USER_LAYOUTS, HTTPMethods.POST, json => ({ data: json.layout }))(newUserLayout);
   }
 
   const localUserLayout: UserLayout = { ...newUserLayout, id: uuidv4() };
 
-  return setItemInLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, localUserLayout, localUserLayout.id).then(response =>
-    response.status === ResponseStatus.FAILURE ? response : { ...SUCCESS_RESPONSE, layout: response },
-  );
+  return setInLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, localUserLayout, localUserLayout.id);
 };
+export type CreateUserLayout = typeof createUserLayout;
 
 /**
  * Delete user layout
- *
- * @returns {Promise<APIResponse>}
  */
-export const deleteUserLayout = (id: UserLayout['id']): Promise<APIResponse> => {
+export const deleteUserLayout = (id: UserLayout['id']): Promise<ApiResponse<undefined>> => {
   if (checkIsEnterprise()) {
-    return fetchJSON(`${API.USER_LAYOUTS}/${id}`, HTTPMethods.DELETE);
+    return api<undefined>(`${API.USER_LAYOUTS}/${id}`, HTTPMethods.DELETE, _ => ({ data: undefined }))();
   }
 
-  return deleteLocalStorageItem(LOCAL_STORAGE_KEYS.LAYOUTS, id);
+  return deleteInLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, id);
 };
+export type DeleteUserLayout = typeof deleteUserLayout;
 
 /**
  * Update user layout
- *
- * @returns {Promise<APIResponse>}
  */
-export const updateUserLayout = (userLayout: UserLayout): Promise<APIResponse> => {
+export const updateUserLayout = (userLayout: UserLayout): Promise<ApiResponse<UserLayout>> => {
   if (checkIsEnterprise()) {
-    return fetchJSON(`${API.USER_LAYOUTS}/${userLayout.id}`, HTTPMethods.PUT, userLayout);
+    return api<UserLayout, UserLayout>(`${API.USER_LAYOUTS}/${userLayout.id}`, HTTPMethods.PUT, json => ({ data: json.layout }))(userLayout);
   }
 
-  return setItemInLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, userLayout, userLayout.id).then(response =>
-    response.status === ResponseStatus.FAILURE ? response : { ...SUCCESS_RESPONSE, layout: response },
-  );
+  return setInLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, userLayout, userLayout.id);
 };
+export type UpdateUserLayout = typeof updateUserLayout;
 
 /**
  * Get settings
- *
- * @returns {Promise<MeSettingsState | APIResponse>}
  */
-export const getUserSettings = (): Promise<MeSettingsState | APIResponse> => {
+export const getUserSettings = (): Promise<ApiResponse<MeSettingsState>> => {
   if (checkIsEnterprise()) {
-    return fetchJSON(API.USER_SETTINGS, HTTPMethods.GET);
+    return api<MeSettingsState>(API.USER_SETTINGS, HTTPMethods.GET, json => ({ data: json || {} }))();
   }
 
-  return getLocalStorage(LOCAL_STORAGE_KEYS.SETTINGS);
+  return getLocalStorage<MeSettingsState>(LOCAL_STORAGE_KEYS.SETTINGS, defaultSettings);
 };
+export type GetUserSettings = typeof getUserSettings;
 
 /**
  * Save settings
- *
- * @returns {Promise<APIResponse>}
  */
-export const saveUserSettings = (settings: MeSettingsState): Promise<APIResponse> => {
+export const saveUserSettings = (settings: MeSettingsState): Promise<ApiResponse<undefined>> => {
   if (checkIsEnterprise()) {
-    return fetchJSON(API.USER_SETTINGS, HTTPMethods.POST, { settings });
+    return api<undefined, { settings: MeSettingsState }>(API.USER_SETTINGS, HTTPMethods.POST, _ => ({ data: undefined }))({ settings });
   }
 
   return setLocalStorage(LOCAL_STORAGE_KEYS.SETTINGS, settings);
 };
+export type SaveUserSettings = typeof saveUserSettings;
 
 /**
  * Update user password
- *
- * @returns {Promise<APIResponse>}
  */
-export const updateUserPassword = (payload: UpdatePasswordRequestPayload): Promise<APIResponse> => {
-  return fetchJSON(API.UPDATE_PASSWORD, HTTPMethods.POST, payload);
-};
+export const updateUserPassword = api<undefined, UpdatePasswordRequestPayload>(API.UPDATE_PASSWORD, HTTPMethods.POST, _ => ({ data: undefined }));
+export type UpdateUserPassword = typeof updateUserPassword;

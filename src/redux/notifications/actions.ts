@@ -1,9 +1,11 @@
-import { createAction } from 'redux-actions';
+import { createAsyncActionCreators } from '../utils';
 
-import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
+const TOGGLE_NOTIFICATION_CENTER_REQUEST = 'TOGGLE_NOTIFICATION_CENTER_REQUEST';
+const TOGGLE_NOTIFICATION_CENTER_SUCCESS = 'TOGGLE_NOTIFICATION_CENTER_SUCCESS';
+const TOGGLE_NOTIFICATION_CENTER_FAILURE = 'TOGGLE_NOTIFICATION_CENTER_FAILURE';
 
-export const TOGGLE_NOTIFICATION_CENTER = generateAsyncActionTypes('TOGGLE_NOTIFICATION_CENTER');
-
-export const toggleNotificationCenterRequest = createAction(TOGGLE_NOTIFICATION_CENTER.REQUEST);
-export const toggleNotificationCenterSuccess = createAction(TOGGLE_NOTIFICATION_CENTER.SUCCESS);
-export const toggleNotificationCenterError = createAction(TOGGLE_NOTIFICATION_CENTER.ERROR);
+export const toggleNotificationCenter = createAsyncActionCreators(
+  TOGGLE_NOTIFICATION_CENTER_REQUEST,
+  TOGGLE_NOTIFICATION_CENTER_SUCCESS,
+  TOGGLE_NOTIFICATION_CENTER_FAILURE,
+)<void, void, Error>();

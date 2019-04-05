@@ -1,18 +1,7 @@
-import {
-  CREATE_ADMIN_APP,
-  CREATE_ADMIN_USER,
-  DELETE_ADMIN_APP,
-  DELETE_ADMIN_USER,
-  GET_ADMIN_APPS,
-  GET_ADMIN_USERS,
-  UPDATE_ADMIN_APP,
-  UPDATE_ADMIN_USER,
-} from './actions';
-
-import { formatByIds } from '../../utils/byIds';
-
 import { App, ById, User } from '../../types/commons';
-import { AdminState } from './types';
+import { formatByIds } from '../../utils/byIds';
+import { createAdminApp, createAdminUser, deleteAdminApp, deleteAdminUser, getAdminApps, getAdminUsers, updateAdminApp, updateAdminUser } from './actions';
+import { AdminActions, AdminState } from './types';
 
 const defaultState: AdminState = {
   apps: {
@@ -25,13 +14,12 @@ const defaultState: AdminState = {
   },
 };
 
-export default (state: AdminState = defaultState, action): AdminState => {
+export default (state: AdminState = defaultState, action: AdminActions): AdminState => {
   switch (action.type) {
-    case GET_ADMIN_APPS.SUCCESS: {
-      const appList: App[] = action.payload;
+    case getAdminApps.success.toString(): {
+      const appList = action.payload;
 
       const byId: ById<App> = formatByIds(appList);
-
       const ids: string[] = Object.keys(byId);
 
       return {
@@ -42,8 +30,8 @@ export default (state: AdminState = defaultState, action): AdminState => {
         },
       };
     }
-    case CREATE_ADMIN_APP.SUCCESS: {
-      const app: App = action.payload;
+    case createAdminApp.success.toString(): {
+      const app = action.payload;
 
       return {
         ...state,
@@ -56,8 +44,8 @@ export default (state: AdminState = defaultState, action): AdminState => {
         },
       };
     }
-    case UPDATE_ADMIN_APP.SUCCESS: {
-      const app: App = action.payload;
+    case updateAdminApp.success.toString(): {
+      const app = action.payload;
 
       return {
         ...state,
@@ -70,11 +58,10 @@ export default (state: AdminState = defaultState, action): AdminState => {
         },
       };
     }
-    case DELETE_ADMIN_APP.SUCCESS: {
-      const app: App = action.payload;
+    case deleteAdminApp.success.toString(): {
+      const app = action.payload;
 
       const { [app.id]: deletedItem, ...byId } = state.apps.byId;
-
       const ids: string[] = Object.keys(byId);
 
       return {
@@ -85,11 +72,10 @@ export default (state: AdminState = defaultState, action): AdminState => {
         },
       };
     }
-    case GET_ADMIN_USERS.SUCCESS: {
-      const userList: User[] = action.payload;
+    case getAdminUsers.success.toString(): {
+      const userList = action.payload;
 
       const byId: ById<User> = formatByIds(userList);
-
       const ids: string[] = Object.keys(byId);
 
       return {
@@ -100,8 +86,8 @@ export default (state: AdminState = defaultState, action): AdminState => {
         },
       };
     }
-    case CREATE_ADMIN_USER.SUCCESS: {
-      const user: User = action.payload;
+    case createAdminUser.success.toString(): {
+      const user = action.payload;
 
       return {
         ...state,
@@ -114,8 +100,8 @@ export default (state: AdminState = defaultState, action): AdminState => {
         },
       };
     }
-    case UPDATE_ADMIN_USER.SUCCESS: {
-      const user: User = action.payload;
+    case updateAdminUser.success.toString(): {
+      const user = action.payload;
 
       return {
         ...state,
@@ -128,11 +114,10 @@ export default (state: AdminState = defaultState, action): AdminState => {
         },
       };
     }
-    case DELETE_ADMIN_USER.SUCCESS: {
-      const user: User = action.payload;
+    case deleteAdminUser.success.toString(): {
+      const user = action.payload;
 
       const { [user.id]: deletedItem, ...byId } = state.users.byId;
-
       const ids: string[] = Object.keys(byId);
 
       return {

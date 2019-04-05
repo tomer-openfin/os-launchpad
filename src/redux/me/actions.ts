@@ -1,123 +1,99 @@
-import { createAction } from 'redux-actions';
-
-import { APIResponse, DirectionalPosition, ErrorResponse, LauncherSize, MetaWithCallbacks, MonitorDetails } from '../../types/commons';
-import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
-import { metaWithCallbacksCreator, payloadIdentityCreator } from '../../utils/metaAndPayloadCreators';
+import { MonitorDetails } from '../../types/commons';
+import { createAction, createAsyncActionCreators } from '../utils';
 import {
   ConfirmPasswordPayload,
   ForgotPasswordPayload,
   LoginErrorPayload,
   LoginRequestPayload,
   LoginSuccessPayload,
-  LoginWithNewPasswordPayload,
+  MeAuthMessagingState,
   MeSettingsState,
-  NewPasswordPayload,
   SetAppIdsPayload,
   SetAutoHidePayload,
   SetLauncherPositionPayload,
   SetLauncherSizePayload,
   SetMePayload,
-  UpdatePasswordErrorPayload,
   UpdatePasswordRequestPayload,
-  UpdatePasswordSuccessPayload,
 } from './types';
 
 // Action Types
-export const LOGIN = generateAsyncActionTypes('LOGIN');
-export const LOGOUT = generateAsyncActionTypes('LOGOUT');
-export const LOGIN_WITH_NEW_PASSWORD = 'LOGIN_WITH_NEW_PASSWORD';
-
-export const CONFIRM_PASSWORD = generateAsyncActionTypes('CONFIRM_PASSWORD');
-export const FORGOT_PASSWORD = generateAsyncActionTypes('FORGOT_PASSWORD');
-
-export const GET_ME = generateAsyncActionTypes('GET_ME');
-
-export const SET_ME = 'SET_ME';
-
-export const GET_SETTINGS = generateAsyncActionTypes('GET_SETTINGS');
-export const SAVE_SETTINGS = generateAsyncActionTypes('SAVE_SETTINGS');
-
-export const SAVE_APP_IDS = 'SAVE_APP_IDS';
-export const SET_APPLICATION_LAUNCHER = 'SET_APPLICATION_LAUNCHER';
-export const SET_APP_IDS = 'SET_APP_IDS';
-export const SET_AUTO_HIDE = 'SET_AUTO_HIDE';
-export const SET_LAUNCHER_POSITION = 'SET_LAUNCHER_POSITION';
-export const SET_LAUNCHER_SIZE = 'SET_LAUNCHER_SIZE';
-export const SET_LAUNCHER_MONITOR_SETTINGS = 'SET_LAUNCHER_MONITOR_SETTINGS';
-
-export const ADD_TO_APP_LAUNCHER = 'ADD_TO_APP_LAUNCHER';
-export const REMOVE_FROM_APP_LAUNCHER = 'REMOVE_FROM_APP_LAUNCHER';
-
-export const UPDATE_PASSWORD = generateAsyncActionTypes('UPDATE_PASSWORD');
+const ADD_TO_APP_LAUNCHER = 'ADD_TO_APP_LAUNCHER';
+const REMOVE_FROM_APP_LAUNCHER = 'REMOVE_FROM_APP_LAUNCHER';
+const RESET_SETTINGS = 'RESET_SETTINGS';
+const SET_APP_IDS = 'SET_APP_IDS';
+const SET_AUTO_HIDE = 'SET_AUTO_HIDE';
+const SET_LAUNCHER_MONITOR_SETTINGS = 'SET_LAUNCHER_MONITOR_SETTINGS';
+const SET_LAUNCHER_POSITION = 'SET_LAUNCHER_POSITION';
+const SET_LAUNCHER_SIZE = 'SET_LAUNCHER_SIZE';
+const SET_ME = 'SET_ME';
+const SET_AUTH_MESSAGING = 'SET_AUTH_MESSAGING';
+// LOGIN
+const LOGIN_REQUEST = 'LOGIN_REQUEST';
+const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+const LOGIN_FAILURE = 'LOGIN_FAILURE';
+// LOGOUT
+const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
+const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
+// CONFIRM_PASSWORD
+const CONFIRM_PASSWORD_REQUEST = 'CONFIRM_PASSWORD_REQUEST';
+const CONFIRM_PASSWORD_SUCCESS = 'CONFIRM_PASSWORD_SUCCESS';
+const CONFIRM_PASSWORD_FAILURE = 'CONFIRM_PASSWORD_FAILURE';
+// FORGOT_PASSWORD
+const FORGOT_PASSWORD_REQUEST = 'FORGOT_PASSWORD_REQUEST';
+const FORGOT_PASSWORD_SUCCESS = 'FORGOT_PASSWORD_SUCCESS';
+const FORGOT_PASSWORD_FAILURE = 'FORGOT_PASSWORD_FAILURE';
+// GET_SETTINGS
+const GET_SETTINGS_REQUEST = 'GET_SETTINGS_REQUEST';
+const GET_SETTINGS_SUCCESS = 'GET_SETTINGS_SUCCESS';
+const GET_SETTINGS_FAILURE = 'GET_SETTINGS_FAILURE';
+// SAVE_SETTINGS
+const SAVE_SETTINGS_REQUEST = 'SAVE_SETTINGS_REQUEST';
+const SAVE_SETTINGS_SUCCESS = 'SAVE_SETTINGS_SUCCESS';
+const SAVE_SETTINGS_FAILURE = 'SAVE_SETTINGS_FAILURE';
+// UPDATE_PASSWORD
+const UPDATE_PASSWORD_REQUEST = 'UPDATE_PASSWORD_REQUEST';
+const UPDATE_PASSWORD_SUCCESS = 'UPDATE_PASSWORD_SUCCESS';
+const UPDATE_PASSWORD_FAILURE = 'UPDATE_PASSWORD_FAILURE';
 
 // Action Creators
-export const forgotPasswordRequest = createAction<ForgotPasswordPayload, MetaWithCallbacks>(
-  FORGOT_PASSWORD.REQUEST,
-  payloadIdentityCreator,
-  metaWithCallbacksCreator,
-);
-export const forgotPasswordSuccess = createAction<APIResponse, MetaWithCallbacks>(FORGOT_PASSWORD.SUCCESS, payloadIdentityCreator, metaWithCallbacksCreator);
-export const forgotPasswordError = createAction<ErrorResponse, MetaWithCallbacks>(FORGOT_PASSWORD.ERROR, payloadIdentityCreator, metaWithCallbacksCreator);
+export const addToAppLauncher = createAction(ADD_TO_APP_LAUNCHER)<string>();
+export const removeFromAppLauncher = createAction(REMOVE_FROM_APP_LAUNCHER)<string>();
+export const resetSettings = createAction(RESET_SETTINGS)();
+export const setAppIds = createAction(SET_APP_IDS)<SetAppIdsPayload>();
+export const setAutoHide = createAction(SET_AUTO_HIDE)<SetAutoHidePayload>();
+export const setLauncherMonitorSettings = createAction(SET_LAUNCHER_MONITOR_SETTINGS)<MonitorDetails>();
+export const setLauncherPosition = createAction(SET_LAUNCHER_POSITION)<SetLauncherPositionPayload>();
+export const setLauncherSize = createAction(SET_LAUNCHER_SIZE)<SetLauncherSizePayload>();
+export const setMe = createAction(SET_ME)<SetMePayload>();
+export const setAuthMessaging = createAction(SET_AUTH_MESSAGING)<MeAuthMessagingState>();
 
-export const confirmPasswordRequest = createAction<ConfirmPasswordPayload, MetaWithCallbacks>(
-  CONFIRM_PASSWORD.REQUEST,
-  payloadIdentityCreator,
-  metaWithCallbacksCreator,
-);
-export const confirmPasswordSuccess = createAction<APIResponse, MetaWithCallbacks>(CONFIRM_PASSWORD.SUCCESS, payloadIdentityCreator, metaWithCallbacksCreator);
-export const confirmPasswordError = createAction<ErrorResponse, MetaWithCallbacks>(CONFIRM_PASSWORD.ERROR, payloadIdentityCreator, metaWithCallbacksCreator);
+export const login = createAsyncActionCreators(LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE)<
+  LoginRequestPayload,
+  LoginSuccessPayload,
+  Error,
+  { onFailure: (error: Error, errorPayload: LoginErrorPayload) => void }
+>();
 
-export const getSettingsRequest = createAction(GET_SETTINGS.REQUEST);
-export const getSettingsSuccess = createAction<MeSettingsState>(GET_SETTINGS.SUCCESS);
-export const getSettingsError = createAction<ErrorResponse>(GET_SETTINGS.ERROR);
-
-export const loginRequest = createAction<LoginRequestPayload, MetaWithCallbacks>(LOGIN.REQUEST, payloadIdentityCreator, metaWithCallbacksCreator);
-export const loginSuccess = createAction<LoginSuccessPayload, MetaWithCallbacks>(LOGIN.SUCCESS, payloadIdentityCreator, metaWithCallbacksCreator);
-export const loginError = createAction<LoginErrorPayload, MetaWithCallbacks>(LOGIN.ERROR, payloadIdentityCreator, metaWithCallbacksCreator);
-
-export const logoutRequest = createAction(LOGOUT.REQUEST);
-export const logoutSuccess = createAction(LOGOUT.SUCCESS);
-export const logoutError = createAction<ErrorResponse>(LOGOUT.ERROR);
-
-export const loginWithNewPassword = createAction<LoginWithNewPasswordPayload, MetaWithCallbacks>(
-  LOGIN_WITH_NEW_PASSWORD,
-  payloadIdentityCreator,
-  metaWithCallbacksCreator,
-);
-
-export const saveSettingsRequest = createAction(SAVE_SETTINGS.REQUEST);
-export const saveSettingsSuccess = createAction(SAVE_SETTINGS.SUCCESS);
-export const saveSettingsError = createAction<ErrorResponse>(SAVE_SETTINGS.ERROR);
-
-export const getMeRequest = createAction(GET_ME.REQUEST);
-export const getMeSuccess = createAction<LoginSuccessPayload>(GET_ME.SUCCESS);
-export const getMeError = createAction<ErrorResponse>(GET_ME.ERROR);
-
-export const setMe = createAction<SetMePayload>(SET_ME);
-
-export const setAppIds = createAction<SetAppIdsPayload, string[]>(SET_APP_IDS, appIds => ({ appIds }));
-export const setAutoHide = createAction<SetAutoHidePayload, boolean>(SET_AUTO_HIDE, autoHide => ({ autoHide }));
-export const setLauncherPosition = createAction<SetLauncherPositionPayload, DirectionalPosition>(SET_LAUNCHER_POSITION, launcherPosition => ({
-  launcherPosition,
-}));
-export const setLauncherSize = createAction<SetLauncherSizePayload, LauncherSize>(SET_LAUNCHER_SIZE, launcherSize => ({ launcherSize }));
-export const setLauncherMonitorSettings = createAction<MonitorDetails>(SET_LAUNCHER_MONITOR_SETTINGS);
-
-export const addToAppLauncher = createAction<string>(ADD_TO_APP_LAUNCHER);
-export const removeFromAppLauncher = createAction<string>(REMOVE_FROM_APP_LAUNCHER);
-
-export const updatePasswordRequest = createAction<UpdatePasswordRequestPayload, MetaWithCallbacks>(
-  UPDATE_PASSWORD.REQUEST,
-  payloadIdentityCreator,
-  metaWithCallbacksCreator,
-);
-export const updatePasswordSuccess = createAction<UpdatePasswordSuccessPayload, MetaWithCallbacks>(
-  UPDATE_PASSWORD.SUCCESS,
-  payloadIdentityCreator,
-  metaWithCallbacksCreator,
-);
-export const updatePasswordError = createAction<UpdatePasswordErrorPayload, MetaWithCallbacks>(
-  UPDATE_PASSWORD.ERROR,
-  payloadIdentityCreator,
-  metaWithCallbacksCreator,
-);
+export const logout = createAsyncActionCreators(LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE)<
+  MeAuthMessagingState | void,
+  MeAuthMessagingState | void,
+  Error
+>();
+export const confirmPassword = createAsyncActionCreators(CONFIRM_PASSWORD_REQUEST, CONFIRM_PASSWORD_SUCCESS, CONFIRM_PASSWORD_FAILURE)<
+  ConfirmPasswordPayload,
+  void,
+  Error
+>();
+export const forgotPassword = createAsyncActionCreators(FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_FAILURE)<
+  ForgotPasswordPayload,
+  void,
+  Error
+>();
+export const getSettings = createAsyncActionCreators(GET_SETTINGS_REQUEST, GET_SETTINGS_SUCCESS, GET_SETTINGS_FAILURE)<void, MeSettingsState, Error>();
+export const saveSettings = createAsyncActionCreators(SAVE_SETTINGS_REQUEST, SAVE_SETTINGS_SUCCESS, SAVE_SETTINGS_FAILURE)<void, void, Error>();
+export const updatePassword = createAsyncActionCreators(UPDATE_PASSWORD_REQUEST, UPDATE_PASSWORD_SUCCESS, UPDATE_PASSWORD_FAILURE)<
+  UpdatePasswordRequestPayload,
+  void,
+  Error
+>();

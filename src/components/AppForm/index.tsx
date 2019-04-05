@@ -1,6 +1,6 @@
-import AppForm from './AppForm';
+import AppFormik from './AppFormik';
 
 export * from './utils';
 export * from './AppForm';
 
-export default AppForm;
+export default AppFormik;

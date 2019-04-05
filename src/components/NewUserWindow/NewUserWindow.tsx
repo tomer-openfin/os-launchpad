@@ -4,7 +4,8 @@ import { DispatchRequest, User } from '../../types/commons';
 
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
 import FormWindow from '../FormWindow';
-import NewUserFormik from '../NewUserForm';
+import UserFormik from '../UserForm';
+import { newUserSchema } from '../UserForm/utils';
 
 interface Props extends ResponseProps {
   createUser: DispatchRequest<User>;
@@ -33,8 +34,8 @@ class NewUserWindow extends React.Component<Props> {
 
     return new Promise(resolve => {
       createUser(newUser, {
-        errorCb: onResponseError(resolve),
-        successCb: onResponseSuccess(() => {
+        onFailure: onResponseError(resolve),
+        onSuccess: onResponseSuccess(() => {
           handleSuccess();
           resolve();
         }),
@@ -52,7 +53,13 @@ class NewUserWindow extends React.Component<Props> {
         resetResponseError={resetResponseError}
         message={`There was an error trying to create this user: ${responseMessage} Please try again.`}
       >
-        <NewUserFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={emptyUser} />
+        <UserFormik
+          handleSubmitValues={this.handleSubmitValues}
+          handleCancel={handleCancel}
+          initialValues={emptyUser}
+          validationSchema={newUserSchema}
+          withPasswordField={true}
+        />
       </FormWindow>
     );
   }

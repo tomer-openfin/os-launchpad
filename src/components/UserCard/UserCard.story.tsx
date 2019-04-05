@@ -1,4 +1,4 @@
-import { boolean, number, select, text, withKnobs } from '@storybook/addon-knobs';
+import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
@@ -30,7 +30,7 @@ const renderButtons = user => {
 
 const Wrapper = styled.div<{ withBorder: boolean }>`
   margin: 50px 0;
-  border: 1px solid ${({ withBorder }) => withBorder ? Color.COMET : Color.VOID};
+  border: 1px solid ${({ withBorder }) => (withBorder ? Color.COMET : Color.VOID)};
 `;
 
 storiesOf(`${CATEGORIES.ADMIN}UserCard`, module)
@@ -60,7 +60,7 @@ storiesOf(`${CATEGORIES.ADMIN}UserCard`, module)
     };
 
     return (
-      <Wrapper withBorder={wrapperBorder} >
+      <Wrapper withBorder={wrapperBorder}>
         <UserCard user={user} ctas={withCtas ? renderButtons(user) : null} />
       </Wrapper>
     );

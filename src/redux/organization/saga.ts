@@ -2,112 +2,87 @@ import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 
-import { ResponseStatus } from '../../types/enums';
-
-import {
-  GET_ADMIN_ORG_SETTINGS,
-  GET_ORG_SETTINGS,
-  getAdminOrgSettingsError,
-  getAdminOrgSettingsRequest,
-  getAdminOrgSettingsSuccess,
-  getOrgSettingsError,
-  getOrgSettingsSuccess,
-  SAVE_ADMIN_ORG_SETTINGS,
-  SAVE_ORG_ACTIVE_THEME_ID,
-  SAVE_ORG_IMAGE,
-  saveAdminOrgSettingsError,
-  saveAdminOrgSettingsRequest,
-  saveAdminOrgSettingsSuccess,
-} from './actions';
+import { ApiResponseStatus } from '../../types/enums';
+import { UnPromisfy } from '../../types/utils';
+import { getErrorFromCatch } from '../utils';
+import { getAdminOrgSettings, getOrgSettings, saveAdminOrgSettings, saveOrgActiveThemeId, saveOrgImage } from './actions';
 import { getOrganizationSettings } from './selectors';
-import { SaveAdminOrgSettingsRequest, SaveOrgActiveThemeId, SaveOrgImage } from './types';
 
-function* watchSaveOrgImage(action: SaveOrgImage) {
-  const orgSettings = yield select(getOrganizationSettings);
+function* watchSaveOrgImage(action: ReturnType<typeof saveOrgImage>) {
+  try {
+    const orgSettings: ReturnType<typeof getOrganizationSettings> = yield select(getOrganizationSettings);
+    const newOrgSettings = { ...orgSettings, ...action.payload };
 
-  const newOrgSettings = { ...orgSettings, ...action.payload };
-
-  yield put(saveAdminOrgSettingsRequest(newOrgSettings, action.meta));
-}
-
-function* watchSaveOrgActiveThemeId(action: SaveOrgActiveThemeId) {
-  const orgSettings = yield select(getOrganizationSettings);
-
-  const activeThemeId = action.payload;
-
-  if (!activeThemeId) return;
-
-  orgSettings.activeThemeId = activeThemeId;
-
-  yield put(saveAdminOrgSettingsRequest(orgSettings, action.meta));
-}
-
-function* watchGetOrgSettingsRequest() {
-  const response = yield call(ApiService.getOrgSettings);
-
-  if (response.status !== ResponseStatus.FAILURE) {
-    yield put(getOrgSettingsSuccess(response));
-  } else {
-    yield put(getOrgSettingsError(response));
+    yield put(saveAdminOrgSettings.request(newOrgSettings, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.log('Error in watchSaveOrgImage', error);
   }
 }
 
-function* watchGetAdminOrgSettingsRequest() {
-  const response = yield call(ApiService.getAdminOrgSettings);
+function* watchSaveOrgActiveThemeId(action: ReturnType<typeof saveOrgActiveThemeId>) {
+  try {
+    const orgSettings: ReturnType<typeof getOrganizationSettings> = yield select(getOrganizationSettings);
 
-  if (response.status !== ResponseStatus.FAILURE) {
-    yield put(getAdminOrgSettingsSuccess(response));
-  } else {
-    yield put(getAdminOrgSettingsError(response));
+    yield put(saveAdminOrgSettings.request({ ...orgSettings, activeThemeId: action.payload }, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.log('Error in watchSaveOrgImage', error);
   }
 }
 
-function* watchSaveAdminOrgSettingsRequest(action: SaveAdminOrgSettingsRequest) {
-  const orgSettings = action.payload;
+function* watchGetOrgSettingsRequest(action: ReturnType<typeof getOrgSettings.request>) {
+  try {
+    const response: UnPromisfy<ReturnType<typeof ApiService.getOrgSettings>> = yield call(ApiService.getOrgSettings);
 
-  if (!orgSettings) return;
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
+    }
 
-  const response = yield call(ApiService.saveAdminOrgSettings, orgSettings);
-
-  if (response.status === ResponseStatus.SUCCESS) {
-    yield put(saveAdminOrgSettingsSuccess(response, action.meta));
-  } else {
-    yield put(saveAdminOrgSettingsError(response, action.meta));
-  }
-
-  yield put(getAdminOrgSettingsRequest());
-}
-
-function* watchRequestError(action) {
-  const error = action.payload;
-
-  const errorMessage = error ? error.message || error : 'Unknown Error';
-
-  // tslint:disable-next-line:no-console
-  console.error('Error on', action.type, ':', errorMessage, '\n');
-
-  if (action.meta && action.meta.errorCb) {
-    action.meta.errorCb(errorMessage);
+    yield put(getOrgSettings.success(response.data, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(getOrgSettings.failure(error, action.meta));
   }
 }
 
-function* watchRequestSuccess(action) {
-  if (action.meta && action.meta.successCb) {
-    action.meta.successCb();
+function* watchGetAdminOrgSettingsRequest(action: ReturnType<typeof getAdminOrgSettings.request>) {
+  try {
+    const response: UnPromisfy<ReturnType<typeof ApiService.getAdminOrgSettings>> = yield call(ApiService.getAdminOrgSettings);
+
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
+    }
+
+    yield put(getAdminOrgSettings.success(response.data, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(getAdminOrgSettings.failure(error, action.meta));
+  }
+}
+
+function* watchSaveAdminOrgSettingsRequest(action: ReturnType<typeof saveAdminOrgSettings.request>) {
+  try {
+    const response: UnPromisfy<ReturnType<typeof ApiService.saveAdminOrgSettings>> = yield call(ApiService.saveAdminOrgSettings, action.payload);
+
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
+    }
+
+    yield put(saveAdminOrgSettings.success(action.payload, action.meta));
+    yield put(getAdminOrgSettings.request());
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(saveAdminOrgSettings.failure(error, action.meta));
   }
 }
 
 export function* organizationSaga() {
-  yield takeLatest(SAVE_ORG_IMAGE, watchSaveOrgImage);
-  yield takeLatest(SAVE_ORG_ACTIVE_THEME_ID, watchSaveOrgActiveThemeId);
-
-  yield takeLatest(GET_ORG_SETTINGS.REQUEST, watchGetOrgSettingsRequest);
-  yield takeLatest(GET_ADMIN_ORG_SETTINGS.REQUEST, watchGetAdminOrgSettingsRequest);
-  yield takeLatest(SAVE_ADMIN_ORG_SETTINGS.REQUEST, watchSaveAdminOrgSettingsRequest);
-
-  yield takeLatest(GET_ORG_SETTINGS.ERROR, watchRequestError);
-  yield takeLatest(GET_ADMIN_ORG_SETTINGS.ERROR, watchRequestError);
-  yield takeLatest(SAVE_ADMIN_ORG_SETTINGS.ERROR, watchRequestError);
-
-  yield takeLatest(SAVE_ADMIN_ORG_SETTINGS.SUCCESS, watchRequestSuccess);
+  yield takeLatest(saveOrgImage, watchSaveOrgImage);
+  yield takeLatest(saveOrgActiveThemeId, watchSaveOrgActiveThemeId);
+  yield takeLatest(getOrgSettings.request, watchGetOrgSettingsRequest);
+  yield takeLatest(getAdminOrgSettings.request, watchGetAdminOrgSettingsRequest);
+  yield takeLatest(saveAdminOrgSettings.request, watchSaveAdminOrgSettingsRequest);
 }

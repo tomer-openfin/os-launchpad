@@ -4,9 +4,8 @@ import { App, DispatchRequest } from '../../types/commons';
 
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
 
-import { createAppManifestUrl, Values } from '../AppForm';
+import AppFormik, { createAppManifestUrl, ManifestType, Values } from '../AppForm';
 import FormWindow from '../FormWindow';
-import NewAppFormik from '../NewAppForm/NewAppForm';
 
 interface Props extends ResponseProps {
   createApp: DispatchRequest<App>;
@@ -15,18 +14,18 @@ interface Props extends ResponseProps {
   handleSuccess: () => void;
 }
 
-const emptyApp = {
+const emptyApp: Values = {
+  // contexts: [],
+  // images: [],
+  // intents: [],
   appUrl: '',
-  contexts: [],
   description: '',
   icon: '',
   id: '',
-  images: [],
-  intents: [],
-  manifest_url: '',
+  manifestType: ManifestType.AppUrl, // default RadioOption
+  manifestUrl: '',
   name: '',
   title: '',
-  withAppUrl: true,
 };
 
 class NewAppWindow extends React.Component<Props> {
@@ -37,16 +36,16 @@ class NewAppWindow extends React.Component<Props> {
     // todo: ensure uniqueness -> sync up with OF Brian, how is this being handled on BE?
     formData.name = formData.title.replace(/\s/g, '');
 
-    const { appUrl, manifest_url, withAppUrl, ...rest } = formData;
+    const { appUrl, manifestType, manifestUrl, ...rest } = formData;
 
-    const computedManifestUrl = createAppManifestUrl({ appUrl, manifest_url, withAppUrl });
+    const computedManifestUrl = createAppManifestUrl(appUrl, manifestUrl, manifestType);
 
     const newApp = { ...rest, manifest_url: computedManifestUrl };
 
     return new Promise(resolve => {
       createApp(newApp, {
-        errorCb: onResponseError(resolve),
-        successCb: onResponseSuccess(() => {
+        onFailure: onResponseError(resolve),
+        onSuccess: onResponseSuccess(() => {
           handleSuccess();
           resolve();
         }),
@@ -64,7 +63,7 @@ class NewAppWindow extends React.Component<Props> {
         resetResponseError={resetResponseError}
         message={`There was an error trying to create this app: ${responseMessage} Please try again.`}
       >
-        <NewAppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={emptyApp} />
+        <AppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={emptyApp} focusFieldOnInitialMount={true} />
       </FormWindow>
     );
   }

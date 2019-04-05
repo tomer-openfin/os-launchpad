@@ -2,13 +2,13 @@ import { getApiUrl } from '../../utils/processHelpers';
 
 const API_URL = getApiUrl();
 
-export const CREATE_MANIFEST_BASE = 'api/app.json?appurl=';
+export const CREATE_MANIFEST_FROM_APP_URL_BASE = 'api/app.json?appurl=';
 
 const API = {
   PUBLIC_APPS: 'https://app-directory.openfin.co/api/v1/apps',
 
-  CREATE_MANIFEST: (appUrl: string, baseUrl?: string, runtimeVersion?: string) => {
-    const url = `${baseUrl || API_URL}${CREATE_MANIFEST_BASE}${appUrl}`;
+  CREATE_MANIFEST_FROM_APP_URL: (appUrl: string, baseUrl?: string, runtimeVersion?: string) => {
+    const url = `${baseUrl || API_URL}${CREATE_MANIFEST_FROM_APP_URL_BASE}${appUrl}`;
 
     return runtimeVersion ? `${url}&runtime=${runtimeVersion}` : url;
   },
@@ -32,6 +32,9 @@ const API = {
   ADMIN_MANIFEST_OVERRIDE: `${API_URL}api/admin/manifest`,
   ADMIN_SETTINGS: `${API_URL}api/admin/settings`,
   ADMIN_USERS: `${API_URL}api/admin/users`,
+
+  SEND_BUG: `${API_URL}api/user/feedback/bug`,
+  SEND_FEEDBACK: `${API_URL}api/user/feedback/feature`,
 };
 
 export default API;

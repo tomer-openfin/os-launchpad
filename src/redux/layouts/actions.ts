@@ -1,61 +1,78 @@
-import { createAction } from 'redux-actions';
-
-import { ErrorResponse, MetaWithCallbacks, UserLayout, Workspace } from '../../types/commons';
-import generateAsyncActionTypes from '../../utils/generateAsyncActionTypes';
-import { metaWithCallbacksCreator, payloadIdentityCreator } from '../../utils/metaAndPayloadCreators';
-import { CreateOrUpdateSuccessPayload, GetLayoutsSuccessPayload, UpdateLayoutRequestPayload, UpdateSuccessPayload } from './types';
+import { UserLayout, Workspace } from '../../types/commons';
+import { createAction, createAsyncActionCreators } from '../utils';
+import { CreateOrUpdateSuccessPayload, GetLayoutsSuccessPayload, UpdateLayoutRequestPayload } from './types';
 
 // Action types
-export const GET_LAYOUTS = generateAsyncActionTypes('GET_LAYOUTS');
-export const RESTORE_LAYOUT = generateAsyncActionTypes('RESTORE_LAYOUT');
-export const CREATE_LAYOUT = generateAsyncActionTypes('CREATE_LAYOUT');
-export const DISMISS_UNDO_UPDATE_LAYOUT = generateAsyncActionTypes('DISMISS_UNDO_UPDATE_LAYOUT');
-export const UNDO_UPDATE_LAYOUT = generateAsyncActionTypes('UNDO_UPDATE_LAYOUT');
-export const UPDATE_LAYOUT = generateAsyncActionTypes('UPDATE_LAYOUT');
-export const DELETE_LAYOUT = generateAsyncActionTypes('DELETE_LAYOUT');
-export const SAVE_LAYOUT = generateAsyncActionTypes('SAVE_LAYOUT');
+// GET_LAYOUTS
+const GET_LAYOUTS_REQUEST = 'GET_LAYOUTS_REQUEST';
+const GET_LAYOUTS_SUCCESS = 'GET_LAYOUTS_SUCCESS';
+const GET_LAYOUTS_FAILURE = 'GET_LAYOUTS_FAILURE';
+// RESTORE_LAYOUT
+const RESTORE_LAYOUT_REQUEST = 'RESTORE_LAYOUT_REQUEST';
+const RESTORE_LAYOUT_SUCCESS = 'RESTORE_LAYOUT_SUCCESS';
+const RESTORE_LAYOUT_FAILURE = 'RESTORE_LAYOUT_FAILURE';
+// CREATE_LAYOUT
+const CREATE_LAYOUT_REQUEST = 'CREATE_LAYOUT_REQUEST';
+const CREATE_LAYOUT_SUCCESS = 'CREATE_LAYOUT_SUCCESS';
+const CREATE_LAYOUT_FAILURE = 'CREATE_LAYOUT_FAILURE';
+// DISMISS_UNDO_UPDATE_LAYOUT
+const DISMISS_UNDO_UPDATE_LAYOUT_REQUEST = 'DISMISS_UNDO_UPDATE_LAYOUT_REQUEST';
+const DISMISS_UNDO_UPDATE_LAYOUT_SUCCESS = 'DISMISS_UNDO_UPDATE_LAYOUT_SUCCESS';
+const DISMISS_UNDO_UPDATE_LAYOUT_FAILURE = 'DISMISS_UNDO_UPDATE_LAYOUT_FAILURE';
+// UNDO_UPDATE_LAYOUT
+const UNDO_UPDATE_LAYOUT_REQUEST = 'UNDO_UPDATE_LAYOUT_REQUEST';
+const UNDO_UPDATE_LAYOUT_SUCCESS = 'UNDO_UPDATE_LAYOUT_SUCCESS';
+const UNDO_UPDATE_LAYOUT_FAILURE = 'UNDO_UPDATE_LAYOUT_FAILURE';
+// UPDATE_LAYOUT
+const UPDATE_LAYOUT_REQUEST = 'UPDATE_LAYOUT_REQUEST';
+const UPDATE_LAYOUT_SUCCESS = 'UPDATE_LAYOUT_SUCCESS';
+const UPDATE_LAYOUT_FAILURE = 'UPDATE_LAYOUT_FAILURE';
+// DELETE_LAYOUT
+const DELETE_LAYOUT_REQUEST = 'DELETE_LAYOUT_REQUEST';
+const DELETE_LAYOUT_SUCCESS = 'DELETE_LAYOUT_SUCCESS';
+const DELETE_LAYOUT_FAILURE = 'DELETE_LAYOUT_FAILURE';
+// SAVE_LAYOUT
+const SAVE_LAYOUT_REQUEST = 'SAVE_LAYOUT_REQUEST';
+const SAVE_LAYOUT_SUCCESS = 'SAVE_LAYOUT_SUCCESS';
+const SAVE_LAYOUT_FAILURE = 'SAVE_LAYOUT_FAILURE';
+// RESET_LAYOUTS
+const RESET_LAYOUTS = 'RESET_LAYOUTS';
 
 // Action creators
-export const getLayoutsRequest = createAction(GET_LAYOUTS.REQUEST);
-export const getLayoutsSuccess = createAction<GetLayoutsSuccessPayload>(GET_LAYOUTS.SUCCESS);
-export const getLayoutsError = createAction<ErrorResponse>(GET_LAYOUTS.ERROR);
-
-export const restoreLayoutRequest = createAction<UserLayout['id']>(RESTORE_LAYOUT.REQUEST);
-export const restoreLayoutSuccess = createAction<Workspace>(RESTORE_LAYOUT.SUCCESS);
-export const restoreLayoutError = createAction<ErrorResponse>(RESTORE_LAYOUT.ERROR);
-
-export const createLayoutRequest = createAction<UserLayout['name'], MetaWithCallbacks>(CREATE_LAYOUT.REQUEST, payloadIdentityCreator, metaWithCallbacksCreator);
-export const createLayoutSuccess = createAction<CreateOrUpdateSuccessPayload, MetaWithCallbacks>(
-  CREATE_LAYOUT.SUCCESS,
-  payloadIdentityCreator,
-  metaWithCallbacksCreator,
-);
-export const createLayoutError = createAction<ErrorResponse, MetaWithCallbacks>(CREATE_LAYOUT.ERROR, payloadIdentityCreator, metaWithCallbacksCreator);
-
-export const dismissUndoUpdateLayoutRequest = createAction<MetaWithCallbacks>(DISMISS_UNDO_UPDATE_LAYOUT.REQUEST, undefined, payloadIdentityCreator);
-export const dismissUndoUpdateLayoutSuccess = createAction<MetaWithCallbacks>(DISMISS_UNDO_UPDATE_LAYOUT.SUCCESS, undefined, payloadIdentityCreator);
-export const dismissUndoUpdateLayoutError = createAction<MetaWithCallbacks>(DISMISS_UNDO_UPDATE_LAYOUT.ERROR, undefined, payloadIdentityCreator);
-
-export const undoUpdateLayoutRequest = createAction<MetaWithCallbacks>(UNDO_UPDATE_LAYOUT.REQUEST, undefined, payloadIdentityCreator);
-export const undoUpdateLayoutSuccess = createAction<MetaWithCallbacks>(UNDO_UPDATE_LAYOUT.SUCCESS, undefined, payloadIdentityCreator);
-export const undoUpdateLayoutError = createAction<MetaWithCallbacks>(UNDO_UPDATE_LAYOUT.ERROR, undefined, payloadIdentityCreator);
-
-export const updateLayoutRequest = createAction<UpdateLayoutRequestPayload, MetaWithCallbacks>(
-  UPDATE_LAYOUT.REQUEST,
-  payloadIdentityCreator,
-  metaWithCallbacksCreator,
-);
-export const updateLayoutSuccess = createAction<UpdateSuccessPayload, MetaWithCallbacks>(
-  UPDATE_LAYOUT.SUCCESS,
-  payloadIdentityCreator,
-  metaWithCallbacksCreator,
-);
-export const updateLayoutError = createAction<ErrorResponse, MetaWithCallbacks>(UPDATE_LAYOUT.ERROR, payloadIdentityCreator, metaWithCallbacksCreator);
-
-export const deleteLayoutRequest = createAction<UserLayout['id']>(DELETE_LAYOUT.REQUEST);
-export const deleteLayoutSuccess = createAction<UserLayout['id']>(DELETE_LAYOUT.SUCCESS);
-export const deleteLayoutError = createAction<ErrorResponse>(DELETE_LAYOUT.ERROR);
-
-export const saveLayoutRequest = createAction<UserLayout['name'], MetaWithCallbacks>(SAVE_LAYOUT.REQUEST, payloadIdentityCreator, metaWithCallbacksCreator);
-export const saveLayoutSuccess = createAction<UserLayout, MetaWithCallbacks>(SAVE_LAYOUT.SUCCESS, payloadIdentityCreator, metaWithCallbacksCreator);
-export const saveLayoutError = createAction<ErrorResponse, MetaWithCallbacks>(SAVE_LAYOUT.ERROR, payloadIdentityCreator, metaWithCallbacksCreator);
+export const getLayouts = createAsyncActionCreators(GET_LAYOUTS_REQUEST, GET_LAYOUTS_SUCCESS, GET_LAYOUTS_FAILURE)<void, GetLayoutsSuccessPayload, Error>();
+export const restoreLayout = createAsyncActionCreators(RESTORE_LAYOUT_REQUEST, RESTORE_LAYOUT_SUCCESS, RESTORE_LAYOUT_FAILURE)<
+  UserLayout['id'],
+  Workspace,
+  Error
+>();
+export const createLayout = createAsyncActionCreators(CREATE_LAYOUT_REQUEST, CREATE_LAYOUT_SUCCESS, CREATE_LAYOUT_FAILURE)<
+  UserLayout['name'],
+  CreateOrUpdateSuccessPayload,
+  Error
+>();
+export const dismissUndoUpdateLayout = createAsyncActionCreators(
+  DISMISS_UNDO_UPDATE_LAYOUT_REQUEST,
+  DISMISS_UNDO_UPDATE_LAYOUT_SUCCESS,
+  DISMISS_UNDO_UPDATE_LAYOUT_FAILURE,
+)<void, void, Error>();
+export const undoUpdateLayout = createAsyncActionCreators(UNDO_UPDATE_LAYOUT_REQUEST, UNDO_UPDATE_LAYOUT_SUCCESS, UNDO_UPDATE_LAYOUT_FAILURE)<
+  void,
+  void,
+  Error
+>();
+export const updateLayout = createAsyncActionCreators(UPDATE_LAYOUT_REQUEST, UPDATE_LAYOUT_SUCCESS, UPDATE_LAYOUT_FAILURE)<
+  UpdateLayoutRequestPayload,
+  CreateOrUpdateSuccessPayload,
+  Error
+>();
+export const deleteLayout = createAsyncActionCreators(DELETE_LAYOUT_REQUEST, DELETE_LAYOUT_SUCCESS, DELETE_LAYOUT_FAILURE)<
+  UserLayout['id'],
+  UserLayout['id'],
+  Error
+>();
+export const saveLayout = createAsyncActionCreators(SAVE_LAYOUT_REQUEST, SAVE_LAYOUT_SUCCESS, SAVE_LAYOUT_FAILURE)<
+  UserLayout['name'],
+  CreateOrUpdateSuccessPayload,
+  Error
+>();
+export const resetLayouts = createAction(RESET_LAYOUTS)();

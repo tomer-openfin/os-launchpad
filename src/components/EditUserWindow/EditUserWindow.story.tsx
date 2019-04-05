@@ -6,8 +6,6 @@ import * as React from 'react';
 import UserData from '../../samples/UserData';
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import { ResponseObject } from '../../types/commons';
-
 import EditUserWindow from './EditUserWindow';
 
 const user = UserData[0];
@@ -18,10 +16,10 @@ const handleCancel = action('handleCancel');
 const handleDelete = action('handleDelete');
 const handleSuccess = action('handleSuccess');
 
-const onResponseErrorNoop = (callback?: () => void) => (message: string) => {
+const onResponseErrorNoop = (callback?: () => void) => (error?: Error) => {
   return;
 };
-const onResponseSuccessNoop = (callback?: () => void) => (resp: ResponseObject) => {
+const onResponseSuccessNoop = (callback?: () => void) => () => {
   return;
 };
 
@@ -56,7 +54,6 @@ storiesOf(`${CATEGORIES.ADMIN}EditUserWindow`, module)
         resetResponseError={reset}
         responseError={error}
         responseMessage={errorMessage}
-        responsePayload={{}}
         updateUser={updateUser}
         user={user}
         userId={user.id}

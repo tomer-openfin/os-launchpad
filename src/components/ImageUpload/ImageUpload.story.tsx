@@ -13,7 +13,6 @@ const cancel = action('cancel');
 storiesOf(`${CATEGORIES.ADMIN}ImageUpload`, module)
   .addDecorator(withKnobs)
   .add('default', () => {
-    const imgSrc = text('Image Source', 'https://openfin.co/android-chrome-256x256.png');
     const headerText = text('Header Text', 'Upload new image asset');
 
     return <ImageUpload headerText={headerText} saveImage={saveImage} handleCancel={cancel} />;

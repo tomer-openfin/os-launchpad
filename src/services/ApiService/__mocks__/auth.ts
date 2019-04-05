@@ -1,5 +1,7 @@
-import { LoginWithNewPasswordPayload } from '../../../redux/me/types';
-import { OkResponse } from './utils/commons';
+import { MeInfo } from '../../../redux/me/types';
+import { ApiSuccessResponse } from '../../../types/commons';
+import { ApiResponseStatus } from '../../../types/enums';
+import { ConfirmPassword, ForgotPassword, Login, Logout, NewPasswordLogin } from '../auth';
 
 export const MockUser = {
   email: 'mock@email.co',
@@ -10,33 +12,61 @@ export const MockUser = {
 
 /**
  * Login
- *
- * @returns {Promise<>}
  */
-export const login = payload => {
-  return Promise.resolve({
-    ...MockUser,
-    email: payload.username || 'mock@email.co',
-  });
+export const login: Login = payload => {
+  const response: ApiSuccessResponse<MeInfo> = {
+    data: {
+      ...MockUser,
+      email: payload.username || 'mock@email.co',
+    },
+    status: ApiResponseStatus.Success,
+  };
+  return Promise.resolve(response);
 };
 
 /**
  * Login with new password
- *
- * @returns {Promise<>}
  */
-export const newPasswordLogin = ({ username, newPassword, session }: LoginWithNewPasswordPayload) => {
-  return Promise.resolve({
-    ...MockUser,
-    email: username || 'mock@email.co',
-  });
+export const newPasswordLogin: NewPasswordLogin = payload => {
+  const response: ApiSuccessResponse<MeInfo> = {
+    data: {
+      ...MockUser,
+      email: payload.username || 'mock@email.co',
+    },
+    status: ApiResponseStatus.Success,
+  };
+  return Promise.resolve(response);
 };
 
 /**
  * Logout
- *
- * @returns {Promise<>}
  */
-export const logout = () => {
-  return Promise.resolve(OkResponse);
+export const logout: Logout = () => {
+  const response: ApiSuccessResponse<undefined> = {
+    data: undefined,
+    status: ApiResponseStatus.Success,
+  };
+  return Promise.resolve(response);
+};
+
+/**
+ * Confirm password
+ */
+export const confirmPassword: ConfirmPassword = () => {
+  const response: ApiSuccessResponse<undefined> = {
+    data: undefined,
+    status: ApiResponseStatus.Success,
+  };
+  return Promise.resolve(response);
+};
+
+/**
+ * Forgot password
+ */
+export const forgotPassword: ForgotPassword = () => {
+  const response: ApiSuccessResponse<undefined> = {
+    data: undefined,
+    status: ApiResponseStatus.Success,
+  };
+  return Promise.resolve(response);
 };

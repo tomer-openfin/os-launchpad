@@ -1,3 +1,4 @@
+import { Manifest } from '../redux/application/types';
 import { Bounds, MonitorInfo, OpenFinApplication, OpenFinApplicationInfo, OpenFinWindow, PointTopLeft } from '../types/commons';
 import promisifyOpenfin from './promisifyOpenfin';
 
@@ -44,6 +45,7 @@ export const getOpenFinApplicationManifest = (uuid: string) => getOpenFinApplica
 export const getOpenFinApplicationChildWindows = (uuid: string) => getOpenFinApplicationPromise<OpenFinWindow[]>(uuid, 'getChildWindows');
 
 export const getCurrentOpenfinApplicationInfo = getCurrentApplicationPromise<OpenFinApplicationInfo>('getInfo');
+export const getCurrentOpenfinApplicationManifest = getCurrentApplicationPromise<Manifest>('getManifest');
 
 export const animateWindow = (finWindow, animation, options) => {
   return promisifyOpenfin(finWindow, 'animate', animation, options);
@@ -85,7 +87,7 @@ export const getVisibleWindowStateAndBounds = async (finWindow: OpenFinWindow): 
   };
 };
 
-export const createAndRunFromManifest = (manifestUrl: string, id: string) => {
+export const createAndRunFromManifest = (manifestUrl: string, id: string): Promise<string> => {
   const { fin } = window;
 
   if (!fin) {

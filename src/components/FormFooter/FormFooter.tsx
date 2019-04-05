@@ -10,7 +10,7 @@ interface Props {
   buttonWidths?: number;
   footerColor?: Color;
   handleCancel?: () => void;
-  isSubmitting: boolean;
+  isSubmitting?: boolean;
   submitDisabled: boolean;
 }
 

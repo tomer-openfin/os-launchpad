@@ -1,5 +1,7 @@
 import { RouteComponentProps } from 'react-router-dom';
-import { ResponseStatus, UserStatus, Workspace } from './commons';
+
+import { ApiResponseStatus, UserStatus } from './enums';
+import { Workspace } from './fin';
 
 export interface App {
   appPage?: string;
@@ -27,30 +29,24 @@ export interface Dimensions {
   width: number;
 }
 
-export interface ResponseObject {
-  status: ResponseStatus;
-  message?: string;
+export interface BaseApiResponse<M> {
+  status: ApiResponseStatus;
+  statusCode?: number;
+  meta?: M;
 }
 
-// TODO: ensure type consistency across all Api Response objects
-// Ideal types are:
-//
-// export interface APIResponse<T> extends Response {
-//   status: ResponseStatus;
-//   message?: string;
-//   data?: T;
-// }
-//
-// export interface ErrorResponse<T> extends APIResponse<T> {
-//   status: ResponseStatus.FAILURE;
-// }
+export interface ApiSuccessResponse<T, M = void> extends BaseApiResponse<M> {
+  data: T;
+  status: ApiResponseStatus.Success;
+}
 
 /* tslint:disable-next-line:no-any */
-export type APIResponse = ResponseObject | any;
-
-export interface ErrorResponse extends APIResponse {
-  status: ResponseStatus.FAILURE;
+export interface ApiFailureResponse extends BaseApiResponse<{ [key: string]: any }> {
+  message: string;
+  status: ApiResponseStatus.Failure;
 }
+
+export type ApiResponse<T, M = void> = ApiSuccessResponse<T, M> | ApiFailureResponse;
 
 export interface Theme {
   backgroundColor: string;
@@ -93,7 +89,7 @@ export interface User {
   readonly lastModified?: string;
   readonly isAdmin?: boolean; // modified on BE only
   readonly status?: UserStatus;
-  readonly username?: string;
+  readonly username: string;
 }
 
 export interface ObjectWithId {
@@ -107,7 +103,7 @@ export interface ById<T extends ObjectWithId> {
 export interface UserLayout {
   id: string;
   name: string;
-  layout: Workspace;
+  layout?: Workspace;
 }
 
 export interface NewUserLayout {
@@ -115,9 +111,9 @@ export interface NewUserLayout {
   layout: Workspace;
 }
 
-export interface MetaWithCallbacks {
-  successCb?: Function;
-  errorCb?: Function;
+export interface MetaWithAsyncHandlers<P = void> {
+  onSuccess?: (payload: P) => void;
+  onFailure?: (error?: Error) => void;
 }
 
 export interface XYCoord {
@@ -126,6 +122,6 @@ export interface XYCoord {
 }
 
 /* tslint:disable-next-line:no-any */
-export type DispatchRequest<T = any> = (payload: T, meta: MetaWithCallbacks, actions?) => void;
+export type DispatchRequest<T = any, M = void> = (payload: T, meta: MetaWithAsyncHandlers<M>, actions?) => void;
 
 export type PushRoute = (route: string, item?) => ReturnType<RouteComponentProps['history']['push']>;

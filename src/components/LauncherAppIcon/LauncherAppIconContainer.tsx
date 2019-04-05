@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { closeFinAppRequest, getAppById, getAppStatusById, openFinAppRequest } from '../../redux/apps';
+import { closeFinApp, getAppById, getAppStatusById, openFinApp } from '../../redux/apps';
 import { getLauncherPosition, getLauncherSizeConfig, removeFromAppLauncher } from '../../redux/me';
 import { AppStatusStates } from '../../types/commons';
 
@@ -20,7 +20,7 @@ const mapState = (state, { appId }) => ({
 });
 
 const mapDispatch = {
-  openFinAppRequest,
+  openFinAppRequest: openFinApp.request,
 };
 
 const mergeProps = (stateProps, dispatchProps, ownProps: Props) => {
@@ -31,10 +31,10 @@ const mergeProps = (stateProps, dispatchProps, ownProps: Props) => {
   if (withContextMenu) {
     contextMenuOptions = [{ label: 'Remove Shortcut', action: removeFromAppLauncher(`${appId}`) }];
     if (status && (status.state === AppStatusStates.Running || status.state === AppStatusStates.Warning) && status.uuid) {
-      contextMenuOptions.unshift({ label: 'Close', action: closeFinAppRequest({ uuid: status.uuid }) });
+      contextMenuOptions.unshift({ label: 'Close', action: closeFinApp.request({ uuid: status.uuid }) });
     }
     if ((!status || status.state === AppStatusStates.Closed || status.state === AppStatusStates.Warning) && app) {
-      contextMenuOptions.unshift({ label: 'Open', action: openFinAppRequest(app) });
+      contextMenuOptions.unshift({ label: 'Open', action: openFinApp.request(app) });
     }
   }
 

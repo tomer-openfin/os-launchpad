@@ -3,8 +3,6 @@ import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { forceReRender, storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { ResponseObject } from '../../types/commons';
-
 import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
 
@@ -12,10 +10,10 @@ import UpdatePasswordForm from './UpdatePasswordForm';
 
 const updatePassword = action('updatePassword');
 
-const onResponseErrorNoop = (callback?: () => void) => (message: string) => {
+const onResponseErrorNoop = (callback?: () => void) => (error?: Error) => {
   return;
 };
-const onResponseSuccessNoop = (callback?: () => void) => (resp: ResponseObject) => {
+const onResponseSuccessNoop = (callback?: () => void) => () => {
   return;
 };
 
@@ -54,7 +52,6 @@ storiesOf(`${CATEGORIES.COMPONENTS}UpdatePasswordForm`, module)
         resetResponseError={reset}
         responseError={error}
         responseMessage={errorMessage}
-        responsePayload={{}}
       />
     );
   });

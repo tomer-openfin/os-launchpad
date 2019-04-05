@@ -1,4 +1,3 @@
-import { Form } from 'formik';
 import styled from 'styled-components';
 
 import * as blobDarkLarge from '../../assets/BlobDarkLarge.svg';
@@ -29,7 +28,7 @@ export const StyledLogo = styled(Logo)`
   margin-bottom: 24px;
 `;
 
-export const FormWrapper = styled(Form)`
+export const FormWrapper = styled.div`
   width: 307px;
 `;
 

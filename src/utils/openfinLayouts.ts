@@ -114,6 +114,11 @@ const mockWorkspaces = {
   restore: mockRestoreWorkspace,
 };
 
+interface WorkspacesLib {
+  generate: () => Promise<Workspace>;
+  restore: (workspaceArg: Workspace) => Promise<Workspace>;
+}
+
 /**
  * The reason for this file is because when openfin-layouts is imported
  * it does setup speficially for openfin applications with window.fin available.
@@ -121,7 +126,7 @@ const mockWorkspaces = {
  * only import the openfin-layouts lib when in an openfin environment
  */
 // tslint:disable-next-line:no-var-requires
-const workspaces = isNotFin ? mockWorkspaces : require('openfin-layouts').workspaces;
+const workspaces: WorkspacesLib = isNotFin ? mockWorkspaces : require('openfin-layouts').workspaces;
 // tslint:disable-next-line:no-var-requires
 export const generateLayout = workspaces.generate;
 // tslint:disable-next-line:no-var-requires

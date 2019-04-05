@@ -1,3 +1,3 @@
-import { MetaWithCallbacks } from '../../types/commons';
+import { MetaWithAsyncHandlers } from '../../types/commons';
 
-export const confirmHandlerCreator = (submit, payload) => (meta: MetaWithCallbacks) => submit(payload, meta);
+export const confirmHandlerCreator = (submit, payload) => (meta: MetaWithAsyncHandlers) => submit(payload, meta);

@@ -2,78 +2,129 @@ import { all, call, put, race, select, take, takeEvery } from 'redux-saga/effect
 
 import { LAYOUTS_WINDOW } from '../../config/windows';
 import ApiService from '../../services/ApiService';
-import { AppStatusOrigins, AppStatusStates, ErrorResponse, ResponseStatus, Transition, UserLayout } from '../../types/commons';
+import { ApiResponseStatus, AppStatusOrigins, AppStatusStates, Transition, UserLayout } from '../../types/commons';
+import { UnPromisfy } from '../../types/utils';
 import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
-import { generateLayout, restoreLayout } from '../../utils/openfinLayouts';
+import { generateLayout, restoreLayout as restoreFinLayout } from '../../utils/openfinLayouts';
 import { animateWindow } from '../../utils/openfinPromises';
 import { calcBoundsRelativeToLauncher } from '../../utils/windowPositionHelpers';
-import { getApps, getAppsStatusById, openFinAppSuccess, setFinAppStatusState } from '../apps';
+import { getApps, getAppsStatusById, openFinApp, setFinAppStatusState } from '../apps';
 import { getLauncherPosition, getLauncherSizeConfig } from '../me';
 import { getExpandedSystemDrawerSize } from '../selectors';
+import { getErrorFromCatch } from '../utils';
 import { getWindowBounds } from '../windows';
-import {
-  CREATE_LAYOUT,
-  createLayoutError,
-  createLayoutRequest,
-  createLayoutSuccess,
-  DELETE_LAYOUT,
-  deleteLayoutError,
-  deleteLayoutSuccess,
-  DISMISS_UNDO_UPDATE_LAYOUT,
-  GET_LAYOUTS,
-  getLayoutsError,
-  getLayoutsSuccess,
-  RESTORE_LAYOUT,
-  restoreLayoutError,
-  restoreLayoutSuccess,
-  SAVE_LAYOUT,
-  UNDO_UPDATE_LAYOUT,
-  UPDATE_LAYOUT,
-  updateLayoutError,
-  updateLayoutRequest,
-  updateLayoutSuccess,
-} from './actions';
-import { getLayoutById, getLayoutByName, getLayouts } from './selectors';
-import {
-  CreateLayoutRequest,
-  DeleteLayoutRequest,
-  RestoreLayoutRequest,
-  RestoreLayoutSuccess,
-  SaveLayoutRequest,
-  UpdateLayoutRequest,
-  UpdateLayoutSuccess,
-} from './types';
+import { createLayout, deleteLayout, dismissUndoUpdateLayout, getLayouts, restoreLayout, saveLayout, undoUpdateLayout, updateLayout } from './actions';
+import { getAllLayouts, getLayoutById, getLayoutByName } from './selectors';
 import { calcDesiredLayoutsWindowHeight } from './utils';
 
-const buildErrorResponse = (message: string): ErrorResponse => ({ status: ResponseStatus.FAILURE, message });
+function* watchLayoutsChangesToAnimateWindow() {
+  try {
+    const layoutsWindow: UnPromisfy<ReturnType<typeof getFinWindowByName>> = yield call(getFinWindowByName, LAYOUTS_WINDOW);
 
-function* watchGetLayoutsRequest() {
-  const response = yield call(ApiService.getUserLayouts);
+    const bounds: ReturnType<typeof getWindowBounds> = yield select(getWindowBounds, LAYOUTS_WINDOW);
+    const launcherBounds: ReturnType<typeof getWindowBounds> = yield select(getWindowBounds, getAppUuid());
+    const launcherPosition: ReturnType<typeof getLauncherPosition> = yield select(getLauncherPosition);
+    const launcherSizeConfig: ReturnType<typeof getLauncherSizeConfig> = yield select(getLauncherSizeConfig);
+    const expandedSystemDrawerSize: ReturnType<typeof getExpandedSystemDrawerSize> = yield select(getExpandedSystemDrawerSize);
+    const layouts: ReturnType<typeof getAllLayouts> = yield select(getAllLayouts);
 
-  if (!response || response.status === ResponseStatus.FAILURE) {
-    yield put(getLayoutsError(response));
-  } else {
-    yield put(getLayoutsSuccess(response));
+    if (!bounds || !layouts || !layoutsWindow || !launcherBounds) {
+      return;
+    }
+
+    const animationBounds = calcBoundsRelativeToLauncher(
+      LAYOUTS_WINDOW,
+      { ...bounds, height: calcDesiredLayoutsWindowHeight(layouts.length) },
+      launcherBounds,
+      launcherPosition,
+      launcherSizeConfig,
+      expandedSystemDrawerSize,
+    );
+
+    const transitions: Transition = {
+      position: {
+        duration: 80,
+        left: animationBounds.left,
+        relative: false,
+        top: animationBounds.top,
+      },
+      size: {
+        duration: 80,
+        height: animationBounds.height,
+        relative: false,
+        width: animationBounds.width,
+      },
+    };
+
+    yield call(animateWindow, layoutsWindow, transitions, { interrupt: false });
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.log('Error in watchLayoutsChangesToAnimateWindow', error);
   }
 }
 
-function* watchRestoreLayoutRequest(action: RestoreLayoutRequest) {
-  const layoutId: string | undefined = action.payload;
-
-  if (!layoutId) return yield put(restoreLayoutError(buildErrorResponse('Error getting layout for restore')));
-
-  const userLayout: UserLayout = yield select(getLayoutById, layoutId);
-
-  if (!userLayout) return yield put(restoreLayoutError(buildErrorResponse('Error getting layout for restore')));
-
-  const { layout } = userLayout;
-
-  if (!layout) return yield put(restoreLayoutError(buildErrorResponse('Error getting layout for restore')));
-
+function* watchGetLayoutsRequest(action: ReturnType<typeof getLayouts.request>) {
   try {
-    const apps = yield select(getApps);
-    const appsStatusById = yield select(getAppsStatusById);
+    const response: UnPromisfy<ReturnType<typeof ApiService.getUserLayouts>> = yield call(ApiService.getUserLayouts);
+
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
+    }
+
+    yield put(getLayouts.success(response.data, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(getLayouts.failure(error, action.meta));
+  }
+}
+
+function* watchCreateLayoutRequest(action: ReturnType<typeof createLayout.request>) {
+  try {
+    const name = action.payload || 'layout';
+    const layout: UnPromisfy<ReturnType<typeof generateLayout>> = yield call(generateLayout);
+
+    const userLayout = { name, layout };
+    const response: UnPromisfy<ReturnType<typeof ApiService.createUserLayout>> = yield call(ApiService.createUserLayout, userLayout);
+
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
+    }
+
+    yield put(createLayout.success({ layout: response.data, updated: false }, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(createLayout.failure(error, action.meta));
+  }
+}
+
+function* watchDeleteLayoutRequest(action: ReturnType<typeof deleteLayout.request>) {
+  try {
+    const response: UnPromisfy<ReturnType<typeof ApiService.deleteUserLayout>> = yield call(ApiService.deleteUserLayout, action.payload);
+
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
+    }
+
+    yield put(deleteLayout.success(action.payload, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(deleteLayout.failure(error, action.meta));
+  }
+}
+
+function* watchRestoreLayoutRequest(action: ReturnType<typeof restoreLayout.request>) {
+  try {
+    const layoutId = action.payload;
+    const userLayout: ReturnType<typeof getLayoutById> = yield select(getLayoutById, layoutId);
+    const { layout } = userLayout;
+    if (!layoutId || !userLayout || !layout) {
+      throw new Error('Error getting layout for restore');
+    }
+
+    const apps: ReturnType<typeof getApps> = yield select(getApps);
+    const appsStatusById: ReturnType<typeof getAppsStatusById> = yield select(getAppsStatusById);
 
     yield all(
       layout.apps.map(layoutApp => {
@@ -95,244 +146,140 @@ function* watchRestoreLayoutRequest(action: RestoreLayoutRequest) {
         return;
       }),
     );
-    const restoredLayout = yield call(restoreLayout, layout);
-
-    yield put(restoreLayoutSuccess(restoredLayout));
+    const restoredLayout: UnPromisfy<ReturnType<typeof restoreFinLayout>> = yield call(restoreFinLayout, layout);
+    yield put(restoreLayout.success(restoredLayout, action.meta));
   } catch (e) {
-    yield put(restoreLayoutError(buildErrorResponse(e)));
+    const error = getErrorFromCatch(e);
+    yield put(restoreLayout.failure(error, action.meta));
   }
 }
 
-function* watchRestoreLayoutSuccess(action: RestoreLayoutSuccess) {
-  const { fin } = window;
-  const { payload: layout } = action;
-  if (!layout || !fin) {
-    return;
-  }
+function* watchRestoreLayoutSuccess(action: ReturnType<typeof restoreLayout.success>) {
+  try {
+    const apps: ReturnType<typeof getApps> = yield select(getApps);
+    const appsStatusById: ReturnType<typeof getAppsStatusById> = yield select(getAppsStatusById);
+    yield all(
+      action.payload.apps.map(layoutApp => {
+        const { manifestUrl, uuid } = layoutApp;
+        const matchingApp = apps.find(app => app.manifest_url === manifestUrl);
 
-  const apps = yield select(getApps);
-  const appsStatusById = yield select(getAppsStatusById);
-  yield all(
-    layout.apps.map(layoutApp => {
-      const { manifestUrl, uuid } = layoutApp;
-      const matchingApp = apps.find(app => app.manifest_url === manifestUrl);
+        if (!matchingApp) {
+          // tslint:disable-next-line:no-console
+          console.error('Could not find manifestUrl in list of applications.', manifestUrl, uuid);
+          return;
+        }
 
-      if (!matchingApp) {
-        // tslint:disable-next-line:no-console
-        console.error('Could not find manifestUrl in list of applications.', manifestUrl, uuid);
+        const { id } = matchingApp;
+        const appStatus = appsStatusById[id];
+
+        if (appStatus && appStatus.state === AppStatusStates.Loading && appStatus.origin === AppStatusOrigins.LayoutRestore) {
+          return put(
+            openFinApp.success({
+              id,
+              origin: AppStatusOrigins.LayoutRestore,
+              // TODO: clean up any, maybe upgrade types
+              // tslint:disable-next-line:no-any
+              runtimeVersion: (layoutApp as any).runtime ? (layoutApp as any).runtime.version : '',
+              uuid,
+            }),
+          );
+        }
+
         return;
-      }
+      }),
+    );
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.log('Error in watchRestoreLayoutSuccess', error);
+  }
+}
 
-      const { id } = matchingApp;
-      const appStatus = appsStatusById[id];
+function* watchSaveLayoutRequest(action: ReturnType<typeof saveLayout.request>) {
+  try {
+    const name = action.payload;
+    const layoutByName: ReturnType<typeof getLayoutByName> = yield select(getLayoutByName, name);
 
-      if (appStatus && appStatus.state === AppStatusStates.Loading && appStatus.origin === AppStatusOrigins.LayoutRestore) {
-        return put(
-          openFinAppSuccess({
-            id,
-            origin: AppStatusOrigins.LayoutRestore,
-            // TODO: clean up any, maybe upgrade types
-            // tslint:disable-next-line:no-any
-            runtimeVersion: (layoutApp as any).runtime ? (layoutApp as any).runtime.version : '',
-            uuid,
-          }),
-        );
-      }
+    if (layoutByName) {
+      const id = layoutByName.id;
+      const updatePayload = { id, isOverwrite: true, layout: layoutByName, name };
 
+      yield put(updateLayout.request(updatePayload, action.meta));
       return;
-    }),
-  );
-}
+    }
 
-export function* watchCreateLayoutRequest(action: CreateLayoutRequest) {
-  const name = action.payload || 'layout';
-
-  const layout = yield call(generateLayout);
-
-  const userLayout = { name, layout };
-
-  const response = yield call(ApiService.createUserLayout, userLayout);
-
-  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error' || !response.layout) {
-    yield put(createLayoutError(response, action.meta));
-  } else {
-    yield put(createLayoutSuccess({ layout: response.layout }, action.meta));
+    yield put(createLayout.request(name, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(saveLayout.failure(error, action.meta));
   }
 }
 
-function* watchUpdateLayoutRequest(action: UpdateLayoutRequest) {
-  const { payload } = action;
-  if (!payload) {
-    return;
-  }
+function* watchUpdateLayoutRequest(action: ReturnType<typeof updateLayout.request>) {
+  try {
+    const { id, isOverwrite, name, layout: previousUserLayout } = action.payload;
+    const { layout } = previousUserLayout;
 
-  const { id, name } = payload;
-  let { layout } = payload;
+    let userLayout: UserLayout;
+    userLayout = {
+      id,
+      layout,
+      name,
+    };
 
-  if (!layout) {
-    layout = yield call(generateLayout);
-  }
+    if (isOverwrite) {
+      const newUserLayout: UnPromisfy<ReturnType<typeof generateLayout>> = yield call(generateLayout);
 
-  const userLayout = {
-    id,
-    layout,
-    name,
-  };
+      userLayout = {
+        id,
+        layout: newUserLayout,
+        name,
+      };
+    }
 
-  const response = yield call(ApiService.updateUserLayout, userLayout);
+    const response: UnPromisfy<ReturnType<typeof ApiService.updateUserLayout>> = yield call(ApiService.updateUserLayout, userLayout);
+    if (response.status === ApiResponseStatus.Failure) {
+      throw new Error(response.message);
+    }
 
-  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error' || !response.layout) {
-    yield put(updateLayoutError(response, action.meta));
-  } else {
-    const previousUserLayout = yield select(getLayoutByName, name);
-    yield put(updateLayoutSuccess({ previousUserLayout, layout: response.layout, updated: true }, action.meta));
-  }
-}
-
-function* watchUpdateLayoutSuccess(action: UpdateLayoutSuccess) {
-  if (action.meta && action.meta.successCb) {
-    action.meta.successCb(action.payload);
-  }
-
-  yield call(watchLayoutsChangesToAnimateWindow);
-
-  const { payload } = action;
-  if (!payload) {
-    return;
-  }
-
-  const { dismiss, undo } = yield race({
-    dismiss: take(DISMISS_UNDO_UPDATE_LAYOUT.REQUEST),
-    undo: take(UNDO_UPDATE_LAYOUT.REQUEST),
-  });
-
-  if (undo) {
-    const { previousUserLayout } = payload;
-    yield put(updateLayoutRequest(previousUserLayout, undo.meta));
+    yield put(updateLayout.success({ previousUserLayout, layout: response.data, updated: true }, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.log('Error in watchUpdateLayoutRequest', error);
+    yield put(updateLayout.failure(error, action.meta));
   }
 }
 
-function* watchDeleteLayoutRequest(action: DeleteLayoutRequest) {
-  if (!action.payload) return;
+function* watchUpdateLayoutSuccess(action: ReturnType<typeof updateLayout.success>) {
+  try {
+    yield call(watchLayoutsChangesToAnimateWindow);
 
-  const id = action.payload;
+    const { dismiss, undo } = yield race({
+      dismiss: take(dismissUndoUpdateLayout.request),
+      undo: take(undoUpdateLayout.request),
+    });
 
-  const response = yield call(ApiService.deleteUserLayout, id);
-
-  if (response.status === ResponseStatus.FAILURE || response === 'Internal Server Error') {
-    yield put(deleteLayoutError(response));
-  } else {
-    yield put(deleteLayoutSuccess(id));
+    const { previousUserLayout } = action.payload;
+    if (undo && previousUserLayout) {
+      yield put(updateLayout.request({ id: previousUserLayout.id, isOverwrite: false, layout: previousUserLayout, name: previousUserLayout.name }, undo.meta));
+    }
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.log('Error in watchUpdateLayoutSuccess', error);
   }
-}
-
-function* watchLayoutsChangesToAnimateWindow() {
-  const layoutsWindow = yield call(getFinWindowByName, LAYOUTS_WINDOW);
-
-  const bounds = yield select(getWindowBounds, LAYOUTS_WINDOW);
-  const launcherBounds = yield select(getWindowBounds, getAppUuid());
-  const launcherPosition = yield select(getLauncherPosition);
-  const launcherSizeConfig = yield select(getLauncherSizeConfig);
-  const expandedSystemDrawerSize = yield select(getExpandedSystemDrawerSize);
-  const layouts = yield select(getLayouts);
-
-  if (!bounds || !layouts || !layoutsWindow) {
-    return;
-  }
-
-  const animationBounds = calcBoundsRelativeToLauncher(
-    LAYOUTS_WINDOW,
-    { ...bounds, height: calcDesiredLayoutsWindowHeight(layouts.length) },
-    launcherBounds,
-    launcherPosition,
-    launcherSizeConfig,
-    expandedSystemDrawerSize,
-  );
-
-  const transitions: Transition = {
-    position: {
-      duration: 80,
-      left: animationBounds.left,
-      relative: false,
-      top: animationBounds.top,
-    },
-    size: {
-      duration: 80,
-      height: animationBounds.height,
-      relative: false,
-      width: animationBounds.width,
-    },
-  };
-
-  yield call(animateWindow, layoutsWindow, transitions, { interrupt: false });
-}
-
-function* watchSaveLayoutRequest(action: SaveLayoutRequest) {
-  if (!action.payload) return;
-
-  const name = action.payload;
-  const layoutByName = yield select(getLayoutByName, name);
-
-  if (layoutByName) {
-    const id = layoutByName.id;
-    const updatePayload = { id, name };
-
-    yield put(updateLayoutRequest(updatePayload, action.meta));
-    return;
-  }
-
-  yield put(createLayoutRequest(name, action.meta));
-}
-
-function* watchRequestError(action) {
-  const error = action.payload;
-
-  const errorMessage = error ? error.message || error : 'Unknown Error';
-
-  // tslint:disable-next-line:no-console
-  console.error('Error on', action.type, ':', errorMessage, '\n');
-
-  if (action.meta && action.meta.errorCb) {
-    action.meta.errorCb(errorMessage);
-  }
-}
-
-function* watchGetLayoutsSuccess(action) {
-  if (action.meta && action.meta.successCb) {
-    action.meta.successCb();
-  }
-
-  yield call(watchLayoutsChangesToAnimateWindow);
-}
-
-function* watchRequestSuccess(action) {
-  if (action.meta && action.meta.successCb) {
-    action.meta.successCb(action.payload);
-  }
-
-  yield call(watchLayoutsChangesToAnimateWindow);
 }
 
 export function* layoutsSaga() {
-  yield takeEvery(GET_LAYOUTS.REQUEST, watchGetLayoutsRequest);
-  yield takeEvery(GET_LAYOUTS.SUCCESS, watchGetLayoutsSuccess);
-  yield takeEvery(GET_LAYOUTS.ERROR, watchRequestError);
+  yield takeEvery(getLayouts.request, watchGetLayoutsRequest);
+  yield takeEvery(createLayout.request, watchCreateLayoutRequest);
+  yield takeEvery(deleteLayout.request, watchDeleteLayoutRequest);
+  yield takeEvery(restoreLayout.request, watchRestoreLayoutRequest);
+  yield takeEvery(restoreLayout.success, watchRestoreLayoutSuccess);
+  yield takeEvery(saveLayout.request, watchSaveLayoutRequest);
+  yield takeEvery(updateLayout.request, watchUpdateLayoutRequest);
+  yield takeEvery(updateLayout.success, watchUpdateLayoutSuccess);
 
-  yield takeEvery(RESTORE_LAYOUT.REQUEST, watchRestoreLayoutRequest);
-  yield takeEvery(RESTORE_LAYOUT.SUCCESS, watchRestoreLayoutSuccess);
-  yield takeEvery(RESTORE_LAYOUT.ERROR, watchRequestError);
-
-  yield takeEvery(CREATE_LAYOUT.REQUEST, watchCreateLayoutRequest);
-  yield takeEvery(CREATE_LAYOUT.ERROR, watchRequestError);
-  yield takeEvery(CREATE_LAYOUT.SUCCESS, watchRequestSuccess);
-
-  yield takeEvery(UPDATE_LAYOUT.REQUEST, watchUpdateLayoutRequest);
-  yield takeEvery(UPDATE_LAYOUT.SUCCESS, watchUpdateLayoutSuccess);
-  yield takeEvery(UPDATE_LAYOUT.ERROR, watchRequestError);
-
-  yield takeEvery(DELETE_LAYOUT.REQUEST, watchDeleteLayoutRequest);
-  yield takeEvery(DELETE_LAYOUT.SUCCESS, watchRequestSuccess);
-  yield takeEvery(DELETE_LAYOUT.ERROR, watchRequestError);
-
-  yield takeEvery(SAVE_LAYOUT.REQUEST, watchSaveLayoutRequest);
+  yield takeEvery([createLayout.success.toString(), deleteLayout.success.toString(), getLayouts.success.toString()], watchLayoutsChangesToAnimateWindow);
 }

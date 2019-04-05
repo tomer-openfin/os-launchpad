@@ -4,10 +4,10 @@ import { App, DispatchRequest } from '../../types/commons';
 
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
 
-import { CREATE_MANIFEST_BASE } from '../../services/ApiService/api';
-import { createAppManifestUrl, Values } from '../AppForm';
+import { CREATE_MANIFEST_FROM_APP_URL_BASE } from '../../services/ApiService/api';
+import { createAppManifestUrl, ManifestType, Values } from '../AppForm';
 
-import EditAppFormik from '../EditAppForm';
+import AppFormik from '../AppForm/AppFormik';
 import FormWindow from '../FormWindow';
 
 interface Props extends ResponseProps {
@@ -32,16 +32,16 @@ class EditAppWindow extends React.Component<Props> {
   handleSubmitValues = (formData: Values): Promise<void> => {
     const { handleSuccess, onResponseError, onResponseSuccess, updateApp } = this.props;
 
-    const { appUrl, manifest_url, withAppUrl, ...rest } = formData;
+    const { appUrl, manifestType, manifestUrl, ...rest } = formData;
 
-    const computedManifestUrl = createAppManifestUrl({ appUrl, manifest_url, withAppUrl });
+    const computedManifestUrl = createAppManifestUrl(appUrl, manifestUrl, manifestType);
 
     const editedApp = { ...rest, manifest_url: computedManifestUrl };
 
     return new Promise(resolve => {
       updateApp(editedApp, {
-        errorCb: onResponseError(resolve),
-        successCb: onResponseSuccess(() => {
+        onFailure: onResponseError(resolve),
+        onSuccess: onResponseSuccess(() => {
           handleSuccess();
           resolve();
         }),
@@ -52,23 +52,29 @@ class EditAppWindow extends React.Component<Props> {
   render() {
     const { app, handleCancel, handleDelete, responseError, responseMessage, resetResponseError } = this.props;
 
-    const { appUrl, contexts, intents, id, manifest_url = '', name, title, description, icon, images } = app;
+    const { id, manifest_url = '', name, title, description, icon } = app;
 
-    const createManifestIndex = manifest_url.indexOf(CREATE_MANIFEST_BASE);
-    const initialAppUrl = createManifestIndex !== -1 ? manifest_url.slice(createManifestIndex + CREATE_MANIFEST_BASE.length) : appUrl;
+    const foundIndex = manifest_url.indexOf(CREATE_MANIFEST_FROM_APP_URL_BASE);
+
+    // did manifest_url contain CREATE_MANIFEST_FROM_APP_URL_BASE?
+    const isManifest = foundIndex === -1;
+
+    // pass through the unmodified manifest if that was what was submitted,
+    // otherwise, extract url from web url
+    const submittedAppUrl = !isManifest ? manifest_url.slice(foundIndex + CREATE_MANIFEST_FROM_APP_URL_BASE.length) : '';
 
     const initialValues: Values = {
-      appUrl: initialAppUrl,
-      contexts: contexts || [],
+      // contexts: contexts || [],
+      // images,
+      // intents: intents || [],
+      appUrl: submittedAppUrl,
       description,
       icon,
       id,
-      images,
-      intents: intents || [],
-      manifest_url: createManifestIndex === -1 ? manifest_url : '',
+      manifestType: isManifest ? ManifestType.Manifest : ManifestType.AppUrl,
+      manifestUrl: isManifest ? manifest_url : '',
       name,
       title,
-      withAppUrl: !!initialAppUrl,
     };
 
     return (
@@ -79,7 +85,7 @@ class EditAppWindow extends React.Component<Props> {
         handleDeleteIconClick={handleDelete}
         message={`There was an error trying to update ${title}: ${responseMessage} Please try again.`}
       >
-        <EditAppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={initialValues} />
+        <AppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={initialValues} focusFieldOnInitialMount={false} />
       </FormWindow>
     );
   }

@@ -8,7 +8,8 @@ import * as notificationsIcon from '../assets/Notifications.svg';
 import * as settingsIcon from '../assets/Settings.svg';
 
 import windowsConfig from '../config/windows';
-import { toggleNotificationCenterRequest } from '../redux/notifications';
+
+import { toggleNotificationCenter } from '../redux/notifications';
 import { launchWindow, toggleWindow } from '../redux/windows';
 import Color from '../styles/color';
 
@@ -33,7 +34,7 @@ export interface SystemIcon {
 export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
   const icons = [
     {
-      action: toggleWindow(windowsConfig.logout.name),
+      action: toggleWindow({ name: windowsConfig.logout.name }),
       color: Color.EARTH,
       hasExtendedWindow: true,
       hoverColor: Color.EARTH_HOVER,
@@ -53,7 +54,7 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       title: SETTINGS_KEY,
     },
     {
-      action: toggleWindow(windowsConfig.appDirectory.name),
+      action: toggleWindow({ name: windowsConfig.appDirectory.name }),
       hasExtendedWindow: false,
       icon: directoryIcon,
       isBackground: true,
@@ -61,7 +62,7 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       title: APP_DIRECTORY_KEY,
     },
     {
-      action: toggleWindow(windowsConfig.layouts.name),
+      action: toggleWindow({ name: windowsConfig.layouts.name }),
       hasExtendedWindow: true,
       icon: layoutsIcon,
       isBackground: true,
@@ -69,7 +70,7 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       title: WORKSPACES_KEY,
     },
     {
-      action: toggleNotificationCenterRequest(),
+      action: toggleNotificationCenter.request(),
       color: Color.JUPITER,
       hasExtendedWindow: false,
       hoverColor: Color.JUPITER_HOVER,

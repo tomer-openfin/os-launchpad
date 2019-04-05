@@ -114,7 +114,7 @@ const template = (baseUrl: string, title: string, position: string = 'fixed') =>
         <div class="of-os-tb-drag">${title}</div>
 
         <div class="of-os-tb-controls">
-          <button class="of-os-tb-btn of-os-tb-undock" title="Undock window">
+          <button class="of-os-tb-btn of-os-tb-undock" title="Undock">
             Undock
           </button>
 

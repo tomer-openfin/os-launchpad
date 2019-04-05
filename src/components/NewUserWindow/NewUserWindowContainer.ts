@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import { MetaWithCallbacks, User } from '../../types/commons';
+import { MetaWithAsyncHandlers, User } from '../../types/commons';
 
-import { createAdminUserRequest } from '../../redux/admin';
+import { createAdminUser } from '../../redux/admin';
 
 import withEscapeKey from '../../hocs/withEscapeKey';
 import withResponseState from '../../hocs/withResponseState';
@@ -11,7 +11,7 @@ import NewUserWindow from './NewUserWindow';
 
 const mapDispatch = (dispatch, ownProps) => ({
   ...ownProps,
-  createUser: (user: User, meta: MetaWithCallbacks) => dispatch(createAdminUserRequest(user, meta)),
+  createUser: (user: User, meta: MetaWithAsyncHandlers<User>) => dispatch(createAdminUser.request(user, meta)),
   onEscDown: ownProps.handleCancel,
 });
 

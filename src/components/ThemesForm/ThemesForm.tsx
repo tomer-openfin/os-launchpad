@@ -1,8 +1,9 @@
-import { Field, FieldProps, Form, Formik, FormikHandlers, FormikProps } from 'formik';
+import { Field, FieldProps, Formik, FormikHandlers, FormikProps } from 'formik';
 import * as React from 'react';
 
-import { MetaWithCallbacks, Theme } from '../../types/commons';
+import { MetaWithAsyncHandlers, Theme } from '../../types/commons';
 
+import { OrganizationState } from '../../redux/organization/types';
 import { Color } from '../../styles';
 import Button from '../Button';
 import { ButtonWrapper, Option, Select, StyledForm } from './ThemesForm.css';
@@ -22,7 +23,7 @@ interface Props {
   themes: Theme[];
   activeThemeId: Theme['id'];
   setOrgActiveThemeId: (themeId: Theme['id']) => void;
-  saveOrgActiveThemeId: (themeId: Theme['id'], meta?: MetaWithCallbacks) => void;
+  saveOrgActiveThemeId: (themeId: Theme['id'], meta?: MetaWithAsyncHandlers<OrganizationState>) => void;
 }
 
 interface State {
@@ -67,7 +68,7 @@ class ThemesForm extends React.PureComponent<Props, State> {
         loading: false,
       });
     };
-    const meta = { successCb };
+    const meta = { onSuccess: successCb };
 
     this.setState(
       {

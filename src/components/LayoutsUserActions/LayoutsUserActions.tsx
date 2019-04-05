@@ -130,12 +130,15 @@ class LayoutsUserActions extends React.Component<Props, State> {
   }
 
   renderLayoutForm() {
+    const { name } = this.state;
+    const isNameEmpty = !name.trim();
+
     return (
       <LayoutForm onSubmit={this.handleFormSubmit}>
         <Input onChange={this.handleNameChange} placeholder="Workspace Name" required type="text" />
 
-        <SubmitButton type="submit" disabled={!this.state.name.trim()}>
-          <CheckIcon hoverColor={Color.JUPITER} imgSrc={checkIcon} size={14} />
+        <SubmitButton type="submit" disabled={isNameEmpty}>
+          {!isNameEmpty && <CheckIcon hoverColor={Color.JUPITER} imgSrc={checkIcon} size={14} />}
         </SubmitButton>
       </LayoutForm>
     );

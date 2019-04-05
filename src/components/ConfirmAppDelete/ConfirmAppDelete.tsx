@@ -6,7 +6,7 @@ import AdminConfirmation, { confirmHandlerCreator } from '../AdminConfirmation';
 
 interface Props {
   app: App;
-  deleteApp: DispatchRequest<App>;
+  deleteApp: DispatchRequest<App, App>;
   handleCancel: () => void;
   handleSuccess: () => void;
 }

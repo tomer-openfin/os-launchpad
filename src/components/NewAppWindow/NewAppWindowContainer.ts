@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import { App, MetaWithCallbacks } from '../../types/commons';
+import { App, MetaWithAsyncHandlers } from '../../types/commons';
 
-import { createAdminAppRequest } from '../../redux/admin';
+import { createAdminApp } from '../../redux/admin';
 
 import withEscapeKey from '../../hocs/withEscapeKey';
 import withResponseState from '../../hocs/withResponseState';
@@ -11,7 +11,7 @@ import NewAppWindow from './NewAppWindow';
 
 const mapDispatch = (dispatch, ownProps) => ({
   ...ownProps,
-  createApp: (app: App, meta: MetaWithCallbacks) => dispatch(createAdminAppRequest(app, meta)),
+  createApp: (app: App, meta: MetaWithAsyncHandlers<App>) => dispatch(createAdminApp.request(app, meta)),
   onEscDown: ownProps.handleCancel,
 });
 

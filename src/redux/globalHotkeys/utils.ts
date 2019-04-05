@@ -13,7 +13,7 @@ const registerEnumToFinGlobalHotkey = (Enum: GlobalHotkeyEnumType, dispatch: Dis
 
   for (const hotkey in Enum) {
     if (Enum.hasOwnProperty(hotkey)) {
-      const hotkeyToRegister = Enum[hotkey];
+      const hotkeyToRegister = Enum[hotkey] as DevGlobalHotkeys | GlobalHotkeys;
 
       const cb = () => {
         dispatch(globalHotkeyPressed({ hotkey: hotkeyToRegister }));
@@ -32,4 +32,13 @@ export const registerGlobalDevHotKeys = (dispatch: Dispatch) => {
 
 export const registerGlobalHotkeys = (dispatch: Dispatch) => {
   registerEnumToFinGlobalHotkey(GlobalHotkeys, dispatch);
+};
+
+export const unregisterAllGlobalHotkeys = () => {
+  const { fin } = window;
+  if (!fin) {
+    return Promise.resolve(undefined);
+  }
+
+  return fin.GlobalHotkey.unregisterAll();
 };

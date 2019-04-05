@@ -1,50 +1,43 @@
-import { APIResponse, HTTPMethods } from '../../types/commons';
-
+import { Manifest, ManifestOverride } from '../../redux/application/types';
 import { OrganizationState } from '../../redux/organization';
-
-import { ManifestOverride } from '../../redux/application/types';
+import { HTTPMethods } from '../../types/commons';
 import API from './api';
-import fetchJSON from './fetchJSON';
+import { api } from './utils';
 
 /**
  * Get organization settings
- *
- * @returns {Promise<APIResponse>}
  */
-export const getOrgSettings = (): Promise<APIResponse> => fetchJSON(API.ORG_SETTINGS, HTTPMethods.GET);
+export const getOrgSettings = api<OrganizationState>(API.ORG_SETTINGS, HTTPMethods.GET, json => ({ data: json }));
+export type GetOrgSettings = typeof getOrgSettings;
 
 /**
  * Get admin organization settings
- *
- * @returns {Promise<APIResponse>}
  */
-export const getAdminOrgSettings = (): Promise<APIResponse> => fetchJSON(API.ADMIN_SETTINGS, HTTPMethods.GET);
+export const getAdminOrgSettings = api<OrganizationState>(API.ADMIN_SETTINGS, HTTPMethods.GET, json => ({ data: json }));
+export type GetAdminOrgSettings = typeof getAdminOrgSettings;
 
 /**
  * Get admin manifest overrides
- *
- * @returns {Promise<APIResponse>}
  */
-export const getAdminManifestOverrides = (): Promise<APIResponse> => fetchJSON(API.ADMIN_MANIFEST_OVERRIDE, HTTPMethods.GET);
+export const getAdminManifestOverrides = api<ManifestOverride>(API.ADMIN_MANIFEST_OVERRIDE, HTTPMethods.GET, json => ({ data: json }));
+export type GetAdminManifestOverrides = typeof getAdminManifestOverrides;
 
 /**
  * Get admin manifest
- *
- * @returns {Promise<APIResponse>}
  */
-export const getAdminManifest = (): Promise<APIResponse> => fetchJSON(API.ADMIN_MANIFEST, HTTPMethods.GET);
+export const getAdminManifest = api<Manifest>(API.ADMIN_MANIFEST, HTTPMethods.GET, json => ({ data: json }));
+export type GetAdminManifest = typeof getAdminManifest;
 
 /**
  * Save organization settings
- *
- * @returns {Promise<APIResponse>}
  */
-export const saveAdminOrgSettings = (settings: OrganizationState): Promise<APIResponse> => fetchJSON(API.ADMIN_SETTINGS, HTTPMethods.POST, { settings });
+export const saveAdminOrgSettings = (settings: OrganizationState) =>
+  api<undefined, { settings: OrganizationState }>(API.ADMIN_SETTINGS, HTTPMethods.POST, json => ({ data: undefined }))({ settings });
+export type SaveAdminOrgSettings = typeof saveAdminOrgSettings;
 
 /**
  * Save admin manifest overrides
- *
- * @returns {Promise<APIResponse>}
  */
-export const saveAdminManifestOverrides = (manifestOverrides: ManifestOverride): Promise<APIResponse> =>
-  fetchJSON(API.ADMIN_MANIFEST_OVERRIDE, HTTPMethods.POST, { manifest: manifestOverrides });
+export const saveAdminManifestOverrides = (manifestOverrides: ManifestOverride) =>
+  api<undefined, { manifest: ManifestOverride }>(API.ADMIN_SETTINGS, HTTPMethods.POST, json => ({ data: undefined }))({ manifest: manifestOverrides });
+export type SaveAdminManifestOverrides = typeof saveAdminManifestOverrides;

@@ -1,28 +1,22 @@
 import {
-  FETCH_MANIFEST,
-  GET_MANIFEST,
-  GET_MANIFEST_OVERRIDE,
-  SET_IS_DRAG_AND_DROP,
-  SET_IS_DRAWER_EXPANDED,
-  SET_IS_ENTERPRISE,
-  SET_IS_EXPANDED,
-  SET_RUNTIME_VERSION,
-  UPDATE_MANIFEST_OVERRIDE,
+  fetchManifest,
+  getManifest,
+  getManifestOverride,
+  resetApplicationUi,
+  setIsDragAndDrop,
+  setIsDrawerExpanded,
+  setIsEnterprise,
+  setIsExpanded,
+  setRuntimeVersion,
+  updateManifestOverride,
 } from './actions';
-import {
-  ApplicationActions,
-  ApplicationState,
-  FetchManifestSuccessAction,
-  GetManifestOverrideSuccessAction,
-  GetManifestSuccessAction,
-  Manifest,
-  SetIsDragAndDropAction,
-  SetIsDrawerExpandedAction,
-  SetIsEnterpriseAction,
-  SetIsExpandedAction,
-  SetRuntimeVersionAction,
-  UpdateManifestOverrideSuccessAction,
-} from './types';
+import { ApplicationActions, ApplicationState, Manifest } from './types';
+
+export const defaultUiState = {
+  isDragAndDrop: false,
+  isDrawerExpanded: false,
+  isExpanded: false,
+};
 
 const emptyManifest: Manifest = {
   shortcut: {
@@ -35,10 +29,8 @@ const emptyManifest: Manifest = {
 };
 
 const defaultState: ApplicationState = {
-  isDragAndDrop: false,
-  isDrawerExpanded: false,
+  ...defaultUiState,
   isEnterprise: false,
-  isExpanded: false,
   manifest: emptyManifest,
   manifestOverride: {},
   runtimeVersion: '',
@@ -46,53 +38,54 @@ const defaultState: ApplicationState = {
 
 export default (state: ApplicationState = defaultState, action: ApplicationActions) => {
   switch (action.type) {
-    case FETCH_MANIFEST.SUCCESS:
-    case GET_MANIFEST.SUCCESS: {
+    case fetchManifest.success.toString():
+    case getManifest.success.toString(): {
       return {
         ...state,
-        manifest: (action as GetManifestSuccessAction | FetchManifestSuccessAction).payload,
+        manifest: action.payload,
       };
     }
-    case GET_MANIFEST_OVERRIDE.SUCCESS:
-    case UPDATE_MANIFEST_OVERRIDE.SUCCESS: {
-      const { payload } = action as GetManifestOverrideSuccessAction | UpdateManifestOverrideSuccessAction;
-      if (!payload) {
-        return state;
-      }
-
+    case getManifestOverride.success.toString():
+    case updateManifestOverride.success.toString(): {
       return {
         ...state,
-        manifestOverride: payload,
+        manifestOverride: action.payload,
       };
     }
-    case SET_IS_ENTERPRISE: {
+    case resetApplicationUi.toString(): {
       return {
         ...state,
-        isEnterprise: !!(action as SetIsEnterpriseAction).payload,
+        ...defaultUiState,
       };
     }
-    case SET_IS_EXPANDED: {
+    case setIsEnterprise.toString(): {
       return {
         ...state,
-        isExpanded: (action as SetIsExpandedAction).payload,
+        isEnterprise: action.payload,
       };
     }
-    case SET_IS_DRAG_AND_DROP: {
+    case setIsExpanded.toString(): {
       return {
         ...state,
-        isDragAndDrop: (action as SetIsDragAndDropAction).payload,
+        isExpanded: action.payload,
       };
     }
-    case SET_IS_DRAWER_EXPANDED: {
+    case setIsDragAndDrop.toString(): {
       return {
         ...state,
-        isDrawerExpanded: (action as SetIsDrawerExpandedAction).payload,
+        isDragAndDrop: action.payload,
       };
     }
-    case SET_RUNTIME_VERSION: {
+    case setIsDrawerExpanded.toString(): {
       return {
         ...state,
-        runtimeVersion: (action as SetRuntimeVersionAction).payload,
+        isDrawerExpanded: action.payload,
+      };
+    }
+    case setRuntimeVersion.toString(): {
+      return {
+        ...state,
+        runtimeVersion: action.payload,
       };
     }
     default: {

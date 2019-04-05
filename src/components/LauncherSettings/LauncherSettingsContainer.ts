@@ -17,13 +17,13 @@ const mapState = (state: State) => ({
 
 const mapDispatch = (dispatch: Dispatch) => ({
   setAutoHide: (autoHide: boolean) => {
-    dispatch(setAutoHide(autoHide));
+    dispatch(setAutoHide({ autoHide }));
   },
   setLauncherPosition: (position: DirectionalPosition) => {
-    dispatch(setLauncherPosition(position));
+    dispatch(setLauncherPosition({ launcherPosition: position }));
   },
   setLauncherSize: (launcherSize: LauncherSize) => {
-    dispatch(setLauncherSize(launcherSize));
+    dispatch(setLauncherSize({ launcherSize }));
   },
 });
 

@@ -1,34 +1,33 @@
 import UsersData from '../../../samples/UserData';
-import { APIResponse, User, UserStatus } from '../../../types/commons';
-import { NotFoundResponse, OkResponse } from './utils/commons';
+import { ApiResponse, ApiResponseStatus, ApiSuccessResponse, User, UserStatus } from '../../../types/commons';
+import { CreateAdminUser, DeleteAdminUser, GetAdminUser, GetAdminUsers, UpdateAdminUser } from '../users';
+import { NotFoundResponse } from './utils/commons';
 
 /**
  * Get admin users
- *
- * @returns {Promise<User[]>}
  */
-export const getAdminUsers = (): Promise<User[]> => {
-  return Promise.resolve(UsersData);
+export const getAdminUsers: GetAdminUsers = () => {
+  const response: ApiSuccessResponse<User[]> = { status: ApiResponseStatus.Success, data: UsersData };
+  return Promise.resolve(response);
 };
 
 /**
  * Get admin user
- *
- * @returns {Promise<User>}
  */
-export const getAdminUser = (user: User): Promise<User | APIResponse> => {
-  return Promise.resolve(UsersData.find(data => data.username === user.username) || NotFoundResponse);
+export const getAdminUser: GetAdminUser = user => {
+  const userDatum = UsersData.find(data => data.username === user.username);
+  const response: ApiResponse<User> = userDatum
+    ? { status: ApiResponseStatus.Success, data: userDatum }
+    : { status: ApiResponseStatus.Failure, message: NotFoundResponse.status };
+  return Promise.resolve(response);
 };
 
 /**
  * Create new admin user
- *
- * @returns {Promise<APIResponse>}
  */
-export const createAdminUser = (user: User): Promise<APIResponse> => {
-  return Promise.resolve({
-    ...OkResponse,
-    user: {
+export const createAdminUser: CreateAdminUser = user => {
+  const response: ApiSuccessResponse<User> = {
+    data: {
       ...user,
       created: '2018-12-26T18:51:58.567Z',
       enabled: true,
@@ -36,18 +35,17 @@ export const createAdminUser = (user: User): Promise<APIResponse> => {
       lastModified: '2018-12-26T18:51:58.567Z',
       status: UserStatus.ChangePassword,
     },
-  });
+    status: ApiResponseStatus.Success,
+  };
+  return Promise.resolve(response);
 };
 
 /**
  * Update an admin user
- *
- * @returns {Promise<APIResponse>}
  */
-export const updateAdminUser = (user: User): Promise<APIResponse> => {
-  return Promise.resolve({
-    ...OkResponse,
-    user: {
+export const updateAdminUser: UpdateAdminUser = user => {
+  const response: ApiSuccessResponse<User> = {
+    data: {
       ...user,
       created: '2018-12-26T18:51:58.567Z',
       enabled: true,
@@ -55,14 +53,15 @@ export const updateAdminUser = (user: User): Promise<APIResponse> => {
       lastModified: '2018-12-26T18:51:58.567Z',
       status: UserStatus.ChangePassword,
     },
-  });
+    status: ApiResponseStatus.Success,
+  };
+  return Promise.resolve(response);
 };
 
 /**
  * Delete an admin user
- *
- * @returns {Promise<APIResponse>}
  */
-export const deleteAdminUser = (user: User): Promise<APIResponse> => {
-  return Promise.resolve(OkResponse);
+export const deleteAdminUser: DeleteAdminUser = user => {
+  const response: ApiSuccessResponse<undefined> = { status: ApiResponseStatus.Success, data: undefined };
+  return Promise.resolve(response);
 };

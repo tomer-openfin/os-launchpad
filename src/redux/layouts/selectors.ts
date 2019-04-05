@@ -7,13 +7,13 @@ export const getLayoutsById = (state: State) => getLayoutsState(state).byId;
 export const getLayoutsIds = (state: State) => getLayoutsState(state).ids;
 export const getLayoutById = (state: State, id: string): UserLayout => getLayoutsById(state)[id];
 
-export const getLayouts = createSelector(
+export const getAllLayouts = createSelector(
   getLayoutsIds,
   getLayoutsById,
   (ids, layouts) => ids.map(id => layouts[id]),
 );
 
 export const getLayoutByName = (state: State, name: string) => {
-  const layouts = getLayouts(state);
+  const layouts = getAllLayouts(state);
   return layouts.find(layout => layout.name === name);
 };

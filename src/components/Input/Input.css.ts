@@ -5,6 +5,7 @@ import { Color, hexToRgba, Typography } from '../../styles';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   hasError?: boolean;
+  ref?: React.RefObject<HTMLInputElement>;
 }
 
 export default styled.input<InputProps>`
@@ -31,7 +32,7 @@ export default styled.input<InputProps>`
       border-color: ${hasError ? errorBorderColor : 'transparent'};
       color: ${hasError ? Color.MARS : Color.VACUUM};
 
-      &:focus{
+      &:focus {
         border-color: ${hasError ? errorBorderColor : focusBorderColor};
       }
     `;

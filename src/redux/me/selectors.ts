@@ -10,6 +10,9 @@ export const getMeName = (state: State) => {
 
 export const getIsAdmin = (state: State) => getMeState(state).isAdmin;
 export const getMeEmail = (state: State) => getMeState(state).email;
+export const getMeAuthMessaging = (state: State) => getMeState(state).authMessaging;
+export const getMeAuthMessage = (state: State) => getMeAuthMessaging(state).message;
+export const getMeAuthIsError = (state: State) => getMeAuthMessaging(state).isError;
 export const getMeSettings = (state: State) => getMeState(state).settings;
 export const getIsLoggedIn = (state: State) => {
   const meState = getMeState(state);

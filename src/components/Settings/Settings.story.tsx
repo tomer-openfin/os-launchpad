@@ -11,7 +11,9 @@ storiesOf(`${CATEGORIES.COMPONENTS}Settings`, module)
   .addDecorator(withKnobs)
   .add('default', () => {
     const hideWindow = action('hideWindow');
+    const handleClose = action('handleClose');
+    const handleConfirm = action('handleConfirm');
     const isEnterprise = boolean('isEnterprise', false);
 
-    return <Settings hideWindow={hideWindow} isEnterprise={isEnterprise} />;
+    return <Settings handleClose={handleClose} handleConfirm={handleConfirm} hideWindow={hideWindow} isEnterprise={isEnterprise} />;
   });

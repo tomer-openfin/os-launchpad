@@ -14,7 +14,7 @@ const stateProps = (state: State) => ({
 
 const dispatchProps = (dispatch: Dispatch) => ({
   hideWindow: () => {
-    dispatch(hideWindow(SETTINGS_WINDOW));
+    dispatch(hideWindow({ name: SETTINGS_WINDOW }));
   },
 });
 

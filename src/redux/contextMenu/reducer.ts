@@ -1,5 +1,5 @@
-import { CLOSE_CONTEXT_MENU, OPEN_CONTEXT_MENU } from './actions';
-import { ContextMenuState, OpenContextMenuSuccess } from './types';
+import { closeContextMenu, openContextMenu } from './actions';
+import { ContextMenuActions, ContextMenuState } from './types';
 
 const defaultState: ContextMenuState = {
   anchor: undefined,
@@ -10,15 +10,10 @@ const defaultState: ContextMenuState = {
   //       a window other than the main app launcher
 };
 
-export default (state: ContextMenuState = defaultState, action) => {
+export default (state: ContextMenuState = defaultState, action: ContextMenuActions) => {
   switch (action.type) {
-    case OPEN_CONTEXT_MENU.SUCCESS: {
-      const { payload } = action as OpenContextMenuSuccess;
-      if (!payload) {
-        return state;
-      }
-
-      const { anchor, bounds, options } = payload;
+    case openContextMenu.success.toString(): {
+      const { anchor, bounds, options } = action.payload;
       return {
         ...state,
         anchor,
@@ -26,7 +21,7 @@ export default (state: ContextMenuState = defaultState, action) => {
         options,
       };
     }
-    case CLOSE_CONTEXT_MENU.SUCCESS: {
+    case closeContextMenu.success.toString(): {
       return defaultState;
     }
     default: {
