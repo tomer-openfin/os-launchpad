@@ -33,3 +33,12 @@ export const registerGlobalDevHotKeys = (dispatch: Dispatch) => {
 export const registerGlobalHotkeys = (dispatch: Dispatch) => {
   registerEnumToFinGlobalHotkey(GlobalHotkeys, dispatch);
 };
+
+export const unregisterAllGlobalHotkeys = () => {
+  const { fin } = window;
+  if (!fin) {
+    return Promise.resolve(undefined);
+  }
+
+  return fin.GlobalHotkey.unregisterAll();
+};

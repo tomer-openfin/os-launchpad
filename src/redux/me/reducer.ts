@@ -3,7 +3,9 @@ import {
   getSettings,
   logout,
   removeFromAppLauncher,
+  resetSettings,
   setAppIds,
+  setAuthMessaging,
   setAutoHide,
   setLauncherMonitorSettings,
   setLauncherPosition,
@@ -13,7 +15,7 @@ import {
 
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
 import { getCoordinatesMidPoint } from '../../utils/coordinateHelpers';
-import { MeActions, MeSettingsState, MeState } from './types';
+import { MeActions, MeAuthMessagingState, MeSettingsState, MeState } from './types';
 
 export const defaultSettings: MeSettingsState = {
   appIds: [],
@@ -27,7 +29,13 @@ export const defaultSettings: MeSettingsState = {
   launcherSize: LauncherSize.Large,
 };
 
+export const defaultAuthMessaging: MeAuthMessagingState = {
+  isError: false,
+  message: '',
+};
+
 export const defaultState: MeState = {
+  authMessaging: defaultAuthMessaging,
   email: '',
   firstName: '',
   isAdmin: false,
@@ -44,6 +52,12 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
           ...state.settings,
           ...action.payload,
         },
+      };
+    }
+    case setAuthMessaging.toString(): {
+      return {
+        ...state,
+        authMessaging: action.payload,
       };
     }
     case setMe.toString(): {
@@ -128,6 +142,12 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
           ...state.settings,
           appIds: [...state.settings.appIds.slice(0, index), ...state.settings.appIds.slice(index + 1)],
         },
+      };
+    }
+    case resetSettings.toString(): {
+      return {
+        ...state,
+        settings: defaultSettings,
       };
     }
     default: {

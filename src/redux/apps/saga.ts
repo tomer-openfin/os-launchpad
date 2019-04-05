@@ -68,7 +68,7 @@ export function* watchOpenFinAppRequest(action: ReturnType<typeof openFinApp.req
       // Remove manifest creation through appUrl when all apps have been migrated off
       const runtimeVersion: ReturnType<typeof getRuntimeVersion> = yield select(getRuntimeVersion);
 
-      manifestUrl = API.CREATE_MANIFEST(appUrl, undefined, runtimeVersion);
+      manifestUrl = API.CREATE_MANIFEST_FROM_APP_URL(appUrl, undefined, runtimeVersion);
     }
 
     if (!manifestUrl) {

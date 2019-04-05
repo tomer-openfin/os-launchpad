@@ -32,32 +32,38 @@ storiesOf(`${CATEGORIES.ADMIN}AppForm`, module)
     const title = text('title', '');
     const titleError = text('titleError', '');
     const titleTouched = boolean('titleTouched', false);
-    const url = text('url', '');
-    const urlError = text('urlError', '');
-    const urlTouched = boolean('urlTouched', false);
+    const appUrl = text('appUrl', '');
+    const appUrlError = text('appUrlError', '');
+    const appUrlTouched = boolean('appUrlTouched', false);
+    const manifestUrl = text('manifestUrl', '');
+    const manifestUrlError = text('manifestUrlError', '');
+    const manifestUrlTouched = boolean('manifestUrlTouched', false);
 
     const values: Values = {
+      appUrl,
       description,
       icon: '',
       id: '',
       manifestType,
+      manifestUrl,
       name,
       title,
-      url,
     };
 
     const errors = {
+      appUrl: appUrlError,
       description: descriptionError,
+      manifestUrl: manifestUrlError,
       name: nameError,
       title: titleError,
-      url: urlError,
     };
 
     const touched = {
+      appUrl: appUrlTouched,
       description: descriptionTouched,
+      manifestUrl: manifestUrlTouched,
       name: nameTouched,
       title: titleTouched,
-      url: urlTouched,
     };
 
     return (

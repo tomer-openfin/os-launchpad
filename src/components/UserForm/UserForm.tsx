@@ -4,8 +4,8 @@ import * as AdminIcon from '../../assets/Admin.svg';
 import * as passwordIcon from '../../assets/Eye.svg';
 
 import { Color } from '../../styles';
-
 import { renderError } from '../../utils/renderError';
+
 import FormFooter from '../FormFooter';
 import Input from '../Input/index';
 import Label from '../Label/Label';
@@ -101,7 +101,6 @@ class UserForm extends React.Component<Props, State> {
               />
             </Label>
           </StyledRowWrapper>
-
           <Label label="Last Name" renderError={renderError(errors.lastName, touched.lastName)}>
             <Input
               hasError={!!errors.lastName && touched.lastName}
@@ -112,7 +111,6 @@ class UserForm extends React.Component<Props, State> {
               placeholder="Enter last name"
             />
           </Label>
-
           <Label label="Email" renderError={renderError(errors.email, touched.email)}>
             <Input
               hasError={!!errors.email && touched.email}
@@ -125,6 +123,7 @@ class UserForm extends React.Component<Props, State> {
               disabled={!withPasswordField}
             />
           </Label>
+
           <StyledRowWrapper secondElementWidth="93px">
             <Label label="Phone Number" renderError={renderError(errors.phone, touched.phone)}>
               <Input
@@ -179,8 +178,7 @@ class UserForm extends React.Component<Props, State> {
             </Label>
           )}
         </ScrollGrid>
-
-        <FormFooter isSubmitting={isSubmitting} submitDisabled={isSubmitting || !isValid} handleCancel={handleCancel} />
+        <FormFooter isSubmitting={isSubmitting} submitDisabled={isSubmitting || !isValid} handleCancel={handleCancel} />;
       </Form>
     );
   }

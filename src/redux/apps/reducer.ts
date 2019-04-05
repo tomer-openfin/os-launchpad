@@ -1,4 +1,4 @@
-import { closeFinApp, getAppDirectoryList, openFinApp, setFinAppStatusState } from './actions';
+import { closeFinApp, getAppDirectoryList, openFinApp, resetAppDirectoryList, setFinAppStatusState } from './actions';
 
 import { App, AppStatusStates } from '../../types/commons';
 import { AppsActions, AppsById, AppsState } from './types';
@@ -13,6 +13,13 @@ const defaultState: AppsState = { byId: {}, ids: [], statusById: {} };
 
 export default (state: AppsState = defaultState, action: AppsActions): AppsState => {
   switch (action.type) {
+    case resetAppDirectoryList.toString(): {
+      return {
+        ...state,
+        byId: {},
+        ids: [],
+      };
+    }
     case getAppDirectoryList.success.toString(): {
       const appList = action.payload;
 

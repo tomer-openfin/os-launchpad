@@ -1,5 +1,5 @@
 import { normalizeData } from '../../utils/reduxHelpers';
-import { createLayout, deleteLayout, getLayouts, updateLayout } from './actions';
+import { createLayout, deleteLayout, getLayouts, resetLayouts, updateLayout } from './actions';
 import { LayoutsActions, LayoutsState } from './types';
 
 const defaultState: LayoutsState = {
@@ -47,6 +47,7 @@ export default (state: LayoutsState = defaultState, action: LayoutsActions): Lay
         ids,
       };
     }
+    case resetLayouts.toString():
     default: {
       return state;
     }

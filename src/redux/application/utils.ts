@@ -7,9 +7,9 @@ import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName, getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
 import { animateWindow, getCurrentOpenfinApplicationInfo, setWindowBoundsPromise } from '../../utils/openfinPromises';
 import { calcBoundsRelativeToLauncher, calcLauncherPosition, isBottom, isRight } from '../../utils/windowPositionHelpers';
-import { getAppDirectoryList } from '../apps';
-import { getLayouts } from '../layouts';
-import { getAutoHide, getLauncherPosition, getLauncherSizeConfig, getSettings } from '../me';
+import { getAppDirectoryList, resetAppDirectoryList } from '../apps';
+import { getLayouts, resetLayouts } from '../layouts';
+import { getAutoHide, getLauncherPosition, getLauncherSizeConfig, getSettings, resetSettings } from '../me';
 import { getOrgSettings } from '../organization';
 import {
   getAppListDimensions,
@@ -21,7 +21,7 @@ import {
 import { getAndSetMonitorInfo } from '../system';
 import { State } from '../types';
 import { getWindowBounds } from '../windows';
-import { getManifest, setRuntimeVersion } from './actions';
+import { getManifest, resetApplicationUi, setRuntimeVersion } from './actions';
 
 export function* initMonitorInfo() {
   yield all([take([getAndSetMonitorInfo.success.toString(), getAndSetMonitorInfo.failure.toString()]), put(getAndSetMonitorInfo.request())]);
@@ -60,6 +60,13 @@ export function* initResources() {
     put(getLayouts.request()),
     put(getSettings.request()),
   ]);
+}
+
+/**
+ * Reset resources gathered in initResources to their default state.
+ */
+export function* resetResources() {
+  yield all([put(resetApplicationUi()), put(resetAppDirectoryList()), put(resetLayouts()), put(resetSettings())]);
 }
 
 export function* animateLauncherCollapseExpand(isExpanded: State['application']['isExpanded'], duration: number) {

@@ -17,11 +17,11 @@ export enum Stage {
 interface Props {
   className?: string;
   closeApplication: () => void;
+  error: boolean;
+  message: string;
 }
 
 interface State {
-  error: boolean;
-  message: string;
   session: string;
   stage: Stage;
   username: string;
@@ -61,8 +61,6 @@ export const LoginView = (props: ViewProps) => {
 
 class Login extends React.Component<Props, State> {
   state = {
-    error: false,
-    message: '',
     session: '',
     stage: Stage.Login,
     username: '',
@@ -72,16 +70,12 @@ class Login extends React.Component<Props, State> {
     const code = payload.code || '';
     if (code === 'NewPasswordRequired') {
       this.setState({
-        error: false,
-        message: payload.message,
         session: payload.session || '',
         stage: Stage.ChangePassword,
         username: payload.username,
       });
     } else {
       this.setState({
-        error: true,
-        message: payload.message,
         session: payload.session || '',
       });
     }

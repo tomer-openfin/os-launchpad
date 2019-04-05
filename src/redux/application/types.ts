@@ -11,6 +11,7 @@ import {
   launchAppLauncher,
   openfinReady,
   reboundLauncher,
+  resetApplicationUi,
   setIsDragAndDrop,
   setIsDrawerExpanded,
   setIsEnterprise,
@@ -66,6 +67,7 @@ export type ApplicationActions =
   | ReturnType<typeof initDevTools>
   | ReturnType<typeof launchAppLauncher>
   | ReturnType<typeof openfinReady>
+  | ReturnType<typeof resetApplicationUi>
   | ReturnType<typeof setIsDragAndDrop>
   | ReturnType<typeof setIsDrawerExpanded>
   | ReturnType<typeof setIsEnterprise>

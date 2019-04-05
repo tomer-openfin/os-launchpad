@@ -18,13 +18,14 @@ const emptyApp: Values = {
   // contexts: [],
   // images: [],
   // intents: [],
+  appUrl: '',
   description: '',
   icon: '',
   id: '',
-  manifestType: ManifestType.AppUrl,
+  manifestType: ManifestType.AppUrl, // default RadioOption
+  manifestUrl: '',
   name: '',
   title: '',
-  url: '',
 };
 
 class NewAppWindow extends React.Component<Props> {
@@ -35,9 +36,9 @@ class NewAppWindow extends React.Component<Props> {
     // todo: ensure uniqueness -> sync up with OF Brian, how is this being handled on BE?
     formData.name = formData.title.replace(/\s/g, '');
 
-    const { manifestType, url, ...rest } = formData;
+    const { appUrl, manifestType, manifestUrl, ...rest } = formData;
 
-    const computedManifestUrl = createAppManifestUrl(url, manifestType);
+    const computedManifestUrl = createAppManifestUrl(appUrl, manifestUrl, manifestType);
 
     const newApp = { ...rest, manifest_url: computedManifestUrl };
 

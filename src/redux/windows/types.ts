@@ -42,6 +42,10 @@ export interface WindowConfig {
   waitForPageLoad: boolean;
 }
 
+export interface WindowConfigsMap {
+  [key: string]: WindowConfig;
+}
+
 // Actions
 export type WindowsActions =
   | ReturnType<typeof hideWindow>

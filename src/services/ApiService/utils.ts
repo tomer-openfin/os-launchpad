@@ -28,7 +28,7 @@ export const api = <Data, Body = void, Meta = void>(
 
     if (response.status >= 400) {
       if (response.status === 401 && document.cookie) {
-        window.store.dispatch(logout.request());
+        window.store.dispatch(logout.request({ message: 'You were logged out due to a system error.', isError: true }));
       }
 
       const failureJson = await response.json().catch(e => {

@@ -23,24 +23,26 @@ interface Touched {
   // contexts?: boolean;
   // images?: boolean;
   // intents?: boolean;
+  appUrl?: boolean;
   description?: boolean;
   icon?: boolean;
   id?: boolean;
+  manifestUrl?: boolean;
   name?: boolean;
   title?: boolean;
-  url?: boolean;
 }
 
 interface Errors {
   // contexts?: Array<{ $type: string }>;
   // images?: string;
   // intents?: Array<{ $type: string }>;
+  appUrl?: string;
   description?: string;
   icon?: string;
   id?: string;
   name?: string;
+  manifestUrl?: string;
   title?: string;
-  url?: string;
 }
 
 export enum ManifestType {
@@ -53,13 +55,14 @@ export interface Values {
   // contexts: Array<{ $type: string }>;
   // images?: Array<{ url: string }>;
   // intents?: Array<{ displayName: string; name: string }>;
+  appUrl?: string;
   description: string;
   icon: string;
   id: string;
   manifestType: ManifestType;
+  manifestUrl?: string;
   name: string;
   title: string;
-  url: string;
 }
 
 type SetFieldValue = <T extends keyof Values>(field: T, value: Values[T], shouldValidate?: boolean) => void;
@@ -178,17 +181,33 @@ class AppForm extends React.Component<Props, State> {
               />
             </StyledLabel>
 
-            <Label label={values.manifestType === ManifestType.AppUrl ? 'App URL' : 'Manifest URL'} renderError={renderError(errors.url, touched.url)}>
-              <Input
-                hasError={!!errors.url && touched.url}
-                name="url"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                placeholder={`Enter ${values.manifestType === ManifestType.AppUrl ? 'app' : 'manifest'} url`}
-                ref={this.inputField}
-                value={values.url}
-              />
-            </Label>
+            {values.manifestType === ManifestType.AppUrl && (
+              <Label label="App URL" renderError={renderError(errors.appUrl, touched.appUrl)}>
+                <Input
+                  hasError={!!errors.appUrl && touched.appUrl}
+                  name="appUrl"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  placeholder="Enter app url"
+                  ref={this.inputField}
+                  value={values.appUrl}
+                />
+              </Label>
+            )}
+
+            {values.manifestType === ManifestType.Manifest && (
+              <Label label="Manifest URL" renderError={renderError(errors.manifestUrl, touched.manifestUrl)}>
+                <Input
+                  hasError={!!errors.manifestUrl && touched.manifestUrl}
+                  name="manifestUrl"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  placeholder="Enter manifest url"
+                  ref={this.inputField}
+                  value={values.manifestUrl}
+                />
+              </Label>
+            )}
           </StyledRow>
 
           <Label label="App Title" renderError={renderError(errors.title, touched.title)}>

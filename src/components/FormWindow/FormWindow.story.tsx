@@ -8,6 +8,7 @@ import { User } from '../../types/commons';
 import { CATEGORIES } from '../../utils/storyCategories';
 
 import AppFormik from '../AppForm/AppFormik';
+import { ManifestType } from '../AppForm/index';
 import UserFormik, { newUserSchema } from '../UserForm';
 import FormWindow from './FormWindow';
 
@@ -34,10 +35,10 @@ const emptyApp = {
   id: '',
   images: [],
   intents: [],
+  manifestType: ManifestType.AppUrl,
   manifest_url: '',
   name: '',
   title: '',
-  withAppUrl: true,
 };
 
 let isClosed = true;
@@ -73,7 +74,7 @@ storiesOf(`${CATEGORIES.COMPONENTS}FormWindow`, module)
             validationSchema={newUserSchema}
           />
         ) : (
-          <AppFormik handleSubmitValues={handleSubmit} handleCancel={handleCancel} />
+          <AppFormik handleSubmitValues={handleSubmit} handleCancel={handleCancel} initialValues={emptyApp} />
         )}
       </FormWindow>
     );

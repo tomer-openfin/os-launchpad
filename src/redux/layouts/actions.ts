@@ -1,5 +1,5 @@
 import { UserLayout, Workspace } from '../../types/commons';
-import { createAsyncActionCreators } from '../utils';
+import { createAction, createAsyncActionCreators } from '../utils';
 import { CreateOrUpdateSuccessPayload, GetLayoutsSuccessPayload, UpdateLayoutRequestPayload } from './types';
 
 // Action types
@@ -35,6 +35,8 @@ const DELETE_LAYOUT_FAILURE = 'DELETE_LAYOUT_FAILURE';
 const SAVE_LAYOUT_REQUEST = 'SAVE_LAYOUT_REQUEST';
 const SAVE_LAYOUT_SUCCESS = 'SAVE_LAYOUT_SUCCESS';
 const SAVE_LAYOUT_FAILURE = 'SAVE_LAYOUT_FAILURE';
+// RESET_LAYOUTS
+const RESET_LAYOUTS = 'RESET_LAYOUTS';
 
 // Action creators
 export const getLayouts = createAsyncActionCreators(GET_LAYOUTS_REQUEST, GET_LAYOUTS_SUCCESS, GET_LAYOUTS_FAILURE)<void, GetLayoutsSuccessPayload, Error>();
@@ -73,3 +75,4 @@ export const saveLayout = createAsyncActionCreators(SAVE_LAYOUT_REQUEST, SAVE_LA
   CreateOrUpdateSuccessPayload,
   Error
 >();
+export const resetLayouts = createAction(RESET_LAYOUTS)();

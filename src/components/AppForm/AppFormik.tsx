@@ -16,13 +16,14 @@ const defaultInitialValues: Values = {
   // contexts: [{ $type: '' }],
   // images: [],
   // intents: [],
+  appUrl: '',
   description: '',
   icon: '',
   id: '',
   manifestType: ManifestType.AppUrl,
+  manifestUrl: '',
   name: '',
   title: '',
-  url: '',
 };
 
 const handleFormikSubmit = (handleSubmitValues: Props['handleSubmitValues']) => async (values: Values, actions: FormikActions<Values>) => {

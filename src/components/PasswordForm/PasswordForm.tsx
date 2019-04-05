@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import ErrorMessage from '../ErrorMessage';
+import { renderError } from '../../utils/renderError';
+
 import FormFooter from '../FormFooter';
 import Input from '../Input';
 import Label from '../Label';
@@ -36,8 +37,6 @@ interface Props {
   touched: Touched;
   values: Values;
 }
-
-const renderError = (error: string | undefined, touched?: boolean) => (error && touched ? () => <ErrorMessage>{error}</ErrorMessage> : undefined);
 
 export const PasswordForm = ({ handleSubmit, isSubmitting, isValid, touched, values, handleChange, handleBlur, errors, handleCancel, className }: Props) => (
   <Form className={className} onSubmit={handleSubmit}>

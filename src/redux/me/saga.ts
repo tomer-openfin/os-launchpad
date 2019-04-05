@@ -1,16 +1,19 @@
 import { Application, Window } from '@giantmachines/redux-openfin';
-import { all, call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
+import { all, call, Effect, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 import eraseCookie from '../../utils/eraseCookie';
 
-import { LOGIN_WINDOW } from '../../config/windows';
+import { adminWindows, authWindows, defaultWindows } from '../../config/windows';
 import { ApiResponseStatus } from '../../types/enums';
 import { UnPromisfy } from '../../types/utils';
+import getAppUuid from '../../utils/getAppUuid';
 import { getAdminApps, getAdminUsers } from '../admin';
-import { getManifestOverride, initResources, launchAppLauncher, reboundLauncher } from '../application';
+import { getManifestOverride, initResources, reboundLauncher, resetResources } from '../application';
+import { unregisterAllGlobalHotkeys } from '../globalHotkeys/utils';
 import { getAdminOrgSettings } from '../organization';
 import { getErrorFromCatch } from '../utils';
+import { closeWindowsByConfig, hideWindowsByConfig, initWindows } from '../windows/utils';
 import {
   addToAppLauncher,
   confirmPassword,
@@ -20,6 +23,7 @@ import {
   logout,
   removeFromAppLauncher,
   saveSettings,
+  setAuthMessaging,
   setAutoHide,
   setLauncherMonitorSettings,
   setLauncherPosition,
@@ -27,7 +31,9 @@ import {
   setMe,
   updatePassword,
 } from './actions';
+import { defaultAuthMessaging } from './reducer';
 import { getMeSettings } from './selectors';
+import { loginFlow } from './utils';
 
 function* watchConfirmPasswordRequest(action: ReturnType<typeof confirmPassword.request>) {
   try {
@@ -68,6 +74,9 @@ function* watchLoginRequest(action: ReturnType<typeof login.request>) {
     if (response.status === ApiResponseStatus.Failure) {
       const error = new Error(response.message);
       if (action.meta && action.meta.onFailure && response.meta) {
+        const isError = response.meta.code !== 'NewPasswordRequired';
+        yield put(setAuthMessaging({ message: response.message, isError }));
+
         action.meta.onFailure(error, {
           code: response.meta.code,
           message: response.message,
@@ -85,6 +94,7 @@ function* watchLoginRequest(action: ReturnType<typeof login.request>) {
     yield put(login.success({ isAdmin, email, firstName, lastName }, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
+    yield put(setAuthMessaging({ message: error.message, isError: true }));
     yield put(login.failure(error, action.meta));
   }
 }
@@ -93,14 +103,22 @@ function* watchLoginSuccess(action: ReturnType<typeof login.success>) {
   try {
     yield put(setMe(action.payload));
 
+    let effects: Effect[] = [call(initResources)];
+
     if (action.payload.isAdmin) {
-      yield all([put(getAdminApps.request()), put(getAdminUsers.request()), put(getAdminOrgSettings.request()), put(getManifestOverride.request())]);
+      effects = [
+        ...effects,
+        call(initWindows, adminWindows),
+        put(getAdminApps.request()),
+        put(getAdminUsers.request()),
+        put(getAdminOrgSettings.request()),
+        put(getManifestOverride.request()),
+      ];
     }
 
-    yield call(initResources);
+    yield all(effects);
 
-    yield put(Window.closeWindow({ id: LOGIN_WINDOW }));
-    yield put(launchAppLauncher());
+    yield put(Window.closeWindow({ id: authWindows.login.name }));
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
@@ -110,20 +128,46 @@ function* watchLoginSuccess(action: ReturnType<typeof login.success>) {
 
 function* watchLogoutRequest(action: ReturnType<typeof logout.request>) {
   try {
+    yield call(closeWindowsByConfig, adminWindows);
+    yield call(hideWindowsByConfig, defaultWindows);
+    yield put(Window.hideWindow({ id: getAppUuid() }));
+    yield all([call(unregisterAllGlobalHotkeys), call(resetResources)]);
+
     const response: UnPromisfy<ReturnType<typeof ApiService.logout>> = yield call(ApiService.logout);
 
     if (response.status === ApiResponseStatus.Failure) {
       throw new Error(response.message);
     }
 
-    yield put(logout.success(undefined, action.meta));
+    eraseCookie();
+
+    yield put(logout.success(action.payload, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(logout.failure(error, action.meta));
   }
+}
 
-  eraseCookie();
-  yield put(Application.restart());
+function* watchLogoutSuccess(action: ReturnType<typeof logout.success>) {
+  try {
+    const authMessaging = action.payload || defaultAuthMessaging;
+    yield put(setAuthMessaging(authMessaging));
+    yield call(loginFlow, false);
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.log('Error watchLogoutSuccess', error);
+  }
+}
+
+function* watchLogoutFailure() {
+  try {
+    yield put(Application.restart());
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.log('Error in watchLogoutFailure', error);
+  }
 }
 
 function* watchGetSettingsRequest(action: ReturnType<typeof getSettings.request>) {
@@ -191,6 +235,8 @@ export function* meSaga() {
   yield takeLatest(login.request, watchLoginRequest);
   yield takeLatest(login.success, watchLoginSuccess);
   yield takeLatest(logout.request, watchLogoutRequest);
+  yield takeLatest(logout.success, watchLogoutSuccess);
+  yield takeLatest(logout.failure, watchLogoutFailure);
   yield takeLatest(getSettings.request, watchGetSettingsRequest);
   yield takeLatest(saveSettings.request, watchSaveSettingsRequest);
   yield takeLatest(addToAppLauncher, reboundLauncherAndSaveSettings, true, 0);
