@@ -1,13 +1,11 @@
 import * as Yup from 'yup';
 
 import API from '../../services/ApiService/api';
-import { App } from '../../types/commons';
+import { ManifestType, Values } from './AppForm';
 
 export const validationSchema = Yup.object().shape({
-  // only require either appUrl OR manifest_url but not both at the same time
-  // withAppUrl = true when appUrl radio toggled, false when manifest_url toggled
-  appUrl: Yup.string().when('withAppUrl', {
-    is: withAppUrlVal => withAppUrlVal,
+  appUrl: Yup.string().when('manifestType', {
+    is: manifestTypeVal => ManifestType.AppUrl === manifestTypeVal,
     then: Yup.string()
       .url('Must be a valid URL')
       .required('Required'),
@@ -18,22 +16,17 @@ export const validationSchema = Yup.object().shape({
   id: Yup.string().notRequired(),
   images: Yup.array().notRequired(),
   intents: Yup.array().notRequired(), // enable when bring back contexts
-  manifest_url: Yup.string().when('withAppUrl', {
-    is: withAppUrlVal => !withAppUrlVal,
+  manifestType: Yup.string().oneOf(['appUrl', 'manifest']),
+  manifestUrl: Yup.string().when('manifestType', {
+    is: manifestTypeVal => ManifestType.Manifest === manifestTypeVal,
     then: Yup.string()
       .url('Must be a valid URL')
       .required('Required'),
   }),
   name: Yup.string(), // injected by us before payload is sent
   title: Yup.string().required('Required'),
-  withAppUrl: Yup.boolean(),
 });
 
-interface CreateAppManifestUrl {
-  appUrl: App['appUrl'];
-  manifest_url: App['manifest_url'];
-  withAppUrl: App['withAppUrl'];
-}
-export const createAppManifestUrl = ({ appUrl, manifest_url, withAppUrl }: CreateAppManifestUrl) => {
-  return withAppUrl && appUrl ? API.CREATE_MANIFEST(appUrl) : manifest_url;
+export const createAppManifestUrl = (appUrl: Values['appUrl'], manifestUrl: Values['manifestUrl'], manifestType: Values['manifestType']) => {
+  return manifestType === 'appUrl' && appUrl ? API.CREATE_MANIFEST_FROM_APP_URL(appUrl) : manifestUrl;
 };

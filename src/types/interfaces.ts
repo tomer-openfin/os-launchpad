@@ -89,7 +89,7 @@ export interface User {
   readonly lastModified?: string;
   readonly isAdmin?: boolean; // modified on BE only
   readonly status?: UserStatus;
-  readonly username?: string;
+  readonly username: string;
 }
 
 export interface ObjectWithId {

@@ -28,7 +28,10 @@ export const MockUserSettings = {
  * Get user info
  */
 export const getUserInfo: GetUserInfo = () => {
-  const response: ApiSuccessResponse<User> = { status: ApiResponseStatus.Success, data: { ...MockUser, id: MockUser.email, phone: '+15555555555' } };
+  const response: ApiSuccessResponse<User> = {
+    data: { ...MockUser, id: MockUser.email, username: MockUser.email, phone: '+15555555555' },
+    status: ApiResponseStatus.Success,
+  };
   return Promise.resolve(response);
 };
 

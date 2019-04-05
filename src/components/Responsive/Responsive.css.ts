@@ -29,7 +29,6 @@ export const GridWrapper = styled.div`
   ${ResponsiveWidth}
 
   display: grid;
-  grid-row-gap: 28px;
   grid-template-columns: 1fr;
   padding: 20px;
 `;

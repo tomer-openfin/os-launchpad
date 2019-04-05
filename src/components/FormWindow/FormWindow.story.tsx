@@ -7,8 +7,9 @@ import { User } from '../../types/commons';
 
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import NewAppFormik from '../NewAppForm';
-import NewUserFormik from '../NewUserForm';
+import AppFormik from '../AppForm/AppFormik';
+import { ManifestType } from '../AppForm/index';
+import UserFormik, { newUserSchema } from '../UserForm';
 import FormWindow from './FormWindow';
 
 const handleCancel = action('handleCancel');
@@ -33,10 +34,10 @@ const emptyApp = {
   id: '',
   images: [],
   intents: [],
+  manifestType: ManifestType.AppUrl,
   manifest_url: '',
   name: '',
   title: '',
-  withAppUrl: true,
 };
 
 let isClosed = true;
@@ -64,9 +65,15 @@ storiesOf(`${CATEGORIES.COMPONENTS}FormWindow`, module)
     return (
       <FormWindow message={errorMessage} headingText={headingText} responseError={error} resetResponseError={reset}>
         {form ? (
-          <NewUserFormik handleSubmitValues={handleSubmit} handleCancel={handleCancel} initialValues={emptyUser} />
+          <UserFormik
+            handleSubmitValues={handleSubmit}
+            handleCancel={handleCancel}
+            initialValues={emptyUser}
+            withPasswordField={true}
+            validationSchema={newUserSchema}
+          />
         ) : (
-          <NewAppFormik handleSubmitValues={handleSubmit} handleCancel={handleCancel} initialValues={emptyApp} />
+          <AppFormik handleSubmitValues={handleSubmit} handleCancel={handleCancel} initialValues={emptyApp} />
         )}
       </FormWindow>
     );
