@@ -6,6 +6,7 @@ import * as layoutsIcon from '../assets/Layouts.svg';
 import * as logoutIcon from '../assets/Logout.svg';
 import * as notificationsIcon from '../assets/Notifications.svg';
 import * as settingsIcon from '../assets/Settings.svg';
+import * as supportIcon from '../assets/Support.svg';
 
 import windowsConfig from '../config/windows';
 
@@ -19,6 +20,7 @@ export const LOGOUT_KEY = 'Logout';
 export const NOTIFICATIONS_KEY = 'Notifications';
 export const APP_DIRECTORY_KEY = 'App Directory';
 export const SETTINGS_KEY = 'Settings';
+export const SUPPORT_KEY = 'Support';
 
 export interface SystemIcon {
   action: Action;
@@ -42,6 +44,16 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       isBackground: false,
       isShownByDefault: false,
       title: LOGOUT_KEY,
+    },
+    {
+      action: launchWindow(windowsConfig.support),
+      color: Color.MARS,
+      hasExtendedWindow: false,
+      hoverColor: Color.MARS_HOVER,
+      icon: supportIcon,
+      isBackground: false,
+      isShownByDefault: false,
+      title: SUPPORT_KEY,
     },
     {
       action: launchWindow(windowsConfig.settings),
