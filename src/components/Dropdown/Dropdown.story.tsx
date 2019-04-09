@@ -20,8 +20,8 @@ storiesOf(`${CATEGORIES.COMPONENTS}Dropdown`, module)
     const open = boolean('Open', false);
     const toggleOpen = action('toggle open');
 
-    return <DropdownView onSelect={onSelect} open={open} options={options} selected={options[0]} toggleOpen={toggleOpen} width={width} />;
+    return <DropdownView onSelect={onSelect} open={open} options={options} selected={options[0].value} toggleOpen={toggleOpen} width={width} />;
   })
   .add('with state', () => {
-    return <Dropdown onSelect={onSelect} options={options} selected={options[0]} width={width} />;
+    return <Dropdown onSelect={onSelect} options={options} selected={options[0].value} width={width} />;
   });

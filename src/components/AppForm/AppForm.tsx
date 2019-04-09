@@ -1,20 +1,20 @@
 import * as React from 'react';
 
-import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../samples/FDC3';
+// import { MOCK_CONTEXTS, MOCK_INTENTS } from '../../samples/FDC3';
 
 import * as EditIcon from '../../assets/Edit.svg';
 
 import { renderError } from '../../utils/renderError';
-import { IconPreviewMeta, IconPreviewMetaWrapper, IconPreviewWrapper, StyledForm, StyledLabel, StyledRow } from './AppForm.css';
+import { IconPreviewMeta, IconPreviewMetaWrapper, IconPreviewWrapper, StyledForm, StyledRow } from './AppForm.css';
 
 // import CheckboxInArray from '../CheckboxInArray';
+import Dropdown, { OptionType } from '../Dropdown';
 import FormFooter from '../FormFooter';
 import ImagePreview from '../ImagePreview';
 import ImageUpload from '../ImageUpload';
 import Input from '../Input';
 import Label from '../Label';
 import Modal from '../Modal';
-import RadioOption from '../RadioOption';
 import ScrollGrid, { /* CheckboxWrapper, */ RowWrapper } from '../Responsive';
 import SvgIcon from '../SvgIcon';
 import TextArea from '../TextArea';
@@ -24,6 +24,7 @@ interface Touched {
   // images?: boolean;
   // intents?: boolean;
   appUrl?: boolean;
+  appPath?: boolean;
   description?: boolean;
   icon?: boolean;
   id?: boolean;
@@ -37,6 +38,7 @@ interface Errors {
   // images?: string;
   // intents?: Array<{ $type: string }>;
   appUrl?: string;
+  appPath?: string;
   description?: string;
   icon?: string;
   id?: string;
@@ -51,11 +53,14 @@ export enum ManifestType {
   Path = 'path',
 }
 
+const MANIFEST_OPTIONS = [{ label: 'App Url', value: 'appUrl' }, { label: 'Manifest', value: 'manifest' }, { label: 'Native App', value: 'path' }];
+
 export interface Values {
   // contexts: Array<{ $type: string }>;
   // images?: Array<{ url: string }>;
   // intents?: Array<{ displayName: string; name: string }>;
   appUrl?: string;
+  appPath?: string;
   description: string;
   icon: string;
   id: string;
@@ -157,29 +162,17 @@ class AppForm extends React.Component<Props, State> {
 
     const { iconFormOpen } = this.state;
 
+    const handleSelect = (option: OptionType) => {
+      setFieldValue('manifestType', option.value as ManifestType);
+    };
+
     return (
       <StyledForm className={className} onSubmit={handleSubmit}>
         <ScrollGrid>
-          <StyledRow firstElementWidth="100px">
-            <StyledLabel label="Config Type">
-              <RadioOption
-                label="App URL"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                option={ManifestType.AppUrl}
-                optionName="manifestType"
-                selectedOption={values.manifestType}
-              />
-
-              <RadioOption
-                label="Manifest"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                option={ManifestType.Manifest}
-                optionName="manifestType"
-                selectedOption={values.manifestType}
-              />
-            </StyledLabel>
+          <StyledRow firstElementWidth="140px">
+            <Label label="App Type">
+              <Dropdown name="manifestType" onSelect={handleSelect} options={MANIFEST_OPTIONS} selected={values.manifestType} />
+            </Label>
 
             {values.manifestType === ManifestType.AppUrl && (
               <Label label="App URL" renderError={renderError(errors.appUrl, touched.appUrl)}>
@@ -205,6 +198,20 @@ class AppForm extends React.Component<Props, State> {
                   placeholder="Enter manifest url"
                   ref={this.inputField}
                   value={values.manifestUrl}
+                />
+              </Label>
+            )}
+
+            {values.manifestType === ManifestType.Path && (
+              <Label label="Native App" renderError={renderError(errors.appPath, touched.appPath)}>
+                <Input
+                  hasError={!!errors.appPath && touched.appPath}
+                  name="appPath"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  placeholder="Enter path"
+                  ref={this.inputField}
+                  value={values.appPath}
                 />
               </Label>
             )}

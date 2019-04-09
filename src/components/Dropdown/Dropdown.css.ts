@@ -13,7 +13,7 @@ export const Display = styled.div`
   align-items: center;
   background-color: ${Color.SEDNOID};
   display: flex;
-  height: 40px;
+  height: 34px;
   justify-content: space-between;
   padding: 8px 5px;
 `;
@@ -29,6 +29,8 @@ export const OptionsWrapper = styled.div<{ width?: number | string; open: boolea
   background-color: ${Color.SEDNOID};
   padding-bottom: 8px;
   position: absolute;
+  z-index: 1;
+  opacity: 1;
 `;
 
 export const Option = styled.div`

@@ -7,9 +7,9 @@ import Color from '../../styles/color';
 import SvgIcon from '../SvgIcon/index';
 import { Display, Indicator, Option, OptionsWrapper, Wrapper } from './Dropdown.css';
 
-export interface Option {
+export interface OptionType {
   label: string;
-  value: string | number;
+  value: string;
 }
 
 interface State {
@@ -17,27 +17,32 @@ interface State {
 }
 
 interface Props {
-  selected: Option;
-  options: Option[];
-  onSelect: (option: Option) => void;
+  selected: string;
+  options: OptionType[];
+  onSelect: (option: OptionType) => void;
   width?: number | string;
+  name?: string;
 }
 
 interface ViewProps extends Props, State {
   toggleOpen: () => void;
 }
+const getLabel = (options: OptionType[], selected: string) => {
+  const current = options.find(opt => opt.value === selected);
+  return (current && current.label) || selected;
+};
 
 export const DropdownView = ({ onSelect, options, open, selected, toggleOpen, width }: ViewProps) => (
   <Wrapper width={width}>
     <Display onClick={toggleOpen}>
-      {selected.label || selected.value}
+      {getLabel(options, selected)}
 
       <SvgIcon imgSrc={indicator} size={12} color={Color.STAR} />
     </Display>
 
     <OptionsWrapper open={open}>
-      {options.map((option: Option, i: number) => {
-        const createOnClick = (currentOpt: Option) => () => onSelect(currentOpt);
+      {options.map((option: OptionType, i: number) => {
+        const createOnClick = (currentOpt: OptionType) => () => onSelect(currentOpt);
 
         return (
           <Option onClick={createOnClick(option)} key={i}>
@@ -58,8 +63,14 @@ class Dropdown extends React.Component<Props, State> {
     this.setState((prevState: State) => ({ open: !prevState.open }));
   };
 
+  handleSelect = (option: OptionType) => {
+    const { onSelect } = this.props;
+    this.toggleOpen();
+    onSelect(option);
+  };
+
   render() {
-    return <DropdownView {...this.props} {...this.state} toggleOpen={this.toggleOpen} />;
+    return <DropdownView {...this.props} {...this.state} onSelect={this.handleSelect} toggleOpen={this.toggleOpen} />;
   }
 }
 

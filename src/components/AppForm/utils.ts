@@ -4,6 +4,12 @@ import API from '../../services/ApiService/api';
 import { ManifestType, Values } from './AppForm';
 
 export const validationSchema = Yup.object().shape({
+  appPath: Yup.string().when('manifestType', {
+    is: manifestTypeVal => ManifestType.Path === manifestTypeVal,
+    then: Yup.string()
+      .trim()
+      .required('Required'),
+  }),
   appUrl: Yup.string().when('manifestType', {
     is: manifestTypeVal => ManifestType.AppUrl === manifestTypeVal,
     then: Yup.string()
