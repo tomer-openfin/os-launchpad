@@ -41,6 +41,7 @@ import '../src/components/BugForm/BugForm.story';
 import '../src/components/ChangePasswordForm/ChangePasswordForm.story';
 import '../src/components/ConfirmPasswordUpdate/ConfirmPasswordUpdate.story';
 import '../src/components/DirectionControls/DirectionControls.story';
+import '../src/components/Dropdown/Dropdown.story';
 import '../src/components/FeedbackForm/FeedbackForm.story';
 import '../src/components/ForgotPassword/ForgotPassword.story';
 import '../src/components/ForgotPasswordChangeForm/ForgotPasswordChangeForm.story';

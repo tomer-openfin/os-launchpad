@@ -6,26 +6,22 @@ import * as React from 'react';
 import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import Dropdown from './Dropdown.css';
+import Dropdown, { DropdownView } from './Dropdown';
 
-storiesOf(`${CATEGORIES.UI}Dropdown`, module)
+const options = [{ label: 'OpenFin One', value: 'one' }, { label: 'OpenFin Two', value: 'two' }, { label: 'OpenFin Three', value: 'three' }];
+
+const onSelect = action('Select');
+const width = number('Width', 140);
+
+storiesOf(`${CATEGORIES.COMPONENTS}Dropdown`, module)
   .addDecorator(withKnobs)
   .addDecorator(withMarginDecorator())
-  .add('with knobs', () => {
+  .add('default', () => {
     const open = boolean('Open', false);
-    const selectedIndex = number('Selected Index', 0);
-    const selected = select(
-      'Options',
-      [{ label: 'option one', value: 'one' }, { label: 'option two', value: 'two' }, { label: 'option three', value: 'three' }],
-      { label: 'option one', value: 'one' },
-    );
-    const width = number('Width', 200);
+    const toggleOpen = action('toggle open');
 
-    // const options = select('Options');
-
-    // const options = boolean(Option)[];
-    // const selectOption = boolean(action)('Select Option');
-    // const width? = boolean(number) | string;
-
-    return <Dropdown width={width} />;
+    return <DropdownView onSelect={onSelect} open={open} options={options} selected={options[0]} toggleOpen={toggleOpen} width={width} />;
+  })
+  .add('with state', () => {
+    return <Dropdown onSelect={onSelect} options={options} selected={options[0]} width={width} />;
   });

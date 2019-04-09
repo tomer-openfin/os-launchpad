@@ -1,4 +1,4 @@
-import Dropdown from './Dropdown.css';
+import Dropdown from './Dropdown';
 
 export * from './Dropdown.css';
 
