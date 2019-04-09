@@ -1,13 +1,10 @@
 import * as React from 'react';
 
+import { CREATE_MANIFEST_FROM_APP_URL_BASE } from '../../services/ApiService/api';
 import { App, DispatchRequest } from '../../types/commons';
 
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
-
-import { CREATE_MANIFEST_FROM_APP_URL_BASE } from '../../services/ApiService/api';
-import { createAppManifestUrl, ManifestType, Values } from '../AppForm';
-
-import AppFormik from '../AppForm/AppFormik';
+import AppFormik, { createAppManifestUrl, ManifestType, Values } from '../AppForm';
 import FormWindow from '../FormWindow';
 
 interface Props extends ResponseProps {
@@ -85,7 +82,12 @@ class EditAppWindow extends React.Component<Props> {
         handleDeleteIconClick={handleDelete}
         message={`There was an error trying to update ${title}: ${responseMessage} Please try again.`}
       >
-        <AppFormik handleSubmitValues={this.handleSubmitValues} handleCancel={handleCancel} initialValues={initialValues} focusFieldOnInitialMount={false} />
+        <AppFormik
+         handleSubmitValues={this.handleSubmitValues}
+         handleCancel={handleCancel}
+         initialValues={initialValues}
+         focusFieldOnInitialMount={false}
+        />
       </FormWindow>
     );
   }
