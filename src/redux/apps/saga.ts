@@ -1,5 +1,6 @@
 import { all, call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
+import { ManifestType } from '../../components/AppForm/index';
 import ApiService from '../../services/ApiService';
 import API from '../../services/ApiService/api';
 import { ApiResponseStatus, AppStatusOrigins, AppStatusStates } from '../../types/enums';
@@ -9,6 +10,7 @@ import { bindFinAppEventHandlers } from '../../utils/finAppEventHandlerHelpers';
 import {
   closeApplication,
   createAndRunFromManifest,
+  createAndRunFromPath,
   getOpenFinApplicationChildWindows,
   getOpenFinApplicationInfo,
   getVisibleWindowStateAndBounds,
@@ -60,9 +62,10 @@ export function* watchGetAppDirectoryListSuccess(action: ReturnType<typeof getAp
 
 export function* watchOpenFinAppRequest(action: ReturnType<typeof openFinApp.request>) {
   try {
-    const { appUrl, id, manifest_url } = action.payload;
+    const { appUrl, id, manifest_url, manifestType } = action.payload;
 
     let manifestUrl = manifest_url;
+
     if (appUrl) {
       // TODO: All apps should be moved off of appUrl and rely on manifest
       // Remove manifest creation through appUrl when all apps have been migrated off
@@ -80,7 +83,9 @@ export function* watchOpenFinAppRequest(action: ReturnType<typeof openFinApp.req
     if (!status || status.state === AppStatusStates.Closed) {
       yield put(setFinAppStatusState({ id, statusState: AppStatusStates.Loading, origin: AppStatusOrigins.Default }));
     }
-    const uuid: UnPromisfy<ReturnType<typeof createAndRunFromManifest>> = yield call(createAndRunFromManifest, manifestUrl, id);
+
+    const uuid = yield manifestType === ManifestType.Path ? call(createAndRunFromPath, manifestUrl) : call(createAndRunFromManifest, manifestUrl, id);
+
     const info = yield call(getOpenFinApplicationInfo(uuid));
 
     yield put(

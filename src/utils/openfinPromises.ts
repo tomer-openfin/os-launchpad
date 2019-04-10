@@ -114,6 +114,26 @@ export const createAndRunFromManifest = (manifestUrl: string, id: string): Promi
     );
   });
 };
+export const createAndRunFromPath = (manifestUrl: string): Promise<string> => {
+  const { fin } = window;
+
+  if (!fin) {
+    return Promise.reject('window.fin is undefined');
+  }
+
+  return new Promise((resolve, reject) => {
+    fin.desktop.System.launchExternalProcess(
+      { path: manifestUrl },
+      ({ uuid }: { uuid: string }) => resolve(uuid),
+      (error: string) => {
+        /* tslint:disable-next-line:no-console */
+        console.log('error is', error);
+        alert(`Error launching native app. App not found at specified location: ${manifestUrl}.`);
+        reject(error);
+      },
+    );
+  });
+};
 
 export const closeApplication = (app: OpenFinApplication) => {
   return promisifyOpenfin(app, 'close');

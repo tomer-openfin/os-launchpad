@@ -4,8 +4,7 @@ import { App, DispatchRequest } from '../../types/commons';
 
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
 
-import { CREATE_MANIFEST_FROM_APP_URL_BASE } from '../../services/ApiService/api';
-import { createAppManifestUrl, ManifestType, Values } from '../AppForm';
+import { getEditAppValues, getSubmitAppData, ManifestType, Values } from '../AppForm';
 
 import AppFormik from '../AppForm/AppFormik';
 import FormWindow from '../FormWindow';
@@ -32,14 +31,8 @@ class EditAppWindow extends React.Component<Props> {
   handleSubmitValues = (formData: Values): Promise<void> => {
     const { handleSuccess, onResponseError, onResponseSuccess, updateApp } = this.props;
 
-    const { appUrl, manifestType, manifestUrl, ...rest } = formData;
-
-    const computedManifestUrl = createAppManifestUrl(appUrl, manifestUrl, manifestType);
-
-    const editedApp = { ...rest, manifest_url: computedManifestUrl };
-
     return new Promise(resolve => {
-      updateApp(editedApp, {
+      updateApp(getSubmitAppData(formData, false), {
         onFailure: onResponseError(resolve),
         onSuccess: onResponseSuccess(() => {
           handleSuccess();
@@ -52,27 +45,21 @@ class EditAppWindow extends React.Component<Props> {
   render() {
     const { app, handleCancel, handleDelete, responseError, responseMessage, resetResponseError } = this.props;
 
-    const { id, manifest_url = '', name, title, description, icon } = app;
+    const { id, manifest_url = '', name, title, description, icon, manifestType } = app;
 
-    const foundIndex = manifest_url.indexOf(CREATE_MANIFEST_FROM_APP_URL_BASE);
-
-    // did manifest_url contain CREATE_MANIFEST_FROM_APP_URL_BASE?
-    const isManifest = foundIndex === -1;
-
-    // pass through the unmodified manifest if that was what was submitted,
-    // otherwise, extract url from web url
-    const submittedAppUrl = !isManifest ? manifest_url.slice(foundIndex + CREATE_MANIFEST_FROM_APP_URL_BASE.length) : '';
+    const { appPath, appUrl, manifestUrl, manifestType: newManifestType } = getEditAppValues(manifest_url, manifestType as ManifestType);
 
     const initialValues: Values = {
       // contexts: contexts || [],
       // images,
       // intents: intents || [],
-      appUrl: submittedAppUrl,
+      appPath,
+      appUrl,
       description,
       icon,
       id,
-      manifestType: isManifest ? ManifestType.Manifest : ManifestType.AppUrl,
-      manifestUrl: isManifest ? manifest_url : '',
+      manifestType: newManifestType,
+      manifestUrl,
       name,
       title,
     };
