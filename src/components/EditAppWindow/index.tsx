@@ -1,3 +1,3 @@
-import EditAppWindow from './EditAppWindowContainer';
+import EditAppWindowContainer from './EditAppWindowContainer';
 
-export default EditAppWindow;
+export default EditAppWindowContainer;

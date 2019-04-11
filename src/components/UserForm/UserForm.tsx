@@ -10,7 +10,7 @@ import Input from '../Input';
 import Label from '../Label';
 import ScrollGrid, { Form, PasswordIconWrapper } from '../Responsive';
 import SvgIcon from '../SvgIcon';
-import { StyledRowWrapper } from './UserForm.css';
+import { StyledLabel, StyledRowWrapper } from './UserForm.css';
 
 interface Touched {
   email?: boolean;
@@ -76,7 +76,7 @@ class UserForm extends React.Component<Props, State> {
       <Form className={className} onSubmit={handleSubmit}>
         <ScrollGrid>
           <StyledRowWrapper secondElementWidth="55px">
-            <Label label="First Name" renderError={renderError(errors.firstName, touched.firstName)}>
+            <StyledLabel index={0} label="First Name" renderError={renderError(errors.firstName, touched.firstName)}>
               <Input
                 hasError={!!errors.firstName && touched.firstName}
                 onBlur={handleBlur}
@@ -85,9 +85,9 @@ class UserForm extends React.Component<Props, State> {
                 name="firstName"
                 placeholder="Enter first name"
               />
-            </Label>
+            </StyledLabel>
 
-            <Label label="MI" renderError={renderError(errors.middleInitial, touched.middleInitial)}>
+            <Label index={1} label="MI" renderError={renderError(errors.middleInitial, touched.middleInitial)}>
               <Input
                 hasError={!!errors.middleInitial && touched.middleInitial}
                 onBlur={handleBlur}
@@ -98,7 +98,7 @@ class UserForm extends React.Component<Props, State> {
             </Label>
           </StyledRowWrapper>
 
-          <Label label="Last Name" renderError={renderError(errors.lastName, touched.lastName)}>
+          <Label index={2} label="Last Name" renderError={renderError(errors.lastName, touched.lastName)}>
             <Input
               hasError={!!errors.lastName && touched.lastName}
               onBlur={handleBlur}
@@ -109,7 +109,7 @@ class UserForm extends React.Component<Props, State> {
             />
           </Label>
 
-          <Label label="Email" renderError={renderError(errors.email, touched.email)}>
+          <Label index={3} label="Email" renderError={renderError(errors.email, touched.email)}>
             <Input
               hasError={!!errors.email && touched.email}
               onBlur={handleBlur}
@@ -122,7 +122,7 @@ class UserForm extends React.Component<Props, State> {
             />
           </Label>
 
-          <Label label="Phone Number" renderError={renderError(errors.phone, touched.phone)}>
+          <Label index={4} label="Phone Number" renderError={renderError(errors.phone, touched.phone)}>
             <Input
               hasError={!!errors.phone && touched.phone}
               onBlur={handleBlur}
@@ -135,7 +135,7 @@ class UserForm extends React.Component<Props, State> {
           </Label>
 
           {withPasswordField && (
-            <Label label="Password" renderError={renderError(errors.tmpPassword, touched.tmpPassword)}>
+            <Label index={5} label="Password" renderError={renderError(errors.tmpPassword, touched.tmpPassword)}>
               <Input
                 hasError={!!errors.tmpPassword && touched.tmpPassword}
                 onBlur={handleBlur}

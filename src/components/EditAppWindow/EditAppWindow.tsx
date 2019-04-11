@@ -1,12 +1,12 @@
 import * as React from 'react';
 
+import { CREATE_MANIFEST_FROM_APP_URL_BASE } from '../../services/ApiService/api';
 import { App, DispatchRequest } from '../../types/commons';
 
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
 
-import { getEditAppValues, getSubmitAppData, ManifestType, Values } from '../AppForm';
+import AppFormik, { getEditAppValues, getSubmitAppData, ManifestType, Values } from '../AppForm';
 
-import AppFormik from '../AppForm/AppFormik';
 import FormWindow from '../FormWindow';
 
 interface Props extends ResponseProps {

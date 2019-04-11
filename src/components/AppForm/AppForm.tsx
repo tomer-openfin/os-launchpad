@@ -101,12 +101,13 @@ class AppForm extends React.Component<Props, State> {
     super(props);
     this.inputField = React.createRef<HTMLInputElement>();
   }
-
-  componentDidMount() {
-    if (this.props.focusFieldOnInitialMount) {
-      this.focusInputField();
-    }
-  }
+  // TEMP: talk to product team
+  // focusing field on mount disrupts cascade animations for NewApp form
+  // componentDidMount() {
+  //   if (this.props.focusFieldOnInitialMount) {
+  //     this.focusInputField();
+  //   }
+  // }
 
   componentDidUpdate(prevProps: Props) {
     const {
@@ -175,7 +176,7 @@ class AppForm extends React.Component<Props, State> {
             </Label>
 
             {values.manifestType === ManifestType.AppUrl && (
-              <Label label="App URL" renderError={renderError(errors.appUrl, touched.appUrl)}>
+              <Label index={1} label="App URL" renderError={renderError(errors.appUrl, touched.appUrl)}>
                 <Input
                   hasError={!!errors.appUrl && touched.appUrl}
                   name="appUrl"
@@ -189,7 +190,7 @@ class AppForm extends React.Component<Props, State> {
             )}
 
             {values.manifestType === ManifestType.Manifest && (
-              <Label label="Manifest URL" renderError={renderError(errors.manifestUrl, touched.manifestUrl)}>
+              <Label index={1} label="Manifest URL" renderError={renderError(errors.manifestUrl, touched.manifestUrl)}>
                 <Input
                   hasError={!!errors.manifestUrl && touched.manifestUrl}
                   name="manifestUrl"
@@ -217,7 +218,7 @@ class AppForm extends React.Component<Props, State> {
             )}
           </StyledRow>
 
-          <Label label="App Title" renderError={renderError(errors.title, touched.title)}>
+          <Label index={2} label="App Title" renderError={renderError(errors.title, touched.title)}>
             <Input
               hasError={!!errors.title && touched.title}
               name="title"
@@ -229,7 +230,7 @@ class AppForm extends React.Component<Props, State> {
           </Label>
 
           <RowWrapper firstElementWidth="100px" height="144px">
-            <Label label="App Shortcut">
+            <Label index={3} label="App Shortcut">
               <IconPreviewWrapper>
                 <ImagePreview imgSrc={values.icon || ''} size={68} />
 
@@ -241,7 +242,7 @@ class AppForm extends React.Component<Props, State> {
               </IconPreviewWrapper>
             </Label>
 
-            <Label label="Description" renderError={renderError(errors.description, touched.description)}>
+            <Label index={4} label="Description" renderError={renderError(errors.description, touched.description)}>
               <TextArea
                 hasError={!!errors.description && touched.description}
                 height={118}
