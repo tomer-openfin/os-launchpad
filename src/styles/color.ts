@@ -6,6 +6,7 @@ enum Color {
   EARTH = '#504CFF',
   EARTH_HOVER = '#736FFF',
   MARS = '#DF5353',
+  MARS_HOVER = '#E77E7E',
   ASTEROID_BELT = '#3A3A3A',
   OORT_CLOUD = '#121212',
   JUPITER = '#FBC23C',
