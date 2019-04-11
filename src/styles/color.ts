@@ -13,6 +13,7 @@ enum Color {
   SATURN = '#95D154',
   SATURN_HOVER = '#AFDC7E',
   SEDNOID = '#515151',
+  SEDNOID_HOVER = '#5c5c5c',
   URANUS = '#7BD5C1',
   URANUS_HOVER = '#BCE9DF',
   NEPTUNE = '#724CFF',

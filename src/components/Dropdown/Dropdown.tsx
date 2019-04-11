@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import * as indicator from '../../assets/DropdownIndicator.svg';
 
-import { boolean } from '@storybook/addon-knobs';
 import Color from '../../styles/color';
 import SvgIcon from '../SvgIcon/index';
 import { Display, Indicator, Option, OptionsWrapper, Wrapper } from './Dropdown.css';
@@ -45,7 +44,7 @@ export const DropdownView = ({ onSelect, options, open, selected, toggleOpen, wi
         const createOnClick = (currentOpt: OptionType) => () => onSelect(currentOpt);
 
         return (
-          <Option onClick={createOnClick(option)} key={i}>
+          <Option chosen={selected === option.value || selected === option.label} onClick={createOnClick(option)} key={i}>
             {option.label}
           </Option>
         );
