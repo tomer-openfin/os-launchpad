@@ -16,11 +16,11 @@ interface State {
 }
 
 interface Props {
-  selected: string;
-  options: OptionType[];
-  onSelect: (option: OptionType) => void;
-  width?: number | string;
   name?: string;
+  onSelect: (option: OptionType) => void;
+  options: OptionType[];
+  selected: string;
+  width?: number | string;
 }
 
 interface ViewProps extends Props, State {

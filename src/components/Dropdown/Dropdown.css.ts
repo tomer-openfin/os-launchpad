@@ -7,7 +7,6 @@ export const Wrapper = styled.div<{ width?: number | string }>`
   color: ${Color.SUN}
 
   ${({ width }) => `width: ${width || 140}px;`}
-
 `;
 
 export const Display = styled.div`
