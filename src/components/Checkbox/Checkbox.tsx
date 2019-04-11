@@ -4,18 +4,15 @@ import { CheckboxUI, HiddenInput, LabelText, Wrapper } from './Checkbox.css';
 
 interface Props {
   checked: boolean;
-  name: string;
   label: string;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onChange: (e: React.ChangeEvent<Element>) => void;
+  onChange: () => void;
 }
 
-const Checkbox = ({ checked, name, label, onBlur, onChange }: Props) => {
+const Checkbox = ({ checked, label, onChange }: Props) => {
   return (
     <Wrapper>
-      <HiddenInput name={name} type="checkbox" checked={checked} onBlur={onBlur} onChange={onChange} />
-
-      <CheckboxUI checked={checked} />
+      <CheckboxUI checked={checked} onClick={onChange} />
 
       {label && <LabelText>{label}</LabelText>}
     </Wrapper>

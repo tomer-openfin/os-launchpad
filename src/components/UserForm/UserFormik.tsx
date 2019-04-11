@@ -20,6 +20,7 @@ const defaultInitialValues: Values = {
   lastName: '',
   middleInitial: '',
   phone: '',
+  sendEmail: false,
   tmpPassword: '',
   username: '',
 };
@@ -33,8 +34,14 @@ const handleFormikSubmit = (handleSubmitValues: Props['handleSubmitValues']) => 
   actions.setSubmitting(false);
 };
 
+type SetFieldValue = <T extends keyof Values>(field: T, value: Values[T], shouldValidate?: boolean) => void;
+
+const handleCheck = (setFieldValue: SetFieldValue, prevChecked: boolean) => () => {
+  setFieldValue('sendEmail', !prevChecked);
+};
+
 const renderForm = (handleCancel: Props['handleCancel'], withPasswordField: boolean, className?: string) => (props: FormikProps<Values>) => {
-  const { errors, handleBlur, handleChange, handleSubmit, isSubmitting, isValid, touched, values } = props;
+  const { errors, handleBlur, handleChange, handleSubmit, isSubmitting, isValid, setFieldValue, touched, values } = props;
 
   return (
     <UserForm
@@ -42,6 +49,7 @@ const renderForm = (handleCancel: Props['handleCancel'], withPasswordField: bool
       errors={errors}
       handleBlur={handleBlur}
       handleCancel={handleCancel}
+      handleCheck={handleCheck(setFieldValue, !!values.sendEmail)}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
       isSubmitting={isSubmitting}

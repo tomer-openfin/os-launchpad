@@ -11,8 +11,8 @@ storiesOf(`${CATEGORIES.UI}Checkbox`, module)
   .addDecorator(withKnobs)
   .add('default', () => {
     const label = text('Label Text', 'Place Text Here');
-    const name = text('Name', 'Place Name Here');
     const checked = boolean('checked', false);
     const onChange = action('onChange');
-    return <Checkbox label={label} onChange={onChange} checked={checked} name={name} />;
+
+    return <Checkbox label={label} onChange={onChange} checked={checked} />;
   });
