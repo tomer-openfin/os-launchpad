@@ -12,14 +12,14 @@ interface CheckedProps {
   checked: boolean;
 }
 
-export const FormFieldWrapper = styled(FormField)`
+export const HiddenInput = styled.input`
+  display: none;
+`;
+
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  & > input {
-    display: none;
-  }
 `;
 
 export const LabelText = styled.div`

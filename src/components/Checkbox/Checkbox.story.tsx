@@ -1,22 +1,18 @@
-import { Formik } from 'formik';
 import * as React from 'react';
 
-import { text, withKnobs } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import { CATEGORIES } from '../../utils/storyCategories';
 
-import noop from '../../utils/noop';
 import Checkbox from './Checkbox';
-
-const FormikCheckbox = ({ label, name }) => ({ values }) => <Checkbox name={name} label={label} checked={values[name]} />;
-
-const FormikCheckboxForm = ({ label, name }) => <Formik initialValues={{ [name]: false }} render={FormikCheckbox({ label, name })} onSubmit={noop} />;
 
 storiesOf(`${CATEGORIES.UI}Checkbox`, module)
   .addDecorator(withKnobs)
-  .add('default', () => <FormikCheckboxForm label="Checkbox" name="checkbox" />)
-  .add('with knobs', () => {
+  .add('default', () => {
     const label = text('Label Text', 'Place Text Here');
-
-    return <FormikCheckboxForm label={label} name="checkbox" />;
+    const name = text('Name', 'Place Name Here');
+    const checked = boolean('checked', false);
+    const onChange = action('onChange');
+    return <Checkbox label={label} onChange={onChange} checked={checked} name={name} />;
   });
