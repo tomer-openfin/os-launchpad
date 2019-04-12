@@ -20,7 +20,6 @@ interface Touched {
   middleInitial?: boolean;
   phone?: boolean;
   tmpPassword?: boolean;
-  sendEmail?: boolean;
 }
 
 interface Errors {
@@ -29,7 +28,6 @@ interface Errors {
   lastName?: string;
   middleInitial?: string;
   phone?: string;
-  sendEmail?: string;
   tmpPassword?: string;
 }
 
