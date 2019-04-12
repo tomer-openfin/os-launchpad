@@ -23,7 +23,6 @@ export const OptionsWrapper = styled.div<{ width?: number | string; open: boolea
   opacity: 1;
   padding-bottom: 14px;
   position: absolute;
-  z-index: 2;
 
   ${({ open, width }) => `
     visibility: ${open ? 'visible' : 'hidden'};

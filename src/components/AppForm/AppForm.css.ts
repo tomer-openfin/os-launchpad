@@ -33,8 +33,4 @@ export const StyledForm = styled(Form)`
   ${GridWrapper} {
     grid-row-gap: 23px;
   }
-
-  ${Label} {
-    z-index: 0;
-  }
 `;
