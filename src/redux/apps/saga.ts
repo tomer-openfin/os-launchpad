@@ -84,7 +84,9 @@ export function* watchOpenFinAppRequest(action: ReturnType<typeof openFinApp.req
       yield put(setFinAppStatusState({ id, statusState: AppStatusStates.Loading, origin: AppStatusOrigins.Default }));
     }
 
-    const uuid = yield manifestType === ManifestType.Path ? call(createAndRunFromPath, manifestUrl) : call(createAndRunFromManifest, manifestUrl, id);
+    const uuid: UnPromisfy<ReturnType<typeof createAndRunFromManifest | typeof createAndRunFromPath>> = yield manifestType === ManifestType.Path
+      ? call(createAndRunFromPath, manifestUrl)
+      : call(createAndRunFromManifest, manifestUrl, id);
 
     const info = yield call(getOpenFinApplicationInfo(uuid));
 
