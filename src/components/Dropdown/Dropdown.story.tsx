@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, color, number, select, text, withKnobs } from '@storybook/addon-knobs';
+import { boolean, number, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
@@ -10,10 +10,10 @@ import Dropdown, { DropdownView } from './Dropdown';
 
 const options = [{ label: 'OpenFin One', value: 'one' }, { label: 'OpenFin Two', value: 'two' }, { label: 'OpenFin Three', value: 'three' }];
 
-const onSelect = action('Select');
+const onSelect = action('onSelect');
 const width = number('Width', 140);
 
-storiesOf(`${CATEGORIES.COMPONENTS}Dropdown`, module)
+storiesOf(`${CATEGORIES.UI}Dropdown`, module)
   .addDecorator(withKnobs)
   .addDecorator(withMarginDecorator())
   .add('default', () => {

@@ -18,8 +18,6 @@ export const Display = styled.div`
   padding: 8px;
 `;
 
-export const Indicator = styled.div<{ open: boolean }>``;
-
 export const OptionsWrapper = styled.div<{ width?: number | string; open: boolean }>`
   background-color: ${Color.SEDNOID};
   opacity: 1;

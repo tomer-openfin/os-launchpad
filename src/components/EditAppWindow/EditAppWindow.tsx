@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { CREATE_MANIFEST_FROM_APP_URL_BASE } from '../../services/ApiService/api';
 import { App, DispatchRequest } from '../../types/commons';
 
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';

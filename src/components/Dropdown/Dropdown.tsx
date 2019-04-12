@@ -4,7 +4,7 @@ import * as indicator from '../../assets/DropdownIndicator.svg';
 
 import Color from '../../styles/color';
 import SvgIcon from '../SvgIcon/index';
-import { Display, Indicator, Option, OptionsWrapper, Wrapper } from './Dropdown.css';
+import { Display, Option, OptionsWrapper, Wrapper } from './Dropdown.css';
 
 export interface OptionType {
   label: string;
