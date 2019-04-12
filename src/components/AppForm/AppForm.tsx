@@ -138,6 +138,10 @@ class AppForm extends React.Component<Props, State> {
     this.handleCloseIconForm();
   };
 
+  handleSelect = (setFieldValue: SetFieldValue) => (option: OptionType) => {
+    setFieldValue('manifestType', option.value as ManifestType);
+  };
+
   // renderMockIntents = () => MOCK_INTENTS.map((intent, index) => <CheckboxInArray name="intents" key={index} value={intent.displayName} />);
 
   // renderMockContexts = () => MOCK_CONTEXTS.map((context, index) => <CheckboxInArray name="contexts" key={index} value={context.$type} />);
@@ -163,16 +167,12 @@ class AppForm extends React.Component<Props, State> {
 
     const { iconFormOpen } = this.state;
 
-    const handleSelect = (option: OptionType) => {
-      setFieldValue('manifestType', option.value as ManifestType);
-    };
-
     return (
       <StyledForm className={className} onSubmit={handleSubmit}>
         <ScrollGrid>
           <StyledRow firstElementWidth="140px">
             <Label label="App Type">
-              <Dropdown name="manifestType" onSelect={handleSelect} options={MANIFEST_OPTIONS} selected={values.manifestType} />
+              <Dropdown name="manifestType" onSelect={this.handleSelect(setFieldValue)} options={MANIFEST_OPTIONS} selected={values.manifestType} />
             </Label>
 
             {values.manifestType === ManifestType.AppUrl && (
