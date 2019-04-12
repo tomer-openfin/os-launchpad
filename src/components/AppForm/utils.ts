@@ -14,12 +14,17 @@ export const validationSchema = Yup.object().shape({
   appUrl: Yup.string().when('manifestType', {
     is: manifestTypeVal => ManifestType.AppUrl === manifestTypeVal,
     then: Yup.string()
+      .trim()
       .url('Must be a valid URL')
       .required('Required'),
   }),
   contexts: Yup.array().notRequired(), // enable when bring back contexts
-  description: Yup.string().required('Required'),
-  icon: Yup.string().required('Required'),
+  description: Yup.string()
+    .trim()
+    .required('Required'),
+  icon: Yup.string()
+    .trim()
+    .required('Required'),
   id: Yup.string().notRequired(),
   images: Yup.array().notRequired(),
   intents: Yup.array().notRequired(), // enable when bring back contexts
@@ -27,11 +32,14 @@ export const validationSchema = Yup.object().shape({
   manifestUrl: Yup.string().when('manifestType', {
     is: manifestTypeVal => ManifestType.Manifest === manifestTypeVal,
     then: Yup.string()
+      .trim()
       .url('Must be a valid URL')
       .required('Required'),
   }),
   name: Yup.string(), // injected by us before payload is sent
-  title: Yup.string().required('Required'),
+  title: Yup.string()
+    .trim()
+    .required('Required'),
 });
 
 export const getEditAppValues = (
