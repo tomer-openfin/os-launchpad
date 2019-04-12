@@ -20,7 +20,7 @@ const defaultInitialValues: Values = {
   lastName: '',
   middleInitial: '',
   phone: '',
-  sendEmail: false,
+  sendEmail: true,
   tmpPassword: '',
   username: '',
 };
