@@ -5,7 +5,7 @@ import * as passwordIcon from '../../assets/Eye.svg';
 import { Color } from '../../styles';
 import { renderError } from '../../utils/renderError';
 
-import Checkbox from '../Checkbox/Checkbox';
+import Checkbox from '../Checkbox';
 import FormFooter from '../FormFooter';
 import Input from '../Input';
 import Label from '../Label';
@@ -177,7 +177,7 @@ class UserForm extends React.Component<Props, State> {
                 </PasswordIconWrapper>
               </Label>
 
-              <Checkbox onChange={handleCheck} checked={!!values.sendEmail} label="Send Installation Instructions" />
+              <Checkbox index={6} onChange={handleCheck} checked={!!values.sendEmail} label="Send Installation Instructions" />
             </>
           )}
         </ScrollGrid>

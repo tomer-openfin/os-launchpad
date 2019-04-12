@@ -5,11 +5,12 @@ import * as EditIcon from '../../assets/Edit.svg';
 import * as TrashIcon from '../../assets/Trash.svg';
 
 import { TypeStyleCanopus, TypeStyleEnif } from '../../styles/typography.css';
+import { Wrapper as CheckboxWrapper } from '../Checkbox';
 
 import { Color } from '../../styles';
 import { ADMIN_FORMS_EASING_FUNCTION, ADMIN_FORMS_ENTER_DURATION, ADMIN_FORMS_EXIT_DURATION, ADMIN_FORMS_TRANSITION_CLASSNAMES } from '../../utils/adminForms';
 
-import {  LABEL_EASING_FUNCTION, LABEL_TRANSITION_DURATION, Wrapper as LabelWrapper } from '../Label';
+import { LABEL_EASING_FUNCTION, LABEL_TRANSITION_DURATION, Wrapper as LabelWrapper } from '../Label';
 
 export const AddEditWrapper = styled.div`
   height: 100vh;
@@ -19,7 +20,7 @@ export const AddEditWrapper = styled.div`
   width: 100vw;
   z-index: 1;
 
-  ${LabelWrapper} {
+  ${LabelWrapper}, ${CheckboxWrapper} {
     transition-property: opacity, transform;
   }
 
@@ -28,7 +29,7 @@ export const AddEditWrapper = styled.div`
       transform: translate3d(100%, 0, 0);
     }
 
-    ${LabelWrapper} {
+    ${LabelWrapper}, ${CheckboxWrapper} {
       opacity: 0;
       transform: translate3d(0, 20px, 0);
     }
@@ -40,7 +41,7 @@ export const AddEditWrapper = styled.div`
       transition: transform ${ADMIN_FORMS_ENTER_DURATION}ms ${ADMIN_FORMS_EASING_FUNCTION};
     }
 
-    ${LabelWrapper} {
+    ${LabelWrapper}, ${CheckboxWrapper} {
       opacity: 1;
       transform: translate3d(0, 0, 0);
       transition: all ${LABEL_TRANSITION_DURATION}ms ${LABEL_EASING_FUNCTION};
@@ -52,7 +53,7 @@ export const AddEditWrapper = styled.div`
       transform: translate3d(0%, 0, 0);
     }
 
-    ${LabelWrapper} {
+    ${LabelWrapper}, ${CheckboxWrapper} {
       opacity: 1;
       transform: translate3d(0, 0, 0);
     }
