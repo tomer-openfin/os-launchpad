@@ -204,7 +204,7 @@ class AppForm extends React.Component<Props, State> {
             )}
 
             {values.manifestType === ManifestType.Path && (
-              <Label label="Native App" renderError={renderError(errors.appPath, touched.appPath)}>
+              <Label index={1} label="Native App" renderError={renderError(errors.appPath, touched.appPath)}>
                 <Input
                   hasError={!!errors.appPath && touched.appPath}
                   name="appPath"
