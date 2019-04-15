@@ -3,40 +3,32 @@ import styled from 'styled-components';
 import * as checkedIcon from '../../assets/Checked.svg';
 import * as uncheckedIcon from '../../assets/Unchecked.svg';
 
-import { Color } from '../../styles';
-import { TypeStyleCanopus } from '../../styles/typography.css';
-
 import { ADMIN_FORMS_ENTER_DURATION } from '../../utils/adminForms';
 
-import { LABEL_TRANSITION_DELAY } from '../Label';
+import Label, { LABEL_TRANSITION_DELAY, LabelWrapper } from '../Label';
 
 interface CheckedProps {
   checked: boolean;
 }
 
-export const HiddenInput = styled.input`
-  display: none;
-`;
-
-export const Wrapper = styled.div<{ index: number }>`
-  display: flex;
-  flex-direction: row;
+export const StyledLabel = styled(Label)<{ index: number }>`
   align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
 
   ${({ index }) => index >= 0 && `transition-delay: ${ADMIN_FORMS_ENTER_DURATION + index * LABEL_TRANSITION_DELAY}ms !important;`}
-`;
 
-export const LabelText = styled.div`
-  ${TypeStyleCanopus}
-
-  color: ${Color.SUN};
+  ${LabelWrapper} {
+    margin-bottom: 0;
+  }
 `;
 
 export const CheckboxUI = styled.div<CheckedProps>`
-  margin-right: 10px;
-  height: 19px;
+  background-image: url(${props => (props.checked ? checkedIcon : uncheckedIcon)});
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url(${props => (props.checked ? checkedIcon : uncheckedIcon)});
+  height: 19px;
+  margin-right: 10px;
   width: 19px;
 `;

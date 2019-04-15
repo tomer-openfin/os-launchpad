@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { CheckboxUI, LabelText, Wrapper } from './Checkbox.css';
+import { CheckboxUI, StyledLabel } from './Checkbox.css';
 
 interface Props {
   checked: boolean;
@@ -12,11 +12,9 @@ interface Props {
 
 const Checkbox = ({ checked, label, onChange, index = 1 }: Props) => {
   return (
-    <Wrapper index={index}>
+    <StyledLabel label={label} index={index}>
       <CheckboxUI checked={checked} onClick={onChange} />
-
-      {label && <LabelText>{label}</LabelText>}
-    </Wrapper>
+    </StyledLabel>
   );
 };
 
