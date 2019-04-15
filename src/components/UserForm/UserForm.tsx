@@ -91,7 +91,7 @@ class UserForm extends React.Component<Props, State> {
               />
             </StyledLabel>
 
-            <Label index={1} label="MI" renderError={renderError(errors.middleInitial, touched.middleInitial)}>
+            <Label index={1} label="MI" renderError={renderError(errors.middleName, touched.middleName)}>
               <Input
                 hasError={!!errors.middleName && touched.middleName}
                 onBlur={handleBlur}
