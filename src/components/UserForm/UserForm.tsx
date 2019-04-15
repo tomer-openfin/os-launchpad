@@ -138,9 +138,9 @@ class UserForm extends React.Component<Props, State> {
             </Label>
 
             <Group>
-              <Heading>
-                Is Admin <SvgIcon color={Color.JUPITER} imgSrc={AdminIcon} size={26} />
-              </Heading>
+              <Heading>Is Admin</Heading>
+
+              <SvgIcon color={Color.JUPITER} imgSrc={AdminIcon} size={26} />
 
               <Row>
                 <StyledRadioButton onChange={handleChange} checked={!!values.isAdmin} name="isAdmin" value="true">
