@@ -19,13 +19,17 @@ import {
   getExpandedSystemDrawerSize,
   getMonitorDetailsDerivedByUserSettings,
 } from '../selectors';
-import { getAndSetMonitorInfo } from '../system';
+import { getAndSetMonitorInfo, getMachineId } from '../system';
 import { State } from '../types';
 import { getWindowBounds } from '../windows';
 import { getManifest, resetApplicationUi, setRuntimeVersion } from './actions';
 
 export function* initChannels() {
   yield all([take([getChannels.success.toString(), getChannels.failure.toString()]), put(getChannels.request())]);
+}
+
+export function* initMachineId() {
+  yield all([take([getMachineId.success.toString(), getMachineId.failure.toString()]), put(getMachineId.request())]);
 }
 
 export function* initMonitorInfo() {

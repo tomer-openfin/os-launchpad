@@ -35,6 +35,7 @@ const getOpenFinApplicationPromise = <T = undefined>(uuid: string, method: strin
 };
 
 export const addSystemEventListener = getSystemPromise('addEventListener');
+export const getSystemMachineId = getSystemPromise<string>('getMachineId');
 export const getSystemMonitorInfo = getSystemPromise<MonitorInfo>('getMonitorInfo');
 export const getSystemMousePosition = getSystemPromise<PointTopLeft>('getMousePosition');
 

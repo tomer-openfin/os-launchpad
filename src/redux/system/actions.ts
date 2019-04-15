@@ -1,6 +1,9 @@
 import { MonitorInfo, SystemBaseEvent } from '../../types/commons';
 import { createAction, createAsyncActionCreators } from '../utils';
 
+const GET_MACHINE_ID_REQUEST = 'GET_MACHINE_ID_REQUEST';
+const GET_MACHINE_ID_SUCCESS = 'GET_MACHINE_ID_SUCCESS';
+const GET_MACHINE_ID_FAILURE = 'GET_MACHINE_ID_FAILURE';
 const GET_AND_SET_MONITOR_INFO_REQUEST = 'GET_AND_SET_MONITOR_INFO_REQUEST';
 const GET_AND_SET_MONITOR_INFO_SUCCESS = 'GET_AND_SET_MONITOR_INFO_SUCCESS';
 const GET_AND_SET_MONITOR_INFO_FAILURE = 'GET_AND_SET_MONITOR_INFO_FAILURE';
@@ -10,6 +13,11 @@ const SYSTEM_EVENT_APPLICATION_CRASHED = 'SYSTEM_EVENT:APPLICATION_CRASHED';
 const SYSTEM_EVENT_APPLICATION_STARTED = 'SYSTEM_EVENT:APPLICATION_STARTED';
 
 // Action creators
+export const getMachineId = createAsyncActionCreators(GET_MACHINE_ID_REQUEST, GET_MACHINE_ID_SUCCESS, GET_MACHINE_ID_FAILURE)<
+  void,
+  { machineId: string },
+  Error
+>();
 export const getAndSetMonitorInfo = createAsyncActionCreators(
   GET_AND_SET_MONITOR_INFO_REQUEST,
   GET_AND_SET_MONITOR_INFO_SUCCESS,

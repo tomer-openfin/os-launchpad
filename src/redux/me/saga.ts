@@ -8,6 +8,7 @@ import { adminWindows, authWindows, defaultWindows } from '../../config/windows'
 import { ApiResponseStatus } from '../../types/enums';
 import { UnPromisfy } from '../../types/utils';
 import getOwnUuid from '../../utils/getOwnUuid';
+import { generateTimestamp } from '../../utils/timestampUtils';
 import { getAdminApps, getAdminUsers } from '../admin';
 import { getManifestOverride, initResources, reboundLauncher, resetResources } from '../application';
 import { unregisterAllGlobalHotkeys } from '../globalHotkeys/utils';
@@ -28,7 +29,6 @@ import {
   setLauncherMonitorSettings,
   setLauncherPosition,
   setLauncherSize,
-  setMe,
   updatePassword,
 } from './actions';
 import { defaultAuthMessaging } from './reducer';
@@ -91,7 +91,8 @@ function* watchLoginRequest(action: ReturnType<typeof login.request>) {
     }
 
     const { isAdmin, email, firstName, lastName } = response.data;
-    yield put(login.success({ isAdmin, email, firstName, lastName }, action.meta));
+    const sessionTimestamp = generateTimestamp();
+    yield put(login.success({ isAdmin, email, firstName, lastName, sessionTimestamp }, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(setAuthMessaging({ message: error.message, isError: true }));
@@ -101,8 +102,6 @@ function* watchLoginRequest(action: ReturnType<typeof login.request>) {
 
 function* watchLoginSuccess(action: ReturnType<typeof login.success>) {
   try {
-    yield put(setMe(action.payload));
-
     let effects: Effect[] = [call(initResources)];
 
     if (action.payload.isAdmin) {

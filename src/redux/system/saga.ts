@@ -2,12 +2,24 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 
 import { UnPromisfy } from '../../types/utils';
 import { unbindFinAppEventHanlders } from '../../utils/finAppEventHandlerHelpers';
-import { getSystemMonitorInfo } from '../../utils/openfinPromises';
+import { getSystemMachineId, getSystemMonitorInfo } from '../../utils/openfinPromises';
 import { reboundLauncher } from '../application';
 import { closeFinApp } from '../apps';
 import { getErrorFromCatch } from '../utils';
 import { recoverLostWindows } from '../windows';
-import { getAndSetMonitorInfo, setMonitorInfo, systemEventApplicationClosed, systemEventApplicationCrashed } from './actions';
+import { getAndSetMonitorInfo, getMachineId, setMonitorInfo, systemEventApplicationClosed, systemEventApplicationCrashed } from './actions';
+
+function* watchGetMachineId() {
+  try {
+    const machineId: UnPromisfy<ReturnType<typeof getSystemMachineId>> = yield call(getSystemMachineId);
+
+    yield put(getMachineId.success({ machineId }));
+  } catch (e) {
+    // tslint:disable-next-line:no-console
+    console.log('Failed to get machineId:', e);
+    yield put(getMachineId.failure(e));
+  }
+}
 
 function* watchGetAndSetMonitorInfo() {
   try {
@@ -67,6 +79,7 @@ function* watchSystemEventApplicationCrashed(action: ReturnType<typeof systemEve
 // }
 
 export function* systemSaga() {
+  yield takeEvery(getMachineId.request, watchGetMachineId);
   yield takeEvery(getAndSetMonitorInfo.request, watchGetAndSetMonitorInfo);
   yield takeEvery(setMonitorInfo, watchSetMonitorInfo);
   yield takeEvery(systemEventApplicationClosed, watchSystemEventApplicationClosed);

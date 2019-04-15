@@ -10,6 +10,7 @@ const transformOpenFinConfig = require('./scripts/utils/transformOpenFinConfig')
 const appJson = require('./src/app.json');
 
 const {
+  ANALYTICS = false,
   API_URL,
   DEV_TOOLS_ON_STARTUP = false,
   ENTERPRISE,
@@ -107,6 +108,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
+        ANALYTICS: JSON.stringify(ANALYTICS),
         API_URL: JSON.stringify(API_URL),
         APP_UUID: JSON.stringify(appJson.startup_app.uuid),
         DEV_TOOLS_ON_STARTUP: JSON.stringify(DEV_TOOLS_ON_STARTUP),

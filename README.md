@@ -45,10 +45,11 @@ Now set your `node` version. The version we're standardizing is in the `.nvmrc` 
 
 | Variable                  | Description                                                                                                    | Development only? |
 | :------------------------ | :------------------------------------------------------------------------------------------------------------- | :---------------: |
+| `ANALYTICS`               | Determine if the app should have analytics enabled.                                                            |                   |
 | `BACKEND`                 | API hostname to proxy requests to.                                                                             |        ✅         |
 | `DEPLOY_LOCATION`         | Set the `url` in the manifest.                                                                                 |                   |
 | `DEV_TOOLS_ON_STARTUP`    | Opens main application window's dev tools on startup.                                                          |        ✅         |
-| `ENTERPRISE`              | Determine if the app should start in enterprise mode.                                                          |        ✅         |
+| `ENTERPRISE`              | Determine if the app should start in enterprise mode.                                                          |                   |
 | `HOST`                    | Set the host for the application.                                                                              |        ✅         |
 | `LOCAL_MANIFEST`          | Reroute requests to `/api/launcher.json` to use the locally-built `app.json` instead of the deployed manifest. |        ✅         |
 | `MOCK_POSTMAN_URI`        | Postman mock server URI.                                                                                       |        ✅         |
