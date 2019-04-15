@@ -12,8 +12,8 @@ interface Props {
 
 const Checkbox = ({ checked, label, onChange, index = 1 }: Props) => {
   return (
-    <StyledLabel label={label} index={index}>
-      <CheckboxUI checked={checked} onClick={onChange} />
+    <StyledLabel label={label} index={index} onClick={onChange}>
+      <CheckboxUI checked={checked} />
     </StyledLabel>
   );
 };
