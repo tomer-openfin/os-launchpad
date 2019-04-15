@@ -44,7 +44,7 @@ export const DropdownView = ({ onSelect, options, open, selected, toggleOpen, wi
         const createOnClick = (currentOpt: OptionType) => () => onSelect(currentOpt);
 
         return (
-          <Option chosen={selected === option.value || selected === option.label} onClick={createOnClick(option)} key={i}>
+          <Option chosen={selected === option.value || selected === option.label} onClick={createOnClick(option)} key={option.label}>
             {option.label}
           </Option>
         );

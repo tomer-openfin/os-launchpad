@@ -13,9 +13,8 @@ export const Display = styled.div`
   align-items: center;
   background-color: ${Color.SEDNOID};
   display: flex;
-  height: 34px;
   justify-content: space-between;
-  padding: 8px;
+  padding: 6px 8px;
 `;
 
 export const OptionsWrapper = styled.div<{ width?: number | string; open: boolean }>`
@@ -35,8 +34,7 @@ export const Option = styled.div<{ chosen: boolean }>`
   align-items: center;
   background-color: ${({ chosen }) => (chosen ? Color.SEDNOID_HOVER : Color.SEDNOID)};
   display: flex;
-  height: 25px;
-  padding: 8px;
+  padding: 1.5px 8px;
 
   &:hover {
     background-color: ${Color.SEDNOID_HOVER};
