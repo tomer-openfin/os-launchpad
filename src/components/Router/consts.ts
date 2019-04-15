@@ -1,3 +1,10 @@
+export interface MatchParams {
+  action: string;
+  id: string;
+}
+
+export const CHANNELS_CONTEXT_PARAM = ':channelId';
+
 export const ADMIN_SETTINGS_ROUTES = {
   ADMIN_SETTINGS_DELETE: '/admin/settings/delete',
   ADMIN_SETTINGS_EDIT: '/admin/settings/edit',
@@ -15,11 +22,6 @@ export const ADMIN_USERS_ROUTES = {
   ADMIN_USERS_IMPORT: '/admin/users/import/',
   ADMIN_USERS_NEW: '/admin/users/new/',
 };
-
-export interface MatchParams {
-  action: string;
-  id: string;
-}
 
 export const ADMIN_ROUTES = {
   ADMIN: '/admin',
@@ -42,6 +44,8 @@ export const ROUTES = {
   ...ADMIN_ROUTES,
   APP_DIRECTORY: '/app-directory',
   APP_LAUNCHER_OVERFLOW: '/app-overflow',
+  CHANNELS: '/channels',
+  CHANNELS_CONTEXT: `/channels/${CHANNELS_CONTEXT_PARAM}/context`,
   CONTEXT_MENU: '/context-menu',
   FORGOT_PASSWORD: '/forgot-password',
   HOME: '/',

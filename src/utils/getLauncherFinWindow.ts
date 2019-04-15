@@ -1,4 +1,4 @@
-import getAppUuid from './getAppUuid';
+import getOwnUuid from './getOwnUuid';
 
 export const getLauncherFinWindow = () => {
   const { fin } = window;
@@ -14,7 +14,7 @@ export const getFinWindowByName = (name: string) => {
     return Promise.resolve(undefined);
   }
 
-  const uuid = getAppUuid();
+  const uuid = getOwnUuid();
   const finWindow = fin.desktop.Window.wrap(uuid, name);
 
   return finWindow.getNativeWindow() ? Promise.resolve(fin.desktop.Window.wrap(uuid, name)) : Promise.resolve(undefined);

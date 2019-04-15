@@ -7,7 +7,7 @@ import eraseCookie from '../../utils/eraseCookie';
 import { adminWindows, authWindows, defaultWindows } from '../../config/windows';
 import { ApiResponseStatus } from '../../types/enums';
 import { UnPromisfy } from '../../types/utils';
-import getAppUuid from '../../utils/getAppUuid';
+import getOwnUuid from '../../utils/getOwnUuid';
 import { getAdminApps, getAdminUsers } from '../admin';
 import { getManifestOverride, initResources, reboundLauncher, resetResources } from '../application';
 import { unregisterAllGlobalHotkeys } from '../globalHotkeys/utils';
@@ -122,7 +122,7 @@ function* watchLoginSuccess(action: ReturnType<typeof login.success>) {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchLoginSuccess', error);
+    console.warn('Error in watchLoginSuccess', error);
   }
 }
 
@@ -130,7 +130,7 @@ function* watchLogoutRequest(action: ReturnType<typeof logout.request>) {
   try {
     yield call(closeWindowsByConfig, adminWindows);
     yield call(hideWindowsByConfig, defaultWindows);
-    yield put(Window.hideWindow({ id: getAppUuid() }));
+    yield put(Window.hideWindow({ id: getOwnUuid() }));
     yield all([call(unregisterAllGlobalHotkeys), call(resetResources)]);
 
     const response: UnPromisfy<ReturnType<typeof ApiService.logout>> = yield call(ApiService.logout);
@@ -156,7 +156,7 @@ function* watchLogoutSuccess(action: ReturnType<typeof logout.success>) {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error watchLogoutSuccess', error);
+    console.warn('Error watchLogoutSuccess', error);
   }
 }
 
@@ -166,7 +166,7 @@ function* watchLogoutFailure() {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchLogoutFailure', error);
+    console.warn('Error in watchLogoutFailure', error);
   }
 }
 
@@ -225,7 +225,7 @@ function* reboundLauncherAndSaveSettings(shouldAnimate: boolean, delay: number, 
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchUpdateLauncherApps', error);
+    console.warn('Error in watchUpdateLauncherApps', error);
   }
 }
 

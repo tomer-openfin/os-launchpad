@@ -1,6 +1,7 @@
 import { Action } from 'redux';
 
 import * as adminIcon from '../assets/AdminSettings.svg';
+import * as chainIcon from '../assets/Chain.svg';
 import * as directoryIcon from '../assets/Directory.svg';
 import * as layoutsIcon from '../assets/Layouts.svg';
 import * as logoutIcon from '../assets/Logout.svg';
@@ -15,12 +16,13 @@ import { launchWindow, toggleWindow } from '../redux/windows';
 import Color from '../styles/color';
 
 export const ADMIN_KEY = 'Admin';
-export const WORKSPACES_KEY = 'Workspaces';
+export const APP_DIRECTORY_KEY = 'App Directory';
+export const CHANNELS_KEY = 'Channels';
 export const LOGOUT_KEY = 'Logout';
 export const NOTIFICATIONS_KEY = 'Notifications';
-export const APP_DIRECTORY_KEY = 'App Directory';
 export const SETTINGS_KEY = 'Settings';
 export const SUPPORT_KEY = 'Support';
+export const WORKSPACES_KEY = 'Workspaces';
 
 export interface SystemIcon {
   action: Action;
@@ -46,14 +48,14 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       title: LOGOUT_KEY,
     },
     {
-      action: launchWindow(windowsConfig.support),
-      color: Color.MARS,
+      action: launchWindow(windowsConfig.channels),
+      color: Color.URANUS,
       hasExtendedWindow: false,
-      hoverColor: Color.MARS_HOVER,
-      icon: supportIcon,
+      hoverColor: Color.URANUS_HOVER,
+      icon: chainIcon,
       isBackground: false,
       isShownByDefault: false,
-      title: SUPPORT_KEY,
+      title: CHANNELS_KEY,
     },
     {
       action: launchWindow(windowsConfig.settings),
@@ -64,6 +66,16 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       isBackground: false,
       isShownByDefault: false,
       title: SETTINGS_KEY,
+    },
+    {
+      action: launchWindow(windowsConfig.support),
+      color: Color.MARS,
+      hasExtendedWindow: false,
+      hoverColor: Color.MARS_HOVER,
+      icon: supportIcon,
+      isBackground: false,
+      isShownByDefault: false,
+      title: SUPPORT_KEY,
     },
     {
       action: toggleWindow({ name: windowsConfig.appDirectory.name }),

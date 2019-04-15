@@ -67,6 +67,11 @@ export const updateWindowOptions = (finWindow, options) => {
   return promisifyOpenfin(finWindow, 'updateOptions', options);
 };
 
+export const getWindowIsShowingOrGrouped = async finWindow => {
+  const [isShowing, group] = await Promise.all([promisifyOpenfin<boolean>(finWindow, 'isShowing'), promisifyOpenfin<[]>(finWindow, 'getGroup')]);
+  return isShowing || !!group.length;
+};
+
 /**
  * Get window state for windows that are showing
  */

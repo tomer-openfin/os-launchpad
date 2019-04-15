@@ -1,7 +1,8 @@
 import { Window } from '@giantmachines/redux-openfin';
 import { put } from 'redux-saga/effects';
 
-import { APP_LAUNCHER_OVERFLOW_WINDOW } from '../config/windows';
+import { APP_LAUNCHER_OVERFLOW_WINDOW, CHANNELS_WINDOW } from '../config/windows';
+import { animateChannels } from '../redux/channels';
 import { windowBlurred, windowHidden, windowShown } from '../redux/windows';
 import { WindowBaseEvent } from '../types/fin';
 
@@ -26,5 +27,9 @@ export function* setupWindow(finName: string) {
   } else {
     yield put(Window.addWindowEventListener({ id: finName, listener: hiddenHandler, type: 'hidden' }));
     yield put(Window.addWindowEventListener({ id: finName, listener: shownHandler, type: 'shown' }));
+  }
+
+  if (finName === CHANNELS_WINDOW) {
+    yield put(animateChannels.request({ animateInstant: true }));
   }
 }

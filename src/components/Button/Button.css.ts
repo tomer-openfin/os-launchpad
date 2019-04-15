@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { Color } from '../../styles';
-import { TypeStyleSirius } from '../../styles/typography.css';
+
+import { Color, getCssValueFromNumberOrString, Typography } from '../../styles';
 
 interface ButtonProps {
   backgroundColor?: string;
-  height?: number;
+  height?: string | number;
   isDark?: boolean;
-  width?: number;
+  width?: string | number;
 }
 
 export const defaultProps = {
@@ -17,25 +17,25 @@ export const defaultProps = {
 };
 
 export const ButtonCSS = css<ButtonProps>`
-  ${TypeStyleSirius}
+  ${Typography.TypeStyleSirius}
 
   align-items: center;
+  border-radius: 3px;
+  border: 1px solid transparent;
   color: ${Color.SUN};
   cursor: pointer;
   display: flex;
   justify-content: center;
   margin: 0;
-  border: none;
   outline: none;
-  border-radius: 3px;
-  padding: 0 8px;
+  padding: 0 7px;
   position: relative;
 
   ${({ backgroundColor = defaultProps.backgroundColor, height = defaultProps.height, width = defaultProps.width }) => `
     background-color: ${backgroundColor};
-    min-height: ${height}px;
-    min-width: ${width}px;
-    max-height: ${height}px;
+    min-width: ${getCssValueFromNumberOrString(width)};
+    min-height: ${getCssValueFromNumberOrString(height)};
+    max-height: ${getCssValueFromNumberOrString(height)};
   `}
 
   :before {
@@ -57,7 +57,7 @@ export const ButtonCSS = css<ButtonProps>`
   }
 
   :hover:not([disabled]) {
-    border: none;
+    border-color: transparent;
 
     &:before {
       opacity: 0.4;
@@ -65,7 +65,7 @@ export const ButtonCSS = css<ButtonProps>`
   }
 
   :focus {
-    border: 1px solid ${Color.JUPITER};
+    border-color: ${Color.JUPITER};
   }
 `;
 

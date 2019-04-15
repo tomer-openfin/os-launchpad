@@ -10,8 +10,8 @@ import windowsConfig, {
   LOGOUT_WINDOW,
 } from '../../config/windows';
 import { getBoundsCenterInCoordinates, isBoundsInCoordinates } from '../../utils/coordinateHelpers';
-import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
+import getOwnUuid from '../../utils/getOwnUuid';
 import { updateWindowOptions } from '../../utils/openfinPromises';
 import { expandApp, getApplicationIsExpanded, getIsDragAndDrop, setIsDrawerExpanded, setWindowRelativeToLauncherBounds } from '../application';
 import { getMonitorDetailsDerivedByUserSettings } from '../selectors';
@@ -35,7 +35,7 @@ function* watchHideWindow(action: ReturnType<typeof hideWindow>) {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchHideWindow', error);
+    console.warn('Error in watchHideWindow', error);
   }
 }
 
@@ -65,7 +65,7 @@ function* watchLaunchWindow(action: ReturnType<typeof launchWindow>) {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchLaunchWindow', error);
+    console.warn('Error in watchLaunchWindow', error);
   }
 }
 
@@ -85,7 +85,7 @@ function* watchToggleWindow(action: ReturnType<typeof toggleWindow>) {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchToggleWindow', error);
+    console.warn('Error in watchToggleWindow', error);
   }
 }
 
@@ -115,7 +115,7 @@ function* watchOpenedWindow(action) {
     }
 
     if (id === APP_LAUNCHER_OVERFLOW_WINDOW || id === LAYOUTS_WINDOW || id === LOGOUT_WINDOW) {
-      const bounds = yield select(getWindowBounds, getAppUuid());
+      const bounds = yield select(getWindowBounds, getOwnUuid());
       if (bounds) {
         yield call(setWindowRelativeToLauncherBounds, id, bounds);
       }
@@ -128,14 +128,14 @@ function* watchOpenedWindow(action) {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchOpenedWindow', error, action);
+    console.warn('Error in watchOpenedWindow', error, action);
   }
 }
 
 function* watchWindowBoundsChanged(action) {
   try {
     const { bounds, id } = action.payload.options;
-    if (id === getAppUuid()) {
+    if (id === getOwnUuid()) {
       yield all([
         call(setWindowRelativeToLauncherBounds, APP_LAUNCHER_OVERFLOW_WINDOW, bounds),
         call(setWindowRelativeToLauncherBounds, LAYOUTS_WINDOW, bounds),
@@ -145,7 +145,7 @@ function* watchWindowBoundsChanged(action) {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchWindowBoundsChanged', error, action);
+    console.warn('Error in watchWindowBoundsChanged', error, action);
   }
 }
 
@@ -153,7 +153,7 @@ function* watchWindowBlurred(action: ReturnType<typeof windowBlurred>) {
   try {
     const { name } = action.payload;
     switch (name) {
-      case getAppUuid(): {
+      case getOwnUuid(): {
         const { cancel, proceed } = yield race({
           cancel: take(fluxStandardAction => {
             const { type, payload: standardPayload } = fluxStandardAction;
@@ -210,13 +210,13 @@ function* watchWindowBlurred(action: ReturnType<typeof windowBlurred>) {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchWindowBlurred', error, action);
+    console.warn('Error in watchWindowBlurred', error, action);
   }
 }
 
 function* watchWindowShown(action: ReturnType<typeof windowShown>) {
   try {
-    if (action.payload.name === getAppUuid() || action.payload.name === APP_LAUNCHER_OVERFLOW_WINDOW) {
+    if (action.payload.name === getOwnUuid() || action.payload.name === APP_LAUNCHER_OVERFLOW_WINDOW) {
       return;
     }
 
@@ -229,7 +229,7 @@ function* watchWindowShown(action: ReturnType<typeof windowShown>) {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchWindowShown', error);
+    console.warn('Error in watchWindowShown', error);
   }
 }
 
@@ -246,7 +246,7 @@ function* watchRecoverLostWindows() {
     yield all(
       windows.map(windowState => {
         // Don't move the main window
-        if (windowState.id === getAppUuid()) {
+        if (windowState.id === getOwnUuid()) {
           return;
         }
 
@@ -266,7 +266,7 @@ function* watchRecoverLostWindows() {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchRecoverLostWindows', error);
+    console.warn('Error in watchRecoverLostWindows', error);
   }
 }
 

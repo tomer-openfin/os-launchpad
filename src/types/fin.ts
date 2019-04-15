@@ -1,6 +1,9 @@
+import { Channel } from 'openfin-fdc3';
 import { Workspace } from 'openfin-layouts/dist/client/workspaces';
 
 export type ApplicationBaseEvent = fin.ApplicationBaseEvent;
+export type Channel = Channel;
+export type Identity = fin.Identity;
 export type MonitorInfo = fin.MonitorInfo;
 export type MonitorDetails = MonitorInfo['primaryMonitor'];
 export type OpenFinApplication = fin.OpenFinApplication;

@@ -2,7 +2,7 @@ import { Application } from '@giantmachines/redux-openfin';
 import { put, select, takeEvery } from 'redux-saga/effects';
 
 import windowsConfig from '../../config/windows';
-import getAppUuid from '../../utils/getAppUuid';
+import getOwnUuid from '../../utils/getOwnUuid';
 import { isDevelopmentEnv } from '../../utils/processHelpers';
 import { restoreLayout } from '../layouts/actions';
 import { getLayoutsIds } from '../layouts/selectors';
@@ -55,7 +55,7 @@ function* watchGlobalHotkeyPressed(action: ReturnType<typeof globalHotkeyPressed
       case DevGlobalHotkeys.ShowDevTools: {
         const { fin } = window;
         if (fin && isDevelopmentEnv()) {
-          const appUuid = getAppUuid();
+          const appUuid = getOwnUuid();
           fin.desktop.System.showDeveloperTools(appUuid, appUuid);
         }
         break;
@@ -68,7 +68,7 @@ function* watchGlobalHotkeyPressed(action: ReturnType<typeof globalHotkeyPressed
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchGlobalHotkeyPressed', error);
+    console.warn('Error in watchGlobalHotkeyPressed', error);
   }
 }
 

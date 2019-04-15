@@ -79,6 +79,18 @@ module.exports = {
           req.setHeader('openfin-os-organization', BACKEND_ORG);
         },
       },
+      '/api/launcher2.json': {
+        changeOrigin: true,
+        logLevel: 'debug',
+        target: LOCAL_MANIFEST ? `http://${HOST}:${PORT}` : BACKEND,
+        pathRewrite: LOCAL_MANIFEST ? { '^/api/launcher2.json': 'app.json' } : undefined,
+        headers: {
+          Referer: `http://${HOST}:${PORT}`,
+        },
+        onProxyReq: req => {
+          req.setHeader('openfin-os-organization', BACKEND_ORG);
+        },
+      },
       '/api/**': {
         changeOrigin: true,
         logLevel: 'debug',

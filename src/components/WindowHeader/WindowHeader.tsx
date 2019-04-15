@@ -10,9 +10,10 @@ import { Children, CtaWrapper, Header, Title } from './WindowHeader.css';
 
 interface Props {
   backgroundColor?: string;
+  children?: React.ReactNode;
   handleBack?: () => void;
   handleClose?: () => void;
-  children?: React.ReactNode;
+  isDragDisabled?: boolean;
 }
 
 export const defaultProps = {
@@ -21,8 +22,8 @@ export const defaultProps = {
 
 const { backgroundColor: defaultBackgroundColor } = defaultProps;
 
-const WindowHeader = ({ children, handleBack, handleClose, backgroundColor = defaultBackgroundColor }: Props) => (
-  <Header backgroundColor={backgroundColor}>
+const WindowHeader = ({ backgroundColor = defaultBackgroundColor, children, handleBack, handleClose, isDragDisabled }: Props) => (
+  <Header backgroundColor={backgroundColor} isDragDisabled={isDragDisabled}>
     {handleBack && (
       <CtaWrapper>
         <SvgIcon imgSrc={ArrowCircle} onClick={handleBack} size={25} />

@@ -28,7 +28,7 @@ function* watchSetMonitorInfo() {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchSetMonitorInfo', error);
+    console.warn('Error in watchSetMonitorInfo', error);
   }
 }
 
@@ -40,7 +40,7 @@ function* watchSystemEventApplicationClosed(action: ReturnType<typeof systemEven
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchSystemEventApplicationClosed', error);
+    console.warn('Error in watchSystemEventApplicationClosed', error);
   }
 }
 
@@ -52,7 +52,7 @@ function* watchSystemEventApplicationCrashed(action: ReturnType<typeof systemEve
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchSystemEventApplicationCrashed', error);
+    console.warn('Error in watchSystemEventApplicationCrashed', error);
   }
 }
 
