@@ -1,13 +1,8 @@
 import { closeFinApp, getAppDirectoryList, openFinApp, resetAppDirectoryList, setFinAppStatusState } from './actions';
 
-import { App, AppStatusStates } from '../../types/commons';
-import { AppsActions, AppsById, AppsState } from './types';
-
-const formatByIds = (appList: App[]) =>
-  appList.reduce((appsById: AppsById, app: App) => {
-    appsById[app.id] = app;
-    return appsById;
-  }, {});
+import { AppStatusStates } from '../../types/commons';
+import { normalizeData } from '../../utils/reduxHelpers';
+import { AppsActions, AppsState } from './types';
 
 const defaultState: AppsState = { byId: {}, ids: [], statusById: {} };
 
@@ -23,8 +18,7 @@ export default (state: AppsState = defaultState, action: AppsActions): AppsState
     case getAppDirectoryList.success.toString(): {
       const appList = action.payload;
 
-      const byId = formatByIds(appList);
-      const ids = Object.keys(byId);
+      const { byId, ids } = normalizeData(appList);
 
       return {
         ...state,
