@@ -55,7 +55,7 @@ class ImageUpload extends React.Component<Props, State> {
     return (
       <Wrapper height={height} width={width}>
         <Borders height="100%" width="100%">
-          <WindowHeader>{headerText}</WindowHeader>
+          <WindowHeader label={headerText}>{headerText}</WindowHeader>
 
           <TabsWrapper>{tabs.map(this.renderTab)}</TabsWrapper>
 

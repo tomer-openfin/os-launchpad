@@ -4,6 +4,7 @@ import { LAYOUTS_WINDOW } from '../../config/windows';
 import ApiService from '../../services/ApiService';
 import { ApiResponseStatus, AppStatusOrigins, AppStatusStates, Transition, UserLayout } from '../../types/commons';
 import { UnPromisfy } from '../../types/utils';
+import { EventType, sendAnalytics } from '../../utils/analytics';
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { generateLayout, restoreLayout as restoreFinLayout } from '../../utils/openfinLayouts';
@@ -101,6 +102,7 @@ function* watchCreateLayoutRequest(action: ReturnType<typeof createLayout.reques
 
 function* watchDeleteLayoutRequest(action: ReturnType<typeof deleteLayout.request>) {
   try {
+    sendAnalytics({ type: EventType.Click, label: 'Workspace::Delete', context: { name: action.payload } });
     const response: UnPromisfy<ReturnType<typeof ApiService.deleteUserLayout>> = yield call(ApiService.deleteUserLayout, action.payload);
 
     if (response.status === ApiResponseStatus.Failure) {
@@ -118,10 +120,12 @@ function* watchRestoreLayoutRequest(action: ReturnType<typeof restoreLayout.requ
   try {
     const layoutId = action.payload;
     const userLayout: ReturnType<typeof getLayoutById> = yield select(getLayoutById, layoutId);
-    const { layout } = userLayout;
-    if (!layoutId || !userLayout || !layout) {
+    if (!userLayout || !userLayout.layout) {
       throw new Error('Error getting layout for restore');
     }
+
+    const { layout, name } = userLayout;
+    sendAnalytics({ type: EventType.Click, label: 'Workspace::Restore', context: { name } });
 
     const apps: ReturnType<typeof getApps> = yield select(getApps);
     const appsStatusById: ReturnType<typeof getAppsStatusById> = yield select(getAppsStatusById);
@@ -204,10 +208,12 @@ function* watchSaveLayoutRequest(action: ReturnType<typeof saveLayout.request>) 
       const id = layoutByName.id;
       const updatePayload = { id, isOverwrite: true, layout: layoutByName, name };
 
+      sendAnalytics({ type: EventType.Click, label: 'Workspace::Save', context: { name, isUpdate: true } });
       yield put(updateLayout.request(updatePayload, action.meta));
       return;
     }
 
+    sendAnalytics({ type: EventType.Click, label: 'Workspace::Save', context: { name, isUpdate: false } });
     yield put(createLayout.request(name, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);

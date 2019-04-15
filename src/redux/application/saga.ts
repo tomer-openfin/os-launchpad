@@ -13,6 +13,7 @@ import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv } from '../../u
 import { setupWindow } from '../../utils/setupWindow';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList } from '../apps';
+import { getChannels } from '../channels/index';
 import { registerGlobalDevHotKeys } from '../globalHotkeys/utils';
 import { getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig } from '../me';
 import { loginFlow } from '../me/utils';
@@ -36,7 +37,7 @@ import {
   updateManifestOverride,
 } from './actions';
 import { getApplicationIsExpanded, getApplicationManifestOverride } from './selectors';
-import { executeAutoHideBehavior, initChannels, initMachineId, initManifest, initMonitorInfo, initOrgSettings, initRuntimeVersion } from './utils';
+import { executeAutoHideBehavior, initMachineId, initManifest, initMonitorInfo, initOrgSettings, initRuntimeVersion } from './utils';
 
 const APP_UUID = getOwnUuid();
 const ANIMATION_DURATION = 285;
@@ -121,9 +122,11 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
       }
 
       yield put(Window.hideWindow({ id: finName }));
+      // Kick off getting channels, but no guarantee right now channel promise will resolve
+      // so don't block here
+      yield put(getChannels.request());
 
       yield all([
-        call(initChannels),
         call(initOrgSettings),
         call(initMachineId),
         call(initMonitorInfo),

@@ -37,7 +37,9 @@ export const LoginView = (props: ViewProps) => {
   return (
     <Wrapper className={className}>
       <Borders borderRadius="6px">
-        <WindowHeader handleClose={closeApplication}>Log In</WindowHeader>
+        <WindowHeader handleClose={closeApplication} label="LogIn">
+          Log In
+        </WindowHeader>
 
         <ContentWrapper>
           <LogoWrapper>

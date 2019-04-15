@@ -4,10 +4,10 @@ import { Dispatch } from 'redux';
 
 import { setLauncherMonitorSettings } from '../../redux/me';
 import { getActiveLauncherMonitorId } from '../../redux/selectors';
+import { getMonitorDetailsById } from '../../redux/system';
 import { State } from '../../redux/types';
 import { MonitorDetails } from '../../types/fin';
-
-import { getMonitorDetailsById } from '../../redux/system';
+import { EventType, sendAnalytics } from '../../utils/analytics';
 
 import { Props } from './MonitorControlsDialog';
 
@@ -35,6 +35,10 @@ const mapState = (state: State): MapState => ({
   monitorDetailsById: getMonitorDetailsById(state),
 });
 
+const mapDispatch = (dispatch: Dispatch): MapDispatch => ({
+  handleClick: (monitorDetails: MonitorDetails) => dispatch(setLauncherMonitorSettings(monitorDetails)),
+});
+
 const mergeProps = ({ activeId, monitorDetailsById }: MapState, { handleClick }: MapDispatch, ownProps: Props) => ({
   ...ownProps,
   activeId,
@@ -44,17 +48,14 @@ const mergeProps = ({ activeId, monitorDetailsById }: MapState, { handleClick }:
       return;
     }
 
+    sendAnalytics({ type: EventType.Click, label: 'MonitorLocation', context: { monitorDetails } });
     handleClick(monitorDetails);
   },
 });
 
-const mapLauncherDispatch = (dispatch: Dispatch): MapDispatch => ({
-  handleClick: (monitorDetails: MonitorDetails) => dispatch(setLauncherMonitorSettings(monitorDetails)),
-});
-
 export const withLauncherConfig = connect<MapState, MapDispatch, Props, MergeProps, State>(
   mapState,
-  mapLauncherDispatch,
+  mapDispatch,
   mergeProps,
 );
 

@@ -36,7 +36,9 @@ const Settings = ({ currentAction, handleClose, handleConfirm, hideWindow, isEnt
   return (
     <Window>
       <Borders height="100%" width="100%">
-        <WindowHeader handleClose={hideWindow}>My Settings</WindowHeader>
+        <WindowHeader handleClose={hideWindow} label="MySettings">
+          My Settings
+        </WindowHeader>
 
         <SettingsWrapper>
           <LauncherSettings />

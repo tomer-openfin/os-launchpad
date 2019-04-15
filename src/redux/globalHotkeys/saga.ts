@@ -2,10 +2,11 @@ import { Application } from '@giantmachines/redux-openfin';
 import { put, select, takeEvery } from 'redux-saga/effects';
 
 import windowsConfig from '../../config/windows';
+import { EventType, sendAnalytics } from '../../utils/analytics';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { isDevelopmentEnv } from '../../utils/processHelpers';
 import { restoreLayout } from '../layouts/actions';
-import { getLayoutsIds } from '../layouts/selectors';
+import { getAllLayouts } from '../layouts/selectors';
 import { getAutoHide, setAutoHide } from '../me';
 import { getErrorFromCatch } from '../utils';
 import { launchWindow } from '../windows/actions';
@@ -21,12 +22,14 @@ function* watchGlobalHotkeyPressed(action: ReturnType<typeof globalHotkeyPressed
         // tslint:disable-next-line:no-console
         console.log(`${GlobalHotkeys.RestoreLayout} pressed`);
 
-        // todo: align with watchRestoreLayout saga once it's updated to handle
-        // multiple user layouts
-        const layoutIds: ReturnType<typeof getLayoutsIds> = yield select(getLayoutsIds);
-        const firstLayoutId = layoutIds[0];
+        const layouts: ReturnType<typeof getAllLayouts> = yield select(getAllLayouts);
+        const firstLayout = layouts[0];
 
-        yield put(restoreLayout.request(firstLayoutId));
+        sendAnalytics({ type: EventType.HotKey, label: 'RestoreLayout', context: { hotkey, name: firstLayout ? firstLayout.name : undefined } });
+        if (firstLayout) {
+          yield put(restoreLayout.request(firstLayout.id));
+        }
+
         break;
       }
 
@@ -34,6 +37,7 @@ function* watchGlobalHotkeyPressed(action: ReturnType<typeof globalHotkeyPressed
         // tslint:disable-next-line:no-console
         console.log(`${GlobalHotkeys.ShowAppDirectory} pressed`);
 
+        sendAnalytics({ type: EventType.HotKey, label: 'ShowAppDirectory', context: { hotkey } });
         yield put(launchWindow(windowsConfig.appDirectory));
         break;
       }
@@ -43,6 +47,7 @@ function* watchGlobalHotkeyPressed(action: ReturnType<typeof globalHotkeyPressed
         console.log(`${GlobalHotkeys.ToggleAutoHide} pressed`);
 
         const autoHide: ReturnType<typeof getAutoHide> = yield select(getAutoHide);
+        sendAnalytics({ type: EventType.HotKey, label: 'ToggleAutoHide', context: { hotkey, currentValue: autoHide } });
         yield put(setAutoHide({ autoHide: !autoHide }));
         break;
       }

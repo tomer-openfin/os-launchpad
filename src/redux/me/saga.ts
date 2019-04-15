@@ -7,6 +7,7 @@ import eraseCookie from '../../utils/eraseCookie';
 import { adminWindows, authWindows, defaultWindows } from '../../config/windows';
 import { ApiResponseStatus } from '../../types/enums';
 import { UnPromisfy } from '../../types/utils';
+import { EventType, sendAnalytics } from '../../utils/analytics';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { generateTimestamp } from '../../utils/timestampUtils';
 import { getAdminApps, getAdminUsers } from '../admin';
@@ -67,6 +68,10 @@ function* watchForgotPasswordRequest(action: ReturnType<typeof forgotPassword.re
 
 function* watchLoginRequest(action: ReturnType<typeof login.request>) {
   try {
+    if (action.payload.session) {
+      sendAnalytics({ type: EventType.Login, label: 'NewUser::Request' });
+    }
+
     const response: UnPromisfy<ReturnType<typeof ApiService.login>> = action.payload.session
       ? yield call(ApiService.newPasswordLogin, { username: action.payload.username, newPassword: action.payload.password, session: action.payload.session })
       : yield call(ApiService.login, action.payload);
@@ -76,6 +81,10 @@ function* watchLoginRequest(action: ReturnType<typeof login.request>) {
       if (action.meta && action.meta.onFailure && response.meta) {
         const isError = response.meta.code !== 'NewPasswordRequired';
         yield put(setAuthMessaging({ message: response.message, isError }));
+
+        if (response.meta.session && !action.payload.session) {
+          sendAnalytics({ type: EventType.Login, label: 'NewUser' });
+        }
 
         action.meta.onFailure(error, {
           code: response.meta.code,
@@ -90,8 +99,9 @@ function* watchLoginRequest(action: ReturnType<typeof login.request>) {
       }
     }
 
-    const { isAdmin, email, firstName, lastName } = response.data;
     const sessionTimestamp = generateTimestamp();
+    sendAnalytics({ type: EventType.Login, label: action.payload.session ? 'NewUser::Success' : 'User::Success', timestamp: sessionTimestamp });
+    const { isAdmin, email, firstName, lastName } = response.data;
     yield put(login.success({ isAdmin, email, firstName, lastName, sessionTimestamp }, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);

@@ -1,4 +1,5 @@
 import { getSessionTimestamp, getSID } from '../redux/me';
+import { getAppListNames } from '../redux/selectors';
 import { getSystemMachineId } from '../redux/system';
 import ApiService from '../services/ApiService';
 import { isAnalyticsEnvOn } from './processHelpers';
@@ -7,9 +8,11 @@ import { generateTimestamp } from './timestampUtils';
 export enum EventType {
   Click = 'click',
   Close = 'close',
+  Drag = 'drag',
+  Drop = 'drop',
+  HotKey = 'hotkey',
   Login = 'login',
   Logout = 'logout',
-  Open = 'open',
 }
 
 export interface SendAnalyticsPayload {
@@ -32,7 +35,23 @@ export interface SendAnalyticsPayload {
   };
 }
 
-export const sendAnalytics = (payload: SendAnalyticsPayload, store: Window['store'] = window.store || window.opener.store) => {
+export interface PostUserStatsPayload extends SendAnalyticsPayload {
+  machineId: string | null;
+  sessionTimestamp: string | null;
+  sid: number;
+  timestamp: string;
+}
+
+interface MetaOptions {
+  includeAppList?: boolean;
+  includeFinWindows?: boolean;
+}
+
+export const sendAnalytics = async (
+  payload: SendAnalyticsPayload,
+  metaOptions: MetaOptions = {},
+  store: Window['store'] = window.store || window.opener.store,
+) => {
   const isAnalyticsOn = isAnalyticsEnvOn();
   if (!store || !isAnalyticsOn) {
     return;
@@ -52,6 +71,26 @@ export const sendAnalytics = (payload: SendAnalyticsPayload, store: Window['stor
     ...payload,
     timestamp,
   };
+
+  if (metaOptions.includeAppList) {
+    const launcherAppList = getAppListNames(state);
+    if (analyticsPayload.meta) {
+      analyticsPayload.meta.launcherAppList = launcherAppList;
+    } else {
+      analyticsPayload.meta = { launcherAppList };
+    }
+  }
+
+  const fin = window.fin;
+  if (fin && metaOptions.includeFinWindows) {
+    const finWindows = await fin.System.getAllWindows();
+
+    if (analyticsPayload.meta) {
+      analyticsPayload.meta.windows = finWindows;
+    } else {
+      analyticsPayload.meta = { windows: finWindows };
+    }
+  }
 
   return ApiService.postUserStats(analyticsPayload);
 };

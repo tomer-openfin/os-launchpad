@@ -4,6 +4,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { DirectionalPosition, Orientation } from '../../types/commons';
 import { isTopOrBottom } from '../../utils/windowPositionHelpers';
 
+import { EventType, sendAnalytics } from '../../utils/analytics';
 import { LauncherSizeConfig } from '../../utils/launcherSizeConfigs';
 import AppListToggle, { AppListToggleId } from '../AppListToggle';
 import LauncherAppIcon, { APP_ICON_TRANSITION_CLASSNAMES, APP_ICON_TRANSITION_DURATION } from '../LauncherAppIcon';
@@ -23,7 +24,7 @@ interface Props {
   width: number;
 }
 
-const moveSource = (appList: string[], setAppIds: (appIds: string[]) => void, toggleIndex: number | null) => (dragIndex: number, hoverIndex: number) => {
+const createMoveSource = (appList: string[], setAppIds: (appIds: string[]) => void, toggleIndex: number | null) => (dragIndex: number, hoverIndex: number) => {
   const app = appList[dragIndex];
   const nextAppList = [...appList];
 
@@ -67,13 +68,6 @@ const AppList = ({
   const edgeMargin = (launcherSizeConfig.launcher - launcherSizeConfig.appIcon) / 2;
   const margin = isOnTopOrBottom ? `${edgeMargin}px ${gutterMargin}px` : `${gutterMargin}px ${edgeMargin}px`;
   const orientation = isOnTopOrBottom ? Orientation.Horizontal : Orientation.Vertical;
-  const endSource = () => {
-    setIsDragAndDrop(false);
-    saveSettings();
-  };
-  const startSource = () => {
-    setIsDragAndDrop(true);
-  };
 
   return (
     <StyledTransitionGroupWrapper
@@ -85,6 +79,19 @@ const AppList = ({
     >
       <TransitionGroup className={TRANSITION_GROUP_CLASSNAME}>
         {appList.map((id, index) => {
+          const moveSource = createMoveSource(appList, setAppIds, toggleIndex);
+          const endSource = () => {
+            setIsDragAndDrop(false);
+            saveSettings();
+            setTimeout(() => {
+              sendAnalytics({ type: EventType.Drop, label: 'AppIcon', context: { id } }, { includeAppList: true });
+            }, 0);
+          };
+          const startSource = () => {
+            sendAnalytics({ type: EventType.Drag, label: 'AppIcon', context: { id } }, { includeAppList: true });
+            setIsDragAndDrop(true);
+          };
+
           return (
             <CSSTransition key={id} classNames={APP_ICON_TRANSITION_CLASSNAMES} timeout={APP_ICON_TRANSITION_DURATION} unmountOnExit>
               {status => {
@@ -95,7 +102,7 @@ const AppList = ({
                       dragDisabled: true,
                       id,
                       index,
-                      moveSource: moveSource(appList, setAppIds, toggleIndex),
+                      moveSource,
                       orientation,
                     }}
                     hasTransition
@@ -112,7 +119,7 @@ const AppList = ({
                       endSource,
                       id,
                       index,
-                      moveSource: moveSource(appList, setAppIds, toggleIndex),
+                      moveSource,
                       orientation,
                       startSource,
                     }}

@@ -69,7 +69,7 @@ class ContextManager extends React.Component<Props, State> {
       <Layout>
         <StyledBorders width={`${MAIN_WIDTH}px`}>
           <Wrapper>
-            <WindowHeader handleClose={this.handleClickClose} isDragDisabled={isDragDisabled}>
+            <WindowHeader handleClose={this.handleClickClose} isDragDisabled={isDragDisabled} label="ContextManager">
               Manage Context Groups
             </WindowHeader>
 
