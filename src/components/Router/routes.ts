@@ -10,7 +10,9 @@ import App from '../App';
 import AppDirectory from '../AppDirectory';
 import AppOverflow from '../AppOverflow';
 import ConfirmRevertImage from '../ConfirmRevertImage';
+import ContextManager from '../ContextManager';
 import ContextMenu from '../ContextMenu';
+import ContextSubscriber from '../ContextSubscriber';
 import ForgotPassword, { asRoute as asForgotPasswordRoute } from '../ForgotPassword';
 import Layouts from '../Layouts';
 import Login from '../Login';
@@ -70,6 +72,16 @@ export const routes: AppRoute[] = [
     Component: App,
     exact: true,
     path: ROUTES.HOME,
+  },
+  {
+    Component: ContextSubscriber,
+    exact: true,
+    path: ROUTES.CHANNELS_CONTEXT,
+  },
+  {
+    Component: ContextManager,
+    exact: true,
+    path: ROUTES.CHANNELS,
   },
   {
     Component: Login,

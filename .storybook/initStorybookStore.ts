@@ -7,7 +7,7 @@ import { MockUserSettings } from '../src/services/ApiService/__mocks__/user';
 
 import { getAdminApps, getAdminUsers } from '../src/redux/admin';
 import { getAppDirectoryList } from '../src/redux/apps';
-import { getSettings, setMe } from '../src/redux/me';
+import { getSettings, login } from '../src/redux/me';
 import { getAndSetMonitorInfo } from '../src/redux/system';
 
 /**
@@ -20,6 +20,6 @@ export const initStorybookStore = (store: Store) => {
   store.dispatch(getSettings.success(MockUserSettings));
   store.dispatch(getAdminUsers.success(UsersData));
   store.dispatch(getAdminApps.success(AppData));
-  store.dispatch(setMe(MockUser));
+  store.dispatch(login.success(MockUser));
   store.dispatch(getAndSetMonitorInfo.request());
 };

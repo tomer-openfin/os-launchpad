@@ -47,6 +47,10 @@ export default (state: ApplicationState = defaultState, action: ApplicationActio
     }
     case getManifestOverride.success.toString():
     case updateManifestOverride.success.toString(): {
+      if (!action.payload) {
+        return state;
+      }
+
       return {
         ...state,
         manifestOverride: action.payload,

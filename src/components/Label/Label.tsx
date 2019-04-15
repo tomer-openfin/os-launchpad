@@ -4,12 +4,17 @@ import { ErrorWrapper, LabelWrapper, Wrapper } from './Label.css';
 
 interface Props extends React.LabelHTMLAttributes<HTMLLabelElement> {
   children?: React.ReactNode;
+  index?: number; // for cascade animations
   label: string;
   renderError?: () => React.ReactNode;
 }
 
-const Label = ({ children, label, renderError, ...rest }: Props) => (
-  <Wrapper {...rest}>
+const defaultProps = {
+  index: 1,
+};
+
+const Label = ({ children, index = defaultProps.index, label, renderError, ...rest }: Props) => (
+  <Wrapper index={index} {...rest}>
     <LabelWrapper>{label}</LabelWrapper>
 
     {children}

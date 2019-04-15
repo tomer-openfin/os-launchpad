@@ -43,7 +43,6 @@ export const AppName = styled.div<Props>`
   font-size: 16px;
   font-weight: 500;
   min-height: 22px;
-  text-transform: capitalize;
 
   &:hover {
     text-decoration: underline;

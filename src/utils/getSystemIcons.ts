@@ -1,24 +1,31 @@
 import { Action } from 'redux';
 
 import * as adminIcon from '../assets/AdminSettings.svg';
+import * as chainIcon from '../assets/Chain.svg';
 import * as directoryIcon from '../assets/Directory.svg';
+import * as gatherWindowsIcon from '../assets/GatherWindows.svg';
 import * as layoutsIcon from '../assets/Layouts.svg';
 import * as logoutIcon from '../assets/Logout.svg';
 import * as notificationsIcon from '../assets/Notifications.svg';
 import * as settingsIcon from '../assets/Settings.svg';
+import * as supportIcon from '../assets/Support.svg';
 
 import windowsConfig from '../config/windows';
 
 import { toggleNotificationCenter } from '../redux/notifications';
+import { getAllWindows } from '../redux/system';
 import { launchWindow, toggleWindow } from '../redux/windows';
 import Color from '../styles/color';
 
 export const ADMIN_KEY = 'Admin';
-export const WORKSPACES_KEY = 'Workspaces';
+export const APP_DIRECTORY_KEY = 'App Directory';
+export const CHANNELS_KEY = 'Channels';
 export const LOGOUT_KEY = 'Logout';
 export const NOTIFICATIONS_KEY = 'Notifications';
-export const APP_DIRECTORY_KEY = 'App Directory';
 export const SETTINGS_KEY = 'Settings';
+export const GATHER_WINDOWS_KEY = 'Gather Windows';
+export const SUPPORT_KEY = 'Support';
+export const WORKSPACES_KEY = 'Workspaces';
 
 export interface SystemIcon {
   action: Action;
@@ -44,6 +51,16 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       title: LOGOUT_KEY,
     },
     {
+      action: launchWindow(windowsConfig.channels),
+      color: Color.URANUS,
+      hasExtendedWindow: false,
+      hoverColor: Color.URANUS_HOVER,
+      icon: chainIcon,
+      isBackground: false,
+      isShownByDefault: false,
+      title: CHANNELS_KEY,
+    },
+    {
       action: launchWindow(windowsConfig.settings),
       color: Color.SATURN,
       hasExtendedWindow: false,
@@ -52,6 +69,26 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       isBackground: false,
       isShownByDefault: false,
       title: SETTINGS_KEY,
+    },
+    {
+      action: getAllWindows.request(),
+      color: Color.ENCELADUS,
+      hasExtendedWindow: false,
+      hoverColor: Color.ENCELADUS_HOVER,
+      icon: gatherWindowsIcon,
+      isBackground: false,
+      isShownByDefault: false,
+      title: GATHER_WINDOWS_KEY,
+    },
+    {
+      action: launchWindow(windowsConfig.support),
+      color: Color.MARS,
+      hasExtendedWindow: false,
+      hoverColor: Color.MARS_HOVER,
+      icon: supportIcon,
+      isBackground: false,
+      isShownByDefault: false,
+      title: SUPPORT_KEY,
     },
     {
       action: toggleWindow({ name: windowsConfig.appDirectory.name }),

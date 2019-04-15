@@ -33,19 +33,6 @@ export const LogoWrapper = styled.div<WrapperProps>`
   justify-content: center;
   position: relative;
 
-  &:before {
-    background-color: ${Color.ASTEROID_BELT};
-    bottom: 0;
-    content: '';
-    height: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? '60%' : '1px')};
-    margin: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? 'auto 0' : '0 auto')};
-    position: absolute;
-    right: 0;
-    width: ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? '1px' : '60%')};
-
-    ${({ launcherPosition }) => (isTopOrBottom(launcherPosition) ? 'top: 0' : 'left: 0')};
-  }
-
   ${({ launcherPosition }) => {
     const chosenDirection = isRight(launcherPosition) ? 'to right' : 'to left';
 

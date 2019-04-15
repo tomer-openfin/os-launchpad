@@ -1,6 +1,7 @@
 import {
   addToAppLauncher,
   getSettings,
+  login,
   logout,
   removeFromAppLauncher,
   resetSettings,
@@ -10,7 +11,6 @@ import {
   setLauncherMonitorSettings,
   setLauncherPosition,
   setLauncherSize,
-  setMe,
 } from './actions';
 
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
@@ -40,6 +40,7 @@ export const defaultState: MeState = {
   firstName: '',
   isAdmin: false,
   lastName: '',
+  sessionTimestamp: null,
   settings: defaultSettings,
 };
 
@@ -60,13 +61,10 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
         authMessaging: action.payload,
       };
     }
-    case setMe.toString(): {
+    case login.success.toString(): {
       return {
         ...state,
-        email: action.payload.email,
-        firstName: action.payload.firstName,
-        isAdmin: action.payload.isAdmin,
-        lastName: action.payload.lastName,
+        ...action.payload,
       };
     }
     case logout.success.toString(): {

@@ -54,7 +54,11 @@ export const SupportView = (props: ViewProps) => {
   return (
     <Wrapper>
       <Borders height="100%" width="100%">
-        <WindowHeader handleBack={type !== Type.Default ? handleReset : undefined} handleClose={type === Type.Default ? handleClose : undefined}>
+        <WindowHeader
+          handleBack={type !== Type.Default ? handleReset : undefined}
+          handleClose={type === Type.Default ? handleClose : undefined}
+          label="Support"
+        >
           {headerTitles[props.type]}
         </WindowHeader>
 

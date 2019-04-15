@@ -10,6 +10,7 @@ const transformOpenFinConfig = require('./scripts/utils/transformOpenFinConfig')
 const appJson = require('./src/app.json');
 
 const {
+  ANALYTICS = false,
   API_URL,
   DEV_TOOLS_ON_STARTUP = false,
   ENTERPRISE,
@@ -79,6 +80,18 @@ module.exports = {
           req.setHeader('openfin-os-organization', BACKEND_ORG);
         },
       },
+      '/api/launcher2.json': {
+        changeOrigin: true,
+        logLevel: 'debug',
+        target: LOCAL_MANIFEST ? `http://${HOST}:${PORT}` : BACKEND,
+        pathRewrite: LOCAL_MANIFEST ? { '^/api/launcher2.json': 'app.json' } : undefined,
+        headers: {
+          Referer: `http://${HOST}:${PORT}`,
+        },
+        onProxyReq: req => {
+          req.setHeader('openfin-os-organization', BACKEND_ORG);
+        },
+      },
       '/api/**': {
         changeOrigin: true,
         logLevel: 'debug',
@@ -95,6 +108,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
+        ANALYTICS: JSON.stringify(ANALYTICS),
         API_URL: JSON.stringify(API_URL),
         APP_UUID: JSON.stringify(appJson.startup_app.uuid),
         DEV_TOOLS_ON_STARTUP: JSON.stringify(DEV_TOOLS_ON_STARTUP),

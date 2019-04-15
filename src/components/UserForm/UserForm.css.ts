@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 
-import { Color, Typography } from '../../styles';
+import Label from '../Label';
 import RadioButton from '../RadioButton';
 import { RowWrapper } from '../Responsive';
 import { Icon } from '../SvgIcon/index';
+
+import { Color, Typography } from '../../styles';
+
+export const StyledLabel = styled(Label)`
+  margin: auto 0;
+`;
 
 export const StyledRowWrapper = styled(RowWrapper)`
   margin-bottom: 20px;

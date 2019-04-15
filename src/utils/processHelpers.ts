@@ -4,7 +4,7 @@ const PRODUCTION = 'production';
 const TEST = 'test';
 const TRUE = 'true';
 
-const { API_URL, DEV_TOOLS_ON_STARTUP = FALSE, ENTERPRISE = FALSE, NODE_ENV = DEVELOPMENT, STORYBOOK_ENV = FALSE } = process.env;
+const { ANALYTICS, API_URL, DEV_TOOLS_ON_STARTUP = FALSE, ENTERPRISE = FALSE, NODE_ENV = DEVELOPMENT, STORYBOOK_ENV = FALSE } = process.env;
 
 export const getApiUrl = () => {
   if (API_URL) {
@@ -14,6 +14,7 @@ export const getApiUrl = () => {
   return window && window.location && window.location.origin ? `${window.location.origin}/` : '/';
 };
 export const hasDevToolsOnStartup = () => DEV_TOOLS_ON_STARTUP === TRUE;
+export const isAnalyticsEnvOn = () => ANALYTICS === TRUE;
 export const isDevelopmentEnv = () => NODE_ENV === DEVELOPMENT;
 export const isEnterpriseEnv = () => ENTERPRISE === TRUE;
 export const isProductionEnv = () => NODE_ENV === PRODUCTION;

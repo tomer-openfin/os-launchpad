@@ -13,6 +13,10 @@ export default (state: OrganizationState = defaultState, action: OrganizationAct
   switch (action.type) {
     case getAdminOrgSettings.success.toString():
     case getOrgSettings.success.toString(): {
+      if (!action.payload) {
+        return state;
+      }
+
       const { activeThemeId, loginLogo, logo, themes } = action.payload;
 
       return {

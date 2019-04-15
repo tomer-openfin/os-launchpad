@@ -40,7 +40,9 @@ const Admin = (props: Props) => {
 
   return (
     <Wrapper>
-      <WindowHeader handleClose={hideWindow}>Admin</WindowHeader>
+      <WindowHeader handleClose={hideWindow} label="Admin">
+        Admin
+      </WindowHeader>
 
       {children && (
         <Tabs activeId={activeTab} onClick={onClickTab}>

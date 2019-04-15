@@ -1,6 +1,7 @@
 import { MeSettingsState, UpdatePasswordRequestPayload } from '../../redux/me';
 import { defaultSettings } from '../../redux/me/reducer';
 import { ApiResponse, HTTPMethods, NewUserLayout, User, UserLayout } from '../../types/commons';
+import { PostUserStatsPayload } from '../../utils/analytics';
 import { checkIsEnterprise } from '../../utils/checkIsEnterprise';
 import { uuidv4 } from '../../utils/createUuid';
 import { deleteInLocalStorage, getInLocalStorage, getLocalStorage, LOCAL_STORAGE_KEYS, setInLocalStorage, setLocalStorage } from '../localStorageAdapter';
@@ -98,6 +99,12 @@ export const saveUserSettings = (settings: MeSettingsState): Promise<ApiResponse
   return setLocalStorage(LOCAL_STORAGE_KEYS.SETTINGS, settings);
 };
 export type SaveUserSettings = typeof saveUserSettings;
+
+/**
+ * Post user stats
+ */
+export const postUserStats = (payload: PostUserStatsPayload) =>
+  api<undefined, PostUserStatsPayload>(`${API.USER_STATS}/${payload.type}`, HTTPMethods.POST, _ => ({ data: undefined }))(payload);
 
 /**
  * Update user password

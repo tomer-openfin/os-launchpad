@@ -26,10 +26,6 @@ export interface AppsState {
 }
 
 // Payloads
-export interface SetMePayload {
-  appList: App[];
-}
-
 export interface CloseFinAppPayload {
   uuid: string;
 }

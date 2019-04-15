@@ -26,6 +26,7 @@ const API = {
   USER_INFO: `${API_URL}api/user/info`,
   USER_LAYOUTS: `${API_URL}api/user/layouts`,
   USER_SETTINGS: `${API_URL}api/user/settings`,
+  USER_STATS: `${API_URL}api/user/stats`,
 
   ADMIN_APPS: `${API_URL}api/admin/apps`,
   ADMIN_MANIFEST: `${API_URL}api/launcher.json`,

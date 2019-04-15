@@ -7,8 +7,8 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import noop from '../../utils/noop';
 import { CATEGORIES } from '../../utils/storyCategories';
 
+import { LABEL_TRANSITION_CLASSNAMES, LABEL_TRANSITION_DURATION } from '../Label/Label.css';
 import FormField from './FormField';
-import { LABEL_TRANSITION_CLASSNAMES, LABEL_TRANSITION_DURATION } from './FormField.css';
 
 const renderEmailField = ({ isSubmitting, isValid }) => (
   <FormField type={'text'} name={'email'} validate={noop} placeholder={'Enter Email'} disabled={false} label={'Email'} />

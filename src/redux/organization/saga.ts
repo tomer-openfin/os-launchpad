@@ -17,7 +17,7 @@ function* watchSaveOrgImage(action: ReturnType<typeof saveOrgImage>) {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchSaveOrgImage', error);
+    console.warn('Error in watchSaveOrgImage', error);
   }
 }
 
@@ -29,7 +29,7 @@ function* watchSaveOrgActiveThemeId(action: ReturnType<typeof saveOrgActiveTheme
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchSaveOrgImage', error);
+    console.warn('Error in watchSaveOrgImage', error);
   }
 }
 

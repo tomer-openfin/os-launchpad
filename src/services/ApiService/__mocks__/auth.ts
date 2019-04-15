@@ -1,6 +1,7 @@
 import { MeInfo } from '../../../redux/me/types';
 import { ApiSuccessResponse } from '../../../types/commons';
 import { ApiResponseStatus } from '../../../types/enums';
+import { generateTimestamp } from '../../../utils/timestampUtils';
 import { ConfirmPassword, ForgotPassword, Login, Logout, NewPasswordLogin } from '../auth';
 
 export const MockUser = {
@@ -8,6 +9,7 @@ export const MockUser = {
   firstName: 'mister',
   isAdmin: true,
   lastName: 'admin',
+  sessionTimestamp: generateTimestamp(),
 };
 
 /**
