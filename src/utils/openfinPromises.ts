@@ -1,5 +1,5 @@
 import { Manifest } from '../redux/application/types';
-import { Bounds, MonitorInfo, OpenFinApplication, OpenFinApplicationInfo, OpenFinWindow, PointTopLeft } from '../types/commons';
+import { Bounds, MonitorInfo, OpenFinApplication, OpenFinApplicationInfo, OpenFinWindow, PointTopLeft, WindowInfo } from '../types/commons';
 import promisifyOpenfin from './promisifyOpenfin';
 
 // TODO - move these functions to redux-openfin
@@ -38,6 +38,7 @@ export const addSystemEventListener = getSystemPromise('addEventListener');
 export const getSystemMachineId = getSystemPromise<string>('getMachineId');
 export const getSystemMonitorInfo = getSystemPromise<MonitorInfo>('getMonitorInfo');
 export const getSystemMousePosition = getSystemPromise<PointTopLeft>('getMousePosition');
+export const getSystemAllWindows = getSystemPromise<WindowInfo[]>('getAllWindows');
 
 // tslint:disable-next-line:no-any
 export const getOpenFinApplicationInfo = (uuid: string) => getOpenFinApplicationPromise<any>(uuid, 'getInfo');
@@ -92,6 +93,11 @@ export const getVisibleWindowStateAndBounds = async (finWindow: OpenFinWindow): 
     state,
   };
 };
+
+/**
+ * Get window bounds
+ */
+export const getWindowBounds = async (finWindow: OpenFinWindow): Promise<Bounds | undefined> => promisifyOpenfin(finWindow, 'getBounds');
 
 export const createAndRunFromManifest = (manifestUrl: string, id: string): Promise<string> => {
   const { fin } = window;

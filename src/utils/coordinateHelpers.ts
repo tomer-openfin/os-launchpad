@@ -1,6 +1,9 @@
 import { Bounds, DirectionalCoordinates, DirectionalPosition, Point, PrimaryDirectionalCoordinates } from '../types/commons';
 import { isTopOrBottom } from './windowPositionHelpers';
 
+export const RESIZE_OFFSET_X = 50;
+export const RESIZE_OFFSET_Y = 50;
+
 export const getCoordinatesHeight = (coordinates: { bottom: number; top: number }): number => {
   const { bottom, top } = coordinates;
   return bottom - top;
@@ -83,4 +86,38 @@ export const getBoundsCenterInCoordinates = (bounds: Bounds, coordinates: Direct
   const yDelta = bounds.height / 2;
 
   return { left: x - xDelta, top: y - yDelta };
+};
+
+export const getBoundsMoveIntoCoordinates = (
+  bounds: Bounds,
+  coordinates: DirectionalCoordinates,
+  offsetX: number = RESIZE_OFFSET_X,
+  offsetY: number = RESIZE_OFFSET_Y,
+): PrimaryDirectionalCoordinates => {
+  let newTop = bounds.top;
+  let newLeft = bounds.left;
+
+  // window above monitor;
+  if (bounds.top < coordinates.top) {
+    newTop = coordinates.top + offsetY;
+  }
+
+  // window below monitor;
+  const windowBottom = bounds.top + bounds.height;
+  if (windowBottom > coordinates.bottom) {
+    newTop = coordinates.bottom - bounds.height - offsetY;
+  }
+
+  // window to left of monitor;
+  if (bounds.left < coordinates.left) {
+    newLeft = coordinates.left + offsetX;
+  }
+
+  // window to right of monitor;
+  const windowRight = bounds.left + bounds.width;
+  if (windowRight > coordinates.right) {
+    newLeft = coordinates.right - bounds.width - offsetX;
+  }
+
+  return { left: newLeft, top: newTop };
 };

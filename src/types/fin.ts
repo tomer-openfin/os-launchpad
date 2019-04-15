@@ -15,3 +15,5 @@ export type SystemBaseEvent = fin.SystemBaseEvent;
 export type Transition = fin.Transition;
 export type WindowBaseEvent = fin.WindowBaseEvent;
 export type Workspace = Workspace;
+export type WindowInfo = fin.WindowInfo;
+export type WindowDetail = fin.WindowDetail;
