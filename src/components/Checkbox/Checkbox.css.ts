@@ -32,3 +32,8 @@ export const CheckboxUI = styled.div<CheckedProps>`
   margin-right: 10px;
   width: 19px;
 `;
+
+export const HiddenInput = styled.input`
+  opacity: 0;
+  position: absolute;
+`;
