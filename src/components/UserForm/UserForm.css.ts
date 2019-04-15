@@ -25,14 +25,12 @@ export const Heading = styled.div`
   ${Typography.TypeStyleArcturus}
 
   color: ${Color.SUN};
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   white-space: nowrap;
 `;
 
 export const Row = styled.div`
-  align-items: center;
   display: flex;
-  justify-content: center;
   width: 100%;
 `;
 
