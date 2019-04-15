@@ -71,19 +71,21 @@ const LauncherSettings = ({
         <Row>
           <DirectionControls direction={launcherPosition} handleChange={setLauncherPosition} />
 
-          <Cta
-            isDisabled={isChangeLauncherMonitorDisabled}
-            onClick={
-              isChangeLauncherMonitorDisabled
-                ? e => {
-                    e.preventDefault();
-                  }
-                : undefined
-            }
-            to={ROUTES.SETTINGS_LAUNCHER_MONITOR}
-          >
-            Change Screen
-          </Cta>
+          {!isChangeLauncherMonitorDisabled && (
+            <Cta
+              isDisabled={isChangeLauncherMonitorDisabled}
+              onClick={
+                isChangeLauncherMonitorDisabled
+                  ? e => {
+                      e.preventDefault();
+                    }
+                  : undefined
+              }
+              to={ROUTES.SETTINGS_LAUNCHER_MONITOR}
+            >
+              Change Screen
+            </Cta>
+          )}
         </Row>
       </Group>
     </Wrapper>
