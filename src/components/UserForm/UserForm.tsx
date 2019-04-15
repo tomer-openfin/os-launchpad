@@ -5,6 +5,7 @@ import * as passwordIcon from '../../assets/Eye.svg';
 import { Color } from '../../styles';
 import { renderError } from '../../utils/renderError';
 
+import Checkbox from '../Checkbox';
 import FormFooter from '../FormFooter';
 import Input from '../Input';
 import Label from '../Label';
@@ -33,11 +34,12 @@ interface Errors {
 export interface Values {
   email: string;
   firstName: string;
+  id: string;
   lastName: string;
   middleInitial?: string;
   phone: string;
+  sendEmail?: boolean;
   tmpPassword?: string;
-  id: string;
   username: string;
 }
 
@@ -51,6 +53,7 @@ interface Props {
   isSubmitting?: boolean;
   isValid?: boolean;
   touched: Touched;
+  sendEmail?: boolean;
   values: Values;
   withPasswordField?: boolean;
 }
@@ -69,7 +72,19 @@ class UserForm extends React.Component<Props, State> {
   togglePasswordFieldType = () => this.setState(prevState => ({ isPasswordShown: !prevState.isPasswordShown }));
 
   render() {
-    const { className, errors, handleBlur, handleCancel, handleChange, handleSubmit, isSubmitting, isValid, touched, values, withPasswordField } = this.props;
+    const {
+      className,
+      errors,
+      handleBlur,
+      handleCancel,
+      handleChange,
+      handleSubmit,
+      isSubmitting,
+      isValid,
+      touched,
+      values,
+      withPasswordField,
+    } = this.props;
     const { isPasswordShown } = this.state;
 
     return (
@@ -135,27 +150,31 @@ class UserForm extends React.Component<Props, State> {
           </Label>
 
           {withPasswordField && (
-            <Label index={5} label="Password" renderError={renderError(errors.tmpPassword, touched.tmpPassword)}>
-              <Input
-                hasError={!!errors.tmpPassword && touched.tmpPassword}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.tmpPassword}
-                name="tmpPassword"
-                placeholder="Enter password"
-                type={isPasswordShown ? 'text' : 'password'}
-              />
-
-              <PasswordIconWrapper>
-                <SvgIcon
-                  color={isPasswordShown ? Color.URANUS : Color.COMET}
-                  hoverColor={Color.JUPITER}
-                  onClick={this.togglePasswordFieldType}
-                  imgSrc={passwordIcon}
-                  size={25}
+            <>
+              <Label index={5} label="Password" renderError={renderError(errors.tmpPassword, touched.tmpPassword)}>
+                <Input
+                  hasError={!!errors.tmpPassword && touched.tmpPassword}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.tmpPassword}
+                  name="tmpPassword"
+                  placeholder="Enter password"
+                  type={isPasswordShown ? 'text' : 'password'}
                 />
-              </PasswordIconWrapper>
-            </Label>
+
+                <PasswordIconWrapper>
+                  <SvgIcon
+                    color={isPasswordShown ? Color.URANUS : Color.COMET}
+                    hoverColor={Color.JUPITER}
+                    onClick={this.togglePasswordFieldType}
+                    imgSrc={passwordIcon}
+                    size={25}
+                  />
+                </PasswordIconWrapper>
+              </Label>
+
+              <Checkbox checked={!!values.sendEmail} index={6} label="Send Installation Instructions" name="sendEmail" onChange={handleChange} />
+            </>
           )}
         </ScrollGrid>
 

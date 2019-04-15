@@ -1,20 +1,22 @@
 import * as React from 'react';
 
-import { CheckboxUI, FormFieldWrapper, LabelText } from './Checkbox.css';
+import { CheckboxUI, HiddenInput, StyledLabel } from './Checkbox.css';
 
 interface Props {
   checked: boolean;
-  name: string;
+  index?: number; // for cascade animations
   label: string;
+  name?: string;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onChange: (e: React.ChangeEvent) => void;
 }
 
-const Checkbox = ({ checked, name, label }: Props) => {
+const Checkbox = ({ checked, label, name, onBlur, onChange, index = 1 }: Props) => {
   return (
-    <FormFieldWrapper name={name} type="checkbox" checked={checked}>
+    <StyledLabel label={label} index={index} >
+      <HiddenInput name={name} onBlur={onBlur} type="checkbox" checked={checked} onChange={onChange} />
       <CheckboxUI checked={checked} />
-
-      {label && <LabelText>{label}</LabelText>}
-    </FormFieldWrapper>
+    </StyledLabel>
   );
 };
 
