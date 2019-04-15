@@ -14,7 +14,6 @@ const handleCancel = action('handleCancel');
 const handleSubmit = action('handleSubmit');
 const handleBlur = action('handleBlur');
 const handleChange = action('handleChange');
-const handleCheck = action('handleCheck');
 
 const handleSubmitValues = action('handleSubmitValues');
 const withPasswordField = boolean('withPasswordField', false);
@@ -81,7 +80,6 @@ storiesOf(`${CATEGORIES.ADMIN}UserForm`, module)
         handleBlur={handleBlur}
         handleCancel={handleCancel}
         handleChange={handleChange}
-        handleCheck={handleCheck}
         handleSubmit={handleSubmit}
         isSubmitting={isSubmitting}
         isValid={isValid}

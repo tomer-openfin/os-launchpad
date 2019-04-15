@@ -36,8 +36,15 @@ const handleFormikSubmit = (handleSubmitValues: Props['handleSubmitValues']) => 
 
 type SetFieldValue = <T extends keyof Values>(field: T, value: Values[T], shouldValidate?: boolean) => void;
 
-const handleCheck = (setFieldValue: SetFieldValue, prevChecked: boolean) => () => {
-  setFieldValue('sendEmail', !prevChecked);
+const myHandleChange = (setFieldValue: SetFieldValue, handleChange: (e: React.ChangeEvent) => void, prevValues: Values) => (e: React.ChangeEvent) => {
+  if (e.target.getAttribute('type') === 'checkbox') {
+    const name = e.target.getAttribute('name') as keyof Values;
+
+    setFieldValue(name, !prevValues[name]);
+    return;
+  }
+
+  handleChange(e);
 };
 
 const renderForm = (handleCancel: Props['handleCancel'], withPasswordField: boolean, className?: string) => (props: FormikProps<Values>) => {
@@ -49,8 +56,7 @@ const renderForm = (handleCancel: Props['handleCancel'], withPasswordField: bool
       errors={errors}
       handleBlur={handleBlur}
       handleCancel={handleCancel}
-      handleCheck={handleCheck(setFieldValue, !!values.sendEmail)}
-      handleChange={handleChange}
+      handleChange={myHandleChange(setFieldValue, handleChange, values)}
       handleSubmit={handleSubmit}
       isSubmitting={isSubmitting}
       isValid={isValid}

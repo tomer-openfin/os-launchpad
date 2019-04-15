@@ -49,7 +49,6 @@ interface Props {
   handleBlur: (e: React.FocusEvent) => void;
   handleCancel: () => void;
   handleChange: (e: React.ChangeEvent) => void;
-  handleCheck: () => void;
   handleSubmit: () => void;
   isSubmitting?: boolean;
   isValid?: boolean;
@@ -80,7 +79,6 @@ class UserForm extends React.Component<Props, State> {
       handleCancel,
       handleChange,
       handleSubmit,
-      handleCheck,
       isSubmitting,
       isValid,
       touched,
@@ -175,7 +173,7 @@ class UserForm extends React.Component<Props, State> {
                 </PasswordIconWrapper>
               </Label>
 
-              <Checkbox index={6} onChange={handleCheck} checked={!!values.sendEmail} label="Send Installation Instructions" />
+              <Checkbox checked={!!values.sendEmail} index={6} label="Send Installation Instructions" name="sendEmail" onChange={handleChange} />
             </>
           )}
         </ScrollGrid>

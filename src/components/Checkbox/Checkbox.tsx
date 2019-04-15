@@ -6,14 +6,15 @@ interface Props {
   checked: boolean;
   index?: number; // for cascade animations
   label: string;
+  name?: string;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onChange: () => void;
+  onChange: (e: React.ChangeEvent) => void;
 }
 
-const Checkbox = ({ checked, label, onBlur, onChange, index = 1 }: Props) => {
+const Checkbox = ({ checked, label, name, onBlur, onChange, index = 1 }: Props) => {
   return (
-    <StyledLabel label={label} index={index} onClick={onChange}>
-      <HiddenInput onBlur={onBlur} type="checkbox" checked={checked} onChange={onChange} />
+    <StyledLabel label={label} index={index} >
+      <HiddenInput name={name} onBlur={onBlur} type="checkbox" checked={checked} onChange={onChange} />
       <CheckboxUI checked={checked} />
     </StyledLabel>
   );
