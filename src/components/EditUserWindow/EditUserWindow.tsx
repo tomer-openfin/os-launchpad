@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { DispatchRequest, User } from '../../types/commons';
+import { DispatchRequest, User, UserFormData, YesNo } from '../../types/commons';
 
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
 import FormWindow from '../FormWindow';
@@ -27,11 +27,10 @@ class EditUserWindow extends React.Component<Props> {
     return nextProps.userId === ':id' ? false : true;
   }
 
-  handleSubmitValues = (formData: User): Promise<void> => {
+  handleSubmitValues = (formData: UserFormData): Promise<void> => {
     const { handleSuccess, onResponseError, onResponseSuccess, updateUser } = this.props;
-
     // default to +1 for country code for now
-    const editedUser: User = { ...formData, phone: `+1${formData.phone}` };
+    const editedUser: User = { ...formData, isAdmin: formData.isAdmin === YesNo.Yes, phone: `+1${formData.phone}` };
 
     return new Promise(resolve => {
       updateUser(editedUser, {
@@ -46,14 +45,15 @@ class EditUserWindow extends React.Component<Props> {
 
   render() {
     const { handleCancel, handleDelete, user, responseError, responseMessage, resetResponseError } = this.props;
-    const { email, firstName, id, lastName, middleInitial, phone, username } = user;
+    const { email, firstName, id, isAdmin, lastName, middleName, phone, username } = user;
 
     const initialValues = {
       email,
       firstName,
       id,
+      isAdmin: isAdmin ? YesNo.Yes : YesNo.No,
       lastName,
-      middleInitial,
+      middleName,
       phone: phone ? parsePhoneWithCountryCode(phone) : '',
       username,
     };

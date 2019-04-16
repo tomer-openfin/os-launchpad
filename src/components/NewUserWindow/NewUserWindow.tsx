@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { DispatchRequest, User } from '../../types/commons';
+import { DispatchRequest, User, UserFormData, YesNo } from '../../types/commons';
 
 import { PassedProps as ResponseProps } from '../../hocs/withResponseState';
 import FormWindow from '../FormWindow';
@@ -14,12 +14,13 @@ interface Props extends ResponseProps {
   handleSuccess: () => void;
 }
 
-const emptyUser: User = {
+const emptyUser: UserFormData = {
   email: '',
   firstName: '',
   id: '',
+  isAdmin: YesNo.No,
   lastName: '',
-  middleInitial: '',
+  middleName: '',
   phone: '',
   sendEmail: true,
   tmpPassword: '',
@@ -27,12 +28,11 @@ const emptyUser: User = {
 };
 
 class NewUserWindow extends React.Component<Props> {
-  handleSubmitValues = (formData: User): Promise<void> => {
+  handleSubmitValues = (formData: UserFormData): Promise<void> => {
     const { createUser, handleSuccess, onResponseError, onResponseSuccess } = this.props;
 
     // default to +1 for country code for now
-    const newUser = { ...formData, phone: `+1${formData.phone}` };
-
+    const newUser = { ...formData, isAdmin: formData.isAdmin === YesNo.Yes, phone: `+1${formData.phone}` };
     return new Promise(resolve => {
       createUser(newUser, {
         onFailure: onResponseError(resolve),

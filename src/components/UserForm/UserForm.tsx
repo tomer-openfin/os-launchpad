@@ -1,23 +1,26 @@
 import * as React from 'react';
 
+import * as AdminIcon from '../../assets/Admin.svg';
 import * as passwordIcon from '../../assets/Eye.svg';
 
 import { Color } from '../../styles';
 import { renderError } from '../../utils/renderError';
 
+import { YesNo } from '../../types/enums';
 import Checkbox from '../Checkbox';
 import FormFooter from '../FormFooter';
 import Input from '../Input';
 import Label from '../Label';
 import ScrollGrid, { Form, PasswordIconWrapper } from '../Responsive';
 import SvgIcon from '../SvgIcon';
-import { StyledLabel, StyledRowWrapper } from './UserForm.css';
+import { Group, Heading, Row, StyledLabel, StyledRadioButton, StyledRowWrapper } from './UserForm.css';
 
 interface Touched {
   email?: boolean;
   firstName?: boolean;
+  isAdmin?: boolean;
   lastName?: boolean;
-  middleInitial?: boolean;
+  middleName?: boolean;
   phone?: boolean;
   tmpPassword?: boolean;
 }
@@ -25,8 +28,9 @@ interface Touched {
 interface Errors {
   email?: string;
   firstName?: string;
+  isAdmin?: string;
   lastName?: string;
-  middleInitial?: string;
+  middleName?: string;
   phone?: string;
   tmpPassword?: string;
 }
@@ -35,8 +39,9 @@ export interface Values {
   email: string;
   firstName: string;
   id: string;
+  isAdmin: YesNo;
   lastName: string;
-  middleInitial?: string;
+  middleName?: string;
   phone: string;
   sendEmail?: boolean;
   tmpPassword?: string;
@@ -72,19 +77,7 @@ class UserForm extends React.Component<Props, State> {
   togglePasswordFieldType = () => this.setState(prevState => ({ isPasswordShown: !prevState.isPasswordShown }));
 
   render() {
-    const {
-      className,
-      errors,
-      handleBlur,
-      handleCancel,
-      handleChange,
-      handleSubmit,
-      isSubmitting,
-      isValid,
-      touched,
-      values,
-      withPasswordField,
-    } = this.props;
+    const { className, errors, handleBlur, handleCancel, handleChange, handleSubmit, isSubmitting, isValid, touched, values, withPasswordField } = this.props;
     const { isPasswordShown } = this.state;
 
     return (
@@ -102,13 +95,13 @@ class UserForm extends React.Component<Props, State> {
               />
             </StyledLabel>
 
-            <Label index={1} label="MI" renderError={renderError(errors.middleInitial, touched.middleInitial)}>
+            <Label index={1} label="MI" renderError={renderError(errors.middleName, touched.middleName)}>
               <Input
-                hasError={!!errors.middleInitial && touched.middleInitial}
+                hasError={!!errors.middleName && touched.middleName}
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.middleInitial}
-                name="middleInitial"
+                value={values.middleName}
+                name="middleName"
               />
             </Label>
           </StyledRowWrapper>
@@ -137,17 +130,35 @@ class UserForm extends React.Component<Props, State> {
             />
           </Label>
 
-          <Label index={4} label="Phone Number" renderError={renderError(errors.phone, touched.phone)}>
-            <Input
-              hasError={!!errors.phone && touched.phone}
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.phone}
-              name="phone"
-              placeholder="Enter phone number"
-              maxLength={10}
-            />
-          </Label>
+          <StyledRowWrapper secondElementWidth="93px">
+            <Label index={4} label="Phone Number" renderError={renderError(errors.phone, touched.phone)}>
+              <Input
+                hasError={!!errors.phone && touched.phone}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.phone}
+                name="phone"
+                placeholder="Enter phone number"
+                maxLength={10}
+              />
+            </Label>
+
+            <Group>
+              <Heading>Is Admin</Heading>
+
+              <SvgIcon color={Color.JUPITER} imgSrc={AdminIcon} size={26} />
+
+              <Row>
+                <StyledRadioButton onChange={handleChange} checked={values.isAdmin === YesNo.Yes} name="isAdmin" value={YesNo.Yes}>
+                  Yes
+                </StyledRadioButton>
+
+                <StyledRadioButton onChange={handleChange} checked={values.isAdmin === YesNo.No} name="isAdmin" value={YesNo.No}>
+                  No
+                </StyledRadioButton>
+              </Row>
+            </Group>
+          </StyledRowWrapper>
 
           {withPasswordField && (
             <>
@@ -177,8 +188,7 @@ class UserForm extends React.Component<Props, State> {
             </>
           )}
         </ScrollGrid>
-
-        <FormFooter isSubmitting={isSubmitting} submitDisabled={isSubmitting || !isValid} handleCancel={handleCancel} />
+        <FormFooter isSubmitting={isSubmitting} submitDisabled={isSubmitting || !isValid} handleCancel={handleCancel} />;
       </Form>
     );
   }

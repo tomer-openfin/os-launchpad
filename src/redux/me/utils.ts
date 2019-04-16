@@ -2,9 +2,9 @@ import { Window } from '@giantmachines/redux-openfin';
 import { all, call, fork, put, take } from 'redux-saga/effects';
 
 import { authWindows, defaultWindows, LOGIN_WINDOW } from '../../config/windows';
-import { initResources, launchAppLauncher } from '../application/index';
+import { initResources, launchAppLauncher } from '../application';
 import { registerGlobalHotkeys } from '../globalHotkeys/utils';
-import { launchWindow } from '../windows/index';
+import { launchWindow } from '../windows';
 import { initWindows } from '../windows/utils';
 
 export function* loginFlow(isLoggedIn: boolean) {

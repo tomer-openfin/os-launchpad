@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Color } from '../../styles/index';
+import { Color } from '../../styles';
 import { TypeStyleCanopus } from '../../styles/typography.css';
 
 interface WrapperProps {

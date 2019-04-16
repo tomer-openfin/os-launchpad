@@ -1,6 +1,7 @@
 import { Formik, FormikActions, FormikProps } from 'formik';
 import * as React from 'react';
 
+import { YesNo } from '../../types/enums';
 import UserForm, { Values } from './UserForm';
 import { editUserSchema, newUserSchema } from './utils';
 
@@ -17,15 +18,15 @@ const defaultInitialValues: Values = {
   email: '',
   firstName: '',
   id: '',
+  isAdmin: YesNo.No,
   lastName: '',
-  middleInitial: '',
+  middleName: '',
   phone: '',
   sendEmail: true,
   tmpPassword: '',
   username: '',
 };
 
-// todo (js): use generic for submit vals, move to utils
 const handleFormikSubmit = (handleSubmitValues: Props['handleSubmitValues']) => async (values: Values, actions: FormikActions<Values>) => {
   actions.setSubmitting(true);
 

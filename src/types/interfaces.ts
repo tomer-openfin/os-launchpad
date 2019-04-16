@@ -1,6 +1,6 @@
 import { RouteComponentProps } from 'react-router-dom';
 
-import { ApiResponseStatus, UserStatus } from './enums';
+import { ApiResponseStatus, UserStatus, YesNo } from './enums';
 import { Workspace } from './fin';
 
 export interface App {
@@ -78,8 +78,26 @@ export interface Point {
 export interface User {
   email: string;
   firstName: string;
+  isAdmin: boolean;
   lastName: string;
-  middleInitial?: string;
+  middleName?: string;
+  tmpPassword?: string;
+  phone: string;
+  // created on backend
+  readonly created?: string;
+  readonly enabled?: boolean;
+  readonly id: string;
+  readonly lastModified?: string;
+  readonly status?: UserStatus;
+  readonly username: string;
+}
+
+export interface UserFormData {
+  email: string;
+  firstName: string;
+  isAdmin: YesNo;
+  lastName: string;
+  middleName?: string;
   tmpPassword?: string;
   phone: string;
   sendEmail?: boolean;
@@ -88,7 +106,6 @@ export interface User {
   readonly enabled?: boolean;
   readonly id: string;
   readonly lastModified?: string;
-  readonly isAdmin?: boolean; // modified on BE only
   readonly status?: UserStatus;
   readonly username: string;
 }
