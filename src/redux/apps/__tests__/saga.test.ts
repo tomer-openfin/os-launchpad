@@ -80,15 +80,17 @@ describe('apps/saga', () => {
   });
 
   describe('appsSaga', () => {
-    const iterator = cloneableGenerator(appsSaga)();
+    it('should contain the following sagas', () => {
+      const iterator = cloneableGenerator(appsSaga)();
 
-    expect(iterator.next(closeFinApp.request({ uuid: 'TEST_APP' })).value).toEqual(takeEvery(closeFinApp.request, watchCloseFinAppRequest));
-    expect(iterator.next(getAppDirectoryList.request()).value).toEqual(takeLatest(getAppDirectoryList.request, watchGetAppDirectoryListRequest));
-    expect(iterator.next(getAppDirectoryList.success(AppData)).value).toEqual(takeEvery(getAppDirectoryList.success, watchGetAppDirectoryListSuccess));
-    expect(iterator.next(openFinApp.request(AppData[0])).value).toEqual(takeEvery(openFinApp.request, watchOpenFinAppRequest));
-    // tslint:disable-next-line:no-any
-    expect(iterator.next(openFinApp.success({} as any)).value).toEqual(takeEvery(openFinApp.success, watchOpenFinAppSuccess));
-    // tslint:disable-next-line:no-any
-    expect(iterator.next(openFinApp.failure({} as any)).value).toEqual(takeEvery(openFinApp.failure, watchOpenFinAppFailure));
+      expect(iterator.next(closeFinApp.request({ uuid: 'TEST_APP' })).value).toEqual(takeEvery(closeFinApp.request, watchCloseFinAppRequest));
+      expect(iterator.next(getAppDirectoryList.request()).value).toEqual(takeLatest(getAppDirectoryList.request, watchGetAppDirectoryListRequest));
+      expect(iterator.next(getAppDirectoryList.success(AppData)).value).toEqual(takeEvery(getAppDirectoryList.success, watchGetAppDirectoryListSuccess));
+      expect(iterator.next(openFinApp.request(AppData[0])).value).toEqual(takeEvery(openFinApp.request, watchOpenFinAppRequest));
+      // tslint:disable-next-line:no-any
+      expect(iterator.next(openFinApp.success({} as any)).value).toEqual(takeEvery(openFinApp.success, watchOpenFinAppSuccess));
+      // tslint:disable-next-line:no-any
+      expect(iterator.next(openFinApp.failure({} as any)).value).toEqual(takeEvery(openFinApp.failure, watchOpenFinAppFailure));
+    });
   });
 });

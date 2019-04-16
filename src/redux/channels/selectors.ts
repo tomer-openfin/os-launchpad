@@ -1,9 +1,9 @@
-import { GLOBAL_CHANNEL_ID } from 'openfin-fdc3';
 import { createSelector } from 'reselect';
 
 import { ContextChannel } from '../../components/ContextGroupItem';
 import { ContextWindowsGroup } from '../../components/ContextWindows/ContextWindows';
 import { convertHexNumberToString } from '../../utils/convertHexNumberToString';
+import { GLOBAL_CHANNEL_ID } from '../../utils/openfinFdc3';
 import { State } from '../types';
 
 export const getChannelsState = (state: State) => state.channels;

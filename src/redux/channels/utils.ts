@@ -1,10 +1,10 @@
-import { addEventListener, getChannel } from 'openfin-fdc3';
 import { all, put } from 'redux-saga/effects';
 
 import { CHANNELS_CONTEXT_PARAM } from '../../components/Router/consts';
 import { polymorphicWindows } from '../../config/windows';
 import { Channel, Identity, OpenFinWindow } from '../../types/commons';
 import getOwnUuid from '../../utils/getOwnUuid';
+import { addEventListener, getChannel } from '../../utils/openfinFdc3';
 import { getWindowIsShowingOrGrouped, wrapApplication, wrapWindow } from '../../utils/openfinPromises';
 import promisifyOpenfin from '../../utils/promisifyOpenfin';
 import { Manifest } from '../application/types';

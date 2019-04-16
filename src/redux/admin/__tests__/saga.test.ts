@@ -222,15 +222,17 @@ describe('admin/saga', () => {
   });
 
   describe('adminSaga', () => {
-    const iterator = cloneableGenerator(adminSaga)();
+    it('should contain the following sagas', () => {
+      const iterator = cloneableGenerator(adminSaga)();
 
-    expect(iterator.next(createAdminApp.request(AppData[0])).value).toEqual(takeEvery(createAdminApp.request, watchCreateAdminAppRequest));
-    expect(iterator.next(createAdminUser.request(UserData[0])).value).toEqual(takeEvery(createAdminUser.request, watchCreateAdminUserRequest));
-    expect(iterator.next(deleteAdminApp.request(AppData[0])).value).toEqual(takeEvery(deleteAdminApp.request, watchDeleteAdminAppRequest));
-    expect(iterator.next(deleteAdminUser.request(UserData[0])).value).toEqual(takeEvery(deleteAdminUser.request, watchDeleteAdminUserRequest));
-    expect(iterator.next(getAdminApps.request()).value).toEqual(takeEvery(getAdminApps.request, watchGetAdminAppsRequest));
-    expect(iterator.next(getAdminUsers.request()).value).toEqual(takeEvery(getAdminUsers.request, watchGetAdminUsersRequest));
-    expect(iterator.next(updateAdminApp.request(AppData[0])).value).toEqual(takeEvery(updateAdminApp.request, watchUpdateAdminAppRequest));
-    expect(iterator.next(updateAdminUser.request(UserData[0])).value).toEqual(takeEvery(updateAdminUser.request, watchUpdateAdminUserRequest));
+      expect(iterator.next(createAdminApp.request(AppData[0])).value).toEqual(takeEvery(createAdminApp.request, watchCreateAdminAppRequest));
+      expect(iterator.next(createAdminUser.request(UserData[0])).value).toEqual(takeEvery(createAdminUser.request, watchCreateAdminUserRequest));
+      expect(iterator.next(deleteAdminApp.request(AppData[0])).value).toEqual(takeEvery(deleteAdminApp.request, watchDeleteAdminAppRequest));
+      expect(iterator.next(deleteAdminUser.request(UserData[0])).value).toEqual(takeEvery(deleteAdminUser.request, watchDeleteAdminUserRequest));
+      expect(iterator.next(getAdminApps.request()).value).toEqual(takeEvery(getAdminApps.request, watchGetAdminAppsRequest));
+      expect(iterator.next(getAdminUsers.request()).value).toEqual(takeEvery(getAdminUsers.request, watchGetAdminUsersRequest));
+      expect(iterator.next(updateAdminApp.request(AppData[0])).value).toEqual(takeEvery(updateAdminApp.request, watchUpdateAdminAppRequest));
+      expect(iterator.next(updateAdminUser.request(UserData[0])).value).toEqual(takeEvery(updateAdminUser.request, watchUpdateAdminUserRequest));
+    });
   });
 });

@@ -1,7 +1,7 @@
-import { addContextListener, joinChannel } from 'openfin-fdc3';
 import { connect } from 'react-redux';
 
 import { addContextToChannel } from '../../redux/channels';
+import { addContextListener, joinChannel } from '../../utils/openfinFdc3';
 import { CHANNELS_CONTEXT_PARAM } from '../Router/consts';
 
 import ContextSubscriber from './ContextSubscriber';
