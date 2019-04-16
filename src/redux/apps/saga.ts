@@ -60,10 +60,16 @@ export function* watchGetAppDirectoryListSuccess(action: ReturnType<typeof getAp
   }
 }
 
-export function* watchLaunchAppRequest(action: ReturnType<typeof launchApp>) {
-  const { manifestType } = action.payload;
+export function* watchLaunchApp(action: ReturnType<typeof launchApp>) {
+  try {
+    const { manifestType } = action.payload;
 
-  yield put(manifestType === ManifestType.Path ? externalApp.request(action.payload) : openFinApp.request(action.payload));
+    yield put(manifestType === ManifestType.Path ? externalApp.request(action.payload) : openFinApp.request(action.payload));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.log('Unknown error saga from:', action, 'Error:', error);
+  }
 }
 
 export function* watchExternalAppRequest(action: ReturnType<typeof externalApp.request>) {
@@ -220,5 +226,5 @@ export function* appsSaga() {
   yield takeEvery(openFinApp.success, watchOpenFinAppSuccess);
   yield takeEvery(openFinApp.failure, watchOpenFinAppFailure);
   yield takeEvery(externalApp.request, watchExternalAppRequest);
-  yield takeEvery(launchApp, watchLaunchAppRequest);
+  yield takeEvery(launchApp, watchLaunchApp);
 }
