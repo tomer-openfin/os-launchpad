@@ -16,6 +16,7 @@ const defaultInitialValues: Values = {
   // contexts: [{ $type: '' }],
   // images: [],
   // intents: [],
+  appPath: '',
   appUrl: '',
   description: '',
   icon: '',

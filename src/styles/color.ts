@@ -15,6 +15,8 @@ enum Color {
   JUPITER_HOVER = '#FCD16C',
   SATURN = '#95D154',
   SATURN_HOVER = '#AFDC7E',
+  SEDNOID = '#515151',
+  SEDNOID_HOVER = '#5c5c5c',
   URANUS = '#7BD5C1',
   URANUS_HOVER = '#BCE9DF',
   NEPTUNE = '#724CFF',
@@ -26,6 +28,7 @@ enum Color {
   SPACE_DUST = '#444444',
   VACUUM = '#000000',
   VOID = 'rgba(0,0,0,0)',
+  STAR = '#AD9EE2',
 }
 
 export default Color;

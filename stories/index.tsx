@@ -47,6 +47,7 @@ import '../src/components/ContextManager/ContextManager.story';
 import '../src/components/ContextWindows/ContextWindows.story';
 import '../src/components/ContextWindowsItem/ContextWindowsItem.story';
 import '../src/components/DirectionControls/DirectionControls.story';
+import '../src/components/Dropdown/Dropdown.story';
 import '../src/components/FeedbackForm/FeedbackForm.story';
 import '../src/components/ForgotPassword/ForgotPassword.story';
 import '../src/components/ForgotPasswordChangeForm/ForgotPasswordChangeForm.story';

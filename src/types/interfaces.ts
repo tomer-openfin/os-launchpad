@@ -14,6 +14,7 @@ export interface App {
   images?: Array<{ url: string }>;
   intents?: Array<{ displayName: string; name: string }>;
   manifest_url?: string;
+  manifestType?: string;
   name: string;
   publisher?: string;
   signature?: string;

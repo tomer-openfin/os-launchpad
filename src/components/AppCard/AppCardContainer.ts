@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getAppStatusStateById, openFinApp } from '../../redux/apps';
+import { getAppStatusStateById, launchApp } from '../../redux/apps';
 import { App, AppStatusStates } from '../../types/commons';
 import { EventType, sendAnalytics } from '../../utils/analytics';
 
@@ -13,7 +13,7 @@ const mapState = (state, { app }: Props) => ({
 const mapDispatch = dispatch => ({
   launchApp: (app: App) => {
     sendAnalytics({ type: EventType.Click, label: 'AppCard', context: { name: app.name } }, { includeAppList: true, includeFinWindows: true });
-    dispatch(openFinApp.request(app));
+    dispatch(launchApp(app));
   },
 });
 
