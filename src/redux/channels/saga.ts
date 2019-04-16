@@ -1,5 +1,4 @@
 import { Window } from '@giantmachines/redux-openfin';
-import { getAllChannels, getChannelMembers, GLOBAL_CHANNEL_ID, joinChannel } from 'openfin-fdc3';
 import { all, call, delay, put, select, spawn, takeEvery } from 'redux-saga/effects';
 
 import { getContextManagerHeight } from '../../components/ContextManager';
@@ -8,13 +7,14 @@ import { CHANNELS_WINDOW } from '../../config/windows';
 import { UnPromisfy } from '../../types/utils';
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
 import getOwnUuid from '../../utils/getOwnUuid';
+import { getAllChannels, getChannelMembers, GLOBAL_CHANNEL_ID, joinChannel } from '../../utils/openfinFdc3';
 import { animateWindow } from '../../utils/openfinPromises';
 import { getErrorFromCatch } from '../utils';
 import { addWindowToChannel, animateChannels, getChannels, removeWindowFromChannel, updateMembersById } from './actions';
 import { getChannelsActiveId, getContextChannels } from './selectors';
 import { createChannelContextWindows, generateAndBindMembersById, subscribeToChannelChanged } from './utils';
 
-function* watchGetChannelsRequest() {
+export function* watchGetChannelsRequest() {
   try {
     const channels: UnPromisfy<ReturnType<typeof getAllChannels>> = yield call(getAllChannels);
     yield spawn(createChannelContextWindows, channels);
@@ -29,7 +29,7 @@ function* watchGetChannelsRequest() {
   }
 }
 
-function* watchGetChannelsSuccess() {
+export function* watchGetChannelsSuccess() {
   try {
     subscribeToChannelChanged();
 
@@ -41,7 +41,7 @@ function* watchGetChannelsSuccess() {
   }
 }
 
-function* watchAddWindowToChannelRequest(action: ReturnType<typeof addWindowToChannel.request>) {
+export function* watchAddWindowToChannelRequest(action: ReturnType<typeof addWindowToChannel.request>) {
   try {
     const { identity, nextId } = action.payload;
 
@@ -54,7 +54,7 @@ function* watchAddWindowToChannelRequest(action: ReturnType<typeof addWindowToCh
   }
 }
 
-function* watchAddWindowToChannelFailure(action: ReturnType<typeof addWindowToChannel.failure>) {
+export function* watchAddWindowToChannelFailure(action: ReturnType<typeof addWindowToChannel.failure>) {
   try {
     const { meta } = action;
     if (!meta || !meta.payload) {
@@ -70,7 +70,7 @@ function* watchAddWindowToChannelFailure(action: ReturnType<typeof addWindowToCh
   }
 }
 
-function* watchRemoveWindowFromChannelRequest(action: ReturnType<typeof removeWindowFromChannel.request>) {
+export function* watchRemoveWindowFromChannelRequest(action: ReturnType<typeof removeWindowFromChannel.request>) {
   try {
     const { identity } = action.payload;
 
@@ -83,7 +83,7 @@ function* watchRemoveWindowFromChannelRequest(action: ReturnType<typeof removeWi
   }
 }
 
-function* watchRemoveWindowFromChannelFailure(action: ReturnType<typeof removeWindowFromChannel.failure>) {
+export function* watchRemoveWindowFromChannelFailure(action: ReturnType<typeof removeWindowFromChannel.failure>) {
   try {
     const { meta } = action;
     if (!meta || !meta.payload) {
@@ -99,7 +99,7 @@ function* watchRemoveWindowFromChannelFailure(action: ReturnType<typeof removeWi
   }
 }
 
-function* watchAnimateChannelsRequest(action: ReturnType<typeof animateChannels.request>) {
+export function* watchAnimateChannelsRequest(action: ReturnType<typeof animateChannels.request>) {
   try {
     const channelWindow: UnPromisfy<ReturnType<typeof getFinWindowByName>> = yield call(getFinWindowByName, CHANNELS_WINDOW);
     if (!channelWindow) {

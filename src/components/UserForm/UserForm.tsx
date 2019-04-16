@@ -7,6 +7,7 @@ import { Color } from '../../styles';
 import { renderError } from '../../utils/renderError';
 
 import { YesNo } from '../../types/enums';
+import Checkbox from '../Checkbox';
 import FormFooter from '../FormFooter';
 import Input from '../Input';
 import Label from '../Label';
@@ -42,6 +43,7 @@ export interface Values {
   lastName: string;
   middleName?: string;
   phone: string;
+  sendEmail?: boolean;
   tmpPassword?: string;
   username: string;
 }
@@ -56,6 +58,7 @@ interface Props {
   isSubmitting?: boolean;
   isValid?: boolean;
   touched: Touched;
+  sendEmail?: boolean;
   values: Values;
   withPasswordField?: boolean;
 }
@@ -158,27 +161,31 @@ class UserForm extends React.Component<Props, State> {
           </StyledRowWrapper>
 
           {withPasswordField && (
-            <Label index={5} label="Password" renderError={renderError(errors.tmpPassword, touched.tmpPassword)}>
-              <Input
-                hasError={!!errors.tmpPassword && touched.tmpPassword}
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.tmpPassword}
-                name="tmpPassword"
-                placeholder="Enter password"
-                type={isPasswordShown ? 'text' : 'password'}
-              />
-
-              <PasswordIconWrapper>
-                <SvgIcon
-                  color={isPasswordShown ? Color.MOON : Color.MERCURY}
-                  hoverColor={Color.JUPITER}
-                  onClick={this.togglePasswordFieldType}
-                  imgSrc={passwordIcon}
-                  size={25}
+            <>
+              <Label index={5} label="Password" renderError={renderError(errors.tmpPassword, touched.tmpPassword)}>
+                <Input
+                  hasError={!!errors.tmpPassword && touched.tmpPassword}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.tmpPassword}
+                  name="tmpPassword"
+                  placeholder="Enter password"
+                  type={isPasswordShown ? 'text' : 'password'}
                 />
-              </PasswordIconWrapper>
-            </Label>
+
+                <PasswordIconWrapper>
+                  <SvgIcon
+                    color={isPasswordShown ? Color.URANUS : Color.COMET}
+                    hoverColor={Color.JUPITER}
+                    onClick={this.togglePasswordFieldType}
+                    imgSrc={passwordIcon}
+                    size={25}
+                  />
+                </PasswordIconWrapper>
+              </Label>
+
+              <Checkbox checked={!!values.sendEmail} index={6} label="Send Installation Instructions" name="sendEmail" onChange={handleChange} />
+            </>
           )}
         </ScrollGrid>
         <FormFooter isSubmitting={isSubmitting} submitDisabled={isSubmitting || !isValid} handleCancel={handleCancel} />;

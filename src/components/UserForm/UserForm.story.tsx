@@ -30,6 +30,8 @@ storiesOf(`${CATEGORIES.ADMIN}UserForm`, module)
     const firstName = text('firstName', '');
     const firstNameError = text('firstNameError', '');
     const firstNameTouched = boolean('firstNameTouched', false);
+    const isSubmitting = boolean('isSubmitting', false);
+    const isValid = boolean('isValid', false);
     const lastName = text('lastName', '');
     const lastNameError = text('lastNameError', '');
     const lastNameTouched = boolean('lastNameTouched', false);
@@ -39,11 +41,10 @@ storiesOf(`${CATEGORIES.ADMIN}UserForm`, module)
     const phone = text('phone', '');
     const phoneError = text('phoneError', '');
     const phoneTouched = boolean('phoneTouched', false);
+    const sendEmail = boolean('sendEmail', false);
     const tmpPassword = text('tmpPassword', '');
     const tmpPasswordError = text('tmpPasswordError', '');
     const tmpPasswordTouched = boolean('tmpPasswordTouched', false);
-    const isSubmitting = boolean('isSubmitting', false);
-    const isValid = boolean('isValid', false);
 
     const values: UserFormData = {
       email,
@@ -53,6 +54,7 @@ storiesOf(`${CATEGORIES.ADMIN}UserForm`, module)
       lastName,
       middleName,
       phone,
+      sendEmail,
       tmpPassword,
       username: '',
     };

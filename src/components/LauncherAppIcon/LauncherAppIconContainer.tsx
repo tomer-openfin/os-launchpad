@@ -30,7 +30,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps: Props) => {
 
   let contextMenuOptions;
   if (withContextMenu) {
-    contextMenuOptions = [{ label: 'Remove Shortcut', action: removeFromAppLauncher(`${appId}`) }];
+    contextMenuOptions = [{ label: 'Remove Shortcut', action: removeFromAppLauncher(appId) }];
     if (status && (status.state === AppStatusStates.Running || status.state === AppStatusStates.Warning) && status.uuid) {
       contextMenuOptions.unshift({ label: 'Close', action: closeFinApp.request({ uuid: status.uuid }) });
     }

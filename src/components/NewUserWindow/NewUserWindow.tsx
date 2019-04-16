@@ -22,6 +22,7 @@ const emptyUser: UserFormData = {
   lastName: '',
   middleName: '',
   phone: '',
+  sendEmail: true,
   tmpPassword: '',
   username: '',
 };
