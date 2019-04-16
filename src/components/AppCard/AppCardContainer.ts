@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getAppStatusStateById, openFinApp } from '../../redux/apps';
+import { getAppStatusStateById, launchApp } from '../../redux/apps';
 import { App, AppStatusStates } from '../../types/commons';
 
 import AppCard, { Props } from './AppCard';
@@ -10,7 +10,7 @@ const mapState = (state, { app }: Props) => ({
 });
 
 const mapDispatch = dispatch => ({
-  launchApp: (app: App) => dispatch(openFinApp.request(app)),
+  launchApp: (app: App) => dispatch(launchApp(app)),
 });
 
 export default connect(

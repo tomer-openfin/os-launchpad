@@ -48,6 +48,10 @@ export interface OpenFinAppSuccessPayload {
   uuid: string;
 }
 
+export interface ExternalAppSuccessPayload {
+  uuid: string;
+}
+
 // Actions
 export type AppsActions =
   | ActionsUnion<typeof closeFinApp>

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { closeFinApp, getAppById, getAppStatusById, openFinApp } from '../../redux/apps';
+import { closeFinApp, getAppById, getAppStatusById, launchApp, openFinApp } from '../../redux/apps';
 import { getLauncherPosition, getLauncherSizeConfig, removeFromAppLauncher } from '../../redux/me';
 import { AppStatusStates } from '../../types/commons';
 
@@ -20,7 +20,7 @@ const mapState = (state, { appId }) => ({
 });
 
 const mapDispatch = {
-  openFinAppRequest: openFinApp.request,
+  openAppRequest: launchApp,
 };
 
 const mergeProps = (stateProps, dispatchProps, ownProps: Props) => {
@@ -45,7 +45,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps: Props) => {
     appTitle: app ? app.title : '',
     contextMenuOptions,
     imgSrc: app ? app.icon : '',
-    launchApp: app ? () => dispatchProps.openFinAppRequest(app) : () => undefined,
+    launchApp: app ? () => dispatchProps.openAppRequest(app) : () => undefined,
     launcherPosition,
     launcherSizeConfig,
   };
