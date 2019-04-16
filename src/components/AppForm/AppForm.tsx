@@ -5,7 +5,7 @@ import * as React from 'react';
 import * as EditIcon from '../../assets/Edit.svg';
 
 import { renderError } from '../../utils/renderError';
-import { IconPreviewMeta, IconPreviewMetaWrapper, IconPreviewWrapper, StyledForm, StyledRow, UnderlayLabel } from './AppForm.css';
+import { IconPreviewMeta, IconPreviewMetaWrapper, IconPreviewWrapper, StyledForm, StyledRow } from './AppForm.css';
 
 // import CheckboxInArray from '../CheckboxInArray';
 import Dropdown, { OptionType } from '../Dropdown';
@@ -218,7 +218,7 @@ class AppForm extends React.Component<Props, State> {
             )}
           </StyledRow>
 
-          <UnderlayLabel index={2} label="App Title" renderError={renderError(errors.title, touched.title)}>
+          <Label index={2} label="App Title" renderError={renderError(errors.title, touched.title)}>
             <Input
               hasError={!!errors.title && touched.title}
               name="title"
@@ -227,7 +227,7 @@ class AppForm extends React.Component<Props, State> {
               placeholder="Enter app title"
               value={values.title}
             />
-          </UnderlayLabel>
+          </Label>
 
           <RowWrapper firstElementWidth="100px" height="144px">
             <Label index={3} label="App Shortcut">

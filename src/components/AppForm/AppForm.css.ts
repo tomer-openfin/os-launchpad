@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 import { Color, Typography } from '../../styles';
 
-import Label from '../Label/Label';
 import { Form, GridWrapper, RowWrapper } from '../Responsive';
 
 export const StyledRow = styled(RowWrapper)`
   grid-template-rows: 1fr;
+  z-index: 1;
 `;
 
 export const IconPreviewWrapper = styled.div`
@@ -32,8 +32,4 @@ export const StyledForm = styled(Form)`
   ${GridWrapper} {
     grid-row-gap: 23px;
   }
-`;
-
-export const UnderlayLabel = styled(Label)`
-  z-index: -1;
 `;
