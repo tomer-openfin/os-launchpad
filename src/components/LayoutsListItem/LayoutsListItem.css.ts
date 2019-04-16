@@ -58,13 +58,14 @@ export const AnimationWrapper = styled.div`
   position: relative;
 `;
 
-export const Item = styled.li<{ isDisabled: boolean }>`
+export const Item = styled.li<{ isDisabled: boolean; isDefault: boolean }>`
   ${Typography.TypeStyleArcturus}
   ${textEllipsis}
 
   color: ${Color.SUN};
   flex: 1;
   list-style-type: none;
+  max-width: ${({ isDefault }) => (isDefault ? `calc(100% - ${LARGE_ICON_DIM}px)` : `calc(100% - ${LARGE_ICON_DIM + 2 * SMALL_ICON_DIM}px)`)};
   opacity: 1;
   transition: opacity ${ICON_TRANSITION_DURATION}ms ${ANIMATION_TIMING_FUNCTION};
 

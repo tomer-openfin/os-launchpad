@@ -1,6 +1,7 @@
 import { logout } from '../../redux/me';
 
 import { ApiResponse, ApiResponseStatus, HTTPMethods } from '../../types/commons';
+import { detectAuth } from '../../utils/cookieUtils';
 
 const STATUS_ERROR_MESSAGE = {
   413: 'Payload too large.',
@@ -27,7 +28,7 @@ export const api = <Data, Body = void, Meta = void>(
     const response = await fetch(endpoint, createOptions<Body>(method, body, optionsOverrides));
 
     if (response.status >= 400) {
-      if (response.status === 401 && document.cookie) {
+      if (response.status === 401 && detectAuth()) {
         window.store.dispatch(logout.request({ message: 'You were logged out due to a system error.', isError: true }));
       }
 

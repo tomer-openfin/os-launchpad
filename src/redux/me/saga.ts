@@ -2,7 +2,7 @@ import { Application, Window } from '@giantmachines/redux-openfin';
 import { all, call, Effect, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
-import eraseCookie from '../../utils/eraseCookie';
+import { eraseCookie } from '../../utils/cookieUtils';
 
 import { adminWindows, authWindows, defaultWindows } from '../../config/windows';
 import { ApiResponseStatus } from '../../types/enums';

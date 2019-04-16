@@ -31,6 +31,14 @@ interface ViewProps extends Props, State {
   handleError: (payload: LoginErrorPayload) => void;
 }
 
+const craftMessage = (error: boolean, message: string, stage: Stage): string => {
+  if (stage === Stage.Login && error) {
+    return 'Login failed. Please try again.';
+  }
+
+  return message;
+};
+
 export const LoginView = (props: ViewProps) => {
   const { className, closeApplication, handleError, error, message, session, stage, username } = props;
 
@@ -54,7 +62,7 @@ export const LoginView = (props: ViewProps) => {
             )}
           </FormWrapper>
 
-          {message && <ResponseMessage error={error}>{message || 'Login failed. Please try again.'}</ResponseMessage>}
+          {message && <ResponseMessage error={error}>{craftMessage(error, message, stage)}</ResponseMessage>}
         </ContentWrapper>
       </Borders>
     </Wrapper>

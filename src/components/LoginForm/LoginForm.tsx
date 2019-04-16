@@ -31,6 +31,7 @@ interface Props {
   handleChange: (e: React.ChangeEvent) => void;
   handleSubmit: () => void;
   isSubmitting?: boolean;
+  isValid?: boolean;
   touched: Touched;
   values: Values;
 }
@@ -47,13 +48,13 @@ class LoginForm extends React.Component<Props> {
   }
 
   render() {
-    const { className, errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values } = this.props;
+    const { className, errors, handleBlur, handleChange, handleSubmit, isSubmitting, isValid, touched, values } = this.props;
 
     return (
       <Form className={className} onSubmit={handleSubmit}>
         <Label label="Email" renderError={renderError(errors.username, touched.username)}>
           <Input
-            hasError={touched.username && !!errors.username}
+            hasError={!!errors.username && touched.username}
             name="username"
             onBlur={handleBlur}
             onChange={handleChange}
@@ -65,7 +66,7 @@ class LoginForm extends React.Component<Props> {
 
         <Label label="Password" renderError={renderError(errors.password, touched.password)}>
           <Input
-            hasError={touched.password && !!errors.password}
+            hasError={!!errors.password && touched.password}
             name="password"
             onBlur={handleBlur}
             onChange={handleChange}
@@ -76,9 +77,13 @@ class LoginForm extends React.Component<Props> {
         </Label>
 
         <Row>
-          <Button disabled={isSubmitting}>{isSubmitting ? <Loading size={15} /> : 'Log In'}</Button>
+          <Button disabled={isSubmitting || !isValid} type="submit">
+            {isSubmitting ? <Loading size={15} /> : 'Log In'}
+          </Button>
 
-          <RouterLink to={ROUTES.FORGOT_PASSWORD}>Forgot Password?</RouterLink>
+          <RouterLink isDisabled={!!isSubmitting} to={ROUTES.FORGOT_PASSWORD}>
+            Forgot Password?
+          </RouterLink>
         </Row>
       </Form>
     );

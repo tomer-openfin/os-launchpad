@@ -4,7 +4,7 @@ import { all, call, delay, put, select, take, takeEvery, takeLatest, takeLeading
 import ApiService from '../../services/ApiService';
 import { ApiResponseStatus } from '../../types/enums';
 import { UnPromisfy } from '../../types/utils';
-import eraseCookie from '../../utils/eraseCookie';
+import { eraseCookie } from '../../utils/cookieUtils';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { updateKeyInManifestOverride } from '../../utils/manifestOverride';
