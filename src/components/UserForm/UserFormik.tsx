@@ -1,6 +1,7 @@
 import { Formik, FormikActions, FormikProps } from 'formik';
 import * as React from 'react';
 
+import { YesNo } from '../../types/enums';
 import UserForm, { Values } from './UserForm';
 import { editUserSchema, newUserSchema } from './utils';
 
@@ -17,7 +18,7 @@ const defaultInitialValues: Values = {
   email: '',
   firstName: '',
   id: '',
-  isAdmin: false,
+  isAdmin: YesNo.No,
   lastName: '',
   middleName: '',
   phone: '',

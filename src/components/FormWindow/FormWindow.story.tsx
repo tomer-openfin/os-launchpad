@@ -3,7 +3,7 @@ import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import { forceReRender, storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { User } from '../../types/commons';
+import { User, UserFormData, YesNo } from '../../types/commons';
 import { CATEGORIES } from '../../utils/storyCategories';
 import { ManifestType } from '../AppForm';
 
@@ -14,11 +14,11 @@ import FormWindow from './FormWindow';
 const handleCancel = action('handleCancel');
 const handleSubmit = action('handleSubmit');
 
-const emptyUser: User = {
+const emptyUser: UserFormData = {
   email: '',
   firstName: '',
   id: '',
-  isAdmin: false,
+  isAdmin: YesNo.No,
   lastName: '',
   middleName: '',
   phone: '',

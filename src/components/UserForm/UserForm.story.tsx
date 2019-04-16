@@ -6,6 +6,8 @@ import * as React from 'react';
 import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
 
+import { UserFormData } from '../../types/commons';
+import { YesNo } from '../../types/enums';
 import UserForm from './UserForm';
 import UserFormik from './UserFormik';
 import { editUserSchema, newUserSchema } from './utils';
@@ -43,11 +45,11 @@ storiesOf(`${CATEGORIES.ADMIN}UserForm`, module)
     const isSubmitting = boolean('isSubmitting', false);
     const isValid = boolean('isValid', false);
 
-    const values = {
+    const values: UserFormData = {
       email,
       firstName,
       id: '',
-      isAdmin: false,
+      isAdmin: YesNo.No,
       lastName,
       middleName,
       phone,

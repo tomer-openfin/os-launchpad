@@ -6,6 +6,7 @@ import * as passwordIcon from '../../assets/Eye.svg';
 import { Color } from '../../styles';
 import { renderError } from '../../utils/renderError';
 
+import { YesNo } from '../../types/enums';
 import FormFooter from '../FormFooter';
 import Input from '../Input';
 import Label from '../Label';
@@ -37,7 +38,7 @@ export interface Values {
   email: string;
   firstName: string;
   id: string;
-  isAdmin: boolean;
+  isAdmin: YesNo;
   lastName: string;
   middleName?: string;
   phone: string;
@@ -127,17 +128,17 @@ class UserForm extends React.Component<Props, State> {
           </Label>
 
           <StyledRowWrapper secondElementWidth="93px">
-                <Label index={4} label="Phone Number" renderError={renderError(errors.phone, touched.phone)}>
-            <Input
-              hasError={!!errors.phone && touched.phone}
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.phone}
-              name="phone"
-              placeholder="Enter phone number"
-              maxLength={10}
-            />
-          </Label>
+            <Label index={4} label="Phone Number" renderError={renderError(errors.phone, touched.phone)}>
+              <Input
+                hasError={!!errors.phone && touched.phone}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.phone}
+                name="phone"
+                placeholder="Enter phone number"
+                maxLength={10}
+              />
+            </Label>
 
             <Group>
               <Heading>Is Admin</Heading>
@@ -145,11 +146,11 @@ class UserForm extends React.Component<Props, State> {
               <SvgIcon color={Color.JUPITER} imgSrc={AdminIcon} size={26} />
 
               <Row>
-                <StyledRadioButton onChange={handleChange} checked={!!values.isAdmin} name="isAdmin" value="true">
+                <StyledRadioButton onChange={handleChange} checked={values.isAdmin === YesNo.Yes} name="isAdmin" value={YesNo.Yes}>
                   Yes
                 </StyledRadioButton>
 
-                <StyledRadioButton onChange={handleChange} checked={!values.isAdmin} name="isAdmin" value="">
+                <StyledRadioButton onChange={handleChange} checked={values.isAdmin === YesNo.No} name="isAdmin" value={YesNo.No}>
                   No
                 </StyledRadioButton>
               </Row>
