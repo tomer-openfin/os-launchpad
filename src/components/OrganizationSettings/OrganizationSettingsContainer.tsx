@@ -4,10 +4,14 @@ import { State } from '../../redux/types';
 
 import { getApplicationManifestOverride, getManifestImages } from '../../redux/application';
 import { getOrganizationImages } from '../../redux/organization';
-
 import { isManifestDefault } from '../../utils/manifestOverride';
 import { ManifestImageViewKeys } from '../../utils/orgImages';
+import { doesCurrentPathMatch } from '../../utils/routeHelpers';
+import { ADMIN_SETTINGS_ROUTES } from '../Router/consts';
+
 import OrganizationSettings from './OrganizationSettings';
+
+const ADMIN_SETTINGS_PATHS = Object.values(ADMIN_SETTINGS_ROUTES);
 
 const mapState = (state: State) => ({
   manifestImages: getManifestImages(state),
@@ -16,9 +20,11 @@ const mapState = (state: State) => ({
 });
 
 const mergeProps = (stateProps, _, ownProps) => ({
-  ...ownProps,
   ...stateProps,
+  children: ownProps.children,
+  handleCloseModal: ownProps.history.goBack,
   isManifestDefault: (imageKey: ManifestImageViewKeys) => isManifestDefault(stateProps.manifestOverride, imageKey),
+  isModalVisible: doesCurrentPathMatch(ADMIN_SETTINGS_PATHS, ownProps.location.pathname),
 });
 
 export default connect(
