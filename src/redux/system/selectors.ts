@@ -7,6 +7,7 @@ import { getCoordinatesHeight, getCoordinatesWidth } from '../../utils/coordinat
 const getMonitorDetailsId = (monitorDetails: MonitorDetails) => monitorDetails.name || monitorDetails.deviceId;
 
 export const getSystem = (state: State) => state.system;
+export const getSystemMachineId = (state: State) => getSystem(state).machineId;
 export const getMonitorInfo = (state: State) => getSystem(state).monitorInfo;
 export const getNormalizedMonitorDetails = createSelector(
   [getMonitorInfo],

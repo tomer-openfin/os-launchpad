@@ -11,6 +11,7 @@ export const Icon = styled.div<Props>`
     return `
       cursor: ${onClick && !disabled ? 'pointer' : 'inherit'};
       height: ${typeof size === 'string' ? size : `${size}px`};
+      opacity: ${disabled ? 0.2 : 1};
       width: ${typeof size === 'string' ? size : `${size}px`};
 
       ${propName}-image: url(${imgSrc});

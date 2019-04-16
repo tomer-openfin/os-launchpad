@@ -3,6 +3,7 @@ import { all } from 'redux-saga/effects';
 import { adminSaga } from './admin';
 import { applicationSaga } from './application';
 import { appsSaga } from './apps';
+import { channelsSaga } from './channels';
 import { contextMenuSaga } from './contextMenu';
 import { globalHotkeysSaga } from './globalHotkeys';
 import { layoutsSaga } from './layouts';
@@ -19,15 +20,16 @@ export default function* rootSaga() {
     adminSaga(),
     applicationSaga(),
     appsSaga(),
+    channelsSaga(),
     contextMenuSaga(),
     globalHotkeysSaga(),
     layoutsSaga(),
     meSaga(),
     notificationsSaga(),
     organizationSaga(),
+    supportSaga(),
     systemSaga(),
     windowsSaga(),
     asyncActionsSaga(),
-    supportSaga(),
   ]);
 }

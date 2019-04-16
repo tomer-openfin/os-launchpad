@@ -83,6 +83,7 @@ export interface User {
   middleInitial?: string;
   tmpPassword?: string;
   phone: string;
+  sendEmail?: boolean;
   // created on backend
   readonly created?: string;
   readonly enabled?: boolean;

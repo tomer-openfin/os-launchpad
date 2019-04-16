@@ -1,5 +1,5 @@
 import { Manifest } from '../redux/application/types';
-import { Bounds, MonitorInfo, OpenFinApplication, OpenFinApplicationInfo, OpenFinWindow, PointTopLeft } from '../types/commons';
+import { Bounds, MonitorInfo, OpenFinApplication, OpenFinApplicationInfo, OpenFinWindow, PointTopLeft, WindowInfo } from '../types/commons';
 import promisifyOpenfin from './promisifyOpenfin';
 
 // TODO - move these functions to redux-openfin
@@ -35,8 +35,10 @@ const getOpenFinApplicationPromise = <T = undefined>(uuid: string, method: strin
 };
 
 export const addSystemEventListener = getSystemPromise('addEventListener');
+export const getSystemMachineId = getSystemPromise<string>('getMachineId');
 export const getSystemMonitorInfo = getSystemPromise<MonitorInfo>('getMonitorInfo');
 export const getSystemMousePosition = getSystemPromise<PointTopLeft>('getMousePosition');
+export const getSystemAllWindows = getSystemPromise<WindowInfo[]>('getAllWindows');
 
 // tslint:disable-next-line:no-any
 export const getOpenFinApplicationInfo = (uuid: string) => getOpenFinApplicationPromise<any>(uuid, 'getInfo');
@@ -67,6 +69,11 @@ export const updateWindowOptions = (finWindow, options) => {
   return promisifyOpenfin(finWindow, 'updateOptions', options);
 };
 
+export const getWindowIsShowingOrGrouped = async finWindow => {
+  const [isShowing, group] = await Promise.all([promisifyOpenfin<boolean>(finWindow, 'isShowing'), promisifyOpenfin<[]>(finWindow, 'getGroup')]);
+  return isShowing || !!group.length;
+};
+
 /**
  * Get window state for windows that are showing
  */
@@ -86,6 +93,11 @@ export const getVisibleWindowStateAndBounds = async (finWindow: OpenFinWindow): 
     state,
   };
 };
+
+/**
+ * Get window bounds
+ */
+export const getWindowBounds = async (finWindow: OpenFinWindow): Promise<Bounds | undefined> => promisifyOpenfin(finWindow, 'getBounds');
 
 export const createAndRunFromManifest = (manifestUrl: string, id: string): Promise<string> => {
   const { fin } = window;

@@ -9,6 +9,7 @@ import { DirectionalPosition, Orientation } from '../../types/commons';
 import { SystemIcon, WORKSPACES_KEY } from '../../utils/getSystemIcons';
 import { LauncherSizeConfig } from '../../utils/launcherSizeConfigs';
 
+import { EventType, sendAnalytics } from '../../utils/analytics';
 import SvgIcon from '../SvgIcon';
 import SvgIconWithExtension from '../SvgIconWithExtension';
 import { SvgIconWrapper, ToggleIcon, ToggleIconWrapper, Wrapper } from './SystemDrawer.css';
@@ -73,6 +74,10 @@ class SystemDrawer extends React.Component<Props> {
     const stopTransition = this.lastConfig !== this.props.launcherSizeConfig || this.lastOrientation !== this.props.orientation;
     this.lastConfig = this.props.launcherSizeConfig;
     this.lastOrientation = this.props.orientation;
+    const handleClickToggle = () => {
+      sendAnalytics({ type: EventType.Click, label: 'SystemDrawerToggle', context: { currentlyExpanded: isExpanded } });
+      onClickToggle();
+    };
 
     return (
       <Wrapper className={className} sizingConfig={launcherSizeConfig} orientation={orientation} size={size} stopTransition={stopTransition}>
@@ -80,7 +85,7 @@ class SystemDrawer extends React.Component<Props> {
           <ToggleIcon
             color={isExpanded ? Color.MARS : undefined}
             imgSrc={isExpanded ? closeIcon : arrowIcon}
-            onClick={onClickToggle}
+            onClick={handleClickToggle}
             orientation={orientation}
             size={isExpanded ? launcherSizeConfig.systemDrawerToggleClose : launcherSizeConfig.systemDrawerToggleOpen}
           />
@@ -89,7 +94,10 @@ class SystemDrawer extends React.Component<Props> {
         {icons.map(({ isBackground, isShownByDefault, color, cta, hasExtendedWindow, hoverColor, icon, title }) => {
           const isVisible = isShownByDefault || isExpanded;
           const delayMultiplier = isShownByDefault ? 0 : hiddenIconCount;
-          const handleClick = this.handleCta(cta, hasExtendedWindow);
+          const handleClick = () => {
+            sendAnalytics({ type: EventType.Click, label: 'SystemDrawerIcon', context: { title } });
+            this.handleCta(cta, hasExtendedWindow)();
+          };
 
           if (!isShownByDefault) {
             hiddenIconCount = hiddenIconCount - 1;

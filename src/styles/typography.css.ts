@@ -23,7 +23,7 @@ const TypeStyle = `
 `;
 
 export const TypeStyleSirius = `
-  ${TypeStyle};
+  ${TypeStyle}
   font-size: 14px;
   font-weight: 700;
   line-height: 19px;
@@ -31,7 +31,7 @@ export const TypeStyleSirius = `
 `;
 
 export const TypeStyleCanopus = `
-  ${TypeStyle};
+  ${TypeStyle}
   font-size: 14px;
   font-weight: 400;
   line-height: 19px;
@@ -39,7 +39,7 @@ export const TypeStyleCanopus = `
 `;
 
 export const TypeStyleArcturus = `
-  ${TypeStyle};
+  ${TypeStyle}
   font-size: 16px;
   font-weight: 400;
   line-height: 22px;
@@ -47,7 +47,7 @@ export const TypeStyleArcturus = `
 `;
 
 export const TypeStyleProcyon = `
-  ${TypeStyle};
+  ${TypeStyle}
   font-size: 16px;
   font-weight: 800;
   line-height: 22px;
@@ -55,7 +55,7 @@ export const TypeStyleProcyon = `
 `;
 
 export const TypeStyleDeneb = `
-  ${TypeStyle};
+  ${TypeStyle}
   font-size: 13px;
   font-weight: 400;
   font-style: italic;
@@ -64,7 +64,7 @@ export const TypeStyleDeneb = `
 `;
 
 export const TypeStylePollux = `
-  ${TypeStyle};
+  ${TypeStyle}
   font-size: 13px;
   font-weight: 800;
   font-style: italic;
@@ -73,7 +73,7 @@ export const TypeStylePollux = `
 `;
 
 export const TypeStyleBellatrix = `
-  ${TypeStyle};
+  ${TypeStyle}
   font-size: 11px;
   font-weight: 400;
   line-height: 16px;
@@ -81,7 +81,7 @@ export const TypeStyleBellatrix = `
 `;
 
 export const TypeStylePolaris = `
-  ${TypeStyle};
+  ${TypeStyle}
   font-size: 20px;
   font-weight: 400;
   line-height: 27px;
@@ -89,7 +89,7 @@ export const TypeStylePolaris = `
 `;
 
 export const TypeStyleAlgol = `
-  ${TypeStyle};
+  ${TypeStyle}
   font-size: 14px;
   font-weight: 400;
   line-height: 19px;
@@ -97,7 +97,7 @@ export const TypeStyleAlgol = `
 `;
 
 export const TypeStyleEnif = `
-  ${TypeStyle};
+  ${TypeStyle}
   font-size: 11px;
   font-weight: 600;
   line-height: 15px;
@@ -105,7 +105,7 @@ export const TypeStyleEnif = `
 `;
 
 export const TypeStyleNaos = `
-  ${TypeStyle};
+  ${TypeStyle}
   font-size: 11px;
   font-weight: 600;
   line-height: 15px;
@@ -113,9 +113,17 @@ export const TypeStyleNaos = `
 `;
 
 export const TypeStyleSol = `
-  ${TypeStyle};
+  ${TypeStyle}
   font-size: 14px;
   font-weight: 400;
   line-height: 16px;
   letter-spacing: -0.09px;
+`;
+
+export const TypeStylePollx = `
+  ${TypeStyle}
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.24px;
+  line-height: 18px;
 `;

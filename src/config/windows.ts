@@ -6,6 +6,8 @@ const WINDOW_PREFIX = 'osLaunchpad';
 export const ADMIN_WINDOW = `${WINDOW_PREFIX}Admin`;
 export const APP_DIRECTORY_WINDOW = `${WINDOW_PREFIX}AppDirectory`;
 export const APP_LAUNCHER_OVERFLOW_WINDOW = `${WINDOW_PREFIX}AppLauncherOverflow`;
+export const CHANNELS_WINDOW = `${WINDOW_PREFIX}Channels`;
+export const CHANNELS_CONTEXT_WINDOW = `${WINDOW_PREFIX}ChannelsContext`;
 export const CONTEXT_MENU = `${WINDOW_PREFIX}ContextMenu`;
 export const LAYOUTS_WINDOW = `${WINDOW_PREFIX}Layouts`;
 export const LOGIN_WINDOW = `${WINDOW_PREFIX}Login`;
@@ -60,6 +62,28 @@ export const defaultWindows = {
     saveWindowState: false,
     showTaskbarIcon: false,
     url: ROUTES.APP_LAUNCHER_OVERFLOW,
+    waitForPageLoad: true,
+  },
+  channels: {
+    alwaysOnTop: false,
+    autoShow: false,
+    contextMenu: !isProduction,
+    defaultCentered: true,
+    defaultHeight: 288,
+    defaultWidth: 368,
+    frame: false,
+    id: CHANNELS_WINDOW,
+    maxHeight: -1,
+    maximizable: false,
+    minHeight: 0,
+    minWidth: 0,
+    minimizable: false,
+    name: CHANNELS_WINDOW,
+    resizable: false,
+    saveWindowState: false,
+    shadow: true,
+    showTaskbarIcon: true,
+    url: ROUTES.CHANNELS,
     waitForPageLoad: true,
   },
   contextMenu: {
@@ -227,6 +251,28 @@ export const authWindows = {
     shadow: true,
     showTaskbarIcon: true,
     url: ROUTES.LOGIN,
+    waitForPageLoad: true,
+  },
+};
+
+export const polymorphicWindows = {
+  channelsContext: {
+    alwaysOnTop: false,
+    autoShow: false,
+    contextMenu: !isProduction,
+    defaultCentered: false,
+    defaultHeight: 240,
+    defaultWidth: 320,
+    frame: true,
+    id: CHANNELS_CONTEXT_WINDOW,
+    maximizable: false,
+    minimizable: false,
+    name: CHANNELS_CONTEXT_WINDOW,
+    resizable: true,
+    saveWindowState: false,
+    shadow: true,
+    showTaskbarIcon: false,
+    url: ROUTES.CHANNELS_CONTEXT,
     waitForPageLoad: true,
   },
 };

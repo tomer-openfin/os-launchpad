@@ -52,10 +52,12 @@ describe('support/saga', () => {
   });
 
   describe('supportSaga', () => {
-    const iterator = cloneableGenerator(supportSaga)();
+    it('should contain the following sagas', () => {
+      const iterator = cloneableGenerator(supportSaga)();
 
-    expect(iterator.next(sendFeedback.request('TEST_FEEDBACK')).value).toEqual(takeEvery(sendFeedback.request, watchSendFeedbackRequest));
-    expect(iterator.next(sendBug.request('TEST_BUG')).value).toEqual(takeEvery(sendBug.request, watchSendBugRequest));
-    expect(iterator.next().done).toBe(true);
+      expect(iterator.next(sendFeedback.request('TEST_FEEDBACK')).value).toEqual(takeEvery(sendFeedback.request, watchSendFeedbackRequest));
+      expect(iterator.next(sendBug.request('TEST_BUG')).value).toEqual(takeEvery(sendBug.request, watchSendBugRequest));
+      expect(iterator.next().done).toBe(true);
+    });
   });
 });

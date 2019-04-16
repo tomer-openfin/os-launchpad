@@ -31,10 +31,13 @@
     },
     {
       "name": "notifications"
+    },
+    {
+      "name": "fdc3"
     }
   ],
   "runtime": {
-    "version": "9.61.38.40"
+    "version": "9.61.38.41"
   },
   "shortcut": {
     "company": "OpenFin",

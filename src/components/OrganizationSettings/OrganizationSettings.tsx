@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
 
 import { OrgImages } from '../../redux/organization';
 
 import {
+  DEFAULT_LOGIN_LOGO,
   DEFAULT_LOGO,
   imageDisplayName,
   imageMetaInfo,
@@ -13,30 +13,31 @@ import {
   orgImageData,
   OrgImageKey,
 } from '../../utils/orgImages';
-import { doesCurrentPathMatch } from '../../utils/routeHelpers';
-import { ADMIN_SETTINGS_ROUTES, ROUTES } from '../Router/consts';
+import { ROUTES } from '../Router/consts';
 
+import noop from '../../utils/noop';
 import { DeleteIconLink, EditIconLink, Header, Row, Wrapper } from './OrganizationSettings.css';
 
 import ImageCard from '../ImageCard';
 import Modal from '../Modal';
 
-const ADMIN_SETTINGS_PATHS = Object.values(ADMIN_SETTINGS_ROUTES);
-
-export interface Props extends RouteComponentProps {
+export interface Props {
+  handleCloseModal: () => void;
+  isManifestDefault: (imageKey: ManifestImageViewKeys, imgSrc: string) => boolean;
+  isModalVisible?: boolean;
   manifestImages: ImagesFromManifest;
   orgImages: { [key in keyof OrgImages]: string };
-  isManifestDefault: (imageKey: ManifestImageViewKeys, imgSrc: string) => boolean;
 }
 
-const defaultProps: Partial<Props> = {
+const defaultProps: Props = {
+  handleCloseModal: () => noop,
   isManifestDefault: () => true,
   manifestImages: {
     [ManifestImageViewKeys.shortcut]: DEFAULT_LOGO,
     [ManifestImageViewKeys.splashscreen]: DEFAULT_LOGO,
   },
   orgImages: {
-    loginLogo: DEFAULT_LOGO,
+    loginLogo: DEFAULT_LOGIN_LOGO,
     logo: DEFAULT_LOGO,
   },
 };
@@ -62,12 +63,12 @@ class OrganizationSettings extends React.PureComponent<Props> {
     if (isManifestImage) {
       return this.props.isManifestDefault(imageKey as ManifestImageViewKeys, imgSrc);
     } else {
-      return imgSrc === DEFAULT_LOGO;
+      return imgSrc === defaultProps.orgImages[imageKey];
     }
   };
 
   render() {
-    const { children, history, orgImages, manifestImages } = this.props;
+    const { children, handleCloseModal, isModalVisible, orgImages, manifestImages } = this.props;
 
     const images = { ...orgImages, ...manifestImages };
 
@@ -96,7 +97,7 @@ class OrganizationSettings extends React.PureComponent<Props> {
           );
         })}
 
-        {doesCurrentPathMatch(ADMIN_SETTINGS_PATHS, location.pathname) && <Modal handleClose={history.goBack}>{children}</Modal>}
+        {isModalVisible && <Modal handleClose={handleCloseModal}>{children}</Modal>}
       </Wrapper>
     );
   }

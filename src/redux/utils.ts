@@ -79,6 +79,9 @@ export function* watchAsyncFailure(action: AnyAction) {
     return;
   }
 
+  // tslint:disable-next-line:no-console
+  console.warn('watchAsyncFailure', action);
+
   meta.onFailure(payload, meta.payload);
 }
 

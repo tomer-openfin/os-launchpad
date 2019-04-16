@@ -5,9 +5,9 @@ import { collapseApp, expandApp, getApplicationIsExpanded } from '../../redux/ap
 import { getAutoHide } from '../../redux/me';
 import { State } from '../../redux/types';
 import { getLauncherIsForceExpanded, getWindowBounds } from '../../redux/windows';
-import getAppUuid from '../../utils/getAppUuid';
+import getOwnUuid from '../../utils/getOwnUuid';
 
-const APP_UUID = getAppUuid();
+const APP_UUID = getOwnUuid();
 
 const mapState = (state: State) => ({
   autoHide: getAutoHide(state),

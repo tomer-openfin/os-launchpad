@@ -208,7 +208,7 @@ export function* watchOpenFinAppFailure(action: ReturnType<typeof openFinApp.fai
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchOpenFinAppFailure', error);
+    console.warn('Error in watchOpenFinAppFailure', error);
   }
 }
 

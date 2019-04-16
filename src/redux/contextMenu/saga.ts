@@ -120,7 +120,7 @@ function* watchOpenContextMenuSuccess() {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchOpenContextMenuSuccess', error);
+    console.warn('Error in watchOpenContextMenuSuccess', error);
   }
 }
 

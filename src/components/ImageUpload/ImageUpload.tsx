@@ -1,9 +1,10 @@
 import * as React from 'react';
 
-import { ContentWrapper, Tab, TabsWrapper, Wrapper } from './ImageUpload.css';
+import { StyledTab, Wrapper } from './ImageUpload.css';
 
 import Borders from '../Borders';
 import ImageForm from '../ImageForm';
+import Tabs, { Props as TabProps } from '../Tabs';
 import WindowHeader from '../WindowHeader';
 
 const FILE_UPLOAD = 'File Upload';
@@ -15,12 +16,12 @@ interface Props {
   handleCancel: () => void;
   headerText: string;
   height?: string;
+  resetResponseError?: () => void;
+  responseError?: boolean;
+  responseMessage?: string;
   saveImage: (imgSrc: string) => void;
   width?: string;
   withoutFileUpload?: boolean;
-  resetResponseError?: () => void;
-  responseMessage?: string;
-  responseError?: boolean;
 }
 
 type TabType = typeof TABS[number];
@@ -30,7 +31,7 @@ interface State {
 }
 
 class ImageUpload extends React.Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -38,16 +39,28 @@ class ImageUpload extends React.Component<Props, State> {
     };
   }
 
-  setActiveTab = (tab: TabType) => () => this.setState({ activeTab: tab });
+  setActiveTab = (tab: TabType) => this.setState({ activeTab: tab });
 
-  renderTab = (tab: TabType) => (
-    <Tab key={tab} active={this.state.activeTab === tab} onClick={this.setActiveTab(tab)}>
-      {tab}
-    </Tab>
-  );
+  renderTab = (tab: TabType): React.ReactElement<TabProps> => {
+    const { handleCancel, resetResponseError, responseError, responseMessage, saveImage } = this.props;
+    const { activeTab } = this.state;
+
+    return (
+      <StyledTab key={tab} id={tab} title={tab}>
+        <ImageForm
+          byUrl={activeTab === BY_URL}
+          handleCancel={handleCancel}
+          message={`Image failed to save: ${responseMessage} Please try again.`}
+          resetResponseError={resetResponseError}
+          responseError={responseError}
+          saveImage={saveImage}
+        />
+      </StyledTab>
+    );
+  };
 
   render() {
-    const { saveImage, handleCancel, headerText, height, width, withoutFileUpload, responseError, responseMessage, resetResponseError } = this.props;
+    const { headerText, height, width, withoutFileUpload } = this.props;
     const { activeTab } = this.state;
 
     const tabs = withoutFileUpload ? TABS.filter(tab => tab !== FILE_UPLOAD) : TABS;
@@ -55,20 +68,11 @@ class ImageUpload extends React.Component<Props, State> {
     return (
       <Wrapper height={height} width={width}>
         <Borders height="100%" width="100%">
-          <WindowHeader>{headerText}</WindowHeader>
+          <WindowHeader label={headerText}>{headerText}</WindowHeader>
 
-          <TabsWrapper>{tabs.map(this.renderTab)}</TabsWrapper>
-
-          <ContentWrapper>
-            <ImageForm
-              byUrl={activeTab === BY_URL}
-              saveImage={saveImage}
-              handleCancel={handleCancel}
-              responseError={responseError}
-              message={`Image failed to save: ${responseMessage} Please try again.`}
-              resetResponseError={resetResponseError}
-            />
-          </ContentWrapper>
+          <Tabs activeId={activeTab} height={30} onClick={this.setActiveTab}>
+            {tabs.map(this.renderTab)}
+          </Tabs>
         </Borders>
       </Wrapper>
     );

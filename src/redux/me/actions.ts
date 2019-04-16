@@ -12,7 +12,6 @@ import {
   SetAutoHidePayload,
   SetLauncherPositionPayload,
   SetLauncherSizePayload,
-  SetMePayload,
   UpdatePasswordRequestPayload,
 } from './types';
 
@@ -25,7 +24,6 @@ const SET_AUTO_HIDE = 'SET_AUTO_HIDE';
 const SET_LAUNCHER_MONITOR_SETTINGS = 'SET_LAUNCHER_MONITOR_SETTINGS';
 const SET_LAUNCHER_POSITION = 'SET_LAUNCHER_POSITION';
 const SET_LAUNCHER_SIZE = 'SET_LAUNCHER_SIZE';
-const SET_ME = 'SET_ME';
 const SET_AUTH_MESSAGING = 'SET_AUTH_MESSAGING';
 // LOGIN
 const LOGIN_REQUEST = 'LOGIN_REQUEST';
@@ -65,7 +63,6 @@ export const setAutoHide = createAction(SET_AUTO_HIDE)<SetAutoHidePayload>();
 export const setLauncherMonitorSettings = createAction(SET_LAUNCHER_MONITOR_SETTINGS)<MonitorDetails>();
 export const setLauncherPosition = createAction(SET_LAUNCHER_POSITION)<SetLauncherPositionPayload>();
 export const setLauncherSize = createAction(SET_LAUNCHER_SIZE)<SetLauncherSizePayload>();
-export const setMe = createAction(SET_ME)<SetMePayload>();
 export const setAuthMessaging = createAction(SET_AUTH_MESSAGING)<MeAuthMessagingState>();
 
 export const login = createAsyncActionCreators(LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE)<

@@ -32,7 +32,9 @@ export const ForgotPasswordView = ({ handleClose, handleError, message, stage, t
   return (
     <Wrapper>
       <Borders borderRadius="6px">
-        <WindowHeader handleBack={handleClose}>Forgot Password</WindowHeader>
+        <WindowHeader handleBack={handleClose} label="ForgotPassword">
+          Forgot Password
+        </WindowHeader>
 
         <ContentWrapper>
           {(() => {

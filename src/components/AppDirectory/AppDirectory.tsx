@@ -3,6 +3,7 @@ import * as React from 'react';
 import { CTA, Directory, Empty, Row, StyledSearchInput, Wrapper } from './AppDirectory.css';
 
 import { App } from '../../types/commons';
+import { EventType, sendAnalytics } from '../../utils/analytics';
 
 import AppCard from '../AppCard';
 import WindowHeader from '../WindowHeader';
@@ -79,7 +80,23 @@ class AppDirectory extends React.PureComponent<Props, State> {
 
     const isLauncherApp = getIsLauncherApp(app.id);
 
-    return <CTA onClick={isLauncherApp ? () => removeFromLauncher(`${app.id}`) : () => addToLauncher(`${app.id}`)}>{renderCTAText(isLauncherApp)}</CTA>;
+    return (
+      <CTA
+        onClick={
+          isLauncherApp
+            ? () => {
+                sendAnalytics({ type: EventType.Click, label: 'RemoveApp', context: { name: app.name } }, { includeAppList: true });
+                removeFromLauncher(app.id);
+              }
+            : () => {
+                sendAnalytics({ type: EventType.Click, label: 'AddApp', context: { name: app.name } }, { includeAppList: true });
+                addToLauncher(app.id);
+              }
+        }
+      >
+        {renderCTAText(isLauncherApp)}
+      </CTA>
+    );
   }
 
   render() {
@@ -89,7 +106,7 @@ class AppDirectory extends React.PureComponent<Props, State> {
 
     return (
       <Wrapper>
-        <WindowHeader handleClose={hideWindow}>
+        <WindowHeader handleClose={hideWindow} label="AppDirectory">
           <StyledSearchInput
             htmlInputRef={this.searchInput}
             onChange={this.handleChange}

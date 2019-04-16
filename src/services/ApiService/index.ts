@@ -8,6 +8,7 @@ import {
   getUserInfo,
   getUserLayouts,
   getUserSettings,
+  postUserStats,
   saveUserSettings,
   updateUserLayout,
   updateUserPassword,
@@ -56,6 +57,8 @@ const ApiService = {
 
   sendBug,
   sendFeedback,
+
+  postUserStats,
 };
 
 export default ApiService;

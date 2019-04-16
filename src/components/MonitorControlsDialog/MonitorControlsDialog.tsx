@@ -15,7 +15,7 @@ export interface Props {
 
 const MonitorControlsDialog = ({ activeId, gutterSize, handleClick, height, title, width }: Props) => (
   <Wrapper>
-    <WindowHeader>{title}</WindowHeader>
+    <WindowHeader label={title}>{title}</WindowHeader>
 
     <Content>
       <MonitorControls activeId={activeId} gutterSize={gutterSize} handleClick={handleClick} height={height} width={width} />

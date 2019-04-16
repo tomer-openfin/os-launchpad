@@ -5,14 +5,15 @@ import ApiService from '../../services/ApiService';
 import { ApiResponseStatus } from '../../types/enums';
 import { UnPromisfy } from '../../types/utils';
 import eraseCookie from '../../utils/eraseCookie';
-import getAppUuid from '../../utils/getAppUuid';
 import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
+import getOwnUuid from '../../utils/getOwnUuid';
 import { updateKeyInManifestOverride } from '../../utils/manifestOverride';
 import { animateWindow, getCurrentOpenfinApplicationManifest } from '../../utils/openfinPromises';
 import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv } from '../../utils/processHelpers';
 import { setupWindow } from '../../utils/setupWindow';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList } from '../apps';
+import { getChannels } from '../channels/index';
 import { registerGlobalDevHotKeys } from '../globalHotkeys/utils';
 import { getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig } from '../me';
 import { loginFlow } from '../me/utils';
@@ -36,9 +37,9 @@ import {
   updateManifestOverride,
 } from './actions';
 import { getApplicationIsExpanded, getApplicationManifestOverride } from './selectors';
-import { executeAutoHideBehavior, initManifest, initMonitorInfo, initOrgSettings, initRuntimeVersion } from './utils';
+import { executeAutoHideBehavior, initMachineId, initManifest, initMonitorInfo, initOrgSettings, initRuntimeVersion } from './utils';
 
-const APP_UUID = getAppUuid();
+const APP_UUID = getOwnUuid();
 const ANIMATION_DURATION = 285;
 
 /**
@@ -50,7 +51,7 @@ function* applicationStart() {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in applicationStart', error);
+    console.warn('Error in applicationStart', error);
   }
 }
 
@@ -60,7 +61,7 @@ function* watchExitApplication() {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchExitApplication', error);
+    console.warn('Error in watchExitApplication', error);
   }
 }
 
@@ -79,7 +80,7 @@ function* watchInitDevTools() {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchInitDevTools', error);
+    console.warn('Error in watchInitDevTools', error);
   }
 }
 
@@ -98,7 +99,7 @@ function* watchLaunchAppLauncher() {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchLaunchAppLauncher', error);
+    console.warn('Error in watchLaunchAppLauncher', error);
   }
 }
 
@@ -121,9 +122,13 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
       }
 
       yield put(Window.hideWindow({ id: finName }));
+      // Kick off getting channels, but no guarantee right now channel promise will resolve
+      // so don't block here
+      yield put(getChannels.request());
 
       yield all([
         call(initOrgSettings),
+        call(initMachineId),
         call(initMonitorInfo),
         call(initRuntimeVersion),
         call(initManifest),
@@ -143,7 +148,7 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in openfinSetup', error);
+    console.warn('Error in openfinSetup', error);
   }
 }
 
@@ -163,7 +168,7 @@ function* watchCollapseApp() {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchCollapseApp', error);
+    console.warn('Error in watchCollapseApp', error);
   }
 }
 
@@ -183,7 +188,7 @@ function* watchExpandApp() {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchExpandApp', error);
+    console.warn('Error in watchExpandApp', error);
   }
 }
 

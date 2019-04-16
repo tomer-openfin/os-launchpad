@@ -21,6 +21,7 @@ const emptyUser: User = {
   lastName: '',
   middleInitial: '',
   phone: '',
+  sendEmail: true,
   tmpPassword: '',
   username: '',
 };
