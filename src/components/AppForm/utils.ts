@@ -7,24 +7,17 @@ import { ManifestType, Values } from './AppForm';
 export const validationSchema = Yup.object().shape({
   appPath: Yup.string().when('manifestType', {
     is: manifestTypeVal => ManifestType.Path === manifestTypeVal,
-    then: Yup.string()
-      .trim()
-      .required('Required'),
+    then: Yup.string().required('Required'),
   }),
   appUrl: Yup.string().when('manifestType', {
     is: manifestTypeVal => ManifestType.AppUrl === manifestTypeVal,
     then: Yup.string()
-      .trim()
       .url('Must be a valid URL')
       .required('Required'),
   }),
   contexts: Yup.array().notRequired(), // enable when bring back contexts
-  description: Yup.string()
-    .trim()
-    .required('Required'),
-  icon: Yup.string()
-    .trim()
-    .required('Required'),
+  description: Yup.string().required('Required'),
+  icon: Yup.string().required('Required'),
   id: Yup.string().notRequired(),
   images: Yup.array().notRequired(),
   intents: Yup.array().notRequired(), // enable when bring back contexts
@@ -32,14 +25,11 @@ export const validationSchema = Yup.object().shape({
   manifestUrl: Yup.string().when('manifestType', {
     is: manifestTypeVal => ManifestType.Manifest === manifestTypeVal,
     then: Yup.string()
-      .trim()
       .url('Must be a valid URL')
       .required('Required'),
   }),
   name: Yup.string(), // injected by us before payload is sent
-  title: Yup.string()
-    .trim()
-    .required('Required'),
+  title: Yup.string().required('Required'),
 });
 
 export const getEditAppValues = (
