@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { components } from 'react-select';
+import { IndicatorComponentType } from 'react-select/lib/components';
 import { IndicatorProps } from 'react-select/lib/components/indicators';
 import { ValueType } from 'react-select/lib/types';
 
@@ -28,10 +29,12 @@ const getLabel = (options: OptionType[], selected: string) => {
 };
 
 const DropdownIndicator = (props: IndicatorProps<OptionType>) => {
+  const Indicator: IndicatorComponentType<OptionType> = components.DropdownIndicator!;
+
   return (
-    <components.DropdownIndicator {...props}>
+    <Indicator {...props}>
       <SvgIcon imgSrc={indicator} size={12} color={Color.STAR} />
-    </components.DropdownIndicator>
+    </Indicator>
   );
 };
 
