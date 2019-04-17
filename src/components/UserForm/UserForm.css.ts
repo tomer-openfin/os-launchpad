@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-import Label from '../Label';
+import Label, { LABEL_TRANSITION_DELAY } from '../Label';
 import RadioButton from '../RadioButton';
 import { RowWrapper } from '../Responsive';
 import { Icon } from '../SvgIcon/index';
 
 import { Color, Typography } from '../../styles';
+import { ADMIN_FORMS_ENTER_DURATION } from '../../utils/adminForms';
 
 export const StyledLabel = styled(Label)`
   margin: auto 0;
@@ -15,10 +16,12 @@ export const StyledRowWrapper = styled(RowWrapper)`
   margin-bottom: 20px;
 `;
 
-export const Group = styled.div`
+export const Group = styled.div<{ index?: number }>`
   display: flex;
   flex-direction: column;
   position: relative;
+
+  ${({ index }) => index && index >= 0 && `transition-delay: ${ADMIN_FORMS_ENTER_DURATION + index * LABEL_TRANSITION_DELAY}ms !important;`}
 
   ${Icon} {
     position: absolute;
