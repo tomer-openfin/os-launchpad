@@ -52,7 +52,7 @@ export const StyledSelect = styled(Select)`
       background-color: ${Color.SEDNOID_HOVER};
     }
 
-    &--is-selected {
+    &--is-selected, &--is-focused {
       background-color: ${Color.SEDNOID_HOVER};
     }
   }
