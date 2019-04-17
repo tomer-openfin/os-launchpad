@@ -51,14 +51,15 @@ export const SupportView = (props: ViewProps) => {
 
   const createHandleType = (nextType: Type) => () => setType(nextType);
 
+  const handleCloseAndReset = () => {
+    handleReset();
+    handleClose();
+  };
+
   return (
     <Wrapper>
       <Borders height="100%" width="100%">
-        <WindowHeader
-          handleBack={type !== Type.Default ? handleReset : undefined}
-          handleClose={type === Type.Default ? handleClose : undefined}
-          label="Support"
-        >
+        <WindowHeader handleBack={type !== Type.Default ? handleReset : undefined} handleClose={handleCloseAndReset} label="Support">
           {headerTitles[props.type]}
         </WindowHeader>
 
