@@ -1,12 +1,13 @@
 import * as React from 'react';
-import Select from 'react-select';
+import { components } from 'react-select';
+import { IndicatorProps } from 'react-select/lib/components/indicators';
+import { ValueType } from 'react-select/lib/types';
 
 import * as indicator from '../../assets/DropdownIndicator.svg';
 
-import { ValueType } from 'react-select/lib/types';
 import Color from '../../styles/color';
-import SvgIcon from '../SvgIcon/index';
-import { Display, Option, OptionsWrapper, StyledSelect, Wrapper } from './Dropdown.css';
+import SvgIcon from '../SvgIcon';
+import { StyledSelect } from './Dropdown.css';
 
 export interface OptionType {
   label: string;
@@ -19,7 +20,6 @@ interface State {
 
 interface Props {
   name?: string;
-  // onSelect: (option: OptionType) => void;
   onSelect: (option: ValueType<OptionType>) => void;
   options: OptionType[];
   selected: string;
@@ -34,9 +34,18 @@ const getLabel = (options: OptionType[], selected: string) => {
   return (current && current.label) || selected;
 };
 
+const DropdownIndicator = (props: IndicatorProps<OptionType>) => {
+  return (
+    <components.DropdownIndicator {...props}>
+      <SvgIcon imgSrc={indicator} size={12} color={Color.STAR} />
+    </components.DropdownIndicator>
+  );
+};
+
 export const DropdownView = ({ onSelect, options, open, selected, toggleOpen, width }: ViewProps) => (
   <StyledSelect
     className="react-select-container"
+    components={{ DropdownIndicator }}
     classNamePrefix="react-select"
     value={options.find(o => o.value === selected)}
     onChange={onSelect}
