@@ -14,10 +14,6 @@ export interface OptionType {
   value: string;
 }
 
-interface State {
-  open: boolean;
-}
-
 interface Props {
   name?: string;
   onSelect: (option: ValueType<OptionType>) => void;
@@ -26,9 +22,6 @@ interface Props {
   width?: number | string;
 }
 
-interface ViewProps extends Props, State {
-  toggleOpen: () => void;
-}
 const getLabel = (options: OptionType[], selected: string) => {
   const current = options.find(opt => opt.value === selected);
   return (current && current.label) || selected;
@@ -42,7 +35,7 @@ const DropdownIndicator = (props: IndicatorProps<OptionType>) => {
   );
 };
 
-export const DropdownView = ({ onSelect, options, open, selected, toggleOpen, width }: ViewProps) => (
+export const Dropdown = ({ onSelect, options, selected, width }: Props) => (
   <StyledSelect
     className="react-select-container"
     components={{ DropdownIndicator }}
@@ -54,25 +47,5 @@ export const DropdownView = ({ onSelect, options, open, selected, toggleOpen, wi
     width={width}
   />
 );
-
-class Dropdown extends React.Component<Props, State> {
-  state = {
-    open: false,
-  };
-
-  toggleOpen = () => {
-    this.setState((prevState: State) => ({ open: !prevState.open }));
-  };
-
-  handleSelect = (option: ValueType<OptionType>) => {
-    const { onSelect } = this.props;
-    this.toggleOpen();
-    onSelect(option);
-  };
-
-  render() {
-    return <DropdownView {...this.props} {...this.state} onSelect={this.handleSelect} toggleOpen={this.toggleOpen} />;
-  }
-}
 
 export default Dropdown;
