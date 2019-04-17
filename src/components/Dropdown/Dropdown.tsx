@@ -1,10 +1,12 @@
 import * as React from 'react';
+import Select from 'react-select';
 
 import * as indicator from '../../assets/DropdownIndicator.svg';
 
+import { ValueType } from 'react-select/lib/types';
 import Color from '../../styles/color';
 import SvgIcon from '../SvgIcon/index';
-import { Display, Option, OptionsWrapper, Wrapper } from './Dropdown.css';
+import { Display, Option, OptionsWrapper, StyledSelect, Wrapper } from './Dropdown.css';
 
 export interface OptionType {
   label: string;
@@ -17,7 +19,8 @@ interface State {
 
 interface Props {
   name?: string;
-  onSelect: (option: OptionType) => void;
+  // onSelect: (option: OptionType) => void;
+  onSelect: (option: ValueType<OptionType>) => void;
   options: OptionType[];
   selected: string;
   width?: number | string;
@@ -32,25 +35,15 @@ const getLabel = (options: OptionType[], selected: string) => {
 };
 
 export const DropdownView = ({ onSelect, options, open, selected, toggleOpen, width }: ViewProps) => (
-  <Wrapper width={width}>
-    <Display onClick={toggleOpen}>
-      {getLabel(options, selected)}
-
-      <SvgIcon imgSrc={indicator} size={12} color={Color.STAR} />
-    </Display>
-
-    <OptionsWrapper open={open}>
-      {options.map((option: OptionType, i: number) => {
-        const createOnClick = (currentOpt: OptionType) => () => onSelect(currentOpt);
-
-        return (
-          <Option chosen={selected === option.value || selected === option.label} onClick={createOnClick(option)} key={option.label}>
-            {option.label}
-          </Option>
-        );
-      })}
-    </OptionsWrapper>
-  </Wrapper>
+  <StyledSelect
+    className="react-select-container"
+    classNamePrefix="react-select"
+    value={options.find(o => o.value === selected)}
+    onChange={onSelect}
+    options={options}
+    isSearchable={false}
+    width={width}
+  />
 );
 
 class Dropdown extends React.Component<Props, State> {
@@ -62,7 +55,7 @@ class Dropdown extends React.Component<Props, State> {
     this.setState((prevState: State) => ({ open: !prevState.open }));
   };
 
-  handleSelect = (option: OptionType) => {
+  handleSelect = (option: ValueType<OptionType>) => {
     const { onSelect } = this.props;
     this.toggleOpen();
     onSelect(option);

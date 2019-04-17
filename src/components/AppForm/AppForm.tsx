@@ -8,6 +8,7 @@ import { renderError } from '../../utils/renderError';
 import { IconPreviewMeta, IconPreviewMetaWrapper, IconPreviewWrapper, StyledForm, StyledRow, UnderlayLabel } from './AppForm.css';
 
 // import CheckboxInArray from '../CheckboxInArray';
+import { ValueType } from 'react-select/lib/types';
 import Dropdown, { OptionType } from '../Dropdown';
 import FormFooter from '../FormFooter';
 import ImagePreview from '../ImagePreview';
@@ -138,8 +139,10 @@ class AppForm extends React.Component<Props, State> {
     this.handleCloseIconForm();
   };
 
-  handleSelect = (setFieldValue: SetFieldValue) => (option: OptionType) => {
-    setFieldValue('manifestType', option.value as ManifestType);
+  handleSelect = (setFieldValue: SetFieldValue) => (option: ValueType<OptionType>) => {
+    if (option && !Array.isArray(option) && option.value) {
+      setFieldValue('manifestType', option.value as ManifestType);
+    }
   };
 
   // renderMockIntents = () => MOCK_INTENTS.map((intent, index) => <CheckboxInArray name="intents" key={index} value={intent.displayName} />);
