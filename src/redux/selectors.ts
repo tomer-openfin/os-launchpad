@@ -11,7 +11,7 @@ import { GLOBAL_CHANNEL_ID } from '../utils/openfinFdc3';
 import { calcAppListDimensions, calcMaxAppCount } from '../utils/windowPositionHelpers';
 import { getDrawerIsExpanded } from './application/selectors';
 import { getAppsById } from './apps/selectors';
-import { getChannelsById, getChannelsContextsById, getChannelsIds, getChannelsMembersById, getContextWindowsByGroup } from './channels';
+import { getChannelsById, getChannelsContextsById, getChannelsIds, getChannelsMembersById, getContextWindowsByGroup } from './channels/selectors';
 import {
   getAppsLauncherIds,
   getIsAdmin,
