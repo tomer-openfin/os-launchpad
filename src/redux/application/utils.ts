@@ -19,7 +19,7 @@ import {
   getExpandedSystemDrawerSize,
   getMonitorDetailsDerivedByUserSettings,
 } from '../selectors';
-import { getAndSetMonitorInfo, getMachineId } from '../system';
+import { getAndSetMonitorInfo, getMachineId, storeAllSystemWindows } from '../system';
 import { State } from '../types';
 import { getWindowBounds } from '../windows';
 import { getManifest, resetApplicationUi, setRuntimeVersion } from './actions';
@@ -69,6 +69,10 @@ export function* initResources() {
     put(getLayouts.request()),
     put(getSettings.request()),
   ]);
+}
+
+export function* initSystemWindows() {
+  yield all([take([storeAllSystemWindows.success.toString(), storeAllSystemWindows.failure.toString()]), put(storeAllSystemWindows.request())]);
 }
 
 /**

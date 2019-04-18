@@ -13,6 +13,8 @@ export type PointTopLeft = fin.PointTopLeft;
 export type SystemBaseEvent = fin.SystemBaseEvent;
 export type Transition = fin.Transition;
 export type WindowBaseEvent = fin.WindowBaseEvent;
+export type WindowBoundsEvent = fin.WindowBoundsEvent;
+export type WindowGroupChangedEvent = fin.WindowGroupChangedEvent;
 export type Workspace = Workspace;
 export type WindowInfo = fin.WindowInfo;
 export type WindowDetail = fin.WindowDetail;
@@ -38,4 +40,9 @@ export interface Channel {
    * The colour that should be associated within this channel when displaying this channel in a UI
    */
   color: number;
+}
+export interface ChannelChangedPayload {
+  identity: Identity;
+  channel: Channel;
+  previousChannel?: Channel;
 }

@@ -37,7 +37,7 @@ import {
   updateManifestOverride,
 } from './actions';
 import { getApplicationIsExpanded, getApplicationManifestOverride } from './selectors';
-import { executeAutoHideBehavior, initMachineId, initManifest, initMonitorInfo, initOrgSettings, initRuntimeVersion } from './utils';
+import { executeAutoHideBehavior, initMachineId, initManifest, initMonitorInfo, initOrgSettings, initRuntimeVersion, initSystemWindows } from './utils';
 
 const APP_UUID = getOwnUuid();
 const ANIMATION_DURATION = 285;
@@ -127,6 +127,7 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
       yield put(getChannels.request());
 
       yield all([
+        call(initSystemWindows),
         call(initOrgSettings),
         call(initMachineId),
         call(initMonitorInfo),

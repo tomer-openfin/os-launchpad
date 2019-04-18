@@ -4,24 +4,33 @@ import { all, call, delay, put, select, spawn, takeEvery } from 'redux-saga/effe
 import { getContextManagerHeight } from '../../components/ContextManager';
 import { EXPANED_HEIGHT, MAIN_WIDTH, SIDE_WIDTH } from '../../components/ContextManager/ContextManager';
 import { CHANNELS_WINDOW } from '../../config/windows';
+import { Channel } from '../../types/fin';
 import { UnPromisfy } from '../../types/utils';
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { getAllChannels, getChannelMembers, GLOBAL_CHANNEL_ID, joinChannel } from '../../utils/openfinFdc3';
 import { animateWindow } from '../../utils/openfinPromises';
+import { getContextChannels } from '../selectors';
 import { getErrorFromCatch } from '../utils';
 import { addWindowToChannel, animateChannels, getChannels, removeWindowFromChannel, updateMembersById } from './actions';
-import { getChannelsActiveId, getContextChannels } from './selectors';
-import { createChannelContextWindows, generateAndBindMembersById, subscribeToChannelChanged } from './utils';
+import { getChannelsActiveId } from './selectors';
+import { ContextMembersById } from './types';
+import { createChannelContextWindows, subscribeToChannelChanged } from './utils';
 
 export function* watchGetChannelsRequest() {
   try {
-    const channels: UnPromisfy<ReturnType<typeof getAllChannels>> = yield call(getAllChannels);
+    const channels: Channel[] = yield call(getAllChannels);
     yield spawn(createChannelContextWindows, channels);
     const channelMembers: Array<UnPromisfy<ReturnType<typeof getChannelMembers>>> = yield all(channels.map(channel => call(getChannelMembers, channel.id)));
     const filteredChannelMembers = channelMembers.map(identities => identities.filter(identity => identity.uuid !== getOwnUuid()));
 
-    const membersById: UnPromisfy<ReturnType<typeof generateAndBindMembersById>> = yield call(generateAndBindMembersById, channels, filteredChannelMembers);
+    const reduceBase: ContextMembersById = {};
+    const membersById = channels.reduce((acc, next, index) => {
+      return {
+        ...acc,
+        [next.id]: filteredChannelMembers[index],
+      };
+    }, reduceBase);
     yield put(getChannels.success({ channels, membersById }));
   } catch (e) {
     const error = getErrorFromCatch(e);
@@ -33,7 +42,7 @@ export function* watchGetChannelsSuccess() {
   try {
     subscribeToChannelChanged();
 
-    yield put(animateChannels.request());
+    yield put(animateChannels.request({ animateInstant: true }));
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
