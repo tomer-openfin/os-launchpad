@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { ContextMember } from '../../redux/channels/types';
 import { Identity } from '../../types/commons';
 import { Content, Header, ItemsWrapper, Wrapper } from './ContextGroupWindows.css';
 
@@ -13,7 +12,7 @@ const ContextGroupWindowsItemWithName = withContextMemberName(ContextGroupWindow
 
 export interface Props {
   className?: string;
-  contextWindows: ContextMember[];
+  contextWindows: Identity[];
   handleDrop: (uuid: string, name: string, channelId: string) => void;
   handleRemove: (identity: Identity) => void;
   preventRender?: boolean;
@@ -32,13 +31,12 @@ const ContextGroupWindows = ({ className, contextWindows, handleRemove, handleDr
       )}
 
       <ItemsWrapper>
-        {contextWindows.map(({ appName, identity }) => {
+        {contextWindows.map(identity => {
           const handleRemoveCreator = () => handleRemove(identity);
 
           return (
             <DragWrapper dataTransferObj={{ ...identity }} key={`${identity.uuid}::${identity.name}`}>
               <ContextGroupWindowsItemWithName
-                appName={appName}
                 handleRemove={handleRemoveCreator}
                 identity={identity}
                 isPollingActive={!preventRender}

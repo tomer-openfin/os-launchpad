@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 
-import { addWindowToChannel, getChannelsActiveId, getContextWindowsByGroup, getContextWindowsCount, removeWindowFromChannel } from '../../redux/channels';
+import { addWindowToChannel, getChannelsActiveId, getContextWindowsByGroup, removeWindowFromChannel } from '../../redux/channels';
 import { State } from '../../redux/types';
 import { Identity } from '../../types/commons';
 
 import withRenderPrevention, { PreventRenderProps } from '../../hocs/withRenderPrevention';
+import { getContextWindowsCount } from '../../redux/selectors';
 import ContextWindows, { Props } from './ContextWindows';
 
 interface MapState {

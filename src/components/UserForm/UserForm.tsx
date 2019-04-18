@@ -143,7 +143,7 @@ class UserForm extends React.Component<Props, State> {
               />
             </Label>
 
-            <Group>
+            <Group index={5}>
               <Heading>Is Admin</Heading>
 
               <SvgIcon color={Color.JUPITER} imgSrc={AdminIcon} size={26} />
@@ -162,7 +162,7 @@ class UserForm extends React.Component<Props, State> {
 
           {withPasswordField && (
             <>
-              <Label index={5} label="Password" renderError={renderError(errors.tmpPassword, touched.tmpPassword)}>
+              <Label index={6} label="Password" renderError={renderError(errors.tmpPassword, touched.tmpPassword)}>
                 <Input
                   hasError={!!errors.tmpPassword && touched.tmpPassword}
                   onBlur={handleBlur}
@@ -184,7 +184,7 @@ class UserForm extends React.Component<Props, State> {
                 </PasswordIconWrapper>
               </Label>
 
-              <Checkbox checked={!!values.sendEmail} index={6} label="Send Installation Instructions" name="sendEmail" onChange={handleChange} />
+              <Checkbox checked={!!values.sendEmail} index={7} label="Send Installation Instructions" name="sendEmail" onChange={handleChange} />
             </>
           )}
         </ScrollGrid>

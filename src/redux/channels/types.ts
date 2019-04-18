@@ -29,13 +29,8 @@ export interface ContextsById {
   [id: string]: Context[];
 }
 
-export interface ContextMember {
-  appName: string;
-  identity: Identity;
-}
-
 export interface ContextMembersById {
-  [id: string]: ContextMember[];
+  [id: string]: Identity[];
 }
 
 export interface ChannelsState {

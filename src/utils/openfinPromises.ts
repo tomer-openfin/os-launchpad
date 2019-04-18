@@ -39,6 +39,7 @@ export const getSystemMachineId = getSystemPromise<string>('getMachineId');
 export const getSystemMonitorInfo = getSystemPromise<MonitorInfo>('getMonitorInfo');
 export const getSystemMousePosition = getSystemPromise<PointTopLeft>('getMousePosition');
 export const getSystemAllWindows = getSystemPromise<WindowInfo[]>('getAllWindows');
+export const removeSystemEventListener = getSystemPromise('removeEventListener');
 
 // tslint:disable-next-line:no-any
 export const getOpenFinApplicationInfo = (uuid: string) => getOpenFinApplicationPromise<any>(uuid, 'getInfo');
@@ -69,15 +70,6 @@ export const updateWindowOptions = (finWindow, options) => {
   return promisifyOpenfin(finWindow, 'updateOptions', options);
 };
 
-export const getWindowIsShowingOrGrouped = async finWindow => {
-  const [isShowing, group] = await Promise.all([promisifyOpenfin<boolean>(finWindow, 'isShowing'), promisifyOpenfin<[]>(finWindow, 'getGroup')]);
-  return isShowing || !!group.length;
-};
-
-export const getWindowGroup = (finWindow: OpenFinWindow) => {
-  return promisifyOpenfin<[]>(finWindow, 'getGroup');
-};
-
 /**
  * Get window state for windows that are showing
  */
@@ -101,7 +93,11 @@ export const getVisibleWindowStateAndBounds = async (finWindow: OpenFinWindow): 
 /**
  * Get window bounds
  */
-export const getWindowBounds = async (finWindow: OpenFinWindow): Promise<Bounds | undefined> => promisifyOpenfin(finWindow, 'getBounds');
+export const getWindowBounds = async (finWindow: OpenFinWindow): Promise<Bounds> => promisifyOpenfin(finWindow, 'getBounds');
+export const getWindowGroup = async (finWindow: OpenFinWindow): Promise<OpenFinWindow[]> => promisifyOpenfin(finWindow, 'getGroup');
+// tslint:disable-next-line:no-any
+export const getWindowInfo = async (finWindow: OpenFinWindow): Promise<any> => promisifyOpenfin(finWindow, 'getInfo');
+export const getWindowIsShowingPromise = async (finWindow: OpenFinWindow): Promise<boolean> => promisifyOpenfin(finWindow, 'isShowing');
 
 export const createAndRunFromManifest = (manifestUrl: string, id: string): Promise<string> => {
   const { fin } = window;

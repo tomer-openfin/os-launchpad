@@ -38,7 +38,7 @@ export default (state: ChannelsState = defaultState, action: ChannelsActions): C
       };
     }
     case addMemberToChannel.toString(): {
-      const { appName, channelId, identity } = action.payload;
+      const { channelId, identity } = action.payload;
       const { membersChannels, membersById } = state;
       const memberId = getUniqueWindowId(identity);
       const currentChannelId = membersChannels[memberId];
@@ -53,7 +53,7 @@ export default (state: ChannelsState = defaultState, action: ChannelsActions): C
           ...state,
           membersById: {
             ...membersById,
-            [channelId]: [...membersById[channelId], { appName, identity }],
+            [channelId]: [...membersById[channelId], identity],
           },
           membersChannels: {
             ...membersChannels,
@@ -63,7 +63,7 @@ export default (state: ChannelsState = defaultState, action: ChannelsActions): C
       }
 
       const members = membersById[currentChannelId] || [];
-      const index = members.findIndex(member => getUniqueWindowId(member.identity) === memberId);
+      const index = members.findIndex(member => getUniqueWindowId(member) === memberId);
 
       // never right now - this may mean new channel created
       if (index === -1) {
@@ -74,7 +74,7 @@ export default (state: ChannelsState = defaultState, action: ChannelsActions): C
         ...state,
         membersById: {
           ...state.membersById,
-          [channelId]: [...membersById[channelId], { appName, identity }],
+          [channelId]: [...membersById[channelId], identity],
           [currentChannelId]: [...members.slice(0, index), ...members.slice(index + 1)],
         },
         membersChannels: {
@@ -98,7 +98,7 @@ export default (state: ChannelsState = defaultState, action: ChannelsActions): C
       delete nextMembersChannels[memberId];
 
       const members = membersById[channelId];
-      const index = members.findIndex(member => getUniqueWindowId(member.identity) === memberId);
+      const index = members.findIndex(member => getUniqueWindowId(member) === memberId);
 
       return {
         ...state,
@@ -120,7 +120,7 @@ export default (state: ChannelsState = defaultState, action: ChannelsActions): C
       if (!currentChannel) {
         return state;
       }
-      const currentIndex = currentChannel.findIndex(currentMember => currentMember.identity.uuid === uuid && currentMember.identity.name === name);
+      const currentIndex = currentChannel.findIndex(currentMember => currentMember.uuid === uuid && currentMember.name === name);
       if (currentIndex === -1) {
         return state;
       }
@@ -151,7 +151,7 @@ export default (state: ChannelsState = defaultState, action: ChannelsActions): C
       if (!currentChannel) {
         return state;
       }
-      const currentIndex = currentChannel.findIndex(currentMember => currentMember.identity.uuid === uuid && currentMember.identity.name === name);
+      const currentIndex = currentChannel.findIndex(currentMember => currentMember.uuid === uuid && currentMember.name === name);
       if (currentIndex === -1) {
         return state;
       }
@@ -177,7 +177,7 @@ export default (state: ChannelsState = defaultState, action: ChannelsActions): C
         const members = membersById[channelId];
 
         members.forEach(member => {
-          const memberId = getUniqueWindowId(member.identity);
+          const memberId = getUniqueWindowId(member);
           acc[memberId] = channelId;
         });
 

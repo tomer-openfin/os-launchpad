@@ -1,13 +1,27 @@
 import { createSelector } from 'reselect';
 import { State } from '../types';
 
-import { DirectionalCoordinates, MonitorDetails } from '../../types/commons';
+import { DirectionalCoordinates, Identity, MonitorDetails } from '../../types/commons';
 import { getCoordinatesHeight, getCoordinatesWidth } from '../../utils/coordinateHelpers';
+import { getUniqueWindowId } from '../windows/utils';
 
 const getMonitorDetailsId = (monitorDetails: MonitorDetails) => monitorDetails.name || monitorDetails.deviceId;
+export const getIsSystemWindowPresent = (windowDetailsById: State['system']['windowDetailsById'], identity: Identity) => {
+  const windowDetails = windowDetailsById[getUniqueWindowId(identity)];
+  if (!windowDetails) {
+    return false;
+  }
+  return windowDetails.isGrouped || windowDetails.isShowing;
+};
 
 export const getSystem = (state: State) => state.system;
 export const getSystemMachineId = (state: State) => getSystem(state).machineId;
+export const getSystemWindowDetailsById = (state: State) => getSystem(state).windowDetailsById;
+// Is present represents a window being on the desktop
+export const getSystemWindowIsPresent = (state: State, identity: Identity) => {
+  const windowDetailsById = getSystemWindowDetailsById(state);
+  return getIsSystemWindowPresent(windowDetailsById, identity);
+};
 export const getMonitorInfo = (state: State) => getSystem(state).monitorInfo;
 export const getNormalizedMonitorDetails = createSelector(
   [getMonitorInfo],

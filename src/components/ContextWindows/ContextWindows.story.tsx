@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { number, object, withKnobs } from '@storybook/addon-knobs';
+import { number, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
@@ -26,15 +26,12 @@ storiesOf(`${CATEGORIES.COMPONENTS}ContextWindows`, module)
       contextWindows: [],
     };
     for (let i = 1; i <= numberOfWindows; i += 1) {
-      const contextWindow = object(`channel ${i}`, {
-        appName: `App Name ${i}`,
-        identity: {
-          name: `App Window ${i}`,
-          uuid: `${i}`,
-        },
-      });
+      const identity = {
+        name: `App Window ${i}`,
+        uuid: `${i}`,
+      };
 
-      redGroup.contextWindows.push(contextWindow);
+      redGroup.contextWindows.push(identity);
     }
     contextWindowsByGroup.push(redGroup);
 

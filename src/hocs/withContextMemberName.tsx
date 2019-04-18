@@ -1,6 +1,11 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+
+import { getSystemWindowIsPresent } from '../redux/system';
+import { State } from '../redux/types';
 import { Identity } from '../types/fin';
 import { Subtract } from '../types/utils';
+import { getOpenFinApplicationManifest, getWindowInfo } from '../utils/openfinPromises';
 
 const INTERVAL_MS = 1500;
 
@@ -9,12 +14,13 @@ interface NameProp {
 }
 
 interface Props {
-  appName: string;
   identity: Identity;
+  isHidden?: boolean;
   isPollingActive: boolean;
 }
 
-interface State {
+interface HocState {
+  appName: string;
   isNotDefault: boolean;
   title: string;
 }
@@ -22,20 +28,21 @@ interface State {
 type WithoutPassedProps<T> = Subtract<T, NameProp>;
 
 const withContextMemberName = <P extends NameProp>(Component: React.ComponentType<P>) =>
-  class ComponentWithContextMemberName extends React.Component<Props & WithoutPassedProps<P>, State> {
+  class ComponentWithContextMemberName extends React.Component<Props & WithoutPassedProps<P>, HocState> {
     interval?: number;
 
     state = {
+      appName: '',
       isNotDefault: false,
       title: '',
     };
 
     componentDidMount() {
-      const { isPollingActive, identity } = this.props;
+      const { isHidden, isPollingActive, identity } = this.props;
 
-      this.getAndSetTitle(identity);
+      this.getAndSetAppNameAndTitle(identity);
 
-      if (isPollingActive) {
+      if (isPollingActive && !isHidden) {
         this.setupInterval();
       }
     }
@@ -45,12 +52,12 @@ const withContextMemberName = <P extends NameProp>(Component: React.ComponentTyp
     }
 
     componentDidUpdate(prevProps: Props) {
-      if (prevProps.isPollingActive && !this.props.isPollingActive) {
+      if ((prevProps.isPollingActive && !this.props.isPollingActive) || (!prevProps.isHidden && this.props.isHidden)) {
         this.teardownInterval();
       }
 
-      if (!prevProps.isPollingActive && this.props.isPollingActive) {
-        this.getAndSetTitle(this.props.identity);
+      if ((!prevProps.isPollingActive && this.props.isPollingActive) || (prevProps.isHidden && !this.props.isHidden)) {
+        this.getAndSetAppNameAndTitle(this.props.identity);
 
         this.setupInterval();
       }
@@ -78,8 +85,8 @@ const withContextMemberName = <P extends NameProp>(Component: React.ComponentTyp
     };
 
     getName = () => {
-      const { isNotDefault, title } = this.state;
-      const { appName, identity } = this.props;
+      const { isNotDefault, appName, title } = this.state;
+      const { identity } = this.props;
 
       // Return an empty space so height of row doesn't shift from line height differences
       if (!isNotDefault) {
@@ -87,23 +94,48 @@ const withContextMemberName = <P extends NameProp>(Component: React.ComponentTyp
       }
 
       const windowName = title || identity.name;
-      return windowName ? `${windowName} / ${appName}` : appName;
+      const displayAppName = appName || identity.uuid;
+      return windowName ? `${windowName} / ${displayAppName}` : displayAppName;
     };
 
-    getAndSetTitle = (identity: Identity) => {
+    getAndSetAppNameAndTitle = async (identity: Identity) => {
       const { uuid, name } = identity;
       if (!name) {
         return;
       }
 
       const finWindow = fin.desktop.Window.wrap(uuid, name);
-      // TODO - remove any
-      // tslint:disable-next-line:no-any
-      (finWindow as any).getInfo(({ title }) => this.setState({ isNotDefault: true, title }));
+      const [manifest, info] = await Promise.all([
+        getOpenFinApplicationManifest(uuid)().catch(() => undefined),
+        getWindowInfo(finWindow).catch(() => undefined),
+      ]);
+
+      const appName = typeof manifest === 'object' && manifest && manifest.startup_app ? manifest.startup_app.name : '';
+      const title = typeof info === 'object' && info ? info.title : '';
+
+      this.setState({ appName, isNotDefault: true, title });
+    };
+
+    getAndSetTitle = async (identity: Identity) => {
+      const { uuid, name } = identity;
+      if (!name) {
+        return;
+      }
+
+      const finWindow = fin.desktop.Window.wrap(uuid, name);
+      const info = await getWindowInfo(finWindow).catch(() => undefined);
+
+      const title = typeof info === 'object' && info ? info.title : '';
+
+      this.setState({ title });
     };
 
     render() {
-      const { appName, identity, isPollingActive, ...props } = this.props;
+      const { identity, isHidden, isPollingActive, ...props } = this.props;
+
+      if (isHidden) {
+        return null;
+      }
 
       // TODO - remove any
       // tslint:disable-next-line:no-any
@@ -111,4 +143,11 @@ const withContextMemberName = <P extends NameProp>(Component: React.ComponentTyp
     }
   };
 
-export default withContextMemberName;
+const mapState = (state: State, ownProps) => {
+  const isPresent = getSystemWindowIsPresent(state, ownProps.identity);
+  return {
+    isHidden: !isPresent,
+  };
+};
+
+export default Component => connect(mapState)(withContextMemberName(Component));

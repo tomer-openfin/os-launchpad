@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 
 import { CHANNELS_WINDOW } from '../../config/windows';
-import { animateChannels, getChannelsActiveId, getContextChannels, setActiveChannelId } from '../../redux/channels';
+import { animateChannels, getChannelsActiveId, setActiveChannelId } from '../../redux/channels';
+import { getContextChannels } from '../../redux/selectors';
 import { State } from '../../redux/types';
 import { hideWindow } from '../../redux/windows';
 import { MetaWithAsyncHandlers } from '../../types/commons';
