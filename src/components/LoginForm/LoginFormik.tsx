@@ -27,7 +27,7 @@ const handleFormikSubmit = (handleSubmitValues: Props['handleSubmitValues']) => 
 };
 
 const renderForm = (className?: string) => (props: FormikProps<Values>) => {
-  const { errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values } = props;
+  const { errors, handleBlur, handleChange, handleSubmit, isSubmitting, isValid, touched, values } = props;
 
   return (
     <LoginForm
@@ -37,6 +37,7 @@ const renderForm = (className?: string) => (props: FormikProps<Values>) => {
       handleChange={handleChange}
       handleSubmit={handleSubmit}
       isSubmitting={isSubmitting}
+      isValid={isValid}
       touched={touched}
       values={values}
     />

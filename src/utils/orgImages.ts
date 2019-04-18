@@ -1,5 +1,6 @@
 import { OrgImages } from '../redux/organization/types';
 
+import * as LoginLogo from '../assets/LoginLogo.svg';
 import * as Logo from '../assets/Logo.svg';
 
 export const enum ManifestImageViewKeys {
@@ -29,6 +30,7 @@ export const orgImageData: OrgImageData = {
   [ManifestImageViewKeys.shortcut]: { title: 'App Shortcut', meta: ' 64x64' },
 };
 
+export const DEFAULT_LOGIN_LOGO = LoginLogo;
 export const DEFAULT_LOGO = Logo;
 
 export const imageDisplayName = (imageKey: OrgImageKey) => orgImageData[imageKey].title;

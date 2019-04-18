@@ -130,7 +130,7 @@ class LayoutsListItem extends React.Component<Props, State> {
 
     return (
       <>
-        <Item isDisabled={stage === Stage.Disabled || isSubmitting} key={id} onClick={this.handleRestoreClick}>
+        <Item isDefault={stage === Stage.Default} isDisabled={stage === Stage.Disabled || isSubmitting} key={id} onClick={this.handleRestoreClick}>
           {name}
         </Item>
 

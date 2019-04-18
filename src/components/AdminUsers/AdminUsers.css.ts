@@ -9,7 +9,7 @@ import { TypeStyleCanopus, TypeStyleEnif } from '../../styles/typography.css';
 import { Color } from '../../styles';
 import { ADMIN_FORMS_EASING_FUNCTION, ADMIN_FORMS_ENTER_DURATION, ADMIN_FORMS_EXIT_DURATION, ADMIN_FORMS_TRANSITION_CLASSNAMES } from '../../utils/adminForms';
 
-import { Label, LABEL_EASING_FUNCTION, LABEL_TRANSITION_DURATION } from '../FormField';
+import { LABEL_EASING_FUNCTION, LABEL_TRANSITION_DURATION, Wrapper as LabelWrapper } from '../Label';
 
 export const AddEditWrapper = styled.div`
   height: 100vh;
@@ -19,7 +19,7 @@ export const AddEditWrapper = styled.div`
   width: 100vw;
   z-index: 1;
 
-  ${Label} {
+  ${LabelWrapper} {
     transition-property: opacity, transform;
   }
 
@@ -28,7 +28,7 @@ export const AddEditWrapper = styled.div`
       transform: translate3d(100%, 0, 0);
     }
 
-    ${Label} {
+    ${LabelWrapper} {
       opacity: 0;
       transform: translate3d(0, 20px, 0);
     }
@@ -40,10 +40,10 @@ export const AddEditWrapper = styled.div`
       transition: transform ${ADMIN_FORMS_ENTER_DURATION}ms ${ADMIN_FORMS_EASING_FUNCTION};
     }
 
-    ${Label} {
+    ${LabelWrapper} {
       opacity: 1;
       transform: translate3d(0, 0, 0);
-      transition: all ${LABEL_TRANSITION_DURATION}ms ${LABEL_EASING_FUNCTION} ${ADMIN_FORMS_ENTER_DURATION}ms;
+      transition: all ${LABEL_TRANSITION_DURATION}ms ${LABEL_EASING_FUNCTION};
     }
   }
 
@@ -52,7 +52,7 @@ export const AddEditWrapper = styled.div`
       transform: translate3d(0%, 0, 0);
     }
 
-    ${Label} {
+    ${LabelWrapper} {
       opacity: 1;
       transform: translate3d(0, 0, 0);
     }

@@ -53,7 +53,7 @@ storiesOf(`${CATEGORIES.ADMIN}UserCard`, module)
       isAdmin,
       lastModified: '2018-12-19T15:28:00.147Z',
       lastName,
-      middleInitial: 'M1',
+      middleName: 'M1',
       phone: '+1234 567 5555',
       status,
       username: 'username1',

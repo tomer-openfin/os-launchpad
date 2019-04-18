@@ -44,6 +44,10 @@ export interface ManifestImages {
 export interface Manifest extends ManifestImages {
   /* tslint:disable-next-line:no-any */
   [key: string]: any;
+  startup_app: {
+    icon: string;
+    name?: string;
+  };
 }
 
 export type ManifestOverride = Partial<Manifest>;

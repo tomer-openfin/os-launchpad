@@ -6,6 +6,8 @@ import * as React from 'react';
 import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
 
+import { UserFormData } from '../../types/commons';
+import { YesNo } from '../../types/enums';
 import UserForm from './UserForm';
 import UserFormik from './UserFormik';
 import { editUserSchema, newUserSchema } from './utils';
@@ -28,28 +30,31 @@ storiesOf(`${CATEGORIES.ADMIN}UserForm`, module)
     const firstName = text('firstName', '');
     const firstNameError = text('firstNameError', '');
     const firstNameTouched = boolean('firstNameTouched', false);
+    const isSubmitting = boolean('isSubmitting', false);
+    const isValid = boolean('isValid', false);
     const lastName = text('lastName', '');
     const lastNameError = text('lastNameError', '');
     const lastNameTouched = boolean('lastNameTouched', false);
-    const middleInitial = text('middleInitial', '');
-    const middleInitialError = text('middleInitialError', '');
-    const middleInitialTouched = boolean('middleInitialTouched', false);
+    const middleName = text('middleName', '');
+    const middleNameError = text('middleNameError', '');
+    const middleNameTouched = boolean('middleNameTouched', false);
     const phone = text('phone', '');
     const phoneError = text('phoneError', '');
     const phoneTouched = boolean('phoneTouched', false);
+    const sendEmail = boolean('sendEmail', false);
     const tmpPassword = text('tmpPassword', '');
     const tmpPasswordError = text('tmpPasswordError', '');
     const tmpPasswordTouched = boolean('tmpPasswordTouched', false);
-    const isSubmitting = boolean('isSubmitting', false);
-    const isValid = boolean('isValid', false);
 
-    const values = {
+    const values: UserFormData = {
       email,
       firstName,
       id: '',
+      isAdmin: YesNo.No,
       lastName,
-      middleInitial,
+      middleName,
       phone,
+      sendEmail,
       tmpPassword,
       username: '',
     };
@@ -58,7 +63,7 @@ storiesOf(`${CATEGORIES.ADMIN}UserForm`, module)
       email: emailError,
       firstName: firstNameError,
       lastName: lastNameError,
-      middleInitial: middleInitialError,
+      middleName: middleNameError,
       phone: phoneError,
       tmpPassword: tmpPasswordError,
     };
@@ -67,7 +72,7 @@ storiesOf(`${CATEGORIES.ADMIN}UserForm`, module)
       email: emailTouched,
       firstName: firstNameTouched,
       lastName: lastNameTouched,
-      middleInitial: middleInitialTouched,
+      middleName: middleNameTouched,
       phone: phoneTouched,
       tmpPassword: tmpPasswordTouched,
     };

@@ -5,13 +5,18 @@ enum Color {
   VENUS = '#6461FF',
   EARTH = '#504CFF',
   EARTH_HOVER = '#736FFF',
+  ENCELADUS = '#6F8DB6',
+  ENCELADUS_HOVER = '#AEC4E4',
   MARS = '#DF5353',
+  MARS_HOVER = '#E77E7E',
   ASTEROID_BELT = '#3A3A3A',
   OORT_CLOUD = '#121212',
   JUPITER = '#FBC23C',
   JUPITER_HOVER = '#FCD16C',
   SATURN = '#95D154',
   SATURN_HOVER = '#AFDC7E',
+  SEDNOID = '#515151',
+  SEDNOID_HOVER = '#5c5c5c',
   URANUS = '#7BD5C1',
   URANUS_HOVER = '#BCE9DF',
   NEPTUNE = '#724CFF',
@@ -23,6 +28,7 @@ enum Color {
   SPACE_DUST = '#444444',
   VACUUM = '#000000',
   VOID = 'rgba(0,0,0,0)',
+  STAR = '#AD9EE2',
 }
 
 export default Color;

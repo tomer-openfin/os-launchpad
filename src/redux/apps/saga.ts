@@ -1,5 +1,6 @@
 import { all, call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
+import { ManifestType } from '../../components/AppForm/index';
 import ApiService from '../../services/ApiService';
 import API from '../../services/ApiService/api';
 import { ApiResponseStatus, AppStatusOrigins, AppStatusStates } from '../../types/enums';
@@ -9,6 +10,7 @@ import { bindFinAppEventHandlers } from '../../utils/finAppEventHandlerHelpers';
 import {
   closeApplication,
   createAndRunFromManifest,
+  createAndRunFromPath,
   getOpenFinApplicationChildWindows,
   getOpenFinApplicationInfo,
   getVisibleWindowStateAndBounds,
@@ -18,7 +20,7 @@ import {
 import promisifyOpenfin from '../../utils/promisifyOpenfin';
 import { getRuntimeVersion, reboundLauncher } from '../application';
 import { getErrorFromCatch } from '../utils';
-import { closeFinApp, getAppDirectoryList, openFinApp, setFinAppStatusState } from './actions';
+import { closeFinApp, externalApp, getAppDirectoryList, launchApp, openFinApp, setFinAppStatusState } from './actions';
 import { getAppStatusById } from './selectors';
 
 export function* watchCloseFinAppRequest(action: ReturnType<typeof closeFinApp.request>) {
@@ -58,11 +60,64 @@ export function* watchGetAppDirectoryListSuccess(action: ReturnType<typeof getAp
   }
 }
 
+export function* watchLaunchApp(action: ReturnType<typeof launchApp>) {
+  try {
+    const { manifestType } = action.payload;
+
+    yield put(manifestType === ManifestType.Path ? externalApp.request(action.payload) : openFinApp.request(action.payload));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.log('Unknown error saga from:', action, 'Error:', error);
+  }
+}
+
+export function* watchExternalAppRequest(action: ReturnType<typeof externalApp.request>) {
+  try {
+    const { id, manifest_url } = action.payload;
+
+    if (!manifest_url) {
+      throw new Error('No manifest url');
+    }
+
+    const uuid: UnPromisfy<ReturnType<typeof createAndRunFromPath>> = yield call(createAndRunFromPath, manifest_url);
+
+    yield put(externalApp.success({ uuid }, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    const meta = action.meta || {};
+    yield put(externalApp.failure(error, { ...meta, payload: action.payload }));
+  }
+}
+
+// TODO: Add event listener for closing native app?
+
+// export function* watchExternalAppSuccess(action: ReturnType<typeof externalApp.success>) {
+//   try {
+
+//   } catch (e) {
+//     const error = getErrorFromCatch(e);
+//     // tslint:disable-next-line:no-console
+//     console.log('Unknown error saga from:', action, 'Error:', error);
+//   }
+// }
+
+// export function* watchExternalAppFailure(action: ReturnType<typeof externalApp.failure>) {
+//   try {
+
+//   } catch (e) {
+//     const error = getErrorFromCatch(e);
+//     // tslint:disable-next-line:no-console
+//     console.log('Error in watchOpenFinAppFailure', error);
+//   }
+// }
+
 export function* watchOpenFinAppRequest(action: ReturnType<typeof openFinApp.request>) {
   try {
-    const { appUrl, id, manifest_url } = action.payload;
+    const { appUrl, id, manifest_url, manifestType } = action.payload;
 
     let manifestUrl = manifest_url;
+
     if (appUrl) {
       // TODO: All apps should be moved off of appUrl and rely on manifest
       // Remove manifest creation through appUrl when all apps have been migrated off
@@ -80,7 +135,9 @@ export function* watchOpenFinAppRequest(action: ReturnType<typeof openFinApp.req
     if (!status || status.state === AppStatusStates.Closed) {
       yield put(setFinAppStatusState({ id, statusState: AppStatusStates.Loading, origin: AppStatusOrigins.Default }));
     }
+
     const uuid: UnPromisfy<ReturnType<typeof createAndRunFromManifest>> = yield call(createAndRunFromManifest, manifestUrl, id);
+
     const info = yield call(getOpenFinApplicationInfo(uuid));
 
     yield put(
@@ -157,7 +214,7 @@ export function* watchOpenFinAppFailure(action: ReturnType<typeof openFinApp.fai
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchOpenFinAppFailure', error);
+    console.warn('Error in watchOpenFinAppFailure', error);
   }
 }
 
@@ -168,4 +225,6 @@ export function* appsSaga() {
   yield takeEvery(openFinApp.request, watchOpenFinAppRequest);
   yield takeEvery(openFinApp.success, watchOpenFinAppSuccess);
   yield takeEvery(openFinApp.failure, watchOpenFinAppFailure);
+  yield takeEvery(externalApp.request, watchExternalAppRequest);
+  yield takeEvery(launchApp, watchLaunchApp);
 }

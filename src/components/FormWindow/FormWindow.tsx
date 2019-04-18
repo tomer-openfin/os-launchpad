@@ -22,7 +22,7 @@ interface Props extends MessageResponseProps {
 const FormWindow = ({ children, handleDeleteIconClick, headingText, message, responseError, resetResponseError }: Props) => (
   <Wrapper>
     <Borders height="100%" width="100%">
-      <WindowHeader backgroundColor={Color.VACUUM}>
+      <WindowHeader backgroundColor={Color.VACUUM} label={headingText}>
         <HeadingText>{headingText}</HeadingText>
 
         {handleDeleteIconClick && <SvgIcon color={Color.MERCURY} hoverColor={Color.MARS} size={30} imgSrc={trashIcon} onClick={handleDeleteIconClick} />}

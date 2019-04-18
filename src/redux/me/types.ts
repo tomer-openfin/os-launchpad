@@ -14,7 +14,6 @@ import {
   setLauncherMonitorSettings,
   setLauncherPosition,
   setLauncherSize,
-  setMe,
   updatePassword,
 } from './actions';
 
@@ -27,6 +26,7 @@ export interface MeInfo {
   firstName: string;
   isAdmin: boolean;
   lastName: string;
+  sessionTimestamp: string | null;
 }
 
 export interface MeAuthMessagingState {
@@ -79,19 +79,13 @@ export interface LoginSuccessPayload {
   email: string;
   isAdmin: boolean;
   lastName: string;
+  sessionTimestamp: string;
 }
 
 export interface LoginWithNewPasswordPayload {
   username: string;
   newPassword: string;
   session: string;
-}
-
-export interface SetMePayload {
-  firstName: string;
-  email: string;
-  isAdmin: boolean;
-  lastName: string;
 }
 
 export interface SetAppIdsPayload {
@@ -144,4 +138,4 @@ export type MeActions =
   | ReturnType<typeof setLauncherMonitorSettings>
   | ReturnType<typeof setLauncherPosition>
   | ReturnType<typeof setLauncherSize>
-  | ReturnType<typeof setMe>;
+  | ActionsUnion<typeof updatePassword>;

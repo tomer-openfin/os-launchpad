@@ -1,22 +1,26 @@
 import * as React from 'react';
 
+import * as AdminIcon from '../../assets/Admin.svg';
 import * as passwordIcon from '../../assets/Eye.svg';
 
 import { Color } from '../../styles';
 import { renderError } from '../../utils/renderError';
 
+import { YesNo } from '../../types/enums';
+import Checkbox from '../Checkbox';
 import FormFooter from '../FormFooter';
 import Input from '../Input';
 import Label from '../Label';
 import ScrollGrid, { Form, PasswordIconWrapper } from '../Responsive';
 import SvgIcon from '../SvgIcon';
-import { StyledRowWrapper } from './UserForm.css';
+import { Group, Heading, Row, StyledLabel, StyledRadioButton, StyledRowWrapper } from './UserForm.css';
 
 interface Touched {
   email?: boolean;
   firstName?: boolean;
+  isAdmin?: boolean;
   lastName?: boolean;
-  middleInitial?: boolean;
+  middleName?: boolean;
   phone?: boolean;
   tmpPassword?: boolean;
 }
@@ -24,8 +28,9 @@ interface Touched {
 interface Errors {
   email?: string;
   firstName?: string;
+  isAdmin?: string;
   lastName?: string;
-  middleInitial?: string;
+  middleName?: string;
   phone?: string;
   tmpPassword?: string;
 }
@@ -33,11 +38,13 @@ interface Errors {
 export interface Values {
   email: string;
   firstName: string;
-  lastName: string;
-  middleInitial?: string;
-  phone: string;
-  tmpPassword?: string;
   id: string;
+  isAdmin: YesNo;
+  lastName: string;
+  middleName?: string;
+  phone: string;
+  sendEmail?: boolean;
+  tmpPassword?: string;
   username: string;
 }
 
@@ -51,6 +58,7 @@ interface Props {
   isSubmitting?: boolean;
   isValid?: boolean;
   touched: Touched;
+  sendEmail?: boolean;
   values: Values;
   withPasswordField?: boolean;
 }
@@ -76,7 +84,7 @@ class UserForm extends React.Component<Props, State> {
       <Form className={className} onSubmit={handleSubmit}>
         <ScrollGrid>
           <StyledRowWrapper secondElementWidth="55px">
-            <Label label="First Name" renderError={renderError(errors.firstName, touched.firstName)}>
+            <StyledLabel index={0} label="First Name" renderError={renderError(errors.firstName, touched.firstName)}>
               <Input
                 hasError={!!errors.firstName && touched.firstName}
                 onBlur={handleBlur}
@@ -85,20 +93,20 @@ class UserForm extends React.Component<Props, State> {
                 name="firstName"
                 placeholder="Enter first name"
               />
-            </Label>
+            </StyledLabel>
 
-            <Label label="MI" renderError={renderError(errors.middleInitial, touched.middleInitial)}>
+            <Label index={1} label="MI" renderError={renderError(errors.middleName, touched.middleName)}>
               <Input
-                hasError={!!errors.middleInitial && touched.middleInitial}
+                hasError={!!errors.middleName && touched.middleName}
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.middleInitial}
-                name="middleInitial"
+                value={values.middleName}
+                name="middleName"
               />
             </Label>
           </StyledRowWrapper>
 
-          <Label label="Last Name" renderError={renderError(errors.lastName, touched.lastName)}>
+          <Label index={2} label="Last Name" renderError={renderError(errors.lastName, touched.lastName)}>
             <Input
               hasError={!!errors.lastName && touched.lastName}
               onBlur={handleBlur}
@@ -109,7 +117,7 @@ class UserForm extends React.Component<Props, State> {
             />
           </Label>
 
-          <Label label="Email" renderError={renderError(errors.email, touched.email)}>
+          <Label index={3} label="Email" renderError={renderError(errors.email, touched.email)}>
             <Input
               hasError={!!errors.email && touched.email}
               onBlur={handleBlur}
@@ -122,44 +130,65 @@ class UserForm extends React.Component<Props, State> {
             />
           </Label>
 
-          <Label label="Phone Number" renderError={renderError(errors.phone, touched.phone)}>
-            <Input
-              hasError={!!errors.phone && touched.phone}
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.phone}
-              name="phone"
-              placeholder="Enter phone number"
-              maxLength={10}
-            />
-          </Label>
-
-          {withPasswordField && (
-            <Label label="Password" renderError={renderError(errors.tmpPassword, touched.tmpPassword)}>
+          <StyledRowWrapper secondElementWidth="93px">
+            <Label index={4} label="Phone Number" renderError={renderError(errors.phone, touched.phone)}>
               <Input
-                hasError={!!errors.tmpPassword && touched.tmpPassword}
+                hasError={!!errors.phone && touched.phone}
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.tmpPassword}
-                name="tmpPassword"
-                placeholder="Enter password"
-                type={isPasswordShown ? 'text' : 'password'}
+                value={values.phone}
+                name="phone"
+                placeholder="Enter phone number"
+                maxLength={10}
               />
-
-              <PasswordIconWrapper>
-                <SvgIcon
-                  color={isPasswordShown ? Color.URANUS : Color.COMET}
-                  hoverColor={Color.JUPITER}
-                  onClick={this.togglePasswordFieldType}
-                  imgSrc={passwordIcon}
-                  size={25}
-                />
-              </PasswordIconWrapper>
             </Label>
+
+            <Group>
+              <Heading>Is Admin</Heading>
+
+              <SvgIcon color={Color.JUPITER} imgSrc={AdminIcon} size={26} />
+
+              <Row>
+                <StyledRadioButton onChange={handleChange} checked={values.isAdmin === YesNo.Yes} name="isAdmin" value={YesNo.Yes}>
+                  Yes
+                </StyledRadioButton>
+
+                <StyledRadioButton onChange={handleChange} checked={values.isAdmin === YesNo.No} name="isAdmin" value={YesNo.No}>
+                  No
+                </StyledRadioButton>
+              </Row>
+            </Group>
+          </StyledRowWrapper>
+
+          {withPasswordField && (
+            <>
+              <Label index={5} label="Password" renderError={renderError(errors.tmpPassword, touched.tmpPassword)}>
+                <Input
+                  hasError={!!errors.tmpPassword && touched.tmpPassword}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.tmpPassword}
+                  name="tmpPassword"
+                  placeholder="Enter password"
+                  type={isPasswordShown ? 'text' : 'password'}
+                />
+
+                <PasswordIconWrapper>
+                  <SvgIcon
+                    color={isPasswordShown ? Color.URANUS : Color.COMET}
+                    hoverColor={Color.JUPITER}
+                    onClick={this.togglePasswordFieldType}
+                    imgSrc={passwordIcon}
+                    size={25}
+                  />
+                </PasswordIconWrapper>
+              </Label>
+
+              <Checkbox checked={!!values.sendEmail} index={6} label="Send Installation Instructions" name="sendEmail" onChange={handleChange} />
+            </>
           )}
         </ScrollGrid>
-
-        <FormFooter isSubmitting={isSubmitting} submitDisabled={isSubmitting || !isValid} handleCancel={handleCancel} />
+        <FormFooter isSubmitting={isSubmitting} submitDisabled={isSubmitting || !isValid} handleCancel={handleCancel} />;
       </Form>
     );
   }

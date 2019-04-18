@@ -75,6 +75,9 @@ export const getErrorFromCatch = (e): Error => (e instanceof Error ? e : new Err
 
 export function* watchAsyncFailure(action: AnyAction) {
   const { payload, meta } = action;
+  // tslint:disable-next-line:no-console
+  console.warn('watchAsyncFailure', action);
+
   if (!meta || typeof meta.onFailure !== 'function') {
     return;
   }

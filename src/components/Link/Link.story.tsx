@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { text, withKnobs } from '@storybook/addon-knobs';
+import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
@@ -15,7 +15,12 @@ storiesOf(`${CATEGORIES.UI}Link`, module)
     return <Link onClick={action('Button Click')}>{linkText}</Link>;
   })
   .add('react-router-dom Link', () => {
+    const isDisabled = boolean('isDisabled', false);
     const linkText = text('text', 'Link Text');
 
-    return <RouterLink to="#">{linkText}</RouterLink>;
+    return (
+      <RouterLink isDisabled={isDisabled} to="#">
+        {linkText}
+      </RouterLink>
+    );
   });

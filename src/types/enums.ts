@@ -15,6 +15,11 @@ export enum OnOff {
   On = 'on',
 }
 
+export enum YesNo {
+  Yes = 'yes',
+  No = 'no',
+}
+
 export enum Orientation {
   Horizontal = 'horizontal',
   Vertical = 'vertical',

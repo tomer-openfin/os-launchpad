@@ -1,6 +1,7 @@
 import { Formik, FormikActions, FormikProps } from 'formik';
 import * as React from 'react';
 
+import { YesNo } from '../../types/enums';
 import UserForm, { Values } from './UserForm';
 import { editUserSchema, newUserSchema } from './utils';
 
@@ -17,14 +18,15 @@ const defaultInitialValues: Values = {
   email: '',
   firstName: '',
   id: '',
+  isAdmin: YesNo.No,
   lastName: '',
-  middleInitial: '',
+  middleName: '',
   phone: '',
+  sendEmail: true,
   tmpPassword: '',
   username: '',
 };
 
-// todo (js): use generic for submit vals, move to utils
 const handleFormikSubmit = (handleSubmitValues: Props['handleSubmitValues']) => async (values: Values, actions: FormikActions<Values>) => {
   actions.setSubmitting(true);
 
@@ -33,8 +35,21 @@ const handleFormikSubmit = (handleSubmitValues: Props['handleSubmitValues']) => 
   actions.setSubmitting(false);
 };
 
+type SetFieldValue = <T extends keyof Values>(field: T, value: Values[T], shouldValidate?: boolean) => void;
+
+const myHandleChange = (setFieldValue: SetFieldValue, handleChange: (e: React.ChangeEvent) => void, prevValues: Values) => (e: React.ChangeEvent) => {
+  if (e.target.getAttribute('type') === 'checkbox') {
+    const name = e.target.getAttribute('name') as keyof Values;
+
+    setFieldValue(name, !prevValues[name]);
+    return;
+  }
+
+  handleChange(e);
+};
+
 const renderForm = (handleCancel: Props['handleCancel'], withPasswordField: boolean, className?: string) => (props: FormikProps<Values>) => {
-  const { errors, handleBlur, handleChange, handleSubmit, isSubmitting, isValid, touched, values } = props;
+  const { errors, handleBlur, handleChange, handleSubmit, isSubmitting, isValid, setFieldValue, touched, values } = props;
 
   return (
     <UserForm
@@ -42,7 +57,7 @@ const renderForm = (handleCancel: Props['handleCancel'], withPasswordField: bool
       errors={errors}
       handleBlur={handleBlur}
       handleCancel={handleCancel}
-      handleChange={handleChange}
+      handleChange={myHandleChange(setFieldValue, handleChange, values)}
       handleSubmit={handleSubmit}
       isSubmitting={isSubmitting}
       isValid={isValid}

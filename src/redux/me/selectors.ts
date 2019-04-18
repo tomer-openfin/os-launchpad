@@ -1,3 +1,6 @@
+import { createSelector } from 'reselect';
+
+import { hashString } from '../../utils/hashString';
 import { launcherSizeConfigs } from '../../utils/launcherSizeConfigs';
 import { State } from '../types';
 
@@ -7,7 +10,7 @@ export const getMeName = (state: State) => {
   const { firstName, lastName } = getMeState(state);
   return `${firstName} ${lastName}`;
 };
-
+export const getSessionTimestamp = (state: State) => getMeState(state).sessionTimestamp;
 export const getIsAdmin = (state: State) => getMeState(state).isAdmin;
 export const getMeEmail = (state: State) => getMeState(state).email;
 export const getMeAuthMessaging = (state: State) => getMeState(state).authMessaging;
@@ -28,3 +31,8 @@ export const getLauncherMonitorId = (state: State) => getMeSettings(state).launc
 export const getLauncherMonitorReferencePoint = (state: State) => getMeSettings(state).launcherMonitorReferencePoint;
 
 export const getIsLauncherAppFromId = (state: State, appId: string) => getAppsLauncherIds(state).indexOf(`${appId}`) !== -1;
+
+export const getSID = createSelector(
+  [getMeEmail, getSessionTimestamp],
+  (email, sessionTimestamp) => hashString(email, sessionTimestamp || ''),
+);

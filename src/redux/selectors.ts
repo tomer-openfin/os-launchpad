@@ -117,6 +117,21 @@ export const getMaxAppCount = createSelector(
     monitorDetails ? calcMaxAppCount(launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, monitorDetails) : 0,
 );
 
+export const getAppListNames = createSelector(
+  [getAppsById, getAppsLauncherIds],
+  (byId, ids) =>
+    ids.reduce(
+      (acc, id) => {
+        const app = byId[id];
+        if (!app) {
+          return acc;
+        }
+        return [...acc, app.name];
+      },
+      [] as string[],
+    ),
+);
+
 export const getAppListApps = createSelector(
   [getAppsById, getAppsLauncherIds, getMaxAppCount],
   (byId, ids, maxAppCount) => {

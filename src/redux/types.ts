@@ -3,6 +3,7 @@ import { AnyAction } from 'redux';
 import { AdminState } from './admin';
 import { ApplicationState } from './application';
 import { AppsState } from './apps';
+import { ChannelsState } from './channels/types';
 import { ContextMenuState } from './contextMenu';
 import { LayoutsState } from './layouts';
 import { MeState } from './me';
@@ -21,6 +22,7 @@ export interface State {
   admin: AdminState;
   apps: AppsState;
   application: ApplicationState;
+  channels: ChannelsState;
   contextMenu: ContextMenuState;
   layouts: LayoutsState;
   me: MeState;

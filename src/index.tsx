@@ -51,9 +51,9 @@ if (!isProduction && module.hot) {
 
 // Render the window as soon as the DOM is ready.
 document.addEventListener('DOMContentLoaded', async () => {
-  window.addEventListener('dragenter', preventDragAndDrop);
-  window.addEventListener('dragover', preventDragAndDrop);
-  window.addEventListener('drop', preventDragAndDrop);
+  document.body.addEventListener('drop', preventDragAndDrop);
+  document.body.addEventListener('dragenter', preventDragAndDrop);
+  document.body.addEventListener('dragover', preventDragAndDrop);
 
   const { fin } = window;
 

@@ -1,3 +1,3 @@
-import NewAppWindow from './NewAppWindowContainer';
+import NewAppWindowContainer from './NewAppWindowContainer';
 
-export default NewAppWindow;
+export default NewAppWindowContainer;

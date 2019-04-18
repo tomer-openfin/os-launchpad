@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 import { Color } from '../../styles';
 
-interface CommonProps {
-  backgroundColor?: string;
-}
+import { Icon } from '../SvgIcon';
 
 export const CtaWrapper = styled.div`
   -webkit-app-region: drag !important;
@@ -13,10 +11,13 @@ export const CtaWrapper = styled.div`
   display: flex;
   height: 100%;
   padding: 0 17.5px;
+
+  ${Icon} {
+    z-index: 1;
+  }
 `;
 
-export const Header = styled.div<CommonProps>`
-  -webkit-app-region: drag !important;
+export const Header = styled.div<{ backgroundColor?: string; isDragDisabled?: boolean }>`
   align-items: center;
   background-color: ${props => props.backgroundColor};
   color: ${Color.SUN};
@@ -24,8 +25,32 @@ export const Header = styled.div<CommonProps>`
   flex-shrink: 0;
   height: 60px;
   justify-content: space-between;
+  position: relative;
   text-align: center;
   width: 100%;
+
+  &:before {
+    -webkit-app-region: drag !important;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &:after {
+    -webkit-app-region: no-drag !important;
+    content: '';
+    display: block;
+    position: absolute;
+
+    ${({ isDragDisabled }) => `
+      height: ${isDragDisabled ? '100%' : '0'};
+      width: ${isDragDisabled ? '100%' : '0'};
+    `}
+  }
 `;
 
 export const Children = styled.div`

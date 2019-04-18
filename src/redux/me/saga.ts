@@ -2,12 +2,14 @@ import { Application, Window } from '@giantmachines/redux-openfin';
 import { all, call, Effect, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
-import eraseCookie from '../../utils/eraseCookie';
+import { eraseCookie } from '../../utils/cookieUtils';
 
 import { adminWindows, authWindows, defaultWindows } from '../../config/windows';
 import { ApiResponseStatus } from '../../types/enums';
 import { UnPromisfy } from '../../types/utils';
-import getAppUuid from '../../utils/getAppUuid';
+import { EventType, sendAnalytics } from '../../utils/analytics';
+import getOwnUuid from '../../utils/getOwnUuid';
+import { generateTimestamp } from '../../utils/timestampUtils';
 import { getAdminApps, getAdminUsers } from '../admin';
 import { getManifestOverride, initResources, reboundLauncher, resetResources } from '../application';
 import { unregisterAllGlobalHotkeys } from '../globalHotkeys/utils';
@@ -28,7 +30,6 @@ import {
   setLauncherMonitorSettings,
   setLauncherPosition,
   setLauncherSize,
-  setMe,
   updatePassword,
 } from './actions';
 import { defaultAuthMessaging } from './reducer';
@@ -67,6 +68,10 @@ function* watchForgotPasswordRequest(action: ReturnType<typeof forgotPassword.re
 
 function* watchLoginRequest(action: ReturnType<typeof login.request>) {
   try {
+    if (action.payload.session) {
+      sendAnalytics({ type: EventType.Login, label: 'NewUser::Request' });
+    }
+
     const response: UnPromisfy<ReturnType<typeof ApiService.login>> = action.payload.session
       ? yield call(ApiService.newPasswordLogin, { username: action.payload.username, newPassword: action.payload.password, session: action.payload.session })
       : yield call(ApiService.login, action.payload);
@@ -76,6 +81,10 @@ function* watchLoginRequest(action: ReturnType<typeof login.request>) {
       if (action.meta && action.meta.onFailure && response.meta) {
         const isError = response.meta.code !== 'NewPasswordRequired';
         yield put(setAuthMessaging({ message: response.message, isError }));
+
+        if (response.meta.session && !action.payload.session) {
+          sendAnalytics({ type: EventType.Login, label: 'NewUser' });
+        }
 
         action.meta.onFailure(error, {
           code: response.meta.code,
@@ -90,8 +99,10 @@ function* watchLoginRequest(action: ReturnType<typeof login.request>) {
       }
     }
 
+    const sessionTimestamp = generateTimestamp();
+    sendAnalytics({ type: EventType.Login, label: action.payload.session ? 'NewUser::Success' : 'User::Success', timestamp: sessionTimestamp });
     const { isAdmin, email, firstName, lastName } = response.data;
-    yield put(login.success({ isAdmin, email, firstName, lastName }, action.meta));
+    yield put(login.success({ isAdmin, email, firstName, lastName, sessionTimestamp }, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(setAuthMessaging({ message: error.message, isError: true }));
@@ -101,8 +112,6 @@ function* watchLoginRequest(action: ReturnType<typeof login.request>) {
 
 function* watchLoginSuccess(action: ReturnType<typeof login.success>) {
   try {
-    yield put(setMe(action.payload));
-
     let effects: Effect[] = [call(initResources)];
 
     if (action.payload.isAdmin) {
@@ -122,7 +131,7 @@ function* watchLoginSuccess(action: ReturnType<typeof login.success>) {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchLoginSuccess', error);
+    console.warn('Error in watchLoginSuccess', error);
   }
 }
 
@@ -130,7 +139,7 @@ function* watchLogoutRequest(action: ReturnType<typeof logout.request>) {
   try {
     yield call(closeWindowsByConfig, adminWindows);
     yield call(hideWindowsByConfig, defaultWindows);
-    yield put(Window.hideWindow({ id: getAppUuid() }));
+    yield put(Window.hideWindow({ id: getOwnUuid() }));
     yield all([call(unregisterAllGlobalHotkeys), call(resetResources)]);
 
     const response: UnPromisfy<ReturnType<typeof ApiService.logout>> = yield call(ApiService.logout);
@@ -156,7 +165,7 @@ function* watchLogoutSuccess(action: ReturnType<typeof logout.success>) {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error watchLogoutSuccess', error);
+    console.warn('Error watchLogoutSuccess', error);
   }
 }
 
@@ -166,7 +175,7 @@ function* watchLogoutFailure() {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchLogoutFailure', error);
+    console.warn('Error in watchLogoutFailure', error);
   }
 }
 
@@ -225,7 +234,7 @@ function* reboundLauncherAndSaveSettings(shouldAnimate: boolean, delay: number, 
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Error in watchUpdateLauncherApps', error);
+    console.warn('Error in watchUpdateLauncherApps', error);
   }
 }
 

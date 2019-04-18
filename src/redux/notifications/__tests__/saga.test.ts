@@ -26,8 +26,12 @@ describe('notifications/saga', () => {
   });
 
   describe('notificationsSaga', () => {
-    const iterator = cloneableGenerator(notificationsSaga)();
+    it('should contain the following sagas', () => {
+      const iterator = cloneableGenerator(notificationsSaga)();
 
-    expect(iterator.next(toggleNotificationCenter.request()).value).toEqual(takeEvery(toggleNotificationCenter.request, watchToggleNotificationCenterRequest));
+      expect(iterator.next(toggleNotificationCenter.request()).value).toEqual(
+        takeEvery(toggleNotificationCenter.request, watchToggleNotificationCenterRequest),
+      );
+    });
   });
 });

@@ -3,11 +3,12 @@ import { all, call, delay, put, race, select, take } from 'redux-saga/effects';
 
 import { APP_LAUNCHER_OVERFLOW_WINDOW } from '../../config/windows';
 import { Bounds, Transition } from '../../types/commons';
-import getAppUuid from '../../utils/getAppUuid';
 import { getFinWindowByName, getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
+import getOwnUuid from '../../utils/getOwnUuid';
 import { animateWindow, getCurrentOpenfinApplicationInfo, setWindowBoundsPromise } from '../../utils/openfinPromises';
 import { calcBoundsRelativeToLauncher, calcLauncherPosition, isBottom, isRight } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList, resetAppDirectoryList } from '../apps';
+import { getChannels } from '../channels';
 import { getLayouts, resetLayouts } from '../layouts';
 import { getAutoHide, getLauncherPosition, getLauncherSizeConfig, getSettings, resetSettings } from '../me';
 import { getOrgSettings } from '../organization';
@@ -18,10 +19,18 @@ import {
   getExpandedSystemDrawerSize,
   getMonitorDetailsDerivedByUserSettings,
 } from '../selectors';
-import { getAndSetMonitorInfo } from '../system';
+import { getAndSetMonitorInfo, getMachineId } from '../system';
 import { State } from '../types';
 import { getWindowBounds } from '../windows';
 import { getManifest, resetApplicationUi, setRuntimeVersion } from './actions';
+
+export function* initChannels() {
+  yield all([take([getChannels.success.toString(), getChannels.failure.toString()]), put(getChannels.request())]);
+}
+
+export function* initMachineId() {
+  yield all([take([getMachineId.success.toString(), getMachineId.failure.toString()]), put(getMachineId.request())]);
+}
 
 export function* initMonitorInfo() {
   yield all([take([getAndSetMonitorInfo.success.toString(), getAndSetMonitorInfo.failure.toString()]), put(getAndSetMonitorInfo.request())]);
@@ -127,7 +136,7 @@ export function* executeAutoHideBehavior(nextIsExpanded: boolean, animationDurat
   // Wait for bounds changed event or bail if changed event takes too long
   yield all([
     race([
-      take(action => action.type === Window.BOUNDS_CHANGED && action.payload && action.payload.options && action.payload.options.id === getAppUuid()),
+      take(action => action.type === Window.BOUNDS_CHANGED && action.payload && action.payload.options && action.payload.options.id === getOwnUuid()),
       delay(animationDuration + 100),
     ]),
     call(animateLauncherCollapseExpand, nextIsExpanded, animationDuration),

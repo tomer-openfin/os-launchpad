@@ -7,7 +7,7 @@ export default [
     id: 'username1',
     isAdmin: true,
     lastName: 'Doe',
-    middleInitial: 'M1',
+    middleName: 'M1',
     phone: '+1234 567 5555',
     username: 'username1',
 
@@ -23,7 +23,7 @@ export default [
     id: 'username2',
     isAdmin: false,
     lastName: 'Williams',
-    middleInitial: 'M2',
+    middleName: 'M2',
     phone: '+1234 567 5555',
     username: 'username2',
 
@@ -39,7 +39,7 @@ export default [
     id: 'username3',
     isAdmin: false,
     lastName: 'Taylor',
-    middleInitial: 'M3',
+    middleName: 'M3',
     phone: '+1234 567 5555',
     username: 'username3',
 
@@ -55,7 +55,7 @@ export default [
     id: 'username4',
     isAdmin: true,
     lastName: 'Johnson',
-    middleInitial: 'M4',
+    middleName: 'M4',
     phone: '+1234 567 5555',
     username: 'username4',
 
@@ -71,7 +71,7 @@ export default [
     id: 'username5',
     isAdmin: true,
     lastName: 'Moore',
-    middleInitial: 'M5',
+    middleName: 'M5',
     phone: '+1234 567 5555',
     username: 'username5',
 
@@ -87,7 +87,7 @@ export default [
     id: 'username6',
     isAdmin: false,
     lastName: 'Conseco',
-    middleInitial: 'M6',
+    middleName: 'M6',
     phone: '+1234 567 5555',
     username: 'username6',
 
@@ -103,7 +103,7 @@ export default [
     id: 'username7',
     isAdmin: true,
     lastName: 'Fire',
-    middleInitial: 'M7',
+    middleName: 'M7',
     phone: '+1234 567 5555',
     username: 'username7',
 
@@ -119,7 +119,7 @@ export default [
     id: 'username8',
     isAdmin: true,
     lastName: 'Knot',
-    middleInitial: 'M8',
+    middleName: 'M8',
     phone: '+1234 567 5555',
     username: 'username8',
 
@@ -135,7 +135,7 @@ export default [
     id: 'username9',
     isAdmin: false,
     lastName: 'Del Toro',
-    middleInitial: 'M9',
+    middleName: 'M9',
     phone: '+1234 567 5555',
     username: 'username9',
 
@@ -151,7 +151,7 @@ export default [
     id: 'username10',
     isAdmin: false,
     lastName: 'Martin',
-    middleInitial: 'M10',
+    middleName: 'M10',
     phone: '+1234 567 5555',
     username: 'username10',
 

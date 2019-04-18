@@ -26,10 +26,6 @@ export interface AppsState {
 }
 
 // Payloads
-export interface SetMePayload {
-  appList: App[];
-}
-
 export interface CloseFinAppPayload {
   uuid: string;
 }
@@ -45,6 +41,10 @@ export interface OpenFinAppSuccessPayload {
   id: string;
   origin: AppStatusOrigins;
   runtimeVersion: string;
+  uuid: string;
+}
+
+export interface ExternalAppSuccessPayload {
   uuid: string;
 }
 

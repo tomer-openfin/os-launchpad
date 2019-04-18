@@ -19,7 +19,12 @@ storiesOf(`${CATEGORIES.UI}WindowHeader`, module)
     const withClose = boolean('withClose', false);
 
     return (
-      <WindowHeader backgroundColor={backgroundColor} handleBack={withBack ? handleBack : undefined} handleClose={withClose ? handleClose : undefined}>
+      <WindowHeader
+        backgroundColor={backgroundColor}
+        handleBack={withBack ? handleBack : undefined}
+        handleClose={withClose ? handleClose : undefined}
+        label={title}
+      >
         {title}
       </WindowHeader>
     );
