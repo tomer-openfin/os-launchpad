@@ -74,6 +74,10 @@ export const getWindowIsShowingOrGrouped = async finWindow => {
   return isShowing || !!group.length;
 };
 
+export const getWindowGroup = (finWindow: OpenFinWindow) => {
+  return promisifyOpenfin<[]>(finWindow, 'getGroup');
+};
+
 /**
  * Get window state for windows that are showing
  */

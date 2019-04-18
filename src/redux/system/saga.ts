@@ -5,7 +5,7 @@ import { UnPromisfy } from '../../types/utils';
 import { getBoundsMoveIntoCoordinates, isBoundsInCoordinates, RESIZE_OFFSET_X, RESIZE_OFFSET_Y } from '../../utils/coordinateHelpers';
 import { unbindFinAppEventHanlders } from '../../utils/finAppEventHandlerHelpers';
 import getOwnUuid from '../../utils/getOwnUuid';
-import { getSystemAllWindows, getSystemMachineId, getSystemMonitorInfo, getWindowBounds, wrapWindow } from '../../utils/openfinPromises';
+import { getSystemAllWindows, getSystemMachineId, getSystemMonitorInfo, getWindowBounds, getWindowGroup, wrapWindow } from '../../utils/openfinPromises';
 import { reboundLauncher } from '../application';
 import { closeFinApp } from '../apps';
 import { getMonitorDetailsDerivedByUserSettings } from '../selectors';
@@ -22,6 +22,7 @@ function* watchGetAllWindowsRequest() {
     if (!monitorDetails.length || !launcherMonitorDetails) {
       throw new Error('monitorDetails and launcherMonitorDetails are required to recover windows');
     }
+    console.log('monitor deets', launcherMonitorDetails);
 
     const allWindows: WindowInfo[] = yield call(getSystemAllWindows);
     yield put(getAllWindows.success(allWindows));
@@ -30,25 +31,86 @@ function* watchGetAllWindowsRequest() {
     const NOTIFICATIONS_UUID = 'notifications-service';
     const LAYOUTS_UUID = 'layouts-service';
 
-    const result = allWindows.reduce((acc: Array<SimpleEffect<'CALL', CallEffectDescriptor>>, el: WindowInfo) => {
+    /// DRAFT
+    const memoizedGroupedWindows = {};
+    const ungroupedWindows: Array<SimpleEffect<'CALL', CallEffectDescriptor>> = [];
+    const groupedWindows: any[] = [];
+
+    for (const el of allWindows) {
       if (el.uuid === NOTIFICATIONS_UUID || el.uuid === LAYOUTS_UUID) {
-        return acc;
+        continue;
       }
 
-      const main =
-        el.mainWindow.name !== getOwnUuid()
-          ? [call(watchMoveAndResizeWindowIntoCoordinates, { ...el.mainWindow, uuid: el.uuid }, monitorDetails, launcherMonitorDetails)]
-          : [];
-
-      // move and resize all the windows together in unison
-      return [
-        ...acc,
-        ...el.childWindows.map(child => call(watchMoveAndResizeWindowIntoCoordinates, { ...child, uuid: el.uuid }, monitorDetails, launcherMonitorDetails)),
-        ...main,
+      const combinedWindows = [
+        ...(el.mainWindow.name !== getOwnUuid() ? [{ ...el.mainWindow, uuid: el.uuid, idName: `${el.uuid}::${el.mainWindow.name}` }] : []),
+        ...el.childWindows.map((childWin: WindowDetail) => ({ ...childWin, uuid: el.uuid, idName: `${el.uuid}::${childWin.name}` })),
       ];
-    }, []);
 
-    yield all(result);
+      for (const targetWindow of combinedWindows) {
+        if (memoizedGroupedWindows[targetWindow.idName]) {
+          console.log('memoized reject', targetWindow, memoizedGroupedWindows);
+          continue;
+        }
+        const wrappedWindow: OpenFinWindow = yield call(wrapWindow, { uuid: targetWindow.uuid, name: targetWindow.name });
+        const groupArr: OpenFinWindow[] = yield call(getWindowGroup, wrappedWindow);
+        console.log('group arr is', groupArr);
+        if (groupArr.length) {
+          groupArr.forEach(gw => (memoizedGroupedWindows[`${gw.uuid}::${gw.name}`] = gw));
+          // add to memoize
+          // map into calls and push onto grouped windows.
+          groupedWindows.push(groupArr);
+        }
+        ungroupedWindows.push(call(watchMoveAndResizeWindowIntoCoordinates, { ...targetWindow, uuid: el.uuid }, monitorDetails, launcherMonitorDetails));
+
+        // ungroupedWindows.push(call(watchMoveAndResizeWindowIntoCoordinates, { ...targetWindow uuid: el.uuid }, monitorDetails, launcherMonitorDetails))
+      }
+    }
+    console.log('grouped:', groupedWindows);
+    console.log('ungrouped:', ungroupedWindows);
+    console.log('memoizedGrouped:', memoizedGroupedWindows);
+    yield all(ungroupedWindows);
+    // reduce into:
+    // {
+    //   grouped: [[windows]],
+    //   ungrouped: [window, window]
+    // }
+
+    // console log the groups, move the rest as is.
+
+    /// END DRAFT
+
+    // const result = allWindows.reduce((acc: Array<SimpleEffect<'CALL', CallEffectDescriptor>>, el: WindowInfo) => {
+    //   if (el.uuid === NOTIFICATIONS_UUID || el.uuid === LAYOUTS_UUID) {
+    //     return acc;
+    //   }
+
+    //   // const combinedWindows = [...(el.mainWindow.name !== getOwnUuid() ? [el.mainWindow] : []), ...el.childWindows];
+    //   // const memoizedGroupedWindows = {};
+    //   // const ungroupedWindows = [];
+    //   // const groupedWindows = [];
+    //   // // use reduce here?
+    //   // for (const win of combinedWindows) {
+    //   //   if (memoizedGroupedWindows[win.name])
+    //   //   //check if grouped.
+    //   //     // if no, add to ungrouped
+    //   //     // if yes, memoize the window names of each grouped window.  add the group array to groupedWindows.
+
+    //   // }
+
+    //   const main =
+    //     el.mainWindow.name !== getOwnUuid()
+    //       ? [call(watchMoveAndResizeWindowIntoCoordinates, { ...el.mainWindow, uuid: el.uuid }, monitorDetails, launcherMonitorDetails)]
+    //       : [];
+
+    //   // move and resize all the windows together in unison
+    //   return [
+    //     ...acc,
+    //     ...el.childWindows.map(child => call(watchMoveAndResizeWindowIntoCoordinates, { ...child, uuid: el.uuid }, monitorDetails, launcherMonitorDetails)),
+    //     ...main,
+    //   ];
+    // }, []);
+
+    // yield all(result);
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
@@ -79,7 +141,7 @@ function* watchMoveAndResizeWindowIntoCoordinates(
   }
 
   const wrappedWindow: OpenFinWindow = yield call(wrapWindow, { uuid: targetWindow.uuid, name: targetWindow.name });
-
+  // @TODO - resize GROUP
   // resize window if necessary
   if (bounds.width > availableRect.right || bounds.height > availableRect.bottom) {
     yield call(
