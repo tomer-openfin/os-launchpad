@@ -10,7 +10,7 @@ import { Color } from '../../styles';
 import { ADMIN_FORMS_EASING_FUNCTION, ADMIN_FORMS_ENTER_DURATION, ADMIN_FORMS_EXIT_DURATION, ADMIN_FORMS_TRANSITION_CLASSNAMES } from '../../utils/adminForms';
 
 import { LABEL_EASING_FUNCTION, LABEL_TRANSITION_DURATION, Wrapper as LabelWrapper } from '../Label';
-import { Group } from '../UserForm/index';
+import { Group } from '../UserForm';
 
 export const AddEditWrapper = styled.div`
   height: 100vh;
