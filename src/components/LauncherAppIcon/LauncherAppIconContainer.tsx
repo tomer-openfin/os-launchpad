@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { closeFinApp, getAppById, getAppStatusById, launchApp, openFinApp } from '../../redux/apps';
+import { closeFinApp, getAppById, getAppStatusById, launchApp } from '../../redux/apps';
 import { getLauncherPosition, getLauncherSizeConfig, removeFromAppLauncher } from '../../redux/me';
 import { AppStatusStates } from '../../types/commons';
 import { EventType, sendAnalytics } from '../../utils/analytics';
@@ -35,7 +35,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps: Props) => {
       contextMenuOptions.unshift({ label: 'Close', action: closeFinApp.request({ uuid: status.uuid }) });
     }
     if ((!status || status.state === AppStatusStates.Closed || status.state === AppStatusStates.Warning) && app) {
-      contextMenuOptions.unshift({ label: 'Open', action: openFinApp.request(app) });
+      contextMenuOptions.unshift({ label: 'Open', action: launchApp(app) });
     }
   }
 
