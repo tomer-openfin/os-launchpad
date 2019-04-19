@@ -30,10 +30,29 @@ import {
   systemEventWindowCreated,
   systemWindowCreatedWithDetails,
 } from './actions';
-import { getMonitorDetails } from './selectors';
+import { getMonitorDetails, getSystem } from './selectors';
 import { SystemWindow } from './types';
+import { gatherWindows } from './utils';
 
 function* watchGetAllWindowsRequest() {
+  try {
+    const systemState = yield select(getSystem);
+
+    const monitorDetails: ReturnType<typeof getMonitorDetails> = yield select(getMonitorDetails);
+    const launcherMonitorDetails: ReturnType<typeof getMonitorDetailsDerivedByUserSettings> = yield select(getMonitorDetailsDerivedByUserSettings);
+    if (!monitorDetails.length || !launcherMonitorDetails) {
+      throw new Error('monitorDetails and launcherMonitorDetails are required to recover windows');
+    }
+    console.log('monitor deets', launcherMonitorDetails);
+
+    yield call(gatherWindows, monitorDetails, launcherMonitorDetails);
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(getAllWindows.failure(error));
+  }
+}
+
+function* watchGetAllWindowsRequest2() {
   try {
     // select monitor details from state
     const monitorDetails: ReturnType<typeof getMonitorDetails> = yield select(getMonitorDetails);
