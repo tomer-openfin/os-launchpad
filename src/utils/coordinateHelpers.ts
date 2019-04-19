@@ -1,9 +1,6 @@
 import { Bounds, DirectionalCoordinates, DirectionalPosition, Point, PrimaryDirectionalCoordinates, WindowDetail } from '../types/commons';
 import { isTopOrBottom } from './windowPositionHelpers';
 
-export const RESIZE_OFFSET_X = 50;
-export const RESIZE_OFFSET_Y = 50;
-
 export const getCoordinatesHeight = (coordinates: { bottom: number; top: number }): number => {
   const { bottom, top } = coordinates;
   return bottom - top;

@@ -1,4 +1,4 @@
-import { MonitorInfo, SystemBaseEvent, WindowBaseEvent, WindowBoundsEvent, WindowGroupChangedEvent, WindowInfo } from '../../types/commons';
+import { MonitorInfo, SystemBaseEvent, WindowBaseEvent, WindowBoundsEvent, WindowGroupChangedEvent } from '../../types/commons';
 import { createAction, createAsyncActionCreators } from '../utils';
 import { SystemWindow } from './types';
 

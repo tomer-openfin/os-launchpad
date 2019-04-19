@@ -149,19 +149,23 @@ const separateGroupedWindows = async (combinedWindows: CombinedWindow[]): Promis
     if (groupArr.length) {
       grouped = { ...grouped, [currentGroupId]: [win] };
 
-      const memo = groupArr.reduce((acc, el) => ({ ...acc, [getUniqueWindowId({ name: el.name, uuid: el.uuid })]: currentGroupId }), {});
+      const memoReduceBase: { [idName: string]: number } = {};
+      const memo = groupArr.reduce(
+        (acc: typeof memoReduceBase, el: OpenFinWindow) => ({ ...acc, [getUniqueWindowId({ name: el.name, uuid: el.uuid })]: currentGroupId }),
+        memoReduceBase,
+      );
+
       groupedWindowIds = { ...groupedWindowIds, ...memo };
       currentGroupId++;
       continue;
     }
     ungrouped = [...ungrouped, win];
   }
+
   return { ungrouped, grouped: Object.values(grouped) };
 };
 
 const moveWindow = async (targetWindow: CombinedWindow, monitorDetails: MonitorDetails[], launcherMonitorDetails: MonitorDetails) => {
-  const { availableRect } = launcherMonitorDetails;
-
   const bounds = {
     height: targetWindow.height,
     left: targetWindow.left,
@@ -169,13 +173,14 @@ const moveWindow = async (targetWindow: CombinedWindow, monitorDetails: MonitorD
     width: targetWindow.width,
   };
 
-  const foundMonitorDetails = monitorDetails.find(monitorDetail => isBoundsInCoordinates(bounds, monitorDetail.monitorRect));
+  const isFullyInMonitor = monitorDetails.find(monitorDetail => isBoundsInCoordinates(bounds, monitorDetail.monitorRect));
   // If window is still within one of the monitors bounds
   // No need to do anything, bail
-  if (foundMonitorDetails) {
+  if (isFullyInMonitor) {
     return;
   }
 
+  const { availableRect } = launcherMonitorDetails;
   const wrappedWindow: OpenFinWindow = await wrapWindow({ uuid: targetWindow.uuid, name: targetWindow.name });
   // resize window if necessary
   if (bounds.width > availableRect.right || bounds.height > availableRect.bottom) {
@@ -184,29 +189,27 @@ const moveWindow = async (targetWindow: CombinedWindow, monitorDetails: MonitorD
 
   const newBounds = await getWindowBounds(wrappedWindow);
 
-  // If monitor does not fall within one of the monitor bounds
-  // Recover to where the launcher is
+  // If monitor does not fall within one of the monitor bounds, recover to where the launcher is
   const { left, top } = getDestinationBoundsInCoordinates(newBounds, availableRect);
 
   wrappedWindow.moveTo(left, top);
 };
 
 const moveGroup = async (targetGroup: CombinedWindow[], monitorDetails: MonitorDetails[], launcherMonitorDetails: MonitorDetails) => {
-  const { availableRect } = launcherMonitorDetails;
-
   const groupBounds = getGroupBounds(targetGroup);
 
-  const foundMonitorDetails = monitorDetails.find(monitorDetail => isBoundsInCoordinates(groupBounds, monitorDetail.monitorRect));
+  const isFullyInMonitor = monitorDetails.find(monitorDetail => isBoundsInCoordinates(groupBounds, monitorDetail.monitorRect));
 
-  // If window is still within one of the monitors bounds
+  // If rectangle encompassing entire group is still within one of the monitors bounds
   // No need to do anything, bail
-  if (foundMonitorDetails) {
+  if (isFullyInMonitor) {
     return;
   }
 
   // // Recover to where the launcher is
   const leftmost = getLeftmostWindow(targetGroup);
 
+  const { availableRect } = launcherMonitorDetails;
   const { left: newLeft, top: newTop } = getDestinationBoundsInCoordinates(groupBounds, availableRect);
   const wrappedLeftmost: OpenFinWindow = await wrapWindow({ uuid: leftmost.uuid, name: leftmost.name });
 
@@ -215,9 +218,8 @@ const moveGroup = async (targetGroup: CombinedWindow[], monitorDetails: MonitorD
   wrappedLeftmost.moveTo(newLeft, destinationTop);
 };
 
-const getLeftmostWindow = (windowGroup: CombinedWindow[]) => {
-  return windowGroup.reduce((acc: CombinedWindow, el: CombinedWindow) => (el.left < acc.left ? el : acc), windowGroup[0]);
-};
+const getLeftmostWindow = (windowGroup: CombinedWindow[]): CombinedWindow =>
+  windowGroup.reduce((acc: CombinedWindow, el: CombinedWindow) => (el.left < acc.left ? el : acc), windowGroup[0]);
 
-const getLeftmostWindowDestinationTop = ({ leftmost, groupBounds, newTop }: { leftmost: CombinedWindow; groupBounds: Bounds; newTop: number }) =>
+const getLeftmostWindowDestinationTop = ({ leftmost, groupBounds, newTop }: { leftmost: CombinedWindow; groupBounds: Bounds; newTop: number }): number =>
   newTop + (leftmost.top - groupBounds.top);

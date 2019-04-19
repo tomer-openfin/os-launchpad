@@ -28,14 +28,12 @@ import {
   systemEventWindowCreated,
   systemWindowCreatedWithDetails,
 } from './actions';
-import { getMonitorDetails, getSystem } from './selectors';
+import { getMonitorDetails } from './selectors';
 import { SystemWindow } from './types';
 import { gatherWindows } from './utils';
 
 function* watchGatherAllWindowsRequest() {
   try {
-    const systemState = yield select(getSystem);
-
     const monitorDetails: ReturnType<typeof getMonitorDetails> = yield select(getMonitorDetails);
     const launcherMonitorDetails: ReturnType<typeof getMonitorDetailsDerivedByUserSettings> = yield select(getMonitorDetailsDerivedByUserSettings);
     if (!monitorDetails.length || !launcherMonitorDetails) {
