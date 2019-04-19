@@ -1,4 +1,4 @@
-import { Bounds, DirectionalCoordinates, DirectionalPosition, Point, PrimaryDirectionalCoordinates } from '../types/commons';
+import { Bounds, DirectionalCoordinates, DirectionalPosition, Point, PrimaryDirectionalCoordinates, WindowDetail } from '../types/commons';
 import { isTopOrBottom } from './windowPositionHelpers';
 
 export const RESIZE_OFFSET_X = 50;
@@ -88,7 +88,7 @@ export const getBoundsCenterInCoordinates = (bounds: Bounds, coordinates: Direct
   return { left: x - xDelta, top: y - yDelta };
 };
 
-export const getBoundsMoveIntoCoordinates = (
+export const getDestinationBoundsInCoordinates = (
   bounds: Bounds,
   coordinates: DirectionalCoordinates,
   offsetX: number = RESIZE_OFFSET_X,
@@ -120,4 +120,22 @@ export const getBoundsMoveIntoCoordinates = (
   }
 
   return { left: newLeft, top: newTop };
+};
+
+export const getGroupBounds = (windows: WindowDetail[]) => {
+  const left = Math.min(...windows.map(win => win.left));
+  const top = Math.min(...windows.map(win => win.top));
+  const right = Math.max(...windows.map(win => win.right));
+  const bottom = Math.max(...windows.map(win => win.bottom));
+  const width = right - left;
+  const height = bottom - top;
+
+  return {
+    bottom,
+    height,
+    left,
+    right,
+    top,
+    width,
+  };
 };

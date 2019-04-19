@@ -1,9 +1,8 @@
 import { Action, Store } from 'redux';
 
-import { access } from 'fs';
+import { Bounds } from '../../types/commons';
 import { MonitorDetails, OpenFinWindow, WindowDetail, WindowInfo } from '../../types/fin';
-import { UnPromisfy } from '../../types/utils';
-import { getBoundsMoveIntoCoordinates, isBoundsInCoordinates, RESIZE_OFFSET_X, RESIZE_OFFSET_Y } from '../../utils/coordinateHelpers';
+import { getDestinationBoundsInCoordinates, getGroupBounds, isBoundsInCoordinates, RESIZE_OFFSET_X, RESIZE_OFFSET_Y } from '../../utils/coordinateHelpers';
 import getOwnUuid from '../../utils/getOwnUuid';
 import {
   addSystemEventListener,
@@ -13,7 +12,6 @@ import {
   removeSystemEventListener,
   wrapWindow,
 } from '../../utils/openfinPromises';
-import { State } from '../types';
 import { getUniqueWindowId } from '../windows/utils';
 import {
   setMonitorInfo,
@@ -89,17 +87,23 @@ export const filterWindowFromGather = (uuid: string) => {
 
 export const gatherWindows = async (monitorDetails: MonitorDetails[], launcherMonitorDetails: MonitorDetails) => {
   // TODO - move monitor details login here.
+
   const allWindows: WindowInfo[] = await getSystemAllWindows();
   const combinedWindows = combineMainChildWindows(allWindows);
 
   const { ungrouped, grouped } = await separateGroupedWindows(combinedWindows);
 
-  console.log('sort result', grouped, ungrouped);
+  if (ungrouped.length) {
+    ungrouped.forEach((win: CombinedWindow) => {
+      moveWindow(win, monitorDetails, launcherMonitorDetails);
+    });
+  }
 
-  ungrouped.forEach((win: CombinedWindow) => {
-    moveUngroupedWindow(win, monitorDetails, launcherMonitorDetails);
-  });
-  // write move grouped windows logic
+  if (grouped.length) {
+    grouped.forEach((group: CombinedWindow[]) => {
+      moveGroup(group, monitorDetails, launcherMonitorDetails);
+    });
+  }
 };
 
 type CombinedWindow = WindowDetail & { uuid: string; idName: string };
@@ -127,8 +131,8 @@ const combineMainChildWindows = (allwindows: WindowInfo[]): CombinedWindow[] => 
   );
 };
 
-const separateGroupedWindows = async (combinedWindows: CombinedWindow[]): Promise<{ grouped: CombinedWindow[]; ungrouped: CombinedWindow[] }> => {
-  const ungrouped: CombinedWindow[] = [];
+const separateGroupedWindows = async (combinedWindows: CombinedWindow[]): Promise<{ grouped: CombinedWindow[][]; ungrouped: CombinedWindow[] }> => {
+  let ungrouped: CombinedWindow[] = [];
   let grouped = {};
   let groupedWindowIds = {};
   let currentGroupId = 1;
@@ -150,12 +154,12 @@ const separateGroupedWindows = async (combinedWindows: CombinedWindow[]): Promis
       currentGroupId++;
       continue;
     }
-    ungrouped.push(win);
+    ungrouped = [...ungrouped, win];
   }
   return { ungrouped, grouped: Object.values(grouped) };
 };
 
-const moveUngroupedWindow = async (targetWindow: CombinedWindow, monitorDetails: MonitorDetails[], launcherMonitorDetails: MonitorDetails) => {
+const moveWindow = async (targetWindow: CombinedWindow, monitorDetails: MonitorDetails[], launcherMonitorDetails: MonitorDetails) => {
   const { availableRect } = launcherMonitorDetails;
 
   const bounds = {
@@ -168,7 +172,6 @@ const moveUngroupedWindow = async (targetWindow: CombinedWindow, monitorDetails:
   const foundMonitorDetails = monitorDetails.find(monitorDetail => isBoundsInCoordinates(bounds, monitorDetail.monitorRect));
   // If window is still within one of the monitors bounds
   // No need to do anything, bail
-  console.log('here');
   if (foundMonitorDetails) {
     return;
   }
@@ -187,7 +190,38 @@ const moveUngroupedWindow = async (targetWindow: CombinedWindow, monitorDetails:
 
   // If monitor does not fall within one of the monitor bounds
   // Recover to where the launcher is
-  const { left, top } = getBoundsMoveIntoCoordinates(newBounds, availableRect);
+  const { left, top } = getDestinationBoundsInCoordinates(newBounds, availableRect);
 
   wrappedWindow.moveTo(left, top);
 };
+
+const moveGroup = async (targetGroup: CombinedWindow[], monitorDetails: MonitorDetails[], launcherMonitorDetails: MonitorDetails) => {
+  const { availableRect } = launcherMonitorDetails;
+
+  const groupBounds = getGroupBounds(targetGroup);
+
+  const foundMonitorDetails = monitorDetails.find(monitorDetail => isBoundsInCoordinates(groupBounds, monitorDetail.monitorRect));
+
+  // If window is still within one of the monitors bounds
+  // No need to do anything, bail
+  if (foundMonitorDetails) {
+    return;
+  }
+
+  // // Recover to where the launcher is
+  const leftmost = getLeftmostWindow(targetGroup);
+
+  const { left: newLeft, top: newTop } = getDestinationBoundsInCoordinates(groupBounds, availableRect);
+  const wrappedLeftmost: OpenFinWindow = await wrapWindow({ uuid: leftmost.uuid, name: leftmost.name });
+
+  const destinationTop = getLeftmostWindowDestinationTop({ leftmost, groupBounds, newTop });
+
+  wrappedLeftmost.moveTo(newLeft, destinationTop);
+};
+
+const getLeftmostWindow = (windowGroup: CombinedWindow[]) => {
+  return windowGroup.reduce((acc: CombinedWindow, el: CombinedWindow) => (el.left < acc.left ? el : acc), windowGroup[0]);
+};
+
+const getLeftmostWindowDestinationTop = ({ leftmost, groupBounds, newTop }: { leftmost: CombinedWindow; groupBounds: Bounds; newTop: number }) =>
+  newTop + (leftmost.top - groupBounds.top);

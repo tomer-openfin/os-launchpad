@@ -2,7 +2,7 @@ import { all, call, CallEffectDescriptor, put, select, SimpleEffect, takeEvery, 
 
 import { MonitorDetails, OpenFinWindow, WindowDetail, WindowInfo } from '../../types/fin';
 import { UnPromisfy } from '../../types/utils';
-import { getBoundsMoveIntoCoordinates, isBoundsInCoordinates, RESIZE_OFFSET_X, RESIZE_OFFSET_Y } from '../../utils/coordinateHelpers';
+import { getDestinationBoundsInCoordinates, isBoundsInCoordinates, RESIZE_OFFSET_X, RESIZE_OFFSET_Y } from '../../utils/coordinateHelpers';
 import { unbindFinAppEventHanlders } from '../../utils/finAppEventHandlerHelpers';
 import getOwnUuid from '../../utils/getOwnUuid';
 import {
