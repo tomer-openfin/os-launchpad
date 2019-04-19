@@ -18,7 +18,7 @@ import { getMonitorDetailsDerivedByUserSettings } from '../selectors';
 import { getErrorFromCatch } from '../utils';
 import { recoverLostWindows } from '../windows';
 import {
-  getAllWindows,
+  gatherAllWindows,
   getAndSetMonitorInfo,
   getMachineId,
   setMonitorInfo,
@@ -32,7 +32,7 @@ import { getMonitorDetails, getSystem } from './selectors';
 import { SystemWindow } from './types';
 import { gatherWindows } from './utils';
 
-function* watchGetAllWindowsRequest() {
+function* watchGatherAllWindowsRequest() {
   try {
     const systemState = yield select(getSystem);
 
@@ -41,12 +41,11 @@ function* watchGetAllWindowsRequest() {
     if (!monitorDetails.length || !launcherMonitorDetails) {
       throw new Error('monitorDetails and launcherMonitorDetails are required to recover windows');
     }
-    console.log('monitor deets', launcherMonitorDetails);
 
     yield call(gatherWindows, monitorDetails, launcherMonitorDetails);
   } catch (e) {
     const error = getErrorFromCatch(e);
-    yield put(getAllWindows.failure(error));
+    yield put(gatherAllWindows.failure(error));
   }
 }
 
@@ -193,6 +192,6 @@ export function* systemSaga() {
   yield takeEvery(systemEventApplicationCrashed, watchSystemEventApplicationCrashed);
   // yield takeEvery(SYSTEM_EVENT_APPLICATION_STARTED, watchSystemEventApplicationStarted);
   yield takeEvery(systemEventWindowCreated, watchSystemEventWindowCreated);
-  yield takeLatest(getAllWindows.request, watchGetAllWindowsRequest);
+  yield takeLatest(gatherAllWindows.request, watchGatherAllWindowsRequest);
   yield takeLatest(storeAllSystemWindows.request, watchStoreAllSystemWindows);
 }

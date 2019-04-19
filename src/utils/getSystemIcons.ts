@@ -13,7 +13,7 @@ import * as supportIcon from '../assets/Support.svg';
 import windowsConfig from '../config/windows';
 
 import { toggleNotificationCenter } from '../redux/notifications';
-import { getAllWindows } from '../redux/system';
+import { gatherAllWindows } from '../redux/system';
 import { launchWindow, toggleWindow } from '../redux/windows';
 import Color from '../styles/color';
 
@@ -71,7 +71,7 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       title: SETTINGS_KEY,
     },
     {
-      action: getAllWindows.request(),
+      action: gatherAllWindows.request(),
       color: Color.ENCELADUS,
       hasExtendedWindow: false,
       hoverColor: Color.ENCELADUS_HOVER,

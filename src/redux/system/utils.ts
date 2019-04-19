@@ -2,7 +2,7 @@ import { Action, Store } from 'redux';
 
 import { Bounds } from '../../types/commons';
 import { MonitorDetails, OpenFinWindow, WindowDetail, WindowInfo } from '../../types/fin';
-import { getDestinationBoundsInCoordinates, getGroupBounds, isBoundsInCoordinates, RESIZE_OFFSET_X, RESIZE_OFFSET_Y } from '../../utils/coordinateHelpers';
+import { getDestinationBoundsInCoordinates, getGroupBounds, isBoundsInCoordinates } from '../../utils/coordinateHelpers';
 import getOwnUuid from '../../utils/getOwnUuid';
 import {
   addSystemEventListener,
@@ -25,8 +25,6 @@ import {
   systemEventWindowHidden,
   systemEventWindowShown,
 } from './actions';
-import { getMonitorDetails } from './selectors';
-import { SystemWindowBounds, SystemWindowDetails } from './types';
 
 type Fin = typeof fin;
 
@@ -86,7 +84,9 @@ export const filterWindowFromGather = (uuid: string) => {
 };
 
 export const gatherWindows = async (monitorDetails: MonitorDetails[], launcherMonitorDetails: MonitorDetails) => {
-  // TODO - move monitor details login here.
+  if (!monitorDetails || !launcherMonitorDetails) {
+    throw new Error('monitorDetails and launcherMonitorDetails are required to recover windows');
+  }
 
   const allWindows: WindowInfo[] = await getSystemAllWindows();
   const combinedWindows = combineMainChildWindows(allWindows);
