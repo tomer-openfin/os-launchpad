@@ -91,8 +91,8 @@ export const getBoundsCenterInCoordinates = (bounds: Bounds, coordinates: Direct
 export const getDestinationBoundsInCoordinates = (
   bounds: Bounds,
   coordinates: DirectionalCoordinates,
-  offsetX: number = RESIZE_OFFSET_X,
-  offsetY: number = RESIZE_OFFSET_Y,
+  offsetX: number = 0,
+  offsetY: number = 0,
 ): PrimaryDirectionalCoordinates => {
   let newTop = bounds.top;
   let newLeft = bounds.left;

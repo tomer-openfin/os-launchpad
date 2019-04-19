@@ -179,11 +179,7 @@ const moveWindow = async (targetWindow: CombinedWindow, monitorDetails: MonitorD
   const wrappedWindow: OpenFinWindow = await wrapWindow({ uuid: targetWindow.uuid, name: targetWindow.name });
   // resize window if necessary
   if (bounds.width > availableRect.right || bounds.height > availableRect.bottom) {
-    await wrappedWindow.resizeTo(
-      Math.min(bounds.width, availableRect.right - RESIZE_OFFSET_X),
-      Math.min(bounds.height, availableRect.bottom - RESIZE_OFFSET_Y),
-      'top-left',
-    );
+    await wrappedWindow.resizeTo(Math.min(bounds.width, availableRect.right), Math.min(bounds.height, availableRect.bottom), 'top-left');
   }
 
   const newBounds = await getWindowBounds(wrappedWindow);
