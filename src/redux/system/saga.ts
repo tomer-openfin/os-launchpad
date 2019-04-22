@@ -41,6 +41,7 @@ function* watchGatherAllWindowsRequest() {
     }
 
     yield call(gatherWindows, monitorDetails, launcherMonitorDetails);
+    yield put(gatherAllWindows.success());
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(gatherAllWindows.failure(error));

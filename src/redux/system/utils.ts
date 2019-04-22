@@ -80,7 +80,8 @@ export const setupSystemHandlers = (fin?: Fin, store?: Store) => {
 export const filterWindowFromGather = (uuid: string) => {
   const NOTIFICATIONS_UUID = 'notifications-service';
   const LAYOUTS_UUID = 'layouts-service';
-  return uuid === NOTIFICATIONS_UUID || uuid === LAYOUTS_UUID;
+  const FDC3_UUID = 'fdc3-service"';
+  return uuid === NOTIFICATIONS_UUID || uuid === LAYOUTS_UUID || uuid === FDC3_UUID;
 };
 
 export const gatherWindows = async (monitorDetails: MonitorDetails[], launcherMonitorDetails: MonitorDetails) => {
@@ -108,16 +109,12 @@ export const gatherWindows = async (monitorDetails: MonitorDetails[], launcherMo
 
 type CombinedWindow = WindowDetail & { uuid: string; idName: string };
 
-const combineMainChildWindows = (allwindows: WindowInfo[]): CombinedWindow[] => {
-  return allwindows.reduce(
+const combineMainChildWindows = (allWindows: WindowInfo[]): CombinedWindow[] => {
+  return allWindows.reduce(
     (acc: CombinedWindow[], el: WindowInfo) => {
       const { mainWindow, childWindows, uuid } = el;
 
-      // filter out service windows and internal windows
-      const NOTIFICATIONS_UUID = 'notifications-service';
-      const LAYOUTS_UUID = 'layouts-service';
-      const FDC3_UUID = 'fdc3-service"';
-      if (uuid === NOTIFICATIONS_UUID || uuid === LAYOUTS_UUID || uuid === FDC3_UUID) {
+      if (filterWindowFromGather(uuid)) {
         return acc;
       }
 
