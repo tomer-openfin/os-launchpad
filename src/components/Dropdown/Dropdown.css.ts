@@ -12,8 +12,8 @@ export const StyledSelect = styled(Select)`
     border-radius: 0;
     border: none;
     min-height: 0;
-    padding-bottom: 3px;
-    padding-top: 3px;
+    padding-bottom: 6px;
+    padding-top: 6px;
 
     &--is-focused {
       box-shadow: none;
@@ -23,8 +23,13 @@ export const StyledSelect = styled(Select)`
       border: none;
     }
   }
+
   & .react-select__single-value {
     color: ${Color.SUN};
+  }
+
+  & .react-select__value-container {
+    padding: 0 5px;
   }
 
   & .react-select__menu-list {
@@ -56,4 +61,8 @@ export const StyledSelect = styled(Select)`
       background-color: ${Color.SEDNOID_HOVER};
     }
   }
+`;
+
+export const IndicatorWrapper = styled.div`
+  padding-right: 5px;
 `;
