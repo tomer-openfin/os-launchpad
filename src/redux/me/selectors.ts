@@ -23,12 +23,12 @@ export const getIsLoggedIn = (state: State) => {
 };
 
 export const getAppsLauncherIds = (state: State) => getMeSettings(state).appIds;
-export const getAutoHide = (state: State) => getMeSettings(state).autoHide;
 export const getLauncherPosition = (state: State) => getMeSettings(state).launcherPosition;
 export const getLauncherSize = (state: State) => getMeSettings(state).launcherSize;
 export const getLauncherSizeConfig = (state: State) => launcherSizeConfigs[getLauncherSize(state)];
 export const getLauncherMonitorId = (state: State) => getMeSettings(state).launcherMonitorId;
 export const getLauncherMonitorReferencePoint = (state: State) => getMeSettings(state).launcherMonitorReferencePoint;
+export const getSystemTrayEnabled = (state: State) => getMeSettings(state).systemTrayEnabled;
 
 export const getIsLauncherAppFromId = (state: State, appId: string) => getAppsLauncherIds(state).indexOf(`${appId}`) !== -1;
 

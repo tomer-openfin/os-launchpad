@@ -34,7 +34,7 @@ const AppCard = ({ app, isLoading = defaultProps.isLoading, ctas, launchApp }: P
           {app.title}
         </AppName>
 
-        <AppDescription>{app.description}</AppDescription>
+        <AppDescription title={`${app.description}`}>{app.description}</AppDescription>
       </InfoWrapper>
 
       <CTAWrapper>{ctas}</CTAWrapper>

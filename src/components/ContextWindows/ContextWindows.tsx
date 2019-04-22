@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { ContextMember } from '../../redux/channels/types';
 import { Identity } from '../../types/commons';
 import { Content, Header, ItemsWrapper, StyledContextManagerEmptyState, Wrapper } from './ContextWindows.css';
 
@@ -19,7 +18,7 @@ export interface ChannelIdentity {
 
 export interface ContextWindowsGroup {
   channel: ChannelIdentity;
-  contextWindows: ContextMember[];
+  contextWindows: Identity[];
 }
 
 export interface Props {
@@ -45,13 +44,12 @@ const ContextWindows = ({ contextWindowsByGroup, handleAdd, isEmpty, handleDrop,
 
       <ItemsWrapper>
         {contextWindowsByGroup.map(({ channel, contextWindows }) => {
-          return contextWindows.map(({ appName, identity }) => {
+          return contextWindows.map(identity => {
             const handleClickAdd = () => handleAdd(identity, channel.id);
 
             return (
               <DragWrapper key={`${identity.uuid}::${identity.name}`} dataTransferObj={{ ...identity, channelId: channel.id }}>
                 <ContextWindowsItemWithName
-                  appName={appName}
                   color={channel.isGlobal ? '' : channel.color}
                   colorTitle={channel.isGlobal ? '' : channel.name}
                   handleAdd={handleClickAdd}

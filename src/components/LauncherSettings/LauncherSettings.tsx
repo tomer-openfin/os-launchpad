@@ -6,30 +6,30 @@ import { Cta, Group, Heading, Row, StyledRadioButton, Wrapper } from './Launcher
 
 import DirectionControls from '../DirectionControls';
 
-const AUTO_HIDE_NAME = 'autohide-onoff';
+const SYSTEM_TRAY_ENABLED_NAME = 'systemTrayEnabled-onoff';
 const LAUNCHER_SIZE_NAME = 'launcherSize-options';
 
 interface Props {
-  autoHide: boolean;
   isChangeLauncherMonitorDisabled?: boolean;
   launcherSize: LauncherSize;
   launcherPosition: DirectionalPosition;
-  setAutoHide: (autoHide: boolean) => void;
+  setSystemTrayEnabled: (systemTrayEnabled: boolean) => void;
   setLauncherPosition: (launcherPosition: DirectionalPosition) => void;
   setLauncherSize: (launcherSize: LauncherSize) => void;
+  systemTrayEnabled: boolean;
 }
 
 const LauncherSettings = ({
-  autoHide,
   isChangeLauncherMonitorDisabled,
   launcherSize,
   launcherPosition,
-  setAutoHide,
+  setSystemTrayEnabled,
   setLauncherPosition,
   setLauncherSize,
+  systemTrayEnabled,
 }: Props) => {
-  const handleAutoHide = (e: React.SyntheticEvent<HTMLInputElement>) => {
-    setAutoHide(e.currentTarget.value === OnOff.On);
+  const handleChangeSystemTray = (e: React.SyntheticEvent<HTMLInputElement>) => {
+    setSystemTrayEnabled(e.currentTarget.value === OnOff.On);
   };
   const handleLauncherSize = (e: React.SyntheticEvent<HTMLInputElement>) => {
     setLauncherSize(e.currentTarget.value as LauncherSize);
@@ -38,14 +38,14 @@ const LauncherSettings = ({
   return (
     <Wrapper>
       <Group>
-        <Heading>Auto-Hide</Heading>
+        <Heading>Enable "Send to System Tray"</Heading>
 
         <Row>
-          <StyledRadioButton onChange={handleAutoHide} checked={!autoHide} name={AUTO_HIDE_NAME} value={OnOff.Off}>
+          <StyledRadioButton onChange={handleChangeSystemTray} checked={!systemTrayEnabled} name={SYSTEM_TRAY_ENABLED_NAME} value={OnOff.Off}>
             Off
           </StyledRadioButton>
 
-          <StyledRadioButton onChange={handleAutoHide} checked={autoHide} name={AUTO_HIDE_NAME} value={OnOff.On}>
+          <StyledRadioButton onChange={handleChangeSystemTray} checked={systemTrayEnabled} name={SYSTEM_TRAY_ENABLED_NAME} value={OnOff.On}>
             On
           </StyledRadioButton>
         </Row>

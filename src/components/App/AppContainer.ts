@@ -2,15 +2,15 @@ import { connect } from 'react-redux';
 import { Action } from 'redux';
 
 import { getDrawerIsExpanded, setIsDrawerExpanded } from '../../redux/application';
-import { getLauncherPosition, getLauncherSizeConfig } from '../../redux/me';
+import { getLauncherPosition, getLauncherSizeConfig, getSystemTrayEnabled } from '../../redux/me';
 import { getCollapsedSystemDrawerSize } from '../../redux/selectors';
 import { State } from '../../redux/types';
-import withAutoHideApp from './withAutoHideApp';
 
 import App from './App';
 
 const mapState = (state: State) => ({
   collapsedSystemDrawerSize: getCollapsedSystemDrawerSize(state),
+  hasSystemTrayEnabled: getSystemTrayEnabled(state),
   isDrawerExpanded: getDrawerIsExpanded(state),
   launcherPosition: getLauncherPosition(state),
   launcherSizeConfig: getLauncherSizeConfig(state),
@@ -27,10 +27,8 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => ({
   toggleDrawer: () => dispatchProps.toggleDrawer(!stateProps.isDrawerExpanded),
 });
 
-export default withAutoHideApp(
-  connect(
-    mapState,
-    mapDispatch,
-    mergeProps,
-  )(App),
-);
+export default connect(
+  mapState,
+  mapDispatch,
+  mergeProps,
+)(App);

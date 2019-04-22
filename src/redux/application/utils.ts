@@ -1,28 +1,28 @@
 import { Window } from '@giantmachines/redux-openfin';
-import { all, call, delay, put, race, select, take } from 'redux-saga/effects';
+import { all, call, put, select, take } from 'redux-saga/effects';
 
-import { APP_LAUNCHER_OVERFLOW_WINDOW } from '../../config/windows';
-import { Bounds, Transition } from '../../types/commons';
-import { getFinWindowByName, getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
+import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGOUT_WINDOW } from '../../config/windows';
+import { Bounds } from '../../types/commons';
+import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
 import getOwnUuid from '../../utils/getOwnUuid';
-import { animateWindow, getCurrentOpenfinApplicationInfo, setWindowBoundsPromise } from '../../utils/openfinPromises';
-import { calcBoundsRelativeToLauncher, calcLauncherPosition, isBottom, isRight } from '../../utils/windowPositionHelpers';
+import { getCurrentOpenfinApplicationInfo, setWindowBoundsPromise } from '../../utils/openfinPromises';
+import { calcBoundsRelativeToLauncher } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList, resetAppDirectoryList } from '../apps';
 import { getChannels } from '../channels';
 import { getLayouts, resetLayouts } from '../layouts';
-import { getAutoHide, getLauncherPosition, getLauncherSizeConfig, getSettings, resetSettings } from '../me';
+import { getLauncherPosition, getLauncherSizeConfig, getSettings, resetSettings } from '../me';
 import { getOrgSettings } from '../organization';
-import {
-  getAppListDimensions,
-  getAppsLauncherAppList,
-  getCollapsedSystemDrawerSize,
-  getExpandedSystemDrawerSize,
-  getMonitorDetailsDerivedByUserSettings,
-} from '../selectors';
-import { getAndSetMonitorInfo, getMachineId } from '../system';
-import { State } from '../types';
+import { getAppListDimensions, getExpandedSystemDrawerSize } from '../selectors';
+import { getAndSetMonitorInfo, getMachineId, storeAllSystemWindows } from '../system';
 import { getWindowBounds } from '../windows';
 import { getManifest, resetApplicationUi, setRuntimeVersion } from './actions';
+
+export function* hideLauncherAndAttachments() {
+  yield put(Window.hideWindow({ id: getOwnUuid() }));
+  yield put(Window.hideWindow({ id: APP_LAUNCHER_OVERFLOW_WINDOW }));
+  yield put(Window.hideWindow({ id: LAYOUTS_WINDOW }));
+  yield put(Window.hideWindow({ id: LOGOUT_WINDOW }));
+}
 
 export function* initChannels() {
   yield all([take([getChannels.success.toString(), getChannels.failure.toString()]), put(getChannels.request())]);
@@ -71,79 +71,15 @@ export function* initResources() {
   ]);
 }
 
+export function* initSystemWindows() {
+  yield all([take([storeAllSystemWindows.success.toString(), storeAllSystemWindows.failure.toString()]), put(storeAllSystemWindows.request())]);
+}
+
 /**
  * Reset resources gathered in initResources to their default state.
  */
 export function* resetResources() {
   yield all([put(resetApplicationUi()), put(resetAppDirectoryList()), put(resetLayouts()), put(resetSettings())]);
-}
-
-export function* animateLauncherCollapseExpand(isExpanded: State['application']['isExpanded'], duration: number) {
-  const launcherFinWindow = yield call(getLauncherFinWindow);
-  if (!launcherFinWindow) {
-    return;
-  }
-
-  const [appList, monitorDetails, launcherPosition, launcherSizeConfig, autoHide, collapsedSystemDrawerSize, expandedSystemDrawerSize] = yield all([
-    select(getAppsLauncherAppList),
-    select(getMonitorDetailsDerivedByUserSettings),
-    select(getLauncherPosition),
-    select(getLauncherSizeConfig),
-    select(getAutoHide),
-    select(getCollapsedSystemDrawerSize),
-    select(getExpandedSystemDrawerSize),
-  ]);
-  const { height, width, top, left } = calcLauncherPosition(
-    appList.length,
-    monitorDetails,
-    launcherPosition,
-    launcherSizeConfig,
-    autoHide,
-    isExpanded,
-    collapsedSystemDrawerSize,
-    expandedSystemDrawerSize,
-  );
-  const transitions: Transition = {
-    size: {
-      duration,
-      height,
-      relative: false,
-      width,
-    },
-  };
-  if (isBottom(launcherPosition)) {
-    transitions.position = {
-      duration,
-      left,
-      relative: false,
-      top,
-    };
-  } else if (isRight(launcherPosition)) {
-    transitions.position = {
-      duration,
-      left,
-      relative: false,
-      top,
-    };
-  }
-
-  yield call(animateWindow, launcherFinWindow, transitions, {
-    interrupt: false,
-  });
-}
-
-export function* executeAutoHideBehavior(nextIsExpanded: boolean, animationDuration: number) {
-  // Wait for bounds changed event or bail if changed event takes too long
-  yield all([
-    race([
-      take(action => action.type === Window.BOUNDS_CHANGED && action.payload && action.payload.options && action.payload.options.id === getOwnUuid()),
-      delay(animationDuration + 100),
-    ]),
-    call(animateLauncherCollapseExpand, nextIsExpanded, animationDuration),
-  ]);
-
-  // Added delay so user cannot trigger a collapse right after expand
-  yield delay(50);
 }
 
 /**

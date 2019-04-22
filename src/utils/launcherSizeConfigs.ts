@@ -6,6 +6,7 @@ export interface LauncherSizeConfig {
   appIconGutter: number;
   appIndicator: number;
   launcher: number;
+  minimizeToTrayIcon: number;
   systemDrawerPaddingEnd: number;
   systemDrawerPaddingStart: number;
   systemDrawerToggleClose: number;
@@ -27,6 +28,7 @@ export const launcherSizeConfigs: LauncherSizeConfigs = {
     appIconGutter: 7,
     appIndicator: 8.4,
     launcher: 56,
+    minimizeToTrayIcon: 22,
     systemDrawerPaddingEnd: 3.5,
     systemDrawerPaddingStart: 7.5,
     systemDrawerToggleClose: 14,
@@ -41,6 +43,7 @@ export const launcherSizeConfigs: LauncherSizeConfigs = {
     appIconGutter: 10,
     appIndicator: 12,
     launcher: 80,
+    minimizeToTrayIcon: 32,
     systemDrawerPaddingEnd: 5,
     systemDrawerPaddingStart: 11,
     systemDrawerToggleClose: 20,

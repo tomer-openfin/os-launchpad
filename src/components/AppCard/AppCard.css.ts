@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Color } from '../../styles';
+import { Color, Typography } from '../../styles';
 
 interface Props {
   onClick?: () => void;
@@ -49,11 +49,15 @@ export const AppName = styled.div<Props>`
   }
 `;
 
+// line-clamp for multi-line text ellipsis
 export const AppDescription = styled.div`
-  font-weight: 200;
-  font-size: 11px;
-  overflow: hidden;
+  ${Typography.TypeStyleSol}
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
   color: ${Color.MERCURY};
+  display: -webkit-box;
+  overflow: hidden;
 `;
 
 export const CTAWrapper = styled.div`

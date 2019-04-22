@@ -7,10 +7,10 @@ import {
   resetSettings,
   setAppIds,
   setAuthMessaging,
-  setAutoHide,
   setLauncherMonitorSettings,
   setLauncherPosition,
   setLauncherSize,
+  setSystemTrayEnabled,
 } from './actions';
 
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
@@ -19,7 +19,6 @@ import { MeActions, MeAuthMessagingState, MeSettingsState, MeState } from './typ
 
 export const defaultSettings: MeSettingsState = {
   appIds: [],
-  autoHide: false,
   launcherMonitorId: null,
   launcherMonitorReferencePoint: {
     x: 0,
@@ -27,6 +26,7 @@ export const defaultSettings: MeSettingsState = {
   },
   launcherPosition: DirectionalPosition.Top,
   launcherSize: LauncherSize.Large,
+  systemTrayEnabled: false,
 };
 
 export const defaultAuthMessaging: MeAuthMessagingState = {
@@ -71,7 +71,7 @@ export default (state: MeState = defaultState, action: MeActions): MeState => {
       return defaultState;
     }
     case setAppIds.toString():
-    case setAutoHide.toString(): {
+    case setSystemTrayEnabled.toString(): {
       return {
         ...state,
         settings: {

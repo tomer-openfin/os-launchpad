@@ -120,8 +120,6 @@ export const calcAppListDimensions = (
  * @param monitorDetails - monitor information
  * @param launcherPosition - current launcher position
  * @param launcherSizeConfig - current launcher sizing config
- * @param autoHide - flag for weather or not launcher is in autohide mode
- * @param isExpanded - flag for weather or not launcher is expanded
  * @param collapsedDrawerSize - size of collapsed SystemDrawer
  * @param expandedDrawerSize - size of expanded SystemDrawer
  *
@@ -132,19 +130,18 @@ export const calcLauncherDimensions = (
   monitorDetails: MonitorDetails,
   launcherPosition: DirectionalPosition,
   launcherSizeConfig: LauncherSizeConfig,
-  autoHide: boolean,
-  isExpanded: boolean,
   collapsedDrawerSize: number,
   expandedDrawerSize: number,
+  isSystemTrayEnabled: boolean,
 ): Dimensions => {
-  const collapsed = autoHide && !isExpanded;
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);
-  const { launcher } = launcherSizeConfig;
-  const STATIC_DIMENSION = collapsed ? SIZE.LAUNCHER_HIDDEN_VISIBILITY_DELTA : launcher;
+  const { launcher, minimizeToTrayIcon } = launcherSizeConfig;
+  const STATIC_DIMENSION = launcher;
+  const minimizeToTray = isSystemTrayEnabled ? minimizeToTrayIcon : 0;
 
-  const minimumDynamicDimension = launcher + expandedDrawerSize;
-  const appListDimensions = calcAppListDimensions(appCount, launcherPosition, launcherSizeConfig, collapsedDrawerSize, monitorDetails);
-  const rawDynamicDimension = launcher + collapsedDrawerSize + (isOnTopOrBottom ? appListDimensions.width : appListDimensions.height);
+  const minimumDynamicDimension = launcher + expandedDrawerSize + minimizeToTray;
+  const appListDimensions = calcAppListDimensions(appCount, launcherPosition, launcherSizeConfig, collapsedDrawerSize + minimizeToTray, monitorDetails);
+  const rawDynamicDimension = launcher + collapsedDrawerSize + (isOnTopOrBottom ? appListDimensions.width : appListDimensions.height) + minimizeToTray;
   const dynamicDimension = Math.max(minimumDynamicDimension, rawDynamicDimension);
 
   const height = isOnTopOrBottom ? STATIC_DIMENSION : dynamicDimension;
@@ -213,8 +210,6 @@ export const calcLauncherCoordinates = (
  * @param monitorDetails - monitor information
  * @param launcherPosition - current launcher position
  * @param launcherSizeConfig - current launcher sizing config
- * @param autoHide - flag for weather or not launcher is in autohide mode
- * @param isExpanded - flag for weather or not launcher is expanded
  * @param collapsedDrawerSize - size of collapsed SystemDrawer
  * @param expandedDrawerSize - size of expanded SystemDrawer
  *
@@ -226,20 +221,18 @@ export const calcLauncherPosition = (
   monitorDetails: MonitorDetails,
   launcherPosition: DirectionalPosition,
   launcherSizeConfig: LauncherSizeConfig,
-  autoHide: boolean,
-  isExpanded: boolean,
   collapsedDrawerSize: number,
   expandedDrawerSize: number,
+  isSystemTrayEnabled: boolean,
 ): Bounds => {
   const dimensions = calcLauncherDimensions(
     appCount,
     monitorDetails,
     launcherPosition,
     launcherSizeConfig,
-    autoHide,
-    isExpanded,
     collapsedDrawerSize,
     expandedDrawerSize,
+    isSystemTrayEnabled,
   );
   const coordinates = calcLauncherCoordinates(dimensions, monitorDetails, launcherPosition);
 

@@ -25,7 +25,7 @@ const REMOVE_WINDOW_FROM_CHANNEL_SUCCESS = 'REMOVE_WINDOW_FROM_CHANNEL_SUCCESS';
 const REMOVE_WINDOW_FROM_CHANNEL_FAILURE = 'REMOVE_WINDOW_FROM_CHANNEL_FAILURE';
 
 export const addContextToChannel = createAction(ADD_CONTEXT_TO_CHANNEL)<{ channelId: string; context: unknown }>();
-export const addMemberToChannel = createAction(ADD_MEMBER_TO_CHANNEL)<{ appName: string; channelId: string; identity: Identity }>();
+export const addMemberToChannel = createAction(ADD_MEMBER_TO_CHANNEL)<{ channelId: string; identity: Identity }>();
 export const removeMemberFromChannel = createAction(REMOVE_MEMBER_FROM_CHANNEL)<{ identity: Identity }>();
 
 export const setActiveChannelId = createAction(SET_ACTIVE_CHANNEL_ID)<string | null | void, { immediate?: boolean }>();

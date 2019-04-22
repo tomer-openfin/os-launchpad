@@ -17,11 +17,11 @@ import { NotFoundResponse } from './utils/commons';
 
 export const MockUserSettings = {
   appIds: ['trumid', 'neptune', 'greenkey', '3', '2', '5', '6'],
-  autoHide: false,
   launcherMonitorId: null,
   launcherMonitorReferencePoint: { x: 0, y: 0 },
   launcherPosition: DirectionalPosition.Top,
   launcherSize: LauncherSize.Large,
+  systemTrayEnabled: false,
 };
 
 /**

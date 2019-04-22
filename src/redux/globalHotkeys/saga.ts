@@ -7,7 +7,7 @@ import getOwnUuid from '../../utils/getOwnUuid';
 import { isDevelopmentEnv } from '../../utils/processHelpers';
 import { restoreLayout } from '../layouts/actions';
 import { getAllLayouts } from '../layouts/selectors';
-import { getAutoHide, setAutoHide } from '../me';
+import { getSystemTrayEnabled, setSystemTrayEnabled } from '../me/index';
 import { getErrorFromCatch } from '../utils';
 import { launchWindow } from '../windows/actions';
 import { globalHotkeyPressed } from './actions';
@@ -42,13 +42,13 @@ function* watchGlobalHotkeyPressed(action: ReturnType<typeof globalHotkeyPressed
         break;
       }
 
-      case GlobalHotkeys.ToggleAutoHide: {
+      case GlobalHotkeys.ToggleSystemTrayEnabled: {
         // tslint:disable-next-line:no-console
-        console.log(`${GlobalHotkeys.ToggleAutoHide} pressed`);
+        console.log(`${GlobalHotkeys.ToggleSystemTrayEnabled} pressed`);
 
-        const autoHide: ReturnType<typeof getAutoHide> = yield select(getAutoHide);
-        sendAnalytics({ type: EventType.HotKey, label: 'ToggleAutoHide', context: { hotkey, currentValue: autoHide } });
-        yield put(setAutoHide({ autoHide: !autoHide }));
+        const systemTrayEnabled: ReturnType<typeof getSystemTrayEnabled> = yield select(getSystemTrayEnabled);
+        sendAnalytics({ type: EventType.HotKey, label: 'ToggleSystemTrayEnabled', context: { hotkey, currentValue: systemTrayEnabled } });
+        yield put(setSystemTrayEnabled({ systemTrayEnabled: !systemTrayEnabled }));
         break;
       }
 
