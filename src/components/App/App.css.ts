@@ -14,7 +14,7 @@ interface ExpandedProp {
 }
 
 interface AppListWrapperProps {
-  endPadding: number;
+  endSpacing: number;
   launcherPosition: DirectionalPosition;
 }
 
@@ -45,12 +45,12 @@ export const LogoWrapper = styled.div<WrapperProps>`
 export const AppListWrapper = styled.div<AppListWrapperProps>`
   overflow: hidden;
 
-  ${({ endPadding, launcherPosition }) => {
+  ${({ endSpacing, launcherPosition }) => {
     const isOnTopOrBottom = isTopOrBottom(launcherPosition);
 
     return `
-      margin-bottom: ${isOnTopOrBottom ? 0 : endPadding}px;
-      margin-right: ${isOnTopOrBottom ? endPadding : 0}px;
+      margin-bottom: ${isOnTopOrBottom ? 0 : endSpacing}px;
+      margin-right: ${isOnTopOrBottom ? endSpacing : 0}px;
     `;
   }}
 `;

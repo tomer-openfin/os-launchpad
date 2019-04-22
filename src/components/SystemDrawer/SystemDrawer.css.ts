@@ -25,6 +25,7 @@ interface ToggleIconWrapperProps {
 }
 
 interface WrapperProps {
+  bottomOrRightMargin: number;
   sizingConfig: LauncherSizeConfig;
   orientation: Orientation;
   size: number;
@@ -85,15 +86,18 @@ export const Wrapper = styled.div<WrapperProps>`
   transition-duration: 250ms;
   transition-timing-function: ease-in-out;
 
-  ${({ sizingConfig, orientation, size, stopTransition }) => {
+  ${({ bottomOrRightMargin, sizingConfig, orientation, size, stopTransition }) => {
     const isHorizontal = getIsHorizontal(orientation);
     const startPadding = `${sizingConfig.systemDrawerPaddingStart}px`;
     const endPadding = `${sizingConfig.systemDrawerPaddingEnd}px`;
+    const margin = `${bottomOrRightMargin}px`;
 
     return `
       background-color: ${Color.KUIPER_BELT};
       flex-direction: ${isHorizontal ? 'row' : 'column'};
       height: ${isHorizontal ? '100%' : `${size}px`};
+      margin-bottom: ${isHorizontal ? 'initial' : margin};
+      margin-right: ${isHorizontal ? margin : 'initial'};
       padding-bottom: ${isHorizontal ? 'initial' : endPadding};
       padding-left: ${isHorizontal ? startPadding : 'initial'};
       padding-right: ${isHorizontal ? endPadding : 'initial'};

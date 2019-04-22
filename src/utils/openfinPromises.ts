@@ -49,6 +49,8 @@ export const getOpenFinApplicationChildWindows = (uuid: string) => getOpenFinApp
 
 export const getCurrentOpenfinApplicationInfo = getCurrentApplicationPromise<OpenFinApplicationInfo>('getInfo');
 export const getCurrentOpenfinApplicationManifest = getCurrentApplicationPromise<Manifest>('getManifest');
+export const setCurrentApplicationSystemTray = getCurrentApplicationPromise('setTrayIcon');
+export const removeCurrentApplicationSystemTray = getCurrentApplicationPromise('removeTrayIcon');
 
 export const animateWindow = (finWindow, animation, options) => {
   return promisifyOpenfin(finWindow, 'animate', animation, options);

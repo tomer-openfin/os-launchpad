@@ -153,35 +153,22 @@ describe('windowPositionHelpers', () => {
       const appCount = 8;
       const launcherSizeConfig = launcherSizeConfigs[LauncherSize.Large];
       const tests = [
-        { autoHide: false, isExpanded: false, launcherPosition: TOP, result: { height: 80, width: 738 } },
-        { autoHide: false, isExpanded: true, launcherPosition: TOP, result: { height: 80, width: 738 } },
-        { autoHide: true, isExpanded: false, launcherPosition: TOP, result: { height: 5, width: 738 } },
-        { autoHide: true, isExpanded: true, launcherPosition: TOP, result: { height: 80, width: 738 } },
-        { autoHide: false, isExpanded: false, launcherPosition: BOTTOM, result: { height: 80, width: 738 } },
-        { autoHide: false, isExpanded: true, launcherPosition: BOTTOM, result: { height: 80, width: 738 } },
-        { autoHide: true, isExpanded: false, launcherPosition: BOTTOM, result: { height: 5, width: 738 } },
-        { autoHide: true, isExpanded: true, launcherPosition: BOTTOM, result: { height: 80, width: 738 } },
-        { autoHide: false, isExpanded: false, launcherPosition: LEFT, result: { height: 738, width: 80 } },
-        { autoHide: false, isExpanded: true, launcherPosition: LEFT, result: { height: 738, width: 80 } },
-        { autoHide: true, isExpanded: false, launcherPosition: LEFT, result: { height: 738, width: 5 } },
-        { autoHide: true, isExpanded: true, launcherPosition: LEFT, result: { height: 738, width: 80 } },
-        { autoHide: false, isExpanded: false, launcherPosition: RIGHT, result: { height: 738, width: 80 } },
-        { autoHide: false, isExpanded: true, launcherPosition: RIGHT, result: { height: 738, width: 80 } },
-        { autoHide: true, isExpanded: false, launcherPosition: RIGHT, result: { height: 738, width: 5 } },
-        { autoHide: true, isExpanded: true, launcherPosition: RIGHT, result: { height: 738, width: 80 } },
+        { launcherPosition: TOP, result: { height: 80, width: 738 } },
+        { launcherPosition: BOTTOM, result: { height: 80, width: 738 } },
+        { launcherPosition: LEFT, result: { height: 738, width: 80 } },
+        { launcherPosition: RIGHT, result: { height: 738, width: 80 } },
       ];
 
-      tests.forEach(({ autoHide, isExpanded, launcherPosition, result }) =>
+      tests.forEach(({ launcherPosition, result }) =>
         expect(
           calcLauncherDimensions(
             appCount,
             monitorInfo.primaryMonitor,
             launcherPosition,
             launcherSizeConfig,
-            autoHide,
-            isExpanded,
             collapsedSystemDrawerSize,
             expandedSystemDrawerSize,
+            false,
           ),
         ).toEqual(result),
       );
@@ -191,35 +178,22 @@ describe('windowPositionHelpers', () => {
       const appCount = 1000;
       const launcherSizeConfig = launcherSizeConfigs[LauncherSize.Large];
       const tests = [
-        { autoHide: false, isExpanded: false, launcherPosition: TOP, result: { height: 80, width: 1438 } },
-        { autoHide: false, isExpanded: true, launcherPosition: TOP, result: { height: 80, width: 1438 } },
-        { autoHide: true, isExpanded: false, launcherPosition: TOP, result: { height: 5, width: 1438 } },
-        { autoHide: true, isExpanded: true, launcherPosition: TOP, result: { height: 80, width: 1438 } },
-        { autoHide: false, isExpanded: false, launcherPosition: BOTTOM, result: { height: 80, width: 1438 } },
-        { autoHide: false, isExpanded: true, launcherPosition: BOTTOM, result: { height: 80, width: 1438 } },
-        { autoHide: true, isExpanded: false, launcherPosition: BOTTOM, result: { height: 5, width: 1438 } },
-        { autoHide: true, isExpanded: true, launcherPosition: BOTTOM, result: { height: 80, width: 1438 } },
-        { autoHide: false, isExpanded: false, launcherPosition: LEFT, result: { height: 1088, width: 80 } },
-        { autoHide: false, isExpanded: true, launcherPosition: LEFT, result: { height: 1088, width: 80 } },
-        { autoHide: true, isExpanded: false, launcherPosition: LEFT, result: { height: 1088, width: 5 } },
-        { autoHide: true, isExpanded: true, launcherPosition: LEFT, result: { height: 1088, width: 80 } },
-        { autoHide: false, isExpanded: false, launcherPosition: RIGHT, result: { height: 1088, width: 80 } },
-        { autoHide: false, isExpanded: true, launcherPosition: RIGHT, result: { height: 1088, width: 80 } },
-        { autoHide: true, isExpanded: false, launcherPosition: RIGHT, result: { height: 1088, width: 5 } },
-        { autoHide: true, isExpanded: true, launcherPosition: RIGHT, result: { height: 1088, width: 80 } },
+        { launcherPosition: TOP, result: { height: 80, width: 1438 } },
+        { launcherPosition: BOTTOM, result: { height: 80, width: 1438 } },
+        { launcherPosition: LEFT, result: { height: 1088, width: 80 } },
+        { launcherPosition: RIGHT, result: { height: 1088, width: 80 } },
       ];
 
-      tests.forEach(({ autoHide, isExpanded, launcherPosition, result }) =>
+      tests.forEach(({ launcherPosition, result }) =>
         expect(
           calcLauncherDimensions(
             appCount,
             monitorInfo.primaryMonitor,
             launcherPosition,
             launcherSizeConfig,
-            autoHide,
-            isExpanded,
             collapsedSystemDrawerSize,
             expandedSystemDrawerSize,
+            false,
           ),
         ).toEqual(result),
       );
@@ -242,35 +216,22 @@ describe('windowPositionHelpers', () => {
       const appCount = 8;
       const launcherSizeConfig = launcherSizeConfigs[LauncherSize.Large];
       const tests = [
-        { autoHide: false, isExpanded: false, launcherPosition: TOP, result: { height: 80, left: 273, top: -100, width: 738 } },
-        { autoHide: false, isExpanded: true, launcherPosition: TOP, result: { height: 80, left: 273, top: -100, width: 738 } },
-        { autoHide: true, isExpanded: false, launcherPosition: TOP, result: { height: 5, left: 273, top: -100, width: 738 } },
-        { autoHide: true, isExpanded: true, launcherPosition: TOP, result: { height: 80, left: 273, top: -100, width: 738 } },
-        { autoHide: false, isExpanded: false, launcherPosition: BOTTOM, result: { height: 80, left: 273, top: 1017, width: 738 } },
-        { autoHide: false, isExpanded: true, launcherPosition: BOTTOM, result: { height: 80, left: 273, top: 1017, width: 738 } },
-        { autoHide: true, isExpanded: false, launcherPosition: BOTTOM, result: { height: 5, left: 273, top: 1092, width: 738 } },
-        { autoHide: true, isExpanded: true, launcherPosition: BOTTOM, result: { height: 80, left: 273, top: 1017, width: 738 } },
-        { autoHide: false, isExpanded: false, launcherPosition: LEFT, result: { height: 738, left: -100, top: 130, width: 80 } },
-        { autoHide: false, isExpanded: true, launcherPosition: LEFT, result: { height: 738, left: -100, top: 130, width: 80 } },
-        { autoHide: true, isExpanded: false, launcherPosition: LEFT, result: { height: 738, left: -100, top: 130, width: 5 } },
-        { autoHide: true, isExpanded: true, launcherPosition: LEFT, result: { height: 738, left: -100, top: 130, width: 80 } },
-        { autoHide: false, isExpanded: false, launcherPosition: RIGHT, result: { height: 738, left: 1304, top: 130, width: 80 } },
-        { autoHide: false, isExpanded: true, launcherPosition: RIGHT, result: { height: 738, left: 1304, top: 130, width: 80 } },
-        { autoHide: true, isExpanded: false, launcherPosition: RIGHT, result: { height: 738, left: 1379, top: 130, width: 5 } },
-        { autoHide: true, isExpanded: true, launcherPosition: RIGHT, result: { height: 738, left: 1304, top: 130, width: 80 } },
+        { launcherPosition: TOP, result: { height: 80, left: 273, top: -100, width: 738 } },
+        { launcherPosition: BOTTOM, result: { height: 80, left: 273, top: 1017, width: 738 } },
+        { launcherPosition: LEFT, result: { height: 738, left: -100, top: 130, width: 80 } },
+        { launcherPosition: RIGHT, result: { height: 738, left: 1304, top: 130, width: 80 } },
       ];
 
-      tests.forEach(({ autoHide, isExpanded, launcherPosition, result }) =>
+      tests.forEach(({ launcherPosition, result }) =>
         expect(
           calcLauncherPosition(
             appCount,
             monitorInfo.primaryMonitor,
             launcherPosition,
             launcherSizeConfig,
-            autoHide,
-            isExpanded,
             collapsedSystemDrawerSize,
             expandedSystemDrawerSize,
+            false,
           ),
         ).toEqual(result),
       );
@@ -281,35 +242,22 @@ describe('windowPositionHelpers', () => {
     const appCount = 1000;
     const launcherSizeConfig = launcherSizeConfigs[LauncherSize.Large];
     const tests = [
-      { autoHide: false, isExpanded: false, launcherPosition: TOP, result: { height: 80, left: -77, top: -100, width: 1438 } },
-      { autoHide: false, isExpanded: true, launcherPosition: TOP, result: { height: 80, left: -77, top: -100, width: 1438 } },
-      { autoHide: true, isExpanded: false, launcherPosition: TOP, result: { height: 5, left: -77, top: -100, width: 1438 } },
-      { autoHide: true, isExpanded: true, launcherPosition: TOP, result: { height: 80, left: -77, top: -100, width: 1438 } },
-      { autoHide: false, isExpanded: false, launcherPosition: BOTTOM, result: { height: 80, left: -77, top: 1017, width: 1438 } },
-      { autoHide: false, isExpanded: true, launcherPosition: BOTTOM, result: { height: 80, left: -77, top: 1017, width: 1438 } },
-      { autoHide: true, isExpanded: false, launcherPosition: BOTTOM, result: { height: 5, left: -77, top: 1092, width: 1438 } },
-      { autoHide: true, isExpanded: true, launcherPosition: BOTTOM, result: { height: 80, left: -77, top: 1017, width: 1438 } },
-      { autoHide: false, isExpanded: false, launcherPosition: LEFT, result: { height: 1088, left: -100, top: -45, width: 80 } },
-      { autoHide: false, isExpanded: true, launcherPosition: LEFT, result: { height: 1088, left: -100, top: -45, width: 80 } },
-      { autoHide: true, isExpanded: false, launcherPosition: LEFT, result: { height: 1088, left: -100, top: -45, width: 5 } },
-      { autoHide: true, isExpanded: true, launcherPosition: LEFT, result: { height: 1088, left: -100, top: -45, width: 80 } },
-      { autoHide: false, isExpanded: false, launcherPosition: RIGHT, result: { height: 1088, left: 1304, top: -45, width: 80 } },
-      { autoHide: false, isExpanded: true, launcherPosition: RIGHT, result: { height: 1088, left: 1304, top: -45, width: 80 } },
-      { autoHide: true, isExpanded: false, launcherPosition: RIGHT, result: { height: 1088, left: 1379, top: -45, width: 5 } },
-      { autoHide: true, isExpanded: true, launcherPosition: RIGHT, result: { height: 1088, left: 1304, top: -45, width: 80 } },
+      { launcherPosition: TOP, result: { height: 80, left: -77, top: -100, width: 1438 } },
+      { launcherPosition: BOTTOM, result: { height: 80, left: -77, top: 1017, width: 1438 } },
+      { launcherPosition: LEFT, result: { height: 1088, left: -100, top: -45, width: 80 } },
+      { launcherPosition: RIGHT, result: { height: 1088, left: 1304, top: -45, width: 80 } },
     ];
 
-    tests.forEach(({ autoHide, isExpanded, launcherPosition, result }) =>
+    tests.forEach(({ launcherPosition, result }) =>
       expect(
         calcLauncherPosition(
           appCount,
           monitorInfo.primaryMonitor,
           launcherPosition,
           launcherSizeConfig,
-          autoHide,
-          isExpanded,
           collapsedSystemDrawerSize,
           expandedSystemDrawerSize,
+          false,
         ),
       ).toEqual(result),
     );

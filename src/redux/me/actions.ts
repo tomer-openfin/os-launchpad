@@ -9,9 +9,9 @@ import {
   MeAuthMessagingState,
   MeSettingsState,
   SetAppIdsPayload,
-  SetAutoHidePayload,
   SetLauncherPositionPayload,
   SetLauncherSizePayload,
+  SetSystemTrayEnabledPayload,
   UpdatePasswordRequestPayload,
 } from './types';
 
@@ -20,11 +20,11 @@ const ADD_TO_APP_LAUNCHER = 'ADD_TO_APP_LAUNCHER';
 const REMOVE_FROM_APP_LAUNCHER = 'REMOVE_FROM_APP_LAUNCHER';
 const RESET_SETTINGS = 'RESET_SETTINGS';
 const SET_APP_IDS = 'SET_APP_IDS';
-const SET_AUTO_HIDE = 'SET_AUTO_HIDE';
 const SET_LAUNCHER_MONITOR_SETTINGS = 'SET_LAUNCHER_MONITOR_SETTINGS';
 const SET_LAUNCHER_POSITION = 'SET_LAUNCHER_POSITION';
 const SET_LAUNCHER_SIZE = 'SET_LAUNCHER_SIZE';
 const SET_AUTH_MESSAGING = 'SET_AUTH_MESSAGING';
+const SET_SYSTEM_TRAY_ENABLED = 'SET_SYSTEM_TRAY_ENABLED';
 // LOGIN
 const LOGIN_REQUEST = 'LOGIN_REQUEST';
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -59,11 +59,11 @@ export const addToAppLauncher = createAction(ADD_TO_APP_LAUNCHER)<string>();
 export const removeFromAppLauncher = createAction(REMOVE_FROM_APP_LAUNCHER)<string>();
 export const resetSettings = createAction(RESET_SETTINGS)();
 export const setAppIds = createAction(SET_APP_IDS)<SetAppIdsPayload>();
-export const setAutoHide = createAction(SET_AUTO_HIDE)<SetAutoHidePayload>();
 export const setLauncherMonitorSettings = createAction(SET_LAUNCHER_MONITOR_SETTINGS)<MonitorDetails>();
 export const setLauncherPosition = createAction(SET_LAUNCHER_POSITION)<SetLauncherPositionPayload>();
 export const setLauncherSize = createAction(SET_LAUNCHER_SIZE)<SetLauncherSizePayload>();
 export const setAuthMessaging = createAction(SET_AUTH_MESSAGING)<MeAuthMessagingState>();
+export const setSystemTrayEnabled = createAction(SET_SYSTEM_TRAY_ENABLED)<SetSystemTrayEnabledPayload>();
 
 export const login = createAsyncActionCreators(LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE)<
   LoginRequestPayload,

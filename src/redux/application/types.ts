@@ -15,7 +15,6 @@ import {
   setIsDragAndDrop,
   setIsDrawerExpanded,
   setIsEnterprise,
-  setIsExpanded,
   setRuntimeVersion,
   updateManifestOverride,
 } from './actions';
@@ -25,7 +24,6 @@ export interface ApplicationState {
   isDragAndDrop: boolean;
   isDrawerExpanded: boolean;
   isEnterprise: boolean;
-  isExpanded: boolean;
   manifest: Manifest;
   manifestOverride: ManifestOverride;
   runtimeVersion: string;
@@ -75,7 +73,6 @@ export type ApplicationActions =
   | ReturnType<typeof setIsDragAndDrop>
   | ReturnType<typeof setIsDrawerExpanded>
   | ReturnType<typeof setIsEnterprise>
-  | ReturnType<typeof setIsExpanded>
   | ReturnType<typeof setRuntimeVersion>
   | ActionsUnion<typeof reboundLauncher>
   | ActionsUnion<typeof getManifestOverride>

@@ -31,6 +31,7 @@ export interface Props {
   };
   className?: string;
   extendedWindowPosition: DirectionalPosition;
+  hasMinimizeToSystemTray?: boolean;
   icons: SystemDrawerIcon[];
   isExpanded: boolean;
   launcherSizeConfig: LauncherSizeConfig;
@@ -66,7 +67,18 @@ class SystemDrawer extends React.Component<Props> {
   };
 
   render() {
-    const { activeIcons, className, extendedWindowPosition, icons, isExpanded, launcherSizeConfig, onClickToggle, orientation, size } = this.props;
+    const {
+      activeIcons,
+      className,
+      extendedWindowPosition,
+      hasMinimizeToSystemTray,
+      icons,
+      isExpanded,
+      launcherSizeConfig,
+      onClickToggle,
+      orientation,
+      size,
+    } = this.props;
 
     let hiddenIconCount = icons.reduce((acc, icon) => (!icon.isShownByDefault ? acc + 1 : acc), 0);
 
@@ -78,9 +90,17 @@ class SystemDrawer extends React.Component<Props> {
       sendAnalytics({ type: EventType.Click, label: 'SystemDrawerToggle', context: { currentlyExpanded: isExpanded } });
       onClickToggle();
     };
+    const bottomOrRightMargin = hasMinimizeToSystemTray ? launcherSizeConfig.minimizeToTrayIcon : 0;
 
     return (
-      <Wrapper className={className} sizingConfig={launcherSizeConfig} orientation={orientation} size={size} stopTransition={stopTransition}>
+      <Wrapper
+        bottomOrRightMargin={bottomOrRightMargin}
+        className={className}
+        orientation={orientation}
+        size={size}
+        sizingConfig={launcherSizeConfig}
+        stopTransition={stopTransition}
+      >
         <ToggleIconWrapper sizingConfig={launcherSizeConfig} isExpanded={isExpanded} orientation={orientation}>
           <ToggleIcon
             color={isExpanded ? Color.MARS : undefined}

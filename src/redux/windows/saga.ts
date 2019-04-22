@@ -13,12 +13,12 @@ import { getBoundsCenterInCoordinates, isBoundsInCoordinates } from '../../utils
 import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { updateWindowOptions } from '../../utils/openfinPromises';
-import { expandApp, getApplicationIsExpanded, getIsDragAndDrop, setIsDrawerExpanded, setWindowRelativeToLauncherBounds } from '../application';
+import { getIsDragAndDrop, setIsDrawerExpanded, setWindowRelativeToLauncherBounds } from '../application';
 import { getMonitorDetailsDerivedByUserSettings } from '../selectors';
 import { getMonitorDetails } from '../system';
 import { getErrorFromCatch } from '../utils';
 import { hideWindow, launchWindow, recoverLostWindows, toggleWindow, windowBlurred, windowHidden, windowShown } from './actions';
-import { getLauncherIsForceExpanded, getWindowBounds, getWindowById, getWindowIsShowing, getWindows } from './selectors';
+import { getWindowBounds, getWindowById, getWindowIsShowing, getWindows } from './selectors';
 
 function* watchHideWindow(action: ReturnType<typeof hideWindow>) {
   try {
@@ -214,25 +214,6 @@ function* watchWindowBlurred(action: ReturnType<typeof windowBlurred>) {
   }
 }
 
-function* watchWindowShown(action: ReturnType<typeof windowShown>) {
-  try {
-    if (action.payload.name === getOwnUuid() || action.payload.name === APP_LAUNCHER_OVERFLOW_WINDOW) {
-      return;
-    }
-
-    const isExpanded: ReturnType<typeof getApplicationIsExpanded> = yield select(getApplicationIsExpanded);
-    const isForceExpanded: ReturnType<typeof getLauncherIsForceExpanded> = yield select(getLauncherIsForceExpanded);
-
-    if (!isExpanded && isForceExpanded) {
-      yield put(expandApp());
-    }
-  } catch (e) {
-    const error = getErrorFromCatch(e);
-    // tslint:disable-next-line:no-console
-    console.warn('Error in watchWindowShown', error);
-  }
-}
-
 function* watchRecoverLostWindows() {
   try {
     const monitorDetails: ReturnType<typeof getMonitorDetails> = yield select(getMonitorDetails);
@@ -277,6 +258,5 @@ export function* windowsSaga() {
   yield takeEvery(Window.WINDOW_OPENED, watchOpenedWindow);
   yield takeEvery(Window.BOUNDS_CHANGED, watchWindowBoundsChanged);
   yield takeEvery(windowBlurred, watchWindowBlurred);
-  yield takeEvery(windowShown, watchWindowShown);
   yield takeLatest(recoverLostWindows, watchRecoverLostWindows);
 }

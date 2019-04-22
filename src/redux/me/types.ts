@@ -10,10 +10,10 @@ import {
   saveSettings,
   setAppIds,
   setAuthMessaging,
-  setAutoHide,
   setLauncherMonitorSettings,
   setLauncherPosition,
   setLauncherSize,
+  setSystemTrayEnabled,
   updatePassword,
 } from './actions';
 
@@ -36,11 +36,11 @@ export interface MeAuthMessagingState {
 
 export interface MeSettingsState {
   appIds: string[];
-  autoHide: boolean;
   launcherMonitorId: string | number | null;
   launcherMonitorReferencePoint: Point;
   launcherPosition: DirectionalPosition;
   launcherSize: LauncherSize;
+  systemTrayEnabled: boolean;
 }
 
 // Reducer
@@ -92,16 +92,16 @@ export interface SetAppIdsPayload {
   appIds: string[];
 }
 
-export interface SetAutoHidePayload {
-  autoHide: boolean;
-}
-
 export interface SetLauncherPositionPayload {
   launcherPosition: DirectionalPosition;
 }
 
 export interface SetLauncherSizePayload {
   launcherSize: LauncherSize;
+}
+
+export interface SetSystemTrayEnabledPayload {
+  systemTrayEnabled: boolean;
 }
 
 export interface NewPasswordPayload {
@@ -134,8 +134,8 @@ export type MeActions =
   | ReturnType<typeof resetSettings>
   | ReturnType<typeof setAppIds>
   | ReturnType<typeof setAuthMessaging>
-  | ReturnType<typeof setAutoHide>
   | ReturnType<typeof setLauncherMonitorSettings>
   | ReturnType<typeof setLauncherPosition>
   | ReturnType<typeof setLauncherSize>
+  | ReturnType<typeof setSystemTrayEnabled>
   | ActionsUnion<typeof updatePassword>;

@@ -13,21 +13,21 @@ storiesOf(`${CATEGORIES.COMPONENTS}LauncherSettings`, module)
   .addDecorator(withKnobs)
   .addDecorator(withMarginDecorator())
   .add('default', () => {
-    const autoHide = boolean('autoHide', false);
+    const systemTrayEnabled = boolean('systemTrayEnabled', false);
     const launcherPosition = select('launcherPosition', Object(DirectionalPosition), DirectionalPosition.Top);
     const launcherSize = select('launcherSize', Object(LauncherSize), LauncherSize.Large);
-    const setAutoHide = action('setAutoHide');
+    const setSystemTrayEnabled = action('setSystemTrayEnabled');
     const setLauncherPosition = action('setLauncherPosition');
     const setLauncherSize = action('setLauncherSize');
 
     return (
       <LauncherSettings
-        autoHide={autoHide}
         launcherSize={launcherSize}
         launcherPosition={launcherPosition}
-        setAutoHide={setAutoHide}
+        setSystemTrayEnabled={setSystemTrayEnabled}
         setLauncherPosition={setLauncherPosition}
         setLauncherSize={setLauncherSize}
+        systemTrayEnabled={systemTrayEnabled}
       />
     );
   });

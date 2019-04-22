@@ -1,5 +1,5 @@
 import { Application, Window } from '@giantmachines/redux-openfin';
-import { all, call, delay, put, select, take, takeEvery, takeLatest, takeLeading } from 'redux-saga/effects';
+import { all, call, delay, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 import { ApiResponseStatus } from '../../types/enums';
@@ -15,16 +15,15 @@ import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList } from '../apps';
 import { getChannels } from '../channels/index';
 import { registerGlobalDevHotKeys } from '../globalHotkeys/utils';
-import { getAutoHide, getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig } from '../me';
+import { getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig, getSystemTrayEnabled } from '../me';
 import { loginFlow } from '../me/utils';
 import { getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings } from '../selectors';
 import { setupSystemHandlers } from '../system';
 import { getErrorFromCatch } from '../utils';
+import { getWindowIsShowing } from '../windows';
 import {
   applicationStarted,
-  collapseApp,
   exitApplication,
-  expandApp,
   fetchManifest,
   getManifest,
   getManifestOverride,
@@ -33,11 +32,11 @@ import {
   openfinReady,
   reboundLauncher,
   setIsEnterprise,
-  setIsExpanded,
+  toggleAppIsShowing,
   updateManifestOverride,
 } from './actions';
-import { getApplicationIsExpanded, getApplicationManifestOverride } from './selectors';
-import { executeAutoHideBehavior, initMachineId, initManifest, initMonitorInfo, initOrgSettings, initRuntimeVersion, initSystemWindows } from './utils';
+import { getApplicationManifestOverride } from './selectors';
+import { hideLauncherAndAttachments, initMachineId, initManifest, initMonitorInfo, initOrgSettings, initRuntimeVersion, initSystemWindows } from './utils';
 
 const APP_UUID = getOwnUuid();
 const ANIMATION_DURATION = 285;
@@ -113,6 +112,9 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
 
     const { finName } = action.payload;
 
+    // Add window specific setup
+    yield setupWindow(finName);
+
     // Only main window should be doing setup.
     if (finName === APP_UUID) {
       eraseCookie();
@@ -143,53 +145,10 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
 
       yield call(loginFlow, isLoggedIn || !isEnterprise);
     }
-
-    // Add window specific setup
-    yield setupWindow(finName);
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
     console.warn('Error in openfinSetup', error);
-  }
-}
-
-function* watchCollapseApp() {
-  try {
-    const autoHide: ReturnType<typeof getAutoHide> = yield select(getAutoHide);
-    const isExpanded: ReturnType<typeof getApplicationIsExpanded> = yield select(getApplicationIsExpanded);
-    if (!autoHide && !isExpanded) {
-      return;
-    }
-
-    const nextIsExpanded = false;
-    const animationDuration = 333;
-    yield call(executeAutoHideBehavior, nextIsExpanded, animationDuration);
-
-    yield put(setIsExpanded(nextIsExpanded));
-  } catch (e) {
-    const error = getErrorFromCatch(e);
-    // tslint:disable-next-line:no-console
-    console.warn('Error in watchCollapseApp', error);
-  }
-}
-
-function* watchExpandApp() {
-  try {
-    const autoHide: ReturnType<typeof getAutoHide> = yield select(getAutoHide);
-    const isExpanded: ReturnType<typeof getApplicationIsExpanded> = yield select(getApplicationIsExpanded);
-    if (!autoHide && isExpanded) {
-      return;
-    }
-
-    const nextIsExpanded = true;
-    const animationDuration = 500;
-    yield call(executeAutoHideBehavior, nextIsExpanded, animationDuration);
-
-    yield put(setIsExpanded(nextIsExpanded));
-  } catch (e) {
-    const error = getErrorFromCatch(e);
-    // tslint:disable-next-line:no-console
-    console.warn('Error in watchExpandApp', error);
   }
 }
 
@@ -240,24 +199,22 @@ function* watchReboundLauncherRequest(action: ReturnType<typeof reboundLauncher.
       throw new Error('Could not find launcher fin window instance');
     }
 
-    const [appList, monitorDetails, launcherPosition, launcherSizeConfig, autoHide, isExpanded, collapsedSystemDrawerSize, expandedSystemDrawerSize]: [
+    const [appList, monitorDetails, launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, expandedSystemDrawerSize, isSystemTrayEnabled]: [
       ReturnType<typeof getAppsLauncherAppList>,
       ReturnType<typeof getMonitorDetailsDerivedByUserSettings>,
       ReturnType<typeof getLauncherPosition>,
       ReturnType<typeof getLauncherSizeConfig>,
-      ReturnType<typeof getAutoHide>,
-      ReturnType<typeof getApplicationIsExpanded>,
       ReturnType<typeof getCollapsedSystemDrawerSize>,
-      ReturnType<typeof getExpandedSystemDrawerSize>
+      ReturnType<typeof getExpandedSystemDrawerSize>,
+      ReturnType<typeof getSystemTrayEnabled>
     ] = yield all([
       select(getAppsLauncherAppList),
       select(getMonitorDetailsDerivedByUserSettings),
       select(getLauncherPosition),
       select(getLauncherSizeConfig),
-      select(getAutoHide),
-      select(getApplicationIsExpanded),
       select(getCollapsedSystemDrawerSize),
       select(getExpandedSystemDrawerSize),
+      select(getSystemTrayEnabled),
     ]);
     if (!monitorDetails) {
       return;
@@ -267,10 +224,9 @@ function* watchReboundLauncherRequest(action: ReturnType<typeof reboundLauncher.
       monitorDetails,
       launcherPosition,
       launcherSizeConfig,
-      autoHide,
-      isExpanded,
       collapsedSystemDrawerSize,
       expandedSystemDrawerSize,
+      isSystemTrayEnabled,
     );
 
     const { shouldAnimate, delay: animationDelay } = action.payload;
@@ -334,14 +290,28 @@ function* watchUpdateManifestOverrideRequest(action: ReturnType<typeof updateMan
   }
 }
 
+function* watchToggleAppIsShowing() {
+  try {
+    const isShowing = yield select(getWindowIsShowing, APP_UUID);
+    if (isShowing) {
+      yield call(hideLauncherAndAttachments);
+    } else {
+      yield put(Window.showWindow({ id: APP_UUID }));
+    }
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.warn('Error in watchToggleAppIsShowing', error);
+  }
+}
+
 export function* applicationSaga() {
   yield takeEvery(applicationStarted, applicationStart);
   yield takeEvery(exitApplication, watchExitApplication);
   yield takeEvery(initDevTools, watchInitDevTools);
   yield takeEvery(launchAppLauncher, watchLaunchAppLauncher);
   yield takeEvery(openfinReady, openfinSetup);
-  yield takeLeading(collapseApp, watchCollapseApp);
-  yield takeLeading(expandApp, watchExpandApp);
+  yield takeLatest(toggleAppIsShowing, watchToggleAppIsShowing);
 
   yield takeLatest(getManifestOverride.request, watchGetManifestOverrideRequest);
   yield takeLatest(fetchManifest.request, watchFetchManifest);

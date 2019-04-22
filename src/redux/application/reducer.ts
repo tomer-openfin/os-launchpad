@@ -6,7 +6,6 @@ import {
   setIsDragAndDrop,
   setIsDrawerExpanded,
   setIsEnterprise,
-  setIsExpanded,
   setRuntimeVersion,
   updateManifestOverride,
 } from './actions';
@@ -15,7 +14,6 @@ import { ApplicationActions, ApplicationState, Manifest } from './types';
 export const defaultUiState = {
   isDragAndDrop: false,
   isDrawerExpanded: false,
-  isExpanded: false,
 };
 
 const emptyManifest: Manifest = {
@@ -66,12 +64,6 @@ export default (state: ApplicationState = defaultState, action: ApplicationActio
       return {
         ...state,
         isEnterprise: action.payload,
-      };
-    }
-    case setIsExpanded.toString(): {
-      return {
-        ...state,
-        isExpanded: action.payload,
       };
     }
     case setIsDragAndDrop.toString(): {

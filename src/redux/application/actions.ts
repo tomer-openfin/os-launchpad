@@ -13,8 +13,8 @@ const RESET_APPLICATION_UI = 'RESET_APPLICATION_UI';
 const SET_IS_DRAG_AND_DROP = 'SET_IS_DRAG_AND_DROP';
 const SET_IS_DRAWER_EXPANDED = 'SET_IS_DRAWER_EXPANDED';
 const SET_IS_ENTERPRISE = 'SET_IS_ENTERPRISE';
-const SET_IS_EXPANDED = 'SET_IS_EXPANDED';
 const SET_RUNTIME_VERSION = 'SET_RUNTIME_VERSION';
+const TOGGLE_APP_IS_SHOWING = 'TOGGLE_APP_IS_SHOWING';
 // REBOUND_LAUNCHER
 const REBOUND_LAUNCHER_REQUEST = 'REBOUND_LAUNCHER_REQUEST';
 const REBOUND_LAUNCHER_SUCCESS = 'REBOUND_LAUNCHER_SUCCESS';
@@ -48,7 +48,6 @@ export const resetApplicationUi = createAction(RESET_APPLICATION_UI)();
 export const setIsDragAndDrop = createAction(SET_IS_DRAG_AND_DROP)<boolean>();
 export const setIsDrawerExpanded = createAction(SET_IS_DRAWER_EXPANDED)<boolean>();
 export const setIsEnterprise = createAction(SET_IS_ENTERPRISE)<boolean>();
-export const setIsExpanded = createAction(SET_IS_EXPANDED)<boolean>();
 export const setRuntimeVersion = createAction(SET_RUNTIME_VERSION)<string>();
 export const reboundLauncher = createAsyncActionCreators(REBOUND_LAUNCHER_REQUEST, REBOUND_LAUNCHER_SUCCESS, REBOUND_LAUNCHER_FAILURE)<
   ReboundLauncherRequestPayload,
@@ -67,3 +66,5 @@ export const updateManifestOverride = createAsyncActionCreators(
 )<ManifestOverride, ManifestOverride, Error>();
 export const fetchManifest = createAsyncActionCreators(FETCH_MANIFEST_REQUEST, FETCH_MANIFEST_SUCCESS, FETCH_MANIFEST_FAILURE)<void, Manifest, Error>();
 export const getManifest = createAsyncActionCreators(GET_MANIFEST_REQUEST, GET_MANIFEST_SUCCESS, GET_MANIFEST_FAILURE)<void, Manifest, Error>();
+
+export const toggleAppIsShowing = createAction(TOGGLE_APP_IS_SHOWING)();
