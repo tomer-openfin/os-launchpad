@@ -1,9 +1,12 @@
 import { App, ById, User } from '../../types/commons';
+import { DeepReadonly } from '../../types/utils';
 import { formatByIds } from '../../utils/byIds';
 import { createAdminApp, createAdminUser, deleteAdminApp, deleteAdminUser, getAdminApps, getAdminUsers, updateAdminApp, updateAdminUser } from './actions';
 import { AdminActions, AdminState } from './types';
 
-const defaultState: AdminState = {
+type ReadonlyAdminState = DeepReadonly<AdminState>;
+
+const defaultState: ReadonlyAdminState = {
   apps: {
     byId: {},
     ids: [],
@@ -14,7 +17,7 @@ const defaultState: AdminState = {
   },
 };
 
-export default (state: AdminState = defaultState, action: AdminActions): AdminState => {
+export default (state: ReadonlyAdminState = defaultState, action: AdminActions): ReadonlyAdminState => {
   switch (action.type) {
     case getAdminApps.success.toString(): {
       const appList = action.payload;

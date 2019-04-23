@@ -14,8 +14,11 @@ import {
 } from './actions';
 
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
+import { DeepReadonly } from '../../types/utils';
 import { getCoordinatesMidPoint } from '../../utils/coordinateHelpers';
 import { MeActions, MeAuthMessagingState, MeSettingsState, MeState } from './types';
+
+type ReadonlyMeState = DeepReadonly<MeState>;
 
 export const defaultSettings: MeSettingsState = {
   appIds: [],
@@ -34,7 +37,7 @@ export const defaultAuthMessaging: MeAuthMessagingState = {
   message: '',
 };
 
-export const defaultState: MeState = {
+export const defaultState: ReadonlyMeState = {
   authMessaging: defaultAuthMessaging,
   email: '',
   firstName: '',
@@ -44,7 +47,7 @@ export const defaultState: MeState = {
   settings: defaultSettings,
 };
 
-export default (state: MeState = defaultState, action: MeActions): MeState => {
+export default (state: ReadonlyMeState = defaultState, action: MeActions): ReadonlyMeState => {
   switch (action.type) {
     case getSettings.success.toString(): {
       return {

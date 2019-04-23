@@ -6,12 +6,14 @@ import { checkIsEnterprise } from '../../utils/checkIsEnterprise';
 import { uuidv4 } from '../../utils/createUuid';
 import { deleteInLocalStorage, getInLocalStorage, getLocalStorage, LOCAL_STORAGE_KEYS, setInLocalStorage, setLocalStorage } from '../localStorageAdapter';
 import API from './api';
-import { api } from './utils';
+import { api, transformNullCheck, transformObjectCheck } from './utils';
+
+const emptyMeSettings: Partial<MeSettingsState> = {};
 
 /**
  * Get user info
  */
-export const getUserInfo = api<User>(API.USER_INFO, HTTPMethods.GET, json => ({ data: json }));
+export const getUserInfo = api<User>(API.USER_INFO, HTTPMethods.GET, transformObjectCheck<User>('getUserInfo'));
 export type GetUserInfo = typeof getUserInfo;
 
 /**
@@ -19,7 +21,7 @@ export type GetUserInfo = typeof getUserInfo;
  */
 export const getUserLayouts = (): Promise<ApiResponse<UserLayout[]>> => {
   if (checkIsEnterprise()) {
-    return api<UserLayout[]>(API.USER_LAYOUTS, HTTPMethods.GET, json => ({ data: json || [] }))();
+    return api<UserLayout[]>(API.USER_LAYOUTS, HTTPMethods.GET, transformNullCheck([] as UserLayout[]))();
   }
 
   return getLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, [] as UserLayout[]);
@@ -31,7 +33,7 @@ export type GetUserLayouts = typeof getUserLayouts;
  */
 export const getUserLayout = (id: UserLayout['id']): Promise<ApiResponse<UserLayout>> => {
   if (checkIsEnterprise()) {
-    return api<UserLayout>(`${API.USER_LAYOUTS}/${id}`, HTTPMethods.GET, json => ({ data: json }))();
+    return api<UserLayout>(`${API.USER_LAYOUTS}/${id}`, HTTPMethods.GET, transformObjectCheck<UserLayout>('getUserLayout'))();
   }
 
   return getInLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, id);
@@ -43,7 +45,7 @@ export type GetUserLayout = typeof getUserLayout;
  */
 export const createUserLayout = (newUserLayout: NewUserLayout): Promise<ApiResponse<UserLayout>> => {
   if (checkIsEnterprise()) {
-    return api<UserLayout, NewUserLayout>(API.USER_LAYOUTS, HTTPMethods.POST, json => ({ data: json.layout }))(newUserLayout);
+    return api<UserLayout, NewUserLayout>(API.USER_LAYOUTS, HTTPMethods.POST, transformObjectCheck<UserLayout>('createUserLayout', 'layout'))(newUserLayout);
   }
 
   const localUserLayout: UserLayout = { ...newUserLayout, id: uuidv4() };
@@ -69,7 +71,9 @@ export type DeleteUserLayout = typeof deleteUserLayout;
  */
 export const updateUserLayout = (userLayout: UserLayout): Promise<ApiResponse<UserLayout>> => {
   if (checkIsEnterprise()) {
-    return api<UserLayout, UserLayout>(`${API.USER_LAYOUTS}/${userLayout.id}`, HTTPMethods.PUT, json => ({ data: json.layout }))(userLayout);
+    return api<UserLayout, UserLayout>(`${API.USER_LAYOUTS}/${userLayout.id}`, HTTPMethods.PUT, transformObjectCheck<UserLayout>('updateUserLayout', 'layout'))(
+      userLayout,
+    );
   }
 
   return setInLocalStorage(LOCAL_STORAGE_KEYS.LAYOUTS, userLayout, userLayout.id);
@@ -79,9 +83,9 @@ export type UpdateUserLayout = typeof updateUserLayout;
 /**
  * Get settings
  */
-export const getUserSettings = (): Promise<ApiResponse<MeSettingsState>> => {
+export const getUserSettings = (): Promise<ApiResponse<Partial<MeSettingsState>>> => {
   if (checkIsEnterprise()) {
-    return api<MeSettingsState>(API.USER_SETTINGS, HTTPMethods.GET, json => ({ data: json || {} }))();
+    return api<Partial<MeSettingsState>>(API.USER_SETTINGS, HTTPMethods.GET, transformNullCheck(emptyMeSettings))();
   }
 
   return getLocalStorage<MeSettingsState>(LOCAL_STORAGE_KEYS.SETTINGS, defaultSettings);

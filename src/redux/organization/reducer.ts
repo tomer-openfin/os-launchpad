@@ -1,15 +1,18 @@
+import { DeepReadonly } from '../../types/utils';
 import DEFAULT_THEMES from '../../utils/defaultThemes';
 import { getAdminOrgSettings, getOrgSettings, setOrgActiveThemeId } from './actions';
 import { OrganizationActions, OrganizationState } from './types';
 
-const defaultState: OrganizationState = {
+type ReadonlyOrganizationState = DeepReadonly<OrganizationState>;
+
+const defaultState: ReadonlyOrganizationState = {
   activeThemeId: DEFAULT_THEMES[0].id,
   loginLogo: null,
   logo: null,
   themes: DEFAULT_THEMES,
 };
 
-export default (state: OrganizationState = defaultState, action: OrganizationActions) => {
+export default (state: ReadonlyOrganizationState = defaultState, action: OrganizationActions): ReadonlyOrganizationState => {
   switch (action.type) {
     case getAdminOrgSettings.success.toString():
     case getOrgSettings.success.toString(): {
@@ -17,14 +20,9 @@ export default (state: OrganizationState = defaultState, action: OrganizationAct
         return state;
       }
 
-      const { activeThemeId, loginLogo, logo, themes } = action.payload;
-
       return {
         ...state,
-        activeThemeId,
-        loginLogo,
-        logo,
-        themes,
+        ...action.payload,
       };
     }
     case setOrgActiveThemeId.toString(): {

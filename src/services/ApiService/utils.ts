@@ -3,6 +3,25 @@ import { logout } from '../../redux/me';
 import { ApiResponse, ApiResponseStatus, HTTPMethods } from '../../types/commons';
 import { detectAuth } from '../../utils/cookieUtils';
 
+export const transformNullCheck = <T>(defaultData: T) => (json: unknown) => {
+  if (!json) {
+    return { data: defaultData };
+  }
+  return { data: json as T };
+};
+
+export const transformObjectCheck = <T extends {}>(context: string, key?: string) => (json: unknown) => {
+  if (typeof json === 'object' && json) {
+    if (!key) {
+      return { data: json as T };
+    } else if (json.hasOwnProperty(key)) {
+      return { data: json[key] as T };
+    }
+  }
+
+  throw new Error(`${context} transform failed type check`);
+};
+
 const STATUS_ERROR_MESSAGE = {
   413: 'Payload too large.',
 };
@@ -21,7 +40,7 @@ const createOptions = <Body>(requestMethod: HTTPMethods, body?: Body, optionOver
 export const api = <Data, Body = void, Meta = void>(
   endpoint: string,
   method: HTTPMethods,
-  transform: (arg) => { data: Data; meta?: Meta },
+  transform: (arg: unknown) => { data: Data; meta?: Meta },
   optionsOverrides?: RequestInit,
 ) => async (body: Body): Promise<ApiResponse<Data, Meta>> => {
   try {

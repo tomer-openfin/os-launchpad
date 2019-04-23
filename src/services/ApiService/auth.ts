@@ -1,18 +1,18 @@
 import { ConfirmPasswordPayload, ForgotPasswordPayload, LoginRequestPayload, LoginWithNewPasswordPayload, MeInfo } from '../../redux/me';
 import { HTTPMethods } from '../../types/enums';
 import API from './api';
-import { api } from './utils';
+import { api, transformObjectCheck } from './utils';
 
 /**
  * Login
  */
-export const login = api<MeInfo, LoginRequestPayload>(API.LOGIN, HTTPMethods.POST, json => ({ data: json }));
+export const login = api<MeInfo, LoginRequestPayload>(API.LOGIN, HTTPMethods.POST, transformObjectCheck<MeInfo>('login'));
 export type Login = typeof login;
 
 /**
  * Login with new password
  */
-export const newPasswordLogin = api<MeInfo, LoginWithNewPasswordPayload>(API.NEW_PASSWORD, HTTPMethods.POST, json => ({ data: json }));
+export const newPasswordLogin = api<MeInfo, LoginWithNewPasswordPayload>(API.NEW_PASSWORD, HTTPMethods.POST, transformObjectCheck<MeInfo>('login'));
 export type NewPasswordLogin = typeof newPasswordLogin;
 
 /**

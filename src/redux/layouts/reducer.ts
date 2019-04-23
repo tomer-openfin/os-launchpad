@@ -1,13 +1,16 @@
+import { DeepReadonly } from '../../types/utils';
 import { normalizeData } from '../../utils/reduxHelpers';
 import { createLayout, deleteLayout, getLayouts, resetLayouts, updateLayout } from './actions';
 import { LayoutsActions, LayoutsState } from './types';
 
-const defaultState: LayoutsState = {
+type ReadonlyLayoutsState = DeepReadonly<LayoutsState>;
+
+const defaultState: ReadonlyLayoutsState = {
   byId: {},
   ids: [],
 };
 
-export default (state: LayoutsState = defaultState, action: LayoutsActions): LayoutsState => {
+export default (state: ReadonlyLayoutsState = defaultState, action: LayoutsActions): ReadonlyLayoutsState => {
   switch (action.type) {
     case getLayouts.success.toString(): {
       return normalizeData(action.payload);

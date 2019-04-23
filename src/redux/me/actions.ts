@@ -87,7 +87,7 @@ export const forgotPassword = createAsyncActionCreators(FORGOT_PASSWORD_REQUEST,
   void,
   Error
 >();
-export const getSettings = createAsyncActionCreators(GET_SETTINGS_REQUEST, GET_SETTINGS_SUCCESS, GET_SETTINGS_FAILURE)<void, MeSettingsState, Error>();
+export const getSettings = createAsyncActionCreators(GET_SETTINGS_REQUEST, GET_SETTINGS_SUCCESS, GET_SETTINGS_FAILURE)<void, Partial<MeSettingsState>, Error>();
 export const saveSettings = createAsyncActionCreators(SAVE_SETTINGS_REQUEST, SAVE_SETTINGS_SUCCESS, SAVE_SETTINGS_FAILURE)<void, void, Error>();
 export const updatePassword = createAsyncActionCreators(UPDATE_PASSWORD_REQUEST, UPDATE_PASSWORD_SUCCESS, UPDATE_PASSWORD_FAILURE)<
   UpdatePasswordRequestPayload,

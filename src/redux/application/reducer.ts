@@ -1,3 +1,4 @@
+import { DeepReadonly } from '../../types/utils';
 import {
   fetchManifest,
   getManifest,
@@ -10,6 +11,8 @@ import {
   updateManifestOverride,
 } from './actions';
 import { ApplicationActions, ApplicationState, Manifest } from './types';
+
+type ReadonlyApplicationState = DeepReadonly<ApplicationState>;
 
 export const defaultUiState = {
   isDragAndDrop: false,
@@ -26,7 +29,7 @@ const emptyManifest: Manifest = {
   },
 };
 
-const defaultState: ApplicationState = {
+const defaultState: ReadonlyApplicationState = {
   ...defaultUiState,
   isEnterprise: false,
   manifest: emptyManifest,
@@ -34,7 +37,7 @@ const defaultState: ApplicationState = {
   runtimeVersion: '',
 };
 
-export default (state: ApplicationState = defaultState, action: ApplicationActions) => {
+export default (state: ReadonlyApplicationState = defaultState, action: ApplicationActions): ReadonlyApplicationState => {
   switch (action.type) {
     case fetchManifest.success.toString():
     case getManifest.success.toString(): {

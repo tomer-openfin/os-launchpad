@@ -11,9 +11,10 @@ import organization from './organization';
 import system from './system';
 import windows from './windows';
 
+import { DeepReadonly } from '../types/utils';
 import { State } from './types';
 
-export default combineReducers<State>({
+export default combineReducers<DeepReadonly<State>>({
   admin,
   application,
   apps,

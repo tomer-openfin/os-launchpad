@@ -23,12 +23,12 @@ export const saveOrgActiveThemeId = createAction(SAVE_ORG_ACTIVE_THEME_ID)<Theme
 export const setOrgActiveThemeId = createAction(SET_ORG_ACTIVE_THEME_ID)<Theme['id'], MetaWithAsyncHandlers<OrganizationState>>();
 export const getOrgSettings = createAsyncActionCreators(GET_ORG_SETTINGS_REQUEST, GET_ORG_SETTINGS_SUCCESS, GET_ORG_SETTINGS_FAILURE)<
   void,
-  OrganizationState,
+  Partial<OrganizationState>,
   Error
 >();
 export const getAdminOrgSettings = createAsyncActionCreators(GET_ADMIN_ORG_SETTINGS_REQUEST, GET_ADMIN_ORG_SETTINGS_SUCCESS, GET_ADMIN_ORG_SETTINGS_FAILURE)<
   void,
-  OrganizationState,
+  Partial<OrganizationState>,
   Error
 >();
 export const saveAdminOrgSettings = createAsyncActionCreators(

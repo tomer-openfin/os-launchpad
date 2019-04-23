@@ -1,5 +1,6 @@
 import { Window } from '@giantmachines/redux-openfin';
 
+import { DeepReadonly } from '../../types/utils';
 import { windowHidden, windowShown } from './actions';
 import { WindowsActions, WindowsState } from './types';
 
@@ -7,7 +8,9 @@ const defaultState = {
   ...Window.reducer(undefined, {}),
 };
 
-const isShowingMutation = (state: WindowsState, action: ReturnType<typeof windowHidden> | ReturnType<typeof windowShown>, isShowing: boolean) => {
+type ReadonlyWindowState = DeepReadonly<WindowsState>;
+
+const isShowingMutation = (state: ReadonlyWindowState, action: ReturnType<typeof windowHidden> | ReturnType<typeof windowShown>, isShowing: boolean) => {
   const { name } = action.payload;
   const window = state.byId[name];
   const byId = {
@@ -26,7 +29,7 @@ const isShowingMutation = (state: WindowsState, action: ReturnType<typeof window
   };
 };
 
-export default (state: WindowsState = defaultState, action: WindowsActions): WindowsState => {
+export default (state: ReadonlyWindowState = defaultState, action: WindowsActions): ReadonlyWindowState => {
   const windowState = Window.reducer(state, action);
 
   switch (action.type) {

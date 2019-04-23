@@ -1,3 +1,4 @@
+import { DeepReadonly } from '../../types/utils';
 import { normalizeData } from '../../utils/reduxHelpers';
 import { getUniqueWindowId } from '../windows/utils';
 import {
@@ -10,9 +11,11 @@ import {
   setActiveChannelId,
   updateMembersById,
 } from './actions';
-import { ChannelsActions, ChannelsState } from './types';
+import { ChannelsActions, ChannelsState, Context } from './types';
 
-const defaultState: ChannelsState = {
+type ReadonlyChannelsState = DeepReadonly<ChannelsState>;
+
+const defaultState: ReadonlyChannelsState = {
   activeId: null,
   byId: {},
   contextsById: {},
@@ -21,7 +24,7 @@ const defaultState: ChannelsState = {
   membersChannels: {},
 };
 
-export default (state: ChannelsState = defaultState, action: ChannelsActions): ChannelsState => {
+export default (state: ReadonlyChannelsState = defaultState, action: ChannelsActions): ReadonlyChannelsState => {
   switch (action.type) {
     case addContextToChannel.toString(): {
       const { contextsById } = state;
@@ -33,7 +36,7 @@ export default (state: ChannelsState = defaultState, action: ChannelsActions): C
         ...state,
         contextsById: {
           ...contextsById,
-          [channelId]: [...contexts, context],
+          [channelId]: [...contexts, context] as DeepReadonly<Context[]>,
         },
       };
     }

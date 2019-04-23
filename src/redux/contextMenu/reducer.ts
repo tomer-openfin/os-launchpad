@@ -1,7 +1,10 @@
+import { DeepReadonly } from '../../types/utils';
 import { closeContextMenu, openContextMenu } from './actions';
 import { ContextMenuActions, ContextMenuState } from './types';
 
-const defaultState: ContextMenuState = {
+type ReadonlyContextMenuState = DeepReadonly<ContextMenuState>;
+
+const defaultState: ReadonlyContextMenuState = {
   anchor: undefined,
   bounds: undefined,
   options: [],
@@ -10,7 +13,7 @@ const defaultState: ContextMenuState = {
   //       a window other than the main app launcher
 };
 
-export default (state: ContextMenuState = defaultState, action: ContextMenuActions) => {
+export default (state: ReadonlyContextMenuState = defaultState, action: ContextMenuActions): ReadonlyContextMenuState => {
   switch (action.type) {
     case openContextMenu.success.toString(): {
       const { anchor, bounds, options } = action.payload;

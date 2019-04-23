@@ -1,3 +1,4 @@
+import { DeepReadonly } from '../../types/utils';
 import { getUniqueWindowId } from '../windows/utils';
 import {
   getMachineId,
@@ -12,7 +13,9 @@ import {
 } from './actions';
 import { SystemActions, SystemState } from './types';
 
-export const defaultState: SystemState = {
+type ReadonlySystemState = DeepReadonly<SystemState>;
+
+export const defaultState: ReadonlySystemState = {
   machineId: null,
   monitorInfo: null,
   windowBoundsById: {},
@@ -22,7 +25,7 @@ export const defaultState: SystemState = {
 
 type NormalizedWindows = Pick<SystemState, 'windowBoundsById'> & Pick<SystemState, 'windowDetailsById'> & Pick<SystemState, 'windowIds'>;
 
-export default (state: SystemState = defaultState, action: SystemActions): SystemState => {
+export default (state: ReadonlySystemState = defaultState, action: SystemActions): ReadonlySystemState => {
   switch (action.type) {
     case getMachineId.success.toString(): {
       return {

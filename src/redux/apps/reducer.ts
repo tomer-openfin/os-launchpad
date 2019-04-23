@@ -1,12 +1,15 @@
 import { closeFinApp, getAppDirectoryList, openFinApp, resetAppDirectoryList, setFinAppStatusState } from './actions';
 
 import { AppStatusStates } from '../../types/commons';
+import { DeepReadonly } from '../../types/utils';
 import { normalizeData } from '../../utils/reduxHelpers';
 import { AppsActions, AppsState } from './types';
 
-const defaultState: AppsState = { byId: {}, ids: [], statusById: {} };
+type ReadonlyAppsState = DeepReadonly<AppsState>;
 
-export default (state: AppsState = defaultState, action: AppsActions): AppsState => {
+const defaultState: ReadonlyAppsState = { byId: {}, ids: [], statusById: {} };
+
+export default (state: ReadonlyAppsState = defaultState, action: AppsActions): ReadonlyAppsState => {
   switch (action.type) {
     case resetAppDirectoryList.toString(): {
       return {
