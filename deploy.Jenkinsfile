@@ -20,7 +20,7 @@ pipeline {
                     }
                 }
                 sh "npm i"
-                sh "ENTERPRISE=true NODE_ENV=production npm run build"
+                sh "ANALYTICS=true ENTERPRISE=true NODE_ENV=production npm run build"
                 sh "echo \"${VERSION} ${GIT_SHORT_SHA}\" > ./build/VERSION.txt"
                 sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*.svg' --exclude 'app.json' --exclude 'index.html'"
                 sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*' --include 'index.html' --content-type 'text/html; charset=utf-8'"

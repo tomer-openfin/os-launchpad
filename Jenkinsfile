@@ -25,7 +25,7 @@ pipeline {
                     S3_LOC = env.OS_LAUNCHPAD_S3_ROOT + '-dev'
                 }
                 sh "npm i"
-                sh "ENTERPRISE=true NODE_ENV=production DEPLOY_LOCATION=\"https://os-dev.openfin.co\" npm run build"
+                sh "ANALYTICS=true ENTERPRISE=true NODE_ENV=production DEPLOY_LOCATION=\"https://os-dev.openfin.co\" npm run build"
                 sh "npm run docs"
                 // sh "npm run build-storybook"
                 sh "echo ${GIT_SHORT_SHA} > ./build/SHA.txt"
