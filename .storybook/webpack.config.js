@@ -5,20 +5,20 @@ const webpack = require('webpack');
 
 const transformOpenFinConfig = require('../scripts/utils/transformOpenFinConfig');
 
-module.exports = (baseConfig, env, config) => {
+module.exports = ({ config, mode }) => {
   config.module.rules.push({
     test: /\.(ts|tsx)$/,
     loader: require.resolve('awesome-typescript-loader'),
     options: { useBabel: true },
   });
 
-  if (env === 'PRODUCTION') {
+  if (mode === 'PRODUCTION') {
     config.plugins.push(new TSDocgenPlugin());
   }
   const MockApi = new webpack.NormalModuleReplacementPlugin(/ApiService\/index\.ts/, './__mocks__/index.ts');
   config.plugins.push(MockApi);
   config.resolve.extensions.push('.ts', '.tsx');
-  if (env !== 'PRODUCTION') {
+  if (mode !== 'PRODUCTION') {
     config.plugins.push(
       new CopyWebpackPlugin([
         {

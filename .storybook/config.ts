@@ -1,7 +1,7 @@
 // tslint:disable-next-line:no-var-requires
 const StoryRouter = require('storybook-react-router').default;
 import { withInfo } from '@storybook/addon-info';
-import { addDecorator, configure } from '@storybook/react';
+import { addDecorator, addParameters, configure } from '@storybook/react';
 import { Store } from 'redux';
 
 import configureStore from '../src/configureStore';
@@ -10,6 +10,7 @@ import { initStorybookStore } from './initStorybookStore';
 import dragAndDropContextDecorator from './decorators/dragAndDropContextDecorator';
 import reduxDecorator from './decorators/reduxDecorator';
 import styledThemeDecorator from './decorators/styledThemeDecorator';
+import { getWindowViewports } from './utils';
 
 declare global {
   interface Window {
@@ -28,6 +29,15 @@ addDecorator(StoryRouter());
 addDecorator(styledThemeDecorator);
 addDecorator(dragAndDropContextDecorator);
 addDecorator(reduxDecorator(store));
+
+addParameters({
+  defaultViewport: 'defaultWindowSize',
+  viewport: {
+    viewports: {
+      ...getWindowViewports(),
+    },
+  },
+});
 
 function loadStories() {
   require('../stories');
