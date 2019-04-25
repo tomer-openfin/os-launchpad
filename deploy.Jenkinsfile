@@ -12,15 +12,19 @@ pipeline {
         stage('build') {
             steps {
                 script {
+                    ENTERPRISE=true
                     GIT_SHORT_SHA = sh ( script: "git rev-parse --short HEAD", returnStdout: true ).trim()
                     VERSION = sh ( script: "node -pe \"require('./package.json').version\"", returnStdout: true ).trim()
                     S3_LOC = env.OS_LAUNCHPAD_S3_ROOT
                     if ( DEPLOY_ENV == 'staging' || DEPLOY_ENV == 'dev') {
                         S3_LOC = env.OS_LAUNCHPAD_S3_ROOT + '-' + DEPLOY_ENV
                     }
+                    if ( DEPLOY_ENV == 'nologin' ) {
+                        ENTERPRISE=false
+                    }
                 }
                 sh "npm i"
-                sh "ANALYTICS=true ENTERPRISE=true NODE_ENV=production npm run build"
+                sh "ANALYTICS=true ENTERPRISE=${ENTERPRISE} NODE_ENV=production npm run build"
                 sh "echo \"${VERSION} ${GIT_SHORT_SHA}\" > ./build/VERSION.txt"
                 sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*.svg' --exclude 'app.json' --exclude 'index.html'"
                 sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*' --include 'index.html' --content-type 'text/html; charset=utf-8'"
