@@ -46,5 +46,5 @@ export type SaveAdminOrgSettings = typeof saveAdminOrgSettings;
  * Save admin manifest overrides
  */
 export const saveAdminManifestOverrides = (manifestOverrides: ManifestOverride) =>
-  api<undefined, { manifest: ManifestOverride }>(API.ADMIN_SETTINGS, HTTPMethods.POST, json => ({ data: undefined }))({ manifest: manifestOverrides });
+  api<undefined, { manifest: ManifestOverride }>(API.ADMIN_MANIFEST_OVERRIDE, HTTPMethods.POST, json => ({ data: undefined }))({ manifest: manifestOverrides });
 export type SaveAdminManifestOverrides = typeof saveAdminManifestOverrides;
