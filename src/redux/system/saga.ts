@@ -1,8 +1,6 @@
-import { all, call, CallEffectDescriptor, put, select, SimpleEffect, takeEvery, takeLatest } from 'redux-saga/effects';
+import { all, call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
-import { MonitorDetails, OpenFinWindow, WindowDetail, WindowInfo } from '../../types/fin';
 import { UnPromisfy } from '../../types/utils';
-import { getBoundsMoveIntoCoordinates, isBoundsInCoordinates, RESIZE_OFFSET_X, RESIZE_OFFSET_Y } from '../../utils/coordinateHelpers';
 import { unbindFinAppEventHanlders } from '../../utils/finAppEventHandlerHelpers';
 import getOwnUuid from '../../utils/getOwnUuid';
 import {
@@ -20,7 +18,7 @@ import { getMonitorDetailsDerivedByUserSettings } from '../selectors';
 import { getErrorFromCatch } from '../utils';
 import { recoverLostWindows } from '../windows';
 import {
-  getAllWindows,
+  gatherAllWindows,
   getAndSetMonitorInfo,
   getMachineId,
   setMonitorInfo,
@@ -32,88 +30,22 @@ import {
 } from './actions';
 import { getMonitorDetails } from './selectors';
 import { SystemWindow } from './types';
+import { gatherWindows } from './utils';
 
-function* watchGetAllWindowsRequest() {
+function* watchGatherAllWindowsRequest() {
   try {
-    // select monitor details from state
     const monitorDetails: ReturnType<typeof getMonitorDetails> = yield select(getMonitorDetails);
     const launcherMonitorDetails: ReturnType<typeof getMonitorDetailsDerivedByUserSettings> = yield select(getMonitorDetailsDerivedByUserSettings);
     if (!monitorDetails.length || !launcherMonitorDetails) {
       throw new Error('monitorDetails and launcherMonitorDetails are required to recover windows');
     }
 
-    const allWindows: WindowInfo[] = yield call(getSystemAllWindows);
-    yield put(getAllWindows.success(allWindows));
-
-    // filter out service windows and internal windows
-    const NOTIFICATIONS_UUID = 'notifications-service';
-    const LAYOUTS_UUID = 'layouts-service';
-
-    const result = allWindows.reduce((acc: Array<SimpleEffect<'CALL', CallEffectDescriptor>>, el: WindowInfo) => {
-      if (el.uuid === NOTIFICATIONS_UUID || el.uuid === LAYOUTS_UUID) {
-        return acc;
-      }
-
-      const main =
-        el.mainWindow.name !== getOwnUuid()
-          ? [call(watchMoveAndResizeWindowIntoCoordinates, { ...el.mainWindow, uuid: el.uuid }, monitorDetails, launcherMonitorDetails)]
-          : [];
-
-      // move and resize all the windows together in unison
-      return [
-        ...acc,
-        ...el.childWindows.map(child => call(watchMoveAndResizeWindowIntoCoordinates, { ...child, uuid: el.uuid }, monitorDetails, launcherMonitorDetails)),
-        ...main,
-      ];
-    }, []);
-
-    yield all(result);
+    yield call(gatherWindows, monitorDetails, launcherMonitorDetails);
+    yield put(gatherAllWindows.success());
   } catch (e) {
     const error = getErrorFromCatch(e);
-    yield put(getAllWindows.failure(error));
+    yield put(gatherAllWindows.failure(error));
   }
-}
-
-function* watchMoveAndResizeWindowIntoCoordinates(
-  targetWindow: WindowDetail & { uuid: WindowInfo['uuid'] },
-  monitorDetails: MonitorDetails[],
-  launcherMonitorDetails: MonitorDetails,
-) {
-  const { availableRect } = launcherMonitorDetails;
-
-  const bounds = {
-    height: targetWindow.height,
-    left: targetWindow.left,
-    top: targetWindow.top,
-    width: targetWindow.width,
-  };
-
-  const foundMonitorDetails = monitorDetails.find(monitorDetail => isBoundsInCoordinates(bounds, monitorDetail.monitorRect));
-  // If window is still within one of the monitors bounds
-  // No need to do anything, bail
-  if (foundMonitorDetails) {
-    return;
-  }
-
-  const wrappedWindow: OpenFinWindow = yield call(wrapWindow, { uuid: targetWindow.uuid, name: targetWindow.name });
-
-  // resize window if necessary
-  if (bounds.width > availableRect.right || bounds.height > availableRect.bottom) {
-    yield call(
-      [wrappedWindow, wrappedWindow.resizeTo],
-      Math.min(bounds.width, availableRect.right - RESIZE_OFFSET_X),
-      Math.min(bounds.height, availableRect.bottom - RESIZE_OFFSET_Y),
-      'top-left',
-    );
-  }
-
-  const newBounds = yield call(getWindowBounds, wrappedWindow);
-
-  // If monitor does not fall within one of the monitor bounds
-  // Recover to where the launcher is
-  const { left, top } = getBoundsMoveIntoCoordinates(newBounds, availableRect);
-
-  yield call([wrappedWindow, wrappedWindow.moveTo], left, top);
 }
 
 function* watchGetMachineId() {
@@ -259,6 +191,6 @@ export function* systemSaga() {
   yield takeEvery(systemEventApplicationCrashed, watchSystemEventApplicationCrashed);
   // yield takeEvery(SYSTEM_EVENT_APPLICATION_STARTED, watchSystemEventApplicationStarted);
   yield takeEvery(systemEventWindowCreated, watchSystemEventWindowCreated);
-  yield takeLatest(getAllWindows.request, watchGetAllWindowsRequest);
+  yield takeLatest(gatherAllWindows.request, watchGatherAllWindowsRequest);
   yield takeLatest(storeAllSystemWindows.request, watchStoreAllSystemWindows);
 }

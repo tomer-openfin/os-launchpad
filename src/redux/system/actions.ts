@@ -1,4 +1,4 @@
-import { MonitorInfo, SystemBaseEvent, WindowBaseEvent, WindowBoundsEvent, WindowGroupChangedEvent, WindowInfo } from '../../types/commons';
+import { MonitorInfo, SystemBaseEvent, WindowBaseEvent, WindowBoundsEvent, WindowGroupChangedEvent } from '../../types/commons';
 import { createAction, createAsyncActionCreators } from '../utils';
 import { SystemWindow } from './types';
 
@@ -23,9 +23,9 @@ const SYSTEM_EVENT_WINDOW_HIDDEN = 'SYSTEM_EVENT:WINDOW_HIDDEN';
 const SYSTEM_EVENT_WINDOW_GROUP_CHANGED = 'SYSTEM_EVENT_WINDOW_GROUP_CHANGED';
 const SYSTEM_EVENT_WINDOW_SHOWN = 'SYSTEM_EVENT:WINDOW_SHOWN';
 
-const GET_ALL_WINDOWS_REQUEST = 'GET_ALL_WINDOWS_REQUEST';
-const GET_ALL_WINDOWS_SUCCESS = 'GET_ALL_WINDOWS_SUCCESS';
-const GET_ALL_WINDOWS_FAILURE = 'GET_ALL_WINDOWS_FAILURE';
+const GATHER_ALL_WINDOWS_REQUEST = 'GATHER_ALL_WINDOWS_REQUEST';
+const GATHER_ALL_WINDOWS_SUCCESS = 'GATHER_ALL_WINDOWS_SUCCESS';
+const GATHER_ALL_WINDOWS_FAILURE = 'GATHER_ALL_WINDOWS_FAILURE';
 
 // Action creators
 export const getMachineId = createAsyncActionCreators(GET_MACHINE_ID_REQUEST, GET_MACHINE_ID_SUCCESS, GET_MACHINE_ID_FAILURE)<
@@ -49,7 +49,11 @@ export const systemWindowCreatedWithDetails = createAction(SYSTEM_WINDOW_CREATED
 export const systemEventWindowHidden = createAction(SYSTEM_EVENT_WINDOW_HIDDEN)<WindowBaseEvent>();
 export const systemEventWindowGroupChanged = createAction(SYSTEM_EVENT_WINDOW_GROUP_CHANGED)<WindowGroupChangedEvent>();
 export const systemEventWindowShown = createAction(SYSTEM_EVENT_WINDOW_SHOWN)<WindowBaseEvent>();
-export const getAllWindows = createAsyncActionCreators(GET_ALL_WINDOWS_REQUEST, GET_ALL_WINDOWS_SUCCESS, GET_ALL_WINDOWS_FAILURE)<void, WindowInfo[], Error>();
+export const gatherAllWindows = createAsyncActionCreators(GATHER_ALL_WINDOWS_REQUEST, GATHER_ALL_WINDOWS_SUCCESS, GATHER_ALL_WINDOWS_FAILURE)<
+  void,
+  void,
+  Error
+>();
 export const storeAllSystemWindows = createAsyncActionCreators(
   STORE_ALL_SYSTEM_WINDOWS_REQUEST,
   STORE_ALL_SYSTEM_WINDOWS_SUCCESS,
