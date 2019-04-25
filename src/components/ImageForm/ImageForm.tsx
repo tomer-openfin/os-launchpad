@@ -129,8 +129,13 @@ class ImageForm extends React.PureComponent<Props, State> {
     const { byUrl, handleCancel, resetResponseError, message, responseError } = this.props;
     const { fileUrl } = this.state;
 
+    const handleNestedFormSubmit = (e: React.FormEvent) => {
+      e.stopPropagation();
+      handleSubmit(e);
+    };
+
     return (
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleNestedFormSubmit}>
         <ScrollGrid>
           {byUrl ? (
             <Label label="Image URL" renderError={this.renderError(errors.imgSrc, touched.imgSrc)}>
