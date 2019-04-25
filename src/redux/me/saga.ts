@@ -12,7 +12,7 @@ import getOwnUuid from '../../utils/getOwnUuid';
 import { removeCurrentApplicationSystemTray, setCurrentApplicationSystemTray } from '../../utils/openfinPromises';
 import { generateTimestamp } from '../../utils/timestampUtils';
 import { getAdminApps, getAdminUsers } from '../admin';
-import { getApplicationManifest, getManifestOverride, initResources, reboundLauncher, resetResources, toggleAppIsShowing } from '../application';
+import { getApplicationManifest, getManifestOverride, initResources, pollStop, reboundLauncher, resetResources, toggleAppIsShowing } from '../application';
 import { unregisterAllGlobalHotkeys } from '../globalHotkeys/utils';
 import { getAdminOrgSettings } from '../organization';
 import { getErrorFromCatch } from '../utils';
@@ -151,8 +151,8 @@ function* watchLogoutRequest(action: ReturnType<typeof logout.request>) {
     }
 
     eraseCookie();
-
     yield put(logout.success(action.payload, action.meta));
+    yield put(pollStop());
   } catch (e) {
     const error = getErrorFromCatch(e);
     yield put(logout.failure(error, action.meta));
@@ -174,6 +174,7 @@ function* watchLogoutSuccess(action: ReturnType<typeof logout.success>) {
 function* watchLogoutFailure() {
   try {
     yield put(Application.restart());
+    yield put(pollStop());
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console

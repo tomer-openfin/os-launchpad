@@ -15,6 +15,7 @@ import { getLauncherPosition, getLauncherSizeConfig } from '../me';
 import { getExpandedSystemDrawerSize } from '../selectors';
 import { getErrorFromCatch } from '../utils';
 import { getWindowBounds } from '../windows';
+
 import { createLayout, deleteLayout, dismissUndoUpdateLayout, getLayouts, restoreLayout, saveLayout, undoUpdateLayout, updateLayout } from './actions';
 import { getAllLayouts, getLayoutById, getLayoutByName } from './selectors';
 import { calcDesiredLayoutsWindowHeight } from './utils';
@@ -286,6 +287,5 @@ export function* layoutsSaga() {
   yield takeEvery(saveLayout.request, watchSaveLayoutRequest);
   yield takeEvery(updateLayout.request, watchUpdateLayoutRequest);
   yield takeEvery(updateLayout.success, watchUpdateLayoutSuccess);
-
   yield takeEvery([createLayout.success.toString(), deleteLayout.success.toString(), getLayouts.success.toString()], watchLayoutsChangesToAnimateWindow);
 }

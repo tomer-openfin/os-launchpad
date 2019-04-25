@@ -1,5 +1,6 @@
 import { Application, Window } from '@giantmachines/redux-openfin';
-import { all, call, delay, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
+import { all, call, cancel, cancelled, delay, fork, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
+// import { all, call, delay, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 import { ApiResponseStatus } from '../../types/enums';
@@ -9,7 +10,7 @@ import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { updateKeyInManifestOverride } from '../../utils/manifestOverride';
 import { animateWindow, getCurrentOpenfinApplicationManifest } from '../../utils/openfinPromises';
-import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv } from '../../utils/processHelpers';
+import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv, isProductionEnv } from '../../utils/processHelpers';
 import { setupWindow } from '../../utils/setupWindow';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList } from '../apps';
@@ -17,6 +18,7 @@ import { getChannels } from '../channels/index';
 import { registerGlobalDevHotKeys } from '../globalHotkeys/utils';
 import { getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig, getSystemTrayEnabled } from '../me';
 import { loginFlow } from '../me/utils';
+import { getOrgSettings } from '../organization';
 import { getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings } from '../selectors';
 import { setupSystemHandlers } from '../system';
 import { getErrorFromCatch } from '../utils';
@@ -30,6 +32,8 @@ import {
   initDevTools,
   launchAppLauncher,
   openfinReady,
+  pollStart,
+  pollStop,
   reboundLauncher,
   setIsEnterprise,
   toggleAppIsShowing,
@@ -56,6 +60,8 @@ function* applicationStart() {
 
 function* watchExitApplication() {
   try {
+    // stop polling for updates on application close
+    yield put(pollStop());
     yield put(Application.close());
   } catch (e) {
     const error = getErrorFromCatch(e);
@@ -95,6 +101,9 @@ function* watchLaunchAppLauncher() {
     // Delay helps with the dom shuffling and initial animations
     yield delay(150);
     yield put(Window.showWindow({ id: APP_UUID }));
+
+    // start polling once launcher is ready
+    yield put(pollStart());
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
@@ -149,6 +158,47 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
     console.warn('Error in openfinSetup', error);
+  }
+}
+
+function* watchPollStart() {
+  // modify dev env delay to > 2min after review
+  const REFETCH_DELAY = isProductionEnv() ? 120000 : 15000;
+
+  while (true) {
+    try {
+      // poll for app directory
+      yield put(getAppDirectoryList.request());
+
+      // poll for org settings
+      yield put(getOrgSettings.request());
+
+      // call indefinitely until app exit or on logout
+      yield delay(REFETCH_DELAY);
+    } finally {
+      if (yield cancelled()) {
+        // tslint:disable-next-line:no-console
+        console.log('Stopped polling.');
+      }
+    }
+  }
+}
+
+function* watchPolling() {
+  try {
+    // start polling in the background
+    const pollStartTask = yield fork(watchPollStart);
+
+    // wait for polling stop request
+    yield take(pollStop);
+
+    // cancel the pollStartTast, causes the
+    // pollStartTask to jump to its finally block
+    yield cancel(pollStartTask);
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.warn('Error in watchPolling', error);
   }
 }
 
@@ -311,6 +361,7 @@ export function* applicationSaga() {
   yield takeEvery(initDevTools, watchInitDevTools);
   yield takeEvery(launchAppLauncher, watchLaunchAppLauncher);
   yield takeEvery(openfinReady, openfinSetup);
+  yield takeLatest(pollStart, watchPolling);
   yield takeLatest(toggleAppIsShowing, watchToggleAppIsShowing);
 
   yield takeLatest(getManifestOverride.request, watchGetManifestOverrideRequest);

@@ -14,6 +14,7 @@ import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { updateWindowOptions } from '../../utils/openfinPromises';
 import { getIsDragAndDrop, setIsDrawerExpanded, setWindowRelativeToLauncherBounds } from '../application';
+import { getSettings } from '../me';
 import { getMonitorDetailsDerivedByUserSettings } from '../selectors';
 import { getMonitorDetails } from '../system';
 import { getErrorFromCatch } from '../utils';
@@ -49,6 +50,11 @@ function* watchLaunchWindow(action: ReturnType<typeof launchWindow>) {
     const window = yield select(getWindowById, id);
 
     if (window) {
+      // fetch settings request on settings window
+      if (id === windowsConfig.settings.name) {
+        yield put(getSettings.request());
+      }
+
       const finWindow = yield call(getFinWindowByName, id);
 
       // App launcher overflow window will change opacity instead to avoid fade in/out effect

@@ -14,6 +14,8 @@ const SET_IS_DRAG_AND_DROP = 'SET_IS_DRAG_AND_DROP';
 const SET_IS_DRAWER_EXPANDED = 'SET_IS_DRAWER_EXPANDED';
 const SET_IS_ENTERPRISE = 'SET_IS_ENTERPRISE';
 const SET_RUNTIME_VERSION = 'SET_RUNTIME_VERSION';
+const POLL_START = 'POLL_START';
+const POLL_STOP = 'POLL_STOP';
 const TOGGLE_APP_IS_SHOWING = 'TOGGLE_APP_IS_SHOWING';
 // REBOUND_LAUNCHER
 const REBOUND_LAUNCHER_REQUEST = 'REBOUND_LAUNCHER_REQUEST';
@@ -49,6 +51,9 @@ export const setIsDragAndDrop = createAction(SET_IS_DRAG_AND_DROP)<boolean>();
 export const setIsDrawerExpanded = createAction(SET_IS_DRAWER_EXPANDED)<boolean>();
 export const setIsEnterprise = createAction(SET_IS_ENTERPRISE)<boolean>();
 export const setRuntimeVersion = createAction(SET_RUNTIME_VERSION)<string>();
+export const pollStart = createAction(POLL_START)();
+export const pollStop = createAction(POLL_STOP)();
+
 export const reboundLauncher = createAsyncActionCreators(REBOUND_LAUNCHER_REQUEST, REBOUND_LAUNCHER_SUCCESS, REBOUND_LAUNCHER_FAILURE)<
   ReboundLauncherRequestPayload,
   void,
