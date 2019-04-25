@@ -1,5 +1,5 @@
 import { ROUTES } from '../components/Router/consts';
-import { isProductionEnv } from '../utils/processHelpers';
+import { isEnterpriseEnv, isProductionEnv } from '../utils/processHelpers';
 
 const WINDOW_PREFIX = 'osLaunchpad';
 
@@ -142,7 +142,7 @@ export const defaultWindows = {
       width: 8,
     },
     defaultCentered: false,
-    defaultHeight: 102,
+    defaultHeight: isEnterpriseEnv() ? 102 : 51,
     defaultWidth: 171,
     frame: false,
     id: LOGOUT_WINDOW,

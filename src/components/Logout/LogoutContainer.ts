@@ -1,11 +1,16 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { exitApplication } from '../../redux/application';
+import { exitApplication, getIsEnterprise } from '../../redux/application';
 import { logout } from '../../redux/me';
+import { State } from '../../redux/types';
 import { EventType, sendAnalytics } from '../../utils/analytics';
 
 import Logout from './Logout';
+
+const mapState = (state: State) => ({
+  isEnterprise: getIsEnterprise(state),
+});
 
 const mapDispatch = (dispatch: Dispatch) => ({
   exit: () => {
@@ -27,6 +32,6 @@ const mapDispatch = (dispatch: Dispatch) => ({
 });
 
 export default connect(
-  null,
+  mapState,
   mapDispatch,
 )(Logout);

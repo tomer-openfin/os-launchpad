@@ -12,17 +12,20 @@ const ICON_SIZE = 42;
 
 interface Props {
   exit: () => void;
+  isEnterprise: boolean;
   logout: () => void;
 }
 
-const Logout = ({ exit, logout }: Props) => {
+const Logout = ({ exit, isEnterprise, logout }: Props) => {
   return (
     <Wrapper>
-      <Action onClick={logout}>
-        <SvgIcon color={Color.SUN} imgSrc={logoutIcon} size={ICON_SIZE} />
+      {isEnterprise && (
+        <Action onClick={logout}>
+          <SvgIcon color={Color.SUN} imgSrc={logoutIcon} size={ICON_SIZE} />
 
-        <Text>Log Out</Text>
-      </Action>
+          <Text>Log Out</Text>
+        </Action>
+      )}
 
       <Action onClick={exit}>
         <SvgIcon color={Color.SUN} imgSrc={ShutdownIcon} size={ICON_SIZE} />

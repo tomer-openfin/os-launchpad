@@ -8,17 +8,17 @@ import { hideWindow } from '../../redux/windows';
 
 import Settings from './Settings';
 
-const stateProps = (state: State) => ({
+const mapState = (state: State) => ({
   isEnterprise: getIsEnterprise(state),
 });
 
-const dispatchProps = (dispatch: Dispatch) => ({
+const mapDispatch = (dispatch: Dispatch) => ({
   hideWindow: () => {
     dispatch(hideWindow({ name: SETTINGS_WINDOW }));
   },
 });
 
 export default connect(
-  stateProps,
-  dispatchProps,
+  mapState,
+  mapDispatch,
 )(Settings);
