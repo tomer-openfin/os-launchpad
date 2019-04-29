@@ -1,16 +1,12 @@
 import { Dispatch } from 'redux';
 
+import { registerGlobalHotkey } from '../../utils/finUtils';
 import { isDevelopmentEnv } from '../../utils/processHelpers';
 import { globalHotkeyPressed } from './actions';
 import { DevGlobalHotkeys, GlobalHotkeys } from './enums';
 
 type GlobalHotkeyEnumType = typeof DevGlobalHotkeys | typeof GlobalHotkeys;
 const registerEnumToFinGlobalHotkey = (Enum: GlobalHotkeyEnumType, dispatch: Dispatch) => {
-  const { fin } = window;
-  if (!fin) {
-    return;
-  }
-
   for (const hotkey in Enum) {
     if (Enum.hasOwnProperty(hotkey)) {
       const hotkeyToRegister = Enum[hotkey] as DevGlobalHotkeys | GlobalHotkeys;
@@ -19,7 +15,7 @@ const registerEnumToFinGlobalHotkey = (Enum: GlobalHotkeyEnumType, dispatch: Dis
         dispatch(globalHotkeyPressed({ hotkey: hotkeyToRegister }));
       };
 
-      fin.GlobalHotkey.register(hotkeyToRegister, cb);
+      registerGlobalHotkey(hotkeyToRegister, cb);
     }
   }
 };
@@ -32,13 +28,4 @@ export const registerGlobalDevHotKeys = (dispatch: Dispatch) => {
 
 export const registerGlobalHotkeys = (dispatch: Dispatch) => {
   registerEnumToFinGlobalHotkey(GlobalHotkeys, dispatch);
-};
-
-export const unregisterAllGlobalHotkeys = () => {
-  const { fin } = window;
-  if (!fin) {
-    return Promise.resolve(undefined);
-  }
-
-  return fin.GlobalHotkey.unregisterAll();
 };

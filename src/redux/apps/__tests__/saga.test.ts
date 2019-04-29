@@ -4,8 +4,7 @@ import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
 import AppData from '../../../samples/AppData';
 import ApiService from '../../../services/ApiService';
 import { ApiResponseStatus } from '../../../types/enums';
-import noop from '../../../utils/noop';
-import { closeApplication, wrapApplication } from '../../../utils/openfinPromises';
+import * as finUtils from '../../../utils/finUtils';
 import { reboundLauncher } from '../../application';
 import { testAsyncGeneratorsErrorCatch } from '../../testUtils';
 import { closeFinApp, getAppDirectoryList, openFinApp } from '../actions';
@@ -19,17 +18,17 @@ import {
   watchOpenFinAppSuccess,
 } from '../saga';
 
+const closeApplicationSpy = jest.spyOn(finUtils, 'closeApplication');
+
 describe('apps/saga', () => {
   describe('watchCloseFinAppRequest', () => {
     const { request, failure } = closeFinApp;
     const action = request({ uuid: 'TEST_UUID' });
     const iterator = cloneableGenerator(watchCloseFinAppRequest)(action);
-    const app = { close: noop };
 
     it('should call closeApplication', () => {
-      expect(iterator.next().value).toEqual(call(wrapApplication, action.payload.uuid));
-      // tslint:disable-next-line:no-any
-      expect(iterator.next(app).value).toEqual(call(closeApplication, app as any));
+      iterator.next();
+      expect(closeApplicationSpy).toBeCalledWith(action.payload);
     });
 
     it('should put failure action when error is thrown', testAsyncGeneratorsErrorCatch(iterator, failure));

@@ -10,9 +10,8 @@ import windowsConfig, {
   LOGOUT_WINDOW,
 } from '../../config/windows';
 import { getBoundsCenterInCoordinates, isBoundsInCoordinates } from '../../utils/coordinateHelpers';
-import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
+import { updateWindowOptions } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
-import { updateWindowOptions } from '../../utils/openfinPromises';
 import { getIsDragAndDrop, setIsDrawerExpanded, setWindowRelativeToLauncherBounds } from '../application';
 import { getSettings } from '../me';
 import { getMonitorDetailsDerivedByUserSettings } from '../selectors';
@@ -25,11 +24,8 @@ function* watchHideWindow(action: ReturnType<typeof hideWindow>) {
   try {
     const { name } = action.payload;
     if (name === APP_LAUNCHER_OVERFLOW_WINDOW) {
-      const finWindow = yield call(getFinWindowByName, name);
-      if (finWindow) {
-        yield call(updateWindowOptions, finWindow, { opacity: 0 });
-        yield put(windowHidden({ name }));
-      }
+      yield call(updateWindowOptions({ uuid: getOwnUuid(), name }), { opacity: 0 });
+      yield put(windowHidden({ name }));
     } else {
       yield put(Window.hideWindow({ id: name }));
     }
@@ -55,11 +51,9 @@ function* watchLaunchWindow(action: ReturnType<typeof launchWindow>) {
         yield put(getSettings.request());
       }
 
-      const finWindow = yield call(getFinWindowByName, id);
-
       // App launcher overflow window will change opacity instead to avoid fade in/out effect
       if (id === APP_LAUNCHER_OVERFLOW_WINDOW) {
-        yield call(updateWindowOptions, finWindow, { opacity: 1 });
+        yield call(updateWindowOptions({ uuid: getOwnUuid(), name: id }), { opacity: 1 });
         yield put(windowShown({ name: id }));
       } else {
         yield put(Window.showWindow({ id }));

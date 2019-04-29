@@ -4,6 +4,7 @@ import { CTA, Directory, Empty, Row, StyledSearchInput, Wrapper } from './AppDir
 
 import { App } from '../../types/commons';
 import { EventType, sendAnalytics } from '../../utils/analytics';
+import { addWindowListener, removeWindowListener } from '../../utils/finUtils';
 
 import AppCard from '../AppCard';
 import WindowHeader from '../WindowHeader';
@@ -33,21 +34,17 @@ class AppDirectory extends React.PureComponent<Props, State> {
   }
 
   componentDidMount() {
-    const { fin } = window;
-
-    if (fin) {
-      fin.desktop.Window.getCurrent().addEventListener('focused', this.focusInputField);
-      fin.desktop.Window.getCurrent().addEventListener('hidden', this.clearInputField);
-    }
+    // tslint:disable-next-line:no-console
+    addWindowListener()('focused', this.focusInputField).catch(e => console.warn(`Caught error attaching focused listener: ${e}`));
+    // tslint:disable-next-line:no-console
+    addWindowListener()('hidden', this.clearInputField).catch(e => console.warn(`Caught error attaching hidden listener: ${e}`));
   }
 
   componentWillUnmount() {
-    const { fin } = window;
-
-    if (fin) {
-      fin.desktop.Window.getCurrent().removeEventListener('focused', this.focusInputField);
-      fin.desktop.Window.getCurrent().removeEventListener('hidden', this.clearInputField);
-    }
+    // tslint:disable-next-line:no-console
+    removeWindowListener()('focused', this.focusInputField).catch(e => console.warn(`Caught error removing focused listener: ${e}`));
+    // tslint:disable-next-line:no-console
+    removeWindowListener()('hidden', this.clearInputField).catch(e => console.warn(`Caught error removing hidden listener: ${e}`));
   }
 
   clearInputField = () => {

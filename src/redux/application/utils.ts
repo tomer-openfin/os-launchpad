@@ -3,9 +3,9 @@ import { all, call, put, select, take } from 'redux-saga/effects';
 
 import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGOUT_WINDOW } from '../../config/windows';
 import { Bounds } from '../../types/commons';
-import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
+import { UnPromisfy } from '../../types/utils';
+import { getApplicationInfo, setWindowBounds } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
-import { getCurrentOpenfinApplicationInfo, setWindowBoundsPromise } from '../../utils/openfinPromises';
 import { calcBoundsRelativeToLauncher } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList, resetAppDirectoryList } from '../apps';
 import { getChannels } from '../channels';
@@ -45,13 +45,7 @@ export function* initOrgSettings() {
 }
 
 export function* initRuntimeVersion() {
-  const { fin } = window;
-  if (!fin) {
-    return;
-  }
-
-  // Set Runtime Version
-  const { runtime } = yield call(getCurrentOpenfinApplicationInfo);
+  const { runtime }: UnPromisfy<ReturnType<ReturnType<typeof getApplicationInfo>>> = yield call(getApplicationInfo({ uuid: getOwnUuid() }));
   if (runtime) {
     yield put(setRuntimeVersion((runtime as { version: string }).version));
   }
@@ -86,23 +80,18 @@ export function* resetResources() {
  * Generator for setting the windows relative to Launcher bounds
  */
 export function* setWindowRelativeToLauncherBounds(finName: string, launcherBounds: Bounds) {
-  const finWindow = yield call(getFinWindowByName, finName);
+  let windowBounds: ReturnType<typeof getWindowBounds> = yield select(getWindowBounds, finName);
 
-  if (!finWindow) {
-    return;
-  }
-
-  let windowBounds = yield select(getWindowBounds, finName);
   if (!windowBounds) {
     return;
   }
 
-  const launcherPosition = yield select(getLauncherPosition);
-  const launcherSizeConfig = yield select(getLauncherSizeConfig);
-  const expandedSystemDrawerSize = yield select(getExpandedSystemDrawerSize);
+  const launcherPosition: ReturnType<typeof getLauncherPosition> = yield select(getLauncherPosition);
+  const launcherSizeConfig: ReturnType<typeof getLauncherSizeConfig> = yield select(getLauncherSizeConfig);
+  const expandedSystemDrawerSize: ReturnType<typeof getExpandedSystemDrawerSize> = yield select(getExpandedSystemDrawerSize);
 
   if (finName === APP_LAUNCHER_OVERFLOW_WINDOW) {
-    const appListDimensions = yield select(getAppListDimensions);
+    const appListDimensions: ReturnType<typeof getAppListDimensions> = yield select(getAppListDimensions);
 
     windowBounds = {
       ...windowBounds,
@@ -111,5 +100,5 @@ export function* setWindowRelativeToLauncherBounds(finName: string, launcherBoun
   }
 
   const bounds = calcBoundsRelativeToLauncher(finName, windowBounds, launcherBounds, launcherPosition, launcherSizeConfig, expandedSystemDrawerSize);
-  yield call(setWindowBoundsPromise, finWindow, bounds);
+  yield call(setWindowBounds({ uuid: getOwnUuid(), name: finName }), bounds);
 }

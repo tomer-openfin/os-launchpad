@@ -3,6 +3,7 @@ import { put, select, takeEvery } from 'redux-saga/effects';
 
 import windowsConfig from '../../config/windows';
 import { EventType, sendAnalytics } from '../../utils/analytics';
+import { showSystemDeveloperTools } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { isDevelopmentEnv } from '../../utils/processHelpers';
 import { restoreLayout } from '../layouts/actions';
@@ -58,10 +59,9 @@ function* watchGlobalHotkeyPressed(action: ReturnType<typeof globalHotkeyPressed
       }
 
       case DevGlobalHotkeys.ShowDevTools: {
-        const { fin } = window;
-        if (fin && isDevelopmentEnv()) {
+        if (isDevelopmentEnv()) {
           const appUuid = getOwnUuid();
-          fin.desktop.System.showDeveloperTools(appUuid, appUuid);
+          showSystemDeveloperTools({ uuid: appUuid, name: appUuid });
         }
         break;
       }

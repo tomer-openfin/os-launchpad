@@ -3,8 +3,8 @@ import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import { CONTEXT_MENU } from '../../config/windows';
 import { isBoundsInCoordinates, isPosInCoordinates } from '../../utils/coordinateHelpers';
-import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
-import { setWindowBoundsPromise } from '../../utils/openfinPromises';
+import { setWindowBounds } from '../../utils/finUtils';
+import getOwnUuid from '../../utils/getOwnUuid';
 import { getMonitorInfo } from '../system';
 import { getErrorFromCatch } from '../utils';
 import { hideWindow } from '../windows';
@@ -31,10 +31,9 @@ function* watchOpenContextMenuRequest(action: ReturnType<typeof openContextMenu.
   try {
     yield put(hideWindow({ name: CONTEXT_MENU }));
 
-    const finWindow = yield call(getFinWindowByName, CONTEXT_MENU);
     const monitorInfo: ReturnType<typeof getMonitorInfo> = yield select(getMonitorInfo);
     const { anchor, options } = action.payload;
-    if (!options.length || !monitorInfo || !finWindow) {
+    if (!options.length || !monitorInfo) {
       throw new Error('finWindow, monitor info or options is missing');
     }
 
@@ -95,7 +94,7 @@ function* watchOpenContextMenuRequest(action: ReturnType<typeof openContextMenu.
       throw new Error('Unable to calculate bounds');
     }
 
-    yield call(setWindowBoundsPromise, finWindow, bounds);
+    yield call(setWindowBounds({ uuid: getOwnUuid(), name: CONTEXT_MENU }), bounds);
 
     yield put(
       openContextMenu.success(

@@ -8,12 +8,11 @@ import { adminWindows, authWindows, defaultWindows } from '../../config/windows'
 import { ApiResponseStatus } from '../../types/enums';
 import { UnPromisfy } from '../../types/utils';
 import { EventType, sendAnalytics } from '../../utils/analytics';
+import { removeApplicationTrayIcon, setApplicationTrayIcon, unregisterAllGlobalHotkey } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
-import { removeCurrentApplicationSystemTray, setCurrentApplicationSystemTray } from '../../utils/openfinPromises';
 import { generateTimestamp } from '../../utils/timestampUtils';
 import { getAdminApps, getAdminUsers } from '../admin';
-import { getApplicationManifest, getManifestOverride, initResources, pollStop, reboundLauncher, resetResources, toggleAppIsShowing } from '../application';
-import { unregisterAllGlobalHotkeys } from '../globalHotkeys/utils';
+import { getApplicationManifest, getManifestOverride, initResources, pollStop, reboundLauncher, resetResources } from '../application';
 import { getAdminOrgSettings } from '../organization';
 import { getErrorFromCatch } from '../utils';
 import { closeWindowsByConfig, hideWindowsByConfig, initWindows } from '../windows/utils';
@@ -142,7 +141,7 @@ function* watchLogoutRequest(action: ReturnType<typeof logout.request>) {
     yield call(closeWindowsByConfig, adminWindows);
     yield call(hideWindowsByConfig, defaultWindows);
     yield put(Window.hideWindow({ id: getOwnUuid() }));
-    yield all([call(unregisterAllGlobalHotkeys), call(resetResources)]);
+    yield all([call(unregisterAllGlobalHotkey), call(resetResources)]);
 
     const response: UnPromisfy<ReturnType<typeof ApiService.logout>> = yield call(ApiService.logout);
 
@@ -243,17 +242,17 @@ function* reboundLauncherAndSaveSettings(shouldAnimate: boolean, delay: number, 
 
 function* systemTrayWatcher() {
   try {
+    const uuid = getOwnUuid();
     const systemTrayEnabled: ReturnType<typeof getSystemTrayEnabled> = yield select(getSystemTrayEnabled);
 
     if (systemTrayEnabled) {
       const manifest = yield select(getApplicationManifest);
       if (manifest && manifest.startup_app && manifest.startup_app.icon) {
-        const handleClickTrayIcon = () => window.store.dispatch(toggleAppIsShowing());
-        yield call(setCurrentApplicationSystemTray, manifest.startup_app.icon, { clickListener: handleClickTrayIcon });
+        yield call(setApplicationTrayIcon({ uuid }), manifest.startup_app.icon);
       }
     } else {
-      yield call(removeCurrentApplicationSystemTray);
-      yield put(Window.showWindow({ id: getOwnUuid() }));
+      yield call(removeApplicationTrayIcon({ uuid }));
+      yield put(Window.showWindow({ id: uuid }));
     }
   } catch (e) {
     const error = getErrorFromCatch(e);

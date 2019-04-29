@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { addWindowListener, removeWindowListener } from '../../utils/finUtils';
+
 import SearchInput from './SearchInput';
 
 interface Props {
@@ -23,19 +25,13 @@ class SearchInputWithState extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    const { fin } = window;
-
-    if (fin) {
-      fin.desktop.Window.getCurrent().addEventListener('hidden', this.clearInputField);
-    }
+    // tslint:disable-next-line:no-console
+    addWindowListener()('hidden', this.clearInputField).catch(e => console.warn('Caught error attaching hidden listener:', e));
   }
 
   componentWillUnmount() {
-    const { fin } = window;
-
-    if (fin) {
-      fin.desktop.Window.getCurrent().removeEventListener('hidden', this.clearInputField);
-    }
+    // tslint:disable-next-line:no-console
+    removeWindowListener()('hidden', this.clearInputField).catch(e => console.warn('Caught error removing hidden listener:', e));
   }
 
   clearInputField = () => {

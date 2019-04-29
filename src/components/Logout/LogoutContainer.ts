@@ -6,6 +6,7 @@ import { logout } from '../../redux/me';
 import { State } from '../../redux/types';
 import { EventType, sendAnalytics } from '../../utils/analytics';
 
+import { hideWindow } from '../../utils/finUtils';
 import Logout from './Logout';
 
 const mapState = (state: State) => ({
@@ -23,10 +24,8 @@ const mapDispatch = (dispatch: Dispatch) => ({
   logout: () => {
     sendAnalytics({ type: EventType.Click, label: 'LogOut' });
     // Bypass redux for immediate result
-    const { fin } = window;
-    if (fin) {
-      fin.desktop.Window.getCurrent().hide();
-    }
+    // tslint:disable-next-line:no-console
+    hideWindow()().catch(e => console.warn('Caught error in hiding logout window:', e));
     dispatch(logout.request({ message: 'You have been successfully logged out.', isError: false }));
   },
 });

@@ -1,5 +1,6 @@
 // import { Channel } from 'openfin-fdc3';
 import { Workspace } from 'openfin-layouts/dist/client/workspaces';
+import { UnPromisfy } from './utils';
 
 export type ApplicationBaseEvent = fin.ApplicationBaseEvent;
 export type Identity = fin.Identity;
@@ -11,13 +12,16 @@ export type OpenFinApplicationInfo = fin.LaunchInfo;
 export type OpenFinWindow = fin.OpenFinWindow;
 export type PointTopLeft = fin.PointTopLeft;
 export type SystemBaseEvent = fin.SystemBaseEvent;
+export type SystemWindowInfo = fin.SystemWindowInfo;
 export type Transition = fin.Transition;
+export type TrayIconClickedEvent = fin.TrayIconClickedEvent;
 export type WindowBaseEvent = fin.WindowBaseEvent;
 export type WindowBoundsEvent = fin.WindowBoundsEvent;
 export type WindowGroupChangedEvent = fin.WindowGroupChangedEvent;
 export type Workspace = Workspace;
 export type WindowInfo = fin.WindowInfo;
 export type WindowDetail = fin.WindowDetail;
+export type FinWindowV2 = UnPromisfy<ReturnType<typeof fin.Window.wrap>>;
 
 // Taken from openfin-fdc3@0.1.0
 type ChannelId = string;

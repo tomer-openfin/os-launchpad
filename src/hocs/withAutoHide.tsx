@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { Bounds } from '../types/commons';
 import { isPosInBounds } from '../utils/coordinateHelpers';
-import { getSystemMousePosition } from '../utils/openfinPromises';
+import { getSystemMousePosition } from '../utils/finUtils';
 
 const CHECK_MOUSE_INTERVAL = 200;
 

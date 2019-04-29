@@ -5,10 +5,9 @@ import ApiService from '../../services/ApiService';
 import { ApiResponseStatus, AppStatusOrigins, AppStatusStates, Transition, UserLayout } from '../../types/commons';
 import { UnPromisfy } from '../../types/utils';
 import { EventType, sendAnalytics } from '../../utils/analytics';
-import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
+import { animateWindow } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { generateLayout, restoreLayout as restoreFinLayout } from '../../utils/openfinLayouts';
-import { animateWindow } from '../../utils/openfinPromises';
 import { calcBoundsRelativeToLauncher } from '../../utils/windowPositionHelpers';
 import { getApps, getAppsStatusById, openFinApp, setFinAppStatusState } from '../apps';
 import { getLauncherPosition, getLauncherSizeConfig } from '../me';
@@ -22,16 +21,15 @@ import { calcDesiredLayoutsWindowHeight } from './utils';
 
 function* watchLayoutsChangesToAnimateWindow() {
   try {
-    const layoutsWindow: UnPromisfy<ReturnType<typeof getFinWindowByName>> = yield call(getFinWindowByName, LAYOUTS_WINDOW);
-
+    const uuid = getOwnUuid();
     const bounds: ReturnType<typeof getWindowBounds> = yield select(getWindowBounds, LAYOUTS_WINDOW);
-    const launcherBounds: ReturnType<typeof getWindowBounds> = yield select(getWindowBounds, getOwnUuid());
+    const launcherBounds: ReturnType<typeof getWindowBounds> = yield select(getWindowBounds, uuid);
     const launcherPosition: ReturnType<typeof getLauncherPosition> = yield select(getLauncherPosition);
     const launcherSizeConfig: ReturnType<typeof getLauncherSizeConfig> = yield select(getLauncherSizeConfig);
     const expandedSystemDrawerSize: ReturnType<typeof getExpandedSystemDrawerSize> = yield select(getExpandedSystemDrawerSize);
     const layouts: ReturnType<typeof getAllLayouts> = yield select(getAllLayouts);
 
-    if (!bounds || !layouts || !layoutsWindow || !launcherBounds) {
+    if (!bounds || !layouts || !launcherBounds) {
       return;
     }
 
@@ -59,7 +57,7 @@ function* watchLayoutsChangesToAnimateWindow() {
       },
     };
 
-    yield call(animateWindow, layoutsWindow, transitions, { interrupt: false });
+    yield call(animateWindow({ uuid, name: LAYOUTS_WINDOW }), transitions, { interrupt: false });
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
@@ -138,7 +136,7 @@ function* watchRestoreLayoutRequest(action: ReturnType<typeof restoreLayout.requ
 
         if (!matchingApp) {
           // tslint:disable-next-line:no-console
-          console.error('Could not find manifestUrl in list of applications.', manifestUrl, uuid);
+          console.warn('Could not find manifestUrl in list of applications.', manifestUrl, uuid);
           return;
         }
 
@@ -170,7 +168,7 @@ function* watchRestoreLayoutSuccess(action: ReturnType<typeof restoreLayout.succ
 
         if (!matchingApp) {
           // tslint:disable-next-line:no-console
-          console.error('Could not find manifestUrl in list of applications.', manifestUrl, uuid);
+          console.warn('Could not find manifestUrl in list of applications.', manifestUrl, uuid);
           return;
         }
 

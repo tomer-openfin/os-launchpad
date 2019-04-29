@@ -1,33 +1,40 @@
-import { all, call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
+import { all, call, Effect, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import { ManifestType } from '../../components/AppForm/index';
 import ApiService from '../../services/ApiService';
 import API from '../../services/ApiService/api';
+import { Bounds, FinWindowV2 } from '../../types/commons';
 import { ApiResponseStatus, AppStatusOrigins, AppStatusStates } from '../../types/enums';
 import { UnPromisfy } from '../../types/utils';
 import { getArea } from '../../utils/coordinateHelpers';
 import { bindFinAppEventHandlers } from '../../utils/finAppEventHandlerHelpers';
 import {
   closeApplication,
-  createAndRunFromManifest,
-  createAndRunFromPath,
-  getOpenFinApplicationChildWindows,
-  getOpenFinApplicationInfo,
-  getVisibleWindowStateAndBounds,
-  wrapApplication,
-  wrapWindow,
-} from '../../utils/openfinPromises';
-import promisifyOpenfin from '../../utils/promisifyOpenfin';
+  getApplicationChildWindows,
+  getApplicationInfo,
+  getApplicationWindow,
+  launchExternalProcess,
+  startFromManifest,
+} from '../../utils/finUtils';
 import { getRuntimeVersion, reboundLauncher } from '../application';
 import { getErrorFromCatch } from '../utils';
 import { closeFinApp, externalApp, getAppDirectoryList, launchApp, openFinApp, setFinAppStatusState } from './actions';
 import { getAppStatusById } from './selectors';
 
+/**
+ * Get window state for windows that are showing
+ */
+export const getVisibleWindowStateAndBounds = async (
+  finWindow: FinWindowV2,
+): Promise<{ finWindow: FinWindowV2; bounds: Bounds; isShowing: boolean; state: string }> => {
+  const [isShowing, bounds, state] = await Promise.all([finWindow.isShowing(), finWindow.getBounds(), finWindow.getState()]);
+
+  return { finWindow, bounds, state, isShowing };
+};
+
 export function* watchCloseFinAppRequest(action: ReturnType<typeof closeFinApp.request>) {
   try {
-    const { uuid } = action.payload;
-    const app: UnPromisfy<ReturnType<typeof wrapApplication>> = yield call(wrapApplication, uuid);
-    yield call(closeApplication, app);
+    yield call(closeApplication(action.payload));
     // success message to be dispatched from the system
   } catch (e) {
     const error = getErrorFromCatch(e);
@@ -80,7 +87,7 @@ export function* watchExternalAppRequest(action: ReturnType<typeof externalApp.r
       throw new Error('No manifest url');
     }
 
-    const uuid: UnPromisfy<ReturnType<typeof createAndRunFromPath>> = yield call(createAndRunFromPath, manifest_url);
+    const { uuid }: UnPromisfy<ReturnType<typeof launchExternalProcess>> = yield call(launchExternalProcess, { path: manifest_url });
 
     yield put(externalApp.success({ uuid }, action.meta));
   } catch (e) {
@@ -136,12 +143,19 @@ export function* watchOpenFinAppRequest(action: ReturnType<typeof openFinApp.req
       yield put(setFinAppStatusState({ id, statusState: AppStatusStates.Loading, origin: AppStatusOrigins.Default }));
     }
 
-    const uuid: UnPromisfy<ReturnType<typeof createAndRunFromManifest>> = yield call(createAndRunFromManifest, manifestUrl, id);
-
-    const info = yield call(getOpenFinApplicationInfo(uuid));
+    const app: UnPromisfy<ReturnType<typeof startFromManifest>> = yield call(startFromManifest, manifestUrl);
+    const info: UnPromisfy<ReturnType<ReturnType<typeof getApplicationInfo>>> = yield call(getApplicationInfo(app.identity));
 
     yield put(
-      openFinApp.success({ id, uuid, origin: AppStatusOrigins.Default, runtimeVersion: info && info.runtime ? info.runtime.version : '' }, action.meta),
+      openFinApp.success(
+        {
+          id,
+          origin: AppStatusOrigins.Default,
+          runtimeVersion: info && info.runtime ? (info as { runtime: { version: string } }).runtime.version : '',
+          uuid: app.identity.uuid,
+        },
+        action.meta,
+      ),
     );
   } catch (e) {
     const error = getErrorFromCatch(e);
@@ -183,33 +197,43 @@ export function* watchOpenFinAppFailure(action: ReturnType<typeof openFinApp.fai
       yield put(setFinAppStatusState({ id, statusState: AppStatusStates.Closed }));
     }
 
-    const { fin } = window;
-    if (fin) {
-      const alreadyRunningError = 'Application with specified UUID is already running: ';
-      if (typeof message === 'string' && message.indexOf(alreadyRunningError) === 0) {
-        const uuid = message.slice(alreadyRunningError.length);
-        const app = fin.desktop.Application.wrap(uuid);
-        const appWindow = app.getWindow();
-        const childWindows: UnPromisfy<ReturnType<ReturnType<typeof getOpenFinApplicationChildWindows>>> = yield call(getOpenFinApplicationChildWindows(uuid));
-        const finChildWindows: Array<UnPromisfy<ReturnType<typeof wrapWindow>>> = yield all(childWindows.map(childWindow => call(wrapWindow, childWindow)));
+    const alreadyRunningError = 'Application with specified UUID is already running: ';
+    if (typeof message === 'string' && message.indexOf(alreadyRunningError) === 0) {
+      const uuid = message.slice(alreadyRunningError.length);
+      const appIdentity = { uuid };
+      const [appWindow, childWindows]: [
+        UnPromisfy<ReturnType<ReturnType<typeof getApplicationWindow>>>,
+        UnPromisfy<ReturnType<ReturnType<typeof getApplicationChildWindows>>>
+      ] = yield all([call(getApplicationWindow(appIdentity)), call(getApplicationChildWindows(appIdentity))]);
 
-        const windows = yield all([
-          call(getVisibleWindowStateAndBounds, appWindow),
-          ...finChildWindows.map(childWindow => call(getVisibleWindowStateAndBounds, childWindow)),
-        ]);
-        const largestWindowsFirst = windows.filter(win => win.bounds).sort((a, b) => getArea(a.bounds) < getArea(b.bounds));
+      const windows: Array<UnPromisfy<ReturnType<typeof getVisibleWindowStateAndBounds>>> = yield all([
+        call(getVisibleWindowStateAndBounds, appWindow),
+        ...childWindows.map(childWindow => call(getVisibleWindowStateAndBounds, childWindow)),
+      ]);
+      const largestWindowsFirst = windows
+        .filter(win => win.isShowing)
+        .sort((a, b) => {
+          const areaA = getArea(a.bounds);
+          const areaB = getArea(b.bounds);
+          if (areaA === areaB) {
+            return 0;
+          }
+          return areaA < areaB ? 1 : -1;
+        });
 
-        yield all(
-          largestWindowsFirst.reduce((acc, { finWindow, state }) => {
+      yield all(
+        largestWindowsFirst.reduce(
+          (acc, { finWindow, state }) => {
             if (!state) {
               return acc;
             }
 
             const method = state === 'minimized' ? 'restore' : 'bringToFront';
-            return [...acc, call(promisifyOpenfin, finWindow, method)];
-          }, []),
-        );
-      }
+            return [...acc, call([finWindow, finWindow[method]])];
+          },
+          [] as Effect[],
+        ),
+      );
     }
   } catch (e) {
     const error = getErrorFromCatch(e);

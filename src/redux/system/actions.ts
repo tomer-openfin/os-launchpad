@@ -1,4 +1,4 @@
-import { MonitorInfo, SystemBaseEvent, WindowBaseEvent, WindowBoundsEvent, WindowGroupChangedEvent } from '../../types/commons';
+import { MonitorInfo, SystemBaseEvent, TrayIconClickedEvent, WindowBaseEvent, WindowBoundsEvent, WindowGroupChangedEvent } from '../../types/commons';
 import { createAction, createAsyncActionCreators } from '../utils';
 import { SystemWindow } from './types';
 
@@ -15,6 +15,7 @@ const STORE_ALL_SYSTEM_WINDOWS_FAILURE = 'STORE_ALL_SYSTEM_WINDOWS_FAILURE';
 const SYSTEM_EVENT_APPLICATION_CLOSED = 'SYSTEM_EVENT:APPLICATION_CLOSED';
 const SYSTEM_EVENT_APPLICATION_CRASHED = 'SYSTEM_EVENT:APPLICATION_CRASHED';
 const SYSTEM_EVENT_APPLICATION_STARTED = 'SYSTEM_EVENT:APPLICATION_STARTED';
+const SYSTEM_EVENT_APPLICATION_TRAY_ICON_CLICKED = 'SYSTEM_EVENT:APPLICATION_TRAY_ICON_CLICKED';
 const SYSTEM_EVENT_WINDOW_BOUNDS_CHANGED = 'SYSTEM_EVENT:WINDOW_BOUNDS_CHANGED';
 const SYSTEM_EVENT_WINDOW_CLOSED = 'SYSTEM_EVENT:WINDOW_CLOSED';
 const SYSTEM_EVENT_WINDOW_CREATED = 'SYSTEM_EVENT:WINDOW_CREATED';
@@ -42,6 +43,7 @@ export const setMonitorInfo = createAction(SET_MONITOR_INFO)<MonitorInfo>();
 export const systemEventApplicationClosed = createAction(SYSTEM_EVENT_APPLICATION_CLOSED)<SystemBaseEvent>();
 export const systemEventApplicationCrashed = createAction(SYSTEM_EVENT_APPLICATION_CRASHED)<SystemBaseEvent>();
 export const systemEventApplicationStarted = createAction(SYSTEM_EVENT_APPLICATION_STARTED)<SystemBaseEvent>();
+export const systemEventApplicationTrayIconClicked = createAction(SYSTEM_EVENT_APPLICATION_TRAY_ICON_CLICKED)<TrayIconClickedEvent>();
 export const systemEventWindowBoundsChanged = createAction(SYSTEM_EVENT_WINDOW_BOUNDS_CHANGED)<WindowBoundsEvent>();
 export const systemEventWindowClosed = createAction(SYSTEM_EVENT_WINDOW_CLOSED)<WindowBaseEvent>();
 export const systemEventWindowCreated = createAction(SYSTEM_EVENT_WINDOW_CREATED)<WindowBaseEvent>();

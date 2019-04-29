@@ -2,17 +2,9 @@ import { all, call, put, select, takeEvery, takeLatest } from 'redux-saga/effect
 
 import { UnPromisfy } from '../../types/utils';
 import { unbindFinAppEventHanlders } from '../../utils/finAppEventHandlerHelpers';
+import { getAllSystemWindows, getSystemMachineId, getSystemMonitorInfo, getWindowBounds, getWindowGroup, isWindowShowing } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
-import {
-  getSystemAllWindows,
-  getSystemMachineId,
-  getSystemMonitorInfo,
-  getWindowBounds,
-  getWindowGroup,
-  getWindowIsShowingPromise,
-  wrapWindow,
-} from '../../utils/openfinPromises';
-import { reboundLauncher } from '../application';
+import { reboundLauncher, toggleAppIsShowing } from '../application';
 import { closeFinApp } from '../apps';
 import { getMonitorDetailsDerivedByUserSettings } from '../selectors';
 import { getErrorFromCatch } from '../utils';
@@ -25,6 +17,7 @@ import {
   storeAllSystemWindows,
   systemEventApplicationClosed,
   systemEventApplicationCrashed,
+  systemEventApplicationTrayIconClicked,
   systemEventWindowCreated,
   systemWindowCreatedWithDetails,
 } from './actions';
@@ -105,6 +98,16 @@ function* watchSystemEventApplicationCrashed(action: ReturnType<typeof systemEve
   }
 }
 
+function* watchSystemEventApplicationTrayIconClicked() {
+  try {
+    yield put(toggleAppIsShowing());
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.warn('Error in watchSystemEventApplicationTrayIconClicked', error);
+  }
+}
+
 // function* watchSystemEventApplicationStarted(action: SystemEventApplicationStartedAction) {
 //   const eventPayload = action.payload;
 
@@ -117,7 +120,7 @@ function* watchSystemEventApplicationCrashed(action: ReturnType<typeof systemEve
 
 function* watchStoreAllSystemWindows() {
   try {
-    const allWindows: UnPromisfy<ReturnType<typeof getSystemAllWindows>> = yield call(getSystemAllWindows);
+    const allWindows: UnPromisfy<ReturnType<typeof getAllSystemWindows>> = yield call(getAllSystemWindows);
     const systemWindows = allWindows.reduce(
       (acc, windowInfo) => {
         const { childWindows, mainWindow, uuid } = windowInfo;
@@ -138,8 +141,7 @@ function* watchStoreAllSystemWindows() {
     const systemWindowsWithIsGrouped = yield Promise.all(
       systemWindows.map(async systemWindow => {
         try {
-          const finWindow = await wrapWindow(systemWindow);
-          const group = await getWindowGroup(finWindow);
+          const group = await getWindowGroup(systemWindow)();
           return {
             ...systemWindow,
             isGrouped: !!group.length,
@@ -159,12 +161,11 @@ function* watchStoreAllSystemWindows() {
 
 function* watchSystemEventWindowCreated(action: ReturnType<typeof systemEventWindowCreated>) {
   try {
-    const { name, uuid } = action.payload;
-    const finWindow: UnPromisfy<ReturnType<typeof wrapWindow>> = yield call(wrapWindow, { name, uuid });
-    const [bounds, isShowing]: [UnPromisfy<ReturnType<typeof getWindowBounds>>, UnPromisfy<ReturnType<typeof getWindowIsShowingPromise>>] = yield all([
-      call(getWindowBounds, finWindow),
-      call(getWindowIsShowingPromise, finWindow),
-    ]);
+    const { uuid } = action.payload;
+    const [bounds, isShowing]: [
+      UnPromisfy<ReturnType<ReturnType<typeof getWindowBounds>>>,
+      UnPromisfy<ReturnType<ReturnType<typeof isWindowShowing>>>
+    ] = yield all([call(getWindowBounds(action.payload)), call(isWindowShowing(action.payload))]);
     yield put(
       systemWindowCreatedWithDetails({
         height: bounds ? bounds.height : 0,
@@ -189,6 +190,7 @@ export function* systemSaga() {
   yield takeEvery(setMonitorInfo, watchSetMonitorInfo);
   yield takeEvery(systemEventApplicationClosed, watchSystemEventApplicationClosed);
   yield takeEvery(systemEventApplicationCrashed, watchSystemEventApplicationCrashed);
+  yield takeEvery(systemEventApplicationTrayIconClicked, watchSystemEventApplicationTrayIconClicked);
   // yield takeEvery(SYSTEM_EVENT_APPLICATION_STARTED, watchSystemEventApplicationStarted);
   yield takeEvery(systemEventWindowCreated, watchSystemEventWindowCreated);
   yield takeLatest(gatherAllWindows.request, watchGatherAllWindowsRequest);

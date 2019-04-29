@@ -1,4 +1,3 @@
-import { Window } from '@giantmachines/redux-openfin';
 import { all, call, delay, put, select, spawn, takeEvery } from 'redux-saga/effects';
 
 import { getContextManagerHeight } from '../../components/ContextManager';
@@ -6,10 +5,9 @@ import { EXPANED_HEIGHT, MAIN_WIDTH, SIDE_WIDTH } from '../../components/Context
 import { CHANNELS_WINDOW } from '../../config/windows';
 import { Channel } from '../../types/fin';
 import { UnPromisfy } from '../../types/utils';
-import { getFinWindowByName } from '../../utils/getLauncherFinWindow';
+import { animateWindow, getWindowBounds, resizeWindowTo } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { getAllChannels, getChannelMembers, GLOBAL_CHANNEL_ID, joinChannel } from '../../utils/openfinFdc3';
-import { animateWindow } from '../../utils/openfinPromises';
 import { getContextChannels } from '../selectors';
 import { getErrorFromCatch } from '../utils';
 import { addWindowToChannel, animateChannels, getChannels, removeWindowFromChannel, updateMembersById } from './actions';
@@ -110,43 +108,42 @@ export function* watchRemoveWindowFromChannelFailure(action: ReturnType<typeof r
 
 export function* watchAnimateChannelsRequest(action: ReturnType<typeof animateChannels.request>) {
   try {
-    const channelWindow: UnPromisfy<ReturnType<typeof getFinWindowByName>> = yield call(getFinWindowByName, CHANNELS_WINDOW);
-    if (!channelWindow) {
-      throw new Error('Could not find channel window');
-    }
-
     const channels = yield select(getContextChannels);
-    const height = getContextManagerHeight(channels.length);
+    const contentHeight = getContextManagerHeight(channels.length);
 
     const { payload } = action;
     if (payload && payload.animateInstant) {
-      yield put(Window.resizeWindow({ id: CHANNELS_WINDOW, width: MAIN_WIDTH, height }));
+      yield call(resizeWindowTo({ uuid: getOwnUuid(), name: CHANNELS_WINDOW }), MAIN_WIDTH, contentHeight, 'top-left');
       return;
     }
 
     const activeId = yield select(getChannelsActiveId);
-    const heightTransition = {
+    const identity = { uuid: getOwnUuid(), name: CHANNELS_WINDOW };
+    const { height, width } = yield call(getWindowBounds(identity));
+
+    const transition1 = {
       size: {
         duration: 300,
         height: activeId ? EXPANED_HEIGHT : height,
         relative: false,
+        width: activeId ? width : MAIN_WIDTH,
       },
     };
-    const widthTransition = {
+    const transition2 = {
       size: {
         duration: 300,
+        height: activeId ? EXPANED_HEIGHT : contentHeight,
         relative: false,
         width: activeId ? MAIN_WIDTH + SIDE_WIDTH : MAIN_WIDTH,
       },
     };
 
     const animationFlow = [
-      call(animateWindow, channelWindow, heightTransition, { interrupt: false }),
+      call(animateWindow(identity), transition1, { interrupt: false }),
       delay(300),
-      call(animateWindow, channelWindow, widthTransition, { interrupt: false }),
+      call(animateWindow(identity), transition2, { interrupt: false }),
     ];
-
-    for (const step of activeId ? animationFlow : animationFlow.reverse()) {
+    for (const step of animationFlow) {
       yield step;
     }
 

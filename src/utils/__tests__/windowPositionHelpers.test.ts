@@ -1,4 +1,5 @@
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
+import { MonitorInfo } from '../../types/fin';
 import { launcherSizeConfigs } from '../launcherSizeConfigs';
 import { calcLauncherCoordinates, calcLauncherDimensions, calcLauncherPosition, isBottomOrRight, isLeftOrRight, isTopOrBottom } from '../windowPositionHelpers';
 
@@ -6,7 +7,7 @@ const { Bottom: BOTTOM, Left: LEFT, Right: RIGHT, Top: TOP } = DirectionalPositi
 
 const dimensions = { height: 100, width: 200 };
 
-const monitorInfo = {
+const monitorInfo: MonitorInfo = {
   deviceScaleFactor: 0,
   dpi: {
     x: 0,
@@ -61,7 +62,7 @@ const monitorInfo = {
       right: 1384,
       top: -100,
     },
-    name: 0,
+    name: 'name',
   },
   reason: 'display',
   taskBar: {

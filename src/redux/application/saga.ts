@@ -6,10 +6,9 @@ import ApiService from '../../services/ApiService';
 import { ApiResponseStatus } from '../../types/enums';
 import { UnPromisfy } from '../../types/utils';
 import { eraseCookie } from '../../utils/cookieUtils';
-import { getLauncherFinWindow } from '../../utils/getLauncherFinWindow';
+import { animateWindow, getApplicationManifest, showSystemDeveloperTools } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { updateKeyInManifestOverride } from '../../utils/manifestOverride';
-import { animateWindow, getCurrentOpenfinApplicationManifest } from '../../utils/openfinPromises';
 import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv, isProductionEnv } from '../../utils/processHelpers';
 import { setupWindow } from '../../utils/setupWindow';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
@@ -76,10 +75,9 @@ function* watchInitDevTools() {
       // Register global dev hotkeys
       registerGlobalDevHotKeys(window.store.dispatch);
 
-      const { fin } = window;
-      if (fin && hasDevToolsOnStartup()) {
+      if (hasDevToolsOnStartup()) {
         // Show main windows dev tools on startup
-        fin.desktop.System.showDeveloperTools(APP_UUID, APP_UUID);
+        showSystemDeveloperTools({ uuid: APP_UUID, name: APP_UUID });
       }
     }
   } catch (e) {
@@ -234,7 +232,7 @@ function* watchFetchManifest(action: ReturnType<typeof fetchManifest.request>) {
 
 function* watchGetManifestRequest(action: ReturnType<typeof getManifest.request>) {
   try {
-    const manifest: UnPromisfy<ReturnType<typeof getCurrentOpenfinApplicationManifest>> = yield call(getCurrentOpenfinApplicationManifest);
+    const manifest: UnPromisfy<ReturnType<ReturnType<typeof getApplicationManifest>>> = yield call(getApplicationManifest({ uuid: APP_UUID }));
     yield put(getManifest.success(manifest, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
@@ -244,11 +242,6 @@ function* watchGetManifestRequest(action: ReturnType<typeof getManifest.request>
 
 function* watchReboundLauncherRequest(action: ReturnType<typeof reboundLauncher.request>) {
   try {
-    const launcherFinWindow: UnPromisfy<ReturnType<typeof getLauncherFinWindow>> = yield call(getLauncherFinWindow);
-    if (!launcherFinWindow) {
-      throw new Error('Could not find launcher fin window instance');
-    }
-
     const [appList, monitorDetails, launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, expandedSystemDrawerSize, isSystemTrayEnabled]: [
       ReturnType<typeof getAppsLauncherAppList>,
       ReturnType<typeof getMonitorDetailsDerivedByUserSettings>,
@@ -284,8 +277,7 @@ function* watchReboundLauncherRequest(action: ReturnType<typeof reboundLauncher.
       yield delay(animationDelay);
     }
     yield call(
-      animateWindow,
-      launcherFinWindow,
+      animateWindow({ uuid: APP_UUID, name: APP_UUID }),
       {
         position: {
           duration: shouldAnimate ? ANIMATION_DURATION : 0,

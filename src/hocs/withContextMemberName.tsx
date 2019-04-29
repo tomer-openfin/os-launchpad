@@ -5,7 +5,7 @@ import { getSystemWindowIsPresent } from '../redux/system';
 import { State } from '../redux/types';
 import { Identity } from '../types/fin';
 import { Subtract } from '../types/utils';
-import { getOpenFinApplicationManifest, getWindowInfo } from '../utils/openfinPromises';
+import { getApplicationManifest, getWindowInfo } from '../utils/finUtils';
 
 const INTERVAL_MS = 1500;
 
@@ -64,10 +64,9 @@ const withContextMemberName = <P extends NameProp>(Component: React.ComponentTyp
     }
 
     handleInterval = () => {
-      const { fin } = window;
       const { isPollingActive, identity } = this.props;
 
-      if (!isPollingActive || !fin) {
+      if (!isPollingActive) {
         return;
       }
 
@@ -99,16 +98,11 @@ const withContextMemberName = <P extends NameProp>(Component: React.ComponentTyp
     };
 
     getAndSetAppNameAndTitle = async (identity: Identity) => {
-      const { uuid, name } = identity;
       if (!name) {
         return;
       }
 
-      const finWindow = fin.desktop.Window.wrap(uuid, name);
-      const [manifest, info] = await Promise.all([
-        getOpenFinApplicationManifest(uuid)().catch(() => undefined),
-        getWindowInfo(finWindow).catch(() => undefined),
-      ]);
+      const [manifest, info] = await Promise.all([getApplicationManifest(identity)().catch(() => undefined), getWindowInfo(identity)().catch(() => undefined)]);
 
       const appName = typeof manifest === 'object' && manifest && manifest.startup_app ? manifest.startup_app.name : '';
       const title = typeof info === 'object' && info ? info.title : '';
@@ -122,8 +116,7 @@ const withContextMemberName = <P extends NameProp>(Component: React.ComponentTyp
         return;
       }
 
-      const finWindow = fin.desktop.Window.wrap(uuid, name);
-      const info = await getWindowInfo(finWindow).catch(() => undefined);
+      const info = await getWindowInfo({ uuid, name })().catch(() => undefined);
 
       const title = typeof info === 'object' && info ? info.title : '';
 
