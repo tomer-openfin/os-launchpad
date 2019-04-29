@@ -76,7 +76,7 @@ export const CTA = styled.div`
 
 export const Row = styled.div`
   display: flex;
-  flex: 1 0 auto;
+  flex: 0 0 auto;
   width: 100%;
   position: relative;
 
