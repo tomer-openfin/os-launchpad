@@ -22,6 +22,10 @@ const mockAddContextListener = (handler: (context) => void): ContextListener => 
 const mockAddEventListener = (event: 'channel-changed', listener: ChannelChangedListener, identity?: Identity) => {
   return;
 };
+// tslint:disable-next-line:no-any
+const mockBroadcast = (context: any) => {
+  return;
+};
 const mockGetAllChannels = (): Promise<Channel[]> => Promise.resolve([]);
 const mockGetChannelMembers = (): Promise<Identity[]> => Promise.resolve([]);
 const mockGetChannel = (identity?: Identity) =>
@@ -43,6 +47,7 @@ const mockJoinChannel = (id: string, identity?: Identity) => Promise.resolve();
 // tslint:disable:no-var-requires
 export const addEventListener = isNotFin ? mockAddEventListener : require('openfin-fdc3').addEventListener;
 export const addContextListener = isNotFin ? mockAddContextListener : require('openfin-fdc3').addContextListener;
+export const broadcast = isNotFin ? mockBroadcast : require('openfin-fdc3').broadcast;
 export const getAllChannels = isNotFin ? mockGetAllChannels : require('openfin-fdc3').getAllChannels;
 export const getChannelMembers = isNotFin ? mockGetChannelMembers : require('openfin-fdc3').getChannelMembers;
 export const getChannel = isNotFin ? mockGetChannel : require('openfin-fdc3').getChannel;

@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+import { Identity } from '../../types/fin';
+import { broadcast } from '../../utils/openfinFdc3';
+
 type ContextListener = (context: unknown) => void;
 
 interface Props {
@@ -7,6 +10,7 @@ interface Props {
   addContextListener: (listener: ContextListener) => void;
   joinChannel: (channelId: string) => void;
   handleChangeContext: ContextListener;
+  members: Identity[];
 }
 
 class ContextSubscriber extends React.Component<Props> {
@@ -14,6 +18,15 @@ class ContextSubscriber extends React.Component<Props> {
     const { addContextListener, channelId, handleChangeContext, joinChannel } = this.props;
     addContextListener(handleChangeContext);
     joinChannel(channelId);
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    // TODO - handling history should probably be on the fdc3-service eventually
+    //      - remove once history is handled by the service
+    // If members goes down to 0, reset channel to empty state
+    if (!!prevProps.members.length && !this.props.members.length) {
+      broadcast(undefined);
+    }
   }
 
   render() {
