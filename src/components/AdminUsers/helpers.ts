@@ -8,9 +8,8 @@ export const filterUserList = memoizeOneInvalidateOnOtherArgs((search: State['se
         user =>
           user.firstName
             .concat(user.lastName)
-            .concat(user.email)
             .toLowerCase()
-            .indexOf(search.toLowerCase()) !== -1,
+            .indexOf(search.toLowerCase()) !== -1 || user.email.toLowerCase().indexOf(search.toLowerCase()) !== -1,
       )
     : users,
 );
