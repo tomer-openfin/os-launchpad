@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { DragDropContextProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 
 import { AppRoute, routes } from './routes';
 
