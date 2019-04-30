@@ -61,6 +61,89 @@ Now set your `node` version. The version we're standardizing is in the `.nvmrc` 
 | `RUNTIME_VERSION`         | Set the `runtime` in the manifest.                                                                             |                   |
 | `USERNAME`                | Default login Username.                                                                                        |        ✅         |
 
+
+### Project Structure/Architecture
+
+Project structure follows a more modular "pod" style file directory system following mostly a functional approach. The following are the main libraries used which all have a specific use case.
+
+`react` - used mostly as view library. Local component state is used sparingly.
+
+`redux`/`react-redux` - data layer and global store across the application. Some business logic can be organized here through `connect`/`containers`. Redux actions follow the [flux standard action (FSA) object structure](https://github.com/redux-utilities/flux-standard-action). Where async action's types follow a `_REQUEST`, `_SUCCESS`, and `_FAILURE` flow.
+
+`redux-saga` - business logic layer. A middleware that handles async side effects based off of redux actions.
+
+`styled-components` - chosen styling library. It works well with the project structure and the modular components.
+
+`storybook` - development tool to easily build components in isolation.
+
+This Application can be viewed as a completely known machine where actions come from the user, fin, and the backend. These async events are passed to our sagas to handle what should be the logic/flow and outcome of these events.
+
+#### /assets
+
+Assets are imported and used inside components. Assets will be hashed and fingerprinted on build.
+
+#### /components
+
+Components modularly organized and split into 3 categories. UI, Components, and Admin Components.
+
+`UI` - components should be very simple and shared across multiple components. Probably best if UI components are not composed of anything but itself. If it composes other UI components, then maybe it belongs in the `Components` category. UI components should not contain a `Container` file.
+
+`Components` - Composed of multiple components and shared across all states of the application (admin vs non-admin users).
+
+`Admin Components` - Components that will only appear for admin users.
+
+Component directories follow the following structure:
+
+- Component.css.ts
+- Component.story.tsx
+- Component.tsx
+- ComponentContainer.ts
+- index.ts
+- utils.ts(x)
+
+#### /config
+
+os-launchpad's window configurations for all of its application windows.
+
+#### /hocs
+
+Higher order components which share specific functionality related to multiple components.
+
+#### /layoutsService
+
+Should be treated as if it were its own repository. Idea being that this may be moved to the layoutsService itself, but for now lives in os-launchpad. Most of the logic was actually taken from the demos directory of openfin-layouts.
+
+#### /redux
+
+Redux slices of state and where each slice is split into its own directory. These directories follow the following structure:
+
+- actions.ts - contains both action types and action creators
+- index.ts - exports all modules within its directory where reducer is the default export
+- reducer.ts - redux reducer
+- saga.ts - saga pertaining to only the actions within its slice of state
+- selectors.ts - helper functions to retrieved data from this slice of state
+- types.ts
+
+#### /samples
+
+Sample data used in tests and storybook.
+
+#### /services
+
+Services which touch outside dependencies. ApiService is the layer in which we communicate to either the backend for enterprise or localstorage for non-enterprise.
+
+#### /styles
+
+Housing for os-launchpad's style guide/system.
+
+#### /types
+
+Accumulation of types throughout the project.
+
+#### /utils
+
+Toolbox of various helper functions.
+
 ### Remote debugging
 
 #### React
@@ -75,7 +158,7 @@ On a Windows virtual machine, open `http://<vmnet1 address here>:8000/` in a bro
 
 ### Developing in Storybook
 
-UI components can be developed in Storybook without launching Openfin (`npm run storybook`).
+Components can be developed in Storybook without launching Openfin (`npm run storybook`). Developing components in isolation is good practice and may help build less coupled components.
 
 ### Developing on macOS
 

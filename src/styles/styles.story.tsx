@@ -65,8 +65,10 @@ const TypeStory = ({ style, name }) => {
 };
 
 const Wrapper = styled.div`
-  width: 100%;
+  background-color: #ffffff;
+  height: 100vh;
   overflow-y: auto;
+  width: 100%;
 `;
 
 storiesOf(`${CATEGORIES.STYLEGUIDE}Typography`, module).add('default', () => (
