@@ -1,4 +1,4 @@
-import { Bounds, DirectionalCoordinates, DirectionalPosition, Point, PrimaryDirectionalCoordinates, WindowDetail } from '../types/commons';
+import { Bounds, DirectionalCoordinates, DirectionalPosition, Point, PointTopLeft, WindowDetail } from '../types/commons';
 import { isTopOrBottom } from './windowPositionHelpers';
 
 export const getCoordinatesHeight = (coordinates: { bottom: number; top: number }): number => {
@@ -20,12 +20,7 @@ export const getCoordinatesMidPoint = (coordinates: DirectionalCoordinates): Poi
 
 export const getArea = ({ height, width }: { height: number; width: number }) => height * width;
 
-export const getNewPosDelta = (
-  bounds: Bounds,
-  launcherPosition: DirectionalPosition,
-  expand: boolean,
-  visbilityDelta: number = 0,
-): PrimaryDirectionalCoordinates => {
+export const getNewPosDelta = (bounds: Bounds, launcherPosition: DirectionalPosition, expand: boolean, visbilityDelta: number = 0): PointTopLeft => {
   const { width, height } = bounds;
   const isTopOrBottomPosition = isTopOrBottom(launcherPosition);
   const isTopOrLeft = launcherPosition === DirectionalPosition.Top || launcherPosition === DirectionalPosition.Left;
@@ -39,7 +34,7 @@ export const getNewPosDelta = (
   };
 };
 
-export const isPosInBounds = (pos: PrimaryDirectionalCoordinates, bounds: Bounds) => {
+export const isPosInBounds = (pos: PointTopLeft, bounds: Bounds) => {
   const { left: posLeft, top: posTop } = pos;
   const { height, left: boundsLeft, top: boundsTop, width } = bounds;
 
@@ -49,7 +44,7 @@ export const isPosInBounds = (pos: PrimaryDirectionalCoordinates, bounds: Bounds
   return isWithinX && isWithinY;
 };
 
-export const isPosInCoordinates = (pos: PrimaryDirectionalCoordinates, coordinates: DirectionalCoordinates) => {
+export const isPosInCoordinates = (pos: PointTopLeft, coordinates: DirectionalCoordinates) => {
   const { left: posLeft, top: posTop } = pos;
   const { bottom: coordBottom, left: coordLeft, right: coordRight, top: coordTop } = coordinates;
 
@@ -77,7 +72,7 @@ export const isBoundsInCoordinates = (bounds: Bounds, coordinates: DirectionalCo
   );
 };
 
-export const getBoundsCenterInCoordinates = (bounds: Bounds, coordinates: DirectionalCoordinates): PrimaryDirectionalCoordinates => {
+export const getBoundsCenterInCoordinates = (bounds: Bounds, coordinates: DirectionalCoordinates): PointTopLeft => {
   const { x, y } = getCoordinatesMidPoint(coordinates);
   const xDelta = bounds.width / 2;
   const yDelta = bounds.height / 2;
@@ -90,7 +85,7 @@ export const getDestinationBoundsInCoordinates = (
   coordinates: DirectionalCoordinates,
   offsetX: number = 0,
   offsetY: number = 0,
-): PrimaryDirectionalCoordinates => {
+): PointTopLeft => {
   let newTop = bounds.top;
   let newLeft = bounds.left;
 

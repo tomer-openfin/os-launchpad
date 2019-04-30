@@ -1,8 +1,47 @@
 import { RouteComponentProps } from 'react-router-dom';
 
 import { ApiResponseStatus, UserStatus, YesNo } from './enums';
-import { Workspace } from './fin';
+import { Bounds, PointTopLeft, Workspace } from './fin';
 
+// API
+export interface BaseApiResponse<M> {
+  status: ApiResponseStatus;
+  statusCode?: number;
+  meta?: M;
+}
+
+export interface ApiSuccessResponse<T, M = void> extends BaseApiResponse<M> {
+  data: T;
+  status: ApiResponseStatus.Success;
+}
+
+/* tslint:disable-next-line:no-any */
+export interface ApiFailureResponse extends BaseApiResponse<{ [key: string]: any }> {
+  message: string;
+  status: ApiResponseStatus.Failure;
+}
+
+export type ApiResponse<T, M = void> = ApiSuccessResponse<T, M> | ApiFailureResponse;
+
+export interface MetaWithAsyncHandlers<P = void> {
+  onSuccess?: (payload: P) => void;
+  onFailure?: (error?: Error) => void;
+}
+
+// Bounds
+export type Dimensions = Pick<Bounds, 'height'> & Pick<Bounds, 'width'>;
+
+export interface DirectionalCoordinates extends PointTopLeft {
+  bottom: number;
+  right: number;
+}
+
+export interface Point {
+  x: number;
+  y: number;
+}
+
+// Common interfaces
 export interface App {
   appPage?: string;
   appUrl?: string;
@@ -23,57 +62,10 @@ export interface App {
   withAppUrl?: boolean;
 }
 
-export interface Bounds extends Dimensions, PrimaryDirectionalCoordinates {}
-
-export interface Dimensions {
-  height: number;
-  width: number;
-}
-
-export interface BaseApiResponse<M> {
-  status: ApiResponseStatus;
-  statusCode?: number;
-  meta?: M;
-}
-
-export interface ApiSuccessResponse<T, M = void> extends BaseApiResponse<M> {
-  data: T;
-  status: ApiResponseStatus.Success;
-}
-
-/* tslint:disable-next-line:no-any */
-export interface ApiFailureResponse extends BaseApiResponse<{ [key: string]: any }> {
-  message: string;
-  status: ApiResponseStatus.Failure;
-}
-
-export type ApiResponse<T, M = void> = ApiSuccessResponse<T, M> | ApiFailureResponse;
-
 export interface Theme {
   backgroundColor: string;
   id: string;
   name: string;
-}
-
-export interface LoginErrorResponse {
-  status: string | 'newPassword';
-  message?: string;
-  requiredFields?: string[];
-}
-
-export interface PrimaryDirectionalCoordinates {
-  left: number;
-  top: number;
-}
-
-export interface DirectionalCoordinates extends PrimaryDirectionalCoordinates {
-  bottom: number;
-  right: number;
-}
-
-export interface Point {
-  x: number;
-  y: number;
 }
 
 export interface User {
@@ -119,25 +111,15 @@ export interface ById<T extends ObjectWithId> {
   [n: string]: T;
 }
 
-export interface UserLayout {
-  id: string;
-  name: string;
-  layout?: Workspace;
-}
-
 export interface NewUserLayout {
   name: string;
   layout: Workspace;
 }
 
-export interface MetaWithAsyncHandlers<P = void> {
-  onSuccess?: (payload: P) => void;
-  onFailure?: (error?: Error) => void;
-}
-
-export interface XYCoord {
-  x: number;
-  y: number;
+export interface UserLayout {
+  id: string;
+  name: string;
+  layout?: Workspace;
 }
 
 /* tslint:disable-next-line:no-any */

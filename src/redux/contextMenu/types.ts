@@ -1,6 +1,6 @@
 import { Action } from 'redux';
 
-import { Bounds, PrimaryDirectionalCoordinates } from '../../types/commons';
+import { Bounds, PointTopLeft } from '../../types/commons';
 import { ActionsUnion } from '../types';
 import { closeContextMenu, openContextMenu } from './actions';
 
@@ -12,19 +12,19 @@ export interface ContextMenuOption {
 
 // Reducer
 export interface ContextMenuState {
-  anchor: PrimaryDirectionalCoordinates | undefined;
+  anchor: PointTopLeft | undefined;
   options: ContextMenuOption[];
   bounds: Bounds | undefined;
 }
 
 // Action payloads
 export interface ContextMenuRequestPayload {
-  anchor: PrimaryDirectionalCoordinates;
+  anchor: PointTopLeft;
   options: ContextMenuOption[];
 }
 
 export interface ContextMenuSuccessPayload {
-  anchor: PrimaryDirectionalCoordinates;
+  anchor: PointTopLeft;
   options: ContextMenuOption[];
   bounds: Bounds;
 }

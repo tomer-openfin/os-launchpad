@@ -11,7 +11,7 @@ import {
 } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 
-import { Orientation, XYCoord } from '../../types/commons';
+import { Orientation, Point } from '../../types/commons';
 
 export interface Props {
   children?: React.ReactNode;
@@ -88,7 +88,7 @@ const dndTarget = {
 
     // Determine mouse position
     const clientOffset = monitor.getClientOffset();
-    const clientOffsetCoord = isHorizontal ? (clientOffset as XYCoord).x : (clientOffset as XYCoord).y;
+    const clientOffsetCoord = isHorizontal ? (clientOffset as Point).x : (clientOffset as Point).y;
 
     // Get pixels to the top
     const hoverClient = clientOffsetCoord - hoverSecondaryCoord;

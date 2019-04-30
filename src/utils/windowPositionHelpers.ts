@@ -1,5 +1,5 @@
 import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGOUT_WINDOW } from '../config/windows';
-import { Bounds, Dimensions, DirectionalPosition, MonitorDetails, PrimaryDirectionalCoordinates } from '../types/commons';
+import { Bounds, Dimensions, DirectionalPosition, MonitorDetails, PointTopLeft } from '../types/commons';
 
 import { getCoordinatesHeight, getCoordinatesWidth } from './coordinateHelpers';
 import { LauncherSizeConfig } from './launcherSizeConfigs';
@@ -160,13 +160,9 @@ export const calcLauncherDimensions = (
  * @param monitorDetails - monitor information
  * @param launcherPosition - current launcher position
  *
- * @returns {PrimaryDirectionalCoordinates}
+ * @returns {PointTopLeft}
  */
-export const calcLauncherCoordinates = (
-  dimensions: Dimensions,
-  monitorDetails: MonitorDetails,
-  launcherPosition: DirectionalPosition,
-): PrimaryDirectionalCoordinates => {
+export const calcLauncherCoordinates = (dimensions: Dimensions, monitorDetails: MonitorDetails, launcherPosition: DirectionalPosition): PointTopLeft => {
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);
   const { height, width } = dimensions;
   const edgeLength = isOnTopOrBottom ? width : height;
@@ -251,7 +247,7 @@ export const calcLauncherPosition = (
  * @param launcherBounds - launcher bounds
  * @param launcherPosition - launcher position
  *
- * @returns {PrimaryDirectionalCoordinates}
+ * @returns {PointTopLeft}
  */
 export const calcCoordinatesRelativeToLauncherBounds = (
   dimensions: Dimensions,
@@ -259,7 +255,7 @@ export const calcCoordinatesRelativeToLauncherBounds = (
   offsetY: number,
   launcherBounds: Bounds,
   launcherPosition: DirectionalPosition,
-): PrimaryDirectionalCoordinates => {
+): PointTopLeft => {
   const { left, top } = launcherBounds;
 
   const isBottomOffset = launcherPosition === DirectionalPosition.Bottom ? dimensions.height : 0;
