@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import * as minimizeToTrayIcon from '../../assets/MinimizeToTray.svg';
+import * as CloseCircleIcon from '../../assets/CloseCircle.svg';
 
 import SvgIcon from '../SvgIcon';
 import { Wrapper } from './SendToSystemTray.css';
 
 const SendToSystemTray = ({ launcherPosition, handleClick, size }) => (
-  <Wrapper launcherPosition={launcherPosition} onClick={handleClick} title="Send to System Tray">
-    <SvgIcon imgSrc={minimizeToTrayIcon} size={size} />
+  <Wrapper size={size} launcherPosition={launcherPosition} onClick={handleClick} title="Send to System Tray">
+    <SvgIcon imgSrc={CloseCircleIcon} size={size} />
   </Wrapper>
 );
 
