@@ -17,9 +17,9 @@ export const Wrapper = styled.div<{ size: number; launcherPosition: DirectionalP
   right: 0;
   z-index: 1;
 
-  &:hover {
+  /* &:hover {
     opacity: 0.7;
-  }
+  } */
 
   ${({ launcherPosition, size }) => {
     const isHorizontal = getLauncherOrientation(launcherPosition) === Orientation.Horizontal;
@@ -30,6 +30,10 @@ export const Wrapper = styled.div<{ size: number; launcherPosition: DirectionalP
 
       ${Icon} {
         ${isHorizontal ? 'height' : 'width'}: ${size * 0.75}px;
+
+        &:hover {
+          background-color: ${Color.MARS};
+        }
       }
     `;
   }}
