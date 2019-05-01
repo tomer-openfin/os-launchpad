@@ -1,7 +1,10 @@
 import * as React from 'react';
 
+import * as EyeIcon from '../../assets/Eye.svg';
 import { OrgImages } from '../../redux/organization';
 
+import { PreviewType } from '../../redux/admin/types';
+import noop from '../../utils/noop';
 import {
   DEFAULT_LOGIN_LOGO,
   DEFAULT_LOGO,
@@ -14,15 +17,16 @@ import {
   OrgImageKey,
 } from '../../utils/orgImages';
 import { ROUTES } from '../Router/consts';
-
-import noop from '../../utils/noop';
 import { DeleteIconLink, EditIconLink, Header, Row, Wrapper } from './OrganizationSettings.css';
 
+import Color from '../../styles/color';
 import ImageCard from '../ImageCard';
 import Modal from '../Modal';
+import SvgIcon from '../SvgIcon/index';
 
 export interface Props {
   handleCloseModal: () => void;
+  togglePreview: (previewType: PreviewType) => () => void;
   isManifestDefault: (imageKey: ManifestImageViewKeys, imgSrc: string) => boolean;
   isModalVisible?: boolean;
   manifestImages: ImagesFromManifest;
@@ -40,22 +44,21 @@ const defaultProps: Props = {
     loginLogo: DEFAULT_LOGIN_LOGO,
     logo: DEFAULT_LOGO,
   },
+  togglePreview: () => () => noop,
 };
 
 const withDisabledClick = (disabled: boolean) => e => {
   if (disabled) e.preventDefault();
 };
 
-const renderImageCtas = (imageKey: OrgImageKey, deleteDisabled) => (
-  <>
-    <EditIconLink to={{ pathname: ROUTES.ADMIN_SETTINGS_EDIT, state: imageKey }} />
-
-    <DeleteIconLink to={{ pathname: ROUTES.ADMIN_SETTINGS_DELETE, state: imageKey }} onClick={withDisabledClick(deleteDisabled)} disabled={deleteDisabled} />
-  </>
-);
-
 class OrganizationSettings extends React.PureComponent<Props> {
   static defaultProps = defaultProps;
+
+  imageNameToPreviewType = {
+    loginLogo: PreviewType.Login,
+    shortcutIcon: PreviewType.Shortcut,
+    splashScreenImage: PreviewType.Splash,
+  };
 
   isDefaultImage = (imageKey: OrgImageKey, imgSrc: string) => {
     const isManifestImage = isManifestImageKey(imageKey);
@@ -65,6 +68,32 @@ class OrganizationSettings extends React.PureComponent<Props> {
     } else {
       return imgSrc === defaultProps.orgImages[imageKey];
     }
+  };
+
+  renderImageCtas = (imageKey: OrgImageKey, deleteDisabled) => {
+    const { togglePreview } = this.props;
+    return (
+      <>
+        {this.imageNameToPreviewType[imageKey] && (
+          <SvgIcon
+            disabled={false}
+            color={Color.MERCURY}
+            hoverColor={Color.JUPITER}
+            imgSrc={EyeIcon}
+            onClick={togglePreview(this.imageNameToPreviewType[imageKey])}
+            size={30}
+          />
+        )}
+
+        <EditIconLink to={{ pathname: ROUTES.ADMIN_SETTINGS_EDIT, state: imageKey }} />
+
+        <DeleteIconLink
+          to={{ pathname: ROUTES.ADMIN_SETTINGS_DELETE, state: imageKey }}
+          onClick={withDisabledClick(deleteDisabled)}
+          disabled={deleteDisabled}
+        />
+      </>
+    );
   };
 
   render() {
@@ -91,7 +120,7 @@ class OrganizationSettings extends React.PureComponent<Props> {
                 title={imageDisplayName(imageKey)}
                 meta={imageMetaInfo(imageKey)}
                 imgSrc={imgSrc}
-                ctas={renderImageCtas(imageKey, defaultImage)}
+                ctas={this.renderImageCtas(imageKey, defaultImage)}
               />
             </Row>
           );

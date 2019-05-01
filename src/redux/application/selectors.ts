@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getImagesFromManifestOverrideOrManifest } from '../../utils/manifestOverride';
+import { getImagesFromManifestOverrideOrManifest, getShortcutNameFromManifestOverrideOrManifest } from '../../utils/manifestOverride';
 import { State } from '../types';
 
 export const getApplicationState = (state: State) => state.application;
@@ -13,4 +13,9 @@ export const getApplicationManifestOverride = (state: State) => getApplicationSt
 export const getManifestImages = createSelector(
   [getApplicationManifest, getApplicationManifestOverride],
   getImagesFromManifestOverrideOrManifest,
+);
+
+export const getManifestShortcutName = createSelector(
+  [getApplicationManifest, getApplicationManifestOverride],
+  getShortcutNameFromManifestOverrideOrManifest,
 );

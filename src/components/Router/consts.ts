@@ -30,6 +30,7 @@ export const ADMIN_ROUTES = {
   ADMIN_SETTINGS: '/admin/settings',
   ...ADMIN_SETTINGS_ROUTES,
   ADMIN_USERS: '/admin/users/:action/:id?',
+  PREVIEW: '/preview',
   ...ADMIN_USERS_ROUTES,
 };
 

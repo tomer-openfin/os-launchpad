@@ -32,6 +32,7 @@ export interface ApplicationState {
 export interface ManifestImages {
   shortcut: {
     icon: string;
+    name?: string;
   };
   splashScreenImage: string;
   startup_app: {

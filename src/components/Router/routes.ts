@@ -9,6 +9,7 @@ import AdminUsers, { asRoute as asAdminUsersRoute } from '../AdminUsers';
 import App from '../App';
 import AppDirectory from '../AppDirectory';
 import AppOverflow from '../AppOverflow';
+import ComponentPreviewWindow from '../ComponentPreviewWindow';
 import ConfirmRevertImage from '../ConfirmRevertImage';
 import ContextManager from '../ContextManager';
 import ContextMenu from '../ContextMenu';
@@ -139,5 +140,10 @@ export const routes: AppRoute[] = [
     Component: ContextMenu,
     exact: true,
     path: ROUTES.CONTEXT_MENU,
+  },
+  {
+    Component: ComponentPreviewWindow,
+    exact: true,
+    path: ROUTES.PREVIEW,
   },
 ];

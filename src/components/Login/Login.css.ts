@@ -3,22 +3,39 @@ import styled from 'styled-components';
 import * as blobDarkLarge from '../../assets/BlobDarkLarge.svg';
 
 import { Color, Typography } from '../../styles';
+import { getBackgroundColor } from '../ConnectedThemeProvider/utils';
 
+import Borders from '../Borders';
 import Button from '../Button';
 import Logo from '../Logo';
 
 export const Wrapper = styled.div`
-  height: 100vh;
-  width: 100vw;
+  -webkit-app-region: drag;
+  align-items: center;
+  background-image: url(${blobDarkLarge});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100vh;
   justify-content: center;
-  -webkit-app-region: drag;
-  background-image: url(${blobDarkLarge});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  width: 100vw;
+`;
+
+export const PreviewWrapper = styled(Wrapper)`
+  background-color: ${getBackgroundColor};
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  opacity: 1;
+  pointer-events: none;
+  width: 100%;
+`;
+
+export const PreviewBorders = styled(Borders)`
+  max-height: 100%;
+  max-width: 100%;
 `;
 
 export const LogoWrapper = styled.div`
@@ -33,13 +50,13 @@ export const FormWrapper = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
-  margin: 24px 0 42px 0;
-  display: flex;
-  flex: 1;
-  width: 100%;
-  flex-direction: column;
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   justify-content: center;
+  margin: 24px 0 42px 0;
+  width: 100%;
 `;
 
 export const ResponseMessage = styled.div<{ error: boolean }>`

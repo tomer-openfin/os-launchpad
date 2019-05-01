@@ -7,6 +7,7 @@ import LoginForm, { Values } from './LoginForm';
 interface Props {
   className?: string;
   handleSubmitValues: (values: Values) => Promise<void>;
+  isTabDisabled?: boolean;
 }
 
 const { USERNAME, PASSWORD } = process.env;
@@ -26,7 +27,7 @@ const handleFormikSubmit = (handleSubmitValues: Props['handleSubmitValues']) => 
   actions.setSubmitting(false);
 };
 
-const renderForm = (className?: string) => (props: FormikProps<Values>) => {
+const renderForm = (className?: string, isTabDisabled?: boolean) => (props: FormikProps<Values>) => {
   const { errors, handleBlur, handleChange, handleSubmit, isSubmitting, isValid, touched, values } = props;
 
   return (
@@ -37,6 +38,7 @@ const renderForm = (className?: string) => (props: FormikProps<Values>) => {
       handleChange={handleChange}
       handleSubmit={handleSubmit}
       isSubmitting={isSubmitting}
+      isTabDisabled={isTabDisabled}
       isValid={isValid}
       touched={touched}
       values={values}
@@ -44,8 +46,13 @@ const renderForm = (className?: string) => (props: FormikProps<Values>) => {
   );
 };
 
-const LoginFormik = ({ className, handleSubmitValues }: Props) => (
-  <Formik initialValues={initialValues} onSubmit={handleFormikSubmit(handleSubmitValues)} render={renderForm(className)} validationSchema={validationSchema} />
+const LoginFormik = ({ className, handleSubmitValues, isTabDisabled }: Props) => (
+  <Formik
+    initialValues={initialValues}
+    onSubmit={handleFormikSubmit(handleSubmitValues)}
+    render={renderForm(className, isTabDisabled)}
+    validationSchema={validationSchema}
+  />
 );
 
 export default LoginFormik;

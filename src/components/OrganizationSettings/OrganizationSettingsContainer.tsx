@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { State } from '../../redux/types';
 
@@ -9,6 +10,7 @@ import { ManifestImageViewKeys } from '../../utils/orgImages';
 import { doesCurrentPathMatch } from '../../utils/routeHelpers';
 import { ADMIN_SETTINGS_ROUTES } from '../Router/consts';
 
+import { clickComponentPreview, PreviewType } from '../../redux/admin';
 import OrganizationSettings from './OrganizationSettings';
 
 const ADMIN_SETTINGS_PATHS = Object.values(ADMIN_SETTINGS_ROUTES);
@@ -19,8 +21,15 @@ const mapState = (state: State) => ({
   orgImages: getOrganizationImages(state),
 });
 
-const mergeProps = (stateProps, _, ownProps) => ({
+const mapDispatch = (dispatch: Dispatch) => ({
+  togglePreview: (previewType: PreviewType) => () => {
+    dispatch(clickComponentPreview(previewType));
+  },
+});
+
+const mergeProps = (stateProps, dispatchProps, ownProps) => ({
   ...stateProps,
+  ...dispatchProps,
   children: ownProps.children,
   handleCloseModal: ownProps.history.goBack,
   isManifestDefault: (imageKey: ManifestImageViewKeys) => isManifestDefault(stateProps.manifestOverride, imageKey),
@@ -29,6 +38,6 @@ const mergeProps = (stateProps, _, ownProps) => ({
 
 export default connect(
   mapState,
-  null,
+  mapDispatch,
   mergeProps,
 )(OrganizationSettings);

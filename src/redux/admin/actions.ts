@@ -1,5 +1,11 @@
 import { App, User } from '../../types/commons';
-import { createAsyncActionCreators } from '../utils';
+import { createAction, createAsyncActionCreators } from '../utils';
+import { PreviewType } from './types';
+
+// CLICK_COMPONENT_PREVIEW
+const CLICK_COMPONENT_PREVIEW = 'CLICK_COMPONENT_PREVIEW';
+// SET_PREVIEW_TYPE
+const SET_PREVIEW_TYPE = 'SET_PREVIEW_TYPE';
 
 // GET_ADMIN_APPS
 const GET_ADMIN_APPS_REQUEST = 'GET_ADMIN_APPS_REQUEST';
@@ -43,3 +49,6 @@ export const getAdminUsers = createAsyncActionCreators(GET_ADMIN_USERS_REQUEST, 
 export const createAdminUser = createAsyncActionCreators(CREATE_ADMIN_USER_REQUEST, CREATE_ADMIN_USER_SUCCESS, CREATE_ADMIN_USER_FAILURE)<User, User, Error>();
 export const updateAdminUser = createAsyncActionCreators(UPDATE_ADMIN_USER_REQUEST, UPDATE_ADMIN_USER_SUCCESS, UPDATE_ADMIN_USER_FAILURE)<User, User, Error>();
 export const deleteAdminUser = createAsyncActionCreators(DELETE_ADMIN_USER_REQUEST, DELETE_ADMIN_USER_SUCCESS, DELETE_ADMIN_USER_FAILURE)<User, User, Error>();
+
+export const setPreviewType = createAction(SET_PREVIEW_TYPE)<PreviewType>();
+export const clickComponentPreview = createAction(CLICK_COMPONENT_PREVIEW)<PreviewType>();

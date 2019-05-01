@@ -1,8 +1,18 @@
 import { App, ById, User } from '../../types/commons';
 import { DeepReadonly } from '../../types/utils';
 import { formatByIds } from '../../utils/byIds';
-import { createAdminApp, createAdminUser, deleteAdminApp, deleteAdminUser, getAdminApps, getAdminUsers, updateAdminApp, updateAdminUser } from './actions';
-import { AdminActions, AdminState } from './types';
+import {
+  createAdminApp,
+  createAdminUser,
+  deleteAdminApp,
+  deleteAdminUser,
+  getAdminApps,
+  getAdminUsers,
+  setPreviewType,
+  updateAdminApp,
+  updateAdminUser,
+} from './actions';
+import { AdminActions, AdminState, PreviewType } from './types';
 
 type ReadonlyAdminState = DeepReadonly<AdminState>;
 
@@ -11,6 +21,7 @@ const defaultState: ReadonlyAdminState = {
     byId: {},
     ids: [],
   },
+  previewType: PreviewType.Login,
   users: {
     byId: {},
     ids: [],
@@ -129,6 +140,14 @@ export default (state: ReadonlyAdminState = defaultState, action: AdminActions):
           byId,
           ids,
         },
+      };
+    }
+    case setPreviewType.toString(): {
+      const previewType = action.payload;
+
+      return {
+        ...state,
+        previewType,
       };
     }
     default: {

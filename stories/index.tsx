@@ -80,6 +80,7 @@ import '../src/components/AdminApps/AdminApps.story';
 import '../src/components/AdminConfirmation/AdminConfirmation.story';
 import '../src/components/AdminUsers/AdminUsers.story';
 import '../src/components/AppForm/AppForm.story';
+import '../src/components/ComponentPreview/ComponentPreview.story';
 import '../src/components/ConfirmAppDelete/ConfirmAppDelete.story';
 import '../src/components/ConfirmRevertImage/ConfirmRevertImage.story';
 import '../src/components/ConfirmUserDelete/ConfirmUserDelete.story';

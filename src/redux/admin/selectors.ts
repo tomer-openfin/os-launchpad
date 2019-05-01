@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { objectsFromIds } from '../../utils/byIds';
 import { State } from '../types';
-import { AdminAppsById, AdminAppsState, AdminState, AdminUsersState } from './types';
+import { AdminAppsById, AdminAppsState, AdminState, AdminUsersState, PreviewType } from './types';
 
 export const getAdminState = (state: State): AdminState => state.admin;
 
@@ -26,6 +26,9 @@ export const getAdminAppsList = createSelector(
 
 // Users
 export const getAdminUsersState = (state: State): AdminUsersState => state.admin.users;
+
+// PreviewType
+export const getAdminPreviewTypeState = (state: State): PreviewType => state.admin.previewType;
 
 export const getAdminUsersById = createSelector(
   getAdminUsersState,

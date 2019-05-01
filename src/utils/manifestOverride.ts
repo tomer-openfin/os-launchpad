@@ -38,6 +38,15 @@ export const getImagesFromManifestOverrideOrManifest = (manifest: Manifest, mani
   };
 };
 
+export const getShortcutNameFromManifestOverrideOrManifest = (manifest: Manifest, manifestOverride: ManifestOverride): string => {
+  const { shortcut } = manifestOverride;
+
+  const { shortcut: originalShortcut } = manifest;
+
+  const shortcutName = shortcut && shortcut.name ? shortcut.name : originalShortcut.name;
+  return shortcutName || '';
+};
+
 export const isManifestDefault = (manifestOverride: Manifest, key: ManifestImageViewKeys): boolean => {
   if (key === ManifestImageViewKeys.shortcut) {
     return !manifestOverride.shortcut || !manifestOverride.shortcut.icon;

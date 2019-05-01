@@ -1,12 +1,26 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, select, takeEvery } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 
+import windowsConfig, { PREVIEW_WINDOW } from '../../config/windows';
 import { ApiResponseStatus } from '../../types/enums';
 import { UnPromisfy } from '../../types/utils';
 import { getAppDirectoryList } from '../apps';
 import { getErrorFromCatch } from '../utils';
-import { createAdminApp, createAdminUser, deleteAdminApp, deleteAdminUser, getAdminApps, getAdminUsers, updateAdminApp, updateAdminUser } from './actions';
+import { getWindowIsShowing, toggleWindow } from '../windows';
+import {
+  clickComponentPreview,
+  createAdminApp,
+  createAdminUser,
+  deleteAdminApp,
+  deleteAdminUser,
+  getAdminApps,
+  getAdminUsers,
+  setPreviewType,
+  updateAdminApp,
+  updateAdminUser,
+} from './actions';
+import { getAdminPreviewTypeState } from './selectors';
 
 export function* watchGetAdminAppsRequest(action: ReturnType<typeof getAdminApps.request>) {
   try {
@@ -131,6 +145,32 @@ export function* watchDeleteAdminUserRequest(action: ReturnType<typeof deleteAdm
   }
 }
 
+export function* watchClickComponentPreview(action: ReturnType<typeof clickComponentPreview>) {
+  try {
+    const newPreviewType = action.payload;
+
+    const oldPreviewType = yield select(getAdminPreviewTypeState);
+
+    yield put(setPreviewType(newPreviewType));
+
+    const isShowing = yield select(getWindowIsShowing, PREVIEW_WINDOW);
+
+    if (isShowing && newPreviewType !== oldPreviewType) {
+      return;
+    }
+
+    yield put(toggleWindow(windowsConfig.preview));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.warn('Error in clickComponentPreview', error);
+  }
+}
+
+// watch an action, it does nothing.
+// the saga catches it, changes the type, waits for it, then shows the window
+// also handles hiding the window.
+
 export function* adminSaga() {
   yield takeEvery(createAdminApp.request, watchCreateAdminAppRequest);
   yield takeEvery(createAdminUser.request, watchCreateAdminUserRequest);
@@ -140,4 +180,5 @@ export function* adminSaga() {
   yield takeEvery(getAdminUsers.request, watchGetAdminUsersRequest);
   yield takeEvery(updateAdminApp.request, watchUpdateAdminAppRequest);
   yield takeEvery(updateAdminUser.request, watchUpdateAdminUserRequest);
+  yield takeEvery(clickComponentPreview, watchClickComponentPreview);
 }

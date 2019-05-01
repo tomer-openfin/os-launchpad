@@ -16,6 +16,7 @@ export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
 export const SNAPSHOT_WINDOW = `${WINDOW_PREFIX}Snapshot`;
 export const SNAPSHOT_OVERLAY_WINDOW = `${WINDOW_PREFIX}SnapshotOverlay`;
 export const SUPPORT_WINDOW = `${WINDOW_PREFIX}Support`;
+export const PREVIEW_WINDOW = `${WINDOW_PREFIX}Preview`;
 
 const isProduction = isProductionEnv();
 
@@ -269,6 +270,28 @@ export const adminWindows = {
     shadow: true,
     showTaskbarIcon: true,
     url: ROUTES.ADMIN_SETTINGS,
+    waitForPageLoad: true,
+  },
+  preview: {
+    alwaysOnTop: false,
+    autoShow: false,
+    contextMenu: !isProduction,
+    defaultCentered: false,
+    defaultHeight: 718,
+    defaultWidth: 664,
+    frame: false,
+    id: PREVIEW_WINDOW,
+    maxHeight: -1,
+    maximizable: false,
+    minHeight: 0,
+    minWidth: 0,
+    minimizable: false,
+    name: PREVIEW_WINDOW,
+    resizable: false,
+    saveWindowState: false,
+    shadow: true,
+    showTaskbarIcon: true,
+    url: ROUTES.PREVIEW,
     waitForPageLoad: true,
   },
 };

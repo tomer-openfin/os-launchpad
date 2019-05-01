@@ -18,6 +18,7 @@ interface Props {
   className?: string;
   closeApplication: () => void;
   error: boolean;
+  isTabDisabled?: boolean;
   message: string;
 }
 
@@ -40,7 +41,7 @@ const craftMessage = (error: boolean, message: string, stage: Stage): string => 
 };
 
 export const LoginView = (props: ViewProps) => {
-  const { className, closeApplication, handleError, error, message, session, stage, username } = props;
+  const { className, closeApplication, handleError, isTabDisabled, error, message, session, stage, username } = props;
 
   return (
     <Wrapper className={className}>
@@ -58,7 +59,7 @@ export const LoginView = (props: ViewProps) => {
             {stage === Stage.ChangePassword ? (
               <ChangePasswordForm errorCb={handleError} session={session} username={username} />
             ) : (
-              <LoginForm errorCb={handleError} />
+              <LoginForm errorCb={handleError} isTabDisabled={isTabDisabled} />
             )}
           </FormWrapper>
 
