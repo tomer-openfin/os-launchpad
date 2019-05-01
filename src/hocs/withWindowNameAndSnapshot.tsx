@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
+import { clearSnapshot, getAndSetSnapshot, setSnapshotAnchor } from '../redux/snapshot';
 import { getSystemWindowIsPresent } from '../redux/system';
 import { State } from '../redux/types';
 import { Identity } from '../types/fin';
 import { Subtract } from '../types/utils';
 import { getApplicationManifest, getWindowInfo } from '../utils/finUtils';
+import { getOwnIdentity } from '../utils/getOwnUuid';
 
 const INTERVAL_MS = 1500;
 
@@ -14,6 +17,8 @@ interface NameProp {
 }
 
 interface Props {
+  handleMouseEnter?: (event: React.MouseEvent) => void;
+  handleMouseLeave?: () => void;
   identity: Identity;
   isHidden?: boolean;
   isPollingActive: boolean;
@@ -27,8 +32,8 @@ interface HocState {
 
 type WithoutPassedProps<T> = Subtract<T, NameProp>;
 
-const withContextMemberName = <P extends NameProp>(Component: React.ComponentType<P>) =>
-  class ComponentWithContextMemberName extends React.Component<Props & WithoutPassedProps<P>, HocState> {
+const withNameAndSnapshot = <P extends NameProp>(Component: React.ComponentType<P>) =>
+  class ComponentWithNameAndSnapshot extends React.Component<Props & WithoutPassedProps<P>, HocState> {
     interval?: number;
 
     state = {
@@ -49,6 +54,10 @@ const withContextMemberName = <P extends NameProp>(Component: React.ComponentTyp
 
     componentWillUnmount() {
       this.teardownInterval();
+
+      if (this.props.handleMouseLeave) {
+        this.props.handleMouseLeave();
+      }
     }
 
     componentDidUpdate(prevProps: Props) {
@@ -124,15 +133,19 @@ const withContextMemberName = <P extends NameProp>(Component: React.ComponentTyp
     };
 
     render() {
-      const { identity, isHidden, isPollingActive, ...props } = this.props;
+      const { handleMouseEnter, handleMouseLeave, identity, isHidden, isPollingActive, ...props } = this.props;
 
       if (isHidden) {
         return null;
       }
 
-      // TODO - remove any
-      // tslint:disable-next-line:no-any
-      return <Component {...props as any} name={this.getName()} />;
+      return (
+        <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          {/* TODO - remove any */}
+          {/* tslint:disable-next-line:no-any */}
+          <Component {...props as any} name={this.getName()} />
+        </div>
+      );
     }
   };
 
@@ -143,4 +156,18 @@ const mapState = (state: State, ownProps) => {
   };
 };
 
-export default Component => connect(mapState)(withContextMemberName(Component));
+const mapDispatch = (dispatch: Dispatch, ownProps) => {
+  return {
+    handleMouseEnter: (event: React.MouseEvent) => {
+      dispatch(setSnapshotAnchor({ anchor: { left: event.screenX, top: event.screenY }, anchorIdentity: getOwnIdentity() }));
+      dispatch(getAndSetSnapshot.request(ownProps.identity));
+    },
+    handleMouseLeave: () => dispatch(clearSnapshot()),
+  };
+};
+
+export default Component =>
+  connect(
+    mapState,
+    mapDispatch,
+  )(withNameAndSnapshot(Component));

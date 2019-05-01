@@ -201,7 +201,7 @@ export const getContextChannels = createSelector(
         const context = contexts[contexts.length - 1];
         const contextName = typeof context === 'object' && context ? (context as { name?: string }).name : '';
 
-        return [...acc, { color: `#${convertHexNumberToString(channel.color)}`, contextName, count, id: channel.id, name: channel.name }];
+        return [...acc, { color: convertHexNumberToString(channel.color), contextName, count, id: channel.id, name: channel.name }];
       },
       [] as ContextChannel[],
     );

@@ -34,4 +34,10 @@ export const Text = styled.p`
 export const Wrapper = styled.div`
   align-items: center;
   display: flex;
+
+  &:hover {
+    ${Text} {
+      color: ${Color.MOON};
+    }
+  }
 `;

@@ -13,6 +13,8 @@ export const LAYOUTS_WINDOW = `${WINDOW_PREFIX}Layouts`;
 export const LOGIN_WINDOW = `${WINDOW_PREFIX}Login`;
 export const LOGOUT_WINDOW = `${WINDOW_PREFIX}Logout`;
 export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
+export const SNAPSHOT_WINDOW = `${WINDOW_PREFIX}Snapshot`;
+export const SNAPSHOT_OVERLAY_WINDOW = `${WINDOW_PREFIX}SnapshotOverlay`;
 export const SUPPORT_WINDOW = `${WINDOW_PREFIX}Support`;
 
 const isProduction = isProductionEnv();
@@ -177,6 +179,51 @@ export const defaultWindows = {
     url: ROUTES.SETTINGS,
     waitForPageLoad: true,
   },
+  snapshot: {
+    alwaysOnTop: true,
+    autoShow: false,
+    contextMenu: !isProduction,
+    defaultCentered: false,
+    defaultHeight: 300,
+    defaultWidth: 300,
+    frame: false,
+    id: SNAPSHOT_WINDOW,
+    maxHeight: -1,
+    maximizable: false,
+    minHeight: 0,
+    minWidth: 0,
+    minimizable: false,
+    name: SNAPSHOT_WINDOW,
+    resizable: false,
+    saveWindowState: false,
+    shadow: true,
+    showTaskbarIcon: false,
+    url: ROUTES.SNAPSHOT,
+    waitForPageLoad: true,
+  },
+  snapshotOverlay: {
+    alwaysOnTop: true,
+    autoShow: false,
+    contextMenu: !isProduction,
+    defaultCentered: false,
+    defaultHeight: 300,
+    defaultWidth: 300,
+    frame: false,
+    id: SNAPSHOT_OVERLAY_WINDOW,
+    maxHeight: -1,
+    maximizable: false,
+    minHeight: 0,
+    minWidth: 0,
+    minimizable: false,
+    name: SNAPSHOT_OVERLAY_WINDOW,
+    opacity: 0.5,
+    resizable: false,
+    saveWindowState: false,
+    shadow: false,
+    showTaskbarIcon: false,
+    url: ROUTES.SNAPSHOT_OVERLAY,
+    waitForPageLoad: true,
+  },
   support: {
     alwaysOnTop: false,
     autoShow: false,
@@ -255,7 +302,9 @@ export const authWindows = {
   },
 };
 
-export const polymorphicWindows = {
+// Multi-windows' default config should not be used
+// Additional context specific information may need to be appended
+export const multiWindows = {
   channelsContext: {
     alwaysOnTop: false,
     autoShow: false,

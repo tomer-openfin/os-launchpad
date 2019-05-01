@@ -1,7 +1,7 @@
 import { all, put } from 'redux-saga/effects';
 
 import { CHANNELS_CONTEXT_PARAM } from '../../components/Router/consts';
-import { polymorphicWindows } from '../../config/windows';
+import { multiWindows } from '../../config/windows';
 import { Channel, ChannelChangedPayload } from '../../types/commons';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { addEventListener } from '../../utils/openfinFdc3';
@@ -9,7 +9,7 @@ import { launchWindow } from '../windows';
 import { addMemberToChannel } from './actions';
 
 export function* createChannelContextWindows(channels: Channel[]) {
-  const defaultConfig = polymorphicWindows.channelsContext;
+  const defaultConfig = multiWindows.channelsContext;
 
   yield all(
     channels.map(channel => {

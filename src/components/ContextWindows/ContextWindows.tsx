@@ -3,11 +3,11 @@ import * as React from 'react';
 import { Identity } from '../../types/commons';
 import { Content, Header, ItemsWrapper, StyledContextManagerEmptyState, Wrapper } from './ContextWindows.css';
 
-import withContextMemberName from '../../hocs/withContextMemberName';
+import withWindowNameAndSnapshot from '../../hocs/withWindowNameAndSnapshot';
 import ContextWindowsItem from '../ContextWindowsItem';
 import DragWrapper, { createChannelsHandleDrop, handleDragOver } from '../DragWrapper';
 
-const ContextWindowsItemWithName = withContextMemberName(ContextWindowsItem);
+const EnhancedContextWindowsItem = withWindowNameAndSnapshot(ContextWindowsItem);
 
 export interface ChannelIdentity {
   color: string;
@@ -49,7 +49,7 @@ const ContextWindows = ({ contextWindowsByGroup, handleAdd, isEmpty, handleDrop,
 
             return (
               <DragWrapper key={`${identity.uuid}::${identity.name}`} dataTransferObj={{ ...identity, channelId: channel.id }}>
-                <ContextWindowsItemWithName
+                <EnhancedContextWindowsItem
                   color={channel.isGlobal ? '' : channel.color}
                   colorTitle={channel.isGlobal ? '' : channel.name}
                   handleAdd={handleClickAdd}

@@ -21,12 +21,14 @@ type FinWindowInstanceMethods = Extract<
   | 'getBounds'
   | 'getGroup'
   | 'getInfo'
+  | 'getSnapshot'
   | 'hide'
   | 'isShowing'
   | 'moveTo'
   | 'removeListener'
   | 'resizeTo'
   | 'setBounds'
+  | 'show'
   | 'updateOptions'
 >;
 
@@ -58,12 +60,14 @@ export const animateWindow = getWindowInstanceMethod('animate');
 export const getWindowBounds = getWindowInstanceMethod('getBounds');
 export const getWindowGroup = getWindowInstanceMethod('getGroup');
 export const getWindowInfo = getWindowInstanceMethod('getInfo');
+export const getWindowSnapshot = getWindowInstanceMethod('getSnapshot');
 export const hideWindow = getWindowInstanceMethod('hide');
 export const isWindowShowing = getWindowInstanceMethod('isShowing');
 export const moveWindowTo = getWindowInstanceMethod('moveTo');
 export const removeWindowListener = getWindowInstanceMethod('removeListener');
 export const resizeWindowTo = getWindowInstanceMethod('resizeTo');
 export const setWindowBounds = getWindowInstanceMethod('setBounds');
+export const showWindow = getWindowInstanceMethod('show');
 export const updateWindowOptions = getWindowInstanceMethod('updateOptions');
 
 // Application

@@ -8,6 +8,7 @@ import { ContextMenuState } from './contextMenu';
 import { LayoutsState } from './layouts';
 import { MeState } from './me';
 import { OrganizationState } from './organization';
+import { SnapshotState } from './snapshot/types';
 import { SystemState } from './system';
 import { WindowsState } from './windows';
 
@@ -27,6 +28,7 @@ export interface State {
   layouts: LayoutsState;
   me: MeState;
   organization: OrganizationState;
+  snapshot: SnapshotState;
   system: SystemState;
   windows: WindowsState;
 }

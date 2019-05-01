@@ -6,5 +6,5 @@ export const convertHexNumberToString = (hex: number): string => {
     hexString = `0${hexString}`;
   }
 
-  return hexString;
+  return `#${hexString}`;
 };

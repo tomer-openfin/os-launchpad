@@ -8,6 +8,7 @@ import contextMenu from './contextMenu';
 import layouts from './layouts';
 import me from './me';
 import organization from './organization';
+import snapshot from './snapshot';
 import system from './system';
 import windows from './windows';
 
@@ -23,6 +24,7 @@ export default combineReducers<DeepReadonly<State>>({
   layouts,
   me,
   organization,
+  snapshot,
   system,
   windows,
 });

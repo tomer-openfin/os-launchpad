@@ -10,6 +10,7 @@ import { layoutsSaga } from './layouts';
 import { meSaga } from './me';
 import { notificationsSaga } from './notifications';
 import { organizationSaga } from './organization';
+import { snapshotSaga } from './snapshot/saga';
 import { supportSaga } from './support';
 import { systemSaga } from './system';
 import { asyncActionsSaga } from './utils';
@@ -27,6 +28,7 @@ export default function* rootSaga() {
     meSaga(),
     notificationsSaga(),
     organizationSaga(),
+    snapshotSaga(),
     supportSaga(),
     systemSaga(),
     windowsSaga(),

@@ -3,12 +3,12 @@ import * as React from 'react';
 import { Identity } from '../../types/commons';
 import { Content, Header, ItemsWrapper, Wrapper } from './ContextGroupWindows.css';
 
-import withContextMemberName from '../../hocs/withContextMemberName';
+import withWindowNameAndSnapshot from '../../hocs/withWindowNameAndSnapshot';
 import ContextGroupWindowsItem from '../ContextGroupWindowsItem';
 import ContextManagerEmptyState from '../ContextManagerEmptyState';
 import DragWrapper, { createChannelsHandleDrop, handleDragOver } from '../DragWrapper';
 
-const ContextGroupWindowsItemWithName = withContextMemberName(ContextGroupWindowsItem);
+const EnhancedContextGroupWindowsItem = withWindowNameAndSnapshot(ContextGroupWindowsItem);
 
 export interface Props {
   className?: string;
@@ -36,7 +36,7 @@ const ContextGroupWindows = ({ className, contextWindows, handleRemove, handleDr
 
           return (
             <DragWrapper dataTransferObj={{ ...identity }} key={`${identity.uuid}::${identity.name}`}>
-              <ContextGroupWindowsItemWithName
+              <EnhancedContextGroupWindowsItem
                 handleRemove={handleRemoveCreator}
                 identity={identity}
                 isPollingActive={!preventRender}

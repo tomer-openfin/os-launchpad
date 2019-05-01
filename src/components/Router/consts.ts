@@ -53,6 +53,8 @@ export const ROUTES = {
   LOGIN: '/login',
   LOGOUT: '/logout',
   SETTINGS: '/settings/:action',
+  SNAPSHOT: '/snapshot',
+  SNAPSHOT_OVERLAY: '/snapshot-overlay',
   SUPPORT: '/support',
   ...SETTINGS_ROUTES,
 };

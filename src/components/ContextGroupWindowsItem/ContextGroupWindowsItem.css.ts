@@ -22,4 +22,10 @@ export const Text = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
+
+  &:hover {
+    ${Text} {
+      color: ${Color.MOON};
+    }
+  }
 `;

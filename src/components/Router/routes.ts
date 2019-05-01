@@ -19,6 +19,8 @@ import Login from '../Login';
 import Logout from '../Logout';
 import OrganizationSettings from '../OrganizationSettings';
 import Settings, { asRoute as asSettingsRoutes } from '../Settings';
+import Snapshot from '../Snapshot';
+import SnapshotOverlay from '../SnapshotOverlay';
 import Support from '../Support';
 
 export interface AppRoute {
@@ -122,6 +124,16 @@ export const routes: AppRoute[] = [
     Component: Support,
     exact: true,
     path: ROUTES.SUPPORT,
+  },
+  {
+    Component: Snapshot,
+    exact: true,
+    path: ROUTES.SNAPSHOT,
+  },
+  {
+    Component: SnapshotOverlay,
+    exact: true,
+    path: ROUTES.SNAPSHOT_OVERLAY,
   },
   {
     Component: ContextMenu,

@@ -12,6 +12,12 @@ export const getChannelsById = (state: State) => getChannelsState(state).byId;
 export const getChannelsContextsById = (state: State) => getChannelsState(state).contextsById;
 export const getChannelsMembersById = (state: State) => getChannelsState(state).membersById;
 export const getChannelsMembersChannels = (state: State) => getChannelsState(state).membersChannels;
+export const getChannelByMemberId = (state: State, id: string) => {
+  const membersChannels = getChannelsMembersChannels(state);
+  const channelId = membersChannels[id];
+  const channelsById = getChannelsById(state);
+  return channelsById[channelId];
+};
 
 export const getChannelMembersByActiveId = createSelector(
   [getChannelsActiveId, getChannelsMembersById],
@@ -32,7 +38,7 @@ export const getContextWindowsByGroup = createSelector(
           ...acc,
           {
             channel: {
-              color: channel.color ? `#${convertHexNumberToString(channel.color)}` : 'transparent',
+              color: channel.color ? convertHexNumberToString(channel.color) : 'transparent',
               id: channel.id,
               isGlobal: GLOBAL_CHANNEL_ID === channel.id,
               name: channel.name,
