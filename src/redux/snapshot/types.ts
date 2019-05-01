@@ -1,10 +1,10 @@
-import { Bounds, Identity, PrimaryDirectionalCoordinates } from '../../types/commons';
+import { Bounds, Identity, PointTopLeft } from '../../types/commons';
 import { ActionsUnion } from '../types';
 import { clearSnapshot, getAndSetSnapshot, setSnapshotAnchor } from './actions';
 
 // Reducer
 export interface SnapshotState {
-  anchor: PrimaryDirectionalCoordinates;
+  anchor: PointTopLeft;
   anchorIdentity: Identity | null;
   imgSrc: string;
   sourceBounds: Bounds;

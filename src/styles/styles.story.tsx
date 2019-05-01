@@ -3,21 +3,8 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import { CATEGORIES } from '../utils/storyCategories';
-import { Color } from './index';
-import {
-  TypeStyleAlgol,
-  TypeStyleArcturus,
-  TypeStyleBellatrix,
-  TypeStyleCanopus,
-  TypeStyleDeneb,
-  TypeStyleEnif,
-  TypeStyleNaos,
-  TypeStylePolaris,
-  TypeStylePollux,
-  TypeStyleProcyon,
-  TypeStyleSirius,
-  TypeStyleSol,
-} from './typography.css';
+import { Color, Typography } from './index';
+import { TypeStyleBellatrix, TypeStyleProcyon } from './typography.css';
 
 const TypeStyleDiv = css => styled.div`
   ${css}
@@ -71,22 +58,17 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-storiesOf(`${CATEGORIES.STYLEGUIDE}Typography`, module).add('default', () => (
-  <Wrapper>
-    <TypeStory style={TypeStyleSirius} name={'Sirius'} />
-    <TypeStory style={TypeStyleCanopus} name={'Canopus'} />
-    <TypeStory style={TypeStyleArcturus} name={'Arcturus'} />
-    <TypeStory style={TypeStyleProcyon} name={'Procyon'} />
-    <TypeStory style={TypeStyleDeneb} name={'Deneb'} />
-    <TypeStory style={TypeStylePollux} name={'Pollux'} />
-    <TypeStory style={TypeStyleBellatrix} name={'Bellatrix'} />
-    <TypeStory style={TypeStylePolaris} name={'Polaris'} />
-    <TypeStory style={TypeStyleAlgol} name={'Algol'} />
-    <TypeStory style={TypeStyleEnif} name={'Enif'} />
-    <TypeStory style={TypeStyleNaos} name={'Naos'} />
-    <TypeStory style={TypeStyleSol} name={'Sol'} />
-  </Wrapper>
-));
+storiesOf(`${CATEGORIES.STYLEGUIDE}Typography`, module).add('default', () => {
+  const typeStyleKeys = Object.keys(Typography);
+
+  return (
+    <Wrapper>
+      {typeStyleKeys.map(key => (
+        <TypeStory key={key} style={Typography[key]} name={key} />
+      ))}
+    </Wrapper>
+  );
+});
 
 const ColorPane = styled.div<{ name: string; backgroundColor: string }>`
   height: 300px;
@@ -123,23 +105,14 @@ const ColorPane = styled.div<{ name: string; backgroundColor: string }>`
   }
 `;
 
-storiesOf(`${CATEGORIES.STYLEGUIDE}Color`, module).add('default', () => (
-  <Wrapper>
-    <ColorPane backgroundColor={Color.SUN} name={'Sun'} />
-    <ColorPane backgroundColor={Color.MERCURY} name={'Mercury'} />
-    <ColorPane backgroundColor={Color.VENUS} name={'Venus'} />
-    <ColorPane backgroundColor={Color.EARTH} name={'Earth'} />
-    <ColorPane backgroundColor={Color.MARS} name={'Mars'} />
-    <ColorPane backgroundColor={Color.ASTEROID_BELT} name={'Asteroid_Belt'} />
-    <ColorPane backgroundColor={Color.JUPITER} name={'Jupiter'} />
-    <ColorPane backgroundColor={Color.SATURN} name={'Saturn'} />
-    <ColorPane backgroundColor={Color.URANUS} name={'Uranus'} />
-    <ColorPane backgroundColor={Color.NEPTUNE} name={'Neptune'} />
-    <ColorPane backgroundColor={Color.KUIPER_BELT} name={'Kuiper_Belt'} />
-    <ColorPane backgroundColor={Color.PLUTO} name={'Pluto'} />
-    <ColorPane backgroundColor={Color.NEBULA} name={'Nebula'} />
-    <ColorPane backgroundColor={Color.COMET} name={'Comet'} />
-    <ColorPane backgroundColor={Color.VACUUM} name={'Vacuum'} />
-    <ColorPane backgroundColor={Color.VOID} name={'Void'} />
-  </Wrapper>
-));
+storiesOf(`${CATEGORIES.STYLEGUIDE}Color`, module).add('default', () => {
+  const colorKeys = Object.keys(Color);
+
+  return (
+    <Wrapper>
+      {colorKeys.map(key => (
+        <ColorPane key={key} backgroundColor={Color[key]} name={key} />
+      ))}
+    </Wrapper>
+  );
+});
