@@ -1,27 +1,30 @@
 import { Application, Window } from '@giantmachines/redux-openfin';
-import { all, call, cancel, cancelled, delay, fork, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
-// import { all, call, delay, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
+import { all, call, cancel, cancelled, delay, fork, put, race, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 import { ApiResponseStatus } from '../../types/enums';
+import { CustomDataWithChannels, WorkspaceApp } from '../../types/fin';
 import { UnPromisfy } from '../../types/utils';
 import { eraseCookie } from '../../utils/cookieUtils';
 import { animateWindow, getApplicationManifest, showSystemDeveloperTools } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { updateKeyInManifestOverride } from '../../utils/manifestOverride';
+import { GLOBAL_CHANNEL_ID } from '../../utils/openfinFdc3';
+import { ready, setGenerateHandler, setRestoreHandler } from '../../utils/openfinLayouts';
 import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv, isProductionEnv } from '../../utils/processHelpers';
 import { setupWindow } from '../../utils/setupWindow';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList } from '../apps';
-import { getChannels } from '../channels/index';
+import { addMemberToChannel, addWindowToChannel, getChannels, getChannelsMembersById, getChannelsMembersChannels, rejoinWindowToChannel } from '../channels';
 import { registerGlobalDevHotKeys } from '../globalHotkeys/utils';
+import { restoreLayout } from '../layouts';
 import { getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig, getSystemTrayEnabled } from '../me';
 import { loginFlow } from '../me/utils';
 import { getOrgSettings } from '../organization';
 import { getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings } from '../selectors';
-import { setupSystemHandlers } from '../system';
+import { getSystemWindowIsPresent, setupSystemHandlers } from '../system';
 import { getErrorFromCatch } from '../utils';
-import { getWindowIsShowing } from '../windows';
+import { getUniqueWindowId, getWindowIsShowing } from '../windows';
 import {
   applicationStarted,
   exitApplication,
@@ -151,6 +154,33 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
       yield put(setIsEnterprise(isEnterprise));
 
       yield call(loginFlow, isLoggedIn || !isEnterprise);
+
+      // called each time new layout is generated
+      const generateListener = () => {
+        const channels = getChannelsMembersById(window.store.getState());
+
+        // enable customData field for launcher itself
+        return { channels };
+      };
+      setGenerateHandler(generateListener);
+      const restoreListener = (workspace: WorkspaceApp) => {
+        // look for saved customData on launcher layout
+        if (workspace && !!workspace.customData) {
+          const { channels } = workspace.customData as CustomDataWithChannels;
+
+          for (const channelId in channels) {
+            if (channels[channelId].length === 0) continue;
+
+            channels[channelId].map(identity => {
+              // return put(rejoinWindowToChannel.request({ identity, channelId }));
+              window.store.dispatch(rejoinWindowToChannel.request({ identity, channelId }));
+            });
+          }
+        }
+        return workspace;
+      };
+      setRestoreHandler(restoreListener);
+      ready();
     }
   } catch (e) {
     const error = getErrorFromCatch(e);
@@ -160,8 +190,7 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
 }
 
 function* watchPollStart() {
-  // modify dev env delay to > 2min after review
-  const REFETCH_DELAY = isProductionEnv() ? 120000 : 15000;
+  const REFETCH_DELAY = isProductionEnv() ? 120000 : 600000;
 
   while (true) {
     try {
@@ -347,12 +376,55 @@ function* watchToggleAppIsShowing() {
   }
 }
 
+function* watchRejoinWindowToChannelRequest(action: ReturnType<typeof rejoinWindowToChannel.request>) {
+  try {
+    const { identity, channelId } = action.payload;
+
+    const isPresent: ReturnType<typeof getSystemWindowIsPresent> = yield select(getSystemWindowIsPresent, identity);
+    const windowId = getUniqueWindowId(identity);
+    const channelsMembers: ReturnType<typeof getChannelsMembersChannels> = yield select(getChannelsMembersChannels);
+    const currentId = channelsMembers[windowId] || GLOBAL_CHANNEL_ID;
+
+    if (channelId === GLOBAL_CHANNEL_ID && !isPresent) return;
+    if (currentId === channelId && isPresent) return;
+
+    if (isPresent) {
+      // case 1: window is open and not in channel
+      // tslint:disable-next-line:no-console
+      console.log(`%c ${identity.uuid}/${identity.name} joining ${channelId} channel.`, `background-color: ${channelId};`);
+
+      yield put(addWindowToChannel.request({ currentId, nextId: channelId, identity }));
+    } else {
+      // case 2: window not yet open and not in channel
+      const { failure } = yield race({
+        failure: take(restoreLayout.failure),
+        success: take(restoreLayout.success),
+      });
+
+      if (failure) {
+        throw new Error('restoreLayout.failure in watchRejoinWindowToChannelRequest.');
+      }
+
+      // tslint:disable-next-line:no-console
+      console.log(`%c ${identity.uuid}/${identity.name} joining ${channelId} channel.`, `background-color: ${channelId};`);
+      yield put(addWindowToChannel.request({ currentId, nextId: channelId, identity }));
+    }
+    yield put(rejoinWindowToChannel.success());
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.warn('Error in watchRejoinWindowToChannelRequest', error);
+    yield put(rejoinWindowToChannel.failure(error));
+  }
+}
+
 export function* applicationSaga() {
   yield takeEvery(applicationStarted, applicationStart);
   yield takeEvery(exitApplication, watchExitApplication);
   yield takeEvery(initDevTools, watchInitDevTools);
   yield takeEvery(launchAppLauncher, watchLaunchAppLauncher);
   yield takeEvery(openfinReady, openfinSetup);
+  yield takeEvery(rejoinWindowToChannel.request, watchRejoinWindowToChannelRequest);
   yield takeLatest(pollStart, watchPolling);
   yield takeLatest(toggleAppIsShowing, watchToggleAppIsShowing);
 

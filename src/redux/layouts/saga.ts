@@ -124,6 +124,7 @@ function* watchRestoreLayoutRequest(action: ReturnType<typeof restoreLayout.requ
     }
 
     const { layout, name } = userLayout;
+
     sendAnalytics({ type: EventType.Click, label: 'Workspace::Restore', context: { name } });
 
     const apps: ReturnType<typeof getApps> = yield select(getApps);
@@ -132,6 +133,10 @@ function* watchRestoreLayoutRequest(action: ReturnType<typeof restoreLayout.requ
     yield all(
       layout.apps.map(layoutApp => {
         const { manifestUrl, uuid } = layoutApp;
+
+        // ignore launcher saved in layout.apps
+        if (uuid === getOwnUuid()) return;
+
         const matchingApp = apps.find(app => app.manifest_url === manifestUrl);
 
         if (!matchingApp) {
@@ -150,6 +155,7 @@ function* watchRestoreLayoutRequest(action: ReturnType<typeof restoreLayout.requ
       }),
     );
     const restoredLayout: UnPromisfy<ReturnType<typeof restoreFinLayout>> = yield call(restoreFinLayout, layout);
+
     yield put(restoreLayout.success(restoredLayout, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
@@ -164,6 +170,10 @@ function* watchRestoreLayoutSuccess(action: ReturnType<typeof restoreLayout.succ
     yield all(
       action.payload.apps.map(layoutApp => {
         const { manifestUrl, uuid } = layoutApp;
+
+        // ignore launcher saved in layout.apps
+        if (uuid === getOwnUuid()) return;
+
         const matchingApp = apps.find(app => app.manifest_url === manifestUrl);
 
         if (!matchingApp) {

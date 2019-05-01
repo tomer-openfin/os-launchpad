@@ -5,6 +5,7 @@ import Router from './components/Router';
 
 import configureStore from './configureStore';
 import { applicationStarted, openfinReady } from './redux/application/actions';
+import getOwnUuid from './utils/getOwnUuid';
 import { isProductionEnv } from './utils/processHelpers';
 import renderWindow from './utils/renderWindow';
 import setupReactCleanUp from './utils/setupReactCleanup';
@@ -72,11 +73,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       const { dispatch } = window.store || window.opener.store;
       dispatch(action);
 
-      deregister({ name, uuid })
-        // tslint:disable-next-line:no-console
-        .then(() => console.log(`Deregistering ${name} from Layouts service.`))
-        // tslint:disable-next-line:no-console
-        .catch(err => console.log(`${name} has already been deregistred from Layouts service. Service returned the following error: ${err}`));
+      if (name !== getOwnUuid()) {
+        deregister({ name, uuid })
+          // tslint:disable-next-line:no-console
+          .then(() => console.log(`Deregistering ${name} from Layouts service.`))
+          // tslint:disable-next-line:no-console
+          .catch(err => console.log(`${name} has already been deregistred from Layouts service. Service returned the following error: ${err}`));
+      }
     });
   }
 });

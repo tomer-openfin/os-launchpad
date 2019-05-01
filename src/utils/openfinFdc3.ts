@@ -1,4 +1,4 @@
-import { Channel, Identity } from '../types/commons';
+import { Channel, ChannelId, Identity } from '../types/commons';
 import noop from './noop';
 import { isStorybookEnv, isTestEnv } from './processHelpers';
 
@@ -35,7 +35,7 @@ const mockGetChannel = (identity?: Identity) =>
     name: 'global',
     type: 'global',
   });
-const MOCK_GLOBAL_CHANNEL_ID = 'global';
+const MOCK_GLOBAL_CHANNEL_ID: ChannelId = 'global';
 const mockJoinChannel = (id: string, identity?: Identity) => Promise.resolve();
 
 /**
@@ -51,6 +51,6 @@ export const broadcast = isNotFin ? mockBroadcast : require('openfin-fdc3').broa
 export const getAllChannels = isNotFin ? mockGetAllChannels : require('openfin-fdc3').getAllChannels;
 export const getChannelMembers = isNotFin ? mockGetChannelMembers : require('openfin-fdc3').getChannelMembers;
 export const getChannel = isNotFin ? mockGetChannel : require('openfin-fdc3').getChannel;
-export const GLOBAL_CHANNEL_ID = isNotFin ? MOCK_GLOBAL_CHANNEL_ID : require('openfin-fdc3').GLOBAL_CHANNEL_ID;
+export const GLOBAL_CHANNEL_ID: ChannelId = isNotFin ? MOCK_GLOBAL_CHANNEL_ID : require('openfin-fdc3').GLOBAL_CHANNEL_ID;
 export const joinChannel = isNotFin ? mockJoinChannel : require('openfin-fdc3').joinChannel;
 // tslint:enable:no-var-requires

@@ -1,4 +1,4 @@
-import { Workspace } from '../types/commons';
+import { Workspace, WorkspaceApp } from '../types/commons';
 import { isStorybookEnv, isTestEnv } from './processHelpers';
 
 const isNotFin = isTestEnv() || isStorybookEnv();
@@ -107,16 +107,27 @@ const mockWorkspace = {
 };
 
 const mockDeregister = () => Promise.resolve(undefined);
+const mockReady = (): Promise<Workspace> => Promise.resolve(mockWorkspace);
 const mockGenerateWorkspace = (): Promise<Workspace> => Promise.resolve(mockWorkspace);
 const mockRestoreWorkspace = (workspaceArg: Workspace): Promise<Workspace> => Promise.resolve(workspaceArg);
+const mockSetGenerateHandler = (customDataDecorator: () => {} | null | undefined): Promise<boolean> => Promise.resolve(true);
+const mockSetRestoreHandler = (listener: (workspaceApp: Workspace) => Workspace | false | Promise<Workspace | false>): Promise<boolean> =>
+  Promise.resolve(true);
+
 const mockWorkspaces = {
   generate: mockGenerateWorkspace,
+  ready: mockReady,
   restore: mockRestoreWorkspace,
+  setGenerateHandler: mockSetGenerateHandler,
+  setRestoreHandler: mockSetRestoreHandler,
 };
 
 interface WorkspacesLib {
   generate: () => Promise<Workspace>;
+  ready: () => Promise<Workspace>;
   restore: (workspaceArg: Workspace) => Promise<Workspace>;
+  setGenerateHandler: (customDataDecorator: () => {} | null | undefined) => Promise<boolean>;
+  setRestoreHandler: (listener: (workspaceApp: WorkspaceApp) => WorkspaceApp | false | Promise<WorkspaceApp | false>) => Promise<boolean>;
 }
 
 /**
@@ -133,3 +144,6 @@ export const generateLayout = workspaces.generate;
 export const restoreLayout = workspaces.restore;
 // tslint:disable-next-line:no-var-requires
 export const deregister = isNotFin ? mockDeregister : require('openfin-layouts').deregister;
+export const setGenerateHandler = workspaces.setGenerateHandler;
+export const setRestoreHandler = workspaces.setRestoreHandler;
+export const ready = workspaces.ready;
