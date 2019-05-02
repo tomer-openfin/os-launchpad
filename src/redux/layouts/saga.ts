@@ -11,7 +11,7 @@ import { generateLayout, restoreLayout as restoreFinLayout } from '../../utils/o
 import { calcBoundsRelativeToLauncher } from '../../utils/windowPositionHelpers';
 import { getApps, getAppsStatusById, openFinApp, setFinAppStatusState } from '../apps';
 import { getLauncherPosition, getLauncherSizeConfig } from '../me';
-import { getExpandedSystemDrawerSize } from '../selectors';
+import { getSystemDrawerSize } from '../selectors';
 import { getErrorFromCatch } from '../utils';
 import { getWindowBounds } from '../windows';
 
@@ -26,7 +26,7 @@ function* watchLayoutsChangesToAnimateWindow() {
     const launcherBounds: ReturnType<typeof getWindowBounds> = yield select(getWindowBounds, uuid);
     const launcherPosition: ReturnType<typeof getLauncherPosition> = yield select(getLauncherPosition);
     const launcherSizeConfig: ReturnType<typeof getLauncherSizeConfig> = yield select(getLauncherSizeConfig);
-    const expandedSystemDrawerSize: ReturnType<typeof getExpandedSystemDrawerSize> = yield select(getExpandedSystemDrawerSize);
+    const systemDrawerSize: ReturnType<typeof getSystemDrawerSize> = yield select(getSystemDrawerSize);
     const layouts: ReturnType<typeof getAllLayouts> = yield select(getAllLayouts);
 
     if (!bounds || !layouts || !launcherBounds) {
@@ -39,7 +39,7 @@ function* watchLayoutsChangesToAnimateWindow() {
       launcherBounds,
       launcherPosition,
       launcherSizeConfig,
-      expandedSystemDrawerSize,
+      systemDrawerSize,
     );
 
     const transitions: Transition = {

@@ -8,11 +8,12 @@ import windowsConfig, {
   LAYOUTS_WINDOW,
   LOGIN_WINDOW,
   LOGOUT_WINDOW,
+  SETTINGS_MENU_WINDOW,
 } from '../../config/windows';
 import { getBoundsCenterInCoordinates, isBoundsInCoordinates } from '../../utils/coordinateHelpers';
 import { updateWindowOptions } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
-import { getIsDragAndDrop, setIsDrawerExpanded, setWindowRelativeToLauncherBounds } from '../application';
+import { getIsDragAndDrop, setWindowRelativeToLauncherBounds } from '../application';
 import { getSettings } from '../me';
 import { getMonitorDetailsDerivedByUserSettings } from '../selectors';
 import { getMonitorDetails } from '../system';
@@ -114,7 +115,7 @@ function* watchOpenedWindow(action) {
       throw new Error('Failed to Open window - unable to get window by id');
     }
 
-    if (id === APP_LAUNCHER_OVERFLOW_WINDOW || id === LAYOUTS_WINDOW || id === LOGOUT_WINDOW) {
+    if (id === APP_LAUNCHER_OVERFLOW_WINDOW || id === LAYOUTS_WINDOW || id === LOGOUT_WINDOW || id === SETTINGS_MENU_WINDOW) {
       const bounds = yield select(getWindowBounds, getOwnUuid());
       if (bounds) {
         yield call(setWindowRelativeToLauncherBounds, id, bounds);
@@ -140,6 +141,7 @@ function* watchWindowBoundsChanged(action) {
         call(setWindowRelativeToLauncherBounds, APP_LAUNCHER_OVERFLOW_WINDOW, bounds),
         call(setWindowRelativeToLauncherBounds, LAYOUTS_WINDOW, bounds),
         call(setWindowRelativeToLauncherBounds, LOGOUT_WINDOW, bounds),
+        call(setWindowRelativeToLauncherBounds, SETTINGS_MENU_WINDOW, bounds),
       ]);
     }
   } catch (e) {
@@ -153,25 +155,6 @@ function* watchWindowBlurred(action: ReturnType<typeof windowBlurred>) {
   try {
     const { name } = action.payload;
     switch (name) {
-      case getOwnUuid(): {
-        const { cancel, proceed } = yield race({
-          cancel: take(fluxStandardAction => {
-            const { type, payload: standardPayload } = fluxStandardAction;
-            return type === toggleWindow.toString() && standardPayload && (standardPayload.name === LAYOUTS_WINDOW || standardPayload.name === LOGOUT_WINDOW);
-          }),
-          proceed: delay(100),
-        });
-
-        if (cancel) {
-          return;
-        }
-
-        const [isLayoutsShowing, isLogoutShowing] = yield all([select(getWindowIsShowing, LAYOUTS_WINDOW), select(getWindowIsShowing, LOGOUT_WINDOW)]);
-        if (!isLayoutsShowing && !isLogoutShowing) {
-          yield put(setIsDrawerExpanded(false));
-        }
-        break;
-      }
       case CONTEXT_MENU: {
         yield put(hideWindow({ name }));
         break;
@@ -185,6 +168,7 @@ function* watchWindowBlurred(action: ReturnType<typeof windowBlurred>) {
       }
       case APP_DIRECTORY_WINDOW:
       case LAYOUTS_WINDOW:
+      case SETTINGS_MENU_WINDOW:
       case LOGOUT_WINDOW: {
         const { cancel, proceed } = yield race({
           cancel: take(fluxStandardAction => {

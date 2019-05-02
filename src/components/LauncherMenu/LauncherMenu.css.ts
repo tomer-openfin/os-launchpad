@@ -4,6 +4,9 @@ import { Color, Typography } from '../../styles';
 
 import { Icon } from '../SvgIcon';
 
+export const ROW_HEIGHT = 46;
+export const EDGE_PADDING = 5;
+
 export const Text = styled.span`
   ${Typography.TypeStyleProcyon}
 
@@ -20,15 +23,15 @@ export const Action = styled.button`
   display: flex;
   margin: 0;
   outline: none;
-  padding: 0;
+  padding: 2px 7px;
   width: 100%;
 
   :first-child {
-    padding: 7px 7px 2px;
+    padding-top: 7px;
   }
 
-  :nth-child(2) {
-    padding: 2px 7px 7px;
+  :last-child {
+    padding-bottom: 7px;
   }
 
   :hover {

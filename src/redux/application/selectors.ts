@@ -4,7 +4,6 @@ import { State } from '../types';
 
 export const getApplicationState = (state: State) => state.application;
 export const getIsDragAndDrop = (state: State) => getApplicationState(state).isDragAndDrop;
-export const getDrawerIsExpanded = (state: State) => getApplicationState(state).isDrawerExpanded;
 export const getIsEnterprise = (state: State) => getApplicationState(state).isEnterprise;
 export const getRuntimeVersion = (state: State) => getApplicationState(state).runtimeVersion;
 export const getApplicationManifest = (state: State) => getApplicationState(state).manifest;

@@ -15,9 +15,9 @@ import ContextManager from '../ContextManager';
 import ContextMenu from '../ContextMenu';
 import ContextSubscriber from '../ContextSubscriber';
 import ForgotPassword, { asRoute as asForgotPasswordRoute } from '../ForgotPassword';
+import LauncherMenu, { withLogout, withSettings } from '../LauncherMenu';
 import Layouts from '../Layouts';
 import Login from '../Login';
-import Logout from '../Logout';
 import OrganizationSettings from '../OrganizationSettings';
 import Settings, { asRoute as asSettingsRoutes } from '../Settings';
 import Snapshot from '../Snapshot';
@@ -107,9 +107,14 @@ export const routes: AppRoute[] = [
     path: ROUTES.LAYOUTS,
   },
   {
-    Component: Logout,
+    Component: withLogout(LauncherMenu),
     exact: true,
     path: ROUTES.LOGOUT,
+  },
+  {
+    Component: withSettings(LauncherMenu),
+    exact: true,
+    path: ROUTES.SETTINGS_MENU,
   },
   {
     Component: AppDirectory,

@@ -54,6 +54,7 @@ export const ROUTES = {
   LOGIN: '/login',
   LOGOUT: '/logout',
   SETTINGS: '/settings/:action',
+  SETTINGS_MENU: '/settings-menu',
   SNAPSHOT: '/snapshot',
   SNAPSHOT_OVERLAY: '/snapshot-overlay',
   SUPPORT: '/support',

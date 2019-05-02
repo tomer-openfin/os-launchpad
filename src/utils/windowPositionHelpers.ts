@@ -1,4 +1,4 @@
-import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGOUT_WINDOW } from '../config/windows';
+import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGOUT_WINDOW, SETTINGS_MENU_WINDOW } from '../config/windows';
 import { Bounds, Dimensions, DirectionalPosition, MonitorDetails, PointTopLeft } from '../types/commons';
 
 import { getCoordinatesHeight, getCoordinatesWidth } from './coordinateHelpers';
@@ -45,21 +45,39 @@ const OFFSETS = {
     }),
   },
   [LOGOUT_WINDOW]: {
-    [DirectionalPosition.Top]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds, expandedSystemDrawerSize: number) => ({
-      offsetX: launcherBounds.width - expandedSystemDrawerSize,
+    [DirectionalPosition.Top]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds, systemDrawerSize: number) => ({
+      offsetX: launcherBounds.width - systemDrawerSize - config.minimizeToTrayIcon,
       offsetY: config.launcher,
     }),
-    [DirectionalPosition.Right]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds, expandedSystemDrawerSize: number) => ({
+    [DirectionalPosition.Right]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds, systemDrawerSize: number) => ({
       offsetX: 0,
-      offsetY: launcherBounds.height - expandedSystemDrawerSize,
+      offsetY: launcherBounds.height - systemDrawerSize - config.minimizeToTrayIcon,
     }),
-    [DirectionalPosition.Bottom]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds, expandedSystemDrawerSize: number) => ({
-      offsetX: launcherBounds.width - expandedSystemDrawerSize,
+    [DirectionalPosition.Bottom]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds, systemDrawerSize: number) => ({
+      offsetX: launcherBounds.width - systemDrawerSize - config.minimizeToTrayIcon,
       offsetY: 0,
     }),
-    [DirectionalPosition.Left]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds, expandedSystemDrawerSize: number) => ({
+    [DirectionalPosition.Left]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds, systemDrawerSize: number) => ({
       offsetX: config.launcher,
-      offsetY: launcherBounds.height - expandedSystemDrawerSize,
+      offsetY: launcherBounds.height - systemDrawerSize - config.minimizeToTrayIcon,
+    }),
+  },
+  [SETTINGS_MENU_WINDOW]: {
+    [DirectionalPosition.Top]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds, systemDrawerSize: number) => ({
+      offsetX: launcherBounds.width - systemDrawerSize - config.minimizeToTrayIcon,
+      offsetY: config.launcher,
+    }),
+    [DirectionalPosition.Right]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds, systemDrawerSize: number) => ({
+      offsetX: 0,
+      offsetY: launcherBounds.height - systemDrawerSize - config.minimizeToTrayIcon,
+    }),
+    [DirectionalPosition.Bottom]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds, systemDrawerSize: number) => ({
+      offsetX: launcherBounds.width - systemDrawerSize - config.minimizeToTrayIcon,
+      offsetY: 0,
+    }),
+    [DirectionalPosition.Left]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds, systemDrawerSize: number) => ({
+      offsetX: config.launcher,
+      offsetY: launcherBounds.height - systemDrawerSize - config.minimizeToTrayIcon,
     }),
   },
 };
@@ -75,7 +93,7 @@ export const isBottomOrRight = (position: DirectionalPosition) => isBottom(posit
 export const calcMaxAppCount = (
   launcherPosition: DirectionalPosition,
   launcherSizeConfig: LauncherSizeConfig,
-  collapsedDrawerSize: number,
+  systemDrawerSize: number,
   monitorDetails: MonitorDetails,
 ) => {
   const { appIcon, appIconGutter, launcher } = launcherSizeConfig;
@@ -83,7 +101,7 @@ export const calcMaxAppCount = (
   const { availableRect } = monitorDetails;
   const monitorGuttersSize = SIZE.LAUNCHER_MONITOR_GUTTER * 2;
   const maximumEdgeLength = (isOnTopOrBottom ? getCoordinatesWidth(availableRect) : getCoordinatesHeight(availableRect)) - monitorGuttersSize;
-  const maximumAppSpace = maximumEdgeLength - launcher - collapsedDrawerSize;
+  const maximumAppSpace = maximumEdgeLength - launcher - systemDrawerSize;
 
   return Math.floor((maximumAppSpace - appIconGutter * 2) / (appIcon + appIconGutter * 2));
 };
@@ -92,15 +110,16 @@ export const calcAppListDimensions = (
   appCount: number,
   launcherPosition: DirectionalPosition,
   launcherSizeConfig: LauncherSizeConfig,
-  collapsedDrawerSize: number,
+  systemDrawerSize: number,
   monitorDetails: MonitorDetails,
 ) => {
   const { appIcon, appIconGutter, launcher } = launcherSizeConfig;
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);
-  const maxAppCount = calcMaxAppCount(launcherPosition, launcherSizeConfig, collapsedDrawerSize, monitorDetails);
+  const maxAppCount = calcMaxAppCount(launcherPosition, launcherSizeConfig, systemDrawerSize, monitorDetails);
 
   const appWithGutter = appIcon + appIconGutter * 2;
-  const totalAppSpace = Math.min(maxAppCount, appCount) * appWithGutter + appIconGutter * 2;
+  const edgeGutter = appCount ? appIconGutter * 2 : 0;
+  const totalAppSpace = Math.min(maxAppCount, appCount) * appWithGutter + edgeGutter;
 
   const overflowRowOrColumnCount = Math.ceil(appCount / maxAppCount);
   const overflowRowOrColumnSize = overflowRowOrColumnCount * launcher;
@@ -120,7 +139,7 @@ export const calcAppListDimensions = (
  * @param monitorDetails - monitor information
  * @param launcherPosition - current launcher position
  * @param launcherSizeConfig - current launcher sizing config
- * @param collapsedDrawerSize - size of collapsed SystemDrawer
+ * @param systemDrawerSize - size of SystemDrawer
  * @param expandedDrawerSize - size of expanded SystemDrawer
  *
  * @returns {Dimensions}
@@ -130,17 +149,16 @@ export const calcLauncherDimensions = (
   monitorDetails: MonitorDetails,
   launcherPosition: DirectionalPosition,
   launcherSizeConfig: LauncherSizeConfig,
-  collapsedDrawerSize: number,
-  expandedDrawerSize: number,
+  systemDrawerSize: number,
 ): Dimensions => {
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);
   const { launcher, minimizeToTrayIcon } = launcherSizeConfig;
   const STATIC_DIMENSION = launcher;
   const minimizeToTray = minimizeToTrayIcon;
 
-  const minimumDynamicDimension = launcher + expandedDrawerSize + minimizeToTray;
-  const appListDimensions = calcAppListDimensions(appCount, launcherPosition, launcherSizeConfig, collapsedDrawerSize + minimizeToTray, monitorDetails);
-  const rawDynamicDimension = launcher + collapsedDrawerSize + (isOnTopOrBottom ? appListDimensions.width : appListDimensions.height) + minimizeToTray;
+  const minimumDynamicDimension = launcher + systemDrawerSize + minimizeToTray;
+  const appListDimensions = calcAppListDimensions(appCount, launcherPosition, launcherSizeConfig, systemDrawerSize + minimizeToTray, monitorDetails);
+  const rawDynamicDimension = launcher + systemDrawerSize + (isOnTopOrBottom ? appListDimensions.width : appListDimensions.height) + minimizeToTray;
   const dynamicDimension = Math.max(minimumDynamicDimension, rawDynamicDimension);
 
   const height = isOnTopOrBottom ? STATIC_DIMENSION : dynamicDimension;
@@ -205,8 +223,7 @@ export const calcLauncherCoordinates = (dimensions: Dimensions, monitorDetails: 
  * @param monitorDetails - monitor information
  * @param launcherPosition - current launcher position
  * @param launcherSizeConfig - current launcher sizing config
- * @param collapsedDrawerSize - size of collapsed SystemDrawer
- * @param expandedDrawerSize - size of expanded SystemDrawer
+ * @param systemDrawerSize - size of SystemDrawer
  *
  *
  * @returns {Bounds}
@@ -216,10 +233,9 @@ export const calcLauncherPosition = (
   monitorDetails: MonitorDetails,
   launcherPosition: DirectionalPosition,
   launcherSizeConfig: LauncherSizeConfig,
-  collapsedDrawerSize: number,
-  expandedDrawerSize: number,
+  systemDrawerSize: number,
 ): Bounds => {
-  const dimensions = calcLauncherDimensions(appCount, monitorDetails, launcherPosition, launcherSizeConfig, collapsedDrawerSize, expandedDrawerSize);
+  const dimensions = calcLauncherDimensions(appCount, monitorDetails, launcherPosition, launcherSizeConfig, systemDrawerSize);
   const coordinates = calcLauncherCoordinates(dimensions, monitorDetails, launcherPosition);
 
   return {
@@ -273,11 +289,11 @@ export const calcBoundsRelativeToLauncher = (
   launcherBounds: Bounds,
   launcherPosition: DirectionalPosition,
   launcherSizeConfig: LauncherSizeConfig,
-  expandedSystemDrawerSize: number,
+  systemDrawerSize: number,
 ): Bounds => {
   const { offsetX, offsetY } =
     OFFSETS[finName] && OFFSETS[finName][launcherPosition]
-      ? OFFSETS[finName][launcherPosition](launcherSizeConfig, bounds, launcherBounds, expandedSystemDrawerSize)
+      ? OFFSETS[finName][launcherPosition](launcherSizeConfig, bounds, launcherBounds, systemDrawerSize)
       : { offsetX: 0, offsetY: 0 };
   const dimensions = { width: bounds.width, height: bounds.height };
   const coordinates = calcCoordinatesRelativeToLauncherBounds(dimensions, offsetX, offsetY, launcherBounds, launcherPosition);

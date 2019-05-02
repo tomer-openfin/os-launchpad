@@ -62,7 +62,6 @@ import '../src/components/LayoutsListItem/LayoutsListItem.story';
 import '../src/components/LayoutsUserActions/LayoutsUserActions.story';
 import '../src/components/Login/Login.story';
 import '../src/components/LoginForm/LoginForm.story';
-import '../src/components/Logout/Logout.story';
 import '../src/components/MonitorControls/MonitorControls.story';
 import '../src/components/MonitorControlsDialog/MonitorControlsDialog.story';
 import '../src/components/NotificationsIcon/NotificationsIcon.story';

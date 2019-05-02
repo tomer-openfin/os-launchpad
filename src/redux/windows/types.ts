@@ -23,19 +23,27 @@ export interface WindowConfig {
   alwaysOnTop: boolean;
   autoShow: boolean;
   contextMenu: boolean;
+  cornerRounding?: {
+    height: number;
+    width: number;
+  };
   defaultCentered: boolean;
   defaultHeight: number;
+  defaultLeft?: number;
+  defaultTop?: number;
   defaultWidth: number;
   frame: boolean;
+  id?: string;
   maxHeight?: number;
   maximizable: boolean;
   minHeight?: number;
   minWidth?: number;
   minimizable: boolean;
   name: string;
-  opactity?: number;
+  opacity?: number;
   resizable: boolean;
   saveWindowState: boolean;
+  shadow?: boolean;
   showTaskbarIcon: boolean;
   // smallWindow: boolean;
   url: string;

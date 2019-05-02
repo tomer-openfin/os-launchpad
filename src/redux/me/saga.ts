@@ -12,7 +12,7 @@ import { unregisterAllGlobalHotkey } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { generateTimestamp } from '../../utils/timestampUtils';
 import { getAdminApps, getAdminUsers } from '../admin';
-import { getManifestOverride, initResources, pollStop, reboundLauncher, resetResources } from '../application';
+import { getManifestOverride, initResources, pollStop, reboundLauncher, resetResources, resizeSettingsMenu } from '../application';
 import { getAdminOrgSettings } from '../organization';
 import { getErrorFromCatch } from '../utils';
 import { closeWindowsByConfig, hideWindowsByConfig, initWindows } from '../windows/utils';
@@ -111,7 +111,7 @@ function* watchLoginRequest(action: ReturnType<typeof login.request>) {
 
 function* watchLoginSuccess(action: ReturnType<typeof login.success>) {
   try {
-    let effects: Effect[] = [call(initResources)];
+    let effects: Effect[] = [call(initResources), call(resizeSettingsMenu)];
 
     if (action.payload.isAdmin) {
       effects = [

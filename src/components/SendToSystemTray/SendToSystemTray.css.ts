@@ -17,23 +17,23 @@ export const Wrapper = styled.div<{ size: number; launcherPosition: DirectionalP
   right: 0;
   z-index: 1;
 
-  /* &:hover {
-    opacity: 0.7;
-  } */
+  &:hover {
+    ${Icon} {
+      background-color: ${Color.MARS};
+    }
+  }
 
   ${({ launcherPosition, size }) => {
     const isHorizontal = getLauncherOrientation(launcherPosition) === Orientation.Horizontal;
+    const iconSize = `${size * 0.75}px`;
 
     return `
-      height: ${isHorizontal ? '100%' : 'auto'};
-      width: ${isHorizontal ? 'auto' : '100%'};
+      height: ${isHorizontal ? '100%' : `${size}px`};
+      width: ${isHorizontal ? `${size}px` : '100%'};
 
       ${Icon} {
-        ${isHorizontal ? 'height' : 'width'}: ${size * 0.75}px;
-
-        &:hover {
-          background-color: ${Color.MARS};
-        }
+        height: ${iconSize};
+        width: ${iconSize};
       }
     `;
   }}

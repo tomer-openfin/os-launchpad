@@ -13,6 +13,7 @@ export const LAYOUTS_WINDOW = `${WINDOW_PREFIX}Layouts`;
 export const LOGIN_WINDOW = `${WINDOW_PREFIX}Login`;
 export const LOGOUT_WINDOW = `${WINDOW_PREFIX}Logout`;
 export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
+export const SETTINGS_MENU_WINDOW = `${WINDOW_PREFIX}SettingsMenu`;
 export const SNAPSHOT_WINDOW = `${WINDOW_PREFIX}Snapshot`;
 export const SNAPSHOT_OVERLAY_WINDOW = `${WINDOW_PREFIX}SnapshotOverlay`;
 export const SUPPORT_WINDOW = `${WINDOW_PREFIX}Support`;
@@ -145,7 +146,7 @@ export const defaultWindows = {
       width: 8,
     },
     defaultCentered: false,
-    defaultHeight: isEnterpriseEnv() ? 102 : 51,
+    defaultHeight: isEnterpriseEnv() ? 102 : 56,
     defaultWidth: 171,
     frame: false,
     id: LOGOUT_WINDOW,
@@ -178,6 +179,28 @@ export const defaultWindows = {
     shadow: true,
     showTaskbarIcon: true,
     url: ROUTES.SETTINGS,
+    waitForPageLoad: true,
+  },
+  settingsMenu: {
+    alwaysOnTop: true,
+    autoShow: false,
+    contextMenu: !isProduction,
+    cornerRounding: {
+      height: 8,
+      width: 8,
+    },
+    defaultCentered: false,
+    defaultHeight: 148,
+    defaultWidth: 184,
+    frame: false,
+    id: SETTINGS_MENU_WINDOW,
+    maximizable: false,
+    minimizable: false,
+    name: SETTINGS_MENU_WINDOW,
+    resizable: false,
+    saveWindowState: false,
+    showTaskbarIcon: false,
+    url: ROUTES.SETTINGS_MENU,
     waitForPageLoad: true,
   },
   snapshot: {

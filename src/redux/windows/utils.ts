@@ -10,15 +10,6 @@ import { WindowConfigsMap } from './types';
 
 export const getUniqueWindowId = (identity: Identity): string => `${identity.uuid}/${identity.name}`;
 
-export const EXPANDED_LAUNCHER_WINDOWS_SHOWING = [
-  APP_DIRECTORY_WINDOW,
-  APP_LAUNCHER_OVERFLOW_WINDOW,
-  CONTEXT_MENU,
-  LAYOUTS_WINDOW,
-  LOGOUT_WINDOW,
-  SETTINGS_WINDOW,
-];
-
 export function* initWindows(configs: WindowConfigsMap) {
   const windowsById = yield select(getWindowsById);
   yield all(

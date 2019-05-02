@@ -2,14 +2,15 @@ import { createSelector } from 'reselect';
 
 import { AppListToggleId } from '../components/AppListToggle';
 import { ContextChannel } from '../components/ContextGroupItem';
+import { EDGE_PADDING, ROW_HEIGHT } from '../components/LauncherMenu';
 import { MonitorDetails, MonitorInfo } from '../types/commons';
 import { objectsFromIds } from '../utils/byIds';
 import { convertHexNumberToString } from '../utils/convertHexNumberToString';
 import { isPointInCoordinates } from '../utils/coordinateHelpers';
-import { getSystemIcons } from '../utils/getSystemIcons';
+import { getLogoutMenuOptions, getSettingsMenuOptions, getSystemIcons } from '../utils/getSystemIcons';
 import { GLOBAL_CHANNEL_ID } from '../utils/openfinFdc3';
 import { calcAppListDimensions, calcMaxAppCount } from '../utils/windowPositionHelpers';
-import { getDrawerIsExpanded } from './application/selectors';
+import { getIsEnterprise } from './application/selectors';
 import { getAppsById } from './apps/selectors';
 import { getChannelsById, getChannelsContextsById, getChannelsIds, getChannelsMembersById, getContextWindowsByGroup } from './channels/selectors';
 import {
@@ -78,49 +79,39 @@ export const getAppsLauncherAppList = createSelector(
   objectsFromIds,
 );
 
-export const getSystemIconsSelector = createSelector(
+export const getLogoutMenuOptionsSelector = createSelector(
+  [getIsEnterprise],
+  isEnterprise => getLogoutMenuOptions(isEnterprise),
+);
+
+export const getSettingsMenuOptionsSelector = createSelector(
   [getIsAdmin],
-  isAdmin => getSystemIcons(isAdmin),
+  isAdmin => getSettingsMenuOptions(isAdmin),
 );
 
-export const getDefaultSystemIconsSelector = createSelector(
-  [getSystemIconsSelector],
-  systemIcons => systemIcons.filter(systemIcon => systemIcon.isShownByDefault),
-);
-
-export const getCollapsedSystemDrawerSize = createSelector(
-  [getDefaultSystemIconsSelector, getLauncherSizeConfig],
-  (systemIcons, config) => {
-    const { systemDrawerPaddingEnd, systemDrawerPaddingStart, systemDrawerToggleOpen, systemIcon } = config;
-    const wrapperSize = systemDrawerPaddingEnd + systemDrawerPaddingStart + systemDrawerToggleOpen;
-    const iconsSize = systemIcons.length * systemIcon;
-
-    return wrapperSize + iconsSize;
+export const getSettingsMenuHeight = createSelector(
+  [getSettingsMenuOptionsSelector],
+  options => {
+    const count = options.length;
+    return ROW_HEIGHT * count + EDGE_PADDING * 2;
   },
 );
 
-export const getExpandedSystemDrawerSize = createSelector(
-  [getSystemIconsSelector, getLauncherSizeConfig],
+export const getSystemDrawerSize = createSelector(
+  [getSystemIcons, getLauncherSizeConfig],
   (systemIcons, config) => {
-    const { systemDrawerPaddingEnd, systemDrawerPaddingStart, systemDrawerToggleOpen, systemIcon, systemIconGutter } = config;
-    const wrapperSize = systemDrawerPaddingEnd + systemDrawerPaddingStart + systemDrawerToggleOpen;
+    const { systemDrawerPaddingEnd, systemDrawerPaddingStart, systemIcon, systemIconGutter } = config;
+    const wrapperSize = systemDrawerPaddingEnd + systemDrawerPaddingStart;
     const iconsSize = systemIcons.length * (systemIcon + systemIconGutter);
 
     return wrapperSize + iconsSize;
   },
 );
 
-export const getSystemDrawerSize = createSelector(
-  [getDrawerIsExpanded, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize],
-  (isDrawerExpanded, collapsedSize, expandedSize) => (isDrawerExpanded ? expandedSize : collapsedSize),
-);
-
 export const getMaxAppCount = createSelector(
-  [getLauncherPosition, getLauncherSizeConfig, getCollapsedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings],
-  (launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, monitorDetails) =>
-    monitorDetails
-      ? calcMaxAppCount(launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize + launcherSizeConfig.minimizeToTrayIcon, monitorDetails)
-      : 0,
+  [getLauncherPosition, getLauncherSizeConfig, getSystemDrawerSize, getMonitorDetailsDerivedByUserSettings],
+  (launcherPosition, launcherSizeConfig, systemDrawerSize, monitorDetails) =>
+    monitorDetails ? calcMaxAppCount(launcherPosition, launcherSizeConfig, systemDrawerSize + launcherSizeConfig.minimizeToTrayIcon, monitorDetails) : 0,
 );
 
 export const getAppListNames = createSelector(
@@ -167,14 +158,14 @@ export const getAppListApps = createSelector(
 );
 
 export const getAppListDimensions = createSelector(
-  [getAppListApps, getLauncherPosition, getLauncherSizeConfig, getCollapsedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings],
-  (list, launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, monitorDetails) =>
+  [getAppListApps, getLauncherPosition, getLauncherSizeConfig, getSystemDrawerSize, getMonitorDetailsDerivedByUserSettings],
+  (list, launcherPosition, launcherSizeConfig, systemDrawerSize, monitorDetails) =>
     monitorDetails
       ? calcAppListDimensions(
           list.appIds.length,
           launcherPosition,
           launcherSizeConfig,
-          collapsedSystemDrawerSize + launcherSizeConfig.minimizeToTrayIcon,
+          systemDrawerSize + launcherSizeConfig.minimizeToTrayIcon,
           monitorDetails,
         )
       : { height: 0, width: 0 },

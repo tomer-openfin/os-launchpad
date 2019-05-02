@@ -9,10 +9,6 @@ interface PositionProp {
   launcherPosition: DirectionalPosition;
 }
 
-interface ExpandedProp {
-  isDrawerExpanded: boolean;
-}
-
 interface AppListWrapperProps {
   endSpacing: number;
   launcherPosition: DirectionalPosition;
@@ -67,17 +63,6 @@ export const Main = styled.div<PositionProp>`
 
     return `background-image: linear-gradient(${isTopOrBottom(launcherPosition) ? 'to bottom' : chosenDirection}, ${Color.OORT_CLOUD}, ${Color.VACUUM})`;
   }}
-`;
-
-export const Overlay = styled.div<ExpandedProp>`
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  ${({ isDrawerExpanded }) => `
-    width: ${isDrawerExpanded ? '100%' : '0'};
-    height: ${isDrawerExpanded ? '100%' : '0'};
-  `}
 `;
 
 export const SystemDrawerWrapper = styled.div<PositionProp>`

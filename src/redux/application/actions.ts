@@ -48,7 +48,6 @@ export const launchAppLauncher = createAction(LAUNCH_APP_LAUNCHER)();
 export const openfinReady = createAction(OPENFIN_READY)<OpenfinReadyPayload>();
 export const resetApplicationUi = createAction(RESET_APPLICATION_UI)();
 export const setIsDragAndDrop = createAction(SET_IS_DRAG_AND_DROP)<boolean>();
-export const setIsDrawerExpanded = createAction(SET_IS_DRAWER_EXPANDED)<boolean>();
 export const setIsEnterprise = createAction(SET_IS_ENTERPRISE)<boolean>();
 export const setRuntimeVersion = createAction(SET_RUNTIME_VERSION)<string>();
 export const pollStart = createAction(POLL_START)();

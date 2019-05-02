@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, select, withKnobs } from '@storybook/addon-knobs';
+import { select, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
@@ -11,35 +11,24 @@ import { getSystemIcons } from '../../utils/getSystemIcons';
 import { LauncherSizeConfig, launcherSizeConfigs } from '../../utils/launcherSizeConfigs';
 import { CATEGORIES } from '../../utils/storyCategories';
 
-interface IsShownByDefault {
-  isShownByDefault: boolean;
-}
-
 // TODO - once redux is fully hooked up in storybook, remove in favor of selector
-const calcSystemDrawerSize = (systemIcons: IsShownByDefault[], isExpanded: boolean, config: LauncherSizeConfig) => {
-  const toggleSize = isExpanded ? config.systemDrawerToggleClose : config.systemDrawerToggleOpen;
-
-  const wrapperSize = toggleSize + config.systemDrawerPaddingStart + config.systemDrawerPaddingEnd;
-  const iconsSize = isExpanded
-    ? systemIcons.length * (config.systemIcon + config.systemIconGutter)
-    : systemIcons.filter(icon => icon.isShownByDefault).length * config.systemIcon;
+const calcSystemDrawerSize = (systemIcons, config: LauncherSizeConfig) => {
+  const wrapperSize = config.systemDrawerPaddingStart + config.systemDrawerPaddingEnd;
+  const iconsSize = systemIcons.length * (config.systemIcon + config.systemIconGutter);
 
   return wrapperSize + iconsSize;
 };
 
-const getStoryIcons = (isAdmin: boolean) =>
-  getSystemIcons(isAdmin).map(icon => ({
+const getStoryIcons = () =>
+  getSystemIcons().map(icon => ({
     color: icon.color,
     cta: action('Action to be dispatched:', icon.action),
     hasExtendedWindow: icon.hasExtendedWindow,
     hoverColor: icon.hoverColor,
     icon: icon.icon,
     isBackground: icon.isBackground,
-    isShownByDefault: icon.isShownByDefault,
     title: icon.title,
   }));
-
-const onClickToggle = action('onClickToggle');
 
 interface PositionStyle {
   top?: string | number;
@@ -53,14 +42,12 @@ storiesOf(`${CATEGORIES.COMPONENTS}SystemDrawer`, module)
   .add('default', () => {
     const launcherSize = select('launcherSize', Object(LauncherSize), LauncherSize.Large);
     const launcherSizeConfig = launcherSizeConfigs[launcherSize];
-    const isAdmin = boolean('isAdmin', false);
-    const isExpanded = boolean('isExpanded', false);
     const launcherPosition = select('launcherPosition', Object(DirectionalPosition), DirectionalPosition.Top);
     const extendedWindowPosition = getOppositeDirection(launcherPosition);
     const orientation = getLauncherOrientation(launcherPosition);
 
-    const icons = getStoryIcons(isAdmin);
-    const size = calcSystemDrawerSize(icons, isExpanded, launcherSizeConfig);
+    const icons = getStoryIcons();
+    const size = calcSystemDrawerSize(icons, launcherSizeConfig);
 
     const positionStyle: PositionStyle = {};
     positionStyle[launcherPosition] = 0;
@@ -82,9 +69,7 @@ storiesOf(`${CATEGORIES.COMPONENTS}SystemDrawer`, module)
         <SystemDrawer
           extendedWindowPosition={extendedWindowPosition}
           icons={icons}
-          isExpanded={isExpanded}
           launcherSizeConfig={launcherSizeConfig}
-          onClickToggle={onClickToggle}
           orientation={orientation}
           size={size}
         />

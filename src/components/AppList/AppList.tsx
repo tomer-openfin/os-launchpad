@@ -71,6 +71,7 @@ const AppList = ({
 
   return (
     <StyledTransitionGroupWrapper
+      appCount={appList.length}
       sizingConfig={launcherSizeConfig}
       height={height}
       isExpanded={isOverflowExpanded}

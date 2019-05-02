@@ -13,7 +13,6 @@ import {
   reboundLauncher,
   resetApplicationUi,
   setIsDragAndDrop,
-  setIsDrawerExpanded,
   setIsEnterprise,
   setRuntimeVersion,
   updateManifestOverride,
@@ -72,7 +71,6 @@ export type ApplicationActions =
   | ReturnType<typeof openfinReady>
   | ReturnType<typeof resetApplicationUi>
   | ReturnType<typeof setIsDragAndDrop>
-  | ReturnType<typeof setIsDrawerExpanded>
   | ReturnType<typeof setIsEnterprise>
   | ReturnType<typeof setRuntimeVersion>
   | ActionsUnion<typeof reboundLauncher>

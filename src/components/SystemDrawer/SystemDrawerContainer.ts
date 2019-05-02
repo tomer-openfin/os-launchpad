@@ -1,30 +1,31 @@
 import { connect } from 'react-redux';
 import { Action, Dispatch } from 'redux';
 
-import { getDrawerIsExpanded, setIsDrawerExpanded } from '../../redux/application';
 import { getLauncherPosition, getLauncherSizeConfig } from '../../redux/me';
-import { getSystemDrawerSize, getSystemIconsSelector } from '../../redux/selectors';
+import { getSystemDrawerSize } from '../../redux/selectors';
 import { State } from '../../redux/types';
 import { getLauncherOrientation, getOppositeDirection } from '../../utils/directionalPositionHelpers';
-import { LOGOUT_KEY, WORKSPACES_KEY } from '../../utils/getSystemIcons';
+import { getSystemIcons, LOGOUT_KEY, SETTINGS_MENU_KEY, WORKSPACES_KEY } from '../../utils/getSystemIcons';
 
-import { LAYOUTS_WINDOW, LOGOUT_WINDOW } from '../../config/windows';
+import { LAYOUTS_WINDOW, LOGOUT_WINDOW, SETTINGS_MENU_WINDOW } from '../../config/windows';
 import { getWindowIsShowing } from '../../redux/windows';
 import SystemDrawer, { Props } from './SystemDrawer';
 
 const mapState = (state: State) => {
   const launcherSizeConfig = getLauncherSizeConfig(state);
-  const isExpanded = getDrawerIsExpanded(state);
   const launcherPosition = getLauncherPosition(state);
-  const icons = getSystemIconsSelector(state);
+  const icons = getSystemIcons();
   const size = getSystemDrawerSize(state);
-  const activeIcons = { [LOGOUT_KEY]: getWindowIsShowing(state, LOGOUT_WINDOW), [WORKSPACES_KEY]: getWindowIsShowing(state, LAYOUTS_WINDOW) };
+  const activeIcons = {
+    [LOGOUT_KEY]: getWindowIsShowing(state, LOGOUT_WINDOW),
+    [WORKSPACES_KEY]: getWindowIsShowing(state, LAYOUTS_WINDOW),
+    [SETTINGS_MENU_KEY]: getWindowIsShowing(state, SETTINGS_MENU_WINDOW),
+  };
 
   return {
     activeIcons,
     extendedWindowPosition: getOppositeDirection(launcherPosition),
     icons,
-    isExpanded,
     launcherSizeConfig,
     orientation: getLauncherOrientation(launcherPosition),
     size,
@@ -33,7 +34,6 @@ const mapState = (state: State) => {
 
 const mapDispatch = (dispatch: Dispatch) => ({
   dispatch: (action: Action) => dispatch(action),
-  setExpanded: (isExpanded: boolean) => dispatch(setIsDrawerExpanded(isExpanded)),
 });
 
 const mergeProps = (stateProps, dispatchProps): Props => {
@@ -46,7 +46,6 @@ const mergeProps = (stateProps, dispatchProps): Props => {
       cta: () => dispatch(action),
       ...iconRest,
     })),
-    onClickToggle: (isExpanded?: boolean) => (typeof isExpanded !== 'boolean' ? setExpanded(!rest.isExpanded) : setExpanded(isExpanded)),
   };
 };
 

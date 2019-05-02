@@ -1,17 +1,20 @@
-import { Action } from 'redux';
+import { Action, AnyAction } from 'redux';
 
 import * as adminIcon from '../assets/AdminSettings.svg';
 import * as chainIcon from '../assets/Chain.svg';
 import * as directoryIcon from '../assets/Directory.svg';
 import * as gatherWindowsIcon from '../assets/GatherWindows.svg';
-import * as layoutsIcon from '../assets/Layouts.svg';
+import * as layouts3Icon from '../assets/Layouts3.svg';
 import * as logoutIcon from '../assets/Logout.svg';
 import * as notificationsIcon from '../assets/Notifications.svg';
 import * as settingsIcon from '../assets/Settings.svg';
+import * as shutdownIcon from '../assets/Shutdown.svg';
 import * as supportIcon from '../assets/Support.svg';
 
 import windowsConfig from '../config/windows';
 
+import { exitApplication } from '../redux/application';
+import { logout } from '../redux/me/index';
 import { toggleNotificationCenter } from '../redux/notifications';
 import { gatherAllWindows } from '../redux/system';
 import { launchWindow, toggleWindow } from '../redux/windows';
@@ -20,10 +23,12 @@ import Color from '../styles/color';
 export const ADMIN_KEY = 'Admin';
 export const APP_DIRECTORY_KEY = 'App Directory';
 export const CHANNELS_KEY = 'Channels';
-export const LOGOUT_KEY = 'Logout';
+export const GATHER_WINDOWS_KEY = 'Gather Windows';
+export const LOGOUT_KEY = 'Log Out';
 export const NOTIFICATIONS_KEY = 'Notifications';
 export const SETTINGS_KEY = 'Settings';
-export const GATHER_WINDOWS_KEY = 'Gather Windows';
+export const SETTINGS_MENU_KEY = 'Settings';
+export const SHUTDOWN_KEY = 'Close Openfin';
 export const SUPPORT_KEY = 'Support';
 export const WORKSPACES_KEY = 'Workspaces';
 
@@ -34,11 +39,10 @@ export interface SystemIcon {
   hoverColor?: string;
   icon: string;
   isBackground: boolean;
-  isShownByDefault: boolean;
   title: string;
 }
 
-export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
+export const getSystemIcons = (): SystemIcon[] => {
   const icons = [
     {
       action: toggleWindow({ name: windowsConfig.logout.name }),
@@ -47,7 +51,6 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       hoverColor: Color.EARTH_HOVER,
       icon: logoutIcon,
       isBackground: false,
-      isShownByDefault: false,
       title: LOGOUT_KEY,
     },
     {
@@ -57,53 +60,29 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       hoverColor: Color.URANUS_HOVER,
       icon: chainIcon,
       isBackground: false,
-      isShownByDefault: false,
       title: CHANNELS_KEY,
     },
     {
-      action: launchWindow(windowsConfig.settings),
+      action: toggleWindow({ name: windowsConfig.settingsMenu.name }),
       color: Color.SATURN,
-      hasExtendedWindow: false,
+      hasExtendedWindow: true,
       hoverColor: Color.SATURN_HOVER,
       icon: settingsIcon,
       isBackground: false,
-      isShownByDefault: false,
-      title: SETTINGS_KEY,
-    },
-    {
-      action: gatherAllWindows.request(),
-      color: Color.ENCELADUS,
-      hasExtendedWindow: false,
-      hoverColor: Color.ENCELADUS_HOVER,
-      icon: gatherWindowsIcon,
-      isBackground: false,
-      isShownByDefault: false,
-      title: GATHER_WINDOWS_KEY,
-    },
-    {
-      action: launchWindow(windowsConfig.support),
-      color: Color.MARS,
-      hasExtendedWindow: false,
-      hoverColor: Color.MARS_HOVER,
-      icon: supportIcon,
-      isBackground: false,
-      isShownByDefault: false,
-      title: SUPPORT_KEY,
+      title: SETTINGS_MENU_KEY,
     },
     {
       action: toggleWindow({ name: windowsConfig.appDirectory.name }),
       hasExtendedWindow: false,
       icon: directoryIcon,
       isBackground: true,
-      isShownByDefault: true,
       title: APP_DIRECTORY_KEY,
     },
     {
       action: toggleWindow({ name: windowsConfig.layouts.name }),
       hasExtendedWindow: true,
-      icon: layoutsIcon,
+      icon: layouts3Icon,
       isBackground: true,
-      isShownByDefault: true,
       title: WORKSPACES_KEY,
     },
     {
@@ -113,23 +92,65 @@ export const getSystemIcons = (isAdmin: boolean): SystemIcon[] => {
       hoverColor: Color.JUPITER_HOVER,
       icon: notificationsIcon,
       isBackground: false,
-      isShownByDefault: true,
       title: NOTIFICATIONS_KEY,
     },
   ];
 
-  if (isAdmin) {
-    icons.splice(1, 0, {
-      action: launchWindow(windowsConfig.admin),
-      color: Color.NEBULA,
-      hasExtendedWindow: false,
-      hoverColor: Color.NEBULA_HOVER,
-      icon: adminIcon,
-      isBackground: false,
-      isShownByDefault: false,
-      title: ADMIN_KEY,
+  return icons;
+};
+
+interface MenuOption {
+  action: AnyAction;
+  icon: string;
+  label: string;
+}
+
+export const getLogoutMenuOptions = (isEnterprise: boolean): MenuOption[] => {
+  const options: MenuOption[] = [
+    {
+      action: exitApplication(),
+      icon: shutdownIcon,
+      label: SHUTDOWN_KEY,
+    },
+  ];
+
+  if (isEnterprise) {
+    options.unshift({
+      action: logout.request({ message: 'You have been successfully logged out.', isError: false }),
+      icon: logoutIcon,
+      label: LOGOUT_KEY,
     });
   }
 
-  return icons;
+  return options;
+};
+
+export const getSettingsMenuOptions = (isAdmin: boolean): MenuOption[] => {
+  const options = [
+    {
+      action: launchWindow(windowsConfig.settings),
+      icon: settingsIcon,
+      label: SETTINGS_KEY,
+    },
+    {
+      action: launchWindow(windowsConfig.support),
+      icon: supportIcon,
+      label: SUPPORT_KEY,
+    },
+    {
+      action: gatherAllWindows.request(),
+      icon: gatherWindowsIcon,
+      label: GATHER_WINDOWS_KEY,
+    },
+  ];
+
+  if (isAdmin) {
+    options.unshift({
+      action: launchWindow(windowsConfig.admin),
+      icon: adminIcon,
+      label: ADMIN_KEY,
+    });
+  }
+
+  return options;
 };

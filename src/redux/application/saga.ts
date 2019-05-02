@@ -21,7 +21,7 @@ import { restoreLayout } from '../layouts';
 import { getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig } from '../me';
 import { loginFlow } from '../me/utils';
 import { getOrgSettings } from '../organization';
-import { getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings } from '../selectors';
+import { getAppsLauncherAppList, getMonitorDetailsDerivedByUserSettings, getSystemDrawerSize } from '../selectors';
 import { getSystemWindowIsPresent, setupSystemHandlers } from '../system';
 import { getErrorFromCatch } from '../utils';
 import { getUniqueWindowId, getWindowIsShowing } from '../windows';
@@ -270,32 +270,23 @@ function* watchGetManifestRequest(action: ReturnType<typeof getManifest.request>
 
 function* watchReboundLauncherRequest(action: ReturnType<typeof reboundLauncher.request>) {
   try {
-    const [appList, monitorDetails, launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, expandedSystemDrawerSize]: [
+    const [appList, monitorDetails, launcherPosition, launcherSizeConfig, systemDrawerSize]: [
       ReturnType<typeof getAppsLauncherAppList>,
       ReturnType<typeof getMonitorDetailsDerivedByUserSettings>,
       ReturnType<typeof getLauncherPosition>,
       ReturnType<typeof getLauncherSizeConfig>,
-      ReturnType<typeof getCollapsedSystemDrawerSize>,
-      ReturnType<typeof getExpandedSystemDrawerSize>
+      ReturnType<typeof getSystemDrawerSize>
     ] = yield all([
       select(getAppsLauncherAppList),
       select(getMonitorDetailsDerivedByUserSettings),
       select(getLauncherPosition),
       select(getLauncherSizeConfig),
-      select(getCollapsedSystemDrawerSize),
-      select(getExpandedSystemDrawerSize),
+      select(getSystemDrawerSize),
     ]);
     if (!monitorDetails) {
       return;
     }
-    const { width, height, left, top } = calcLauncherPosition(
-      appList.length,
-      monitorDetails,
-      launcherPosition,
-      launcherSizeConfig,
-      collapsedSystemDrawerSize,
-      expandedSystemDrawerSize,
-    );
+    const { width, height, left, top } = calcLauncherPosition(appList.length, monitorDetails, launcherPosition, launcherSizeConfig, systemDrawerSize);
 
     const { shouldAnimate, delay: animationDelay } = action.payload;
     if (animationDelay) {

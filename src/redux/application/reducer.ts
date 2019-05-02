@@ -5,7 +5,6 @@ import {
   getManifestOverride,
   resetApplicationUi,
   setIsDragAndDrop,
-  setIsDrawerExpanded,
   setIsEnterprise,
   setRuntimeVersion,
   updateManifestOverride,
@@ -73,12 +72,6 @@ export default (state: ReadonlyApplicationState = defaultState, action: Applicat
       return {
         ...state,
         isDragAndDrop: action.payload,
-      };
-    }
-    case setIsDrawerExpanded.toString(): {
-      return {
-        ...state,
-        isDrawerExpanded: action.payload,
       };
     }
     case setRuntimeVersion.toString(): {

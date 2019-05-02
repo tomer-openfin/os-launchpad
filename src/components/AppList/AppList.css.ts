@@ -7,6 +7,7 @@ import { isBottomOrRight, isTopOrBottom } from '../../utils/windowPositionHelper
 export const TRANSITION_GROUP_CLASSNAME = 'transition-group';
 
 interface TransitionGroupProps {
+  appCount: number;
   sizingConfig: LauncherSizeConfig;
   height: number;
   isExpanded: boolean;
@@ -18,8 +19,9 @@ export const StyledTransitionGroupWrapper = styled.div<TransitionGroupProps>`
   .${TRANSITION_GROUP_CLASSNAME} {
     align-items: center;
     display: flex;
+    transition: padding 300ms ease-in-out;
 
-    ${({ sizingConfig, height, isExpanded, launcherPosition, width }) => {
+    ${({ appCount, sizingConfig, height, isExpanded, launcherPosition, width }) => {
       const edgePadding = sizingConfig.appIconGutter;
 
       return `
@@ -27,7 +29,7 @@ export const StyledTransitionGroupWrapper = styled.div<TransitionGroupProps>`
       flex-wrap: ${isBottomOrRight(launcherPosition) ? 'wrap-reverse' : 'wrap'};
       height: ${height ? `${height}px` : 'auto'};
       overflow: ${isExpanded ? 'visible' : 'hidden'};
-      padding: ${isTopOrBottom(launcherPosition) ? `0 ${edgePadding}px` : `${edgePadding}px 0`};
+      padding: ${isTopOrBottom(launcherPosition) ? `0 ${appCount ? edgePadding : 0}px` : `${appCount ? edgePadding : 0}px 0`};
       width: ${width ? `${width}px` : 'auto'};
     `;
     }}
