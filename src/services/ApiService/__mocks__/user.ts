@@ -21,7 +21,6 @@ export const MockUserSettings = {
   launcherMonitorReferencePoint: { x: 0, y: 0 },
   launcherPosition: DirectionalPosition.Top,
   launcherSize: LauncherSize.Large,
-  systemTrayEnabled: false,
 };
 
 /**

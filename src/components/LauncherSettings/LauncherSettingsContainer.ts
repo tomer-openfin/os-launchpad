@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { getLauncherPosition, getLauncherSize, getSystemTrayEnabled, setLauncherPosition, setLauncherSize, setSystemTrayEnabled } from '../../redux/me';
+import { getLauncherPosition, getLauncherSize, setLauncherPosition, setLauncherSize } from '../../redux/me';
 import { getMonitorDetailsIds } from '../../redux/system';
 import { State } from '../../redux/types';
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
@@ -13,7 +13,6 @@ const mapState = (state: State) => ({
   isChangeLauncherMonitorDisabled: getMonitorDetailsIds(state).length < 2,
   launcherPosition: getLauncherPosition(state),
   launcherSize: getLauncherSize(state),
-  systemTrayEnabled: getSystemTrayEnabled(state),
 });
 
 const mapDispatch = (dispatch: Dispatch) => ({
@@ -24,10 +23,6 @@ const mapDispatch = (dispatch: Dispatch) => ({
   setLauncherSize: (launcherSize: LauncherSize) => {
     sendAnalytics({ type: EventType.Click, label: 'LauncherSize', context: { value: launcherSize } });
     dispatch(setLauncherSize({ launcherSize }));
-  },
-  setSystemTrayEnabled: (systemTrayEnabled: boolean) => {
-    sendAnalytics({ type: EventType.Click, label: 'SystemTrayEnabled', context: { value: systemTrayEnabled } });
-    dispatch(setSystemTrayEnabled({ systemTrayEnabled }));
   },
 });
 

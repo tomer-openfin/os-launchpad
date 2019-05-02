@@ -6,9 +6,9 @@ import { EventType, sendAnalytics } from '../../utils/analytics';
 import { showSystemDeveloperTools } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { isDevelopmentEnv } from '../../utils/processHelpers';
+import { toggleAppIsShowing } from '../application';
 import { restoreLayout } from '../layouts/actions';
 import { getAllLayouts } from '../layouts/selectors';
-import { getSystemTrayEnabled, setSystemTrayEnabled } from '../me/index';
 import { getErrorFromCatch } from '../utils';
 import { launchWindow } from '../windows/actions';
 import { globalHotkeyPressed } from './actions';
@@ -43,13 +43,12 @@ function* watchGlobalHotkeyPressed(action: ReturnType<typeof globalHotkeyPressed
         break;
       }
 
-      case GlobalHotkeys.ToggleSystemTrayEnabled: {
+      case GlobalHotkeys.ToggleAppIsShowing: {
         // tslint:disable-next-line:no-console
-        console.log(`${GlobalHotkeys.ToggleSystemTrayEnabled} pressed`);
+        console.log(`${GlobalHotkeys.ToggleAppIsShowing} pressed`);
 
-        const systemTrayEnabled: ReturnType<typeof getSystemTrayEnabled> = yield select(getSystemTrayEnabled);
-        sendAnalytics({ type: EventType.HotKey, label: 'ToggleSystemTrayEnabled', context: { hotkey, currentValue: systemTrayEnabled } });
-        yield put(setSystemTrayEnabled({ systemTrayEnabled: !systemTrayEnabled }));
+        sendAnalytics({ type: EventType.HotKey, label: 'ToggleAppIsShowing', context: { hotkey } });
+        yield put(toggleAppIsShowing());
         break;
       }
 

@@ -132,12 +132,11 @@ export const calcLauncherDimensions = (
   launcherSizeConfig: LauncherSizeConfig,
   collapsedDrawerSize: number,
   expandedDrawerSize: number,
-  isSystemTrayEnabled: boolean,
 ): Dimensions => {
   const isOnTopOrBottom = isTopOrBottom(launcherPosition);
   const { launcher, minimizeToTrayIcon } = launcherSizeConfig;
   const STATIC_DIMENSION = launcher;
-  const minimizeToTray = isSystemTrayEnabled ? minimizeToTrayIcon : 0;
+  const minimizeToTray = minimizeToTrayIcon;
 
   const minimumDynamicDimension = launcher + expandedDrawerSize + minimizeToTray;
   const appListDimensions = calcAppListDimensions(appCount, launcherPosition, launcherSizeConfig, collapsedDrawerSize + minimizeToTray, monitorDetails);
@@ -219,17 +218,8 @@ export const calcLauncherPosition = (
   launcherSizeConfig: LauncherSizeConfig,
   collapsedDrawerSize: number,
   expandedDrawerSize: number,
-  isSystemTrayEnabled: boolean,
 ): Bounds => {
-  const dimensions = calcLauncherDimensions(
-    appCount,
-    monitorDetails,
-    launcherPosition,
-    launcherSizeConfig,
-    collapsedDrawerSize,
-    expandedDrawerSize,
-    isSystemTrayEnabled,
-  );
+  const dimensions = calcLauncherDimensions(appCount, monitorDetails, launcherPosition, launcherSizeConfig, collapsedDrawerSize, expandedDrawerSize);
   const coordinates = calcLauncherCoordinates(dimensions, monitorDetails, launcherPosition);
 
   return {

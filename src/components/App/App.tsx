@@ -13,7 +13,6 @@ import SystemDrawer from '../SystemDrawer';
 
 export interface Props {
   collapsedSystemDrawerSize: number;
-  hasSystemTrayEnabled: boolean;
   isDrawerExpanded: boolean;
   launcherPosition: DirectionalPosition;
   launcherSizeConfig: LauncherSizeConfig;
@@ -21,7 +20,7 @@ export interface Props {
 }
 
 const App = (props: Props) => {
-  const { collapsedSystemDrawerSize, hasSystemTrayEnabled, launcherPosition, launcherSizeConfig, toggleDrawer, isDrawerExpanded } = props;
+  const { collapsedSystemDrawerSize, launcherPosition, launcherSizeConfig, toggleDrawer, isDrawerExpanded } = props;
 
   return (
     <Main launcherPosition={launcherPosition}>
@@ -41,7 +40,7 @@ const App = (props: Props) => {
             <SystemDrawer />
           </SystemDrawerWrapper>
 
-          {hasSystemTrayEnabled && <SendToSystemTray />}
+          <SendToSystemTray />
         </Borders>
       </Wrapper>
     </Main>

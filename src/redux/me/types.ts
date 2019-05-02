@@ -13,7 +13,6 @@ import {
   setLauncherMonitorSettings,
   setLauncherPosition,
   setLauncherSize,
-  setSystemTrayEnabled,
   updatePassword,
 } from './actions';
 
@@ -40,7 +39,6 @@ export interface MeSettingsState {
   launcherMonitorReferencePoint: Point;
   launcherPosition: DirectionalPosition;
   launcherSize: LauncherSize;
-  systemTrayEnabled: boolean;
 }
 
 // Reducer
@@ -100,10 +98,6 @@ export interface SetLauncherSizePayload {
   launcherSize: LauncherSize;
 }
 
-export interface SetSystemTrayEnabledPayload {
-  systemTrayEnabled: boolean;
-}
-
 export interface NewPasswordPayload {
   session: string;
   message: string;
@@ -137,5 +131,4 @@ export type MeActions =
   | ReturnType<typeof setLauncherMonitorSettings>
   | ReturnType<typeof setLauncherPosition>
   | ReturnType<typeof setLauncherSize>
-  | ReturnType<typeof setSystemTrayEnabled>
   | ActionsUnion<typeof updatePassword>;

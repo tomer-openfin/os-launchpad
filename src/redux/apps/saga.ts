@@ -1,6 +1,6 @@
 import { all, call, Effect, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
-import { ManifestType } from '../../components/AppForm/index';
+import { ManifestType } from '../../components/AppForm';
 import ApiService from '../../services/ApiService';
 import API from '../../services/ApiService/api';
 import { Bounds, FinWindowV2 } from '../../types/commons';

@@ -1,7 +1,7 @@
 export enum GlobalHotkeys {
   RestoreLayout = 'Control+Shift+L',
   ShowAppDirectory = 'Alt+Space',
-  ToggleSystemTrayEnabled = 'Control+Shift+O',
+  ToggleAppIsShowing = 'Control+Shift+O',
 }
 
 export enum DevGlobalHotkeys {

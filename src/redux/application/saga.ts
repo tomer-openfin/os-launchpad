@@ -15,10 +15,10 @@ import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv, isProductionEn
 import { setupWindow } from '../../utils/setupWindow';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList } from '../apps';
-import { addMemberToChannel, addWindowToChannel, getChannels, getChannelsMembersById, getChannelsMembersChannels, rejoinWindowToChannel } from '../channels';
+import { addWindowToChannel, getChannels, getChannelsMembersById, getChannelsMembersChannels, rejoinWindowToChannel } from '../channels';
 import { registerGlobalDevHotKeys } from '../globalHotkeys/utils';
 import { restoreLayout } from '../layouts';
-import { getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig, getSystemTrayEnabled } from '../me';
+import { getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig } from '../me';
 import { loginFlow } from '../me/utils';
 import { getOrgSettings } from '../organization';
 import { getAppsLauncherAppList, getCollapsedSystemDrawerSize, getExpandedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings } from '../selectors';
@@ -172,7 +172,6 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
             if (channels[channelId].length === 0) continue;
 
             channels[channelId].map(identity => {
-              // return put(rejoinWindowToChannel.request({ identity, channelId }));
               window.store.dispatch(rejoinWindowToChannel.request({ identity, channelId }));
             });
           }
@@ -271,14 +270,13 @@ function* watchGetManifestRequest(action: ReturnType<typeof getManifest.request>
 
 function* watchReboundLauncherRequest(action: ReturnType<typeof reboundLauncher.request>) {
   try {
-    const [appList, monitorDetails, launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, expandedSystemDrawerSize, isSystemTrayEnabled]: [
+    const [appList, monitorDetails, launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, expandedSystemDrawerSize]: [
       ReturnType<typeof getAppsLauncherAppList>,
       ReturnType<typeof getMonitorDetailsDerivedByUserSettings>,
       ReturnType<typeof getLauncherPosition>,
       ReturnType<typeof getLauncherSizeConfig>,
       ReturnType<typeof getCollapsedSystemDrawerSize>,
-      ReturnType<typeof getExpandedSystemDrawerSize>,
-      ReturnType<typeof getSystemTrayEnabled>
+      ReturnType<typeof getExpandedSystemDrawerSize>
     ] = yield all([
       select(getAppsLauncherAppList),
       select(getMonitorDetailsDerivedByUserSettings),
@@ -286,7 +284,6 @@ function* watchReboundLauncherRequest(action: ReturnType<typeof reboundLauncher.
       select(getLauncherSizeConfig),
       select(getCollapsedSystemDrawerSize),
       select(getExpandedSystemDrawerSize),
-      select(getSystemTrayEnabled),
     ]);
     if (!monitorDetails) {
       return;
@@ -298,7 +295,6 @@ function* watchReboundLauncherRequest(action: ReturnType<typeof reboundLauncher.
       launcherSizeConfig,
       collapsedSystemDrawerSize,
       expandedSystemDrawerSize,
-      isSystemTrayEnabled,
     );
 
     const { shouldAnimate, delay: animationDelay } = action.payload;

@@ -4,6 +4,7 @@ import { Dispatch } from 'redux';
 import { toggleAppIsShowing } from '../../redux/application';
 import { getLauncherPosition, getLauncherSizeConfig } from '../../redux/me';
 import { State } from '../../redux/types';
+
 import SendToSystemTray from './SendToSystemTray';
 
 const mapState = (state: State) => {

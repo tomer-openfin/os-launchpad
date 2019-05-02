@@ -10,7 +10,6 @@ import {
   setLauncherMonitorSettings,
   setLauncherPosition,
   setLauncherSize,
-  setSystemTrayEnabled,
 } from './actions';
 
 import { DirectionalPosition, LauncherSize } from '../../types/commons';
@@ -29,7 +28,6 @@ export const defaultSettings: MeSettingsState = {
   },
   launcherPosition: DirectionalPosition.Top,
   launcherSize: LauncherSize.Large,
-  systemTrayEnabled: false,
 };
 
 export const defaultAuthMessaging: MeAuthMessagingState = {
@@ -73,8 +71,7 @@ export default (state: ReadonlyMeState = defaultState, action: MeActions): Reado
     case logout.success.toString(): {
       return defaultState;
     }
-    case setAppIds.toString():
-    case setSystemTrayEnabled.toString(): {
+    case setAppIds.toString(): {
       return {
         ...state,
         settings: {

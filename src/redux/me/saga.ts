@@ -8,11 +8,11 @@ import { adminWindows, authWindows, defaultWindows } from '../../config/windows'
 import { ApiResponseStatus } from '../../types/enums';
 import { UnPromisfy } from '../../types/utils';
 import { EventType, sendAnalytics } from '../../utils/analytics';
-import { removeApplicationTrayIcon, setApplicationTrayIcon, unregisterAllGlobalHotkey } from '../../utils/finUtils';
+import { unregisterAllGlobalHotkey } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { generateTimestamp } from '../../utils/timestampUtils';
 import { getAdminApps, getAdminUsers } from '../admin';
-import { getApplicationManifest, getManifestOverride, initResources, pollStop, reboundLauncher, resetResources } from '../application';
+import { getManifestOverride, initResources, pollStop, reboundLauncher, resetResources } from '../application';
 import { getAdminOrgSettings } from '../organization';
 import { getErrorFromCatch } from '../utils';
 import { closeWindowsByConfig, hideWindowsByConfig, initWindows } from '../windows/utils';
@@ -24,17 +24,15 @@ import {
   login,
   logout,
   removeFromAppLauncher,
-  resetSettings,
   saveSettings,
   setAuthMessaging,
   setLauncherMonitorSettings,
   setLauncherPosition,
   setLauncherSize,
-  setSystemTrayEnabled,
   updatePassword,
 } from './actions';
 import { defaultAuthMessaging } from './reducer';
-import { getMeSettings, getSystemTrayEnabled } from './selectors';
+import { getMeSettings } from './selectors';
 import { loginFlow } from './utils';
 
 function* watchConfirmPasswordRequest(action: ReturnType<typeof confirmPassword.request>) {
@@ -240,27 +238,6 @@ function* reboundLauncherAndSaveSettings(shouldAnimate: boolean, delay: number, 
   }
 }
 
-function* systemTrayWatcher() {
-  try {
-    const uuid = getOwnUuid();
-    const systemTrayEnabled: ReturnType<typeof getSystemTrayEnabled> = yield select(getSystemTrayEnabled);
-
-    if (systemTrayEnabled) {
-      const manifest = yield select(getApplicationManifest);
-      if (manifest && manifest.startup_app && manifest.startup_app.icon) {
-        yield call(setApplicationTrayIcon({ uuid }), manifest.startup_app.icon);
-      }
-    } else {
-      yield call(removeApplicationTrayIcon({ uuid }));
-      yield put(Window.showWindow({ id: uuid }));
-    }
-  } catch (e) {
-    const error = getErrorFromCatch(e);
-    // tslint:disable-next-line:no-console
-    console.warn('Error in systemTrayWatcher', error);
-  }
-}
-
 export function* meSaga() {
   yield takeLatest(confirmPassword.request, watchConfirmPasswordRequest);
   yield takeLatest(forgotPassword.request, watchForgotPasswordRequest);
@@ -276,16 +253,9 @@ export function* meSaga() {
   yield takeEvery(updatePassword.request, watchUpdatePasswordRequest);
 
   yield takeLatest(
-    [
-      setSystemTrayEnabled.toString(),
-      setLauncherPosition.toString(),
-      setLauncherSize.toString(),
-      setLauncherMonitorSettings.toString(),
-      getSettings.success.toString(),
-    ],
+    [setLauncherPosition.toString(), setLauncherSize.toString(), setLauncherMonitorSettings.toString(), getSettings.success.toString()],
     reboundLauncherAndSaveSettings,
     false,
     0,
   );
-  yield takeEvery([getSettings.success.toString(), resetSettings.toString(), setSystemTrayEnabled.toString()], systemTrayWatcher);
 }

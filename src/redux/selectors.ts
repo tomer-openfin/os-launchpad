@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 import { AppListToggleId } from '../components/AppListToggle';
-import { ContextChannel } from '../components/ContextGroupItem/index';
+import { ContextChannel } from '../components/ContextGroupItem';
 import { MonitorDetails, MonitorInfo } from '../types/commons';
 import { objectsFromIds } from '../utils/byIds';
 import { convertHexNumberToString } from '../utils/convertHexNumberToString';
@@ -19,7 +19,6 @@ import {
   getLauncherMonitorReferencePoint,
   getLauncherPosition,
   getLauncherSizeConfig,
-  getSystemTrayEnabled,
 } from './me/selectors';
 import { MeSettingsState } from './me/types';
 import { getIsSystemWindowPresent, getMonitorInfo, getSystemWindowDetailsById } from './system/selectors';
@@ -117,15 +116,10 @@ export const getSystemDrawerSize = createSelector(
 );
 
 export const getMaxAppCount = createSelector(
-  [getLauncherPosition, getLauncherSizeConfig, getCollapsedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings, getSystemTrayEnabled],
-  (launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, monitorDetails, systemTrayEnabled) =>
+  [getLauncherPosition, getLauncherSizeConfig, getCollapsedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings],
+  (launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, monitorDetails) =>
     monitorDetails
-      ? calcMaxAppCount(
-          launcherPosition,
-          launcherSizeConfig,
-          collapsedSystemDrawerSize + (systemTrayEnabled ? launcherSizeConfig.minimizeToTrayIcon : 0),
-          monitorDetails,
-        )
+      ? calcMaxAppCount(launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize + launcherSizeConfig.minimizeToTrayIcon, monitorDetails)
       : 0,
 );
 
@@ -173,14 +167,14 @@ export const getAppListApps = createSelector(
 );
 
 export const getAppListDimensions = createSelector(
-  [getAppListApps, getLauncherPosition, getLauncherSizeConfig, getCollapsedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings, getSystemTrayEnabled],
-  (list, launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, monitorDetails, systemTrayEnabled) =>
+  [getAppListApps, getLauncherPosition, getLauncherSizeConfig, getCollapsedSystemDrawerSize, getMonitorDetailsDerivedByUserSettings],
+  (list, launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, monitorDetails) =>
     monitorDetails
       ? calcAppListDimensions(
           list.appIds.length,
           launcherPosition,
           launcherSizeConfig,
-          collapsedSystemDrawerSize + (systemTrayEnabled ? launcherSizeConfig.minimizeToTrayIcon : 0),
+          collapsedSystemDrawerSize + launcherSizeConfig.minimizeToTrayIcon,
           monitorDetails,
         )
       : { height: 0, width: 0 },

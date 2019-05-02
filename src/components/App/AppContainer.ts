@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { Action } from 'redux';
 
 import { getDrawerIsExpanded, setIsDrawerExpanded } from '../../redux/application';
-import { getLauncherPosition, getLauncherSizeConfig, getSystemTrayEnabled } from '../../redux/me';
+import { getLauncherPosition, getLauncherSizeConfig } from '../../redux/me';
 import { getCollapsedSystemDrawerSize } from '../../redux/selectors';
 import { State } from '../../redux/types';
 
@@ -10,7 +10,6 @@ import App from './App';
 
 const mapState = (state: State) => ({
   collapsedSystemDrawerSize: getCollapsedSystemDrawerSize(state),
-  hasSystemTrayEnabled: getSystemTrayEnabled(state),
   isDrawerExpanded: getDrawerIsExpanded(state),
   launcherPosition: getLauncherPosition(state),
   launcherSizeConfig: getLauncherSizeConfig(state),

@@ -1,56 +1,28 @@
 import * as React from 'react';
 
-import { DirectionalPosition, LauncherSize, OnOff } from '../../types/commons';
+import { DirectionalPosition, LauncherSize } from '../../types/commons';
 import { ROUTES } from '../Router/consts';
 import { Cta, Group, Heading, Row, StyledRadioButton, Wrapper } from './LauncherSettings.css';
 
 import DirectionControls from '../DirectionControls';
 
-const SYSTEM_TRAY_ENABLED_NAME = 'systemTrayEnabled-onoff';
 const LAUNCHER_SIZE_NAME = 'launcherSize-options';
 
 interface Props {
   isChangeLauncherMonitorDisabled?: boolean;
   launcherSize: LauncherSize;
   launcherPosition: DirectionalPosition;
-  setSystemTrayEnabled: (systemTrayEnabled: boolean) => void;
   setLauncherPosition: (launcherPosition: DirectionalPosition) => void;
   setLauncherSize: (launcherSize: LauncherSize) => void;
-  systemTrayEnabled: boolean;
 }
 
-const LauncherSettings = ({
-  isChangeLauncherMonitorDisabled,
-  launcherSize,
-  launcherPosition,
-  setSystemTrayEnabled,
-  setLauncherPosition,
-  setLauncherSize,
-  systemTrayEnabled,
-}: Props) => {
-  const handleChangeSystemTray = (e: React.SyntheticEvent<HTMLInputElement>) => {
-    setSystemTrayEnabled(e.currentTarget.value === OnOff.On);
-  };
+const LauncherSettings = ({ isChangeLauncherMonitorDisabled, launcherSize, launcherPosition, setLauncherPosition, setLauncherSize }: Props) => {
   const handleLauncherSize = (e: React.SyntheticEvent<HTMLInputElement>) => {
     setLauncherSize(e.currentTarget.value as LauncherSize);
   };
 
   return (
     <Wrapper>
-      <Group>
-        <Heading>Enable "Send to System Tray"</Heading>
-
-        <Row>
-          <StyledRadioButton onChange={handleChangeSystemTray} checked={!systemTrayEnabled} name={SYSTEM_TRAY_ENABLED_NAME} value={OnOff.Off}>
-            Off
-          </StyledRadioButton>
-
-          <StyledRadioButton onChange={handleChangeSystemTray} checked={systemTrayEnabled} name={SYSTEM_TRAY_ENABLED_NAME} value={OnOff.On}>
-            On
-          </StyledRadioButton>
-        </Row>
-      </Group>
-
       <Group>
         <Heading>Launcher Size</Heading>
 

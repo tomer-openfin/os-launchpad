@@ -154,10 +154,10 @@ describe('windowPositionHelpers', () => {
       const appCount = 8;
       const launcherSizeConfig = launcherSizeConfigs[LauncherSize.Large];
       const tests = [
-        { launcherPosition: TOP, result: { height: 80, width: 738 } },
-        { launcherPosition: BOTTOM, result: { height: 80, width: 738 } },
-        { launcherPosition: LEFT, result: { height: 738, width: 80 } },
-        { launcherPosition: RIGHT, result: { height: 738, width: 80 } },
+        { launcherPosition: TOP, result: { height: 80, width: 770 } },
+        { launcherPosition: BOTTOM, result: { height: 80, width: 770 } },
+        { launcherPosition: LEFT, result: { height: 770, width: 80 } },
+        { launcherPosition: RIGHT, result: { height: 770, width: 80 } },
       ];
 
       tests.forEach(({ launcherPosition, result }) =>
@@ -169,7 +169,6 @@ describe('windowPositionHelpers', () => {
             launcherSizeConfig,
             collapsedSystemDrawerSize,
             expandedSystemDrawerSize,
-            false,
           ),
         ).toEqual(result),
       );
@@ -179,10 +178,10 @@ describe('windowPositionHelpers', () => {
       const appCount = 1000;
       const launcherSizeConfig = launcherSizeConfigs[LauncherSize.Large];
       const tests = [
-        { launcherPosition: TOP, result: { height: 80, width: 1438 } },
-        { launcherPosition: BOTTOM, result: { height: 80, width: 1438 } },
-        { launcherPosition: LEFT, result: { height: 1088, width: 80 } },
-        { launcherPosition: RIGHT, result: { height: 1088, width: 80 } },
+        { launcherPosition: TOP, result: { height: 80, width: 1400 } },
+        { launcherPosition: BOTTOM, result: { height: 80, width: 1400 } },
+        { launcherPosition: LEFT, result: { height: 1120, width: 80 } },
+        { launcherPosition: RIGHT, result: { height: 1120, width: 80 } },
       ];
 
       tests.forEach(({ launcherPosition, result }) =>
@@ -194,7 +193,6 @@ describe('windowPositionHelpers', () => {
             launcherSizeConfig,
             collapsedSystemDrawerSize,
             expandedSystemDrawerSize,
-            false,
           ),
         ).toEqual(result),
       );
@@ -217,23 +215,15 @@ describe('windowPositionHelpers', () => {
       const appCount = 8;
       const launcherSizeConfig = launcherSizeConfigs[LauncherSize.Large];
       const tests = [
-        { launcherPosition: TOP, result: { height: 80, left: 273, top: -100, width: 738 } },
-        { launcherPosition: BOTTOM, result: { height: 80, left: 273, top: 1017, width: 738 } },
-        { launcherPosition: LEFT, result: { height: 738, left: -100, top: 130, width: 80 } },
-        { launcherPosition: RIGHT, result: { height: 738, left: 1304, top: 130, width: 80 } },
+        { launcherPosition: TOP, result: { height: 80, left: 257, top: -100, width: 770 } },
+        { launcherPosition: BOTTOM, result: { height: 80, left: 257, top: 1017, width: 770 } },
+        { launcherPosition: LEFT, result: { height: 770, left: -100, top: 114, width: 80 } },
+        { launcherPosition: RIGHT, result: { height: 770, left: 1304, top: 114, width: 80 } },
       ];
 
       tests.forEach(({ launcherPosition, result }) =>
         expect(
-          calcLauncherPosition(
-            appCount,
-            monitorInfo.primaryMonitor,
-            launcherPosition,
-            launcherSizeConfig,
-            collapsedSystemDrawerSize,
-            expandedSystemDrawerSize,
-            false,
-          ),
+          calcLauncherPosition(appCount, monitorInfo.primaryMonitor, launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, expandedSystemDrawerSize),
         ).toEqual(result),
       );
     });
@@ -243,23 +233,15 @@ describe('windowPositionHelpers', () => {
     const appCount = 1000;
     const launcherSizeConfig = launcherSizeConfigs[LauncherSize.Large];
     const tests = [
-      { launcherPosition: TOP, result: { height: 80, left: -77, top: -100, width: 1438 } },
-      { launcherPosition: BOTTOM, result: { height: 80, left: -77, top: 1017, width: 1438 } },
-      { launcherPosition: LEFT, result: { height: 1088, left: -100, top: -45, width: 80 } },
-      { launcherPosition: RIGHT, result: { height: 1088, left: 1304, top: -45, width: 80 } },
+      { launcherPosition: TOP, result: { height: 80, left: -58, top: -100, width: 1400 } },
+      { launcherPosition: BOTTOM, result: { height: 80, left: -58, top: 1017, width: 1400 } },
+      { launcherPosition: LEFT, result: { height: 1120, left: -100, top: -61, width: 80 } },
+      { launcherPosition: RIGHT, result: { height: 1120, left: 1304, top: -61, width: 80 } },
     ];
 
     tests.forEach(({ launcherPosition, result }) =>
       expect(
-        calcLauncherPosition(
-          appCount,
-          monitorInfo.primaryMonitor,
-          launcherPosition,
-          launcherSizeConfig,
-          collapsedSystemDrawerSize,
-          expandedSystemDrawerSize,
-          false,
-        ),
+        calcLauncherPosition(appCount, monitorInfo.primaryMonitor, launcherPosition, launcherSizeConfig, collapsedSystemDrawerSize, expandedSystemDrawerSize),
       ).toEqual(result),
     );
   });

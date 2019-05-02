@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Label, { LABEL_TRANSITION_DELAY } from '../Label';
 import RadioButton from '../RadioButton';
 import { RowWrapper } from '../Responsive';
-import { Icon } from '../SvgIcon/index';
+import { Icon } from '../SvgIcon';
 
 import { Color, Typography } from '../../styles';
 import { ADMIN_FORMS_ENTER_DURATION } from '../../utils/adminForms';

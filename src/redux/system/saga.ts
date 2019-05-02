@@ -1,10 +1,19 @@
+import { Window } from '@giantmachines/redux-openfin';
 import { all, call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import { UnPromisfy } from '../../types/utils';
 import { unbindFinAppEventHanlders } from '../../utils/finAppEventHandlerHelpers';
-import { getAllSystemWindows, getSystemMachineId, getSystemMonitorInfo, getWindowBounds, getWindowGroup, isWindowShowing } from '../../utils/finUtils';
+import {
+  getAllSystemWindows,
+  getSystemMachineId,
+  getSystemMonitorInfo,
+  getWindowBounds,
+  getWindowGroup,
+  isWindowShowing,
+  setApplicationTrayIcon,
+} from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
-import { reboundLauncher, toggleAppIsShowing } from '../application';
+import { getApplicationManifest, reboundLauncher, toggleAppIsShowing } from '../application';
 import { closeFinApp } from '../apps';
 import { getMonitorDetailsDerivedByUserSettings } from '../selectors';
 import { getErrorFromCatch } from '../utils';
@@ -181,6 +190,21 @@ function* watchSystemEventWindowCreated(action: ReturnType<typeof systemEventWin
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
     console.warn('Error in watchSystemEventWindowCreated', error);
+  }
+}
+
+export function* initSystemTrayIcon() {
+  try {
+    const uuid = getOwnUuid();
+    const manifest = yield select(getApplicationManifest);
+
+    if (manifest && manifest.startup_app && manifest.startup_app.icon) {
+      yield call(setApplicationTrayIcon({ uuid }), manifest.startup_app.icon);
+    }
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.warn('Error in initSystemTrayIcon', error);
   }
 }
 
