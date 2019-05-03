@@ -93,7 +93,7 @@
     "formik": "1.4.3",
     "lodash-es": "4.17.11",
     "newman": "4.4.0",
-    "openfin-fdc3": "0.1.0",
+    "openfin-fdc3": "0.1.1",
     "openfin-layouts": "1.0.0",
     "openfin-notifications": "0.9.6",
     "react": "16.8.6",
