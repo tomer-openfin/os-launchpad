@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
 import { PREVIEW_WINDOW } from '../../config/windows';
-import { getAdminPreviewTypeState } from '../../redux/admin/index';
+import { getAdminPreviewTypeState } from '../../redux/admin';
 import { State } from '../../redux/types';
 import { hideWindow } from '../../redux/windows';
 

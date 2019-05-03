@@ -270,7 +270,7 @@ function* watchUpdateLayoutSuccess(action: ReturnType<typeof updateLayout.succes
   try {
     yield call(watchLayoutsChangesToAnimateWindow);
 
-    const { dismiss, undo } = yield race({
+    const { undo } = yield race({
       dismiss: take(dismissUndoUpdateLayout.request),
       undo: take(undoUpdateLayout.request),
     });

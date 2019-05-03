@@ -22,7 +22,7 @@ import { DeleteIconLink, EditIconLink, Header, Row, Wrapper } from './Organizati
 import Color from '../../styles/color';
 import ImageCard from '../ImageCard';
 import Modal from '../Modal';
-import SvgIcon from '../SvgIcon/index';
+import SvgIcon from '../SvgIcon';
 
 export interface Props {
   handleCloseModal: () => void;

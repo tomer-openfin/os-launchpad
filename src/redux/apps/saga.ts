@@ -81,7 +81,7 @@ export function* watchLaunchApp(action: ReturnType<typeof launchApp>) {
 
 export function* watchExternalAppRequest(action: ReturnType<typeof externalApp.request>) {
   try {
-    const { id, manifest_url } = action.payload;
+    const { manifest_url } = action.payload;
 
     if (!manifest_url) {
       throw new Error('No manifest url');
@@ -121,7 +121,7 @@ export function* watchExternalAppRequest(action: ReturnType<typeof externalApp.r
 
 export function* watchOpenFinAppRequest(action: ReturnType<typeof openFinApp.request>) {
   try {
-    const { appUrl, id, manifest_url, manifestType } = action.payload;
+    const { appUrl, id, manifest_url } = action.payload;
 
     let manifestUrl = manifest_url;
 

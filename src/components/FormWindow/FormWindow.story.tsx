@@ -3,7 +3,7 @@ import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import { forceReRender, storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { User, UserFormData, YesNo } from '../../types/commons';
+import { UserFormData, YesNo } from '../../types/commons';
 import { CATEGORIES } from '../../utils/storyCategories';
 import { ManifestType } from '../AppForm';
 

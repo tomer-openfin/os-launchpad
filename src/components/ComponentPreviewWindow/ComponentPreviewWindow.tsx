@@ -4,7 +4,7 @@ import { PreviewType } from '../../redux/admin/types';
 import noop from '../../utils/noop';
 import { LoginView, Stage } from '../Login/Login';
 
-import ComponentPreview from '../ComponentPreview/index';
+import ComponentPreview from '../ComponentPreview';
 import ComponentPreviewShortcut from '../ComponentPreviewShortcut';
 import ComponentPreviewSplash from '../ComponentPreviewSplash';
 

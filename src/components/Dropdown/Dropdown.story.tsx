@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { boolean, number, withKnobs } from '@storybook/addon-knobs';
+import { number, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 

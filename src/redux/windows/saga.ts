@@ -170,7 +170,7 @@ function* watchWindowBlurred(action: ReturnType<typeof windowBlurred>) {
       case LAYOUTS_WINDOW:
       case SETTINGS_MENU_WINDOW:
       case LOGOUT_WINDOW: {
-        const { cancel, proceed } = yield race({
+        const { proceed } = yield race({
           cancel: take(fluxStandardAction => {
             const { type, payload: standardPayload } = fluxStandardAction;
             return (
