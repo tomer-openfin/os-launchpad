@@ -28,7 +28,7 @@ pipeline {
                 sh "ANALYTICS=true ENTERPRISE=true NODE_ENV=production DEPLOY_LOCATION=\"https://os-dev.openfin.co\" npm run build"
                 sh "npm run docs"
                 // sh "npm run build-storybook"
-                sh "echo ${GIT_SHORT_SHA} > ./build/SHA.txt"
+                sh "echo \"${VERSION} ${GIT_SHORT_SHA}\" > ./build/VERSION.txt"
                 sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*.svg' --exclude 'app.json' --exclude 'index.html'"
                 sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*' --include 'index.html' --content-type 'text/html; charset=utf-8'"
                 sh "aws s3 cp ./build ${S3_LOC}/ --recursive --exclude '*' --include '*.svg' --content-type 'image/svg+xml'"
