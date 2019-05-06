@@ -14,7 +14,9 @@ import {
   resetApplicationUi,
   setIsDragAndDrop,
   setIsEnterprise,
+  setManifestUrl,
   setRuntimeVersion,
+  setRvmVersion,
   updateManifestOverride,
 } from './actions';
 
@@ -25,7 +27,9 @@ export interface ApplicationState {
   isEnterprise: boolean;
   manifest: Manifest;
   manifestOverride: ManifestOverride;
+  manifestUrl: string;
   runtimeVersion: string;
+  rvmVersion: string;
 }
 
 export interface ManifestImages {
@@ -45,6 +49,7 @@ export interface Manifest extends ManifestImages {
   startup_app: {
     icon: string;
     name?: string;
+    url?: string;
   };
 }
 
@@ -73,6 +78,8 @@ export type ApplicationActions =
   | ReturnType<typeof setIsDragAndDrop>
   | ReturnType<typeof setIsEnterprise>
   | ReturnType<typeof setRuntimeVersion>
+  | ReturnType<typeof setRvmVersion>
+  | ReturnType<typeof setManifestUrl>
   | ActionsUnion<typeof reboundLauncher>
   | ActionsUnion<typeof getManifestOverride>
   | ActionsUnion<typeof updateManifestOverride>

@@ -6,7 +6,9 @@ import {
   resetApplicationUi,
   setIsDragAndDrop,
   setIsEnterprise,
+  setManifestUrl,
   setRuntimeVersion,
+  setRvmVersion,
   updateManifestOverride,
 } from './actions';
 import { ApplicationActions, ApplicationState, Manifest } from './types';
@@ -33,7 +35,9 @@ const defaultState: ReadonlyApplicationState = {
   isEnterprise: false,
   manifest: emptyManifest,
   manifestOverride: {},
+  manifestUrl: '',
   runtimeVersion: '',
+  rvmVersion: '',
 };
 
 export default (state: ReadonlyApplicationState = defaultState, action: ApplicationActions): ReadonlyApplicationState => {
@@ -78,6 +82,18 @@ export default (state: ReadonlyApplicationState = defaultState, action: Applicat
       return {
         ...state,
         runtimeVersion: action.payload,
+      };
+    }
+    case setRvmVersion.toString(): {
+      return {
+        ...state,
+        rvmVersion: action.payload,
+      };
+    }
+    case setManifestUrl.toString(): {
+      return {
+        ...state,
+        manifestUrl: action.payload,
       };
     }
     default: {

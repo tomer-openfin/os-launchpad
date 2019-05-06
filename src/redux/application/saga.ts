@@ -42,7 +42,17 @@ import {
   updateManifestOverride,
 } from './actions';
 import { getApplicationManifestOverride } from './selectors';
-import { hideLauncherAndAttachments, initMachineId, initManifest, initMonitorInfo, initOrgSettings, initRuntimeVersion, initSystemWindows } from './utils';
+import {
+  hideLauncherAndAttachments,
+  initMachineId,
+  initManifest,
+  initManifestUrl,
+  initMonitorInfo,
+  initOrgSettings,
+  initRuntimeVersion,
+  initRvmVersion,
+  initSystemWindows,
+} from './utils';
 
 const APP_UUID = getOwnUuid();
 const ANIMATION_DURATION = 285;
@@ -144,7 +154,9 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
         call(initMachineId),
         call(initMonitorInfo),
         call(initRuntimeVersion),
+        call(initRvmVersion),
         call(initManifest),
+        call(initManifestUrl),
         call(setupSystemHandlers, window.fin, window.store || window.opener.store),
       ]);
 

@@ -124,7 +124,15 @@ export const setApplicationTrayIcon = getApplicationInstanceMethod('setTrayIcon'
 type FinSystem = typeof fin.System;
 type FinSystemMethods = Extract<
   keyof FinSystem,
-  'addListener' | 'getAllWindows' | 'getMachineId' | 'getMonitorInfo' | 'getMousePosition' | 'launchExternalProcess' | 'removeListener' | 'showDeveloperTools'
+  | 'addListener'
+  | 'getAllWindows'
+  | 'getMachineId'
+  | 'getMonitorInfo'
+  | 'getMousePosition'
+  | 'getRvmInfo'
+  | 'launchExternalProcess'
+  | 'removeListener'
+  | 'showDeveloperTools'
 >;
 
 // Static
@@ -144,6 +152,7 @@ const getSystemMethod = <T extends FinSystemMethods>(method: T): FinSystem[T] =>
 export const addSystemListener = getSystemMethod('addListener');
 export const launchExternalProcess = getSystemMethod('launchExternalProcess');
 export const getAllSystemWindows = getSystemMethod('getAllWindows');
+export const getSystemRvmInfo = getSystemMethod('getRvmInfo');
 export const getSystemMachineId = getSystemMethod('getMachineId');
 export const getSystemMonitorInfo = getSystemMethod('getMonitorInfo');
 export const getSystemMousePosition = getSystemMethod('getMousePosition');

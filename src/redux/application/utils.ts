@@ -4,7 +4,7 @@ import { all, call, put, select, take } from 'redux-saga/effects';
 import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGOUT_WINDOW, SETTINGS_MENU_WINDOW } from '../../config/windows';
 import { Bounds } from '../../types/commons';
 import { UnPromisfy } from '../../types/utils';
-import { getApplicationInfo, getWindowBounds, resizeWindowTo, setWindowBounds } from '../../utils/finUtils';
+import { getApplicationInfo, getSystemRvmInfo, getWindowBounds, resizeWindowTo, setWindowBounds } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { calcBoundsRelativeToLauncher } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList, resetAppDirectoryList } from '../apps';
@@ -15,7 +15,7 @@ import { getOrgSettings } from '../organization';
 import { getAppListDimensions, getSettingsMenuHeight, getSystemDrawerSize } from '../selectors';
 import { getAndSetMonitorInfo, getMachineId, storeAllSystemWindows } from '../system';
 import { getWindowBounds as getWindowBoundsSelector } from '../windows';
-import { getManifest, resetApplicationUi, setRuntimeVersion } from './actions';
+import { getManifest, resetApplicationUi, setManifestUrl, setRuntimeVersion, setRvmVersion } from './actions';
 
 export function* hideLauncherAndAttachments() {
   yield put(Window.hideWindow({ id: getOwnUuid() }));
@@ -49,6 +49,20 @@ export function* initRuntimeVersion() {
   const { runtime }: UnPromisfy<ReturnType<ReturnType<typeof getApplicationInfo>>> = yield call(getApplicationInfo({ uuid: getOwnUuid() }));
   if (runtime) {
     yield put(setRuntimeVersion((runtime as { version: string }).version));
+  }
+}
+
+export function* initRvmVersion() {
+  const { version: rvmVersion } = yield call(getSystemRvmInfo);
+  if (rvmVersion) {
+    yield put(setRvmVersion(rvmVersion));
+  }
+}
+
+export function* initManifestUrl() {
+  const { manifestUrl }: UnPromisfy<ReturnType<ReturnType<typeof getApplicationInfo>>> = yield call(getApplicationInfo({ uuid: getOwnUuid() }));
+  if (manifestUrl) {
+    yield put(setManifestUrl(manifestUrl));
   }
 }
 

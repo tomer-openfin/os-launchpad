@@ -1,3 +1,4 @@
+import { getApplicationManifestUrl, getRuntimeVersion, getRvmVersion } from '../redux/application';
 import { getSessionTimestamp, getSID } from '../redux/me';
 import { getAppListNames } from '../redux/selectors';
 import { getSystemMachineId } from '../redux/system';
@@ -16,11 +17,14 @@ export enum EventType {
 }
 
 export interface SendAnalyticsPayload {
-  // sid: number; // subject
-  // machineId: string; // subject
-  // sessionTimestamp?: string;
+  desktopId: string | null;
+  event: AnalyticsEvent;
+  manifestUrl: string;
+  runtimeVersion: string;
+  rvmVersion: string;
+}
 
-  timestamp?: string; // timestamp of event
+interface AnalyticsEvent {
   type: EventType; // verb/action which occurred
   label: string; // what the verb/action acted upon
   context?: {
@@ -33,13 +37,9 @@ export interface SendAnalyticsPayload {
     // tslint:disable-next-line:no-any
     [key: string]: any;
   };
-}
-
-export interface PostUserStatsPayload extends SendAnalyticsPayload {
-  machineId: string | null;
-  sessionTimestamp: string | null;
-  sid: number;
-  timestamp: string;
+  sessionTimestamp?: string | null;
+  sid?: string | number; // subject
+  timestamp?: string; // timestamp of event
 }
 
 interface MetaOptions {
@@ -47,37 +47,36 @@ interface MetaOptions {
   includeFinWindows?: boolean;
 }
 
-export const sendAnalytics = async (
-  payload: SendAnalyticsPayload,
-  metaOptions: MetaOptions = {},
-  store: Window['store'] = window.store || window.opener.store,
-) => {
+export const sendAnalytics = async (payload: AnalyticsEvent, metaOptions: MetaOptions = {}, store: Window['store'] = window.store || window.opener.store) => {
   const isAnalyticsOn = isAnalyticsEnvOn();
   if (!store || !isAnalyticsOn) {
     return;
   }
 
-  const timestamp = payload.timestamp || generateTimestamp();
-
   const state = store.getState();
-  const sid = getSID(state);
-  const machineId = getSystemMachineId(state);
+
+  const desktopId = getSystemMachineId(state);
+  const manifestUrl = getApplicationManifestUrl(state);
+  const runtimeVersion = getRuntimeVersion(state);
+  const rvmVersion = getRvmVersion(state);
   const sessionTimestamp = getSessionTimestamp(state);
+  const sid = getSID(state);
+  const timestamp = generateTimestamp();
 
   const analyticsPayload = {
-    machineId,
-    sessionTimestamp,
-    sid,
-    ...payload,
-    timestamp,
+    desktopId,
+    event: { sessionTimestamp, sid, timestamp, ...payload },
+    manifestUrl,
+    runtimeVersion,
+    rvmVersion,
   };
 
   if (metaOptions.includeAppList) {
     const launcherAppList = getAppListNames(state);
-    if (analyticsPayload.meta) {
-      analyticsPayload.meta.launcherAppList = launcherAppList;
+    if (analyticsPayload.event.meta) {
+      analyticsPayload.event.meta.launcherAppList = launcherAppList;
     } else {
-      analyticsPayload.meta = { launcherAppList };
+      analyticsPayload.event.meta = { launcherAppList };
     }
   }
 
@@ -85,10 +84,10 @@ export const sendAnalytics = async (
   if (fin && metaOptions.includeFinWindows) {
     const finWindows = await fin.System.getAllWindows();
 
-    if (analyticsPayload.meta) {
-      analyticsPayload.meta.windows = finWindows;
+    if (analyticsPayload.event.meta) {
+      analyticsPayload.event.meta.windows = finWindows;
     } else {
-      analyticsPayload.meta = { windows: finWindows };
+      analyticsPayload.event.meta = { windows: finWindows };
     }
   }
 
