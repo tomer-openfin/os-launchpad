@@ -4,6 +4,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import { Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 
+import { ROUTES } from './consts';
 import { AppRoute, routes } from './routes';
 
 import { GlobalStyle } from '../../styles/globals.css';
@@ -14,11 +15,13 @@ const renderNestedRoute = (Component, children) => props => {
 };
 
 export const renderRoute = ({ children, Component, exact, path }: AppRoute) => {
+  const routePath = path === ROUTES.HOME ? [path, '/index.html'] : path;
+
   if (!children) {
-    return <Route key={path} component={Component} exact={exact} path={path} />;
+    return <Route key={path} component={Component} exact={exact} path={routePath} />;
   }
 
-  return <Route key={path} exact={exact} path={path} render={renderNestedRoute(Component, children)} />;
+  return <Route key={path} exact={exact} path={routePath} render={renderNestedRoute(Component, children)} />;
 };
 
 const Router = () => (
