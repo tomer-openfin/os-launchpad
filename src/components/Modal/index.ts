@@ -1,5 +1,5 @@
-import Component from './Modal';
+import Modal from './Modal';
 
 export * from './Modal.css';
 
-export default Component;
+export default Modal;

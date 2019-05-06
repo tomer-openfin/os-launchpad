@@ -1,5 +1,5 @@
-import Component from './CheckboxInArray';
+import CheckboxInArray from './CheckboxInArray';
 
 export * from './CheckboxInArray.css';
 
-export default Component;
+export default CheckboxInArray;

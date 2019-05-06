@@ -1,3 +1,3 @@
-import ComponentPreviewShortcut from './ComponentPreviewShortcutContainer';
+import ComponentPreviewShortcutContainer from './ComponentPreviewShortcutContainer';
 
-export default ComponentPreviewShortcut;
+export default ComponentPreviewShortcutContainer;

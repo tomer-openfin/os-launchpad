@@ -1,3 +1,3 @@
-import AdminOrgImageUpload from './AdminOrgImageUploadContainer';
+import AdminOrgImageUploadContainer from './AdminOrgImageUploadContainer';
 
-export default AdminOrgImageUpload;
+export default AdminOrgImageUploadContainer;

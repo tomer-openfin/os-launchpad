@@ -1,3 +1,3 @@
-import EditUserWindow from './EditUserWindowContainer';
+import EditUserWindowContainer from './EditUserWindowContainer';
 
-export default EditUserWindow;
+export default EditUserWindowContainer;

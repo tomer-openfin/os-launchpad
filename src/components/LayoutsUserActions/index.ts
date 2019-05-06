@@ -1,5 +1,5 @@
-import Component from './LayoutsUserActionsContainer';
+import LayoutsUserActionsContainer from './LayoutsUserActionsContainer';
 
 export * from './LayoutsUserActions.css';
 
-export default Component;
+export default LayoutsUserActionsContainer;

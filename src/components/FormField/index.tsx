@@ -1,5 +1,5 @@
-import Component from './FormField';
+import FormField from './FormField';
 
 export * from './FormField.css';
 
-export default Component;
+export default FormField;

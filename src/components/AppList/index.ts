@@ -1,6 +1,6 @@
-import Component from './AppListContainer';
+import AppListContainer from './AppListContainer';
 
 export * from './AppList';
 export * from './AppList.css';
 
-export default Component;
+export default AppListContainer;

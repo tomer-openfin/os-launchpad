@@ -1,3 +1,3 @@
-import ComponentPreviewSplash from './ComponentPreviewSplashContainer';
+import ComponentPreviewSplashContainer from './ComponentPreviewSplashContainer';
 
-export default ComponentPreviewSplash;
+export default ComponentPreviewSplashContainer;

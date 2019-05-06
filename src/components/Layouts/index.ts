@@ -1,9 +1,9 @@
 import * as Story from './Layouts.story';
 
-import Component from './LayoutsContainer';
+import LayoutsContainer from './LayoutsContainer';
 
 export * from './Layouts.css';
 
 export { Story };
 
-export default Component;
+export default LayoutsContainer;

@@ -1,5 +1,5 @@
-import Component from './AppCardContainer';
+import AppCardContainer from './AppCardContainer';
 
 export * from './AppCard.css';
 
-export default Component;
+export default AppCardContainer;

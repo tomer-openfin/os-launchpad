@@ -1,9 +1,7 @@
 import * as React from 'react';
 
-import * as layouts3Icon from '../../assets/Layouts3.svg';
-
 import { DirectionalPosition, Orientation } from '../../types/commons';
-import { SystemIcon, WORKSPACES_KEY } from '../../utils/getSystemIcons';
+import { SystemIcon } from '../../utils/getSystemIcons';
 import { LauncherSizeConfig } from '../../utils/launcherSizeConfigs';
 
 import { EventType, sendAnalytics } from '../../utils/analytics';

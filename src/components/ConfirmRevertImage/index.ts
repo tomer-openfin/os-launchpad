@@ -1,3 +1,3 @@
-import ConfirmRevertImage from './ConfirmRevertImageContainer';
+import ConfirmRevertImageContainer from './ConfirmRevertImageContainer';
 
-export default ConfirmRevertImage;
+export default ConfirmRevertImageContainer;

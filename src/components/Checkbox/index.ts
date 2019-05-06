@@ -1,5 +1,5 @@
-import Component from './Checkbox';
+import Checkbox from './Checkbox';
 
 export * from './Checkbox.css';
 
-export default Component;
+export default Checkbox;

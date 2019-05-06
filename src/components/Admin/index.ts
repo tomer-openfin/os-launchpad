@@ -1,6 +1,6 @@
-import Component from './AdminContainer';
+import AdminContainer from './AdminContainer';
 
 export * from './Admin.css';
 export * from './utils';
 
-export default Component;
+export default AdminContainer;

@@ -1,3 +1,3 @@
-import ComponentPreviewWindow from './ComponentPreviewWindowContainer';
+import ComponentPreviewWindowContainer from './ComponentPreviewWindowContainer';
 
-export default ComponentPreviewWindow;
+export default ComponentPreviewWindowContainer;

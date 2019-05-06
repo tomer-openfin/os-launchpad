@@ -1,3 +1,3 @@
-import NewUserWindow from './NewUserWindowContainer';
+import NewUserWindowContainer from './NewUserWindowContainer';
 
-export default NewUserWindow;
+export default NewUserWindowContainer;

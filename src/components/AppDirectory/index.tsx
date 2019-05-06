@@ -1,5 +1,5 @@
-import Component from './AppDirectoryContainer';
+import AppDirectoryContainer from './AppDirectoryContainer';
 
 export * from './AppDirectory.css';
 
-export default Component;
+export default AppDirectoryContainer;

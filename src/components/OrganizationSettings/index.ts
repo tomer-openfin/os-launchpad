@@ -1,5 +1,5 @@
-import OrganizationSettings from './OrganizationSettingsContainer';
+import OrganizationSettingsContainer from './OrganizationSettingsContainer';
 
 export * from './OrganizationSettings.css';
 
-export default OrganizationSettings;
+export default OrganizationSettingsContainer;

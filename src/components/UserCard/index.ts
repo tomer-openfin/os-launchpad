@@ -1,5 +1,5 @@
-import Component from './UserCard';
+import UserCard from './UserCard';
 
 export * from './UserCard.css';
 
-export default Component;
+export default UserCard;

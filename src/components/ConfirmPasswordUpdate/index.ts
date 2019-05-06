@@ -1,3 +1,3 @@
-import Component from './ConfirmPasswordUpdate';
+import ConfirmPasswordUpdate from './ConfirmPasswordUpdate';
 
-export default Component;
+export default ConfirmPasswordUpdate;
