@@ -12,9 +12,8 @@ import * as shutdownIcon from '../assets/Shutdown.svg';
 import * as supportIcon from '../assets/Support.svg';
 
 import windowsConfig from '../config/windows';
-
 import { exitApplication } from '../redux/application';
-import { logout } from '../redux/me/index';
+import { logout } from '../redux/me';
 import { toggleNotificationCenter } from '../redux/notifications';
 import { gatherAllWindows } from '../redux/system';
 import { launchWindow, toggleWindow } from '../redux/windows';
@@ -45,24 +44,6 @@ export interface SystemIcon {
 export const getSystemIcons = (): SystemIcon[] => {
   const icons = [
     {
-      action: toggleWindow({ name: windowsConfig.logout.name }),
-      color: Color.EARTH,
-      hasExtendedWindow: true,
-      hoverColor: Color.EARTH_HOVER,
-      icon: logoutIcon,
-      isBackground: false,
-      title: LOGOUT_KEY,
-    },
-    {
-      action: launchWindow(windowsConfig.channels),
-      color: Color.URANUS,
-      hasExtendedWindow: false,
-      hoverColor: Color.URANUS_HOVER,
-      icon: chainIcon,
-      isBackground: false,
-      title: CHANNELS_KEY,
-    },
-    {
       action: toggleWindow({ name: windowsConfig.settingsMenu.name }),
       color: Color.SATURN,
       hasExtendedWindow: true,
@@ -86,6 +67,15 @@ export const getSystemIcons = (): SystemIcon[] => {
       title: WORKSPACES_KEY,
     },
     {
+      action: launchWindow(windowsConfig.channels),
+      color: Color.URANUS,
+      hasExtendedWindow: false,
+      hoverColor: Color.URANUS_HOVER,
+      icon: chainIcon,
+      isBackground: false,
+      title: CHANNELS_KEY,
+    },
+    {
       action: toggleNotificationCenter.request(),
       color: Color.JUPITER,
       hasExtendedWindow: false,
@@ -105,28 +95,8 @@ interface MenuOption {
   label: string;
 }
 
-export const getLogoutMenuOptions = (isEnterprise: boolean): MenuOption[] => {
+export const getSettingsMenuOptions = (isAdmin: boolean, isEnterprise: boolean): MenuOption[] => {
   const options: MenuOption[] = [
-    {
-      action: exitApplication(),
-      icon: shutdownIcon,
-      label: SHUTDOWN_KEY,
-    },
-  ];
-
-  if (isEnterprise) {
-    options.unshift({
-      action: logout.request({ message: 'You have been successfully logged out.', isError: false }),
-      icon: logoutIcon,
-      label: LOGOUT_KEY,
-    });
-  }
-
-  return options;
-};
-
-export const getSettingsMenuOptions = (isAdmin: boolean): MenuOption[] => {
-  const options = [
     {
       action: launchWindow(windowsConfig.settings),
       icon: settingsIcon,
@@ -142,6 +112,11 @@ export const getSettingsMenuOptions = (isAdmin: boolean): MenuOption[] => {
       icon: gatherWindowsIcon,
       label: GATHER_WINDOWS_KEY,
     },
+    {
+      action: exitApplication(),
+      icon: shutdownIcon,
+      label: SHUTDOWN_KEY,
+    },
   ];
 
   if (isAdmin) {
@@ -150,6 +125,16 @@ export const getSettingsMenuOptions = (isAdmin: boolean): MenuOption[] => {
       icon: adminIcon,
       label: ADMIN_KEY,
     });
+  }
+
+  if (isEnterprise) {
+    const idxBeforeShutdownIcon = options.length - 1;
+    const item = {
+      action: logout.request({ message: 'You have been successfully logged out.', isError: false }),
+      icon: logoutIcon,
+      label: LOGOUT_KEY,
+    };
+    options.splice(idxBeforeShutdownIcon, 0, item);
   }
 
   return options;

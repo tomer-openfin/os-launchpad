@@ -1,7 +1,7 @@
 import { Window } from '@giantmachines/redux-openfin';
 import { all, call, put, select, take } from 'redux-saga/effects';
 
-import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGOUT_WINDOW, SETTINGS_MENU_WINDOW } from '../../config/windows';
+import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, SETTINGS_MENU_WINDOW } from '../../config/windows';
 import { Bounds } from '../../types/commons';
 import { UnPromisfy } from '../../types/utils';
 import { getApplicationInfo, getSystemRvmInfo, getWindowBounds, resizeWindowTo, setWindowBounds } from '../../utils/finUtils';
@@ -21,7 +21,6 @@ export function* hideLauncherAndAttachments() {
   yield put(Window.hideWindow({ id: getOwnUuid() }));
   yield put(Window.hideWindow({ id: APP_LAUNCHER_OVERFLOW_WINDOW }));
   yield put(Window.hideWindow({ id: LAYOUTS_WINDOW }));
-  yield put(Window.hideWindow({ id: LOGOUT_WINDOW }));
   yield put(Window.hideWindow({ id: SETTINGS_MENU_WINDOW }));
 }
 

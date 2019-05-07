@@ -1,4 +1,4 @@
-import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, LOGOUT_WINDOW, SETTINGS_MENU_WINDOW } from '../config/windows';
+import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, SETTINGS_MENU_WINDOW } from '../config/windows';
 import { Bounds, Dimensions, DirectionalPosition, MonitorDetails, PointTopLeft } from '../types/commons';
 
 import { getCoordinatesHeight, getCoordinatesWidth } from './coordinateHelpers';
@@ -42,24 +42,6 @@ const OFFSETS = {
     [DirectionalPosition.Left]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds) => ({
       offsetX: config.launcher,
       offsetY: launcherBounds.height - bounds.height,
-    }),
-  },
-  [LOGOUT_WINDOW]: {
-    [DirectionalPosition.Top]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds, systemDrawerSize: number) => ({
-      offsetX: launcherBounds.width - systemDrawerSize - config.minimizeToTrayIcon,
-      offsetY: config.launcher,
-    }),
-    [DirectionalPosition.Right]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds, systemDrawerSize: number) => ({
-      offsetX: 0,
-      offsetY: launcherBounds.height - systemDrawerSize - config.minimizeToTrayIcon,
-    }),
-    [DirectionalPosition.Bottom]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds, systemDrawerSize: number) => ({
-      offsetX: launcherBounds.width - systemDrawerSize - config.minimizeToTrayIcon,
-      offsetY: 0,
-    }),
-    [DirectionalPosition.Left]: (config: LauncherSizeConfig, bounds: Bounds, launcherBounds: Bounds, systemDrawerSize: number) => ({
-      offsetX: config.launcher,
-      offsetY: launcherBounds.height - systemDrawerSize - config.minimizeToTrayIcon,
     }),
   },
   [SETTINGS_MENU_WINDOW]: {

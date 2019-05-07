@@ -5,9 +5,9 @@ import { getLauncherPosition, getLauncherSizeConfig } from '../../redux/me';
 import { getSystemDrawerSize } from '../../redux/selectors';
 import { State } from '../../redux/types';
 import { getLauncherOrientation, getOppositeDirection } from '../../utils/directionalPositionHelpers';
-import { getSystemIcons, LOGOUT_KEY, SETTINGS_MENU_KEY, WORKSPACES_KEY } from '../../utils/getSystemIcons';
+import { getSystemIcons, SETTINGS_MENU_KEY, WORKSPACES_KEY } from '../../utils/getSystemIcons';
 
-import { LAYOUTS_WINDOW, LOGOUT_WINDOW, SETTINGS_MENU_WINDOW } from '../../config/windows';
+import { LAYOUTS_WINDOW, SETTINGS_MENU_WINDOW } from '../../config/windows';
 import { getWindowIsShowing } from '../../redux/windows';
 import SystemDrawer, { Props } from './SystemDrawer';
 
@@ -17,7 +17,6 @@ const mapState = (state: State) => {
   const icons = getSystemIcons();
   const size = getSystemDrawerSize(state);
   const activeIcons = {
-    [LOGOUT_KEY]: getWindowIsShowing(state, LOGOUT_WINDOW),
     [WORKSPACES_KEY]: getWindowIsShowing(state, LAYOUTS_WINDOW),
     [SETTINGS_MENU_KEY]: getWindowIsShowing(state, SETTINGS_MENU_WINDOW),
   };

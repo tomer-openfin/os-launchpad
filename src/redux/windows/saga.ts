@@ -7,7 +7,6 @@ import windowsConfig, {
   CONTEXT_MENU,
   LAYOUTS_WINDOW,
   LOGIN_WINDOW,
-  LOGOUT_WINDOW,
   SETTINGS_MENU_WINDOW,
 } from '../../config/windows';
 import { getBoundsCenterInCoordinates, isBoundsInCoordinates } from '../../utils/coordinateHelpers';
@@ -115,7 +114,7 @@ function* watchOpenedWindow(action) {
       throw new Error('Failed to Open window - unable to get window by id');
     }
 
-    if (id === APP_LAUNCHER_OVERFLOW_WINDOW || id === LAYOUTS_WINDOW || id === LOGOUT_WINDOW || id === SETTINGS_MENU_WINDOW) {
+    if (id === APP_LAUNCHER_OVERFLOW_WINDOW || id === LAYOUTS_WINDOW || id === SETTINGS_MENU_WINDOW) {
       const bounds = yield select(getWindowBounds, getOwnUuid());
       if (bounds) {
         yield call(setWindowRelativeToLauncherBounds, id, bounds);
@@ -140,7 +139,6 @@ function* watchWindowBoundsChanged(action) {
       yield all([
         call(setWindowRelativeToLauncherBounds, APP_LAUNCHER_OVERFLOW_WINDOW, bounds),
         call(setWindowRelativeToLauncherBounds, LAYOUTS_WINDOW, bounds),
-        call(setWindowRelativeToLauncherBounds, LOGOUT_WINDOW, bounds),
         call(setWindowRelativeToLauncherBounds, SETTINGS_MENU_WINDOW, bounds),
       ]);
     }
@@ -168,8 +166,7 @@ function* watchWindowBlurred(action: ReturnType<typeof windowBlurred>) {
       }
       case APP_DIRECTORY_WINDOW:
       case LAYOUTS_WINDOW:
-      case SETTINGS_MENU_WINDOW:
-      case LOGOUT_WINDOW: {
+      case SETTINGS_MENU_WINDOW: {
         const { proceed } = yield race({
           cancel: take(fluxStandardAction => {
             const { type, payload: standardPayload } = fluxStandardAction;

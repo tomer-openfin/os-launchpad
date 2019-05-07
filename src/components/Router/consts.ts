@@ -52,7 +52,6 @@ export const ROUTES = {
   HOME: '/',
   LAYOUTS: '/layouts',
   LOGIN: '/login',
-  LOGOUT: '/logout',
   SETTINGS: '/settings/:action',
   SETTINGS_MENU: '/settings-menu',
   SNAPSHOT: '/snapshot',

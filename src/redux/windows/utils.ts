@@ -1,7 +1,6 @@
 import { Window } from '@giantmachines/redux-openfin';
 import { all, Effect, put, select, take } from 'redux-saga/effects';
 
-import { APP_DIRECTORY_WINDOW, APP_LAUNCHER_OVERFLOW_WINDOW, CONTEXT_MENU, LAYOUTS_WINDOW, LOGOUT_WINDOW, SETTINGS_WINDOW } from '../../config/windows';
 import { Identity } from '../../types/fin';
 import { openfinReady } from '../application';
 import { hideWindow, launchWindow } from './actions';

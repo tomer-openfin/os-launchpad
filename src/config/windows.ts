@@ -1,5 +1,5 @@
 import { ROUTES } from '../components/Router/consts';
-import { isEnterpriseEnv, isProductionEnv } from '../utils/processHelpers';
+import { isProductionEnv } from '../utils/processHelpers';
 
 const WINDOW_PREFIX = 'osLaunchpad';
 
@@ -11,7 +11,6 @@ export const CHANNELS_CONTEXT_WINDOW = `${WINDOW_PREFIX}ChannelsContext`;
 export const CONTEXT_MENU = `${WINDOW_PREFIX}ContextMenu`;
 export const LAYOUTS_WINDOW = `${WINDOW_PREFIX}Layouts`;
 export const LOGIN_WINDOW = `${WINDOW_PREFIX}Login`;
-export const LOGOUT_WINDOW = `${WINDOW_PREFIX}Logout`;
 export const SETTINGS_WINDOW = `${WINDOW_PREFIX}Settings`;
 export const SETTINGS_MENU_WINDOW = `${WINDOW_PREFIX}SettingsMenu`;
 export const SNAPSHOT_WINDOW = `${WINDOW_PREFIX}Snapshot`;
@@ -135,28 +134,6 @@ export const defaultWindows = {
     saveWindowState: false,
     showTaskbarIcon: false,
     url: ROUTES.LAYOUTS,
-    waitForPageLoad: true,
-  },
-  logout: {
-    alwaysOnTop: true,
-    autoShow: false,
-    contextMenu: !isProduction,
-    cornerRounding: {
-      height: 8,
-      width: 8,
-    },
-    defaultCentered: false,
-    defaultHeight: isEnterpriseEnv() ? 102 : 56,
-    defaultWidth: 171,
-    frame: false,
-    id: LOGOUT_WINDOW,
-    maximizable: false,
-    minimizable: false,
-    name: LOGOUT_WINDOW,
-    resizable: false,
-    saveWindowState: false,
-    showTaskbarIcon: false,
-    url: ROUTES.LOGOUT,
     waitForPageLoad: true,
   },
   settings: {

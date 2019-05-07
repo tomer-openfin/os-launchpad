@@ -7,7 +7,7 @@ import { MonitorDetails, MonitorInfo } from '../types/commons';
 import { objectsFromIds } from '../utils/byIds';
 import { convertHexNumberToString } from '../utils/convertHexNumberToString';
 import { isPointInCoordinates } from '../utils/coordinateHelpers';
-import { getLogoutMenuOptions, getSettingsMenuOptions, getSystemIcons } from '../utils/getSystemIcons';
+import { getSettingsMenuOptions, getSystemIcons } from '../utils/getSystemIcons';
 import { GLOBAL_CHANNEL_ID } from '../utils/openfinFdc3';
 import { calcAppListDimensions, calcMaxAppCount } from '../utils/windowPositionHelpers';
 import { getIsEnterprise } from './application/selectors';
@@ -79,14 +79,9 @@ export const getAppsLauncherAppList = createSelector(
   objectsFromIds,
 );
 
-export const getLogoutMenuOptionsSelector = createSelector(
-  [getIsEnterprise],
-  isEnterprise => getLogoutMenuOptions(isEnterprise),
-);
-
 export const getSettingsMenuOptionsSelector = createSelector(
-  [getIsAdmin],
-  isAdmin => getSettingsMenuOptions(isAdmin),
+  [getIsAdmin, getIsEnterprise],
+  (isAdmin, isEnterprise) => getSettingsMenuOptions(isAdmin, isEnterprise),
 );
 
 export const getSettingsMenuHeight = createSelector(

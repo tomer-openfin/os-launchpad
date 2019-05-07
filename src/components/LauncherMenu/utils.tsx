@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { getLogoutMenuOptionsSelector, getSettingsMenuOptionsSelector } from '../../redux/selectors';
+import { getSettingsMenuOptionsSelector } from '../../redux/selectors';
 import { State } from '../../redux/types';
 import { EventType, sendAnalytics } from '../../utils/analytics';
 import { hideWindow } from '../../utils/finUtils';
@@ -9,16 +9,12 @@ import { hideWindow } from '../../utils/finUtils';
 import { Props } from './LauncherMenu';
 
 interface MapState {
-  options: ReturnType<typeof getLogoutMenuOptionsSelector>;
+  options: ReturnType<typeof getSettingsMenuOptionsSelector>;
 }
 
 interface MapDispatch {
   dispatch: Dispatch;
 }
-
-const mapLogoutState = (state: State): MapState => ({
-  options: getLogoutMenuOptionsSelector(state),
-});
 
 const mapSettingsState = (state: State): MapState => ({
   options: getSettingsMenuOptionsSelector(state),
@@ -40,12 +36,6 @@ const mergeProps = ({ options }, { dispatch }): Props => ({
     label,
   })),
 });
-
-export const withLogout = connect<MapState, MapDispatch, null, Props, State>(
-  mapLogoutState,
-  mapDispatch,
-  mergeProps,
-);
 
 export const withSettings = connect<MapState, MapDispatch, null, Props, State>(
   mapSettingsState,
