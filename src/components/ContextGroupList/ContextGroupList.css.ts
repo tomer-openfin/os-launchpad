@@ -5,26 +5,18 @@ import { Color, Typography } from '../../styles';
 import ContextGroupItem, { Cell as ContextGroupItemCell, Wrapper as ContextGroupItemWrapper } from '../ContextGroupItem';
 
 const COL_MARGIN = 10;
-const COL_1 = 113;
-const COL_2 = 66;
-const COL_3 = 95;
-const COL_4 = 54;
+const COL_1 = 173;
+const COL_2 = 155;
 
 const GridLayout = `
   &:nth-child(1) {
     margin-right: ${COL_MARGIN}px;
     width: ${COL_1 - COL_MARGIN}px;
   }
+
   &:nth-child(2) {
     margin-right: ${COL_MARGIN}px;
     width: ${COL_2 - COL_MARGIN}px;
-  }
-  &:nth-child(3) {
-    margin-right: ${COL_MARGIN}px;
-    width: ${COL_3 - COL_MARGIN}px;
-  }
-  &:nth-child(4) {
-    width: ${COL_4}px;
   }
 `;
 

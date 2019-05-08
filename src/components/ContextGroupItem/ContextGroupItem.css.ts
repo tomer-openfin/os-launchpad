@@ -44,7 +44,9 @@ export const Name = styled.div`
 
 export const Text = styled.div<{ isDisabled?: boolean }>`
   ${Typography.TypeStylePollx}
+
   display: inline-block;
+  margin-left: 10px;
 
   ${({ isDisabled }) => `
     color: ${isDisabled ? Color.MERCURY : 'inherit'};

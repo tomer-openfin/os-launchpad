@@ -32,9 +32,7 @@ const ContextGroupList = ({
     <Wrapper>
       <Header margin={headerMargin}>
         <HeaderLabel>Group</HeaderLabel>
-        <HeaderLabel>Count</HeaderLabel>
         <HeaderLabel>Context</HeaderLabel>
-        <HeaderLabel>Manage</HeaderLabel>
       </Header>
 
       {!channels.length && <ContextManagerEmptyState>You do not have any active groups.</ContextManagerEmptyState>}
