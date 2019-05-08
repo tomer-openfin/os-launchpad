@@ -2,13 +2,12 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { clearSnapshot, getAndSetSnapshot, setSnapshotAnchor } from '../redux/snapshot';
-import { getSystemWindowIsPresent } from '../redux/system';
+import { setOverlayIdentity } from '../redux/snapshot/index';
+import { getSystemWindowIsPresent } from '../redux/system/index';
 import { State } from '../redux/types';
 import { Identity } from '../types/fin';
 import { Subtract } from '../types/utils';
 import { getApplicationManifest, getWindowInfo } from '../utils/finUtils';
-import { getOwnIdentity } from '../utils/getOwnUuid';
 
 const INTERVAL_MS = 1500;
 
@@ -32,8 +31,8 @@ interface HocState {
 
 type WithoutPassedProps<T> = Subtract<T, NameProp>;
 
-const withNameAndSnapshot = <P extends NameProp>(Component: React.ComponentType<P>) =>
-  class ComponentWithNameAndSnapshot extends React.Component<Props & WithoutPassedProps<P>, HocState> {
+const withWindowNameAndOverlay = <P extends NameProp>(Component: React.ComponentType<P>) =>
+  class ComponentWithWindowNameAndOverlay extends React.Component<Props & WithoutPassedProps<P>, HocState> {
     interval?: number;
 
     state = {
@@ -158,11 +157,12 @@ const mapState = (state: State, ownProps) => {
 
 const mapDispatch = (dispatch: Dispatch, ownProps) => {
   return {
-    handleMouseEnter: (event: React.MouseEvent) => {
-      dispatch(setSnapshotAnchor({ anchor: { left: event.screenX, top: event.screenY }, anchorIdentity: getOwnIdentity() }));
-      dispatch(getAndSetSnapshot.request(ownProps.identity));
+    handleMouseEnter: () => {
+      dispatch(setOverlayIdentity(ownProps.identity));
     },
-    handleMouseLeave: () => dispatch(clearSnapshot()),
+    handleMouseLeave: () => {
+      dispatch(setOverlayIdentity(null));
+    },
   };
 };
 
@@ -170,4 +170,4 @@ export default Component =>
   connect(
     mapState,
     mapDispatch,
-  )(withNameAndSnapshot(Component));
+  )(withWindowNameAndOverlay(Component));

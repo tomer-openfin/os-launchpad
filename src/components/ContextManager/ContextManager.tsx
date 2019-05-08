@@ -28,6 +28,7 @@ export const EXPANED_HEIGHT = 415;
 export interface Props {
   activeId: string | null;
   channels: ContextChannel[];
+  clearSnapshot: () => void;
   handleClose: () => void;
   handleEdit: (id: string | null, meta?: MetaWithAsyncHandlers) => void;
 }
@@ -43,6 +44,7 @@ class ContextManager extends React.Component<Props, State> {
 
   handleClickClose = () => {
     this.handleEnableDrag();
+    this.props.clearSnapshot();
     this.props.handleClose();
   };
 
@@ -52,7 +54,10 @@ class ContextManager extends React.Component<Props, State> {
     handleEdit(id, { onSuccess: this.handleEnableDrag, onFailure: this.handleEnableDrag });
   };
 
-  handleFinishEditing = () => this.handleEdit(null);
+  handleFinishEditing = () => {
+    this.props.clearSnapshot();
+    this.handleEdit(null);
+  };
 
   handleDisableDrag = () => {
     this.setState({ isDragDisabled: true });

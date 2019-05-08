@@ -1,3 +1,3 @@
-import SnapshotOverlayContainer from './SnapshotOverlayContainer';
+import SnapshotOverlay from './SnapshotOverlay.css';
 
-export default SnapshotOverlayContainer;
+export default SnapshotOverlay;

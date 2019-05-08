@@ -1,80 +1,92 @@
-import { all, call, put, select, takeLatest } from 'redux-saga/effects';
+import { all, call, delay, put, select, takeLatest } from 'redux-saga/effects';
 
 import { SNAPSHOT_OVERLAY_WINDOW, SNAPSHOT_WINDOW } from '../../config/windows';
 import { UnPromisfy } from '../../types/utils';
 import { isBoundsInCoordinates } from '../../utils/coordinateHelpers';
-import { getWindowBounds, getWindowSnapshot, hideWindow, setWindowBounds, showWindow } from '../../utils/finUtils';
+import { animateWindow, getWindowBounds, getWindowSnapshot, hideWindow, setWindowBounds, showWindow } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { getMonitorDetails } from '../system';
 import { getErrorFromCatch } from '../utils';
-import { getWindowBounds as selectWindowBounds } from '../windows';
-import { clearSnapshot, getAndSetSnapshot } from './actions';
-import { getSnapshotAnchor, getSnapshotAnchorIdentity } from './selectors';
+import { clearSnapshot, setOverlayIdentity, setSnapshot, setSnapshotImgSrc } from './actions';
 
-function* watchGetAndSetSnapshotRequest(action: ReturnType<typeof getAndSetSnapshot.request> | ReturnType<typeof clearSnapshot>) {
+function* watchSetAndClearSnapshot(action: ReturnType<typeof setSnapshot> | ReturnType<typeof clearSnapshot>) {
   try {
+    const uuid = getOwnUuid();
+    const windowIdentity = { uuid, name: SNAPSHOT_WINDOW };
+
     if (action.type === clearSnapshot.toString()) {
+      yield call(hideWindow(windowIdentity));
       return;
     }
 
-    const [imgSrc, sourceBounds]: [
+    const { anchorIdentity, snapshotIdentity } = action.payload;
+    const [imgSrc, snapshotBounds, anchorBounds]: [
       UnPromisfy<ReturnType<ReturnType<typeof getWindowSnapshot>>>,
+      UnPromisfy<ReturnType<ReturnType<typeof getWindowBounds>>>,
       UnPromisfy<ReturnType<ReturnType<typeof getWindowBounds>>>
-    ] = yield all([call(getWindowSnapshot(action.payload)), call(getWindowBounds(action.payload))]);
+    ] = yield all([call(getWindowSnapshot(snapshotIdentity)), call(getWindowBounds(snapshotIdentity)), call(getWindowBounds(anchorIdentity))]);
+    yield put(setSnapshotImgSrc(`data:image/png;base64,${imgSrc}`));
 
-    yield put(getAndSetSnapshot.success({ imgSrc: `data:image/png;base64,${imgSrc}`, sourceBounds, sourceIdentity: action.payload }));
-  } catch (e) {
-    const error = getErrorFromCatch(e);
-    yield put(getAndSetSnapshot.failure(error));
-  }
-}
+    const isWider = snapshotBounds.width > snapshotBounds.height;
+    const MAX_DIMENSION = 300;
+    const factor = MAX_DIMENSION / (isWider ? snapshotBounds.width : snapshotBounds.height);
+    const width = isWider ? MAX_DIMENSION : snapshotBounds.width * factor;
+    const height = isWider ? snapshotBounds.height * factor : MAX_DIMENSION;
+    const monitorDetails: ReturnType<typeof getMonitorDetails> = yield select(getMonitorDetails);
+    const rightSideBounds = { top: anchorBounds.top, left: anchorBounds.left + anchorBounds.width, width, height };
+    const foundMonitorDetails = monitorDetails.find(monitorDetail => isBoundsInCoordinates(rightSideBounds, monitorDetail.monitorRect));
+    const snapshotWindowBounds = foundMonitorDetails ? rightSideBounds : { top: anchorBounds.top, left: anchorBounds.left - width, width, height };
+    const delta = foundMonitorDetails ? width * -1 : width;
 
-function* watchClearSnapshot() {
-  try {
-    const uuid = getOwnUuid();
-
-    yield all([call(hideWindow({ uuid, name: SNAPSHOT_OVERLAY_WINDOW })), call(hideWindow({ uuid, name: SNAPSHOT_WINDOW }))]);
+    yield call(setWindowBounds(windowIdentity), { ...snapshotWindowBounds, left: snapshotWindowBounds.left + delta });
+    yield call(showWindow(windowIdentity));
+    yield call(
+      animateWindow(windowIdentity),
+      {
+        position: {
+          duration: 300,
+          left: snapshotWindowBounds.left,
+          relative: false,
+          top: snapshotWindowBounds.top,
+        },
+      },
+      {
+        interrupt: true,
+        tween: 'ease-in-out',
+      },
+    );
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.warn('Error in watchClearSnapshot', error);
+    console.warn('Error in watchSetAndClearSnapshot', error);
   }
 }
 
-function* watchGetAndSetSnapshotSuccess(action: ReturnType<typeof getAndSetSnapshot.success>) {
+function* watchSetOverlayIdentity(action: ReturnType<typeof setOverlayIdentity>) {
   try {
-    const { sourceBounds } = action.payload;
-
     const uuid = getOwnUuid();
     const overlayIdentity = { uuid, name: SNAPSHOT_OVERLAY_WINDOW };
-    const snapshotIdentity = { uuid, name: SNAPSHOT_WINDOW };
 
-    const isWider = sourceBounds.width > sourceBounds.height;
-    const MAX_DIMENSION = 300;
-    const factor = MAX_DIMENSION / (isWider ? sourceBounds.width : sourceBounds.height);
-    const width = isWider ? MAX_DIMENSION : sourceBounds.width * factor;
-    const height = isWider ? sourceBounds.height * factor : MAX_DIMENSION;
-    const anchor: ReturnType<typeof getSnapshotAnchor> = yield select(getSnapshotAnchor);
-    const anchorIdentity: ReturnType<typeof getSnapshotAnchorIdentity> = yield select(getSnapshotAnchorIdentity);
-    let anchorBounds: ReturnType<typeof selectWindowBounds> = yield select(selectWindowBounds, (anchorIdentity && anchorIdentity.name) || '');
-    if (!anchorBounds) {
-      anchorBounds = { top: 0, left: 0, width: 0, height: 0 };
+    if (action.payload === null) {
+      yield call(hideWindow(overlayIdentity));
+      return;
     }
-    const monitorDetails: ReturnType<typeof getMonitorDetails> = yield select(getMonitorDetails);
-    const rightSideBounds = { top: anchor.top - height / 2, left: anchorBounds.left + anchorBounds.width, width, height };
-    const foundMonitorDetails = monitorDetails.find(monitorDetail => isBoundsInCoordinates(rightSideBounds, monitorDetail.monitorRect));
-    const snapshotWindowBounds = foundMonitorDetails ? rightSideBounds : { top: anchor.top - height / 2, left: anchorBounds.left - width, width, height };
-    yield all([call(setWindowBounds(overlayIdentity), sourceBounds), call(setWindowBounds(snapshotIdentity), snapshotWindowBounds)]);
-    yield all([call(showWindow(overlayIdentity)), call(showWindow(snapshotIdentity))]);
+
+    // Delay showing of snapshot and overlay unless mouse stays on
+    yield delay(1000);
+
+    const bounds: UnPromisfy<ReturnType<ReturnType<typeof getWindowBounds>>> = yield call(getWindowBounds(action.payload));
+
+    yield call(setWindowBounds(overlayIdentity), bounds);
+    yield call(showWindow(overlayIdentity));
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.warn('Error in watchGetAndSetSnapshotSuccess', error);
+    console.warn('Error in watchSetOverlayIdentity', error);
   }
 }
 
 export function* snapshotSaga() {
-  yield takeLatest([getAndSetSnapshot.request.toString(), clearSnapshot.toString()], watchGetAndSetSnapshotRequest);
-  yield takeLatest(clearSnapshot, watchClearSnapshot);
-  yield takeLatest(getAndSetSnapshot.success, watchGetAndSetSnapshotSuccess);
+  yield takeLatest([clearSnapshot.toString(), setSnapshot.toString()], watchSetAndClearSnapshot);
+  yield takeLatest(setOverlayIdentity, watchSetOverlayIdentity);
 }

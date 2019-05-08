@@ -3,12 +3,12 @@ import * as React from 'react';
 import { Identity } from '../../types/commons';
 import { Content, Header, ItemsWrapper, Wrapper } from './ContextGroupWindows.css';
 
-import withWindowNameAndSnapshot from '../../hocs/withWindowNameAndSnapshot';
+import withWindowNameAndOverlay from '../../hocs/withWindowNameAndOverlay';
 import ContextGroupWindowsItem from '../ContextGroupWindowsItem';
 import ContextManagerEmptyState from '../ContextManagerEmptyState';
 import DragWrapper, { createChannelsHandleDrop, handleDragOver } from '../DragWrapper';
 
-const EnhancedContextGroupWindowsItem = withWindowNameAndSnapshot(ContextGroupWindowsItem);
+const EnhancedContextGroupWindowsItem = withWindowNameAndOverlay(ContextGroupWindowsItem);
 
 export interface Props {
   className?: string;

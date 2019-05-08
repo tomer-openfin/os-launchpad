@@ -9,6 +9,7 @@ import { withMarginDecorator } from '../../utils/storybookHelpers';
 import ContextWindowsItem from './ContextWindowsItem';
 
 const handleAdd = action('handleAdd');
+const handlePreview = action('handlePreview');
 
 storiesOf(`${CATEGORIES.COMPONENTS}ContextWindowsItem`, module)
   .addDecorator(withKnobs)
@@ -18,5 +19,5 @@ storiesOf(`${CATEGORIES.COMPONENTS}ContextWindowsItem`, module)
     const colorTitle = text('colorTitle', '');
     const name = text('name', 'App/Window Name');
 
-    return <ContextWindowsItem color={contextColor} colorTitle={colorTitle} handleAdd={handleAdd} name={name} />;
+    return <ContextWindowsItem color={contextColor} colorTitle={colorTitle} handleAdd={handleAdd} handlePreview={handlePreview} name={name} />;
   });

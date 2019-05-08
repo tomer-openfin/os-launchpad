@@ -1,18 +1,12 @@
 import styled from 'styled-components';
 
-interface Props {
-  backgroundColor: string;
-}
+import { Color } from '../../styles/';
 
-const SnapshotOverlay = styled.div<Props>`
-  background-position: center;
-  background-size: contain;
+const SnapshotOverlay = styled.div`
+  background-color: ${Color.SUN};
+  border: 8px solid ${Color.EARTH};
   height: 100vh;
   width: 100vw;
-
-  ${({ backgroundColor }) => `
-    background-color: ${backgroundColor};
-  `}
 `;
 
 export default SnapshotOverlay;

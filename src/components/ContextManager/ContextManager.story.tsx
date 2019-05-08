@@ -10,6 +10,7 @@ import ContextManager from './ContextManager';
 
 const COLORS = ['Red', 'Blue', 'Green', 'Yellow', 'DodgerBlue', 'Tomato', 'GoldenRod', 'Salmon', 'BlanchedAlmond'];
 
+const clearSnapshot = action('clearSnapshot');
 const handleClose = action('handleClose');
 const handleEdit = action('handleEdit');
 
@@ -32,5 +33,5 @@ storiesOf(`${CATEGORIES.COMPONENTS}ContextManager`, module)
       channels.push(channel);
     }
 
-    return <ContextManager activeId={activeId} channels={channels} handleClose={handleClose} handleEdit={handleEdit} />;
+    return <ContextManager activeId={activeId} channels={channels} clearSnapshot={clearSnapshot} handleClose={handleClose} handleEdit={handleEdit} />;
   });

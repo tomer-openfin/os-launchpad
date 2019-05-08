@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { CHANNELS_WINDOW } from '../../config/windows';
 import { animateChannels, getChannelsActiveId, setActiveChannelId } from '../../redux/channels';
 import { getContextChannels } from '../../redux/selectors';
+import { clearSnapshot } from '../../redux/snapshot';
 import { State } from '../../redux/types';
 import { hideWindow } from '../../redux/windows';
 import { MetaWithAsyncHandlers } from '../../types/commons';
@@ -16,6 +17,7 @@ interface MapState {
 
 interface MapDispatch {
   animateChannels: typeof animateChannels.request;
+  clearSnapshot: typeof clearSnapshot;
   hideWindow: typeof hideWindow;
   setActiveChannelId: typeof setActiveChannelId;
 }
@@ -25,13 +27,19 @@ const mapState = (state: State) => ({
   channels: getContextChannels(state),
 });
 
-const mapDispatch = { hideWindow, setActiveChannelId, animateChannels: animateChannels.request };
+const mapDispatch = { clearSnapshot, hideWindow, setActiveChannelId, animateChannels: animateChannels.request };
 
 const mergeProps = (
   stateProps: MapState,
-  { hideWindow: hideWindowDispatch, setActiveChannelId: setActiveChannelIdDispatch, animateChannels: animateChannelsDispatch }: MapDispatch,
+  {
+    clearSnapshot: clearSnapshotDispatch,
+    hideWindow: hideWindowDispatch,
+    setActiveChannelId: setActiveChannelIdDispatch,
+    animateChannels: animateChannelsDispatch,
+  }: MapDispatch,
 ) => ({
   ...stateProps,
+  clearSnapshot: () => clearSnapshotDispatch(),
   handleClose: () => {
     hideWindowDispatch({ name: CHANNELS_WINDOW });
     setActiveChannelIdDispatch(null);

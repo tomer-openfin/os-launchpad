@@ -1,24 +1,35 @@
 import * as React from 'react';
 
-import * as PlusIcon from '../../assets/PlusCircle.svg';
+import * as EyeIcon from '../../assets/Eye.svg';
 
 import { Color } from '../../styles';
-import { AddIcon, Dot, Text, Wrapper } from './ContextWindowsItem.css';
+import { Dot, Icon, Text, Wrapper } from './ContextWindowsItem.css';
 
 interface Props {
   color: string;
   colorTitle: string;
-  name: string;
   handleAdd: () => void;
+  handlePreview: () => void;
+  isPreviewActive?: boolean;
+  name: string;
 }
 
-const ContextWindowsItem = ({ color, colorTitle, name, handleAdd }: Props) => (
+const ContextWindowsItem = ({ color, colorTitle, name, handleAdd, handlePreview, isPreviewActive }: Props) => (
   <Wrapper>
     <Dot color={color} title={colorTitle} />
 
-    <Text title={name}>{name}</Text>
+    <Text title={name} onClick={handleAdd}>
+      {name}
+    </Text>
 
-    <AddIcon hoverColor={Color.COMET} imgSrc={PlusIcon} onClick={handleAdd} size={15} />
+    <Icon
+      hoverColor={Color.JUPITER}
+      imgSrc={EyeIcon}
+      onClick={handlePreview}
+      size={15}
+      isActive={isPreviewActive}
+      title={isPreviewActive ? 'Close snapshot' : 'View snapshot'}
+    />
   </Wrapper>
 );
 

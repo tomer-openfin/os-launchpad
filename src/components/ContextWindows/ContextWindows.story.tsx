@@ -9,6 +9,7 @@ import ContextWindows, { ContextWindowsGroup } from './ContextWindows';
 
 const handleAdd = action('handleAdd');
 const handleDrop = action('handleDrop');
+const handleSnapshot = action('handleSnapshot');
 
 storiesOf(`${CATEGORIES.COMPONENTS}ContextWindows`, module)
   .addDecorator(withKnobs)
@@ -35,5 +36,13 @@ storiesOf(`${CATEGORIES.COMPONENTS}ContextWindows`, module)
     }
     contextWindowsByGroup.push(redGroup);
 
-    return <ContextWindows contextWindowsByGroup={contextWindowsByGroup} handleAdd={handleAdd} handleDrop={handleDrop} />;
+    return (
+      <ContextWindows
+        contextWindowsByGroup={contextWindowsByGroup}
+        handleAdd={handleAdd}
+        handleDrop={handleDrop}
+        handleSnapshot={handleSnapshot}
+        snapshotIdentity={null}
+      />
+    );
   });

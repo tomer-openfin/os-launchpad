@@ -1,19 +1,23 @@
 import { connect } from 'react-redux';
 
-import { addWindowToChannel, getChannelMembersByActiveId, getChannelsActiveId, removeWindowFromChannel } from '../../redux/channels';
+import withRenderPrevention, { PreventRenderProps } from '../../hocs/withRenderPrevention';
+import { addWindowToChannel, getChannelsActiveId, removeWindowFromChannel } from '../../redux/channels';
+import { getFilteredChannelMembersByActiveId } from '../../redux/selectors';
+import { clearSnapshot, getSnapshotIdentity } from '../../redux/snapshot';
 import { State } from '../../redux/types';
 import { Identity } from '../../types/commons';
 
-import withRenderPrevention, { PreventRenderProps } from '../../hocs/withRenderPrevention';
 import ContextGroupWindows, { Props } from './ContextGroupWindows';
 
 interface MapState {
-  activeId: ReturnType<typeof getChannelsActiveId>;
-  contextWindows: ReturnType<typeof getChannelMembersByActiveId>;
+  activeId: string | null;
+  contextWindows: Identity[];
+  snapshotIdentity: Identity | null;
 }
 
 interface MapDispatch {
   addWindowToChannel: typeof addWindowToChannel.request;
+  clearSnapshot: typeof clearSnapshot;
   removeWindowFromChannel: typeof removeWindowFromChannel.request;
 }
 
@@ -23,17 +27,25 @@ interface OwnProps {
 
 const mapState = (state: State) => ({
   activeId: getChannelsActiveId(state),
-  contextWindows: getChannelMembersByActiveId(state),
+  contextWindows: getFilteredChannelMembersByActiveId(state),
+  snapshotIdentity: getSnapshotIdentity(state),
 });
 
-const mapDispatch = { removeWindowFromChannel: removeWindowFromChannel.request, addWindowToChannel: addWindowToChannel.request };
+const mapDispatch = { addWindowToChannel: addWindowToChannel.request, clearSnapshot, removeWindowFromChannel: removeWindowFromChannel.request };
 
 const mergeProps = (stateProps: MapState, dispatchProps: MapDispatch, ownProps: OwnProps) => {
+  const { snapshotIdentity } = stateProps;
+
   return {
     ...ownProps,
     contextWindows: stateProps.contextWindows,
-    handleDrop: (uuid: string, name: string, id: string) =>
-      dispatchProps.addWindowToChannel({ identity: { uuid, name }, nextId: stateProps.activeId || '', currentId: id }),
+    handleDrop: (uuid: string, name: string, id: string) => {
+      if (snapshotIdentity && snapshotIdentity.uuid === uuid && snapshotIdentity.name === name) {
+        dispatchProps.clearSnapshot();
+      }
+      dispatchProps.addWindowToChannel({ identity: { uuid, name }, nextId: stateProps.activeId || '', currentId: id });
+    },
+
     handleRemove: (identity: Identity) => dispatchProps.removeWindowFromChannel({ id: stateProps.activeId || '', identity }),
     preventRender: !stateProps.activeId,
   };

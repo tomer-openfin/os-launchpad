@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface Props {
   imgSrc: string;
+  onClick: () => void;
 }
 
 const Snapshot = styled.div<Props>`

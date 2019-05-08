@@ -3,11 +3,11 @@ import * as React from 'react';
 import { Identity } from '../../types/commons';
 import { Content, Header, ItemsWrapper, StyledContextManagerEmptyState, Wrapper } from './ContextWindows.css';
 
-import withWindowNameAndSnapshot from '../../hocs/withWindowNameAndSnapshot';
+import withWindowNameAndOverlay from '../../hocs/withWindowNameAndOverlay';
 import ContextWindowsItem from '../ContextWindowsItem';
 import DragWrapper, { createChannelsHandleDrop, handleDragOver } from '../DragWrapper';
 
-const EnhancedContextWindowsItem = withWindowNameAndSnapshot(ContextWindowsItem);
+const EnhancedContextWindowsItem = withWindowNameAndOverlay(ContextWindowsItem);
 
 export interface ChannelIdentity {
   color: string;
@@ -25,11 +25,13 @@ export interface Props {
   contextWindowsByGroup: ContextWindowsGroup[];
   handleAdd: (identity: Identity, id: string) => void;
   handleDrop: (uuid: string, name: string, channelId: string) => void;
+  handleSnapshot: (identity: Identity) => void;
   isEmpty?: boolean;
   preventRender?: boolean;
+  snapshotIdentity: Identity | null;
 }
 
-const ContextWindows = ({ contextWindowsByGroup, handleAdd, isEmpty, handleDrop, preventRender }: Props) => (
+const ContextWindows = ({ contextWindowsByGroup, handleAdd, handleDrop, handleSnapshot, isEmpty, preventRender, snapshotIdentity }: Props) => (
   <Wrapper onDragOver={handleDragOver} onDrop={createChannelsHandleDrop(handleDrop)}>
     <Header>Other Running Windows</Header>
 
@@ -46,6 +48,7 @@ const ContextWindows = ({ contextWindowsByGroup, handleAdd, isEmpty, handleDrop,
         {contextWindowsByGroup.map(({ channel, contextWindows }) => {
           return contextWindows.map(identity => {
             const handleClickAdd = () => handleAdd(identity, channel.id);
+            const handleClickPreview = () => handleSnapshot(identity);
 
             return (
               <DragWrapper key={`${identity.uuid}::${identity.name}`} dataTransferObj={{ ...identity, channelId: channel.id }}>
@@ -53,8 +56,10 @@ const ContextWindows = ({ contextWindowsByGroup, handleAdd, isEmpty, handleDrop,
                   color={channel.isGlobal ? '' : channel.color}
                   colorTitle={channel.isGlobal ? '' : channel.name}
                   handleAdd={handleClickAdd}
+                  handlePreview={handleClickPreview}
                   identity={identity}
                   isPollingActive={!preventRender}
+                  isPreviewActive={snapshotIdentity && snapshotIdentity.uuid === identity.uuid && snapshotIdentity.name === identity.name}
                   key={`${identity.uuid}::${identity.name}`}
                 />
               </DragWrapper>

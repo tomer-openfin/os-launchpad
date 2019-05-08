@@ -12,7 +12,14 @@ import { GLOBAL_CHANNEL_ID } from '../utils/openfinFdc3';
 import { calcAppListDimensions, calcMaxAppCount } from '../utils/windowPositionHelpers';
 import { getIsEnterprise } from './application/selectors';
 import { getAppsById } from './apps/selectors';
-import { getChannelsById, getChannelsContextsById, getChannelsIds, getChannelsMembersById, getContextWindowsByGroup } from './channels/selectors';
+import {
+  getChannelMembersByActiveId,
+  getChannelsById,
+  getChannelsContextsById,
+  getChannelsIds,
+  getChannelsMembersById,
+  getContextWindowsByGroup,
+} from './channels/selectors';
 import {
   getAppsLauncherIds,
   getIsAdmin,
@@ -192,4 +199,9 @@ export const getContextWindowsCount = createSelector(
   [getContextWindowsByGroup, getSystemWindowDetailsById],
   (contextWindowsByGroup, windowDetailsById) =>
     contextWindowsByGroup.reduce((acc, next) => acc + next.contextWindows.filter(identity => getIsSystemWindowPresent(windowDetailsById, identity)).length, 0),
+);
+
+export const getFilteredChannelMembersByActiveId = createSelector(
+  [getChannelMembersByActiveId, getSystemWindowDetailsById],
+  (members, windowDetailsById) => members.filter(identity => getIsSystemWindowPresent(windowDetailsById, identity)),
 );
