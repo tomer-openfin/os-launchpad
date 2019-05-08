@@ -122,7 +122,6 @@ export const calcAppListDimensions = (
  * @param launcherPosition - current launcher position
  * @param launcherSizeConfig - current launcher sizing config
  * @param systemDrawerSize - size of SystemDrawer
- * @param expandedDrawerSize - size of expanded SystemDrawer
  *
  * @returns {Dimensions}
  */
@@ -259,9 +258,11 @@ export const calcCoordinatesRelativeToLauncherBounds = (
  * Calculates window bounds relative to launcher.
  *
  * @param finName - window fin name
- * @param bounds - window bounds to be relative to launcher
+ * @param bounds - window bounds relative to launcher
  * @param launcherBounds - launcher bounds
  * @param launcherPosition - launcher position
+ * @param launcherSizeConfig - launcher configuration information
+ * @param systemDrawerSize - system drawer size in pixels
  *
  * @returns {Bounds}
  */

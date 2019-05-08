@@ -2,13 +2,14 @@ import { Window } from '@giantmachines/redux-openfin';
 import { all, call, put, select, take } from 'redux-saga/effects';
 
 import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, SETTINGS_MENU_WINDOW } from '../../config/windows';
-import { Bounds } from '../../types/commons';
+import { Bounds, CustomDataWithChannels, WorkspaceApp } from '../../types/commons';
 import { UnPromisfy } from '../../types/utils';
 import { getApplicationInfo, getSystemRvmInfo, getWindowBounds, resizeWindowTo, setWindowBounds } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
+import { ready, setGenerateHandler, setRestoreHandler } from '../../utils/openfinLayouts';
 import { calcBoundsRelativeToLauncher } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList, resetAppDirectoryList } from '../apps';
-import { getChannels } from '../channels';
+import { getChannels, getChannelsMembersById, rejoinWindowToChannel } from '../channels';
 import { getLayouts, resetLayouts } from '../layouts';
 import { getLauncherPosition, getLauncherSizeConfig, getSettings, resetSettings } from '../me';
 import { getOrgSettings } from '../organization';
@@ -16,6 +17,34 @@ import { getAppListDimensions, getSettingsMenuHeight, getSystemDrawerSize } from
 import { getAndSetMonitorInfo, getMachineId, storeAllSystemWindows } from '../system';
 import { getWindowBounds as getWindowBoundsSelector } from '../windows';
 import { getManifest, resetApplicationUi, setManifestUrl, setRuntimeVersion, setRvmVersion } from './actions';
+
+export function setupLayoutsListeners() {
+  // called each time new layout is generated
+  const generateListener = () => {
+    const channels = getChannelsMembersById(window.store.getState());
+
+    // enable customData field for launcher itself
+    return { channels };
+  };
+  setGenerateHandler(generateListener);
+  const restoreListener = (workspace: WorkspaceApp) => {
+    // look for saved customData on launcher layout
+    if (workspace && !!workspace.customData) {
+      const { channels } = workspace.customData as CustomDataWithChannels;
+
+      for (const channelId in channels) {
+        if (channels[channelId].length === 0) continue;
+
+        channels[channelId].map(identity => {
+          window.store.dispatch(rejoinWindowToChannel.request({ identity, channelId }));
+        });
+      }
+    }
+    return workspace;
+  };
+  setRestoreHandler(restoreListener);
+  ready();
+}
 
 export function* hideLauncherAndAttachments() {
   yield put(Window.hideWindow({ id: getOwnUuid() }));

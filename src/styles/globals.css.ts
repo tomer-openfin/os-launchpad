@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-app-region: no-drag;
     box-sizing: border-box;
   }
+
   body {
     margin: 0;
     background-color: ${getBackgroundColor};

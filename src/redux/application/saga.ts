@@ -3,19 +3,17 @@ import { all, call, cancel, cancelled, delay, fork, put, race, select, take, tak
 
 import ApiService from '../../services/ApiService';
 import { ApiResponseStatus } from '../../types/enums';
-import { CustomDataWithChannels, WorkspaceApp } from '../../types/fin';
 import { UnPromisfy } from '../../types/utils';
 import { eraseCookie } from '../../utils/cookieUtils';
 import { animateWindow, getApplicationManifest, showSystemDeveloperTools } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { updateKeyInManifestOverride } from '../../utils/manifestOverride';
 import { GLOBAL_CHANNEL_ID } from '../../utils/openfinFdc3';
-import { ready, setGenerateHandler, setRestoreHandler } from '../../utils/openfinLayouts';
 import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv, isProductionEnv } from '../../utils/processHelpers';
 import { setupWindow } from '../../utils/setupWindow';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
 import { getAppDirectoryList } from '../apps';
-import { addWindowToChannel, getChannels, getChannelsMembersById, getChannelsMembersChannels, rejoinWindowToChannel } from '../channels';
+import { addWindowToChannel, getChannels, getChannelsMembersChannels, rejoinWindowToChannel } from '../channels';
 import { registerGlobalDevHotKeys } from '../globalHotkeys/utils';
 import { restoreLayout } from '../layouts';
 import { getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig } from '../me';
@@ -52,6 +50,7 @@ import {
   initRuntimeVersion,
   initRvmVersion,
   initSystemWindows,
+  setupLayoutsListeners,
 } from './utils';
 
 const APP_UUID = getOwnUuid();
@@ -166,32 +165,7 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
       yield put(setIsEnterprise(isEnterprise));
 
       yield call(loginFlow, isLoggedIn || !isEnterprise);
-
-      // called each time new layout is generated
-      const generateListener = () => {
-        const channels = getChannelsMembersById(window.store.getState());
-
-        // enable customData field for launcher itself
-        return { channels };
-      };
-      setGenerateHandler(generateListener);
-      const restoreListener = (workspace: WorkspaceApp) => {
-        // look for saved customData on launcher layout
-        if (workspace && !!workspace.customData) {
-          const { channels } = workspace.customData as CustomDataWithChannels;
-
-          for (const channelId in channels) {
-            if (channels[channelId].length === 0) continue;
-
-            channels[channelId].map(identity => {
-              window.store.dispatch(rejoinWindowToChannel.request({ identity, channelId }));
-            });
-          }
-        }
-        return workspace;
-      };
-      setRestoreHandler(restoreListener);
-      ready();
+      setupLayoutsListeners();
     }
   } catch (e) {
     const error = getErrorFromCatch(e);
@@ -230,7 +204,7 @@ function* watchPolling() {
     // wait for polling stop request
     yield take(pollStop);
 
-    // cancel the pollStartTast, causes the
+    // cancel the pollStartTask, causes the
     // pollStartTask to jump to its finally block
     yield cancel(pollStartTask);
   } catch (e) {
@@ -424,9 +398,9 @@ export function* applicationSaga() {
   yield takeEvery(launchAppLauncher, watchLaunchAppLauncher);
   yield takeEvery(openfinReady, openfinSetup);
   yield takeEvery(rejoinWindowToChannel.request, watchRejoinWindowToChannelRequest);
+
   yield takeLatest(pollStart, watchPolling);
   yield takeLatest(toggleAppIsShowing, watchToggleAppIsShowing);
-
   yield takeLatest(getManifestOverride.request, watchGetManifestOverrideRequest);
   yield takeLatest(fetchManifest.request, watchFetchManifest);
   yield takeLatest(getManifest.request, watchGetManifestRequest);

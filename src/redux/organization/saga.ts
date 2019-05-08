@@ -1,7 +1,6 @@
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
-
 import { ApiResponseStatus } from '../../types/enums';
 import { UnPromisfy } from '../../types/utils';
 import { getErrorFromCatch } from '../utils';
@@ -29,7 +28,7 @@ function* watchSaveOrgActiveThemeId(action: ReturnType<typeof saveOrgActiveTheme
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.warn('Error in watchSaveOrgImage', error);
+    console.warn('Error in watchSaveOrgActiveThemeId', error);
   }
 }
 

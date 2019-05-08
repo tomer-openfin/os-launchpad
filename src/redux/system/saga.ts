@@ -117,16 +117,6 @@ function* watchSystemEventApplicationTrayIconClicked() {
   }
 }
 
-// function* watchSystemEventApplicationStarted(action: SystemEventApplicationStartedAction) {
-//   const eventPayload = action.payload;
-
-//   if (!eventPayload) {
-//     return;
-//   }
-
-//   const { uuid } = eventPayload;
-// }
-
 function* watchStoreAllSystemWindows() {
   try {
     const allWindows: UnPromisfy<ReturnType<typeof getAllSystemWindows>> = yield call(getAllSystemWindows);
@@ -215,7 +205,6 @@ export function* systemSaga() {
   yield takeEvery(systemEventApplicationClosed, watchSystemEventApplicationClosed);
   yield takeEvery(systemEventApplicationCrashed, watchSystemEventApplicationCrashed);
   yield takeEvery(systemEventApplicationTrayIconClicked, watchSystemEventApplicationTrayIconClicked);
-  // yield takeEvery(SYSTEM_EVENT_APPLICATION_STARTED, watchSystemEventApplicationStarted);
   yield takeEvery(systemEventWindowCreated, watchSystemEventWindowCreated);
   yield takeLatest(gatherAllWindows.request, watchGatherAllWindowsRequest);
   yield takeLatest(storeAllSystemWindows.request, watchStoreAllSystemWindows);

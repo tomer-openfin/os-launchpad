@@ -1,7 +1,7 @@
-import { State } from '../types';
-
 import { createSelector } from 'reselect';
+
 import { denormalizeData } from '../../utils/reduxHelpers';
+import { State } from '../types';
 
 export const getWindowsState = (state: State) => state.windows;
 export const getWindowsById = (state: State) => getWindowsState(state).byId;

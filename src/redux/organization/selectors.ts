@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
+
 import DEFAULT_THEMES from '../../utils/defaultThemes';
 import { DEFAULT_LOGIN_LOGO, DEFAULT_LOGO } from '../../utils/orgImages';
 import { State } from '../types';
 import { OrganizationState } from './types';
 
 export const getOrganizationSettings = (state: State): OrganizationState => state.organization;
-
 export const getOrganizationLogo = (state: State) => getOrganizationSettings(state).logo || DEFAULT_LOGO;
 export const getOrganizationLoginLogo = (state: State) => getOrganizationSettings(state).loginLogo || DEFAULT_LOGIN_LOGO;
 export const getOrganizationActiveThemeId = (state: State) => getOrganizationSettings(state).activeThemeId;

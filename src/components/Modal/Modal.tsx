@@ -23,7 +23,7 @@ const Modal = ({ children, handleClose }: Props) => {
   const modals = document.getElementById('modals');
   if (!modals) {
     // tslint:disable-next-line:no-console
-    console.log('Modal root div not found.');
+    console.warn('Modal root div not found.');
     return null;
   }
 

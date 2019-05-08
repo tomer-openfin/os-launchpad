@@ -67,7 +67,7 @@ function* watchGlobalHotkeyPressed(action: ReturnType<typeof globalHotkeyPressed
 
       default:
         // tslint:disable-next-line:no-console
-        console.log('Not a valid registered hotkey.');
+        console.warn('Not a valid registered hotkey.');
     }
   } catch (e) {
     const error = getErrorFromCatch(e);

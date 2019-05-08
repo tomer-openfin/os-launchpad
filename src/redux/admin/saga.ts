@@ -163,13 +163,9 @@ export function* watchClickComponentPreview(action: ReturnType<typeof clickCompo
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.warn('Error in clickComponentPreview', error);
+    console.warn('Error in watchClickComponentPreview', error);
   }
 }
-
-// watch an action, it does nothing.
-// the saga catches it, changes the type, waits for it, then shows the window
-// also handles hiding the window.
 
 export function* adminSaga() {
   yield takeEvery(createAdminApp.request, watchCreateAdminAppRequest);

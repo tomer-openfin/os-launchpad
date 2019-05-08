@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
-import { State } from '../types';
 
 import { DirectionalCoordinates, Identity, MonitorDetails } from '../../types/commons';
 import { getCoordinatesHeight, getCoordinatesWidth } from '../../utils/coordinateHelpers';
+import { State } from '../types';
 import { getUniqueWindowId } from '../windows/utils';
 
 const getMonitorDetailsId = (monitorDetails: MonitorDetails) => monitorDetails.name || monitorDetails.deviceId;

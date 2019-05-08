@@ -102,7 +102,7 @@ export function* watchRemoveWindowFromChannelFailure(action: ReturnType<typeof r
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.warn('Error in watchAddWindowToChannelFailure', error);
+    console.warn('Error in watchRemoveWindowFromChannelFailure', error);
   }
 }
 

@@ -63,7 +63,7 @@ export function* watchGetAppDirectoryListSuccess(action: ReturnType<typeof getAp
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Unknown error saga from:', action, 'Error:', error);
+    console.warn('Unknown error saga from:', action, 'Error:', error);
   }
 }
 
@@ -75,7 +75,7 @@ export function* watchLaunchApp(action: ReturnType<typeof launchApp>) {
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Unknown error saga from:', action, 'Error:', error);
+    console.warn('Unknown error saga from:', action, 'Error:', error);
   }
 }
 
@@ -98,26 +98,6 @@ export function* watchExternalAppRequest(action: ReturnType<typeof externalApp.r
 }
 
 // TODO: Add event listener for closing native app?
-
-// export function* watchExternalAppSuccess(action: ReturnType<typeof externalApp.success>) {
-//   try {
-
-//   } catch (e) {
-//     const error = getErrorFromCatch(e);
-//     // tslint:disable-next-line:no-console
-//     console.log('Unknown error saga from:', action, 'Error:', error);
-//   }
-// }
-
-// export function* watchExternalAppFailure(action: ReturnType<typeof externalApp.failure>) {
-//   try {
-
-//   } catch (e) {
-//     const error = getErrorFromCatch(e);
-//     // tslint:disable-next-line:no-console
-//     console.log('Error in watchOpenFinAppFailure', error);
-//   }
-// }
 
 export function* watchOpenFinAppRequest(action: ReturnType<typeof openFinApp.request>) {
   try {
@@ -179,7 +159,7 @@ export function* watchOpenFinAppSuccess(action: ReturnType<typeof openFinApp.suc
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
-    console.log('Unknown error saga from:', action, 'Error:', error);
+    console.warn('Unknown error saga from:', action, 'Error:', error);
   }
 }
 

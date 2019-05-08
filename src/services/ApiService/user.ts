@@ -81,7 +81,7 @@ export const updateUserLayout = (userLayout: UserLayout): Promise<ApiResponse<Us
 export type UpdateUserLayout = typeof updateUserLayout;
 
 /**
- * Get settings
+ * Get user settings
  */
 export const getUserSettings = (): Promise<ApiResponse<Partial<MeSettingsState>>> => {
   if (checkIsEnterprise()) {
@@ -93,7 +93,7 @@ export const getUserSettings = (): Promise<ApiResponse<Partial<MeSettingsState>>
 export type GetUserSettings = typeof getUserSettings;
 
 /**
- * Save settings
+ * Save user settings
  */
 export const saveUserSettings = (settings: MeSettingsState): Promise<ApiResponse<undefined>> => {
   if (checkIsEnterprise()) {
