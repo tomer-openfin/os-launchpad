@@ -1,19 +1,15 @@
-import { Application } from '@giantmachines/redux-openfin';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 
 import { getMeAuthIsError, getMeAuthMessage } from '../../redux/me';
 import { State } from '../../redux/types';
+import { closeApplication } from '../../utils/finUtils';
 
 import Login from './Login';
 
-const mapState = (state: State) => ({ message: getMeAuthMessage(state), error: getMeAuthIsError(state) });
-
-const mapDispatch = (dispatch: Dispatch) => ({
-  closeApplication: () => dispatch(Application.close()),
+const mapState = (state: State) => ({
+  closeApplication: () => closeApplication()(),
+  error: getMeAuthIsError(state),
+  message: getMeAuthMessage(state),
 });
 
-export default connect(
-  mapState,
-  mapDispatch,
-)(Login);
+export default connect(mapState)(Login);

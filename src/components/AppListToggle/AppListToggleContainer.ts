@@ -5,12 +5,12 @@ import { hideWindow, launchWindow } from '../../redux/windows';
 import AppListToggle from './AppListToggle';
 
 interface MapDispatch {
-  hideWindow: typeof hideWindow;
+  hideWindow: typeof hideWindow.request;
   launchWindow: typeof launchWindow;
 }
 
 const mapDispatch = {
-  hideWindow,
+  hideWindow: hideWindow.request,
   launchWindow,
 };
 

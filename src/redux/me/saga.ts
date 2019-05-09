@@ -1,4 +1,3 @@
-import { Application, Window } from '@giantmachines/redux-openfin';
 import { all, call, Effect, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
@@ -8,7 +7,7 @@ import { adminWindows, authWindows, defaultWindows } from '../../config/windows'
 import { ApiResponseStatus } from '../../types/enums';
 import { UnPromisfy } from '../../types/utils';
 import { EventType, sendAnalytics } from '../../utils/analytics';
-import { unregisterAllGlobalHotkey } from '../../utils/finUtils';
+import { closeWindow, hideWindow, restartApplication, unregisterAllGlobalHotkey } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { generateTimestamp } from '../../utils/timestampUtils';
 import { getAdminApps, getAdminUsers } from '../admin';
@@ -126,7 +125,7 @@ function* watchLoginSuccess(action: ReturnType<typeof login.success>) {
 
     yield all(effects);
 
-    yield put(Window.closeWindow({ id: authWindows.login.name }));
+    yield call(closeWindow({ uuid: getOwnUuid(), name: authWindows.login.name }));
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
@@ -136,9 +135,7 @@ function* watchLoginSuccess(action: ReturnType<typeof login.success>) {
 
 function* watchLogoutRequest(action: ReturnType<typeof logout.request>) {
   try {
-    yield call(closeWindowsByConfig, adminWindows);
-    yield call(hideWindowsByConfig, defaultWindows);
-    yield put(Window.hideWindow({ id: getOwnUuid() }));
+    yield all([call(closeWindowsByConfig, adminWindows), call(hideWindowsByConfig, defaultWindows), call(hideWindow())]);
     yield all([call(unregisterAllGlobalHotkey), call(resetResources)]);
 
     const response: UnPromisfy<ReturnType<typeof ApiService.logout>> = yield call(ApiService.logout);
@@ -170,8 +167,8 @@ function* watchLogoutSuccess(action: ReturnType<typeof logout.success>) {
 
 function* watchLogoutFailure() {
   try {
-    yield put(Application.restart());
     yield put(pollStop());
+    yield call(restartApplication());
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console

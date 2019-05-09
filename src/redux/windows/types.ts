@@ -1,11 +1,25 @@
 import { Bounds } from '../../types/commons';
 import { NormalizedById } from '../../utils/reduxHelpers';
-import { hideWindow, launchWindow, recoverLostWindows, toggleWindow, windowBlurred, windowHidden, windowShown } from './actions';
+import { ActionsUnion } from '../types';
+import {
+  hideWindow,
+  launchWindow,
+  openWindow,
+  recoverLostWindows,
+  toggleWindow,
+  windowBlurred,
+  windowBoundsChanged,
+  windowClosed,
+  windowHidden,
+  windowShown,
+} from './actions';
 
 export interface WindowState {
-  bounds: Bounds;
+  bounds?: Bounds;
   id: string;
   isShowing?: boolean;
+  name: string;
+  uuid: string;
 }
 
 // State
@@ -56,10 +70,13 @@ export interface WindowConfigsMap {
 
 // Actions
 export type WindowsActions =
-  | ReturnType<typeof hideWindow>
+  | ActionsUnion<typeof hideWindow>
+  | ActionsUnion<typeof openWindow>
   | ReturnType<typeof launchWindow>
   | ReturnType<typeof recoverLostWindows>
   | ReturnType<typeof toggleWindow>
   | ReturnType<typeof windowBlurred>
+  | ReturnType<typeof windowBoundsChanged>
+  | ReturnType<typeof windowClosed>
   | ReturnType<typeof windowHidden>
   | ReturnType<typeof windowShown>;

@@ -7,7 +7,7 @@ import { hideWindow } from '../../redux/windows';
 import Support from './Support';
 
 const mapDispatch = (dispatch: Dispatch) => ({
-  handleClose: () => dispatch(hideWindow({ name: windowsConfig.support.name })),
+  handleClose: () => dispatch(hideWindow.request({ name: windowsConfig.support.name })),
 });
 
 export default connect(

@@ -66,20 +66,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderWindow(Router);
 
   if (fin) {
-    fin.desktop.main(() => {
-      const finWindow = fin.desktop.Window.getCurrent();
-      const { name, uuid } = finWindow;
-      const action = openfinReady({ finName: name });
-      const { dispatch } = window.store || window.opener.store;
-      dispatch(action);
+    const finWindow = fin.desktop.Window.getCurrent();
+    const { name, uuid } = finWindow;
+    const action = openfinReady({ finName: name });
+    const { dispatch } = window.store || window.opener.store;
+    dispatch(action);
 
-      if (name !== getOwnUuid()) {
-        deregister({ name, uuid })
-          // tslint:disable-next-line:no-console
-          .then(() => console.log(`Deregistering ${name} from Layouts service.`))
-          // tslint:disable-next-line:no-console
-          .catch(err => console.log(`${name} has already been deregistred from Layouts service. Service returned the following error: ${err}`));
-      }
-    });
+    if (name !== getOwnUuid()) {
+      deregister({ name, uuid })
+        // tslint:disable-next-line:no-console
+        .then(() => console.log(`Deregistering ${name} from Layouts service.`))
+        // tslint:disable-next-line:no-console
+        .catch(err => console.log(`${name} has already been deregistred from Layouts service. Service returned the following error: ${err}`));
+    }
   }
 });

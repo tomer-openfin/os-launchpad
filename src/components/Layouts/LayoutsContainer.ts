@@ -13,7 +13,7 @@ const mapState = (state: State) => ({
 });
 
 const mapDispatch = dispatch => ({
-  close: () => dispatch(hideWindow({ name: LAYOUTS_WINDOW })),
+  close: () => dispatch(hideWindow.request({ name: LAYOUTS_WINDOW })),
   deleteLayout: (id: string, meta: MetaWithAsyncHandlers<UserLayout['id']>) => dispatch(deleteLayout.request(id, meta)),
   restoreLayout: (id: string) => dispatch(restoreLayout.request(id)),
 });

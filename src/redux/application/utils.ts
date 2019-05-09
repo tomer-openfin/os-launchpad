@@ -1,10 +1,9 @@
-import { Window } from '@giantmachines/redux-openfin';
 import { all, call, put, select, take } from 'redux-saga/effects';
 
 import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, SETTINGS_MENU_WINDOW } from '../../config/windows';
 import { Bounds, CustomDataWithChannels, WorkspaceApp } from '../../types/commons';
 import { UnPromisfy } from '../../types/utils';
-import { getApplicationInfo, getSystemRvmInfo, getWindowBounds, resizeWindowTo, setWindowBounds } from '../../utils/finUtils';
+import { getApplicationInfo, getSystemRvmInfo, getWindowBounds, hideWindow, resizeWindowTo, setWindowBounds } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { ready, setGenerateHandler, setRestoreHandler } from '../../utils/openfinLayouts';
 import { calcBoundsRelativeToLauncher } from '../../utils/windowPositionHelpers';
@@ -18,39 +17,15 @@ import { getAndSetMonitorInfo, getMachineId, storeAllSystemWindows } from '../sy
 import { getWindowBounds as getWindowBoundsSelector } from '../windows';
 import { getManifest, resetApplicationUi, setManifestUrl, setRuntimeVersion, setRvmVersion } from './actions';
 
-export function setupLayoutsListeners() {
-  // called each time new layout is generated
-  const generateListener = () => {
-    const channels = getChannelsMembersById(window.store.getState());
-
-    // enable customData field for launcher itself
-    return { channels };
-  };
-  setGenerateHandler(generateListener);
-  const restoreListener = (workspace: WorkspaceApp) => {
-    // look for saved customData on launcher layout
-    if (workspace && !!workspace.customData) {
-      const { channels } = workspace.customData as CustomDataWithChannels;
-
-      for (const channelId in channels) {
-        if (channels[channelId].length === 0) continue;
-
-        channels[channelId].map(identity => {
-          window.store.dispatch(rejoinWindowToChannel.request({ identity, channelId }));
-        });
-      }
-    }
-    return workspace;
-  };
-  setRestoreHandler(restoreListener);
-  ready();
-}
+const APP_UUID = getOwnUuid();
 
 export function* hideLauncherAndAttachments() {
-  yield put(Window.hideWindow({ id: getOwnUuid() }));
-  yield put(Window.hideWindow({ id: APP_LAUNCHER_OVERFLOW_WINDOW }));
-  yield put(Window.hideWindow({ id: LAYOUTS_WINDOW }));
-  yield put(Window.hideWindow({ id: SETTINGS_MENU_WINDOW }));
+  yield all([
+    call(hideWindow({ uuid: APP_UUID, name: APP_UUID })),
+    call(hideWindow({ uuid: APP_UUID, name: APP_LAUNCHER_OVERFLOW_WINDOW })),
+    call(hideWindow({ uuid: APP_UUID, name: LAYOUTS_WINDOW })),
+    call(hideWindow({ uuid: APP_UUID, name: SETTINGS_MENU_WINDOW })),
+  ]);
 }
 
 export function* initChannels() {
@@ -124,6 +99,34 @@ export function* resizeSettingsMenu() {
   const identity = { uuid: getOwnUuid(), name: SETTINGS_MENU_WINDOW };
   const bounds: UnPromisfy<ReturnType<ReturnType<typeof getWindowBounds>>> = yield call(getWindowBounds(identity));
   yield call(resizeWindowTo({ uuid: getOwnUuid(), name: SETTINGS_MENU_WINDOW }), bounds.width, height, 'top-left');
+}
+
+export function setupLayoutsListeners() {
+  // called each time new layout is generated
+  const generateListener = () => {
+    const channels = getChannelsMembersById(window.store.getState());
+
+    // enable customData field for launcher itself
+    return { channels };
+  };
+  setGenerateHandler(generateListener);
+  const restoreListener = (workspace: WorkspaceApp) => {
+    // look for saved customData on launcher layout
+    if (workspace && !!workspace.customData) {
+      const { channels } = workspace.customData as CustomDataWithChannels;
+
+      for (const channelId in channels) {
+        if (channels[channelId].length === 0) continue;
+
+        channels[channelId].map(identity => {
+          window.store.dispatch(rejoinWindowToChannel.request({ identity, channelId }));
+        });
+      }
+    }
+    return workspace;
+  };
+  setRestoreHandler(restoreListener);
+  ready();
 }
 
 /**

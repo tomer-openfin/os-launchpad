@@ -1,14 +1,14 @@
-import { Window } from '@giantmachines/redux-openfin';
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import { CONTEXT_MENU } from '../../config/windows';
 import { isBoundsInCoordinates, isPosInCoordinates } from '../../utils/coordinateHelpers';
-import { setWindowBounds } from '../../utils/finUtils';
+import { focusWindow, hideWindow, setWindowBounds, showWindow } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { getMonitorInfo } from '../system';
 import { getErrorFromCatch } from '../utils';
-import { hideWindow } from '../windows';
 import { closeContextMenu, openContextMenu } from './actions';
+
+const APP_UUID = getOwnUuid();
 
 const PADDING = 10;
 // TODO: Do width and height calculations after dom has been rendered
@@ -19,7 +19,7 @@ const W_CHAR_WIDTH = 6;
 
 function* watchCloseContextMenuRequest(action: ReturnType<typeof closeContextMenu.request>) {
   try {
-    yield put(hideWindow({ name: CONTEXT_MENU }));
+    yield call(hideWindow({ uuid: APP_UUID, name: CONTEXT_MENU }));
     yield put(closeContextMenu.success(undefined, action.meta));
   } catch (e) {
     const error = getErrorFromCatch(e);
@@ -29,7 +29,7 @@ function* watchCloseContextMenuRequest(action: ReturnType<typeof closeContextMen
 
 function* watchOpenContextMenuRequest(action: ReturnType<typeof openContextMenu.request>) {
   try {
-    yield put(hideWindow({ name: CONTEXT_MENU }));
+    yield call(hideWindow({ uuid: APP_UUID, name: CONTEXT_MENU }));
 
     const monitorInfo: ReturnType<typeof getMonitorInfo> = yield select(getMonitorInfo);
     const { anchor, options } = action.payload;
@@ -114,8 +114,9 @@ function* watchOpenContextMenuRequest(action: ReturnType<typeof openContextMenu.
 
 function* watchOpenContextMenuSuccess() {
   try {
-    yield put(Window.showWindow({ id: CONTEXT_MENU }));
-    yield put(Window.focusWindow({ id: CONTEXT_MENU }));
+    const identity = { uuid: APP_UUID, name: CONTEXT_MENU };
+    yield call(showWindow(identity));
+    yield call(focusWindow(identity));
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console

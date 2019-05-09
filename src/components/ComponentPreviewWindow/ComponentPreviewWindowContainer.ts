@@ -13,7 +13,7 @@ const mapState = (state: State) => ({
 });
 
 const mapDispatch = (dispatch: Dispatch) => ({
-  handleClose: () => dispatch(hideWindow({ name: PREVIEW_WINDOW })),
+  handleClose: () => dispatch(hideWindow.request({ name: PREVIEW_WINDOW })),
 });
 
 export default connect(

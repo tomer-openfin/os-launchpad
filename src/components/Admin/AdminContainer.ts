@@ -39,7 +39,7 @@ const mapDispatch = (dispatch: Dispatch) => ({
     dispatch(getAdminUsers.request());
   },
   hideWindow: () => {
-    dispatch(hideWindow({ name: ADMIN_WINDOW }));
+    dispatch(hideWindow.request({ name: ADMIN_WINDOW }));
   },
 });
 

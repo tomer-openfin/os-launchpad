@@ -1,4 +1,3 @@
-import { middleware as reduxOpenFin } from '@giantmachines/redux-openfin';
 import { applyMiddleware, compose, createStore, StoreEnhancer } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { composeWithDevTools } from 'remote-redux-devtools';
@@ -15,11 +14,8 @@ const isStorybook = isStorybookEnv();
 
 export default (state?: State) => {
   // Middleware
-  const openFinMiddleware = reduxOpenFin(window.fin);
   const sagaMiddleware = createSagaMiddleware();
-
-  // Don't include redux-openfin when running in Storybook.
-  const middlewareArgs = isStorybook ? [sagaMiddleware] : [openFinMiddleware, sagaMiddleware];
+  const middlewareArgs = [sagaMiddleware];
 
   // Include the extra Redux dev tools when running in development, but not in Storybook.
   const middleware =

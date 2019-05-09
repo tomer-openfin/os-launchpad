@@ -12,12 +12,14 @@ const getFin = () => {
 
 // Window
 type FinWindow = typeof fin.Window;
-type FinWindowMethods = Extract<keyof FinApplication, 'getCurrent' | 'wrap'>;
+type FinWindowMethods = Extract<keyof FinWindow, 'create' | 'getCurrent' | 'wrap'>;
 type FinWindowInstance = UnPromisfy<ReturnType<typeof fin.Window.wrap>>;
 type FinWindowInstanceMethods = Extract<
   keyof FinWindowInstance,
   | 'addListener'
   | 'animate'
+  | 'close'
+  | 'focus'
   | 'getBounds'
   | 'getGroup'
   | 'getInfo'
@@ -46,8 +48,9 @@ const getWindowMethod = <T extends FinWindowMethods>(method: T): FinWindow[T] =>
   }
 };
 
-const wrapWindow = getWindowMethod('wrap');
+export const createWindow = getWindowMethod('create');
 const getCurrentWindow = getWindowMethod('getCurrent');
+const wrapWindow = getWindowMethod('wrap');
 
 // Instance
 const getWindowInstanceMethod = <T extends FinWindowInstanceMethods>(method: T) => (identity?: fin.Identity): FinWindowInstance[T] => async (...args) => {
@@ -57,6 +60,8 @@ const getWindowInstanceMethod = <T extends FinWindowInstanceMethods>(method: T) 
 
 export const addWindowListener = getWindowInstanceMethod('addListener');
 export const animateWindow = getWindowInstanceMethod('animate');
+export const closeWindow = getWindowInstanceMethod('close');
+export const focusWindow = getWindowInstanceMethod('focus');
 export const getWindowBounds = getWindowInstanceMethod('getBounds');
 export const getWindowGroup = getWindowInstanceMethod('getGroup');
 export const getWindowInfo = getWindowInstanceMethod('getInfo');
@@ -76,7 +81,7 @@ type FinApplicationMethods = Extract<keyof FinApplication, 'createFromManifest' 
 type FinApplicationInstance = UnPromisfy<ReturnType<typeof fin.Application.wrap>>;
 type FinApplicationInstanceMethods = Extract<
   keyof FinApplicationInstance,
-  'addListener' | 'close' | 'getChildWindows' | 'getInfo' | 'getManifest' | 'getWindow' | 'removeTrayIcon' | 'setTrayIcon'
+  'addListener' | 'close' | 'getChildWindows' | 'getInfo' | 'getManifest' | 'getWindow' | 'removeTrayIcon' | 'restart' | 'setTrayIcon'
 >;
 
 // Static
@@ -105,7 +110,7 @@ const getCurrentApplication = getApplicationMethod('getCurrent');
 const wrapApplication = getApplicationMethod('wrap');
 
 // Instance
-const getApplicationInstanceMethod = <T extends FinApplicationInstanceMethods>(method: T) => (identity: fin.Identity): FinApplicationInstance[T] => async (
+const getApplicationInstanceMethod = <T extends FinApplicationInstanceMethods>(method: T) => (identity?: fin.Identity): FinApplicationInstance[T] => async (
   ...args
 ) => {
   const finApplication = identity ? await wrapApplication(identity) : await getCurrentApplication();
@@ -118,6 +123,7 @@ export const getApplicationInfo = getApplicationInstanceMethod('getInfo');
 export const getApplicationManifest = getApplicationInstanceMethod('getManifest');
 export const getApplicationWindow = getApplicationInstanceMethod('getWindow');
 export const removeApplicationTrayIcon = getApplicationInstanceMethod('removeTrayIcon');
+export const restartApplication = getApplicationInstanceMethod('restart');
 export const setApplicationTrayIcon = getApplicationInstanceMethod('setTrayIcon');
 
 // System

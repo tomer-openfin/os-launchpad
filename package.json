@@ -23,7 +23,6 @@
     "test": "echo '---> See test:* sub tasks.\n\n' && exit 1"
   },
   "devDependencies": {
-    "@babel/core": "7.3.4",
     "@types/enzyme": "3.1.14",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "23.3.7",
@@ -40,6 +39,7 @@
     "@types/storybook__react": "4.0.1",
     "@types/styled-components": "4.1.4",
     "awesome-typescript-loader": "5.2.1",
+    "babel-core": "6.26.3",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.4",
     "babel-plugin-styled-components": "1.10.0",
@@ -70,7 +70,6 @@
     "webpack-dev-server": "3.1.14"
   },
   "dependencies": {
-    "@giantmachines/redux-openfin": "0.7.4",
     "@redux-saga/testing-utils": "1.0.2",
     "@storybook/addon-actions": "5.0.10",
     "@storybook/addon-info": "5.0.10",

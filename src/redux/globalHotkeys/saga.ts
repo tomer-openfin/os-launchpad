@@ -1,9 +1,8 @@
-import { Application } from '@giantmachines/redux-openfin';
-import { put, select, takeEvery } from 'redux-saga/effects';
+import { call, put, select, takeEvery } from 'redux-saga/effects';
 
 import windowsConfig from '../../config/windows';
 import { EventType, sendAnalytics } from '../../utils/analytics';
-import { showSystemDeveloperTools } from '../../utils/finUtils';
+import { restartApplication, showSystemDeveloperTools } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { isDevelopmentEnv } from '../../utils/processHelpers';
 import { toggleAppIsShowing } from '../application';
@@ -53,7 +52,7 @@ function* watchGlobalHotkeyPressed(action: ReturnType<typeof globalHotkeyPressed
       }
 
       case DevGlobalHotkeys.ReloadApp: {
-        yield put(Application.restart());
+        yield call(restartApplication());
         break;
       }
 

@@ -1,11 +1,10 @@
-import { Application, Window } from '@giantmachines/redux-openfin';
 import { all, call, cancel, cancelled, delay, fork, put, race, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import ApiService from '../../services/ApiService';
 import { ApiResponseStatus } from '../../types/enums';
 import { UnPromisfy } from '../../types/utils';
 import { eraseCookie } from '../../utils/cookieUtils';
-import { animateWindow, getApplicationManifest, showSystemDeveloperTools } from '../../utils/finUtils';
+import { animateWindow, closeApplication, getApplicationManifest, hideWindow, showSystemDeveloperTools, showWindow } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { updateKeyInManifestOverride } from '../../utils/manifestOverride';
 import { GLOBAL_CHANNEL_ID } from '../../utils/openfinFdc3';
@@ -73,7 +72,7 @@ function* watchExitApplication() {
   try {
     // stop polling for updates on application close
     yield put(pollStop());
-    yield put(Application.close());
+    yield call(closeApplication());
   } catch (e) {
     const error = getErrorFromCatch(e);
     // tslint:disable-next-line:no-console
@@ -110,7 +109,7 @@ function* watchLaunchAppLauncher() {
     // When all done show main app bar
     // Delay helps with the dom shuffling and initial animations
     yield delay(150);
-    yield put(Window.showWindow({ id: APP_UUID }));
+    yield call(showWindow({ uuid: APP_UUID, name: APP_UUID }));
 
     // start polling once launcher is ready
     yield put(pollStart());
@@ -130,9 +129,10 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
     console.log('Openfin ready', action);
 
     const { finName } = action.payload;
+    const identity = { uuid: APP_UUID, name: finName };
 
     // Add window specific setup
-    yield setupWindow(finName);
+    yield setupWindow(identity);
 
     // Only main window should be doing setup.
     if (finName === APP_UUID) {
@@ -142,7 +142,8 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
         yield put(initDevTools());
       }
 
-      yield put(Window.hideWindow({ id: finName }));
+      yield call(hideWindow(identity));
+
       // Kick off getting channels, but no guarantee right now channel promise will resolve
       // so don't block here
       yield put(getChannels.request());
@@ -340,7 +341,7 @@ function* watchToggleAppIsShowing() {
     if (isShowing) {
       yield call(hideLauncherAndAttachments);
     } else {
-      yield put(Window.showWindow({ id: APP_UUID }));
+      yield call(showWindow({ uuid: APP_UUID, name: APP_UUID }));
     }
   } catch (e) {
     const error = getErrorFromCatch(e);

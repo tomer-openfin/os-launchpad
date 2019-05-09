@@ -18,7 +18,7 @@ interface MapState {
 interface MapDispatch {
   animateChannels: typeof animateChannels.request;
   clearSnapshot: typeof clearSnapshot;
-  hideWindow: typeof hideWindow;
+  hideWindow: typeof hideWindow.request;
   setActiveChannelId: typeof setActiveChannelId;
 }
 
@@ -27,7 +27,7 @@ const mapState = (state: State) => ({
   channels: getContextChannels(state),
 });
 
-const mapDispatch = { clearSnapshot, hideWindow, setActiveChannelId, animateChannels: animateChannels.request };
+const mapDispatch = { clearSnapshot, hideWindow: hideWindow.request, setActiveChannelId, animateChannels: animateChannels.request };
 
 const mergeProps = (
   stateProps: MapState,

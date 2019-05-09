@@ -21,8 +21,9 @@ export type WindowBoundsEvent = fin.WindowBoundsEvent;
 export type WindowGroupChangedEvent = fin.WindowGroupChangedEvent;
 export type Workspace = Workspace;
 export type WorkspaceApp = WorkspaceApp;
-export type WindowInfo = fin.WindowInfo;
 export type WindowDetail = fin.WindowDetail;
+export type WindowInfo = fin.WindowInfo;
+export type WindowOption = fin.WindowOption;
 export type CustomDataWithChannels = WorkspaceApp['customData'] & { channels: { [channelColor: string]: Identity[] } };
 export type FinWindowV2 = UnPromisfy<ReturnType<typeof fin.Window.wrap>>;
 

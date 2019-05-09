@@ -14,7 +14,7 @@ const mapState = (state: State) => ({
 
 const mapDispatch = (dispatch: Dispatch) => ({
   hideWindow: () => {
-    dispatch(hideWindow({ name: SETTINGS_WINDOW }));
+    dispatch(hideWindow.request({ name: SETTINGS_WINDOW }));
   },
 });
 

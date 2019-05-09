@@ -1,4 +1,3 @@
-import { Window } from '@giantmachines/redux-openfin';
 import { all, call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import { UnPromisfy } from '../../types/utils';
