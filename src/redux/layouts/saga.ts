@@ -1,4 +1,4 @@
-import { all, call, put, race, select, take, takeEvery } from 'redux-saga/effects';
+import { all, call, put, race, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
 
 import { LAYOUTS_WINDOW } from '../../config/windows';
 import ApiService from '../../services/ApiService';
@@ -15,7 +15,7 @@ import { getSystemDrawerSize } from '../selectors';
 import { getErrorFromCatch } from '../utils';
 import { getWindowBounds } from '../windows';
 
-import { createLayout, deleteLayout, dismissUndoUpdateLayout, getLayouts, restoreLayout, saveLayout, undoUpdateLayout, updateLayout } from './actions';
+import { createLayout, deleteLayout, dismissUndoUpdateLayout, getLayouts, restoreLayout, saveLayout, undoUpdateLayout, updateLayout, shareLayout } from './actions';
 import { getAllLayouts, getLayoutById, getLayoutByName } from './selectors';
 import { calcDesiredLayoutsWindowHeight } from './utils';
 
@@ -286,12 +286,27 @@ function* watchUpdateLayoutSuccess(action: ReturnType<typeof updateLayout.succes
   }
 }
 
+function* watchShareLayoutRequest(action: ReturnType<typeof shareLayout.request>) {
+  try {
+    const response = yield call(ApiService.shareWorkspace(action.payload));
+    if (response.status === ApiResponseStatus.Failure) {
+    } 
+    const clipboardData = `fins://openfin.os-launcher.openfin.co/api/launcher.json?$$layoutUrl=${response.data.link}`;
+    yield call([fin.Clipboard, fin.Clipboard.writeText], {data: clipboardData}); // call, all, put
+    yield put(shareLayout.success({link: clipboardData}, action.meta));
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    yield put(shareLayout.failure(error, action.meta));
+  }
+}
+
 export function* layoutsSaga() {
   yield takeEvery(getLayouts.request, watchGetLayoutsRequest);
   yield takeEvery(createLayout.request, watchCreateLayoutRequest);
   yield takeEvery(deleteLayout.request, watchDeleteLayoutRequest);
   yield takeEvery(restoreLayout.request, watchRestoreLayoutRequest);
   yield takeEvery(restoreLayout.success, watchRestoreLayoutSuccess);
+  yield takeLatest(shareLayout.request, watchShareLayoutRequest);
   yield takeEvery(saveLayout.request, watchSaveLayoutRequest);
   yield takeEvery(updateLayout.request, watchUpdateLayoutRequest);
   yield takeEvery(updateLayout.success, watchUpdateLayoutSuccess);

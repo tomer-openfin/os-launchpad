@@ -115,3 +115,6 @@ export const postUserStats = (payload: SendAnalyticsPayload) =>
  */
 export const updateUserPassword = api<undefined, UpdatePasswordRequestPayload>(API.UPDATE_PASSWORD, HTTPMethods.POST, _ => ({ data: undefined }));
 export type UpdateUserPassword = typeof updateUserPassword;
+type SHAREABLE_LINK = {link: string};
+
+export const shareWorkspace = (id: any) => api<SHAREABLE_LINK>(`${API.SHARE_LAYOUT.replace(':id', id)}`, HTTPMethods.PUT, (res: any) => res)

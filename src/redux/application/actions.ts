@@ -3,6 +3,7 @@ import { Manifest, ManifestOverride, OpenfinReadyPayload, ReboundLauncherRequest
 
 // Action Types
 const APPLICATION_STARTED = 'APPLICATION_STARTED';
+const APPLICATION_RUN_REQUESTED = 'APPLICATION_RUN_REQUESTED';
 const COLLAPSE_APP = 'COLLAPSE_APP';
 const EXIT_APPLICATION = 'EXIT_APPLICATION';
 const EXPAND_APP = 'EXPAND_APP';
@@ -41,6 +42,7 @@ const FETCH_MANIFEST_FAILURE = 'FETCH_MANIFEST_FAILURE';
 
 // Action Creators
 export const applicationStarted = createAction(APPLICATION_STARTED)();
+export const applicationRunRequested = createAction(APPLICATION_RUN_REQUESTED)<any>();
 export const collapseApp = createAction(COLLAPSE_APP)();
 export const exitApplication = createAction(EXIT_APPLICATION)();
 export const expandApp = createAction(EXPAND_APP)();

@@ -12,6 +12,7 @@ import {
   saveUserSettings,
   updateUserLayout,
   updateUserPassword,
+  shareWorkspace
 } from './user';
 import { createAdminUser, deleteAdminUser, getAdminUser, getAdminUsers, updateAdminUser } from './users';
 
@@ -57,7 +58,8 @@ const ApiService = {
 
   sendBug,
   sendFeedback,
-
+  shareWorkspace,
+  
   postUserStats,
 };
 

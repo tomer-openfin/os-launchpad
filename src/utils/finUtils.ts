@@ -117,6 +117,7 @@ const getApplicationInstanceMethod = <T extends FinApplicationInstanceMethods>(m
   return (finApplication[method] as Function).call(finApplication, ...args);
 };
 
+export const addApplicationListener = getApplicationInstanceMethod('addListener');
 export const getApplicationChildWindows = getApplicationInstanceMethod('getChildWindows');
 export const closeApplication = getApplicationInstanceMethod('close');
 export const getApplicationInfo = getApplicationInstanceMethod('getInfo');

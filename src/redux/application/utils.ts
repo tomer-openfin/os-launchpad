@@ -3,7 +3,7 @@ import { all, call, put, select, take } from 'redux-saga/effects';
 import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, SETTINGS_MENU_WINDOW } from '../../config/windows';
 import { Bounds, CustomDataWithChannels, WorkspaceApp } from '../../types/commons';
 import { UnPromisfy } from '../../types/utils';
-import { getApplicationInfo, getSystemRvmInfo, getWindowBounds, hideWindow, resizeWindowTo, setWindowBounds } from '../../utils/finUtils';
+import { getApplicationInfo, getSystemRvmInfo, getWindowBounds, hideWindow, resizeWindowTo, setWindowBounds, addApplicationListener } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { ready, setGenerateHandler, setRestoreHandler } from '../../utils/openfinLayouts';
 import { calcBoundsRelativeToLauncher } from '../../utils/windowPositionHelpers';
@@ -100,7 +100,10 @@ export function* resizeSettingsMenu() {
   const bounds: UnPromisfy<ReturnType<ReturnType<typeof getWindowBounds>>> = yield call(getWindowBounds(identity));
   yield call(resizeWindowTo({ uuid: getOwnUuid(), name: SETTINGS_MENU_WINDOW }), bounds.width, height, 'top-left');
 }
-
+export function* setupApplicationHandlers() {
+  const runRequestedHandler = (payload: any) => window.store.dispatch({type: 'APPLICATION_RUN_REQUESTED', payload});
+  yield call(addApplicationListener(), 'run-requested', runRequestedHandler);
+}
 export function setupLayoutsListeners() {
   // called each time new layout is generated
   const generateListener = () => {

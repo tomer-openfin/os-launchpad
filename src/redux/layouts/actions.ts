@@ -7,6 +7,12 @@ import { CreateOrUpdateSuccessPayload, GetLayoutsSuccessPayload, UpdateLayoutReq
 const GET_LAYOUTS_REQUEST = 'GET_LAYOUTS_REQUEST';
 const GET_LAYOUTS_SUCCESS = 'GET_LAYOUTS_SUCCESS';
 const GET_LAYOUTS_FAILURE = 'GET_LAYOUTS_FAILURE';
+
+// SHARE_LAYOUT
+const SHARE_LAYOUT_REQUEST = 'SHARE_LAYOUT_REQUEST';
+const SHARE_LAYOUT_SUCCESS = 'SHARE_LAYOUT_SUCCESS';
+const SHARE_LAYOUT_FAILURE = 'SHARE_LAYOUT_FAILURE';
+
 // RESTORE_LAYOUT
 const RESTORE_LAYOUT_REQUEST = 'RESTORE_LAYOUT_REQUEST';
 const RESTORE_LAYOUT_SUCCESS = 'RESTORE_LAYOUT_SUCCESS';
@@ -73,6 +79,11 @@ export const deleteLayout = createAsyncActionCreators(DELETE_LAYOUT_REQUEST, DEL
 export const saveLayout = createAsyncActionCreators(SAVE_LAYOUT_REQUEST, SAVE_LAYOUT_SUCCESS, SAVE_LAYOUT_FAILURE)<
   UserLayout['name'],
   CreateOrUpdateSuccessPayload,
+  Error
+>();
+export const shareLayout = createAsyncActionCreators(SHARE_LAYOUT_REQUEST, SHARE_LAYOUT_SUCCESS, SHARE_LAYOUT_FAILURE)<
+  UserLayout['id'],
+  {link: string},
   Error
 >();
 export const resetLayouts = createAction(RESET_LAYOUTS)();

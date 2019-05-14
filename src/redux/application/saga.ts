@@ -15,11 +15,13 @@ import { getAppDirectoryList } from '../apps';
 import { addWindowToChannel, getChannels, getChannelsMembersChannels, rejoinWindowToChannel } from '../channels';
 import { registerGlobalDevHotKeys } from '../globalHotkeys/utils';
 import { restoreLayout } from '../layouts';
+import { restoreLayout as restoreFinLayout } from '../../utils/openfinLayouts';
 import { getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig } from '../me';
 import { loginFlow } from '../me/utils';
 import { getOrgSettings } from '../organization';
 import { getAppsLauncherAppList, getMonitorDetailsDerivedByUserSettings, getSystemDrawerSize } from '../selectors';
 import { getSystemWindowIsPresent, setupSystemHandlers } from '../system';
+import { setupApplicationHandlers } from './utils';
 import { getErrorFromCatch } from '../utils';
 import { getUniqueWindowId, getWindowIsShowing } from '../windows';
 import {
@@ -37,6 +39,7 @@ import {
   setIsEnterprise,
   toggleAppIsShowing,
   updateManifestOverride,
+  applicationRunRequested
 } from './actions';
 import { getApplicationManifestOverride } from './selectors';
 import {
@@ -158,6 +161,8 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
         call(initManifest),
         call(initManifestUrl),
         call(setupSystemHandlers, window.fin, window.store || window.opener.store),
+        call(setupApplicationHandlers, window.fin, window.store || window.opener.store),
+
       ]);
 
       const isLoggedIn: ReturnType<typeof getIsLoggedIn> = yield select(getIsLoggedIn);
@@ -348,6 +353,21 @@ function* watchToggleAppIsShowing() {
     // tslint:disable-next-line:no-console
     console.warn('Error in watchToggleAppIsShowing', error);
   }
+}
+
+function* watchApplicationRunRequested(action: ReturnType<typeof applicationRunRequested>) {
+  try {
+    if (action.payload.userAppConfigArgs && action.payload.userAppConfigArgs.layoutUrl) {
+      fetch(action.payload.userAppConfigArgs.layoutUrl).then(res => res.json()).then(data => {
+        restoreFinLayout(data.layout);
+      });
+    }
+  } catch (e) {
+    const error = getErrorFromCatch(e);
+    // tslint:disable-next-line:no-console
+    console.warn('Error in watchToggleAppIsShowing', e);
+  }
+
 }
 
 function* watchRejoinWindowToChannelRequest(action: ReturnType<typeof rejoinWindowToChannel.request>) {
