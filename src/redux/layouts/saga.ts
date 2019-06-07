@@ -15,7 +15,13 @@ import { getSystemDrawerSize } from '../selectors';
 import { getErrorFromCatch } from '../utils';
 import { getWindowBounds } from '../windows';
 
-import { createLayout, deleteLayout, dismissUndoUpdateLayout, getLayouts, restoreLayout, saveLayout, undoUpdateLayout, updateLayout, shareLayout } from './actions';
+import { createLayout,
+  deleteLayout,
+  dismissUndoUpdateLayout,
+  getLayouts, restoreLayout,
+  saveLayout, shareLayout,
+  undoUpdateLayout,
+  updateLayout } from './actions';
 import { getAllLayouts, getLayoutById, getLayoutByName } from './selectors';
 import { calcDesiredLayoutsWindowHeight } from './utils';
 
@@ -289,8 +295,8 @@ function* watchUpdateLayoutSuccess(action: ReturnType<typeof updateLayout.succes
 function* watchShareLayoutRequest(action: ReturnType<typeof shareLayout.request>) {
   try {
     const response = yield call(ApiService.shareWorkspace(action.payload));
-    if (response.status === ApiResponseStatus.Failure) {
-    } 
+    // if (response.status === ApiResponseStatus.Failure) {
+    // }
     const clipboardData = `fins://openfin.os-launcher.openfin.co/api/launcher.json?$$layoutUrl=${response.data.link}`;
     yield call([fin.Clipboard, fin.Clipboard.writeText], {data: clipboardData}); // call, all, put
     yield put(shareLayout.success({link: clipboardData}, action.meta));

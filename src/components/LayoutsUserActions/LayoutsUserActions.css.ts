@@ -74,6 +74,14 @@ export const SubmitButton = styled.button`
   }
 `;
 
+export const ShareIcon = styled(SvgIcon)<Props>`
+${({ hoverColor }) => `
+  &:hover {
+    background-color: ${hoverColor};
+  }
+`}
+`;
+
 export const Input = styled.input`
   ${Typography.TypeStyleCanopus}
 

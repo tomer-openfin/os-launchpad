@@ -1,10 +1,11 @@
 import * as React from 'react';
 
+import * as shareIcon from '../../assets/Chain.svg';
 import * as checkIcon from '../../assets/CheckCircle.svg';
 import * as saveIcon from '../../assets/Save.svg';
-
 import { Color } from '../../styles';
-import { CheckIcon, Input, LayoutForm, SaveIcon, SubmitButton, Text, TextWrapper, UndoText, UserActions } from './LayoutsUserActions.css';
+import noop from '../../utils/noop';
+import { CheckIcon, Input, LayoutForm, SaveIcon, ShareIcon, SubmitButton, Text, TextWrapper, UndoText, UserActions } from './LayoutsUserActions.css';
 
 const ERROR_SHOW_DURATION_MS = 5000;
 const SUCCESS_SHOW_DURATION_MS = 10000;
@@ -21,6 +22,7 @@ interface Props {
   dismissUndoLayout: () => void;
   saveLayout: (name: string, meta: { successCb: (updated: boolean) => void; errorCb: () => void }) => void;
   undoLayout: (meta: { successCb: () => void; errorCb: () => void }) => void;
+  shareLayout: (meta: { successCb: () => void; errorCb: () => void }, payload) => void;
 }
 
 interface State {
@@ -76,6 +78,13 @@ class LayoutsUserActions extends React.Component<Props, State> {
 
     this.setState({ stage: Stage.Submitting });
     undoLayout({ errorCb: this.errorCb, successCb: this.resetForm });
+  };
+
+  handleShare = () => {
+    const { shareLayout } = this.props;
+
+    this.setState({ stage: Stage.Submitting });
+    shareLayout({ errorCb: this.errorCb, successCb: () => undefined }, null);
   };
 
   handleFormSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
@@ -136,10 +145,10 @@ class LayoutsUserActions extends React.Component<Props, State> {
     return (
       <LayoutForm onSubmit={this.handleFormSubmit}>
         <Input onChange={this.handleNameChange} placeholder="Workspace Name" required type="text" />
-
         <SubmitButton type="submit" disabled={isNameEmpty}>
           {!isNameEmpty && <CheckIcon hoverColor={Color.JUPITER} imgSrc={checkIcon} size={14} />}
         </SubmitButton>
+        <ShareIcon validResult={true} size={24} hoverColor={Color.JUPITER} imgSrc={shareIcon} />
       </LayoutForm>
     );
   }

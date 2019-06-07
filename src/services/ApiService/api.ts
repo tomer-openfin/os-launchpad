@@ -22,7 +22,6 @@ const API = {
 
   ORG_SETTINGS: `${API_URL}api/config`,
 
-
   USER_APPS: `${API_URL}api/user/apps`,
   USER_INFO: `${API_URL}api/user/info`,
   USER_LAYOUTS: `${API_URL}api/user/layouts`,

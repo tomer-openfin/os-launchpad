@@ -8,6 +8,7 @@ import { animateWindow, closeApplication, getApplicationManifest, hideWindow, sh
 import getOwnUuid from '../../utils/getOwnUuid';
 import { updateKeyInManifestOverride } from '../../utils/manifestOverride';
 import { GLOBAL_CHANNEL_ID } from '../../utils/openfinFdc3';
+import { restoreLayout as restoreFinLayout } from '../../utils/openfinLayouts';
 import { hasDevToolsOnStartup, isDevelopmentEnv, isEnterpriseEnv, isProductionEnv } from '../../utils/processHelpers';
 import { setupWindow } from '../../utils/setupWindow';
 import { calcLauncherPosition } from '../../utils/windowPositionHelpers';
@@ -15,16 +16,15 @@ import { getAppDirectoryList } from '../apps';
 import { addWindowToChannel, getChannels, getChannelsMembersChannels, rejoinWindowToChannel } from '../channels';
 import { registerGlobalDevHotKeys } from '../globalHotkeys/utils';
 import { restoreLayout } from '../layouts';
-import { restoreLayout as restoreFinLayout } from '../../utils/openfinLayouts';
 import { getIsLoggedIn, getLauncherPosition, getLauncherSizeConfig } from '../me';
 import { loginFlow } from '../me/utils';
 import { getOrgSettings } from '../organization';
 import { getAppsLauncherAppList, getMonitorDetailsDerivedByUserSettings, getSystemDrawerSize } from '../selectors';
 import { getSystemWindowIsPresent, setupSystemHandlers } from '../system';
-import { setupApplicationHandlers } from './utils';
 import { getErrorFromCatch } from '../utils';
 import { getUniqueWindowId, getWindowIsShowing } from '../windows';
 import {
+  applicationRunRequested,
   applicationStarted,
   exitApplication,
   fetchManifest,
@@ -39,7 +39,6 @@ import {
   setIsEnterprise,
   toggleAppIsShowing,
   updateManifestOverride,
-  applicationRunRequested
 } from './actions';
 import { getApplicationManifestOverride } from './selectors';
 import {
@@ -52,6 +51,7 @@ import {
   initRuntimeVersion,
   initRvmVersion,
   initSystemWindows,
+  setupApplicationHandlers,
   setupLayoutsListeners,
 } from './utils';
 
@@ -161,8 +161,7 @@ function* openfinSetup(action: ReturnType<typeof openfinReady>) {
         call(initManifest),
         call(initManifestUrl),
         call(setupSystemHandlers, window.fin, window.store || window.opener.store),
-        call(setupApplicationHandlers, window.fin, window.store || window.opener.store),
-
+        call(setupApplicationHandlers),
       ]);
 
       const isLoggedIn: ReturnType<typeof getIsLoggedIn> = yield select(getIsLoggedIn);

@@ -3,7 +3,14 @@ import { all, call, put, select, take } from 'redux-saga/effects';
 import { APP_LAUNCHER_OVERFLOW_WINDOW, LAYOUTS_WINDOW, SETTINGS_MENU_WINDOW } from '../../config/windows';
 import { Bounds, CustomDataWithChannels, WorkspaceApp } from '../../types/commons';
 import { UnPromisfy } from '../../types/utils';
-import { getApplicationInfo, getSystemRvmInfo, getWindowBounds, hideWindow, resizeWindowTo, setWindowBounds, addApplicationListener } from '../../utils/finUtils';
+import {
+  addApplicationListener,
+  getApplicationInfo,
+  getSystemRvmInfo,
+  getWindowBounds,
+  hideWindow,
+  resizeWindowTo,
+  setWindowBounds } from '../../utils/finUtils';
 import getOwnUuid from '../../utils/getOwnUuid';
 import { ready, setGenerateHandler, setRestoreHandler } from '../../utils/openfinLayouts';
 import { calcBoundsRelativeToLauncher } from '../../utils/windowPositionHelpers';

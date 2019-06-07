@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { dismissUndoUpdateLayout, saveLayout, undoUpdateLayout } from '../../redux/layouts';
+import { dismissUndoUpdateLayout, saveLayout, shareLayout, undoUpdateLayout } from '../../redux/layouts';
 
 import LayoutsUserActions from './LayoutsUserActions';
 
@@ -14,6 +14,8 @@ const mapDispatch = (dispatch: Dispatch) => ({
 
     dispatch(saveLayout.request(name, { onSuccess: successCb, onFailure: meta.errorCb }));
   },
+  shareLayout: (payload, meta) =>
+    dispatch(shareLayout.request(payload, { onSuccess: meta.successCb, onFailure: meta.errorCb })),
   undoLayout: (meta: { successCb: () => void; errorCb: () => void }) =>
     dispatch(undoUpdateLayout.request(undefined, { onSuccess: meta.successCb, onFailure: meta.errorCb })),
 });
