@@ -54,7 +54,7 @@ export const TrashIcon = styled(SvgIcon)<{ isVisible: boolean }>`
 
 export const ShareIcon = styled(SvgIcon)<{ isVisible: boolean }>`
   position: absolute;
-  right: 0;
+  right: 22;
   transform: translate(0);
   transition: transform ${ICON_TRANSITION_DURATION}ms ${ANIMATION_TIMING_FUNCTION};
   transition-delay: ${ICON_TRANSITION_DURATION}ms;
