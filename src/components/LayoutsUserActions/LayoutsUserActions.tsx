@@ -1,11 +1,10 @@
 import * as React from 'react';
 
-import * as shareIcon from '../../assets/Chain.svg';
 import * as checkIcon from '../../assets/CheckCircle.svg';
 import * as saveIcon from '../../assets/Save.svg';
 import { Color } from '../../styles';
 import noop from '../../utils/noop';
-import { CheckIcon, Input, LayoutForm, SaveIcon, ShareIcon, SubmitButton, Text, TextWrapper, UndoText, UserActions } from './LayoutsUserActions.css';
+import { CheckIcon, Input, LayoutForm, SaveIcon, SubmitButton, Text, TextWrapper, UndoText, UserActions } from './LayoutsUserActions.css';
 
 const ERROR_SHOW_DURATION_MS = 5000;
 const SUCCESS_SHOW_DURATION_MS = 10000;

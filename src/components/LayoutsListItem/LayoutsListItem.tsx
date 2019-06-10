@@ -27,6 +27,7 @@ interface Props {
   close: () => void;
   deleteLayout: (id: UserLayout['id'], meta: MetaWithAsyncHandlers<UserLayout['id']>) => void;
   handleClickDelete: () => void;
+  handleClickShare: () => void;
   id: string;
   name: string;
   resetActiveId: () => void;
@@ -112,13 +113,13 @@ class LayoutsListItem extends React.Component<Props, State> {
   };
 
   renderIconAnimations = () => {
-    const { handleClickDelete } = this.props;
+    const { handleClickDelete, handleClickShare } = this.props;
     const { stage, isSubmitting } = this.state;
 
     return (
       <AnimationWrapper>
         <ConfirmIcon hoverColor={Color.SATURN} imgSrc={checkIcon} isVisible={stage === Stage.Confirm} onClick={this.handleClickConfirmDelete} size={14} />
-        {!isSubmitting && <ShareIcon hoverColor={Color.MARS} imgSrc={shareIcon} isVisible={stage === Stage.Confirm} onClick={handleClickDelete} size={16} />}
+        {!isSubmitting && <ShareIcon hoverColor={Color.MARS} imgSrc={shareIcon} isVisible={stage === Stage.Confirm} onClick={handleClickShare} size={16} />}
         {!isSubmitting && <TrashIcon hoverColor={Color.MARS} imgSrc={trashIcon} isVisible={stage === Stage.Confirm} onClick={handleClickDelete} size={20} />}
 
         <CancelIcon hoverColor={Color.MARS} imgSrc={closeIcon} isVisible={stage === Stage.Confirm} onClick={this.handleClickCancelDelete} size={14} />
