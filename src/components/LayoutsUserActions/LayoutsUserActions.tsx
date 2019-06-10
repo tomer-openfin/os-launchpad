@@ -148,7 +148,6 @@ class LayoutsUserActions extends React.Component<Props, State> {
         <SubmitButton type="submit" disabled={isNameEmpty}>
           {!isNameEmpty && <CheckIcon hoverColor={Color.JUPITER} imgSrc={checkIcon} size={14} />}
         </SubmitButton>
-        <ShareIcon validResult={true} size={24} hoverColor={Color.JUPITER} imgSrc={shareIcon} />
       </LayoutForm>
     );
   }

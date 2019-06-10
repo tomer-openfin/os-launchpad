@@ -52,6 +52,16 @@ export const TrashIcon = styled(SvgIcon)<{ isVisible: boolean }>`
   ${({ isVisible }) => isVisible && `transform: translate(-${(LARGE_ICON_DIM + SMALL_ICON_DIM) / 2}px); transition-delay: 0ms; pointer-events: none;`}
 `;
 
+export const ShareIcon = styled(SvgIcon)<{ isVisible: boolean }>`
+  position: absolute;
+  right: 0;
+  transform: translate(0);
+  transition: transform ${ICON_TRANSITION_DURATION}ms ${ANIMATION_TIMING_FUNCTION};
+  transition-delay: ${ICON_TRANSITION_DURATION}ms;
+
+  ${({ isVisible }) => isVisible && `transform: translate(-${(LARGE_ICON_DIM + SMALL_ICON_DIM) / 2}px); transition-delay: 0ms; pointer-events: none;`}
+`;
+
 export const AnimationWrapper = styled.div`
   align-items: center;
   display: flex;

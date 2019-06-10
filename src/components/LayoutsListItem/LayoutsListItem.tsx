@@ -3,8 +3,10 @@ import * as React from 'react';
 import * as checkIcon from '../../assets/CheckCircle.svg';
 import * as closeIcon from '../../assets/CloseCircle.svg';
 import * as trashIcon from '../../assets/Trash.svg';
+import * as shareIcon from '../../assets/Share.svg';
 
-import { AnimationWrapper, CancelIcon, ConfirmIcon, Item, Row, Text, TrashIcon } from './LayoutsListItem.css';
+
+import { AnimationWrapper, CancelIcon, ConfirmIcon, Item, Row, Text, TrashIcon, ShareIcon } from './LayoutsListItem.css';
 
 import { Color } from '../../styles';
 import { MetaWithAsyncHandlers, UserLayout } from '../../types/commons';
@@ -116,7 +118,7 @@ class LayoutsListItem extends React.Component<Props, State> {
     return (
       <AnimationWrapper>
         <ConfirmIcon hoverColor={Color.SATURN} imgSrc={checkIcon} isVisible={stage === Stage.Confirm} onClick={this.handleClickConfirmDelete} size={14} />
-
+        {!isSubmitting && <ShareIcon hoverColor={Color.MARS} imgSrc={shareIcon} isVisible={stage === Stage.Confirm} onClick={handleClickDelete} size={20} />}
         {!isSubmitting && <TrashIcon hoverColor={Color.MARS} imgSrc={trashIcon} isVisible={stage === Stage.Confirm} onClick={handleClickDelete} size={20} />}
 
         <CancelIcon hoverColor={Color.MARS} imgSrc={closeIcon} isVisible={stage === Stage.Confirm} onClick={this.handleClickCancelDelete} size={14} />
