@@ -7,9 +7,7 @@ import styled from 'styled-components';
 import { exampleUserLayouts } from '../../samples/LayoutData';
 import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
-
 import LayoutsList from './LayoutsList';
-import { shareLayout } from 'src/redux/layouts';
 
 const Wrapper = styled.div`
   width: 171px;

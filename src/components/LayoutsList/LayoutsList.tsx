@@ -42,8 +42,8 @@ class LayoutsList extends React.Component<Props, State> {
   };
 
   handleClickShare = id => {
-    let { shareLayout } = this.props;
-    shareLayout(id, {onSuccess: () => undefined, onFailure: () => undefined})
+    const { shareLayout } = this.props;
+    shareLayout(id, {onSuccess: () => undefined, onFailure: () => undefined});
   }
 
   renderLayoutsList = () => {

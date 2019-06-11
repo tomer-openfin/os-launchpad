@@ -2,11 +2,10 @@ import * as React from 'react';
 
 import * as checkIcon from '../../assets/CheckCircle.svg';
 import * as closeIcon from '../../assets/CloseCircle.svg';
-import * as trashIcon from '../../assets/Trash.svg';
 import * as shareIcon from '../../assets/Share.svg';
+import * as trashIcon from '../../assets/Trash.svg';
 
-
-import { AnimationWrapper, CancelIcon, ConfirmIcon, Item, Row, Text, TrashIcon, ShareIcon } from './LayoutsListItem.css';
+import { AnimationWrapper, CancelIcon, ConfirmIcon, Item, Row, ShareIcon, Text, TrashIcon } from './LayoutsListItem.css';
 
 import { Color } from '../../styles';
 import { MetaWithAsyncHandlers, UserLayout } from '../../types/commons';
