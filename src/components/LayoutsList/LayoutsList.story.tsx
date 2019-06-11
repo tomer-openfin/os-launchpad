@@ -9,6 +9,7 @@ import { withMarginDecorator } from '../../utils/storybookHelpers';
 import { CATEGORIES } from '../../utils/storyCategories';
 
 import LayoutsList from './LayoutsList';
+import { shareLayout } from 'src/redux/layouts';
 
 const Wrapper = styled.div`
   width: 171px;
@@ -21,13 +22,13 @@ storiesOf(`${CATEGORIES.COMPONENTS}LayoutsList`, module)
   .addDecorator(withMarginDecorator())
   .add('default', () => {
     return (
-      <LayoutsList close={close} deleteLayout={action('deleteLayout clicked')} layouts={exampleUserLayouts} restoreLayout={action('restoreLayout clicked')} />
+      <LayoutsList close={close} deleteLayout={action('deleteLayout clicked')} layouts={exampleUserLayouts} restoreLayout={action('restoreLayout clicked')} shareLayout={action('shareLayout clicked')} />
     );
   })
   .add('with Wrapper', () => {
     return (
       <Wrapper>
-        <LayoutsList close={close} deleteLayout={action('deleteLayout clicked')} layouts={exampleUserLayouts} restoreLayout={action('restoreLayout clicked')} />
+        <LayoutsList close={close} deleteLayout={action('deleteLayout clicked')} layouts={exampleUserLayouts} restoreLayout={action('restoreLayout clicked')} shareLayout={action('shareLayout clicked')} />
       </Wrapper>
     );
   });

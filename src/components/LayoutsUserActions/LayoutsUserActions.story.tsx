@@ -11,11 +11,10 @@ import LayoutsUserActions from './LayoutsUserActions';
 const dismissUndoLayout = action('dismissUndoLayout');
 const saveLayout = action('saveLayout');
 const undoLayout = action('undoLayout');
-const shareLayout = action('shareLayout');
 
 storiesOf(`${CATEGORIES.COMPONENTS}LayoutsUserActions`, module)
   .addDecorator(withKnobs)
   .addDecorator(withMarginDecorator())
   .add('default', () => {
-    return <LayoutsUserActions dismissUndoLayout={dismissUndoLayout} saveLayout={saveLayout} shareLayout={shareLayout} undoLayout={undoLayout} />;
+    return <LayoutsUserActions dismissUndoLayout={dismissUndoLayout} saveLayout={saveLayout} undoLayout={undoLayout} />;
   });

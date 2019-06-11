@@ -21,7 +21,6 @@ interface Props {
   dismissUndoLayout: () => void;
   saveLayout: (name: string, meta: { successCb: (updated: boolean) => void; errorCb: () => void }) => void;
   undoLayout: (meta: { successCb: () => void; errorCb: () => void }) => void;
-  shareLayout: (meta: { successCb: () => void; errorCb: () => void }, payload) => void;
 }
 
 interface State {
@@ -77,13 +76,6 @@ class LayoutsUserActions extends React.Component<Props, State> {
 
     this.setState({ stage: Stage.Submitting });
     undoLayout({ errorCb: this.errorCb, successCb: this.resetForm });
-  };
-
-  handleShare = () => {
-    const { shareLayout } = this.props;
-
-    this.setState({ stage: Stage.Submitting });
-    shareLayout({ errorCb: this.errorCb, successCb: () => undefined }, null);
   };
 
   handleFormSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {

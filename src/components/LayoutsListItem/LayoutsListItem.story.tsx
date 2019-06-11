@@ -28,6 +28,7 @@ storiesOf(`${CATEGORIES.COMPONENTS}LayoutsListItem`, module)
         name={name}
         restoreLayout={action('restoreLayout clicked')}
         resetActiveId={action('resetActiveId clicked')}
+        handleClickShare={action('shareLayout clicked')}
       />
     );
   });

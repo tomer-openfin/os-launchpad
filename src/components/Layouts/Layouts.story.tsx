@@ -13,5 +13,6 @@ storiesOf(`${CATEGORIES.COMPONENTS}Layouts`, module).add('default', () => (
     deleteLayout={action('deleteLayout clicked')}
     layouts={[exampleUserLayout]}
     restoreLayout={action('restoreLayout clicked')}
+    shareLayout={action('shareLayout clicked')}
   />
 ));

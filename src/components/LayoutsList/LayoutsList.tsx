@@ -11,6 +11,7 @@ interface Props {
   deleteLayout: (id: UserLayout['id'], meta: MetaWithAsyncHandlers<UserLayout['id']>) => void;
   layouts: UserLayout[];
   restoreLayout: (id: UserLayout['id']) => void;
+  shareLayout: (id: UserLayout['id'], meta: { onSuccess: () => void, onFailure: () => void }) => void;
 }
 
 interface State {
@@ -40,15 +41,21 @@ class LayoutsList extends React.Component<Props, State> {
     this.setState({ activeId: null });
   };
 
+  handleClickShare = id => {
+    let { shareLayout } = this.props;
+    shareLayout(id, {onSuccess: () => undefined, onFailure: () => undefined})
+  }
+
   renderLayoutsList = () => {
     const { activeId, showFullList } = this.state;
-    const { close, deleteLayout, layouts, restoreLayout } = this.props;
+    const { close, deleteLayout, layouts, restoreLayout} = this.props;
 
     return (
       <UL showFullList={showFullList}>
         {layouts.length > 0 ? (
           layouts.map(layout => {
             const handleClickDeleteCreator = (id: UserLayout['id']) => () => this.handleClickDelete(id);
+            const handleClickShareCreator = (id: UserLayout['id']) => () => this.handleClickShare(id);
 
             return (
               <LayoutsListItem
@@ -56,6 +63,7 @@ class LayoutsList extends React.Component<Props, State> {
                 close={close}
                 deleteLayout={deleteLayout}
                 handleClickDelete={handleClickDeleteCreator(layout.id)}
+                handleClickShare={handleClickShareCreator(layout.id)}
                 id={layout.id}
                 key={layout.id}
                 name={layout.name}
